@@ -1928,6 +1928,230 @@ class DescribePublishSubscribeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeReadOnlyGroupByReadOnlyInstanceRequest(AbstractModel):
+    """DescribeReadOnlyGroupByReadOnlyInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，格式如：mssqlro-3l3fgqn7
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class DescribeReadOnlyGroupByReadOnlyInstanceResponse(AbstractModel):
+    """DescribeReadOnlyGroupByReadOnlyInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ReadOnlyGroupId: 只读组ID
+        :type ReadOnlyGroupId: str
+        :param ReadOnlyGroupName: 只读组名称
+        :type ReadOnlyGroupName: str
+        :param RegionId: 只读组的地域ID
+        :type RegionId: str
+        :param ZoneId: 只读组的可用区ID
+        :type ZoneId: str
+        :param IsOfflineDelay: 是否启动超时剔除功能 ,0-不开启剔除功能，1-开启剔除功能
+        :type IsOfflineDelay: int
+        :param ReadOnlyMaxDelayTime: 启动超时剔除功能后，使用的超时阈值，单位是秒
+        :type ReadOnlyMaxDelayTime: int
+        :param MinReadOnlyInGroup: 启动超时剔除功能后，只读组至少保留的只读副本数
+        :type MinReadOnlyInGroup: int
+        :param Vip: 只读组vip
+        :type Vip: str
+        :param Vport: 只读组vport
+        :type Vport: int
+        :param VpcId: 只读组在私有网络ID
+        :type VpcId: str
+        :param SubnetId: 只读组在私有网络子网ID
+        :type SubnetId: str
+        :param MasterInstanceId: 主实例ID，形如mssql-sgeshe3th
+        :type MasterInstanceId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ReadOnlyGroupId = None
+        self.ReadOnlyGroupName = None
+        self.RegionId = None
+        self.ZoneId = None
+        self.IsOfflineDelay = None
+        self.ReadOnlyMaxDelayTime = None
+        self.MinReadOnlyInGroup = None
+        self.Vip = None
+        self.Vport = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.MasterInstanceId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ReadOnlyGroupId = params.get("ReadOnlyGroupId")
+        self.ReadOnlyGroupName = params.get("ReadOnlyGroupName")
+        self.RegionId = params.get("RegionId")
+        self.ZoneId = params.get("ZoneId")
+        self.IsOfflineDelay = params.get("IsOfflineDelay")
+        self.ReadOnlyMaxDelayTime = params.get("ReadOnlyMaxDelayTime")
+        self.MinReadOnlyInGroup = params.get("MinReadOnlyInGroup")
+        self.Vip = params.get("Vip")
+        self.Vport = params.get("Vport")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.MasterInstanceId = params.get("MasterInstanceId")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeReadOnlyGroupDetailsRequest(AbstractModel):
+    """DescribeReadOnlyGroupDetails请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 主实例ID，格式如：mssql-3l3fgqn7
+        :type InstanceId: str
+        :param ReadOnlyGroupId: 只读组ID，格式如：mssqlrg-3l3fgqn7
+        :type ReadOnlyGroupId: str
+        """
+        self.InstanceId = None
+        self.ReadOnlyGroupId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ReadOnlyGroupId = params.get("ReadOnlyGroupId")
+
+
+class DescribeReadOnlyGroupDetailsResponse(AbstractModel):
+    """DescribeReadOnlyGroupDetails返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ReadOnlyGroupId: 只读组ID
+        :type ReadOnlyGroupId: str
+        :param ReadOnlyGroupName: 只读组名称
+        :type ReadOnlyGroupName: str
+        :param RegionId: 只读组的地域ID，与主实例相同
+        :type RegionId: str
+        :param ZoneId: 只读组的可用区ID，与主实例相同
+        :type ZoneId: str
+        :param IsOfflineDelay: 是否启动超时剔除功能，0-不开启剔除功能，1-开启剔除功能
+        :type IsOfflineDelay: int
+        :param ReadOnlyMaxDelayTime: 启动超时剔除功能后，使用的超时阈值
+        :type ReadOnlyMaxDelayTime: int
+        :param MinReadOnlyInGroup: 启动超时剔除功能后，至少只读组保留的只读副本数
+        :type MinReadOnlyInGroup: int
+        :param Vip: 只读组vip
+        :type Vip: str
+        :param Vport: 只读组vport
+        :type Vport: int
+        :param VpcId: 只读组私有网络ID
+        :type VpcId: str
+        :param SubnetId: 只读组私有网络子网ID
+        :type SubnetId: str
+        :param ReadOnlyInstanceSet: 只读实例副本集合
+        :type ReadOnlyInstanceSet: list of ReadOnlyInstance
+        :param Status: 只读组状态: 1-申请成功运行中，5-申请中
+        :type Status: int
+        :param MasterInstanceId: 主实例ID，形如mssql-sgeshe3th
+        :type MasterInstanceId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ReadOnlyGroupId = None
+        self.ReadOnlyGroupName = None
+        self.RegionId = None
+        self.ZoneId = None
+        self.IsOfflineDelay = None
+        self.ReadOnlyMaxDelayTime = None
+        self.MinReadOnlyInGroup = None
+        self.Vip = None
+        self.Vport = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.ReadOnlyInstanceSet = None
+        self.Status = None
+        self.MasterInstanceId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ReadOnlyGroupId = params.get("ReadOnlyGroupId")
+        self.ReadOnlyGroupName = params.get("ReadOnlyGroupName")
+        self.RegionId = params.get("RegionId")
+        self.ZoneId = params.get("ZoneId")
+        self.IsOfflineDelay = params.get("IsOfflineDelay")
+        self.ReadOnlyMaxDelayTime = params.get("ReadOnlyMaxDelayTime")
+        self.MinReadOnlyInGroup = params.get("MinReadOnlyInGroup")
+        self.Vip = params.get("Vip")
+        self.Vport = params.get("Vport")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        if params.get("ReadOnlyInstanceSet") is not None:
+            self.ReadOnlyInstanceSet = []
+            for item in params.get("ReadOnlyInstanceSet"):
+                obj = ReadOnlyInstance()
+                obj._deserialize(item)
+                self.ReadOnlyInstanceSet.append(obj)
+        self.Status = params.get("Status")
+        self.MasterInstanceId = params.get("MasterInstanceId")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeReadOnlyGroupListRequest(AbstractModel):
+    """DescribeReadOnlyGroupList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 主实例ID，格式如：mssql-3l3fgqn7
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class DescribeReadOnlyGroupListResponse(AbstractModel):
+    """DescribeReadOnlyGroupList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ReadOnlyGroupSet: 只读组列表
+        :type ReadOnlyGroupSet: list of ReadOnlyGroup
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ReadOnlyGroupSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ReadOnlyGroupSet") is not None:
+            self.ReadOnlyGroupSet = []
+            for item in params.get("ReadOnlyGroupSet"):
+                obj = ReadOnlyGroup()
+                obj._deserialize(item)
+                self.ReadOnlyGroupSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRegionsRequest(AbstractModel):
     """DescribeRegions请求参数结构体
 
@@ -3033,6 +3257,77 @@ class ModifyPublishSubscribeNameResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyReadOnlyGroupDetailsRequest(AbstractModel):
+    """ModifyReadOnlyGroupDetails请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 主实例ID，格式如：mssql-3l3fgqn7
+        :type InstanceId: str
+        :param ReadOnlyGroupId: 只读组ID
+        :type ReadOnlyGroupId: str
+        :param ReadOnlyGroupName: 只读组名称，不填此参数，则不修改
+        :type ReadOnlyGroupName: str
+        :param IsOfflineDelay: 是否启动超时剔除功能,0-不开启剔除功能，1-开启剔除功能，不填此参数，则不修改
+        :type IsOfflineDelay: int
+        :param ReadOnlyMaxDelayTime: 启动超时剔除功能后，使用的超时阈值，不填此参数，则不修改
+        :type ReadOnlyMaxDelayTime: int
+        :param MinReadOnlyInGroup: 启动超时剔除功能后，只读组至少保留的只读副本数，不填此参数，则不修改
+        :type MinReadOnlyInGroup: int
+        :param WeightPairs: 只读组实例权重修改集合，不填此参数，则不修改
+        :type WeightPairs: list of ReadOnlyInstanceWeightPair
+        :param AutoWeight: 0-用户自定义权重（根据WeightPairs调整）,1-系统自动分配权重(WeightPairs无效)， 默认为0
+        :type AutoWeight: int
+        :param BalanceWeight: 0-不重新均衡负载，1-重新均衡负载，默认为0
+        :type BalanceWeight: int
+        """
+        self.InstanceId = None
+        self.ReadOnlyGroupId = None
+        self.ReadOnlyGroupName = None
+        self.IsOfflineDelay = None
+        self.ReadOnlyMaxDelayTime = None
+        self.MinReadOnlyInGroup = None
+        self.WeightPairs = None
+        self.AutoWeight = None
+        self.BalanceWeight = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ReadOnlyGroupId = params.get("ReadOnlyGroupId")
+        self.ReadOnlyGroupName = params.get("ReadOnlyGroupName")
+        self.IsOfflineDelay = params.get("IsOfflineDelay")
+        self.ReadOnlyMaxDelayTime = params.get("ReadOnlyMaxDelayTime")
+        self.MinReadOnlyInGroup = params.get("MinReadOnlyInGroup")
+        if params.get("WeightPairs") is not None:
+            self.WeightPairs = []
+            for item in params.get("WeightPairs"):
+                obj = ReadOnlyInstanceWeightPair()
+                obj._deserialize(item)
+                self.WeightPairs.append(obj)
+        self.AutoWeight = params.get("AutoWeight")
+        self.BalanceWeight = params.get("BalanceWeight")
+
+
+class ModifyReadOnlyGroupDetailsResponse(AbstractModel):
+    """ModifyReadOnlyGroupDetails返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class PublishSubscribe(AbstractModel):
     """发布订阅对象
 
@@ -3085,6 +3380,216 @@ class PublishSubscribe(AbstractModel):
                 obj = DatabaseTupleStatus()
                 obj._deserialize(item)
                 self.DatabaseTupleSet.append(obj)
+
+
+class ReadOnlyGroup(AbstractModel):
+    """只读组对象
+
+    """
+
+    def __init__(self):
+        """
+        :param ReadOnlyGroupId: 只读组ID
+        :type ReadOnlyGroupId: str
+        :param ReadOnlyGroupName: 只读组名称
+        :type ReadOnlyGroupName: str
+        :param RegionId: 只读组的地域ID，与主实例相同
+        :type RegionId: str
+        :param ZoneId: 只读组的可用区ID，与主实例相同
+        :type ZoneId: str
+        :param IsOfflineDelay: 是否启动超时剔除功能，0-不开启剔除功能，1-开启剔除功能
+        :type IsOfflineDelay: int
+        :param ReadOnlyMaxDelayTime: 启动超时剔除功能后，使用的超时阈值
+        :type ReadOnlyMaxDelayTime: int
+        :param MinReadOnlyInGroup: 启动超时剔除功能后，只读组至少保留的只读副本数
+        :type MinReadOnlyInGroup: int
+        :param Vip: 只读组vip
+        :type Vip: str
+        :param Vport: 只读组vport
+        :type Vport: int
+        :param VpcId: 只读组私有网络ID
+        :type VpcId: str
+        :param SubnetId: 只读组私有网络子网ID
+        :type SubnetId: str
+        :param Status: 只读组状态: 1-申请成功运行中，5-申请中
+        :type Status: int
+        :param MasterInstanceId: 主实例ID，形如mssql-sgeshe3th
+        :type MasterInstanceId: str
+        :param ReadOnlyInstanceSet: 只读实例副本集合
+        :type ReadOnlyInstanceSet: list of ReadOnlyInstance
+        """
+        self.ReadOnlyGroupId = None
+        self.ReadOnlyGroupName = None
+        self.RegionId = None
+        self.ZoneId = None
+        self.IsOfflineDelay = None
+        self.ReadOnlyMaxDelayTime = None
+        self.MinReadOnlyInGroup = None
+        self.Vip = None
+        self.Vport = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.Status = None
+        self.MasterInstanceId = None
+        self.ReadOnlyInstanceSet = None
+
+
+    def _deserialize(self, params):
+        self.ReadOnlyGroupId = params.get("ReadOnlyGroupId")
+        self.ReadOnlyGroupName = params.get("ReadOnlyGroupName")
+        self.RegionId = params.get("RegionId")
+        self.ZoneId = params.get("ZoneId")
+        self.IsOfflineDelay = params.get("IsOfflineDelay")
+        self.ReadOnlyMaxDelayTime = params.get("ReadOnlyMaxDelayTime")
+        self.MinReadOnlyInGroup = params.get("MinReadOnlyInGroup")
+        self.Vip = params.get("Vip")
+        self.Vport = params.get("Vport")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.Status = params.get("Status")
+        self.MasterInstanceId = params.get("MasterInstanceId")
+        if params.get("ReadOnlyInstanceSet") is not None:
+            self.ReadOnlyInstanceSet = []
+            for item in params.get("ReadOnlyInstanceSet"):
+                obj = ReadOnlyInstance()
+                obj._deserialize(item)
+                self.ReadOnlyInstanceSet.append(obj)
+
+
+class ReadOnlyInstance(AbstractModel):
+    """只读副本实例
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 只读副本ID，格式如：mssqlro-3l3fgqn7
+        :type InstanceId: str
+        :param Name: 只读副本名称
+        :type Name: str
+        :param Uid: 只读副本唯一UID
+        :type Uid: str
+        :param ProjectId: 只读副本所在项目ID
+        :type ProjectId: int
+        :param Status: 只读副本状态。1：申请中 2：运行中 3：被延迟剔除 4：已隔离 5：回收中 6：已回收 7：任务执行中 8：已下线 9：实例扩容中 10：实例迁移中  12：重启中
+        :type Status: int
+        :param CreateTime: 只读副本创建时间
+        :type CreateTime: str
+        :param UpdateTime: 只读副本更新时间
+        :type UpdateTime: str
+        :param Memory: 只读副本内存大小，单位G
+        :type Memory: int
+        :param Storage: 只读副本存储空间大小，单位G
+        :type Storage: int
+        :param Cpu: 只读副本cpu核心数
+        :type Cpu: int
+        :param Version: 只读副本版本代号
+        :type Version: str
+        :param Type: 宿主机代号
+        :type Type: str
+        :param Model: 只读副本模式，2-单机
+        :type Model: int
+        :param PayMode: 只读副本计费模式，1-包年包月，0-按量计费
+        :type PayMode: int
+        :param Weight: 只读副本权重
+        :type Weight: int
+        :param DelayTime: 只读副本延迟时间，单位秒
+        :type DelayTime: str
+        :param SynStatus: 只读副本与主实例的同步状态。
+Init:初始化
+DeployReadOnlyInPorgress:部署副本进行中
+DeployReadOnlySuccess:部署副本成功
+DeployReadOnlyFail:部署副本失败
+DeployMasterDBInPorgress:主节点上加入副本数据库进行中
+DeployMasterDBSuccess:主节点上加入副本数据库成功
+DeployMasterDBFail:主节点上加入副本数据库进失败
+DeployReadOnlyDBInPorgress:副本还原加入数据库开始
+DeployReadOnlyDBSuccess:副本还原加入数据库成功
+DeployReadOnlyDBFail:副本还原加入数据库失败
+SyncDelay:同步延迟
+SyncFail:同步故障
+SyncExcluded:已剔除只读组
+SyncNormal:正常
+        :type SynStatus: str
+        :param DatabaseDifference: 只读副本与主实例没有同步的库
+        :type DatabaseDifference: str
+        :param AccountDifference: 只读副本与主实例没有同步的账户
+        :type AccountDifference: str
+        :param StartTime: 只读副本计费开始时间
+        :type StartTime: str
+        :param EndTime: 只读副本计费结束时间
+        :type EndTime: str
+        :param IsolateTime: 只读副本隔离时间
+        :type IsolateTime: str
+        """
+        self.InstanceId = None
+        self.Name = None
+        self.Uid = None
+        self.ProjectId = None
+        self.Status = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.Memory = None
+        self.Storage = None
+        self.Cpu = None
+        self.Version = None
+        self.Type = None
+        self.Model = None
+        self.PayMode = None
+        self.Weight = None
+        self.DelayTime = None
+        self.SynStatus = None
+        self.DatabaseDifference = None
+        self.AccountDifference = None
+        self.StartTime = None
+        self.EndTime = None
+        self.IsolateTime = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Name = params.get("Name")
+        self.Uid = params.get("Uid")
+        self.ProjectId = params.get("ProjectId")
+        self.Status = params.get("Status")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.Memory = params.get("Memory")
+        self.Storage = params.get("Storage")
+        self.Cpu = params.get("Cpu")
+        self.Version = params.get("Version")
+        self.Type = params.get("Type")
+        self.Model = params.get("Model")
+        self.PayMode = params.get("PayMode")
+        self.Weight = params.get("Weight")
+        self.DelayTime = params.get("DelayTime")
+        self.SynStatus = params.get("SynStatus")
+        self.DatabaseDifference = params.get("DatabaseDifference")
+        self.AccountDifference = params.get("AccountDifference")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.IsolateTime = params.get("IsolateTime")
+
+
+class ReadOnlyInstanceWeightPair(AbstractModel):
+    """只读实例与权重对应关系
+
+    """
+
+    def __init__(self):
+        """
+        :param ReadOnlyInstanceId: 只读实例ID，格式如：mssqlro-3l3fgqn7
+        :type ReadOnlyInstanceId: str
+        :param ReadOnlyWeight: 只读实例权重 ，范围是0-100
+        :type ReadOnlyWeight: int
+        """
+        self.ReadOnlyInstanceId = None
+        self.ReadOnlyWeight = None
+
+
+    def _deserialize(self, params):
+        self.ReadOnlyInstanceId = params.get("ReadOnlyInstanceId")
+        self.ReadOnlyWeight = params.get("ReadOnlyWeight")
 
 
 class RegionInfo(AbstractModel):

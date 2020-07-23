@@ -190,6 +190,29 @@ class AddLiveWatermarkResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class BandwidthInfo(AbstractModel):
+    """带宽信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Time: 返回格式：
+yyyy-mm-dd HH:MM:SS
+根据粒度会有不同程度的缩减。
+        :type Time: str
+        :param Bandwidth: 带宽。
+        :type Bandwidth: float
+        """
+        self.Time = None
+        self.Bandwidth = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        self.Bandwidth = params.get("Bandwidth")
+
+
 class BillDataInfo(AbstractModel):
     """带宽和流量信息。
 
@@ -2532,6 +2555,53 @@ class DescribeConcurrentRecordStreamNumResponse(AbstractModel):
             self.DataInfoList = []
             for item in params.get("DataInfoList"):
                 obj = ConcurrentRecordStreamNum()
+                obj._deserialize(item)
+                self.DataInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDeliverBandwidthListRequest(AbstractModel):
+    """DescribeDeliverBandwidthList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 起始时间，格式为%Y-%m-%d %H:%M:%S。
+        :type StartTime: str
+        :param EndTime: 结束时间，格式为%Y-%m-%d %H:%M:%S，支持最近三个月的数据查询，时间跨度最大是1个月。
+        :type EndTime: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+
+
+class DescribeDeliverBandwidthListResponse(AbstractModel):
+    """DescribeDeliverBandwidthList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DataInfoList: 转推计费带宽数据
+        :type DataInfoList: list of BandwidthInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DataInfoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DataInfoList") is not None:
+            self.DataInfoList = []
+            for item in params.get("DataInfoList"):
+                obj = BandwidthInfo()
                 obj._deserialize(item)
                 self.DataInfoList.append(obj)
         self.RequestId = params.get("RequestId")

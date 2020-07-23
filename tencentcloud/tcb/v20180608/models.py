@@ -235,6 +235,8 @@ class CreatePostpayPackageRequest(AbstractModel):
 如果envsource为qcloud, channel可以为qc_console,cocos, qq, cloudgame,dcloud
 和 EnvSource 参数同时传，或者同时不传；EnvId 为空时必传。
         :type Channel: str
+        :param ExtensionId: 扩展ID
+        :type ExtensionId: str
         """
         self.EnvId = None
         self.WxAppId = None
@@ -243,6 +245,7 @@ class CreatePostpayPackageRequest(AbstractModel):
         self.Alias = None
         self.EnvSource = None
         self.Channel = None
+        self.ExtensionId = None
 
 
     def _deserialize(self, params):
@@ -253,6 +256,7 @@ class CreatePostpayPackageRequest(AbstractModel):
         self.Alias = params.get("Alias")
         self.EnvSource = params.get("EnvSource")
         self.Channel = params.get("Channel")
+        self.ExtensionId = params.get("ExtensionId")
 
 
 class CreatePostpayPackageResponse(AbstractModel):

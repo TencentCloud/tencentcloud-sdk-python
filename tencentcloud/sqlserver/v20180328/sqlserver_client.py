@@ -641,6 +641,90 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeReadOnlyGroupByReadOnlyInstance(self, request):
+        """本接口（DescribeReadOnlyGroupByReadOnlyInstance）用于通过只读副本实例ID查询其所在的只读组。
+
+        :param request: Request instance for DescribeReadOnlyGroupByReadOnlyInstance.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeReadOnlyGroupByReadOnlyInstanceRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeReadOnlyGroupByReadOnlyInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeReadOnlyGroupByReadOnlyInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeReadOnlyGroupByReadOnlyInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeReadOnlyGroupDetails(self, request):
+        """本接口（DescribeReadOnlyGroupDetails）用于查询只读组详情。
+
+        :param request: Request instance for DescribeReadOnlyGroupDetails.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeReadOnlyGroupDetailsRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeReadOnlyGroupDetailsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeReadOnlyGroupDetails", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeReadOnlyGroupDetailsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeReadOnlyGroupList(self, request):
+        """本接口（DescribeReadOnlyGroupList）用于查询只读组列表。
+
+        :param request: Request instance for DescribeReadOnlyGroupList.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeReadOnlyGroupListRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeReadOnlyGroupListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeReadOnlyGroupList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeReadOnlyGroupListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRegions(self, request):
         """本接口 (DescribeRegions) 用于查询售卖地域信息。
 
@@ -1131,6 +1215,34 @@ class SqlserverClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyPublishSubscribeNameResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyReadOnlyGroupDetails(self, request):
+        """本接口（ModifyReadOnlyGroupDetails）用于修改只读组详情。
+
+        :param request: Request instance for ModifyReadOnlyGroupDetails.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyReadOnlyGroupDetailsRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.ModifyReadOnlyGroupDetailsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyReadOnlyGroupDetails", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyReadOnlyGroupDetailsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

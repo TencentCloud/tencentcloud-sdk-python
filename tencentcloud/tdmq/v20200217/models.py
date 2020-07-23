@@ -828,7 +828,7 @@ class FilterSubscription(AbstractModel):
 
     def __init__(self):
         """
-        :param ConsumerHasCount: 是否仅展示包含真实消费者的订。
+        :param ConsumerHasCount: 是否仅展示包含真实消费者的订阅。
         :type ConsumerHasCount: bool
         :param ConsumerHasBacklog: 是否仅展示消息堆积的订阅。
         :type ConsumerHasBacklog: bool
@@ -912,7 +912,7 @@ class ModifyTopicRequest(AbstractModel):
         :type EnvironmentId: str
         :param TopicName: 主题名。
         :type TopicName: str
-        :param Partitions: 分区数，必须>=原分区数大，不填则不修改分区数，修改分区数仅对非全局顺序消息起效果，不允许超过128个分区。
+        :param Partitions: 分区数，必须大于或者等于原分区数，若想维持原分区数请输入原数目，修改分区数仅对非全局顺序消息起效果，不允许超过128个分区。
         :type Partitions: int
         :param Remark: 备注，128字符以内。
         :type Remark: str
@@ -937,7 +937,7 @@ class ModifyTopicResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Partitions: 分区数，必须比原分区数大，不填则不修复分区数，修改分区数仅对非全局顺序消息起效果。
+        :param Partitions: 分区数
         :type Partitions: int
         :param Remark: 备注，128字符以内。
         :type Remark: str

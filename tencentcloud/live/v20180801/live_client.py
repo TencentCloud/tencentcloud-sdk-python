@@ -1104,6 +1104,34 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDeliverBandwidthList(self, request):
+        """查询直播转推计费带宽，查询时间范围最大支持3个月内的数据，时间跨度最长31天。
+
+        :param request: Request instance for DescribeDeliverBandwidthList.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeDeliverBandwidthListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeDeliverBandwidthListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDeliverBandwidthList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDeliverBandwidthListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeGroupProIspPlayInfoList(self, request):
         """查询按省份和运营商分组的下行播放数据。
 

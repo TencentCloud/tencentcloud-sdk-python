@@ -1999,7 +1999,7 @@ class CreateInvoiceItem(AbstractModel):
         :type Name: str
         :param TaxCode: 税收商品编码
         :type TaxCode: str
-        :param TotalPrice: 不含税商品总价（商品含税价总额/（1+税率））。单位为分
+        :param TotalPrice: 不含税商品总价（商品含税价总额/（1+税率））。InvoicePlatformId 为1时，该金额为含税总金额。单位为分。
         :type TotalPrice: int
         :param TaxRate: 商品税率
         :type TaxRate: int
@@ -2013,7 +2013,7 @@ class CreateInvoiceItem(AbstractModel):
         :type Unit: str
         :param Total: 商品数量
         :type Total: str
-        :param Price: 不含税商品单价
+        :param Price: 不含税商品单价。InvoicePlatformId 为1时，该金额为含税单价。
         :type Price: str
         :param Discount: 含税折扣总额。单位为分
         :type Discount: int
@@ -2069,7 +2069,7 @@ class CreateInvoiceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InvoicePlatformId: 开票平台ID。0：高灯
+        :param InvoicePlatformId: 开票平台ID。0：高灯，1：票易通
         :type InvoicePlatformId: int
         :param TitleType: 抬头类型：1：个人/政府事业单位；2：企业
         :type TitleType: int
@@ -2081,7 +2081,7 @@ class CreateInvoiceRequest(AbstractModel):
         :type AmountHasTax: int
         :param TaxAmount: 总税额（单位为分）
         :type TaxAmount: int
-        :param AmountWithoutTax: 不含税总金额（单位为分）
+        :param AmountWithoutTax: 不含税总金额（单位为分）。InvoicePlatformId 为1时，传默认值-1
         :type AmountWithoutTax: int
         :param SellerTaxpayerNum: 销方纳税人识别号
         :type SellerTaxpayerNum: str
@@ -3402,6 +3402,132 @@ class ModifyMntMbrBindRelateAcctBankCodeResponse(AbstractModel):
         self.CnsmrSeqNo = params.get("CnsmrSeqNo")
         self.ReservedMsg = params.get("ReservedMsg")
         self.RequestId = params.get("RequestId")
+
+
+class Order(AbstractModel):
+    """线下查票-订单信息
+
+    """
+
+    def __init__(self):
+        """
+        :param AmountHasTax: 含税金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AmountHasTax: float
+        :param Discount: 优惠金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Discount: float
+        :param SellerName: 销方名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SellerName: str
+        :param InvoiceType: 发票类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InvoiceType: int
+        :param Name: 默认“”
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Amount: 支付金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Amount: float
+        :param OrderDate: 下单日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrderDate: str
+        :param OrderId: 订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrderId: str
+        :param StoreNo: 门店号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StoreNo: str
+        :param Items: 明细
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of OrderItem
+        """
+        self.AmountHasTax = None
+        self.Discount = None
+        self.SellerName = None
+        self.InvoiceType = None
+        self.Name = None
+        self.Amount = None
+        self.OrderDate = None
+        self.OrderId = None
+        self.StoreNo = None
+        self.Items = None
+
+
+    def _deserialize(self, params):
+        self.AmountHasTax = params.get("AmountHasTax")
+        self.Discount = params.get("Discount")
+        self.SellerName = params.get("SellerName")
+        self.InvoiceType = params.get("InvoiceType")
+        self.Name = params.get("Name")
+        self.Amount = params.get("Amount")
+        self.OrderDate = params.get("OrderDate")
+        self.OrderId = params.get("OrderId")
+        self.StoreNo = params.get("StoreNo")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = OrderItem()
+                obj._deserialize(item)
+                self.Items.append(obj)
+
+
+class OrderItem(AbstractModel):
+    """线下查票-订单明细
+
+    """
+
+    def __init__(self):
+        """
+        :param AmountHasTax: 明细金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AmountHasTax: float
+        :param Discount: 优惠金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Discount: float
+        :param Name: 商品名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Models: 型号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Models: str
+        :param Total: 数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param Unit: 数量单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Unit: str
+        :param Status: 默认“0”
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param Price: 单价
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Price: float
+        :param TaxCode: 商品编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaxCode: str
+        """
+        self.AmountHasTax = None
+        self.Discount = None
+        self.Name = None
+        self.Models = None
+        self.Total = None
+        self.Unit = None
+        self.Status = None
+        self.Price = None
+        self.TaxCode = None
+
+
+    def _deserialize(self, params):
+        self.AmountHasTax = params.get("AmountHasTax")
+        self.Discount = params.get("Discount")
+        self.Name = params.get("Name")
+        self.Models = params.get("Models")
+        self.Total = params.get("Total")
+        self.Unit = params.get("Unit")
+        self.Status = params.get("Status")
+        self.Price = params.get("Price")
+        self.TaxCode = params.get("TaxCode")
 
 
 class QueryAcctBindingRequest(AbstractModel):
@@ -4821,10 +4947,14 @@ class QueryInvoiceResult(AbstractModel):
         :param Data: 查询发票数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.cpdp.v20190820.models.QueryInvoiceResultData`
+        :param Order: 订单数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Order: :class:`tencentcloud.cpdp.v20190820.models.Order`
         """
         self.Message = None
         self.Code = None
         self.Data = None
+        self.Order = None
 
 
     def _deserialize(self, params):
@@ -4833,6 +4963,9 @@ class QueryInvoiceResult(AbstractModel):
         if params.get("Data") is not None:
             self.Data = QueryInvoiceResultData()
             self.Data._deserialize(params.get("Data"))
+        if params.get("Order") is not None:
+            self.Order = Order()
+            self.Order._deserialize(params.get("Order"))
 
 
 class QueryInvoiceResultData(AbstractModel):

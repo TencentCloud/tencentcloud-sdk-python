@@ -405,9 +405,9 @@ class CreateAutoScalingGroupFromInstanceRequest(AbstractModel):
         :type AutoScalingGroupName: str
         :param InstanceId: 实例ID
         :type InstanceId: str
-        :param MinSize: 最大实例数，取值范围为0-2000。
+        :param MinSize: 最小实例数，取值范围为0-2000。
         :type MinSize: int
-        :param MaxSize: 最小实例数，取值范围为0-2000。
+        :param MaxSize: 最大实例数，取值范围为0-2000。
         :type MaxSize: int
         :param DesiredCapacity: 期望实例数，大小介于最小实例数和最大实例数之间。
         :type DesiredCapacity: int

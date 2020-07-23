@@ -193,6 +193,34 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ClassifyDetectOCR(self, request):
+        """支持身份证、护照、名片、银行卡、行驶证、驾驶证、港澳台通行证、户口本、港澳台来往内地通行证、港澳台居住证、不动产证、营业执照的智能分类。
+
+        :param request: Request instance for ClassifyDetectOCR.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.ClassifyDetectOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.ClassifyDetectOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ClassifyDetectOCR", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ClassifyDetectOCRResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DriverLicenseOCR(self, request):
         """本接口支持驾驶证主页和副页所有字段的自动定位与识别，重点字段的识别准确度达到99%以上。
 
