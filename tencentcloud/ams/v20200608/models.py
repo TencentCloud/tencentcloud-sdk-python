@@ -278,9 +278,9 @@ class CreateAudioModerationTaskRequest(AbstractModel):
         """
         :param BizType: 业务类型, 定义 模版策略，输出存储配置。如果没有BizType，可以先参考 【创建业务配置】接口进行创建
         :type BizType: str
-        :param Type: 回调签名key，具体可以查看签名文档。
+        :param Type: 异步检测结果回调通知接收URL。支持HTTP和HTTPS
         :type Type: str
-        :param Seed: 异步检测结果回调通知接收URL。支持HTTP和HTTPS
+        :param Seed: 回调签名key，具体可以查看签名文档。
         :type Seed: str
         :param CallbackUrl: 接收审核信息回调地址，如果设置，则审核过程中产生的违规音频片段和画面截帧发送此接口
         :type CallbackUrl: str

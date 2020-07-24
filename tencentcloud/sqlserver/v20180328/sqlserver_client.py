@@ -25,6 +25,34 @@ class SqlserverClient(AbstractClient):
     _endpoint = 'sqlserver.tencentcloudapi.com'
 
 
+    def AssociateSecurityGroups(self, request):
+        """本接口(AssociateSecurityGroups)用于安全组批量绑定实例。
+
+        :param request: Request instance for AssociateSecurityGroups.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.AssociateSecurityGroupsRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.AssociateSecurityGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AssociateSecurityGroups", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AssociateSecurityGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CompleteExpansion(self, request):
         """本接口（CompleteExpansion）在实例发起扩容后，实例状态处于“升级待切换”时，可立即完成实例升级切换操作，无需等待可维护时间窗。本接口需要在实例低峰时调用，在完全切换成功前，存在部分库不可访问的风险。
 
@@ -95,6 +123,34 @@ class SqlserverClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateBackupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateBasicDBInstances(self, request):
+        """本接口（CreateBasicDBInstances）用于创建SQL server基础版实例。
+
+        :param request: Request instance for CreateBasicDBInstances.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.CreateBasicDBInstancesRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.CreateBasicDBInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateBasicDBInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateBasicDBInstancesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -221,6 +277,34 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateReadOnlyDBInstances(self, request):
+        """本接口（CreateReadOnlyDBInstances）用于添加只读副本实例。
+
+        :param request: Request instance for CreateReadOnlyDBInstances.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.CreateReadOnlyDBInstancesRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.CreateReadOnlyDBInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateReadOnlyDBInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateReadOnlyDBInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteAccount(self, request):
         """本接口（DeleteAccount）用于删除实例账号。
 
@@ -263,6 +347,34 @@ class SqlserverClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteDBResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteDBInstance(self, request):
+        """本接口（DeleteDBInstance）用于释放回收站中的SQL server实例。释放后的实例将保存一段时间后物理销毁。其发布订阅将自动解除，其ro副本将自动释放。
+
+        :param request: Request instance for DeleteDBInstance.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DeleteDBInstanceRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DeleteDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteDBInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteDBInstanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -403,6 +515,34 @@ class SqlserverClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDBSecurityGroups(self, request):
+        """本接口(DescribeDBSecurityGroups)用于查询实例的安全组详情。
+
+        :param request: Request instance for DescribeDBSecurityGroups.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDBSecurityGroupsRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDBSecurityGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDBSecurityGroups", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDBSecurityGroupsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -599,6 +739,34 @@ class SqlserverClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProductConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeProjectSecurityGroups(self, request):
+        """本接口(DescribeProjectSecurityGroups)用于查询项目的安全组详情。
+
+        :param request: Request instance for DescribeProjectSecurityGroups.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeProjectSecurityGroupsRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeProjectSecurityGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeProjectSecurityGroups", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeProjectSecurityGroupsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -823,6 +991,34 @@ class SqlserverClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeZonesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DisassociateSecurityGroups(self, request):
+        """本接口(DisassociateSecurityGroups)用于安全组批量解绑实例。
+
+        :param request: Request instance for DisassociateSecurityGroups.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DisassociateSecurityGroupsRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DisassociateSecurityGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DisassociateSecurityGroups", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DisassociateSecurityGroupsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1089,6 +1285,34 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyDBInstanceSecurityGroups(self, request):
+        """本接口(ModifyDBInstanceSecurityGroups)用于修改实例绑定的安全组。
+
+        :param request: Request instance for ModifyDBInstanceSecurityGroups.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDBInstanceSecurityGroupsRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDBInstanceSecurityGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDBInstanceSecurityGroups", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDBInstanceSecurityGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyDBName(self, request):
         """本接口（ModifyDBName）用于更新数据库名。
 
@@ -1299,6 +1523,34 @@ class SqlserverClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RenewDBInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RenewPostpaidDBInstance(self, request):
+        """本接口（RenewPostpaidDBInstance）用于将通过接口TerminateDBInstance手动隔离的按量计费实例从回收站中恢复。
+
+        :param request: Request instance for RenewPostpaidDBInstance.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.RenewPostpaidDBInstanceRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.RenewPostpaidDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RenewPostpaidDBInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RenewPostpaidDBInstanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

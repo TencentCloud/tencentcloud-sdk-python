@@ -1900,6 +1900,8 @@ class DescribePolicyGroupListRequest(AbstractModel):
         :type ConditionTempGroupId: str
         :param ReceiverType: 过滤条件, 接收人或者接收组, user表示接收人, group表示接收组
         :type ReceiverType: str
+        :param IsOpen: 过滤条件，告警策略是否已启动或停止
+        :type IsOpen: bool
         """
         self.Module = None
         self.Limit = None
@@ -1915,6 +1917,7 @@ class DescribePolicyGroupListRequest(AbstractModel):
         self.Dimensions = None
         self.ConditionTempGroupId = None
         self.ReceiverType = None
+        self.IsOpen = None
 
 
     def _deserialize(self, params):
@@ -1932,6 +1935,7 @@ class DescribePolicyGroupListRequest(AbstractModel):
         self.Dimensions = params.get("Dimensions")
         self.ConditionTempGroupId = params.get("ConditionTempGroupId")
         self.ReceiverType = params.get("ReceiverType")
+        self.IsOpen = params.get("IsOpen")
 
 
 class DescribePolicyGroupListResponse(AbstractModel):

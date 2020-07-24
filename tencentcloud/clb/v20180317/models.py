@@ -756,6 +756,48 @@ class ClusterItem(AbstractModel):
         self.Zone = params.get("Zone")
 
 
+class CreateClsLogSetRequest(AbstractModel):
+    """CreateClsLogSet请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Period: 日志集的保存周期，单位：天，最大 90。
+        :type Period: int
+        :param LogsetName: 日志集的名字，不能和cls其他日志集重名。不填默认为clb_logset。
+        :type LogsetName: str
+        """
+        self.Period = None
+        self.LogsetName = None
+
+
+    def _deserialize(self, params):
+        self.Period = params.get("Period")
+        self.LogsetName = params.get("LogsetName")
+
+
+class CreateClsLogSetResponse(AbstractModel):
+    """CreateClsLogSet返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LogsetId: 日志集的 ID。
+        :type LogsetId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LogsetId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.LogsetId = params.get("LogsetId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateListenerRequest(AbstractModel):
     """CreateListener请求参数结构体
 
@@ -1077,6 +1119,48 @@ class CreateTargetGroupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.TargetGroupId = params.get("TargetGroupId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateTopicRequest(AbstractModel):
+    """CreateTopic请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TopicName: 日志主题的名字
+        :type TopicName: str
+        :param PartitionCount: 主题分区 partition个数，不传参默认创建1个，最大创建允许10个，分裂/合并操作会改变分区数量，整体上限50个。
+        :type PartitionCount: int
+        """
+        self.TopicName = None
+        self.PartitionCount = None
+
+
+    def _deserialize(self, params):
+        self.TopicName = params.get("TopicName")
+        self.PartitionCount = params.get("PartitionCount")
+
+
+class CreateTopicResponse(AbstractModel):
+    """CreateTopic返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TopicId: 日志主题的 ID
+        :type TopicId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TopicId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TopicId = params.get("TopicId")
         self.RequestId = params.get("RequestId")
 
 
@@ -1796,6 +1880,33 @@ class DescribeClassicalLBTargetsResponse(AbstractModel):
                 obj = ClassicalTarget()
                 obj._deserialize(item)
                 self.Targets.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClsLogSetRequest(AbstractModel):
+    """DescribeClsLogSet请求参数结构体
+
+    """
+
+
+class DescribeClsLogSetResponse(AbstractModel):
+    """DescribeClsLogSet返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LogsetId: 日志集的 ID。
+        :type LogsetId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LogsetId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.LogsetId = params.get("LogsetId")
         self.RequestId = params.get("RequestId")
 
 

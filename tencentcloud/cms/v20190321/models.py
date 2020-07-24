@@ -1073,6 +1073,136 @@ class LogoDetail(AbstractModel):
                 self.AppLogoDetail.append(obj)
 
 
+class ManualReviewContent(AbstractModel):
+    """人审审核数据相关信息
+
+    """
+
+    def __init__(self):
+        """
+        :param BatchId: 审核批次号
+        :type BatchId: str
+        :param Content: 审核内容
+        :type Content: str
+        :param ContentId: 消息Id
+        :type ContentId: str
+        :param ContentType: 审核内容类型 1 图片 2 视频 3 文本 4 音频
+        :type ContentType: int
+        :param UserInfo: 用户信息
+        :type UserInfo: :class:`tencentcloud.cms.v20190321.models.User`
+        :param AutoDetailCode: 机器审核类型，与腾讯机器审核定义一致
+100 正常
+20001 政治
+20002 色情
+20006 违法
+20007 谩骂
+24001 暴恐
+20105 广告
+20103 性感
+        :type AutoDetailCode: int
+        :param AutoResult: 机器审核结果 0 放过 1 拦截
+        :type AutoResult: int
+        :param CallBackInfo: 回调信息标识，回传数据时原样返回
+        :type CallBackInfo: str
+        :param CreateTime: 创建时间 格式“2020-01-01 00:00:12”
+        :type CreateTime: str
+        :param Priority: 审核优先级，可选值 [1,2,3,4]，其中 1 最高，4 最低
+        :type Priority: int
+        :param Title: 标题
+        :type Title: str
+        """
+        self.BatchId = None
+        self.Content = None
+        self.ContentId = None
+        self.ContentType = None
+        self.UserInfo = None
+        self.AutoDetailCode = None
+        self.AutoResult = None
+        self.CallBackInfo = None
+        self.CreateTime = None
+        self.Priority = None
+        self.Title = None
+
+
+    def _deserialize(self, params):
+        self.BatchId = params.get("BatchId")
+        self.Content = params.get("Content")
+        self.ContentId = params.get("ContentId")
+        self.ContentType = params.get("ContentType")
+        if params.get("UserInfo") is not None:
+            self.UserInfo = User()
+            self.UserInfo._deserialize(params.get("UserInfo"))
+        self.AutoDetailCode = params.get("AutoDetailCode")
+        self.AutoResult = params.get("AutoResult")
+        self.CallBackInfo = params.get("CallBackInfo")
+        self.CreateTime = params.get("CreateTime")
+        self.Priority = params.get("Priority")
+        self.Title = params.get("Title")
+
+
+class ManualReviewData(AbstractModel):
+    """人工审核接口返回结果，由ContentId和BatchId组成
+
+    """
+
+    def __init__(self):
+        """
+        :param BatchId: 人审内容批次号
+        :type BatchId: str
+        :param ContentId: 人审内容ID
+        :type ContentId: str
+        """
+        self.BatchId = None
+        self.ContentId = None
+
+
+    def _deserialize(self, params):
+        self.BatchId = params.get("BatchId")
+        self.ContentId = params.get("ContentId")
+
+
+class ManualReviewRequest(AbstractModel):
+    """ManualReview请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ReviewContent: 人工审核信息
+        :type ReviewContent: :class:`tencentcloud.cms.v20190321.models.ManualReviewContent`
+        """
+        self.ReviewContent = None
+
+
+    def _deserialize(self, params):
+        if params.get("ReviewContent") is not None:
+            self.ReviewContent = ManualReviewContent()
+            self.ReviewContent._deserialize(params.get("ReviewContent"))
+
+
+class ManualReviewResponse(AbstractModel):
+    """ManualReview返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 人审接口同步响应结果
+        :type Data: :class:`tencentcloud.cms.v20190321.models.ManualReviewData`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = ManualReviewData()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
 class OCRDetect(AbstractModel):
     """OCR识别结果详情
 
@@ -1178,18 +1308,22 @@ class RiskDetails(AbstractModel):
         """
         :param Keywords: 预留字段，暂时不使用
         :type Keywords: list of str
-        :param Lable: 风险类别，RiskAccount，RiskIP, RiskIMEI
+        :param Label: 风险类别，RiskAccount，RiskIP, RiskIMEI
+        :type Label: str
+        :param Lable: 预留字段，暂时不用
         :type Lable: str
         :param Level: 风险等级，1:疑似，2：恶意
         :type Level: int
         """
         self.Keywords = None
+        self.Label = None
         self.Lable = None
         self.Level = None
 
 
     def _deserialize(self, params):
         self.Keywords = params.get("Keywords")
+        self.Label = params.get("Label")
         self.Lable = params.get("Lable")
         self.Level = params.get("Level")
 

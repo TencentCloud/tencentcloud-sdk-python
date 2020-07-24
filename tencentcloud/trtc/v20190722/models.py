@@ -599,9 +599,9 @@ class DescribeRoomInformationRequest(AbstractModel):
         :type EndTime: int
         :param RoomId: 数字房间号
         :type RoomId: str
-        :param PageNumber: 分页index（不填默认只返回10个）
+        :param PageNumber: 分页index，从0开始（PageNumber和PageSize 其中一个不填均默认返回10条数据）
         :type PageNumber: str
-        :param PageSize: 分页大小（不填默认返回10个,最多不超过100条）
+        :param PageSize: 分页大小（PageNumber和PageSize 其中一个不填均默认返回10条数据,最大不超过100）
         :type PageSize: str
         """
         self.SdkAppId = None
@@ -1203,7 +1203,7 @@ class UserInformation(AbstractModel):
         :type UserId: str
         :param JoinTs: 用户进房时间
         :type JoinTs: int
-        :param LeaveTs: 用户退房时间
+        :param LeaveTs: 用户退房时间，用户没有退房则返回当前时间
         :type LeaveTs: int
         :param DeviceType: 终端类型
         :type DeviceType: str

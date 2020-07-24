@@ -193,6 +193,44 @@ class AccountRemark(AbstractModel):
         self.Remark = params.get("Remark")
 
 
+class AssociateSecurityGroupsRequest(AbstractModel):
+    """AssociateSecurityGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityGroupId: 安全组ID。
+        :type SecurityGroupId: str
+        :param InstanceIdSet: 实例ID 列表，一个或者多个实例ID组成的数组。多个实例必须是同一个地域，同一个可用区，同一个项目下的。
+        :type InstanceIdSet: list of str
+        """
+        self.SecurityGroupId = None
+        self.InstanceIdSet = None
+
+
+    def _deserialize(self, params):
+        self.SecurityGroupId = params.get("SecurityGroupId")
+        self.InstanceIdSet = params.get("InstanceIdSet")
+
+
+class AssociateSecurityGroupsResponse(AbstractModel):
+    """AssociateSecurityGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class Backup(AbstractModel):
     """备份文件详细信息
 
@@ -378,6 +416,116 @@ class CreateBackupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateBasicDBInstancesRequest(AbstractModel):
+    """CreateBasicDBInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Zone: 实例可用区，类似ap-guangzhou-1（广州一区）；实例可售卖区域可以通过接口DescribeZones获取
+        :type Zone: str
+        :param Cpu: 实例的CPU核心数
+        :type Cpu: int
+        :param Memory: 实例内存大小，单位GB
+        :type Memory: int
+        :param Storage: 实例磁盘大小，单位GB
+        :type Storage: int
+        :param SubnetId: VPC子网ID，形如subnet-bdoe83fa
+        :type SubnetId: str
+        :param VpcId: VPC网络ID，形如vpc-dsp338hz
+        :type VpcId: str
+        :param MachineType: 购买实例的宿主机类型, CLOUD_PREMIUM-虚拟机高性能云盘，CLOUD_SSD-虚拟机SSD云盘
+        :type MachineType: str
+        :param InstanceChargeType: 付费模式，取值支持 PREPAID（预付费），POSTPAID（后付费）。
+        :type InstanceChargeType: str
+        :param ProjectId: 项目ID
+        :type ProjectId: int
+        :param GoodsNum: 本次购买几个实例，默认值为1。取值不超过10
+        :type GoodsNum: int
+        :param DBVersion: sqlserver版本，目前只支持：2008R2（SQL Server 2008 Enterprise），2012SP3（SQL Server 2012 Enterprise），2016SP1（SQL Server 2016 Enterprise），201602（SQL Server 2016 Standard），2017（SQL Server 2017 Enterprise），201202（SQL Server 2012 Standard），201402（SQL Server 2014 Standard），2014SP2（SQL Server 2014 Enterprise），201702（SQL Server 2017 Standard）版本。每个地域支持售卖的版本不同，可通过DescribeProductConfig接口来拉取每个地域可售卖的版本信息。不填，默认为版本2008R2。
+        :type DBVersion: str
+        :param Period: 购买实例周期，默认取值为1，表示一个月。取值不超过48
+        :type Period: int
+        :param SecurityGroupList: 安全组列表，填写形如sg-xxx的安全组ID
+        :type SecurityGroupList: list of str
+        :param AutoRenewFlag: 自动续费标志：0-正常续费  1-自动续费，默认为1自动续费。只在购买预付费实例时有效。
+        :type AutoRenewFlag: int
+        :param AutoVoucher: 是否自动使用代金券；1 - 是，0 - 否，默认不使用
+        :type AutoVoucher: int
+        :param VoucherIds: 代金券ID数组，目前单个订单只能使用一张
+        :type VoucherIds: list of str
+        :param Weekly: 可维护时间窗配置，以周为单位，表示周几允许维护，1-7分别代表周一到周末
+        :type Weekly: list of int
+        :param StartTime: 可维护时间窗配置，每天可维护的开始时间
+        :type StartTime: str
+        :param Span: 可维护时间窗配置，持续时间，单位：小时
+        :type Span: int
+        """
+        self.Zone = None
+        self.Cpu = None
+        self.Memory = None
+        self.Storage = None
+        self.SubnetId = None
+        self.VpcId = None
+        self.MachineType = None
+        self.InstanceChargeType = None
+        self.ProjectId = None
+        self.GoodsNum = None
+        self.DBVersion = None
+        self.Period = None
+        self.SecurityGroupList = None
+        self.AutoRenewFlag = None
+        self.AutoVoucher = None
+        self.VoucherIds = None
+        self.Weekly = None
+        self.StartTime = None
+        self.Span = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.Cpu = params.get("Cpu")
+        self.Memory = params.get("Memory")
+        self.Storage = params.get("Storage")
+        self.SubnetId = params.get("SubnetId")
+        self.VpcId = params.get("VpcId")
+        self.MachineType = params.get("MachineType")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        self.ProjectId = params.get("ProjectId")
+        self.GoodsNum = params.get("GoodsNum")
+        self.DBVersion = params.get("DBVersion")
+        self.Period = params.get("Period")
+        self.SecurityGroupList = params.get("SecurityGroupList")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.AutoVoucher = params.get("AutoVoucher")
+        self.VoucherIds = params.get("VoucherIds")
+        self.Weekly = params.get("Weekly")
+        self.StartTime = params.get("StartTime")
+        self.Span = params.get("Span")
+
+
+class CreateBasicDBInstancesResponse(AbstractModel):
+    """CreateBasicDBInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DealName: 订单名称
+        :type DealName: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DealName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DealName = params.get("DealName")
         self.RequestId = params.get("RequestId")
 
 
@@ -661,6 +809,116 @@ class CreatePublishSubscribeResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateReadOnlyDBInstancesRequest(AbstractModel):
+    """CreateReadOnlyDBInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 主实例ID，格式如：mssql-3l3fgqn7
+        :type InstanceId: str
+        :param Zone: 实例可用区，类似ap-guangzhou-1（广州一区）；实例可售卖区域可以通过接口DescribeZones获取
+        :type Zone: str
+        :param ReadOnlyGroupType: 只读组类型选项，1-按照一个实例一个只读组的方式发货，2-新建只读组后发货，所有实例都在这个只读组下面， 3-发货的所有实例都在已有的只读组下面
+        :type ReadOnlyGroupType: int
+        :param Memory: 实例内存大小，单位GB
+        :type Memory: int
+        :param Storage: 实例磁盘大小，单位GB
+        :type Storage: int
+        :param ReadOnlyGroupForcedUpgrade: 0-默认不升级主实例，1-强制升级主实例完成ro部署；主实例为非集群版时需要填1，强制升级为集群版。填1 说明您已同意将主实例升级到集群版实例。
+        :type ReadOnlyGroupForcedUpgrade: int
+        :param ReadOnlyGroupId: ReadOnlyGroupType=3时必填,已存在的只读组ID
+        :type ReadOnlyGroupId: str
+        :param ReadOnlyGroupName: ReadOnlyGroupType=2时必填，新建的只读组名称
+        :type ReadOnlyGroupName: str
+        :param ReadOnlyGroupIsOfflineDelay: ReadOnlyGroupType=2时必填，新建的只读组是否开启延迟剔除功能，1-开启，0-关闭。当只读副本与主实例延迟大于阈值后，自动剔除。
+        :type ReadOnlyGroupIsOfflineDelay: int
+        :param ReadOnlyGroupMaxDelayTime: ReadOnlyGroupType=2 且 ReadOnlyGroupIsOfflineDelay=1时必填，新建的只读组延迟剔除的阈值。
+        :type ReadOnlyGroupMaxDelayTime: int
+        :param ReadOnlyGroupMinInGroup: ReadOnlyGroupType=2 且 ReadOnlyGroupIsOfflineDelay=1时必填，新建的只读组延迟剔除后至少保留只读副本的个数。
+        :type ReadOnlyGroupMinInGroup: int
+        :param InstanceChargeType: 付费模式，取值支持 PREPAID（预付费），POSTPAID（后付费）。
+        :type InstanceChargeType: str
+        :param GoodsNum: 本次购买几个只读实例，默认值为1。
+        :type GoodsNum: int
+        :param SubnetId: VPC子网ID，形如subnet-bdoe83fa；SubnetId和VpcId需同时设置或者同时不设置
+        :type SubnetId: str
+        :param VpcId: VPC网络ID，形如vpc-dsp338hz；SubnetId和VpcId需同时设置或者同时不设置
+        :type VpcId: str
+        :param Period: 购买实例周期，默认取值为1，表示一个月。取值不超过48
+        :type Period: int
+        :param SecurityGroupList: 安全组列表，填写形如sg-xxx的安全组ID
+        :type SecurityGroupList: list of str
+        :param AutoVoucher: 是否自动使用代金券；1 - 是，0 - 否，默认不使用
+        :type AutoVoucher: int
+        :param VoucherIds: 代金券ID数组，目前单个订单只能使用一张
+        :type VoucherIds: list of str
+        """
+        self.InstanceId = None
+        self.Zone = None
+        self.ReadOnlyGroupType = None
+        self.Memory = None
+        self.Storage = None
+        self.ReadOnlyGroupForcedUpgrade = None
+        self.ReadOnlyGroupId = None
+        self.ReadOnlyGroupName = None
+        self.ReadOnlyGroupIsOfflineDelay = None
+        self.ReadOnlyGroupMaxDelayTime = None
+        self.ReadOnlyGroupMinInGroup = None
+        self.InstanceChargeType = None
+        self.GoodsNum = None
+        self.SubnetId = None
+        self.VpcId = None
+        self.Period = None
+        self.SecurityGroupList = None
+        self.AutoVoucher = None
+        self.VoucherIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Zone = params.get("Zone")
+        self.ReadOnlyGroupType = params.get("ReadOnlyGroupType")
+        self.Memory = params.get("Memory")
+        self.Storage = params.get("Storage")
+        self.ReadOnlyGroupForcedUpgrade = params.get("ReadOnlyGroupForcedUpgrade")
+        self.ReadOnlyGroupId = params.get("ReadOnlyGroupId")
+        self.ReadOnlyGroupName = params.get("ReadOnlyGroupName")
+        self.ReadOnlyGroupIsOfflineDelay = params.get("ReadOnlyGroupIsOfflineDelay")
+        self.ReadOnlyGroupMaxDelayTime = params.get("ReadOnlyGroupMaxDelayTime")
+        self.ReadOnlyGroupMinInGroup = params.get("ReadOnlyGroupMinInGroup")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        self.GoodsNum = params.get("GoodsNum")
+        self.SubnetId = params.get("SubnetId")
+        self.VpcId = params.get("VpcId")
+        self.Period = params.get("Period")
+        self.SecurityGroupList = params.get("SecurityGroupList")
+        self.AutoVoucher = params.get("AutoVoucher")
+        self.VoucherIds = params.get("VoucherIds")
+
+
+class CreateReadOnlyDBInstancesResponse(AbstractModel):
+    """CreateReadOnlyDBInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DealNames: 订单名称数组
+        :type DealNames: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DealNames = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DealNames = params.get("DealNames")
         self.RequestId = params.get("RequestId")
 
 
@@ -1122,6 +1380,40 @@ class DeleteAccountResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteDBInstanceRequest(AbstractModel):
+    """DeleteDBInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，格式如：mssql-3l3fgqn7 或 mssqlro-3l3fgqn7
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class DeleteDBInstanceResponse(AbstractModel):
+    """DeleteDBInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteDBRequest(AbstractModel):
     """DeleteDB请求参数结构体
 
@@ -1447,6 +1739,49 @@ class DescribeDBInstancesResponse(AbstractModel):
                 obj = DBInstance()
                 obj._deserialize(item)
                 self.DBInstances.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDBSecurityGroupsRequest(AbstractModel):
+    """DescribeDBSecurityGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，格式如：mssql-c1nl9rpv或者mssqlro-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class DescribeDBSecurityGroupsResponse(AbstractModel):
+    """DescribeDBSecurityGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityGroupSet: 安全组详情。
+        :type SecurityGroupSet: list of SecurityGroup
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SecurityGroupSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SecurityGroupSet") is not None:
+            self.SecurityGroupSet = []
+            for item in params.get("SecurityGroupSet"):
+                obj = SecurityGroup()
+                obj._deserialize(item)
+                self.SecurityGroupSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1846,6 +2181,49 @@ class DescribeProductConfigResponse(AbstractModel):
                 obj._deserialize(item)
                 self.SpecInfoList.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeProjectSecurityGroupsRequest(AbstractModel):
+    """DescribeProjectSecurityGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProjectId: 项目ID。
+        :type ProjectId: int
+        """
+        self.ProjectId = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+
+
+class DescribeProjectSecurityGroupsResponse(AbstractModel):
+    """DescribeProjectSecurityGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityGroupSet: 安全组详情。
+        :type SecurityGroupSet: list of SecurityGroup
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SecurityGroupSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SecurityGroupSet") is not None:
+            self.SecurityGroupSet = []
+            for item in params.get("SecurityGroupSet"):
+                obj = SecurityGroup()
+                obj._deserialize(item)
+                self.SecurityGroupSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2331,6 +2709,44 @@ class DescribeZonesResponse(AbstractModel):
                 obj = ZoneInfo()
                 obj._deserialize(item)
                 self.ZoneSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DisassociateSecurityGroupsRequest(AbstractModel):
+    """DisassociateSecurityGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityGroupId: 安全组ID。
+        :type SecurityGroupId: str
+        :param InstanceIdSet: 实例ID 列表，一个或者多个实例ID组成的数组。多个实例必须是同一个地域，同一个可用区，同一个项目下的。
+        :type InstanceIdSet: list of str
+        """
+        self.SecurityGroupId = None
+        self.InstanceIdSet = None
+
+
+    def _deserialize(self, params):
+        self.SecurityGroupId = params.get("SecurityGroupId")
+        self.InstanceIdSet = params.get("InstanceIdSet")
+
+
+class DisassociateSecurityGroupsResponse(AbstractModel):
+    """DisassociateSecurityGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -3010,6 +3426,44 @@ class ModifyDBInstanceRenewFlagResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Count = params.get("Count")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
+    """ModifyDBInstanceSecurityGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例 ID，格式如：mssql-c1nl9rpv 或者 mssqlro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+        :type InstanceId: str
+        :param SecurityGroupIdSet: 要修改的安全组 ID 列表，一个或者多个安全组 ID 组成的数组。
+        :type SecurityGroupIdSet: list of str
+        """
+        self.InstanceId = None
+        self.SecurityGroupIdSet = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.SecurityGroupIdSet = params.get("SecurityGroupIdSet")
+
+
+class ModifyDBInstanceSecurityGroupsResponse(AbstractModel):
+    """ModifyDBInstanceSecurityGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -3709,6 +4163,40 @@ class RenewDBInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RenewPostpaidDBInstanceRequest(AbstractModel):
+    """RenewPostpaidDBInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，格式如：mssql-3l3fgqn7 或 mssqlro-3l3fgqn7
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class RenewPostpaidDBInstanceResponse(AbstractModel):
+    """RenewPostpaidDBInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ResetAccountPasswordRequest(AbstractModel):
     """ResetAccountPassword请求参数结构体
 
@@ -3922,6 +4410,90 @@ class RunMigrationResponse(AbstractModel):
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
         self.RequestId = params.get("RequestId")
+
+
+class SecurityGroup(AbstractModel):
+    """安全组
+
+    """
+
+    def __init__(self):
+        """
+        :param ProjectId: 项目ID
+        :type ProjectId: int
+        :param CreateTime: 创建时间，时间格式：yyyy-mm-dd hh:mm:ss
+        :type CreateTime: str
+        :param InboundSet: 入站规则
+        :type InboundSet: list of SecurityGroupPolicy
+        :param OutboundSet: 出站规则
+        :type OutboundSet: list of SecurityGroupPolicy
+        :param SecurityGroupId: 安全组ID
+        :type SecurityGroupId: str
+        :param SecurityGroupName: 安全组名称
+        :type SecurityGroupName: str
+        :param SecurityGroupRemark: 安全组备注
+        :type SecurityGroupRemark: str
+        """
+        self.ProjectId = None
+        self.CreateTime = None
+        self.InboundSet = None
+        self.OutboundSet = None
+        self.SecurityGroupId = None
+        self.SecurityGroupName = None
+        self.SecurityGroupRemark = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.CreateTime = params.get("CreateTime")
+        if params.get("InboundSet") is not None:
+            self.InboundSet = []
+            for item in params.get("InboundSet"):
+                obj = SecurityGroupPolicy()
+                obj._deserialize(item)
+                self.InboundSet.append(obj)
+        if params.get("OutboundSet") is not None:
+            self.OutboundSet = []
+            for item in params.get("OutboundSet"):
+                obj = SecurityGroupPolicy()
+                obj._deserialize(item)
+                self.OutboundSet.append(obj)
+        self.SecurityGroupId = params.get("SecurityGroupId")
+        self.SecurityGroupName = params.get("SecurityGroupName")
+        self.SecurityGroupRemark = params.get("SecurityGroupRemark")
+
+
+class SecurityGroupPolicy(AbstractModel):
+    """安全组策略
+
+    """
+
+    def __init__(self):
+        """
+        :param Action: 策略，ACCEPT 或者 DROP
+        :type Action: str
+        :param CidrIp: 目的 IP 或 IP 段，例如172.16.0.0/12
+        :type CidrIp: str
+        :param PortRange: 端口或者端口范围
+        :type PortRange: str
+        :param IpProtocol: 网络协议，支持 UDP、TCP等
+        :type IpProtocol: str
+        :param Dir: 规则限定的方向，OUTPUT-出战规则  INPUT-进站规则
+        :type Dir: str
+        """
+        self.Action = None
+        self.CidrIp = None
+        self.PortRange = None
+        self.IpProtocol = None
+        self.Dir = None
+
+
+    def _deserialize(self, params):
+        self.Action = params.get("Action")
+        self.CidrIp = params.get("CidrIp")
+        self.PortRange = params.get("PortRange")
+        self.IpProtocol = params.get("IpProtocol")
+        self.Dir = params.get("Dir")
 
 
 class SlowlogInfo(AbstractModel):

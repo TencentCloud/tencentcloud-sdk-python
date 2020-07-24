@@ -168,6 +168,34 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateClsLogSet(self, request):
+        """创建clb专有日志集，此日志集用于存储clb的日志。
+
+        :param request: Request instance for CreateClsLogSet.
+        :type request: :class:`tencentcloud.clb.v20180317.models.CreateClsLogSetRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.CreateClsLogSetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateClsLogSet", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateClsLogSetResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateListener(self, request):
         """在一个负载均衡实例下创建监听器。
         本接口为异步接口，接口返回成功后，需以返回的 RequestId 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
@@ -298,6 +326,34 @@ class ClbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTargetGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateTopic(self, request):
+        """创建主题，默认开启全文索引和键值索引。如果不存在clb专有日志集，则创建失败。
+
+        :param request: Request instance for CreateTopic.
+        :type request: :class:`tencentcloud.clb.v20180317.models.CreateTopicRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.CreateTopicResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateTopic", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateTopicResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -754,6 +810,34 @@ class ClbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClassicalLBTargetsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeClsLogSet(self, request):
+        """获取用户的clb独占日志集。
+
+        :param request: Request instance for DescribeClsLogSet.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeClsLogSetRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeClsLogSetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeClsLogSet", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClsLogSetResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
