@@ -2081,7 +2081,7 @@ class InvoiceDetectInfo(AbstractModel):
 13：过路过桥费发票
 14：购物小票
         :type Type: int
-        :param Rect: 识别出的图片在混贴票据图片中的位置信息。与Angel结合可以得出原图位置，组成RotatedRect((X+0.5*Width,Y+0.5*Height), (Width, Height), Angle)，详情可参考OpenCV文档。
+        :param Rect: 识别出的图片在混贴票据图片中的位置信息。与Angel结合可以得出原图位置，组成RotatedRect((X+0.5\*Width,Y+0.5\*Height), (Width, Height), Angle)，详情可参考OpenCV文档。
         :type Rect: :class:`tencentcloud.ocr.v20181119.models.Rect`
         :param Image: 入参 ReturnImage 为 True 时返回 Base64 编码后的图片。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -2633,7 +2633,7 @@ FailedOperation.UnKnowError：表示识别失败；
 12：购车发票
 13：过路过桥费发票
         :type Type: int
-        :param Rect: 识别出的图片在混贴票据图片中的位置信息。与Angel结合可以得出原图位置，组成RotatedRect((X+0.5*Width,Y+0.5*Height), (Width, Height), Angle)，详情可参考OpenCV文档。
+        :param Rect: 识别出的图片在混贴票据图片中的位置信息。与Angel结合可以得出原图位置，组成RotatedRect((X+0.5\*Width,Y+0.5\*Height), (Width, Height), Angle)，详情可参考OpenCV文档。
         :type Rect: :class:`tencentcloud.ocr.v20181119.models.Rect`
         :param Angle: 识别出的图片在混贴票据图片中的旋转角度。
         :type Angle: float

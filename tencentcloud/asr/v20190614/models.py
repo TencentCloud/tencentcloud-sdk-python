@@ -97,7 +97,7 @@ class CreateRecTaskRequest(AbstractModel):
         :type SourceType: int
         :param CallbackUrl: 回调 URL，用户自行搭建的用于接收识别结果的服务器地址， 长度小于2048字节。如果用户使用回调方式获取识别结果，需提交该参数；如果用户使用轮询方式获取识别结果，则无需提交该参数。
         :type CallbackUrl: str
-        :param Url: 语音的URL地址，需要公网可下载。长度小于2048字节，当 SourceType 值为 0 时须填写该字段，为 1 时不需要填写。注意：请确保录音文件时长在一个小时之内，否则可能识别失败。请保证文件的下载速度，否则可能下载失败。
+        :param Url: 语音的URL地址，需要公网可下载。长度小于2048字节，当 SourceType 值为 0 时须填写该字段，为 1 时不需要填写。注意：请确保录音文件时长在5个小时之内，否则可能识别失败。请保证文件的下载速度，否则可能下载失败。
         :type Url: str
         :param Data: 语音数据，当SourceType 值为1时必须填写，为0可不写。要base64编码(采用python语言时注意读取文件应该为string而不是byte，以byte格式读取后要decode()。编码后的数据不可带有回车换行符)。音频数据要小于5MB。
         :type Data: str
@@ -111,6 +111,13 @@ class CreateRecTaskRequest(AbstractModel):
         :type FilterModal: int
         :param ConvertNumMode: 是否进行阿拉伯数字智能转换（目前支持中文普通话引擎）。0：不转换，直接输出中文数字，1：根据场景智能转换为阿拉伯数字。默认值为 1。
         :type ConvertNumMode: int
+        :param Extra: 附加参数
+        :type Extra: str
+        :param SpeakerDiarization: 是否开启话者分离，0：不开启，1：开启(仅支持8k_zh/16k_zh引擎模型，单声道音频)
+        :type SpeakerDiarization: int
+        :param SpeakerNumber: 话者分离人数（需配合开启话者分离使用），支持2-10（8k_zh仅支持2， 16k_zh支持2-10）
+注：话者分离目前是beta版本，请根据您的需要谨慎使用
+        :type SpeakerNumber: int
         """
         self.EngineModelType = None
         self.ChannelNum = None
@@ -124,6 +131,9 @@ class CreateRecTaskRequest(AbstractModel):
         self.FilterDirty = None
         self.FilterModal = None
         self.ConvertNumMode = None
+        self.Extra = None
+        self.SpeakerDiarization = None
+        self.SpeakerNumber = None
 
 
     def _deserialize(self, params):
@@ -139,6 +149,9 @@ class CreateRecTaskRequest(AbstractModel):
         self.FilterDirty = params.get("FilterDirty")
         self.FilterModal = params.get("FilterModal")
         self.ConvertNumMode = params.get("ConvertNumMode")
+        self.Extra = params.get("Extra")
+        self.SpeakerDiarization = params.get("SpeakerDiarization")
+        self.SpeakerNumber = params.get("SpeakerNumber")
 
 
 class CreateRecTaskResponse(AbstractModel):
@@ -530,15 +543,19 @@ class SentenceRecognitionResponse(AbstractModel):
         """
         :param Result: 识别结果。
         :type Result: str
+        :param AudioDuration: 请求的音频时长，单位为ms
+        :type AudioDuration: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Result = None
+        self.AudioDuration = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.Result = params.get("Result")
+        self.AudioDuration = params.get("AudioDuration")
         self.RequestId = params.get("RequestId")
 
 

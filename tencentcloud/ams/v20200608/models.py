@@ -125,11 +125,15 @@ class AudioResultDetailLanguageResult(AbstractModel):
         :param EndTime: 结束时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: float
+        :param SubLabelCode: 子标签码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubLabelCode: str
         """
         self.Label = None
         self.Score = None
         self.StartTime = None
         self.EndTime = None
+        self.SubLabelCode = None
 
 
     def _deserialize(self, params):
@@ -137,6 +141,7 @@ class AudioResultDetailLanguageResult(AbstractModel):
         self.Score = params.get("Score")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        self.SubLabelCode = params.get("SubLabelCode")
 
 
 class AudioResultDetailMoanResult(AbstractModel):
@@ -155,11 +160,14 @@ class AudioResultDetailMoanResult(AbstractModel):
         :type StartTime: float
         :param EndTime: 结束时间
         :type EndTime: float
+        :param SubLabelCode: 子标签码
+        :type SubLabelCode: str
         """
         self.Label = None
         self.Score = None
         self.StartTime = None
         self.EndTime = None
+        self.SubLabelCode = None
 
 
     def _deserialize(self, params):
@@ -167,6 +175,7 @@ class AudioResultDetailMoanResult(AbstractModel):
         self.Score = params.get("Score")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        self.SubLabelCode = params.get("SubLabelCode")
 
 
 class AudioResultDetailTextResult(AbstractModel):
@@ -641,6 +650,9 @@ class ImageResultsResultDetail(AbstractModel):
         :param Score: 得分
 注意：此字段可能返回 null，表示取不到有效值。
         :type Score: int
+        :param SubLabelCode: 子标签码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubLabelCode: str
         """
         self.Location = None
         self.Name = None
@@ -651,6 +663,7 @@ class ImageResultsResultDetail(AbstractModel):
         self.Keywords = None
         self.Suggestion = None
         self.Score = None
+        self.SubLabelCode = None
 
 
     def _deserialize(self, params):
@@ -668,6 +681,7 @@ class ImageResultsResultDetail(AbstractModel):
         self.Keywords = params.get("Keywords")
         self.Suggestion = params.get("Suggestion")
         self.Score = params.get("Score")
+        self.SubLabelCode = params.get("SubLabelCode")
 
 
 class ImageResultsResultDetailLocation(AbstractModel):
