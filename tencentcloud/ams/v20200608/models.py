@@ -343,6 +343,116 @@ class CreateAudioModerationTaskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateBizConfigRequest(AbstractModel):
+    """CreateBizConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BizType: 业务ID
+        :type BizType: str
+        :param MediaModeration: 审核分类信息
+        :type MediaModeration: :class:`tencentcloud.ams.v20200608.models.MediaModerationConfig`
+        :param BizName: 页面名称
+        :type BizName: str
+        :param ModerationCategories: 审核内容，可选：Polity (政治); Porn (色情); Illegal(违法);Abuse (谩骂); Terror (暴恐); Ad (广告);
+        :type ModerationCategories: list of str
+        """
+        self.BizType = None
+        self.MediaModeration = None
+        self.BizName = None
+        self.ModerationCategories = None
+
+
+    def _deserialize(self, params):
+        self.BizType = params.get("BizType")
+        if params.get("MediaModeration") is not None:
+            self.MediaModeration = MediaModerationConfig()
+            self.MediaModeration._deserialize(params.get("MediaModeration"))
+        self.BizName = params.get("BizName")
+        self.ModerationCategories = params.get("ModerationCategories")
+
+
+class CreateBizConfigResponse(AbstractModel):
+    """CreateBizConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBizConfigRequest(AbstractModel):
+    """DescribeBizConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BizType: 审核业务类类型
+        :type BizType: str
+        """
+        self.BizType = None
+
+
+    def _deserialize(self, params):
+        self.BizType = params.get("BizType")
+
+
+class DescribeBizConfigResponse(AbstractModel):
+    """DescribeBizConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BizType: 业务类型
+        :type BizType: str
+        :param BizName: 业务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BizName: str
+        :param ModerationCategories: 审核范围
+        :type ModerationCategories: list of str
+        :param MediaModeration: 多媒体审核配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MediaModeration: :class:`tencentcloud.ams.v20200608.models.MediaModerationConfig`
+        :param CreatedAt: 创建时间
+        :type CreatedAt: str
+        :param UpdatedAt: 更新时间
+        :type UpdatedAt: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BizType = None
+        self.BizName = None
+        self.ModerationCategories = None
+        self.MediaModeration = None
+        self.CreatedAt = None
+        self.UpdatedAt = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BizType = params.get("BizType")
+        self.BizName = params.get("BizName")
+        self.ModerationCategories = params.get("ModerationCategories")
+        if params.get("MediaModeration") is not None:
+            self.MediaModeration = MediaModerationConfig()
+            self.MediaModeration._deserialize(params.get("MediaModeration"))
+        self.CreatedAt = params.get("CreatedAt")
+        self.UpdatedAt = params.get("UpdatedAt")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTaskDetailRequest(AbstractModel):
     """DescribeTaskDetail请求参数结构体
 
@@ -377,13 +487,14 @@ class DescribeTaskDetailResponse(AbstractModel):
         :param DataId: 审核时传入的数据Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataId: str
-        :param BizType: 业务类型
+        :param BizType: 业务类型，用于调用识别策略模板；
+（暂未发布功能，敬请期待）
 注意：此字段可能返回 null，表示取不到有效值。
         :type BizType: str
         :param Name: 任务名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param Status: 状态，可选值：
+        :param Status: 查询内容审核任务的状态，可选值：
 FINISH 已完成
 PENDING 等待中
 RUNNING 进行中
@@ -391,38 +502,38 @@ ERROR 出错
 CANCELLED 已取消
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param Type: 类型
+        :param Type: 任务类型：可选AUDIO（点播音频），LIVE_AUDIO（直播音频）
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
-        :param Suggestion: 审核建议
-可选：
-Pass 通过
-Reveiw 建议复审
-Block 确认违规
+        :param Suggestion: 智能审核服务对于内容违规类型的等级，可选值：
+Pass 建议通过；
+Reveiw 建议复审；
+Block 建议屏蔽；
 注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
-        :param Labels: 审核结果
+        :param Labels: 智能审核服务对于内容违规类型的判断，详见返回值列表
+如：Label：Porn（色情）；
 注意：此字段可能返回 null，表示取不到有效值。
         :type Labels: list of TaskLabel
-        :param MediaInfo: 媒体解码信息
+        :param MediaInfo: 传入媒体的解码信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type MediaInfo: :class:`tencentcloud.ams.v20200608.models.MediaInfo`
-        :param InputInfo: 任务信息
+        :param InputInfo: 审核任务的信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type InputInfo: :class:`tencentcloud.ams.v20200608.models.InputInfo`
-        :param CreatedAt: 创建时间
+        :param CreatedAt: 审核任务的创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedAt: str
-        :param UpdatedAt: 更新时间
+        :param UpdatedAt: 审核任务的更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedAt: str
-        :param TryInSeconds: 在秒后重试
+        :param TryInSeconds: 在N秒后重试
 注意：此字段可能返回 null，表示取不到有效值。
         :type TryInSeconds: int
-        :param AudioSegments: 音频结果
+        :param AudioSegments: 视频/音频审核中的音频结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type AudioSegments: list of AudioSegments
-        :param ImageSegments: 图片结果
+        :param ImageSegments: 视频审核中的图片结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageSegments: list of ImageSegments
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -482,6 +593,31 @@ Block 确认违规
                 obj._deserialize(item)
                 self.ImageSegments.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class FileOutput(AbstractModel):
+    """Cos FileOutput
+
+    """
+
+    def __init__(self):
+        """
+        :param Bucket: 存储的Bucket
+        :type Bucket: str
+        :param Region: Cos Region
+        :type Region: str
+        :param ObjectPrefix: 对象前缀
+        :type ObjectPrefix: str
+        """
+        self.Bucket = None
+        self.Region = None
+        self.ObjectPrefix = None
+
+
+    def _deserialize(self, params):
+        self.Bucket = params.get("Bucket")
+        self.Region = params.get("Region")
+        self.ObjectPrefix = params.get("ObjectPrefix")
 
 
 class ImageResult(AbstractModel):
@@ -805,6 +941,45 @@ class MediaInfo(AbstractModel):
         self.Duration = params.get("Duration")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+
+
+class MediaModerationConfig(AbstractModel):
+    """媒体审核配置
+
+    """
+
+    def __init__(self):
+        """
+        :param AudioFrequency: 音频截帧频率。默认一分钟
+        :type AudioFrequency: int
+        :param ImageFrequency: 图片取帧频率, 单位（秒/帧），默认 5， 可选 1 ～ 300
+        :type ImageFrequency: int
+        :param CallbackUrl: 异步回调地址。
+        :type CallbackUrl: str
+        :param SegmentOutput: 临时文件存储位置
+        :type SegmentOutput: :class:`tencentcloud.ams.v20200608.models.FileOutput`
+        :param UseOCR: 是否使用OCR，默认为true
+        :type UseOCR: bool
+        :param UseAudio: 是否使用音频。（音频场景下，该值永远为true）
+        :type UseAudio: bool
+        """
+        self.AudioFrequency = None
+        self.ImageFrequency = None
+        self.CallbackUrl = None
+        self.SegmentOutput = None
+        self.UseOCR = None
+        self.UseAudio = None
+
+
+    def _deserialize(self, params):
+        self.AudioFrequency = params.get("AudioFrequency")
+        self.ImageFrequency = params.get("ImageFrequency")
+        self.CallbackUrl = params.get("CallbackUrl")
+        if params.get("SegmentOutput") is not None:
+            self.SegmentOutput = FileOutput()
+            self.SegmentOutput._deserialize(params.get("SegmentOutput"))
+        self.UseOCR = params.get("UseOCR")
+        self.UseAudio = params.get("UseAudio")
 
 
 class StorageInfo(AbstractModel):

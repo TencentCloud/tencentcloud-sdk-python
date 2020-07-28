@@ -843,6 +843,35 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def HKIDCardOCR(self, request):
+        """本接口支持中国香港身份证人像面中关键字段的识别，包括中文姓名、英文姓名、姓名电码、出生日期、性别、证件符号、首次签发日期、最近领用日期、身份证号、是否是永久性居民身份证；具备防伪识别、人像照片裁剪等扩展功能。
+        本接口暂未完全对外开放，如需咨询，请[联系商务](https://cloud.tencent.com/about/connect)
+
+        :param request: Request instance for HKIDCardOCR.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.HKIDCardOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.HKIDCardOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("HKIDCardOCR", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.HKIDCardOCRResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def HmtResidentPermitOCR(self, request):
         """港澳台居住证OCR支持港澳台居住证正反面全字段内容检测识别功能，包括姓名、性别、出生日期、地址、身份证ID、签发机关、有效期限、签发次数、通行证号码关键字段识别。可以应用于港澳台居住证信息有效性校验场景，例如银行开户、用户注册等场景。
 

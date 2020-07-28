@@ -81,6 +81,34 @@ class KmsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def BindCloudResource(self, request):
+        """记录当前key被哪个云产品的那个资源所使用。如果当前key设置了自动过期，则取消该设置，确保当前key不会自动失效。如果当前关联关系已经创建，也返回成功。
+
+        :param request: Request instance for BindCloudResource.
+        :type request: :class:`tencentcloud.kms.v20190118.models.BindCloudResourceRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.BindCloudResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("BindCloudResource", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.BindCloudResourceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CancelKeyDeletion(self, request):
         """取消CMK的计划删除操作
 
@@ -1132,6 +1160,34 @@ class KmsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ScheduleKeyDeletionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UnbindCloudResource(self, request):
+        """删除指定（key, 资源，云产品）的记录，以表明：指定的云产品的资源已不再使用当前的key。
+
+        :param request: Request instance for UnbindCloudResource.
+        :type request: :class:`tencentcloud.kms.v20190118.models.UnbindCloudResourceRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.UnbindCloudResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UnbindCloudResource", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UnbindCloudResourceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

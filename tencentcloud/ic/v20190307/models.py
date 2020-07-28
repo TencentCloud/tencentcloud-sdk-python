@@ -136,9 +136,9 @@ class CardInfo(AbstractModel):
         :type AllowArrears: int
         :param NeedSms: 是否开通短信0:未开短信 1:开通短信
         :type NeedSms: int
-        :param Provider: 服务
+        :param Provider: 供应商
         :type Provider: int
-        :param CertificationState: 实名验证(浙江联通)
+        :param CertificationState: 实名认证 0:无 1:未实名 2:已实名
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertificationState: int
         """
@@ -373,7 +373,7 @@ class RenewCardsRequest(AbstractModel):
         :type Sdkappid: int
         :param Iccids: 续费的iccid
         :type Iccids: list of str
-        :param RenewNum: 续费的周期
+        :param RenewNum: 续费的周期（单位：月）
         :type RenewNum: int
         """
         self.Sdkappid = None

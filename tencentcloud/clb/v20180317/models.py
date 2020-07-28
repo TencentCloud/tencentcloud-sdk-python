@@ -2013,6 +2013,85 @@ class DescribeLoadBalancerListByCertIdResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeLoadBalancersDetailRequest(AbstractModel):
+    """DescribeLoadBalancersDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Limit: 返回负载均衡列表数目，默认20，最大值1000。
+        :type Limit: int
+        :param Offset: 返回负载均衡列表起始偏移量，默认0
+        :type Offset: int
+        :param Fields: 选择返回的Fields列表，默认添加LoadBalancerId和LoadBalancerName。
+        :type Fields: list of str
+        :param TargetType: 当Fields包含TargetId、TargetAddress、TargetPort、TargetWeight等Fields时，必选选择导出目标组的Target或者非目标组Target，值范围NODE、GROUP。
+        :type TargetType: str
+        :param Filters: 查询负载均衡详细信息列表条件，详细的过滤条件如下：
+<li> loadbalancer-id - String - 是否必填：否 - （过滤条件）按照 负载均衡ID 过滤，如："lb-12345678"。</li>
+<li> project-id - String - 是否必填：否 - （过滤条件）按照 项目ID 过滤，如："0","123"。</li>
+<li> network - String - 是否必填：否 - （过滤条件）按照 负载均衡网络类型 过滤，如："Public","Private"。</li>
+<li> vip - String - 是否必填：否 - （过滤条件）按照 负载均衡Vip 过滤，如："1.1.1.1","2204::22:3"。</li>
+<li> target-ip - String - 是否必填：否 - （过滤条件）按照 后端目标内网Ip 过滤，如："1.1.1.1","2203::214:4"。</li>
+<li> vpcid - String - 是否必填：否 - （过滤条件）按照 负载均衡所属vpcId 过滤，如："vpc-12345678"。</li>
+<li> zone - String - 是否必填：否 - （过滤条件）按照 负载均衡所属的可用区 过滤，如："ap-guangzhou-1"。</li>
+<li> tag-key - String - 是否必填：否 - （过滤条件）按照 负载均衡标签的标签键 过滤，如："name"。</li>
+<li> tag:* - String - 是否必填：否 - （过滤条件）按照 负载均衡的标签 过滤，':' 后面跟的是标签键。如：过滤标签键name，标签值zhangsan,lisi，{"Name": "tag:name","Values": ["zhangsan", "lisi"]}。</li>
+<li> fuzzy-search - String - 是否必填：否 - （过滤条件）按照 负载均衡Vip，负载均衡名称 模糊搜索，如："1.1"。</li>
+        :type Filters: list of Filter
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Fields = None
+        self.TargetType = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Fields = params.get("Fields")
+        self.TargetType = params.get("TargetType")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class DescribeLoadBalancersDetailResponse(AbstractModel):
+    """DescribeLoadBalancersDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 负载均衡详情列表总数。
+        :type TotalCount: int
+        :param LoadBalancerDetailSet: 负载均衡详情列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancerDetailSet: list of LoadBalancerDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.LoadBalancerDetailSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("LoadBalancerDetailSet") is not None:
+            self.LoadBalancerDetailSet = []
+            for item in params.get("LoadBalancerDetailSet"):
+                obj = LoadBalancerDetail()
+                obj._deserialize(item)
+                self.LoadBalancerDetailSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeLoadBalancersRequest(AbstractModel):
     """DescribeLoadBalancers请求参数结构体
 
@@ -3228,6 +3307,180 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.IsBlock = params.get("IsBlock")
         self.IsBlockTime = params.get("IsBlockTime")
         self.LocalBgp = params.get("LocalBgp")
+
+
+class LoadBalancerDetail(AbstractModel):
+    """负载均衡详细信息
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: 负载均衡实例 ID。
+        :type LoadBalancerId: str
+        :param LoadBalancerName: 负载均衡实例的名称。
+        :type LoadBalancerName: str
+        :param LoadBalancerType: 负载均衡实例的网络类型：
+Public：公网属性， Private：内网属性。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancerType: str
+        :param Status: 负载均衡实例的状态，包括
+0：创建中，1：正常运行。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param Address: 负载均衡实例的 VIP 。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Address: str
+        :param AddressIPv6: 负载均衡实例 VIP 的IPv6地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AddressIPv6: str
+        :param AddressIPVersion: 负载均衡实例IP版本，IPv4 | IPv6。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AddressIPVersion: str
+        :param IPv6Mode: 负载均衡实例IPv6地址类型，IPv6Nat64 | IPv6FullChain。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IPv6Mode: str
+        :param Zone: 负载均衡实例所在可用区。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        :param AddressIsp: 负载均衡实例IP地址所属的ISP。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AddressIsp: str
+        :param VpcId: 负载均衡实例所属私有网络的 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param ProjectId: 负载均衡实例所属的项目 ID， 0 表示默认项目。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: int
+        :param CreateTime: 负载均衡实例的创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param ChargeType: 负载均衡实例的计费类型。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChargeType: str
+        :param NetworkAttributes: 负载均衡实例的网络属性。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetworkAttributes: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
+        :param PrepaidAttributes: 负载均衡实例的预付费相关属性。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrepaidAttributes: :class:`tencentcloud.clb.v20180317.models.LBChargePrepaid`
+        :param ExtraInfo: 暂做保留，一般用户无需关注。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtraInfo: :class:`tencentcloud.clb.v20180317.models.ExtraInfo`
+        :param ConfigId: 负载均衡维度的个性化配置ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigId: str
+        :param Tags: 负载均衡实例的标签信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of TagInfo
+        :param ListenerId: 负载均衡监听器 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ListenerId: str
+        :param Protocol: 监听器协议。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Protocol: str
+        :param Port: 监听器端口。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param LocationId: 转发规则的 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LocationId: str
+        :param Domain: 转发规则的域名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Domain: str
+        :param Url: 转发规则的路径。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
+        :param TargetId: 后端目标ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetId: str
+        :param TargetAddress: 后端目标的IP地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetAddress: str
+        :param TargetPort: 后端目标监听端口。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetPort: int
+        :param TargetWeight: 后端目标转发权重。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetWeight: int
+        :param Isolation: 0：表示未被隔离，1：表示被隔离。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Isolation: int
+        """
+        self.LoadBalancerId = None
+        self.LoadBalancerName = None
+        self.LoadBalancerType = None
+        self.Status = None
+        self.Address = None
+        self.AddressIPv6 = None
+        self.AddressIPVersion = None
+        self.IPv6Mode = None
+        self.Zone = None
+        self.AddressIsp = None
+        self.VpcId = None
+        self.ProjectId = None
+        self.CreateTime = None
+        self.ChargeType = None
+        self.NetworkAttributes = None
+        self.PrepaidAttributes = None
+        self.ExtraInfo = None
+        self.ConfigId = None
+        self.Tags = None
+        self.ListenerId = None
+        self.Protocol = None
+        self.Port = None
+        self.LocationId = None
+        self.Domain = None
+        self.Url = None
+        self.TargetId = None
+        self.TargetAddress = None
+        self.TargetPort = None
+        self.TargetWeight = None
+        self.Isolation = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.LoadBalancerName = params.get("LoadBalancerName")
+        self.LoadBalancerType = params.get("LoadBalancerType")
+        self.Status = params.get("Status")
+        self.Address = params.get("Address")
+        self.AddressIPv6 = params.get("AddressIPv6")
+        self.AddressIPVersion = params.get("AddressIPVersion")
+        self.IPv6Mode = params.get("IPv6Mode")
+        self.Zone = params.get("Zone")
+        self.AddressIsp = params.get("AddressIsp")
+        self.VpcId = params.get("VpcId")
+        self.ProjectId = params.get("ProjectId")
+        self.CreateTime = params.get("CreateTime")
+        self.ChargeType = params.get("ChargeType")
+        if params.get("NetworkAttributes") is not None:
+            self.NetworkAttributes = InternetAccessible()
+            self.NetworkAttributes._deserialize(params.get("NetworkAttributes"))
+        if params.get("PrepaidAttributes") is not None:
+            self.PrepaidAttributes = LBChargePrepaid()
+            self.PrepaidAttributes._deserialize(params.get("PrepaidAttributes"))
+        if params.get("ExtraInfo") is not None:
+            self.ExtraInfo = ExtraInfo()
+            self.ExtraInfo._deserialize(params.get("ExtraInfo"))
+        self.ConfigId = params.get("ConfigId")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.ListenerId = params.get("ListenerId")
+        self.Protocol = params.get("Protocol")
+        self.Port = params.get("Port")
+        self.LocationId = params.get("LocationId")
+        self.Domain = params.get("Domain")
+        self.Url = params.get("Url")
+        self.TargetId = params.get("TargetId")
+        self.TargetAddress = params.get("TargetAddress")
+        self.TargetPort = params.get("TargetPort")
+        self.TargetWeight = params.get("TargetWeight")
+        self.Isolation = params.get("Isolation")
 
 
 class LoadBalancerHealth(AbstractModel):

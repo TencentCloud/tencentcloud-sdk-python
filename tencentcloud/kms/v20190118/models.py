@@ -133,6 +133,48 @@ class AsymmetricSm2DecryptResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class BindCloudResourceRequest(AbstractModel):
+    """BindCloudResource请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: cmk的ID
+        :type KeyId: str
+        :param ProductId: 云产品的唯一性标识符
+        :type ProductId: str
+        :param ResourceId: 资源/实例ID，由调用方根据自己的云产品特征来定义，以字符串形式做存储。
+        :type ResourceId: str
+        """
+        self.KeyId = None
+        self.ProductId = None
+        self.ResourceId = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+        self.ProductId = params.get("ProductId")
+        self.ResourceId = params.get("ResourceId")
+
+
+class BindCloudResourceResponse(AbstractModel):
+    """BindCloudResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CancelKeyDeletionRequest(AbstractModel):
     """CancelKeyDeletion请求参数结构体
 
@@ -1938,6 +1980,48 @@ class Tag(AbstractModel):
     def _deserialize(self, params):
         self.TagKey = params.get("TagKey")
         self.TagValue = params.get("TagValue")
+
+
+class UnbindCloudResourceRequest(AbstractModel):
+    """UnbindCloudResource请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: cmk的ID
+        :type KeyId: str
+        :param ProductId: 云产品的唯一性标识符
+        :type ProductId: str
+        :param ResourceId: 资源/实例ID，由调用方根据自己的云产品特征来定义，以字符串形式做存储。
+        :type ResourceId: str
+        """
+        self.KeyId = None
+        self.ProductId = None
+        self.ResourceId = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+        self.ProductId = params.get("ProductId")
+        self.ResourceId = params.get("ResourceId")
+
+
+class UnbindCloudResourceResponse(AbstractModel):
+    """UnbindCloudResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class UpdateAliasRequest(AbstractModel):

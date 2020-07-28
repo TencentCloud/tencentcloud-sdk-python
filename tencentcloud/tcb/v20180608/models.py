@@ -1544,6 +1544,12 @@ class OrderInfo(AbstractModel):
 <li>prepayment 预付费</li>
 <li>postpaid 后付费</li>
         :type PayMode: str
+        :param ExtensionId: 订单绑定的扩展ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtensionId: str
+        :param ResourceReady: 资源初始化结果(仅当ExtensionId不为空时有效): successful(初始化成功), failed(初始化失败), doing(初始化进行中), init(准备初始化)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceReady: str
         """
         self.TranId = None
         self.PackageId = None
@@ -1552,6 +1558,8 @@ class OrderInfo(AbstractModel):
         self.UpdateTime = None
         self.CreateTime = None
         self.PayMode = None
+        self.ExtensionId = None
+        self.ResourceReady = None
 
 
     def _deserialize(self, params):
@@ -1562,6 +1570,8 @@ class OrderInfo(AbstractModel):
         self.UpdateTime = params.get("UpdateTime")
         self.CreateTime = params.get("CreateTime")
         self.PayMode = params.get("PayMode")
+        self.ExtensionId = params.get("ExtensionId")
+        self.ResourceReady = params.get("ResourceReady")
 
 
 class PackageFreeQuotaInfo(AbstractModel):

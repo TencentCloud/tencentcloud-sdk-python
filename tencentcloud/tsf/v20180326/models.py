@@ -7437,7 +7437,7 @@ class StopContainerGroupResponse(AbstractModel):
         """
         :param Result: 停止操作是否成功。
 true：停止成功
-flase：停止失败
+false：停止失败
         :type Result: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

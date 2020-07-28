@@ -76,6 +76,65 @@ class AmsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateBizConfig(self, request):
+        """创建业务配置，1个账号最多可以创建20个配置。在创建业务配置之前，你需要以下步骤：
+        1. 开通COS存储捅功能，新建存储桶，cms_segments
+        2. 授权天御对 cms_segments存储桶对读写权限。
+        这个存储桶用来存储 视频转换过程中生成对音频和图片。
+
+        :param request: Request instance for CreateBizConfig.
+        :type request: :class:`tencentcloud.ams.v20200608.models.CreateBizConfigRequest`
+        :rtype: :class:`tencentcloud.ams.v20200608.models.CreateBizConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateBizConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateBizConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBizConfig(self, request):
+        """查看单个配置
+
+        :param request: Request instance for DescribeBizConfig.
+        :type request: :class:`tencentcloud.ams.v20200608.models.DescribeBizConfigRequest`
+        :rtype: :class:`tencentcloud.ams.v20200608.models.DescribeBizConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBizConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBizConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTaskDetail(self, request):
         """查看任务详情
 

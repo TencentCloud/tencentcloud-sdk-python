@@ -1715,6 +1715,122 @@ class GeneralHandwritingOCRResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class HKIDCardOCRRequest(AbstractModel):
+    """HKIDCardOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DetectFake: 是否鉴伪。
+        :type DetectFake: bool
+        :param ReturnHeadImage: 是否返回人像照片。
+        :type ReturnHeadImage: bool
+        :param ImageBase64: 图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 Url 地址。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        """
+        self.DetectFake = None
+        self.ReturnHeadImage = None
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.DetectFake = params.get("DetectFake")
+        self.ReturnHeadImage = params.get("ReturnHeadImage")
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+
+
+class HKIDCardOCRResponse(AbstractModel):
+    """HKIDCardOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CnName: 中文姓名
+        :type CnName: str
+        :param EnName: 英文姓名
+        :type EnName: str
+        :param TelexCode: 中文姓名对应电码
+        :type TelexCode: str
+        :param Sex: 性别 ：“男M”或“女F”
+        :type Sex: str
+        :param Birthday: 出生日期
+        :type Birthday: str
+        :param Permanent: 永久性居民身份证。
+0：非永久；
+1：永久；
+-1：未知。
+        :type Permanent: int
+        :param IdNum: 身份证号码
+        :type IdNum: str
+        :param Symbol: 证件符号，出生日期下的符号，例如"***AZ"
+        :type Symbol: str
+        :param FirstIssueDate: 首次签发日期
+        :type FirstIssueDate: str
+        :param CurrentIssueDate: 最近领用日期
+        :type CurrentIssueDate: str
+        :param FakeDetectResult: 真假判断。
+0：无法判断（图像模糊、不完整、反光、过暗等导致无法判断）；
+1：假；
+2：真。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FakeDetectResult: int
+        :param HeadImage: 人像照片Base64后的结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HeadImage: str
+        :param WarningCode: 多重告警码，当身份证是翻拍、复印、PS件时返回对应告警码。
+-9102：证照复印件告警
+-9103：证照翻拍告警
+-9104：证照PS告警
+-9105：证照防伪告警
+        :type WarningCode: list of int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CnName = None
+        self.EnName = None
+        self.TelexCode = None
+        self.Sex = None
+        self.Birthday = None
+        self.Permanent = None
+        self.IdNum = None
+        self.Symbol = None
+        self.FirstIssueDate = None
+        self.CurrentIssueDate = None
+        self.FakeDetectResult = None
+        self.HeadImage = None
+        self.WarningCode = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CnName = params.get("CnName")
+        self.EnName = params.get("EnName")
+        self.TelexCode = params.get("TelexCode")
+        self.Sex = params.get("Sex")
+        self.Birthday = params.get("Birthday")
+        self.Permanent = params.get("Permanent")
+        self.IdNum = params.get("IdNum")
+        self.Symbol = params.get("Symbol")
+        self.FirstIssueDate = params.get("FirstIssueDate")
+        self.CurrentIssueDate = params.get("CurrentIssueDate")
+        self.FakeDetectResult = params.get("FakeDetectResult")
+        self.HeadImage = params.get("HeadImage")
+        self.WarningCode = params.get("WarningCode")
+        self.RequestId = params.get("RequestId")
+
+
 class HmtResidentPermitOCRRequest(AbstractModel):
     """HmtResidentPermitOCR请求参数结构体
 
