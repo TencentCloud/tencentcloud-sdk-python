@@ -1291,7 +1291,7 @@ class CreateLiveSnapshotTemplateRequest(AbstractModel):
 仅支持中文、英文、数字、_、-。
         :type Description: str
         :param SnapshotInterval: 截图间隔，单位s，默认10s。
-范围： 5s ~ 600s。
+范围： 5s ~ 300s。
         :type SnapshotInterval: int
         :param Width: 截图宽度。默认：0（原始宽）。
         :type Width: int
@@ -6206,7 +6206,7 @@ class ModifyLiveSnapshotTemplateRequest(AbstractModel):
 长度上限：1024字节。
         :type Description: str
         :param SnapshotInterval: 截图间隔，单位s，默认10s。
-范围： 5s ~ 600s。
+范围： 5s ~ 300s。
         :type SnapshotInterval: int
         :param Width: 截图宽度。默认：0（原始宽）。
         :type Width: int

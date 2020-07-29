@@ -575,19 +575,19 @@ class CreateBaselineStrategyRequest(AbstractModel):
         """
         :param StrategyName: 策略名称
         :type StrategyName: str
-        :param ScanCycle: 检测周期
+        :param ScanCycle: 检测周期, 表示每隔多少天进行检测.示例: 2, 表示每2天进行检测一次.
         :type ScanCycle: int
-        :param ScanAt: 定期检测时间，该时间下发扫描
+        :param ScanAt: 定期检测时间，该时间下发扫描. 示例:“22:00”, 表示在22:00下发检测
         :type ScanAt: str
-        :param CategoryIds: 该策略下选择的基线id数组
+        :param CategoryIds: 该策略下选择的基线id数组. 示例: [1,3,5,7]
         :type CategoryIds: list of int non-negative
         :param IsGlobal: 扫描范围是否全部服务器, 1:是  0:否, 为1则为全部专业版主机
         :type IsGlobal: int
-        :param MachineType: 云主机类型：cvm：虚拟主机，bms：裸金属，ecm：边缘计算主机
+        :param MachineType: 云主机类型：“CVM”：虚拟主机，"BMS"：裸金属，"ECM"：边缘计算主机
         :type MachineType: str
-        :param RegionCode: 主机地域
+        :param RegionCode: 主机地域. 示例: "ap-bj"
         :type RegionCode: str
-        :param Quuids: 主机id数组
+        :param Quuids: 主机id数组. 示例: ["quuid1","quuid2"]
         :type Quuids: list of str
         """
         self.StrategyName = None

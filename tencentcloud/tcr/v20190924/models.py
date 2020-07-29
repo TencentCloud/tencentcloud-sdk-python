@@ -275,14 +275,20 @@ class CreateInstanceRequest(AbstractModel):
         :type RegistryName: str
         :param RegistryType: 企业版实例类型
         :type RegistryType: str
+        :param TagSpecification: 云标签描述
+        :type TagSpecification: :class:`tencentcloud.tcr.v20190924.models.TagSpecification`
         """
         self.RegistryName = None
         self.RegistryType = None
+        self.TagSpecification = None
 
 
     def _deserialize(self, params):
         self.RegistryName = params.get("RegistryName")
         self.RegistryType = params.get("RegistryType")
+        if params.get("TagSpecification") is not None:
+            self.TagSpecification = TagSpecification()
+            self.TagSpecification._deserialize(params.get("TagSpecification"))
 
 
 class CreateInstanceResponse(AbstractModel):
@@ -2818,6 +2824,9 @@ class Registry(AbstractModel):
         :type TokenValidTime: int
         :param InternalEndpoint: 实例内部访问地址
         :type InternalEndpoint: str
+        :param TagSpecification: 实例云标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagSpecification: :class:`tencentcloud.tcr.v20190924.models.TagSpecification`
         """
         self.RegistryId = None
         self.RegistryName = None
@@ -2830,6 +2839,7 @@ class Registry(AbstractModel):
         self.EnableAnonymous = None
         self.TokenValidTime = None
         self.InternalEndpoint = None
+        self.TagSpecification = None
 
 
     def _deserialize(self, params):
@@ -2844,6 +2854,9 @@ class Registry(AbstractModel):
         self.EnableAnonymous = params.get("EnableAnonymous")
         self.TokenValidTime = params.get("TokenValidTime")
         self.InternalEndpoint = params.get("InternalEndpoint")
+        if params.get("TagSpecification") is not None:
+            self.TagSpecification = TagSpecification()
+            self.TagSpecification._deserialize(params.get("TagSpecification"))
 
 
 class RegistryCondition(AbstractModel):
@@ -3135,6 +3148,27 @@ class SearchUserRepositoryResp(AbstractModel):
         self.PrivilegeFiltered = params.get("PrivilegeFiltered")
 
 
+class Tag(AbstractModel):
+    """云标签Tag
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: 云标签的key
+        :type Key: str
+        :param Value: 云标签的值
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+
+
 class TagInfo(AbstractModel):
     """镜像tag信息
 
@@ -3237,6 +3271,34 @@ class TagInfoResp(AbstractModel):
                 self.TagInfo.append(obj)
         self.Server = params.get("Server")
         self.RepoName = params.get("RepoName")
+
+
+class TagSpecification(AbstractModel):
+    """云标签
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceType: 默认值为instance
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceType: str
+        :param Tags: 云标签数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        """
+        self.ResourceType = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.ResourceType = params.get("ResourceType")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class TcrImageInfo(AbstractModel):

@@ -1351,7 +1351,8 @@ class NodeHardwareInfo(AbstractModel):
         :param WanIp: master节点绑定外网IP
 注意：此字段可能返回 null，表示取不到有效值。
         :type WanIp: str
-        :param Flag: 节点类型
+        :param Flag: 节点类型。0:common节点；1:master节点
+；2:core节点；3:task节点
 注意：此字段可能返回 null，表示取不到有效值。
         :type Flag: int
         :param Spec: 节点规格
