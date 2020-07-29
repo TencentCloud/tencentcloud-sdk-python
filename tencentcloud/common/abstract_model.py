@@ -20,25 +20,22 @@ class AbstractModel(object):
     """Base class for all models."""
 
     def _serialize(self, allow_none=False):
-        d = vars(self)
-        ret = {}
-        for k in d:
-            if isinstance(d[k], AbstractModel):
-                r = d[k]._serialize(allow_none)
-            elif isinstance(d[k], list):
-                r = list()
-                for tem in d[k]:
-                    if isinstance(tem, AbstractModel):
-                        r.append(tem._serialize(allow_none))
-                    else:
-                        r.append(
-                            tem.encode("UTF-8") if isinstance(tem, type(u"")) and sys.version_info[0] == 2 else tem)
+        """Get all params which are not None if None is not allowed."""
+        def dfs(obj):
+            if isinstance(obj, AbstractModel):
+                d = vars(obj)
+                ret = {}
+                for k in d:
+                    r = dfs(d[k])
+                    if allow_none or r is not None:
+                        ret[k[0].upper() + k[1:]] = r
+                return ret
+            elif isinstance(obj, list):
+                return [dfs(o) for o in obj if allow_none or dfs(o) is not None]
             else:
-                r = d[k].encode("UTF-8") if isinstance(d[k], type(u"")) and sys.version_info[0] == 2 else d[k]
-            if allow_none or r is not None:
-                ret[k[0].upper() + k[1:]] = r
-        return ret
+                return obj.encode("UTF-8") if isinstance(obj, type(u"")) and sys.version_info[0] == 2 else obj
 
+        return dfs(self)
 
     def _deserialize(self, params):
         return None
