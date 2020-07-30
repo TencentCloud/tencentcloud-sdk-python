@@ -628,6 +628,94 @@ class DescribeResourcesByTagsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeResourcesByTagsUnionRequest(AbstractModel):
+    """DescribeResourcesByTagsUnion请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TagFilters: 标签过滤数组
+        :type TagFilters: list of TagFilter
+        :param CreateUin: 创建标签者uin
+        :type CreateUin: int
+        :param Offset: 数据偏移量，默认为 0, 必须为Limit参数的整数倍
+        :type Offset: int
+        :param Limit: 每页大小，默认为 15
+        :type Limit: int
+        :param ResourcePrefix: 资源前缀
+        :type ResourcePrefix: str
+        :param ResourceId: 资源唯一标记
+        :type ResourceId: str
+        :param ResourceRegion: 资源所在地域
+        :type ResourceRegion: str
+        :param ServiceType: 业务类型
+        :type ServiceType: str
+        """
+        self.TagFilters = None
+        self.CreateUin = None
+        self.Offset = None
+        self.Limit = None
+        self.ResourcePrefix = None
+        self.ResourceId = None
+        self.ResourceRegion = None
+        self.ServiceType = None
+
+
+    def _deserialize(self, params):
+        if params.get("TagFilters") is not None:
+            self.TagFilters = []
+            for item in params.get("TagFilters"):
+                obj = TagFilter()
+                obj._deserialize(item)
+                self.TagFilters.append(obj)
+        self.CreateUin = params.get("CreateUin")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.ResourcePrefix = params.get("ResourcePrefix")
+        self.ResourceId = params.get("ResourceId")
+        self.ResourceRegion = params.get("ResourceRegion")
+        self.ServiceType = params.get("ServiceType")
+
+
+class DescribeResourcesByTagsUnionResponse(AbstractModel):
+    """DescribeResourcesByTagsUnion返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 结果总数
+        :type TotalCount: int
+        :param Offset: 数据位移偏量
+        :type Offset: int
+        :param Limit: 每页大小
+        :type Limit: int
+        :param Rows: 资源标签
+        :type Rows: list of ResourceTag
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Offset = None
+        self.Limit = None
+        self.Rows = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Rows") is not None:
+            self.Rows = []
+            for item in params.get("Rows"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self.Rows.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTagKeysRequest(AbstractModel):
     """DescribeTagKeys请求参数结构体
 
@@ -841,7 +929,7 @@ class DescribeTagsRequest(AbstractModel):
         :type Limit: int
         :param CreateUin: 创建者用户 Uin，不传或为空只将 Uin 作为条件查询
         :type CreateUin: int
-        :param TagKeys: 标签键数组,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签,当与TagKey同时传递时只会本值
+        :param TagKeys: 标签键数组,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签,当与TagKey同时传递时只取本值
         :type TagKeys: list of str
         :param ShowProject: 是否展现项目标签
         :type ShowProject: int
@@ -920,7 +1008,7 @@ class DescribeTagsSeqRequest(AbstractModel):
         :type Limit: int
         :param CreateUin: 创建者用户 Uin，不传或为空只将 Uin 作为条件查询
         :type CreateUin: int
-        :param TagKeys: 标签键数组,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签,当与TagKey同时传递时只会本值
+        :param TagKeys: 标签键数组,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签,当与TagKey同时传递时只取本值
         :type TagKeys: list of str
         :param ShowProject: 是否展现项目标签
         :type ShowProject: int

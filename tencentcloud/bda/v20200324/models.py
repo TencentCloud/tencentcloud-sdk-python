@@ -1174,6 +1174,65 @@ class SearchTraceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SegmentCustomizedPortraitPicRequest(AbstractModel):
+    """SegmentCustomizedPortraitPic请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SegmentationOptions: 此参数为分割选项，请根据需要选择自己所想从图片中分割的部分。注意所有选项均为非必选，如未选择则值默认为false, 但是必须要保证多于一个选项的描述为true。
+        :type SegmentationOptions: :class:`tencentcloud.bda.v20200324.models.SegmentationOptions`
+        :param Image: 图片 base64 数据，base64 编码后大小不可超过5M。
+图片分辨率须小于2000*2000。 
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :type Image: str
+        :param Url: 图片的 Url 。
+Url、Image必须提供一个，如果都提供，只使用 Url。
+图片分辨率须小于2000*2000 ，图片 base64 编码后大小不可超过5M。 
+图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。  
+非腾讯云存储的Url速度和稳定性可能受一定影响。 
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :type Url: str
+        """
+        self.SegmentationOptions = None
+        self.Image = None
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        if params.get("SegmentationOptions") is not None:
+            self.SegmentationOptions = SegmentationOptions()
+            self.SegmentationOptions._deserialize(params.get("SegmentationOptions"))
+        self.Image = params.get("Image")
+        self.Url = params.get("Url")
+
+
+class SegmentCustomizedPortraitPicResponse(AbstractModel):
+    """SegmentCustomizedPortraitPic返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PortraitImage: 根据指定标签分割输出的透明背景人像图片的 base64 数据。
+        :type PortraitImage: str
+        :param MaskImage: 指定标签处理后的Mask。一个通过 Base64 编码的文件，解码后文件由 Float 型浮点数组成。这些浮点数代表原图从左上角开始的每一行的每一个像素点，每一个浮点数的值是原图相应像素点位于人体轮廓内的置信度（0-1）转化的灰度值（0-255）
+        :type MaskImage: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PortraitImage = None
+        self.MaskImage = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PortraitImage = params.get("PortraitImage")
+        self.MaskImage = params.get("MaskImage")
+        self.RequestId = params.get("RequestId")
+
+
 class SegmentPortraitPicRequest(AbstractModel):
     """SegmentPortraitPic请求参数结构体
 
@@ -1225,6 +1284,103 @@ class SegmentPortraitPicResponse(AbstractModel):
         self.ResultImage = params.get("ResultImage")
         self.ResultMask = params.get("ResultMask")
         self.RequestId = params.get("RequestId")
+
+
+class SegmentationOptions(AbstractModel):
+    """此参数为分割选项，请根据需要选择自己所想从图片中分割的部分。注意所有选项均为非必选，如未选择则值默认为false, 但是必须要保证多于一个选项的描述为true。
+
+    """
+
+    def __init__(self):
+        """
+        :param Background: 分割选项-背景
+        :type Background: bool
+        :param Hair: 分割选项-头发
+        :type Hair: bool
+        :param LeftEyebrow: 分割选项-左眉
+        :type LeftEyebrow: bool
+        :param RightEyebrow: 分割选项-右眉
+        :type RightEyebrow: bool
+        :param LeftEye: 分割选项-左眼
+        :type LeftEye: bool
+        :param RightEye: 分割选项-右眼
+        :type RightEye: bool
+        :param Nose: 分割选项-鼻子
+        :type Nose: bool
+        :param UpperLip: 分割选项-上唇
+        :type UpperLip: bool
+        :param LowerLip: 分割选项-下唇
+        :type LowerLip: bool
+        :param Tooth: 分割选项-牙齿
+        :type Tooth: bool
+        :param Mouth: 分割选项-口腔（不包含牙齿）
+        :type Mouth: bool
+        :param LeftEar: 分割选项-左耳
+        :type LeftEar: bool
+        :param RightEar: 分割选项-右耳
+        :type RightEar: bool
+        :param Face: 分割选项-面部(不包含眼、耳、口、鼻等五官及头发。)
+        :type Face: bool
+        :param Head: 复合分割选项-头部(包含所有的头部元素，相关装饰除外)
+        :type Head: bool
+        :param Body: 分割选项-身体（包含脖子）
+        :type Body: bool
+        :param Hat: 分割选项-帽子
+        :type Hat: bool
+        :param Headdress: 分割选项-头饰
+        :type Headdress: bool
+        :param Earrings: 分割选项-耳环
+        :type Earrings: bool
+        :param Necklace: 分割选项-项链
+        :type Necklace: bool
+        :param Belongings: 分割选项-随身物品（ 例如伞、包、手机等。 ）
+        :type Belongings: bool
+        """
+        self.Background = None
+        self.Hair = None
+        self.LeftEyebrow = None
+        self.RightEyebrow = None
+        self.LeftEye = None
+        self.RightEye = None
+        self.Nose = None
+        self.UpperLip = None
+        self.LowerLip = None
+        self.Tooth = None
+        self.Mouth = None
+        self.LeftEar = None
+        self.RightEar = None
+        self.Face = None
+        self.Head = None
+        self.Body = None
+        self.Hat = None
+        self.Headdress = None
+        self.Earrings = None
+        self.Necklace = None
+        self.Belongings = None
+
+
+    def _deserialize(self, params):
+        self.Background = params.get("Background")
+        self.Hair = params.get("Hair")
+        self.LeftEyebrow = params.get("LeftEyebrow")
+        self.RightEyebrow = params.get("RightEyebrow")
+        self.LeftEye = params.get("LeftEye")
+        self.RightEye = params.get("RightEye")
+        self.Nose = params.get("Nose")
+        self.UpperLip = params.get("UpperLip")
+        self.LowerLip = params.get("LowerLip")
+        self.Tooth = params.get("Tooth")
+        self.Mouth = params.get("Mouth")
+        self.LeftEar = params.get("LeftEar")
+        self.RightEar = params.get("RightEar")
+        self.Face = params.get("Face")
+        self.Head = params.get("Head")
+        self.Body = params.get("Body")
+        self.Hat = params.get("Hat")
+        self.Headdress = params.get("Headdress")
+        self.Earrings = params.get("Earrings")
+        self.Necklace = params.get("Necklace")
+        self.Belongings = params.get("Belongings")
 
 
 class Trace(AbstractModel):

@@ -470,6 +470,10 @@ class BillTransactionInfo(AbstractModel):
         :type Incentive: int
         :param Freezing: 冻结余额，单位（分）
         :type Freezing: int
+        :param PayChannel: 交易渠道
+        :type PayChannel: str
+        :param DeductMode: 扣费模式：trade 包年包月(预付费)，hourh  按量-小时结，hourd 按量-日结，hourm 按量-月结，month 按量-月结
+        :type DeductMode: str
         """
         self.ActionType = None
         self.Amount = None
@@ -480,6 +484,8 @@ class BillTransactionInfo(AbstractModel):
         self.Cash = None
         self.Incentive = None
         self.Freezing = None
+        self.PayChannel = None
+        self.DeductMode = None
 
 
     def _deserialize(self, params):
@@ -492,6 +498,8 @@ class BillTransactionInfo(AbstractModel):
         self.Cash = params.get("Cash")
         self.Incentive = params.get("Incentive")
         self.Freezing = params.get("Freezing")
+        self.PayChannel = params.get("PayChannel")
+        self.DeductMode = params.get("DeductMode")
 
 
 class BusinessSummaryOverviewItem(AbstractModel):

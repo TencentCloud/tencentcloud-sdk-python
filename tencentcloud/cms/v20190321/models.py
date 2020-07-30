@@ -1424,8 +1424,12 @@ class TextData(AbstractModel):
         :type RiskDetails: list of RiskDetails
         :param BizType: 最终使用的BizType
         :type BizType: int
+        :param DataId: 和请求中的DataId一致，原样返回
+        :type DataId: str
         :param EvilLabel: 恶意标签，Normal：正常，Polity：涉政，Porn：色情，Illegal：违法，Abuse：谩骂，Terror：暴恐，Ad：广告，Custom：自定义关键词
         :type EvilLabel: str
+        :param Extra: 输出的其他信息，不同客户内容不同
+        :type Extra: str
         :param Keywords: 命中的关键词
         :type Keywords: list of str
         :param Score: 命中的模型分值
@@ -1442,7 +1446,9 @@ class TextData(AbstractModel):
         self.Res = None
         self.RiskDetails = None
         self.BizType = None
+        self.DataId = None
         self.EvilLabel = None
+        self.Extra = None
         self.Keywords = None
         self.Score = None
         self.Suggestion = None
@@ -1479,7 +1485,9 @@ class TextData(AbstractModel):
                 obj._deserialize(item)
                 self.RiskDetails.append(obj)
         self.BizType = params.get("BizType")
+        self.DataId = params.get("DataId")
         self.EvilLabel = params.get("EvilLabel")
+        self.Extra = params.get("Extra")
         self.Keywords = params.get("Keywords")
         self.Score = params.get("Score")
         self.Suggestion = params.get("Suggestion")

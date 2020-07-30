@@ -388,6 +388,34 @@ class BdaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def SegmentCustomizedPortraitPic(self, request):
+        """在前后景分割的基础上优化多分类分割，支持对头发、五官等的分割，既作为换发型、挂件等底层技术，也可用于扣人头、扣人脸等玩法
+
+        :param request: Request instance for SegmentCustomizedPortraitPic.
+        :type request: :class:`tencentcloud.bda.v20200324.models.SegmentCustomizedPortraitPicRequest`
+        :rtype: :class:`tencentcloud.bda.v20200324.models.SegmentCustomizedPortraitPicResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SegmentCustomizedPortraitPic", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SegmentCustomizedPortraitPicResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def SegmentPortraitPic(self, request):
         """识别传入图片中人体的完整轮廓，进行抠像。
 

@@ -1950,7 +1950,7 @@ class CreateRepositoryRequest(AbstractModel):
         """
         :param RepositoryName: 仓库名称
         :type RepositoryName: str
-        :param RepositoryType: 仓库类型
+        :param RepositoryType: 仓库类型（默认仓库：default，私有仓库：private）
         :type RepositoryType: str
         :param BucketName: 仓库所在桶名称
         :type BucketName: str
