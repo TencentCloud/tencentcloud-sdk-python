@@ -3427,6 +3427,151 @@ class MerchantManagementResult(AbstractModel):
                 self.List.append(obj)
 
 
+class MigrateOrderRefundQueryRequest(AbstractModel):
+    """MigrateOrderRefundQuery请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MerchantId: 商户号
+        :type MerchantId: str
+        :param PayChannel: 支付渠道，ALIPAY对应支付宝渠道；UNIONPAY对应银联渠道
+        :type PayChannel: str
+        :param RefundOrderId: 退款订单号，最长64位，仅支持数字、 字母
+        :type RefundOrderId: str
+        :param TradeSerialNo: 退款流水号
+        :type TradeSerialNo: str
+        :param Profile: 接入环境。沙箱环境填 sandbox。
+        :type Profile: str
+        """
+        self.MerchantId = None
+        self.PayChannel = None
+        self.RefundOrderId = None
+        self.TradeSerialNo = None
+        self.Profile = None
+
+
+    def _deserialize(self, params):
+        self.MerchantId = params.get("MerchantId")
+        self.PayChannel = params.get("PayChannel")
+        self.RefundOrderId = params.get("RefundOrderId")
+        self.TradeSerialNo = params.get("TradeSerialNo")
+        self.Profile = params.get("Profile")
+
+
+class MigrateOrderRefundQueryResponse(AbstractModel):
+    """MigrateOrderRefundQuery返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param IsSuccess: 请求成功状态
+        :type IsSuccess: bool
+        :param TradeSerialNo: 交易流水号
+        :type TradeSerialNo: str
+        :param TradeMsg: 交易备注
+        :type TradeMsg: str
+        :param TradeStatus: 交易状态：0=交易待处理；1=交易处理中；2=交易处理成功；3=交易失败；4=状态未知
+        :type TradeStatus: int
+        :param ThirdChannelOrderId: 第三方支付机构支付交易号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ThirdChannelOrderId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.IsSuccess = None
+        self.TradeSerialNo = None
+        self.TradeMsg = None
+        self.TradeStatus = None
+        self.ThirdChannelOrderId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.IsSuccess = params.get("IsSuccess")
+        self.TradeSerialNo = params.get("TradeSerialNo")
+        self.TradeMsg = params.get("TradeMsg")
+        self.TradeStatus = params.get("TradeStatus")
+        self.ThirdChannelOrderId = params.get("ThirdChannelOrderId")
+        self.RequestId = params.get("RequestId")
+
+
+class MigrateOrderRefundRequest(AbstractModel):
+    """MigrateOrderRefund请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MerchantId: 商户代码
+        :type MerchantId: str
+        :param PayChannel: 支付渠道，ALIPAY对应支付宝渠道；UNIONPAY对应银联渠道
+        :type PayChannel: str
+        :param PayOrderId: 正向支付商户订单号
+        :type PayOrderId: str
+        :param RefundOrderId: 退款订单号，最长64位，仅支持数字、 字母
+        :type RefundOrderId: str
+        :param RefundAmt: 退款金额，单位：分。备注：改字段必须大于0 和小于10000000000的整数。
+        :type RefundAmt: int
+        :param ThirdChannelOrderId: 第三方支付机构支付交易号
+        :type ThirdChannelOrderId: str
+        :param PayAmt: 原始支付金额，单位：分。备注：当该字段为空或者为0 时，系统会默认使用订单当 实付金额作为退款金额
+        :type PayAmt: int
+        :param Profile: 接入环境。沙箱环境填 sandbox。
+        :type Profile: str
+        """
+        self.MerchantId = None
+        self.PayChannel = None
+        self.PayOrderId = None
+        self.RefundOrderId = None
+        self.RefundAmt = None
+        self.ThirdChannelOrderId = None
+        self.PayAmt = None
+        self.Profile = None
+
+
+    def _deserialize(self, params):
+        self.MerchantId = params.get("MerchantId")
+        self.PayChannel = params.get("PayChannel")
+        self.PayOrderId = params.get("PayOrderId")
+        self.RefundOrderId = params.get("RefundOrderId")
+        self.RefundAmt = params.get("RefundAmt")
+        self.ThirdChannelOrderId = params.get("ThirdChannelOrderId")
+        self.PayAmt = params.get("PayAmt")
+        self.Profile = params.get("Profile")
+
+
+class MigrateOrderRefundResponse(AbstractModel):
+    """MigrateOrderRefund返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param IsSuccess: 请求成功状态
+        :type IsSuccess: bool
+        :param TradeSerialNo: 退款流水号
+        :type TradeSerialNo: str
+        :param TradeMsg: 交易备注
+        :type TradeMsg: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.IsSuccess = None
+        self.TradeSerialNo = None
+        self.TradeMsg = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.IsSuccess = params.get("IsSuccess")
+        self.TradeSerialNo = params.get("TradeSerialNo")
+        self.TradeMsg = params.get("TradeMsg")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyAgentTaxPaymentInfoRequest(AbstractModel):
     """ModifyAgentTaxPaymentInfo请求参数结构体
 

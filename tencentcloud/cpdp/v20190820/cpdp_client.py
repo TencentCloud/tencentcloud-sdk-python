@@ -761,6 +761,62 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def MigrateOrderRefund(self, request):
+        """山姆聚合支付项目-存量订单退款接口。可以通过本接口将支付款全部或部分退还给付款方，在收到用户退款请求并且验证成功之后，按照退款规则将支付款按原路退回到支付帐号。
+
+        :param request: Request instance for MigrateOrderRefund.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.MigrateOrderRefundRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.MigrateOrderRefundResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("MigrateOrderRefund", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.MigrateOrderRefundResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def MigrateOrderRefundQuery(self, request):
+        """提交退款申请后，通过调用该接口查询退款状态。退款可能有一定延时。
+
+        :param request: Request instance for MigrateOrderRefundQuery.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.MigrateOrderRefundQueryRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.MigrateOrderRefundQueryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("MigrateOrderRefundQuery", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.MigrateOrderRefundQueryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyAgentTaxPaymentInfo(self, request):
         """直播平台-修改代理商完税信息
 
