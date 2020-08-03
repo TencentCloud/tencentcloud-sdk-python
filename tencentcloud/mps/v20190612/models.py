@@ -5299,6 +5299,8 @@ class DescribeTaskDetailResponse(AbstractModel):
         :type SessionId: str
         :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长1000个字符。
         :type SessionContext: str
+        :param ExtInfo: 扩展信息字段，仅用于特定场景。
+        :type ExtInfo: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5314,6 +5316,7 @@ class DescribeTaskDetailResponse(AbstractModel):
         self.TasksPriority = None
         self.SessionId = None
         self.SessionContext = None
+        self.ExtInfo = None
         self.RequestId = None
 
 
@@ -5338,6 +5341,7 @@ class DescribeTaskDetailResponse(AbstractModel):
         self.TasksPriority = params.get("TasksPriority")
         self.SessionId = params.get("SessionId")
         self.SessionContext = params.get("SessionContext")
+        self.ExtInfo = params.get("ExtInfo")
         self.RequestId = params.get("RequestId")
 
 
@@ -6219,7 +6223,7 @@ class ImageWatermarkInputForUpdate(AbstractModel):
         :type Width: str
         :param Height: 水印的高度。支持 %、px 两种格式：
 <li>当字符串以 % 结尾，表示水印 Height 为视频高度的百分比大小，如 10% 表示 Height 为视频高度的 10%；</li>
-<li>当字符串以 px 结尾，表示水印 Width 单位为像素，如 100px 表示 Width 为 100 像素。取值范围为0或[8, 4096]。</li>
+<li>当字符串以 px 结尾，表示水印 Height 单位为像素，如 100px 表示 Height 为 100 像素。取值范围为0或[8, 4096]。</li>
 默认值：0px，表示 Height 按照原始水印图片的宽高比缩放。
         :type Height: str
         """
@@ -6249,7 +6253,7 @@ class ImageWatermarkTemplate(AbstractModel):
         :type Width: str
         :param Height: 水印的高度。支持 %、px 两种格式：
 <li>当字符串以 % 结尾，表示水印 Height 为视频高度的百分比大小，如 10% 表示 Height 为视频高度的 10%；</li>
-<li>当字符串以 px 结尾，表示水印 Width 单位为像素，如 100px 表示 Width 为 100 像素；</li>
+<li>当字符串以 px 结尾，表示水印 Height 单位为像素，如 100px 表示 Height 为 100 像素；</li>
 0px：表示 Height 按照 Width 对视频宽度的比例缩放。
         :type Height: str
         """
@@ -8760,7 +8764,7 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
         :type Container: str
         :param Name: 转码模板名称，长度限制：64 个字符。
         :type Name: str
-        :param Comment: 模板描述信息，长度限制：256 个字节。
+        :param Comment: 模板描述信息，长度限制：256 个字符。
         :type Comment: str
         :param RemoveVideo: 是否去除视频数据，可选值：
 <li>0：保留</li>

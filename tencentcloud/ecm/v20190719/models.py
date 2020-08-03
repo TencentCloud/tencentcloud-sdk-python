@@ -428,11 +428,11 @@ class CreateImageRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ImageName: 镜像名称
+        :param ImageName: 镜像名称。
         :type ImageName: str
         :param InstanceId: 需要制作镜像的实例ID。
         :type InstanceId: str
-        :param ImageDescription: 镜像描述
+        :param ImageDescription: 镜像描述。
         :type ImageDescription: str
         :param ForcePoweroff: 是否执行强制关机以制作镜像。取值范围：
 TRUE：表示自动关机后制作镜像

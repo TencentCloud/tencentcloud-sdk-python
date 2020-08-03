@@ -260,6 +260,8 @@ class Backup(AbstractModel):
         :type Strategy: int
         :param BackupWay: 备份方式，0-定时备份；1-手动临时备份
         :type BackupWay: int
+        :param BackupName: 备份名称，可自定义
+        :type BackupName: str
         """
         self.FileName = None
         self.Size = None
@@ -272,6 +274,7 @@ class Backup(AbstractModel):
         self.DBs = None
         self.Strategy = None
         self.BackupWay = None
+        self.BackupName = None
 
 
     def _deserialize(self, params):
@@ -286,6 +289,7 @@ class Backup(AbstractModel):
         self.DBs = params.get("DBs")
         self.Strategy = params.get("Strategy")
         self.BackupWay = params.get("BackupWay")
+        self.BackupName = params.get("BackupName")
 
 
 class CompleteExpansionRequest(AbstractModel):

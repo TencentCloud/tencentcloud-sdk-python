@@ -1446,7 +1446,10 @@ baseline/main/high。默认baseline
         :type FpsToOrig: int
         :param AiTransCode: 是否是极速高清模板，0：否，1：是。默认0。
         :type AiTransCode: int
-        :param AdaptBitratePercent: 极速高清相比VideoBitrate少多少码率，0.1到0.5
+        :param AdaptBitratePercent: 极速高清视频码率压缩比。
+极速高清目标码率=VideoBitrate * (1-AdaptBitratePercent)
+
+取值范围：0.0到0.5
         :type AdaptBitratePercent: float
         """
         self.TemplateName = None
@@ -5610,6 +5613,7 @@ class HlsSpecialParam(AbstractModel):
     def __init__(self):
         """
         :param FlowContinueDuration: HLS续流超时时间。
+取值范围[0，1800]。
         :type FlowContinueDuration: int
         """
         self.FlowContinueDuration = None
@@ -6321,7 +6325,10 @@ baseline/main/high。
         :type HeightToOrig: int
         :param FpsToOrig: 是否不超过原始帧率。0：否，1：是。默认0。
         :type FpsToOrig: int
-        :param AdaptBitratePercent: 极速高清相比 VideoBitrate 少多少码率，0.1到0.5。
+        :param AdaptBitratePercent: 极速高清视频码率压缩比。
+极速高清目标码率=VideoBitrate * (1-AdaptBitratePercent)
+
+取值范围：0.0到0.5
         :type AdaptBitratePercent: float
         """
         self.TemplateId = None

@@ -69,6 +69,9 @@ class AccessPoint(AbstractModel):
         :type LineOperator: list of str
         :param RegionId: 接入点管理的大区ID。
         :type RegionId: str
+        :param AvailablePortType: 接入点可用的端口类型列表。1000BASE-T代表千兆电口，1000BASE-LX代表千兆单模光口10km，1000BASE-ZX代表千兆单模光口80km,10GBASE-LR代表万兆单模光口10km,10GBASE-ZR代表万兆单模光口80km,10GBASE-LH代表万兆单模光口40km,100GBASE-LR4代表100G单模光口10km
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AvailablePortType: list of str
         """
         self.AccessPointName = None
         self.AccessPointId = None
@@ -76,6 +79,7 @@ class AccessPoint(AbstractModel):
         self.Location = None
         self.LineOperator = None
         self.RegionId = None
+        self.AvailablePortType = None
 
 
     def _deserialize(self, params):
@@ -85,6 +89,7 @@ class AccessPoint(AbstractModel):
         self.Location = params.get("Location")
         self.LineOperator = params.get("LineOperator")
         self.RegionId = params.get("RegionId")
+        self.AvailablePortType = params.get("AvailablePortType")
 
 
 class BgpPeer(AbstractModel):
@@ -658,6 +663,9 @@ class DirectConnect(AbstractModel):
         :param StartTime: 物理专线开通时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
+        :param SignLaw: 物理专线是否已签署用户协议
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SignLaw: bool
         """
         self.DirectConnectId = None
         self.DirectConnectName = None
@@ -686,6 +694,7 @@ class DirectConnect(AbstractModel):
         self.IdcCity = None
         self.ChargeState = None
         self.StartTime = None
+        self.SignLaw = None
 
 
     def _deserialize(self, params):
@@ -721,6 +730,7 @@ class DirectConnect(AbstractModel):
         self.IdcCity = params.get("IdcCity")
         self.ChargeState = params.get("ChargeState")
         self.StartTime = params.get("StartTime")
+        self.SignLaw = params.get("SignLaw")
 
 
 class DirectConnectTunnel(AbstractModel):
@@ -805,6 +815,9 @@ REJECTED:拒绝
         :param TencentBackupAddress: TencentBackupAddress，腾讯侧备用互联 IP
 注意：此字段可能返回 null，表示取不到有效值。
         :type TencentBackupAddress: str
+        :param SignLaw: 专用通道关联的物理专线是否签署了用户协议
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SignLaw: bool
         """
         self.DirectConnectTunnelId = None
         self.DirectConnectId = None
@@ -834,6 +847,7 @@ REJECTED:拒绝
         self.DirectConnectGatewayName = None
         self.VpcName = None
         self.TencentBackupAddress = None
+        self.SignLaw = None
 
 
     def _deserialize(self, params):
@@ -877,6 +891,7 @@ REJECTED:拒绝
         self.DirectConnectGatewayName = params.get("DirectConnectGatewayName")
         self.VpcName = params.get("VpcName")
         self.TencentBackupAddress = params.get("TencentBackupAddress")
+        self.SignLaw = params.get("SignLaw")
 
 
 class Filter(AbstractModel):

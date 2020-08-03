@@ -865,6 +865,34 @@ class IotcloudClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def PublishBroadcastMessage(self, request):
+        """发布广播消息
+
+        :param request: Request instance for PublishBroadcastMessage.
+        :type request: :class:`tencentcloud.iotcloud.v20180614.models.PublishBroadcastMessageRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.PublishBroadcastMessageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("PublishBroadcastMessage", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.PublishBroadcastMessageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def PublishMessage(self, request):
         """本接口（PublishMessage）用于向某个主题发消息。
 
@@ -879,6 +907,34 @@ class IotcloudClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PublishMessageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def PublishRRPCMessage(self, request):
+        """发布RRPC消息
+
+        :param request: Request instance for PublishRRPCMessage.
+        :type request: :class:`tencentcloud.iotcloud.v20180614.models.PublishRRPCMessageRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.PublishRRPCMessageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("PublishRRPCMessage", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.PublishRRPCMessageResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -2560,6 +2560,8 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
         :type TagSpecification: list of TagSpecification
         :param InstanceMarketOptions: 实例的市场相关选项，如竞价实例相关参数
         :type InstanceMarketOptions: :class:`tencentcloud.cvm.v20170312.models.InstanceMarketOptionsRequest`
+        :param HpcClusterId: 高性能计算集群ID。
+        :type HpcClusterId: str
         """
         self.Placement = None
         self.ImageId = None
@@ -2579,6 +2581,7 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
         self.HostName = None
         self.TagSpecification = None
         self.InstanceMarketOptions = None
+        self.HpcClusterId = None
 
 
     def _deserialize(self, params):
@@ -2626,6 +2629,7 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
         if params.get("InstanceMarketOptions") is not None:
             self.InstanceMarketOptions = InstanceMarketOptionsRequest()
             self.InstanceMarketOptions._deserialize(params.get("InstanceMarketOptions"))
+        self.HpcClusterId = params.get("HpcClusterId")
 
 
 class InquiryPriceRunInstancesResponse(AbstractModel):
@@ -2729,6 +2733,12 @@ class Instance(AbstractModel):
         :param CamRoleName: CAM角色名。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CamRoleName: str
+        :param HpcClusterId: 高性能计算集群`ID`。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HpcClusterId: str
+        :param RdmaIpAddresses: 高性能计算集群`IP`列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RdmaIpAddresses: list of str
         """
         self.Placement = None
         self.InstanceId = None
@@ -2761,6 +2771,8 @@ class Instance(AbstractModel):
         self.DisasterRecoverGroupId = None
         self.IPv6Addresses = None
         self.CamRoleName = None
+        self.HpcClusterId = None
+        self.RdmaIpAddresses = None
 
 
     def _deserialize(self, params):
@@ -2815,6 +2827,8 @@ class Instance(AbstractModel):
         self.DisasterRecoverGroupId = params.get("DisasterRecoverGroupId")
         self.IPv6Addresses = params.get("IPv6Addresses")
         self.CamRoleName = params.get("CamRoleName")
+        self.HpcClusterId = params.get("HpcClusterId")
+        self.RdmaIpAddresses = params.get("RdmaIpAddresses")
 
 
 class InstanceChargePrepaid(AbstractModel):
@@ -4452,6 +4466,8 @@ true：发送检查请求，不会创建实例。检查项包括是否填写了�
 如果检查通过，则返回RequestId.
 false（默认）：发送正常请求，通过检查后直接创建实例
         :type DryRun: bool
+        :param HpcClusterId: 高性能计算集群ID。若创建的实例为高性能计算实例，需指定实例放置的集群，否则不可指定。
+        :type HpcClusterId: str
         """
         self.Placement = None
         self.ImageId = None
@@ -4475,6 +4491,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         self.InstanceMarketOptions = None
         self.UserData = None
         self.DryRun = None
+        self.HpcClusterId = None
 
 
     def _deserialize(self, params):
@@ -4528,6 +4545,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
             self.InstanceMarketOptions._deserialize(params.get("InstanceMarketOptions"))
         self.UserData = params.get("UserData")
         self.DryRun = params.get("DryRun")
+        self.HpcClusterId = params.get("HpcClusterId")
 
 
 class RunInstancesResponse(AbstractModel):

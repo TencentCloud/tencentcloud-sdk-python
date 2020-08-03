@@ -2133,6 +2133,52 @@ class PublishAsDeviceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class PublishBroadcastMessageRequest(AbstractModel):
+    """PublishBroadcastMessage请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param Payload: 消息内容
+        :type Payload: str
+        :param Qos: 消息质量等级
+        :type Qos: int
+        """
+        self.ProductId = None
+        self.Payload = None
+        self.Qos = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.Payload = params.get("Payload")
+        self.Qos = params.get("Qos")
+
+
+class PublishBroadcastMessageResponse(AbstractModel):
+    """PublishBroadcastMessage返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 广播消息任务ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class PublishMessageRequest(AbstractModel):
     """PublishMessage请求参数结构体
 
@@ -2180,6 +2226,56 @@ class PublishMessageResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class PublishRRPCMessageRequest(AbstractModel):
+    """PublishRRPCMessage请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        :param Payload: 消息内容，utf8编码
+        :type Payload: str
+        """
+        self.ProductId = None
+        self.DeviceName = None
+        self.Payload = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+        self.Payload = params.get("Payload")
+
+
+class PublishRRPCMessageResponse(AbstractModel):
+    """PublishRRPCMessage返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MessageId: RRPC消息ID
+        :type MessageId: int
+        :param PayloadBase64: 设备回复的的消息内容，采用base64编码
+        :type PayloadBase64: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MessageId = None
+        self.PayloadBase64 = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MessageId = params.get("MessageId")
+        self.PayloadBase64 = params.get("PayloadBase64")
         self.RequestId = params.get("RequestId")
 
 
