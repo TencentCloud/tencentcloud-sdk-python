@@ -127,12 +127,12 @@ class CreateDirectConnectRequest(AbstractModel):
         :type AccessPointId: str
         :param LineOperator: 提供接入物理专线的运营商。ChinaTelecom：中国电信， ChinaMobile：中国移动，ChinaUnicom：中国联通， In-houseWiring：楼内线，ChinaOther：中国其他， InternationalOperator：境外其他。
         :type LineOperator: str
-        :param Location: 本地数据中心的地理位置。
-        :type Location: str
         :param PortType: 物理专线接入端口类型,取值：100Base-T：百兆电口,1000Base-T（默认值）：千兆电口,1000Base-LX：千兆单模光口（10千米）,10GBase-T：万兆电口10GBase-LR：万兆单模光口（10千米），默认值，千兆单模光口（10千米）。
         :type PortType: str
         :param CircuitCode: 运营商或者服务商为物理专线提供的电路编码。
         :type CircuitCode: str
+        :param Location: 本地数据中心的地理位置。
+        :type Location: str
         :param Bandwidth: 物理专线接入接口带宽，单位为Mbps，默认值为1000，取值范围为 [2, 10240]。
         :type Bandwidth: int
         :param RedundantDirectConnectId: 冗余物理专线的ID。
@@ -153,13 +153,15 @@ class CreateDirectConnectRequest(AbstractModel):
         :type FaultReportContactPerson: str
         :param FaultReportContactNumber: 报障联系电话。
         :type FaultReportContactNumber: str
+        :param SignLaw: 物理专线申请者是否签署了用户使用协议。默认已签署
+        :type SignLaw: bool
         """
         self.DirectConnectName = None
         self.AccessPointId = None
         self.LineOperator = None
-        self.Location = None
         self.PortType = None
         self.CircuitCode = None
+        self.Location = None
         self.Bandwidth = None
         self.RedundantDirectConnectId = None
         self.Vlan = None
@@ -170,15 +172,16 @@ class CreateDirectConnectRequest(AbstractModel):
         self.CustomerContactNumber = None
         self.FaultReportContactPerson = None
         self.FaultReportContactNumber = None
+        self.SignLaw = None
 
 
     def _deserialize(self, params):
         self.DirectConnectName = params.get("DirectConnectName")
         self.AccessPointId = params.get("AccessPointId")
         self.LineOperator = params.get("LineOperator")
-        self.Location = params.get("Location")
         self.PortType = params.get("PortType")
         self.CircuitCode = params.get("CircuitCode")
+        self.Location = params.get("Location")
         self.Bandwidth = params.get("Bandwidth")
         self.RedundantDirectConnectId = params.get("RedundantDirectConnectId")
         self.Vlan = params.get("Vlan")
@@ -189,6 +192,7 @@ class CreateDirectConnectRequest(AbstractModel):
         self.CustomerContactNumber = params.get("CustomerContactNumber")
         self.FaultReportContactPerson = params.get("FaultReportContactPerson")
         self.FaultReportContactNumber = params.get("FaultReportContactNumber")
+        self.SignLaw = params.get("SignLaw")
 
 
 class CreateDirectConnectResponse(AbstractModel):
@@ -560,11 +564,15 @@ class DescribeDirectConnectsResponse(AbstractModel):
         :type DirectConnectSet: list of DirectConnect
         :param TotalCount: 符合物理专线列表数量。
         :type TotalCount: int
+        :param AllSignLaw: 用户名下物理专线是否都签署了用户协议
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AllSignLaw: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.DirectConnectSet = None
         self.TotalCount = None
+        self.AllSignLaw = None
         self.RequestId = None
 
 
@@ -576,6 +584,7 @@ class DescribeDirectConnectsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.DirectConnectSet.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.AllSignLaw = params.get("AllSignLaw")
         self.RequestId = params.get("RequestId")
 
 
@@ -944,6 +953,8 @@ class ModifyDirectConnectAttributeRequest(AbstractModel):
         :type FaultReportContactPerson: str
         :param FaultReportContactNumber: 报障联系电话。
         :type FaultReportContactNumber: str
+        :param SignLaw: 物理专线申请者补签用户使用协议
+        :type SignLaw: bool
         """
         self.DirectConnectId = None
         self.DirectConnectName = None
@@ -956,6 +967,7 @@ class ModifyDirectConnectAttributeRequest(AbstractModel):
         self.CustomerContactNumber = None
         self.FaultReportContactPerson = None
         self.FaultReportContactNumber = None
+        self.SignLaw = None
 
 
     def _deserialize(self, params):
@@ -970,6 +982,7 @@ class ModifyDirectConnectAttributeRequest(AbstractModel):
         self.CustomerContactNumber = params.get("CustomerContactNumber")
         self.FaultReportContactPerson = params.get("FaultReportContactPerson")
         self.FaultReportContactNumber = params.get("FaultReportContactNumber")
+        self.SignLaw = params.get("SignLaw")
 
 
 class ModifyDirectConnectAttributeResponse(AbstractModel):

@@ -2386,9 +2386,12 @@ class EnhancedService(AbstractModel):
         :type SecurityService: :class:`tencentcloud.ecm.v20190719.models.RunSecurityServiceEnabled`
         :param MonitorService: 是否开启云监控服务。
         :type MonitorService: :class:`tencentcloud.ecm.v20190719.models.RunMonitorServiceEnabled`
+        :param EIPDirectService: 是否开通IP直通。若不指定该参数，则Linux镜像默认开通，windows镜像暂不支持IP直通。
+        :type EIPDirectService: :class:`tencentcloud.ecm.v20190719.models.RunEIPDirectServiceEnabled`
         """
         self.SecurityService = None
         self.MonitorService = None
+        self.EIPDirectService = None
 
 
     def _deserialize(self, params):
@@ -2398,6 +2401,9 @@ class EnhancedService(AbstractModel):
         if params.get("MonitorService") is not None:
             self.MonitorService = RunMonitorServiceEnabled()
             self.MonitorService._deserialize(params.get("MonitorService"))
+        if params.get("EIPDirectService") is not None:
+            self.EIPDirectService = RunEIPDirectServiceEnabled()
+            self.EIPDirectService._deserialize(params.get("EIPDirectService"))
 
 
 class Filter(AbstractModel):
@@ -4657,6 +4663,27 @@ class ResetInstancesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class RunEIPDirectServiceEnabled(AbstractModel):
+    """IP直通相关的信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Enabled: 是否开通IP直通。取值范围：
+TRUE：表示开通IP直通
+FALSE：表示不开通IP直通
+默认取值：TRUE。
+windows镜像目前不支持IP直通。
+        :type Enabled: bool
+        """
+        self.Enabled = None
+
+
+    def _deserialize(self, params):
+        self.Enabled = params.get("Enabled")
 
 
 class RunInstancesRequest(AbstractModel):

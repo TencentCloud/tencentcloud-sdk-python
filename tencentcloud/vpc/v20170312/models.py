@@ -877,6 +877,48 @@ class AssociateDhcpIpWithAddressIpResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AssociateDirectConnectGatewayNatGatewayRequest(AbstractModel):
+    """AssociateDirectConnectGatewayNatGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: 专线网关ID。
+        :type VpcId: str
+        :param NatGatewayId: NAT网关ID。
+        :type NatGatewayId: str
+        :param DirectConnectGatewayId: VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+        :type DirectConnectGatewayId: str
+        """
+        self.VpcId = None
+        self.NatGatewayId = None
+        self.DirectConnectGatewayId = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.NatGatewayId = params.get("NatGatewayId")
+        self.DirectConnectGatewayId = params.get("DirectConnectGatewayId")
+
+
+class AssociateDirectConnectGatewayNatGatewayResponse(AbstractModel):
+    """AssociateDirectConnectGatewayNatGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class AssociateNatGatewayAddressRequest(AbstractModel):
     """AssociateNatGatewayAddress请求参数结构体
 
@@ -2560,6 +2602,8 @@ class CreateNatGatewayRequest(AbstractModel):
         :type Zone: str
         :param Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
         :type Tags: list of Tag
+        :param SubnetId: NAT网关所属子网
+        :type SubnetId: str
         """
         self.NatGatewayName = None
         self.VpcId = None
@@ -2569,6 +2613,7 @@ class CreateNatGatewayRequest(AbstractModel):
         self.PublicIpAddresses = None
         self.Zone = None
         self.Tags = None
+        self.SubnetId = None
 
 
     def _deserialize(self, params):
@@ -2585,6 +2630,7 @@ class CreateNatGatewayRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.SubnetId = params.get("SubnetId")
 
 
 class CreateNatGatewayResponse(AbstractModel):
@@ -8026,6 +8072,9 @@ NAT类型支持网络地址转换配置，类型确定后不能修改；一个�
         :type EnableBGP: bool
         :param EnableBGPCommunity: 开启和关闭BGP的community属性。
         :type EnableBGPCommunity: bool
+        :param NatGatewayId: 绑定的NAT网关ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NatGatewayId: str
         """
         self.DirectConnectGatewayId = None
         self.DirectConnectGatewayName = None
@@ -8039,6 +8088,7 @@ NAT类型支持网络地址转换配置，类型确定后不能修改；一个�
         self.CcnRouteType = None
         self.EnableBGP = None
         self.EnableBGPCommunity = None
+        self.NatGatewayId = None
 
 
     def _deserialize(self, params):
@@ -8054,6 +8104,7 @@ NAT类型支持网络地址转换配置，类型确定后不能修改；一个�
         self.CcnRouteType = params.get("CcnRouteType")
         self.EnableBGP = params.get("EnableBGP")
         self.EnableBGPCommunity = params.get("EnableBGPCommunity")
+        self.NatGatewayId = params.get("NatGatewayId")
 
 
 class DirectConnectGatewayCcnRoute(AbstractModel):
@@ -8259,6 +8310,48 @@ class DisassociateDhcpIpWithAddressIpRequest(AbstractModel):
 
 class DisassociateDhcpIpWithAddressIpResponse(AbstractModel):
     """DisassociateDhcpIpWithAddressIp返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DisassociateDirectConnectGatewayNatGatewayRequest(AbstractModel):
+    """DisassociateDirectConnectGatewayNatGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: 专线网关ID。
+        :type VpcId: str
+        :param NatGatewayId: NAT网关ID。
+        :type NatGatewayId: str
+        :param DirectConnectGatewayId: VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+        :type DirectConnectGatewayId: str
+        """
+        self.VpcId = None
+        self.NatGatewayId = None
+        self.DirectConnectGatewayId = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.NatGatewayId = params.get("NatGatewayId")
+        self.DirectConnectGatewayId = params.get("DirectConnectGatewayId")
+
+
+class DisassociateDirectConnectGatewayNatGatewayResponse(AbstractModel):
+    """DisassociateDirectConnectGatewayNatGateway返回参数结构体
 
     """
 
@@ -11116,6 +11209,12 @@ class NatGateway(AbstractModel):
         :type VpcId: str
         :param Zone: NAT网关所在的可用区。
         :type Zone: str
+        :param DirectConnectGatewayIds: 绑定的专线网关ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DirectConnectGatewayIds: list of str
+        :param SubnetId: 所属子网ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
         """
         self.NatGatewayId = None
         self.NatGatewayName = None
@@ -11128,6 +11227,8 @@ class NatGateway(AbstractModel):
         self.DestinationIpPortTranslationNatRuleSet = None
         self.VpcId = None
         self.Zone = None
+        self.DirectConnectGatewayIds = None
+        self.SubnetId = None
 
 
     def _deserialize(self, params):
@@ -11152,6 +11253,8 @@ class NatGateway(AbstractModel):
                 self.DestinationIpPortTranslationNatRuleSet.append(obj)
         self.VpcId = params.get("VpcId")
         self.Zone = params.get("Zone")
+        self.DirectConnectGatewayIds = params.get("DirectConnectGatewayIds")
+        self.SubnetId = params.get("SubnetId")
 
 
 class NatGatewayAddress(AbstractModel):

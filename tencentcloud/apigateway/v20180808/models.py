@@ -4731,6 +4731,9 @@ class Service(AbstractModel):
         :param TradeIsolateStatus: 服务的计费状态。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TradeIsolateStatus: int
+        :param Tags: 服务绑定的标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         """
         self.InnerHttpsPort = None
         self.ServiceDesc = None
@@ -4747,6 +4750,7 @@ class Service(AbstractModel):
         self.InnerHttpPort = None
         self.InnerSubDomain = None
         self.TradeIsolateStatus = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -4765,6 +4769,12 @@ class Service(AbstractModel):
         self.InnerHttpPort = params.get("InnerHttpPort")
         self.InnerSubDomain = params.get("InnerSubDomain")
         self.TradeIsolateStatus = params.get("TradeIsolateStatus")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class ServiceConfig(AbstractModel):

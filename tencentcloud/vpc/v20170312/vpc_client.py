@@ -356,6 +356,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AssociateDirectConnectGatewayNatGateway(self, request):
+        """将专线网关与NAT网关绑定，专线网关默认路由指向NAT网关
+
+        :param request: Request instance for AssociateDirectConnectGatewayNatGateway.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.AssociateDirectConnectGatewayNatGatewayRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.AssociateDirectConnectGatewayNatGatewayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AssociateDirectConnectGatewayNatGateway", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AssociateDirectConnectGatewayNatGatewayResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AssociateNatGatewayAddress(self, request):
         """本接口(AssociateNatGatewayAddress)用于NAT网关绑定弹性IP（EIP）。
 
@@ -4122,6 +4150,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisassociateDhcpIpWithAddressIpResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DisassociateDirectConnectGatewayNatGateway(self, request):
+        """将专线网关与NAT网关解绑，解绑之后，专线网关将不能通过NAT网关访问公网
+
+        :param request: Request instance for DisassociateDirectConnectGatewayNatGateway.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DisassociateDirectConnectGatewayNatGatewayRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DisassociateDirectConnectGatewayNatGatewayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DisassociateDirectConnectGatewayNatGateway", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DisassociateDirectConnectGatewayNatGatewayResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

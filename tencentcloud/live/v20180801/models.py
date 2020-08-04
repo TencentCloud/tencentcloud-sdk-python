@@ -2683,11 +2683,10 @@ class DescribeHttpStatusInfoListRequest(AbstractModel):
         """
         :param StartTime: 起始时间，北京时间，
 格式：yyyy-mm-dd HH:MM:SS。
-StartTime不能为3个月前。
         :type StartTime: str
         :param EndTime: 结束时间，北京时间，
 格式：yyyy-mm-dd HH:MM:SS。
-注：EndTime 和 StartTime 只支持最近1天的数据查询。
+注：最大时间跨度支持1天，支持最近3个月的数据查询。
         :type EndTime: str
         :param PlayDomains: 播放域名列表。
         :type PlayDomains: list of str
@@ -4534,9 +4533,9 @@ class DescribeProIspPlaySumInfoListRequest(AbstractModel):
 格式：yyyy-mm-dd HH:MM:SS。
 注：EndTime 和 StartTime 只支持最近1天的数据查询。
         :type EndTime: str
-        :param StatType: 统计的类型，可选值：”Province”，”Isp”，“CountryOrArea”。
+        :param StatType: 统计的类型，可选值：”Province”(省份)，”Isp”(运营商)，“CountryOrArea”(国家或地区)。
         :type StatType: str
-        :param PlayDomains: 不填则为总体数据。
+        :param PlayDomains: 播放域名列表，不填则为全部。
         :type PlayDomains: list of str
         :param PageNum: 页号，范围是[1,1000]，默认值是1。
         :type PageNum: int
@@ -4906,7 +4905,7 @@ class DescribeStreamPlayInfoListRequest(AbstractModel):
         :type StreamName: str
         :param AppName: 推流路径，与播放地址中的AppName保持一致，会精确匹配，在同时传递了StreamName时生效。
 若不填，则为查询总体播放数据。
-注意：按AppName查询，需要联系客服同学提单支持。
+注意：按AppName查询请先联系工单申请，开通后配置生效预计需要5个工作日左右，具体时间以最终回复为准。
         :type AppName: str
         """
         self.StartTime = None
@@ -5162,7 +5161,7 @@ class DescribeVisitTopSumInfoListResponse(AbstractModel):
         :type PageSize: int
         :param TopIndex: 峰值指标，可选值包括”Domain”，”StreamId”。
         :type TopIndex: str
-        :param OrderParam: 排序指标，可选值包括” AvgFluxPerSecond”，”TotalRequest”（默认）,“TotalFlux”。
+        :param OrderParam: 排序指标，可选值包括” AvgFluxPerSecond”(按每秒平均流量排序)，”TotalRequest”（默认，按总请求数排序）,“TotalFlux”（按总流量排序）。
         :type OrderParam: str
         :param TotalNum: 记录总数。
         :type TotalNum: int

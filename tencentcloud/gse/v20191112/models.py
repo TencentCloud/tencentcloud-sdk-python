@@ -25,11 +25,11 @@ class CreateGameServerSessionRequest(AbstractModel):
         """
         :param MaximumPlayerSessionCount: 最大玩家数量
         :type MaximumPlayerSessionCount: int
-        :param AliasId: 别名ID
+        :param AliasId: 别名ID。每个请求需要指定别名ID 或者舰队 ID，如果两个同时指定时，优先选择舰队 ID
         :type AliasId: str
         :param CreatorId: 创建者ID
         :type CreatorId: str
-        :param FleetId: 舰队ID
+        :param FleetId: 舰队ID。每个请求需要指定别名ID 或者舰队 ID，如果两个同时指定时，优先选择舰队 ID
         :type FleetId: str
         :param GameProperties: 游戏属性
         :type GameProperties: list of GameProperty
@@ -365,7 +365,7 @@ class DescribeGameServerSessionsResponse(AbstractModel):
         :param GameServerSessions: 游戏服务器会话列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type GameServerSessions: list of GameServerSession
-        :param NextToken: 页便宜，用于查询下一页
+        :param NextToken: 页偏移，用于查询下一页
 注意：此字段可能返回 null，表示取不到有效值。
         :type NextToken: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
