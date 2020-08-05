@@ -2371,6 +2371,8 @@ class DeviceHardwareInfo(AbstractModel):
         :type RaidDescription: str
         :param Cpu: cpu的核心数。仅是物理服务器未开启超线程的核心数， 超线程的核心数为Cpu*2
         :type Cpu: int
+        :param DeviceClassCode: 机型外部代号
+        :type DeviceClassCode: str
         """
         self.InstanceId = None
         self.IsElastic = None
@@ -2388,6 +2390,7 @@ class DeviceHardwareInfo(AbstractModel):
         self.NicDescription = None
         self.RaidDescription = None
         self.Cpu = None
+        self.DeviceClassCode = None
 
 
     def _deserialize(self, params):
@@ -2407,6 +2410,7 @@ class DeviceHardwareInfo(AbstractModel):
         self.NicDescription = params.get("NicDescription")
         self.RaidDescription = params.get("RaidDescription")
         self.Cpu = params.get("Cpu")
+        self.DeviceClassCode = params.get("DeviceClassCode")
 
 
 class DeviceInfo(AbstractModel):

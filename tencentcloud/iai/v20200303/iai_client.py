@@ -701,6 +701,62 @@ class IaiClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetUpgradeGroupFaceModelVersionJobList(self, request):
+        """获取人员库升级任务列表
+
+        :param request: Request instance for GetUpgradeGroupFaceModelVersionJobList.
+        :type request: :class:`tencentcloud.iai.v20200303.models.GetUpgradeGroupFaceModelVersionJobListRequest`
+        :rtype: :class:`tencentcloud.iai.v20200303.models.GetUpgradeGroupFaceModelVersionJobListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetUpgradeGroupFaceModelVersionJobList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetUpgradeGroupFaceModelVersionJobListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetUpgradeGroupFaceModelVersionResult(self, request):
+        """人员库升级结果查询
+
+        :param request: Request instance for GetUpgradeGroupFaceModelVersionResult.
+        :type request: :class:`tencentcloud.iai.v20200303.models.GetUpgradeGroupFaceModelVersionResultRequest`
+        :rtype: :class:`tencentcloud.iai.v20200303.models.GetUpgradeGroupFaceModelVersionResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetUpgradeGroupFaceModelVersionResult", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetUpgradeGroupFaceModelVersionResultResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyGroup(self, request):
         """修改人员库名称、备注、自定义描述字段名称。
 
@@ -926,6 +982,36 @@ class IaiClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SearchPersonsReturnsByGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpgradeGroupFaceModelVersion(self, request):
+        """升级人员库。升级过程中，人员库仍然为原算法版本，人员库相关操作仍然支持。升级完成后，人员库为新算法版本。
+        单个人员库有且仅支持一次回滚操作。
+        注：此处QPS限制为10。
+
+        :param request: Request instance for UpgradeGroupFaceModelVersion.
+        :type request: :class:`tencentcloud.iai.v20200303.models.UpgradeGroupFaceModelVersionRequest`
+        :rtype: :class:`tencentcloud.iai.v20200303.models.UpgradeGroupFaceModelVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpgradeGroupFaceModelVersion", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpgradeGroupFaceModelVersionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

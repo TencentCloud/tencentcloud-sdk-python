@@ -3423,6 +3423,48 @@ class ModifyInstancesAttributeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyModuleConfigRequest(AbstractModel):
+    """ModifyModuleConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ModuleId: 模块ID。
+        :type ModuleId: str
+        :param InstanceType: 机型ID。
+        :type InstanceType: str
+        :param DefaultDataDiskSize: 默认数据盘大小，单位：G。范围不得超过数据盘范围大小，详看DescribeConfig。
+        :type DefaultDataDiskSize: int
+        """
+        self.ModuleId = None
+        self.InstanceType = None
+        self.DefaultDataDiskSize = None
+
+
+    def _deserialize(self, params):
+        self.ModuleId = params.get("ModuleId")
+        self.InstanceType = params.get("InstanceType")
+        self.DefaultDataDiskSize = params.get("DefaultDataDiskSize")
+
+
+class ModifyModuleConfigResponse(AbstractModel):
+    """ModifyModuleConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyModuleImageRequest(AbstractModel):
     """ModifyModuleImage请求参数结构体
 

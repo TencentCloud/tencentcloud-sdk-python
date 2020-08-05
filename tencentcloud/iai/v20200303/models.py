@@ -1750,6 +1750,128 @@ class GetSimilarPersonResultResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GetUpgradeGroupFaceModelVersionJobListRequest(AbstractModel):
+    """GetUpgradeGroupFaceModelVersionJobList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: 起始序号，默认值为0。
+        :type Offset: int
+        :param Limit: 返回数量，默认值为10，最大值为1000。
+        :type Limit: int
+        """
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class GetUpgradeGroupFaceModelVersionJobListResponse(AbstractModel):
+    """GetUpgradeGroupFaceModelVersionJobList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param JobInfos: 人员库升级任务信息列表。
+        :type JobInfos: list of UpgradeJobInfo
+        :param JobNum: 升级任务总数量。
+        :type JobNum: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.JobInfos = None
+        self.JobNum = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("JobInfos") is not None:
+            self.JobInfos = []
+            for item in params.get("JobInfos"):
+                obj = UpgradeJobInfo()
+                obj._deserialize(item)
+                self.JobInfos.append(obj)
+        self.JobNum = params.get("JobNum")
+        self.RequestId = params.get("RequestId")
+
+
+class GetUpgradeGroupFaceModelVersionResultRequest(AbstractModel):
+    """GetUpgradeGroupFaceModelVersionResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param JobId: 升级任务ID，用于查询、获取人员库升级的进度和结果。
+        :type JobId: str
+        """
+        self.JobId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+
+
+class GetUpgradeGroupFaceModelVersionResultResponse(AbstractModel):
+    """GetUpgradeGroupFaceModelVersionResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EndTimestamp: 人员升级任务预估结束时间。 StartTimestamp的值是自 Unix 纪元时间到人员查重任务预估结束的毫秒数。  
+Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00:00。 
+如果为0表示这个任务已经执行完毕。
+        :type EndTimestamp: int
+        :param Progress: 升级任务完成进度。取值[0.0，100.0]。
+        :type Progress: float
+        :param Status: 0表示升级中，1表示升级完毕，2表示回滚完毕。
+        :type Status: int
+        :param StartTime: 升级起始时间。 
+StartTime的值是自 Unix 纪元时间到Group创建时间的毫秒数。 
+Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00:00。 
+有关更多信息，请参阅 Unix 时间。
+        :type StartTime: int
+        :param FromFaceModelVersion: 当前算法模型版本。
+        :type FromFaceModelVersion: str
+        :param ToFaceModelVersion: 目标算法模型版本。
+        :type ToFaceModelVersion: str
+        :param GroupId: 人员库ID。
+        :type GroupId: str
+        :param FailedFacesUrl: 无法升级的人脸Id信息，文件格式
+        :type FailedFacesUrl: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.EndTimestamp = None
+        self.Progress = None
+        self.Status = None
+        self.StartTime = None
+        self.FromFaceModelVersion = None
+        self.ToFaceModelVersion = None
+        self.GroupId = None
+        self.FailedFacesUrl = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.EndTimestamp = params.get("EndTimestamp")
+        self.Progress = params.get("Progress")
+        self.Status = params.get("Status")
+        self.StartTime = params.get("StartTime")
+        self.FromFaceModelVersion = params.get("FromFaceModelVersion")
+        self.ToFaceModelVersion = params.get("ToFaceModelVersion")
+        self.GroupId = params.get("GroupId")
+        self.FailedFacesUrl = params.get("FailedFacesUrl")
+        self.RequestId = params.get("RequestId")
+
+
 class GroupCandidate(AbstractModel):
     """分组识别结果Item
 
@@ -2588,6 +2710,88 @@ class SearchPersonsReturnsByGroupResponse(AbstractModel):
                 self.ResultsReturnsByGroup.append(obj)
         self.FaceModelVersion = params.get("FaceModelVersion")
         self.RequestId = params.get("RequestId")
+
+
+class UpgradeGroupFaceModelVersionRequest(AbstractModel):
+    """UpgradeGroupFaceModelVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupId: 需要升级的人员库ID。
+        :type GroupId: str
+        :param FaceModelVersion: 需要升级至的算法模型版本。默认为最新版本。
+        :type FaceModelVersion: str
+        """
+        self.GroupId = None
+        self.FaceModelVersion = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.FaceModelVersion = params.get("FaceModelVersion")
+
+
+class UpgradeGroupFaceModelVersionResponse(AbstractModel):
+    """UpgradeGroupFaceModelVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param JobId: 升级任务ID，用于查询、获取升级的进度和结果。
+        :type JobId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.JobId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.RequestId = params.get("RequestId")
+
+
+class UpgradeJobInfo(AbstractModel):
+    """人员库升级任务信息
+
+    """
+
+    def __init__(self):
+        """
+        :param JobId: 人员库升级任务ID，用于查询、获取升级的进度和结果。
+        :type JobId: str
+        :param GroupId: 人员库ID。
+        :type GroupId: str
+        :param FromFaceModelVersion: 当前算法模型版本。
+        :type FromFaceModelVersion: str
+        :param ToFaceModelVersion: 目标算法模型版本。
+        :type ToFaceModelVersion: str
+        :param StartTime: 升级起始时间。 
+StartTime的值是自 Unix 纪元时间到Group创建时间的毫秒数。 
+Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00:00。 
+有关更多信息，请参阅 Unix 时间。
+        :type StartTime: int
+        :param Status: 0表示升级中，1表示升级完毕，2表示回滚完毕。
+        :type Status: int
+        """
+        self.JobId = None
+        self.GroupId = None
+        self.FromFaceModelVersion = None
+        self.ToFaceModelVersion = None
+        self.StartTime = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.GroupId = params.get("GroupId")
+        self.FromFaceModelVersion = params.get("FromFaceModelVersion")
+        self.ToFaceModelVersion = params.get("ToFaceModelVersion")
+        self.StartTime = params.get("StartTime")
+        self.Status = params.get("Status")
 
 
 class VerifyFaceRequest(AbstractModel):

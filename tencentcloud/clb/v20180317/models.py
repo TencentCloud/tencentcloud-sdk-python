@@ -2020,7 +2020,7 @@ class DescribeLoadBalancersDetailRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Limit: 返回负载均衡列表数目，默认20，最大值1000。
+        :param Limit: 返回负载均衡列表数目，默认20，最大值100。
         :type Limit: int
         :param Offset: 返回负载均衡列表起始偏移量，默认0
         :type Offset: int

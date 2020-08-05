@@ -2774,6 +2774,9 @@ class DescribeServiceResponse(AbstractModel):
         :param SetId: 预留字段。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SetId: int
+        :param Tags: 服务绑定的标签。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2797,6 +2800,7 @@ class DescribeServiceResponse(AbstractModel):
         self.IpVersion = None
         self.UserType = None
         self.SetId = None
+        self.Tags = None
         self.RequestId = None
 
 
@@ -2831,6 +2835,12 @@ class DescribeServiceResponse(AbstractModel):
         self.IpVersion = params.get("IpVersion")
         self.UserType = params.get("UserType")
         self.SetId = params.get("SetId")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         self.RequestId = params.get("RequestId")
 
 

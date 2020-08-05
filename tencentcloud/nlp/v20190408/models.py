@@ -1524,21 +1524,21 @@ class WordItem(AbstractModel):
 
     def __init__(self):
         """
-        :param CreateTime: 词条创建时间。
-        :type CreateTime: str
         :param Text: 词条文本内容。
         :type Text: str
+        :param CreateTime: 词条创建时间。
+        :type CreateTime: str
         :param Pos: 词条的词性。
         :type Pos: str
         """
-        self.CreateTime = None
         self.Text = None
+        self.CreateTime = None
         self.Pos = None
 
 
     def _deserialize(self, params):
-        self.CreateTime = params.get("CreateTime")
         self.Text = params.get("Text")
+        self.CreateTime = params.get("CreateTime")
         self.Pos = params.get("Pos")
 
 

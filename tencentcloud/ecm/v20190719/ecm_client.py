@@ -1379,6 +1379,34 @@ class EcmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyModuleConfig(self, request):
+        """修改模块配置，已关联实例的模块不支持调整配置。
+
+        :param request: Request instance for ModifyModuleConfig.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.ModifyModuleConfigRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.ModifyModuleConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyModuleConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyModuleConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyModuleImage(self, request):
         """ModifyModuleImage
 
