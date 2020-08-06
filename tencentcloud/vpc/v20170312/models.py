@@ -1243,6 +1243,8 @@ class CCN(AbstractModel):
         :type BandwidthLimitType: str
         :param TagSet: 标签键值对。
         :type TagSet: list of Tag
+        :param RoutePriorityFlag: 是否支持云联网路由优先级的功能。False：不支持，True：支持。
+        :type RoutePriorityFlag: bool
         """
         self.CcnId = None
         self.CcnName = None
@@ -1254,6 +1256,7 @@ class CCN(AbstractModel):
         self.InstanceChargeType = None
         self.BandwidthLimitType = None
         self.TagSet = None
+        self.RoutePriorityFlag = None
 
 
     def _deserialize(self, params):
@@ -1272,6 +1275,7 @@ class CCN(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.TagSet.append(obj)
+        self.RoutePriorityFlag = params.get("RoutePriorityFlag")
 
 
 class CcnAttachedInstance(AbstractModel):
@@ -1313,6 +1317,8 @@ class CcnAttachedInstance(AbstractModel):
         :type AttachedTime: str
         :param CcnUin: 云联网所属UIN（根账号）。
         :type CcnUin: str
+        :param InstanceArea: 关联实例所属的大地域，如: CHINA_MAINLAND
+        :type InstanceArea: str
         """
         self.CcnId = None
         self.InstanceType = None
@@ -1324,6 +1330,7 @@ class CcnAttachedInstance(AbstractModel):
         self.State = None
         self.AttachedTime = None
         self.CcnUin = None
+        self.InstanceArea = None
 
 
     def _deserialize(self, params):
@@ -1337,6 +1344,7 @@ class CcnAttachedInstance(AbstractModel):
         self.State = params.get("State")
         self.AttachedTime = params.get("AttachedTime")
         self.CcnUin = params.get("CcnUin")
+        self.InstanceArea = params.get("InstanceArea")
 
 
 class CcnBandwidthInfo(AbstractModel):
@@ -1472,6 +1480,14 @@ class CcnRoute(AbstractModel):
         :type Enabled: bool
         :param InstanceUin: 关联实例所属UIN（根账号）
         :type InstanceUin: str
+        :param ExtraState: 路由的扩展状态
+        :type ExtraState: str
+        :param IsBgp: 是否动态路由
+        :type IsBgp: bool
+        :param RoutePriority: 路由优先级
+        :type RoutePriority: int
+        :param InstanceExtraName: 下一跳扩展名称（关联实例的扩展名称）
+        :type InstanceExtraName: str
         """
         self.RouteId = None
         self.DestinationCidrBlock = None
@@ -1482,6 +1498,10 @@ class CcnRoute(AbstractModel):
         self.UpdateTime = None
         self.Enabled = None
         self.InstanceUin = None
+        self.ExtraState = None
+        self.IsBgp = None
+        self.RoutePriority = None
+        self.InstanceExtraName = None
 
 
     def _deserialize(self, params):
@@ -1494,6 +1514,10 @@ class CcnRoute(AbstractModel):
         self.UpdateTime = params.get("UpdateTime")
         self.Enabled = params.get("Enabled")
         self.InstanceUin = params.get("InstanceUin")
+        self.ExtraState = params.get("ExtraState")
+        self.IsBgp = params.get("IsBgp")
+        self.RoutePriority = params.get("RoutePriority")
+        self.InstanceExtraName = params.get("InstanceExtraName")
 
 
 class CheckAssistantCidrRequest(AbstractModel):
@@ -12981,9 +13005,9 @@ class SecurityGroupPolicy(AbstractModel):
 
     def __init__(self):
         """
-        :param PolicyIndex: 安全组规则索引号。
+        :param PolicyIndex: 安全组规则索引号，值会随着安全组规则的变更动态变化。使用PolicyIndex时，请先调用`DescribeSecurityGroupPolicies`获取到规则的PolicyIndex，并且结合返回值中的Version一起使用处理规则。
         :type PolicyIndex: int
-        :param Protocol: 协议, 取值: TCP,UDP, ICMP。
+        :param Protocol: 协议, 取值: TCP,UDP,ICMP,ICMPv6,ALL。
         :type Protocol: str
         :param Port: 端口(all, 离散port,  range)。
         :type Port: str

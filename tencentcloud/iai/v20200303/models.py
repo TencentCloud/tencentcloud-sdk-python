@@ -2298,6 +2298,40 @@ class ResultsReturnsByGroup(AbstractModel):
         self.RetCode = params.get("RetCode")
 
 
+class RevertGroupFaceModelVersionRequest(AbstractModel):
+    """RevertGroupFaceModelVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param JobId: 需要回滚的升级任务ID。
+        :type JobId: str
+        """
+        self.JobId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+
+
+class RevertGroupFaceModelVersionResponse(AbstractModel):
+    """RevertGroupFaceModelVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class SearchFacesRequest(AbstractModel):
     """SearchFaces请求参数结构体
 

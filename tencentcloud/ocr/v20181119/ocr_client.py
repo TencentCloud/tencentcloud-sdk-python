@@ -514,7 +514,7 @@ class OcrClient(AbstractClient):
 
         适用于文字较多、版式复杂、对识别准召率要求较高的场景，如试卷试题、网络图片、街景店招牌、法律卷宗等场景。
 
-        产品优势：与通用印刷体识别的基础上，提供更高精度的文字识别服务，在文字较多、长串数字、小字、模糊字、倾斜文本等困难场景下，高精度版的准确率和召回率更高。
+        产品优势：与通用印刷体识别相比，提供更高精度的文字识别服务，在文字较多、长串数字、小字、模糊字、倾斜文本等困难场景下，高精度版的准确率和召回率更高。
 
         通用印刷体识别不同版本的差异如下：
         <table style="width:715px">
@@ -1441,6 +1441,36 @@ class OcrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResidenceBookletOCRResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RideHailingDriverLicenseOCR(self, request):
+        """本接口支持网约车驾驶证重要字段的自动定位与识别，重点字段的识别准确度达到99%以上。
+
+        网约车驾驶证：包括姓名、证号、起始日期、截止日期、发证日期。
+
+        :param request: Request instance for RideHailingDriverLicenseOCR.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.RideHailingDriverLicenseOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.RideHailingDriverLicenseOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RideHailingDriverLicenseOCR", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RideHailingDriverLicenseOCRResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

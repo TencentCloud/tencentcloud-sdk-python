@@ -3698,6 +3698,66 @@ class ResidenceBookletOCRResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RideHailingDriverLicenseOCRRequest(AbstractModel):
+    """RideHailingDriverLicenseOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。
+建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+        :type ImageUrl: str
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+
+
+class RideHailingDriverLicenseOCRResponse(AbstractModel):
+    """RideHailingDriverLicenseOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 姓名
+        :type Name: str
+        :param LicenseNumber: 证号，对应网约车驾驶证字段：证号、从业资格证号、驾驶员证号、身份证号
+        :type LicenseNumber: str
+        :param StartDate: 有效起始日期
+        :type StartDate: str
+        :param EndDate: 有效期截止时间，对应网约车驾驶证字段：有效期至、营运期限止
+        :type EndDate: str
+        :param ReleaseDate: 初始发证日期，对应网约车驾驶证字段：初始领证日期、发证日期
+        :type ReleaseDate: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Name = None
+        self.LicenseNumber = None
+        self.StartDate = None
+        self.EndDate = None
+        self.ReleaseDate = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.LicenseNumber = params.get("LicenseNumber")
+        self.StartDate = params.get("StartDate")
+        self.EndDate = params.get("EndDate")
+        self.ReleaseDate = params.get("ReleaseDate")
+        self.RequestId = params.get("RequestId")
+
+
 class SealOCRRequest(AbstractModel):
     """SealOCR请求参数结构体
 

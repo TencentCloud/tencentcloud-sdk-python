@@ -701,6 +701,62 @@ class IaiClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetUpgradeGroupFaceModelVersionJobList(self, request):
+        """获取人员库升级任务列表
+
+        :param request: Request instance for GetUpgradeGroupFaceModelVersionJobList.
+        :type request: :class:`tencentcloud.iai.v20180301.models.GetUpgradeGroupFaceModelVersionJobListRequest`
+        :rtype: :class:`tencentcloud.iai.v20180301.models.GetUpgradeGroupFaceModelVersionJobListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetUpgradeGroupFaceModelVersionJobList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetUpgradeGroupFaceModelVersionJobListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetUpgradeGroupFaceModelVersionResult(self, request):
+        """人员库升级结果查询
+
+        :param request: Request instance for GetUpgradeGroupFaceModelVersionResult.
+        :type request: :class:`tencentcloud.iai.v20180301.models.GetUpgradeGroupFaceModelVersionResultRequest`
+        :rtype: :class:`tencentcloud.iai.v20180301.models.GetUpgradeGroupFaceModelVersionResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetUpgradeGroupFaceModelVersionResult", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetUpgradeGroupFaceModelVersionResultResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyGroup(self, request):
         """修改人员库名称、备注、自定义描述字段名称。
 
@@ -771,6 +827,38 @@ class IaiClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyPersonGroupInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RevertGroupFaceModelVersion(self, request):
+        """本接口用于回滚人员库的人脸识别算法模型版本。单个人员库有且仅有一次回滚机会。
+
+        回滚操作会在10s内生效，回滚操作中，您对人员库的操作可能会失效。
+
+        注：给客户我会写10s内生效，我们实际上越快越好。待讨论。
+
+        :param request: Request instance for RevertGroupFaceModelVersion.
+        :type request: :class:`tencentcloud.iai.v20180301.models.RevertGroupFaceModelVersionRequest`
+        :rtype: :class:`tencentcloud.iai.v20180301.models.RevertGroupFaceModelVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RevertGroupFaceModelVersion", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RevertGroupFaceModelVersionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -926,6 +1014,36 @@ class IaiClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SearchPersonsReturnsByGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpgradeGroupFaceModelVersion(self, request):
+        """升级人员库。升级过程中，人员库仍然为原算法版本，人员库相关操作仍然支持。升级完成后，人员库为新算法版本。
+        单个人员库有且仅支持一次回滚操作。
+        注：此处QPS限制为10。
+
+        :param request: Request instance for UpgradeGroupFaceModelVersion.
+        :type request: :class:`tencentcloud.iai.v20180301.models.UpgradeGroupFaceModelVersionRequest`
+        :rtype: :class:`tencentcloud.iai.v20180301.models.UpgradeGroupFaceModelVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpgradeGroupFaceModelVersion", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpgradeGroupFaceModelVersionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

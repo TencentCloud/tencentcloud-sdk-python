@@ -73,6 +73,31 @@ Computing: 计算和存储都计费
         self.Status = params.get("Status")
 
 
+class ClsConfig(AbstractModel):
+    """接入CLS服务的配置
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 接入类型，可选项为free、customer
+        :type Type: str
+        :param LogSetId: 自定义CLS的日志集ID，只有当Type为customer时生效
+        :type LogSetId: str
+        :param TopicId: 自定义CLS的日志主题ID，只有当Type为customer时生效
+        :type TopicId: str
+        """
+        self.Type = None
+        self.LogSetId = None
+        self.TopicId = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.LogSetId = params.get("LogSetId")
+        self.TopicId = params.get("TopicId")
+
+
 class CodeRepoSummary(AbstractModel):
     """存储库列表
 
@@ -237,6 +262,8 @@ class CreateNotebookInstanceRequest(AbstractModel):
 取值为Disabled的时候StoppingCondition将被忽略
 取值为Enabled的时候读取StoppingCondition作为自动停止的配置
         :type AutoStopping: str
+        :param ClsConfig: 接入日志的配置
+        :type ClsConfig: :class:`tencentcloud.tione.v20191022.models.ClsConfig`
         """
         self.NotebookInstanceName = None
         self.InstanceType = None
@@ -250,6 +277,7 @@ class CreateNotebookInstanceRequest(AbstractModel):
         self.ClsAccess = None
         self.StoppingCondition = None
         self.AutoStopping = None
+        self.ClsConfig = None
 
 
     def _deserialize(self, params):
@@ -267,6 +295,9 @@ class CreateNotebookInstanceRequest(AbstractModel):
             self.StoppingCondition = StoppingCondition()
             self.StoppingCondition._deserialize(params.get("StoppingCondition"))
         self.AutoStopping = params.get("AutoStopping")
+        if params.get("ClsConfig") is not None:
+            self.ClsConfig = ClsConfig()
+            self.ClsConfig._deserialize(params.get("ClsConfig"))
 
 
 class CreateNotebookInstanceResponse(AbstractModel):
@@ -829,6 +860,9 @@ Failed: 失败
         :param StoppingCondition: 自动停止配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type StoppingCondition: :class:`tencentcloud.tione.v20191022.models.StoppingCondition`
+        :param ClsConfig: Cls配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClsConfig: :class:`tencentcloud.tione.v20191022.models.ClsConfig`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -852,6 +886,7 @@ Failed: 失败
         self.Prepay = None
         self.Deadline = None
         self.StoppingCondition = None
+        self.ClsConfig = None
         self.RequestId = None
 
 
@@ -878,6 +913,9 @@ Failed: 失败
         if params.get("StoppingCondition") is not None:
             self.StoppingCondition = StoppingCondition()
             self.StoppingCondition._deserialize(params.get("StoppingCondition"))
+        if params.get("ClsConfig") is not None:
+            self.ClsConfig = ClsConfig()
+            self.ClsConfig._deserialize(params.get("ClsConfig"))
         self.RequestId = params.get("RequestId")
 
 
@@ -2006,6 +2044,8 @@ class UpdateNotebookInstanceRequest(AbstractModel):
         :type AutoStopping: str
         :param StoppingCondition: 自动停止配置，只在AutoStopping为Enabled的时候生效
         :type StoppingCondition: :class:`tencentcloud.tione.v20191022.models.StoppingCondition`
+        :param ClsConfig: 接入日志的配置
+        :type ClsConfig: :class:`tencentcloud.tione.v20191022.models.ClsConfig`
         """
         self.NotebookInstanceName = None
         self.RoleArn = None
@@ -2021,6 +2061,7 @@ class UpdateNotebookInstanceRequest(AbstractModel):
         self.ClsAccess = None
         self.AutoStopping = None
         self.StoppingCondition = None
+        self.ClsConfig = None
 
 
     def _deserialize(self, params):
@@ -2040,6 +2081,9 @@ class UpdateNotebookInstanceRequest(AbstractModel):
         if params.get("StoppingCondition") is not None:
             self.StoppingCondition = StoppingCondition()
             self.StoppingCondition._deserialize(params.get("StoppingCondition"))
+        if params.get("ClsConfig") is not None:
+            self.ClsConfig = ClsConfig()
+            self.ClsConfig._deserialize(params.get("ClsConfig"))
 
 
 class UpdateNotebookInstanceResponse(AbstractModel):

@@ -1579,12 +1579,21 @@ class DescribeClusterRoutesRequest(AbstractModel):
         """
         :param RouteTableName: 路由表名称。
         :type RouteTableName: str
+        :param Filters: 过滤条件,当前只支持按照单个条件GatewayIP进行过滤（可选）
+        :type Filters: list of Filter
         """
         self.RouteTableName = None
+        self.Filters = None
 
 
     def _deserialize(self, params):
         self.RouteTableName = params.get("RouteTableName")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
 
 
 class DescribeClusterRoutesResponse(AbstractModel):

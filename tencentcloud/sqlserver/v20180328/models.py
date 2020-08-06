@@ -3122,7 +3122,7 @@ class MigrateTask(AbstractModel):
         :type StartTime: str
         :param EndTime: 迁移任务的结束时间
         :type EndTime: str
-        :param Status: 迁移任务的状态（1:初始化,4:迁移中,5.迁移失败,6.迁移成功）
+        :param Status: 迁移任务的状态（1:初始化,4:迁移中,5.迁移失败,6.迁移成功,7已中止,8已删除,9中止中,10完成中,11中止失败,12完成失败）
         :type Status: int
         :param Message: 信息
         :type Message: str
