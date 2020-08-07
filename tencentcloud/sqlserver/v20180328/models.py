@@ -390,16 +390,20 @@ class CreateBackupRequest(AbstractModel):
         :type DBNames: list of str
         :param InstanceId: 实例ID，形如mssql-i1z41iwd
         :type InstanceId: str
+        :param BackupName: 备份名称，若不填则自动生成“实例ID_备份开始时间戳”
+        :type BackupName: str
         """
         self.Strategy = None
         self.DBNames = None
         self.InstanceId = None
+        self.BackupName = None
 
 
     def _deserialize(self, params):
         self.Strategy = params.get("Strategy")
         self.DBNames = params.get("DBNames")
         self.InstanceId = params.get("InstanceId")
+        self.BackupName = params.get("BackupName")
 
 
 class CreateBackupResponse(AbstractModel):
@@ -1596,6 +1600,92 @@ class DescribeAccountsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBackupByFlowIdRequest(AbstractModel):
+    """DescribeBackupByFlowId请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，格式如：mssql-3l3fgqn7
+        :type InstanceId: str
+        :param FlowId: 创建备份流程ID
+        :type FlowId: str
+        """
+        self.InstanceId = None
+        self.FlowId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.FlowId = params.get("FlowId")
+
+
+class DescribeBackupByFlowIdResponse(AbstractModel):
+    """DescribeBackupByFlowId返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 备份文件唯一标识，RestoreInstance接口会用到该字段
+        :type Id: int
+        :param FileName: 存储文件名
+        :type FileName: str
+        :param BackupName: 备份名称，可自定义
+        :type BackupName: str
+        :param StartTime: 备份开始时间
+        :type StartTime: str
+        :param EndTime: 备份结束时间
+        :type EndTime: str
+        :param Size: 文件大小，单位 KB
+        :type Size: int
+        :param Strategy: 备份策略，0-实例备份；1-多库备份；实例状态是0-创建中时，该字段为默认值0，无实际意义
+        :type Strategy: int
+        :param BackupWay: 备份方式，0-定时备份；1-手动临时备份；实例状态是0-创建中时，该字段为默认值0，无实际意义
+        :type BackupWay: int
+        :param Status: 备份文件状态，0-创建中；1-成功；2-失败
+        :type Status: int
+        :param DBs: 多库备份时的DB列表
+        :type DBs: list of str
+        :param InternalAddr: 内网下载地址
+        :type InternalAddr: str
+        :param ExternalAddr: 外网下载地址
+        :type ExternalAddr: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Id = None
+        self.FileName = None
+        self.BackupName = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Size = None
+        self.Strategy = None
+        self.BackupWay = None
+        self.Status = None
+        self.DBs = None
+        self.InternalAddr = None
+        self.ExternalAddr = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.FileName = params.get("FileName")
+        self.BackupName = params.get("BackupName")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Size = params.get("Size")
+        self.Strategy = params.get("Strategy")
+        self.BackupWay = params.get("BackupWay")
+        self.Status = params.get("Status")
+        self.DBs = params.get("DBs")
+        self.InternalAddr = params.get("InternalAddr")
+        self.ExternalAddr = params.get("ExternalAddr")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeBackupsRequest(AbstractModel):
     """DescribeBackups请求参数结构体
 
@@ -1613,12 +1703,21 @@ class DescribeBackupsRequest(AbstractModel):
         :type Limit: int
         :param Offset: 分页返回，页编号，默认值为第0页
         :type Offset: int
+        :param BackupName: 按照备份名称筛选，不填则不筛选此项
+        :type BackupName: str
+        :param Strategy: 按照备份策略筛选，0-实例备份，1-多库备份，不填则不筛选此项
+        :type Strategy: int
+        :param BackupWay: 按照备份方式筛选，0-后台自动定时备份，1-用户手动临时备份，不填则不筛选此项
+        :type BackupWay: int
         """
         self.StartTime = None
         self.EndTime = None
         self.InstanceId = None
         self.Limit = None
         self.Offset = None
+        self.BackupName = None
+        self.Strategy = None
+        self.BackupWay = None
 
 
     def _deserialize(self, params):
@@ -1627,6 +1726,9 @@ class DescribeBackupsRequest(AbstractModel):
         self.InstanceId = params.get("InstanceId")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        self.BackupName = params.get("BackupName")
+        self.Strategy = params.get("Strategy")
+        self.BackupWay = params.get("BackupWay")
 
 
 class DescribeBackupsResponse(AbstractModel):
@@ -1656,6 +1758,48 @@ class DescribeBackupsResponse(AbstractModel):
                 obj = Backup()
                 obj._deserialize(item)
                 self.Backups.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCrossRegionZoneRequest(AbstractModel):
+    """DescribeCrossRegionZone请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，格式如：mssql-3l3fgqn7
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class DescribeCrossRegionZoneResponse(AbstractModel):
+    """DescribeCrossRegionZone返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Region: 备机所在地域的字符串ID，形如：ap-guangzhou
+        :type Region: str
+        :param Zone: 备机所在可用区的字符串ID，形如：ap-guangzhou-1
+        :type Zone: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Region = None
+        self.Zone = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Region = params.get("Region")
+        self.Zone = params.get("Zone")
         self.RequestId = params.get("RequestId")
 
 
@@ -3241,6 +3385,48 @@ class ModifyAccountRemarkRequest(AbstractModel):
 
 class ModifyAccountRemarkResponse(AbstractModel):
     """ModifyAccountRemark返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyBackupNameRequest(AbstractModel):
+    """ModifyBackupName请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，格式如：mssql-3l3fgqn7
+        :type InstanceId: str
+        :param BackupId: 要修改名称的备份ID，可通过DescribeBackups 接口获取。
+        :type BackupId: int
+        :param BackupName: 修改的备份名称
+        :type BackupName: str
+        """
+        self.InstanceId = None
+        self.BackupId = None
+        self.BackupName = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.BackupId = params.get("BackupId")
+        self.BackupName = params.get("BackupName")
+
+
+class ModifyBackupNameResponse(AbstractModel):
+    """ModifyBackupName返回参数结构体
 
     """
 

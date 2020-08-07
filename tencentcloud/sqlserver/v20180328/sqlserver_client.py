@@ -473,6 +473,34 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBackupByFlowId(self, request):
+        """本接口(DescribeBackupByFlowId)用于通过备份创建流程的ID查询创建的备份详情，流程ID可从接口CreateBackup中获得。
+
+        :param request: Request instance for DescribeBackupByFlowId.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeBackupByFlowIdRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeBackupByFlowIdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBackupByFlowId", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBackupByFlowIdResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBackups(self, request):
         """本接口(DescribeBackups)用于查询备份列表。
 
@@ -487,6 +515,34 @@ class SqlserverClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBackupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCrossRegionZone(self, request):
+        """本接口(DescribeCrossRegionZone)根据主实例查询备机的容灾地域和可用区。
+
+        :param request: Request instance for DescribeCrossRegionZone.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeCrossRegionZoneRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeCrossRegionZoneResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCrossRegionZone", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCrossRegionZoneResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1159,6 +1215,34 @@ class SqlserverClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAccountRemarkResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyBackupName(self, request):
+        """本接口(ModifyBackupName)用于修改备份名称。
+
+        :param request: Request instance for ModifyBackupName.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyBackupNameRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.ModifyBackupNameResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyBackupName", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyBackupNameResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

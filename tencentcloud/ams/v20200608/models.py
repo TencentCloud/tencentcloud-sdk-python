@@ -536,6 +536,9 @@ Block 建议屏蔽；
         :param ImageSegments: 视频审核中的图片结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageSegments: list of ImageSegments
+        :param AudioText: 音频识别总文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AudioText: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -554,6 +557,7 @@ Block 建议屏蔽；
         self.TryInSeconds = None
         self.AudioSegments = None
         self.ImageSegments = None
+        self.AudioText = None
         self.RequestId = None
 
 
@@ -592,6 +596,7 @@ Block 建议屏蔽；
                 obj = ImageSegments()
                 obj._deserialize(item)
                 self.ImageSegments.append(obj)
+        self.AudioText = params.get("AudioText")
         self.RequestId = params.get("RequestId")
 
 
