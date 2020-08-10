@@ -212,6 +212,36 @@ class BizLicenseOCRResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class BizLicenseVerifyResult(AbstractModel):
+    """验真接口
+
+    """
+
+    def __init__(self):
+        """
+        :param RegNum: “0“：一致
+“-1”：此号未查询到结果
+        :type RegNum: str
+        :param Name: “0“：一致
+“-1”：不一致
+“”：不验真
+        :type Name: str
+        :param Address: “0“：一致
+“-1”：不一致
+“”：不验真
+        :type Address: str
+        """
+        self.RegNum = None
+        self.Name = None
+        self.Address = None
+
+
+    def _deserialize(self, params):
+        self.RegNum = params.get("RegNum")
+        self.Name = params.get("Name")
+        self.Address = params.get("Address")
+
+
 class BusInvoiceInfo(AbstractModel):
     """汽车票字段信息
 
@@ -3730,13 +3760,13 @@ class RideHailingDriverLicenseOCRResponse(AbstractModel):
         """
         :param Name: 姓名
         :type Name: str
-        :param LicenseNumber: 证号，对应网约车驾驶证字段：证号、从业资格证号、驾驶员证号、身份证号
+        :param LicenseNumber: 证号，对应网约车驾驶证字段：证号/从业资格证号/驾驶员证号/身份证号
         :type LicenseNumber: str
         :param StartDate: 有效起始日期
         :type StartDate: str
-        :param EndDate: 有效期截止时间，对应网约车驾驶证字段：有效期至、营运期限止
+        :param EndDate: 有效期截止时间，对应网约车驾驶证字段：有效期至/营运期限止
         :type EndDate: str
-        :param ReleaseDate: 初始发证日期，对应网约车驾驶证字段：初始领证日期、发证日期
+        :param ReleaseDate: 初始发证日期，对应网约车驾驶证字段：初始领证日期/发证日期
         :type ReleaseDate: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5147,6 +5177,350 @@ class VehicleRegCertOCRResponse(AbstractModel):
                 obj = VehicleRegCertInfo()
                 obj._deserialize(item)
                 self.VehicleRegCertInfos.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class VerifyBasicBizLicenseRequest(AbstractModel):
+    """VerifyBasicBizLicense请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 用于入参是营业执照图片的场景，ImageBase64和ImageUrl必选一个输入。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 用于入参是营业执照图片的场景，ImageBase64和ImageUrl必选一个输入。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageUrl: str
+        :param ImageConfig: 用于入参是营业执照图片的场景，表示需要校验的参数：RegNum（注册号或者统一社会信用代码），Name（企业名称），Address（经营地址）。选择后会返回相关参数校验结果。RegNum为必选，Name和Address可选。
+格式为{RegNum: true, Name:true/false, Address:true/false}
+
+设置方式参考：
+Config = Json.stringify({"Name":true,"Address":true})
+API 3.0 Explorer 设置方式参考：
+Config = {"Name":true,"Address":true}
+        :type ImageConfig: str
+        :param RegNum: 用于入参是文本的场景，RegNum表示注册号或者统一社会信用代码。RegNum为必选项。
+        :type RegNum: str
+        :param Name: 用于入参是文本的场景，Name表示企业名称。Name为可选项，填写后会返回Name的校验结果。
+        :type Name: str
+        :param Address: 用于入参是文本的场景，Address表示经营地址，填写后会返回Name的校验结果。
+        :type Address: str
+        :param RegCapital: 1表示输出注册资本字段（单位：万元），其他值表示不输出。默认不输出。
+        :type RegCapital: int
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+        self.ImageConfig = None
+        self.RegNum = None
+        self.Name = None
+        self.Address = None
+        self.RegCapital = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+        self.ImageConfig = params.get("ImageConfig")
+        self.RegNum = params.get("RegNum")
+        self.Name = params.get("Name")
+        self.Address = params.get("Address")
+        self.RegCapital = params.get("RegCapital")
+
+
+class VerifyBasicBizLicenseResponse(AbstractModel):
+    """VerifyBasicBizLicense返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ErrorCode: 状态码，成功时返回0
+        :type ErrorCode: int
+        :param CreditCode: 统一社会信用代码
+        :type CreditCode: str
+        :param Opfrom: 经营期限自（YYYY-MM-DD）
+        :type Opfrom: str
+        :param Opto: 经营期限至（YYYY-MM-DD）
+        :type Opto: str
+        :param Frname: 法人姓名
+        :type Frname: str
+        :param Entstatus: 经营状态（在营、注销、吊销、其他）
+        :type Entstatus: str
+        :param Zsopscope: 经营业务范围
+        :type Zsopscope: str
+        :param Reason: 状态信息
+        :type Reason: str
+        :param Oriregno: 原注册号
+        :type Oriregno: str
+        :param VerifyRegno: 要核验的工商注册号
+        :type VerifyRegno: str
+        :param Regno: 工商注册号
+        :type Regno: str
+        :param VerifyEntname: 要核验的企业名称
+        :type VerifyEntname: str
+        :param Entname: 企业名称
+        :type Entname: str
+        :param VerifyDom: 要核验的住址
+        :type VerifyDom: str
+        :param Dom: 住址
+        :type Dom: str
+        :param RegNumResult: 验证结果
+        :type RegNumResult: :class:`tencentcloud.ocr.v20181119.models.BizLicenseVerifyResult`
+        :param RegCapital: 注册资本（单位：万元）,只有输入参数regCapital为1的时候才输出
+        :type RegCapital: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrorCode = None
+        self.CreditCode = None
+        self.Opfrom = None
+        self.Opto = None
+        self.Frname = None
+        self.Entstatus = None
+        self.Zsopscope = None
+        self.Reason = None
+        self.Oriregno = None
+        self.VerifyRegno = None
+        self.Regno = None
+        self.VerifyEntname = None
+        self.Entname = None
+        self.VerifyDom = None
+        self.Dom = None
+        self.RegNumResult = None
+        self.RegCapital = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrorCode = params.get("ErrorCode")
+        self.CreditCode = params.get("CreditCode")
+        self.Opfrom = params.get("Opfrom")
+        self.Opto = params.get("Opto")
+        self.Frname = params.get("Frname")
+        self.Entstatus = params.get("Entstatus")
+        self.Zsopscope = params.get("Zsopscope")
+        self.Reason = params.get("Reason")
+        self.Oriregno = params.get("Oriregno")
+        self.VerifyRegno = params.get("VerifyRegno")
+        self.Regno = params.get("Regno")
+        self.VerifyEntname = params.get("VerifyEntname")
+        self.Entname = params.get("Entname")
+        self.VerifyDom = params.get("VerifyDom")
+        self.Dom = params.get("Dom")
+        if params.get("RegNumResult") is not None:
+            self.RegNumResult = BizLicenseVerifyResult()
+            self.RegNumResult._deserialize(params.get("RegNumResult"))
+        self.RegCapital = params.get("RegCapital")
+        self.RequestId = params.get("RequestId")
+
+
+class VerifyBizLicenseRequest(AbstractModel):
+    """VerifyBizLicense请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 用于入参是营业执照图片的场景，ImageBase64和ImageUrl必选一个输入。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 用于入参是营业执照图片的场景，ImageBase64和ImageUrl必选一个输入。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageUrl: str
+        :param ImageConfig: 用于入参是营业执照图片的场景，表示需要校验的参数：RegNum（注册号或者统一社会信用代码），Name（企业名称），Address（经营地址）。选择后会返回相关参数校验结果。RegNum为必选，Name和Address可选。
+格式为{RegNum: true, Name:true/false, Address:true/false}
+
+设置方式参考：
+Config = Json.stringify({"Name":true,"Address":true})
+API 3.0 Explorer 设置方式参考：
+Config = {"Name":true,"Address":true}
+        :type ImageConfig: str
+        :param RegNum: 用于入参是文本的场景，RegNum表示注册号或者统一社会信用代码。RegNum为必选项。
+        :type RegNum: str
+        :param Name: 用于入参是文本的场景，Name表示企业名称。Name为可选项，填写后会返回Name的校验结果。
+        :type Name: str
+        :param Address: 用于入参是文本的场景，Address表示经营地址，填写后会返回Name的校验结果。
+        :type Address: str
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+        self.ImageConfig = None
+        self.RegNum = None
+        self.Name = None
+        self.Address = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+        self.ImageConfig = params.get("ImageConfig")
+        self.RegNum = params.get("RegNum")
+        self.Name = params.get("Name")
+        self.Address = params.get("Address")
+
+
+class VerifyBizLicenseResponse(AbstractModel):
+    """VerifyBizLicense返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ErrorCode: 状态码
+        :type ErrorCode: int
+        :param CreditCode: 统一社会信用代码
+        :type CreditCode: str
+        :param OrgCode: 组织机构代码
+        :type OrgCode: str
+        :param OpenFrom: 经营期限自（YYYY-MM-DD）
+        :type OpenFrom: str
+        :param OpenTo: 经营期限至（YYYY-MM-DD）
+        :type OpenTo: str
+        :param FrName: 法人姓名
+        :type FrName: str
+        :param EnterpriseStatus: 经营状态（在营、注销、吊销、其他）
+        :type EnterpriseStatus: str
+        :param OperateScopeAndForm: 经营（业务）范围及方式
+        :type OperateScopeAndForm: str
+        :param RegCap: 注册资金（单位:万元）
+        :type RegCap: str
+        :param RegCapCur: 注册币种
+        :type RegCapCur: str
+        :param RegOrg: 登记机关
+        :type RegOrg: str
+        :param EsDate: 开业日期（YYYY-MM-DD）
+        :type EsDate: str
+        :param EnterpriseType: 企业（机构）类型
+        :type EnterpriseType: str
+        :param CancelDate: 注销日期
+        :type CancelDate: str
+        :param RevokeDate: 吊销日期
+        :type RevokeDate: str
+        :param AbuItem: 许可经营项目
+        :type AbuItem: str
+        :param CbuItem: 一般经营项目
+        :type CbuItem: str
+        :param ApprDate: 核准时间
+        :type ApprDate: str
+        :param Province: 省
+        :type Province: str
+        :param City: 地级市
+        :type City: str
+        :param County: 区\县
+        :type County: str
+        :param AreaCode: 住所所在行政区划代码
+        :type AreaCode: str
+        :param IndustryPhyCode: 行业门类代码
+        :type IndustryPhyCode: str
+        :param IndustryPhyName: 行业门类名称
+        :type IndustryPhyName: str
+        :param IndustryCode: 国民经济行业代码
+        :type IndustryCode: str
+        :param IndustryName: 国民经济行业名称
+        :type IndustryName: str
+        :param OperateScope: 经营（业务）范围
+        :type OperateScope: str
+        :param VerifyRegNo: 要核验的工商注册号
+        :type VerifyRegNo: str
+        :param RegNo: 工商注册号
+        :type RegNo: str
+        :param VerifyEnterpriseName: 要核验的企业名称
+        :type VerifyEnterpriseName: str
+        :param EnterpriseName: 企业名称
+        :type EnterpriseName: str
+        :param VerifyAddress: 要核验的注册地址
+        :type VerifyAddress: str
+        :param Address: 注册地址
+        :type Address: str
+        :param RegNumResult: 验证结果
+        :type RegNumResult: :class:`tencentcloud.ocr.v20181119.models.BizLicenseVerifyResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrorCode = None
+        self.CreditCode = None
+        self.OrgCode = None
+        self.OpenFrom = None
+        self.OpenTo = None
+        self.FrName = None
+        self.EnterpriseStatus = None
+        self.OperateScopeAndForm = None
+        self.RegCap = None
+        self.RegCapCur = None
+        self.RegOrg = None
+        self.EsDate = None
+        self.EnterpriseType = None
+        self.CancelDate = None
+        self.RevokeDate = None
+        self.AbuItem = None
+        self.CbuItem = None
+        self.ApprDate = None
+        self.Province = None
+        self.City = None
+        self.County = None
+        self.AreaCode = None
+        self.IndustryPhyCode = None
+        self.IndustryPhyName = None
+        self.IndustryCode = None
+        self.IndustryName = None
+        self.OperateScope = None
+        self.VerifyRegNo = None
+        self.RegNo = None
+        self.VerifyEnterpriseName = None
+        self.EnterpriseName = None
+        self.VerifyAddress = None
+        self.Address = None
+        self.RegNumResult = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrorCode = params.get("ErrorCode")
+        self.CreditCode = params.get("CreditCode")
+        self.OrgCode = params.get("OrgCode")
+        self.OpenFrom = params.get("OpenFrom")
+        self.OpenTo = params.get("OpenTo")
+        self.FrName = params.get("FrName")
+        self.EnterpriseStatus = params.get("EnterpriseStatus")
+        self.OperateScopeAndForm = params.get("OperateScopeAndForm")
+        self.RegCap = params.get("RegCap")
+        self.RegCapCur = params.get("RegCapCur")
+        self.RegOrg = params.get("RegOrg")
+        self.EsDate = params.get("EsDate")
+        self.EnterpriseType = params.get("EnterpriseType")
+        self.CancelDate = params.get("CancelDate")
+        self.RevokeDate = params.get("RevokeDate")
+        self.AbuItem = params.get("AbuItem")
+        self.CbuItem = params.get("CbuItem")
+        self.ApprDate = params.get("ApprDate")
+        self.Province = params.get("Province")
+        self.City = params.get("City")
+        self.County = params.get("County")
+        self.AreaCode = params.get("AreaCode")
+        self.IndustryPhyCode = params.get("IndustryPhyCode")
+        self.IndustryPhyName = params.get("IndustryPhyName")
+        self.IndustryCode = params.get("IndustryCode")
+        self.IndustryName = params.get("IndustryName")
+        self.OperateScope = params.get("OperateScope")
+        self.VerifyRegNo = params.get("VerifyRegNo")
+        self.RegNo = params.get("RegNo")
+        self.VerifyEnterpriseName = params.get("VerifyEnterpriseName")
+        self.EnterpriseName = params.get("EnterpriseName")
+        self.VerifyAddress = params.get("VerifyAddress")
+        self.Address = params.get("Address")
+        if params.get("RegNumResult") is not None:
+            self.RegNumResult = BizLicenseVerifyResult()
+            self.RegNumResult._deserialize(params.get("RegNumResult"))
         self.RequestId = params.get("RequestId")
 
 

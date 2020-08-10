@@ -236,6 +236,117 @@ class BankCardVerificationResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CheckIdCardInformationRequest(AbstractModel):
+    """CheckIdCardInformation请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 身份证人像面的 Base64 值
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+ImageBase64、ImageUrl二者必须提供其中之一。若都提供了，则按照ImageUrl>ImageBase64的优先级使用参数。
+        :type ImageBase64: str
+        :param ImageUrl: 身份证人像面的 Url 地址
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        :param Config: 以下可选字段均为bool 类型，默认false：
+CopyWarn，复印件告警
+BorderCheckWarn，边框和框内遮挡告警
+ReshootWarn，翻拍告警
+DetectPsWarn，PS检测告警
+TempIdWarn，临时身份证告警
+
+SDK 设置方式参考：
+Config = Json.stringify({"CopyWarn":true,"ReshootWarn":true})
+API 3.0 Explorer 设置方式参考：
+Config = {"CopyWarn":true,"ReshootWarn":true}
+        :type Config: str
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+        self.Config = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+        self.Config = params.get("Config")
+
+
+class CheckIdCardInformationResponse(AbstractModel):
+    """CheckIdCardInformation返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Sim: 相似度，取值范围 [0.00, 100.00]。推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）
+        :type Sim: float
+        :param Result: 业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
+        :type Result: str
+        :param Description: 业务结果描述。
+        :type Description: str
+        :param Name: 姓名
+        :type Name: str
+        :param Sex: 性别
+        :type Sex: str
+        :param Nation: 民族
+        :type Nation: str
+        :param Birth: 出生日期
+        :type Birth: str
+        :param Address: 地址
+        :type Address: str
+        :param IdNum: 身份证号
+        :type IdNum: str
+        :param Portrait: 身份证头像照片的base64编码，如果抠图失败会拿整张身份证做比对并返回空。
+        :type Portrait: str
+        :param Warnings: 告警信息，当在Config中配置了告警信息会停止人像比对，Result返回错误（FailedOperation.OcrWarningOccurred）并有此告警信息，Code 告警码列表和释义：
+
+-9101 身份证边框不完整告警，
+-9102 身份证复印件告警，
+-9103 身份证翻拍告警，
+-9105 身份证框内遮挡告警，
+-9104 临时身份证告警，
+-9106 身份证 PS 告警。
+多个会 |  隔开如 "-9101|-9106|-9104"
+        :type Warnings: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Sim = None
+        self.Result = None
+        self.Description = None
+        self.Name = None
+        self.Sex = None
+        self.Nation = None
+        self.Birth = None
+        self.Address = None
+        self.IdNum = None
+        self.Portrait = None
+        self.Warnings = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Sim = params.get("Sim")
+        self.Result = params.get("Result")
+        self.Description = params.get("Description")
+        self.Name = params.get("Name")
+        self.Sex = params.get("Sex")
+        self.Nation = params.get("Nation")
+        self.Birth = params.get("Birth")
+        self.Address = params.get("Address")
+        self.IdNum = params.get("IdNum")
+        self.Portrait = params.get("Portrait")
+        self.Warnings = params.get("Warnings")
+        self.RequestId = params.get("RequestId")
+
+
 class DetectAuthRequest(AbstractModel):
     """DetectAuth请求参数结构体
 

@@ -1408,7 +1408,7 @@ class EcmClient(AbstractClient):
 
 
     def ModifyModuleImage(self, request):
-        """ModifyModuleImage
+        """修改模块的默认镜像
 
         :param request: Request instance for ModifyModuleImage.
         :type request: :class:`tencentcloud.ecm.v20190719.models.ModifyModuleImageRequest`
@@ -1421,6 +1421,34 @@ class EcmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyModuleImageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyModuleIpDirect(self, request):
+        """修改模块IP直通。
+
+        :param request: Request instance for ModifyModuleIpDirect.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.ModifyModuleIpDirectRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.ModifyModuleIpDirectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyModuleIpDirect", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyModuleIpDirectResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

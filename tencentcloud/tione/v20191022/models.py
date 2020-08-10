@@ -252,7 +252,8 @@ class CreateNotebookInstanceRequest(AbstractModel):
 每个元素可以是已创建的存储库名称或者已https://开头的公共git库
 参考https://cloud.tencent.com/document/product/851/43139
         :type AdditionalCodeRepositories: list of str
-        :param ClsAccess: 是否开启CLS日志服务，可取值Enabled/Disabled，默认为Disabled
+        :param ClsAccess: 已弃用，请使用ClsConfig配置。
+是否开启CLS日志服务，可取值Enabled/Disabled，默认为Disabled
 开启后，Notebook运行的日志会收集到CLS中，CLS会产生费用，请根据需要选择
         :type ClsAccess: str
         :param StoppingCondition: 自动停止配置
@@ -262,7 +263,7 @@ class CreateNotebookInstanceRequest(AbstractModel):
 取值为Disabled的时候StoppingCondition将被忽略
 取值为Enabled的时候读取StoppingCondition作为自动停止的配置
         :type AutoStopping: str
-        :param ClsConfig: 接入日志的配置
+        :param ClsConfig: 接入日志的配置，默认接入免费日志
         :type ClsConfig: :class:`tencentcloud.tione.v20191022.models.ClsConfig`
         """
         self.NotebookInstanceName = None
@@ -2036,7 +2037,7 @@ class UpdateNotebookInstanceRequest(AbstractModel):
         :param DisassociateAdditionalCodeRepositories: 是否取消关联其他存储库，默认false
 该值为true时，AdditionalCodeRepositories将被忽略
         :type DisassociateAdditionalCodeRepositories: bool
-        :param ClsAccess: 是否开启CLS日志服务，可取值Enabled/Disabled
+        :param ClsAccess: 已弃用，请使用ClsConfig配置。是否开启CLS日志服务，可取值Enabled/Disabled
         :type ClsAccess: str
         :param AutoStopping: 自动停止，可取值Enabled/Disabled
 取值为Disabled的时候StoppingCondition将被忽略
@@ -2044,7 +2045,7 @@ class UpdateNotebookInstanceRequest(AbstractModel):
         :type AutoStopping: str
         :param StoppingCondition: 自动停止配置，只在AutoStopping为Enabled的时候生效
         :type StoppingCondition: :class:`tencentcloud.tione.v20191022.models.StoppingCondition`
-        :param ClsConfig: 接入日志的配置
+        :param ClsConfig: 接入日志的配置，默认使用免费日志服务。
         :type ClsConfig: :class:`tencentcloud.tione.v20191022.models.ClsConfig`
         """
         self.NotebookInstanceName = None

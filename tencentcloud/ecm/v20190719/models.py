@@ -493,6 +493,12 @@ class CreateModuleRequest(AbstractModel):
         :type DefaultSystemDiskSize: int
         :param DefaultDataDiskSize: 默认数据盘大小，单位：G。范围不得超过数据盘范围大小，详看DescribeConfig。
         :type DefaultDataDiskSize: int
+        :param CloseIpDirect: 是否关闭IP直通。取值范围：
+1：表示关闭IP直通
+0：表示开通IP直通
+        :type CloseIpDirect: bool
+        :param TagSpecification: 标签列表。
+        :type TagSpecification: list of TagSpecification
         """
         self.ModuleName = None
         self.DefaultBandWidth = None
@@ -500,6 +506,8 @@ class CreateModuleRequest(AbstractModel):
         self.InstanceType = None
         self.DefaultSystemDiskSize = None
         self.DefaultDataDiskSize = None
+        self.CloseIpDirect = None
+        self.TagSpecification = None
 
 
     def _deserialize(self, params):
@@ -509,6 +517,13 @@ class CreateModuleRequest(AbstractModel):
         self.InstanceType = params.get("InstanceType")
         self.DefaultSystemDiskSize = params.get("DefaultSystemDiskSize")
         self.DefaultDataDiskSize = params.get("DefaultDataDiskSize")
+        self.CloseIpDirect = params.get("CloseIpDirect")
+        if params.get("TagSpecification") is not None:
+            self.TagSpecification = []
+            for item in params.get("TagSpecification"):
+                obj = TagSpecification()
+                obj._deserialize(item)
+                self.TagSpecification.append(obj)
 
 
 class CreateModuleResponse(AbstractModel):
@@ -1673,7 +1688,7 @@ module-name - string - 是否必填：否 - （过滤条件）按照模块名称
 module-id - string - 是否必填：否 - （过滤条件）按照模块ID过滤。
 image-id      String      是否必填：否      （过滤条件）按照镜像ID过滤。
 instance-family      String      是否必填：否      （过滤条件）按照机型family过滤。
-
+security-group-id - string 是否必填：否 - （过滤条件）按照模块绑定的安全组id过滤。
 每次请求的Filters的上限为10，Filter.Values的上限为5。
         :type Filters: list of Filter
         :param Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。
@@ -3007,7 +3022,7 @@ class InstanceTypeConfig(AbstractModel):
         :type CpuModelName: str
         :param InstanceFamilyTypeConfig: 机型族类别配置信息
         :type InstanceFamilyTypeConfig: :class:`tencentcloud.ecm.v20190719.models.InstanceFamilyTypeConfig`
-        :param ExtInfo: 机型额外信息
+        :param ExtInfo: 机型额外信息 是一个json字符串，如果存在则表示特殊机型，格式如下：{"dataDiskSize":3200,"systemDiskSize":60, "systemDiskSizeShow":"系统盘默认60G","dataDiskSizeShow":"本地NVMe SSD 硬盘3200 GB"}
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtInfo: str
         """
@@ -3503,6 +3518,46 @@ class ModifyModuleImageResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyModuleIpDirectRequest(AbstractModel):
+    """ModifyModuleIpDirect请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ModuleId: 模块ID。
+        :type ModuleId: str
+        :param CloseIpDirect: 是否关闭IP直通。取值范围：
+1：表示关闭IP直通
+0：表示开通IP直通
+        :type CloseIpDirect: bool
+        """
+        self.ModuleId = None
+        self.CloseIpDirect = None
+
+
+    def _deserialize(self, params):
+        self.ModuleId = params.get("ModuleId")
+        self.CloseIpDirect = params.get("CloseIpDirect")
+
+
+class ModifyModuleIpDirectResponse(AbstractModel):
+    """ModifyModuleIpDirect返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyModuleNameRequest(AbstractModel):
     """ModifyModuleName请求参数结构体
 
@@ -3695,6 +3750,11 @@ DELETEFAILED：删除失败
         :type CreateTime: str
         :param DefaultBandwidth: 默认带宽
         :type DefaultBandwidth: int
+        :param TagSet: 标签集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagSet: list of Tag
+        :param CloseIpDirect: 是否关闭IP直通
+        :type CloseIpDirect: int
         """
         self.ModuleId = None
         self.ModuleName = None
@@ -3705,6 +3765,8 @@ DELETEFAILED：删除失败
         self.DefaultImage = None
         self.CreateTime = None
         self.DefaultBandwidth = None
+        self.TagSet = None
+        self.CloseIpDirect = None
 
 
     def _deserialize(self, params):
@@ -3721,6 +3783,13 @@ DELETEFAILED：删除失败
             self.DefaultImage._deserialize(params.get("DefaultImage"))
         self.CreateTime = params.get("CreateTime")
         self.DefaultBandwidth = params.get("DefaultBandwidth")
+        if params.get("TagSet") is not None:
+            self.TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagSet.append(obj)
+        self.CloseIpDirect = params.get("CloseIpDirect")
 
 
 class ModuleCounter(AbstractModel):
@@ -5184,7 +5253,7 @@ class TagSpecification(AbstractModel):
 
     def __init__(self):
         """
-        :param ResourceType: 资源类型，目前仅支持"instance"
+        :param ResourceType: 资源类型，目前仅支持"instance"、"module"
         :type ResourceType: str
         :param Tags: 标签列表
         :type Tags: list of Tag

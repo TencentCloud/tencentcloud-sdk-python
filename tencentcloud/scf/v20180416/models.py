@@ -391,6 +391,8 @@ class CreateFunctionRequest(AbstractModel):
         :type PublicNetConfig: :class:`tencentcloud.scf.v20180416.models.PublicNetConfigIn`
         :param CfsConfig: 文件系统配置参数，用于云函数挂载文件系统
         :type CfsConfig: :class:`tencentcloud.scf.v20180416.models.CfsConfig`
+        :param InitTimeout: 函数初始化超时时间
+        :type InitTimeout: int
         """
         self.FunctionName = None
         self.Code = None
@@ -411,6 +413,7 @@ class CreateFunctionRequest(AbstractModel):
         self.DeadLetterConfig = None
         self.PublicNetConfig = None
         self.CfsConfig = None
+        self.InitTimeout = None
 
 
     def _deserialize(self, params):
@@ -450,6 +453,7 @@ class CreateFunctionRequest(AbstractModel):
         if params.get("CfsConfig") is not None:
             self.CfsConfig = CfsConfig()
             self.CfsConfig._deserialize(params.get("CfsConfig"))
+        self.InitTimeout = params.get("InitTimeout")
 
 
 class CreateFunctionResponse(AbstractModel):
@@ -1364,7 +1368,7 @@ class GetFunctionResponse(AbstractModel):
         :type Role: str
         :param InstallDependency: 是否自动安装依赖
         :type InstallDependency: str
-        :param Status: 函数状态
+        :param Status: 函数状态，状态值及流转[参考说明](https://cloud.tencent.com/document/product/583/47175)
         :type Status: str
         :param StatusDesc: 状态描述
         :type StatusDesc: str
@@ -1399,12 +1403,14 @@ class GetFunctionResponse(AbstractModel):
         :param CfsConfig: 文件系统配置参数，用于云函数挂载文件系统
 注意：此字段可能返回 null，表示取不到有效值。
         :type CfsConfig: :class:`tencentcloud.scf.v20180416.models.CfsConfig`
-        :param AvailableStatus: 函数的计费状态
+        :param AvailableStatus: 函数的计费状态，状态值[参考此处](https://cloud.tencent.com/document/product/583/47175#.E5.87.BD.E6.95.B0.E8.AE.A1.E8.B4.B9.E7.8A.B6.E6.80.81)
 注意：此字段可能返回 null，表示取不到有效值。
         :type AvailableStatus: str
         :param Qualifier: 函数版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type Qualifier: str
+        :param InitTimeout: 函数初始化超时时间
+        :type InitTimeout: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1446,6 +1452,7 @@ class GetFunctionResponse(AbstractModel):
         self.CfsConfig = None
         self.AvailableStatus = None
         self.Qualifier = None
+        self.InitTimeout = None
         self.RequestId = None
 
 
@@ -1517,6 +1524,7 @@ class GetFunctionResponse(AbstractModel):
             self.CfsConfig._deserialize(params.get("CfsConfig"))
         self.AvailableStatus = params.get("AvailableStatus")
         self.Qualifier = params.get("Qualifier")
+        self.InitTimeout = params.get("InitTimeout")
         self.RequestId = params.get("RequestId")
 
 
@@ -1684,11 +1692,7 @@ class LayerVersionInfo(AbstractModel):
         :type LayerVersion: int
         :param LayerName: 层名称
         :type LayerName: str
-        :param Status: 层的具体版本当前状态，可能取值：
-Active 正常
-Publishing  发布中
-PublishFailed  发布失败
-Deleted 已删除
+        :param Status: 层的具体版本当前状态，状态值[参考此处](https://cloud.tencent.com/document/product/583/47175#.E5.B1.82.EF.BC.88layer.EF.BC.89.E7.8A.B6.E6.80.81)
         :type Status: str
         """
         self.CompatibleRuntimes = None
@@ -2819,6 +2823,8 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         :type PublicNetConfig: :class:`tencentcloud.scf.v20180416.models.PublicNetConfigIn`
         :param CfsConfig: 文件系统配置入参，用于云函数绑定文件系统
         :type CfsConfig: :class:`tencentcloud.scf.v20180416.models.CfsConfig`
+        :param InitTimeout: 函数初始化执行超时时间，默认15秒
+        :type InitTimeout: int
         """
         self.FunctionName = None
         self.Description = None
@@ -2837,6 +2843,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         self.DeadLetterConfig = None
         self.PublicNetConfig = None
         self.CfsConfig = None
+        self.InitTimeout = None
 
 
     def _deserialize(self, params):
@@ -2872,6 +2879,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         if params.get("CfsConfig") is not None:
             self.CfsConfig = CfsConfig()
             self.CfsConfig._deserialize(params.get("CfsConfig"))
+        self.InitTimeout = params.get("InitTimeout")
 
 
 class UpdateFunctionConfigurationResponse(AbstractModel):

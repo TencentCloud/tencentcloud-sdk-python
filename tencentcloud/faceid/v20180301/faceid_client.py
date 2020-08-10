@@ -109,6 +109,34 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CheckIdCardInformation(self, request):
+        """传入身份证人像面照片，识别身份证照片上的信息，并将姓名、身份证号、身份证人像照片与公安权威库的证件照进行比对，是否属于同一个人，从而验证身份证信息的真实性。
+
+        :param request: Request instance for CheckIdCardInformation.
+        :type request: :class:`tencentcloud.faceid.v20180301.models.CheckIdCardInformationRequest`
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.CheckIdCardInformationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CheckIdCardInformation", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CheckIdCardInformationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DetectAuth(self, request):
         """每次调用人脸核身SaaS化服务前，需先调用本接口获取BizToken，用来串联核身流程，在验证完成后，用于获取验证结果信息。
 
