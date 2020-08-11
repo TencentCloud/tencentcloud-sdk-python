@@ -102,7 +102,7 @@ class CreateRecTaskRequest(AbstractModel):
         :type Url: str
         :param Data: 语音数据，当SourceType 值为1时必须填写，为0可不写。要base64编码(采用python语言时注意读取文件应该为string而不是byte，以byte格式读取后要decode()。编码后的数据不可带有回车换行符)。音频数据要小于5MB。
         :type Data: str
-        :param DataLen: 数据长度，当 SourceType 值为1时必须填写，为0可不写（此数据长度为数据未进行base64编码时的数据长度）。
+        :param DataLen: 数据长度，非必填（此数据长度为数据未进行base64编码时的数据长度）。
         :type DataLen: int
         :param HotwordId: 热词id。用于调用对应的热词表，如果在调用语音识别服务时，不进行单独的热词id设置，自动生效默认热词；如果进行了单独的热词id设置，那么将生效单独设置的热词id。
         :type HotwordId: str
@@ -119,6 +119,8 @@ class CreateRecTaskRequest(AbstractModel):
         :param SpeakerNumber: 话者分离人数（需配合开启话者分离使用），支持2-10（8k_zh仅支持2， 16k_zh支持2-10）
 注：话者分离目前是beta版本，请根据您的需要谨慎使用
         :type SpeakerNumber: int
+        :param FilterPunc: 是否过滤标点符号（目前支持中文普通话引擎）。 0：不过滤，1：过滤句末标点，2：过滤所有标点。默认为0。
+        :type FilterPunc: int
         """
         self.EngineModelType = None
         self.ChannelNum = None
@@ -135,6 +137,7 @@ class CreateRecTaskRequest(AbstractModel):
         self.Extra = None
         self.SpeakerDiarization = None
         self.SpeakerNumber = None
+        self.FilterPunc = None
 
 
     def _deserialize(self, params):
@@ -153,6 +156,7 @@ class CreateRecTaskRequest(AbstractModel):
         self.Extra = params.get("Extra")
         self.SpeakerDiarization = params.get("SpeakerDiarization")
         self.SpeakerNumber = params.get("SpeakerNumber")
+        self.FilterPunc = params.get("FilterPunc")
 
 
 class CreateRecTaskResponse(AbstractModel):

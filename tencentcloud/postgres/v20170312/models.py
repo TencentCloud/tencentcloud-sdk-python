@@ -2295,7 +2295,7 @@ class SpecInfo(AbstractModel):
 
 
 class SpecItemInfo(AbstractModel):
-    """描述一种规格的信息信息
+    """描述一种规格的信息
 
     """
 

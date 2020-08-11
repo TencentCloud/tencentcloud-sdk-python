@@ -81,6 +81,34 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CompleteMigration(self, request):
+        """本接口（CompleteMigration）作用是完成一个迁移任务
+
+        :param request: Request instance for CompleteMigration.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.CompleteMigrationRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.CompleteMigrationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CompleteMigration", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CompleteMigrationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateAccount(self, request):
         """本接口（CreateAccount）用于创建实例账号
 
@@ -683,6 +711,34 @@ class SqlserverClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMaintenanceSpanResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeMigrationDatabases(self, request):
+        """本接口（DescribeMigrationDatabases）的作用是查询待迁移数据库列表
+
+        :param request: Request instance for DescribeMigrationDatabases.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeMigrationDatabasesRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeMigrationDatabasesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMigrationDatabases", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMigrationDatabasesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1565,6 +1621,34 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def QueryMigrationCheckProcess(self, request):
+        """本接口（QueryMigrationCheckProcess）的作用是查询迁移检查任务的进度，适用于迁移源的类型为TencentDB for SQLServer 的迁移方式
+
+        :param request: Request instance for QueryMigrationCheckProcess.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.QueryMigrationCheckProcessRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.QueryMigrationCheckProcessResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryMigrationCheckProcess", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryMigrationCheckProcessResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RemoveBackups(self, request):
         """本接口（RemoveBackups）可以删除用户手动创建的备份文件。待删除的备份策略可以是实例备份，也可以是多库备份。
 
@@ -1775,6 +1859,62 @@ class SqlserverClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RunMigrationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StartMigrationCheck(self, request):
+        """本接口（StartMigrationCheck）的作用是启动一个迁移前的校验任务，适用于迁移源的类型为TencentDB for SQLServer 的迁移方式
+
+        :param request: Request instance for StartMigrationCheck.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.StartMigrationCheckRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.StartMigrationCheckResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StartMigrationCheck", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StartMigrationCheckResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StopMigration(self, request):
+        """本接口（StopMigration）作用是中止一个迁移任务
+
+        :param request: Request instance for StopMigration.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.StopMigrationRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.StopMigrationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StopMigration", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StopMigrationResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

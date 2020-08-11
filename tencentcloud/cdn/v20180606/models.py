@@ -5001,16 +5001,20 @@ overseas：预热至境外节点
 global：预热全球节点
 不填充情况下，默认为 mainland， URL 中域名必须在对应区域启用了加速服务才能提交对应区域的预热任务
         :type Area: str
+        :param Layer: 填写"middle"或不填充时预热至中间层节点
+        :type Layer: str
         """
         self.Urls = None
         self.UserAgent = None
         self.Area = None
+        self.Layer = None
 
 
     def _deserialize(self, params):
         self.Urls = params.get("Urls")
         self.UserAgent = params.get("UserAgent")
         self.Area = params.get("Area")
+        self.Layer = params.get("Layer")
 
 
 class PushUrlsCacheResponse(AbstractModel):

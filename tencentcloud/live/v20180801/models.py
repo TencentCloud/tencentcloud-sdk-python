@@ -1288,6 +1288,7 @@ class CreateLiveSnapshotTemplateRequest(AbstractModel):
         :param CosAppId: Cos 应用 ID。
         :type CosAppId: int
         :param CosBucket: Cos Bucket名称。
+注：CosBucket参数值不能包含-[appid] 部分。
         :type CosBucket: str
         :param CosRegion: Cos地区。
         :type CosRegion: str
@@ -6228,6 +6229,7 @@ class ModifyLiveSnapshotTemplateRequest(AbstractModel):
         :param CosAppId: Cos 应用 ID。
         :type CosAppId: int
         :param CosBucket: Cos Bucket名称。
+注：CosBucket参数值不能包含-[appid] 部分。
         :type CosBucket: str
         :param CosRegion: Cos 地域。
         :type CosRegion: str

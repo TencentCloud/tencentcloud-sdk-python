@@ -2616,6 +2616,12 @@ class DeployContainerGroupRequest(AbstractModel):
         :type MaxSurge: str
         :param MaxUnavailable: kubernetes滚动更新策略的MaxUnavailable参数
         :type MaxUnavailable: str
+        :param HealthCheckSettings: 健康检查配置信息，若不指定该参数，则默认不设置健康检查。
+        :type HealthCheckSettings: :class:`tencentcloud.tsf.v20180326.models.HealthCheckSettings`
+        :param Envs: 部署组应用运行的环境变量。若不指定该参数，则默认不设置额外的环境变量。
+        :type Envs: list of Env
+        :param ServiceSetting: 容器部署组的网络设置。
+        :type ServiceSetting: :class:`tencentcloud.tsf.v20180326.models.ServiceSetting`
         """
         self.GroupId = None
         self.Server = None
@@ -2641,6 +2647,9 @@ class DeployContainerGroupRequest(AbstractModel):
         self.IstioMemLimit = None
         self.MaxSurge = None
         self.MaxUnavailable = None
+        self.HealthCheckSettings = None
+        self.Envs = None
+        self.ServiceSetting = None
 
 
     def _deserialize(self, params):
@@ -2668,6 +2677,18 @@ class DeployContainerGroupRequest(AbstractModel):
         self.IstioMemLimit = params.get("IstioMemLimit")
         self.MaxSurge = params.get("MaxSurge")
         self.MaxUnavailable = params.get("MaxUnavailable")
+        if params.get("HealthCheckSettings") is not None:
+            self.HealthCheckSettings = HealthCheckSettings()
+            self.HealthCheckSettings._deserialize(params.get("HealthCheckSettings"))
+        if params.get("Envs") is not None:
+            self.Envs = []
+            for item in params.get("Envs"):
+                obj = Env()
+                obj._deserialize(item)
+                self.Envs.append(obj)
+        if params.get("ServiceSetting") is not None:
+            self.ServiceSetting = ServiceSetting()
+            self.ServiceSetting._deserialize(params.get("ServiceSetting"))
 
 
 class DeployContainerGroupResponse(AbstractModel):
@@ -2706,16 +2727,20 @@ class DeployGroupRequest(AbstractModel):
         :type PkgId: str
         :param StartupParameters: 部署组启动参数
         :type StartupParameters: str
+        :param DeployDesc: 部署应用描述信息
+        :type DeployDesc: str
         """
         self.GroupId = None
         self.PkgId = None
         self.StartupParameters = None
+        self.DeployDesc = None
 
 
     def _deserialize(self, params):
         self.GroupId = params.get("GroupId")
         self.PkgId = params.get("PkgId")
         self.StartupParameters = params.get("StartupParameters")
+        self.DeployDesc = params.get("DeployDesc")
 
 
 class DeployGroupResponse(AbstractModel):
@@ -5185,6 +5210,96 @@ class GroupPodResult(AbstractModel):
                 self.Content.append(obj)
 
 
+class HealthCheckSetting(AbstractModel):
+    """健康检查配置信息，若不指定该参数，则默认不设置健康检查。
+
+    """
+
+    def __init__(self):
+        """
+        :param ActionType: 健康检查方法。HTTP：通过 HTTP 接口检查；CMD：通过执行命令检查；TCP：通过建立 TCP 连接检查。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActionType: str
+        :param InitialDelaySeconds: 容器延时启动健康检查的时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InitialDelaySeconds: int
+        :param TimeoutSeconds: 每次健康检查响应的最大超时时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeoutSeconds: int
+        :param PeriodSeconds: 进行健康检查的时间间隔。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PeriodSeconds: int
+        :param SuccessThreshold: 表示后端容器从失败到成功的连续健康检查成功次数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuccessThreshold: int
+        :param FailureThreshold: 表示后端容器从成功到失败的连续健康检查成功次数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailureThreshold: int
+        :param Scheme: HTTP 健康检查方法使用的检查协议。支持HTTP、HTTPS。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Scheme: str
+        :param Port: 健康检查端口，范围 1~65535 。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param Path: HTTP 健康检查接口的请求路径。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Path: str
+        :param Command: 执行命令检查方式，执行的命令。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Command: list of str
+        """
+        self.ActionType = None
+        self.InitialDelaySeconds = None
+        self.TimeoutSeconds = None
+        self.PeriodSeconds = None
+        self.SuccessThreshold = None
+        self.FailureThreshold = None
+        self.Scheme = None
+        self.Port = None
+        self.Path = None
+        self.Command = None
+
+
+    def _deserialize(self, params):
+        self.ActionType = params.get("ActionType")
+        self.InitialDelaySeconds = params.get("InitialDelaySeconds")
+        self.TimeoutSeconds = params.get("TimeoutSeconds")
+        self.PeriodSeconds = params.get("PeriodSeconds")
+        self.SuccessThreshold = params.get("SuccessThreshold")
+        self.FailureThreshold = params.get("FailureThreshold")
+        self.Scheme = params.get("Scheme")
+        self.Port = params.get("Port")
+        self.Path = params.get("Path")
+        self.Command = params.get("Command")
+
+
+class HealthCheckSettings(AbstractModel):
+    """健康检查参数
+
+    """
+
+    def __init__(self):
+        """
+        :param LivenessProbe: 存活健康检查
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LivenessProbe: :class:`tencentcloud.tsf.v20180326.models.HealthCheckSetting`
+        :param ReadinessProbe: 就绪健康检查
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReadinessProbe: :class:`tencentcloud.tsf.v20180326.models.HealthCheckSetting`
+        """
+        self.LivenessProbe = None
+        self.ReadinessProbe = None
+
+
+    def _deserialize(self, params):
+        if params.get("LivenessProbe") is not None:
+            self.LivenessProbe = HealthCheckSetting()
+            self.LivenessProbe._deserialize(params.get("LivenessProbe"))
+        if params.get("ReadinessProbe") is not None:
+            self.ReadinessProbe = HealthCheckSetting()
+            self.ReadinessProbe._deserialize(params.get("ReadinessProbe"))
+
+
 class ImageTag(AbstractModel):
     """列表信息
 
@@ -7099,6 +7214,36 @@ class ServerlessGroupPage(AbstractModel):
                 self.Content.append(obj)
 
 
+class ServiceSetting(AbstractModel):
+    """容器网络设置。
+
+    """
+
+    def __init__(self):
+        """
+        :param AccessType: 0:公网 1:集群内访问 2：NodePort
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessType: int
+        :param ProtocolPorts: 容器端口映射
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProtocolPorts: :class:`tencentcloud.tsf.v20180326.models.ProtocolPort`
+        :param SubnetId: 子网ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
+        """
+        self.AccessType = None
+        self.ProtocolPorts = None
+        self.SubnetId = None
+
+
+    def _deserialize(self, params):
+        self.AccessType = params.get("AccessType")
+        if params.get("ProtocolPorts") is not None:
+            self.ProtocolPorts = ProtocolPort()
+            self.ProtocolPorts._deserialize(params.get("ProtocolPorts"))
+        self.SubnetId = params.get("SubnetId")
+
+
 class ShrinkGroupRequest(AbstractModel):
     """ShrinkGroup请求参数结构体
 
@@ -7991,6 +8136,9 @@ class VmGroup(AbstractModel):
         :param UpdatedTime: 部署组更新时间戳
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedTime: int
+        :param DeployDesc: 部署应用描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeployDesc: str
         """
         self.GroupId = None
         self.GroupName = None
@@ -8015,6 +8163,7 @@ class VmGroup(AbstractModel):
         self.ApplicationType = None
         self.GroupResourceType = None
         self.UpdatedTime = None
+        self.DeployDesc = None
 
 
     def _deserialize(self, params):
@@ -8041,6 +8190,7 @@ class VmGroup(AbstractModel):
         self.ApplicationType = params.get("ApplicationType")
         self.GroupResourceType = params.get("GroupResourceType")
         self.UpdatedTime = params.get("UpdatedTime")
+        self.DeployDesc = params.get("DeployDesc")
 
 
 class VmGroupSimple(AbstractModel):
@@ -8098,6 +8248,9 @@ class VmGroupSimple(AbstractModel):
         :param UpdatedTime: 部署组更新时间戳
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedTime: int
+        :param DeployDesc: 部署应用描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeployDesc: str
         """
         self.GroupId = None
         self.GroupName = None
@@ -8115,6 +8268,7 @@ class VmGroupSimple(AbstractModel):
         self.MicroserviceType = None
         self.GroupResourceType = None
         self.UpdatedTime = None
+        self.DeployDesc = None
 
 
     def _deserialize(self, params):
@@ -8134,3 +8288,4 @@ class VmGroupSimple(AbstractModel):
         self.MicroserviceType = params.get("MicroserviceType")
         self.GroupResourceType = params.get("GroupResourceType")
         self.UpdatedTime = params.get("UpdatedTime")
+        self.DeployDesc = params.get("DeployDesc")

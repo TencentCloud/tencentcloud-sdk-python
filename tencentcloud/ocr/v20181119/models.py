@@ -452,14 +452,20 @@ class CarInvoiceInfo(AbstractModel):
         :type Name: str
         :param Value: 识别出的字段名称对应的值，也就是字段name对应的字符串结果。
         :type Value: str
+        :param Rect: 文本行在旋转纠正之后的图像中的像素坐标。
+        :type Rect: :class:`tencentcloud.ocr.v20181119.models.Rect`
         """
         self.Name = None
         self.Value = None
+        self.Rect = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Value = params.get("Value")
+        if params.get("Rect") is not None:
+            self.Rect = Rect()
+            self.Rect._deserialize(params.get("Rect"))
 
 
 class CarInvoiceOCRRequest(AbstractModel):
@@ -3788,6 +3794,70 @@ class RideHailingDriverLicenseOCRResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RideHailingTransportLicenseOCRRequest(AbstractModel):
+    """RideHailingTransportLicenseOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。
+建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+        :type ImageUrl: str
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+
+
+class RideHailingTransportLicenseOCRResponse(AbstractModel):
+    """RideHailingTransportLicenseOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param OperationLicenseNumber: 交运管许可字号。
+        :type OperationLicenseNumber: str
+        :param VehicleOwner: 车辆所有人，对应网约车运输证字段：车辆所有人/车主名称/业户名称。
+        :type VehicleOwner: str
+        :param VehicleNumber: 车牌号码，对应网约车运输证字段：车牌号码/车辆号牌。
+        :type VehicleNumber: str
+        :param StartDate: 有效起始日期。
+        :type StartDate: str
+        :param EndDate: 有效期截止时间，对应网约车运输证字段：有效期至/营运期限止。
+        :type EndDate: str
+        :param ReleaseDate: 初始发证日期，对应网约车运输证字段：初始领证日期/发证日期。
+        :type ReleaseDate: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.OperationLicenseNumber = None
+        self.VehicleOwner = None
+        self.VehicleNumber = None
+        self.StartDate = None
+        self.EndDate = None
+        self.ReleaseDate = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.OperationLicenseNumber = params.get("OperationLicenseNumber")
+        self.VehicleOwner = params.get("VehicleOwner")
+        self.VehicleNumber = params.get("VehicleNumber")
+        self.StartDate = params.get("StartDate")
+        self.EndDate = params.get("EndDate")
+        self.ReleaseDate = params.get("ReleaseDate")
+        self.RequestId = params.get("RequestId")
+
+
 class SealOCRRequest(AbstractModel):
     """SealOCR请求参数结构体
 
@@ -4833,6 +4903,127 @@ class TrainTicketOCRResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class VatInvoice(AbstractModel):
+    """增值税发票信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Code: 发票代码
+        :type Code: str
+        :param Number: 发票号码
+        :type Number: str
+        :param Date: 开票日期
+        :type Date: str
+        :param BuyerName: 购方抬头
+        :type BuyerName: str
+        :param BuyerTaxCode: 购方税号
+        :type BuyerTaxCode: str
+        :param BuyerAddressPhone: 购方地址电话
+        :type BuyerAddressPhone: str
+        :param BuyerBankAccount: 购方银行账号
+        :type BuyerBankAccount: str
+        :param SellerName: 销方名称
+        :type SellerName: str
+        :param SellerTaxCode: 销方税号
+        :type SellerTaxCode: str
+        :param SellerAddressPhone: 销方地址电话
+        :type SellerAddressPhone: str
+        :param SellerBankAccount: 销方银行账号
+        :type SellerBankAccount: str
+        :param Remark: 备注
+        :type Remark: str
+        :param MachineNo: 机器编码
+        :type MachineNo: str
+        :param Type: 发票类型
+01：专用发票 
+02：货运发票
+03：机动车发票 
+04：普通发票 
+10：电子发票 
+11：卷式发票 
+14：通行费发票 
+15：二手车发票
+        :type Type: str
+        :param CheckCode: 检验码
+        :type CheckCode: str
+        :param IsAbandoned: 是否作废（红冲）是否作废（红冲）
+Y: 已作废 N：未作废 H：红冲
+        :type IsAbandoned: str
+        :param HasSellerList: 是否有销货清单 
+Y: 有清单 N：无清单 
+卷票无
+        :type HasSellerList: str
+        :param SellerListTitle: 销货清单标题
+        :type SellerListTitle: str
+        :param SellerListTax: 销货清单税额
+        :type SellerListTax: str
+        :param AmountWithoutTax: 不含税金额
+        :type AmountWithoutTax: str
+        :param TaxAmount: 税额
+        :type TaxAmount: str
+        :param AmountWithTax: 含税金额
+        :type AmountWithTax: str
+        :param Items: 项目明细
+        :type Items: list of VatInvoiceItem
+        """
+        self.Code = None
+        self.Number = None
+        self.Date = None
+        self.BuyerName = None
+        self.BuyerTaxCode = None
+        self.BuyerAddressPhone = None
+        self.BuyerBankAccount = None
+        self.SellerName = None
+        self.SellerTaxCode = None
+        self.SellerAddressPhone = None
+        self.SellerBankAccount = None
+        self.Remark = None
+        self.MachineNo = None
+        self.Type = None
+        self.CheckCode = None
+        self.IsAbandoned = None
+        self.HasSellerList = None
+        self.SellerListTitle = None
+        self.SellerListTax = None
+        self.AmountWithoutTax = None
+        self.TaxAmount = None
+        self.AmountWithTax = None
+        self.Items = None
+
+
+    def _deserialize(self, params):
+        self.Code = params.get("Code")
+        self.Number = params.get("Number")
+        self.Date = params.get("Date")
+        self.BuyerName = params.get("BuyerName")
+        self.BuyerTaxCode = params.get("BuyerTaxCode")
+        self.BuyerAddressPhone = params.get("BuyerAddressPhone")
+        self.BuyerBankAccount = params.get("BuyerBankAccount")
+        self.SellerName = params.get("SellerName")
+        self.SellerTaxCode = params.get("SellerTaxCode")
+        self.SellerAddressPhone = params.get("SellerAddressPhone")
+        self.SellerBankAccount = params.get("SellerBankAccount")
+        self.Remark = params.get("Remark")
+        self.MachineNo = params.get("MachineNo")
+        self.Type = params.get("Type")
+        self.CheckCode = params.get("CheckCode")
+        self.IsAbandoned = params.get("IsAbandoned")
+        self.HasSellerList = params.get("HasSellerList")
+        self.SellerListTitle = params.get("SellerListTitle")
+        self.SellerListTax = params.get("SellerListTax")
+        self.AmountWithoutTax = params.get("AmountWithoutTax")
+        self.TaxAmount = params.get("TaxAmount")
+        self.AmountWithTax = params.get("AmountWithTax")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = VatInvoiceItem()
+                obj._deserialize(item)
+                self.Items.append(obj)
+
+
 class VatInvoiceItem(AbstractModel):
     """增值税发票项目明细
 
@@ -4942,6 +5133,63 @@ class VatInvoiceOCRResponse(AbstractModel):
                 obj = VatInvoiceItem()
                 obj._deserialize(item)
                 self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class VatInvoiceVerifyRequest(AbstractModel):
+    """VatInvoiceVerify请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InvoiceCode: 发票代码， 一张发票一天只能查询5次。
+        :type InvoiceCode: str
+        :param InvoiceNo: 发票号码（8位）。
+        :type InvoiceNo: str
+        :param InvoiceDate: 开票日期（不支持当天发票查询，只支持一年以内），如：2019-12-20。
+        :type InvoiceDate: str
+        :param Additional: 金额/发票校验码后6位（根据票种传递对应值，如果报参数错误，请仔细检查每个票种对应的值）
+增值税专用发票：开具金额（不含税）
+增值税普通发票、增值税电子普通发票（含通行费发票）、增值税普通发票（卷票）：校验码后6位
+机动车销售统一发票：不含税价
+货物运输业增值税专用发票：合计金额
+二手车销售统一发票：车价合计
+        :type Additional: str
+        """
+        self.InvoiceCode = None
+        self.InvoiceNo = None
+        self.InvoiceDate = None
+        self.Additional = None
+
+
+    def _deserialize(self, params):
+        self.InvoiceCode = params.get("InvoiceCode")
+        self.InvoiceNo = params.get("InvoiceNo")
+        self.InvoiceDate = params.get("InvoiceDate")
+        self.Additional = params.get("Additional")
+
+
+class VatInvoiceVerifyResponse(AbstractModel):
+    """VatInvoiceVerify返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Invoice: 增值税发票信息，详情请点击左侧链接。
+        :type Invoice: :class:`tencentcloud.ocr.v20181119.models.VatInvoice`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Invoice = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Invoice") is not None:
+            self.Invoice = VatInvoice()
+            self.Invoice._deserialize(params.get("Invoice"))
         self.RequestId = params.get("RequestId")
 
 

@@ -748,6 +748,52 @@ class DeleteImagePersonalResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteImageRequest(AbstractModel):
+    """DeleteImage请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param RepositoryName: 镜像仓库名称
+        :type RepositoryName: str
+        :param ImageVersion: 镜像版本
+        :type ImageVersion: str
+        :param NamespaceName: 命名空间名称
+        :type NamespaceName: str
+        """
+        self.RegistryId = None
+        self.RepositoryName = None
+        self.ImageVersion = None
+        self.NamespaceName = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.RepositoryName = params.get("RepositoryName")
+        self.ImageVersion = params.get("ImageVersion")
+        self.NamespaceName = params.get("NamespaceName")
+
+
+class DeleteImageResponse(AbstractModel):
+    """DeleteImage返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteInstanceTokenRequest(AbstractModel):
     """DeleteInstanceToken请求参数结构体
 

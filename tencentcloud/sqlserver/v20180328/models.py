@@ -330,6 +330,44 @@ class CompleteExpansionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CompleteMigrationRequest(AbstractModel):
+    """CompleteMigration请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MigrateId: 迁移任务ID
+        :type MigrateId: int
+        """
+        self.MigrateId = None
+
+
+    def _deserialize(self, params):
+        self.MigrateId = params.get("MigrateId")
+
+
+class CompleteMigrationResponse(AbstractModel):
+    """CompleteMigration返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: 完成迁移流程发起后，返回的流程id
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateAccountRequest(AbstractModel):
     """CreateAccount请求参数结构体
 
@@ -2069,6 +2107,56 @@ class DescribeMaintenanceSpanResponse(AbstractModel):
         self.Weekly = params.get("Weekly")
         self.StartTime = params.get("StartTime")
         self.Span = params.get("Span")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeMigrationDatabasesRequest(AbstractModel):
+    """DescribeMigrationDatabases请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 迁移源实例的ID，格式如：mssql-si2823jyl
+        :type InstanceId: str
+        :param UserName: 迁移源实例用户名
+        :type UserName: str
+        :param Password: 迁移源实例密码
+        :type Password: str
+        """
+        self.InstanceId = None
+        self.UserName = None
+        self.Password = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.UserName = params.get("UserName")
+        self.Password = params.get("Password")
+
+
+class DescribeMigrationDatabasesResponse(AbstractModel):
+    """DescribeMigrationDatabases返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Amount: 数据库数量
+        :type Amount: int
+        :param MigrateDBSet: 数据库名称数组
+        :type MigrateDBSet: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Amount = None
+        self.MigrateDBSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Amount = params.get("Amount")
+        self.MigrateDBSet = params.get("MigrateDBSet")
         self.RequestId = params.get("RequestId")
 
 
@@ -4026,6 +4114,57 @@ class PublishSubscribe(AbstractModel):
                 self.DatabaseTupleSet.append(obj)
 
 
+class QueryMigrationCheckProcessRequest(AbstractModel):
+    """QueryMigrationCheckProcess请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MigrateId: 迁移任务ID
+        :type MigrateId: int
+        """
+        self.MigrateId = None
+
+
+    def _deserialize(self, params):
+        self.MigrateId = params.get("MigrateId")
+
+
+class QueryMigrationCheckProcessResponse(AbstractModel):
+    """QueryMigrationCheckProcess返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalStep: 总步骤数量
+        :type TotalStep: int
+        :param CurrentStep: 当前步骤编号，从1开始
+        :type CurrentStep: int
+        :param StepDetails: 所有步骤详情
+        :type StepDetails: list of StepDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalStep = None
+        self.CurrentStep = None
+        self.StepDetails = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalStep = params.get("TotalStep")
+        self.CurrentStep = params.get("CurrentStep")
+        if params.get("StepDetails") is not None:
+            self.StepDetails = []
+            for item in params.get("StepDetails"):
+                obj = StepDetail()
+                obj._deserialize(item)
+                self.StepDetails.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class ReadOnlyGroup(AbstractModel):
     """只读组对象
 
@@ -4800,6 +4939,107 @@ class SpecInfo(AbstractModel):
         self.Pid = params.get("Pid")
         self.PostPid = params.get("PostPid")
         self.PayModeStatus = params.get("PayModeStatus")
+
+
+class StartMigrationCheckRequest(AbstractModel):
+    """StartMigrationCheck请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MigrateId: 迁移任务id
+        :type MigrateId: int
+        """
+        self.MigrateId = None
+
+
+    def _deserialize(self, params):
+        self.MigrateId = params.get("MigrateId")
+
+
+class StartMigrationCheckResponse(AbstractModel):
+    """StartMigrationCheck返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: 迁移检查流程发起后，返回的流程id
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class StepDetail(AbstractModel):
+    """进度步骤详情
+
+    """
+
+    def __init__(self):
+        """
+        :param Msg: 具体步骤返回信息
+        :type Msg: str
+        :param Status: 当前步骤状态，0成功，-2未开始
+        :type Status: int
+        :param Name: 步骤名称
+        :type Name: str
+        """
+        self.Msg = None
+        self.Status = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.Msg = params.get("Msg")
+        self.Status = params.get("Status")
+        self.Name = params.get("Name")
+
+
+class StopMigrationRequest(AbstractModel):
+    """StopMigration请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MigrateId: 迁移任务ID
+        :type MigrateId: int
+        """
+        self.MigrateId = None
+
+
+    def _deserialize(self, params):
+        self.MigrateId = params.get("MigrateId")
+
+
+class StopMigrationResponse(AbstractModel):
+    """StopMigration返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: 中止迁移流程发起后，返回的流程id
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
 
 
 class TerminateDBInstanceRequest(AbstractModel):

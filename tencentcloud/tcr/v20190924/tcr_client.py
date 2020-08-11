@@ -389,6 +389,34 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteImage(self, request):
+        """删除指定镜像
+
+        :param request: Request instance for DeleteImage.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteImageRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DeleteImageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteImage", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteImageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteImageLifecycleGlobalPersonal(self, request):
         """用于删除个人版全局镜像版本自动清理策略
 

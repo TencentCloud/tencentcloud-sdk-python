@@ -232,6 +232,7 @@ class CdnClient(AbstractClient):
 
     def DescribeCdnIp(self, request):
         """DescribeCdnIp 用于查询 CDN IP 归属。
+        （注意：此接口请求频率限制以 CDN 侧限制为准：200次/10分钟）
 
         :param request: Request instance for DescribeCdnIp.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeCdnIpRequest`
