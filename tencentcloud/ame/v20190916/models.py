@@ -309,6 +309,106 @@ class DescribeMusicResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribePackageItemsRequest(AbstractModel):
+    """DescribePackageItems请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param OrderId: 订单id
+        :type OrderId: str
+        :param Offset: 默认0
+        :type Offset: int
+        :param Length: 默认20
+        :type Length: int
+        """
+        self.OrderId = None
+        self.Offset = None
+        self.Length = None
+
+
+    def _deserialize(self, params):
+        self.OrderId = params.get("OrderId")
+        self.Offset = params.get("Offset")
+        self.Length = params.get("Length")
+
+
+class DescribePackageItemsResponse(AbstractModel):
+    """DescribePackageItems返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PackageItems: 歌曲信息数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PackageItems: list of PackageItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PackageItems = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("PackageItems") is not None:
+            self.PackageItems = []
+            for item in params.get("PackageItems"):
+                obj = PackageItem()
+                obj._deserialize(item)
+                self.PackageItems.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePackagesRequest(AbstractModel):
+    """DescribePackages请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: 默认0
+        :type Offset: int
+        :param Length: 默认20
+        :type Length: int
+        """
+        self.Offset = None
+        self.Length = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Length = params.get("Length")
+
+
+class DescribePackagesResponse(AbstractModel):
+    """DescribePackages返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Packages: 已购曲库包数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Packages: list of Package
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Packages = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Packages") is not None:
+            self.Packages = []
+            for item in params.get("Packages"):
+                obj = Package()
+                obj._deserialize(item)
+                self.Packages.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeStationsRequest(AbstractModel):
     """DescribeStations请求参数结构体
 
@@ -397,7 +497,7 @@ class ImagePath(AbstractModel):
 
 
 class Item(AbstractModel):
-    """Item
+    """歌曲信息
 
     """
 
@@ -414,11 +514,15 @@ class Item(AbstractModel):
         :param Artists: 多个歌手集合
 注意：此字段可能返回 null，表示取不到有效值。
         :type Artists: list of Artist
+        :param Status: 歌曲状态，1:添加进购物车；2:核销进曲库包
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
         """
         self.ItemID = None
         self.DataInfo = None
         self.Album = None
         self.Artists = None
+        self.Status = None
 
 
     def _deserialize(self, params):
@@ -435,6 +539,7 @@ class Item(AbstractModel):
                 obj = Artist()
                 obj._deserialize(item)
                 self.Artists.append(obj)
+        self.Status = params.get("Status")
 
 
 class Lyric(AbstractModel):
@@ -500,6 +605,109 @@ Unit :ms
         self.AuditionBegin = params.get("AuditionBegin")
         self.AuditionEnd = params.get("AuditionEnd")
         self.FullUrl = params.get("FullUrl")
+
+
+class Package(AbstractModel):
+    """曲库包信息
+
+    """
+
+    def __init__(self):
+        """
+        :param OrderId: 订单id
+        :type OrderId: str
+        :param Name: 曲库包名称
+        :type Name: str
+        :param AuthorizedArea: 授权地区-global: 全球  CN: 中国
+        :type AuthorizedArea: str
+        :param AuthorizedLimit: 授权次数
+        :type AuthorizedLimit: int
+        :param TermOfValidity: 套餐有效期，单位:天
+        :type TermOfValidity: int
+        :param Commercial: 0:不可商业化；1:可商业化
+        :type Commercial: int
+        :param PackagePrice: 套餐价格，单位：元
+        :type PackagePrice: float
+        :param EffectTime: 生效开始时间,格式yyyy-MM-dd HH:mm:ss
+        :type EffectTime: str
+        :param ExpireTime: 生效结束时间,格式yyyy-MM-dd HH:mm:ss
+        :type ExpireTime: str
+        :param UsedCount: 剩余授权次数
+        :type UsedCount: int
+        :param UseRanges: 曲库包用途信息
+        :type UseRanges: list of UseRange
+        """
+        self.OrderId = None
+        self.Name = None
+        self.AuthorizedArea = None
+        self.AuthorizedLimit = None
+        self.TermOfValidity = None
+        self.Commercial = None
+        self.PackagePrice = None
+        self.EffectTime = None
+        self.ExpireTime = None
+        self.UsedCount = None
+        self.UseRanges = None
+
+
+    def _deserialize(self, params):
+        self.OrderId = params.get("OrderId")
+        self.Name = params.get("Name")
+        self.AuthorizedArea = params.get("AuthorizedArea")
+        self.AuthorizedLimit = params.get("AuthorizedLimit")
+        self.TermOfValidity = params.get("TermOfValidity")
+        self.Commercial = params.get("Commercial")
+        self.PackagePrice = params.get("PackagePrice")
+        self.EffectTime = params.get("EffectTime")
+        self.ExpireTime = params.get("ExpireTime")
+        self.UsedCount = params.get("UsedCount")
+        if params.get("UseRanges") is not None:
+            self.UseRanges = []
+            for item in params.get("UseRanges"):
+                obj = UseRange()
+                obj._deserialize(item)
+                self.UseRanges.append(obj)
+
+
+class PackageItem(AbstractModel):
+    """曲库包歌曲信息
+
+    """
+
+    def __init__(self):
+        """
+        :param OrderId: 订单id
+        :type OrderId: str
+        :param TrackName: 歌曲名
+        :type TrackName: str
+        :param ItemID: 歌曲ID
+        :type ItemID: str
+        :param Img: 专辑图片
+        :type Img: str
+        :param ArtistName: 歌手名
+        :type ArtistName: str
+        :param Duration: 歌曲时长
+        :type Duration: str
+        :param AuthorizedArea: 授权区域，global: 全球 CN: 中国
+        :type AuthorizedArea: str
+        """
+        self.OrderId = None
+        self.TrackName = None
+        self.ItemID = None
+        self.Img = None
+        self.ArtistName = None
+        self.Duration = None
+        self.AuthorizedArea = None
+
+
+    def _deserialize(self, params):
+        self.OrderId = params.get("OrderId")
+        self.TrackName = params.get("TrackName")
+        self.ItemID = params.get("ItemID")
+        self.Img = params.get("Img")
+        self.ArtistName = params.get("ArtistName")
+        self.Duration = params.get("Duration")
+        self.AuthorizedArea = params.get("AuthorizedArea")
 
 
 class ReportDataRequest(AbstractModel):
@@ -588,3 +796,24 @@ class Station(AbstractModel):
                 obj = ImagePath()
                 obj._deserialize(item)
                 self.ImagePathMap.append(obj)
+
+
+class UseRange(AbstractModel):
+    """曲库包用途信息
+
+    """
+
+    def __init__(self):
+        """
+        :param UseRangeId: 用途id
+        :type UseRangeId: int
+        :param Name: 用途范围名称
+        :type Name: str
+        """
+        self.UseRangeId = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.UseRangeId = params.get("UseRangeId")
+        self.Name = params.get("Name")

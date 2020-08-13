@@ -826,6 +826,8 @@ class CreateListenerRequest(AbstractModel):
         :type SniSwitch: int
         :param TargetType: 后端目标类型，NODE表示绑定普通节点，TARGETGROUP表示绑定目标组。
         :type TargetType: str
+        :param SessionType: 会话保持类型。不传或传NORMAL表示默认会话保持类型。QUIC_CID 表示根据Quic Connection ID做会话保持。QUIC_CID只支持UDP协议。
+        :type SessionType: str
         """
         self.LoadBalancerId = None
         self.Ports = None
@@ -837,6 +839,7 @@ class CreateListenerRequest(AbstractModel):
         self.Scheduler = None
         self.SniSwitch = None
         self.TargetType = None
+        self.SessionType = None
 
 
     def _deserialize(self, params):
@@ -854,6 +857,7 @@ class CreateListenerRequest(AbstractModel):
         self.Scheduler = params.get("Scheduler")
         self.SniSwitch = params.get("SniSwitch")
         self.TargetType = params.get("TargetType")
+        self.SessionType = params.get("SessionType")
 
 
 class CreateListenerResponse(AbstractModel):
@@ -2916,6 +2920,12 @@ class Listener(AbstractModel):
         :param TargetGroup: 绑定的目标组基本信息；当监听器绑定目标组时，会返回该字段
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetGroup: :class:`tencentcloud.clb.v20180317.models.BasicTargetGroupInfo`
+        :param SessionType: 会话保持类型。NORMAL表示默认会话保持类型。QUIC_CID 表示根据Quic Connection ID做会话保持。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionType: str
+        :param KeepaliveEnable: 是否开启长连接（本参数仅对于HTTP/HTTPS监听器有意义）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeepaliveEnable: int
         """
         self.ListenerId = None
         self.Protocol = None
@@ -2931,6 +2941,8 @@ class Listener(AbstractModel):
         self.EndPort = None
         self.TargetType = None
         self.TargetGroup = None
+        self.SessionType = None
+        self.KeepaliveEnable = None
 
 
     def _deserialize(self, params):
@@ -2959,6 +2971,8 @@ class Listener(AbstractModel):
         if params.get("TargetGroup") is not None:
             self.TargetGroup = BasicTargetGroupInfo()
             self.TargetGroup._deserialize(params.get("TargetGroup"))
+        self.SessionType = params.get("SessionType")
+        self.KeepaliveEnable = params.get("KeepaliveEnable")
 
 
 class ListenerBackend(AbstractModel):

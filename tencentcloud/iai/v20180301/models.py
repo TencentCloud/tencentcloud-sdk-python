@@ -16,6 +16,86 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AnalyzeDenseLandmarksRequest(AbstractModel):
+    """AnalyzeDenseLandmarks请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Mode: 检测模式。0 为检测所有出现的人脸， 1 为检测面积最大的人脸。 
+默认为 0。 
+最多返回 5 张人脸的五官定位（人脸关键点）具体信息。
+        :type Mode: int
+        :param Image: 图片 base64 数据，base64 编码后大小不可超过5M。
+jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。  
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :type Image: str
+        :param Url: 图片的 Url 。对应图片 base64 编码后大小不可超过5M。  
+jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+Url、Image必须提供一个，如果都提供，只使用 Url。  
+图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。  
+非腾讯云存储的Url速度和稳定性可能受一定影响。  
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :type Url: str
+        :param FaceModelVersion: 人脸识别服务所用的算法模型版本。本接口仅支持 “3.0“ 输入。
+        :type FaceModelVersion: str
+        :param NeedRotateDetection: 是否开启图片旋转识别支持。0为不开启，1为开启。默认为0。本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
+        :type NeedRotateDetection: int
+        """
+        self.Mode = None
+        self.Image = None
+        self.Url = None
+        self.FaceModelVersion = None
+        self.NeedRotateDetection = None
+
+
+    def _deserialize(self, params):
+        self.Mode = params.get("Mode")
+        self.Image = params.get("Image")
+        self.Url = params.get("Url")
+        self.FaceModelVersion = params.get("FaceModelVersion")
+        self.NeedRotateDetection = params.get("NeedRotateDetection")
+
+
+class AnalyzeDenseLandmarksResponse(AbstractModel):
+    """AnalyzeDenseLandmarks返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageWidth: 请求的图片宽度。
+        :type ImageWidth: int
+        :param ImageHeight: 请求的图片高度。
+        :type ImageHeight: int
+        :param DenseFaceShapeSet: 稠密人脸关键点具体信息。
+        :type DenseFaceShapeSet: list of DenseFaceShape
+        :param FaceModelVersion: 人脸识别服务所用的算法模型版本。本接口仅支持 “3.0“ 输入。
+        :type FaceModelVersion: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ImageWidth = None
+        self.ImageHeight = None
+        self.DenseFaceShapeSet = None
+        self.FaceModelVersion = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ImageWidth = params.get("ImageWidth")
+        self.ImageHeight = params.get("ImageHeight")
+        if params.get("DenseFaceShapeSet") is not None:
+            self.DenseFaceShapeSet = []
+            for item in params.get("DenseFaceShapeSet"):
+                obj = DenseFaceShape()
+                obj._deserialize(item)
+                self.DenseFaceShapeSet.append(obj)
+        self.FaceModelVersion = params.get("FaceModelVersion")
+        self.RequestId = params.get("RequestId")
+
+
 class AnalyzeFaceRequest(AbstractModel):
     """AnalyzeFace请求参数结构体
 
@@ -92,6 +172,27 @@ class AnalyzeFaceResponse(AbstractModel):
                 self.FaceShapeSet.append(obj)
         self.FaceModelVersion = params.get("FaceModelVersion")
         self.RequestId = params.get("RequestId")
+
+
+class AttributeItem(AbstractModel):
+    """人脸属性信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 属性值
+        :type Type: int
+        :param Probability: Type识别概率值，【0,1】,代表判断正确的概率。
+        :type Probability: float
+        """
+        self.Type = None
+        self.Probability = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Probability = params.get("Probability")
 
 
 class Candidate(AbstractModel):
@@ -763,6 +864,252 @@ class DeletePersonResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DenseFaceShape(AbstractModel):
+    """稠密关键点详细信息
+
+    """
+
+    def __init__(self):
+        """
+        :param X: 人脸框左上角横坐标。
+        :type X: int
+        :param Y: 人脸框左上角纵坐标。
+        :type Y: int
+        :param Width: 人脸框宽度。
+        :type Width: int
+        :param Height: 人脸框高度。
+        :type Height: int
+        :param LeftEye: 描述左侧眼睛轮廓的 XX 点。
+        :type LeftEye: list of Point
+        :param RightEye: 描述右侧眼睛轮廓的 XX 点。
+        :type RightEye: list of Point
+        :param LeftEyeBrow: 描述左侧眉毛轮廓的 XX 点。
+        :type LeftEyeBrow: list of Point
+        :param RightEyeBrow: 描述右侧眉毛轮廓的 XX 点。
+        :type RightEyeBrow: list of Point
+        :param MouthOutside: 描述外嘴巴轮廓的 XX 点， 从左侧开始逆时针返回。
+        :type MouthOutside: list of Point
+        :param MouthInside: 描述内嘴巴轮廓的 XX 点，从左侧开始逆时针返回。
+        :type MouthInside: list of Point
+        :param Nose: 描述鼻子轮廓的 XX 点。
+        :type Nose: list of Point
+        :param LeftPupil: 左瞳孔轮廓的 XX 个点。
+        :type LeftPupil: list of Point
+        :param RightPupil: 右瞳孔轮廓的 XX 个点。
+        :type RightPupil: list of Point
+        :param CentralAxis: 中轴线轮廓的 XX 个点。
+        :type CentralAxis: list of Point
+        :param Chin: 下轮廓的 XX 个点。
+        :type Chin: list of Point
+        :param LeftEyeBags: 左眼袋的 XX 个点。
+        :type LeftEyeBags: list of Point
+        :param RightEyeBags: 右眼袋的 XX 个点。
+        :type RightEyeBags: list of Point
+        :param Forehead: 额头的 XX 个点。
+        :type Forehead: list of Point
+        """
+        self.X = None
+        self.Y = None
+        self.Width = None
+        self.Height = None
+        self.LeftEye = None
+        self.RightEye = None
+        self.LeftEyeBrow = None
+        self.RightEyeBrow = None
+        self.MouthOutside = None
+        self.MouthInside = None
+        self.Nose = None
+        self.LeftPupil = None
+        self.RightPupil = None
+        self.CentralAxis = None
+        self.Chin = None
+        self.LeftEyeBags = None
+        self.RightEyeBags = None
+        self.Forehead = None
+
+
+    def _deserialize(self, params):
+        self.X = params.get("X")
+        self.Y = params.get("Y")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        if params.get("LeftEye") is not None:
+            self.LeftEye = []
+            for item in params.get("LeftEye"):
+                obj = Point()
+                obj._deserialize(item)
+                self.LeftEye.append(obj)
+        if params.get("RightEye") is not None:
+            self.RightEye = []
+            for item in params.get("RightEye"):
+                obj = Point()
+                obj._deserialize(item)
+                self.RightEye.append(obj)
+        if params.get("LeftEyeBrow") is not None:
+            self.LeftEyeBrow = []
+            for item in params.get("LeftEyeBrow"):
+                obj = Point()
+                obj._deserialize(item)
+                self.LeftEyeBrow.append(obj)
+        if params.get("RightEyeBrow") is not None:
+            self.RightEyeBrow = []
+            for item in params.get("RightEyeBrow"):
+                obj = Point()
+                obj._deserialize(item)
+                self.RightEyeBrow.append(obj)
+        if params.get("MouthOutside") is not None:
+            self.MouthOutside = []
+            for item in params.get("MouthOutside"):
+                obj = Point()
+                obj._deserialize(item)
+                self.MouthOutside.append(obj)
+        if params.get("MouthInside") is not None:
+            self.MouthInside = []
+            for item in params.get("MouthInside"):
+                obj = Point()
+                obj._deserialize(item)
+                self.MouthInside.append(obj)
+        if params.get("Nose") is not None:
+            self.Nose = []
+            for item in params.get("Nose"):
+                obj = Point()
+                obj._deserialize(item)
+                self.Nose.append(obj)
+        if params.get("LeftPupil") is not None:
+            self.LeftPupil = []
+            for item in params.get("LeftPupil"):
+                obj = Point()
+                obj._deserialize(item)
+                self.LeftPupil.append(obj)
+        if params.get("RightPupil") is not None:
+            self.RightPupil = []
+            for item in params.get("RightPupil"):
+                obj = Point()
+                obj._deserialize(item)
+                self.RightPupil.append(obj)
+        if params.get("CentralAxis") is not None:
+            self.CentralAxis = []
+            for item in params.get("CentralAxis"):
+                obj = Point()
+                obj._deserialize(item)
+                self.CentralAxis.append(obj)
+        if params.get("Chin") is not None:
+            self.Chin = []
+            for item in params.get("Chin"):
+                obj = Point()
+                obj._deserialize(item)
+                self.Chin.append(obj)
+        if params.get("LeftEyeBags") is not None:
+            self.LeftEyeBags = []
+            for item in params.get("LeftEyeBags"):
+                obj = Point()
+                obj._deserialize(item)
+                self.LeftEyeBags.append(obj)
+        if params.get("RightEyeBags") is not None:
+            self.RightEyeBags = []
+            for item in params.get("RightEyeBags"):
+                obj = Point()
+                obj._deserialize(item)
+                self.RightEyeBags.append(obj)
+        if params.get("Forehead") is not None:
+            self.Forehead = []
+            for item in params.get("Forehead"):
+                obj = Point()
+                obj._deserialize(item)
+                self.Forehead.append(obj)
+
+
+class DetectFaceAttributesRequest(AbstractModel):
+    """DetectFaceAttributes请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MaxFaceNum: 最多处理的人脸数目。 
+默认值为1（仅检测图片中面积最大的那张人脸），最大值为120。 
+此参数用于控制处理待检测图片中的人脸个数，值越小，处理速度越快。
+        :type MaxFaceNum: int
+        :param Image: 图片 base64 数据，base64 编码后大小不可超过5M。 
+jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :type Image: str
+        :param Url: 图片的 Url 。 
+对应图片 base64 编码后大小不可超过5M。
+jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。 
+Url、Image必须提供一个，如果都提供，只使用 Url。 
+图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+非腾讯云存储的Url速度和稳定性可能受一定影响。 
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :type Url: str
+        :param FaceAttributesType: 是否返回年龄、性别、情绪等属性。 
+合法值为（大小写不敏感）：None、Age、Beauty、Emotion、Eye、Eyebrow 
+Gender、Hair、Hat、Headpose、Mask、Mouth、Moustache、Nose、Shape、Skin、Smile。 
+None为不需要返回。默认为 None。 
+需要将属性组成一个用逗号分隔的字符串，属性之间的顺序没有要求。 
+关于各属性的详细描述，参见下文出参。 
+最多返回面积最大的 5 张人脸属性信息，超过 5 张人脸（第 6 张及以后的人脸）的 AttributesInfo 不具备参考意义。
+        :type FaceAttributesType: str
+        :param NeedRotateDetection: 是否开启图片旋转识别支持。0为不开启，1为开启。默认为0。本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
+        :type NeedRotateDetection: int
+        :param FaceModelVersion: 人脸识别服务所用的算法模型版本。本接口仅支持“3.0”输入
+        :type FaceModelVersion: str
+        """
+        self.MaxFaceNum = None
+        self.Image = None
+        self.Url = None
+        self.FaceAttributesType = None
+        self.NeedRotateDetection = None
+        self.FaceModelVersion = None
+
+
+    def _deserialize(self, params):
+        self.MaxFaceNum = params.get("MaxFaceNum")
+        self.Image = params.get("Image")
+        self.Url = params.get("Url")
+        self.FaceAttributesType = params.get("FaceAttributesType")
+        self.NeedRotateDetection = params.get("NeedRotateDetection")
+        self.FaceModelVersion = params.get("FaceModelVersion")
+
+
+class DetectFaceAttributesResponse(AbstractModel):
+    """DetectFaceAttributes返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageWidth: 请求的图片宽度。
+        :type ImageWidth: int
+        :param ImageHeight: 请求的图片高度。
+        :type ImageHeight: int
+        :param FaceDetailInfos: 人脸信息列表。
+        :type FaceDetailInfos: list of FaceDetailInfo
+        :param FaceModelVersion: 人脸识别所用的算法模型版本。
+        :type FaceModelVersion: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ImageWidth = None
+        self.ImageHeight = None
+        self.FaceDetailInfos = None
+        self.FaceModelVersion = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ImageWidth = params.get("ImageWidth")
+        self.ImageHeight = params.get("ImageHeight")
+        if params.get("FaceDetailInfos") is not None:
+            self.FaceDetailInfos = []
+            for item in params.get("FaceDetailInfos"):
+                obj = FaceDetailInfo()
+                obj._deserialize(item)
+                self.FaceDetailInfos.append(obj)
+        self.FaceModelVersion = params.get("FaceModelVersion")
+        self.RequestId = params.get("RequestId")
+
+
 class DetectFaceRequest(AbstractModel):
     """DetectFace请求参数结构体
 
@@ -965,6 +1312,81 @@ class EstimateCheckSimilarPersonCostTimeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class Eye(AbstractModel):
+    """眼睛信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Glass: 识别是否佩戴眼镜。
+AttributeItem对应的Type为 —— 0：无眼镜，1：普通眼镜，2：墨镜
+        :type Glass: :class:`tencentcloud.iai.v20180301.models.AttributeItem`
+        :param EyeOpen: 识别眼睛的睁开、闭合状态。
+AttributeItem对应的Type为 —— 0：睁开，1：闭眼
+        :type EyeOpen: :class:`tencentcloud.iai.v20180301.models.AttributeItem`
+        :param EyelidType: 识别是否双眼皮。
+AttributeItem对应的Type为 —— 0：无，1：有。
+        :type EyelidType: :class:`tencentcloud.iai.v20180301.models.AttributeItem`
+        :param EyeSize: 眼睛大小。
+AttributeItem对应的Type为 —— 0：小眼睛，1：普通眼睛，2：大眼睛。
+        :type EyeSize: :class:`tencentcloud.iai.v20180301.models.AttributeItem`
+        """
+        self.Glass = None
+        self.EyeOpen = None
+        self.EyelidType = None
+        self.EyeSize = None
+
+
+    def _deserialize(self, params):
+        if params.get("Glass") is not None:
+            self.Glass = AttributeItem()
+            self.Glass._deserialize(params.get("Glass"))
+        if params.get("EyeOpen") is not None:
+            self.EyeOpen = AttributeItem()
+            self.EyeOpen._deserialize(params.get("EyeOpen"))
+        if params.get("EyelidType") is not None:
+            self.EyelidType = AttributeItem()
+            self.EyelidType._deserialize(params.get("EyelidType"))
+        if params.get("EyeSize") is not None:
+            self.EyeSize = AttributeItem()
+            self.EyeSize._deserialize(params.get("EyeSize"))
+
+
+class Eyebrow(AbstractModel):
+    """眉毛信息
+
+    """
+
+    def __init__(self):
+        """
+        :param EyebrowDensity: 眉毛浓密。
+AttributeItem对应的Type为 —— 0：淡眉，1：浓眉。
+        :type EyebrowDensity: :class:`tencentcloud.iai.v20180301.models.AttributeItem`
+        :param EyebrowCurve: 眉毛弯曲。
+AttributeItem对应的Type为 —— 0：不弯，1：弯眉。
+        :type EyebrowCurve: :class:`tencentcloud.iai.v20180301.models.AttributeItem`
+        :param EyebrowLength: 眉毛长短。
+AttributeItem对应的Type为 —— 0：短眉毛，1：长眉毛。
+        :type EyebrowLength: :class:`tencentcloud.iai.v20180301.models.AttributeItem`
+        """
+        self.EyebrowDensity = None
+        self.EyebrowCurve = None
+        self.EyebrowLength = None
+
+
+    def _deserialize(self, params):
+        if params.get("EyebrowDensity") is not None:
+            self.EyebrowDensity = AttributeItem()
+            self.EyebrowDensity._deserialize(params.get("EyebrowDensity"))
+        if params.get("EyebrowCurve") is not None:
+            self.EyebrowCurve = AttributeItem()
+            self.EyebrowCurve._deserialize(params.get("EyebrowCurve"))
+        if params.get("EyebrowLength") is not None:
+            self.EyebrowLength = AttributeItem()
+            self.EyebrowLength._deserialize(params.get("EyebrowLength"))
+
+
 class FaceAttributesInfo(AbstractModel):
     """人脸属性信息，包含性别( gender )、年龄( age )、表情( expression )、
     魅力( beauty )、眼镜( glass )、口罩（mask）、头发（hair）和姿态 (pitch，roll，yaw )。只有当 NeedFaceAttributes 设为 1 时才返回有效信息，最多返回面积最大的 5 张人脸属性信息，超过 5 张人脸（第 6 张及以后的人脸）的 FaceAttributesInfo 不具备参考意义。
@@ -1034,6 +1456,165 @@ class FaceAttributesInfo(AbstractModel):
             self.Hair = FaceHairAttributesInfo()
             self.Hair._deserialize(params.get("Hair"))
         self.EyeOpen = params.get("EyeOpen")
+
+
+class FaceDetailAttributesInfo(AbstractModel):
+    """人脸属性信息，根据 FaceAttributesType 输入的类型，返回年龄（Age）、颜值（Beauty）
+    情绪（Emotion）、眼睛信息（Eye）、眉毛（Eyebrow）、性别（Gender）
+    头发（Hair）、帽子（Hat）、姿态（Headpose）、口罩（Mask）、嘴巴（Mouse）、胡子（Moustache）
+    鼻子（Nose）、脸型（Shape）、肤色（Skin）、微笑（Smile）等人脸属性信息。
+    若 FaceAttributesType 没有输入相关类型，则FaceDetaiAttributesInfo返回的细项不具备参考意义。
+
+    """
+
+    def __init__(self):
+        """
+        :param Age: 年龄 [0,65]，其中65代表“65岁及以上”。 
+FaceAttributesType 不为含Age 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+        :type Age: int
+        :param Beauty: 美丑打分[0,100]。 
+FaceAttributesType 不含 Beauty 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+        :type Beauty: int
+        :param Emotion: 情绪，可识别自然、高兴、惊讶、生气、悲伤、厌恶、害怕。 
+AttributeItem对应的Type为 —— 0：自然，1：高兴，2：惊讶，3：生气，4：悲伤，5：厌恶，6：害怕
+FaceAttributesType 不含Emotion 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+        :type Emotion: :class:`tencentcloud.iai.v20180301.models.AttributeItem`
+        :param Eye: 眼睛相关信息，可识别是否戴眼镜、是否闭眼、是否双眼皮和眼睛大小。 
+FaceAttributesType 不含Eye 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+        :type Eye: :class:`tencentcloud.iai.v20180301.models.Eye`
+        :param Eyebrow: 眉毛相关信息，可识别眉毛浓密、弯曲、长短信息。 
+FaceAttributesType 不含Eyebrow 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+        :type Eyebrow: :class:`tencentcloud.iai.v20180301.models.Eyebrow`
+        :param Gender: 性别信息。 
+AttributeItem对应的Type为 —— 	0：男性，1：女性。
+FaceAttributesType 不含Gender 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+        :type Gender: :class:`tencentcloud.iai.v20180301.models.AttributeItem`
+        :param Hair: 头发信息，包含头发长度、有无刘海、头发颜色。 
+FaceAttributesType 不含Hair 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+        :type Hair: :class:`tencentcloud.iai.v20180301.models.Hair`
+        :param Hat: 帽子信息，可识别是否佩戴帽子、帽子款式、帽子颜色。 
+FaceAttributesType 不含Hat 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+        :type Hat: :class:`tencentcloud.iai.v20180301.models.Hat`
+        :param HeadPose: 姿态信息，包含人脸的上下偏移、左右偏移、平面旋转信息。 
+FaceAttributesType 不含Headpose 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+        :type HeadPose: :class:`tencentcloud.iai.v20180301.models.HeadPose`
+        :param Mask: 口罩佩戴信息。 
+AttributeItem对应的Type为 —— 0: 无口罩， 1: 有口罩不遮脸，2: 有口罩遮下巴，3: 有口罩遮嘴，4: 正确佩戴口罩。
+FaceAttributesType 不含Mask 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+        :type Mask: :class:`tencentcloud.iai.v20180301.models.AttributeItem`
+        :param Mouth: 嘴巴信息，可识别是否张嘴、嘴唇厚度。 
+FaceAttributesType 不含 Mouth 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+        :type Mouth: :class:`tencentcloud.iai.v20180301.models.Mouth`
+        :param Moustache: 胡子信息。
+AttributeItem对应的Type为 —— 0：无胡子，1：有胡子。 
+FaceAttributesType 不含 Moustache 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+        :type Moustache: :class:`tencentcloud.iai.v20180301.models.AttributeItem`
+        :param Nose: 鼻子信息。 
+AttributeItem对应的Type为 —— 0：朝天鼻，1：鹰钩鼻，2：普通，3：圆鼻头
+FaceAttributesType 不含 Nose 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+        :type Nose: :class:`tencentcloud.iai.v20180301.models.AttributeItem`
+        :param Shape: 脸型信息。 
+AttributeItem对应的Type为 —— 0：方脸，1：三角脸，2：鹅蛋脸，3：心形脸，4：圆脸。
+FaceAttributesType 不含 Shape 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+        :type Shape: :class:`tencentcloud.iai.v20180301.models.AttributeItem`
+        :param Skin: 肤色信息。 
+AttributeItem对应的Type为 —— 0：黄色皮肤，1：棕色皮肤，2：黑色皮肤，3：白色皮肤。
+FaceAttributesType 不含 Skin 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+        :type Skin: :class:`tencentcloud.iai.v20180301.models.AttributeItem`
+        :param Smile: 微笑程度，[0,100]。 
+FaceAttributesType 不含 Smile 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+        :type Smile: int
+        """
+        self.Age = None
+        self.Beauty = None
+        self.Emotion = None
+        self.Eye = None
+        self.Eyebrow = None
+        self.Gender = None
+        self.Hair = None
+        self.Hat = None
+        self.HeadPose = None
+        self.Mask = None
+        self.Mouth = None
+        self.Moustache = None
+        self.Nose = None
+        self.Shape = None
+        self.Skin = None
+        self.Smile = None
+
+
+    def _deserialize(self, params):
+        self.Age = params.get("Age")
+        self.Beauty = params.get("Beauty")
+        if params.get("Emotion") is not None:
+            self.Emotion = AttributeItem()
+            self.Emotion._deserialize(params.get("Emotion"))
+        if params.get("Eye") is not None:
+            self.Eye = Eye()
+            self.Eye._deserialize(params.get("Eye"))
+        if params.get("Eyebrow") is not None:
+            self.Eyebrow = Eyebrow()
+            self.Eyebrow._deserialize(params.get("Eyebrow"))
+        if params.get("Gender") is not None:
+            self.Gender = AttributeItem()
+            self.Gender._deserialize(params.get("Gender"))
+        if params.get("Hair") is not None:
+            self.Hair = Hair()
+            self.Hair._deserialize(params.get("Hair"))
+        if params.get("Hat") is not None:
+            self.Hat = Hat()
+            self.Hat._deserialize(params.get("Hat"))
+        if params.get("HeadPose") is not None:
+            self.HeadPose = HeadPose()
+            self.HeadPose._deserialize(params.get("HeadPose"))
+        if params.get("Mask") is not None:
+            self.Mask = AttributeItem()
+            self.Mask._deserialize(params.get("Mask"))
+        if params.get("Mouth") is not None:
+            self.Mouth = Mouth()
+            self.Mouth._deserialize(params.get("Mouth"))
+        if params.get("Moustache") is not None:
+            self.Moustache = AttributeItem()
+            self.Moustache._deserialize(params.get("Moustache"))
+        if params.get("Nose") is not None:
+            self.Nose = AttributeItem()
+            self.Nose._deserialize(params.get("Nose"))
+        if params.get("Shape") is not None:
+            self.Shape = AttributeItem()
+            self.Shape._deserialize(params.get("Shape"))
+        if params.get("Skin") is not None:
+            self.Skin = AttributeItem()
+            self.Skin._deserialize(params.get("Skin"))
+        self.Smile = params.get("Smile")
+
+
+class FaceDetailInfo(AbstractModel):
+    """人脸信息列表。
+
+    """
+
+    def __init__(self):
+        """
+        :param FaceRect: 检测出的人脸框位置。
+        :type FaceRect: :class:`tencentcloud.iai.v20180301.models.FaceRect`
+        :param FaceDetailAttributesInfo: 人脸属性信息，根据 FaceAttributesType 输入的类型，返回年龄（Age）、颜值（Beauty） 
+情绪（Emotion）、眼睛信息（Eye）、眉毛（Eyebrow）、性别（Gender） 
+头发（Hair）、帽子（Hat）、姿态（Headpose）、口罩（Mask）、嘴巴（Mouse）、胡子（Moustache） 
+鼻子（Nose）、脸型（Shape）、肤色（Skin）、微笑（Smile）等人脸属性信息。  
+若 FaceAttributesType 没有输入相关类型，则FaceDetaiAttributesInfo返回的细项不具备参考意义。
+        :type FaceDetailAttributesInfo: :class:`tencentcloud.iai.v20180301.models.FaceDetailAttributesInfo`
+        """
+        self.FaceRect = None
+        self.FaceDetailAttributesInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("FaceRect") is not None:
+            self.FaceRect = FaceRect()
+            self.FaceRect._deserialize(params.get("FaceRect"))
+        if params.get("FaceDetailAttributesInfo") is not None:
+            self.FaceDetailAttributesInfo = FaceDetailAttributesInfo()
+            self.FaceDetailAttributesInfo._deserialize(params.get("FaceDetailAttributesInfo"))
 
 
 class FaceHairAttributesInfo(AbstractModel):
@@ -1960,6 +2541,92 @@ Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00
         self.CreationTimestamp = params.get("CreationTimestamp")
 
 
+class Hair(AbstractModel):
+    """头发信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Length: 头发长度信息。
+AttributeItem对应的Type为 —— 0：光头，1：短发，2：中发，3：长发，4：绑发。
+        :type Length: :class:`tencentcloud.iai.v20180301.models.AttributeItem`
+        :param Bang: 刘海信息。
+AttributeItem对应的Type为 —— 0：无刘海，1：有刘海。
+        :type Bang: :class:`tencentcloud.iai.v20180301.models.AttributeItem`
+        :param Color: 头发颜色信息。
+AttributeItem对应的Type为 —— 0：黑色，1：金色，2：棕色，3：灰白色。
+        :type Color: :class:`tencentcloud.iai.v20180301.models.AttributeItem`
+        """
+        self.Length = None
+        self.Bang = None
+        self.Color = None
+
+
+    def _deserialize(self, params):
+        if params.get("Length") is not None:
+            self.Length = AttributeItem()
+            self.Length._deserialize(params.get("Length"))
+        if params.get("Bang") is not None:
+            self.Bang = AttributeItem()
+            self.Bang._deserialize(params.get("Bang"))
+        if params.get("Color") is not None:
+            self.Color = AttributeItem()
+            self.Color._deserialize(params.get("Color"))
+
+
+class Hat(AbstractModel):
+    """帽子信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Style: 帽子佩戴状态信息。
+AttributeItem对应的Type为 —— 0：不戴帽子，1：普通帽子，2：头盔，3：保安帽。
+        :type Style: :class:`tencentcloud.iai.v20180301.models.AttributeItem`
+        :param Color: 帽子颜色。
+AttributeItem对应的Type为 —— 0：不戴帽子，1：红色系，2：黄色系，3：蓝色系，4：黑色系，5：灰白色系，6：混色系子。
+        :type Color: :class:`tencentcloud.iai.v20180301.models.AttributeItem`
+        """
+        self.Style = None
+        self.Color = None
+
+
+    def _deserialize(self, params):
+        if params.get("Style") is not None:
+            self.Style = AttributeItem()
+            self.Style._deserialize(params.get("Style"))
+        if params.get("Color") is not None:
+            self.Color = AttributeItem()
+            self.Color._deserialize(params.get("Color"))
+
+
+class HeadPose(AbstractModel):
+    """姿态信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Pitch: 上下偏移[-30,30]。
+        :type Pitch: int
+        :param Yaw: 左右偏移[-30,30]。
+        :type Yaw: int
+        :param Roll: 平面旋转[-180,180]。
+        :type Roll: int
+        """
+        self.Pitch = None
+        self.Yaw = None
+        self.Roll = None
+
+
+    def _deserialize(self, params):
+        self.Pitch = params.get("Pitch")
+        self.Yaw = params.get("Yaw")
+        self.Roll = params.get("Roll")
+
+
 class JobIdInfo(AbstractModel):
     """查重任务信息
 
@@ -2126,6 +2793,26 @@ class ModifyPersonGroupInfoResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class Mouth(AbstractModel):
+    """嘴巴信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param MouthOpen: 是否张嘴信息。
+AttributeItem对应的Type为 —— 0：不张嘴，1：张嘴。
+        :type MouthOpen: :class:`tencentcloud.iai.v20180301.models.AttributeItem`
+        """
+        self.MouthOpen = None
+
+
+    def _deserialize(self, params):
+        if params.get("MouthOpen") is not None:
+            self.MouthOpen = AttributeItem()
+            self.MouthOpen._deserialize(params.get("MouthOpen"))
 
 
 class PersonExDescriptionInfo(AbstractModel):

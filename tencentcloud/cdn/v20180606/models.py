@@ -1769,6 +1769,91 @@ class DescribeCertDomainsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDistrictIspDataRequest(AbstractModel):
+    """DescribeDistrictIspData请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Domains: 域名列表，最多支持20个域名
+        :type Domains: list of str
+        :param StartTime: 查询起始时间，如：2018-09-04 10:40:00，返回结果大于等于指定时间
+支持近 60 天内的数据查询，每次查询时间区间为 3 小时
+        :type StartTime: str
+        :param EndTime: 查询结束时间，如：2018-09-04 10:40:00，返回结果小于等于指定时间
+结束时间与起始时间区间最大为 3 小时
+        :type EndTime: str
+        :param Metric: 指定查询指标，支持:
+bandwidth：带宽，单位为 bps
+request：请求数，单位为 次
+        :type Metric: str
+        :param Districts: 指定省份查询，不填充表示查询所有省份
+省份、国家/地区编码可以查看 [省份编码映射](https://cloud.tencent.com/document/product/228/6316#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8)
+        :type Districts: list of int
+        :param Isps: 指定运营商查询，不填充表示查询所有运营商
+运营商编码可以查看 [运营商编码映射](https://cloud.tencent.com/document/product/228/6316#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8)
+        :type Isps: list of int
+        :param Protocol: 指定协议查询，不填充表示查询所有协议
+all：所有协议
+http：指定查询 HTTP 对应指标
+https：指定查询 HTTPS 对应指标
+        :type Protocol: str
+        :param IpProtocol: 指定IP协议查询，不填充表示查询所有协议
+all：所有协议
+ipv4：指定查询 ipv4 对应指标
+ipv6：指定查询 ipv6 对应指标
+指定IP协议查询时，不可同时指定省份、运营商查询
+        :type IpProtocol: str
+        """
+        self.Domains = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Metric = None
+        self.Districts = None
+        self.Isps = None
+        self.Protocol = None
+        self.IpProtocol = None
+
+
+    def _deserialize(self, params):
+        self.Domains = params.get("Domains")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Metric = params.get("Metric")
+        self.Districts = params.get("Districts")
+        self.Isps = params.get("Isps")
+        self.Protocol = params.get("Protocol")
+        self.IpProtocol = params.get("IpProtocol")
+
+
+class DescribeDistrictIspDataResponse(AbstractModel):
+    """DescribeDistrictIspData返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 地区运营商数据明细
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of DistrictIspInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = DistrictIspInfo()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDomainsConfigRequest(AbstractModel):
     """DescribeDomainsConfig请求参数结构体
 
@@ -3144,6 +3229,67 @@ class DisableClsLogTopicResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class DistrictIspInfo(AbstractModel):
+    """地区运营商明细数据
+
+    """
+
+    def __init__(self):
+        """
+        :param Domain: 域名
+        :type Domain: str
+        :param Protocol: 协议类型
+        :type Protocol: str
+        :param IpProtocol: IP协议类型
+        :type IpProtocol: str
+        :param StartTime: 起始时间
+        :type StartTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
+        :param Interval: 时间间隔，单位为分钟
+        :type Interval: int
+        :param Metric: 指标名称
+        :type Metric: str
+        :param District: 地区ID
+        :type District: int
+        :param Isp: 运营商ID
+        :type Isp: int
+        :param DataPoints: 指标数据点
+        :type DataPoints: list of int non-negative
+        :param DistrictName: 地区名称
+        :type DistrictName: str
+        :param IspName: 运营商名称
+        :type IspName: str
+        """
+        self.Domain = None
+        self.Protocol = None
+        self.IpProtocol = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Interval = None
+        self.Metric = None
+        self.District = None
+        self.Isp = None
+        self.DataPoints = None
+        self.DistrictName = None
+        self.IspName = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.Protocol = params.get("Protocol")
+        self.IpProtocol = params.get("IpProtocol")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Interval = params.get("Interval")
+        self.Metric = params.get("Metric")
+        self.District = params.get("District")
+        self.Isp = params.get("Isp")
+        self.DataPoints = params.get("DataPoints")
+        self.DistrictName = params.get("DistrictName")
+        self.IspName = params.get("IspName")
 
 
 class DomainAreaConfig(AbstractModel):

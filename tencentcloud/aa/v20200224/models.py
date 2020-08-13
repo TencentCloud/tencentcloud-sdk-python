@@ -29,7 +29,7 @@ class AccountInfo(AbstractModel):
 4：手机号（暂仅支持国内手机号）。
 8：设备号（imei/imeiMD5/idfa/idfaMd5）。
 0：其他。
-10004：手机号MD5。
+10004：手机号MD5（标准中国大陆手机号11位，MD5后取32位小写值）
         :type AccountType: int
         :param QQAccount: QQ账号信息，AccountType是1时，该字段必填。
         :type QQAccount: :class:`tencentcloud.aa.v20200224.models.QQAccountInfo`

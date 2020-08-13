@@ -137,6 +137,62 @@ class AmeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePackageItems(self, request):
+        """查询曲库包已核验歌曲列表接口
+
+        :param request: Request instance for DescribePackageItems.
+        :type request: :class:`tencentcloud.ame.v20190916.models.DescribePackageItemsRequest`
+        :rtype: :class:`tencentcloud.ame.v20190916.models.DescribePackageItemsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePackageItems", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePackageItemsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePackages(self, request):
+        """查询已购曲库包列表接口
+
+        :param request: Request instance for DescribePackages.
+        :type request: :class:`tencentcloud.ame.v20190916.models.DescribePackagesRequest`
+        :rtype: :class:`tencentcloud.ame.v20190916.models.DescribePackagesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePackages", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePackagesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeStations(self, request):
         """获取素材库列表时使用
 

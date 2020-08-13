@@ -287,6 +287,35 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDistrictIspData(self, request):
+        """查询指定域名的区域、运营商明细数据
+        注意事项：接口尚未全量开放，未在内测名单中的账号不支持调用
+
+        :param request: Request instance for DescribeDistrictIspData.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeDistrictIspDataRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeDistrictIspDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDistrictIspData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDistrictIspDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDomains(self, request):
         """DescribeDomains 用于查询内容分发网络加速域名（含境内、境外）基本配置信息，包括项目ID、服务状态，业务类型、创建时间、更新时间等信息。
 

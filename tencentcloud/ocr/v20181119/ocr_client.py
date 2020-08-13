@@ -1115,8 +1115,8 @@ class OcrClient(AbstractClient):
 
 
     def MLIDPassportOCR(self, request):
-        """本接口支持中国港澳台地区以及其他国家、地区的护照。识别字段包括护照ID、姓名、出生日期、性别、有效期、发行国、国籍；具备护照人像照片的裁剪功能和翻拍、复印件告警功能。
-        本接口暂未完全对外开放，如需咨询，请[联系商务](https://cloud.tencent.com/about/connect)
+        """本接口支持中国港澳台地区以及其他国家、地区的护照识别。识别字段包括护照ID、姓名、出生日期、性别、有效期、发行国、国籍，具备护照人像照片的裁剪功能和翻拍、复印件告警功能。
+        本接口暂未完全对外开放，如需咨询，请[联系商务](https://cloud.tencent.com/about/connect)。
 
         :param request: Request instance for MLIDPassportOCR.
         :type request: :class:`tencentcloud.ocr.v20181119.models.MLIDPassportOCRRequest`

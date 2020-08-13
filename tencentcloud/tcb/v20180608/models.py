@@ -213,7 +213,7 @@ class CreatePostpayPackageRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EnvId: 环境ID
+        :param EnvId: 环境ID，需要系统自动创建环境时，此字段不传
         :type EnvId: str
         :param WxAppId: 微信 AppId，微信必传
         :type WxAppId: str
@@ -223,16 +223,16 @@ class CreatePostpayPackageRequest(AbstractModel):
         :type Source: str
         :param FreeQuota: 用户享有的免费额度级别，目前只能为“basic”，不传该字段或该字段为空，标识不享受免费额度。
         :type FreeQuota: str
-        :param Alias: 环境别名，要以a-z开头，不能包含 a-zA-z0-9- 以外的字符
-        :type Alias: str
         :param EnvSource: 环境创建来源，取值：
 <li>miniapp</li>
 <li>qcloud</li>
 用法同CreateEnv接口的Source参数
 和 Channel 参数同时传，或者同时不传；EnvId 为空时必传。
         :type EnvSource: str
+        :param Alias: 环境别名，要以a-z开头，不能包含 a-zA-z0-9- 以外的字符
+        :type Alias: str
         :param Channel: 如果envsource为miniapp, channel可以为ide或api;
-如果envsource为qcloud, channel可以为qc_console,cocos, qq, cloudgame,dcloud
+如果envsource为qcloud, channel可以为qc_console,cocos, qq, cloudgame,dcloud,serverless_framework
 和 EnvSource 参数同时传，或者同时不传；EnvId 为空时必传。
         :type Channel: str
         :param ExtensionId: 扩展ID
@@ -242,8 +242,8 @@ class CreatePostpayPackageRequest(AbstractModel):
         self.WxAppId = None
         self.Source = None
         self.FreeQuota = None
-        self.Alias = None
         self.EnvSource = None
+        self.Alias = None
         self.Channel = None
         self.ExtensionId = None
 
@@ -253,8 +253,8 @@ class CreatePostpayPackageRequest(AbstractModel):
         self.WxAppId = params.get("WxAppId")
         self.Source = params.get("Source")
         self.FreeQuota = params.get("FreeQuota")
-        self.Alias = params.get("Alias")
         self.EnvSource = params.get("EnvSource")
+        self.Alias = params.get("Alias")
         self.Channel = params.get("Channel")
         self.ExtensionId = params.get("ExtensionId")
 

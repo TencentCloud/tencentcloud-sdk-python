@@ -1210,6 +1210,8 @@ class Deal(AbstractModel):
         :param RefReturnDeals: 退费涉及订单信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type RefReturnDeals: str
+        :param PayMode: 付费模式：prePay 预付费 postPay后付费 riPay预留实例
+        :type PayMode: str
         """
         self.OrderId = None
         self.Status = None
@@ -1232,6 +1234,7 @@ class Deal(AbstractModel):
         self.BigDealId = None
         self.Formula = None
         self.RefReturnDeals = None
+        self.PayMode = None
 
 
     def _deserialize(self, params):
@@ -1261,6 +1264,7 @@ class Deal(AbstractModel):
         self.BigDealId = params.get("BigDealId")
         self.Formula = params.get("Formula")
         self.RefReturnDeals = params.get("RefReturnDeals")
+        self.PayMode = params.get("PayMode")
 
 
 class DescribeAccountBalanceRequest(AbstractModel):
