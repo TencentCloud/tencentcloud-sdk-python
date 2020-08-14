@@ -2787,6 +2787,112 @@ class CreateSinglePayResult(AbstractModel):
         self.BankRetMsg = params.get("BankRetMsg")
 
 
+class CreateTransferBatchRequest(AbstractModel):
+    """CreateTransferBatch请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MerchantId: 商户号。
+示例值：129284394
+        :type MerchantId: str
+        :param TransferDetails: 转账明细列表。
+发起批量转账的明细列表，最多三千笔
+        :type TransferDetails: list of TransferDetailRequest
+        :param MerchantAppId: 直连商户appId。
+即商户号绑定的appid。
+示例值：wxf636efh567hg4356
+        :type MerchantAppId: str
+        :param MerchantBatchNo: 商家批次单号。
+商户系统内部的商家批次单号，此参数只能由数字、字母组成，商户系统内部唯一，UTF8编码，最多32个字符。
+示例值：plfk2020042013
+        :type MerchantBatchNo: str
+        :param BatchName: 批次名称。
+批量转账的名称。
+示例值：2019年1月深圳分部报销单
+        :type BatchName: str
+        :param BatchRemark: 转账说明。
+UTF8编码，最多32个字符。
+示例值：2019年深圳分部报销单
+        :type BatchRemark: str
+        :param TotalAmount: 转账总金额。
+转账金额，单位为分。
+示例值：4000000
+        :type TotalAmount: int
+        :param TotalNum: 转账总笔数。
+一个转账批次最多允许发起三千笔转账。
+示例值：200
+        :type TotalNum: int
+        :param Profile: 环境名。
+release: 现网环境
+sandbox: 沙箱环境
+development: 开发环境
+缺省: release
+        :type Profile: str
+        """
+        self.MerchantId = None
+        self.TransferDetails = None
+        self.MerchantAppId = None
+        self.MerchantBatchNo = None
+        self.BatchName = None
+        self.BatchRemark = None
+        self.TotalAmount = None
+        self.TotalNum = None
+        self.Profile = None
+
+
+    def _deserialize(self, params):
+        self.MerchantId = params.get("MerchantId")
+        if params.get("TransferDetails") is not None:
+            self.TransferDetails = []
+            for item in params.get("TransferDetails"):
+                obj = TransferDetailRequest()
+                obj._deserialize(item)
+                self.TransferDetails.append(obj)
+        self.MerchantAppId = params.get("MerchantAppId")
+        self.MerchantBatchNo = params.get("MerchantBatchNo")
+        self.BatchName = params.get("BatchName")
+        self.BatchRemark = params.get("BatchRemark")
+        self.TotalAmount = params.get("TotalAmount")
+        self.TotalNum = params.get("TotalNum")
+        self.Profile = params.get("Profile")
+
+
+class CreateTransferBatchResponse(AbstractModel):
+    """CreateTransferBatch返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MerchantBatchNo: 商家批次单号。
+商户系统内部的商家批次单号，此参数只能由数字、字母组成，商户系统内部唯一，UTF8编码，最多32个字符。
+示例值：plfk2020042013
+        :type MerchantBatchNo: str
+        :param BatchId: 微信批次单号。
+微信商家转账系统返回的唯一标识。
+示例值：1030000071100999991182020050700019480001
+        :type BatchId: str
+        :param CreateTime: 批次受理成功时返回，遵循rfc3339标准格式。格式为YYYY-MM-DDTHH:mm:ss.sss+TIMEZONE，YYYY-MM-DD表示年月日，T出现在字符串中，表示time元素的开头，HH:mm:ss.sss表示时分秒毫秒，TIMEZONE表示时区（+08:00表示东八区时间，领先UTC 8小时，即北京时间）。例如：2015-05-20T13:29:35.120+08:00表示北京时间2015年05月20日13点29分35秒。
+示例值：2015-05-20T13:29:35.120+08:00
+        :type CreateTime: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MerchantBatchNo = None
+        self.BatchId = None
+        self.CreateTime = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MerchantBatchNo = params.get("MerchantBatchNo")
+        self.BatchId = params.get("BatchId")
+        self.CreateTime = params.get("CreateTime")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteAgentTaxPaymentInfoRequest(AbstractModel):
     """DeleteAgentTaxPaymentInfo请求参数结构体
 
@@ -6887,6 +6993,376 @@ class QueryTradeResult(AbstractModel):
         self.Code = params.get("Code")
 
 
+class QueryTransferBatchRequest(AbstractModel):
+    """QueryTransferBatch请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MerchantId: 商户号。
+示例值：129284394
+        :type MerchantId: str
+        :param NeedQueryDetail: 微信明细单号。
+微信区分明细单返回的唯一标识。
+示例值：1030000071100999991182020050700019480101
+        :type NeedQueryDetail: bool
+        :param MerchantBatchNo: 商家批次单号。
+商户系统内部的商家批次单号，此参数只能由数字、字母组成，商户系统内部唯一，UTF8编码，最多32个字符。
+示例值：plfk2020042013
+        :type MerchantBatchNo: str
+        :param BatchId: 是否查询账单明细。
+true-是；
+false-否，默认否。
+商户可选择是否查询指定状态的转账明细单，当转账批次单状态为“FINISHED”（已完成）时，才会返回满足条件的转账明细单。
+示例值：true
+        :type BatchId: str
+        :param Profile: 环境名:
+release: 现网环境
+sandbox: 沙箱环境
+development: 开发环境
+缺省: release
+        :type Profile: str
+        :param Offset: 请求资源起始位置。
+从0开始，默认值为0。
+示例值：20
+        :type Offset: int
+        :param Limit: 最大资源条数。
+该次请求可返回的最大资源（转账明细单）条数，最小20条，最大100条，不传则默认20条。不足20条按实际条数返回
+示例值：20
+        :type Limit: int
+        :param DetailStatus: 明细状态。
+ALL：全部，需要同时查询转账成功喝失败的明细单；
+SUCCESS：转账成功，只查询成功的明细单；
+FAIL：转账失败，只查询转账失败的明细单。
+示例值：FAIL
+        :type DetailStatus: str
+        """
+        self.MerchantId = None
+        self.NeedQueryDetail = None
+        self.MerchantBatchNo = None
+        self.BatchId = None
+        self.Profile = None
+        self.Offset = None
+        self.Limit = None
+        self.DetailStatus = None
+
+
+    def _deserialize(self, params):
+        self.MerchantId = params.get("MerchantId")
+        self.NeedQueryDetail = params.get("NeedQueryDetail")
+        self.MerchantBatchNo = params.get("MerchantBatchNo")
+        self.BatchId = params.get("BatchId")
+        self.Profile = params.get("Profile")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.DetailStatus = params.get("DetailStatus")
+
+
+class QueryTransferBatchResponse(AbstractModel):
+    """QueryTransferBatch返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MerchantId: 商户号。
+示例值：19300009329
+        :type MerchantId: str
+        :param MerchantBatchNo: 商家批次单号。
+商户系统内部的商家批次单号，此参数只能由数字、字母组成，商户系统内部唯一，UTF8编码，最多32个字符。
+示例值：plfk2020042013
+        :type MerchantBatchNo: str
+        :param BatchId: 微信批次单号。
+微信商家转账系统返回的唯一标识。
+示例值：1030000071100999991182020050700019480001
+        :type BatchId: str
+        :param MerchantAppId: 直连商户appId。
+商户号绑定的appid。
+示例值：wxf636efh567hg4356
+        :type MerchantAppId: str
+        :param BatchStatus: 批次状态。
+ACCEPTED:已受理，批次已受理成功，若发起批量转账的30分钟后，转账批次单仍处于该状态，可能原因是商户账户余额不足等。商户可查询账户资金流水，若该笔转账批次单的扣款已经发生，则表示批次已经进入转账中，请再次查单确认；
+PROCESSING:转账中，已开始处理批次内的转账明细单；
+FINISHED:已完成，批次内的所有转账明细单都已处理完成；
+CLOSED:已关闭，可查询具体的批次关闭原因确认；
+示例值：ACCEPTED
+        :type BatchStatus: str
+        :param CloseReason: 批次关闭原因。
+如果批次单状态为“CLOSED”（已关闭），则有关闭原因；
+MERCHANT_REVOCATION：商户主动撤销；
+OVERDUE_CLOSE：系统超时关闭。
+示例值：OVERDUE_CLOSE
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CloseReason: str
+        :param TotalAmount: 转账总金额。
+转账金额，单位为分。
+示例值：4000000
+        :type TotalAmount: int
+        :param TotalNum: 转账总笔数。
+一个转账批次最多允许发起三千笔转账。
+示例值：200
+        :type TotalNum: int
+        :param CreateTime: 批次受理成功时返回，遵循rfc3339标准格式。格式为YYYY-MM-DDTHH:mm:ss.sss+TIMEZONE，YYYY-MM-DD表示年月日，T出现在字符串中，表示time元素的开头，HH:mm:ss.sss表示时分秒毫秒，TIMEZONE表示时区（+08:00表示东八区时间，领先UTC 8小时，即北京时间）。例如：2015-05-20T13:29:35.120+08:00表示北京时间2015年05月20日13点29分35秒。
+示例值：2015-05-20T13:29:35.120+08:00
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param UpdateTime: 批次最近一次更新时间，遵循rfc3339标准格式。格式为YYYY-MM-DDTHH:mm:ss.sss+TIMEZONE，YYYY-MM-DD表示年月日，T出现在字符串中，表示time元素的开头，HH:mm:ss.sss表示时分秒毫秒，TIMEZONE表示时区（+08:00表示东八区时间，领先UTC 8小时，即北京时间）。例如：2015-05-20T13:29:35.120+08:00表示北京时间2015年05月20日13点29分35秒。
+示例值：2015-05-20T13:29:35.120+08:00
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param SuccessAmount: 转账成功金额。
+转账成功的金额，单位为分，可能随时变化。
+示例值：4000000
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuccessAmount: int
+        :param SuccessNum: 转账成功的笔数。
+可能随时变化。
+示例值：200
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuccessNum: int
+        :param FailAmount: 转账失败金额。
+转账失败的金额，单位为分，可能随时变化。
+示例值：4000000
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailAmount: int
+        :param FailNum: 转账失败笔数。
+可能随时变化。
+示例值：200
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailNum: int
+        :param TransferDetails: 转账明细列表。
+返回明细详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransferDetails: list of TransferDetailResponse
+        :param BatchType: 批次类型。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BatchType: str
+        :param BatchName: 批次名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BatchName: str
+        :param BatchRemark: 批次标注。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BatchRemark: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MerchantId = None
+        self.MerchantBatchNo = None
+        self.BatchId = None
+        self.MerchantAppId = None
+        self.BatchStatus = None
+        self.CloseReason = None
+        self.TotalAmount = None
+        self.TotalNum = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.SuccessAmount = None
+        self.SuccessNum = None
+        self.FailAmount = None
+        self.FailNum = None
+        self.TransferDetails = None
+        self.BatchType = None
+        self.BatchName = None
+        self.BatchRemark = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MerchantId = params.get("MerchantId")
+        self.MerchantBatchNo = params.get("MerchantBatchNo")
+        self.BatchId = params.get("BatchId")
+        self.MerchantAppId = params.get("MerchantAppId")
+        self.BatchStatus = params.get("BatchStatus")
+        self.CloseReason = params.get("CloseReason")
+        self.TotalAmount = params.get("TotalAmount")
+        self.TotalNum = params.get("TotalNum")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.SuccessAmount = params.get("SuccessAmount")
+        self.SuccessNum = params.get("SuccessNum")
+        self.FailAmount = params.get("FailAmount")
+        self.FailNum = params.get("FailNum")
+        if params.get("TransferDetails") is not None:
+            self.TransferDetails = []
+            for item in params.get("TransferDetails"):
+                obj = TransferDetailResponse()
+                obj._deserialize(item)
+                self.TransferDetails.append(obj)
+        self.BatchType = params.get("BatchType")
+        self.BatchName = params.get("BatchName")
+        self.BatchRemark = params.get("BatchRemark")
+        self.RequestId = params.get("RequestId")
+
+
+class QueryTransferDetailRequest(AbstractModel):
+    """QueryTransferDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MerchantId: 商户号。
+示例值：129284394
+        :type MerchantId: str
+        :param MerchantBatchNo: 商家批次单号。
+商户系统内部的商家批次单号，此参数只能由数字、字母组成，商户系统内部唯一，UTF8编码，最多32个字符。
+示例值：plfk2020042013
+        :type MerchantBatchNo: str
+        :param MerchantDetailNo: 商家明细单号。
+商户系统内部的商家明细单号
+示例值：plfk2020042013
+        :type MerchantDetailNo: str
+        :param BatchId: 微信批次单号。
+微信商家转账系统返回的唯一标识。
+商家单号（包含批次号和明细单号）和微信单号（包含批次号和明细单号）二者必填其一。
+示例值：1030000071100999991182020050700019480001
+        :type BatchId: str
+        :param DetailId: 微信明细单号。
+微信区分明细单返回的唯一标识。
+示例值：1030000071100999991182020050700019480001
+        :type DetailId: str
+        :param Profile: 环境名:
+release: 现网环境
+sandbox: 沙箱环境
+development: 开发环境
+缺省: release
+        :type Profile: str
+        """
+        self.MerchantId = None
+        self.MerchantBatchNo = None
+        self.MerchantDetailNo = None
+        self.BatchId = None
+        self.DetailId = None
+        self.Profile = None
+
+
+    def _deserialize(self, params):
+        self.MerchantId = params.get("MerchantId")
+        self.MerchantBatchNo = params.get("MerchantBatchNo")
+        self.MerchantDetailNo = params.get("MerchantDetailNo")
+        self.BatchId = params.get("BatchId")
+        self.DetailId = params.get("DetailId")
+        self.Profile = params.get("Profile")
+
+
+class QueryTransferDetailResponse(AbstractModel):
+    """QueryTransferDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MerchantId: 商户号。
+示例值：19300009329
+        :type MerchantId: str
+        :param MerchantBatchNo: 商家批次单号。
+商户系统内部的商家批次单号，此参数只能由数字、字母组成，商户系统内部唯一，UTF8编码，最多32个字符。
+示例值：plfk2020042013
+        :type MerchantBatchNo: str
+        :param BatchId: 微信批次单号。
+微信商家转账系统返回的唯一标识。
+示例值：1030000071100999991182020050700019480001
+        :type BatchId: str
+        :param MerchantDetailNo: 商家明细单号。
+商户系统内部的商家明细单号
+示例值：plfk2020042013
+        :type MerchantDetailNo: str
+        :param DetailId: 微信明细单号。
+微信区分明细单返回的唯一标识。
+示例值：1030000071100999991182020050700019480001
+        :type DetailId: str
+        :param DetailStatus: 明细状态。
+PROCESSING：转账中，正在处理，结果未明；
+SUCCESS：转账成功；
+FAIL：转账失败，需要确认失败原因以后，再决定是否重新发起地该笔明细的转账。
+示例值：SUCCESS
+        :type DetailStatus: str
+        :param TransferAmount: 转账金额。
+单位为分。
+示例值：200
+        :type TransferAmount: int
+        :param FailReason: 失败原因。
+如果转账失败则有失败原因
+ACCOUNT_FROZEN：账户冻结
+REAL_NAME_CHECK_FAIL：用户未实名
+NAME_NOT_CORRECT：用户姓名校验失败
+OPENID_INVALID：Openid校验失败
+TRANSFER_QUOTA_EXCEED：超过用户单笔收款额度
+DAY_RECEIVED_QUOTA_EXCEED：超过用户单日收款额度
+MONTH_RECEIVED_QUOTA_EXCEED：超过用户单月收款额度
+DAY_RECEIVED_COUNT_EXCEED：超过用户单日收款次数
+PRODUCT_AUTH_CHECK_FAIL：产品权限校验失败
+OVERDUE_CLOSE：转账关闭
+ID_CARD_NOT_CORRECT：用户身份证校验失败
+ACCOUNT_NOT_EXIST：用户账户不存在
+TRANSFER_RISK：转账存在风险
+示例值：ACCOUNT_FROZEN
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailReason: str
+        :param InitiateTime: 转账发起时间。
+遵循rfc3339标准格式。格式为YYYY-MM-DDTHH:mm:ss.sss+TIMEZONE，YYYY-MM-DD表示年月日，T出现在字符串中，表示time元素的开头，HH:mm:ss.sss表示时分秒毫秒，TIMEZONE表示时区（+08:00表示东八区时间，领先UTC 8小时，即北京时间）。例如：2015-05-20T13:29:35.120+08:00表示北京时间2015年05月20日13点29分35秒。
+示例值：2015-05-20T13:29:35.120+08:00
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InitiateTime: str
+        :param UpdateTime: 转账更新时间。
+遵循rfc3339标准格式。格式为YYYY-MM-DDTHH:mm:ss.sss+TIMEZONE，YYYY-MM-DD表示年月日，T出现在字符串中，表示time元素的开头，HH:mm:ss.sss表示时分秒毫秒，TIMEZONE表示时区（+08:00表示东八区时间，领先UTC 8小时，即北京时间）。例如：2015-05-20T13:29:35.120+08:00表示北京时间2015年05月20日13点29分35秒。
+示例值：2015-05-20T13:29:35.120+08:00
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param UserName: 用户名。
+示例值：张三
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param TransferRemark: 转账备注。
+单条转账备注（微信用户会收到该备注）。UTF8编码，最多32字符。
+示例值：2020年4月报销
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransferRemark: str
+        :param MerchantAppId: 商家绑定公众号APPID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MerchantAppId: str
+        :param OpenId: 用户openId。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OpenId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MerchantId = None
+        self.MerchantBatchNo = None
+        self.BatchId = None
+        self.MerchantDetailNo = None
+        self.DetailId = None
+        self.DetailStatus = None
+        self.TransferAmount = None
+        self.FailReason = None
+        self.InitiateTime = None
+        self.UpdateTime = None
+        self.UserName = None
+        self.TransferRemark = None
+        self.MerchantAppId = None
+        self.OpenId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MerchantId = params.get("MerchantId")
+        self.MerchantBatchNo = params.get("MerchantBatchNo")
+        self.BatchId = params.get("BatchId")
+        self.MerchantDetailNo = params.get("MerchantDetailNo")
+        self.DetailId = params.get("DetailId")
+        self.DetailStatus = params.get("DetailStatus")
+        self.TransferAmount = params.get("TransferAmount")
+        self.FailReason = params.get("FailReason")
+        self.InitiateTime = params.get("InitiateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.UserName = params.get("UserName")
+        self.TransferRemark = params.get("TransferRemark")
+        self.MerchantAppId = params.get("MerchantAppId")
+        self.OpenId = params.get("OpenId")
+        self.RequestId = params.get("RequestId")
+
+
 class RechargeByThirdPayRequest(AbstractModel):
     """RechargeByThirdPay请求参数结构体
 
@@ -8143,6 +8619,81 @@ class TransactionItem(AbstractModel):
         self.InSubAcctNo = params.get("InSubAcctNo")
         self.OutSubAcctNo = params.get("OutSubAcctNo")
         self.Remark = params.get("Remark")
+
+
+class TransferDetailRequest(AbstractModel):
+    """批量转账明细实体
+
+    """
+
+    def __init__(self):
+        """
+        :param MerchantDetailNo: 商家明细单号。
+商户系统内部区分转账批次单下不同转账明细单的唯一标识，要求此参数只能由数字、大小写字母组成。
+示例值：x23zy545Bd5436
+        :type MerchantDetailNo: str
+        :param TransferAmount: 转账金额。
+转账金额单位为分。
+示例值：200000
+        :type TransferAmount: int
+        :param TransferRemark: 转账备注。
+单条转账备注（微信用户会收到该备注）。UTF8编码，最多32字符。
+示例值：2020年4月报销
+        :type TransferRemark: str
+        :param OpenId: 用户在直连商户下的唯一标识。
+示例值：o-MYE42l80oelYMDE34nYD456Xoy
+        :type OpenId: str
+        :param UserName: 收款用户姓名。
+收款方姓名。
+示例值：张三
+        :type UserName: str
+        """
+        self.MerchantDetailNo = None
+        self.TransferAmount = None
+        self.TransferRemark = None
+        self.OpenId = None
+        self.UserName = None
+
+
+    def _deserialize(self, params):
+        self.MerchantDetailNo = params.get("MerchantDetailNo")
+        self.TransferAmount = params.get("TransferAmount")
+        self.TransferRemark = params.get("TransferRemark")
+        self.OpenId = params.get("OpenId")
+        self.UserName = params.get("UserName")
+
+
+class TransferDetailResponse(AbstractModel):
+    """批量转账查询返回批次明细实体
+
+    """
+
+    def __init__(self):
+        """
+        :param MerchantDetailNo: 商家明细单号。
+商户系统内部的商家明细单号
+示例值：plfk2020042013
+        :type MerchantDetailNo: str
+        :param DetailId: 微信明细单号。
+微信区分明细单返回的唯一标识。
+示例值：1030000071100999991182020050700019480001
+        :type DetailId: str
+        :param DetailStatus: 明细状态。
+PROCESSING：转账中，正在处理，结果未明；
+SUCCESS：转账成功；
+FAIL：转账失败，需要确认失败原因以后，再决定是否重新发起地该笔明细的转账。
+示例值：SUCCESS
+        :type DetailStatus: str
+        """
+        self.MerchantDetailNo = None
+        self.DetailId = None
+        self.DetailStatus = None
+
+
+    def _deserialize(self, params):
+        self.MerchantDetailNo = params.get("MerchantDetailNo")
+        self.DetailId = params.get("DetailId")
+        self.DetailStatus = params.get("DetailStatus")
 
 
 class TransferItem(AbstractModel):

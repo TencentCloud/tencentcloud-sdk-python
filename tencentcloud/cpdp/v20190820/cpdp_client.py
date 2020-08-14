@@ -593,6 +593,34 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateTransferBatch(self, request):
+        """微信商户发起批量转账
+
+        :param request: Request instance for CreateTransferBatch.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.CreateTransferBatchRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.CreateTransferBatchResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateTransferBatch", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateTransferBatchResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteAgentTaxPaymentInfo(self, request):
         """直播平台-删除代理商完税信息
 
@@ -1644,6 +1672,62 @@ class CpdpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryTradeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryTransferBatch(self, request):
+        """通过商家批次单号或者微信批次号查询批次单
+
+        :param request: Request instance for QueryTransferBatch.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryTransferBatchRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryTransferBatchResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryTransferBatch", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryTransferBatchResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryTransferDetail(self, request):
+        """通过商家或者微信批次明细单号查询明细单
+
+        :param request: Request instance for QueryTransferDetail.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryTransferDetailRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryTransferDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryTransferDetail", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryTransferDetailResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

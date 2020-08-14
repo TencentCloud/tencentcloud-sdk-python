@@ -121,13 +121,16 @@ class CfsInsInfo(AbstractModel):
         :type LocalMountDir: str
         :param RemoteMountDir: 远程挂载点
         :type RemoteMountDir: str
-        :param IpAddress: 文件系统ip
+        :param IpAddress: 文件系统ip，配置 cfs 时无需填写。
+注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IpAddress: str
-        :param MountVpcId: 文件系统所在的私有网络id
+        :param MountVpcId: 文件系统所在的私有网络id，配置 cfs 时无需填写。
+注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MountVpcId: str
-        :param MountSubnetId: 文件系统所在私有网络的子网id
+        :param MountSubnetId: 文件系统所在私有网络的子网id，配置 cfs 时无需填写。
+注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MountSubnetId: str
         """

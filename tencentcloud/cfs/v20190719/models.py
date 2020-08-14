@@ -801,7 +801,7 @@ class FileSystemInfo(AbstractModel):
         :type Protocol: str
         :param StorageType: 文件系统存储类型
         :type StorageType: str
-        :param StorageResourcePkg: 文件系统绑定的预付费存储包（暂未支持）
+        :param StorageResourcePkg: 文件系统绑定的预付费存储包
         :type StorageResourcePkg: str
         :param BandwidthResourcePkg: 文件系统绑定的预付费带宽包（暂未支持）
         :type BandwidthResourcePkg: str
@@ -815,6 +815,8 @@ class FileSystemInfo(AbstractModel):
         :type KmsKeyId: str
         :param AppId: 应用ID
         :type AppId: int
+        :param BandwidthLimit: 文件系统吞吐上限，吞吐上限是根据文件系统当前已使用存储量、绑定的存储资源包以及吞吐资源包一同确定
+        :type BandwidthLimit: float
         """
         self.CreationTime = None
         self.CreationToken = None
@@ -833,6 +835,7 @@ class FileSystemInfo(AbstractModel):
         self.Encrypted = None
         self.KmsKeyId = None
         self.AppId = None
+        self.BandwidthLimit = None
 
 
     def _deserialize(self, params):
@@ -855,6 +858,7 @@ class FileSystemInfo(AbstractModel):
         self.Encrypted = params.get("Encrypted")
         self.KmsKeyId = params.get("KmsKeyId")
         self.AppId = params.get("AppId")
+        self.BandwidthLimit = params.get("BandwidthLimit")
 
 
 class MountInfo(AbstractModel):

@@ -1861,7 +1861,7 @@ class DescribeDomainsConfigRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: 分页查询偏移量，默认为 0 （第一页）
+        :param Offset: 分页查询偏移量，默认为 0
         :type Offset: int
         :param Limit: 分页查询限制数目，默认为 100，最大可设置为 1000
         :type Limit: int
@@ -2989,6 +2989,17 @@ global：全球锁定
         :param AccessControl: 访问控制
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccessControl: :class:`tencentcloud.cdn.v20180606.models.AccessControl`
+        :param Advance: 是否支持高级配置项
+on：支持
+off：不支持
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Advance: str
+        :param UrlRedirect: URL重定向配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UrlRedirect: :class:`tencentcloud.cdn.v20180606.models.UrlRedirect`
+        :param AccessPort: 访问端口配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessPort: list of int
         """
         self.ResourceId = None
         self.AppId = None
@@ -3034,6 +3045,9 @@ global：全球锁定
         self.ImageOptimization = None
         self.UserAgentFilter = None
         self.AccessControl = None
+        self.Advance = None
+        self.UrlRedirect = None
+        self.AccessPort = None
 
 
     def _deserialize(self, params):
@@ -3145,6 +3159,11 @@ global：全球锁定
         if params.get("AccessControl") is not None:
             self.AccessControl = AccessControl()
             self.AccessControl._deserialize(params.get("AccessControl"))
+        self.Advance = params.get("Advance")
+        if params.get("UrlRedirect") is not None:
+            self.UrlRedirect = UrlRedirect()
+            self.UrlRedirect._deserialize(params.get("UrlRedirect"))
+        self.AccessPort = params.get("AccessPort")
 
 
 class DisableCachesRequest(AbstractModel):
@@ -6327,6 +6346,12 @@ global：全球加速
         :type AwsPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.AwsPrivateAccess`
         :param UserAgentFilter: UA黑白名单配置
         :type UserAgentFilter: :class:`tencentcloud.cdn.v20180606.models.UserAgentFilter`
+        :param AccessControl: 访问控制
+        :type AccessControl: :class:`tencentcloud.cdn.v20180606.models.AccessControl`
+        :param UrlRedirect: URL重定向配置
+        :type UrlRedirect: :class:`tencentcloud.cdn.v20180606.models.UrlRedirect`
+        :param AccessPort: 访问端口配置
+        :type AccessPort: list of int
         """
         self.Domain = None
         self.ProjectId = None
@@ -6359,6 +6384,9 @@ global：全球加速
         self.OriginPullTimeout = None
         self.AwsPrivateAccess = None
         self.UserAgentFilter = None
+        self.AccessControl = None
+        self.UrlRedirect = None
+        self.AccessPort = None
 
 
     def _deserialize(self, params):
@@ -6447,6 +6475,13 @@ global：全球加速
         if params.get("UserAgentFilter") is not None:
             self.UserAgentFilter = UserAgentFilter()
             self.UserAgentFilter._deserialize(params.get("UserAgentFilter"))
+        if params.get("AccessControl") is not None:
+            self.AccessControl = AccessControl()
+            self.AccessControl._deserialize(params.get("AccessControl"))
+        if params.get("UrlRedirect") is not None:
+            self.UrlRedirect = UrlRedirect()
+            self.UrlRedirect._deserialize(params.get("UrlRedirect"))
+        self.AccessPort = params.get("AccessPort")
 
 
 class UpdateDomainConfigResponse(AbstractModel):
@@ -6587,6 +6622,60 @@ class UrlRecord(AbstractModel):
         self.RealUrl = params.get("RealUrl")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+
+
+class UrlRedirect(AbstractModel):
+    """URL重定向配置
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: URL重定向配置开关
+on：开启
+off：关闭
+        :type Switch: str
+        :param PathRules: URL重定向规则，当Switch为on时必填，规则数量最大为10个。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PathRules: list of UrlRedirectRule
+        """
+        self.Switch = None
+        self.PathRules = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("PathRules") is not None:
+            self.PathRules = []
+            for item in params.get("PathRules"):
+                obj = UrlRedirectRule()
+                obj._deserialize(item)
+                self.PathRules.append(obj)
+
+
+class UrlRedirectRule(AbstractModel):
+    """Url重定向规则配置
+
+    """
+
+    def __init__(self):
+        """
+        :param RedirectStatusCode: 重定向状态码，301 | 302
+        :type RedirectStatusCode: int
+        :param Pattern: 待匹配的Url模式，支持完全路径匹配和正则匹配，最大长度1024字符。
+        :type Pattern: str
+        :param RedirectUrl: 目标URL，必须以“/”开头，最大长度1024字符。
+        :type RedirectUrl: str
+        """
+        self.RedirectStatusCode = None
+        self.Pattern = None
+        self.RedirectUrl = None
+
+
+    def _deserialize(self, params):
+        self.RedirectStatusCode = params.get("RedirectStatusCode")
+        self.Pattern = params.get("Pattern")
+        self.RedirectUrl = params.get("RedirectUrl")
 
 
 class UserAgentFilter(AbstractModel):

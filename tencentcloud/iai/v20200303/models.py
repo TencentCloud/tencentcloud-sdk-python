@@ -2426,7 +2426,7 @@ Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00
         :type EndTimestamp: int
         :param Progress: 升级任务完成进度。取值[0.0，100.0]。
         :type Progress: float
-        :param Status: 0表示升级中，1表示升级完毕，2表示回滚完毕。
+        :param Status: 0表示升级中，1表示升级完毕，2表示回滚完毕，3表示升级失败。
         :type Status: int
         :param StartTime: 升级起始时间。 
 StartTime的值是自 Unix 纪元时间到Group创建时间的毫秒数。 
@@ -3517,7 +3517,7 @@ StartTime的值是自 Unix 纪元时间到Group创建时间的毫秒数。
 Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00:00。 
 有关更多信息，请参阅 Unix 时间。
         :type StartTime: int
-        :param Status: 0表示升级中，1表示升级完毕，2表示回滚完毕。
+        :param Status: 0表示升级中，1表示升级完毕，2表示回滚完毕，3表示升级失败。
         :type Status: int
         """
         self.JobId = None

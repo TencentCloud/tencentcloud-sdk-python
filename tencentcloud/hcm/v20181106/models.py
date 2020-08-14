@@ -45,6 +45,8 @@ class EvaluationRequest(AbstractModel):
         :type EnablePdfRecognize: bool
         :param PdfPageIndex: pdf页码，从0开始，默认为0
         :type PdfPageIndex: int
+        :param LaTex: 是否返回LaTex，默认为0返回普通格式，设置成1返回LaTex格式
+        :type LaTex: int
         """
         self.SessionId = None
         self.Image = None
@@ -57,6 +59,7 @@ class EvaluationRequest(AbstractModel):
         self.EnableDispMidresult = None
         self.EnablePdfRecognize = None
         self.PdfPageIndex = None
+        self.LaTex = None
 
 
     def _deserialize(self, params):
@@ -71,6 +74,7 @@ class EvaluationRequest(AbstractModel):
         self.EnableDispMidresult = params.get("EnableDispMidresult")
         self.EnablePdfRecognize = params.get("EnablePdfRecognize")
         self.PdfPageIndex = params.get("PdfPageIndex")
+        self.LaTex = params.get("LaTex")
 
 
 class EvaluationResponse(AbstractModel):
@@ -126,12 +130,16 @@ class Item(AbstractModel):
         :param ExpressionType: 算式题型编号，如加减乘除四则题型，具体题型及编号如下：1 加减乘除四则 2 加减乘除已知结果求运算因子3 判断大小 4 约等于估算 5 带余数除法 6 分数四则运算 7 单位换算 8 竖式加减法 9 竖式乘除法 10 脱式计算 11 解方程
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpressionType: str
+        :param ItemConf: 文本行置信度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ItemConf: float
         """
         self.Item = None
         self.ItemString = None
         self.ItemCoord = None
         self.Answer = None
         self.ExpressionType = None
+        self.ItemConf = None
 
 
     def _deserialize(self, params):
@@ -142,6 +150,7 @@ class Item(AbstractModel):
             self.ItemCoord._deserialize(params.get("ItemCoord"))
         self.Answer = params.get("Answer")
         self.ExpressionType = params.get("ExpressionType")
+        self.ItemConf = params.get("ItemConf")
 
 
 class ItemCoord(AbstractModel):

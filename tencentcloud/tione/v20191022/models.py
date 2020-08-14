@@ -440,6 +440,9 @@ class CreateTrainingJobRequest(AbstractModel):
         :type EnvConfig: list of EnvConfig
         :param RoleName: 角色名称
         :type RoleName: str
+        :param RetryWhenResourceInsufficient: 在资源不足（ResourceInsufficient）时后台不定时尝试重新创建训练任务。可取值Enabled/Disabled
+默认值为Disabled即不重新尝试。设为Enabled时重新尝试有一定的时间期限，定义在 StoppingCondition 中 MaxWaitTimeInSecond中 ，默认值为1天，超过该期限创建失败。
+        :type RetryWhenResourceInsufficient: str
         """
         self.AlgorithmSpecification = None
         self.OutputDataConfig = None
@@ -451,6 +454,7 @@ class CreateTrainingJobRequest(AbstractModel):
         self.HyperParameters = None
         self.EnvConfig = None
         self.RoleName = None
+        self.RetryWhenResourceInsufficient = None
 
 
     def _deserialize(self, params):
@@ -484,6 +488,7 @@ class CreateTrainingJobRequest(AbstractModel):
                 obj._deserialize(item)
                 self.EnvConfig.append(obj)
         self.RoleName = params.get("RoleName")
+        self.RetryWhenResourceInsufficient = params.get("RetryWhenResourceInsufficient")
 
 
 class CreateTrainingJobResponse(AbstractModel):
@@ -1895,12 +1900,17 @@ class StoppingCondition(AbstractModel):
         :param MaxRuntimeInSeconds: 最长运行运行时间（秒）
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxRuntimeInSeconds: int
+        :param MaxWaitTimeInSeconds: 最长等待运行时间（秒）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxWaitTimeInSeconds: int
         """
         self.MaxRuntimeInSeconds = None
+        self.MaxWaitTimeInSeconds = None
 
 
     def _deserialize(self, params):
         self.MaxRuntimeInSeconds = params.get("MaxRuntimeInSeconds")
+        self.MaxWaitTimeInSeconds = params.get("MaxWaitTimeInSeconds")
 
 
 class TrainingJobSummary(AbstractModel):

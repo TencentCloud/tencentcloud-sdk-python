@@ -11240,6 +11240,8 @@ class NatGateway(AbstractModel):
         :param SubnetId: 所属子网ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
+        :param TagSet: 标签键值对。
+        :type TagSet: list of Tag
         """
         self.NatGatewayId = None
         self.NatGatewayName = None
@@ -11254,6 +11256,7 @@ class NatGateway(AbstractModel):
         self.Zone = None
         self.DirectConnectGatewayIds = None
         self.SubnetId = None
+        self.TagSet = None
 
 
     def _deserialize(self, params):
@@ -11280,6 +11283,12 @@ class NatGateway(AbstractModel):
         self.Zone = params.get("Zone")
         self.DirectConnectGatewayIds = params.get("DirectConnectGatewayIds")
         self.SubnetId = params.get("SubnetId")
+        if params.get("TagSet") is not None:
+            self.TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagSet.append(obj)
 
 
 class NatGatewayAddress(AbstractModel):

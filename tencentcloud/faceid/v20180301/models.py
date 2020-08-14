@@ -1461,7 +1461,7 @@ class MobileNetworkTimeVerificationRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Mobile: 手机号码。不支持电信手机号。
+        :param Mobile: 手机号码
         :type Mobile: str
         """
         self.Mobile = None
