@@ -394,34 +394,48 @@ class CreateProductRequest(AbstractModel):
         """
         :param ProductModel: 产器型号(APP产品,为APP包名)
         :type ProductModel: str
-        :param Features: 设备功能码（ypsxth:音频双向通话 ，spdxth:视频单向通话）
-        :type Features: list of str
         :param ProductName: 产品名称
 仅支持中文、英文、数字、下划线，不超过32个字符
         :type ProductName: str
         :param ProductDescription: 产品描述信息
 不支持单引号、双引号、退格符、回车符、换行符、制表符、反斜杠、下划线、“%”、“#”、“$”，不超过128字符
         :type ProductDescription: str
+        :param Features: 设备功能码（ypsxth:音频双向通话 ，spdxth:视频单向通话）
+        :type Features: list of str
         :param ChipManufactureId: 主芯片产商ID
         :type ChipManufactureId: str
         :param ChipId: 主芯片ID
         :type ChipId: str
+        :param ProductRegion: 地域：
+China-Mainland（中国大陆）
+China-Hong Kong, Macao and Taiwan（港澳台地区）
+America（美国）
+Europe（欧洲）
+India（印度）
+Other-Overseas（其他境外地区）
+        :type ProductRegion: str
+        :param ProductCate: 设备类型, 0-普通视频设备，1-NVR设备
+        :type ProductCate: int
         """
         self.ProductModel = None
-        self.Features = None
         self.ProductName = None
         self.ProductDescription = None
+        self.Features = None
         self.ChipManufactureId = None
         self.ChipId = None
+        self.ProductRegion = None
+        self.ProductCate = None
 
 
     def _deserialize(self, params):
         self.ProductModel = params.get("ProductModel")
-        self.Features = params.get("Features")
         self.ProductName = params.get("ProductName")
         self.ProductDescription = params.get("ProductDescription")
+        self.Features = params.get("Features")
         self.ChipManufactureId = params.get("ChipManufactureId")
         self.ChipId = params.get("ChipId")
+        self.ProductRegion = params.get("ProductRegion")
+        self.ProductCate = params.get("ProductCate")
 
 
 class CreateProductResponse(AbstractModel):
@@ -2414,6 +2428,27 @@ class ProductBase(AbstractModel):
         :type IotModelRevision: int
         :param SecretKey: 产品密钥
         :type SecretKey: str
+        :param FuncCode: 设备功能码
+ypsxth : 音频双向通话;	
+spdxth : 视频单向通话(监控);
+NVR0824 : NVR设备,大于8路，小于等于24路;
+WifiKeepalive : Wifi保活(低功耗产品);
+Alexa : Alexa接入;
+Google : Google接入;
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FuncCode: list of str
+        :param ProductCate: 产品类别，0 : 普通视频设备；1 : NVR设备
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductCate: int
+        :param ProductRegion: 产品地域
+China-Mainland（中国大陆）
+China-Hong Kong, Macao and Taiwan（港澳台地区）
+America（美国）
+Europe（欧洲）
+India（印度）
+Other-Overseas（其他境外地区）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductRegion: str
         """
         self.ProductId = None
         self.ProductModel = None
@@ -2422,6 +2457,9 @@ class ProductBase(AbstractModel):
         self.CreateTime = None
         self.IotModelRevision = None
         self.SecretKey = None
+        self.FuncCode = None
+        self.ProductCate = None
+        self.ProductRegion = None
 
 
     def _deserialize(self, params):
@@ -2432,6 +2470,9 @@ class ProductBase(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.IotModelRevision = params.get("IotModelRevision")
         self.SecretKey = params.get("SecretKey")
+        self.FuncCode = params.get("FuncCode")
+        self.ProductCate = params.get("ProductCate")
+        self.ProductRegion = params.get("ProductRegion")
 
 
 class ProductData(AbstractModel):
@@ -2471,6 +2512,18 @@ class ProductData(AbstractModel):
         :param ChipId: 主芯片型号
 注意：此字段可能返回 null，表示取不到有效值。
         :type ChipId: str
+        :param ProductCate: 产品类别，0：普通视频设备；1：NVR设备
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductCate: int
+        :param ProductRegion: 产品地区
+China-Mainland（中国大陆）
+China-Hong Kong, Macao and Taiwan（港澳台地区）
+America（美国）
+Europe（欧洲）
+India（印度）
+Other-Overseas（其他境外地区）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductRegion: str
         """
         self.ProductId = None
         self.ProductName = None
@@ -2482,6 +2535,8 @@ class ProductData(AbstractModel):
         self.ProductModel = None
         self.ChipManufactureId = None
         self.ChipId = None
+        self.ProductCate = None
+        self.ProductRegion = None
 
 
     def _deserialize(self, params):
@@ -2495,6 +2550,8 @@ class ProductData(AbstractModel):
         self.ProductModel = params.get("ProductModel")
         self.ChipManufactureId = params.get("ChipManufactureId")
         self.ChipId = params.get("ChipId")
+        self.ProductCate = params.get("ProductCate")
+        self.ProductRegion = params.get("ProductRegion")
 
 
 class RegisteredStatus(AbstractModel):

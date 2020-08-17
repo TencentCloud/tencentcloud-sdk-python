@@ -756,18 +756,20 @@ class CreateVpcRequest(AbstractModel):
         """
         :param VpcName: vpc名称，最大长度不能超过60个字节。
         :type VpcName: str
-        :param CidrBlock: vpc的cidr，只能为10.0.0.0/16，172.16.0.0/16，192.168.0.0/16这三个内网网段内。
+        :param CidrBlock: vpc的cidr，只能为10.*.0.0/16，172.[16-31].0.0/16，192.168.0.0/16这三个内网网段内。
         :type CidrBlock: str
         :param EcmRegion: ECM 地域
         :type EcmRegion: str
-        :param EnableMulticast: 是否开启组播。true: 开启, false: 不开启。
+        :param EnableMulticast: 是否开启组播。true: 开启, false: 不开启。暂不支持
         :type EnableMulticast: str
-        :param DnsServers: DNS地址，最多支持4个
+        :param DnsServers: DNS地址，最多支持4个，暂不支持
         :type DnsServers: list of str
-        :param DomainName: 域名
+        :param DomainName: 域名，暂不支持
         :type DomainName: str
         :param Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
         :type Tags: list of Tag
+        :param Description: 描述信息
+        :type Description: str
         """
         self.VpcName = None
         self.CidrBlock = None
@@ -776,6 +778,7 @@ class CreateVpcRequest(AbstractModel):
         self.DnsServers = None
         self.DomainName = None
         self.Tags = None
+        self.Description = None
 
 
     def _deserialize(self, params):
@@ -791,6 +794,7 @@ class CreateVpcRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.Description = params.get("Description")
 
 
 class CreateVpcResponse(AbstractModel):
@@ -1561,6 +1565,8 @@ tag:tag-key      String      是否必填：否      （过滤条件）按照标
 instance-family      String      是否必填：否      （过滤条件）按照机型family过滤。
 module-name      String      是否必填：否      （过滤条件）按照模块名称过滤,支持模糊匹配。
 image-id      String      是否必填：否      （过滤条件）按照实例的镜像ID过滤。
+vpc-id String      是否必填：否      （过滤条件）按照实例的vpc id过滤。
+subnet-id String      是否必填：否      （过滤条件）按照实例的subnet id过滤。
 
 若不传Filters参数则表示查询所有相关的实例信息。
 单次请求的Filter.Values的上限为5。
@@ -2002,35 +2008,37 @@ class DescribeSubnetsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EcmRegion: ECM 地域
-        :type EcmRegion: str
         :param SubnetIds: 子网实例ID查询。形如：subnet-pxir56ns。每次请求的实例的上限为100。参数不支持同时指定SubnetIds和Filters。
         :type SubnetIds: list of str
         :param Filters: 过滤条件，参数不支持同时指定SubnetIds和Filters。
-subnet-id - String - （过滤条件）Subnet实例名称。
-vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。
-cidr-block - String - （过滤条件）子网网段，形如: 192.168.1.0 。
-is-default - Boolean - （过滤条件）是否是默认子网。
-is-remote-vpc-snat - Boolean - （过滤条件）是否为VPC SNAT地址池子网。
-subnet-name - String - （过滤条件）子网名称。
-zone - String - （过滤条件）可用区。
-tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。
-tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例
+subnet-id - String - Subnet实例名称。
+subnet-name - String - 子网名称。只支持单值的模糊查询。
+cidr-block - String - 子网网段，形如: 192.168.1.0 。只支持单值的模糊查询。
+vpc-id - String - VPC实例ID，形如：vpc-f49l6u0z。
+vpc-cidr-block  - String - vpc网段，形如: 192.168.1.0 。只支持单值的模糊查询。
+region - String - ECM地域
+zone - String - 可用区。
+tag-key - String -是否必填：否- 按照标签键进行过滤。
+tag:tag-key - String - 是否必填：否 - 按照标签键值对进行过滤。
         :type Filters: list of Filter
         :param Offset: 偏移量
         :type Offset: str
         :param Limit: 返回数量
         :type Limit: str
+        :param EcmRegion: ECM 地域
+        :type EcmRegion: str
+        :param Sort: 排序方式：time时间倒序, default按照网络规划排序
+        :type Sort: str
         """
-        self.EcmRegion = None
         self.SubnetIds = None
         self.Filters = None
         self.Offset = None
         self.Limit = None
+        self.EcmRegion = None
+        self.Sort = None
 
 
     def _deserialize(self, params):
-        self.EcmRegion = params.get("EcmRegion")
         self.SubnetIds = params.get("SubnetIds")
         if params.get("Filters") is not None:
             self.Filters = []
@@ -2040,6 +2048,8 @@ tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值
                 self.Filters.append(obj)
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.EcmRegion = params.get("EcmRegion")
+        self.Sort = params.get("Sort")
 
 
 class DescribeSubnetsResponse(AbstractModel):
@@ -2174,32 +2184,34 @@ class DescribeVpcsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EcmRegion: 地域
-        :type EcmRegion: str
         :param VpcIds: VPC实例ID。形如：vpc-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定VpcIds和Filters。
         :type VpcIds: list of str
         :param Filters: 过滤条件，参数不支持同时指定VpcIds和Filters。
-vpc-name - String - （过滤条件）VPC实例名称。
-is-default - String - （过滤条件）是否默认VPC。
-vpc-id - String - （过滤条件）VPC实例ID形如：vpc-f49l6u0z。
-cidr-block - String - （过滤条件）vpc的cidr。
-tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。
-tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例
+vpc-name - String - VPC实例名称，只支持单值的模糊查询。
+vpc-id - String - VPC实例ID形如：vpc-f49l6u0z。
+cidr-block - String - vpc的cidr，只支持单值的模糊查询。
+region - String - vpc的region。
+tag-key - String -是否必填：否- 按照标签键进行过滤。
+tag:tag-key - String - 是否必填：否 - 按照标签键值对进行过滤。
         :type Filters: list of Filter
         :param Offset: 偏移量
         :type Offset: int
         :param Limit: 返回数量
         :type Limit: int
+        :param EcmRegion: 地域
+        :type EcmRegion: str
+        :param Sort: 排序方式：time时间倒序, default按照网络规划排序
+        :type Sort: str
         """
-        self.EcmRegion = None
         self.VpcIds = None
         self.Filters = None
         self.Offset = None
         self.Limit = None
+        self.EcmRegion = None
+        self.Sort = None
 
 
     def _deserialize(self, params):
-        self.EcmRegion = params.get("EcmRegion")
         self.VpcIds = params.get("VpcIds")
         if params.get("Filters") is not None:
             self.Filters = []
@@ -2209,6 +2221,8 @@ tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值
                 self.Filters.append(obj)
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.EcmRegion = params.get("EcmRegion")
+        self.Sort = params.get("Sort")
 
 
 class DescribeVpcsResponse(AbstractModel):
@@ -2854,6 +2868,9 @@ PROTECTIVELY_ISOLATED：表示被安全隔离的实例。
         :param SecurityGroupIds: 实例所属安全组。该参数可以通过调用 DescribeSecurityGroups 的返回值中的sgId字段来获取。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityGroupIds: list of str
+        :param VirtualPrivateCloud: VPC属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VirtualPrivateCloud: :class:`tencentcloud.ecm.v20190719.models.VirtualPrivateCloud`
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -2880,6 +2897,7 @@ PROTECTIVELY_ISOLATED：表示被安全隔离的实例。
         self.DataDisks = None
         self.NewFlag = None
         self.SecurityGroupIds = None
+        self.VirtualPrivateCloud = None
 
 
     def _deserialize(self, params):
@@ -2930,6 +2948,9 @@ PROTECTIVELY_ISOLATED：表示被安全隔离的实例。
                 self.DataDisks.append(obj)
         self.NewFlag = params.get("NewFlag")
         self.SecurityGroupIds = params.get("SecurityGroupIds")
+        if params.get("VirtualPrivateCloud") is not None:
+            self.VirtualPrivateCloud = VirtualPrivateCloud()
+            self.VirtualPrivateCloud._deserialize(params.get("VirtualPrivateCloud"))
 
 
 class InstanceFamilyConfig(AbstractModel):
@@ -3649,11 +3670,14 @@ class ModifySubnetAttributeRequest(AbstractModel):
         :type SubnetName: str
         :param EnableBroadcast: 子网是否开启广播。
         :type EnableBroadcast: str
+        :param Tags: 子网的标签键值
+        :type Tags: list of Tag
         """
         self.SubnetId = None
         self.EcmRegion = None
         self.SubnetName = None
         self.EnableBroadcast = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -3661,6 +3685,12 @@ class ModifySubnetAttributeRequest(AbstractModel):
         self.EcmRegion = params.get("EcmRegion")
         self.SubnetName = params.get("SubnetName")
         self.EnableBroadcast = params.get("EnableBroadcast")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class ModifySubnetAttributeResponse(AbstractModel):
@@ -3693,16 +3723,29 @@ class ModifyVpcAttributeRequest(AbstractModel):
         :type EcmRegion: str
         :param VpcName: 私有网络名称，可任意命名，但不得超过60个字符。
         :type VpcName: str
+        :param Tags: 标签
+        :type Tags: list of Tag
+        :param Description: 私有网络描述
+        :type Description: str
         """
         self.VpcId = None
         self.EcmRegion = None
         self.VpcName = None
+        self.Tags = None
+        self.Description = None
 
 
     def _deserialize(self, params):
         self.VpcId = params.get("VpcId")
         self.EcmRegion = params.get("EcmRegion")
         self.VpcName = params.get("VpcName")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.Description = params.get("Description")
 
 
 class ModifyVpcAttributeResponse(AbstractModel):
@@ -5184,6 +5227,21 @@ class Subnet(AbstractModel):
         :type TagSet: list of Tag
         :param Zone: 所在区域
         :type Zone: str
+        :param ZoneName: 可用区名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneName: str
+        :param InstanceCount: 实例数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceCount: int
+        :param VpcCidrBlock: VPC的 IPv4 CIDR。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcCidrBlock: str
+        :param VpcIpv6CidrBlock: VPC的 IPv6 CIDR。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcIpv6CidrBlock: str
+        :param Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
         """
         self.VpcId = None
         self.SubnetId = None
@@ -5199,6 +5257,11 @@ class Subnet(AbstractModel):
         self.IsRemoteVpcSnat = None
         self.TagSet = None
         self.Zone = None
+        self.ZoneName = None
+        self.InstanceCount = None
+        self.VpcCidrBlock = None
+        self.VpcIpv6CidrBlock = None
+        self.Region = None
 
 
     def _deserialize(self, params):
@@ -5221,6 +5284,11 @@ class Subnet(AbstractModel):
                 obj._deserialize(item)
                 self.TagSet.append(obj)
         self.Zone = params.get("Zone")
+        self.ZoneName = params.get("ZoneName")
+        self.InstanceCount = params.get("InstanceCount")
+        self.VpcCidrBlock = params.get("VpcCidrBlock")
+        self.VpcIpv6CidrBlock = params.get("VpcIpv6CidrBlock")
+        self.Region = params.get("Region")
 
 
 class Tag(AbstractModel):
@@ -5372,6 +5440,43 @@ class TerminateInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class VirtualPrivateCloud(AbstractModel):
+    """私有网络相关信息配置。
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: 私有网络ID，形如vpc-xxx。
+        :type VpcId: str
+        :param SubnetId: 私有网络子网ID，形如subnet-xxx。
+        :type SubnetId: str
+        :param AsVpcGateway: 是否用作公网网关。公网网关只有在实例拥有公网IP以及处于私有网络下时才能正常使用。取值范围：
+TRUE：表示用作公网网关
+FALSE：表示不用作公网网关
+
+默认取值：FALSE。
+        :type AsVpcGateway: bool
+        :param PrivateIpAddresses: 私有网络子网 IP 数组，在创建实例、修改实例vpc属性操作中可使用此参数。
+        :type PrivateIpAddresses: list of str
+        :param Ipv6AddressCount: 为弹性网卡指定随机生成的 IPv6 地址数量。
+        :type Ipv6AddressCount: int
+        """
+        self.VpcId = None
+        self.SubnetId = None
+        self.AsVpcGateway = None
+        self.PrivateIpAddresses = None
+        self.Ipv6AddressCount = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.AsVpcGateway = params.get("AsVpcGateway")
+        self.PrivateIpAddresses = params.get("PrivateIpAddresses")
+        self.Ipv6AddressCount = params.get("Ipv6AddressCount")
+
+
 class VpcInfo(AbstractModel):
     """私有网络(VPC)对象。
 
@@ -5409,6 +5514,21 @@ class VpcInfo(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AssistantCidrSet: list of AssistantCidr
+        :param Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param Description: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param RegionName: 地域中文名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionName: str
+        :param SubnetCount: 包含子网数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetCount: int
+        :param InstanceCount: 包含实例数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceCount: int
         """
         self.VpcName = None
         self.VpcId = None
@@ -5423,6 +5543,11 @@ class VpcInfo(AbstractModel):
         self.Ipv6CidrBlock = None
         self.TagSet = None
         self.AssistantCidrSet = None
+        self.Region = None
+        self.Description = None
+        self.RegionName = None
+        self.SubnetCount = None
+        self.InstanceCount = None
 
 
     def _deserialize(self, params):
@@ -5449,6 +5574,11 @@ class VpcInfo(AbstractModel):
                 obj = AssistantCidr()
                 obj._deserialize(item)
                 self.AssistantCidrSet.append(obj)
+        self.Region = params.get("Region")
+        self.Description = params.get("Description")
+        self.RegionName = params.get("RegionName")
+        self.SubnetCount = params.get("SubnetCount")
+        self.InstanceCount = params.get("InstanceCount")
 
 
 class ZoneInfo(AbstractModel):

@@ -665,12 +665,29 @@ class DescribeWhiteBoxKeyDetailsRequest(AbstractModel):
         """
         :param KeyStatus: 过滤条件：密钥的状态，0：disabled，1：enabled
         :type KeyStatus: int
+        :param Offset: 含义跟 SQL 查询的 Offset 一致，表示本次获取从按一定顺序排列数组的第 Offset 个元素开始，缺省为0
+        :type Offset: int
+        :param Limit: 含义跟 SQL 查询的 Limit 一致，表示本次最多获取 Limit 个元素。缺省值为0, 表示不分页
+        :type Limit: int
+        :param TagFilters: 标签过滤条件
+        :type TagFilters: list of TagFilter
         """
         self.KeyStatus = None
+        self.Offset = None
+        self.Limit = None
+        self.TagFilters = None
 
 
     def _deserialize(self, params):
         self.KeyStatus = params.get("KeyStatus")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("TagFilters") is not None:
+            self.TagFilters = []
+            for item in params.get("TagFilters"):
+                obj = TagFilter()
+                obj._deserialize(item)
+                self.TagFilters.append(obj)
 
 
 class DescribeWhiteBoxKeyDetailsResponse(AbstractModel):
@@ -682,10 +699,14 @@ class DescribeWhiteBoxKeyDetailsResponse(AbstractModel):
         """
         :param KeyInfos: 白盒密钥信息列表
         :type KeyInfos: list of WhiteboxKeyInfo
+        :param TotalCount: key总数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.KeyInfos = None
+        self.TotalCount = None
         self.RequestId = None
 
 
@@ -696,6 +717,7 @@ class DescribeWhiteBoxKeyDetailsResponse(AbstractModel):
                 obj = WhiteboxKeyInfo()
                 obj._deserialize(item)
                 self.KeyInfos.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -1701,6 +1723,8 @@ class ListKeyDetailRequest(AbstractModel):
         :type Origin: str
         :param KeyUsage: 根据CMK的KeyUsage筛选，ALL表示筛选全部，可使用的参数为：ALL 或 ENCRYPT_DECRYPT 或 ASYMMETRIC_DECRYPT_RSA_2048 或 ASYMMETRIC_DECRYPT_SM2，为空则默认筛选ENCRYPT_DECRYPT类型
         :type KeyUsage: str
+        :param TagFilters: 标签过滤条件
+        :type TagFilters: list of TagFilter
         """
         self.Offset = None
         self.Limit = None
@@ -1710,6 +1734,7 @@ class ListKeyDetailRequest(AbstractModel):
         self.SearchKeyAlias = None
         self.Origin = None
         self.KeyUsage = None
+        self.TagFilters = None
 
 
     def _deserialize(self, params):
@@ -1721,6 +1746,12 @@ class ListKeyDetailRequest(AbstractModel):
         self.SearchKeyAlias = params.get("SearchKeyAlias")
         self.Origin = params.get("Origin")
         self.KeyUsage = params.get("KeyUsage")
+        if params.get("TagFilters") is not None:
+            self.TagFilters = []
+            for item in params.get("TagFilters"):
+                obj = TagFilter()
+                obj._deserialize(item)
+                self.TagFilters.append(obj)
 
 
 class ListKeyDetailResponse(AbstractModel):
@@ -1982,6 +2013,27 @@ class Tag(AbstractModel):
         self.TagValue = params.get("TagValue")
 
 
+class TagFilter(AbstractModel):
+    """标签过滤器
+
+    """
+
+    def __init__(self):
+        """
+        :param TagKey: 标签键
+        :type TagKey: str
+        :param TagValue: 标签值
+        :type TagValue: list of str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
+
+
 class UnbindCloudResourceRequest(AbstractModel):
     """UnbindCloudResource请求参数结构体
 
@@ -2129,6 +2181,9 @@ class WhiteboxKeyInfo(AbstractModel):
         :type DecryptKey: str
         :param ResourceId: 资源ID，格式：creatorUin/$creatorUin/$keyId
         :type ResourceId: str
+        :param DeviceFingerprintBind: 是否有设备指纹与当前密钥绑定
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceFingerprintBind: bool
         """
         self.KeyId = None
         self.Alias = None
@@ -2141,6 +2196,7 @@ class WhiteboxKeyInfo(AbstractModel):
         self.EncryptKey = None
         self.DecryptKey = None
         self.ResourceId = None
+        self.DeviceFingerprintBind = None
 
 
     def _deserialize(self, params):
@@ -2155,3 +2211,4 @@ class WhiteboxKeyInfo(AbstractModel):
         self.EncryptKey = params.get("EncryptKey")
         self.DecryptKey = params.get("DecryptKey")
         self.ResourceId = params.get("ResourceId")
+        self.DeviceFingerprintBind = params.get("DeviceFingerprintBind")
