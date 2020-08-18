@@ -1192,7 +1192,7 @@ class CompressionRule(AbstractModel):
         :type MaxLength: int
         :param Algorithms: 文件压缩算法
 gzip：指定 GZIP 压缩
-brotli：需要同时指定 GZIP 压缩才可启用
+brotli：指定Brotli压缩
 注意：此字段可能返回 null，表示取不到有效值。
         :type Algorithms: list of str
         """

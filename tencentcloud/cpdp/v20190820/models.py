@@ -3627,6 +3627,8 @@ class MigrateOrderRefundRequest(AbstractModel):
         :type PayAmt: int
         :param Profile: 接入环境。沙箱环境填 sandbox。
         :type Profile: str
+        :param RefundReason: 退款原因
+        :type RefundReason: str
         """
         self.MerchantId = None
         self.PayChannel = None
@@ -3636,6 +3638,7 @@ class MigrateOrderRefundRequest(AbstractModel):
         self.ThirdChannelOrderId = None
         self.PayAmt = None
         self.Profile = None
+        self.RefundReason = None
 
 
     def _deserialize(self, params):
@@ -3647,6 +3650,7 @@ class MigrateOrderRefundRequest(AbstractModel):
         self.ThirdChannelOrderId = params.get("ThirdChannelOrderId")
         self.PayAmt = params.get("PayAmt")
         self.Profile = params.get("Profile")
+        self.RefundReason = params.get("RefundReason")
 
 
 class MigrateOrderRefundResponse(AbstractModel):

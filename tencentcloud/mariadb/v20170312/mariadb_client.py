@@ -812,6 +812,34 @@ class MariadbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def FlushBinlog(self, request):
+        """相当于在mysqld中执行flush logs，完成切分的binlog将展示在实例控制台binlog列表里。
+
+        :param request: Request instance for FlushBinlog.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.FlushBinlogRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.FlushBinlogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("FlushBinlog", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.FlushBinlogResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GrantAccountPrivileges(self, request):
         """本接口（GrantAccountPrivileges）用于给云数据库账号赋权。
         注意：相同用户名，不同Host是不同的账号。

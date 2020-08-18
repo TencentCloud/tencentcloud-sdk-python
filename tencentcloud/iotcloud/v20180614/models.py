@@ -863,6 +863,57 @@ class DeleteTopicRuleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeAllDevicesRequest(AbstractModel):
+    """DescribeAllDevices请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: 查询偏移量。
+        :type Offset: int
+        :param Limit: 查询设备数量。最大支持250个
+        :type Limit: int
+        """
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeAllDevicesResponse(AbstractModel):
+    """DescribeAllDevices返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 设备总数。
+        :type TotalCount: int
+        :param Devices: 查询的设备列表信息。
+        :type Devices: list of DeviceProperty
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Devices = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Devices") is not None:
+            self.Devices = []
+            for item in params.get("Devices"):
+                obj = DeviceProperty()
+                obj._deserialize(item)
+                self.Devices.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDeviceClientKeyRequest(AbstractModel):
     """DescribeDeviceClientKey请求参数结构体
 
@@ -1170,7 +1221,7 @@ class DescribeLoraDeviceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ProductId: 产品id
+        :param ProductId: 产品ID
         :type ProductId: str
         :param DeviceName: 设备名称
         :type DeviceName: str
@@ -1768,6 +1819,39 @@ class DeviceLabel(AbstractModel):
     def _deserialize(self, params):
         self.Key = params.get("Key")
         self.Value = params.get("Value")
+
+
+class DeviceProperty(AbstractModel):
+    """设备资源信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductId: 产品ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductId: str
+        :param ProductName: 产品名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductName: str
+        :param DeviceName: 设备名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceName: str
+        :param ResourceId: 设备资源ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceId: str
+        """
+        self.ProductId = None
+        self.ProductName = None
+        self.DeviceName = None
+        self.ResourceId = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.ProductName = params.get("ProductName")
+        self.DeviceName = params.get("DeviceName")
+        self.ResourceId = params.get("ResourceId")
 
 
 class DeviceTag(AbstractModel):

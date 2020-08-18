@@ -311,6 +311,8 @@ class CreateDBInstanceRequest(AbstractModel):
         :type AutoRenewFlag: int
         :param Ipv6Flag: 是否支持IPv6
         :type Ipv6Flag: int
+        :param ResourceTags: 标签键值对数组
+        :type ResourceTags: list of ResourceTag
         """
         self.Zones = None
         self.NodeCount = None
@@ -328,6 +330,7 @@ class CreateDBInstanceRequest(AbstractModel):
         self.SecurityGroupIds = None
         self.AutoRenewFlag = None
         self.Ipv6Flag = None
+        self.ResourceTags = None
 
 
     def _deserialize(self, params):
@@ -347,6 +350,12 @@ class CreateDBInstanceRequest(AbstractModel):
         self.SecurityGroupIds = params.get("SecurityGroupIds")
         self.AutoRenewFlag = params.get("AutoRenewFlag")
         self.Ipv6Flag = params.get("Ipv6Flag")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
 
 
 class CreateDBInstanceResponse(AbstractModel):
@@ -573,6 +582,27 @@ class DBInstance(AbstractModel):
         :type IsEncryptSupported: int
         :param Cpu: 实例CPU核数
         :type Cpu: int
+        :param Ipv6Flag: 实例IPv6标志
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ipv6Flag: int
+        :param Vipv6: 内网IPv6
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vipv6: str
+        :param WanVipv6: 外网IPv6
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WanVipv6: str
+        :param WanPortIpv6: 外网IPv6端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WanPortIpv6: int
+        :param WanStatusIpv6: 外网IPv6状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WanStatusIpv6: int
+        :param DbEngine: 数据库引擎
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DbEngine: str
+        :param DbVersion: 数据库版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DbVersion: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -613,6 +643,13 @@ class DBInstance(AbstractModel):
         self.Machine = None
         self.IsEncryptSupported = None
         self.Cpu = None
+        self.Ipv6Flag = None
+        self.Vipv6 = None
+        self.WanVipv6 = None
+        self.WanPortIpv6 = None
+        self.WanStatusIpv6 = None
+        self.DbEngine = None
+        self.DbVersion = None
 
 
     def _deserialize(self, params):
@@ -655,6 +692,13 @@ class DBInstance(AbstractModel):
         self.Machine = params.get("Machine")
         self.IsEncryptSupported = params.get("IsEncryptSupported")
         self.Cpu = params.get("Cpu")
+        self.Ipv6Flag = params.get("Ipv6Flag")
+        self.Vipv6 = params.get("Vipv6")
+        self.WanVipv6 = params.get("WanVipv6")
+        self.WanPortIpv6 = params.get("WanPortIpv6")
+        self.WanStatusIpv6 = params.get("WanStatusIpv6")
+        self.DbEngine = params.get("DbEngine")
+        self.DbVersion = params.get("DbVersion")
 
 
 class DBParamValue(AbstractModel):
@@ -1013,6 +1057,8 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type ExclusterType: int
         :param ExclusterIds: 按独享集群ID过滤实例，独享集群ID形如dbdc-4ih6uct9
         :type ExclusterIds: list of str
+        :param TagKeys: 按标签key查询
+        :type TagKeys: list of str
         """
         self.InstanceIds = None
         self.SearchName = None
@@ -1029,6 +1075,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.IsFilterExcluster = None
         self.ExclusterType = None
         self.ExclusterIds = None
+        self.TagKeys = None
 
 
     def _deserialize(self, params):
@@ -1047,6 +1094,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.IsFilterExcluster = params.get("IsFilterExcluster")
         self.ExclusterType = params.get("ExclusterType")
         self.ExclusterIds = params.get("ExclusterIds")
+        self.TagKeys = params.get("TagKeys")
 
 
 class DescribeDBInstancesResponse(AbstractModel):
@@ -2036,6 +2084,40 @@ class DescribeUpgradePriceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class FlushBinlogRequest(AbstractModel):
+    """FlushBinlog请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class FlushBinlogResponse(AbstractModel):
+    """FlushBinlog返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class GrantAccountPrivilegesRequest(AbstractModel):
     """GrantAccountPrivileges请求参数结构体
 
@@ -2849,6 +2931,27 @@ class ResetAccountPasswordResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class ResourceTag(AbstractModel):
+    """标签对象，包含tagKey & tagValue
+
+    """
+
+    def __init__(self):
+        """
+        :param TagKey: 标签键key
+        :type TagKey: str
+        :param TagValue: 标签值value
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
 
 
 class ResourceUsageMonitorSet(AbstractModel):

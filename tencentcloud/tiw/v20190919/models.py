@@ -941,6 +941,10 @@ class VideoInfo(AbstractModel):
         :type VideoType: int
         :param UserId: 摄像头/屏幕分享视频所属用户的 Id（白板视频为空、混流视频tic_mixstream_房间号_混流布局类型、辅路视频tic_substream_用户Id）
         :type UserId: str
+        :param Width: 视频分辨率的宽
+        :type Width: int
+        :param Height: 视频分辨率的高
+        :type Height: int
         """
         self.VideoPlayTime = None
         self.VideoSize = None
@@ -950,6 +954,8 @@ class VideoInfo(AbstractModel):
         self.VideoId = None
         self.VideoType = None
         self.UserId = None
+        self.Width = None
+        self.Height = None
 
 
     def _deserialize(self, params):
@@ -961,6 +967,8 @@ class VideoInfo(AbstractModel):
         self.VideoId = params.get("VideoId")
         self.VideoType = params.get("VideoType")
         self.UserId = params.get("UserId")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
 
 
 class Whiteboard(AbstractModel):

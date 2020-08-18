@@ -570,6 +570,49 @@ class DescribeAvailableZoneInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCfsFileSystemClientsRequest(AbstractModel):
+    """DescribeCfsFileSystemClients请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FileSystemId: 文件系统 ID。
+        :type FileSystemId: str
+        """
+        self.FileSystemId = None
+
+
+    def _deserialize(self, params):
+        self.FileSystemId = params.get("FileSystemId")
+
+
+class DescribeCfsFileSystemClientsResponse(AbstractModel):
+    """DescribeCfsFileSystemClients返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClientList: 客户端列表
+        :type ClientList: list of FileSystemClient
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ClientList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ClientList") is not None:
+            self.ClientList = []
+            for item in params.get("ClientList"):
+                obj = FileSystemClient()
+                obj._deserialize(item)
+                self.ClientList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCfsFileSystemsRequest(AbstractModel):
     """DescribeCfsFileSystems请求参数结构体
 
@@ -772,6 +815,43 @@ class DescribeMountTargetsResponse(AbstractModel):
                 self.MountTargets.append(obj)
         self.NumberOfMountTargets = params.get("NumberOfMountTargets")
         self.RequestId = params.get("RequestId")
+
+
+class FileSystemClient(AbstractModel):
+    """文件系统客户端信息
+
+    """
+
+    def __init__(self):
+        """
+        :param CfsVip: 文件系统IP地址
+        :type CfsVip: str
+        :param ClientIp: 客户端IP地址
+        :type ClientIp: str
+        :param VpcId: 文件系统所属VPCID
+        :type VpcId: str
+        :param Zone: 可用区名称，例如ap-beijing-1，请参考 概览文档中的地域与可用区列表
+        :type Zone: str
+        :param ZoneName: 可用区中文名称
+        :type ZoneName: str
+        :param MountDirectory: 该文件系统被挂载到客户端上的路径信息
+        :type MountDirectory: str
+        """
+        self.CfsVip = None
+        self.ClientIp = None
+        self.VpcId = None
+        self.Zone = None
+        self.ZoneName = None
+        self.MountDirectory = None
+
+
+    def _deserialize(self, params):
+        self.CfsVip = params.get("CfsVip")
+        self.ClientIp = params.get("ClientIp")
+        self.VpcId = params.get("VpcId")
+        self.Zone = params.get("Zone")
+        self.ZoneName = params.get("ZoneName")
+        self.MountDirectory = params.get("MountDirectory")
 
 
 class FileSystemInfo(AbstractModel):

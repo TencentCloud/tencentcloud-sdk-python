@@ -445,6 +445,34 @@ class IotcloudClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAllDevices(self, request):
+        """查询所有设备列表
+
+        :param request: Request instance for DescribeAllDevices.
+        :type request: :class:`tencentcloud.iotcloud.v20180614.models.DescribeAllDevicesRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.DescribeAllDevicesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAllDevices", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAllDevicesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDevice(self, request):
         """本接口（DescribeDevice）用于查看设备信息
 

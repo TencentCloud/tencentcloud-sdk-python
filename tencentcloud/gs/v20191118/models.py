@@ -45,12 +45,14 @@ class CreateSessionRequest(AbstractModel):
         :type MaxBitrate: int
         :param MinBitrate: 单位Mbps，动态调整最小码率
         :type MinBitrate: int
-        :param Fps: 帧率，可设置为30、45或60
+        :param Fps: 帧率，可设置为30、45、60、90、120、144
         :type Fps: int
         :param UserIp: 游戏用户IP，用于就近调度，例如125.127.178.228
         :type UserIp: str
         :param Optimization: 优化项，便于客户灰度开启新的优化项，默认为0
         :type Optimization: int
+        :param HostUserId: 用于多人游戏，游戏主机用户ID
+        :type HostUserId: str
         """
         self.ClientSession = None
         self.UserId = None
@@ -66,6 +68,7 @@ class CreateSessionRequest(AbstractModel):
         self.Fps = None
         self.UserIp = None
         self.Optimization = None
+        self.HostUserId = None
 
 
     def _deserialize(self, params):
@@ -83,6 +86,7 @@ class CreateSessionRequest(AbstractModel):
         self.Fps = params.get("Fps")
         self.UserIp = params.get("UserIp")
         self.Optimization = params.get("Optimization")
+        self.HostUserId = params.get("HostUserId")
 
 
 class CreateSessionResponse(AbstractModel):
@@ -115,12 +119,16 @@ class StopGameRequest(AbstractModel):
         """
         :param UserId: 游戏用户ID
         :type UserId: str
+        :param HostUserId: 用于多人游戏，游戏主机用户ID
+        :type HostUserId: str
         """
         self.UserId = None
+        self.HostUserId = None
 
 
     def _deserialize(self, params):
         self.UserId = params.get("UserId")
+        self.HostUserId = params.get("HostUserId")
 
 
 class StopGameResponse(AbstractModel):

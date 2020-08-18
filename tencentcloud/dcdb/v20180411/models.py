@@ -342,6 +342,8 @@ class CreateDCDBInstanceRequest(AbstractModel):
         :type InstanceName: str
         :param Ipv6Flag: 是否支持IPv6
         :type Ipv6Flag: int
+        :param ResourceTags: 标签键值对数组
+        :type ResourceTags: list of ResourceTag
         """
         self.Zones = None
         self.Period = None
@@ -359,6 +361,7 @@ class CreateDCDBInstanceRequest(AbstractModel):
         self.SecurityGroupId = None
         self.InstanceName = None
         self.Ipv6Flag = None
+        self.ResourceTags = None
 
 
     def _deserialize(self, params):
@@ -378,6 +381,12 @@ class CreateDCDBInstanceRequest(AbstractModel):
         self.SecurityGroupId = params.get("SecurityGroupId")
         self.InstanceName = params.get("InstanceName")
         self.Ipv6Flag = params.get("Ipv6Flag")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
 
 
 class CreateDCDBInstanceResponse(AbstractModel):
@@ -481,7 +490,7 @@ class DCDBInstanceInfo(AbstractModel):
         :type InstanceId: str
         :param InstanceName: 实例名称
         :type InstanceName: str
-        :param AppId: AppID
+        :param AppId: 应用ID
         :type AppId: int
         :param ProjectId: 项目ID
         :type ProjectId: int
@@ -515,7 +524,7 @@ class DCDBInstanceInfo(AbstractModel):
         :type PeriodEndTime: str
         :param IsolatedTimestamp: 隔离时间
         :type IsolatedTimestamp: str
-        :param Uin: UIN
+        :param Uin: 账号ID
         :type Uin: str
         :param ShardDetail: 分片详情
         :type ShardDetail: list of ShardInfo
@@ -556,6 +565,21 @@ class DCDBInstanceInfo(AbstractModel):
         :type IsAuditSupported: int
         :param Cpu: Cpu核数
         :type Cpu: int
+        :param Ipv6Flag: 实例IPv6标志
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ipv6Flag: int
+        :param Vipv6: 内网IPv6
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vipv6: str
+        :param WanVipv6: 外网IPv6
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WanVipv6: str
+        :param WanPortIpv6: 外网IPv6端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WanPortIpv6: int
+        :param WanStatusIpv6: 外网IPv6状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WanStatusIpv6: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -596,6 +620,11 @@ class DCDBInstanceInfo(AbstractModel):
         self.WanStatus = None
         self.IsAuditSupported = None
         self.Cpu = None
+        self.Ipv6Flag = None
+        self.Vipv6 = None
+        self.WanVipv6 = None
+        self.WanPortIpv6 = None
+        self.WanStatusIpv6 = None
 
 
     def _deserialize(self, params):
@@ -643,6 +672,11 @@ class DCDBInstanceInfo(AbstractModel):
         self.WanStatus = params.get("WanStatus")
         self.IsAuditSupported = params.get("IsAuditSupported")
         self.Cpu = params.get("Cpu")
+        self.Ipv6Flag = params.get("Ipv6Flag")
+        self.Vipv6 = params.get("Vipv6")
+        self.WanVipv6 = params.get("WanVipv6")
+        self.WanPortIpv6 = params.get("WanPortIpv6")
+        self.WanStatusIpv6 = params.get("WanStatusIpv6")
 
 
 class DCDBShardInfo(AbstractModel):
@@ -1243,6 +1277,8 @@ class DescribeDCDBInstancesRequest(AbstractModel):
         :type IsFilterExcluster: bool
         :param ExclusterIds: 独享集群ID
         :type ExclusterIds: list of str
+        :param TagKeys: 按标签key查询
+        :type TagKeys: list of str
         """
         self.InstanceIds = None
         self.SearchName = None
@@ -1258,6 +1294,7 @@ class DescribeDCDBInstancesRequest(AbstractModel):
         self.ExclusterType = None
         self.IsFilterExcluster = None
         self.ExclusterIds = None
+        self.TagKeys = None
 
 
     def _deserialize(self, params):
@@ -1275,6 +1312,7 @@ class DescribeDCDBInstancesRequest(AbstractModel):
         self.ExclusterType = params.get("ExclusterType")
         self.IsFilterExcluster = params.get("IsFilterExcluster")
         self.ExclusterIds = params.get("ExclusterIds")
+        self.TagKeys = params.get("TagKeys")
 
 
 class DescribeDCDBInstancesResponse(AbstractModel):
@@ -1991,6 +2029,40 @@ class ExpandShardConfig(AbstractModel):
         self.ShardStorage = params.get("ShardStorage")
 
 
+class FlushBinlogRequest(AbstractModel):
+    """FlushBinlog请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 无
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class FlushBinlogResponse(AbstractModel):
+    """FlushBinlog返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class GrantAccountPrivilegesRequest(AbstractModel):
     """GrantAccountPrivileges请求参数结构体
 
@@ -2649,6 +2721,27 @@ class ResetAccountPasswordResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class ResourceTag(AbstractModel):
+    """标签对象，包含tagKey & tagValue
+
+    """
+
+    def __init__(self):
+        """
+        :param TagKey: 标签键key
+        :type TagKey: str
+        :param TagValue: 标签值value
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
 
 
 class ShardInfo(AbstractModel):

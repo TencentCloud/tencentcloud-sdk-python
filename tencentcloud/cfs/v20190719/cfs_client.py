@@ -249,6 +249,34 @@ class CfsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCfsFileSystemClients(self, request):
+        """查询挂载该文件系统的客户端。此功能需要客户端安装CFS监控插件。
+
+        :param request: Request instance for DescribeCfsFileSystemClients.
+        :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeCfsFileSystemClientsRequest`
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.DescribeCfsFileSystemClientsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCfsFileSystemClients", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCfsFileSystemClientsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCfsFileSystems(self, request):
         """本接口（DescribeCfsFileSystems）用于查询文件系统
 
