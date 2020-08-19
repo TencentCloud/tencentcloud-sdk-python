@@ -4570,7 +4570,7 @@ class ReqParameter(AbstractModel):
         """
         :param Name: API 的前端参数名称。
         :type Name: str
-        :param Position: API 的前端参数位置，如 head。目前支持 head、query、path。
+        :param Position: API 的前端参数位置，如 header。目前支持 header、query、path。
         :type Position: str
         :param Type: API 的前端参数类型，如 String、int。
         :type Type: str

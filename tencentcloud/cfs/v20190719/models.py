@@ -84,11 +84,14 @@ class AvailableType(AbstractModel):
         """
         :param Protocols: 协议与售卖详情
         :type Protocols: list of AvailableProtoStatus
-        :param Type: 存储类型。可选值有 SD 标准型存储、HP性能型存储
+        :param Type: 存储类型。返回值中 SD 为标准型存储、HP 为性能型存储
         :type Type: str
+        :param Prepayment: 是否支持预付费。返回值中 true 为支持、false 为不支持
+        :type Prepayment: bool
         """
         self.Protocols = None
         self.Type = None
+        self.Prepayment = None
 
 
     def _deserialize(self, params):
@@ -99,6 +102,7 @@ class AvailableType(AbstractModel):
                 obj._deserialize(item)
                 self.Protocols.append(obj)
         self.Type = params.get("Type")
+        self.Prepayment = params.get("Prepayment")
 
 
 class AvailableZone(AbstractModel):

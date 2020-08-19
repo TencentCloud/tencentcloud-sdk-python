@@ -902,6 +902,9 @@ class CreateLiveCallbackTemplateRequest(AbstractModel):
         :param CallbackKey: 回调 Key，回调 URL 公用，回调签名详见事件消息通知文档。
 [事件消息通知](/document/product/267/32744)。
         :type CallbackKey: str
+        :param StreamMixNotifyUrl: 混流回调 URL，
+相关协议文档：[事件消息通知](/document/product/267/32744)。
+        :type StreamMixNotifyUrl: str
         """
         self.TemplateName = None
         self.Description = None
@@ -911,6 +914,7 @@ class CreateLiveCallbackTemplateRequest(AbstractModel):
         self.SnapshotNotifyUrl = None
         self.PornCensorshipNotifyUrl = None
         self.CallbackKey = None
+        self.StreamMixNotifyUrl = None
 
 
     def _deserialize(self, params):
@@ -922,6 +926,7 @@ class CreateLiveCallbackTemplateRequest(AbstractModel):
         self.SnapshotNotifyUrl = params.get("SnapshotNotifyUrl")
         self.PornCensorshipNotifyUrl = params.get("PornCensorshipNotifyUrl")
         self.CallbackKey = params.get("CallbackKey")
+        self.StreamMixNotifyUrl = params.get("StreamMixNotifyUrl")
 
 
 class CreateLiveCallbackTemplateResponse(AbstractModel):
@@ -1306,8 +1311,14 @@ class CreateLiveSnapshotTemplateRequest(AbstractModel):
         :param PornFlag: 是否开启鉴黄，0：不开启，1：开启。默认：0。
         :type PornFlag: int
         :param CosPrefix: Cos Bucket文件夹前缀。
+如不传，实际按默认值
+/{Year}-{Month}-{Day}
+生效
         :type CosPrefix: str
         :param CosFileName: Cos 文件名称。
+如不传，实际按默认值
+{StreamID}-screenshot-{Hour}-{Minute}-{Second}-{Width}x{Height}{Ext}
+生效
         :type CosFileName: str
         """
         self.TemplateName = None

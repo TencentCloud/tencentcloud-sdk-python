@@ -240,6 +240,12 @@ class ClusterAdvancedSettings(AbstractModel):
         :type DeletionProtection: bool
         :param KubeProxyMode: 集群的网络代理模型
         :type KubeProxyMode: str
+        :param AuditEnabled: 是否开启审计开关
+        :type AuditEnabled: bool
+        :param AuditLogsetId: 审计日志上传到的logset日志集
+        :type AuditLogsetId: str
+        :param AuditLogTopicId: 审计日志上传到的topic
+        :type AuditLogTopicId: str
         """
         self.IPVS = None
         self.AsEnabled = None
@@ -250,6 +256,9 @@ class ClusterAdvancedSettings(AbstractModel):
         self.IsNonStaticIpMode = None
         self.DeletionProtection = None
         self.KubeProxyMode = None
+        self.AuditEnabled = None
+        self.AuditLogsetId = None
+        self.AuditLogTopicId = None
 
 
     def _deserialize(self, params):
@@ -264,6 +273,9 @@ class ClusterAdvancedSettings(AbstractModel):
         self.IsNonStaticIpMode = params.get("IsNonStaticIpMode")
         self.DeletionProtection = params.get("DeletionProtection")
         self.KubeProxyMode = params.get("KubeProxyMode")
+        self.AuditEnabled = params.get("AuditEnabled")
+        self.AuditLogsetId = params.get("AuditLogsetId")
+        self.AuditLogTopicId = params.get("AuditLogTopicId")
 
 
 class ClusterAsGroup(AbstractModel):
@@ -513,7 +525,7 @@ class ClusterExtraArgs(AbstractModel):
 
     def __init__(self):
         """
-        :param KubeAPIServer: kube-apiserver自定义参数
+        :param KubeAPIServer: kube-apiserver自定义参数，参数格式为["k1=v1", "k1=v2"]， 例如["max-requests-inflight=500","feature-gates=PodShareProcessNamespace=true,DynamicKubeletConfig=true"]
 注意：此字段可能返回 null，表示取不到有效值。
         :type KubeAPIServer: list of str
         :param KubeControllerManager: kube-controller-manager自定义参数
@@ -2370,7 +2382,7 @@ class InstanceExtraArgs(AbstractModel):
 
     def __init__(self):
         """
-        :param Kubelet: kubelet自定义参数
+        :param Kubelet: kubelet自定义参数，参数格式为["k1=v1", "k1=v2"]， 例如["root-dir=/var/lib/kubelet","feature-gates=PodShareProcessNamespace=true,DynamicKubeletConfig=true"]
 注意：此字段可能返回 null，表示取不到有效值。
         :type Kubelet: list of str
         """

@@ -474,7 +474,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def DescribeStudioProduct(self, request):
-        """提供查看茶品详细信息的能力，包括产品的ID、数据协议、认证类型等重要参数
+        """提供查看产品详细信息的能力，包括产品的ID、数据协议、认证类型等重要参数
 
         :param request: Request instance for DescribeStudioProduct.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeStudioProductRequest`

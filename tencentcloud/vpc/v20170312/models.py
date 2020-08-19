@@ -2123,14 +2123,23 @@ class CreateCustomerGatewayRequest(AbstractModel):
         :type CustomerGatewayName: str
         :param IpAddress: 对端网关公网IP。
         :type IpAddress: str
+        :param Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+        :type Tags: list of Tag
         """
         self.CustomerGatewayName = None
         self.IpAddress = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
         self.CustomerGatewayName = params.get("CustomerGatewayName")
         self.IpAddress = params.get("IpAddress")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class CreateCustomerGatewayResponse(AbstractModel):
@@ -3441,6 +3450,8 @@ class CreateVpnConnectionRequest(AbstractModel):
         :type IKEOptionsSpecification: :class:`tencentcloud.vpc.v20170312.models.IKEOptionsSpecification`
         :param IPSECOptionsSpecification: IPSec配置，腾讯云提供IPSec安全会话设置
         :type IPSECOptionsSpecification: :class:`tencentcloud.vpc.v20170312.models.IPSECOptionsSpecification`
+        :param Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+        :type Tags: list of Tag
         """
         self.VpcId = None
         self.VpnGatewayId = None
@@ -3450,6 +3461,7 @@ class CreateVpnConnectionRequest(AbstractModel):
         self.SecurityPolicyDatabases = None
         self.IKEOptionsSpecification = None
         self.IPSECOptionsSpecification = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -3470,6 +3482,12 @@ class CreateVpnConnectionRequest(AbstractModel):
         if params.get("IPSECOptionsSpecification") is not None:
             self.IPSECOptionsSpecification = IPSECOptionsSpecification()
             self.IPSECOptionsSpecification._deserialize(params.get("IPSECOptionsSpecification"))
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class CreateVpnConnectionResponse(AbstractModel):
@@ -3516,6 +3534,8 @@ class CreateVpnGatewayRequest(AbstractModel):
         :type Zone: str
         :param Type: VPN网关类型。值“CCN”云联网类型VPN网关
         :type Type: str
+        :param Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+        :type Tags: list of Tag
         """
         self.VpcId = None
         self.VpnGatewayName = None
@@ -3524,6 +3544,7 @@ class CreateVpnGatewayRequest(AbstractModel):
         self.InstanceChargePrepaid = None
         self.Zone = None
         self.Type = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -3536,6 +3557,12 @@ class CreateVpnGatewayRequest(AbstractModel):
             self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
         self.Zone = params.get("Zone")
         self.Type = params.get("Type")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class CreateVpnGatewayResponse(AbstractModel):

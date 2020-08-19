@@ -810,6 +810,24 @@ class EmrProductConfigOutter(AbstractModel):
         self.CbsEncrypt = params.get("CbsEncrypt")
 
 
+class HostVolumeContext(AbstractModel):
+    """Pod HostPath挂载方式描述
+
+    """
+
+    def __init__(self):
+        """
+        :param VolumePath: Pod挂载宿主机的目录。资源对宿主机的挂载点，指定的挂载点对应了宿主机的路径，该挂载点在Pod中作为数据存储目录使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VolumePath: str
+        """
+        self.VolumePath = None
+
+
+    def _deserialize(self, params):
+        self.VolumePath = params.get("VolumePath")
+
+
 class InquiryPriceCreateInstanceRequest(AbstractModel):
     """InquiryPriceCreateInstance请求参数结构体
 
@@ -1601,6 +1619,29 @@ class OutterResource(AbstractModel):
         self.InstanceType = params.get("InstanceType")
 
 
+class PersistentVolumeContext(AbstractModel):
+    """Pod PVC存储方式描述
+
+    """
+
+    def __init__(self):
+        """
+        :param DiskSize: 磁盘大小，单位为GB。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskSize: int
+        :param DiskType: 磁盘类型。CLOUD_PREMIUM;CLOUD_SSD
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskType: str
+        """
+        self.DiskSize = None
+        self.DiskType = None
+
+
+    def _deserialize(self, params):
+        self.DiskSize = params.get("DiskSize")
+        self.DiskType = params.get("DiskType")
+
+
 class Placement(AbstractModel):
     """描述集群实例位置信息
 
@@ -1639,8 +1680,12 @@ class PodSpec(AbstractModel):
         :type Cpu: int
         :param Memory: 内存大小，单位为GB。
         :type Memory: int
-        :param DataVolumes: 资源对宿主机的挂载点，指定的挂载点对应了宿主机的路径，该挂载点在Pod中作为数据存储目录使用。
+        :param DataVolumes: 资源对宿主机的挂载点，指定的挂载点对应了宿主机的路径，该挂载点在Pod中作为数据存储目录使用。弃用
         :type DataVolumes: list of str
+        :param CpuType: Eks集群-CPU类型，当前支持"intel"和"amd"
+        :type CpuType: str
+        :param PodVolumes: Pod节点数据目录挂载信息。
+        :type PodVolumes: list of PodVolume
         """
         self.ResourceProviderIdentifier = None
         self.ResourceProviderType = None
@@ -1648,6 +1693,8 @@ class PodSpec(AbstractModel):
         self.Cpu = None
         self.Memory = None
         self.DataVolumes = None
+        self.CpuType = None
+        self.PodVolumes = None
 
 
     def _deserialize(self, params):
@@ -1657,6 +1704,45 @@ class PodSpec(AbstractModel):
         self.Cpu = params.get("Cpu")
         self.Memory = params.get("Memory")
         self.DataVolumes = params.get("DataVolumes")
+        self.CpuType = params.get("CpuType")
+        if params.get("PodVolumes") is not None:
+            self.PodVolumes = []
+            for item in params.get("PodVolumes"):
+                obj = PodVolume()
+                obj._deserialize(item)
+                self.PodVolumes.append(obj)
+
+
+class PodVolume(AbstractModel):
+    """Pod的存储设备描述信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param VolumeType: 存储类型，可为"pvc"，"hostpath"。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VolumeType: str
+        :param PVCVolume: 当VolumeType为"pvc"时，该字段生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PVCVolume: :class:`tencentcloud.emr.v20190103.models.PersistentVolumeContext`
+        :param HostVolume: 当VolumeType为"hostpath"时，该字段生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostVolume: :class:`tencentcloud.emr.v20190103.models.HostVolumeContext`
+        """
+        self.VolumeType = None
+        self.PVCVolume = None
+        self.HostVolume = None
+
+
+    def _deserialize(self, params):
+        self.VolumeType = params.get("VolumeType")
+        if params.get("PVCVolume") is not None:
+            self.PVCVolume = PersistentVolumeContext()
+            self.PVCVolume._deserialize(params.get("PVCVolume"))
+        if params.get("HostVolume") is not None:
+            self.HostVolume = HostVolumeContext()
+            self.HostVolume._deserialize(params.get("HostVolume"))
 
 
 class PreExecuteFileSettings(AbstractModel):
