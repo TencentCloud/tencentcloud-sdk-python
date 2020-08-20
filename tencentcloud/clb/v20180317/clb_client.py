@@ -825,7 +825,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeClsLogSet(self, request):
-        """获取用户的clb独占日志集。
+        """获取用户的clb专有日志集
 
         :param request: Request instance for DescribeClsLogSet.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeClsLogSetRequest`

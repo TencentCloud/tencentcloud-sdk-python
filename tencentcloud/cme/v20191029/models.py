@@ -3084,6 +3084,8 @@ class VideoEditProjectOutput(AbstractModel):
 
     def __init__(self):
         """
+        :param MaterialId: 导出的云剪素材 MaterialId，仅当导出为云剪素材时有效。
+        :type MaterialId: str
         :param VodFileId: 云点播媒资 FileId。
         :type VodFileId: str
         :param URL: 导出的媒资 URL。
@@ -3092,12 +3094,14 @@ class VideoEditProjectOutput(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type MetaData: :class:`tencentcloud.cme.v20191029.models.MediaMetaData`
         """
+        self.MaterialId = None
         self.VodFileId = None
         self.URL = None
         self.MetaData = None
 
 
     def _deserialize(self, params):
+        self.MaterialId = params.get("MaterialId")
         self.VodFileId = params.get("VodFileId")
         self.URL = params.get("URL")
         if params.get("MetaData") is not None:

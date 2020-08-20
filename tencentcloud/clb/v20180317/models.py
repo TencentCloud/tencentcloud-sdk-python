@@ -3186,10 +3186,10 @@ OPEN：公网属性， INTERNAL：内网属性。
         :param IPv6Mode: IP地址版本为ipv6时此字段有意义， IPv6Nat64 | IPv6FullChain
 注意：此字段可能返回 null，表示取不到有效值。
         :type IPv6Mode: str
-        :param SnatPro: 是否开启SnatPro
+        :param SnatPro: 是否开启SnatPro。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SnatPro: bool
-        :param SnatIps: 开启SnatPro负载均衡后，SnatIp列表
+        :param SnatIps: 开启SnatPro负载均衡后，SnatIp列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SnatIps: list of SnatIp
         :param SlaType: 性能保障规格
@@ -3204,6 +3204,12 @@ OPEN：公网属性， INTERNAL：内网属性。
         :param LocalBgp: IP类型是否是本地BGP
 注意：此字段可能返回 null，表示取不到有效值。
         :type LocalBgp: bool
+        :param ClusterTag: 7层独占标签。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterTag: str
+        :param MixIpTarget: 开启IPv6FullChain负载均衡7层监听器支持混绑IPv4/IPv6目标功能。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MixIpTarget: bool
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
@@ -3250,6 +3256,8 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.IsBlock = None
         self.IsBlockTime = None
         self.LocalBgp = None
+        self.ClusterTag = None
+        self.MixIpTarget = None
 
 
     def _deserialize(self, params):
@@ -3325,6 +3333,8 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.IsBlock = params.get("IsBlock")
         self.IsBlockTime = params.get("IsBlockTime")
         self.LocalBgp = params.get("LocalBgp")
+        self.ClusterTag = params.get("ClusterTag")
+        self.MixIpTarget = params.get("MixIpTarget")
 
 
 class LoadBalancerDetail(AbstractModel):

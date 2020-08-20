@@ -339,14 +339,20 @@ class BusinessCardInfo(AbstractModel):
         :type Name: str
         :param Value: 识别出的字段名称对应的值，也就是字段name对应的字符串结果。
         :type Value: str
+        :param ItemCoord: 文本行在旋转纠正之后的图像中的像素坐标，表示为（左上角x, 左上角y，宽width，高height）
+        :type ItemCoord: :class:`tencentcloud.ocr.v20181119.models.ItemCoord`
         """
         self.Name = None
         self.Value = None
+        self.ItemCoord = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Value = params.get("Value")
+        if params.get("ItemCoord") is not None:
+            self.ItemCoord = ItemCoord()
+            self.ItemCoord._deserialize(params.get("ItemCoord"))
 
 
 class BusinessCardOCRRequest(AbstractModel):
@@ -400,11 +406,14 @@ class BusinessCardOCRResponse(AbstractModel):
         :type BusinessCardInfos: list of BusinessCardInfo
         :param RetImageBase64: 返回图像预处理后的图片，图像预处理未开启时返回内容为空。
         :type RetImageBase64: str
+        :param Angle: 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
+        :type Angle: float
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.BusinessCardInfos = None
         self.RetImageBase64 = None
+        self.Angle = None
         self.RequestId = None
 
 
@@ -416,6 +425,7 @@ class BusinessCardOCRResponse(AbstractModel):
                 obj._deserialize(item)
                 self.BusinessCardInfos.append(obj)
         self.RetImageBase64 = params.get("RetImageBase64")
+        self.Angle = params.get("Angle")
         self.RequestId = params.get("RequestId")
 
 
@@ -1501,12 +1511,12 @@ class GeneralBasicOCRRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ImageBase64: 图片的 Base64 值。
-要求图片经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP格式。
+        :param ImageBase64: 图片/PDF的 Base64 值。
+要求图片/PDF经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :type ImageBase64: str
-        :param ImageUrl: 图片的 Url 地址。
-要求图片经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP格式。
+        :param ImageUrl: 图片/PDF的 Url 地址。
+要求图片/PDF经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。
 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :type ImageUrl: str
         :param Scene: 保留字段。
@@ -1518,19 +1528,26 @@ zh\auto\jap\kor\
 spa\fre\ger\por\
 vie\may\rus\ita\
 hol\swe\fin\dan\
-nor\hun\tha\lat
+nor\hun\tha\lat\ara
 可选值分别表示：
 中英文混合、自动识别、日语、韩语、
 西班牙语、法语、德语、葡萄牙语、
 越南语、马来语、俄语、意大利语、
 荷兰语、瑞典语、芬兰语、丹麦语、
-挪威语、匈牙利语、泰语、拉丁语系。
+挪威语、匈牙利语、泰语、拉丁语系、
+阿拉伯语。
         :type LanguageType: str
+        :param IsPdf: 是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+        :type IsPdf: bool
+        :param PdfPageNumber: 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        :type PdfPageNumber: int
         """
         self.ImageBase64 = None
         self.ImageUrl = None
         self.Scene = None
         self.LanguageType = None
+        self.IsPdf = None
+        self.PdfPageNumber = None
 
 
     def _deserialize(self, params):
@@ -1538,6 +1555,8 @@ nor\hun\tha\lat
         self.ImageUrl = params.get("ImageUrl")
         self.Scene = params.get("Scene")
         self.LanguageType = params.get("LanguageType")
+        self.IsPdf = params.get("IsPdf")
+        self.PdfPageNumber = params.get("PdfPageNumber")
 
 
 class GeneralBasicOCRResponse(AbstractModel):
@@ -1553,12 +1572,15 @@ class GeneralBasicOCRResponse(AbstractModel):
         :type Language: str
         :param Angel: 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
         :type Angel: float
+        :param PdfPageSize: 图片为PDF时，返回PDF的总页数，默认为0
+        :type PdfPageSize: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TextDetections = None
         self.Language = None
         self.Angel = None
+        self.PdfPageSize = None
         self.RequestId = None
 
 
@@ -1571,6 +1593,7 @@ class GeneralBasicOCRResponse(AbstractModel):
                 self.TextDetections.append(obj)
         self.Language = params.get("Language")
         self.Angel = params.get("Angel")
+        self.PdfPageSize = params.get("PdfPageSize")
         self.RequestId = params.get("RequestId")
 
 
@@ -2474,7 +2497,7 @@ class MLIDCardOCRResponse(AbstractModel):
         :type Warn: list of int
         :param Image: 证件图片
         :type Image: str
-        :param AdvancedInfo: 扩展字段:
+        :param AdvancedInfo: 扩展字段：
 {
     ID:{
         Confidence:0.9999
@@ -2492,6 +2515,8 @@ MyKAS    临时身份证
 POLIS  警察
 IKAD   劳工证
         :type Type: str
+        :param Birthday: 出生日期（目前该字段仅支持IKAD劳工证）
+        :type Birthday: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2503,6 +2528,7 @@ IKAD   劳工证
         self.Image = None
         self.AdvancedInfo = None
         self.Type = None
+        self.Birthday = None
         self.RequestId = None
 
 
@@ -2515,6 +2541,7 @@ IKAD   劳工证
         self.Image = params.get("Image")
         self.AdvancedInfo = params.get("AdvancedInfo")
         self.Type = params.get("Type")
+        self.Birthday = params.get("Birthday")
         self.RequestId = params.get("RequestId")
 
 

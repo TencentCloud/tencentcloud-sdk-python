@@ -172,6 +172,8 @@ class CreateDBInstancesRequest(AbstractModel):
         :type Name: str
         :param NeedSupportIpv6: 是否需要支持Ipv6，1：是，0：否
         :type NeedSupportIpv6: int
+        :param TagList: 实例需要绑定的Tag信息，默认为空
+        :type TagList: list of Tag
         """
         self.SpecCode = None
         self.DBVersion = None
@@ -189,6 +191,7 @@ class CreateDBInstancesRequest(AbstractModel):
         self.ActivityId = None
         self.Name = None
         self.NeedSupportIpv6 = None
+        self.TagList = None
 
 
     def _deserialize(self, params):
@@ -208,6 +211,12 @@ class CreateDBInstancesRequest(AbstractModel):
         self.ActivityId = params.get("ActivityId")
         self.Name = params.get("Name")
         self.NeedSupportIpv6 = params.get("NeedSupportIpv6")
+        if params.get("TagList") is not None:
+            self.TagList = []
+            for item in params.get("TagList"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagList.append(obj)
 
 
 class CreateDBInstancesResponse(AbstractModel):
@@ -260,6 +269,8 @@ class CreateServerlessDBInstanceRequest(AbstractModel):
         :type VpcId: str
         :param SubnetId: 私有网络子网ID。
         :type SubnetId: str
+        :param TagList: 实例需要绑定的标签数组信息
+        :type TagList: list of Tag
         """
         self.Zone = None
         self.DBInstanceName = None
@@ -268,6 +279,7 @@ class CreateServerlessDBInstanceRequest(AbstractModel):
         self.ProjectId = None
         self.VpcId = None
         self.SubnetId = None
+        self.TagList = None
 
 
     def _deserialize(self, params):
@@ -278,6 +290,12 @@ class CreateServerlessDBInstanceRequest(AbstractModel):
         self.ProjectId = params.get("ProjectId")
         self.VpcId = params.get("VpcId")
         self.SubnetId = params.get("SubnetId")
+        if params.get("TagList") is not None:
+            self.TagList = []
+            for item in params.get("TagList"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagList.append(obj)
 
 
 class CreateServerlessDBInstanceResponse(AbstractModel):
@@ -419,6 +437,9 @@ class DBInstance(AbstractModel):
         :type Uid: int
         :param SupportIpv6: 实例是否支持Ipv6，1：支持，0：不支持
         :type SupportIpv6: int
+        :param TagList: 实例绑定的标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagList: list of Tag
         """
         self.Region = None
         self.Zone = None
@@ -447,6 +468,7 @@ class DBInstance(AbstractModel):
         self.AppId = None
         self.Uid = None
         self.SupportIpv6 = None
+        self.TagList = None
 
 
     def _deserialize(self, params):
@@ -482,6 +504,12 @@ class DBInstance(AbstractModel):
         self.AppId = params.get("AppId")
         self.Uid = params.get("Uid")
         self.SupportIpv6 = params.get("SupportIpv6")
+        if params.get("TagList") is not None:
+            self.TagList = []
+            for item in params.get("TagList"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagList.append(obj)
 
 
 class DBInstanceNetInfo(AbstractModel):
@@ -803,7 +831,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Filters: 过滤条件，目前支持：db-instance-id、db-instance-name、db-project-id、db-pay-mode。
+        :param Filters: 过滤条件，目前支持：db-instance-id、db-instance-name、db-project-id、db-pay-mode、db-tag-key。
         :type Filters: list of Filter
         :param Limit: 每页显示数量，默认返回10条。
         :type Limit: int
@@ -1176,10 +1204,16 @@ class DescribeServerlessDBInstancesRequest(AbstractModel):
         :type Limit: int
         :param Offset: 偏移量
         :type Offset: int
+        :param OrderBy: 排序指标，目前支持实例创建时间CreateTime
+        :type OrderBy: str
+        :param OrderByType: 排序方式，包括升序、降序
+        :type OrderByType: str
         """
         self.Filter = None
         self.Limit = None
         self.Offset = None
+        self.OrderBy = None
+        self.OrderByType = None
 
 
     def _deserialize(self, params):
@@ -1191,6 +1225,8 @@ class DescribeServerlessDBInstancesRequest(AbstractModel):
                 self.Filter.append(obj)
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderByType = params.get("OrderByType")
 
 
 class DescribeServerlessDBInstancesResponse(AbstractModel):
@@ -2083,10 +2119,10 @@ class ServerlessDBInstance(AbstractModel):
         :param Zone: 可用区
 注意：此字段可能返回 null，表示取不到有效值。
         :type Zone: str
-        :param ProjectId: projectId
+        :param ProjectId: 项目id
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: int
-        :param VpcId: VpcId
+        :param VpcId: 私有网络Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
         :param SubnetId: 子网id
@@ -2110,6 +2146,9 @@ class ServerlessDBInstance(AbstractModel):
         :param DBDatabaseList: 实例下的db信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type DBDatabaseList: list of str
+        :param TagList: 实例绑定的标签数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagList: list of Tag
         """
         self.DBInstanceId = None
         self.DBInstanceName = None
@@ -2125,6 +2164,7 @@ class ServerlessDBInstance(AbstractModel):
         self.DBInstanceNetInfo = None
         self.DBAccountSet = None
         self.DBDatabaseList = None
+        self.TagList = None
 
 
     def _deserialize(self, params):
@@ -2152,6 +2192,12 @@ class ServerlessDBInstance(AbstractModel):
                 obj._deserialize(item)
                 self.DBAccountSet.append(obj)
         self.DBDatabaseList = params.get("DBDatabaseList")
+        if params.get("TagList") is not None:
+            self.TagList = []
+            for item in params.get("TagList"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagList.append(obj)
 
 
 class ServerlessDBInstanceNetInfo(AbstractModel):
@@ -2345,6 +2391,27 @@ class SpecItemInfo(AbstractModel):
         self.Qps = params.get("Qps")
         self.Pid = params.get("Pid")
         self.Type = params.get("Type")
+
+
+class Tag(AbstractModel):
+    """实例绑定的标签信息，包含标签键TagKey和标签值TagValue
+
+    """
+
+    def __init__(self):
+        """
+        :param TagKey: 标签键
+        :type TagKey: str
+        :param TagValue: 标签值
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
 
 
 class UpgradeDBInstanceRequest(AbstractModel):

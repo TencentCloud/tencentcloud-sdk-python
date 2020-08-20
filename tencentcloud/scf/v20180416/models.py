@@ -656,14 +656,18 @@ class DeleteFunctionRequest(AbstractModel):
         :type FunctionName: str
         :param Namespace: 函数所属命名空间
         :type Namespace: str
+        :param Qualifier: 函数版本
+        :type Qualifier: str
         """
         self.FunctionName = None
         self.Namespace = None
+        self.Qualifier = None
 
 
     def _deserialize(self, params):
         self.FunctionName = params.get("FunctionName")
         self.Namespace = params.get("Namespace")
+        self.Qualifier = params.get("Qualifier")
 
 
 class DeleteFunctionResponse(AbstractModel):
@@ -1941,9 +1945,9 @@ class ListLayersRequest(AbstractModel):
         """
         :param CompatibleRuntime: 适配的运行时
         :type CompatibleRuntime: str
-        :param Offset: Offset
+        :param Offset: 偏移位置
         :type Offset: int
-        :param Limit: Limit
+        :param Limit: 查询数目限制
         :type Limit: int
         :param SearchKey: 查询key，模糊匹配名称
         :type SearchKey: str
