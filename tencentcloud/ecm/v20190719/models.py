@@ -99,6 +99,27 @@ class Address(AbstractModel):
         self.PayMode = params.get("PayMode")
 
 
+class AddressTemplateSpecification(AbstractModel):
+    """IP地址模版
+
+    """
+
+    def __init__(self):
+        """
+        :param AddressId: IP地址ID，例如：eipm-2uw6ujo6。
+        :type AddressId: str
+        :param AddressGroupId: IP地址组ID，例如：eipmg-2uw6ujo6。
+        :type AddressGroupId: str
+        """
+        self.AddressId = None
+        self.AddressGroupId = None
+
+
+    def _deserialize(self, params):
+        self.AddressId = params.get("AddressId")
+        self.AddressGroupId = params.get("AddressGroupId")
+
+
 class AllocateAddressesRequest(AbstractModel):
     """AllocateAddresses请求参数结构体
 
@@ -337,6 +358,44 @@ class AssociateAddressResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AssociateSecurityGroupsRequest(AbstractModel):
+    """AssociateSecurityGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityGroupIds: 要绑定的安全组ID，类似esg-efil73jd，只支持绑定单个安全组。
+        :type SecurityGroupIds: list of str
+        :param InstanceIds: 被绑定的实例ID，类似ein-lesecurk，支持指定多个实例，每次请求批量实例的上限为100。
+        :type InstanceIds: list of str
+        """
+        self.SecurityGroupIds = None
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        self.InstanceIds = params.get("InstanceIds")
+
+
+class AssociateSecurityGroupsResponse(AbstractModel):
+    """AssociateSecurityGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class AttachNetworkInterfaceRequest(AbstractModel):
     """AttachNetworkInterface请求参数结构体
 
@@ -499,6 +558,8 @@ class CreateModuleRequest(AbstractModel):
         :type CloseIpDirect: bool
         :param TagSpecification: 标签列表。
         :type TagSpecification: list of TagSpecification
+        :param SecurityGroups: 模块默认安全组列表
+        :type SecurityGroups: list of str
         """
         self.ModuleName = None
         self.DefaultBandWidth = None
@@ -508,6 +569,7 @@ class CreateModuleRequest(AbstractModel):
         self.DefaultDataDiskSize = None
         self.CloseIpDirect = None
         self.TagSpecification = None
+        self.SecurityGroups = None
 
 
     def _deserialize(self, params):
@@ -524,6 +586,7 @@ class CreateModuleRequest(AbstractModel):
                 obj = TagSpecification()
                 obj._deserialize(item)
                 self.TagSpecification.append(obj)
+        self.SecurityGroups = params.get("SecurityGroups")
 
 
 class CreateModuleResponse(AbstractModel):
@@ -626,6 +689,46 @@ class CreateNetworkInterfaceResponse(AbstractModel):
         if params.get("NetworkInterface") is not None:
             self.NetworkInterface = NetworkInterface()
             self.NetworkInterface._deserialize(params.get("NetworkInterface"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateSecurityGroupPoliciesRequest(AbstractModel):
+    """CreateSecurityGroupPolicies请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityGroupId: 安全组实例ID，例如esg-33ocnj9n，可通过DescribeSecurityGroups获取。
+        :type SecurityGroupId: str
+        :param SecurityGroupPolicySet: 安全组规则集合。
+        :type SecurityGroupPolicySet: :class:`tencentcloud.ecm.v20190719.models.SecurityGroupPolicySet`
+        """
+        self.SecurityGroupId = None
+        self.SecurityGroupPolicySet = None
+
+
+    def _deserialize(self, params):
+        self.SecurityGroupId = params.get("SecurityGroupId")
+        if params.get("SecurityGroupPolicySet") is not None:
+            self.SecurityGroupPolicySet = SecurityGroupPolicySet()
+            self.SecurityGroupPolicySet._deserialize(params.get("SecurityGroupPolicySet"))
+
+
+class CreateSecurityGroupPoliciesResponse(AbstractModel):
+    """CreateSecurityGroupPolicies返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -911,6 +1014,80 @@ class DeleteNetworkInterfaceRequest(AbstractModel):
 
 class DeleteNetworkInterfaceResponse(AbstractModel):
     """DeleteNetworkInterface返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteSecurityGroupPoliciesRequest(AbstractModel):
+    """DeleteSecurityGroupPolicies请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityGroupId: 安全组实例ID，例如esg-33ocnj9n，可通过DescribeSecurityGroups获取。
+        :type SecurityGroupId: str
+        :param SecurityGroupPolicySet: 安全组规则集合。一个请求中只能删除单个方向的一条或多条规则。支持指定索引（PolicyIndex） 匹配删除和安全组规则匹配删除两种方式，一个请求中只能使用一种匹配方式。
+        :type SecurityGroupPolicySet: :class:`tencentcloud.ecm.v20190719.models.SecurityGroupPolicySet`
+        """
+        self.SecurityGroupId = None
+        self.SecurityGroupPolicySet = None
+
+
+    def _deserialize(self, params):
+        self.SecurityGroupId = params.get("SecurityGroupId")
+        if params.get("SecurityGroupPolicySet") is not None:
+            self.SecurityGroupPolicySet = SecurityGroupPolicySet()
+            self.SecurityGroupPolicySet._deserialize(params.get("SecurityGroupPolicySet"))
+
+
+class DeleteSecurityGroupPoliciesResponse(AbstractModel):
+    """DeleteSecurityGroupPolicies返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteSecurityGroupRequest(AbstractModel):
+    """DeleteSecurityGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityGroupId: 安全组实例ID，例如esg-33ocnj9n，可通过DescribeSecurityGroups获取。
+        :type SecurityGroupId: str
+        """
+        self.SecurityGroupId = None
+
+
+    def _deserialize(self, params):
+        self.SecurityGroupId = params.get("SecurityGroupId")
+
+
+class DeleteSecurityGroupResponse(AbstractModel):
+    """DeleteSecurityGroup返回参数结构体
 
     """
 
@@ -2001,6 +2178,186 @@ class DescribePeakNetworkOverviewResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSecurityGroupAssociationStatisticsRequest(AbstractModel):
+    """DescribeSecurityGroupAssociationStatistics请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityGroupIds: 安全实例ID，例如esg-33ocnj9n，可通过DescribeSecurityGroups获取。
+        :type SecurityGroupIds: list of str
+        """
+        self.SecurityGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+
+
+class DescribeSecurityGroupAssociationStatisticsResponse(AbstractModel):
+    """DescribeSecurityGroupAssociationStatistics返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityGroupAssociationStatisticsSet: 安全组关联实例统计。
+        :type SecurityGroupAssociationStatisticsSet: list of SecurityGroupAssociationStatistics
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SecurityGroupAssociationStatisticsSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SecurityGroupAssociationStatisticsSet") is not None:
+            self.SecurityGroupAssociationStatisticsSet = []
+            for item in params.get("SecurityGroupAssociationStatisticsSet"):
+                obj = SecurityGroupAssociationStatistics()
+                obj._deserialize(item)
+                self.SecurityGroupAssociationStatisticsSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSecurityGroupLimitsRequest(AbstractModel):
+    """DescribeSecurityGroupLimits请求参数结构体
+
+    """
+
+
+class DescribeSecurityGroupLimitsResponse(AbstractModel):
+    """DescribeSecurityGroupLimits返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityGroupLimitSet: 用户安全组配额限制。
+        :type SecurityGroupLimitSet: :class:`tencentcloud.ecm.v20190719.models.SecurityGroupLimitSet`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SecurityGroupLimitSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SecurityGroupLimitSet") is not None:
+            self.SecurityGroupLimitSet = SecurityGroupLimitSet()
+            self.SecurityGroupLimitSet._deserialize(params.get("SecurityGroupLimitSet"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSecurityGroupPoliciesRequest(AbstractModel):
+    """DescribeSecurityGroupPolicies请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityGroupId: 安全组实例ID，例如：esg-33ocnj9n，可通过DescribeSecurityGroups获取。
+        :type SecurityGroupId: str
+        """
+        self.SecurityGroupId = None
+
+
+    def _deserialize(self, params):
+        self.SecurityGroupId = params.get("SecurityGroupId")
+
+
+class DescribeSecurityGroupPoliciesResponse(AbstractModel):
+    """DescribeSecurityGroupPolicies返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityGroupPolicySet: 安全组规则集合。
+        :type SecurityGroupPolicySet: :class:`tencentcloud.ecm.v20190719.models.SecurityGroupPolicySet`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SecurityGroupPolicySet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SecurityGroupPolicySet") is not None:
+            self.SecurityGroupPolicySet = SecurityGroupPolicySet()
+            self.SecurityGroupPolicySet._deserialize(params.get("SecurityGroupPolicySet"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSecurityGroupsRequest(AbstractModel):
+    """DescribeSecurityGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityGroupIds: 安全组实例ID，例如：esg-33ocnj9n，可通过DescribeSecurityGroups获取。每次请求的实例的上限为100。参数不支持同时指定SecurityGroupIds和Filters。
+        :type SecurityGroupIds: list of str
+        :param Filters: 过滤条件，参数不支持同时指定SecurityGroupIds和Filters。
+security-group-id - String - （过滤条件）安全组ID。
+security-group-name - String - （过滤条件）安全组名称。
+tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。
+tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
+        :type Filters: list of Filter
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        """
+        self.SecurityGroupIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeSecurityGroupsResponse(AbstractModel):
+    """DescribeSecurityGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的实例数量。
+        :type TotalCount: int
+        :param SecurityGroupSet: 安全组对象。
+        :type SecurityGroupSet: list of SecurityGroup
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.SecurityGroupSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("SecurityGroupSet") is not None:
+            self.SecurityGroupSet = []
+            for item in params.get("SecurityGroupSet"):
+                obj = SecurityGroup()
+                obj._deserialize(item)
+                self.SecurityGroupSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSubnetsRequest(AbstractModel):
     """DescribeSubnets请求参数结构体
 
@@ -2348,6 +2705,44 @@ class DisassociateAddressResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class DisassociateSecurityGroupsRequest(AbstractModel):
+    """DisassociateSecurityGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityGroupIds: 要解绑的安全组ID，类似esg-efil73jd，只支持解绑单个安全组。
+        :type SecurityGroupIds: list of str
+        :param InstanceIds: 被解绑的实例ID，类似ein-lesecurk，支持指定多个实例 。
+        :type InstanceIds: list of str
+        """
+        self.SecurityGroupIds = None
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        self.InstanceIds = params.get("InstanceIds")
+
+
+class DisassociateSecurityGroupsResponse(AbstractModel):
+    """DisassociateSecurityGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -3022,6 +3417,27 @@ class InstanceOperator(AbstractModel):
                 self.DeniedActions.append(obj)
 
 
+class InstanceStatistic(AbstractModel):
+    """用于描述实例的统计信息
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceType: 实例的类型
+        :type InstanceType: str
+        :param InstanceCount: 实例的个数
+        :type InstanceCount: int
+        """
+        self.InstanceType = None
+        self.InstanceCount = None
+
+
+    def _deserialize(self, params):
+        self.InstanceType = params.get("InstanceType")
+        self.InstanceCount = params.get("InstanceCount")
+
+
 class InstanceTypeConfig(AbstractModel):
     """机型配置
 
@@ -3432,14 +3848,18 @@ class ModifyInstancesAttributeRequest(AbstractModel):
         :type InstanceIdSet: list of str
         :param InstanceName: 修改成功后显示的实例名称，不得超过60个字符，不传则名称显示为空。
         :type InstanceName: str
+        :param SecurityGroups: 指定实例的安全组Id列表，子机将重新关联指定列表的安全组，原本关联的安全组会被解绑。限制不超过5个。
+        :type SecurityGroups: list of str
         """
         self.InstanceIdSet = None
         self.InstanceName = None
+        self.SecurityGroups = None
 
 
     def _deserialize(self, params):
         self.InstanceIdSet = params.get("InstanceIdSet")
         self.InstanceName = params.get("InstanceName")
+        self.SecurityGroups = params.get("SecurityGroups")
 
 
 class ModifyInstancesAttributeResponse(AbstractModel):
@@ -3655,6 +4075,130 @@ class ModifyModuleNetworkResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyModuleSecurityGroupsRequest(AbstractModel):
+    """ModifyModuleSecurityGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityGroupIdSet: 安全组列表。不超过5个。
+        :type SecurityGroupIdSet: list of str
+        :param ModuleId: 模块id。
+        :type ModuleId: str
+        """
+        self.SecurityGroupIdSet = None
+        self.ModuleId = None
+
+
+    def _deserialize(self, params):
+        self.SecurityGroupIdSet = params.get("SecurityGroupIdSet")
+        self.ModuleId = params.get("ModuleId")
+
+
+class ModifyModuleSecurityGroupsResponse(AbstractModel):
+    """ModifyModuleSecurityGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifySecurityGroupAttributeRequest(AbstractModel):
+    """ModifySecurityGroupAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityGroupId: 安全组实例ID，例如esg-33ocnj9n，可通过DescribeSecurityGroups获取。
+        :type SecurityGroupId: str
+        :param GroupName: 安全组名称，可任意命名，但不得超过60个字符。
+        :type GroupName: str
+        :param GroupDescription: 安全组备注，最多100个字符。
+        :type GroupDescription: str
+        """
+        self.SecurityGroupId = None
+        self.GroupName = None
+        self.GroupDescription = None
+
+
+    def _deserialize(self, params):
+        self.SecurityGroupId = params.get("SecurityGroupId")
+        self.GroupName = params.get("GroupName")
+        self.GroupDescription = params.get("GroupDescription")
+
+
+class ModifySecurityGroupAttributeResponse(AbstractModel):
+    """ModifySecurityGroupAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifySecurityGroupPoliciesRequest(AbstractModel):
+    """ModifySecurityGroupPolicies请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityGroupId: 安全组实例ID，例如esg-33ocnj9n，可通过DescribeSecurityGroups获取。
+        :type SecurityGroupId: str
+        :param SecurityGroupPolicySet: 安全组规则集合。 SecurityGroupPolicySet对象必须同时指定新的出（Egress）入（Ingress）站规则。 SecurityGroupPolicy对象不支持自定义索引（PolicyIndex）。
+        :type SecurityGroupPolicySet: :class:`tencentcloud.ecm.v20190719.models.SecurityGroupPolicySet`
+        :param SortPolicys: 排序安全组标识。值为True时，支持安全组排序；SortPolicys不存在或SortPolicys为False时，为修改安全组规则。
+        :type SortPolicys: bool
+        """
+        self.SecurityGroupId = None
+        self.SecurityGroupPolicySet = None
+        self.SortPolicys = None
+
+
+    def _deserialize(self, params):
+        self.SecurityGroupId = params.get("SecurityGroupId")
+        if params.get("SecurityGroupPolicySet") is not None:
+            self.SecurityGroupPolicySet = SecurityGroupPolicySet()
+            self.SecurityGroupPolicySet._deserialize(params.get("SecurityGroupPolicySet"))
+        self.SortPolicys = params.get("SortPolicys")
+
+
+class ModifySecurityGroupPoliciesResponse(AbstractModel):
+    """ModifySecurityGroupPolicies返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifySubnetAttributeRequest(AbstractModel):
     """ModifySubnetAttribute请求参数结构体
 
@@ -3798,6 +4342,8 @@ DELETEFAILED：删除失败
         :type TagSet: list of Tag
         :param CloseIpDirect: 是否关闭IP直通
         :type CloseIpDirect: int
+        :param SecurityGroupIds: 默认安全组id列表
+        :type SecurityGroupIds: list of str
         """
         self.ModuleId = None
         self.ModuleName = None
@@ -3810,6 +4356,7 @@ DELETEFAILED：删除失败
         self.DefaultBandwidth = None
         self.TagSet = None
         self.CloseIpDirect = None
+        self.SecurityGroupIds = None
 
 
     def _deserialize(self, params):
@@ -3833,6 +4380,7 @@ DELETEFAILED：删除失败
                 obj._deserialize(item)
                 self.TagSet.append(obj)
         self.CloseIpDirect = params.get("CloseIpDirect")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
 
 
 class ModuleCounter(AbstractModel):
@@ -4681,6 +5229,46 @@ class RemovePrivateIpAddressesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ReplaceSecurityGroupPolicyRequest(AbstractModel):
+    """ReplaceSecurityGroupPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityGroupId: 安全组实例ID，例如esg-33ocnj9n，可通过DescribeSecurityGroups获取
+        :type SecurityGroupId: str
+        :param SecurityGroupPolicySet: 安全组规则集合对象。
+        :type SecurityGroupPolicySet: :class:`tencentcloud.ecm.v20190719.models.SecurityGroupPolicySet`
+        """
+        self.SecurityGroupId = None
+        self.SecurityGroupPolicySet = None
+
+
+    def _deserialize(self, params):
+        self.SecurityGroupId = params.get("SecurityGroupId")
+        if params.get("SecurityGroupPolicySet") is not None:
+            self.SecurityGroupPolicySet = SecurityGroupPolicySet()
+            self.SecurityGroupPolicySet._deserialize(params.get("SecurityGroupPolicySet"))
+
+
+class ReplaceSecurityGroupPolicyResponse(AbstractModel):
+    """ReplaceSecurityGroupPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ResetInstancesMaxBandwidthRequest(AbstractModel):
     """ResetInstancesMaxBandwidth请求参数结构体
 
@@ -5035,6 +5623,211 @@ class SecurityGroup(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.TagSet.append(obj)
+
+
+class SecurityGroupAssociationStatistics(AbstractModel):
+    """安全组关联的资源统计
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityGroupId: 安全组实例ID。
+        :type SecurityGroupId: str
+        :param ECM: ECM实例数。
+        :type ECM: int
+        :param Module: ECM模块数。
+        :type Module: int
+        :param ENI: 弹性网卡实例数。
+        :type ENI: int
+        :param SG: 被安全组引用数。
+        :type SG: int
+        :param CLB: 负载均衡实例数。
+        :type CLB: int
+        :param InstanceStatistics: 全量实例的绑定统计。
+        :type InstanceStatistics: list of InstanceStatistic
+        :param TotalCount: 所有资源的总计数（不包含被安全组引用数）。
+        :type TotalCount: int
+        """
+        self.SecurityGroupId = None
+        self.ECM = None
+        self.Module = None
+        self.ENI = None
+        self.SG = None
+        self.CLB = None
+        self.InstanceStatistics = None
+        self.TotalCount = None
+
+
+    def _deserialize(self, params):
+        self.SecurityGroupId = params.get("SecurityGroupId")
+        self.ECM = params.get("ECM")
+        self.Module = params.get("Module")
+        self.ENI = params.get("ENI")
+        self.SG = params.get("SG")
+        self.CLB = params.get("CLB")
+        if params.get("InstanceStatistics") is not None:
+            self.InstanceStatistics = []
+            for item in params.get("InstanceStatistics"):
+                obj = InstanceStatistic()
+                obj._deserialize(item)
+                self.InstanceStatistics.append(obj)
+        self.TotalCount = params.get("TotalCount")
+
+
+class SecurityGroupLimitSet(AbstractModel):
+    """用户安全组配额限制
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityGroupLimit: 可创建安全组总数
+        :type SecurityGroupLimit: int
+        :param SecurityGroupPolicyLimit: 安全组下的最大规则数
+        :type SecurityGroupPolicyLimit: int
+        :param ReferedSecurityGroupLimit: 安全组下嵌套安全组规则数
+        :type ReferedSecurityGroupLimit: int
+        :param SecurityGroupInstanceLimit: 单安全组关联实例数
+        :type SecurityGroupInstanceLimit: int
+        :param InstanceSecurityGroupLimit: 实例关联安全组数
+        :type InstanceSecurityGroupLimit: int
+        :param SecurityGroupModuleLimit: 单安全组关联的模块数
+        :type SecurityGroupModuleLimit: int
+        :param ModuleSecurityGroupLimit: 模块关联的安全组数
+        :type ModuleSecurityGroupLimit: int
+        """
+        self.SecurityGroupLimit = None
+        self.SecurityGroupPolicyLimit = None
+        self.ReferedSecurityGroupLimit = None
+        self.SecurityGroupInstanceLimit = None
+        self.InstanceSecurityGroupLimit = None
+        self.SecurityGroupModuleLimit = None
+        self.ModuleSecurityGroupLimit = None
+
+
+    def _deserialize(self, params):
+        self.SecurityGroupLimit = params.get("SecurityGroupLimit")
+        self.SecurityGroupPolicyLimit = params.get("SecurityGroupPolicyLimit")
+        self.ReferedSecurityGroupLimit = params.get("ReferedSecurityGroupLimit")
+        self.SecurityGroupInstanceLimit = params.get("SecurityGroupInstanceLimit")
+        self.InstanceSecurityGroupLimit = params.get("InstanceSecurityGroupLimit")
+        self.SecurityGroupModuleLimit = params.get("SecurityGroupModuleLimit")
+        self.ModuleSecurityGroupLimit = params.get("ModuleSecurityGroupLimit")
+
+
+class SecurityGroupPolicy(AbstractModel):
+    """安全组规则对象
+
+    """
+
+    def __init__(self):
+        """
+        :param PolicyIndex: 安全组规则索引号
+        :type PolicyIndex: int
+        :param Protocol: 协议, 取值: TCP,UDP, ICMP。
+        :type Protocol: str
+        :param Port: 端口(all, 离散port, range)。
+        :type Port: str
+        :param ServiceTemplate: 协议端口ID或者协议端口组ID。ServiceTemplate和Protocol+Port互斥。
+        :type ServiceTemplate: :class:`tencentcloud.ecm.v20190719.models.ServiceTemplateSpecification`
+        :param CidrBlock: 网段或IP(互斥)。
+        :type CidrBlock: str
+        :param SecurityGroupId: 安全组实例ID，例如：esg-ohuuioma。
+        :type SecurityGroupId: str
+        :param AddressTemplate: IP地址ID或者ID地址组ID。
+        :type AddressTemplate: :class:`tencentcloud.ecm.v20190719.models.AddressTemplateSpecification`
+        :param Action: ACCEPT 或 DROP。
+        :type Action: str
+        :param PolicyDescription: 安全组规则描述。
+        :type PolicyDescription: str
+        :param ModifyTime: 修改时间，例如 2020-07-22 19：27：23
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: str
+        """
+        self.PolicyIndex = None
+        self.Protocol = None
+        self.Port = None
+        self.ServiceTemplate = None
+        self.CidrBlock = None
+        self.SecurityGroupId = None
+        self.AddressTemplate = None
+        self.Action = None
+        self.PolicyDescription = None
+        self.ModifyTime = None
+
+
+    def _deserialize(self, params):
+        self.PolicyIndex = params.get("PolicyIndex")
+        self.Protocol = params.get("Protocol")
+        self.Port = params.get("Port")
+        if params.get("ServiceTemplate") is not None:
+            self.ServiceTemplate = ServiceTemplateSpecification()
+            self.ServiceTemplate._deserialize(params.get("ServiceTemplate"))
+        self.CidrBlock = params.get("CidrBlock")
+        self.SecurityGroupId = params.get("SecurityGroupId")
+        if params.get("AddressTemplate") is not None:
+            self.AddressTemplate = AddressTemplateSpecification()
+            self.AddressTemplate._deserialize(params.get("AddressTemplate"))
+        self.Action = params.get("Action")
+        self.PolicyDescription = params.get("PolicyDescription")
+        self.ModifyTime = params.get("ModifyTime")
+
+
+class SecurityGroupPolicySet(AbstractModel):
+    """安全组规则集合
+
+    """
+
+    def __init__(self):
+        """
+        :param Version: 安全组规则当前版本。用户每次更新安全规则版本会自动加1，防止更新的路由规则已过期，不填不考虑冲突。
+        :type Version: str
+        :param Egress: 出站规则。
+        :type Egress: list of SecurityGroupPolicy
+        :param Ingress: 入站规则。
+        :type Ingress: list of SecurityGroupPolicy
+        """
+        self.Version = None
+        self.Egress = None
+        self.Ingress = None
+
+
+    def _deserialize(self, params):
+        self.Version = params.get("Version")
+        if params.get("Egress") is not None:
+            self.Egress = []
+            for item in params.get("Egress"):
+                obj = SecurityGroupPolicy()
+                obj._deserialize(item)
+                self.Egress.append(obj)
+        if params.get("Ingress") is not None:
+            self.Ingress = []
+            for item in params.get("Ingress"):
+                obj = SecurityGroupPolicy()
+                obj._deserialize(item)
+                self.Ingress.append(obj)
+
+
+class ServiceTemplateSpecification(AbstractModel):
+    """协议端口模版
+
+    """
+
+    def __init__(self):
+        """
+        :param ServiceId: 协议端口ID，例如：eppm-f5n1f8da。
+        :type ServiceId: str
+        :param ServiceGroupId: 协议端口组ID，例如：eppmg-f5n1f8da。
+        :type ServiceGroupId: str
+        """
+        self.ServiceId = None
+        self.ServiceGroupId = None
+
+
+    def _deserialize(self, params):
+        self.ServiceId = params.get("ServiceId")
+        self.ServiceGroupId = params.get("ServiceGroupId")
 
 
 class SimpleModule(AbstractModel):

@@ -4351,7 +4351,7 @@ class DescribeDDoSTrendResponse(AbstractModel):
         :type StartTime: str
         :param EndTime: 统计结束时间
         :type EndTime: str
-        :param Data: 值数组
+        :param Data: 值数组，攻击流量带宽单位为Mbps，包速率单位为pps
         :type Data: list of int non-negative
         :param Count: 值个数
         :type Count: int

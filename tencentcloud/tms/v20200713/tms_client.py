@@ -25,6 +25,34 @@ class TmsClient(AbstractClient):
     _endpoint = 'tms.tencentcloudapi.com'
 
 
+    def AccountTipoffAccess(self, request):
+        """举报恶意账号
+
+        :param request: Request instance for AccountTipoffAccess.
+        :type request: :class:`tencentcloud.tms.v20200713.models.AccountTipoffAccessRequest`
+        :rtype: :class:`tencentcloud.tms.v20200713.models.AccountTipoffAccessResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AccountTipoffAccess", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AccountTipoffAccessResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def TextModeration(self, request):
         """文本内容检测（Text Moderation）服务使用了深度学习技术，识别涉黄、涉政、涉恐等有害内容，同时支持用户配置词库，打击自定义的违规文本。
 

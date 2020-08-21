@@ -2229,6 +2229,38 @@ class DescribeLoadBalancersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeQuotaRequest(AbstractModel):
+    """DescribeQuota请求参数结构体
+
+    """
+
+
+class DescribeQuotaResponse(AbstractModel):
+    """DescribeQuota返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param QuotaSet: 配额列表
+        :type QuotaSet: list of Quota
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.QuotaSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("QuotaSet") is not None:
+            self.QuotaSet = []
+            for item in params.get("QuotaSet"):
+                obj = Quota()
+                obj._deserialize(item)
+                self.QuotaSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRewriteRequest(AbstractModel):
     """DescribeRewrite请求参数结构体
 
@@ -4225,6 +4257,37 @@ class ModifyTargetWeightResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class Quota(AbstractModel):
+    """描述配额信息，所有配额均指当前地域下的配额。
+
+    """
+
+    def __init__(self):
+        """
+        :param QuotaId: 配额名称，取值范围：
+<li> TOTAL_OPEN_CLB_QUOTA: 用户当前地域下的公网LB配额 </li>
+<li> TOTAL_INTERNAL_CLB_QUOTA: 用户当前地域下的内网LB配额 </li>
+<li> TOTAL_LISTENER_QUOTA: 一个CLB下的监听器配额 </li>
+<li> TOTAL_LISTENER_RULE_QUOTA: 一个监听器下的转发规则配额 </li>
+<li> TOTAL_TARGET_BIND_QUOTA: 一条转发规则下绑定设备配额 </li>
+        :type QuotaId: str
+        :param QuotaCurrent: 当前使用数量，为 null 时表示无意义。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QuotaCurrent: int
+        :param QuotaLimit: 配额数量。
+        :type QuotaLimit: int
+        """
+        self.QuotaId = None
+        self.QuotaCurrent = None
+        self.QuotaLimit = None
+
+
+    def _deserialize(self, params):
+        self.QuotaId = params.get("QuotaId")
+        self.QuotaCurrent = params.get("QuotaCurrent")
+        self.QuotaLimit = params.get("QuotaLimit")
+
+
 class RegisterTargetGroupInstancesRequest(AbstractModel):
     """RegisterTargetGroupInstances请求参数结构体
 
@@ -4548,7 +4611,7 @@ class RuleInput(AbstractModel):
         :type Url: str
         :param SessionExpireTime: 会话保持时间。设置为0表示关闭会话保持，开启会话保持可取值30~3600，单位：秒。
         :type SessionExpireTime: int
-        :param HealthCheck: 健康检查信息
+        :param HealthCheck: 健康检查信息。详情请参见：[健康检查](https://cloud.tencent.com/document/product/214/6097)
         :type HealthCheck: :class:`tencentcloud.clb.v20180317.models.HealthCheck`
         :param Certificate: 证书信息
         :type Certificate: :class:`tencentcloud.clb.v20180317.models.CertificateInput`

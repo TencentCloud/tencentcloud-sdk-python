@@ -3651,6 +3651,32 @@ class Canvas(AbstractModel):
         self.Height = params.get("Height")
 
 
+class CdnLogInfo(AbstractModel):
+    """CDN 日志信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Date: 日志所属日期， 格式为：yyyy-MM-dd ，如2018-03-01。
+        :type Date: str
+        :param Name: 日志名称，格式为：日期小时-域名
+如 2018120101-test.vod2.mqcloud.com。
+        :type Name: str
+        :param Url: 日志下载链接，24小时内下载有效。
+        :type Url: str
+        """
+        self.Date = None
+        self.Name = None
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        self.Date = params.get("Date")
+        self.Name = params.get("Name")
+        self.Url = params.get("Url")
+
+
 class ClassificationConfigureInfo(AbstractModel):
     """智能分类任务控制参数
 
@@ -6614,6 +6640,72 @@ class DescribeCDNUsageDataResponse(AbstractModel):
                 obj = StatDataItem()
                 obj._deserialize(item)
                 self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCdnLogsRequest(AbstractModel):
+    """DescribeCdnLogs请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: 域名。
+        :type DomainName: str
+        :param StartTime: 获取日志起始时间点，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type StartTime: str
+        :param EndTime: 结束时间需大于起始时间；使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type EndTime: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.DomainName = None
+        self.StartTime = None
+        self.EndTime = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DescribeCdnLogsResponse(AbstractModel):
+    """DescribeCdnLogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DomesticCdnLogs: 国内CDN节点的日志下载列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DomesticCdnLogs: list of CdnLogInfo
+        :param OverseaCdnLogs: 海外CDN节点的日志下载列表。如果域名没有开启海外加速，忽略该参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OverseaCdnLogs: list of CdnLogInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DomesticCdnLogs = None
+        self.OverseaCdnLogs = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DomesticCdnLogs") is not None:
+            self.DomesticCdnLogs = []
+            for item in params.get("DomesticCdnLogs"):
+                obj = CdnLogInfo()
+                obj._deserialize(item)
+                self.DomesticCdnLogs.append(obj)
+        if params.get("OverseaCdnLogs") is not None:
+            self.OverseaCdnLogs = []
+            for item in params.get("OverseaCdnLogs"):
+                obj = CdnLogInfo()
+                obj._deserialize(item)
+                self.OverseaCdnLogs.append(obj)
         self.RequestId = params.get("RequestId")
 
 

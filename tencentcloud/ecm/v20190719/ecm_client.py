@@ -115,6 +115,34 @@ class EcmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AssociateSecurityGroups(self, request):
+        """绑定安全组
+
+        :param request: Request instance for AssociateSecurityGroups.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.AssociateSecurityGroupsRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.AssociateSecurityGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AssociateSecurityGroups", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AssociateSecurityGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AttachNetworkInterface(self, request):
         """弹性网卡绑定云主机
 
@@ -255,6 +283,45 @@ class EcmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateSecurityGroupPolicies(self, request):
+        """在 SecurityGroupPolicySet 参数中：
+
+        Version 安全组规则版本号，用户每次更新安全规则版本会自动加1，防止您更新的路由规则已过期，不填不考虑冲突。
+        在创建出站和入站规则（Egress 和 Ingress）时：
+        Protocol 字段支持输入TCP, UDP, ICMP, ICMPV6, GRE, ALL。
+        CidrBlock 字段允许输入符合cidr格式标准的任意字符串。(展开)在基础网络中，如果 CidrBlock 包含您的账户内的云服务器之外的设备在腾讯云的内网 IP，并不代表此规则允许您访问这些设备，租户之间网络隔离规则优先于安全组中的内网规则。
+        Ipv6CidrBlock 字段允许输入符合IPv6 cidr格式标准的任意字符串。(展开)在基础网络中，如果Ipv6CidrBlock 包含您的账户内的云服务器之外的设备在腾讯云的内网 IPv6，并不代表此规则允许您访问这些设备，租户之间网络隔离规则优先于安全组中的内网规则。
+        SecurityGroupId 字段允许输入与待修改的安全组位于相同项目中的安全组 ID，包括这个安全组 ID 本身，代表安全组下所有云服务器的内网 IP。使用这个字段时，这条规则用来匹配网络报文的过程中会随着被使用的这个 ID 所关联的云服务器变化而变化，不需要重新修改。
+        Port 字段允许输入一个单独端口号，或者用减号分隔的两个端口号代表端口范围，例如80或8000-8010。只有当 Protocol 字段是 TCP 或 UDP 时，Port 字段才被接受，即 Protocol 字段不是 TCP 或 UDP 时，Protocol 和 Port 排他关系，不允许同时输入，否则会接口报错。
+        Action 字段只允许输入 ACCEPT 或 DROP。
+        CidrBlock, Ipv6CidrBlock, SecurityGroupId, AddressTemplate 四者是排他关系，不允许同时输入，Protocol + Port 和 ServiceTemplate 二者是排他关系，不允许同时输入。
+        一次请求中只能创建单个方向的规则, 如果需要指定索引（PolicyIndex）参数, 多条规则的索引必须一致。
+
+        :param request: Request instance for CreateSecurityGroupPolicies.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.CreateSecurityGroupPoliciesRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.CreateSecurityGroupPoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateSecurityGroupPolicies", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateSecurityGroupPoliciesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateSubnet(self, request):
         """创建子网，若创建成功，则此子网会成为此可用区的默认子网。
 
@@ -381,6 +448,64 @@ class EcmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteNetworkInterfaceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteSecurityGroup(self, request):
+        """只有当前账号下的安全组允许被删除。
+        安全组实例ID如果在其他安全组的规则中被引用，则无法直接删除。这种情况下，需要先进行规则修改，再删除安全组。
+        删除的安全组无法再找回，请谨慎调用。
+
+        :param request: Request instance for DeleteSecurityGroup.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.DeleteSecurityGroupRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.DeleteSecurityGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteSecurityGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteSecurityGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteSecurityGroupPolicies(self, request):
+        """SecurityGroupPolicySet.Version 用于指定要操作的安全组的版本。传入 Version 版本号若不等于当前安全组的最新版本，将返回失败；若不传 Version 则直接删除指定PolicyIndex的规则。
+
+        :param request: Request instance for DeleteSecurityGroupPolicies.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.DeleteSecurityGroupPoliciesRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.DeleteSecurityGroupPoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteSecurityGroupPolicies", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteSecurityGroupPoliciesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -955,6 +1080,118 @@ class EcmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeSecurityGroupAssociationStatistics(self, request):
+        """查询安全组关联实例统计
+
+        :param request: Request instance for DescribeSecurityGroupAssociationStatistics.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeSecurityGroupAssociationStatisticsRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.DescribeSecurityGroupAssociationStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSecurityGroupAssociationStatistics", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSecurityGroupAssociationStatisticsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSecurityGroupLimits(self, request):
+        """查询用户安全组配额
+
+        :param request: Request instance for DescribeSecurityGroupLimits.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeSecurityGroupLimitsRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.DescribeSecurityGroupLimitsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSecurityGroupLimits", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSecurityGroupLimitsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSecurityGroupPolicies(self, request):
+        """查询安全组规则
+
+        :param request: Request instance for DescribeSecurityGroupPolicies.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeSecurityGroupPoliciesRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.DescribeSecurityGroupPoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSecurityGroupPolicies", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSecurityGroupPoliciesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSecurityGroups(self, request):
+        """查看安全组
+
+        :param request: Request instance for DescribeSecurityGroups.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeSecurityGroupsRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.DescribeSecurityGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSecurityGroups", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSecurityGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeSubnets(self, request):
         """查询子网列表
 
@@ -1111,6 +1348,34 @@ class EcmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisassociateAddressResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DisassociateSecurityGroups(self, request):
+        """解绑安全组
+
+        :param request: Request instance for DisassociateSecurityGroups.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.DisassociateSecurityGroupsRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.DisassociateSecurityGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DisassociateSecurityGroups", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DisassociateSecurityGroupsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1519,6 +1784,90 @@ class EcmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyModuleSecurityGroups(self, request):
+        """修改模块默认安全组
+
+        :param request: Request instance for ModifyModuleSecurityGroups.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.ModifyModuleSecurityGroupsRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.ModifyModuleSecurityGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyModuleSecurityGroups", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyModuleSecurityGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifySecurityGroupAttribute(self, request):
+        """修改安全组属性
+
+        :param request: Request instance for ModifySecurityGroupAttribute.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.ModifySecurityGroupAttributeRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.ModifySecurityGroupAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifySecurityGroupAttribute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifySecurityGroupAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifySecurityGroupPolicies(self, request):
+        """修改安全组出站和入站规则
+
+        :param request: Request instance for ModifySecurityGroupPolicies.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.ModifySecurityGroupPoliciesRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.ModifySecurityGroupPoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifySecurityGroupPolicies", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifySecurityGroupPoliciesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifySubnetAttribute(self, request):
         """修改子网属性
 
@@ -1648,6 +1997,34 @@ class EcmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RemovePrivateIpAddressesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ReplaceSecurityGroupPolicy(self, request):
+        """替换单条安全组路由规则, 单个请求中只能替换单个方向的一条规则, 必须要指定索引（PolicyIndex）。
+
+        :param request: Request instance for ReplaceSecurityGroupPolicy.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.ReplaceSecurityGroupPolicyRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.ReplaceSecurityGroupPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ReplaceSecurityGroupPolicy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ReplaceSecurityGroupPolicyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

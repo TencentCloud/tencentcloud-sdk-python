@@ -964,6 +964,34 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeQuota(self, request):
+        """查询用户当前地域下的各项配额
+
+        :param request: Request instance for DescribeQuota.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeQuotaRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeQuota", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeQuotaResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRewrite(self, request):
         """DescribeRewrite 接口可根据负载均衡实例ID，查询一个负载均衡实例下转发规则的重定向关系。如果不指定监听器ID或转发规则ID，则返回该负载均衡实例下的所有重定向关系。
 

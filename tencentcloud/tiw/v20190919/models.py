@@ -566,6 +566,59 @@ class PauseOnlineRecordResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RecordControl(AbstractModel):
+    """录制控制参数， 用于指定全局录制控制及具体流录制控制参数，比如设置需要对哪些流进行录制，是否只录制小画面等
+
+    """
+
+    def __init__(self):
+        """
+        :param Enabled: 设置是否开启录制控制参数，只有设置为true的时候，录制控制参数才生效。
+        :type Enabled: bool
+        :param DisableRecord: 设置是否禁用录制的全局控制参数。一般与`StreamControls`参数配合使用。
+
+true - 所有流都不录制。
+false - 所有流都录制。默认为false。
+
+这里的设置对所有流都生效，如果同时在 `StreamControls` 列表中针对指定流设置了控制参数，则优先采用`StreamControls`中设置的控制参数。
+        :type DisableRecord: bool
+        :param DisableAudio: 设置是否禁用所有流的音频录制的全局控制参数。一般与`StreamControls`参数配合使用。
+
+true - 所有流的录制都不对音频进行录制。
+false - 所有流的录制都需要对音频进行录制。默认为false。
+
+这里的设置对所有流都生效，如果同时在 `StreamControls` 列表中针对指定流设置了控制参数，则优先采用`StreamControls`中设置的控制参数。
+        :type DisableAudio: bool
+        :param PullSmallVideo: 设置是否所有流都只录制小画面的全局控制参数。一般与`StreamControls`参数配合使用。
+
+true - 所有流都只录制小画面。设置为true时，请确保上行端在推流的时候同时上行了小画面，否则录制视频可能是黑屏。
+false - 所有流都录制大画面，默认为false。
+
+这里的设置对所有流都生效，如果同时在 `StreamControls` 列表中针对指定流设置了控制参数，则优先采用`StreamControls`中设置的控制参数。
+        :type PullSmallVideo: bool
+        :param StreamControls: 针对具体流指定控制参数，如果列表为空，则所有流采用全局配置的控制参数进行录制。列表不为空，则列表中指定的流将优先按此列表指定的控制参数进行录制。
+        :type StreamControls: list of StreamControl
+        """
+        self.Enabled = None
+        self.DisableRecord = None
+        self.DisableAudio = None
+        self.PullSmallVideo = None
+        self.StreamControls = None
+
+
+    def _deserialize(self, params):
+        self.Enabled = params.get("Enabled")
+        self.DisableRecord = params.get("DisableRecord")
+        self.DisableAudio = params.get("DisableAudio")
+        self.PullSmallVideo = params.get("PullSmallVideo")
+        if params.get("StreamControls") is not None:
+            self.StreamControls = []
+            for item in params.get("StreamControls"):
+                obj = StreamControl()
+                obj._deserialize(item)
+                self.StreamControls.append(obj)
+
+
 class ResumeOnlineRecordRequest(AbstractModel):
     """ResumeOnlineRecord请求参数结构体
 
@@ -773,7 +826,7 @@ class StartOnlineRecordRequest(AbstractModel):
         :type RecordUserId: str
         :param RecordUserSig: 与RecordUserId对应的签名
         :type RecordUserSig: str
-        :param GroupId: 白板的 IM 群组 Id，默认同房间号
+        :param GroupId: （已废弃，设置无效）白板的 IM 群组 Id，默认同房间号
         :type GroupId: str
         :param Concat: 实时录制视频拼接参数
         :type Concat: :class:`tencentcloud.tiw.v20190919.models.Concat`
@@ -790,6 +843,8 @@ MIX_STREAM - 混流功能
         :type Extras: list of str
         :param AudioFileNeeded: 是否需要在结果回调中返回各路流的纯音频录制文件，文件格式为mp3
         :type AudioFileNeeded: bool
+        :param RecordControl: 实时录制控制参数，用于更精细地指定需要录制哪些流，某一路流是否禁用音频，是否只录制小画面等
+        :type RecordControl: :class:`tencentcloud.tiw.v20190919.models.RecordControl`
         """
         self.SdkAppId = None
         self.RoomId = None
@@ -801,6 +856,7 @@ MIX_STREAM - 混流功能
         self.MixStream = None
         self.Extras = None
         self.AudioFileNeeded = None
+        self.RecordControl = None
 
 
     def _deserialize(self, params):
@@ -820,6 +876,9 @@ MIX_STREAM - 混流功能
             self.MixStream._deserialize(params.get("MixStream"))
         self.Extras = params.get("Extras")
         self.AudioFileNeeded = params.get("AudioFileNeeded")
+        if params.get("RecordControl") is not None:
+            self.RecordControl = RecordControl()
+            self.RecordControl._deserialize(params.get("RecordControl"))
 
 
 class StartOnlineRecordResponse(AbstractModel):
@@ -881,6 +940,56 @@ class StopOnlineRecordResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class StreamControl(AbstractModel):
+    """指定流录制的控制参数，比如是否禁用音频、视频是录制大画面还是录制小画面等
+
+    """
+
+    def __init__(self):
+        """
+        :param StreamId: 视频流ID
+视频流ID的取值含义如下：
+1. tic_record_user - 表示白板视频流
+2. tic_substream - 表示辅路视频流
+3. 特定用户ID - 表示指定用户的视频流
+
+在实际录制过程中，视频流ID的匹配规则为前缀匹配，只要真实流ID的前缀与指定的流ID一致就认为匹配成功。
+        :type StreamId: str
+        :param DisableRecord: 设置是否对此路流开启录制。
+
+true - 表示不对这路流进行录制，录制结果将不包含这路流的视频。
+false - 表示需要对这路流进行录制，录制结果会包含这路流的视频。
+
+默认为 false。
+        :type DisableRecord: bool
+        :param DisableAudio: 设置是否禁用这路流的音频录制。
+
+true - 表示不对这路流的音频进行录制，录制结果里这路流的视频将会没有声音。
+false - 录制视频会保留音频，如果设置为true，则录制视频会丢弃这路流的音频。
+
+默认为 false。
+        :type DisableAudio: bool
+        :param PullSmallVideo: 设置当前流录制视频是否只录制小画面。
+
+true - 录制小画面。设置为true时，请确保上行端同时上行了小画面，否则录制视频可能是黑屏。
+false - 录制大画面。
+
+默认为 false。
+        :type PullSmallVideo: bool
+        """
+        self.StreamId = None
+        self.DisableRecord = None
+        self.DisableAudio = None
+        self.PullSmallVideo = None
+
+
+    def _deserialize(self, params):
+        self.StreamId = params.get("StreamId")
+        self.DisableRecord = params.get("DisableRecord")
+        self.DisableAudio = params.get("DisableAudio")
+        self.PullSmallVideo = params.get("PullSmallVideo")
+
+
 class StreamLayout(AbstractModel):
     """流布局参数
 
@@ -899,10 +1008,16 @@ class StreamLayout(AbstractModel):
         :type InputStreamId: str
         :param BackgroundColor: 背景颜色，默认为黑色，格式为RGB格式，如红色为"#FF0000"
         :type BackgroundColor: str
+        :param FillMode: 视频画面填充模式。
+
+0 - 自适应模式，对视频画面进行等比例缩放，在指定区域内显示完整的画面。此模式可能存在黑边。
+1 - 全屏模式，对视频画面进行等比例缩放，让画面填充满整个指定区域。此模式不会存在黑边，但会将超出区域的那一部分画面裁剪掉。
+        :type FillMode: int
         """
         self.LayoutParams = None
         self.InputStreamId = None
         self.BackgroundColor = None
+        self.FillMode = None
 
 
     def _deserialize(self, params):
@@ -911,6 +1026,7 @@ class StreamLayout(AbstractModel):
             self.LayoutParams._deserialize(params.get("LayoutParams"))
         self.InputStreamId = params.get("InputStreamId")
         self.BackgroundColor = params.get("BackgroundColor")
+        self.FillMode = params.get("FillMode")
 
 
 class VideoInfo(AbstractModel):

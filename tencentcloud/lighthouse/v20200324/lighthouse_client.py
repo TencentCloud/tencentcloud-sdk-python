@@ -25,6 +25,34 @@ class LighthouseClient(AbstractClient):
     _endpoint = 'lighthouse.tencentcloudapi.com'
 
 
+    def DescribeBlueprints(self, request):
+        """本接口（DescribeBlueprints）用于查询镜像信息。
+
+        :param request: Request instance for DescribeBlueprints.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeBlueprintsRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DescribeBlueprintsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBlueprints", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBlueprintsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBundles(self, request):
         """本接口（DescribeBundles）用于查询套餐信息。
 
@@ -57,7 +85,7 @@ class LighthouseClient(AbstractClient):
         """本接口（DescribeInstances）用于查询一个或多个实例的详细信息。
 
         * 可以根据实例 ID、实例名称或者实例的内网 IP 查询实例的详细信息。
-        * 过滤信息详细请见过滤器 Filters 。
+        * 过滤信息详细请见过滤器 [Filters](https://cloud.tencent.com/document/product/1207/47576#Filter) 。
         * 如果参数为空，返回当前用户一定数量（Limit 所指定的数量，默认为 20）的实例。
         * 支持查询实例的最新操作（LatestOperation）以及最新操作状态（LatestOperationState）。
 

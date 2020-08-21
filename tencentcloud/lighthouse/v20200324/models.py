@@ -16,6 +16,55 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class Blueprint(AbstractModel):
+    """描述了镜像信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param BlueprintId: 镜像 ID  ，是 blueprint 的唯一标识。
+        :type BlueprintId: str
+        :param DisplayTitle: 镜像对外展示标题。
+        :type DisplayTitle: str
+        :param DisplayVersion: 镜像对外展示版本。
+        :type DisplayVersion: str
+        :param Description: 镜像描述信息。
+        :type Description: str
+        :param OsName: 操作系统名称。
+        :type OsName: str
+        :param Platform: 操作系统平台。
+        :type Platform: str
+        :param PlatformType: 操作系统平台类型，如 LINUX_UNIX、WINDOWS。
+        :type PlatformType: str
+        :param BlueprintType: 镜像类型，如 APP_OS、PURE_OS。
+        :type BlueprintType: str
+        :param ImageUrl: 镜像图片 URL。
+        :type ImageUrl: str
+        """
+        self.BlueprintId = None
+        self.DisplayTitle = None
+        self.DisplayVersion = None
+        self.Description = None
+        self.OsName = None
+        self.Platform = None
+        self.PlatformType = None
+        self.BlueprintType = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.BlueprintId = params.get("BlueprintId")
+        self.DisplayTitle = params.get("DisplayTitle")
+        self.DisplayVersion = params.get("DisplayVersion")
+        self.Description = params.get("Description")
+        self.OsName = params.get("OsName")
+        self.Platform = params.get("Platform")
+        self.PlatformType = params.get("PlatformType")
+        self.BlueprintType = params.get("BlueprintType")
+        self.ImageUrl = params.get("ImageUrl")
+
+
 class Bundle(AbstractModel):
     """套餐信息。
 
@@ -28,6 +77,8 @@ class Bundle(AbstractModel):
         :param Memory: 内存大小，单位 GB。
         :type Memory: int
         :param SystemDiskType: 系统盘类型。
+取值范围： 
+<li> LOCAL_BASIC：本地硬盘</li><li> LOCAL_SSD：本地 SSD 硬盘</li><li> CLOUD_BASIC：普通云硬盘</li><li> CLOUD_SSD：SSD 云硬盘</li><li> CLOUD_PREMIUM：高性能云硬盘</li>
         :type SystemDiskType: str
         :param SystemDiskSize: 系统盘大小。
         :type SystemDiskSize: int
@@ -77,6 +128,82 @@ class Bundle(AbstractModel):
         self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
         self.InternetChargeType = params.get("InternetChargeType")
         self.BundleSalesState = params.get("BundleSalesState")
+
+
+class DescribeBlueprintsRequest(AbstractModel):
+    """DescribeBlueprints请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BlueprintIds: 镜像 ID 列表。
+        :type BlueprintIds: list of str
+        :param Offset: 偏移量，默认为 0。
+        :type Offset: int
+        :param Limit: 返回数量，默认为 20，最大值为 100。
+        :type Limit: int
+        :param Filters: 过滤器列表。
+<li>blueprint-id</li>按照【镜像 ID】进行过滤。
+类型：String
+必选：否
+<li>blueprint-type</li>按照【镜像类型】进行过滤。
+取值： APP_OS（预置应用的系统 ）；PURE_OS（纯净的 OS 系统）。
+类型：String
+必选：否
+<li>platform-type</li>按照【镜像平台类型】进行过滤。
+取值： LINUX_UNIX（Linux/Unix系统）；WINDOWS（Windows 系统）。
+类型：String
+必选：否
+每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 BlueprintIds 和 Filters 。
+        :type Filters: list of Filter
+        """
+        self.BlueprintIds = None
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.BlueprintIds = params.get("BlueprintIds")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class DescribeBlueprintsResponse(AbstractModel):
+    """DescribeBlueprints返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的镜像数量。
+        :type TotalCount: int
+        :param BlueprintSet: 镜像详细信息列表。
+        :type BlueprintSet: list of Blueprint
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.BlueprintSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("BlueprintSet") is not None:
+            self.BlueprintSet = []
+            for item in params.get("BlueprintSet"):
+                obj = Blueprint()
+                obj._deserialize(item)
+                self.BlueprintSet.append(obj)
+        self.RequestId = params.get("RequestId")
 
 
 class DescribeBundlesRequest(AbstractModel):
@@ -165,6 +292,9 @@ class DescribeInstancesRequest(AbstractModel):
 类型：String
 必选：否
 <li>private-ip-address</li>按照【实例主网卡的内网 IP】进行过滤。
+类型：String
+必选：否
+<li>public-ip-address</li>按照【实例主网卡的公网 IP】进行过滤。
 类型：String
 必选：否
 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 InstanceIds 和 Filters。
@@ -482,7 +612,7 @@ class RebootInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceIds: 实例 ID 列表。每次请求批量实例的上限为 100。
+        :param InstanceIds: 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
         :type InstanceIds: list of str
         """
         self.InstanceIds = None
@@ -516,7 +646,7 @@ class ResetInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例 ID。
+        :param InstanceId: 实例 ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
         :type InstanceId: str
         :param BlueprintId: 镜像 ID。
         :type BlueprintId: str
@@ -554,7 +684,7 @@ class StartInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceIds: 实例 ID 列表。每次请求批量实例的上限为 100。
+        :param InstanceIds: 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
         :type InstanceIds: list of str
         """
         self.InstanceIds = None
@@ -588,7 +718,7 @@ class StopInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceIds: 实例 ID 列表。每次请求批量实例的上限为 100。
+        :param InstanceIds: 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
         :type InstanceIds: list of str
         """
         self.InstanceIds = None

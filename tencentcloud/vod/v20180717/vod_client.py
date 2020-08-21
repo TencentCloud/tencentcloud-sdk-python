@@ -1223,6 +1223,37 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCdnLogs(self, request):
+        """查询点播域名的 CDN 访问日志的下载链接。
+            1. 可以查询最近30天内的 CDN 日志下载链接。
+            2. 默认情况下 CDN 每小时生成一个日志文件，如果某一个小时没有 CDN 访问，不会生成日志文件。
+            3. CDN 日志下载链接的有效期为24小时。
+
+        :param request: Request instance for DescribeCdnLogs.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeCdnLogsRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeCdnLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCdnLogs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCdnLogsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeContentReviewTemplates(self, request):
         """根据视频内容审核模板唯一标识，获取视频内容审核模板详情列表。返回结果包含符合条件的所有用户自定义模板及[系统预置内容审核模板](https://cloud.tencent.com/document/product/266/33476#.E9.A2.84.E7.BD.AE.E8.A7.86.E9.A2.91.E5.86.85.E5.AE.B9.E5.AE.A1.E6.A0.B8.E6.A8.A1.E6.9D.BF)。
 

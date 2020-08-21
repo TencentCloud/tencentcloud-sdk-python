@@ -16,6 +16,71 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AccountTipoffAccessRequest(AbstractModel):
+    """AccountTipoffAccess请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ReportedAccount: 被举报账号，长度低于 128 个字符
+        :type ReportedAccount: str
+        :param ReportedAccountType: 被举报账号类型(1-微信uin 2-QQ号 3-微信群uin 4-qq群号 5-微信openid 6-QQopenid 7-手机号 8-微信号 0-其它string)
+        :type ReportedAccountType: int
+        :param EvilType: 被举报账号所属恶意类型(1-诈骗，2-骚扰，3-广告，4-违法违规，5-赌博传销，0-其他)
+        :type EvilType: int
+        :param SenderAccount: 举报者账号，长度低于 128 个字符
+        :type SenderAccount: str
+        :param SenderAccountType: 举报者账号类型(1-微信uin 2-QQ号 3-微信群uin 4-qq群号 5-微信openid 6-QQopenid 7-手机号 8-微信号 0-其它string)
+        :type SenderAccountType: int
+        :param SenderIP: 举报者IP地址
+        :type SenderIP: str
+        :param EvilContent: 包含被举报账号的恶意内容（比如文本、图片链接，长度低于1024个字符）
+        :type EvilContent: str
+        """
+        self.ReportedAccount = None
+        self.ReportedAccountType = None
+        self.EvilType = None
+        self.SenderAccount = None
+        self.SenderAccountType = None
+        self.SenderIP = None
+        self.EvilContent = None
+
+
+    def _deserialize(self, params):
+        self.ReportedAccount = params.get("ReportedAccount")
+        self.ReportedAccountType = params.get("ReportedAccountType")
+        self.EvilType = params.get("EvilType")
+        self.SenderAccount = params.get("SenderAccount")
+        self.SenderAccountType = params.get("SenderAccountType")
+        self.SenderIP = params.get("SenderIP")
+        self.EvilContent = params.get("EvilContent")
+
+
+class AccountTipoffAccessResponse(AbstractModel):
+    """AccountTipoffAccess返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 举报接口响应数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.tms.v20200713.models.TipoffResponse`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = TipoffResponse()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
 class DetailResults(AbstractModel):
     """文本返回的详细结果
 
@@ -227,6 +292,27 @@ class TextModerationResponse(AbstractModel):
                 self.RiskDetails.append(obj)
         self.Extra = params.get("Extra")
         self.RequestId = params.get("RequestId")
+
+
+class TipoffResponse(AbstractModel):
+    """举报接口响应数据
+
+    """
+
+    def __init__(self):
+        """
+        :param ResultCode: 举报结果， "0-举报数据提交成功  99-举报数据提交失败"
+        :type ResultCode: int
+        :param ResultMsg: 结果描述
+        :type ResultMsg: str
+        """
+        self.ResultCode = None
+        self.ResultMsg = None
+
+
+    def _deserialize(self, params):
+        self.ResultCode = params.get("ResultCode")
+        self.ResultMsg = params.get("ResultMsg")
 
 
 class User(AbstractModel):
