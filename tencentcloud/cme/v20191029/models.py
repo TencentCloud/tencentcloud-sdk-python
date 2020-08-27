@@ -396,6 +396,7 @@ class CreateProjectRequest(AbstractModel):
         :type Platform: str
         :param Category: 项目类别，取值有：
 <li>VIDEO_EDIT：视频编辑。</li>
+<li>SWITCHER：导播台。</li>
         :type Category: str
         :param Name: 项目名称，不可超过30个字符。
         :type Name: str
@@ -405,12 +406,18 @@ class CreateProjectRequest(AbstractModel):
         :type AspectRatio: str
         :param Owner: 归属者。
         :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
+        :param Description: 项目描述信息。
+        :type Description: str
+        :param SwitcherProjectInput: 导播台信息，仅当项目类型为 SWITCHER 时有效。
+        :type SwitcherProjectInput: :class:`tencentcloud.cme.v20191029.models.SwitcherProjectInput`
         """
         self.Platform = None
         self.Category = None
         self.Name = None
         self.AspectRatio = None
         self.Owner = None
+        self.Description = None
+        self.SwitcherProjectInput = None
 
 
     def _deserialize(self, params):
@@ -421,6 +428,10 @@ class CreateProjectRequest(AbstractModel):
         if params.get("Owner") is not None:
             self.Owner = Entity()
             self.Owner._deserialize(params.get("Owner"))
+        self.Description = params.get("Description")
+        if params.get("SwitcherProjectInput") is not None:
+            self.SwitcherProjectInput = SwitcherProjectInput()
+            self.SwitcherProjectInput._deserialize(params.get("SwitcherProjectInput"))
 
 
 class CreateProjectResponse(AbstractModel):
@@ -2925,6 +2936,65 @@ class SortBy(AbstractModel):
     def _deserialize(self, params):
         self.Field = params.get("Field")
         self.Order = params.get("Order")
+
+
+class SwitcherPgmOutputConfig(AbstractModel):
+    """导播台主监输出配置信息
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 导播台输出模板 ID，可取值：
+<li>10001：分辨率为1080 P；</li>
+<li>10002：分辨率为720 P；</li>
+<li>10003：分辨率为480 P。</li>
+        :type TemplateId: int
+        :param Width: 导播台输出宽。
+        :type Width: int
+        :param Height: 导播台输出高。
+        :type Height: int
+        :param Fps: 导播台输出帧率。
+        :type Fps: int
+        :param BitRate: 导播台输出码率。
+        :type BitRate: int
+        """
+        self.TemplateId = None
+        self.Width = None
+        self.Height = None
+        self.Fps = None
+        self.BitRate = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.Fps = params.get("Fps")
+        self.BitRate = params.get("BitRate")
+
+
+class SwitcherProjectInput(AbstractModel):
+    """导播台项目输入信息
+
+    """
+
+    def __init__(self):
+        """
+        :param StopTime: 导播台停止时间。
+        :type StopTime: str
+        :param PgmOutputConfig: 导播台主监输出配置信息。
+        :type PgmOutputConfig: :class:`tencentcloud.cme.v20191029.models.SwitcherPgmOutputConfig`
+        """
+        self.StopTime = None
+        self.PgmOutputConfig = None
+
+
+    def _deserialize(self, params):
+        self.StopTime = params.get("StopTime")
+        if params.get("PgmOutputConfig") is not None:
+            self.PgmOutputConfig = SwitcherPgmOutputConfig()
+            self.PgmOutputConfig._deserialize(params.get("PgmOutputConfig"))
 
 
 class TaskBaseInfo(AbstractModel):

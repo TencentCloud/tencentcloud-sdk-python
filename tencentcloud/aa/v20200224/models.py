@@ -171,6 +171,27 @@ class InputActivityAntiRushAdvanced(AbstractModel):
         self.VendorId = params.get("VendorId")
 
 
+class InputDetails(AbstractModel):
+    """入参的详细参数信息
+
+    """
+
+    def __init__(self):
+        """
+        :param FieldName: 字段名称
+        :type FieldName: str
+        :param FieldValue: 字段值
+        :type FieldValue: str
+        """
+        self.FieldName = None
+        self.FieldValue = None
+
+
+    def _deserialize(self, params):
+        self.FieldName = params.get("FieldName")
+        self.FieldValue = params.get("FieldValue")
+
+
 class InputManageMarketingRisk(AbstractModel):
     """营销风控入参
 
@@ -180,16 +201,16 @@ class InputManageMarketingRisk(AbstractModel):
         """
         :param Account: 账号信息。
         :type Account: :class:`tencentcloud.aa.v20200224.models.AccountInfo`
-        :param SceneType: 场景类型。
+        :param UserIp: 登录来源的外网IP
+        :type UserIp: str
+        :param PostTime: 用户操作时间戳，单位秒（格林威治时间精确到秒，如1501590972）。
+        :type PostTime: int
+        :param SceneType: 场景类型。(后续不再支持，请使用SceneCode字段)
 1：活动防刷
 2：登录保护
 3：注册保护
 4：活动防刷高级版（网赚）
         :type SceneType: int
-        :param UserIp: 登录来源的外网IP
-        :type UserIp: str
-        :param PostTime: 用户操作时间戳，单位秒（格林威治时间精确到秒，如1501590972）。
-        :type PostTime: int
         :param UserId: 用户唯一标识。
         :type UserId: str
         :param DeviceToken: 设备指纹token。
@@ -220,11 +241,15 @@ class InputManageMarketingRisk(AbstractModel):
         :type VendorId: str
         :param CrowdAntiRush: 网赚防刷相关信息。SceneType为4时填写。
         :type CrowdAntiRush: :class:`tencentcloud.aa.v20200224.models.CrowdAntiRushInfo`
+        :param SceneCode: 场景Code，控制台上获取
+        :type SceneCode: str
+        :param Details: 详细信息
+        :type Details: list of InputDetails
         """
         self.Account = None
-        self.SceneType = None
         self.UserIp = None
         self.PostTime = None
+        self.SceneType = None
         self.UserId = None
         self.DeviceToken = None
         self.DeviceBusinessId = None
@@ -239,15 +264,17 @@ class InputManageMarketingRisk(AbstractModel):
         self.MacAddress = None
         self.VendorId = None
         self.CrowdAntiRush = None
+        self.SceneCode = None
+        self.Details = None
 
 
     def _deserialize(self, params):
         if params.get("Account") is not None:
             self.Account = AccountInfo()
             self.Account._deserialize(params.get("Account"))
-        self.SceneType = params.get("SceneType")
         self.UserIp = params.get("UserIp")
         self.PostTime = params.get("PostTime")
+        self.SceneType = params.get("SceneType")
         self.UserId = params.get("UserId")
         self.DeviceToken = params.get("DeviceToken")
         self.DeviceBusinessId = params.get("DeviceBusinessId")
@@ -264,6 +291,13 @@ class InputManageMarketingRisk(AbstractModel):
         if params.get("CrowdAntiRush") is not None:
             self.CrowdAntiRush = CrowdAntiRushInfo()
             self.CrowdAntiRush._deserialize(params.get("CrowdAntiRush"))
+        self.SceneCode = params.get("SceneCode")
+        if params.get("Details") is not None:
+            self.Details = []
+            for item in params.get("Details"):
+                obj = InputDetails()
+                obj._deserialize(item)
+                self.Details.append(obj)
 
 
 class ManageMarketingRiskRequest(AbstractModel):

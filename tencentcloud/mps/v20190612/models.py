@@ -6978,15 +6978,20 @@ class MediaAiAnalysisFrameTagItem(AbstractModel):
         """
         :param Tag: 按帧标签名称。
         :type Tag: str
+        :param CategorySet: 按帧标签名称的分类列表，CategorySet.N 表示第 N+1级分类。
+比如 Tag 为“塔楼”时，CategorySet 包含两个元素：CategorySet.0 为“场景”，CategorySet.1为 “建筑”，表示按帧标签为“塔楼”，且第1级分类是“场景”，第2级分类是“建筑”。
+        :type CategorySet: list of str
         :param Confidence: 按帧标签的可信度，取值范围是 0 到 100。
         :type Confidence: float
         """
         self.Tag = None
+        self.CategorySet = None
         self.Confidence = None
 
 
     def _deserialize(self, params):
         self.Tag = params.get("Tag")
+        self.CategorySet = params.get("CategorySet")
         self.Confidence = params.get("Confidence")
 
 

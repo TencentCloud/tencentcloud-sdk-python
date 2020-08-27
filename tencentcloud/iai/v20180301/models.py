@@ -899,7 +899,7 @@ class DenseFaceShape(AbstractModel):
         :type RightPupil: list of Point
         :param CentralAxis: 中轴线轮廓的 XX 个点。
         :type CentralAxis: list of Point
-        :param Chin: 下轮廓的 XX 个点。
+        :param Chin: 下巴轮廓的 XX 个点。
         :type Chin: list of Point
         :param LeftEyeBags: 左眼袋的 XX 个点。
         :type LeftEyeBags: list of Point

@@ -949,6 +949,34 @@ class KmsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetRegions(self, request):
+        """获取支持的地域列表
+
+        :param request: Request instance for GetRegions.
+        :type request: :class:`tencentcloud.kms.v20190118.models.GetRegionsRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.GetRegionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetRegions", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetRegionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetServiceStatus(self, request):
         """用于查询该用户是否已开通KMS服务
 

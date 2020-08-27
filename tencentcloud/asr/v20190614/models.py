@@ -89,10 +89,11 @@ class CreateRecTaskRequest(AbstractModel):
 • 16k_en：16k 英语；
 • 16k_ca：16k 粤语；
 • 16k_ja：16k 日语；
+• 16k_wuu-SH：16k 上海话方言；
         :type EngineModelType: str
         :param ChannelNum: 语音声道数。1：单声道；2：双声道（仅支持 8k_zh 引擎模型）。
         :type ChannelNum: int
-        :param ResTextFormat: 识别结果返回形式。0： 识别结果文本(含分段时间戳)； 1：仅支持16k中文引擎，含识别结果详情(词时间戳列表，一般用于生成字幕场景)。
+        :param ResTextFormat: 识别结果返回形式。0： 识别结果文本(含分段时间戳)； 1：仅支持16k中文引擎，含词级别粒度的[详细识别结果](https://cloud.tencent.com/document/api/1093/37824#SentenceDetail)(词时间戳列表，一般用于生成字幕场景)。
         :type ResTextFormat: int
         :param SourceType: 语音数据来源。0：语音 URL；1：语音数据（post body）。
         :type SourceType: int
@@ -485,6 +486,7 @@ class SentenceRecognitionRequest(AbstractModel):
 • 16k_en：16k 英语；
 • 16k_ca：16k 粤语；
 • 16k_ja：16k 日语；
+•16k_wuu-SH：16k 上海话方言。
         :type EngSerViceType: str
         :param SourceType: 语音数据来源。0：语音 URL；1：语音数据（post body）。
         :type SourceType: int

@@ -1488,6 +1488,34 @@ class GetPublicKeyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GetRegionsRequest(AbstractModel):
+    """GetRegions请求参数结构体
+
+    """
+
+
+class GetRegionsResponse(AbstractModel):
+    """GetRegions返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Regions: 可用region列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Regions: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Regions = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Regions = params.get("Regions")
+        self.RequestId = params.get("RequestId")
+
+
 class GetServiceStatusRequest(AbstractModel):
     """GetServiceStatus请求参数结构体
 

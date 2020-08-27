@@ -87,6 +87,172 @@ class BeautifyPicResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class BeautifyVideoOutput(AbstractModel):
+    """视频美颜返回结果
+
+    """
+
+    def __init__(self):
+        """
+        :param VideoUrl: 视频美颜输出的url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VideoUrl: str
+        :param VideoMD5: 视频美颜输出的视频MD5，用于校验
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VideoMD5: str
+        :param CoverImage: 美颜输出的视频封面图base64字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CoverImage: str
+        :param Width: 视频宽度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Width: int
+        :param Height: 视频高度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Height: int
+        :param Fps: 每秒传输帧数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Fps: float
+        :param DurationInSec: 视频播放时长，单位为秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DurationInSec: float
+        """
+        self.VideoUrl = None
+        self.VideoMD5 = None
+        self.CoverImage = None
+        self.Width = None
+        self.Height = None
+        self.Fps = None
+        self.DurationInSec = None
+
+
+    def _deserialize(self, params):
+        self.VideoUrl = params.get("VideoUrl")
+        self.VideoMD5 = params.get("VideoMD5")
+        self.CoverImage = params.get("CoverImage")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.Fps = params.get("Fps")
+        self.DurationInSec = params.get("DurationInSec")
+
+
+class BeautifyVideoRequest(AbstractModel):
+    """BeautifyVideo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Url: 视频url地址
+        :type Url: str
+        :param BeautyParam: 美颜参数 - 美白、平滑、大眼和瘦脸。参数值范围[0, 100]。参数值为0，则不做美颜。参数默认值为0。目前默认取数组第一个元素是对所有人脸美颜。
+        :type BeautyParam: list of BeautyParam
+        :param OutputVideoType: 目前只支持mp4
+        :type OutputVideoType: str
+        """
+        self.Url = None
+        self.BeautyParam = None
+        self.OutputVideoType = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
+        if params.get("BeautyParam") is not None:
+            self.BeautyParam = []
+            for item in params.get("BeautyParam"):
+                obj = BeautyParam()
+                obj._deserialize(item)
+                self.BeautyParam.append(obj)
+        self.OutputVideoType = params.get("OutputVideoType")
+
+
+class BeautifyVideoResponse(AbstractModel):
+    """BeautifyVideo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param JobId: 视频美颜任务的Job id
+        :type JobId: str
+        :param EstimatedProcessTime: 预估处理时间，粒度为秒
+        :type EstimatedProcessTime: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.JobId = None
+        self.EstimatedProcessTime = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.EstimatedProcessTime = params.get("EstimatedProcessTime")
+        self.RequestId = params.get("RequestId")
+
+
+class BeautyParam(AbstractModel):
+    """全局美颜参数，针对所有人脸做美颜。参数全部为0，则为不做美颜
+
+    """
+
+    def __init__(self):
+        """
+        :param WhitenLevel: 美白程度，取值范围[0,100]。0不美白，100代表最高程度。默认值30。
+        :type WhitenLevel: int
+        :param SmoothingLevel: 磨皮程度，取值范围[0,100]。0不磨皮，100代表最高程度。默认值30。
+        :type SmoothingLevel: int
+        :param EyeEnlargeLevel: 大眼程度，取值范围[0,100]。0不大眼，100代表最高程度。默认值70。
+        :type EyeEnlargeLevel: int
+        :param FaceShrinkLevel: 瘦脸程度，取值范围[0,100]。0不瘦脸，100代表最高程度。默认值70。
+        :type FaceShrinkLevel: int
+        """
+        self.WhitenLevel = None
+        self.SmoothingLevel = None
+        self.EyeEnlargeLevel = None
+        self.FaceShrinkLevel = None
+
+
+    def _deserialize(self, params):
+        self.WhitenLevel = params.get("WhitenLevel")
+        self.SmoothingLevel = params.get("SmoothingLevel")
+        self.EyeEnlargeLevel = params.get("EyeEnlargeLevel")
+        self.FaceShrinkLevel = params.get("FaceShrinkLevel")
+
+
+class CancelBeautifyVideoJobRequest(AbstractModel):
+    """CancelBeautifyVideoJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param JobId: 美颜视频的Job id
+        :type JobId: str
+        """
+        self.JobId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+
+
+class CancelBeautifyVideoJobResponse(AbstractModel):
+    """CancelBeautifyVideoJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateModelRequest(AbstractModel):
     """CreateModel请求参数结构体
 
@@ -302,6 +468,51 @@ class ModelInfo(AbstractModel):
         self.ModelId = params.get("ModelId")
         self.LUTFileUrl = params.get("LUTFileUrl")
         self.Description = params.get("Description")
+
+
+class QueryBeautifyVideoJobRequest(AbstractModel):
+    """QueryBeautifyVideoJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param JobId: 视频美颜Job id
+        :type JobId: str
+        """
+        self.JobId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+
+
+class QueryBeautifyVideoJobResponse(AbstractModel):
+    """QueryBeautifyVideoJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param JobStatus: 当前任务状态：排队中、处理中、处理失败或者处理完成
+        :type JobStatus: str
+        :param BeautifyVideoOutput: 视频美颜输出的结果信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BeautifyVideoOutput: :class:`tencentcloud.fmu.v20191213.models.BeautifyVideoOutput`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.JobStatus = None
+        self.BeautifyVideoOutput = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.JobStatus = params.get("JobStatus")
+        if params.get("BeautifyVideoOutput") is not None:
+            self.BeautifyVideoOutput = BeautifyVideoOutput()
+            self.BeautifyVideoOutput._deserialize(params.get("BeautifyVideoOutput"))
+        self.RequestId = params.get("RequestId")
 
 
 class RGBAInfo(AbstractModel):

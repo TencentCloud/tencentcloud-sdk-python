@@ -1588,6 +1588,8 @@ class DescribeInstancesRequest(AbstractModel):
         :type SearchKeys: list of str
         :param TypeList: 内部参数，用户可忽略
         :type TypeList: list of int
+        :param MonitorVersion: 内部参数，用户可忽略
+        :type MonitorVersion: str
         """
         self.Limit = None
         self.Offset = None
@@ -1610,6 +1612,7 @@ class DescribeInstancesRequest(AbstractModel):
         self.Type = None
         self.SearchKeys = None
         self.TypeList = None
+        self.MonitorVersion = None
 
 
     def _deserialize(self, params):
@@ -1634,6 +1637,7 @@ class DescribeInstancesRequest(AbstractModel):
         self.Type = params.get("Type")
         self.SearchKeys = params.get("SearchKeys")
         self.TypeList = params.get("TypeList")
+        self.MonitorVersion = params.get("MonitorVersion")
 
 
 class DescribeInstancesResponse(AbstractModel):
@@ -2945,6 +2949,12 @@ class InstanceSet(AbstractModel):
         :param RemainBandwidthDuration: 内部参数，用户可忽略
 注意：此字段可能返回 null，表示取不到有效值。
         :type RemainBandwidthDuration: str
+        :param DiskSize: Tendis实例的磁盘大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskSize: int
+        :param MonitorVersion: 监控版本: 1m-分钟粒度监控，5s-5秒粒度监控
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MonitorVersion: str
         """
         self.InstanceName = None
         self.InstanceId = None
@@ -2989,6 +2999,8 @@ class InstanceSet(AbstractModel):
         self.ReadOnly = None
         self.Vip6 = None
         self.RemainBandwidthDuration = None
+        self.DiskSize = None
+        self.MonitorVersion = None
 
 
     def _deserialize(self, params):
@@ -3045,6 +3057,8 @@ class InstanceSet(AbstractModel):
         self.ReadOnly = params.get("ReadOnly")
         self.Vip6 = params.get("Vip6")
         self.RemainBandwidthDuration = params.get("RemainBandwidthDuration")
+        self.DiskSize = params.get("DiskSize")
+        self.MonitorVersion = params.get("MonitorVersion")
 
 
 class InstanceSlowlogDetail(AbstractModel):

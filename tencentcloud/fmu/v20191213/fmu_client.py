@@ -53,6 +53,62 @@ class FmuClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def BeautifyVideo(self, request):
+        """视频美颜
+
+        :param request: Request instance for BeautifyVideo.
+        :type request: :class:`tencentcloud.fmu.v20191213.models.BeautifyVideoRequest`
+        :rtype: :class:`tencentcloud.fmu.v20191213.models.BeautifyVideoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("BeautifyVideo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.BeautifyVideoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CancelBeautifyVideoJob(self, request):
+        """撤销视频美颜任务请求
+
+        :param request: Request instance for CancelBeautifyVideoJob.
+        :type request: :class:`tencentcloud.fmu.v20191213.models.CancelBeautifyVideoJobRequest`
+        :rtype: :class:`tencentcloud.fmu.v20191213.models.CancelBeautifyVideoJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CancelBeautifyVideoJob", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CancelBeautifyVideoJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateModel(self, request):
         """在使用LUT素材的modelid实现试唇色前，您需要先上传 LUT 格式的cube文件注册唇色ID。查看 [LUT文件的使用说明](https://cloud.tencent.com/document/product/1172/41701)。
 
@@ -125,6 +181,34 @@ class FmuClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetModelListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryBeautifyVideoJob(self, request):
+        """查询视频美颜处理进度
+
+        :param request: Request instance for QueryBeautifyVideoJob.
+        :type request: :class:`tencentcloud.fmu.v20191213.models.QueryBeautifyVideoJobRequest`
+        :rtype: :class:`tencentcloud.fmu.v20191213.models.QueryBeautifyVideoJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryBeautifyVideoJob", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryBeautifyVideoJobResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

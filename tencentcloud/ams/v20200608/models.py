@@ -287,7 +287,7 @@ class CreateAudioModerationTaskRequest(AbstractModel):
         """
         :param BizType: 业务类型, 定义 模版策略，输出存储配置。如果没有BizType，可以先参考 【创建业务配置】接口进行创建
         :type BizType: str
-        :param Type: 异步检测结果回调通知接收URL。支持HTTP和HTTPS
+        :param Type: 审核类型，这里可选：AUDIO (点播音频)和 LIVE_AUDIO（直播音频）
         :type Type: str
         :param Seed: 回调签名key，具体可以查看签名文档。
         :type Seed: str

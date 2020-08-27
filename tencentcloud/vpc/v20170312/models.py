@@ -930,9 +930,9 @@ class AssociateNatGatewayAddressRequest(AbstractModel):
         :type NatGatewayId: str
         :param AddressCount: 需要申请的弹性IP个数，系统会按您的要求生产N个弹性IP, 其中AddressCount和PublicAddresses至少传递一个。
         :type AddressCount: int
-        :param PublicIpAddresses: 绑定NAT网关的弹性IP数组，其中AddressCount和PublicAddresses至少传递一个。。
+        :param PublicIpAddresses: 绑定NAT网关的弹性IP数组，其中AddressCount和PublicAddresses至少传递一个。
         :type PublicIpAddresses: list of str
-        :param Zone: 弹性IP可以区，自动分配弹性IP时传递。
+        :param Zone: 弹性IP可用区，自动分配弹性IP时传递。
         :type Zone: str
         """
         self.NatGatewayId = None
@@ -1149,6 +1149,48 @@ class AttachNetworkInterfaceRequest(AbstractModel):
 
 class AttachNetworkInterfaceResponse(AbstractModel):
     """AttachNetworkInterface返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class AuditCrossBorderComplianceRequest(AbstractModel):
+    """AuditCrossBorderCompliance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ServiceProvider: 服务商, 可选值：`UNICOM`。
+        :type ServiceProvider: str
+        :param ComplianceId: 表单唯一`ID`。
+        :type ComplianceId: int
+        :param AuditBehavior: 通过：`APPROVED `，拒绝：`DENY`。
+        :type AuditBehavior: str
+        """
+        self.ServiceProvider = None
+        self.ComplianceId = None
+        self.AuditBehavior = None
+
+
+    def _deserialize(self, params):
+        self.ServiceProvider = params.get("ServiceProvider")
+        self.ComplianceId = params.get("ComplianceId")
+        self.AuditBehavior = params.get("AuditBehavior")
+
+
+class AuditCrossBorderComplianceResponse(AbstractModel):
+    """AuditCrossBorderCompliance返回参数结构体
 
     """
 
@@ -3588,6 +3630,107 @@ class CreateVpnGatewayResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CrossBorderCompliance(AbstractModel):
+    """跨境专线合规化审批单
+
+    """
+
+    def __init__(self):
+        """
+        :param ServiceProvider: 服务商，可选值：`UNICOM`。
+        :type ServiceProvider: str
+        :param ComplianceId: 合规化审批单`ID`。
+        :type ComplianceId: int
+        :param Company: 公司全称。
+        :type Company: str
+        :param UniformSocialCreditCode: 统一社会信用代码。
+        :type UniformSocialCreditCode: str
+        :param LegalPerson: 法人。
+        :type LegalPerson: str
+        :param IssuingAuthority: 发证机关。
+        :type IssuingAuthority: str
+        :param BusinessLicense: 营业执照。
+        :type BusinessLicense: str
+        :param BusinessAddress: 营业执照住所。
+        :type BusinessAddress: str
+        :param PostCode: 邮编。
+        :type PostCode: int
+        :param Manager: 经办人。
+        :type Manager: str
+        :param ManagerId: 经办人身份证号。
+        :type ManagerId: str
+        :param ManagerIdCard: 经办人身份证。
+        :type ManagerIdCard: str
+        :param ManagerAddress: 经办人身份证地址。
+        :type ManagerAddress: str
+        :param ManagerTelephone: 经办人联系电话。
+        :type ManagerTelephone: str
+        :param Email: 电子邮箱。
+        :type Email: str
+        :param ServiceHandlingForm: 跨境专线服务受理单。
+        :type ServiceHandlingForm: str
+        :param AuthorizationLetter: 授权函。
+        :type AuthorizationLetter: str
+        :param SafetyCommitment: 信息安全承诺书。
+        :type SafetyCommitment: str
+        :param ServiceStartDate: 服务开始时间。
+        :type ServiceStartDate: str
+        :param ServiceEndDate: 服务截止时间。
+        :type ServiceEndDate: str
+        :param State: 状态。待审批：`PENDING`，已通过：`APPROVED`，已拒绝：`DENY`。
+        :type State: str
+        :param CreatedTime: 审批单创建时间。
+        :type CreatedTime: str
+        """
+        self.ServiceProvider = None
+        self.ComplianceId = None
+        self.Company = None
+        self.UniformSocialCreditCode = None
+        self.LegalPerson = None
+        self.IssuingAuthority = None
+        self.BusinessLicense = None
+        self.BusinessAddress = None
+        self.PostCode = None
+        self.Manager = None
+        self.ManagerId = None
+        self.ManagerIdCard = None
+        self.ManagerAddress = None
+        self.ManagerTelephone = None
+        self.Email = None
+        self.ServiceHandlingForm = None
+        self.AuthorizationLetter = None
+        self.SafetyCommitment = None
+        self.ServiceStartDate = None
+        self.ServiceEndDate = None
+        self.State = None
+        self.CreatedTime = None
+
+
+    def _deserialize(self, params):
+        self.ServiceProvider = params.get("ServiceProvider")
+        self.ComplianceId = params.get("ComplianceId")
+        self.Company = params.get("Company")
+        self.UniformSocialCreditCode = params.get("UniformSocialCreditCode")
+        self.LegalPerson = params.get("LegalPerson")
+        self.IssuingAuthority = params.get("IssuingAuthority")
+        self.BusinessLicense = params.get("BusinessLicense")
+        self.BusinessAddress = params.get("BusinessAddress")
+        self.PostCode = params.get("PostCode")
+        self.Manager = params.get("Manager")
+        self.ManagerId = params.get("ManagerId")
+        self.ManagerIdCard = params.get("ManagerIdCard")
+        self.ManagerAddress = params.get("ManagerAddress")
+        self.ManagerTelephone = params.get("ManagerTelephone")
+        self.Email = params.get("Email")
+        self.ServiceHandlingForm = params.get("ServiceHandlingForm")
+        self.AuthorizationLetter = params.get("AuthorizationLetter")
+        self.SafetyCommitment = params.get("SafetyCommitment")
+        self.ServiceStartDate = params.get("ServiceStartDate")
+        self.ServiceEndDate = params.get("ServiceEndDate")
+        self.State = params.get("State")
+        self.CreatedTime = params.get("CreatedTime")
+
+
 class CustomerGateway(AbstractModel):
     """对端网关
 
@@ -5440,6 +5583,113 @@ class DescribeClassicLinkInstancesResponse(AbstractModel):
                 obj = ClassicLinkInstance()
                 obj._deserialize(item)
                 self.ClassicLinkInstanceSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCrossBorderComplianceRequest(AbstractModel):
+    """DescribeCrossBorderCompliance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ServiceProvider: （精确匹配）服务商，可选值：`UNICOM`。
+        :type ServiceProvider: str
+        :param ComplianceId: （精确匹配）合规化审批单`ID`。
+        :type ComplianceId: int
+        :param Company: （模糊查询）公司名称。
+        :type Company: str
+        :param UniformSocialCreditCode: （精确匹配）统一社会信用代码。
+        :type UniformSocialCreditCode: str
+        :param LegalPerson: （模糊查询）法人。
+        :type LegalPerson: str
+        :param IssuingAuthority: （模糊查询）发证机关。
+        :type IssuingAuthority: str
+        :param BusinessAddress: （模糊查询）营业执照住所。
+        :type BusinessAddress: str
+        :param PostCode: （精确匹配）邮编。
+        :type PostCode: int
+        :param Manager: （模糊查询）经办人。
+        :type Manager: str
+        :param ManagerId: （精确查询）经办人身份证号。
+        :type ManagerId: str
+        :param ManagerAddress: （模糊查询）经办人身份证地址。
+        :type ManagerAddress: str
+        :param ManagerTelephone: （精确匹配）经办人联系电话。
+        :type ManagerTelephone: str
+        :param Email: （精确匹配）电子邮箱。
+        :type Email: str
+        :param ServiceStartDate: （精确匹配）服务开始时间。
+        :type ServiceStartDate: str
+        :param ServiceEndDate: （精确匹配）服务开始时间。
+        :type ServiceEndDate: str
+        :param State: （精确匹配）状态。待审批：`PENDING`，通过：`APPROVED `，拒绝：`DENY`。
+        :type State: str
+        """
+        self.ServiceProvider = None
+        self.ComplianceId = None
+        self.Company = None
+        self.UniformSocialCreditCode = None
+        self.LegalPerson = None
+        self.IssuingAuthority = None
+        self.BusinessAddress = None
+        self.PostCode = None
+        self.Manager = None
+        self.ManagerId = None
+        self.ManagerAddress = None
+        self.ManagerTelephone = None
+        self.Email = None
+        self.ServiceStartDate = None
+        self.ServiceEndDate = None
+        self.State = None
+
+
+    def _deserialize(self, params):
+        self.ServiceProvider = params.get("ServiceProvider")
+        self.ComplianceId = params.get("ComplianceId")
+        self.Company = params.get("Company")
+        self.UniformSocialCreditCode = params.get("UniformSocialCreditCode")
+        self.LegalPerson = params.get("LegalPerson")
+        self.IssuingAuthority = params.get("IssuingAuthority")
+        self.BusinessAddress = params.get("BusinessAddress")
+        self.PostCode = params.get("PostCode")
+        self.Manager = params.get("Manager")
+        self.ManagerId = params.get("ManagerId")
+        self.ManagerAddress = params.get("ManagerAddress")
+        self.ManagerTelephone = params.get("ManagerTelephone")
+        self.Email = params.get("Email")
+        self.ServiceStartDate = params.get("ServiceStartDate")
+        self.ServiceEndDate = params.get("ServiceEndDate")
+        self.State = params.get("State")
+
+
+class DescribeCrossBorderComplianceResponse(AbstractModel):
+    """DescribeCrossBorderCompliance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CrossBorderComplianceSet: 合规化审批单列表。
+        :type CrossBorderComplianceSet: list of CrossBorderCompliance
+        :param TotalCount: 合规化审批单总数。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CrossBorderComplianceSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CrossBorderComplianceSet") is not None:
+            self.CrossBorderComplianceSet = []
+            for item in params.get("CrossBorderComplianceSet"):
+                obj = CrossBorderCompliance()
+                obj._deserialize(item)
+                self.CrossBorderComplianceSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -8428,7 +8678,7 @@ class DisassociateNatGatewayAddressRequest(AbstractModel):
         """
         :param NatGatewayId: NAT网关的ID，形如：`nat-df45454`。
         :type NatGatewayId: str
-        :param PublicIpAddresses: 绑定NAT网关的弹性IP数组。
+        :param PublicIpAddresses: 待解绑NAT网关的弹性IP数组。
         :type PublicIpAddresses: list of str
         """
         self.NatGatewayId = None

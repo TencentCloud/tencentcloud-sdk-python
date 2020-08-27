@@ -39,6 +39,8 @@ class AddClusterInstancesRequest(AbstractModel):
         :type SgId: str
         :param InstanceImportMode: 云主机导入方式，虚拟机集群必填，容器集群不填写此字段，R：重装TSF系统镜像，M：手动安装agent
         :type InstanceImportMode: str
+        :param OsCustomizeType: 镜像定制类型
+        :type OsCustomizeType: str
         """
         self.ClusterId = None
         self.InstanceIdList = None
@@ -48,6 +50,7 @@ class AddClusterInstancesRequest(AbstractModel):
         self.KeyId = None
         self.SgId = None
         self.InstanceImportMode = None
+        self.OsCustomizeType = None
 
 
     def _deserialize(self, params):
@@ -59,6 +62,7 @@ class AddClusterInstancesRequest(AbstractModel):
         self.KeyId = params.get("KeyId")
         self.SgId = params.get("SgId")
         self.InstanceImportMode = params.get("InstanceImportMode")
+        self.OsCustomizeType = params.get("OsCustomizeType")
 
 
 class AddClusterInstancesResponse(AbstractModel):

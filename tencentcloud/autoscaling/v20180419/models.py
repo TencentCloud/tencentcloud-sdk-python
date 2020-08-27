@@ -759,7 +759,7 @@ class CreateLifecycleHookRequest(AbstractModel):
         :type DefaultResult: str
         :param HeartbeatTimeout: 生命周期挂钩超时之前可以经过的最长时间（以秒为单位），范围从30到3600秒，默认值为300秒
         :type HeartbeatTimeout: int
-        :param NotificationMetadata: 弹性伸缩向通知目标发送的附加信息，默认值为空字符串“”。最大长度不能超过1024个字节。
+        :param NotificationMetadata: 弹性伸缩向通知目标发送的附加信息，默认值为空字符串""。最大长度不能超过1024个字节。
         :type NotificationMetadata: str
         :param NotificationTarget: 通知目标
         :type NotificationTarget: :class:`tencentcloud.autoscaling.v20180419.models.NotificationTarget`
@@ -3941,7 +3941,7 @@ class UpgradeLifecycleHookRequest(AbstractModel):
         :type DefaultResult: str
         :param HeartbeatTimeout: 生命周期挂钩超时之前可以经过的最长时间（以秒为单位），范围从30到3600秒，默认值为300秒
         :type HeartbeatTimeout: int
-        :param NotificationMetadata: 弹性伸缩向通知目标发送的附加信息，默认值为''
+        :param NotificationMetadata: 弹性伸缩向通知目标发送的附加信息，默认值为空字符串""
         :type NotificationMetadata: str
         :param NotificationTarget: 通知目标
         :type NotificationTarget: :class:`tencentcloud.autoscaling.v20180419.models.NotificationTarget`

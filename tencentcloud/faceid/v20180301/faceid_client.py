@@ -109,6 +109,34 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CheckBankCardInformation(self, request):
+        """银行卡基础信息查询
+
+        :param request: Request instance for CheckBankCardInformation.
+        :type request: :class:`tencentcloud.faceid.v20180301.models.CheckBankCardInformationRequest`
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.CheckBankCardInformationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CheckBankCardInformation", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CheckBankCardInformationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CheckIdCardInformation(self, request):
         """传入身份证人像面照片，识别身份证照片上的信息，并将姓名、身份证号、身份证人像照片与公安权威库的证件照进行比对，是否属于同一个人，从而验证身份证信息的真实性。
 

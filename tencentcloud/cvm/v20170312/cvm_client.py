@@ -862,6 +862,34 @@ class CvmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeSpotTypeConfig(self, request):
+        """查询用户可购买的竞价机型信息列表
+
+        :param request: Request instance for DescribeSpotTypeConfig.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeSpotTypeConfigRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeSpotTypeConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSpotTypeConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSpotTypeConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeZoneInstanceConfigInfos(self, request):
         """本接口(DescribeZoneInstanceConfigInfos) 获取可用区的机型信息。
 

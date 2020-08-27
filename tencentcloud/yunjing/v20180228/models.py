@@ -4619,15 +4619,19 @@ class ExportNonlocalLoginPlacesResponse(AbstractModel):
         """
         :param DownloadUrl: 导出文件下载链接地址。
         :type DownloadUrl: str
+        :param TaskId: 导出任务ID
+        :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.DownloadUrl = None
+        self.TaskId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.DownloadUrl = params.get("DownloadUrl")
+        self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
 
 

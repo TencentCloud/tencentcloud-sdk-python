@@ -648,7 +648,7 @@ class ResetInstanceRequest(AbstractModel):
         """
         :param InstanceId: 实例 ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
         :type InstanceId: str
-        :param BlueprintId: 镜像 ID。
+        :param BlueprintId: 镜像 ID。可通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回值中的BlueprintId获取。
         :type BlueprintId: str
         """
         self.InstanceId = None

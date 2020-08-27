@@ -2967,6 +2967,8 @@ class DescribeCCTrendRequest(AbstractModel):
         :type EndTime: str
         :param Id: 资源实例ID，当Business为basic时，此字段不用填写（因为基础防护没有资源实例）
         :type Id: str
+        :param Domain: 域名，可选
+        :type Domain: str
         """
         self.Business = None
         self.Ip = None
@@ -2975,6 +2977,7 @@ class DescribeCCTrendRequest(AbstractModel):
         self.StartTime = None
         self.EndTime = None
         self.Id = None
+        self.Domain = None
 
 
     def _deserialize(self, params):
@@ -2985,6 +2988,7 @@ class DescribeCCTrendRequest(AbstractModel):
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
         self.Id = params.get("Id")
+        self.Domain = params.get("Domain")
 
 
 class DescribeCCTrendResponse(AbstractModel):

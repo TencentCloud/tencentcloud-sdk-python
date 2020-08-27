@@ -236,6 +236,62 @@ class BankCardVerificationResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CheckBankCardInformationRequest(AbstractModel):
+    """CheckBankCardInformation请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BankCard: 银行卡号。
+        :type BankCard: str
+        """
+        self.BankCard = None
+
+
+    def _deserialize(self, params):
+        self.BankCard = params.get("BankCard")
+
+
+class CheckBankCardInformationResponse(AbstractModel):
+    """CheckBankCardInformation返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 认证结果码，收费情况如下。
+收费结果码：
+0: 查询成功
+-1: 未查到信息
+不收费结果码
+-2：验证中心服务繁忙
+-3：银行卡不存在
+        :type Result: str
+        :param Description: 业务结果描述
+        :type Description: str
+        :param AccountBank: 开户行
+        :type AccountBank: str
+        :param AccountType: 卡性质：1. 借记卡；2. 贷记卡
+        :type AccountType: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.Description = None
+        self.AccountBank = None
+        self.AccountType = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.Description = params.get("Description")
+        self.AccountBank = params.get("AccountBank")
+        self.AccountType = params.get("AccountType")
+        self.RequestId = params.get("RequestId")
+
+
 class CheckIdCardInformationRequest(AbstractModel):
     """CheckIdCardInformation请求参数结构体
 

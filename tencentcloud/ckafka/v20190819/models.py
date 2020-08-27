@@ -2021,6 +2021,9 @@ class InstanceAttributesResponse(AbstractModel):
         :param Cvm: 售卖类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type Cvm: int
+        :param InstanceType: 类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceType: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -2048,6 +2051,7 @@ class InstanceAttributesResponse(AbstractModel):
         self.Version = None
         self.MaxGroupNum = None
         self.Cvm = None
+        self.InstanceType = None
 
 
     def _deserialize(self, params):
@@ -2089,6 +2093,7 @@ class InstanceAttributesResponse(AbstractModel):
         self.Version = params.get("Version")
         self.MaxGroupNum = params.get("MaxGroupNum")
         self.Cvm = params.get("Cvm")
+        self.InstanceType = params.get("InstanceType")
 
 
 class InstanceConfigDO(AbstractModel):

@@ -820,11 +820,14 @@ class LayoutParams(AbstractModel):
         :type MainVideoStreamType: int
         :param SmallVideoLayoutParams: 画中画模板中有效，代表小画面的布局参数。
         :type SmallVideoLayoutParams: :class:`tencentcloud.trtc.v20190722.models.SmallVideoLayoutParams`
+        :param MainVideoRightAlign: 屏幕分享模板有效。设置为1时代表大画面居右，小画面居左布局。默认为0。
+        :type MainVideoRightAlign: int
         """
         self.Template = None
         self.MainVideoUserId = None
         self.MainVideoStreamType = None
         self.SmallVideoLayoutParams = None
+        self.MainVideoRightAlign = None
 
 
     def _deserialize(self, params):
@@ -834,6 +837,7 @@ class LayoutParams(AbstractModel):
         if params.get("SmallVideoLayoutParams") is not None:
             self.SmallVideoLayoutParams = SmallVideoLayoutParams()
             self.SmallVideoLayoutParams._deserialize(params.get("SmallVideoLayoutParams"))
+        self.MainVideoRightAlign = params.get("MainVideoRightAlign")
 
 
 class OutputParams(AbstractModel):
