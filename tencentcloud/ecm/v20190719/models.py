@@ -5783,9 +5783,9 @@ class SecurityGroupPolicySet(AbstractModel):
         """
         :param Version: 安全组规则当前版本。用户每次更新安全规则版本会自动加1，防止更新的路由规则已过期，不填不考虑冲突。
         :type Version: str
-        :param Egress: 出站规则。
+        :param Egress: 出站规则。其中出站规则和入站规则必须选一个。
         :type Egress: list of SecurityGroupPolicy
-        :param Ingress: 入站规则。
+        :param Ingress: 入站规则。其中出站规则和入站规则必须选一个。
         :type Ingress: list of SecurityGroupPolicy
         """
         self.Version = None

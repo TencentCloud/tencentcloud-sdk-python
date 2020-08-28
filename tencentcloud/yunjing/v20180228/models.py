@@ -5064,6 +5064,8 @@ class Machine(AbstractModel):
         :type SecurityStatus: str
         :param InvasionNum: 入侵事件数
         :type InvasionNum: int
+        :param RegionInfo: 地域信息
+        :type RegionInfo: :class:`tencentcloud.yunjing.v20180228.models.RegionInfo`
         """
         self.MachineName = None
         self.MachineOs = None
@@ -5081,6 +5083,7 @@ class Machine(AbstractModel):
         self.CyberAttackNum = None
         self.SecurityStatus = None
         self.InvasionNum = None
+        self.RegionInfo = None
 
 
     def _deserialize(self, params):
@@ -5105,6 +5108,9 @@ class Machine(AbstractModel):
         self.CyberAttackNum = params.get("CyberAttackNum")
         self.SecurityStatus = params.get("SecurityStatus")
         self.InvasionNum = params.get("InvasionNum")
+        if params.get("RegionInfo") is not None:
+            self.RegionInfo = RegionInfo()
+            self.RegionInfo._deserialize(params.get("RegionInfo"))
 
 
 class MachineTag(AbstractModel):
@@ -5993,6 +5999,35 @@ class RecoverMalwaresResponse(AbstractModel):
         self.SuccessIds = params.get("SuccessIds")
         self.FailedIds = params.get("FailedIds")
         self.RequestId = params.get("RequestId")
+
+
+class RegionInfo(AbstractModel):
+    """地域信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Region: 地域标志，如 ap-guangzhou，ap-shanghai，ap-beijing
+        :type Region: str
+        :param RegionName: 地域中文名，如华南地区（广州），华东地区（上海金融），华北地区（北京）
+        :type RegionName: str
+        :param RegionId: 地域ID
+        :type RegionId: int
+        :param RegionCode: 地域代码，如 gz，sh，bj
+        :type RegionCode: str
+        """
+        self.Region = None
+        self.RegionName = None
+        self.RegionId = None
+        self.RegionCode = None
+
+
+    def _deserialize(self, params):
+        self.Region = params.get("Region")
+        self.RegionName = params.get("RegionName")
+        self.RegionId = params.get("RegionId")
+        self.RegionCode = params.get("RegionCode")
 
 
 class RenewProVersionRequest(AbstractModel):

@@ -54,7 +54,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeAbnormalEvent(self, request):
-        """查询SDKAppID下用户的异常体验事件，返回异常体验ID与可能产生异常体验的原因。可查询24小时内数据，查询起止时间不超过1个小时。支持跨天查询。异常体验ID映射见：https://cloud.tencent.com/document/product/647/44916
+        """查询SDKAppID下用户的异常体验事件，返回异常体验ID与可能产生异常体验的原因。可查询5天内数据，查询起止时间不超过1个小时。支持跨天查询。异常体验ID映射见：https://cloud.tencent.com/document/product/647/44916
 
         :param request: Request instance for DescribeAbnormalEvent.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeAbnormalEventRequest`
@@ -82,7 +82,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeCallDetail(self, request):
-        """查询指定时间内的用户列表及用户通话质量数据。可查询5天内数据，查询起止时间不超过1个小时，查询用户不超过6个，不支持跨天查询。
+        """查询指定时间内的用户列表及用户通话质量数据。可查询14天内数据，查询起止时间不超过1个小时，查询用户不超过6个，支持跨天查询。
 
         :param request: Request instance for DescribeCallDetail.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeCallDetailRequest`
@@ -110,7 +110,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeDetailEvent(self, request):
-        """查询用户某次通话内的进退房，视频开关等详细事件。可查询5天内数据。
+        """查询用户某次通话内的进退房，视频开关等详细事件。可查询14天内数据。
 
         :param request: Request instance for DescribeDetailEvent.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeDetailEventRequest`
@@ -138,7 +138,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeHistoryScale(self, request):
-        """可查询sdkqppid 每天的房间数和用户数，每分钟1次，可查询最近5天的数据。当天未结束，无法查到当天的房间数与用户数。
+        """可查询sdkqppid 每天的房间数和用户数，每分钟1次，可查询最近14天的数据。当天未结束，无法查到当天的房间数与用户数。
 
         :param request: Request instance for DescribeHistoryScale.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeHistoryScaleRequest`
@@ -250,7 +250,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeRoomInformation(self, request):
-        """查询sdkappid下的房间列表。默认返回10条通话，一次最多返回100条通话。可查询5天内的数据。
+        """查询sdkappid下的房间列表。默认返回10条通话，一次最多返回100条通话。可查询14天内的数据。
 
         :param request: Request instance for DescribeRoomInformation.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeRoomInformationRequest`

@@ -576,6 +576,34 @@ class DtsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifySubscribeAutoRenewFlag(self, request):
+        """修改订阅实例自动续费标识
+
+        :param request: Request instance for ModifySubscribeAutoRenewFlag.
+        :type request: :class:`tencentcloud.dts.v20180330.models.ModifySubscribeAutoRenewFlagRequest`
+        :rtype: :class:`tencentcloud.dts.v20180330.models.ModifySubscribeAutoRenewFlagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifySubscribeAutoRenewFlag", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifySubscribeAutoRenewFlagResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifySubscribeConsumeTime(self, request):
         """本接口(ModifySubscribeConsumeTime)用于修改数据订阅通道的消费时间点
 

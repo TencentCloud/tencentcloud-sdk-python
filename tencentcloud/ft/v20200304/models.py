@@ -105,6 +105,61 @@ class ChangeAgePicResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class FaceCartoonPicRequest(AbstractModel):
+    """FaceCartoonPic请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Image: 图片 base64 数据，base64 编码后大小不可超过5M。
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :type Image: str
+        :param Url: 图片的 Url ，对应图片 base64 编码后大小不可超过5M。
+图片的 Url、Image必须提供一个，如果都提供，只使用 Url。
+图片存储于腾讯云的 Url 可保障更高下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的Url速度和稳定性可能受一定影响。
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :type Url: str
+        :param RspImgType: 返回图像方式（base64 或 url ) ，二选一。url有效期为1天。
+        :type RspImgType: str
+        """
+        self.Image = None
+        self.Url = None
+        self.RspImgType = None
+
+
+    def _deserialize(self, params):
+        self.Image = params.get("Image")
+        self.Url = params.get("Url")
+        self.RspImgType = params.get("RspImgType")
+
+
+class FaceCartoonPicResponse(AbstractModel):
+    """FaceCartoonPic返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ResultImage: 结果图片Base64信息。
+        :type ResultImage: str
+        :param ResultUrl: RspImgType 为 url 时，返回处理后的图片 url 数据。(暂时不支持)
+        :type ResultUrl: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ResultImage = None
+        self.ResultUrl = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ResultImage = params.get("ResultImage")
+        self.ResultUrl = params.get("ResultUrl")
+        self.RequestId = params.get("RequestId")
+
+
 class FaceRect(AbstractModel):
     """人脸框位置
 

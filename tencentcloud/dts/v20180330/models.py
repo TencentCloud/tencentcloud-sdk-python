@@ -270,12 +270,15 @@ class CreateSubscribeRequest(AbstractModel):
         :type Count: int
         :param AutoRenew: 是否自动续费，默认为0，1表示自动续费。小时计费实例设置该标识无效。
         :type AutoRenew: int
+        :param Tags: 实例资源标签
+        :type Tags: list of TagItem
         """
         self.Product = None
         self.PayType = None
         self.Duration = None
         self.Count = None
         self.AutoRenew = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -284,6 +287,12 @@ class CreateSubscribeRequest(AbstractModel):
         self.Duration = params.get("Duration")
         self.Count = params.get("Count")
         self.AutoRenew = params.get("AutoRenew")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = TagItem()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class CreateSubscribeResponse(AbstractModel):
@@ -759,6 +768,12 @@ class DescribeSubscribeConfResponse(AbstractModel):
         :type ModifyTime: str
         :param Region: 地域
         :type Region: str
+        :param Tags: 订阅实例的标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of TagItem
+        :param AutoRenewFlag: 自动续费标识,0-不自动续费，1-自动续费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoRenewFlag: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -786,6 +801,8 @@ class DescribeSubscribeConfResponse(AbstractModel):
         self.SubscribeObjects = None
         self.ModifyTime = None
         self.Region = None
+        self.Tags = None
+        self.AutoRenewFlag = None
         self.RequestId = None
 
 
@@ -819,6 +836,13 @@ class DescribeSubscribeConfResponse(AbstractModel):
                 self.SubscribeObjects.append(obj)
         self.ModifyTime = params.get("ModifyTime")
         self.Region = params.get("Region")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = TagItem()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
         self.RequestId = params.get("RequestId")
 
 
@@ -851,6 +875,8 @@ class DescribeSubscribesRequest(AbstractModel):
         :type Limit: int
         :param OrderDirection: 排序方向，可选的值为"DESC"和"ASC"，默认为"DESC"，按创建时间逆序排序
         :type OrderDirection: str
+        :param TagFilters: 标签过滤条件
+        :type TagFilters: list of TagFilter
         """
         self.SubscribeId = None
         self.SubscribeName = None
@@ -863,6 +889,7 @@ class DescribeSubscribesRequest(AbstractModel):
         self.Offset = None
         self.Limit = None
         self.OrderDirection = None
+        self.TagFilters = None
 
 
     def _deserialize(self, params):
@@ -877,6 +904,12 @@ class DescribeSubscribesRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.OrderDirection = params.get("OrderDirection")
+        if params.get("TagFilters") is not None:
+            self.TagFilters = []
+            for item in params.get("TagFilters"):
+                obj = TagFilter()
+                obj._deserialize(item)
+                self.TagFilters.append(obj)
 
 
 class DescribeSubscribesResponse(AbstractModel):
@@ -1438,6 +1471,44 @@ class ModifyMigrateJobResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifySubscribeAutoRenewFlagRequest(AbstractModel):
+    """ModifySubscribeAutoRenewFlag请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SubscribeId: 订阅实例ID，例如：subs-8uey736k
+        :type SubscribeId: str
+        :param AutoRenewFlag: 自动续费标识。1-自动续费，0-不自动续费
+        :type AutoRenewFlag: int
+        """
+        self.SubscribeId = None
+        self.AutoRenewFlag = None
+
+
+    def _deserialize(self, params):
+        self.SubscribeId = params.get("SubscribeId")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+
+
+class ModifySubscribeAutoRenewFlagResponse(AbstractModel):
+    """ModifySubscribeAutoRenewFlag返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifySubscribeConsumeTimeRequest(AbstractModel):
     """ModifySubscribeConsumeTime请求参数结构体
 
@@ -1958,6 +2029,12 @@ class SubscribeInfo(AbstractModel):
         :type Status: str
         :param SdkConsumedTime: SDK最后一条确认消息的时间戳，如果SDK一直消费，也可以作为SDK当前消费时间点
         :type SdkConsumedTime: str
+        :param Tags: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of TagItem
+        :param AutoRenewFlag: 自动续费标识。0-不自动续费，1-自动续费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoRenewFlag: int
         """
         self.SubscribeId = None
         self.SubscribeName = None
@@ -1980,6 +2057,8 @@ class SubscribeInfo(AbstractModel):
         self.UniqSubnetId = None
         self.Status = None
         self.SdkConsumedTime = None
+        self.Tags = None
+        self.AutoRenewFlag = None
 
 
     def _deserialize(self, params):
@@ -2004,6 +2083,13 @@ class SubscribeInfo(AbstractModel):
         self.UniqSubnetId = params.get("UniqSubnetId")
         self.Status = params.get("Status")
         self.SdkConsumedTime = params.get("SdkConsumedTime")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = TagItem()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
 
 
 class SubscribeObject(AbstractModel):
@@ -2349,3 +2435,46 @@ class SyncStepDetailInfo(AbstractModel):
         self.StepName = params.get("StepName")
         self.CanStop = params.get("CanStop")
         self.StepId = params.get("StepId")
+
+
+class TagFilter(AbstractModel):
+    """标签过滤
+
+    """
+
+    def __init__(self):
+        """
+        :param TagKey: 标签键值
+        :type TagKey: str
+        :param TagValue: 标签值
+        :type TagValue: list of str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
+
+
+class TagItem(AbstractModel):
+    """标签
+
+    """
+
+    def __init__(self):
+        """
+        :param TagKey: 标签键值
+        :type TagKey: str
+        :param TagValue: 标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
