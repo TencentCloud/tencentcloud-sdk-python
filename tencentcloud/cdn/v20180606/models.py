@@ -1290,6 +1290,95 @@ class CreateClsLogTopicResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateScdnLogTaskRequest(AbstractModel):
+    """CreateScdnLogTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Mode: 防护类型
+Mode 映射如下：
+  waf = "Web攻击"
+  cc = "CC攻击"
+        :type Mode: str
+        :param StartTime: 查询起始时间，如：2018-09-04 10:40:00，返回结果大于等于指定时间
+        :type StartTime: str
+        :param EndTime: 查询结束时间，如：2018-09-04 10:40:00，返回结果小于等于指定时间
+        :type EndTime: str
+        :param Domain: 指定域名查询, 不填默认查询全部域名
+        :type Domain: str
+        :param AttackType: 指定攻击类型, 不填默认查询全部攻击类型
+AttackType 映射如下:
+  other = '未知类型'
+  malicious_scan = "恶意扫描"
+  sql_inject = "SQL注入攻击"
+  xss = "XSS攻击"
+  cmd_inject = "命令注入攻击"
+  ldap_inject = "LDAP注入攻击"
+  ssi_inject = "SSI注入攻击"
+  xml_inject = "XML注入攻击"
+  web_service = "WEB服务漏洞攻击"
+  web_app = "WEB应用漏洞攻击"
+  path_traversal = "路径跨越攻击"
+  illegal_access_core_file = "核心文件非法访问"
+  trojan_horse = "木马后门攻击"
+  csrf = "CSRF攻击"
+  malicious_file_upload= '恶意文件上传'
+        :type AttackType: str
+        :param DefenceMode: 指定执行动作, 不填默认查询全部执行动作
+DefenceMode 映射如下：
+  observe = '观察模式'
+  intercept = '拦截模式'
+        :type DefenceMode: str
+        :param Ip: 不填为全部ip
+        :type Ip: str
+        :param Domains: 指定域名查询, 与 Domain 参数同时有值时使用 Domains 参数，不填默认查询全部域名，指定域名查询时最多支持同时选择 5 个域名查询
+        :type Domains: list of str
+        """
+        self.Mode = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Domain = None
+        self.AttackType = None
+        self.DefenceMode = None
+        self.Ip = None
+        self.Domains = None
+
+
+    def _deserialize(self, params):
+        self.Mode = params.get("Mode")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Domain = params.get("Domain")
+        self.AttackType = params.get("AttackType")
+        self.DefenceMode = params.get("DefenceMode")
+        self.Ip = params.get("Ip")
+        self.Domains = params.get("Domains")
+
+
+class CreateScdnLogTaskResponse(AbstractModel):
+    """CreateScdnLogTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 创建结果, 
+"0" -> 创建成功
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteCdnDomainRequest(AbstractModel):
     """DeleteCdnDomain请求参数结构体
 
@@ -2719,6 +2808,128 @@ class DescribeReportDataResponse(AbstractModel):
                 obj = ReportData()
                 obj._deserialize(item)
                 self.ProjectReport.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeScdnTopDataRequest(AbstractModel):
+    """DescribeScdnTopData请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 查询起始时间，如：2018-09-04 10:40:00，返回结果大于等于指定时间
+        :type StartTime: str
+        :param EndTime: 查询结束时间，如：2018-09-04 10:40:00，返回结果小于等于指定时间
+        :type EndTime: str
+        :param Mode: 查询的SCDN TOP攻击数据类型：
+waf：Web 攻击防护TOP数据
+        :type Mode: str
+        :param Metric: 排序对象，支持以下几种形式：
+url：攻击目标 url 排序
+ip：攻击源 IP 排序
+attackType：攻击类型排序
+        :type Metric: str
+        :param Filter: 排序使用的指标名称：
+request：请求次数
+        :type Filter: str
+        :param Domain: 指定域名查询
+        :type Domain: str
+        :param AttackType: 指定攻击类型, 仅 Mode=waf 时有效
+不填则查询所有攻击类型的数据总和
+AttackType 映射如下:
+  other = '未知类型'
+  malicious_scan = "恶意扫描"
+  sql_inject = "SQL注入攻击"
+  xss = "XSS攻击"
+  cmd_inject = "命令注入攻击"
+  ldap_inject = "LDAP注入攻击"
+  ssi_inject = "SSI注入攻击"
+  xml_inject = "XML注入攻击"
+  web_service = "WEB服务漏洞攻击"
+  web_app = "WEB应用漏洞攻击"
+  path_traversal = "路径跨越攻击"
+  illegal_access_core_file = "核心文件非法访问"
+  trojan_horse = "木马后门攻击"
+  csrf = "CSRF攻击"
+  malicious_file_upload= '恶意文件上传'
+        :type AttackType: str
+        :param DefenceMode: 指定防御模式,仅 Mode=waf 时有效
+不填则查询所有防御模式的数据总和
+DefenceMode 映射如下：
+  observe = '观察模式'
+  intercept = '拦截模式'
+        :type DefenceMode: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.Mode = None
+        self.Metric = None
+        self.Filter = None
+        self.Domain = None
+        self.AttackType = None
+        self.DefenceMode = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Mode = params.get("Mode")
+        self.Metric = params.get("Metric")
+        self.Filter = params.get("Filter")
+        self.Domain = params.get("Domain")
+        self.AttackType = params.get("AttackType")
+        self.DefenceMode = params.get("DefenceMode")
+
+
+class DescribeScdnTopDataResponse(AbstractModel):
+    """DescribeScdnTopData返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TopTypeData: WAF 攻击类型统计
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopTypeData: list of ScdnTypeData
+        :param TopIpData: TOP 攻击源 IP 统计
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopIpData: list of ScdnTopData
+        :param Mode: 查询的SCDN类型，当前仅支持 waf
+        :type Mode: str
+        :param TopUrlData: TOP URL 统计
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopUrlData: list of ScdnTopUrlData
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TopTypeData = None
+        self.TopIpData = None
+        self.Mode = None
+        self.TopUrlData = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TopTypeData") is not None:
+            self.TopTypeData = []
+            for item in params.get("TopTypeData"):
+                obj = ScdnTypeData()
+                obj._deserialize(item)
+                self.TopTypeData.append(obj)
+        if params.get("TopIpData") is not None:
+            self.TopIpData = []
+            for item in params.get("TopIpData"):
+                obj = ScdnTopData()
+                obj._deserialize(item)
+                self.TopIpData.append(obj)
+        self.Mode = params.get("Mode")
+        if params.get("TopUrlData") is not None:
+            self.TopUrlData = []
+            for item in params.get("TopUrlData"):
+                obj = ScdnTopUrlData()
+                obj._deserialize(item)
+                self.TopUrlData.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -5604,6 +5815,85 @@ class Revalidate(AbstractModel):
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
         self.Path = params.get("Path")
+
+
+class ScdnTopData(AbstractModel):
+    """SCDN攻击数据Top展示
+
+    """
+
+    def __init__(self):
+        """
+        :param Time: 时间
+        :type Time: str
+        :param Value: 数值
+        :type Value: int
+        :param Isp: 运营商
+        :type Isp: str
+        :param Ip: IP地址
+        :type Ip: str
+        :param District: 区域
+        :type District: str
+        """
+        self.Time = None
+        self.Value = None
+        self.Isp = None
+        self.Ip = None
+        self.District = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        self.Value = params.get("Value")
+        self.Isp = params.get("Isp")
+        self.Ip = params.get("Ip")
+        self.District = params.get("District")
+
+
+class ScdnTopUrlData(AbstractModel):
+    """SCDN攻击数据Top URL展示
+
+    """
+
+    def __init__(self):
+        """
+        :param Url: Top数据的URL
+        :type Url: str
+        :param Value: 数值
+        :type Value: int
+        :param Time: 时间
+        :type Time: str
+        """
+        self.Url = None
+        self.Value = None
+        self.Time = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
+        self.Value = params.get("Value")
+        self.Time = params.get("Time")
+
+
+class ScdnTypeData(AbstractModel):
+    """Scdn饼图数据，waf仅有
+
+    """
+
+    def __init__(self):
+        """
+        :param AttackType: 攻击类型
+        :type AttackType: str
+        :param Value: 攻击值
+        :type Value: int
+        """
+        self.AttackType = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.AttackType = params.get("AttackType")
+        self.Value = params.get("Value")
 
 
 class SchemeKey(AbstractModel):

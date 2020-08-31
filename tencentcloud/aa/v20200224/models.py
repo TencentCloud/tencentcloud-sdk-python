@@ -237,14 +237,16 @@ class InputManageMarketingRisk(AbstractModel):
         :type XForwardedFor: str
         :param MacAddress: MAC地址或设备唯一标识。
         :type MacAddress: str
-        :param VendorId: 手机制造商ID，如果手机注册，请带上此信息。
-        :type VendorId: str
         :param CrowdAntiRush: 网赚防刷相关信息。SceneType为4时填写。
         :type CrowdAntiRush: :class:`tencentcloud.aa.v20200224.models.CrowdAntiRushInfo`
         :param SceneCode: 场景Code，控制台上获取
         :type SceneCode: str
         :param Details: 详细信息
         :type Details: list of InputDetails
+        :param DeviceType: 设备类型：
+1：Android
+2：IOS
+        :type DeviceType: int
         """
         self.Account = None
         self.UserIp = None
@@ -262,10 +264,10 @@ class InputManageMarketingRisk(AbstractModel):
         self.UserAgent = None
         self.XForwardedFor = None
         self.MacAddress = None
-        self.VendorId = None
         self.CrowdAntiRush = None
         self.SceneCode = None
         self.Details = None
+        self.DeviceType = None
 
 
     def _deserialize(self, params):
@@ -287,7 +289,6 @@ class InputManageMarketingRisk(AbstractModel):
         self.UserAgent = params.get("UserAgent")
         self.XForwardedFor = params.get("XForwardedFor")
         self.MacAddress = params.get("MacAddress")
-        self.VendorId = params.get("VendorId")
         if params.get("CrowdAntiRush") is not None:
             self.CrowdAntiRush = CrowdAntiRushInfo()
             self.CrowdAntiRush._deserialize(params.get("CrowdAntiRush"))
@@ -298,6 +299,7 @@ class InputManageMarketingRisk(AbstractModel):
                 obj = InputDetails()
                 obj._deserialize(item)
                 self.Details.append(obj)
+        self.DeviceType = params.get("DeviceType")
 
 
 class ManageMarketingRiskRequest(AbstractModel):

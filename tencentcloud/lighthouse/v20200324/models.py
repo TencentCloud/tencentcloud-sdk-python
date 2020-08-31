@@ -139,9 +139,9 @@ class DescribeBlueprintsRequest(AbstractModel):
         """
         :param BlueprintIds: 镜像 ID 列表。
         :type BlueprintIds: list of str
-        :param Offset: 偏移量，默认为 0。
+        :param Offset: 偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
         :type Offset: int
-        :param Limit: 返回数量，默认为 20，最大值为 100。
+        :param Limit: 返回数量，默认为 20，最大值为 100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
         :type Limit: int
         :param Filters: 过滤器列表。
 <li>blueprint-id</li>按照【镜像 ID】进行过滤。
@@ -215,9 +215,9 @@ class DescribeBundlesRequest(AbstractModel):
         """
         :param BundleIds: 套餐 ID 列表。
         :type BundleIds: list of str
-        :param Offset: 偏移量，默认为 0。
+        :param Offset: 偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
         :type Offset: int
-        :param Limit: 返回数量，默认为 20，最大值为 100。
+        :param Limit: 返回数量，默认为 20，最大值为 100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
         :type Limit: int
         :param Filters: 过滤器列表。
 <li>bundle-id</li>按照【镜像 ID】进行过滤。
@@ -299,9 +299,9 @@ class DescribeInstancesRequest(AbstractModel):
 必选：否
 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 InstanceIds 和 Filters。
         :type Filters: list of Filter
-        :param Offset: 偏移量，默认为 0。
+        :param Offset: 偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
         :type Offset: int
-        :param Limit: 返回数量，默认为 20，最大值为 100。
+        :param Limit: 返回数量，默认为 20，最大值为 100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
         :type Limit: int
         """
         self.InstanceIds = None

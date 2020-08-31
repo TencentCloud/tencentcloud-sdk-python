@@ -3631,7 +3631,7 @@ class CreateVpnGatewayResponse(AbstractModel):
 
 
 class CrossBorderCompliance(AbstractModel):
-    """跨境专线合规化审批单
+    """合规化审批单
 
     """
 
@@ -3645,7 +3645,7 @@ class CrossBorderCompliance(AbstractModel):
         :type Company: str
         :param UniformSocialCreditCode: 统一社会信用代码。
         :type UniformSocialCreditCode: str
-        :param LegalPerson: 法人。
+        :param LegalPerson: 法定代表人。
         :type LegalPerson: str
         :param IssuingAuthority: 发证机关。
         :type IssuingAuthority: str
@@ -3667,7 +3667,7 @@ class CrossBorderCompliance(AbstractModel):
         :type ManagerTelephone: str
         :param Email: 电子邮箱。
         :type Email: str
-        :param ServiceHandlingForm: 跨境专线服务受理单。
+        :param ServiceHandlingForm: 服务受理单。
         :type ServiceHandlingForm: str
         :param AuthorizationLetter: 授权函。
         :type AuthorizationLetter: str
@@ -5601,7 +5601,7 @@ class DescribeCrossBorderComplianceRequest(AbstractModel):
         :type Company: str
         :param UniformSocialCreditCode: （精确匹配）统一社会信用代码。
         :type UniformSocialCreditCode: str
-        :param LegalPerson: （模糊查询）法人。
+        :param LegalPerson: （模糊查询）法定代表人。
         :type LegalPerson: str
         :param IssuingAuthority: （模糊查询）发证机关。
         :type IssuingAuthority: str
@@ -5619,9 +5619,9 @@ class DescribeCrossBorderComplianceRequest(AbstractModel):
         :type ManagerTelephone: str
         :param Email: （精确匹配）电子邮箱。
         :type Email: str
-        :param ServiceStartDate: （精确匹配）服务开始时间。
+        :param ServiceStartDate: （精确匹配）服务开始日期，如：`2020-07-28`。
         :type ServiceStartDate: str
-        :param ServiceEndDate: （精确匹配）服务开始时间。
+        :param ServiceEndDate: （精确匹配）服务结束日期，如：`2021-07-28`。
         :type ServiceEndDate: str
         :param State: （精确匹配）状态。待审批：`PENDING`，通过：`APPROVED `，拒绝：`DENY`。
         :type State: str

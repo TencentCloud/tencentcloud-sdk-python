@@ -2185,7 +2185,7 @@ class DescribeSecurityGroupAssociationStatisticsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SecurityGroupIds: 安全实例ID，例如esg-33ocnj9n，可通过DescribeSecurityGroups获取。
+        :param SecurityGroupIds: 安全实例ID，例如esg-33ocnj9n，可通过[DescribeSecurityGroups](https://cloud.tencent.com/document/product/1108/47697)获取。
         :type SecurityGroupIds: list of str
         """
         self.SecurityGroupIds = None
@@ -2257,7 +2257,7 @@ class DescribeSecurityGroupPoliciesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SecurityGroupId: 安全组实例ID，例如：esg-33ocnj9n，可通过DescribeSecurityGroups获取。
+        :param SecurityGroupId: 安全组实例ID，例如：esg-33ocnj9n，可通过[DescribeSecurityGroups](https://cloud.tencent.com/document/product/1108/47697)获取。
         :type SecurityGroupId: str
         """
         self.SecurityGroupId = None
@@ -2297,7 +2297,7 @@ class DescribeSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SecurityGroupIds: 安全组实例ID，例如：esg-33ocnj9n，可通过DescribeSecurityGroups获取。每次请求的实例的上限为100。参数不支持同时指定SecurityGroupIds和Filters。
+        :param SecurityGroupIds: 安全组实例ID，例如：esg-33ocnj9n，可通过[DescribeSecurityGroups](https://cloud.tencent.com/document/product/1108/47697)获取。每次请求的实例的上限为100。参数不支持同时指定SecurityGroupIds和Filters。
         :type SecurityGroupIds: list of str
         :param Filters: 过滤条件，参数不支持同时指定SecurityGroupIds和Filters。
 security-group-id - String - （过滤条件）安全组ID。
@@ -3969,8 +3969,8 @@ class ModifyModuleIpDirectRequest(AbstractModel):
         :param ModuleId: 模块ID。
         :type ModuleId: str
         :param CloseIpDirect: 是否关闭IP直通。取值范围：
-1：表示关闭IP直通
-0：表示开通IP直通
+true：表示关闭IP直通
+false：表示开通IP直通
         :type CloseIpDirect: bool
         """
         self.ModuleId = None

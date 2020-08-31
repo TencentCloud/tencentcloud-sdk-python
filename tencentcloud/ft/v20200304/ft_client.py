@@ -25,6 +25,34 @@ class FtClient(AbstractClient):
     _endpoint = 'ft.tencentcloudapi.com'
 
 
+    def CancelFaceMorphJob(self, request):
+        """撤销人像渐变任务请求
+
+        :param request: Request instance for CancelFaceMorphJob.
+        :type request: :class:`tencentcloud.ft.v20200304.models.CancelFaceMorphJobRequest`
+        :rtype: :class:`tencentcloud.ft.v20200304.models.CancelFaceMorphJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CancelFaceMorphJob", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CancelFaceMorphJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ChangeAgePic(self, request):
         """用户上传一张人脸图片，基于人脸编辑与生成算法，输出一张人脸变老或变年轻的图片，支持实现人脸不同年龄的变化。
 
@@ -67,6 +95,62 @@ class FtClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.FaceCartoonPicResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def MorphFace(self, request):
+        """用户上传2-5张人脸照片，输出一段人脸变换特效视频
+
+        :param request: Request instance for MorphFace.
+        :type request: :class:`tencentcloud.ft.v20200304.models.MorphFaceRequest`
+        :rtype: :class:`tencentcloud.ft.v20200304.models.MorphFaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("MorphFace", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.MorphFaceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryFaceMorphJob(self, request):
+        """查询人像渐变处理进度
+
+        :param request: Request instance for QueryFaceMorphJob.
+        :type request: :class:`tencentcloud.ft.v20200304.models.QueryFaceMorphJobRequest`
+        :rtype: :class:`tencentcloud.ft.v20200304.models.QueryFaceMorphJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryFaceMorphJob", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryFaceMorphJobResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

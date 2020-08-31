@@ -81,6 +81,34 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateScdnLogTask(self, request):
+        """CreateScdnLogTask 用于创建事件日志任务
+
+        :param request: Request instance for CreateScdnLogTask.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.CreateScdnLogTaskRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.CreateScdnLogTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateScdnLogTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateScdnLogTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteCdnDomain(self, request):
         """DeleteCdnDomain 用于删除指定加速域名
 
@@ -680,6 +708,34 @@ class CdnClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeReportDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeScdnTopData(self, request):
+        """获取SCDN的Top数据
+
+        :param request: Request instance for DescribeScdnTopData.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeScdnTopDataRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeScdnTopDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeScdnTopData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeScdnTopDataResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -40,6 +40,40 @@ class AgeInfo(AbstractModel):
             self.FaceRect._deserialize(params.get("FaceRect"))
 
 
+class CancelFaceMorphJobRequest(AbstractModel):
+    """CancelFaceMorphJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param JobId: 人像渐变任务Job id
+        :type JobId: str
+        """
+        self.JobId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+
+
+class CancelFaceMorphJobResponse(AbstractModel):
+    """CancelFaceMorphJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ChangeAgePicRequest(AbstractModel):
     """ChangeAgePic请求参数结构体
 
@@ -144,7 +178,7 @@ class FaceCartoonPicResponse(AbstractModel):
         """
         :param ResultImage: 结果图片Base64信息。
         :type ResultImage: str
-        :param ResultUrl: RspImgType 为 url 时，返回处理后的图片 url 数据。(暂时不支持)
+        :param ResultUrl: RspImgType 为 url 时，返回处理后的图片 url 数据。(默认为base64)
         :type ResultUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -158,6 +192,34 @@ class FaceCartoonPicResponse(AbstractModel):
         self.ResultImage = params.get("ResultImage")
         self.ResultUrl = params.get("ResultUrl")
         self.RequestId = params.get("RequestId")
+
+
+class FaceMorphOutput(AbstractModel):
+    """人像渐变返回结果
+
+    """
+
+    def __init__(self):
+        """
+        :param MorphUrl: 人像渐变输出的url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MorphUrl: str
+        :param MorphMd5: 人像渐变输出的结果MD5，用于校验
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MorphMd5: str
+        :param CoverImage: 人像渐变输出的结果封面图base64字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CoverImage: str
+        """
+        self.MorphUrl = None
+        self.MorphMd5 = None
+        self.CoverImage = None
+
+
+    def _deserialize(self, params):
+        self.MorphUrl = params.get("MorphUrl")
+        self.MorphMd5 = params.get("MorphMd5")
+        self.CoverImage = params.get("CoverImage")
 
 
 class FaceRect(AbstractModel):
@@ -211,6 +273,152 @@ class GenderInfo(AbstractModel):
         if params.get("FaceRect") is not None:
             self.FaceRect = FaceRect()
             self.FaceRect._deserialize(params.get("FaceRect"))
+
+
+class GradientInfo(AbstractModel):
+    """渐变参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Tempo: 图片的展示时长，即单张图片静止不变的时间。GIF默认每张图片0.7s，视频默认每张图片2s
+        :type Tempo: float
+        :param MorphTime: 人像渐变的最长时间，即单张图片使用渐变特效的时间。 GIF默认值为0.5s，视频默值认为1s
+        :type MorphTime: float
+        """
+        self.Tempo = None
+        self.MorphTime = None
+
+
+    def _deserialize(self, params):
+        self.Tempo = params.get("Tempo")
+        self.MorphTime = params.get("MorphTime")
+
+
+class MorphFaceRequest(AbstractModel):
+    """MorphFace请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Images: 图片 base64 数据，base64 编码后大小不可超过5M。 
+jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。 
+人员人脸总数量至少2张，不可超过5张。 
+若图片中包含多张人脸，只选取其中人脸面积最大的人脸。 
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :type Images: list of str
+        :param Urls: 图片的 Url 。对应图片 base64 编码后大小不可超过5M。jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。 
+Url、Image必须提供一个，如果都提供，只使用 Url。图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+非腾讯云存储的Url速度和稳定性可能受一定影响。 
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。 
+人员人脸总数量不可超过5张。 
+若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
+        :type Urls: list of str
+        :param GradientInfos: 人脸渐变参数。可调整每张图片的展示时长、人像渐变的最长时间
+        :type GradientInfos: list of GradientInfo
+        :param Fps: 视频帧率，取值[1,60]。默认10
+        :type Fps: int
+        :param OutputType: 视频类型，取值[0,2]，其中0为MP4，1为GIF，2为MOV。目前仅支持MP4格式，默认为MP4格式
+        :type OutputType: int
+        :param OutputWidth: 视频宽度，取值[128,1280]。默认值720
+        :type OutputWidth: int
+        :param OutputHeight: 视频高度，取值[128,1280]。默认值1280
+        :type OutputHeight: int
+        """
+        self.Images = None
+        self.Urls = None
+        self.GradientInfos = None
+        self.Fps = None
+        self.OutputType = None
+        self.OutputWidth = None
+        self.OutputHeight = None
+
+
+    def _deserialize(self, params):
+        self.Images = params.get("Images")
+        self.Urls = params.get("Urls")
+        if params.get("GradientInfos") is not None:
+            self.GradientInfos = []
+            for item in params.get("GradientInfos"):
+                obj = GradientInfo()
+                obj._deserialize(item)
+                self.GradientInfos.append(obj)
+        self.Fps = params.get("Fps")
+        self.OutputType = params.get("OutputType")
+        self.OutputWidth = params.get("OutputWidth")
+        self.OutputHeight = params.get("OutputHeight")
+
+
+class MorphFaceResponse(AbstractModel):
+    """MorphFace返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param JobId: 人像渐变任务的Job id
+        :type JobId: str
+        :param EstimatedProcessTime: 预估处理时间，粒度为秒
+        :type EstimatedProcessTime: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.JobId = None
+        self.EstimatedProcessTime = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.EstimatedProcessTime = params.get("EstimatedProcessTime")
+        self.RequestId = params.get("RequestId")
+
+
+class QueryFaceMorphJobRequest(AbstractModel):
+    """QueryFaceMorphJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param JobId: 人像渐变任务Job id
+        :type JobId: str
+        """
+        self.JobId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+
+
+class QueryFaceMorphJobResponse(AbstractModel):
+    """QueryFaceMorphJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param JobStatus: 当前任务状态：排队中、处理中、处理失败或者处理完成
+        :type JobStatus: str
+        :param FaceMorphOutput: 人像渐变输出的结果信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FaceMorphOutput: :class:`tencentcloud.ft.v20200304.models.FaceMorphOutput`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.JobStatus = None
+        self.FaceMorphOutput = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.JobStatus = params.get("JobStatus")
+        if params.get("FaceMorphOutput") is not None:
+            self.FaceMorphOutput = FaceMorphOutput()
+            self.FaceMorphOutput._deserialize(params.get("FaceMorphOutput"))
+        self.RequestId = params.get("RequestId")
 
 
 class SwapGenderPicRequest(AbstractModel):
