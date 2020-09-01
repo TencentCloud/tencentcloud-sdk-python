@@ -1423,21 +1423,28 @@ class CreateLiveTranscodeTemplateRequest(AbstractModel):
     def __init__(self):
         """
         :param TemplateName: 模板名称，例：900 900p 仅支持字母和数字的组合。
+长度限制：
+  标准转码：1-10个字符
+  极速高清转码：3-10个字符
         :type TemplateName: str
         :param VideoBitrate: 视频码率。范围：100-8000。
-注意：码率必须是100的倍数。
+注: 转码模板有码率唯一要求，最终保存的码率可能与输入码率有所差别。
         :type VideoBitrate: int
-        :param Vcodec: 视频编码：h264/h265，默认h264。
-        :type Vcodec: str
-        :param Acodec: 音频编码：aac，默认原始音频格式。
+        :param Acodec: 音频编码：aac，默认aac。
 注意：当前该参数未生效，待后续支持！
         :type Acodec: str
-        :param AudioBitrate: 音频码率：默认0。0-500。
+        :param AudioBitrate: 音频码率，默认0。
+范围：0-500。
         :type AudioBitrate: int
+        :param Vcodec: 视频编码：h264/h265/origin，默认h264。
+
+origin: 保持原始编码格式
+        :type Vcodec: str
         :param Description: 模板描述。
         :type Description: str
         :param Width: 宽，默认0。
 范围[0-3000]
+数值必须是2的倍数，0是原始宽度
         :type Width: int
         :param NeedVideo: 是否保留视频，0：否，1：是。默认1。
         :type NeedVideo: int
@@ -1445,12 +1452,16 @@ class CreateLiveTranscodeTemplateRequest(AbstractModel):
         :type NeedAudio: int
         :param Height: 高，默认0。
 范围[0-3000]
+数值必须是2的倍数，0是原始宽度
         :type Height: int
         :param Fps: 帧率，默认0。
+范围0-60
         :type Fps: int
         :param Gop: 关键帧间隔，单位：秒。默认原始的间隔
+范围2-6
         :type Gop: int
-        :param Rotate: 是否旋转，0：否，1：是。默认0。
+        :param Rotate: 旋转角度，默认0。
+可取值：0，90，180，270
         :type Rotate: int
         :param Profile: 编码质量：
 baseline/main/high。默认baseline
@@ -1468,12 +1479,14 @@ baseline/main/high。默认baseline
 
 取值范围：0.0到0.5
         :type AdaptBitratePercent: float
+        :param ShortEdgeAsHeight: 是否以短边作为高度，0：否，1：是。默认0。
+        :type ShortEdgeAsHeight: int
         """
         self.TemplateName = None
         self.VideoBitrate = None
-        self.Vcodec = None
         self.Acodec = None
         self.AudioBitrate = None
+        self.Vcodec = None
         self.Description = None
         self.Width = None
         self.NeedVideo = None
@@ -1488,14 +1501,15 @@ baseline/main/high。默认baseline
         self.FpsToOrig = None
         self.AiTransCode = None
         self.AdaptBitratePercent = None
+        self.ShortEdgeAsHeight = None
 
 
     def _deserialize(self, params):
         self.TemplateName = params.get("TemplateName")
         self.VideoBitrate = params.get("VideoBitrate")
-        self.Vcodec = params.get("Vcodec")
         self.Acodec = params.get("Acodec")
         self.AudioBitrate = params.get("AudioBitrate")
+        self.Vcodec = params.get("Vcodec")
         self.Description = params.get("Description")
         self.Width = params.get("Width")
         self.NeedVideo = params.get("NeedVideo")
@@ -1510,6 +1524,7 @@ baseline/main/high。默认baseline
         self.FpsToOrig = params.get("FpsToOrig")
         self.AiTransCode = params.get("AiTransCode")
         self.AdaptBitratePercent = params.get("AdaptBitratePercent")
+        self.ShortEdgeAsHeight = params.get("ShortEdgeAsHeight")
 
 
 class CreateLiveTranscodeTemplateResponse(AbstractModel):
@@ -6304,11 +6319,12 @@ class ModifyLiveTranscodeTemplateRequest(AbstractModel):
         """
         :param TemplateId: 模板 Id。
         :type TemplateId: int
-        :param Vcodec: 视频编码：
-h264/h265。
+        :param Vcodec: 视频编码：h264/h265/origin，默认h264。
+
+origin: 保持原始编码格式
         :type Vcodec: str
-        :param Acodec: 音频编码：
-aac/mp3。
+        :param Acodec: 音频编码：aac，默认aac。
+注意：当前该参数未生效，待后续支持！
         :type Acodec: str
         :param AudioBitrate: 音频码率，默认0。
 范围：0-500。
@@ -6316,22 +6332,26 @@ aac/mp3。
         :param Description: 模板描述。
         :type Description: str
         :param VideoBitrate: 视频码率。范围：100kbps - 8000kbps。
-注意：码率必须是100的倍数。
+注: 转码模板有码率唯一要求，最终保存的码率可能与输入码率有所差别。
         :type VideoBitrate: int
         :param Width: 宽。0-3000。
+数值必须是2的倍数，0是原始宽度
         :type Width: int
         :param NeedVideo: 是否保留视频，0：否，1：是。默认1。
         :type NeedVideo: int
         :param NeedAudio: 是否保留音频，0：否，1：是。默认1。
         :type NeedAudio: int
         :param Height: 高。0-3000。
+数值必须是2的倍数，0是原始宽度
         :type Height: int
-        :param Fps: 帧率。0-200。
+        :param Fps: 帧率，默认0。
+范围0-60
         :type Fps: int
-        :param Gop: 关键帧间隔，单位：秒。0-50。
+        :param Gop: 关键帧间隔，单位：秒。
+范围2-6
         :type Gop: int
-        :param Rotate: 旋转角度。
-0 90 180 270。
+        :param Rotate: 旋转角度，默认0。
+可取值：0，90，180，270
         :type Rotate: int
         :param Profile: 编码质量：
 baseline/main/high。
@@ -6347,6 +6367,8 @@ baseline/main/high。
 
 取值范围：0.0到0.5
         :type AdaptBitratePercent: float
+        :param ShortEdgeAsHeight: 是否以短边作为高度，0：否，1：是。默认0。
+        :type ShortEdgeAsHeight: int
         """
         self.TemplateId = None
         self.Vcodec = None
@@ -6366,6 +6388,7 @@ baseline/main/high。
         self.HeightToOrig = None
         self.FpsToOrig = None
         self.AdaptBitratePercent = None
+        self.ShortEdgeAsHeight = None
 
 
     def _deserialize(self, params):
@@ -6387,6 +6410,7 @@ baseline/main/high。
         self.HeightToOrig = params.get("HeightToOrig")
         self.FpsToOrig = params.get("FpsToOrig")
         self.AdaptBitratePercent = params.get("AdaptBitratePercent")
+        self.ShortEdgeAsHeight = params.get("ShortEdgeAsHeight")
 
 
 class ModifyLiveTranscodeTemplateResponse(AbstractModel):

@@ -602,7 +602,7 @@ Default-默认不修改
         :type ResourceName: str
         :param SgIds: 安全组Id
         :type SgIds: list of str
-        :param VpcId: VpcId
+        :param VpcId: 虚拟专网Id
         :type VpcId: str
         :param SubnetId: 子网Id
         :type SubnetId: str

@@ -756,9 +756,13 @@ class Cache(AbstractModel):
         :param AdvancedCache: 高级缓存过期时间配置（功能灰度中，尚未全量）
 注意：此字段可能返回 null，表示取不到有效值。
         :type AdvancedCache: :class:`tencentcloud.cdn.v20180606.models.AdvancedCache`
+        :param RuleCache: 高级路径缓存配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleCache: list of RuleCache
         """
         self.SimpleCache = None
         self.AdvancedCache = None
+        self.RuleCache = None
 
 
     def _deserialize(self, params):
@@ -768,6 +772,109 @@ class Cache(AbstractModel):
         if params.get("AdvancedCache") is not None:
             self.AdvancedCache = AdvancedCache()
             self.AdvancedCache._deserialize(params.get("AdvancedCache"))
+        if params.get("RuleCache") is not None:
+            self.RuleCache = []
+            for item in params.get("RuleCache"):
+                obj = RuleCache()
+                obj._deserialize(item)
+                self.RuleCache.append(obj)
+
+
+class CacheConfigCache(AbstractModel):
+    """路径缓存缓存配置
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 缓存配置开关
+on：开启
+off：关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: str
+        :param CacheTime: 缓存过期时间设置
+单位为秒，最大可设置为 365 天
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CacheTime: int
+        :param CompareMaxAge: 高级缓存过期配置，开启时会对比源站返回的 max-age 值与 CacheRules 中设置的缓存过期时间，取最小值在节点进行缓存
+on：开启
+off：关闭
+默认为关闭状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompareMaxAge: str
+        :param IgnoreCacheControl: 强制缓存
+on：开启
+off：关闭
+默认为关闭状态，开启后，源站返回的 no-store、no-cache 资源，也将按照 CacheRules 规则进行缓存
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IgnoreCacheControl: str
+        :param IgnoreSetCookie: 忽略源站的 Set-Cookie 头部
+on：开启
+off：关闭
+默认为关闭状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IgnoreSetCookie: str
+        """
+        self.Switch = None
+        self.CacheTime = None
+        self.CompareMaxAge = None
+        self.IgnoreCacheControl = None
+        self.IgnoreSetCookie = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.CacheTime = params.get("CacheTime")
+        self.CompareMaxAge = params.get("CompareMaxAge")
+        self.IgnoreCacheControl = params.get("IgnoreCacheControl")
+        self.IgnoreSetCookie = params.get("IgnoreSetCookie")
+
+
+class CacheConfigFollowOrigin(AbstractModel):
+    """路径缓存遵循源站配置
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 遵循源站配置开关
+on：开启
+off：关闭
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
+class CacheConfigNoCache(AbstractModel):
+    """路径缓存不缓存配置
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 不缓存配置开关
+on：开启
+off：关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: str
+        :param Revalidate: 总是回源站校验
+on：开启
+off：关闭
+默认为关闭状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Revalidate: str
+        """
+        self.Switch = None
+        self.Revalidate = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Revalidate = params.get("Revalidate")
 
 
 class CacheKey(AbstractModel):
@@ -799,6 +906,9 @@ off：关闭全路径缓存（即开启参数过滤）
         :param Scheme: CacheKey中包含请求协议
 注意：此字段可能返回 null，表示取不到有效值。
         :type Scheme: :class:`tencentcloud.cdn.v20180606.models.SchemeKey`
+        :param KeyRules: 分路径缓存键配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeyRules: list of KeyRule
         """
         self.FullUrlCache = None
         self.IgnoreCase = None
@@ -807,6 +917,7 @@ off：关闭全路径缓存（即开启参数过滤）
         self.Header = None
         self.CacheTag = None
         self.Scheme = None
+        self.KeyRules = None
 
 
     def _deserialize(self, params):
@@ -827,6 +938,12 @@ off：关闭全路径缓存（即开启参数过滤）
         if params.get("Scheme") is not None:
             self.Scheme = SchemeKey()
             self.Scheme._deserialize(params.get("Scheme"))
+        if params.get("KeyRules") is not None:
+            self.KeyRules = []
+            for item in params.get("KeyRules"):
+                obj = KeyRule()
+                obj._deserialize(item)
+                self.KeyRules.append(obj)
 
 
 class CacheOptResult(AbstractModel):
@@ -4254,6 +4371,61 @@ class Ipv6(AbstractModel):
         self.Switch = params.get("Switch")
 
 
+class KeyRule(AbstractModel):
+    """缓存键分路径配置
+
+    """
+
+    def __init__(self):
+        """
+        :param RulePaths: CacheType 对应类型下的匹配内容：
+file 时填充后缀名，如 jpg、txt
+directory 时填充路径，如 /xxx/test
+path 时填充绝对路径，如 /xxx/test.html
+index 时填充 /
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RulePaths: list of str
+        :param RuleType: 规则类型：
+file：指定文件后缀生效
+directory：指定路径生效
+path：指定绝对路径生效
+index：首页
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleType: str
+        :param FullUrlCache: 是否开启全路径缓存
+on：开启全路径缓存（即关闭参数过滤）
+off：关闭全路径缓存（即开启参数过滤）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FullUrlCache: str
+        :param IgnoreCase: 是否忽略大小写缓存
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IgnoreCase: str
+        :param QueryString: CacheKey中包含请求参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueryString: :class:`tencentcloud.cdn.v20180606.models.RuleQueryString`
+        :param RuleTag: 路径缓存键标签，传 user
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleTag: str
+        """
+        self.RulePaths = None
+        self.RuleType = None
+        self.FullUrlCache = None
+        self.IgnoreCase = None
+        self.QueryString = None
+        self.RuleTag = None
+
+
+    def _deserialize(self, params):
+        self.RulePaths = params.get("RulePaths")
+        self.RuleType = params.get("RuleType")
+        self.FullUrlCache = params.get("FullUrlCache")
+        self.IgnoreCase = params.get("IgnoreCase")
+        if params.get("QueryString") is not None:
+            self.QueryString = RuleQueryString()
+            self.QueryString._deserialize(params.get("QueryString"))
+        self.RuleTag = params.get("RuleTag")
+
+
 class ListClsLogTopicsRequest(AbstractModel):
     """ListClsLogTopics请求参数结构体
 
@@ -5815,6 +5987,110 @@ class Revalidate(AbstractModel):
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
         self.Path = params.get("Path")
+
+
+class RuleCache(AbstractModel):
+    """缓存配置分路径版本。
+    默认情况下所有文件缓存过期时间为 30 天
+    默认情况下静态加速类型的域名 .php;.jsp;.asp;.aspx 不缓存
+
+    """
+
+    def __init__(self):
+        """
+        :param RulePaths: CacheType 对应类型下的匹配内容：
+all 时填充 *
+file 时填充后缀名，如 jpg、txt
+directory 时填充路径，如 /xxx/test
+path 时填充绝对路径，如 /xxx/test.html
+index 时填充 /
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RulePaths: list of str
+        :param RuleType: 规则类型：
+all：所有文件生效
+file：指定文件后缀生效
+directory：指定路径生效
+path：指定绝对路径生效
+index：首页
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleType: str
+        :param CacheConfig: 缓存配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CacheConfig: :class:`tencentcloud.cdn.v20180606.models.RuleCacheConfig`
+        """
+        self.RulePaths = None
+        self.RuleType = None
+        self.CacheConfig = None
+
+
+    def _deserialize(self, params):
+        self.RulePaths = params.get("RulePaths")
+        self.RuleType = params.get("RuleType")
+        if params.get("CacheConfig") is not None:
+            self.CacheConfig = RuleCacheConfig()
+            self.CacheConfig._deserialize(params.get("CacheConfig"))
+
+
+class RuleCacheConfig(AbstractModel):
+    """路径缓存缓存配置（三种缓存模式中选取一种）
+
+    """
+
+    def __init__(self):
+        """
+        :param Cache: 缓存配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cache: :class:`tencentcloud.cdn.v20180606.models.CacheConfigCache`
+        :param NoCache: 不缓存配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NoCache: :class:`tencentcloud.cdn.v20180606.models.CacheConfigNoCache`
+        :param FollowOrigin: 遵循源站配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FollowOrigin: :class:`tencentcloud.cdn.v20180606.models.CacheConfigFollowOrigin`
+        """
+        self.Cache = None
+        self.NoCache = None
+        self.FollowOrigin = None
+
+
+    def _deserialize(self, params):
+        if params.get("Cache") is not None:
+            self.Cache = CacheConfigCache()
+            self.Cache._deserialize(params.get("Cache"))
+        if params.get("NoCache") is not None:
+            self.NoCache = CacheConfigNoCache()
+            self.NoCache._deserialize(params.get("NoCache"))
+        if params.get("FollowOrigin") is not None:
+            self.FollowOrigin = CacheConfigFollowOrigin()
+            self.FollowOrigin._deserialize(params.get("FollowOrigin"))
+
+
+class RuleQueryString(AbstractModel):
+    """路径保留参数配置
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: on | off CacheKey是否由QueryString组成
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: str
+        :param Action: includeCustom 包含部分url参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Action: str
+        :param Value: 使用/排除的url参数数组，';' 分割
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self.Switch = None
+        self.Action = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Action = params.get("Action")
+        self.Value = params.get("Value")
 
 
 class ScdnTopData(AbstractModel):

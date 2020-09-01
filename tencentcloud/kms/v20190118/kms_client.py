@@ -25,6 +25,34 @@ class KmsClient(AbstractClient):
     _endpoint = 'kms.tencentcloudapi.com'
 
 
+    def ArchiveKey(self, request):
+        """对密钥进行归档，被归档的密钥只能用于解密，不能加密
+
+        :param request: Request instance for ArchiveKey.
+        :type request: :class:`tencentcloud.kms.v20190118.models.ArchiveKeyRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.ArchiveKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ArchiveKey", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ArchiveKeyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AsymmetricRsaDecrypt(self, request):
         """使用指定的RSA非对称密钥的私钥进行数据解密，密文必须是使用对应公钥加密的。处于Enabled 状态的非对称密钥才能进行解密操作。
 
@@ -95,6 +123,34 @@ class KmsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BindCloudResourceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CancelKeyArchive(self, request):
+        """取消密钥归档，取消后密钥的状态变为Enabled。
+
+        :param request: Request instance for CancelKeyArchive.
+        :type request: :class:`tencentcloud.kms.v20190118.models.CancelKeyArchiveRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.CancelKeyArchiveResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CancelKeyArchive", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CancelKeyArchiveResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

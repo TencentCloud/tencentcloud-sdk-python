@@ -807,6 +807,8 @@ class CreateClusterRequest(AbstractModel):
         :type ExistedInstancesForNode: list of ExistedInstancesForNode
         :param InstanceDataDiskMountSettings: CVM类型和其对应的数据盘挂载配置信息
         :type InstanceDataDiskMountSettings: list of InstanceDataDiskMountSetting
+        :param ExtensionAddons: 需要安装的扩展组件信息
+        :type ExtensionAddons: list of ExtensionAddon
         """
         self.ClusterCIDRSettings = None
         self.ClusterType = None
@@ -816,6 +818,7 @@ class CreateClusterRequest(AbstractModel):
         self.InstanceAdvancedSettings = None
         self.ExistedInstancesForNode = None
         self.InstanceDataDiskMountSettings = None
+        self.ExtensionAddons = None
 
 
     def _deserialize(self, params):
@@ -850,6 +853,12 @@ class CreateClusterRequest(AbstractModel):
                 obj = InstanceDataDiskMountSetting()
                 obj._deserialize(item)
                 self.InstanceDataDiskMountSettings.append(obj)
+        if params.get("ExtensionAddons") is not None:
+            self.ExtensionAddons = []
+            for item in params.get("ExtensionAddons"):
+                obj = ExtensionAddon()
+                obj._deserialize(item)
+                self.ExtensionAddons.append(obj)
 
 
 class CreateClusterResponse(AbstractModel):
@@ -2159,6 +2168,27 @@ class ExistedInstancesPara(AbstractModel):
             self.LoginSettings._deserialize(params.get("LoginSettings"))
         self.SecurityGroupIds = params.get("SecurityGroupIds")
         self.HostName = params.get("HostName")
+
+
+class ExtensionAddon(AbstractModel):
+    """创建集群时，选择安装的扩展组件的信息
+
+    """
+
+    def __init__(self):
+        """
+        :param AddonName: 扩展组件名称
+        :type AddonName: str
+        :param AddonParam: 扩展组件信息(扩展组件资源对象的json字符串描述)
+        :type AddonParam: str
+        """
+        self.AddonName = None
+        self.AddonParam = None
+
+
+    def _deserialize(self, params):
+        self.AddonName = params.get("AddonName")
+        self.AddonParam = params.get("AddonParam")
 
 
 class Filter(AbstractModel):

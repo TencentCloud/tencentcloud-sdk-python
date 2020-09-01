@@ -157,16 +157,20 @@ class FaceCartoonPicRequest(AbstractModel):
         :type Url: str
         :param RspImgType: 返回图像方式（base64 或 url ) ，二选一。url有效期为1天。
         :type RspImgType: str
+        :param DisableGlobalEffect: 是否取消全图动漫化效果。
+        :type DisableGlobalEffect: str
         """
         self.Image = None
         self.Url = None
         self.RspImgType = None
+        self.DisableGlobalEffect = None
 
 
     def _deserialize(self, params):
         self.Image = params.get("Image")
         self.Url = params.get("Url")
         self.RspImgType = params.get("RspImgType")
+        self.DisableGlobalEffect = params.get("DisableGlobalEffect")
 
 
 class FaceCartoonPicResponse(AbstractModel):

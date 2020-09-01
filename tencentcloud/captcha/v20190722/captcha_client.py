@@ -165,6 +165,34 @@ class CaptchaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCaptchaTicketData(self, request):
+        """验证码控制台票据验证信息
+
+        :param request: Request instance for DescribeCaptchaTicketData.
+        :type request: :class:`tencentcloud.captcha.v20190722.models.DescribeCaptchaTicketDataRequest`
+        :rtype: :class:`tencentcloud.captcha.v20190722.models.DescribeCaptchaTicketDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCaptchaTicketData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCaptchaTicketDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCaptchaUserAllAppId(self, request):
         """安全验证码获取用户注册所有APPId和应用名称
 

@@ -190,6 +190,46 @@ class CaptchaQueryData(AbstractModel):
         self.Date = params.get("Date")
 
 
+class CaptchaTicketDataRes(AbstractModel):
+    """DescribeCaptchaTicketData 接口 返回数据类型集合
+
+    """
+
+    def __init__(self):
+        """
+        :param TicketAmountArray: 票据验证总量返回
+        :type TicketAmountArray: list of TicketAmountUnit
+        :param TicketThroughArray: 票据验证通过量返回
+        :type TicketThroughArray: list of TicketThroughUnit
+        :param TicketInterceptArray: 票据验证拦截量返回
+        :type TicketInterceptArray: list of TicketInterceptUnit
+        """
+        self.TicketAmountArray = None
+        self.TicketThroughArray = None
+        self.TicketInterceptArray = None
+
+
+    def _deserialize(self, params):
+        if params.get("TicketAmountArray") is not None:
+            self.TicketAmountArray = []
+            for item in params.get("TicketAmountArray"):
+                obj = TicketAmountUnit()
+                obj._deserialize(item)
+                self.TicketAmountArray.append(obj)
+        if params.get("TicketThroughArray") is not None:
+            self.TicketThroughArray = []
+            for item in params.get("TicketThroughArray"):
+                obj = TicketThroughUnit()
+                obj._deserialize(item)
+                self.TicketThroughArray.append(obj)
+        if params.get("TicketInterceptArray") is not None:
+            self.TicketInterceptArray = []
+            for item in params.get("TicketInterceptArray"):
+                obj = TicketInterceptUnit()
+                obj._deserialize(item)
+                self.TicketInterceptArray.append(obj)
+
+
 class CaptchaUserAllAppId(AbstractModel):
     """用户注册的APPID和应用名称对象
 
@@ -619,6 +659,60 @@ class DescribeCaptchaResultResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCaptchaTicketDataRequest(AbstractModel):
+    """DescribeCaptchaTicketData请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CaptchaAppId: 验证码应用ID
+        :type CaptchaAppId: int
+        :param Start: 查询开始时间
+        :type Start: int
+        """
+        self.CaptchaAppId = None
+        self.Start = None
+
+
+    def _deserialize(self, params):
+        self.CaptchaAppId = params.get("CaptchaAppId")
+        self.Start = params.get("Start")
+
+
+class DescribeCaptchaTicketDataResponse(AbstractModel):
+    """DescribeCaptchaTicketData返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CaptchaCode: 成功返回 0 其它失败
+        :type CaptchaCode: int
+        :param CaptchaMsg: 返回信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CaptchaMsg: str
+        :param Data: 验证码票据信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.captcha.v20190722.models.CaptchaTicketDataRes`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CaptchaCode = None
+        self.CaptchaMsg = None
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CaptchaCode = params.get("CaptchaCode")
+        self.CaptchaMsg = params.get("CaptchaMsg")
+        if params.get("Data") is not None:
+            self.Data = CaptchaTicketDataRes()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCaptchaUserAllAppIdRequest(AbstractModel):
     """DescribeCaptchaUserAllAppId请求参数结构体
 
@@ -659,6 +753,69 @@ class DescribeCaptchaUserAllAppIdResponse(AbstractModel):
         self.CaptchaCode = params.get("CaptchaCode")
         self.CaptchaMsg = params.get("CaptchaMsg")
         self.RequestId = params.get("RequestId")
+
+
+class TicketAmountUnit(AbstractModel):
+    """DescribeCaptchaTicketData 返回的数据结构
+
+    """
+
+    def __init__(self):
+        """
+        :param DateKey: 时间
+        :type DateKey: str
+        :param Amount: 票据验证总量
+        :type Amount: int
+        """
+        self.DateKey = None
+        self.Amount = None
+
+
+    def _deserialize(self, params):
+        self.DateKey = params.get("DateKey")
+        self.Amount = params.get("Amount")
+
+
+class TicketInterceptUnit(AbstractModel):
+    """DescribeCaptchaTicketData 返回的数据结构
+
+    """
+
+    def __init__(self):
+        """
+        :param DateKey: 时间
+        :type DateKey: str
+        :param Intercept: 票据验证拦截量
+        :type Intercept: int
+        """
+        self.DateKey = None
+        self.Intercept = None
+
+
+    def _deserialize(self, params):
+        self.DateKey = params.get("DateKey")
+        self.Intercept = params.get("Intercept")
+
+
+class TicketThroughUnit(AbstractModel):
+    """DescribeCaptchaTicketData 返回的数据结构
+
+    """
+
+    def __init__(self):
+        """
+        :param DateKey: 时间
+        :type DateKey: str
+        :param Through: 票据验证的通过量
+        :type Through: int
+        """
+        self.DateKey = None
+        self.Through = None
+
+
+    def _deserialize(self, params):
+        self.DateKey = params.get("DateKey")
+        self.Through = params.get("Through")
 
 
 class UpdateCaptchaAppIdInfoRequest(AbstractModel):

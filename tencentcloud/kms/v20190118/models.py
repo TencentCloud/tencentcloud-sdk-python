@@ -37,6 +37,40 @@ class AlgorithmInfo(AbstractModel):
         self.Algorithm = params.get("Algorithm")
 
 
+class ArchiveKeyRequest(AbstractModel):
+    """ArchiveKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: CMK唯一标识符
+        :type KeyId: str
+        """
+        self.KeyId = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+
+
+class ArchiveKeyResponse(AbstractModel):
+    """ArchiveKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class AsymmetricRsaDecryptRequest(AbstractModel):
     """AsymmetricRsaDecrypt请求参数结构体
 
@@ -160,6 +194,40 @@ class BindCloudResourceRequest(AbstractModel):
 
 class BindCloudResourceResponse(AbstractModel):
     """BindCloudResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CancelKeyArchiveRequest(AbstractModel):
+    """CancelKeyArchive请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyId: CMK唯一标识符
+        :type KeyId: str
+        """
+        self.KeyId = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+
+
+class CancelKeyArchiveResponse(AbstractModel):
+    """CancelKeyArchive返回参数结构体
 
     """
 
@@ -1626,7 +1694,7 @@ class KeyMetadata(AbstractModel):
         :type CreateTime: int
         :param Description: CMK的描述
         :type Description: str
-        :param KeyState: CMK的状态， 取值为：Enabled | Disabled | PendingDelete | PendingImport
+        :param KeyState: CMK的状态， 取值为：Enabled | Disabled | PendingDelete | PendingImport | Archived
         :type KeyState: str
         :param KeyUsage: CMK用途，取值为: ENCRYPT_DECRYPT | ASYMMETRIC_DECRYPT_RSA_2048 | ASYMMETRIC_DECRYPT_SM2
         :type KeyUsage: str
@@ -1743,7 +1811,7 @@ class ListKeyDetailRequest(AbstractModel):
         :type Role: int
         :param OrderType: 根据CMK创建时间排序， 0 表示按照降序排序，1表示按照升序排序
         :type OrderType: int
-        :param KeyState: 根据CMK状态筛选， 0表示全部CMK， 1 表示仅查询Enabled CMK， 2 表示仅查询Disabled CMK，3 表示查询PendingDelete 状态的CMK(处于计划删除状态的Key)，4 表示查询 PendingImport 状态的CMK
+        :param KeyState: 根据CMK状态筛选， 0表示全部CMK， 1 表示仅查询Enabled CMK， 2 表示仅查询Disabled CMK，3 表示查询PendingDelete 状态的CMK(处于计划删除状态的Key)，4 表示查询 PendingImport 状态的CMK，5 表示查询 Archived 状态的 CMK
         :type KeyState: int
         :param SearchKeyAlias: 根据KeyId或者Alias进行模糊匹配查询
         :type SearchKeyAlias: str
