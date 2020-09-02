@@ -2036,7 +2036,7 @@ class FlushBinlogRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 无
+        :param InstanceId: 实例ID
         :type InstanceId: str
         """
         self.InstanceId = None

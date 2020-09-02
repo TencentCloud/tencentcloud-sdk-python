@@ -157,7 +157,7 @@ class FaceCartoonPicRequest(AbstractModel):
         :type Url: str
         :param RspImgType: 返回图像方式（base64 或 url ) ，二选一。url有效期为1天。
         :type RspImgType: str
-        :param DisableGlobalEffect: 是否取消全图动漫化效果。
+        :param DisableGlobalEffect: 关闭全图动漫化，传入true（不分大小写）即关闭全图动漫化。
         :type DisableGlobalEffect: str
         """
         self.Image = None

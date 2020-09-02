@@ -218,6 +218,14 @@ class Address(AbstractModel):
         :type EipAlgType: :class:`tencentcloud.vpc.v20170312.models.AlgType`
         :param InternetServiceProvider: 弹性公网IP的运营商信息，当前可能返回值包括"CMCC","CTCC","CUCC","BGP"
         :type InternetServiceProvider: str
+        :param LocalBgp: 是否本地带宽EIP
+        :type LocalBgp: bool
+        :param Bandwidth: 弹性公网IP的带宽值。注意，非带宽上移账户的弹性公网IP没有带宽属性，值为空。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Bandwidth: int
+        :param InternetChargeType: 弹性公网IP的网络计费模式。注意，非带宽上移账户的弹性公网IP没有网络计费模式属性，值为空。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InternetChargeType: str
         """
         self.AddressId = None
         self.AddressName = None
@@ -234,6 +242,9 @@ class Address(AbstractModel):
         self.CascadeRelease = None
         self.EipAlgType = None
         self.InternetServiceProvider = None
+        self.LocalBgp = None
+        self.Bandwidth = None
+        self.InternetChargeType = None
 
 
     def _deserialize(self, params):
@@ -254,6 +265,9 @@ class Address(AbstractModel):
             self.EipAlgType = AlgType()
             self.EipAlgType._deserialize(params.get("EipAlgType"))
         self.InternetServiceProvider = params.get("InternetServiceProvider")
+        self.LocalBgp = params.get("LocalBgp")
+        self.Bandwidth = params.get("Bandwidth")
+        self.InternetChargeType = params.get("InternetChargeType")
 
 
 class AddressChargePrepaid(AbstractModel):
