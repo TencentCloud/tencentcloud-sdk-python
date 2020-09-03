@@ -745,7 +745,7 @@ class CreateClusterInstancesRequest(AbstractModel):
         """
         :param ClusterId: 集群 ID，请填写 查询集群列表 接口中返回的 clusterId 字段
         :type ClusterId: str
-        :param RunInstancePara: CVM创建透传参数，json化字符串格式，详见[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口。
+        :param RunInstancePara: CVM创建透传参数，json化字符串格式，如需要保证扩展集群节点请求幂等性需要在此参数添加ClientToken字段，详见[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口。
         :type RunInstancePara: str
         :param InstanceAdvancedSettings: 实例额外需要设置参数信息
         :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
@@ -2324,6 +2324,7 @@ class InstanceAdvancedSettings(AbstractModel):
     def __init__(self):
         """
         :param MountTarget: 数据盘挂载点, 默认不挂载数据盘. 已格式化的 ext3，ext4，xfs 文件系统的数据盘将直接挂载，其他文件系统或未格式化的数据盘将自动格式化为ext4 并挂载，请注意备份数据! 无数据盘或有多块数据盘的云主机此设置不生效。
+注意，注意，多盘场景请使用下方的DataDisks数据结构，设置对应的云盘类型、云盘大小、挂载路径、是否格式化等信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MountTarget: str
         :param DockerGraphPath: dockerd --graph 指定值, 默认为 /var/lib/docker
@@ -2337,7 +2338,7 @@ class InstanceAdvancedSettings(AbstractModel):
         :param Labels: 节点Label数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type Labels: list of Label
-        :param DataDisks: 数据盘相关信息
+        :param DataDisks: 多盘数据盘挂载信息，同时请确保购买CVM的参数传递了购买多个数据盘的信息，如添加节点CreateClusterInstances API的RunInstancesPara下的DataDisks也设置了购买多个数据盘, 具体可以参考CreateClusterInstances接口的，添加集群节点(多块数据盘)样例
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataDisks: list of DataDisk
         :param ExtraArgs: 节点相关的自定义参数信息

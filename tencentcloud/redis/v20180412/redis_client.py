@@ -138,7 +138,7 @@ class RedisClient(AbstractClient):
 
 
     def CreateInstances(self, request):
-        """创建redis实例
+        """本接口(CreateInstances)用于创建redis实例。
 
         :param request: Request instance for CreateInstances.
         :type request: :class:`tencentcloud.redis.v20180412.models.CreateInstancesRequest`
@@ -1342,7 +1342,7 @@ class RedisClient(AbstractClient):
 
 
     def ModifyInstanceParams(self, request):
-        """修改实例参数
+        """本接口(ModifyInstanceParams)用于修改实例参数。
 
         :param request: Request instance for ModifyInstanceParams.
         :type request: :class:`tencentcloud.redis.v20180412.models.ModifyInstanceParamsRequest`

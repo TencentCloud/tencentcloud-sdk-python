@@ -35,6 +35,8 @@ class CreateSecretRequest(AbstractModel):
         :type SecretBinary: str
         :param SecretString: 文本类型凭据信息明文（不需要进行base64编码）。SecretBinary 和 SecretString 必须且只能设置一个，，最大支持4096字节。
         :type SecretString: str
+        :param Tags: 标签列表
+        :type Tags: list of Tag
         """
         self.SecretName = None
         self.VersionId = None
@@ -42,6 +44,7 @@ class CreateSecretRequest(AbstractModel):
         self.KmsKeyId = None
         self.SecretBinary = None
         self.SecretString = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -51,6 +54,12 @@ class CreateSecretRequest(AbstractModel):
         self.KmsKeyId = params.get("KmsKeyId")
         self.SecretBinary = params.get("SecretBinary")
         self.SecretString = params.get("SecretString")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class CreateSecretResponse(AbstractModel):
@@ -64,17 +73,27 @@ class CreateSecretResponse(AbstractModel):
         :type SecretName: str
         :param VersionId: 新创建的凭据版本。
         :type VersionId: str
+        :param TagCode: 标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagCode: int
+        :param TagMsg: 标签操作的返回信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagMsg: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.SecretName = None
         self.VersionId = None
+        self.TagCode = None
+        self.TagMsg = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.SecretName = params.get("SecretName")
         self.VersionId = params.get("VersionId")
+        self.TagCode = params.get("TagCode")
+        self.TagMsg = params.get("TagMsg")
         self.RequestId = params.get("RequestId")
 
 
@@ -485,12 +504,15 @@ class ListSecretsRequest(AbstractModel):
         :type State: int
         :param SearchSecretName: 根据凭据名称进行过滤，为空表示不过滤。
         :type SearchSecretName: str
+        :param TagFilters: 标签过滤条件
+        :type TagFilters: list of TagFilter
         """
         self.Offset = None
         self.Limit = None
         self.OrderType = None
         self.State = None
         self.SearchSecretName = None
+        self.TagFilters = None
 
 
     def _deserialize(self, params):
@@ -499,6 +521,12 @@ class ListSecretsRequest(AbstractModel):
         self.OrderType = params.get("OrderType")
         self.State = params.get("State")
         self.SearchSecretName = params.get("SearchSecretName")
+        if params.get("TagFilters") is not None:
+            self.TagFilters = []
+            for item in params.get("TagFilters"):
+                obj = TagFilter()
+                obj._deserialize(item)
+                self.TagFilters.append(obj)
 
 
 class ListSecretsResponse(AbstractModel):
@@ -666,6 +694,48 @@ class SecretMetadata(AbstractModel):
         self.DeleteTime = params.get("DeleteTime")
         self.CreateTime = params.get("CreateTime")
         self.KmsKeyType = params.get("KmsKeyType")
+
+
+class Tag(AbstractModel):
+    """标签键和标签值
+
+    """
+
+    def __init__(self):
+        """
+        :param TagKey: 标签键
+        :type TagKey: str
+        :param TagValue: 标签值
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
+
+
+class TagFilter(AbstractModel):
+    """标签过滤器
+
+    """
+
+    def __init__(self):
+        """
+        :param TagKey: 标签键
+        :type TagKey: str
+        :param TagValue: 标签值
+        :type TagValue: list of str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
 
 
 class UpdateDescriptionRequest(AbstractModel):

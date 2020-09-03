@@ -286,9 +286,9 @@ class GradientInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Tempo: 图片的展示时长，即单张图片静止不变的时间。GIF默认每张图片0.7s，视频默认每张图片2s
+        :param Tempo: 图片的展示时长，即单张图片静止不变的时间。GIF默认每张图片0.7s，视频默认每张图片0.5s。最大取值1s。
         :type Tempo: float
-        :param MorphTime: 人像渐变的最长时间，即单张图片使用渐变特效的时间。 GIF默认值为0.5s，视频默值认为1s
+        :param MorphTime: 人像渐变的最长时间，即单张图片使用渐变特效的时间。 GIF默认值为0.5s，视频默值认为1s。最大取值1s。
         :type MorphTime: float
         """
         self.Tempo = None
@@ -322,7 +322,7 @@ Url、Image必须提供一个，如果都提供，只使用 Url。图片存储�
         :type Urls: list of str
         :param GradientInfos: 人脸渐变参数。可调整每张图片的展示时长、人像渐变的最长时间
         :type GradientInfos: list of GradientInfo
-        :param Fps: 视频帧率，取值[1,60]。默认10
+        :param Fps: 视频帧率，取值[1,25]。默认10
         :type Fps: int
         :param OutputType: 视频类型，取值[0,2]，其中0为MP4，1为GIF，2为MOV。目前仅支持MP4格式，默认为MP4格式
         :type OutputType: int

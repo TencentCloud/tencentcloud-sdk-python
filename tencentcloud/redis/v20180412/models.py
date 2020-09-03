@@ -329,39 +329,39 @@ class CreateInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ZoneId: 实例所属的可用区ID
+        :param ZoneId: 实例所属的可用区ID，可参考[地域和可用区](https://cloud.tencent.com/document/product/239/4106)  。
         :type ZoneId: int
-        :param TypeId: 实例类型：2 – Redis2.8内存版（标准架构），3 – Redis3.2内存版（标准架构），4 – CKV 3.2内存版(标准架构)，6 – Redis4.0内存版（标准架构），7 – Redis4.0内存版（集群架构），8 – Redis5.0内存版（标准架构），9 – Redis5.0内存版（集群架构），
+        :param TypeId: 实例类型：2 – Redis2.8内存版（标准架构），3 – CKV 3.2内存版(标准架构)，4 – CKV 3.2内存版(集群架构)，6 – Redis4.0内存版（标准架构），7 – Redis4.0内存版（集群架构），8 – Redis5.0内存版（标准架构），9 – Redis5.0内存版（集群架构）。
         :type TypeId: int
-        :param MemSize: 实例容量，单位MB， 取值大小以 查询售卖规格接口返回的规格为准
+        :param MemSize: 实例容量，单位MB， 数值需为1024的整数倍，取值大小以 [查询产品售卖规格](https://cloud.tencent.com/document/api/239/30600) 返回的规格为准。
         :type MemSize: int
-        :param GoodsNum: 实例数量，单次购买实例数量以 查询售卖规格接口返回的规格为准
+        :param GoodsNum: 实例数量，单次购买实例数量以 [查询产品售卖规格](https://cloud.tencent.com/document/api/239/30600) 返回的规格为准。
         :type GoodsNum: int
-        :param Period: 购买时长，在创建包年包月实例的时候需要填写，按量计费实例填1即可，单位：月，取值范围 [1,2,3,4,5,6,7,8,9,10,11,12,24,36]
+        :param Period: 购买时长，在创建包年包月实例的时候需要填写，按量计费实例填1即可，单位：月，取值范围 [1,2,3,4,5,6,7,8,9,10,11,12,24,36]。
         :type Period: int
         :param BillingMode: 付费方式:0-按量计费，1-包年包月。
         :type BillingMode: int
         :param Password: 实例密码，8-30个字符，至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&*-+=_|{}[]:;<>,.?/ 中的2种，不能以"/"开头。
         :type Password: str
-        :param VpcId: 私有网络ID，如果不传则默认选择基础网络，请使用私有网络列表查询，如：vpc-sad23jfdfk
+        :param VpcId: 私有网络ID，如果不传则默认选择基础网络，请使用私有网络列表查询，如：vpc-sad23jfdfk。
         :type VpcId: str
-        :param SubnetId: 基础网络下， subnetId无效； vpc子网下，取值以查询子网列表，如：subnet-fdj24n34j2
+        :param SubnetId: 基础网络下， subnetId无效； vpc子网下，取值以查询子网列表，如：subnet-fdj24n34j2。
         :type SubnetId: str
-        :param ProjectId: 项目id，取值以用户账户>用户账户相关接口查询>项目列表返回的projectId为准
+        :param ProjectId: 项目id，取值以用户账户>用户账户相关接口查询>项目列表返回的projectId为准。
         :type ProjectId: int
-        :param AutoRenew: 自动续费标识。0 - 默认状态（手动续费）；1 - 自动续费；2 - 明确不自动续费
+        :param AutoRenew: 自动续费标识。0 - 默认状态（手动续费）；1 - 自动续费；2 - 明确不自动续费。
         :type AutoRenew: int
-        :param SecurityGroupIdList: 安全组id数组
+        :param SecurityGroupIdList: 安全组id数组。
         :type SecurityGroupIdList: list of str
-        :param VPort: 用户自定义的端口 不填则默认为6379，范围[1024,65535]
+        :param VPort: 用户自定义的端口 不填则默认为6379，范围[1024,65535]。
         :type VPort: int
-        :param RedisShardNum: 实例分片数量，购买标准版实例不需要填写，集群版分片数量范围[3,5,8,12,16,24,32,64,96,128]
+        :param RedisShardNum: 实例分片数量，购买标准版实例不需要填写，集群版分片数量范围[3,5,8,12,16,24,32,64,96,128]。
         :type RedisShardNum: int
         :param RedisReplicasNum: 实例副本数量，Redis 2.8标准版、CKV标准版只支持1副本，4.0、5.0标准版和集群版支持1-5个副本。
         :type RedisReplicasNum: int
-        :param ReplicasReadonly: 是否支持副本只读，Redis 2.8标准版、CKV标准版不支持副本只读，开启副本只读，实例将自动读写分离，写请求路由到主节点，读请求路由到副本节点，如需开启副本只读建议副本数>=2.
+        :param ReplicasReadonly: 是否支持副本只读，Redis 2.8标准版、CKV标准版不支持副本只读，开启副本只读，实例将自动读写分离，写请求路由到主节点，读请求路由到副本节点，如需开启副本只读建议副本数>=2。
         :type ReplicasReadonly: bool
-        :param InstanceName: 实例名称，长度小于60的中文/英文/数字/"-"/"_"
+        :param InstanceName: 实例名称，长度小于60的中文/英文/数字/"-"/"_"。
         :type InstanceName: str
         :param NoAuth: 是否支持免密，true-免密实例，false-非免密实例，默认为非免密实例，仅VPC网络的实例支持免密码访问。
         :type NoAuth: bool
@@ -598,7 +598,7 @@ class DescribeDBSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Product: 数据库引擎名称：mariadb,cdb,cynosdb,dcdb,redis,mongodb 等。
+        :param Product: 数据库引擎名称，本接口取值：redis。
         :type Product: str
         :param InstanceId: 实例ID，格式如：cdb-c1nl9rpv或者cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
         :type InstanceId: str
@@ -900,7 +900,7 @@ class DescribeInstanceDealDetailRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DealIds: 订单ID数组
+        :param DealIds: 订单交易ID数组，即 [CreateInstances](https://cloud.tencent.com/document/api/239/20026) 的输出参数DealId。
         :type DealIds: list of str
         """
         self.DealIds = None
@@ -2881,7 +2881,7 @@ class InstanceSet(AbstractModel):
         :type Size: float
         :param SizeUsed: 该字段已废弃
         :type SizeUsed: float
-        :param Type: 实例类型，1：Redis2.8集群版；2：Redis2.8主从版；3：CKV主从版（Redis3.2）；4：CKV集群版（Redis3.2）；5：Redis2.8单机版；6：Redis4.0主从版；7：Redis4.0集群版；
+        :param Type: 实例类型：1 – Redis2.8内存版（集群架构），2 – Redis2.8内存版（标准架构），3 – CKV 3.2内存版(标准架构)，4 – CKV 3.2内存版(集群架构)，5 – Redis2.8内存版（单机），6 – Redis4.0内存版（标准架构），7 – Redis4.0内存版（集群架构），8 – Redis5.0内存版（标准架构），9 – Redis5.0内存版（集群架构）
         :type Type: int
         :param AutoRenewFlag: 实例是否设置自动续费标识，1：设置自动续费；0：未设置自动续费
         :type AutoRenewFlag: int
@@ -4399,7 +4399,7 @@ class UpgradeInstanceVersionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TargetInstanceType: 目标实例类型，同CreateInstances接口的Type，即实例要变更的目标类型
+        :param TargetInstanceType: 目标实例类型，同 [CreateInstances](https://cloud.tencent.com/document/api/239/20026) 的Type，即实例要变更的目标类型
         :type TargetInstanceType: str
         :param SwitchOption: 切换模式：1-维护时间窗切换，2-立即切换
         :type SwitchOption: int
