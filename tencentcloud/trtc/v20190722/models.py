@@ -237,6 +237,10 @@ bigvLoss：上/下行视频丢包；
 bigvWidth：上/下行分辨率宽；
 bigvHeight：上/下行分辨率高
         :type DataType: list of str
+        :param PageNumber: 只查询用户列表时，设置分页index，从0开始（PageNumber和PageSize 其中一个不填均默认返回10条数据）
+        :type PageNumber: str
+        :param PageSize: 只查询用户列表时，设置分页大小（PageNumber和PageSize 其中一个不填均默认返回6条数据,最大不超过100）
+        :type PageSize: str
         """
         self.CommId = None
         self.StartTime = None
@@ -244,6 +248,8 @@ bigvHeight：上/下行分辨率高
         self.SdkAppId = None
         self.UserIds = None
         self.DataType = None
+        self.PageNumber = None
+        self.PageSize = None
 
 
     def _deserialize(self, params):
@@ -253,6 +259,8 @@ bigvHeight：上/下行分辨率高
         self.SdkAppId = params.get("SdkAppId")
         self.UserIds = params.get("UserIds")
         self.DataType = params.get("DataType")
+        self.PageNumber = params.get("PageNumber")
+        self.PageSize = params.get("PageSize")
 
 
 class DescribeCallDetailResponse(AbstractModel):

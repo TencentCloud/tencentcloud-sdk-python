@@ -1496,6 +1496,52 @@ class CreateScdnLogTaskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateVerifyRecordRequest(AbstractModel):
+    """CreateVerifyRecord请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Domain: 要取回的域名
+        :type Domain: str
+        """
+        self.Domain = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+
+
+class CreateVerifyRecordResponse(AbstractModel):
+    """CreateVerifyRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SubDomain: 子解析
+        :type SubDomain: str
+        :param Record: 解析值
+        :type Record: str
+        :param RecordType: 解析类型
+        :type RecordType: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SubDomain = None
+        self.Record = None
+        self.RecordType = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SubDomain = params.get("SubDomain")
+        self.Record = params.get("Record")
+        self.RecordType = params.get("RecordType")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteCdnDomainRequest(AbstractModel):
     """DeleteCdnDomain请求参数结构体
 
@@ -7307,6 +7353,44 @@ path: 根据完整访问路径生效
         self.RulePaths = params.get("RulePaths")
         self.UserAgents = params.get("UserAgents")
         self.FilterType = params.get("FilterType")
+
+
+class VerifyDomainRecordRequest(AbstractModel):
+    """VerifyDomainRecord请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Domain: 域名
+        :type Domain: str
+        """
+        self.Domain = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+
+
+class VerifyDomainRecordResponse(AbstractModel):
+    """VerifyDomainRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 是否验证成功
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
 
 
 class VideoSeek(AbstractModel):

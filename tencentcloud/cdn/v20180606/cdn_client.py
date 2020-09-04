@@ -109,6 +109,34 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateVerifyRecord(self, request):
+        """生成一条子域名解析，提示客户添加到域名解析上，用于泛域名及域名取回校验归属权
+
+        :param request: Request instance for CreateVerifyRecord.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.CreateVerifyRecordRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.CreateVerifyRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateVerifyRecord", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateVerifyRecordResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteCdnDomain(self, request):
         """DeleteCdnDomain 用于删除指定加速域名
 
@@ -1311,6 +1339,34 @@ class CdnClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdatePayTypeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def VerifyDomainRecord(self, request):
+        """验证域名解析值
+
+        :param request: Request instance for VerifyDomainRecord.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.VerifyDomainRecordRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.VerifyDomainRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("VerifyDomainRecord", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.VerifyDomainRecordResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

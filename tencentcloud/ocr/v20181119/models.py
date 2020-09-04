@@ -182,6 +182,14 @@ class BizLicenseOCRResponse(AbstractModel):
         :type ComposingForm: str
         :param SetDate: 成立日期
         :type SetDate: str
+        :param RecognizeWarnCode: Code 告警码列表和释义：
+-20001 非营业执照
+注：告警码可以同时存在多个
+        :type RecognizeWarnCode: list of int
+        :param RecognizeWarnMsg: 告警码说明：
+OCR_WARNING_TPYE_NOT_MATCH 非营业执照
+注：告警信息可以同时存在多个
+        :type RecognizeWarnMsg: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -195,6 +203,8 @@ class BizLicenseOCRResponse(AbstractModel):
         self.Period = None
         self.ComposingForm = None
         self.SetDate = None
+        self.RecognizeWarnCode = None
+        self.RecognizeWarnMsg = None
         self.RequestId = None
 
 
@@ -209,6 +219,8 @@ class BizLicenseOCRResponse(AbstractModel):
         self.Period = params.get("Period")
         self.ComposingForm = params.get("ComposingForm")
         self.SetDate = params.get("SetDate")
+        self.RecognizeWarnCode = params.get("RecognizeWarnCode")
+        self.RecognizeWarnMsg = params.get("RecognizeWarnMsg")
         self.RequestId = params.get("RequestId")
 
 
@@ -2430,17 +2442,23 @@ class LicensePlateOCRResponse(AbstractModel):
         :type Number: str
         :param Confidence: 置信度，0 - 100 之间。
         :type Confidence: int
+        :param Rect: 文本行在原图片中的像素坐标框。
+        :type Rect: :class:`tencentcloud.ocr.v20181119.models.Rect`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Number = None
         self.Confidence = None
+        self.Rect = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.Number = params.get("Number")
         self.Confidence = params.get("Confidence")
+        if params.get("Rect") is not None:
+            self.Rect = Rect()
+            self.Rect._deserialize(params.get("Rect"))
         self.RequestId = params.get("RequestId")
 
 

@@ -755,6 +755,8 @@ class CreateMigrationRequest(AbstractModel):
         :type Target: :class:`tencentcloud.sqlserver.v20180328.models.MigrateTarget`
         :param MigrateDBSet: 迁移DB对象 ，离线迁移不使用（SourceType=4或SourceType=5）。
         :type MigrateDBSet: list of MigrateDB
+        :param RenameRestore: 按照ReNameRestoreDatabase中的库进行恢复，并重命名，不填则按照默认方式命名恢复的库，且恢复所有的库。SourceType=5的情况下有效。
+        :type RenameRestore: list of RenameRestoreDatabase
         """
         self.MigrateName = None
         self.MigrateType = None
@@ -762,6 +764,7 @@ class CreateMigrationRequest(AbstractModel):
         self.Source = None
         self.Target = None
         self.MigrateDBSet = None
+        self.RenameRestore = None
 
 
     def _deserialize(self, params):
@@ -780,6 +783,12 @@ class CreateMigrationRequest(AbstractModel):
                 obj = MigrateDB()
                 obj._deserialize(item)
                 self.MigrateDBSet.append(obj)
+        if params.get("RenameRestore") is not None:
+            self.RenameRestore = []
+            for item in params.get("RenameRestore"):
+                obj = RenameRestoreDatabase()
+                obj._deserialize(item)
+                self.RenameRestore.append(obj)
 
 
 class CreateMigrationResponse(AbstractModel):
@@ -1747,6 +1756,8 @@ class DescribeBackupsRequest(AbstractModel):
         :type Strategy: int
         :param BackupWay: 按照备份方式筛选，0-后台自动定时备份，1-用户手动临时备份，不填则不筛选此项
         :type BackupWay: int
+        :param BackupId: 按照备份ID筛选，不填则不筛选此项
+        :type BackupId: int
         """
         self.StartTime = None
         self.EndTime = None
@@ -1756,6 +1767,7 @@ class DescribeBackupsRequest(AbstractModel):
         self.BackupName = None
         self.Strategy = None
         self.BackupWay = None
+        self.BackupId = None
 
 
     def _deserialize(self, params):
@@ -1767,6 +1779,7 @@ class DescribeBackupsRequest(AbstractModel):
         self.BackupName = params.get("BackupName")
         self.Strategy = params.get("Strategy")
         self.BackupWay = params.get("BackupWay")
+        self.BackupId = params.get("BackupId")
 
 
 class DescribeBackupsResponse(AbstractModel):
@@ -4442,6 +4455,27 @@ class RemoveBackupsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RenameRestoreDatabase(AbstractModel):
+    """用于RestoreInstance，RollbackInstance，CreateMigration 等接口；对恢复的库进行重命名，且支持选择要恢复的库。
+
+    """
+
+    def __init__(self):
+        """
+        :param OldName: 库的名字，如果oldName不存在则返回失败。
+        :type OldName: str
+        :param NewName: 库的新名字，如果不填则按照系统默认方式命名恢复的库
+        :type NewName: str
+        """
+        self.OldName = None
+        self.NewName = None
+
+
+    def _deserialize(self, params):
+        self.OldName = params.get("OldName")
+        self.NewName = params.get("NewName")
+
+
 class RenewDBInstanceRequest(AbstractModel):
     """RenewDBInstance请求参数结构体
 
@@ -4622,14 +4656,27 @@ class RestoreInstanceRequest(AbstractModel):
         :type InstanceId: str
         :param BackupId: 备份文件ID，该ID可以通过DescribeBackups接口返回数据中的Id字段获得
         :type BackupId: int
+        :param TargetInstanceId: 备份恢复到的同一个APPID下的实例ID，不填则恢复到原实例ID
+        :type TargetInstanceId: str
+        :param RenameRestore: 按照ReNameRestoreDatabase中的库进行恢复，并重命名，不填则按照默认方式命名恢复的库，且恢复所有的库。
+        :type RenameRestore: list of RenameRestoreDatabase
         """
         self.InstanceId = None
         self.BackupId = None
+        self.TargetInstanceId = None
+        self.RenameRestore = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.BackupId = params.get("BackupId")
+        self.TargetInstanceId = params.get("TargetInstanceId")
+        if params.get("RenameRestore") is not None:
+            self.RenameRestore = []
+            for item in params.get("RenameRestore"):
+                obj = RenameRestoreDatabase()
+                obj._deserialize(item)
+                self.RenameRestore.append(obj)
 
 
 class RestoreInstanceResponse(AbstractModel):
@@ -4668,11 +4715,17 @@ class RollbackInstanceRequest(AbstractModel):
         :type DBs: list of str
         :param Time: 回档目标时间点
         :type Time: str
+        :param TargetInstanceId: 备份恢复到的同一个APPID下的实例ID，不填则恢复到原实例ID
+        :type TargetInstanceId: str
+        :param RenameRestore: 按照ReNameRestoreDatabase中的库进行重命名，仅在Type = 1重命名回档方式有效；不填则按照默认方式命名库，DBs参数确定要恢复的库
+        :type RenameRestore: list of RenameRestoreDatabase
         """
         self.InstanceId = None
         self.Type = None
         self.DBs = None
         self.Time = None
+        self.TargetInstanceId = None
+        self.RenameRestore = None
 
 
     def _deserialize(self, params):
@@ -4680,6 +4733,13 @@ class RollbackInstanceRequest(AbstractModel):
         self.Type = params.get("Type")
         self.DBs = params.get("DBs")
         self.Time = params.get("Time")
+        self.TargetInstanceId = params.get("TargetInstanceId")
+        if params.get("RenameRestore") is not None:
+            self.RenameRestore = []
+            for item in params.get("RenameRestore"):
+                obj = RenameRestoreDatabase()
+                obj._deserialize(item)
+                self.RenameRestore.append(obj)
 
 
 class RollbackInstanceResponse(AbstractModel):

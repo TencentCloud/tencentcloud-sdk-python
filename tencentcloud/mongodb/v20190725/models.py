@@ -433,6 +433,62 @@ class CreateDBInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CurrentOp(AbstractModel):
+    """云数据库实例当前操作
+
+    """
+
+    def __init__(self):
+        """
+        :param OpId: 操作序号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OpId: int
+        :param Ns: 操作所在的命名空间，形式如db.collection
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ns: str
+        :param Query: 操作执行语句
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Query: str
+        :param Op: 操作类型，可能的取值：aggregate、count、delete、distinct、find、findAndModify、getMore、insert、mapReduce、update和command
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Op: str
+        :param ReplicaSetName: 操作所在的分片名称
+        :type ReplicaSetName: str
+        :param State: 筛选条件，节点状态，可能的取值为：Primary、Secondary
+注意：此字段可能返回 null，表示取不到有效值。
+        :type State: str
+        :param Operation: 操作详细信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Operation: str
+        :param NodeName: 操作所在的节点名称
+        :type NodeName: str
+        :param MicrosecsRunning: 操作已执行时间（ms）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MicrosecsRunning: int
+        """
+        self.OpId = None
+        self.Ns = None
+        self.Query = None
+        self.Op = None
+        self.ReplicaSetName = None
+        self.State = None
+        self.Operation = None
+        self.NodeName = None
+        self.MicrosecsRunning = None
+
+
+    def _deserialize(self, params):
+        self.OpId = params.get("OpId")
+        self.Ns = params.get("Ns")
+        self.Query = params.get("Query")
+        self.Op = params.get("Op")
+        self.ReplicaSetName = params.get("ReplicaSetName")
+        self.State = params.get("State")
+        self.Operation = params.get("Operation")
+        self.NodeName = params.get("NodeName")
+        self.MicrosecsRunning = params.get("MicrosecsRunning")
+
+
 class DBInstanceInfo(AbstractModel):
     """实例信息
 
@@ -628,6 +684,90 @@ class DescribeClientConnectionsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCurrentOpRequest(AbstractModel):
+    """DescribeCurrentOp请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        :type InstanceId: str
+        :param Ns: 筛选条件，操作所属的命名空间namespace，格式为db.collection
+        :type Ns: str
+        :param MillisecondRunning: 筛选条件，操作已经执行的时间（单位：毫秒），结果将返回超过设置时间的操作，默认值为0，取值范围为[0, 3600000]
+        :type MillisecondRunning: int
+        :param Op: 筛选条件，操作类型，可能的取值：none，update，insert，query，command，getmore，remove和killcursors
+        :type Op: str
+        :param ReplicaSetName: 筛选条件，分片名称
+        :type ReplicaSetName: str
+        :param State: 筛选条件，节点状态，可能的取值为：primary
+secondary
+        :type State: str
+        :param Limit: 单次请求返回的数量，默认值为100，取值范围为[0,100]
+        :type Limit: int
+        :param Offset: 偏移量，默认值为0，取值范围为[0,10000]
+        :type Offset: int
+        :param OrderBy: 返回结果集排序的字段，目前支持："MicrosecsRunning"/"microsecsrunning"，默认为升序排序
+        :type OrderBy: str
+        :param OrderByType: 返回结果集排序方式，可能的取值："ASC"/"asc"或"DESC"/"desc"
+        :type OrderByType: str
+        """
+        self.InstanceId = None
+        self.Ns = None
+        self.MillisecondRunning = None
+        self.Op = None
+        self.ReplicaSetName = None
+        self.State = None
+        self.Limit = None
+        self.Offset = None
+        self.OrderBy = None
+        self.OrderByType = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Ns = params.get("Ns")
+        self.MillisecondRunning = params.get("MillisecondRunning")
+        self.Op = params.get("Op")
+        self.ReplicaSetName = params.get("ReplicaSetName")
+        self.State = params.get("State")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderByType = params.get("OrderByType")
+
+
+class DescribeCurrentOpResponse(AbstractModel):
+    """DescribeCurrentOp返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合查询条件的操作总数
+        :type TotalCount: int
+        :param CurrentOps: 当前操作列表
+        :type CurrentOps: list of CurrentOp
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.CurrentOps = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("CurrentOps") is not None:
+            self.CurrentOps = []
+            for item in params.get("CurrentOps"):
+                obj = CurrentOp()
+                obj._deserialize(item)
+                self.CurrentOps.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDBBackupsRequest(AbstractModel):
     """DescribeDBBackups请求参数结构体
 
@@ -637,12 +777,24 @@ class DescribeDBBackupsRequest(AbstractModel):
         """
         :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
         :type InstanceId: str
+        :param BackupMethod: 备份方式，当前支持：0-逻辑备份，1-物理备份，2-所有备份。默认为逻辑备份。
+        :type BackupMethod: int
+        :param Limit: 分页大小，最大值为100，不设置默认查询所有。
+        :type Limit: int
+        :param Offset: 分页偏移量，最小值为0，默认值为0。
+        :type Offset: int
         """
         self.InstanceId = None
+        self.BackupMethod = None
+        self.Limit = None
+        self.Offset = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
+        self.BackupMethod = params.get("BackupMethod")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
 
 
 class DescribeDBBackupsResponse(AbstractModel):
@@ -1453,6 +1605,49 @@ class IsolateDBInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class KillOpsRequest(AbstractModel):
+    """KillOps请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        :type InstanceId: str
+        :param Operations: 待终止的操作
+        :type Operations: list of Operation
+        """
+        self.InstanceId = None
+        self.Operations = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("Operations") is not None:
+            self.Operations = []
+            for item in params.get("Operations"):
+                obj = Operation()
+                obj._deserialize(item)
+                self.Operations.append(obj)
+
+
+class KillOpsResponse(AbstractModel):
+    """KillOps返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyDBInstanceSpecRequest(AbstractModel):
     """ModifyDBInstanceSpec请求参数结构体
 
@@ -1539,6 +1734,31 @@ class OfflineIsolatedDBInstanceResponse(AbstractModel):
     def _deserialize(self, params):
         self.AsyncRequestId = params.get("AsyncRequestId")
         self.RequestId = params.get("RequestId")
+
+
+class Operation(AbstractModel):
+    """需要终止的操作
+
+    """
+
+    def __init__(self):
+        """
+        :param ReplicaSetName: 操作所在的分片名
+        :type ReplicaSetName: str
+        :param NodeName: 操作所在的节点名
+        :type NodeName: str
+        :param OpId: 操作序号
+        :type OpId: int
+        """
+        self.ReplicaSetName = None
+        self.NodeName = None
+        self.OpId = None
+
+
+    def _deserialize(self, params):
+        self.ReplicaSetName = params.get("ReplicaSetName")
+        self.NodeName = params.get("NodeName")
+        self.OpId = params.get("OpId")
 
 
 class RenameInstanceRequest(AbstractModel):

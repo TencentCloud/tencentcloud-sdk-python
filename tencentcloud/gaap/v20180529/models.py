@@ -162,14 +162,18 @@ class BandwidthPriceGradient(AbstractModel):
         :type BandwidthRange: list of int
         :param BandwidthUnitPrice: 在对应带宽范围内的单宽单价，单位：元/Mbps/天。
         :type BandwidthUnitPrice: float
+        :param DiscountBandwidthUnitPrice: 带宽折扣价，单位：元/Mbps/天。
+        :type DiscountBandwidthUnitPrice: float
         """
         self.BandwidthRange = None
         self.BandwidthUnitPrice = None
+        self.DiscountBandwidthUnitPrice = None
 
 
     def _deserialize(self, params):
         self.BandwidthRange = params.get("BandwidthRange")
         self.BandwidthUnitPrice = params.get("BandwidthUnitPrice")
+        self.DiscountBandwidthUnitPrice = params.get("DiscountBandwidthUnitPrice")
 
 
 class BindListenerRealServersRequest(AbstractModel):
@@ -3021,22 +3025,34 @@ class DescribeRealServerStatisticsRequest(AbstractModel):
         :type RealServerId: str
         :param ListenerId: 监听器ID
         :type ListenerId: str
+        :param RuleId: L7层规则ID
+        :type RuleId: str
         :param WithinTime: 统计时长，单位：小时。仅支持最近1,3,6,12,24小时的统计查询
         :type WithinTime: int
-        :param RuleId: 规则ID
-        :type RuleId: str
+        :param StartTime: 统计开始时间(2020-08-19 00:00:00)
+        :type StartTime: str
+        :param EndTime: 统计结束时间(2020-08-19 23:59:59)
+        :type EndTime: str
+        :param Granularity: 统计的数据粒度，单位：秒，仅支持1分钟-60和5分钟-300粒度
+        :type Granularity: int
         """
         self.RealServerId = None
         self.ListenerId = None
-        self.WithinTime = None
         self.RuleId = None
+        self.WithinTime = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Granularity = None
 
 
     def _deserialize(self, params):
         self.RealServerId = params.get("RealServerId")
         self.ListenerId = params.get("ListenerId")
-        self.WithinTime = params.get("WithinTime")
         self.RuleId = params.get("RuleId")
+        self.WithinTime = params.get("WithinTime")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Granularity = params.get("Granularity")
 
 
 class DescribeRealServerStatisticsResponse(AbstractModel):
@@ -3046,12 +3062,15 @@ class DescribeRealServerStatisticsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param StatisticsData: 源站状态统计数据
+        :param StatisticsData: 指定监听器的源站状态统计数据
         :type StatisticsData: list of StatisticsDataInfo
+        :param RsStatisticsData: 多个源站状态统计数据
+        :type RsStatisticsData: list of MetricStatisticsInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.StatisticsData = None
+        self.RsStatisticsData = None
         self.RequestId = None
 
 
@@ -3062,6 +3081,12 @@ class DescribeRealServerStatisticsResponse(AbstractModel):
                 obj = StatisticsDataInfo()
                 obj._deserialize(item)
                 self.StatisticsData.append(obj)
+        if params.get("RsStatisticsData") is not None:
+            self.RsStatisticsData = []
+            for item in params.get("RsStatisticsData"):
+                obj = MetricStatisticsInfo()
+                obj._deserialize(item)
+                self.RsStatisticsData.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -5393,6 +5418,9 @@ MOVING表示通道迁移中。
         :param CreateTime: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: int
+        :param ProxyType: 通道组是否包含微软通道
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxyType: int
         """
         self.GroupId = None
         self.Domain = None
@@ -5403,6 +5431,7 @@ MOVING表示通道迁移中。
         self.TagSet = None
         self.Version = None
         self.CreateTime = None
+        self.ProxyType = None
 
 
     def _deserialize(self, params):
@@ -5422,6 +5451,7 @@ MOVING表示通道迁移中。
                 self.TagSet.append(obj)
         self.Version = params.get("Version")
         self.CreateTime = params.get("CreateTime")
+        self.ProxyType = params.get("ProxyType")
 
 
 class ProxyIdDict(AbstractModel):
@@ -5520,6 +5550,9 @@ UNKNOWN表示未知状态。
         :param ModifyConfigTime: 配置变更时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyConfigTime: int
+        :param ProxyType: 通道类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxyType: int
         """
         self.InstanceId = None
         self.CreateTime = None
@@ -5546,6 +5579,7 @@ UNKNOWN表示未知状态。
         self.BillingType = None
         self.RelatedGlobalDomains = None
         self.ModifyConfigTime = None
+        self.ProxyType = None
 
 
     def _deserialize(self, params):
@@ -5583,6 +5617,7 @@ UNKNOWN表示未知状态。
         self.BillingType = params.get("BillingType")
         self.RelatedGlobalDomains = params.get("RelatedGlobalDomains")
         self.ModifyConfigTime = params.get("ModifyConfigTime")
+        self.ProxyType = params.get("ProxyType")
 
 
 class ProxySimpleInfo(AbstractModel):

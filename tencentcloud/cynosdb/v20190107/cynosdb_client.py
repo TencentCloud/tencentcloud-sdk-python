@@ -1,0 +1,557 @@
+# -*- coding: utf8 -*-
+# Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+import json
+
+from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
+from tencentcloud.common.abstract_client import AbstractClient
+from tencentcloud.cynosdb.v20190107 import models
+
+
+class CynosdbClient(AbstractClient):
+    _apiVersion = '2019-01-07'
+    _endpoint = 'cynosdb.tencentcloudapi.com'
+
+
+    def AddInstances(self, request):
+        """本接口（AddInstances）用于集群添加实例
+
+        :param request: Request instance for AddInstances.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.AddInstancesRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.AddInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AddInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateClusters(self, request):
+        """创建集群
+
+        :param request: Request instance for CreateClusters.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.CreateClustersRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.CreateClustersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateClusters", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateClustersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAccounts(self, request):
+        """本接口(DescribeAccounts)用于查询数据库管理账号。
+
+        :param request: Request instance for DescribeAccounts.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeAccountsRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeAccountsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAccounts", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAccountsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBackupConfig(self, request):
+        """获取指定集群的备份配置信息，包括全量备份时间段，备份文件保留时间
+
+        :param request: Request instance for DescribeBackupConfig.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeBackupConfigRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeBackupConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBackupConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBackupConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBackupList(self, request):
+        """查询备份文件列表
+
+        :param request: Request instance for DescribeBackupList.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeBackupListRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeBackupListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBackupList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBackupListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeClusterDetail(self, request):
+        """显示集群详情
+
+        :param request: Request instance for DescribeClusterDetail.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterDetailRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeClusterDetail", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClusterDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeClusters(self, request):
+        """查询集群列表
+
+        :param request: Request instance for DescribeClusters.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClustersRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClustersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeClusters", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClustersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeInstanceSpecs(self, request):
+        """本接口（DescribeInstanceSpecs）用于查询实例规格
+
+        :param request: Request instance for DescribeInstanceSpecs.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeInstanceSpecsRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeInstanceSpecsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInstanceSpecs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstanceSpecsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeMaintainPeriod(self, request):
+        """查询实例维护时间窗
+
+        :param request: Request instance for DescribeMaintainPeriod.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeMaintainPeriodRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeMaintainPeriodResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMaintainPeriod", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMaintainPeriodResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRollbackTimeRange(self, request):
+        """查询指定集群有效回滚时间范围
+
+        :param request: Request instance for DescribeRollbackTimeRange.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeRollbackTimeRangeRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeRollbackTimeRangeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRollbackTimeRange", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRollbackTimeRangeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRollbackTimeValidity(self, request):
+        """指定时间和集群查询是否可回滚
+
+        :param request: Request instance for DescribeRollbackTimeValidity.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeRollbackTimeValidityRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeRollbackTimeValidityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRollbackTimeValidity", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRollbackTimeValidityResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def IsolateCluster(self, request):
+        """隔离集群
+
+        :param request: Request instance for IsolateCluster.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.IsolateClusterRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.IsolateClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("IsolateCluster", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.IsolateClusterResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def IsolateInstance(self, request):
+        """本接口(IsolateInstance)用于隔离实例访问。
+
+        :param request: Request instance for IsolateInstance.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.IsolateInstanceRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.IsolateInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("IsolateInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.IsolateInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyBackupConfig(self, request):
+        """修改指定集群的备份配置
+
+        :param request: Request instance for ModifyBackupConfig.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyBackupConfigRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyBackupConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyBackupConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyBackupConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyDBInstanceSecurityGroups(self, request):
+        """本接口(ModifyDBInstanceSecurityGroups)用于修改实例绑定的安全组。
+
+        :param request: Request instance for ModifyDBInstanceSecurityGroups.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyDBInstanceSecurityGroupsRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyDBInstanceSecurityGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDBInstanceSecurityGroups", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDBInstanceSecurityGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyMaintainPeriodConfig(self, request):
+        """修改维护时间配置
+
+        :param request: Request instance for ModifyMaintainPeriodConfig.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyMaintainPeriodConfigRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyMaintainPeriodConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyMaintainPeriodConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyMaintainPeriodConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def OfflineCluster(self, request):
+        """下线集群
+
+        :param request: Request instance for OfflineCluster.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.OfflineClusterRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.OfflineClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("OfflineCluster", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.OfflineClusterResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SetRenewFlag(self, request):
+        """SetRenewFlag设置实例的自动续费功能
+
+        :param request: Request instance for SetRenewFlag.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.SetRenewFlagRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.SetRenewFlagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SetRenewFlag", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetRenewFlagResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpgradeInstance(self, request):
+        """升级实例
+
+        :param request: Request instance for UpgradeInstance.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.UpgradeInstanceRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.UpgradeInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpgradeInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpgradeInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

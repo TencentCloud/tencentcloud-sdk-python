@@ -865,6 +865,34 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeProxySlowLog(self, request):
+        """本接口（DescribeProxySlowLog）用于查询代理慢查询。
+
+        :param request: Request instance for DescribeProxySlowLog.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeProxySlowLogRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeProxySlowLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeProxySlowLog", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeProxySlowLogResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeSlowLog(self, request):
         """查询实例慢查询记录
 

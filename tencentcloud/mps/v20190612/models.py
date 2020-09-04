@@ -11482,7 +11482,7 @@ class VideoTemplateInfo(AbstractModel):
 <li>av1：AOMedia Video 1 编码</li>
 目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。av1 编码容器目前只支持 mp4 。
         :type Codec: str
-        :param Fps: 视频帧率，取值范围：[0, 60]，单位：Hz。
+        :param Fps: 视频帧率，取值范围：[0, 100]，单位：Hz。
 当取值为 0，表示帧率和原始视频保持一致。
         :type Fps: int
         :param Bitrate: 视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。
@@ -11550,7 +11550,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 <li>av1：AOMedia Video 1 编码</li>
 目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。av1 编码容器目前只支持 mp4 。
         :type Codec: str
-        :param Fps: 视频帧率，取值范围：[0, 60]，单位：Hz。
+        :param Fps: 视频帧率，取值范围：[0, 100]，单位：Hz。
 当取值为 0，表示帧率和原始视频保持一致。
         :type Fps: int
         :param Bitrate: 视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。

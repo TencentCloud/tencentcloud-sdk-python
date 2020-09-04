@@ -221,8 +221,36 @@ class MongodbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCurrentOp(self, request):
+        """本接口(DescribeCurrentOp)用于查询MongoDB云数据库实例的当前正在执行的操作。
+
+        :param request: Request instance for DescribeCurrentOp.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeCurrentOpRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.DescribeCurrentOpResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCurrentOp", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCurrentOpResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDBBackups(self, request):
-        """本接口（DescribeDBBackups）用于查询实例备份列表，目前只支持7天内的备份查询。
+        """本接口（DescribeDBBackups）用于查询实例备份列表，目前只支持查询7天内的备份记录。
 
         :param request: Request instance for DescribeDBBackups.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeDBBackupsRequest`
@@ -515,6 +543,34 @@ class MongodbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.IsolateDBInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def KillOps(self, request):
+        """本接口(KillOps)用于终止MongoDB云数据库实例上执行的特定操作。
+
+        :param request: Request instance for KillOps.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.KillOpsRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.KillOpsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("KillOps", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.KillOpsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

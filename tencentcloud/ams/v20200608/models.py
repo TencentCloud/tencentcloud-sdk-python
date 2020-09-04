@@ -350,11 +350,11 @@ class CreateBizConfigRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param BizType: 业务ID
+        :param BizType: 业务类型，仅限英文字母、数字和下划线（_）组成，长度不超过8位
         :type BizType: str
-        :param MediaModeration: 审核分类信息
+        :param MediaModeration: 配置信息，
         :type MediaModeration: :class:`tencentcloud.ams.v20200608.models.MediaModerationConfig`
-        :param BizName: 页面名称
+        :param BizName: 业务名称，用于标识业务场景，长度不超过32位
         :type BizName: str
         :param ModerationCategories: 审核内容，可选：Polity (政治); Porn (色情); Illegal(违法);Abuse (谩骂); Terror (暴恐); Ad (广告);
         :type ModerationCategories: list of str
