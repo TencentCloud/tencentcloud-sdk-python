@@ -2481,6 +2481,8 @@ class CreateFlowLogRequest(AbstractModel):
         :type CloudLogId: str
         :param FlowLogDescription: 流日志实例描述
         :type FlowLogDescription: str
+        :param Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+        :type Tags: list of Tag
         """
         self.VpcId = None
         self.FlowLogName = None
@@ -2489,6 +2491,7 @@ class CreateFlowLogRequest(AbstractModel):
         self.TrafficType = None
         self.CloudLogId = None
         self.FlowLogDescription = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -2499,6 +2502,12 @@ class CreateFlowLogRequest(AbstractModel):
         self.TrafficType = params.get("TrafficType")
         self.CloudLogId = params.get("CloudLogId")
         self.FlowLogDescription = params.get("FlowLogDescription")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class CreateFlowLogResponse(AbstractModel):

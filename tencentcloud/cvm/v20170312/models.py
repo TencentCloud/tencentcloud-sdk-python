@@ -1404,6 +1404,71 @@ class DescribeRegionsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeReservedInstancesConfigInfosRequest(AbstractModel):
+    """DescribeReservedInstancesConfigInfos请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Filters: zone
+按照预留实例计费可购买的可用区进行过滤。形如：ap-guangzhou-1。
+类型：String
+必选：否
+可选项：各地域可用区列表
+
+product-description
+按照预留实例计费的平台描述（即操作系统）进行过滤。形如：linux。
+类型：String
+必选：否
+可选项：linux
+
+duration
+按照预留实例计费有效期，即预留实例计费购买时长进行过滤。形如：31536000。
+类型：Integer
+计量单位：秒
+必选：否
+可选项：31536000 (1年) | 94608000（3年）
+        :type Filters: list of Filter
+        """
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class DescribeReservedInstancesConfigInfosResponse(AbstractModel):
+    """DescribeReservedInstancesConfigInfos返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ReservedInstanceConfigInfos: 预留实例静态配置信息列表。
+        :type ReservedInstanceConfigInfos: list of ReservedInstanceConfigInfoItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ReservedInstanceConfigInfos = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ReservedInstanceConfigInfos") is not None:
+            self.ReservedInstanceConfigInfos = []
+            for item in params.get("ReservedInstanceConfigInfos"):
+                obj = ReservedInstanceConfigInfoItem()
+                obj._deserialize(item)
+                self.ReservedInstanceConfigInfos.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeReservedInstancesOfferingsRequest(AbstractModel):
     """DescribeReservedInstancesOfferings请求参数结构体
 
@@ -1510,7 +1575,10 @@ class DescribeReservedInstancesRequest(AbstractModel):
 <li><strong>duration</strong></li>
 <p style="padding-left: 30px;">按照预留实例计费【<strong>有效期</strong>】即预留实例计费购买时长进行过滤。形如：31536000。</p><p style="padding-left: 30px;">类型：Integer</p><p style="padding-left: 30px;">计量单位：秒</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：31536000 (1年) | 94608000（3年）</p>
 <li><strong>instance-type</strong></li>
-<p style="padding-left: 30px;">按照【<strong>预留实例计费类型</strong>】进行过滤。形如：S3.MEDIUM4。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：<a href="https://cloud.tencent.com/document/product/213/11518">预留实例计费类型列表</a></p>
+<p style="padding-left: 30px;">按照【<strong>预留实例规格</strong>】进行过滤。形如：S3.MEDIUM4。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：<a href="https://cloud.tencent.com/document/product/213/11518">预留实例规格列表</a></p>
+<li><strong>instance-family</strong></li>
+<p style="padding-left: 30px;">按照【<strong>预留实例类型</strong>】进行过滤。形如：S3。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：<a href="https://cloud.tencent.com/document/product/213/11518">预留实例类型列表</a></p>
+<li><strong>offering-type</strong></li>
 <li><strong>offering-type</strong></li>
 <p style="padding-left: 30px;">按照【<strong>付款类型</strong>】进行过滤。形如：All Upfront (预付全部费用)。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：All Upfront (预付全部费用)</p>
 <li><strong>product-description</strong></li>
@@ -2224,6 +2292,62 @@ class ImportKeyPairResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.KeyId = params.get("KeyId")
+        self.RequestId = params.get("RequestId")
+
+
+class InquirePricePurchaseReservedInstancesOfferingRequest(AbstractModel):
+    """InquirePricePurchaseReservedInstancesOffering请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceCount: 购买预留实例计费数量
+        :type InstanceCount: int
+        :param ReservedInstancesOfferingId: 预留实例计费配置ID
+        :type ReservedInstancesOfferingId: str
+        :param DryRun: 试运行
+        :type DryRun: bool
+        :param ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。<br>更多详细信息请参阅：如何保证幂等性
+        :type ClientToken: str
+        :param ReservedInstanceName: 预留实例显示名称。<br><li>不指定实例显示名称则默认显示‘未命名’。</li><li>最多支持60个字符（包含模式串）。</li>
+        :type ReservedInstanceName: str
+        """
+        self.InstanceCount = None
+        self.ReservedInstancesOfferingId = None
+        self.DryRun = None
+        self.ClientToken = None
+        self.ReservedInstanceName = None
+
+
+    def _deserialize(self, params):
+        self.InstanceCount = params.get("InstanceCount")
+        self.ReservedInstancesOfferingId = params.get("ReservedInstancesOfferingId")
+        self.DryRun = params.get("DryRun")
+        self.ClientToken = params.get("ClientToken")
+        self.ReservedInstanceName = params.get("ReservedInstanceName")
+
+
+class InquirePricePurchaseReservedInstancesOfferingResponse(AbstractModel):
+    """InquirePricePurchaseReservedInstancesOffering返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Price: 该参数表示对应配置预留实例的价格。
+        :type Price: :class:`tencentcloud.cvm.v20170312.models.ReservedInstancePrice`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Price = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Price") is not None:
+            self.Price = ReservedInstancePrice()
+            self.Price._deserialize(params.get("Price"))
         self.RequestId = params.get("RequestId")
 
 
@@ -3883,11 +4007,14 @@ class PurchaseReservedInstancesOfferingRequest(AbstractModel):
         :type DryRun: bool
         :param ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。<br>更多详细信息请参阅：如何保证幂等性
         :type ClientToken: str
+        :param ReservedInstanceName: 预留实例显示名称。<br><li>不指定实例显示名称则默认显示‘未命名’。</li><li>最多支持60个字符（包含模式串）。</li>
+        :type ReservedInstanceName: str
         """
         self.InstanceCount = None
         self.ReservedInstancesOfferingId = None
         self.DryRun = None
         self.ClientToken = None
+        self.ReservedInstanceName = None
 
 
     def _deserialize(self, params):
@@ -3895,6 +4022,7 @@ class PurchaseReservedInstancesOfferingRequest(AbstractModel):
         self.ReservedInstancesOfferingId = params.get("ReservedInstancesOfferingId")
         self.DryRun = params.get("DryRun")
         self.ClientToken = params.get("ClientToken")
+        self.ReservedInstanceName = params.get("ReservedInstanceName")
 
 
 class PurchaseReservedInstancesOfferingResponse(AbstractModel):
@@ -4069,6 +4197,218 @@ class RenewInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ReservedInstanceConfigInfoItem(AbstractModel):
+    """预留实例静态配置信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 实例规格。
+        :type Type: str
+        :param TypeName: 实例规格名称。
+        :type TypeName: str
+        :param Order: 优先级。
+        :type Order: int
+        :param InstanceFamilies: 实例族信息列表。
+        :type InstanceFamilies: list of ReservedInstanceFamilyItem
+        """
+        self.Type = None
+        self.TypeName = None
+        self.Order = None
+        self.InstanceFamilies = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.TypeName = params.get("TypeName")
+        self.Order = params.get("Order")
+        if params.get("InstanceFamilies") is not None:
+            self.InstanceFamilies = []
+            for item in params.get("InstanceFamilies"):
+                obj = ReservedInstanceFamilyItem()
+                obj._deserialize(item)
+                self.InstanceFamilies.append(obj)
+
+
+class ReservedInstanceFamilyItem(AbstractModel):
+    """预留实例相关实例族信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceFamily: 实例族。
+        :type InstanceFamily: str
+        :param Order: 优先级。
+        :type Order: int
+        :param InstanceTypes: 实例类型信息列表。
+        :type InstanceTypes: list of ReservedInstanceTypeItem
+        """
+        self.InstanceFamily = None
+        self.Order = None
+        self.InstanceTypes = None
+
+
+    def _deserialize(self, params):
+        self.InstanceFamily = params.get("InstanceFamily")
+        self.Order = params.get("Order")
+        if params.get("InstanceTypes") is not None:
+            self.InstanceTypes = []
+            for item in params.get("InstanceTypes"):
+                obj = ReservedInstanceTypeItem()
+                obj._deserialize(item)
+                self.InstanceTypes.append(obj)
+
+
+class ReservedInstancePrice(AbstractModel):
+    """预留实例相关价格信息
+
+    """
+
+    def __init__(self):
+        """
+        :param OriginalFixedPrice: 预支合计费用的原价，单位：元。
+        :type OriginalFixedPrice: float
+        :param DiscountFixedPrice: 预支合计费用的折扣价，单位：元。
+        :type DiscountFixedPrice: float
+        :param OriginalUsagePrice: 后续合计费用的原价，单位：元/小时
+        :type OriginalUsagePrice: float
+        :param DiscountUsagePrice: 后续合计费用的折扣价，单位：元/小时
+        :type DiscountUsagePrice: float
+        """
+        self.OriginalFixedPrice = None
+        self.DiscountFixedPrice = None
+        self.OriginalUsagePrice = None
+        self.DiscountUsagePrice = None
+
+
+    def _deserialize(self, params):
+        self.OriginalFixedPrice = params.get("OriginalFixedPrice")
+        self.DiscountFixedPrice = params.get("DiscountFixedPrice")
+        self.OriginalUsagePrice = params.get("OriginalUsagePrice")
+        self.DiscountUsagePrice = params.get("DiscountUsagePrice")
+
+
+class ReservedInstancePriceItem(AbstractModel):
+    """基于付费类型的预留实例相关价格信息
+
+    """
+
+    def __init__(self):
+        """
+        :param OfferingType: 付费类型，如："All Upfront","Partial Upfront","No Upfront"
+        :type OfferingType: str
+        :param FixedPrice: 预支合计费用，单位：元。
+        :type FixedPrice: float
+        :param UsagePrice: 后续合计费用，单位：元/小时
+        :type UsagePrice: float
+        :param ReservedInstancesOfferingId: 预留实例配置ID
+        :type ReservedInstancesOfferingId: str
+        :param Zone: 预留实例计费可购买的可用区。
+        :type Zone: str
+        :param Duration: 预留实例计费【有效期】即预留实例计费购买时长。形如：31536000。
+计量单位：秒
+        :type Duration: int
+        :param ProductDescription: 预留实例计费的平台描述（即操作系统）。形如：linux。
+返回项： linux 。
+        :type ProductDescription: str
+        """
+        self.OfferingType = None
+        self.FixedPrice = None
+        self.UsagePrice = None
+        self.ReservedInstancesOfferingId = None
+        self.Zone = None
+        self.Duration = None
+        self.ProductDescription = None
+
+
+    def _deserialize(self, params):
+        self.OfferingType = params.get("OfferingType")
+        self.FixedPrice = params.get("FixedPrice")
+        self.UsagePrice = params.get("UsagePrice")
+        self.ReservedInstancesOfferingId = params.get("ReservedInstancesOfferingId")
+        self.Zone = params.get("Zone")
+        self.Duration = params.get("Duration")
+        self.ProductDescription = params.get("ProductDescription")
+
+
+class ReservedInstanceTypeItem(AbstractModel):
+    """预留实例类型信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceType: 实例类型。
+        :type InstanceType: str
+        :param Cpu: CPU核数。
+        :type Cpu: int
+        :param Memory: 内存大小。
+        :type Memory: int
+        :param Gpu: GPU核数。
+        :type Gpu: int
+        :param Fpga: FPGA核数。
+        :type Fpga: int
+        :param StorageBlock: 存储块数。
+        :type StorageBlock: int
+        :param NetworkCard: 网卡数。
+        :type NetworkCard: int
+        :param MaxBandwidth: 最大带宽。
+        :type MaxBandwidth: float
+        :param Frequency: 主频。
+        :type Frequency: str
+        :param CpuModelName: CPU型号名称。
+        :type CpuModelName: str
+        :param Pps: 包转发率。
+        :type Pps: int
+        :param Externals: 外部信息。
+        :type Externals: :class:`tencentcloud.cvm.v20170312.models.Externals`
+        :param Remark: 备注信息。
+        :type Remark: str
+        :param Prices: 预留实例配置价格信息。
+        :type Prices: list of ReservedInstancePriceItem
+        """
+        self.InstanceType = None
+        self.Cpu = None
+        self.Memory = None
+        self.Gpu = None
+        self.Fpga = None
+        self.StorageBlock = None
+        self.NetworkCard = None
+        self.MaxBandwidth = None
+        self.Frequency = None
+        self.CpuModelName = None
+        self.Pps = None
+        self.Externals = None
+        self.Remark = None
+        self.Prices = None
+
+
+    def _deserialize(self, params):
+        self.InstanceType = params.get("InstanceType")
+        self.Cpu = params.get("Cpu")
+        self.Memory = params.get("Memory")
+        self.Gpu = params.get("Gpu")
+        self.Fpga = params.get("Fpga")
+        self.StorageBlock = params.get("StorageBlock")
+        self.NetworkCard = params.get("NetworkCard")
+        self.MaxBandwidth = params.get("MaxBandwidth")
+        self.Frequency = params.get("Frequency")
+        self.CpuModelName = params.get("CpuModelName")
+        self.Pps = params.get("Pps")
+        if params.get("Externals") is not None:
+            self.Externals = Externals()
+            self.Externals._deserialize(params.get("Externals"))
+        self.Remark = params.get("Remark")
+        if params.get("Prices") is not None:
+            self.Prices = []
+            for item in params.get("Prices"):
+                obj = ReservedInstancePriceItem()
+                obj._deserialize(item)
+                self.Prices.append(obj)
+
+
 class ReservedInstances(AbstractModel):
     """描述用户已购买预留实例计费信息
 
@@ -4078,8 +4418,8 @@ class ReservedInstances(AbstractModel):
         """
         :param ReservedInstancesId: 已购买的预留实例计费ID。形如：650c138f-ae7e-4750-952a-96841d6e9fc1。
         :type ReservedInstancesId: str
-        :param InstanceType: 预留实例计费的类型。形如：S3.MEDIUM4。
-返回项：<a href="https://cloud.tencent.com/document/product/213/11518">预留实例计费类型列表</a>
+        :param InstanceType: 预留实例计费的规格。形如：S3.MEDIUM4。
+返回项：<a href="https://cloud.tencent.com/document/product/213/11518">预留实例计费规格列表</a>
         :type InstanceType: str
         :param Zone: 预留实例计费可购买的可用区。形如：ap-guangzhou-1。
 返回项：<a href="https://cloud.tencent.com/document/product/213/6091">可用区列表</a>
@@ -4105,6 +4445,9 @@ class ReservedInstances(AbstractModel):
         :param OfferingType: 预留实例计费的付款类型。形如：All Upfront。
 返回项： All Upfront (预付全部费用)。
         :type OfferingType: str
+        :param InstanceFamily: 预留实例计费的类型。形如：S3。
+返回项：<a href="https://cloud.tencent.com/document/product/213/11518">预留实例计费类型列表</a>
+        :type InstanceFamily: str
         """
         self.ReservedInstancesId = None
         self.InstanceType = None
@@ -4117,6 +4460,7 @@ class ReservedInstances(AbstractModel):
         self.State = None
         self.CurrencyCode = None
         self.OfferingType = None
+        self.InstanceFamily = None
 
 
     def _deserialize(self, params):
@@ -4131,6 +4475,7 @@ class ReservedInstances(AbstractModel):
         self.State = params.get("State")
         self.CurrencyCode = params.get("CurrencyCode")
         self.OfferingType = params.get("OfferingType")
+        self.InstanceFamily = params.get("InstanceFamily")
 
 
 class ReservedInstancesOffering(AbstractModel):
@@ -4453,7 +4798,7 @@ class RunInstancesRequest(AbstractModel):
         :param InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
         :type InstanceChargePrepaid: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
         :param InstanceType: 实例机型。不同实例机型指定了不同的资源规格。
-<br><li>对于付费模式为PREPAID或POSTPAID\_BY\_HOUR的实例创建，具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。若不指定该参数，则默认机型为S1.SMALL1。<br><li>对于付费模式为CDHPAID的实例创建，该参数以"CDH_"为前缀，根据CPU和内存配置生成，具体形式为：CDH_XCXG，例如对于创建CPU为1核，内存为1G大小的专用宿主机的实例，该参数应该为CDH_1C1G。
+<br><li>对于付费模式为PREPAID或POSTPAID\_BY\_HOUR的实例创建，具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。若不指定该参数，则系统将根据当前地域的资源售卖情况动态指定默认机型。<br><li>对于付费模式为CDHPAID的实例创建，该参数以"CDH_"为前缀，根据CPU和内存配置生成，具体形式为：CDH_XCXG，例如对于创建CPU为1核，内存为1G大小的专用宿主机的实例，该参数应该为CDH_1C1G。
         :type InstanceType: str
         :param SystemDisk: 实例系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
         :type SystemDisk: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`
