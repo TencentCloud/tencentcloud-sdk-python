@@ -1688,9 +1688,9 @@ class CreateRecordTaskRequest(AbstractModel):
         :type DomainName: str
         :param AppName: 推流路径。
         :type AppName: str
-        :param EndTime: 录制任务结束时间，Unix时间戳。设置时间必须大于StartTime，且不能超过从当前时刻开始24小时之内的时间。
+        :param EndTime: 录制任务结束时间，Unix时间戳。设置时间必须大于StartTime，且EndTime - StartTime不能超过24小时。
         :type EndTime: int
-        :param StartTime: 录制任务开始时间，Unix时间戳。如果不填表示立即启动录制。不超过从当前时间开始24小时之内的时间。
+        :param StartTime: 录制任务开始时间，Unix时间戳。如果不填表示立即启动录制。不超过从当前时间开始6天之内的时间。
         :type StartTime: int
         :param StreamType: 推流类型，默认0。取值：
 0-直播推流。
@@ -1698,7 +1698,7 @@ class CreateRecordTaskRequest(AbstractModel):
         :type StreamType: int
         :param TemplateId: 录制模板ID，CreateLiveRecordTemplate 返回值。如果不填或者传入错误ID，则默认录制HLS格式、永久存储。
         :type TemplateId: int
-        :param Extension: 扩展字段，默认空。
+        :param Extension: 扩展字段，暂无定义。默认为空。
         :type Extension: str
         """
         self.StreamName = None
@@ -1729,7 +1729,7 @@ class CreateRecordTaskResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 任务ID，全局唯一标识录制任务。
+        :param TaskId: 任务ID，全局唯一标识录制任务。返回TaskId字段说明录制任务创建成功。
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

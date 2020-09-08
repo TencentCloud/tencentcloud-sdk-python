@@ -835,7 +835,7 @@ class CvmClient(AbstractClient):
 
 
     def DescribeReservedInstancesConfigInfos(self, request):
-        """本接口(DescribeReservedInstancesConfigInfos)供用户列出可购买预留实例机型配置
+        """本接口(DescribeReservedInstancesConfigInfos)供用户列出可购买预留实例机型配置。预留实例当前只针对国际站白名单用户开放。
 
         :param request: Request instance for DescribeReservedInstancesConfigInfos.
         :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeReservedInstancesConfigInfosRequest`
@@ -1097,7 +1097,7 @@ class CvmClient(AbstractClient):
 
 
     def InquirePricePurchaseReservedInstancesOffering(self, request):
-        """本接口(InquirePricePurchaseReservedInstancesOffering)用于创建预留实例询价。本接口仅允许针对购买限制范围内的预留实例配置进行询价,
+        """本接口(InquirePricePurchaseReservedInstancesOffering)用于创建预留实例询价。本接口仅允许针对购买限制范围内的预留实例配置进行询价。预留实例当前只针对国际站白名单用户开放。
 
         :param request: Request instance for InquirePricePurchaseReservedInstancesOffering.
         :type request: :class:`tencentcloud.cvm.v20170312.models.InquirePricePurchaseReservedInstancesOfferingRequest`

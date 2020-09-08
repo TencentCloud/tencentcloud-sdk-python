@@ -585,6 +585,34 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeClusterKubeconfig(self, request):
+        """获取集群的kubeconfig文件，不同子账户获取自己的kubeconfig文件，该文件中有每个子账户自己的kube-apiserver的客户端证书，默认首次调此接口时候创建客户端证书，时效20年，未授予任何权限，如果是集群所有者或者主账户，则默认是cluster-admin权限。
+
+        :param request: Request instance for DescribeClusterKubeconfig.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterKubeconfigRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClusterKubeconfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeClusterKubeconfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClusterKubeconfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeClusterRouteTables(self, request):
         """查询集群路由表
 

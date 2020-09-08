@@ -4463,8 +4463,9 @@ class RenameRestoreDatabase(AbstractModel):
     def __init__(self):
         """
         :param OldName: 库的名字，如果oldName不存在则返回失败。
+在用于离线迁移任务时可不填。
         :type OldName: str
-        :param NewName: 库的新名字，如果不填则按照系统默认方式命名恢复的库
+        :param NewName: 库的新名字，如果不填则按照系统默认方式命名恢复的库。在用于离线迁移任务时，不填则按照OldName命名，OldName和NewName不能同时不填。
         :type NewName: str
         """
         self.OldName = None

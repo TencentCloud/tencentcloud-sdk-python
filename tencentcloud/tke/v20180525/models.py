@@ -1555,6 +1555,44 @@ class DescribeClusterInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeClusterKubeconfigRequest(AbstractModel):
+    """DescribeClusterKubeconfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+
+
+class DescribeClusterKubeconfigResponse(AbstractModel):
+    """DescribeClusterKubeconfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Kubeconfig: 子账户kubeconfig文件，可用于直接访问集群kube-apiserver
+        :type Kubeconfig: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Kubeconfig = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Kubeconfig = params.get("Kubeconfig")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeClusterRouteTablesRequest(AbstractModel):
     """DescribeClusterRouteTables请求参数结构体
 
