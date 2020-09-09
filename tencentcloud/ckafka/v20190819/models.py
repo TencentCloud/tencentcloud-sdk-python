@@ -2234,6 +2234,9 @@ class InstanceAttributesResponse(AbstractModel):
         :param InstanceType: 类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceType: str
+        :param Features: 表示该实例支持的特性。FEATURE_SUBNET_ACL:表示acl策略支持设置子网。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Features: list of str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -2262,6 +2265,7 @@ class InstanceAttributesResponse(AbstractModel):
         self.MaxGroupNum = None
         self.Cvm = None
         self.InstanceType = None
+        self.Features = None
 
 
     def _deserialize(self, params):
@@ -2304,6 +2308,7 @@ class InstanceAttributesResponse(AbstractModel):
         self.MaxGroupNum = params.get("MaxGroupNum")
         self.Cvm = params.get("Cvm")
         self.InstanceType = params.get("InstanceType")
+        self.Features = params.get("Features")
 
 
 class InstanceConfigDO(AbstractModel):

@@ -2574,12 +2574,12 @@ class DeployContainerGroupRequest(AbstractModel):
         """
         :param GroupId: 部署组ID，分组唯一标识
         :type GroupId: str
-        :param Server: 镜像server
-        :type Server: str
         :param TagName: 镜像版本名称,如v1
         :type TagName: str
         :param InstanceNum: 实例数量
         :type InstanceNum: int
+        :param Server: 镜像server
+        :type Server: str
         :param Reponame: 旧版镜像名，如/tsf/nginx
         :type Reponame: str
         :param CpuLimit: 业务容器最大的 CPU 核数，对应 K8S 的 limit；不填时默认为 request 的 2 倍
@@ -2628,9 +2628,9 @@ class DeployContainerGroupRequest(AbstractModel):
         :type ServiceSetting: :class:`tencentcloud.tsf.v20180326.models.ServiceSetting`
         """
         self.GroupId = None
-        self.Server = None
         self.TagName = None
         self.InstanceNum = None
+        self.Server = None
         self.Reponame = None
         self.CpuLimit = None
         self.MemLimit = None
@@ -2658,9 +2658,9 @@ class DeployContainerGroupRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.GroupId = params.get("GroupId")
-        self.Server = params.get("Server")
         self.TagName = params.get("TagName")
         self.InstanceNum = params.get("InstanceNum")
+        self.Server = params.get("Server")
         self.Reponame = params.get("Reponame")
         self.CpuLimit = params.get("CpuLimit")
         self.MemLimit = params.get("MemLimit")

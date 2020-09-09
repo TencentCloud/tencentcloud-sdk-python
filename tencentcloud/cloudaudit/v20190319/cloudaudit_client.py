@@ -253,6 +253,34 @@ class CloudauditClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ListKeyAliasByRegion(self, request):
+        """根据地域获取KMS密钥别名
+
+        :param request: Request instance for ListKeyAliasByRegion.
+        :type request: :class:`tencentcloud.cloudaudit.v20190319.models.ListKeyAliasByRegionRequest`
+        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.ListKeyAliasByRegionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListKeyAliasByRegion", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListKeyAliasByRegionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def LookUpEvents(self, request):
         """用于对操作日志进行检索，便于用户进行查询相关的操作信息。
 

@@ -479,6 +479,27 @@ class InquireAuditCreditResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class KeyMetadata(AbstractModel):
+    """CMK属性
+
+    """
+
+    def __init__(self):
+        """
+        :param Alias: 作为密钥更容易辨识，更容易被人看懂的别名
+        :type Alias: str
+        :param KeyId: CMK的全局唯一标识
+        :type KeyId: str
+        """
+        self.Alias = None
+        self.KeyId = None
+
+
+    def _deserialize(self, params):
+        self.Alias = params.get("Alias")
+        self.KeyId = params.get("KeyId")
+
+
 class ListAuditsRequest(AbstractModel):
     """ListAudits请求参数结构体
 
@@ -594,6 +615,61 @@ class ListCosEnableRegionResponse(AbstractModel):
                 obj = CosRegionInfo()
                 obj._deserialize(item)
                 self.EnableRegions.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class ListKeyAliasByRegionRequest(AbstractModel):
+    """ListKeyAliasByRegion请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param KmsRegion: Kms地域
+        :type KmsRegion: str
+        :param Limit: 含义跟 SQL 查询的 Limit 一致，表示本次获最多获取 Limit 个元素。缺省值为10，最大值为200
+        :type Limit: int
+        :param Offset: 含义跟 SQL 查询的 Offset 一致，表示本次获取从按一定顺序排列数组的第 Offset 个元素开始，缺省为0
+        :type Offset: int
+        """
+        self.KmsRegion = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.KmsRegion = params.get("KmsRegion")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class ListKeyAliasByRegionResponse(AbstractModel):
+    """ListKeyAliasByRegion返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyMetadatas: 密钥别名
+        :type KeyMetadatas: list of KeyMetadata
+        :param TotalCount: CMK的总数量
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.KeyMetadatas = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("KeyMetadatas") is not None:
+            self.KeyMetadatas = []
+            for item in params.get("KeyMetadatas"):
+                obj = KeyMetadata()
+                obj._deserialize(item)
+                self.KeyMetadatas.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
