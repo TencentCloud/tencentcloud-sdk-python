@@ -660,6 +660,143 @@ class CynosdbClusterDetail(AbstractModel):
         self.Zone = params.get("Zone")
 
 
+class CynosdbInstanceDetail(AbstractModel):
+    """实例详情
+
+    """
+
+    def __init__(self):
+        """
+        :param Uin: 用户Uin
+        :type Uin: str
+        :param AppId: 用户AppId
+        :type AppId: int
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param ClusterName: 集群名称
+        :type ClusterName: str
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param InstanceName: 实例名称
+        :type InstanceName: str
+        :param ProjectId: 项目ID
+        :type ProjectId: int
+        :param Region: 地域
+        :type Region: str
+        :param Zone: 可用区
+        :type Zone: str
+        :param Status: 实例状态
+        :type Status: str
+        :param StatusDesc: 实例状态中文描述
+        :type StatusDesc: str
+        :param DbType: 数据库类型
+        :type DbType: str
+        :param DbVersion: 数据库版本
+        :type DbVersion: str
+        :param Cpu: Cpu，单位：核
+        :type Cpu: int
+        :param Memory: 内存，单位：GB
+        :type Memory: int
+        :param Storage: 存储量，单位：GB
+        :type Storage: int
+        :param InstanceType: 实例类型
+        :type InstanceType: str
+        :param InstanceRole: 实例当前角色
+        :type InstanceRole: str
+        :param UpdateTime: 更新时间
+        :type UpdateTime: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param PayMode: 付费模式
+        :type PayMode: int
+        :param PeriodEndTime: 实例过期时间
+        :type PeriodEndTime: str
+        :param NetType: 网络类型
+        :type NetType: int
+        :param VpcId: VPC网络ID
+        :type VpcId: str
+        :param SubnetId: 子网ID
+        :type SubnetId: str
+        :param Vip: 实例内网IP
+        :type Vip: str
+        :param Vport: 实例内网端口
+        :type Vport: int
+        :param WanDomain: 实例外网域名
+        :type WanDomain: str
+        :param Charset: 字符集
+        :type Charset: str
+        :param CynosVersion: Cynos内核版本
+        :type CynosVersion: str
+        :param RenewFlag: 续费标志
+        :type RenewFlag: int
+        """
+        self.Uin = None
+        self.AppId = None
+        self.ClusterId = None
+        self.ClusterName = None
+        self.InstanceId = None
+        self.InstanceName = None
+        self.ProjectId = None
+        self.Region = None
+        self.Zone = None
+        self.Status = None
+        self.StatusDesc = None
+        self.DbType = None
+        self.DbVersion = None
+        self.Cpu = None
+        self.Memory = None
+        self.Storage = None
+        self.InstanceType = None
+        self.InstanceRole = None
+        self.UpdateTime = None
+        self.CreateTime = None
+        self.PayMode = None
+        self.PeriodEndTime = None
+        self.NetType = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.Vip = None
+        self.Vport = None
+        self.WanDomain = None
+        self.Charset = None
+        self.CynosVersion = None
+        self.RenewFlag = None
+
+
+    def _deserialize(self, params):
+        self.Uin = params.get("Uin")
+        self.AppId = params.get("AppId")
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterName = params.get("ClusterName")
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.ProjectId = params.get("ProjectId")
+        self.Region = params.get("Region")
+        self.Zone = params.get("Zone")
+        self.Status = params.get("Status")
+        self.StatusDesc = params.get("StatusDesc")
+        self.DbType = params.get("DbType")
+        self.DbVersion = params.get("DbVersion")
+        self.Cpu = params.get("Cpu")
+        self.Memory = params.get("Memory")
+        self.Storage = params.get("Storage")
+        self.InstanceType = params.get("InstanceType")
+        self.InstanceRole = params.get("InstanceRole")
+        self.UpdateTime = params.get("UpdateTime")
+        self.CreateTime = params.get("CreateTime")
+        self.PayMode = params.get("PayMode")
+        self.PeriodEndTime = params.get("PeriodEndTime")
+        self.NetType = params.get("NetType")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.Vip = params.get("Vip")
+        self.Vport = params.get("Vport")
+        self.WanDomain = params.get("WanDomain")
+        self.Charset = params.get("Charset")
+        self.CynosVersion = params.get("CynosVersion")
+        self.RenewFlag = params.get("RenewFlag")
+
+
 class DescribeAccountsRequest(AbstractModel):
     """DescribeAccounts请求参数结构体
 
@@ -936,6 +1073,46 @@ class DescribeClustersResponse(AbstractModel):
                 obj = CynosdbCluster()
                 obj._deserialize(item)
                 self.ClusterSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInstanceDetailRequest(AbstractModel):
+    """DescribeInstanceDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class DescribeInstanceDetailResponse(AbstractModel):
+    """DescribeInstanceDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Detail: 实例详情
+        :type Detail: :class:`tencentcloud.cynosdb.v20190107.models.CynosdbInstanceDetail`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Detail = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Detail") is not None:
+            self.Detail = CynosdbInstanceDetail()
+            self.Detail._deserialize(params.get("Detail"))
         self.RequestId = params.get("RequestId")
 
 
@@ -1458,6 +1635,48 @@ class OfflineClusterRequest(AbstractModel):
 
 class OfflineClusterResponse(AbstractModel):
     """OfflineCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: 任务流ID
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class OfflineInstanceRequest(AbstractModel):
+    """OfflineInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param InstanceIdList: 实例ID数组
+        :type InstanceIdList: list of str
+        """
+        self.ClusterId = None
+        self.InstanceIdList = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.InstanceIdList = params.get("InstanceIdList")
+
+
+class OfflineInstanceResponse(AbstractModel):
+    """OfflineInstance返回参数结构体
 
     """
 

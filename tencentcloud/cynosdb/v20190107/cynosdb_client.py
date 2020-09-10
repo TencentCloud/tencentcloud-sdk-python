@@ -221,6 +221,34 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeInstanceDetail(self, request):
+        """本接口(DescribeInstanceDetail)用于查询实例详情。
+
+        :param request: Request instance for DescribeInstanceDetail.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeInstanceDetailRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeInstanceDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInstanceDetail", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstanceDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeInstanceSpecs(self, request):
         """本接口（DescribeInstanceSpecs）用于查询实例规格
 
@@ -362,7 +390,7 @@ class CynosdbClient(AbstractClient):
 
 
     def IsolateInstance(self, request):
-        """本接口(IsolateInstance)用于隔离实例访问。
+        """本接口(IsolateInstance)用于隔离实例。
 
         :param request: Request instance for IsolateInstance.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.IsolateInstanceRequest`
@@ -487,6 +515,34 @@ class CynosdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.OfflineClusterResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def OfflineInstance(self, request):
+        """下线实例
+
+        :param request: Request instance for OfflineInstance.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.OfflineInstanceRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.OfflineInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("OfflineInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.OfflineInstanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

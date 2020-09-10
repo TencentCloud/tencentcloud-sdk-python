@@ -130,6 +130,92 @@ class Bundle(AbstractModel):
         self.BundleSalesState = params.get("BundleSalesState")
 
 
+class CreateFirewallRulesRequest(AbstractModel):
+    """CreateFirewallRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例 ID。
+        :type InstanceId: str
+        :param FirewallRules: 防火墙规则列表。
+        :type FirewallRules: list of FirewallRule
+        """
+        self.InstanceId = None
+        self.FirewallRules = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("FirewallRules") is not None:
+            self.FirewallRules = []
+            for item in params.get("FirewallRules"):
+                obj = FirewallRule()
+                obj._deserialize(item)
+                self.FirewallRules.append(obj)
+
+
+class CreateFirewallRulesResponse(AbstractModel):
+    """CreateFirewallRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteFirewallRulesRequest(AbstractModel):
+    """DeleteFirewallRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例 ID。
+        :type InstanceId: str
+        :param FirewallRules: 防火墙规则列表。
+        :type FirewallRules: list of FirewallRule
+        """
+        self.InstanceId = None
+        self.FirewallRules = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("FirewallRules") is not None:
+            self.FirewallRules = []
+            for item in params.get("FirewallRules"):
+                obj = FirewallRule()
+                obj._deserialize(item)
+                self.FirewallRules.append(obj)
+
+
+class DeleteFirewallRulesResponse(AbstractModel):
+    """DeleteFirewallRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeBlueprintsRequest(AbstractModel):
     """DescribeBlueprints请求参数结构体
 
@@ -278,6 +364,61 @@ class DescribeBundlesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeFirewallRulesRequest(AbstractModel):
+    """DescribeFirewallRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例 ID。
+        :type InstanceId: str
+        :param Offset: 偏移量，默认为 0。
+        :type Offset: int
+        :param Limit: 返回数量，默认为 20，最大值为 100。
+        :type Limit: int
+        """
+        self.InstanceId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeFirewallRulesResponse(AbstractModel):
+    """DescribeFirewallRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的防火墙规则数量。
+        :type TotalCount: int
+        :param FirewallRuleSet: 防火墙规则详细信息列表。
+        :type FirewallRuleSet: list of FirewallRuleInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.FirewallRuleSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("FirewallRuleSet") is not None:
+            self.FirewallRuleSet = []
+            for item in params.get("FirewallRuleSet"):
+                obj = FirewallRuleInfo()
+                obj._deserialize(item)
+                self.FirewallRuleSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeInstancesRequest(AbstractModel):
     """DescribeInstances请求参数结构体
 
@@ -381,6 +522,52 @@ class Filter(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Values = params.get("Values")
+
+
+class FirewallRule(AbstractModel):
+    """描述防火墙规则信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param Protocol: 协议，取值：TCP，UDP，ALL。
+        :type Protocol: str
+        :param Port: 端口，取值：ALL，单独的端口，逗号分隔的离散端口，减号分隔的端口范围。
+        :type Port: str
+        """
+        self.Protocol = None
+        self.Port = None
+
+
+    def _deserialize(self, params):
+        self.Protocol = params.get("Protocol")
+        self.Port = params.get("Port")
+
+
+class FirewallRuleInfo(AbstractModel):
+    """描述防火墙规则详细信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param AppType: 应用类型，取值：自定义，HTTP(80)，HTTPS(443)，Linux登录(22)，Windows登录(3389)，MySQL(3306)，SQL Server(1433)，全部TCP，全部UDP，ALL。
+        :type AppType: str
+        :param Protocol: 协议，取值：TCP，UDP，ALL。
+        :type Protocol: str
+        :param Port: 端口，取值：ALL，单独的端口，逗号分隔的离散端口，减号分隔的端口范围。
+        :type Port: str
+        """
+        self.AppType = None
+        self.Protocol = None
+        self.Port = None
+
+
+    def _deserialize(self, params):
+        self.AppType = params.get("AppType")
+        self.Protocol = params.get("Protocol")
+        self.Port = params.get("Port")
 
 
 class Instance(AbstractModel):

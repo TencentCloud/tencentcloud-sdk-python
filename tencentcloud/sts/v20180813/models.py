@@ -120,7 +120,7 @@ class AssumeRoleWithSAMLRequest(AbstractModel):
         :type RoleArn: str
         :param RoleSessionName: 会话名称
         :type RoleSessionName: str
-        :param DurationSeconds: 指定临时证书的有效期，单位：秒，默认 7200 秒，最长可设定有效期为 7200 秒
+        :param DurationSeconds: 指定临时证书的有效期，单位：秒，默认 7200 秒，最长可设定有效期为 43200 秒
         :type DurationSeconds: int
         """
         self.SAMLAssertion = None
@@ -176,11 +176,11 @@ class Credentials(AbstractModel):
 
     def __init__(self):
         """
-        :param Token: token
+        :param Token: token。token长度和绑定的策略有关，最长不超过4096字节。
         :type Token: str
-        :param TmpSecretId: 临时证书密钥ID
+        :param TmpSecretId: 临时证书密钥ID。最长不超过1024字节。
         :type TmpSecretId: str
-        :param TmpSecretKey: 临时证书密钥Key
+        :param TmpSecretKey: 临时证书密钥Key。最长不超过1024字节。
         :type TmpSecretKey: str
         """
         self.Token = None
@@ -209,7 +209,7 @@ class GetFederationTokenRequest(AbstractModel):
 2、策略中不能包含 principal 元素。
 3、该参数需要做urlencode。
         :type Policy: str
-        :param DurationSeconds: 指定临时证书的有效期，单位：秒，默认1800秒，最长可设定有效期为7200秒。
+        :param DurationSeconds: 指定临时证书的有效期，单位：秒，默认1800秒，主账号最长可设定有效期为7200秒，子账号最长可设定有效期为129600秒。
         :type DurationSeconds: int
         """
         self.Name = None

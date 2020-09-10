@@ -1466,11 +1466,17 @@ origin: 保持原始编码格式
         :param Profile: 编码质量：
 baseline/main/high。默认baseline
         :type Profile: str
-        :param BitrateToOrig: 是否不超过原始码率，0：否，1：是。默认0。
+        :param BitrateToOrig: 当设置的码率>原始码率时，是否以原始码率为准。
+0：否， 1：是
+默认 0。
         :type BitrateToOrig: int
-        :param HeightToOrig: 是否不超过原始高，0：否，1：是。默认0。
+        :param HeightToOrig: 当设置的高度>原始高度时，是否以原始高度为准。
+0：否， 1：是
+默认 0。
         :type HeightToOrig: int
-        :param FpsToOrig: 是否不超过原始帧率，0：否，1：是。默认0。
+        :param FpsToOrig: 当设置的帧率>原始帧率时，是否以原始帧率为准。
+0：否， 1：是
+默认 0。
         :type FpsToOrig: int
         :param AiTransCode: 是否是极速高清模板，0：否，1：是。默认0。
         :type AiTransCode: int
@@ -6356,11 +6362,17 @@ origin: 保持原始编码格式
         :param Profile: 编码质量：
 baseline/main/high。
         :type Profile: str
-        :param BitrateToOrig: 是否不超过原始码率。0：否，1：是。默认0。
+        :param BitrateToOrig: 当设置的码率>原始码率时，是否以原始码率为准。
+0：否， 1：是
+默认 0。
         :type BitrateToOrig: int
-        :param HeightToOrig: 是否不超过原始高。0：否，1：是。默认0。
+        :param HeightToOrig: 当设置的高度>原始高度时，是否以原始高度为准。
+0：否， 1：是
+默认 0。
         :type HeightToOrig: int
-        :param FpsToOrig: 是否不超过原始帧率。0：否，1：是。默认0。
+        :param FpsToOrig: 当设置的帧率>原始帧率时，是否以原始帧率为准。
+0：否， 1：是
+默认 0。
         :type FpsToOrig: int
         :param AdaptBitratePercent: 极速高清视频码率压缩比。
 极速高清目标码率=VideoBitrate * (1-AdaptBitratePercent)

@@ -25,6 +25,70 @@ class LighthouseClient(AbstractClient):
     _endpoint = 'lighthouse.tencentcloudapi.com'
 
 
+    def CreateFirewallRules(self, request):
+        """本接口（CreateFirewallRules）用于在实例上添加防火墙规则。
+
+        * Protocol 字段支持输入 TCP，UDP，或 ALL。
+
+        * Port 字段允许输入 ALL，或者一个单独的端口号，或者用逗号分隔的离散端口号，或者用减号分隔的两个端口号代表的端口范围。当 Port 为范围时，减号分隔的第一个端口号小于第二个端口号。当 Protocol 字段不是 TCP 或 UDP 时，Port 字段只能为空或 ALL。Port 字段长度不得超过 64。
+
+        :param request: Request instance for CreateFirewallRules.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.CreateFirewallRulesRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.CreateFirewallRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateFirewallRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateFirewallRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteFirewallRules(self, request):
+        """本接口（DeleteFirewallRules）用于删除实例的防火墙规则。
+
+        * Protocol 字段支持输入 TCP，UDP，或 ALL。
+
+        * Port 字段允许输入 ALL，或者一个单独的端口号，或者用逗号分隔的离散端口号，或者用减号分隔的两个端口号代表的端口范围。当 Port 为范围时，减号分隔的第一个端口号小于第二个端口号。当 Protocol 字段不是 TCP 或 UDP 时，Port 字段只能为空或 ALL。Port 字段长度不得超过 64。
+
+        :param request: Request instance for DeleteFirewallRules.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.DeleteFirewallRulesRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DeleteFirewallRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteFirewallRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteFirewallRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBlueprints(self, request):
         """本接口（DescribeBlueprints）用于查询镜像信息。
 
@@ -67,6 +131,34 @@ class LighthouseClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBundlesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeFirewallRules(self, request):
+        """本接口（DescribeFirewallRules）用于查询实例的防火墙规则。
+
+        :param request: Request instance for DescribeFirewallRules.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeFirewallRulesRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DescribeFirewallRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeFirewallRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeFirewallRulesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

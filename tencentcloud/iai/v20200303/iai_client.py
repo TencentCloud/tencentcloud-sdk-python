@@ -922,8 +922,6 @@ class IaiClient(AbstractClient):
 
         回滚操作会在10s内生效，回滚操作中，您对人员库的操作可能会失效。
 
-        注：给客户我会写10s内生效，我们实际上越快越好。待讨论。
-
         :param request: Request instance for RevertGroupFaceModelVersion.
         :type request: :class:`tencentcloud.iai.v20200303.models.RevertGroupFaceModelVersionRequest`
         :rtype: :class:`tencentcloud.iai.v20200303.models.RevertGroupFaceModelVersionResponse`
