@@ -660,6 +660,167 @@ class CynosdbClusterDetail(AbstractModel):
         self.Zone = params.get("Zone")
 
 
+class CynosdbInstance(AbstractModel):
+    """实例信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Uin: 用户Uin
+        :type Uin: str
+        :param AppId: 用户AppId
+        :type AppId: int
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param ClusterName: 集群名称
+        :type ClusterName: str
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param InstanceName: 实例名称
+        :type InstanceName: str
+        :param ProjectId: 项目ID
+        :type ProjectId: int
+        :param Region: 地域
+        :type Region: str
+        :param Zone: 可用区
+        :type Zone: str
+        :param Status: 实例状态
+        :type Status: str
+        :param StatusDesc: 实例状态中文描述
+        :type StatusDesc: str
+        :param DbType: 数据库类型
+        :type DbType: str
+        :param DbVersion: 数据库版本
+        :type DbVersion: str
+        :param Cpu: Cpu，单位：核
+        :type Cpu: int
+        :param Memory: 内存，单位：GB
+        :type Memory: int
+        :param Storage: 存储量，单位：GB
+        :type Storage: int
+        :param InstanceType: 实例类型
+        :type InstanceType: str
+        :param InstanceRole: 实例当前角色
+        :type InstanceRole: str
+        :param UpdateTime: 更新时间
+        :type UpdateTime: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param VpcId: VPC网络ID
+        :type VpcId: str
+        :param SubnetId: 子网ID
+        :type SubnetId: str
+        :param Vip: 实例内网IP
+        :type Vip: str
+        :param Vport: 实例内网端口
+        :type Vport: int
+        :param PayMode: 付费模式
+        :type PayMode: int
+        :param PeriodEndTime: 实例过期时间
+        :type PeriodEndTime: str
+        :param DestroyDeadlineText: 销毁期限
+        :type DestroyDeadlineText: str
+        :param IsolateTime: 隔离时间
+        :type IsolateTime: str
+        :param NetType: 网络类型
+        :type NetType: int
+        :param WanDomain: 外网域名
+        :type WanDomain: str
+        :param WanIP: 外网IP
+        :type WanIP: str
+        :param WanPort: 外网端口
+        :type WanPort: int
+        :param WanStatus: 外网状态
+        :type WanStatus: str
+        :param DestroyTime: 实例销毁时间
+        :type DestroyTime: str
+        :param CynosVersion: Cynos内核版本
+        :type CynosVersion: str
+        :param ProcessingTask: 正在处理的任务
+        :type ProcessingTask: str
+        :param RenewFlag: 续费标志
+        :type RenewFlag: int
+        """
+        self.Uin = None
+        self.AppId = None
+        self.ClusterId = None
+        self.ClusterName = None
+        self.InstanceId = None
+        self.InstanceName = None
+        self.ProjectId = None
+        self.Region = None
+        self.Zone = None
+        self.Status = None
+        self.StatusDesc = None
+        self.DbType = None
+        self.DbVersion = None
+        self.Cpu = None
+        self.Memory = None
+        self.Storage = None
+        self.InstanceType = None
+        self.InstanceRole = None
+        self.UpdateTime = None
+        self.CreateTime = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.Vip = None
+        self.Vport = None
+        self.PayMode = None
+        self.PeriodEndTime = None
+        self.DestroyDeadlineText = None
+        self.IsolateTime = None
+        self.NetType = None
+        self.WanDomain = None
+        self.WanIP = None
+        self.WanPort = None
+        self.WanStatus = None
+        self.DestroyTime = None
+        self.CynosVersion = None
+        self.ProcessingTask = None
+        self.RenewFlag = None
+
+
+    def _deserialize(self, params):
+        self.Uin = params.get("Uin")
+        self.AppId = params.get("AppId")
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterName = params.get("ClusterName")
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.ProjectId = params.get("ProjectId")
+        self.Region = params.get("Region")
+        self.Zone = params.get("Zone")
+        self.Status = params.get("Status")
+        self.StatusDesc = params.get("StatusDesc")
+        self.DbType = params.get("DbType")
+        self.DbVersion = params.get("DbVersion")
+        self.Cpu = params.get("Cpu")
+        self.Memory = params.get("Memory")
+        self.Storage = params.get("Storage")
+        self.InstanceType = params.get("InstanceType")
+        self.InstanceRole = params.get("InstanceRole")
+        self.UpdateTime = params.get("UpdateTime")
+        self.CreateTime = params.get("CreateTime")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.Vip = params.get("Vip")
+        self.Vport = params.get("Vport")
+        self.PayMode = params.get("PayMode")
+        self.PeriodEndTime = params.get("PeriodEndTime")
+        self.DestroyDeadlineText = params.get("DestroyDeadlineText")
+        self.IsolateTime = params.get("IsolateTime")
+        self.NetType = params.get("NetType")
+        self.WanDomain = params.get("WanDomain")
+        self.WanIP = params.get("WanIP")
+        self.WanPort = params.get("WanPort")
+        self.WanStatus = params.get("WanStatus")
+        self.DestroyTime = params.get("DestroyTime")
+        self.CynosVersion = params.get("CynosVersion")
+        self.ProcessingTask = params.get("ProcessingTask")
+        self.RenewFlag = params.get("RenewFlag")
+
+
 class CynosdbInstanceDetail(AbstractModel):
     """实例详情
 
@@ -795,6 +956,84 @@ class CynosdbInstanceDetail(AbstractModel):
         self.Charset = params.get("Charset")
         self.CynosVersion = params.get("CynosVersion")
         self.RenewFlag = params.get("RenewFlag")
+
+
+class CynosdbInstanceGrp(AbstractModel):
+    """实例组信息
+
+    """
+
+    def __init__(self):
+        """
+        :param AppId: appId
+        :type AppId: int
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param CreatedTime: 创建时间
+        :type CreatedTime: str
+        :param DeletedTime: 删除时间
+        :type DeletedTime: str
+        :param InstanceGrpId: 实例组ID
+        :type InstanceGrpId: str
+        :param Status: 状态
+        :type Status: str
+        :param Type: 实例组类型。ha-ha组；ro-只读组
+        :type Type: str
+        :param UpdatedTime: 更新时间
+        :type UpdatedTime: str
+        :param Vip: 内网IP
+        :type Vip: str
+        :param Vport: 内网端口
+        :type Vport: int
+        :param WanDomain: 外网域名
+        :type WanDomain: str
+        :param WanIP: 外网ip
+        :type WanIP: str
+        :param WanPort: 外网端口
+        :type WanPort: int
+        :param WanStatus: 外网状态
+        :type WanStatus: str
+        :param InstanceSet: 实例组包含实例信息
+        :type InstanceSet: list of CynosdbInstance
+        """
+        self.AppId = None
+        self.ClusterId = None
+        self.CreatedTime = None
+        self.DeletedTime = None
+        self.InstanceGrpId = None
+        self.Status = None
+        self.Type = None
+        self.UpdatedTime = None
+        self.Vip = None
+        self.Vport = None
+        self.WanDomain = None
+        self.WanIP = None
+        self.WanPort = None
+        self.WanStatus = None
+        self.InstanceSet = None
+
+
+    def _deserialize(self, params):
+        self.AppId = params.get("AppId")
+        self.ClusterId = params.get("ClusterId")
+        self.CreatedTime = params.get("CreatedTime")
+        self.DeletedTime = params.get("DeletedTime")
+        self.InstanceGrpId = params.get("InstanceGrpId")
+        self.Status = params.get("Status")
+        self.Type = params.get("Type")
+        self.UpdatedTime = params.get("UpdatedTime")
+        self.Vip = params.get("Vip")
+        self.Vport = params.get("Vport")
+        self.WanDomain = params.get("WanDomain")
+        self.WanIP = params.get("WanIP")
+        self.WanPort = params.get("WanPort")
+        self.WanStatus = params.get("WanStatus")
+        if params.get("InstanceSet") is not None:
+            self.InstanceSet = []
+            for item in params.get("InstanceSet"):
+                obj = CynosdbInstance()
+                obj._deserialize(item)
+                self.InstanceSet.append(obj)
 
 
 class DescribeAccountsRequest(AbstractModel):
@@ -1000,6 +1239,53 @@ class DescribeClusterDetailResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeClusterInstanceGrpsRequest(AbstractModel):
+    """DescribeClusterInstanceGrps请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+
+
+class DescribeClusterInstanceGrpsResponse(AbstractModel):
+    """DescribeClusterInstanceGrps返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 实例组个数
+        :type TotalCount: int
+        :param InstanceGrpInfoList: 实例组列表
+        :type InstanceGrpInfoList: list of CynosdbInstanceGrp
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.InstanceGrpInfoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("InstanceGrpInfoList") is not None:
+            self.InstanceGrpInfoList = []
+            for item in params.get("InstanceGrpInfoList"):
+                obj = CynosdbInstanceGrp()
+                obj._deserialize(item)
+                self.InstanceGrpInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeClustersRequest(AbstractModel):
     """DescribeClusters请求参数结构体
 
@@ -1073,6 +1359,49 @@ class DescribeClustersResponse(AbstractModel):
                 obj = CynosdbCluster()
                 obj._deserialize(item)
                 self.ClusterSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDBSecurityGroupsRequest(AbstractModel):
+    """DescribeDBSecurityGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例组ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class DescribeDBSecurityGroupsResponse(AbstractModel):
+    """DescribeDBSecurityGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Groups: 安全组信息
+        :type Groups: list of SecurityGroup
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Groups = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Groups") is not None:
+            self.Groups = []
+            for item in params.get("Groups"):
+                obj = SecurityGroup()
+                obj._deserialize(item)
+                self.Groups.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1203,6 +1532,49 @@ class DescribeMaintainPeriodResponse(AbstractModel):
         self.MaintainWeekDays = params.get("MaintainWeekDays")
         self.MaintainStartTime = params.get("MaintainStartTime")
         self.MaintainDuration = params.get("MaintainDuration")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeProjectSecurityGroupsRequest(AbstractModel):
+    """DescribeProjectSecurityGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProjectId: 项目ID
+        :type ProjectId: int
+        """
+        self.ProjectId = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+
+
+class DescribeProjectSecurityGroupsResponse(AbstractModel):
+    """DescribeProjectSecurityGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Groups: 安全组详情
+        :type Groups: list of SecurityGroup
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Groups = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Groups") is not None:
+            self.Groups = []
+            for item in params.get("Groups"):
+                obj = SecurityGroup()
+                obj._deserialize(item)
+                self.Groups.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1696,6 +2068,51 @@ class OfflineInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class PolicyRule(AbstractModel):
+    """安全组规则
+
+    """
+
+    def __init__(self):
+        """
+        :param Action: 策略，ACCEPT或者DROP
+        :type Action: str
+        :param CidrIp: 来源Ip或Ip段，例如192.168.0.0/16
+        :type CidrIp: str
+        :param PortRange: 端口
+        :type PortRange: str
+        :param IpProtocol: 网络协议，支持udp、tcp等
+        :type IpProtocol: str
+        :param ServiceModule: 协议端口ID或者协议端口组ID。
+        :type ServiceModule: str
+        :param AddressModule: IP地址ID或者ID地址组ID。
+        :type AddressModule: str
+        :param Id: id
+        :type Id: str
+        :param Desc: 描述
+        :type Desc: str
+        """
+        self.Action = None
+        self.CidrIp = None
+        self.PortRange = None
+        self.IpProtocol = None
+        self.ServiceModule = None
+        self.AddressModule = None
+        self.Id = None
+        self.Desc = None
+
+
+    def _deserialize(self, params):
+        self.Action = params.get("Action")
+        self.CidrIp = params.get("CidrIp")
+        self.PortRange = params.get("PortRange")
+        self.IpProtocol = params.get("IpProtocol")
+        self.ServiceModule = params.get("ServiceModule")
+        self.AddressModule = params.get("AddressModule")
+        self.Id = params.get("Id")
+        self.Desc = params.get("Desc")
+
+
 class QueryFilter(AbstractModel):
     """查询过滤器
 
@@ -1723,6 +2140,57 @@ class QueryFilter(AbstractModel):
         self.Values = params.get("Values")
         self.ExactMatch = params.get("ExactMatch")
         self.Name = params.get("Name")
+
+
+class SecurityGroup(AbstractModel):
+    """安全组详情
+
+    """
+
+    def __init__(self):
+        """
+        :param ProjectId: 项目ID
+        :type ProjectId: int
+        :param CreateTime: 创建时间，时间格式：yyyy-mm-dd hh:mm:ss
+        :type CreateTime: str
+        :param Inbound: 入站规则
+        :type Inbound: list of PolicyRule
+        :param Outbound: 出站规则
+        :type Outbound: list of PolicyRule
+        :param SecurityGroupId: 安全组ID
+        :type SecurityGroupId: str
+        :param SecurityGroupName: 安全组名称
+        :type SecurityGroupName: str
+        :param SecurityGroupRemark: 安全组备注
+        :type SecurityGroupRemark: str
+        """
+        self.ProjectId = None
+        self.CreateTime = None
+        self.Inbound = None
+        self.Outbound = None
+        self.SecurityGroupId = None
+        self.SecurityGroupName = None
+        self.SecurityGroupRemark = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.CreateTime = params.get("CreateTime")
+        if params.get("Inbound") is not None:
+            self.Inbound = []
+            for item in params.get("Inbound"):
+                obj = PolicyRule()
+                obj._deserialize(item)
+                self.Inbound.append(obj)
+        if params.get("Outbound") is not None:
+            self.Outbound = []
+            for item in params.get("Outbound"):
+                obj = PolicyRule()
+                obj._deserialize(item)
+                self.Outbound.append(obj)
+        self.SecurityGroupId = params.get("SecurityGroupId")
+        self.SecurityGroupName = params.get("SecurityGroupName")
+        self.SecurityGroupRemark = params.get("SecurityGroupRemark")
 
 
 class SetRenewFlagRequest(AbstractModel):

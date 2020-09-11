@@ -193,6 +193,34 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeClusterInstanceGrps(self, request):
+        """本接口（DescribeClusterInstanceGrps）用于查询实例组
+
+        :param request: Request instance for DescribeClusterInstanceGrps.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterInstanceGrpsRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterInstanceGrpsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeClusterInstanceGrps", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClusterInstanceGrpsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeClusters(self, request):
         """查询集群列表
 
@@ -207,6 +235,34 @@ class CynosdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClustersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDBSecurityGroups(self, request):
+        """查询实例安全组信息
+
+        :param request: Request instance for DescribeDBSecurityGroups.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeDBSecurityGroupsRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeDBSecurityGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDBSecurityGroups", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDBSecurityGroupsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -291,6 +347,34 @@ class CynosdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMaintainPeriodResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeProjectSecurityGroups(self, request):
+        """查询项目安全组信息
+
+        :param request: Request instance for DescribeProjectSecurityGroups.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeProjectSecurityGroupsRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeProjectSecurityGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeProjectSecurityGroups", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeProjectSecurityGroupsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
