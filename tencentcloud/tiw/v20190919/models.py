@@ -257,6 +257,9 @@ class DescribeOnlineRecordResponse(AbstractModel):
         :type OmittedDurations: list of OmittedDuration
         :param VideoInfos: 录制视频列表
         :type VideoInfos: list of VideoInfo
+        :param ReplayUrl: 回放URL，需配合信令播放器使用。此字段仅适用于`视频生成模式`
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReplayUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -272,6 +275,7 @@ class DescribeOnlineRecordResponse(AbstractModel):
         self.ExceptionCnt = None
         self.OmittedDurations = None
         self.VideoInfos = None
+        self.ReplayUrl = None
         self.RequestId = None
 
 
@@ -298,6 +302,7 @@ class DescribeOnlineRecordResponse(AbstractModel):
                 obj = VideoInfo()
                 obj._deserialize(item)
                 self.VideoInfos.append(obj)
+        self.ReplayUrl = params.get("ReplayUrl")
         self.RequestId = params.get("RequestId")
 
 
@@ -821,18 +826,18 @@ class StartOnlineRecordRequest(AbstractModel):
         :type SdkAppId: int
         :param RoomId: 需要录制的房间号，取值范围: (1, 4294967295)
         :type RoomId: int
-        :param RecordUserId: 用于实时录制服务进房的用户ID，格式为`tic_record_user_${RoomId}_${Random}`，其中 `${RoomId} `与录制房间号对应，`${Random}`为一个随机字符串。
-该ID必须是一个单独的未在SDK中使用的ID，实时录制服务使用这个用户ID进入房间进行音视频与白板录制，若该ID和SDK中使用的ID重复，会导致SDK和录制服务互踢，影响正常录制。
+        :param RecordUserId: 用于录制服务进房的用户ID，格式为`tic_record_user_${RoomId}_${Random}`，其中 `${RoomId} `与录制房间号对应，`${Random}`为一个随机字符串。
+该ID必须是一个单独的未在SDK中使用的ID，录制服务使用这个用户ID进入房间进行音视频与白板录制，若该ID和SDK中使用的ID重复，会导致SDK和录制服务互踢，影响正常录制。
         :type RecordUserId: str
         :param RecordUserSig: 与RecordUserId对应的签名
         :type RecordUserSig: str
         :param GroupId: （已废弃，设置无效）白板的 IM 群组 Id，默认同房间号
         :type GroupId: str
-        :param Concat: 实时录制视频拼接参数
+        :param Concat: 录制视频拼接参数
         :type Concat: :class:`tencentcloud.tiw.v20190919.models.Concat`
-        :param Whiteboard: 实时录制白板参数，例如白板宽高等
+        :param Whiteboard: 录制白板参数，例如白板宽高等
         :type Whiteboard: :class:`tencentcloud.tiw.v20190919.models.Whiteboard`
-        :param MixStream: 实时录制混流参数
+        :param MixStream: 录制混流参数
 特别说明：
 1. 混流功能需要根据额外开通， 请联系腾讯云互动白板客服人员
 2. 使用混流功能，必须提供 Extras 参数，且 Extras 参数中必须包含 "MIX_STREAM"
@@ -843,8 +848,17 @@ MIX_STREAM - 混流功能
         :type Extras: list of str
         :param AudioFileNeeded: 是否需要在结果回调中返回各路流的纯音频录制文件，文件格式为mp3
         :type AudioFileNeeded: bool
-        :param RecordControl: 实时录制控制参数，用于更精细地指定需要录制哪些流，某一路流是否禁用音频，是否只录制小画面等
+        :param RecordControl: 录制控制参数，用于更精细地指定需要录制哪些流，某一路流是否禁用音频，是否只录制小画面等
         :type RecordControl: :class:`tencentcloud.tiw.v20190919.models.RecordControl`
+        :param RecordMode: 录制模式
+
+REALTIME_MODE - 实时录制模式（默认）
+VIDEO_GENERATION_MODE - 视频生成模式（内测中，需邮件申请开通）
+        :type RecordMode: str
+        :param ChatGroupId: 聊天群组ID，此字段仅适用于`视频生成模式`
+
+在`视频生成模式`下，默认会记录白板群组内的非白板信令消息，如果指定了`ChatGroupId`，则会记录指定群ID的聊天消息。
+        :type ChatGroupId: str
         """
         self.SdkAppId = None
         self.RoomId = None
@@ -857,6 +871,8 @@ MIX_STREAM - 混流功能
         self.Extras = None
         self.AudioFileNeeded = None
         self.RecordControl = None
+        self.RecordMode = None
+        self.ChatGroupId = None
 
 
     def _deserialize(self, params):
@@ -879,6 +895,8 @@ MIX_STREAM - 混流功能
         if params.get("RecordControl") is not None:
             self.RecordControl = RecordControl()
             self.RecordControl._deserialize(params.get("RecordControl"))
+        self.RecordMode = params.get("RecordMode")
+        self.ChatGroupId = params.get("ChatGroupId")
 
 
 class StartOnlineRecordResponse(AbstractModel):
@@ -888,7 +906,7 @@ class StartOnlineRecordResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 实时录制的任务Id
+        :param TaskId: 录制任务Id
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

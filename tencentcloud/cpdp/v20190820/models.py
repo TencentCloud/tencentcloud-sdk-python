@@ -9018,6 +9018,10 @@ sandbox: 沙箱环境
 development: 开发环境
 缺省: release
         :type MidasEnvironment: str
+        :param WxAppId: 微信商户应用ID
+        :type WxAppId: str
+        :param WxSubAppId: 微信商户子应用ID
+        :type WxSubAppId: str
         """
         self.CurrencyType = None
         self.MidasAppId = None
@@ -9042,6 +9046,8 @@ development: 开发环境
         self.WxOpenId = None
         self.WxSubOpenId = None
         self.MidasEnvironment = None
+        self.WxAppId = None
+        self.WxSubAppId = None
 
 
     def _deserialize(self, params):
@@ -9073,6 +9079,8 @@ development: 开发环境
         self.WxOpenId = params.get("WxOpenId")
         self.WxSubOpenId = params.get("WxSubOpenId")
         self.MidasEnvironment = params.get("MidasEnvironment")
+        self.WxAppId = params.get("WxAppId")
+        self.WxSubAppId = params.get("WxSubAppId")
 
 
 class UnifiedOrderResponse(AbstractModel):

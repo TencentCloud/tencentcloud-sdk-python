@@ -2457,7 +2457,7 @@ class DescribeBillBandwidthAndFluxListRequest(AbstractModel):
         """
         :param StartTime: 起始时间点，格式为yyyy-mm-dd HH:MM:SS。
         :type StartTime: str
-        :param EndTime: 结束时间点，格式为yyyy-mm-dd HH:MM:SS，起始和结束时间跨度不支持超过31天。
+        :param EndTime: 结束时间点，格式为yyyy-mm-dd HH:MM:SS，起始和结束时间跨度不支持超过31天。支持最近3年的数据查询
         :type EndTime: str
         :param PlayDomains: 直播播放域名，若不填，表示总体数据。
         :type PlayDomains: list of str
@@ -4858,7 +4858,7 @@ class DescribeStreamDayPlayInfoListRequest(AbstractModel):
     def __init__(self):
         """
         :param DayTime: 日期，格式：YYYY-mm-dd。
-第二天凌晨3点出昨天的数据，建议在这个时间点之后查询最新数据。
+第二天凌晨3点出昨天的数据，建议在这个时间点之后查询最新数据。支持最近3个月的数据查询。
         :type DayTime: str
         :param PlayDomain: 播放域名。
         :type PlayDomain: str
@@ -4929,11 +4929,10 @@ class DescribeStreamPlayInfoListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: 开始时间，北京时间，格式为yyyy-mm-dd HH:MM:SS，
-当前时间 和 开始时间 间隔不超过30天。
+        :param StartTime: 开始时间，北京时间，格式为yyyy-mm-dd HH:MM:SS
         :type StartTime: str
         :param EndTime: 结束时间，北京时间，格式为yyyy-mm-dd HH:MM:SS，
-结束时间 和 开始时间  必须在同一天内。
+结束时间 和 开始时间  必须在同一天内，支持距当前时间30天内的数据查询。
         :type EndTime: str
         :param PlayDomain: 播放域名，
 若不填，则为查询所有播放域名的在线流数据。

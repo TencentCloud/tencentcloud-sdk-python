@@ -54,7 +54,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribeOnlineRecord(self, request):
-        """查询实时录制任务状态与结果
+        """查询录制任务状态与结果
 
         :param request: Request instance for DescribeOnlineRecord.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeOnlineRecordRequest`

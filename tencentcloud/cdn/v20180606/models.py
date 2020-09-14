@@ -158,6 +158,8 @@ global：全球加速
         :type Area: str
         :param OriginPullTimeout: 回源超时配置
         :type OriginPullTimeout: :class:`tencentcloud.cdn.v20180606.models.OriginPullTimeout`
+        :param Tag: 标签配置
+        :type Tag: list of Tag
         """
         self.Domain = None
         self.ServiceType = None
@@ -189,6 +191,7 @@ global：全球加速
         self.SpecificConfig = None
         self.Area = None
         self.OriginPullTimeout = None
+        self.Tag = None
 
 
     def _deserialize(self, params):
@@ -274,6 +277,12 @@ global：全球加速
         if params.get("OriginPullTimeout") is not None:
             self.OriginPullTimeout = OriginPullTimeout()
             self.OriginPullTimeout._deserialize(params.get("OriginPullTimeout"))
+        if params.get("Tag") is not None:
+            self.Tag = []
+            for item in params.get("Tag"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tag.append(obj)
 
 
 class AddCdnDomainResponse(AbstractModel):
@@ -3374,6 +3383,9 @@ off：不支持
         :param AccessPort: 访问端口配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccessPort: list of int
+        :param Tag: 标签配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tag: list of Tag
         """
         self.ResourceId = None
         self.AppId = None
@@ -3422,6 +3434,7 @@ off：不支持
         self.Advance = None
         self.UrlRedirect = None
         self.AccessPort = None
+        self.Tag = None
 
 
     def _deserialize(self, params):
@@ -3538,6 +3551,12 @@ off：不支持
             self.UrlRedirect = UrlRedirect()
             self.UrlRedirect._deserialize(params.get("UrlRedirect"))
         self.AccessPort = params.get("AccessPort")
+        if params.get("Tag") is not None:
+            self.Tag = []
+            for item in params.get("Tag"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tag.append(obj)
 
 
 class DisableCachesRequest(AbstractModel):
@@ -6699,6 +6718,29 @@ avg：平均值
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Value = params.get("Value")
+
+
+class Tag(AbstractModel):
+    """域名标签配置
+
+    """
+
+    def __init__(self):
+        """
+        :param TagKey: 标签键
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagKey: str
+        :param TagValue: 标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
 
 
 class TimestampData(AbstractModel):
