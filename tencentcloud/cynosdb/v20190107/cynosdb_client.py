@@ -333,6 +333,34 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeInstances(self, request):
+        """本接口(DescribeInstances)用于查询实例列表。
+
+        :param request: Request instance for DescribeInstances.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeInstancesRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeMaintainPeriod(self, request):
         """查询实例维护时间窗
 

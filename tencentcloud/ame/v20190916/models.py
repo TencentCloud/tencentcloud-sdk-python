@@ -266,7 +266,8 @@ class DescribeMusicRequest(AbstractModel):
         :type ItemId: str
         :param IdentityId: 在应用前端播放音乐C端用户的唯一标识。无需是账户信息，用户唯一标识即可。
         :type IdentityId: str
-        :param SubItemType: 填 MP3-64K-FTD-P 获取歌曲热门片段
+        :param SubItemType: 基础版：入参 MP3-64K-FTD-P  获取64kbps歌曲热门片段。
+高级/商用版：入参 MP3-320K-FTD 获取320kbps已核验歌曲完整资源。
         :type SubItemType: str
         :param Ssl: CDN URL Protocol:HTTP or HTTPS/SSL
 Values:Y , N(default)

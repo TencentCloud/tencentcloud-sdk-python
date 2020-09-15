@@ -435,6 +435,69 @@ class DescribeAuthDomainsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCloudBaseBuildServiceRequest(AbstractModel):
+    """DescribeCloudBaseBuildService请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境id
+        :type EnvId: str
+        :param ServiceName: 服务名
+        :type ServiceName: str
+        :param CIBusiness: build类型,枚举值有: cloudbaserun, framework-ci
+        :type CIBusiness: str
+        """
+        self.EnvId = None
+        self.ServiceName = None
+        self.CIBusiness = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.ServiceName = params.get("ServiceName")
+        self.CIBusiness = params.get("CIBusiness")
+
+
+class DescribeCloudBaseBuildServiceResponse(AbstractModel):
+    """DescribeCloudBaseBuildService返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param UploadUrl: 上传url
+        :type UploadUrl: str
+        :param UploadHeaders: heder
+        :type UploadHeaders: list of KVPair
+        :param PackageName: 包名
+        :type PackageName: str
+        :param PackageVersion: 包版本
+        :type PackageVersion: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.UploadUrl = None
+        self.UploadHeaders = None
+        self.PackageName = None
+        self.PackageVersion = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.UploadUrl = params.get("UploadUrl")
+        if params.get("UploadHeaders") is not None:
+            self.UploadHeaders = []
+            for item in params.get("UploadHeaders"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self.UploadHeaders.append(obj)
+        self.PackageName = params.get("PackageName")
+        self.PackageVersion = params.get("PackageVersion")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDatabaseACLRequest(AbstractModel):
     """DescribeDatabaseACL请求参数结构体
 
@@ -1320,6 +1383,27 @@ class FunctionInfo(AbstractModel):
     def _deserialize(self, params):
         self.Namespace = params.get("Namespace")
         self.Region = params.get("Region")
+
+
+class KVPair(AbstractModel):
+    """键值对
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: 键
+        :type Key: str
+        :param Value: 值
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
 
 
 class LogServiceInfo(AbstractModel):

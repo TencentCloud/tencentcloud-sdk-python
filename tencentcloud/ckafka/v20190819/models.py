@@ -2947,10 +2947,14 @@ class SubscribedInfo(AbstractModel):
         :param PartitionOffset: 分区offset信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type PartitionOffset: list of PartitionOffset
+        :param TopicId: 订阅的主题ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicId: str
         """
         self.TopicName = None
         self.Partition = None
         self.PartitionOffset = None
+        self.TopicId = None
 
 
     def _deserialize(self, params):
@@ -2962,6 +2966,7 @@ class SubscribedInfo(AbstractModel):
                 obj = PartitionOffset()
                 obj._deserialize(item)
                 self.PartitionOffset.append(obj)
+        self.TopicId = params.get("TopicId")
 
 
 class Tag(AbstractModel):

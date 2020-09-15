@@ -1427,7 +1427,8 @@ class CreateLiveTranscodeTemplateRequest(AbstractModel):
   标准转码：1-10个字符
   极速高清转码：3-10个字符
         :type TemplateName: str
-        :param VideoBitrate: 视频码率。范围：100-8000。
+        :param VideoBitrate: 视频码率。范围：0kbps - 8000kbps。
+0为保持原始码率。
 注: 转码模板有码率唯一要求，最终保存的码率可能与输入码率有所差别。
         :type VideoBitrate: int
         :param Acodec: 音频编码：aac，默认aac。
@@ -1455,9 +1456,10 @@ origin: 保持原始编码格式
 数值必须是2的倍数，0是原始宽度
         :type Height: int
         :param Fps: 帧率，默认0。
-范围0-60
+范围0-60fps
         :type Fps: int
-        :param Gop: 关键帧间隔，单位：秒。默认原始的间隔
+        :param Gop: 关键帧间隔，单位：秒。
+默认原始的间隔
 范围2-6
         :type Gop: int
         :param Rotate: 旋转角度，默认0。
@@ -4101,6 +4103,21 @@ class DescribeLiveTranscodeRulesRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        """
+        :param TemplateIds: 要筛选的模板ID数组。
+        :type TemplateIds: list of int
+        :param DomainNames: 要筛选的域名数组。
+        :type DomainNames: list of str
+        """
+        self.TemplateIds = None
+        self.DomainNames = None
+
+
+    def _deserialize(self, params):
+        self.TemplateIds = params.get("TemplateIds")
+        self.DomainNames = params.get("DomainNames")
+
 
 class DescribeLiveTranscodeRulesResponse(AbstractModel):
     """DescribeLiveTranscodeRules返回参数结构体
@@ -6336,7 +6353,8 @@ origin: 保持原始编码格式
         :type AudioBitrate: int
         :param Description: 模板描述。
         :type Description: str
-        :param VideoBitrate: 视频码率。范围：100kbps - 8000kbps。
+        :param VideoBitrate: 视频码率。范围：0kbps - 8000kbps。
+0为保持原始码率。
 注: 转码模板有码率唯一要求，最终保存的码率可能与输入码率有所差别。
         :type VideoBitrate: int
         :param Width: 宽。0-3000。
@@ -7610,33 +7628,52 @@ class TemplateInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Vcodec: 视频编码：
-h264/h265。
+        :param Vcodec: 视频编码：h264/h265/origin，默认h264。
+
+origin: 保持原始编码格式
         :type Vcodec: str
-        :param VideoBitrate: 视频码率，取值范围：100kbps - 8000kbps。
+        :param VideoBitrate: 视频码率。范围：0kbps - 8000kbps。
+0为保持原始码率。
+注: 转码模板有码率唯一要求，最终保存的码率可能与输入码率有所差别。
         :type VideoBitrate: int
-        :param Acodec: 音频编码，可选 aac 或 mp3。
+        :param Acodec: 音频编码：aac，默认aac。
+注意：当前该参数未生效，待后续支持！
         :type Acodec: str
         :param AudioBitrate: 音频码率。取值范围：0kbps - 500kbps。
+默认0。
         :type AudioBitrate: int
-        :param Width: 宽，取值范围：0-3000。
+        :param Width: 宽，默认0。
+范围[0-3000]
+数值必须是2的倍数，0是原始宽度
         :type Width: int
-        :param Height: 高，取值范围：0-3000。
+        :param Height: 高，默认0。
+范围[0-3000]
+数值必须是2的倍数，0是原始宽度
         :type Height: int
-        :param Fps: 帧率。取值范围：0fps - 200fps。
+        :param Fps: 帧率，默认0。
+范围0-60fps
         :type Fps: int
-        :param Gop: 关键帧间隔，取值范围：1秒 - 50秒。
+        :param Gop: 关键帧间隔，单位：秒。
+默认原始的间隔
+范围2-6
         :type Gop: int
-        :param Rotate: 旋转角度。可选择：0 90 180 270。
+        :param Rotate: 旋转角度，默认0。
+可取值：0，90，180，270
         :type Rotate: int
-        :param Profile: 编码质量，可选择：
-baseline，main，high。
+        :param Profile: 编码质量：
+baseline/main/high。默认baseline
         :type Profile: str
-        :param BitrateToOrig: 是否不超过原始码率。0：否，1：是。
+        :param BitrateToOrig: 当设置的码率>原始码率时，是否以原始码率为准。
+0：否， 1：是
+默认 0。
         :type BitrateToOrig: int
-        :param HeightToOrig: 是否不超过原始高度。0：否，1：是。
+        :param HeightToOrig: 当设置的高度>原始高度时，是否以原始高度为准。
+0：否， 1：是
+默认 0。
         :type HeightToOrig: int
-        :param FpsToOrig: 是否不超过原始帧率。0：否，1：是。
+        :param FpsToOrig: 当设置的帧率>原始帧率时，是否以原始帧率为准。
+0：否， 1：是
+默认 0。
         :type FpsToOrig: int
         :param NeedVideo: 是否保留视频。0：否，1：是。
         :type NeedVideo: int
@@ -7650,8 +7687,14 @@ baseline，main，high。
         :type Description: str
         :param AiTransCode: 是否是极速高清模板，0：否，1：是。默认0。
         :type AiTransCode: int
-        :param AdaptBitratePercent: 极速高清相比 VideoBitrate 少多少码率，0.1到0.5。
+        :param AdaptBitratePercent: 极速高清视频码率压缩比。
+极速高清目标码率=VideoBitrate * (1-AdaptBitratePercent)
+
+取值范围：0.0到0.5
         :type AdaptBitratePercent: float
+        :param ShortEdgeAsHeight: 是否以短边作为高度，0：否，1：是。默认0。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShortEdgeAsHeight: int
         """
         self.Vcodec = None
         self.VideoBitrate = None
@@ -7673,6 +7716,7 @@ baseline，main，high。
         self.Description = None
         self.AiTransCode = None
         self.AdaptBitratePercent = None
+        self.ShortEdgeAsHeight = None
 
 
     def _deserialize(self, params):
@@ -7696,6 +7740,7 @@ baseline，main，high。
         self.Description = params.get("Description")
         self.AiTransCode = params.get("AiTransCode")
         self.AdaptBitratePercent = params.get("AdaptBitratePercent")
+        self.ShortEdgeAsHeight = params.get("ShortEdgeAsHeight")
 
 
 class TimeValue(AbstractModel):

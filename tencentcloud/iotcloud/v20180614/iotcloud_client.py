@@ -53,6 +53,34 @@ class IotcloudClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CancelDeviceFirmwareTask(self, request):
+        """取消设备升级任务
+
+        :param request: Request instance for CancelDeviceFirmwareTask.
+        :type request: :class:`tencentcloud.iotcloud.v20180614.models.CancelDeviceFirmwareTaskRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.CancelDeviceFirmwareTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CancelDeviceFirmwareTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CancelDeviceFirmwareTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CancelTask(self, request):
         """本接口（CancelTask）用于取消一个未被调度的任务。
 
@@ -585,6 +613,174 @@ class IotcloudClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeFirmware(self, request):
+        """查询固件信息
+
+        :param request: Request instance for DescribeFirmware.
+        :type request: :class:`tencentcloud.iotcloud.v20180614.models.DescribeFirmwareRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.DescribeFirmwareResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeFirmware", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeFirmwareResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeFirmwareTask(self, request):
+        """查询固件升级任务列表
+
+        :param request: Request instance for DescribeFirmwareTask.
+        :type request: :class:`tencentcloud.iotcloud.v20180614.models.DescribeFirmwareTaskRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.DescribeFirmwareTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeFirmwareTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeFirmwareTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeFirmwareTaskDevices(self, request):
+        """查询固件升级任务的设备列表
+
+        :param request: Request instance for DescribeFirmwareTaskDevices.
+        :type request: :class:`tencentcloud.iotcloud.v20180614.models.DescribeFirmwareTaskDevicesRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.DescribeFirmwareTaskDevicesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeFirmwareTaskDevices", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeFirmwareTaskDevicesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeFirmwareTaskDistribution(self, request):
+        """查询固件升级任务状态分布
+
+        :param request: Request instance for DescribeFirmwareTaskDistribution.
+        :type request: :class:`tencentcloud.iotcloud.v20180614.models.DescribeFirmwareTaskDistributionRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.DescribeFirmwareTaskDistributionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeFirmwareTaskDistribution", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeFirmwareTaskDistributionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeFirmwareTaskStatistics(self, request):
+        """查询固件升级任务统计信息
+
+        :param request: Request instance for DescribeFirmwareTaskStatistics.
+        :type request: :class:`tencentcloud.iotcloud.v20180614.models.DescribeFirmwareTaskStatisticsRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.DescribeFirmwareTaskStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeFirmwareTaskStatistics", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeFirmwareTaskStatisticsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeFirmwareTasks(self, request):
+        """查询固件升级任务列表
+
+        :param request: Request instance for DescribeFirmwareTasks.
+        :type request: :class:`tencentcloud.iotcloud.v20180614.models.DescribeFirmwareTasksRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.DescribeFirmwareTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeFirmwareTasks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeFirmwareTasksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeLoraDevice(self, request):
         """获取lora类型设备的详细信息
 
@@ -837,6 +1033,34 @@ class IotcloudClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def EditFirmware(self, request):
+        """编辑固件信息
+
+        :param request: Request instance for EditFirmware.
+        :type request: :class:`tencentcloud.iotcloud.v20180614.models.EditFirmwareRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.EditFirmwareResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("EditFirmware", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EditFirmwareResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def EnableTopicRule(self, request):
         """本接口（EnableTopicRule）用于启用规则
 
@@ -1061,6 +1285,34 @@ class IotcloudClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def RetryDeviceFirmwareTask(self, request):
+        """重试设备升级任务
+
+        :param request: Request instance for RetryDeviceFirmwareTask.
+        :type request: :class:`tencentcloud.iotcloud.v20180614.models.RetryDeviceFirmwareTaskRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.RetryDeviceFirmwareTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RetryDeviceFirmwareTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RetryDeviceFirmwareTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def UnbindDevices(self, request):
         """本接口（UnbindDevices）用于网关设备批量解绑子设备
 
@@ -1159,6 +1411,34 @@ class IotcloudClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateTopicPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UploadFirmware(self, request):
+        """本接口（UploadFirmware）用于上传设备固件信息
+
+        :param request: Request instance for UploadFirmware.
+        :type request: :class:`tencentcloud.iotcloud.v20180614.models.UploadFirmwareRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.UploadFirmwareResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UploadFirmware", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UploadFirmwareResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

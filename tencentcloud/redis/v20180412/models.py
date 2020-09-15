@@ -2989,7 +2989,7 @@ class InstanceSet(AbstractModel):
         :type DeadlineTime: str
         :param Engine: 引擎：社区版Redis、腾讯云CKV
         :type Engine: str
-        :param ProductType: 产品类型：Redis2.8集群版、Redis2.8主从版、Redis3.2主从版（CKV主从版）、Redis3.2集群版（CKV集群版）、Redis2.8单机版、Redis4.0集群版
+        :param ProductType: 产品类型：standalone – 标准版，cluster – 集群版
         :type ProductType: str
         :param UniqVpcId: vpc网络id 如：vpc-fk33jsf43kgv
         :type UniqVpcId: str

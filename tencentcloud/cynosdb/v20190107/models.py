@@ -1489,6 +1489,90 @@ class DescribeInstanceSpecsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeInstancesRequest(AbstractModel):
+    """DescribeInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Limit: 返回数量，默认为 20，最大值为 100
+        :type Limit: int
+        :param Offset: 记录偏移量，默认值为0
+        :type Offset: int
+        :param OrderBy: 排序字段，取值范围：
+<li> CREATETIME：创建时间</li>
+<li> PERIODENDTIME：过期时间</li>
+        :type OrderBy: str
+        :param OrderByType: 排序类型，取值范围：
+<li> ASC：升序排序 </li>
+<li> DESC：降序排序 </li>
+        :type OrderByType: str
+        :param Filters: 搜索条件，若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
+        :type Filters: list of QueryFilter
+        :param DbType: 引擎类型：目前支持“MYSQL”， “POSTGRESQL”
+        :type DbType: str
+        :param Status: 实例状态
+        :type Status: str
+        :param InstanceIds: 实例id列表
+        :type InstanceIds: list of str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.OrderBy = None
+        self.OrderByType = None
+        self.Filters = None
+        self.DbType = None
+        self.Status = None
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderByType = params.get("OrderByType")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = QueryFilter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.DbType = params.get("DbType")
+        self.Status = params.get("Status")
+        self.InstanceIds = params.get("InstanceIds")
+
+
+class DescribeInstancesResponse(AbstractModel):
+    """DescribeInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 实例个数
+        :type TotalCount: int
+        :param InstanceSet: 实例列表
+        :type InstanceSet: list of CynosdbInstance
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.InstanceSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("InstanceSet") is not None:
+            self.InstanceSet = []
+            for item in params.get("InstanceSet"):
+                obj = CynosdbInstance()
+                obj._deserialize(item)
+                self.InstanceSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeMaintainPeriodRequest(AbstractModel):
     """DescribeMaintainPeriod请求参数结构体
 
