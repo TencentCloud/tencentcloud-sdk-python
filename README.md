@@ -26,6 +26,8 @@ pip install --upgrade tencentcloud-sdk-python
 
 请注意，如果同时有 python2 和 python3 环境， python3 环境需要使用 pip3 命令安装。
 
+如果只想使用某个具体产品的包，例如云服务器 CVM，可以单独安装，但是注意不能和总包同时工作。`pip install --upgrade tencentcloud-sdk-python-common tencentcloud-sdk-python-cvm`
+
 ## 通过源码包安装
 
 前往 [Github 代码托管地址](https://github.com/tencentcloud/tencentcloud-sdk-python) 下载最新代码，解压后
