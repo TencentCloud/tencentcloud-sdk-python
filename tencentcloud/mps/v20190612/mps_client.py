@@ -1304,6 +1304,34 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ExecuteFunction(self, request):
+        """本接口仅用于定制开发的特殊场景，除非云视频处理客服人员主动告知您需要使用本接口，其它情况请勿调用。
+
+        :param request: Request instance for ExecuteFunction.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ExecuteFunctionRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ExecuteFunctionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ExecuteFunction", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ExecuteFunctionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ManageTask(self, request):
         """对已发起的任务进行管理。
         > 注意：目前仅支持终止执行中的直播流处理任务。

@@ -243,16 +243,20 @@ class CaptchaUserAllAppId(AbstractModel):
         :type AppName: str
         :param TcAppId: 腾讯云APPID
         :type TcAppId: int
+        :param ChannelInfo: 渠道信息
+        :type ChannelInfo: str
         """
         self.CaptchaAppId = None
         self.AppName = None
         self.TcAppId = None
+        self.ChannelInfo = None
 
 
     def _deserialize(self, params):
         self.CaptchaAppId = params.get("CaptchaAppId")
         self.AppName = params.get("AppName")
         self.TcAppId = params.get("TcAppId")
+        self.ChannelInfo = params.get("ChannelInfo")
 
 
 class DescribeCaptchaAppIdInfoRequest(AbstractModel):

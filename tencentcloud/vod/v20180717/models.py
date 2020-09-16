@@ -3541,7 +3541,10 @@ class AudioTrackItem(AbstractModel):
 
     def __init__(self):
         """
-        :param SourceMedia: 音频素材的媒体文件来源。可以是点播的文件 ID，也可以是其它文件的 URL。
+        :param SourceMedia: 音频片段的媒体素材来源，可以是：
+<li>点播的媒体文件 ID；</li>
+<li>其他媒体文件的下载 URL。</li>
+注意：当使用其他媒体文件的下载 URL 作为素材来源，且开启了访问控制（如防盗链）时，需要在 URL 携带访问控制参数（如防盗链签名）。
         :type SourceMedia: str
         :param SourceMediaStartTime: 音频片段取自素材文件的起始时间，单位为秒。0 表示从素材开始位置截取。默认为0。
         :type SourceMediaStartTime: float
@@ -3906,7 +3909,7 @@ class ComposeMediaRequest(AbstractModel):
         :type Canvas: :class:`tencentcloud.vod.v20180717.models.Canvas`
         :param SessionContext: 标识来源上下文，用于透传用户请求信息，在ComposeMediaComplete回调将返回该字段值，最长 1000个字符。
         :type SessionContext: str
-        :param SessionId: 用于任务去重的识别码，如果一天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :param SessionId: 用于任务去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
         :type SessionId: str
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
@@ -8049,8 +8052,10 @@ class EditMediaRequest(AbstractModel):
         :type SessionContext: str
         :param TasksPriority: 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
         :type TasksPriority: int
-        :param SessionId: 用于任务去重的识别码，如果一天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :param SessionId: 用于任务去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
         :type SessionId: str
+        :param ExtInfo: 保留字段，特殊用途时使用。
+        :type ExtInfo: str
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
         """
@@ -8063,6 +8068,7 @@ class EditMediaRequest(AbstractModel):
         self.SessionContext = None
         self.TasksPriority = None
         self.SessionId = None
+        self.ExtInfo = None
         self.SubAppId = None
 
 
@@ -8088,6 +8094,7 @@ class EditMediaRequest(AbstractModel):
         self.SessionContext = params.get("SessionContext")
         self.TasksPriority = params.get("TasksPriority")
         self.SessionId = params.get("SessionId")
+        self.ExtInfo = params.get("ExtInfo")
         self.SubAppId = params.get("SubAppId")
 
 
@@ -13348,7 +13355,7 @@ class ProcessMediaByProcedureRequest(AbstractModel):
         :type TasksNotifyMode: str
         :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
         :type SessionContext: str
-        :param SessionId: 用于去重的识别码，如果一天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :param SessionId: 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
         :type SessionId: str
         :param ExtInfo: 保留字段，特殊用途时使用。
         :type ExtInfo: str
@@ -13420,7 +13427,7 @@ class ProcessMediaByUrlRequest(AbstractModel):
         :type TasksNotifyMode: str
         :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
         :type SessionContext: str
-        :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :param SessionId: 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
         :type SessionId: str
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
@@ -13504,7 +13511,7 @@ class ProcessMediaRequest(AbstractModel):
         :type TasksNotifyMode: str
         :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
         :type SessionContext: str
-        :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :param SessionId: 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
         :type SessionId: str
         :param ExtInfo: 保留字段，特殊用途时使用。
         :type ExtInfo: str
@@ -13801,7 +13808,7 @@ class PullUploadRequest(AbstractModel):
         :type ClassId: int
         :param SessionContext: 来源上下文，用于透传用户请求信息，当指定 Procedure 任务后，任务流状态变更回调将返回该字段值，最长 1000 个字符。
         :type SessionContext: str
-        :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :param SessionId: 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
         :type SessionId: str
         :param ExtInfo: 保留字段，特殊用途时使用。
         :type ExtInfo: str
@@ -14687,7 +14694,10 @@ class StickerTrackItem(AbstractModel):
 
     def __init__(self):
         """
-        :param SourceMedia: 贴图素材的媒体文件来源。可以是点播的文件 ID，也可以是其它文件的 URL。
+        :param SourceMedia: 贴图片段的媒体素材来源，可以是：
+<li>点播的媒体文件 ID；</li>
+<li>其他媒体文件的下载 URL。</li>
+注意：当使用其他媒体文件的下载 URL 作为素材来源，且开启了访问控制（如防盗链）时，需要在 URL 携带访问控制参数（如防盗链签名）。
         :type SourceMedia: str
         :param Duration: 贴图的持续时间，单位为秒。
         :type Duration: float
@@ -16054,7 +16064,10 @@ class VideoTrackItem(AbstractModel):
 
     def __init__(self):
         """
-        :param SourceMedia: 视频片段的媒体素材来源，可以是点播的文件 ID，或者是其它文件的 URL。
+        :param SourceMedia: 视频片段的媒体素材来源，可以是：
+<li>点播的媒体文件 ID；</li>
+<li>其他媒体文件的下载 URL。</li>
+注意：当使用其他媒体文件的下载 URL 作为素材来源，且开启了访问控制（如防盗链）时，需要在 URL 携带访问控制参数（如防盗链签名）。
         :type SourceMedia: str
         :param SourceMediaStartTime: 视频片段取自素材文件的起始时间，单位为秒。默认为0。
         :type SourceMediaStartTime: float

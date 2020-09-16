@@ -890,7 +890,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type InstanceType: int
         :param ClusterType: 集群类型，取值范围：0-副本集实例，1-分片实例，-1-所有实例
         :type ClusterType: int
-        :param Status: 实例状态，取值范围：0-待初始化，1-流程执行中，2-实例有效，-2-实例已过期
+        :param Status: 实例状态，取值范围：0-待初始化，1-流程执行中，2-实例有效，-2-已隔离（包年包月实例），-3-已隔离（按量计费实例）
         :type Status: list of int
         :param VpcId: 私有网络的ID，基础网络则不传该参数
         :type VpcId: str
@@ -908,8 +908,10 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type OrderByType: str
         :param ProjectIds: 项目 ID
         :type ProjectIds: list of int non-negative
-        :param SearchKey: 搜索关键词，支持实例Id、实例名称、完整IP
+        :param SearchKey: 搜索关键词，支持实例ID、实例名称、完整IP
         :type SearchKey: str
+        :param Tags: Tag信息
+        :type Tags: :class:`tencentcloud.mongodb.v20190725.models.TagInfo`
         """
         self.InstanceIds = None
         self.InstanceType = None
@@ -924,6 +926,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.OrderByType = None
         self.ProjectIds = None
         self.SearchKey = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -940,6 +943,9 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.OrderByType = params.get("OrderByType")
         self.ProjectIds = params.get("ProjectIds")
         self.SearchKey = params.get("SearchKey")
+        if params.get("Tags") is not None:
+            self.Tags = TagInfo()
+            self.Tags._deserialize(params.get("Tags"))
 
 
 class DescribeDBInstancesResponse(AbstractModel):

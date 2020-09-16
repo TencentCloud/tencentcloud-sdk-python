@@ -185,11 +185,11 @@ class Block(AbstractModel):
         """
         :param BlockNum: 区块编号
         :type BlockNum: int
-        :param DataHash: 区块Hash数值
+        :param DataHash: 区块数据Hash数值
         :type DataHash: str
         :param BlockId: 区块ID，与区块编号一致
         :type BlockId: int
-        :param PreHash: 前一个区块Hash（未使用）,与区块Hash数值一致
+        :param PreHash: 前一个区块Hash
         :type PreHash: str
         :param TxCount: 区块内的交易数量
         :type TxCount: int
@@ -268,7 +268,7 @@ class DeployDynamicContractHandlerRequest(AbstractModel):
         """
         :param Module: 模块名，固定字段：contract
         :type Module: str
-        :param Operation: 操作名，固定字段：deploy_by_dynamic_contract
+        :param Operation: 操作名，固定字段：deploy_dynamic_contract
         :type Operation: str
         :param GroupPk: 群组编号
         :type GroupPk: str

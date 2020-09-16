@@ -5749,7 +5749,7 @@ class EditMediaRequest(AbstractModel):
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
         :param TasksPriority: 任务优先级，数值越大优先级越高，取值范围是-10到 10，不填代表0。
         :type TasksPriority: int
-        :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :param SessionId: 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
         :type SessionId: str
         :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
         :type SessionContext: str
@@ -5925,6 +5925,48 @@ class EnableWorkflowResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ExecuteFunctionRequest(AbstractModel):
+    """ExecuteFunction请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FunctionName: 调用后端接口名称。
+        :type FunctionName: str
+        :param FunctionArg: 接口参数，具体参数格式调用时与后端协调。
+        :type FunctionArg: str
+        """
+        self.FunctionName = None
+        self.FunctionArg = None
+
+
+    def _deserialize(self, params):
+        self.FunctionName = params.get("FunctionName")
+        self.FunctionArg = params.get("FunctionArg")
+
+
+class ExecuteFunctionResponse(AbstractModel):
+    """ExecuteFunction返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 处理结果打包后的字符串，具体与后台一同协调。
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
 
 
@@ -9867,7 +9909,7 @@ class ProcessMediaRequest(AbstractModel):
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
         :param TasksPriority: 任务流的优先级，数值越大优先级越高，取值范围是-10到 10，不填代表0。
         :type TasksPriority: int
-        :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :param SessionId: 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
         :type SessionId: str
         :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
         :type SessionContext: str

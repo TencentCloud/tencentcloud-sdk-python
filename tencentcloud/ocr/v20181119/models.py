@@ -474,12 +474,17 @@ class CarInvoiceInfo(AbstractModel):
         :type Name: str
         :param Value: 识别出的字段名称对应的值，也就是字段name对应的字符串结果。
         :type Value: str
-        :param Rect: 文本行在旋转纠正之后的图像中的像素坐标。
+        :param Rect: 字段在旋转纠正之后的图像中的像素坐标。
         :type Rect: :class:`tencentcloud.ocr.v20181119.models.Rect`
+        :param Polygon: 字段在原图中的中的四点坐标。
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Polygon: :class:`tencentcloud.ocr.v20181119.models.Polygon`
         """
         self.Name = None
         self.Value = None
         self.Rect = None
+        self.Polygon = None
 
 
     def _deserialize(self, params):
@@ -488,6 +493,9 @@ class CarInvoiceInfo(AbstractModel):
         if params.get("Rect") is not None:
             self.Rect = Rect()
             self.Rect._deserialize(params.get("Rect"))
+        if params.get("Polygon") is not None:
+            self.Polygon = Polygon()
+            self.Polygon._deserialize(params.get("Polygon"))
 
 
 class CarInvoiceOCRRequest(AbstractModel):
@@ -1748,16 +1756,20 @@ class GeneralHandwritingOCRRequest(AbstractModel):
         :param Scene: 场景字段，默认不用填写。
 可选值:only_hw  表示只输出手写体识别结果，过滤印刷体。
         :type Scene: str
+        :param EnableWordPolygon: 是否开启单字的四点定位坐标输出，默认值为false。
+        :type EnableWordPolygon: bool
         """
         self.ImageBase64 = None
         self.ImageUrl = None
         self.Scene = None
+        self.EnableWordPolygon = None
 
 
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
         self.Scene = params.get("Scene")
+        self.EnableWordPolygon = params.get("EnableWordPolygon")
 
 
 class GeneralHandwritingOCRResponse(AbstractModel):
@@ -2867,12 +2879,12 @@ class MixedInvoiceOCRRequest(AbstractModel):
         """
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :type ImageBase64: str
         :param ImageUrl: 图片的 Url 地址。
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :type ImageUrl: str
@@ -3168,6 +3180,44 @@ class PermitOCRResponse(AbstractModel):
         self.IssueAddress = params.get("IssueAddress")
         self.Birthday = params.get("Birthday")
         self.RequestId = params.get("RequestId")
+
+
+class Polygon(AbstractModel):
+    """文本的坐标，以四个顶点坐标表示
+    注意：此字段可能返回 null，表示取不到有效值
+
+    """
+
+    def __init__(self):
+        """
+        :param LeftTop: 左上顶点坐标
+        :type LeftTop: :class:`tencentcloud.ocr.v20181119.models.Coord`
+        :param RightTop: 右上顶点坐标
+        :type RightTop: :class:`tencentcloud.ocr.v20181119.models.Coord`
+        :param RightBottom: 右下顶点坐标
+        :type RightBottom: :class:`tencentcloud.ocr.v20181119.models.Coord`
+        :param LeftBottom: 左下顶点坐标
+        :type LeftBottom: :class:`tencentcloud.ocr.v20181119.models.Coord`
+        """
+        self.LeftTop = None
+        self.RightTop = None
+        self.RightBottom = None
+        self.LeftBottom = None
+
+
+    def _deserialize(self, params):
+        if params.get("LeftTop") is not None:
+            self.LeftTop = Coord()
+            self.LeftTop._deserialize(params.get("LeftTop"))
+        if params.get("RightTop") is not None:
+            self.RightTop = Coord()
+            self.RightTop._deserialize(params.get("RightTop"))
+        if params.get("RightBottom") is not None:
+            self.RightBottom = Coord()
+            self.RightBottom._deserialize(params.get("RightBottom"))
+        if params.get("LeftBottom") is not None:
+            self.LeftBottom = Coord()
+            self.LeftBottom._deserialize(params.get("LeftBottom"))
 
 
 class ProductDataRecord(AbstractModel):
@@ -4489,11 +4539,15 @@ class TextGeneralHandwriting(AbstractModel):
 能返回文本行的段落信息，例如：{\"Parag\":{\"ParagNo\":2}}，
 其中ParagNo为段落行，从1开始。
         :type AdvancedInfo: str
+        :param WordPolygon: 字的坐标数组，以四个顶点坐标表示
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WordPolygon: list of Polygon
         """
         self.DetectedText = None
         self.Confidence = None
         self.Polygon = None
         self.AdvancedInfo = None
+        self.WordPolygon = None
 
 
     def _deserialize(self, params):
@@ -4506,6 +4560,12 @@ class TextGeneralHandwriting(AbstractModel):
                 obj._deserialize(item)
                 self.Polygon.append(obj)
         self.AdvancedInfo = params.get("AdvancedInfo")
+        if params.get("WordPolygon") is not None:
+            self.WordPolygon = []
+            for item in params.get("WordPolygon"):
+                obj = Polygon()
+                obj._deserialize(item)
+                self.WordPolygon.append(obj)
 
 
 class TextTable(AbstractModel):
@@ -4573,14 +4633,22 @@ class TextVatInvoice(AbstractModel):
         :type Name: str
         :param Value: 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
         :type Value: str
+        :param Polygon: 字段在原图中的中的四点坐标。
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Polygon: :class:`tencentcloud.ocr.v20181119.models.Polygon`
         """
         self.Name = None
         self.Value = None
+        self.Polygon = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Value = params.get("Value")
+        if params.get("Polygon") is not None:
+            self.Polygon = Polygon()
+            self.Polygon._deserialize(params.get("Polygon"))
 
 
 class TextVehicleBack(AbstractModel):
@@ -5124,25 +5192,33 @@ class VatInvoiceOCRRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ImageBase64: 图片的 Base64 值。
-支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
-图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :param ImageBase64: 图片/PDF的 Base64 值。
+支持的文件格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。
+支持的图片/PDF大小：所下载文件经Base64编码后不超过 3M。文件下载时间不超过 3 秒。
+输入参数 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :type ImageBase64: str
-        :param ImageUrl: 图片的 Url 地址。
-支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+        :param ImageUrl: 图片/PDF的 Url 地址。
+支持的文件格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。
+支持的图片/PDF大小：所下载文件经 Base64 编码后不超过 3M。文件下载时间不超过 3 秒。
 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :type ImageUrl: str
+        :param IsPdf: 是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+        :type IsPdf: bool
+        :param PdfPageNumber: 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        :type PdfPageNumber: int
         """
         self.ImageBase64 = None
         self.ImageUrl = None
+        self.IsPdf = None
+        self.PdfPageNumber = None
 
 
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        self.IsPdf = params.get("IsPdf")
+        self.PdfPageNumber = params.get("PdfPageNumber")
 
 
 class VatInvoiceOCRResponse(AbstractModel):
@@ -5156,11 +5232,14 @@ class VatInvoiceOCRResponse(AbstractModel):
         :type VatInvoiceInfos: list of TextVatInvoice
         :param Items: 明细条目。VatInvoiceInfos中关于明细项的具体条目。
         :type Items: list of VatInvoiceItem
+        :param PdfPageSize: 图片为PDF时，返回PDF的总页数，默认为0
+        :type PdfPageSize: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.VatInvoiceInfos = None
         self.Items = None
+        self.PdfPageSize = None
         self.RequestId = None
 
 
@@ -5177,6 +5256,7 @@ class VatInvoiceOCRResponse(AbstractModel):
                 obj = VatInvoiceItem()
                 obj._deserialize(item)
                 self.Items.append(obj)
+        self.PdfPageSize = params.get("PdfPageSize")
         self.RequestId = params.get("RequestId")
 
 

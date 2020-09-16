@@ -1418,6 +1418,9 @@ class GetFunctionResponse(AbstractModel):
         :type Qualifier: str
         :param InitTimeout: 函数初始化超时时间
         :type InitTimeout: int
+        :param StatusReasons: 函数状态失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatusReasons: list of StatusReason
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1460,6 +1463,7 @@ class GetFunctionResponse(AbstractModel):
         self.AvailableStatus = None
         self.Qualifier = None
         self.InitTimeout = None
+        self.StatusReasons = None
         self.RequestId = None
 
 
@@ -1532,6 +1536,12 @@ class GetFunctionResponse(AbstractModel):
         self.AvailableStatus = params.get("AvailableStatus")
         self.Qualifier = params.get("Qualifier")
         self.InitTimeout = params.get("InitTimeout")
+        if params.get("StatusReasons") is not None:
+            self.StatusReasons = []
+            for item in params.get("StatusReasons"):
+                obj = StatusReason()
+                obj._deserialize(item)
+                self.StatusReasons.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2539,6 +2549,27 @@ class RoutingConfig(AbstractModel):
                 obj = VersionMatch()
                 obj._deserialize(item)
                 self.AddtionVersionMatchs.append(obj)
+
+
+class StatusReason(AbstractModel):
+    """状态原因描述
+
+    """
+
+    def __init__(self):
+        """
+        :param ErrorCode: 错误码
+        :type ErrorCode: str
+        :param ErrorMessage: 错误描述
+        :type ErrorMessage: str
+        """
+        self.ErrorCode = None
+        self.ErrorMessage = None
+
+
+    def _deserialize(self, params):
+        self.ErrorCode = params.get("ErrorCode")
+        self.ErrorMessage = params.get("ErrorMessage")
 
 
 class Tag(AbstractModel):
