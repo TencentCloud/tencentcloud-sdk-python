@@ -53,6 +53,62 @@ class IeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateMediaQualityRestorationTask(self, request):
+        """创建画质重生任务，对视频进行转码、去噪、去划痕、去毛刺、超分、细节增强和色彩增强。
+
+        :param request: Request instance for CreateMediaQualityRestorationTask.
+        :type request: :class:`tencentcloud.ie.v20200304.models.CreateMediaQualityRestorationTaskRequest`
+        :rtype: :class:`tencentcloud.ie.v20200304.models.CreateMediaQualityRestorationTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateMediaQualityRestorationTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateMediaQualityRestorationTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateQualityControlTask(self, request):
+        """通过接口可以智能检测视频画面中抖动重影、模糊、低光照、过曝光、黑边、白边、黑屏、白屏、花屏、噪点、马赛克、二维码等在内的多个场景，还可以自动检测视频无音频异常、无声音片段。
+
+        :param request: Request instance for CreateQualityControlTask.
+        :type request: :class:`tencentcloud.ie.v20200304.models.CreateQualityControlTaskRequest`
+        :rtype: :class:`tencentcloud.ie.v20200304.models.CreateQualityControlTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateQualityControlTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateQualityControlTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeEditingTaskResult(self, request):
         """获取智能编辑任务结果。
 
@@ -67,6 +123,90 @@ class IeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEditingTaskResultResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeMediaQualityRestorationTaskRusult(self, request):
+        """获取画质重生任务结果，查看结束后的文件信息
+
+        :param request: Request instance for DescribeMediaQualityRestorationTaskRusult.
+        :type request: :class:`tencentcloud.ie.v20200304.models.DescribeMediaQualityRestorationTaskRusultRequest`
+        :rtype: :class:`tencentcloud.ie.v20200304.models.DescribeMediaQualityRestorationTaskRusultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMediaQualityRestorationTaskRusult", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMediaQualityRestorationTaskRusultResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeQualityControlTaskResult(self, request):
+        """获取质检任务结果
+
+        :param request: Request instance for DescribeQualityControlTaskResult.
+        :type request: :class:`tencentcloud.ie.v20200304.models.DescribeQualityControlTaskResultRequest`
+        :rtype: :class:`tencentcloud.ie.v20200304.models.DescribeQualityControlTaskResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeQualityControlTaskResult", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeQualityControlTaskResultResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StopMediaQualityRestorationTask(self, request):
+        """删除正在进行的画质重生任务
+
+        :param request: Request instance for StopMediaQualityRestorationTask.
+        :type request: :class:`tencentcloud.ie.v20200304.models.StopMediaQualityRestorationTaskRequest`
+        :rtype: :class:`tencentcloud.ie.v20200304.models.StopMediaQualityRestorationTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StopMediaQualityRestorationTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StopMediaQualityRestorationTaskResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

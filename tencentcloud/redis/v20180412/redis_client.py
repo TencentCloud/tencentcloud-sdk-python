@@ -26,7 +26,7 @@ class RedisClient(AbstractClient):
 
 
     def AssociateSecurityGroups(self, request):
-        """本接口 (AssociateSecurityGroups) 用于绑定安全组到指定实例。
+        """本接口 (AssociateSecurityGroups) 用于安全组批量绑定多个指定实例。
 
         :param request: Request instance for AssociateSecurityGroups.
         :type request: :class:`tencentcloud.redis.v20180412.models.AssociateSecurityGroupsRequest`
@@ -1286,7 +1286,7 @@ class RedisClient(AbstractClient):
 
 
     def ModifyDBInstanceSecurityGroups(self, request):
-        """本接口(ModifyDBInstanceSecurityGroups)用于修改实例绑定的安全组
+        """本接口(ModifyDBInstanceSecurityGroups)用于修改实例绑定的安全组。
 
         :param request: Request instance for ModifyDBInstanceSecurityGroups.
         :type request: :class:`tencentcloud.redis.v20180412.models.ModifyDBInstanceSecurityGroupsRequest`

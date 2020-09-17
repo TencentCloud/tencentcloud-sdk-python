@@ -438,6 +438,236 @@ class AttachNetworkInterfaceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class Backend(AbstractModel):
+    """负责均衡后端信息
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 后端服务的唯一 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param Port: 后端服务的监听端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param Weight: 后端服务的转发权重，取值范围：[0, 100]，默认为 10。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Weight: int
+        :param PrivateIpAddresses: 后端服务的内网 IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrivateIpAddresses: list of str
+        :param RegisteredTime: 后端服务被绑定的时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegisteredTime: str
+        :param EniId: 弹性网卡唯一ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EniId: str
+        :param PublicIpAddresses: 后端服务的外网 IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicIpAddresses: list of str
+        :param InstanceName: 后端服务的实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        """
+        self.InstanceId = None
+        self.Port = None
+        self.Weight = None
+        self.PrivateIpAddresses = None
+        self.RegisteredTime = None
+        self.EniId = None
+        self.PublicIpAddresses = None
+        self.InstanceName = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Port = params.get("Port")
+        self.Weight = params.get("Weight")
+        self.PrivateIpAddresses = params.get("PrivateIpAddresses")
+        self.RegisteredTime = params.get("RegisteredTime")
+        self.EniId = params.get("EniId")
+        self.PublicIpAddresses = params.get("PublicIpAddresses")
+        self.InstanceName = params.get("InstanceName")
+
+
+class BatchDeregisterTargetsRequest(AbstractModel):
+    """BatchDeregisterTargets请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: 负载均衡ID
+        :type LoadBalancerId: str
+        :param Targets: 解绑目标
+        :type Targets: list of BatchTarget
+        """
+        self.LoadBalancerId = None
+        self.Targets = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        if params.get("Targets") is not None:
+            self.Targets = []
+            for item in params.get("Targets"):
+                obj = BatchTarget()
+                obj._deserialize(item)
+                self.Targets.append(obj)
+
+
+class BatchDeregisterTargetsResponse(AbstractModel):
+    """BatchDeregisterTargets返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FailListenerIdSet: 解绑失败的监听器ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailListenerIdSet: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FailListenerIdSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FailListenerIdSet = params.get("FailListenerIdSet")
+        self.RequestId = params.get("RequestId")
+
+
+class BatchModifyTargetWeightRequest(AbstractModel):
+    """BatchModifyTargetWeight请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: 负载均衡实例 ID
+        :type LoadBalancerId: str
+        :param ModifyList: 要批量修改权重的列表
+        :type ModifyList: list of TargetsWeightRule
+        """
+        self.LoadBalancerId = None
+        self.ModifyList = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        if params.get("ModifyList") is not None:
+            self.ModifyList = []
+            for item in params.get("ModifyList"):
+                obj = TargetsWeightRule()
+                obj._deserialize(item)
+                self.ModifyList.append(obj)
+
+
+class BatchModifyTargetWeightResponse(AbstractModel):
+    """BatchModifyTargetWeight返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class BatchRegisterTargetsRequest(AbstractModel):
+    """BatchRegisterTargets请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: 负载均衡ID
+        :type LoadBalancerId: str
+        :param Targets: 绑定目标
+        :type Targets: list of BatchTarget
+        """
+        self.LoadBalancerId = None
+        self.Targets = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        if params.get("Targets") is not None:
+            self.Targets = []
+            for item in params.get("Targets"):
+                obj = BatchTarget()
+                obj._deserialize(item)
+                self.Targets.append(obj)
+
+
+class BatchRegisterTargetsResponse(AbstractModel):
+    """BatchRegisterTargets返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FailListenerIdSet: 绑定失败的监听器ID，如为空表示全部绑定成功。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailListenerIdSet: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FailListenerIdSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FailListenerIdSet = params.get("FailListenerIdSet")
+        self.RequestId = params.get("RequestId")
+
+
+class BatchTarget(AbstractModel):
+    """负责均衡批量目标项
+
+    """
+
+    def __init__(self):
+        """
+        :param ListenerId: 监听器ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ListenerId: str
+        :param Port: 绑定端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param InstanceId: 子机ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param EniIp: 弹性网卡ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EniIp: str
+        :param Weight: 子机权重，范围[0, 100]。绑定时如果不存在，则默认为10。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Weight: int
+        """
+        self.ListenerId = None
+        self.Port = None
+        self.InstanceId = None
+        self.EniIp = None
+        self.Weight = None
+
+
+    def _deserialize(self, params):
+        self.ListenerId = params.get("ListenerId")
+        self.Port = params.get("Port")
+        self.InstanceId = params.get("InstanceId")
+        self.EniIp = params.get("EniIp")
+        self.Weight = params.get("Weight")
+
+
 class City(AbstractModel):
     """城市信息
 
@@ -530,6 +760,147 @@ class CreateImageResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateListenerRequest(AbstractModel):
+    """CreateListener请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: 负载均衡实例 ID
+        :type LoadBalancerId: str
+        :param Ports: 要将监听器创建到哪些端口，每个端口对应一个新的监听器
+        :type Ports: list of int
+        :param Protocol: 监听器协议： TCP | UDP
+        :type Protocol: str
+        :param ListenerNames: 要创建的监听器名称列表，名称与Ports数组按序一一对应，如不需立即命名，则无需提供此参数
+        :type ListenerNames: list of str
+        :param HealthCheck: 健康检查相关参数
+        :type HealthCheck: :class:`tencentcloud.ecm.v20190719.models.HealthCheck`
+        :param SessionExpireTime: 会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。此参数仅适用于TCP/UDP监听器。
+        :type SessionExpireTime: int
+        :param Scheduler: 监听器转发的方式。可选值：WRR、LEAST_CONN
+分别表示按权重轮询、最小连接数， 默认为 WRR。
+        :type Scheduler: str
+        """
+        self.LoadBalancerId = None
+        self.Ports = None
+        self.Protocol = None
+        self.ListenerNames = None
+        self.HealthCheck = None
+        self.SessionExpireTime = None
+        self.Scheduler = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.Ports = params.get("Ports")
+        self.Protocol = params.get("Protocol")
+        self.ListenerNames = params.get("ListenerNames")
+        if params.get("HealthCheck") is not None:
+            self.HealthCheck = HealthCheck()
+            self.HealthCheck._deserialize(params.get("HealthCheck"))
+        self.SessionExpireTime = params.get("SessionExpireTime")
+        self.Scheduler = params.get("Scheduler")
+
+
+class CreateListenerResponse(AbstractModel):
+    """CreateListener返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ListenerIds: 创建的监听器的唯一标识数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ListenerIds: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ListenerIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ListenerIds = params.get("ListenerIds")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateLoadBalancerRequest(AbstractModel):
+    """CreateLoadBalancer请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EcmRegion: 区域。
+        :type EcmRegion: str
+        :param LoadBalancerType: 负载均衡实例的网络类型。目前只支持传入OPEN，表示公网属性。
+        :type LoadBalancerType: str
+        :param VipIsp: CMCC | CTCC | CUCC，分别对应 移动 | 电信 | 联通。
+        :type VipIsp: str
+        :param LoadBalancerName: 负载均衡实例的名称，只在创建一个实例的时候才会生效。规则：1-50 个英文、汉字、数字、连接线“-”或下划线“_”。
+注意：如果名称与系统中已有负载均衡实例的名称相同，则系统将会自动生成此次创建的负载均衡实例的名称。
+        :type LoadBalancerName: str
+        :param VpcId: 负载均衡后端目标设备所属的网络 ID，如vpc-12345678。
+        :type VpcId: str
+        :param Number: 创建负载均衡的个数，默认值 1。
+        :type Number: int
+        :param InternetAccessible: 负载均衡的带宽限制等信息。
+        :type InternetAccessible: :class:`tencentcloud.ecm.v20190719.models.LoadBalancerInternetAccessible`
+        :param Tags: 标签。
+        :type Tags: list of TagInfo
+        """
+        self.EcmRegion = None
+        self.LoadBalancerType = None
+        self.VipIsp = None
+        self.LoadBalancerName = None
+        self.VpcId = None
+        self.Number = None
+        self.InternetAccessible = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.EcmRegion = params.get("EcmRegion")
+        self.LoadBalancerType = params.get("LoadBalancerType")
+        self.VipIsp = params.get("VipIsp")
+        self.LoadBalancerName = params.get("LoadBalancerName")
+        self.VpcId = params.get("VpcId")
+        self.Number = params.get("Number")
+        if params.get("InternetAccessible") is not None:
+            self.InternetAccessible = LoadBalancerInternetAccessible()
+            self.InternetAccessible._deserialize(params.get("InternetAccessible"))
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+
+
+class CreateLoadBalancerResponse(AbstractModel):
+    """CreateLoadBalancer返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerIds: 由负载均衡实例ID组成的数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancerIds: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LoadBalancerIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerIds = params.get("LoadBalancerIds")
         self.RequestId = params.get("RequestId")
 
 
@@ -942,6 +1313,116 @@ class DeleteImageRequest(AbstractModel):
 
 class DeleteImageResponse(AbstractModel):
     """DeleteImage返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteListenerRequest(AbstractModel):
+    """DeleteListener请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: 负载均衡实例 ID
+        :type LoadBalancerId: str
+        :param ListenerId: 要删除的监听器 ID
+        :type ListenerId: str
+        """
+        self.LoadBalancerId = None
+        self.ListenerId = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.ListenerId = params.get("ListenerId")
+
+
+class DeleteListenerResponse(AbstractModel):
+    """DeleteListener返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLoadBalancerListenersRequest(AbstractModel):
+    """DeleteLoadBalancerListeners请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: 负载均衡实例 ID
+        :type LoadBalancerId: str
+        :param ListenerIds: 指定删除的监听器ID数组，若不填则删除负载均衡的所有监听器
+        :type ListenerIds: list of str
+        """
+        self.LoadBalancerId = None
+        self.ListenerIds = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.ListenerIds = params.get("ListenerIds")
+
+
+class DeleteLoadBalancerListenersResponse(AbstractModel):
+    """DeleteLoadBalancerListeners返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLoadBalancerRequest(AbstractModel):
+    """DeleteLoadBalancer请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerIds: 要删除的负载均衡实例 ID数组，数组大小最大支持20
+        :type LoadBalancerIds: list of str
+        """
+        self.LoadBalancerIds = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerIds = params.get("LoadBalancerIds")
+
+
+class DeleteLoadBalancerResponse(AbstractModel):
+    """DeleteLoadBalancer返回参数结构体
 
     """
 
@@ -1811,6 +2292,198 @@ class DescribeInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeListenersRequest(AbstractModel):
+    """DescribeListeners请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: 负载均衡实例 ID
+        :type LoadBalancerId: str
+        :param ListenerIds: 要查询的负载均衡监听器 ID数组
+        :type ListenerIds: list of str
+        :param Protocol: 要查询的监听器协议类型，取值 TCP | UDP
+        :type Protocol: str
+        :param Port: 要查询的监听器的端口
+        :type Port: int
+        """
+        self.LoadBalancerId = None
+        self.ListenerIds = None
+        self.Protocol = None
+        self.Port = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.ListenerIds = params.get("ListenerIds")
+        self.Protocol = params.get("Protocol")
+        self.Port = params.get("Port")
+
+
+class DescribeListenersResponse(AbstractModel):
+    """DescribeListeners返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Listeners: 监听器列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Listeners: list of Listener
+        :param TotalCount: 总的监听器个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Listeners = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Listeners") is not None:
+            self.Listeners = []
+            for item in params.get("Listeners"):
+                obj = Listener()
+                obj._deserialize(item)
+                self.Listeners.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLoadBalanceTaskStatusRequest(AbstractModel):
+    """DescribeLoadBalanceTaskStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 请求ID，即接口返回的 RequestId 参数
+        :type TaskId: str
+        """
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+
+
+class DescribeLoadBalanceTaskStatusResponse(AbstractModel):
+    """DescribeLoadBalanceTaskStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 任务的当前状态。 0：成功，1：失败，2：进行中。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLoadBalancersRequest(AbstractModel):
+    """DescribeLoadBalancers请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EcmRegion: 区域。如果不传则默认查询所有区域。
+        :type EcmRegion: str
+        :param LoadBalancerIds: 负载均衡实例 ID。
+        :type LoadBalancerIds: list of str
+        :param LoadBalancerName: 负载均衡实例的名称。
+        :type LoadBalancerName: str
+        :param LoadBalancerVips: 负载均衡实例的 VIP 地址，支持多个。
+        :type LoadBalancerVips: list of str
+        :param BackendPrivateIps: 负载均衡绑定的后端服务的内网 IP。
+        :type BackendPrivateIps: list of str
+        :param Offset: 数据偏移量，默认为 0。
+        :type Offset: int
+        :param Limit: 返回负载均衡实例的数量，默认为20，最大值为100。
+        :type Limit: int
+        :param WithBackend: 负载均衡是否绑定后端服务，0：没有绑定后端服务，1：绑定后端服务，-1：查询全部。 
+如果不传则默认查询全部。
+        :type WithBackend: int
+        :param VpcId: 负载均衡实例所属私有网络唯一ID，如 vpc-bhqkbhdx。
+        :type VpcId: str
+        :param Filters: 每次请求的`Filters`的上限为10，`Filter.Values`的上限为100。详细的过滤条件如下：
+tag-key - String - 是否必填：否 - （过滤条件）按照标签的键过滤。
+        :type Filters: list of Filter
+        """
+        self.EcmRegion = None
+        self.LoadBalancerIds = None
+        self.LoadBalancerName = None
+        self.LoadBalancerVips = None
+        self.BackendPrivateIps = None
+        self.Offset = None
+        self.Limit = None
+        self.WithBackend = None
+        self.VpcId = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.EcmRegion = params.get("EcmRegion")
+        self.LoadBalancerIds = params.get("LoadBalancerIds")
+        self.LoadBalancerName = params.get("LoadBalancerName")
+        self.LoadBalancerVips = params.get("LoadBalancerVips")
+        self.BackendPrivateIps = params.get("BackendPrivateIps")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.WithBackend = params.get("WithBackend")
+        self.VpcId = params.get("VpcId")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class DescribeLoadBalancersResponse(AbstractModel):
+    """DescribeLoadBalancers返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 满足过滤条件的负载均衡实例总数。此数值与入参中的Limit无关。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param LoadBalancerSet: 返回的负载均衡实例数组。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancerSet: list of LoadBalancer
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.LoadBalancerSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("LoadBalancerSet") is not None:
+            self.LoadBalancerSet = []
+            for item in params.get("LoadBalancerSet"):
+                obj = LoadBalancer()
+                obj._deserialize(item)
+                self.LoadBalancerSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeModuleDetailRequest(AbstractModel):
     """DescribeModuleDetail请求参数结构体
 
@@ -2445,6 +3118,106 @@ class DescribeSubnetsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTargetHealthRequest(AbstractModel):
+    """DescribeTargetHealth请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerIds: 要查询的负载均衡实例 ID列表
+        :type LoadBalancerIds: list of str
+        """
+        self.LoadBalancerIds = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerIds = params.get("LoadBalancerIds")
+
+
+class DescribeTargetHealthResponse(AbstractModel):
+    """DescribeTargetHealth返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancers: 负载均衡实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancers: list of LoadBalancerHealth
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LoadBalancers = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("LoadBalancers") is not None:
+            self.LoadBalancers = []
+            for item in params.get("LoadBalancers"):
+                obj = LoadBalancerHealth()
+                obj._deserialize(item)
+                self.LoadBalancers.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTargetsRequest(AbstractModel):
+    """DescribeTargets请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: 负载均衡实例 ID
+        :type LoadBalancerId: str
+        :param ListenerIds: 监听器 ID列表
+        :type ListenerIds: list of str
+        :param Protocol: 监听器协议类型
+        :type Protocol: int
+        :param Port: 监听器端口
+        :type Port: int
+        """
+        self.LoadBalancerId = None
+        self.ListenerIds = None
+        self.Protocol = None
+        self.Port = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.ListenerIds = params.get("ListenerIds")
+        self.Protocol = params.get("Protocol")
+        self.Port = params.get("Port")
+
+
+class DescribeTargetsResponse(AbstractModel):
+    """DescribeTargets返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Listeners: 监听器后端绑定的机器信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Listeners: list of ListenerBackend
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Listeners = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Listeners") is not None:
+            self.Listeners = []
+            for item in params.get("Listeners"):
+                obj = ListenerBackend()
+                obj._deserialize(item)
+                self.Listeners.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTaskResultRequest(AbstractModel):
     """DescribeTaskResult请求参数结构体
 
@@ -2854,6 +3627,69 @@ class Filter(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Values = params.get("Values")
+
+
+class HealthCheck(AbstractModel):
+    """负载均衡健康检查
+
+    """
+
+    def __init__(self):
+        """
+        :param HealthSwitch: 是否开启健康检查：1（开启）、0（关闭）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HealthSwitch: int
+        :param TimeOut: 健康检查的响应超时时间，可选值：2~60，默认值：2，单位：秒。响应超时时间要小于检查间隔时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeOut: int
+        :param IntervalTime: 健康检查探测间隔时间，默认值：5，可选值：5~300，单位：秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IntervalTime: int
+        :param HealthNum: 健康阈值，默认值：3，表示当连续探测三次健康则表示该转发正常，可选值：2~10，单位：次。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HealthNum: int
+        :param UnHealthyNum: 不健康阈值，默认值：3，表示当连续探测三次不健康则表示该转发异常，可选值：2~10，单位：次。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnHealthyNum: int
+        :param CheckPort: 自定义探测相关参数。健康检查端口，默认为后端服务的端口，除非您希望指定特定端口，否则建议留空。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CheckPort: int
+        :param ContextType: 自定义探测相关参数。健康检查协议CheckType的值取CUSTOM时，必填此字段，代表健康检查的输入格式，可取值：HEX或TEXT；取值为HEX时，SendContext和RecvContext的字符只能在0123456789ABCDEF中选取且长度必须是偶数位。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContextType: str
+        :param SendContext: 自定义探测相关参数。健康检查协议CheckType的值取CUSTOM时，必填此字段，代表健康检查发送的请求内容，只允许ASCII可见字符，最大长度限制500。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SendContext: str
+        :param RecvContext: 自定义探测相关参数。健康检查协议CheckType的值取CUSTOM时，必填此字段，代表健康检查返回的结果，只允许ASCII可见字符，最大长度限制500。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecvContext: str
+        :param CheckType: 自定义探测相关参数。健康检查使用的协议：TCP | CUSTOM（UDP监听器只支持CUSTOM；如果使用自定义健康检查功能，则必传）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CheckType: str
+        """
+        self.HealthSwitch = None
+        self.TimeOut = None
+        self.IntervalTime = None
+        self.HealthNum = None
+        self.UnHealthyNum = None
+        self.CheckPort = None
+        self.ContextType = None
+        self.SendContext = None
+        self.RecvContext = None
+        self.CheckType = None
+
+
+    def _deserialize(self, params):
+        self.HealthSwitch = params.get("HealthSwitch")
+        self.TimeOut = params.get("TimeOut")
+        self.IntervalTime = params.get("IntervalTime")
+        self.HealthNum = params.get("HealthNum")
+        self.UnHealthyNum = params.get("UnHealthyNum")
+        self.CheckPort = params.get("CheckPort")
+        self.ContextType = params.get("ContextType")
+        self.SendContext = params.get("SendContext")
+        self.RecvContext = params.get("RecvContext")
+        self.CheckType = params.get("CheckType")
 
 
 class ISP(AbstractModel):
@@ -3567,6 +4403,280 @@ AVAILABLE：可用的
         self.State = params.get("State")
 
 
+class Listener(AbstractModel):
+    """负载均衡监听器
+
+    """
+
+    def __init__(self):
+        """
+        :param ListenerId: 负载均衡监听器 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ListenerId: str
+        :param Protocol: 监听器协议
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Protocol: str
+        :param Port: 监听器端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param HealthCheck: 监听器的健康检查信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HealthCheck: :class:`tencentcloud.ecm.v20190719.models.HealthCheck`
+        :param Scheduler: 请求的调度方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Scheduler: str
+        :param SessionExpireTime: 会话保持时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionExpireTime: int
+        :param ListenerName: 监听器的名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ListenerName: str
+        :param CreateTime: 监听器的创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        """
+        self.ListenerId = None
+        self.Protocol = None
+        self.Port = None
+        self.HealthCheck = None
+        self.Scheduler = None
+        self.SessionExpireTime = None
+        self.ListenerName = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.ListenerId = params.get("ListenerId")
+        self.Protocol = params.get("Protocol")
+        self.Port = params.get("Port")
+        if params.get("HealthCheck") is not None:
+            self.HealthCheck = HealthCheck()
+            self.HealthCheck._deserialize(params.get("HealthCheck"))
+        self.Scheduler = params.get("Scheduler")
+        self.SessionExpireTime = params.get("SessionExpireTime")
+        self.ListenerName = params.get("ListenerName")
+        self.CreateTime = params.get("CreateTime")
+
+
+class ListenerBackend(AbstractModel):
+    """监听器后端
+
+    """
+
+    def __init__(self):
+        """
+        :param ListenerId: 监听器 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ListenerId: str
+        :param Protocol: 监听器的协议
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Protocol: str
+        :param Port: 监听器的端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param Targets: 监听器上绑定的后端服务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Targets: list of Backend
+        """
+        self.ListenerId = None
+        self.Protocol = None
+        self.Port = None
+        self.Targets = None
+
+
+    def _deserialize(self, params):
+        self.ListenerId = params.get("ListenerId")
+        self.Protocol = params.get("Protocol")
+        self.Port = params.get("Port")
+        if params.get("Targets") is not None:
+            self.Targets = []
+            for item in params.get("Targets"):
+                obj = Backend()
+                obj._deserialize(item)
+                self.Targets.append(obj)
+
+
+class ListenerHealth(AbstractModel):
+    """监听器健康状态
+
+    """
+
+    def __init__(self):
+        """
+        :param ListenerId: 监听器ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ListenerId: str
+        :param ListenerName: 监听器名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ListenerName: str
+        :param Protocol: 监听器的协议
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Protocol: str
+        :param Port: 监听器的端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param Rules: 监听器的转发规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rules: list of RuleHealth
+        """
+        self.ListenerId = None
+        self.ListenerName = None
+        self.Protocol = None
+        self.Port = None
+        self.Rules = None
+
+
+    def _deserialize(self, params):
+        self.ListenerId = params.get("ListenerId")
+        self.ListenerName = params.get("ListenerName")
+        self.Protocol = params.get("Protocol")
+        self.Port = params.get("Port")
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = RuleHealth()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+
+
+class LoadBalancer(AbstractModel):
+    """负载均衡实例信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Region: 区域。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param Position: 位置信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Position: :class:`tencentcloud.ecm.v20190719.models.Position`
+        :param LoadBalancerId: 负载均衡实例 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancerId: str
+        :param LoadBalancerName: 负载均衡实例的名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancerName: str
+        :param LoadBalancerType: 负载均衡实例的网络类型：OPEN：公网属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancerType: str
+        :param LoadBalancerVips: 负载均衡实例的 VIP 列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancerVips: list of str
+        :param Status: 负载均衡实例的状态，包括
+ 0：创建中，1：正常运行。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param CreateTime: 负载均衡实例的创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param StatusTime: 负载均衡实例的上次状态转换时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatusTime: str
+        :param VpcId: 私有网络的 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param Tags: 负载均衡实例的标签信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of TagInfo
+        :param VipIsp: 负载均衡IP地址所属的ISP。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VipIsp: str
+        :param NetworkAttributes: 负载均衡实例的网络属性。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetworkAttributes: :class:`tencentcloud.ecm.v20190719.models.LoadBalancerInternetAccessible`
+        """
+        self.Region = None
+        self.Position = None
+        self.LoadBalancerId = None
+        self.LoadBalancerName = None
+        self.LoadBalancerType = None
+        self.LoadBalancerVips = None
+        self.Status = None
+        self.CreateTime = None
+        self.StatusTime = None
+        self.VpcId = None
+        self.Tags = None
+        self.VipIsp = None
+        self.NetworkAttributes = None
+
+
+    def _deserialize(self, params):
+        self.Region = params.get("Region")
+        if params.get("Position") is not None:
+            self.Position = Position()
+            self.Position._deserialize(params.get("Position"))
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.LoadBalancerName = params.get("LoadBalancerName")
+        self.LoadBalancerType = params.get("LoadBalancerType")
+        self.LoadBalancerVips = params.get("LoadBalancerVips")
+        self.Status = params.get("Status")
+        self.CreateTime = params.get("CreateTime")
+        self.StatusTime = params.get("StatusTime")
+        self.VpcId = params.get("VpcId")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.VipIsp = params.get("VipIsp")
+        if params.get("NetworkAttributes") is not None:
+            self.NetworkAttributes = LoadBalancerInternetAccessible()
+            self.NetworkAttributes._deserialize(params.get("NetworkAttributes"))
+
+
+class LoadBalancerHealth(AbstractModel):
+    """负载均衡器健康状态
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: 负载均衡实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancerId: str
+        :param LoadBalancerName: 负载均衡实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancerName: str
+        :param Listeners: 监听器列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Listeners: list of ListenerHealth
+        """
+        self.LoadBalancerId = None
+        self.LoadBalancerName = None
+        self.Listeners = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.LoadBalancerName = params.get("LoadBalancerName")
+        if params.get("Listeners") is not None:
+            self.Listeners = []
+            for item in params.get("Listeners"):
+                obj = ListenerHealth()
+                obj._deserialize(item)
+                self.Listeners.append(obj)
+
+
+class LoadBalancerInternetAccessible(AbstractModel):
+    """负载均衡的带宽限制等信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param InternetMaxBandwidthOut: 最大出带宽，单位Mbps。
+        :type InternetMaxBandwidthOut: int
+        """
+        self.InternetMaxBandwidthOut = None
+
+
+    def _deserialize(self, params):
+        self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+
+
 class MigrateNetworkInterfaceRequest(AbstractModel):
     """MigrateNetworkInterface请求参数结构体
 
@@ -3869,6 +4979,107 @@ class ModifyInstancesAttributeRequest(AbstractModel):
 
 class ModifyInstancesAttributeResponse(AbstractModel):
     """ModifyInstancesAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyListenerRequest(AbstractModel):
+    """ModifyListener请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: 负载均衡实例 ID
+        :type LoadBalancerId: str
+        :param ListenerId: 负载均衡监听器 ID
+        :type ListenerId: str
+        :param ListenerName: 新的监听器名称
+        :type ListenerName: str
+        :param SessionExpireTime: 会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。此参数仅适用于TCP/UDP监听器。
+        :type SessionExpireTime: int
+        :param HealthCheck: 健康检查相关参数
+        :type HealthCheck: :class:`tencentcloud.ecm.v20190719.models.HealthCheck`
+        :param Scheduler: 监听器转发的方式。可选值：WRR、LEAST_CONN
+分别表示按权重轮询、最小连接数， 默认为 WRR。
+        :type Scheduler: str
+        """
+        self.LoadBalancerId = None
+        self.ListenerId = None
+        self.ListenerName = None
+        self.SessionExpireTime = None
+        self.HealthCheck = None
+        self.Scheduler = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.ListenerId = params.get("ListenerId")
+        self.ListenerName = params.get("ListenerName")
+        self.SessionExpireTime = params.get("SessionExpireTime")
+        if params.get("HealthCheck") is not None:
+            self.HealthCheck = HealthCheck()
+            self.HealthCheck._deserialize(params.get("HealthCheck"))
+        self.Scheduler = params.get("Scheduler")
+
+
+class ModifyListenerResponse(AbstractModel):
+    """ModifyListener返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyLoadBalancerAttributesRequest(AbstractModel):
+    """ModifyLoadBalancerAttributes请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: 负载均衡的唯一ID
+        :type LoadBalancerId: str
+        :param LoadBalancerName: 负载均衡实例名称
+        :type LoadBalancerName: str
+        :param InternetChargeInfo: 网络计费及带宽相关参数
+        :type InternetChargeInfo: :class:`tencentcloud.ecm.v20190719.models.LoadBalancerInternetAccessible`
+        """
+        self.LoadBalancerId = None
+        self.LoadBalancerName = None
+        self.InternetChargeInfo = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.LoadBalancerName = params.get("LoadBalancerName")
+        if params.get("InternetChargeInfo") is not None:
+            self.InternetChargeInfo = LoadBalancerInternetAccessible()
+            self.InternetChargeInfo._deserialize(params.get("InternetChargeInfo"))
+
+
+class ModifyLoadBalancerAttributesResponse(AbstractModel):
+    """ModifyLoadBalancerAttributes返回参数结构体
 
     """
 
@@ -4244,6 +5455,108 @@ class ModifySubnetAttributeRequest(AbstractModel):
 
 class ModifySubnetAttributeResponse(AbstractModel):
     """ModifySubnetAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyTargetPortRequest(AbstractModel):
+    """ModifyTargetPort请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: 负载均衡实例 ID
+        :type LoadBalancerId: str
+        :param ListenerId: 负载均衡监听器 ID
+        :type ListenerId: str
+        :param Targets: 要修改端口的后端服务列表
+        :type Targets: list of Target
+        :param NewPort: 后端服务绑定到监听器或转发规则的新端口
+        :type NewPort: int
+        """
+        self.LoadBalancerId = None
+        self.ListenerId = None
+        self.Targets = None
+        self.NewPort = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.ListenerId = params.get("ListenerId")
+        if params.get("Targets") is not None:
+            self.Targets = []
+            for item in params.get("Targets"):
+                obj = Target()
+                obj._deserialize(item)
+                self.Targets.append(obj)
+        self.NewPort = params.get("NewPort")
+
+
+class ModifyTargetPortResponse(AbstractModel):
+    """ModifyTargetPort返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyTargetWeightRequest(AbstractModel):
+    """ModifyTargetWeight请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: 负载均衡实例 ID
+        :type LoadBalancerId: str
+        :param ListenerId: 负载均衡监听器 ID
+        :type ListenerId: str
+        :param Targets: 要修改权重的后端服务列表
+        :type Targets: list of Target
+        :param Weight: 后端服务新的转发权重，取值范围：0~100，默认值10。如果设置了 Targets.Weight 参数，则此参数不生效。
+        :type Weight: int
+        """
+        self.LoadBalancerId = None
+        self.ListenerId = None
+        self.Targets = None
+        self.Weight = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.ListenerId = params.get("ListenerId")
+        if params.get("Targets") is not None:
+            self.Targets = []
+            for item in params.get("Targets"):
+                obj = Target()
+                obj._deserialize(item)
+                self.Targets.append(obj)
+        self.Weight = params.get("Weight")
+
+
+class ModifyTargetWeightResponse(AbstractModel):
+    """ModifyTargetWeight返回参数结构体
 
     """
 
@@ -5412,6 +6725,29 @@ class ResetInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RuleHealth(AbstractModel):
+    """转发规则及健康状态列表
+
+    """
+
+    def __init__(self):
+        """
+        :param Targets: 本规则上绑定的后端的健康检查状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Targets: list of TargetHealth
+        """
+        self.Targets = None
+
+
+    def _deserialize(self, params):
+        if params.get("Targets") is not None:
+            self.Targets = []
+            for item in params.get("Targets"):
+                obj = TargetHealth()
+                obj._deserialize(item)
+                self.Targets.append(obj)
+
+
 class RunEIPDirectServiceEnabled(AbstractModel):
     """IP直通相关的信息
 
@@ -6112,6 +7448,27 @@ class Tag(AbstractModel):
         self.Value = params.get("Value")
 
 
+class TagInfo(AbstractModel):
+    """标签信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param TagKey: 标签的键。
+        :type TagKey: str
+        :param TagValue: 标签的值。
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
+
+
 class TagSpecification(AbstractModel):
     """资源类型的Tag
 
@@ -6136,6 +7493,110 @@ class TagSpecification(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+
+
+class Target(AbstractModel):
+    """负责均衡后端目标
+
+    """
+
+    def __init__(self):
+        """
+        :param Port: 后端服务的监听端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param InstanceId: 子机ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param Weight: 后端服务的转发权重，取值范围：[0, 100]，默认为 10。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Weight: int
+        :param EniIp: 绑定弹性网卡时需要传入此参数，代表弹性网卡的IP，弹性网卡必须先绑定至子机，然后才能绑定到负载均衡实例。注意：参数 InstanceId 和 EniIp 只能传入一个且必须传入一个。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EniIp: str
+        """
+        self.Port = None
+        self.InstanceId = None
+        self.Weight = None
+        self.EniIp = None
+
+
+    def _deserialize(self, params):
+        self.Port = params.get("Port")
+        self.InstanceId = params.get("InstanceId")
+        self.Weight = params.get("Weight")
+        self.EniIp = params.get("EniIp")
+
+
+class TargetHealth(AbstractModel):
+    """后端的健康检查状态
+
+    """
+
+    def __init__(self):
+        """
+        :param IP: Target的内网IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IP: str
+        :param Port: Target绑定的端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param HealthStatus: 当前健康状态，true：健康，false：不健康（包括尚未开始探测、探测中、状态异常等几种状态）。只有处于健康状态（且权重大于0），负载均衡才会向其转发流量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HealthStatus: bool
+        :param TargetId: Target的实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetId: str
+        :param HealthStatusDetail: 当前健康状态的详细信息。如：Alive、Dead、Unknown、Close。Alive状态为健康，Dead状态为异常，Unknown状态包括尚未开始探测、探测中、状态未知，Close为未配置健康检查。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HealthStatusDetail: str
+        """
+        self.IP = None
+        self.Port = None
+        self.HealthStatus = None
+        self.TargetId = None
+        self.HealthStatusDetail = None
+
+
+    def _deserialize(self, params):
+        self.IP = params.get("IP")
+        self.Port = params.get("Port")
+        self.HealthStatus = params.get("HealthStatus")
+        self.TargetId = params.get("TargetId")
+        self.HealthStatusDetail = params.get("HealthStatusDetail")
+
+
+class TargetsWeightRule(AbstractModel):
+    """目标和权重的描述信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ListenerId: 负载均衡监听器 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ListenerId: str
+        :param Targets: 要修改权重的后端机器列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Targets: list of Target
+        :param Weight: 后端服务新的转发权重，取值范围：0~100。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Weight: int
+        """
+        self.ListenerId = None
+        self.Targets = None
+        self.Weight = None
+
+
+    def _deserialize(self, params):
+        self.ListenerId = params.get("ListenerId")
+        if params.get("Targets") is not None:
+            self.Targets = []
+            for item in params.get("Targets"):
+                obj = Target()
+                obj._deserialize(item)
+                self.Targets.append(obj)
+        self.Weight = params.get("Weight")
 
 
 class TaskInput(AbstractModel):

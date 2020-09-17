@@ -109,6 +109,90 @@ class CaptchaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCaptchaMiniData(self, request):
+        """安全验证码小程序插件分类查询数据接口（内测中），请求量type=0、通过量type=1、验证量type=2、拦截量type=3 小时级查询（五小时左右延迟）
+
+        :param request: Request instance for DescribeCaptchaMiniData.
+        :type request: :class:`tencentcloud.captcha.v20190722.models.DescribeCaptchaMiniDataRequest`
+        :rtype: :class:`tencentcloud.captcha.v20190722.models.DescribeCaptchaMiniDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCaptchaMiniData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCaptchaMiniDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCaptchaMiniDataSum(self, request):
+        """安全验证码小程序插件查询请求数据概况（内测中）
+
+        :param request: Request instance for DescribeCaptchaMiniDataSum.
+        :type request: :class:`tencentcloud.captcha.v20190722.models.DescribeCaptchaMiniDataSumRequest`
+        :rtype: :class:`tencentcloud.captcha.v20190722.models.DescribeCaptchaMiniDataSumResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCaptchaMiniDataSum", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCaptchaMiniDataSumResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCaptchaMiniOperData(self, request):
+        """安全验证码小程序插件用户操作数据查询（内测中）
+
+        :param request: Request instance for DescribeCaptchaMiniOperData.
+        :type request: :class:`tencentcloud.captcha.v20190722.models.DescribeCaptchaMiniOperDataRequest`
+        :rtype: :class:`tencentcloud.captcha.v20190722.models.DescribeCaptchaMiniOperDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCaptchaMiniOperData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCaptchaMiniOperDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCaptchaOperData(self, request):
         """安全验证码用户操作数据查询，验证码加载耗时type = 1 、拦截情况type = 2、 一周通过平均尝试次数 type = 3、尝试次数分布 type = 4
 
@@ -166,7 +250,7 @@ class CaptchaClient(AbstractClient):
 
 
     def DescribeCaptchaTicketData(self, request):
-        """验证码控制台票据验证信息
+        """安全验证码用户操作票据数据查询
 
         :param request: Request instance for DescribeCaptchaTicketData.
         :type request: :class:`tencentcloud.captcha.v20190722.models.DescribeCaptchaTicketDataRequest`

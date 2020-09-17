@@ -1049,6 +1049,34 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAreaBillBandwidthAndFluxList(self, request):
+        """海外分区直播计费带宽和流量数据查询。
+
+        :param request: Request instance for DescribeAreaBillBandwidthAndFluxList.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeAreaBillBandwidthAndFluxListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeAreaBillBandwidthAndFluxListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAreaBillBandwidthAndFluxList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAreaBillBandwidthAndFluxListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBillBandwidthAndFluxList(self, request):
         """直播计费带宽和流量数据查询。
 

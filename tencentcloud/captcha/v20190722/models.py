@@ -491,6 +491,216 @@ class DescribeCaptchaDataSumResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCaptchaMiniDataRequest(AbstractModel):
+    """DescribeCaptchaMiniData请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CaptchaAppId: 验证码应用ID
+        :type CaptchaAppId: int
+        :param Start: 查询开始时间
+        :type Start: int
+        :param End: 查询结束时间
+        :type End: int
+        :param Type: 查询类型
+        :type Type: int
+        """
+        self.CaptchaAppId = None
+        self.Start = None
+        self.End = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.CaptchaAppId = params.get("CaptchaAppId")
+        self.Start = params.get("Start")
+        self.End = params.get("End")
+        self.Type = params.get("Type")
+
+
+class DescribeCaptchaMiniDataResponse(AbstractModel):
+    """DescribeCaptchaMiniData返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CaptchaCode: 返回码 0 成功 其它失败
+        :type CaptchaCode: int
+        :param Data: 数据数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of CaptchaQueryData
+        :param CaptchaMsg: 返回信息描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CaptchaMsg: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CaptchaCode = None
+        self.Data = None
+        self.CaptchaMsg = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CaptchaCode = params.get("CaptchaCode")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = CaptchaQueryData()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.CaptchaMsg = params.get("CaptchaMsg")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCaptchaMiniDataSumRequest(AbstractModel):
+    """DescribeCaptchaMiniDataSum请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CaptchaAppId: 验证码应用ID
+        :type CaptchaAppId: int
+        :param Start: 查询开始时间
+        :type Start: int
+        :param End: 查询结束时间
+        :type End: int
+        """
+        self.CaptchaAppId = None
+        self.Start = None
+        self.End = None
+
+
+    def _deserialize(self, params):
+        self.CaptchaAppId = params.get("CaptchaAppId")
+        self.Start = params.get("Start")
+        self.End = params.get("End")
+
+
+class DescribeCaptchaMiniDataSumResponse(AbstractModel):
+    """DescribeCaptchaMiniDataSum返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GetSum: 请求总量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GetSum: int
+        :param VfySuccSum: 请求验证成功量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VfySuccSum: int
+        :param VfySum: 请求验证量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VfySum: int
+        :param AttackSum: 拦截攻击量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttackSum: int
+        :param CaptchaMsg: 返回信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CaptchaMsg: str
+        :param CaptchaCode: 成功返回0  其它失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CaptchaCode: int
+        :param CheckTicketSum: 票据校验总量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CheckTicketSum: int
+        :param TicketThroughputSum: 票据验证通过量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TicketThroughputSum: int
+        :param TicketInterceptSum: 票据验证拦截量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TicketInterceptSum: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.GetSum = None
+        self.VfySuccSum = None
+        self.VfySum = None
+        self.AttackSum = None
+        self.CaptchaMsg = None
+        self.CaptchaCode = None
+        self.CheckTicketSum = None
+        self.TicketThroughputSum = None
+        self.TicketInterceptSum = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.GetSum = params.get("GetSum")
+        self.VfySuccSum = params.get("VfySuccSum")
+        self.VfySum = params.get("VfySum")
+        self.AttackSum = params.get("AttackSum")
+        self.CaptchaMsg = params.get("CaptchaMsg")
+        self.CaptchaCode = params.get("CaptchaCode")
+        self.CheckTicketSum = params.get("CheckTicketSum")
+        self.TicketThroughputSum = params.get("TicketThroughputSum")
+        self.TicketInterceptSum = params.get("TicketInterceptSum")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCaptchaMiniOperDataRequest(AbstractModel):
+    """DescribeCaptchaMiniOperData请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CaptchaAppId: 验证码应用ID
+        :type CaptchaAppId: int
+        :param Start: 查询开始时间
+        :type Start: int
+        :param Type: 查询类型
+        :type Type: int
+        """
+        self.CaptchaAppId = None
+        self.Start = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.CaptchaAppId = params.get("CaptchaAppId")
+        self.Start = params.get("Start")
+        self.Type = params.get("Type")
+
+
+class DescribeCaptchaMiniOperDataResponse(AbstractModel):
+    """DescribeCaptchaMiniOperData返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CaptchaCode: 成功返回 0 其它失败
+        :type CaptchaCode: int
+        :param CaptchaMsg: 返回信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CaptchaMsg: str
+        :param Data: 用户操作数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.captcha.v20190722.models.CaptchaOperDataRes`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CaptchaCode = None
+        self.CaptchaMsg = None
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CaptchaCode = params.get("CaptchaCode")
+        self.CaptchaMsg = params.get("CaptchaMsg")
+        if params.get("Data") is not None:
+            self.Data = CaptchaOperDataRes()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCaptchaOperDataRequest(AbstractModel):
     """DescribeCaptchaOperData请求参数结构体
 

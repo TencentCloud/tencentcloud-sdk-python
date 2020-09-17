@@ -237,9 +237,9 @@ bigvLoss：上/下行视频丢包；
 bigvWidth：上/下行分辨率宽；
 bigvHeight：上/下行分辨率高
         :type DataType: list of str
-        :param PageNumber: 只查询用户列表时，设置分页index，从0开始（PageNumber和PageSize 其中一个不填均默认返回10条数据）
+        :param PageNumber: 只查询用户列表时，设置分页index，从0开始（PageNumber和PageSize 其中一个不填均默认返回6条数据）
         :type PageNumber: str
-        :param PageSize: 只查询用户列表时，设置分页大小（PageNumber和PageSize 其中一个不填均默认返回6条数据,最大不超过100）
+        :param PageSize: 只查询用户列表时，设置分页大小（PageNumber和PageSize 其中一个不填均默认返回6条数据,PageSize最大不超过100）
         :type PageSize: str
         """
         self.CommId = None
@@ -830,12 +830,15 @@ class LayoutParams(AbstractModel):
         :type SmallVideoLayoutParams: :class:`tencentcloud.trtc.v20190722.models.SmallVideoLayoutParams`
         :param MainVideoRightAlign: 屏幕分享模板有效。设置为1时代表大画面居右，小画面居左布局。默认为0。
         :type MainVideoRightAlign: int
+        :param MixVideoUids: 悬浮模板、九宫格、屏幕分享模板有效。设置此参数后，输出流混合此参数中包含用户的音视频，以及其他用户的纯音频。最多可设置16个用户。
+        :type MixVideoUids: list of str
         """
         self.Template = None
         self.MainVideoUserId = None
         self.MainVideoStreamType = None
         self.SmallVideoLayoutParams = None
         self.MainVideoRightAlign = None
+        self.MixVideoUids = None
 
 
     def _deserialize(self, params):
@@ -846,6 +849,7 @@ class LayoutParams(AbstractModel):
             self.SmallVideoLayoutParams = SmallVideoLayoutParams()
             self.SmallVideoLayoutParams._deserialize(params.get("SmallVideoLayoutParams"))
         self.MainVideoRightAlign = params.get("MainVideoRightAlign")
+        self.MixVideoUids = params.get("MixVideoUids")
 
 
 class OutputParams(AbstractModel):

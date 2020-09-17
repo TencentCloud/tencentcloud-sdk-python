@@ -171,6 +171,90 @@ class EcmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def BatchDeregisterTargets(self, request):
+        """批量解绑后端服务。
+
+        :param request: Request instance for BatchDeregisterTargets.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.BatchDeregisterTargetsRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.BatchDeregisterTargetsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("BatchDeregisterTargets", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.BatchDeregisterTargetsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def BatchModifyTargetWeight(self, request):
+        """批量修改监听器绑定的后端机器的转发权重。
+
+        :param request: Request instance for BatchModifyTargetWeight.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.BatchModifyTargetWeightRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.BatchModifyTargetWeightResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("BatchModifyTargetWeight", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.BatchModifyTargetWeightResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def BatchRegisterTargets(self, request):
+        """批量绑定后端目标。
+
+        :param request: Request instance for BatchRegisterTargets.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.BatchRegisterTargetsRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.BatchRegisterTargetsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("BatchRegisterTargets", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.BatchRegisterTargetsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateImage(self, request):
         """本接口(CreateImage)用于将实例的系统盘制作为新镜像，创建后的镜像可以用于创建实例。
 
@@ -185,6 +269,62 @@ class EcmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateImageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateListener(self, request):
+        """创建负载均衡监听器。
+
+        :param request: Request instance for CreateListener.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.CreateListenerRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.CreateListenerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateListener", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateListenerResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateLoadBalancer(self, request):
+        """购买负载均衡实例。
+
+        :param request: Request instance for CreateLoadBalancer.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.CreateLoadBalancerRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.CreateLoadBalancerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateLoadBalancer", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateLoadBalancerResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -392,6 +532,90 @@ class EcmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteImageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteListener(self, request):
+        """删除负载均衡监听器。
+
+        :param request: Request instance for DeleteListener.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.DeleteListenerRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.DeleteListenerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteListener", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteListenerResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteLoadBalancer(self, request):
+        """删除负载均衡实例。
+
+        :param request: Request instance for DeleteLoadBalancer.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.DeleteLoadBalancerRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.DeleteLoadBalancerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteLoadBalancer", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteLoadBalancerResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteLoadBalancerListeners(self, request):
+        """删除负载均衡多个监听器
+
+        :param request: Request instance for DeleteLoadBalancerListeners.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.DeleteLoadBalancerListenersRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.DeleteLoadBalancerListenersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteLoadBalancerListeners", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteLoadBalancerListenersResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -912,6 +1136,90 @@ class EcmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeListeners(self, request):
+        """查询负载均衡的监听器列表。
+
+        :param request: Request instance for DescribeListeners.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeListenersRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.DescribeListenersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeListeners", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeListenersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLoadBalanceTaskStatus(self, request):
+        """查询负载均衡相关的任务状态
+
+        :param request: Request instance for DescribeLoadBalanceTaskStatus.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeLoadBalanceTaskStatusRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.DescribeLoadBalanceTaskStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLoadBalanceTaskStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLoadBalanceTaskStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLoadBalancers(self, request):
+        """查询负载均衡实例列表。
+
+        :param request: Request instance for DescribeLoadBalancers.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeLoadBalancersRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.DescribeLoadBalancersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLoadBalancers", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLoadBalancersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeModule(self, request):
         """获取模块列表
 
@@ -1206,6 +1514,62 @@ class EcmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSubnetsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTargetHealth(self, request):
+        """获取负载均衡后端服务的健康检查状态。
+
+        :param request: Request instance for DescribeTargetHealth.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeTargetHealthRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.DescribeTargetHealthResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTargetHealth", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTargetHealthResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTargets(self, request):
+        """查询负载均衡绑定的后端服务列表。
+
+        :param request: Request instance for DescribeTargets.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeTargetsRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.DescribeTargetsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTargets", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTargetsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1644,6 +2008,62 @@ class EcmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyListener(self, request):
+        """修改负载均衡监听器属性。
+
+        :param request: Request instance for ModifyListener.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.ModifyListenerRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.ModifyListenerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyListener", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyListenerResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyLoadBalancerAttributes(self, request):
+        """修改负载均衡实例的属性。
+
+        :param request: Request instance for ModifyLoadBalancerAttributes.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.ModifyLoadBalancerAttributesRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.ModifyLoadBalancerAttributesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyLoadBalancerAttributes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyLoadBalancerAttributesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyModuleConfig(self, request):
         """修改模块配置，已关联实例的模块不支持调整配置。
 
@@ -1882,6 +2302,62 @@ class EcmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySubnetAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyTargetPort(self, request):
+        """修改监听器绑定的后端机器的端口。
+
+        :param request: Request instance for ModifyTargetPort.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.ModifyTargetPortRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.ModifyTargetPortResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyTargetPort", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyTargetPortResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyTargetWeight(self, request):
+        """修改监听器绑定的后端机器的转发权重。
+
+        :param request: Request instance for ModifyTargetWeight.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.ModifyTargetWeightRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.ModifyTargetWeightResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyTargetWeight", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyTargetWeightResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

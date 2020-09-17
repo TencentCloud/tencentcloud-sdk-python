@@ -213,6 +213,58 @@ yyyy-mm-dd HH:MM:SS
         self.Bandwidth = params.get("Bandwidth")
 
 
+class BillAreaInfo(AbstractModel):
+    """海外分区直播带宽出参，分区信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 大区名称
+        :type Name: str
+        :param Countrys: 国家明细数据
+        :type Countrys: list of BillCountryInfo
+        """
+        self.Name = None
+        self.Countrys = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        if params.get("Countrys") is not None:
+            self.Countrys = []
+            for item in params.get("Countrys"):
+                obj = BillCountryInfo()
+                obj._deserialize(item)
+                self.Countrys.append(obj)
+
+
+class BillCountryInfo(AbstractModel):
+    """海外分区直播带宽出参国家带宽信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 国家名称
+        :type Name: str
+        :param BandInfoList: 带宽明细数据信息。
+        :type BandInfoList: list of BillDataInfo
+        """
+        self.Name = None
+        self.BandInfoList = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        if params.get("BandInfoList") is not None:
+            self.BandInfoList = []
+            for item in params.get("BandInfoList"):
+                obj = BillDataInfo()
+                obj._deserialize(item)
+                self.BandInfoList.append(obj)
+
+
 class BillDataInfo(AbstractModel):
     """带宽和流量信息。
 
@@ -2445,6 +2497,57 @@ class DescribeAllStreamPlayInfoListResponse(AbstractModel):
             self.DataInfoList = []
             for item in params.get("DataInfoList"):
                 obj = MonitorStreamPlayInfo()
+                obj._deserialize(item)
+                self.DataInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAreaBillBandwidthAndFluxListRequest(AbstractModel):
+    """DescribeAreaBillBandwidthAndFluxList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 起始时间点，格式为yyyy-mm-dd HH:MM:SS。
+        :type StartTime: str
+        :param EndTime: 结束时间点，格式为yyyy-mm-dd HH:MM:SS，起始和结束时间跨度不支持超过1天。
+        :type EndTime: str
+        :param PlayDomains: 直播播放域名，若不填，表示总体数据。
+        :type PlayDomains: list of str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.PlayDomains = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.PlayDomains = params.get("PlayDomains")
+
+
+class DescribeAreaBillBandwidthAndFluxListResponse(AbstractModel):
+    """DescribeAreaBillBandwidthAndFluxList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DataInfoList: 明细数据信息。
+        :type DataInfoList: list of BillAreaInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DataInfoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DataInfoList") is not None:
+            self.DataInfoList = []
+            for item in params.get("DataInfoList"):
+                obj = BillAreaInfo()
                 obj._deserialize(item)
                 self.DataInfoList.append(obj)
         self.RequestId = params.get("RequestId")

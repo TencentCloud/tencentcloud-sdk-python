@@ -106,6 +106,8 @@ class CreateInstanceRequest(AbstractModel):
         :type TagList: list of TagInfo
         :param BasicSecurityType: 6.8（及以上版本）基础版是否开启xpack security认证<li>1：不开启</li><li>2：开启</li>
         :type BasicSecurityType: int
+        :param SceneType: 场景化模板类型 0：不启用 1：通用 2：日志 3：搜索
+        :type SceneType: int
         """
         self.Zone = None
         self.EsVersion = None
@@ -134,6 +136,7 @@ class CreateInstanceRequest(AbstractModel):
         self.NodeInfoList = None
         self.TagList = None
         self.BasicSecurityType = None
+        self.SceneType = None
 
 
     def _deserialize(self, params):
@@ -179,6 +182,7 @@ class CreateInstanceRequest(AbstractModel):
                 obj._deserialize(item)
                 self.TagList.append(obj)
         self.BasicSecurityType = params.get("BasicSecurityType")
+        self.SceneType = params.get("SceneType")
 
 
 class CreateInstanceResponse(AbstractModel):
@@ -711,6 +715,9 @@ class InstanceInfo(AbstractModel):
         :param SecurityType: 6.8（及以上版本）基础版是否开启xpack security认证<li>1：不开启</li><li>2：开启</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityType: int
+        :param SceneType: 场景化模板类型：0、不开启；1、通用场景；2、日志场景；3、搜索场景
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SceneType: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -764,6 +771,7 @@ class InstanceInfo(AbstractModel):
         self.KibanaPublicAccess = None
         self.KibanaPrivateAccess = None
         self.SecurityType = None
+        self.SceneType = None
 
 
     def _deserialize(self, params):
@@ -844,6 +852,7 @@ class InstanceInfo(AbstractModel):
         self.KibanaPublicAccess = params.get("KibanaPublicAccess")
         self.KibanaPrivateAccess = params.get("KibanaPrivateAccess")
         self.SecurityType = params.get("SecurityType")
+        self.SceneType = params.get("SceneType")
 
 
 class InstanceLog(AbstractModel):
@@ -1130,6 +1139,48 @@ class RestartInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RestartNodesRequest(AbstractModel):
+    """RestartNodes请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 集群实例ID
+        :type InstanceId: str
+        :param NodeNames: 节点名称列表
+        :type NodeNames: list of str
+        :param ForceRestart: 是否强制重启
+        :type ForceRestart: bool
+        """
+        self.InstanceId = None
+        self.NodeNames = None
+        self.ForceRestart = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.NodeNames = params.get("NodeNames")
+        self.ForceRestart = params.get("ForceRestart")
+
+
+class RestartNodesResponse(AbstractModel):
+    """RestartNodes返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class SubTaskDetail(AbstractModel):
     """实例操作记录流程任务中的子任务信息（如升级检查任务中的各个检查项）
 
@@ -1285,6 +1336,10 @@ class UpdateInstanceRequest(AbstractModel):
         :type KibanaPrivatePort: int
         :param ScaleType: 0: 蓝绿变更方式扩容，集群不重启 （默认） 1: 磁盘解挂载扩容，集群滚动重启
         :type ScaleType: int
+        :param MultiZoneInfo: 多可用区部署
+        :type MultiZoneInfo: list of ZoneDetail
+        :param SceneType: 场景化模板类型 -1：不启用 1：通用 2：日志 3：搜索
+        :type SceneType: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -1307,6 +1362,8 @@ class UpdateInstanceRequest(AbstractModel):
         self.BasicSecurityType = None
         self.KibanaPrivatePort = None
         self.ScaleType = None
+        self.MultiZoneInfo = None
+        self.SceneType = None
 
 
     def _deserialize(self, params):
@@ -1342,6 +1399,13 @@ class UpdateInstanceRequest(AbstractModel):
         self.BasicSecurityType = params.get("BasicSecurityType")
         self.KibanaPrivatePort = params.get("KibanaPrivatePort")
         self.ScaleType = params.get("ScaleType")
+        if params.get("MultiZoneInfo") is not None:
+            self.MultiZoneInfo = []
+            for item in params.get("MultiZoneInfo"):
+                obj = ZoneDetail()
+                obj._deserialize(item)
+                self.MultiZoneInfo.append(obj)
+        self.SceneType = params.get("SceneType")
 
 
 class UpdateInstanceResponse(AbstractModel):
@@ -1424,12 +1488,15 @@ class UpgradeInstanceRequest(AbstractModel):
         :type LicenseType: str
         :param BasicSecurityType: 6.8（及以上版本）基础版是否开启xpack security认证<li>1：不开启</li><li>2：开启</li>
         :type BasicSecurityType: int
+        :param UpgradeMode: 升级方式：<li>scale 蓝绿变更</li><li>restart 滚动重启</li>默认值为scale
+        :type UpgradeMode: str
         """
         self.InstanceId = None
         self.EsVersion = None
         self.CheckOnly = None
         self.LicenseType = None
         self.BasicSecurityType = None
+        self.UpgradeMode = None
 
 
     def _deserialize(self, params):
@@ -1438,6 +1505,7 @@ class UpgradeInstanceRequest(AbstractModel):
         self.CheckOnly = params.get("CheckOnly")
         self.LicenseType = params.get("LicenseType")
         self.BasicSecurityType = params.get("BasicSecurityType")
+        self.UpgradeMode = params.get("UpgradeMode")
 
 
 class UpgradeInstanceResponse(AbstractModel):

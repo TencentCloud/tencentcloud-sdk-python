@@ -3706,6 +3706,78 @@ class QuotaInvoiceOCRResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RecognizeThaiIDCardOCRRequest(AbstractModel):
+    """RecognizeThaiIDCardOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
+建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+        :type ImageUrl: str
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+
+
+class RecognizeThaiIDCardOCRResponse(AbstractModel):
+    """RecognizeThaiIDCardOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ID: 身份证号码
+        :type ID: str
+        :param ThaiName: 泰文姓名
+        :type ThaiName: str
+        :param EnFirstName: 英文姓名
+        :type EnFirstName: str
+        :param Address: 地址
+        :type Address: str
+        :param Birthday: 出生日期
+        :type Birthday: str
+        :param IssueDate: 首次领用日期
+        :type IssueDate: str
+        :param ExpirationDate: 签发日期
+        :type ExpirationDate: str
+        :param EnLastName: 英文姓名
+        :type EnLastName: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ID = None
+        self.ThaiName = None
+        self.EnFirstName = None
+        self.Address = None
+        self.Birthday = None
+        self.IssueDate = None
+        self.ExpirationDate = None
+        self.EnLastName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ID = params.get("ID")
+        self.ThaiName = params.get("ThaiName")
+        self.EnFirstName = params.get("EnFirstName")
+        self.Address = params.get("Address")
+        self.Birthday = params.get("Birthday")
+        self.IssueDate = params.get("IssueDate")
+        self.ExpirationDate = params.get("ExpirationDate")
+        self.EnLastName = params.get("EnLastName")
+        self.RequestId = params.get("RequestId")
+
+
 class Rect(AbstractModel):
     """矩形坐标
 

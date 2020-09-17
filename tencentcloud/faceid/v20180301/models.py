@@ -929,6 +929,7 @@ class GetDetectInfoResponse(AbstractModel):
     "LiveMsg": null,      // 活体检测阶段的错误信息
     "Comparestatus": null,// 一比一阶段的错误码。0为成功
     "Comparemsg": null,   // 一比一阶段的错误信息
+    "Sim": null, // 比对相似度
     "Location": null, // 地理位置信息
     "Extra": "",          // DetectAuth结果传进来的Extra信息
     "Detail": {           // 活体一比一信息详情
@@ -1497,8 +1498,11 @@ class MinorsVerificationResponse(AbstractModel):
         :type Result: str
         :param Description: 业务结果描述。
         :type Description: str
-        :param AgeRange: 当结果码为0或者-1时，该字段的值为年龄区间。
-格式为[a,b)，表示年龄在a岁以上（包括a岁），b岁以下（不包括b岁）。若b为+时表示没有上限。
+        :param AgeRange: 该字段的值为年龄区间。格式为[a,b)，
+[0,8)表示年龄小于8周岁区间，不包括8岁；
+[8,16)表示年龄8-16周岁区间，不包括16岁；
+[16,18)表示年龄16-18周岁区间，不包括18岁；
+[18,+)表示年龄大于18周岁。
         :type AgeRange: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
