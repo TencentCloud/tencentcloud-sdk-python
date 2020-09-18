@@ -701,6 +701,88 @@ class DescribeCaptchaMiniOperDataResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCaptchaMiniResultRequest(AbstractModel):
+    """DescribeCaptchaMiniResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CaptchaType: 验证码类型，9：滑块验证码
+        :type CaptchaType: int
+        :param Ticket: 验证码返回给用户的票据
+        :type Ticket: str
+        :param UserIp: 用户操作来源的外网 IP
+        :type UserIp: str
+        :param CaptchaAppId: 验证码应用ID
+        :type CaptchaAppId: int
+        :param AppSecretKey: 用于服务器端校验验证码票据的验证密钥，请妥善保密，请勿泄露给第三方
+        :type AppSecretKey: str
+        :param BusinessId: 业务 ID，网站或应用在多个业务中使用此服务，通过此 ID 区分统计数据
+        :type BusinessId: int
+        :param SceneId: 场景 ID，网站或应用的业务下有多个场景使用此服务，通过此 ID 区分统计数据
+        :type SceneId: int
+        :param MacAddress: mac 地址或设备唯一标识
+        :type MacAddress: str
+        :param Imei: 手机设备号
+        :type Imei: str
+        """
+        self.CaptchaType = None
+        self.Ticket = None
+        self.UserIp = None
+        self.CaptchaAppId = None
+        self.AppSecretKey = None
+        self.BusinessId = None
+        self.SceneId = None
+        self.MacAddress = None
+        self.Imei = None
+
+
+    def _deserialize(self, params):
+        self.CaptchaType = params.get("CaptchaType")
+        self.Ticket = params.get("Ticket")
+        self.UserIp = params.get("UserIp")
+        self.CaptchaAppId = params.get("CaptchaAppId")
+        self.AppSecretKey = params.get("AppSecretKey")
+        self.BusinessId = params.get("BusinessId")
+        self.SceneId = params.get("SceneId")
+        self.MacAddress = params.get("MacAddress")
+        self.Imei = params.get("Imei")
+
+
+class DescribeCaptchaMiniResultResponse(AbstractModel):
+    """DescribeCaptchaMiniResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CaptchaCode: 1       ticket verification succeeded     票据验证成功
+8       ticket expired     票据超时
+10     ticket format error     票据格式不正确
+15     ticket decryption failed     验证码解密失败
+16     CaptchaAppId wrong format      检查CaptchaAppId错误
+26     system internal error     系统内部错误
+100    param err appsecretkey     参数校验错误
+21      ticket error     差别，票据验证错误
+        :type CaptchaCode: int
+        :param CaptchaMsg: 状态描述及验证错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CaptchaMsg: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CaptchaCode = None
+        self.CaptchaMsg = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CaptchaCode = params.get("CaptchaCode")
+        self.CaptchaMsg = params.get("CaptchaMsg")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCaptchaOperDataRequest(AbstractModel):
     """DescribeCaptchaOperData请求参数结构体
 

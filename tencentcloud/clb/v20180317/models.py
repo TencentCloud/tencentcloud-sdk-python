@@ -828,6 +828,8 @@ class CreateListenerRequest(AbstractModel):
         :type TargetType: str
         :param SessionType: 会话保持类型。不传或传NORMAL表示默认会话保持类型。QUIC_CID 表示根据Quic Connection ID做会话保持。QUIC_CID只支持UDP协议。
         :type SessionType: str
+        :param KeepaliveEnable: 是否开启长连接，此参数仅适用于HTTP/HTTPS监听器
+        :type KeepaliveEnable: int
         """
         self.LoadBalancerId = None
         self.Ports = None
@@ -840,6 +842,7 @@ class CreateListenerRequest(AbstractModel):
         self.SniSwitch = None
         self.TargetType = None
         self.SessionType = None
+        self.KeepaliveEnable = None
 
 
     def _deserialize(self, params):
@@ -858,6 +861,7 @@ class CreateListenerRequest(AbstractModel):
         self.SniSwitch = params.get("SniSwitch")
         self.TargetType = params.get("TargetType")
         self.SessionType = params.get("SessionType")
+        self.KeepaliveEnable = params.get("KeepaliveEnable")
 
 
 class CreateListenerResponse(AbstractModel):
@@ -3824,6 +3828,8 @@ class ModifyListenerRequest(AbstractModel):
         :type Scheduler: str
         :param SniSwitch: 是否开启SNI特性，此参数仅适用于HTTPS监听器。注意：未开启SNI的监听器可以开启SNI；已开启SNI的监听器不能关闭SNI
         :type SniSwitch: int
+        :param KeepaliveEnable: 是否开启长连接，此参数仅适用于HTTP/HTTPS监听器
+        :type KeepaliveEnable: int
         """
         self.LoadBalancerId = None
         self.ListenerId = None
@@ -3833,6 +3839,7 @@ class ModifyListenerRequest(AbstractModel):
         self.Certificate = None
         self.Scheduler = None
         self.SniSwitch = None
+        self.KeepaliveEnable = None
 
 
     def _deserialize(self, params):
@@ -3848,6 +3855,7 @@ class ModifyListenerRequest(AbstractModel):
             self.Certificate._deserialize(params.get("Certificate"))
         self.Scheduler = params.get("Scheduler")
         self.SniSwitch = params.get("SniSwitch")
+        self.KeepaliveEnable = params.get("KeepaliveEnable")
 
 
 class ModifyListenerResponse(AbstractModel):

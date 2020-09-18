@@ -304,6 +304,25 @@ class GetAsrVocabListRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        """
+        :param TagInfos: 标签信息，格式为“$TagKey : $TagValue ”，中间分隔符为“空格”+“:”+“空格”
+        :type TagInfos: list of str
+        :param Offset: 分页Offset
+        :type Offset: int
+        :param Limit: 分页Limit
+        :type Limit: int
+        """
+        self.TagInfos = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.TagInfos = params.get("TagInfos")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
 
 class GetAsrVocabListResponse(AbstractModel):
     """GetAsrVocabList返回参数结构体
@@ -314,10 +333,13 @@ class GetAsrVocabListResponse(AbstractModel):
         """
         :param VocabList: 热词表列表
         :type VocabList: list of Vocab
+        :param TotalCount: 热词列表总数
+        :type TotalCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.VocabList = None
+        self.TotalCount = None
         self.RequestId = None
 
 
@@ -328,6 +350,7 @@ class GetAsrVocabListResponse(AbstractModel):
                 obj = Vocab()
                 obj._deserialize(item)
                 self.VocabList.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -398,6 +421,63 @@ class GetAsrVocabResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GetCustomizationListRequest(AbstractModel):
+    """GetCustomizationList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TagInfos: 标签信息，格式为“$TagKey : $TagValue ”，中间分隔符为“空格”+“:”+“空格”
+        :type TagInfos: list of str
+        :param Limit: 分页大小
+        :type Limit: int
+        :param Offset: 分页offset
+        :type Offset: int
+        """
+        self.TagInfos = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.TagInfos = params.get("TagInfos")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class GetCustomizationListResponse(AbstractModel):
+    """GetCustomizationList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 自学习模型数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of Model
+        :param TotalCount: 自学习模型总量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = Model()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class HotWord(AbstractModel):
     """热词的词和权重
 
@@ -417,6 +497,52 @@ class HotWord(AbstractModel):
     def _deserialize(self, params):
         self.Word = params.get("Word")
         self.Weight = params.get("Weight")
+
+
+class Model(AbstractModel):
+    """自学习模型信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ModelName: 模型名称
+        :type ModelName: str
+        :param DictName: 模型文件名称
+        :type DictName: str
+        :param ModelId: 模型Id
+        :type ModelId: str
+        :param ModelType: 模型类型，“8k”或者”16k“
+        :type ModelType: str
+        :param ServiceType: 服务类型
+        :type ServiceType: str
+        :param ModelState: 模型状态，-1下线状态，1上线状态, 0训练中, -2 训练失败
+        :type ModelState: int
+        :param AtUpdated: 最后更新时间
+        :type AtUpdated: str
+        :param TagInfos: 标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagInfos: list of str
+        """
+        self.ModelName = None
+        self.DictName = None
+        self.ModelId = None
+        self.ModelType = None
+        self.ServiceType = None
+        self.ModelState = None
+        self.AtUpdated = None
+        self.TagInfos = None
+
+
+    def _deserialize(self, params):
+        self.ModelName = params.get("ModelName")
+        self.DictName = params.get("DictName")
+        self.ModelId = params.get("ModelId")
+        self.ModelType = params.get("ModelType")
+        self.ServiceType = params.get("ServiceType")
+        self.ModelState = params.get("ModelState")
+        self.AtUpdated = params.get("AtUpdated")
+        self.TagInfos = params.get("TagInfos")
 
 
 class SentenceDetail(AbstractModel):
@@ -480,10 +606,14 @@ class SentenceRecognitionRequest(AbstractModel):
         :type SubServiceType: int
         :param EngSerViceType: 引擎模型类型。
 电话场景：
+• 8k_en：电话 8k 英语；
 • 8k_zh：电话 8k 中文普通话通用；
 非电话场景：
 • 16k_zh：16k 中文普通话通用；
 • 16k_en：16k 英语；
+• 16k_ca：16k 粤语；
+• 16k_ja：16k 日语；
+•16k_wuu-SH：16k 上海话方言。
 • 16k_ca：16k 粤语；
 • 16k_ja：16k 日语；
 •16k_wuu-SH：16k 上海话方言。
@@ -510,6 +640,8 @@ class SentenceRecognitionRequest(AbstractModel):
         :type FilterPunc: int
         :param ConvertNumMode: 是否进行阿拉伯数字智能转换。0：不转换，直接输出中文数字，1：根据场景智能转换为阿拉伯数字。默认值为1
         :type ConvertNumMode: int
+        :param WordInfo: 是否显示词级别时间戳。0：不显示；1：显示，不包含标点时间戳，2：显示，包含标点时间戳。支持引擎8k_zh，16k_zh，16k_en，16k_ca，16k_ja，16k_wuu-SH
+        :type WordInfo: int
         """
         self.ProjectId = None
         self.SubServiceType = None
@@ -525,6 +657,7 @@ class SentenceRecognitionRequest(AbstractModel):
         self.FilterModal = None
         self.FilterPunc = None
         self.ConvertNumMode = None
+        self.WordInfo = None
 
 
     def _deserialize(self, params):
@@ -542,6 +675,7 @@ class SentenceRecognitionRequest(AbstractModel):
         self.FilterModal = params.get("FilterModal")
         self.FilterPunc = params.get("FilterPunc")
         self.ConvertNumMode = params.get("ConvertNumMode")
+        self.WordInfo = params.get("WordInfo")
 
 
 class SentenceRecognitionResponse(AbstractModel):
@@ -555,18 +689,58 @@ class SentenceRecognitionResponse(AbstractModel):
         :type Result: str
         :param AudioDuration: 请求的音频时长，单位为ms
         :type AudioDuration: int
+        :param WordSize: 词时间戳列表的长度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WordSize: int
+        :param WordList: 词时间戳列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WordList: list of SentenceWord
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Result = None
         self.AudioDuration = None
+        self.WordSize = None
+        self.WordList = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.AudioDuration = params.get("AudioDuration")
+        self.WordSize = params.get("WordSize")
+        if params.get("WordList") is not None:
+            self.WordList = []
+            for item in params.get("WordList"):
+                obj = SentenceWord()
+                obj._deserialize(item)
+                self.WordList.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class SentenceWord(AbstractModel):
+    """一句话识别返回的词时间戳
+
+    """
+
+    def __init__(self):
+        """
+        :param Word: 词结果
+        :type Word: str
+        :param StartTime: 词在音频中的开始时间
+        :type StartTime: int
+        :param EndTime: 词在音频中的结束时间
+        :type EndTime: int
+        """
+        self.Word = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.Word = params.get("Word")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
 
 
 class SentenceWords(AbstractModel):
@@ -780,6 +954,9 @@ class Vocab(AbstractModel):
         :type UpdateTime: str
         :param State: 热词表状态，1为默认状态即在识别时默认加载该热词表进行识别，0为初始状态
         :type State: int
+        :param TagInfos: 标签数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagInfos: list of str
         """
         self.Name = None
         self.Description = None
@@ -788,6 +965,7 @@ class Vocab(AbstractModel):
         self.CreateTime = None
         self.UpdateTime = None
         self.State = None
+        self.TagInfos = None
 
 
     def _deserialize(self, params):
@@ -803,3 +981,4 @@ class Vocab(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
         self.State = params.get("State")
+        self.TagInfos = params.get("TagInfos")

@@ -1222,6 +1222,66 @@ class DetectFaceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DetectLiveFaceAccurateRequest(AbstractModel):
+    """DetectLiveFaceAccurate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Image: 图片 base64 数据，base64 编码后大小不可超过5M。
+jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。 
+图片的宽高比请接近 3:4，手机拍摄比例最佳。
+人脸尺寸大于100X100像素。
+图片格式支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :type Image: str
+        :param Url: 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
+jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+Url、Image必须提供一个，如果都提供，只使用 Url。 
+图片的宽高比请接近 3:4，手机拍摄比例最佳。
+人脸尺寸大于100X100像素。
+图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的Url速度和稳定性可能受一定影响。
+图片格式支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :type Url: str
+        :param FaceModelVersion: 人脸识别服务所用的算法模型版本。目前入参支持“3.0“。
+        :type FaceModelVersion: str
+        """
+        self.Image = None
+        self.Url = None
+        self.FaceModelVersion = None
+
+
+    def _deserialize(self, params):
+        self.Image = params.get("Image")
+        self.Url = params.get("Url")
+        self.FaceModelVersion = params.get("FaceModelVersion")
+
+
+class DetectLiveFaceAccurateResponse(AbstractModel):
+    """DetectLiveFaceAccurate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Score: 活体打分，取值范围 [0,100]，根据活体分数对应的阈值区间来判断是否为翻拍。目前阈值可分为[5,10,40,70,90]，其中推荐阈值为40。
+        :type Score: float
+        :param FaceModelVersion: 人脸识别所用的算法模型版本。
+        :type FaceModelVersion: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Score = None
+        self.FaceModelVersion = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Score = params.get("Score")
+        self.FaceModelVersion = params.get("FaceModelVersion")
+        self.RequestId = params.get("RequestId")
+
+
 class DetectLiveFaceRequest(AbstractModel):
     """DetectLiveFace请求参数结构体
 

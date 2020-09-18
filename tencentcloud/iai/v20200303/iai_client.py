@@ -519,6 +519,36 @@ class IaiClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DetectLiveFaceAccurate(self, request):
+        """人脸静态活体检测（高精度版）可用于对用户上传的静态图片进行防翻拍活体检测，以判断是否是翻拍图片。
+
+        相比现有静态活体检测服务，高精度版在维持高真人通过率的前提下，增强了对高清屏幕、裁剪纸片、3D面具等攻击的防御能力，攻击拦截率约为业内同类型产品形态4-5倍。同时支持多场景人脸核验，满足移动端、PC端各类型场景的图片活体检验需求，适用于各个行业不同的活体检验应用。
+
+        :param request: Request instance for DetectLiveFaceAccurate.
+        :type request: :class:`tencentcloud.iai.v20200303.models.DetectLiveFaceAccurateRequest`
+        :rtype: :class:`tencentcloud.iai.v20200303.models.DetectLiveFaceAccurateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DetectLiveFaceAccurate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DetectLiveFaceAccurateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def EstimateCheckSimilarPersonCostTime(self, request):
         """获取若要开始一个人员查重任务，这个任务结束的预估时间。
 

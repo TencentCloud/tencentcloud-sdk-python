@@ -193,6 +193,34 @@ class CaptchaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCaptchaMiniResult(self, request):
+        """核查验证码小程序插件票据结果（内测中）
+
+        :param request: Request instance for DescribeCaptchaMiniResult.
+        :type request: :class:`tencentcloud.captcha.v20190722.models.DescribeCaptchaMiniResultRequest`
+        :rtype: :class:`tencentcloud.captcha.v20190722.models.DescribeCaptchaMiniResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCaptchaMiniResult", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCaptchaMiniResultResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCaptchaOperData(self, request):
         """安全验证码用户操作数据查询，验证码加载耗时type = 1 、拦截情况type = 2、 一周通过平均尝试次数 type = 3、尝试次数分布 type = 4
 

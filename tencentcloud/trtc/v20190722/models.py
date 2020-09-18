@@ -218,7 +218,7 @@ class DescribeCallDetailRequest(AbstractModel):
         :type StartTime: int
         :param EndTime: 查询结束时间，本地unix时间戳（1588031999s）
         :type EndTime: int
-        :param SdkAppId: 用户sdkappid（1400188366）
+        :param SdkAppId: 用户SDKAppID（1400188366）
         :type SdkAppId: str
         :param UserIds: 需查询的用户数组，不填默认返回6个用户,最多可填6个用户
         :type UserIds: list of str
@@ -237,9 +237,9 @@ bigvLoss：上/下行视频丢包；
 bigvWidth：上/下行分辨率宽；
 bigvHeight：上/下行分辨率高
         :type DataType: list of str
-        :param PageNumber: 只查询用户列表时，设置分页index，从0开始（PageNumber和PageSize 其中一个不填均默认返回6条数据）
+        :param PageNumber: 设置分页index，从0开始（PageNumber和PageSize 其中一个不填均默认返回6条数据）
         :type PageNumber: str
-        :param PageSize: 只查询用户列表时，设置分页大小（PageNumber和PageSize 其中一个不填均默认返回6条数据,PageSize最大不超过100）
+        :param PageSize: 设置分页大小（PageNumber和PageSize 其中一个不填均默认返回6条数据,DataType，UserIds不为null，PageSize最大不超过6，DataType，UserIds为null，PageSize最大不超过100）
         :type PageSize: str
         """
         self.CommId = None

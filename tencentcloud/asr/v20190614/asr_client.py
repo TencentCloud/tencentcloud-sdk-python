@@ -239,6 +239,34 @@ class AsrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetCustomizationList(self, request):
+        """查询自学习模型列表
+
+        :param request: Request instance for GetCustomizationList.
+        :type request: :class:`tencentcloud.asr.v20190614.models.GetCustomizationListRequest`
+        :rtype: :class:`tencentcloud.asr.v20190614.models.GetCustomizationListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetCustomizationList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetCustomizationListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def SentenceRecognition(self, request):
         """本接口用于对60秒之内的短音频文件进行识别。
         <br>•   支持中文普通话、英语、粤语、日语、上海话方言。
