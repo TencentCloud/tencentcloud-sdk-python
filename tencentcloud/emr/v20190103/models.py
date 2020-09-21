@@ -1632,14 +1632,19 @@ class PersistentVolumeContext(AbstractModel):
         :param DiskType: 磁盘类型。CLOUD_PREMIUM;CLOUD_SSD
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiskType: str
+        :param DiskNum: 磁盘数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskNum: int
         """
         self.DiskSize = None
         self.DiskType = None
+        self.DiskNum = None
 
 
     def _deserialize(self, params):
         self.DiskSize = params.get("DiskSize")
         self.DiskType = params.get("DiskType")
+        self.DiskNum = params.get("DiskNum")
 
 
 class Placement(AbstractModel):
@@ -2024,6 +2029,12 @@ class ScaleOutInstanceRequest(AbstractModel):
         :type HardwareResourceType: str
         :param PodSpec: 使用Pod资源扩容时，指定的Pod规格以及来源等信息
         :type PodSpec: :class:`tencentcloud.emr.v20190103.models.PodSpec`
+        :param ClickHouseClusterName: 使用clickhouse集群扩容时，选择的机器分组名称
+        :type ClickHouseClusterName: str
+        :param ClickHouseClusterType: 使用clickhouse集群扩容时，选择的机器分组类型。new为新增，old为选择旧分组
+        :type ClickHouseClusterType: str
+        :param YarnNodeLabel: 规则扩容指定 yarn node label
+        :type YarnNodeLabel: str
         """
         self.TimeUnit = None
         self.TimeSpan = None
@@ -2041,6 +2052,9 @@ class ScaleOutInstanceRequest(AbstractModel):
         self.Tags = None
         self.HardwareResourceType = None
         self.PodSpec = None
+        self.ClickHouseClusterName = None
+        self.ClickHouseClusterType = None
+        self.YarnNodeLabel = None
 
 
     def _deserialize(self, params):
@@ -2072,6 +2086,9 @@ class ScaleOutInstanceRequest(AbstractModel):
         if params.get("PodSpec") is not None:
             self.PodSpec = PodSpec()
             self.PodSpec._deserialize(params.get("PodSpec"))
+        self.ClickHouseClusterName = params.get("ClickHouseClusterName")
+        self.ClickHouseClusterType = params.get("ClickHouseClusterType")
+        self.YarnNodeLabel = params.get("YarnNodeLabel")
 
 
 class ScaleOutInstanceResponse(AbstractModel):

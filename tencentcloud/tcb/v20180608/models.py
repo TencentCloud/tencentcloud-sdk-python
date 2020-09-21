@@ -84,6 +84,247 @@ class CheckTcbServiceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CloudBaseCodeRepoDetail(AbstractModel):
+    """代码仓库里 Repo的信息描述
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: repo的名字
+        :type Name: :class:`tencentcloud.tcb.v20180608.models.CloudBaseCodeRepoName`
+        :param Url: repo的url
+        :type Url: str
+        """
+        self.Name = None
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        if params.get("Name") is not None:
+            self.Name = CloudBaseCodeRepoName()
+            self.Name._deserialize(params.get("Name"))
+        self.Url = params.get("Url")
+
+
+class CloudBaseCodeRepoName(AbstractModel):
+    """代码仓库 repo的名字
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: repo的名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param FullName: repo的完整全名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FullName: str
+        """
+        self.Name = None
+        self.FullName = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.FullName = params.get("FullName")
+
+
+class CloudBaseRunImageInfo(AbstractModel):
+    """CloudBaseRun 镜像信息
+
+    """
+
+    def __init__(self):
+        """
+        :param RepositoryName: 镜像仓库名称
+        :type RepositoryName: str
+        :param IsPublic: 是否公有
+        :type IsPublic: bool
+        :param TagName: 镜像tag名称
+        :type TagName: str
+        :param ServerAddr: 镜像server
+        :type ServerAddr: str
+        :param ImageUrl: 镜像拉取地址
+        :type ImageUrl: str
+        """
+        self.RepositoryName = None
+        self.IsPublic = None
+        self.TagName = None
+        self.ServerAddr = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.RepositoryName = params.get("RepositoryName")
+        self.IsPublic = params.get("IsPublic")
+        self.TagName = params.get("TagName")
+        self.ServerAddr = params.get("ServerAddr")
+        self.ImageUrl = params.get("ImageUrl")
+
+
+class CloudRunServiceSimpleVersionSnapshot(AbstractModel):
+    """CloudRunServiceSimpleVersionSnapshot 信息
+
+    """
+
+    def __init__(self):
+        """
+        :param VersionName: 版本名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionName: str
+        :param Remark: 版本备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param Cpu: cpu规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cpu: float
+        :param Mem: 内存规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Mem: float
+        :param MinNum: 最小副本数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MinNum: int
+        :param MaxNum: 最大副本数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxNum: int
+        :param ImageUrl: 镜像url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageUrl: str
+        :param PolicyType: 扩容策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyType: str
+        :param PolicyThreshold: 策略阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyThreshold: int
+        :param EnvParams: 环境参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnvParams: str
+        :param ContainerPort: 容器端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContainerPort: int
+        :param CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param UploadType: 更新类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UploadType: str
+        :param DockerfilePath: dockerfile路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DockerfilePath: str
+        :param BuildDir: 构建路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BuildDir: str
+        :param RepoType: repo类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RepoType: str
+        :param Repo: 仓库
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Repo: str
+        :param Branch: 分支
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Branch: str
+        :param EnvId: 环境id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnvId: str
+        :param ServerName: 服务名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServerName: str
+        :param PackageName: package名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PackageName: str
+        :param PackageVersion: package版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PackageVersion: str
+        :param CustomLogs: 自定义log路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomLogs: str
+        :param InitialDelaySeconds: 延时健康检查时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InitialDelaySeconds: int
+        :param SnapshotName: snapshot名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SnapshotName: str
+        :param ImageInfo: 镜像信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageInfo: :class:`tencentcloud.tcb.v20180608.models.CloudBaseRunImageInfo`
+        :param CodeDetail: 代码仓库信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CodeDetail: :class:`tencentcloud.tcb.v20180608.models.CloudBaseCodeRepoDetail`
+        :param Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        """
+        self.VersionName = None
+        self.Remark = None
+        self.Cpu = None
+        self.Mem = None
+        self.MinNum = None
+        self.MaxNum = None
+        self.ImageUrl = None
+        self.PolicyType = None
+        self.PolicyThreshold = None
+        self.EnvParams = None
+        self.ContainerPort = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.UploadType = None
+        self.DockerfilePath = None
+        self.BuildDir = None
+        self.RepoType = None
+        self.Repo = None
+        self.Branch = None
+        self.EnvId = None
+        self.ServerName = None
+        self.PackageName = None
+        self.PackageVersion = None
+        self.CustomLogs = None
+        self.InitialDelaySeconds = None
+        self.SnapshotName = None
+        self.ImageInfo = None
+        self.CodeDetail = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.VersionName = params.get("VersionName")
+        self.Remark = params.get("Remark")
+        self.Cpu = params.get("Cpu")
+        self.Mem = params.get("Mem")
+        self.MinNum = params.get("MinNum")
+        self.MaxNum = params.get("MaxNum")
+        self.ImageUrl = params.get("ImageUrl")
+        self.PolicyType = params.get("PolicyType")
+        self.PolicyThreshold = params.get("PolicyThreshold")
+        self.EnvParams = params.get("EnvParams")
+        self.ContainerPort = params.get("ContainerPort")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.UploadType = params.get("UploadType")
+        self.DockerfilePath = params.get("DockerfilePath")
+        self.BuildDir = params.get("BuildDir")
+        self.RepoType = params.get("RepoType")
+        self.Repo = params.get("Repo")
+        self.Branch = params.get("Branch")
+        self.EnvId = params.get("EnvId")
+        self.ServerName = params.get("ServerName")
+        self.PackageName = params.get("PackageName")
+        self.PackageVersion = params.get("PackageVersion")
+        self.CustomLogs = params.get("CustomLogs")
+        self.InitialDelaySeconds = params.get("InitialDelaySeconds")
+        self.SnapshotName = params.get("SnapshotName")
+        if params.get("ImageInfo") is not None:
+            self.ImageInfo = CloudBaseRunImageInfo()
+            self.ImageInfo._deserialize(params.get("ImageInfo"))
+        if params.get("CodeDetail") is not None:
+            self.CodeDetail = CloudBaseCodeRepoDetail()
+            self.CodeDetail._deserialize(params.get("CodeDetail"))
+        self.Status = params.get("Status")
+
+
 class CommonServiceAPIRequest(AbstractModel):
     """CommonServiceAPI请求参数结构体
 
@@ -495,6 +736,70 @@ class DescribeCloudBaseBuildServiceResponse(AbstractModel):
                 self.UploadHeaders.append(obj)
         self.PackageName = params.get("PackageName")
         self.PackageVersion = params.get("PackageVersion")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCloudBaseRunVersionSnapshotRequest(AbstractModel):
+    """DescribeCloudBaseRunVersionSnapshot请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ServerName: 服务名
+        :type ServerName: str
+        :param VersionName: 版本名
+        :type VersionName: str
+        :param EnvId: 环境id
+        :type EnvId: str
+        :param SnapshotName: 版本历史名
+        :type SnapshotName: str
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 限制大小
+        :type Limit: int
+        """
+        self.ServerName = None
+        self.VersionName = None
+        self.EnvId = None
+        self.SnapshotName = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.ServerName = params.get("ServerName")
+        self.VersionName = params.get("VersionName")
+        self.EnvId = params.get("EnvId")
+        self.SnapshotName = params.get("SnapshotName")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeCloudBaseRunVersionSnapshotResponse(AbstractModel):
+    """DescribeCloudBaseRunVersionSnapshot返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Snapshots: 版本历史
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Snapshots: list of CloudRunServiceSimpleVersionSnapshot
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Snapshots = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Snapshots") is not None:
+            self.Snapshots = []
+            for item in params.get("Snapshots"):
+                obj = CloudRunServiceSimpleVersionSnapshot()
+                obj._deserialize(item)
+                self.Snapshots.append(obj)
         self.RequestId = params.get("RequestId")
 
 
