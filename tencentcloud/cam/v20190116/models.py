@@ -187,11 +187,15 @@ class AttachEntityOfPolicy(AbstractModel):
         :type Uin: int
         :param RelatedType: 关联类型。1 用户关联 ； 2 用户组关联
         :type RelatedType: int
+        :param AttachmentTime: 策略关联时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttachmentTime: str
         """
         self.Id = None
         self.Name = None
         self.Uin = None
         self.RelatedType = None
+        self.AttachmentTime = None
 
 
     def _deserialize(self, params):
@@ -199,6 +203,7 @@ class AttachEntityOfPolicy(AbstractModel):
         self.Name = params.get("Name")
         self.Uin = params.get("Uin")
         self.RelatedType = params.get("RelatedType")
+        self.AttachmentTime = params.get("AttachmentTime")
 
 
 class AttachGroupPolicyRequest(AbstractModel):

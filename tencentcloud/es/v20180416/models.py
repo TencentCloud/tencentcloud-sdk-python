@@ -1295,7 +1295,7 @@ class UpdateInstanceRequest(AbstractModel):
         :param NodeNum: 已废弃请使用NodeInfoList
 节点个数（2-50个）
         :type NodeNum: int
-        :param EsConfig: 配置项（JSON格式字符串）。当前仅支持以下配置项：<li>action.destructive_requires_name</li><li>indices.fielddata.cache.size</li><li>indices.query.bool.max_clause_count</li>
+        :param EsConfig: 配置项（JSON格式字符串）
         :type EsConfig: str
         :param Password: 默认用户elastic的密码（8到16位，至少包括两项（[a-z,A-Z],[0-9]和[-!@#$%&^*+=_:;,.?]的特殊符号）
         :type Password: str

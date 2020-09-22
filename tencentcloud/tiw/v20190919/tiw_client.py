@@ -53,6 +53,34 @@ class TiwClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateVideoGenerationTask(self, request):
+        """创建视频生成任务
+
+        :param request: Request instance for CreateVideoGenerationTask.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.CreateVideoGenerationTaskRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.CreateVideoGenerationTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateVideoGenerationTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateVideoGenerationTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeOnlineRecord(self, request):
         """查询录制任务状态与结果
 
@@ -151,6 +179,62 @@ class TiwClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTranscodeCallbackResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVideoGenerationTask(self, request):
+        """查询录制视频生成任务状态与结果
+
+        :param request: Request instance for DescribeVideoGenerationTask.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeVideoGenerationTaskRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.DescribeVideoGenerationTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeVideoGenerationTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVideoGenerationTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVideoGenerationTaskCallback(self, request):
+        """查询录制视频生成回调地址
+
+        :param request: Request instance for DescribeVideoGenerationTaskCallback.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeVideoGenerationTaskCallbackRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.DescribeVideoGenerationTaskCallbackResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeVideoGenerationTaskCallback", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVideoGenerationTaskCallbackResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -319,6 +403,62 @@ class TiwClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetTranscodeCallbackKeyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SetVideoGenerationTaskCallback(self, request):
+        """设置录制视频生成回调地址
+
+        :param request: Request instance for SetVideoGenerationTaskCallback.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.SetVideoGenerationTaskCallbackRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.SetVideoGenerationTaskCallbackResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SetVideoGenerationTaskCallback", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetVideoGenerationTaskCallbackResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SetVideoGenerationTaskCallbackKey(self, request):
+        """设置视频生成回调鉴权密钥
+
+        :param request: Request instance for SetVideoGenerationTaskCallbackKey.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.SetVideoGenerationTaskCallbackKeyRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.SetVideoGenerationTaskCallbackKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SetVideoGenerationTaskCallbackKey", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetVideoGenerationTaskCallbackKeyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

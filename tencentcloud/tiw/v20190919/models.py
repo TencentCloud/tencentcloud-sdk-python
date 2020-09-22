@@ -127,6 +127,80 @@ class CreateTranscodeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateVideoGenerationTaskRequest(AbstractModel):
+    """CreateVideoGenerationTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param OnlineRecordTaskId: 录制任务的TaskId
+        :type OnlineRecordTaskId: str
+        :param SdkAppId: 客户的SdkAppId
+        :type SdkAppId: int
+        :param Whiteboard: 视频生成的白板参数，例如白板宽高等。
+
+此参数与开始录制接口提供的Whiteboard参数互斥，在本接口与开始录制接口都提供了Whiteboard参数时，优先使用本接口指定的Whiteboard参数进行视频生成，否则使用开始录制接口提供的Whiteboard参数进行视频生成。
+        :type Whiteboard: :class:`tencentcloud.tiw.v20190919.models.Whiteboard`
+        :param Concat: 视频拼接参数
+
+此参数与开始录制接口提供的Concat参数互斥，在本接口与开始录制接口都提供了Concat参数时，优先使用本接口指定的Concat参数进行视频拼接，否则使用开始录制接口提供的Concat参数进行视频拼接。
+        :type Concat: :class:`tencentcloud.tiw.v20190919.models.Concat`
+        :param MixStream: 视频生成混流参数
+
+此参数与开始录制接口提供的MixStream参数互斥，在本接口与开始录制接口都提供了MixStream参数时，优先使用本接口指定的MixStream参数进行视频混流，否则使用开始录制接口提供的MixStream参数进行视频拼混流。
+        :type MixStream: :class:`tencentcloud.tiw.v20190919.models.MixStream`
+        :param RecordControl: 视频生成控制参数，用于更精细地指定需要生成哪些流，某一路流是否禁用音频，是否只录制小画面等
+
+此参数与开始录制接口提供的RecordControl参数互斥，在本接口与开始录制接口都提供了RecordControl参数时，优先使用本接口指定的RecordControl参数进行视频生成控制，否则使用开始录制接口提供的RecordControl参数进行视频拼生成控制。
+        :type RecordControl: :class:`tencentcloud.tiw.v20190919.models.RecordControl`
+        """
+        self.OnlineRecordTaskId = None
+        self.SdkAppId = None
+        self.Whiteboard = None
+        self.Concat = None
+        self.MixStream = None
+        self.RecordControl = None
+
+
+    def _deserialize(self, params):
+        self.OnlineRecordTaskId = params.get("OnlineRecordTaskId")
+        self.SdkAppId = params.get("SdkAppId")
+        if params.get("Whiteboard") is not None:
+            self.Whiteboard = Whiteboard()
+            self.Whiteboard._deserialize(params.get("Whiteboard"))
+        if params.get("Concat") is not None:
+            self.Concat = Concat()
+            self.Concat._deserialize(params.get("Concat"))
+        if params.get("MixStream") is not None:
+            self.MixStream = MixStream()
+            self.MixStream._deserialize(params.get("MixStream"))
+        if params.get("RecordControl") is not None:
+            self.RecordControl = RecordControl()
+            self.RecordControl._deserialize(params.get("RecordControl"))
+
+
+class CreateVideoGenerationTaskResponse(AbstractModel):
+    """CreateVideoGenerationTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 视频生成的任务Id
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class CustomLayout(AbstractModel):
     """自定义混流布局参数
 
@@ -432,6 +506,119 @@ class DescribeTranscodeResponse(AbstractModel):
         self.ThumbnailUrl = params.get("ThumbnailUrl")
         self.ThumbnailResolution = params.get("ThumbnailResolution")
         self.CompressFileUrl = params.get("CompressFileUrl")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVideoGenerationTaskCallbackRequest(AbstractModel):
+    """DescribeVideoGenerationTaskCallback请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SdkAppId: 应用的SdkAppId
+        :type SdkAppId: int
+        """
+        self.SdkAppId = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+
+
+class DescribeVideoGenerationTaskCallbackResponse(AbstractModel):
+    """DescribeVideoGenerationTaskCallback返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Callback: 录制视频生成回调地址
+        :type Callback: str
+        :param CallbackKey: 录制视频生成回调鉴权密钥
+        :type CallbackKey: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Callback = None
+        self.CallbackKey = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Callback = params.get("Callback")
+        self.CallbackKey = params.get("CallbackKey")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVideoGenerationTaskRequest(AbstractModel):
+    """DescribeVideoGenerationTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SdkAppId: 客户的SdkAppId
+        :type SdkAppId: int
+        :param TaskId: 录制视频生成的任务Id
+        :type TaskId: str
+        """
+        self.SdkAppId = None
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.TaskId = params.get("TaskId")
+
+
+class DescribeVideoGenerationTaskResponse(AbstractModel):
+    """DescribeVideoGenerationTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupId: 任务对应的群组Id
+        :type GroupId: str
+        :param RoomId: 任务对应的房间号
+        :type RoomId: int
+        :param TaskId: 任务的Id
+        :type TaskId: str
+        :param Progress: 录制视频生成进度（0-100，100表示视频生成完成 ）
+        :type Progress: int
+        :param Status: 录制视频生成任务状态
+- QUEUED: 正在排队
+- PROCESSING: 正在生成视频
+- FINISHED: 生成视频结束（成功完成或失败结束，可以通过错误码和错误信息进一步判断）
+        :type Status: str
+        :param TotalTime: 回放视频总时长,单位：毫秒
+        :type TotalTime: int
+        :param VideoInfos: 录制视频生成列表
+        :type VideoInfos: :class:`tencentcloud.tiw.v20190919.models.VideoInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.GroupId = None
+        self.RoomId = None
+        self.TaskId = None
+        self.Progress = None
+        self.Status = None
+        self.TotalTime = None
+        self.VideoInfos = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.RoomId = params.get("RoomId")
+        self.TaskId = params.get("TaskId")
+        self.Progress = params.get("Progress")
+        self.Status = params.get("Status")
+        self.TotalTime = params.get("TotalTime")
+        if params.get("VideoInfos") is not None:
+            self.VideoInfos = VideoInfo()
+            self.VideoInfos._deserialize(params.get("VideoInfos"))
         self.RequestId = params.get("RequestId")
 
 
@@ -800,6 +987,82 @@ class SetTranscodeCallbackRequest(AbstractModel):
 
 class SetTranscodeCallbackResponse(AbstractModel):
     """SetTranscodeCallback返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class SetVideoGenerationTaskCallbackKeyRequest(AbstractModel):
+    """SetVideoGenerationTaskCallbackKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SdkAppId: 应用的SdkAppId
+        :type SdkAppId: int
+        :param CallbackKey: 设置视频生成回调鉴权密钥，最长64字符，如果传入空字符串，那么删除现有的鉴权回调密钥
+        :type CallbackKey: str
+        """
+        self.SdkAppId = None
+        self.CallbackKey = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.CallbackKey = params.get("CallbackKey")
+
+
+class SetVideoGenerationTaskCallbackKeyResponse(AbstractModel):
+    """SetVideoGenerationTaskCallbackKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class SetVideoGenerationTaskCallbackRequest(AbstractModel):
+    """SetVideoGenerationTaskCallback请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SdkAppId: 客户的SdkAppId
+        :type SdkAppId: int
+        :param Callback: 课后录制任务结果回调地址，如果传空字符串会删除原来的回调地址配置，回调地址仅支持 http或https协议，即回调地址以http://或https://开头
+        :type Callback: str
+        """
+        self.SdkAppId = None
+        self.Callback = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.Callback = params.get("Callback")
+
+
+class SetVideoGenerationTaskCallbackResponse(AbstractModel):
+    """SetVideoGenerationTaskCallback返回参数结构体
 
     """
 

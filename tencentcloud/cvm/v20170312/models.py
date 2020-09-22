@@ -4838,6 +4838,8 @@ true：发送检查请求，不会创建实例。检查项包括是否填写了�
 如果检查通过，则返回RequestId.
 false（默认）：发送正常请求，通过检查后直接创建实例
         :type DryRun: bool
+        :param CamRoleName: CAM角色名称。可通过[`DescribeRoleList`](https://cloud.tencent.com/document/product/598/13887)接口返回值中的`roleName`获取。
+        :type CamRoleName: str
         :param HpcClusterId: 高性能计算集群ID。若创建的实例为高性能计算实例，需指定实例放置的集群，否则不可指定。
         :type HpcClusterId: str
         """
@@ -4863,6 +4865,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         self.InstanceMarketOptions = None
         self.UserData = None
         self.DryRun = None
+        self.CamRoleName = None
         self.HpcClusterId = None
 
 
@@ -4917,6 +4920,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
             self.InstanceMarketOptions._deserialize(params.get("InstanceMarketOptions"))
         self.UserData = params.get("UserData")
         self.DryRun = params.get("DryRun")
+        self.CamRoleName = params.get("CamRoleName")
         self.HpcClusterId = params.get("HpcClusterId")
 
 

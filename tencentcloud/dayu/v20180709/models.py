@@ -721,7 +721,7 @@ class CreateDDoSPolicyRequest(AbstractModel):
         :type Name: str
         :param PortLimits: 端口禁用，当没有禁用端口时填空数组
         :type PortLimits: list of DDoSPolicyPortLimit
-        :param IpAllowDenys: IP黑白名单，当没有IP黑白名单时填空数组
+        :param IpAllowDenys: 请求源IP黑白名单，当没有IP黑白名单时填空数组
         :type IpAllowDenys: list of IpBlackWhite
         :param PacketFilters: 报文过滤，当没有报文过滤时填空数组
         :type PacketFilters: list of DDoSPolicyPacketFilter
