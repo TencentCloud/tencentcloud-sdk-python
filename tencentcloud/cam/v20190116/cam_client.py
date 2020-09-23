@@ -669,6 +669,34 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeSafeAuthFlagColl(self, request):
+        """查询安全设置
+
+        :param request: Request instance for DescribeSafeAuthFlagColl.
+        :type request: :class:`tencentcloud.cam.v20190116.models.DescribeSafeAuthFlagCollRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.DescribeSafeAuthFlagCollResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSafeAuthFlagColl", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSafeAuthFlagCollResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DetachGroupPolicy(self, request):
         """本接口（DetachGroupPolicy）可用于解除绑定到用户组的策略。
 

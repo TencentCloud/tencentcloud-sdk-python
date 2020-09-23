@@ -8030,6 +8030,7 @@ class TaskDetail(AbstractModel):
 "KILLED" - 已终止；
 "REMOVED" - 已删除；
 "PAUSED" - 已暂停。
+"WAITING" - 等待中（可撤销）
         :type TaskStatus: str
         :param TaskType: 实例任务类型，可能的值包括：
 "ROLLBACK" - 数据库回档；

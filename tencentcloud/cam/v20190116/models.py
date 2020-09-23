@@ -1138,6 +1138,58 @@ class DescribeRoleListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSafeAuthFlagCollRequest(AbstractModel):
+    """DescribeSafeAuthFlagColl请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SubUin: 子账号
+        :type SubUin: int
+        """
+        self.SubUin = None
+
+
+    def _deserialize(self, params):
+        self.SubUin = params.get("SubUin")
+
+
+class DescribeSafeAuthFlagCollResponse(AbstractModel):
+    """DescribeSafeAuthFlagColl返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoginFlag: 登录保护设置
+        :type LoginFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlag`
+        :param ActionFlag: 敏感操作保护设置
+        :type ActionFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlag`
+        :param OffsiteFlag: 异地登录保护设置
+        :type OffsiteFlag: :class:`tencentcloud.cam.v20190116.models.OffsiteFlag`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LoginFlag = None
+        self.ActionFlag = None
+        self.OffsiteFlag = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("LoginFlag") is not None:
+            self.LoginFlag = LoginActionFlag()
+            self.LoginFlag._deserialize(params.get("LoginFlag"))
+        if params.get("ActionFlag") is not None:
+            self.ActionFlag = LoginActionFlag()
+            self.ActionFlag._deserialize(params.get("ActionFlag"))
+        if params.get("OffsiteFlag") is not None:
+            self.OffsiteFlag = OffsiteFlag()
+            self.OffsiteFlag._deserialize(params.get("OffsiteFlag"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSafeAuthFlagRequest(AbstractModel):
     """DescribeSafeAuthFlag请求参数结构体
 

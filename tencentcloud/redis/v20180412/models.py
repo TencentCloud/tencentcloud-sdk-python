@@ -1316,6 +1316,90 @@ class DescribeInstanceMonitorTopNCmdTookResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeInstanceNodeInfoRequest(AbstractModel):
+    """DescribeInstanceNodeInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param Limit: 列表大小
+        :type Limit: int
+        :param Offset: 偏移量
+        :type Offset: int
+        """
+        self.InstanceId = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class DescribeInstanceNodeInfoResponse(AbstractModel):
+    """DescribeInstanceNodeInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProxyCount: proxy节点数量
+        :type ProxyCount: int
+        :param Proxy: proxy节点信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Proxy: list of ProxyNodes
+        :param RedisCount: redis节点数量
+        :type RedisCount: int
+        :param Redis: redis节点信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Redis: list of RedisNodes
+        :param TendisCount: tendis节点数量
+        :type TendisCount: int
+        :param Tendis: tendis节点信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tendis: list of TendisNodes
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ProxyCount = None
+        self.Proxy = None
+        self.RedisCount = None
+        self.Redis = None
+        self.TendisCount = None
+        self.Tendis = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ProxyCount = params.get("ProxyCount")
+        if params.get("Proxy") is not None:
+            self.Proxy = []
+            for item in params.get("Proxy"):
+                obj = ProxyNodes()
+                obj._deserialize(item)
+                self.Proxy.append(obj)
+        self.RedisCount = params.get("RedisCount")
+        if params.get("Redis") is not None:
+            self.Redis = []
+            for item in params.get("Redis"):
+                obj = RedisNodes()
+                obj._deserialize(item)
+                self.Redis.append(obj)
+        self.TendisCount = params.get("TendisCount")
+        if params.get("Tendis") is not None:
+            self.Tendis = []
+            for item in params.get("Tendis"):
+                obj = TendisNodes()
+                obj._deserialize(item)
+                self.Tendis.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeInstanceParamRecordsRequest(AbstractModel):
     """DescribeInstanceParamRecords请求参数结构体
 
@@ -3845,6 +3929,24 @@ class ProductConf(AbstractModel):
         self.EnableRepicaReadOnly = params.get("EnableRepicaReadOnly")
 
 
+class ProxyNodes(AbstractModel):
+    """Proxy节点信息
+
+    """
+
+    def __init__(self):
+        """
+        :param NodeId: 节点ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeId: str
+        """
+        self.NodeId = None
+
+
+    def _deserialize(self, params):
+        self.NodeId = params.get("NodeId")
+
+
 class RedisBackupSet(AbstractModel):
     """实例的备份数组
 
@@ -3880,6 +3982,31 @@ class RedisBackupSet(AbstractModel):
         self.Status = params.get("Status")
         self.Remark = params.get("Remark")
         self.Locked = params.get("Locked")
+
+
+class RedisNodes(AbstractModel):
+    """Redis节点信息
+
+    """
+
+    def __init__(self):
+        """
+        :param NodeId: 节点ID
+        :type NodeId: str
+        :param NodeRole: 节点角色
+        :type NodeRole: str
+        :param ClusterId: 分片ID
+        :type ClusterId: int
+        """
+        self.NodeId = None
+        self.NodeRole = None
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.NodeId = params.get("NodeId")
+        self.NodeRole = params.get("NodeRole")
+        self.ClusterId = params.get("ClusterId")
 
 
 class RegionConf(AbstractModel):
@@ -4379,6 +4506,27 @@ class TaskInfoDetail(AbstractModel):
         self.Progress = params.get("Progress")
         self.EndTime = params.get("EndTime")
         self.Result = params.get("Result")
+
+
+class TendisNodes(AbstractModel):
+    """tendis节点信息
+
+    """
+
+    def __init__(self):
+        """
+        :param NodeId: 节点ID
+        :type NodeId: str
+        :param NodeRole: 节点角色
+        :type NodeRole: str
+        """
+        self.NodeId = None
+        self.NodeRole = None
+
+
+    def _deserialize(self, params):
+        self.NodeId = params.get("NodeId")
+        self.NodeRole = params.get("NodeRole")
 
 
 class TradeDealDetail(AbstractModel):

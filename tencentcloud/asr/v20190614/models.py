@@ -72,6 +72,56 @@ class CreateAsrVocabResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateCustomizationRequest(AbstractModel):
+    """CreateCustomization请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ModelName: 自学习模型名称，需在1-20字符之间
+        :type ModelName: str
+        :param TextUrl: 文本文件的下载地址，服务会从该地址下载文件， 以训练模型，目前仅支持腾讯云cos
+        :type TextUrl: str
+        :param ModelType: 自学习模型类型，填写8k或者16k
+        :type ModelType: str
+        :param TagInfos: 标签信息
+        :type TagInfos: list of str
+        """
+        self.ModelName = None
+        self.TextUrl = None
+        self.ModelType = None
+        self.TagInfos = None
+
+
+    def _deserialize(self, params):
+        self.ModelName = params.get("ModelName")
+        self.TextUrl = params.get("TextUrl")
+        self.ModelType = params.get("ModelType")
+        self.TagInfos = params.get("TagInfos")
+
+
+class CreateCustomizationResponse(AbstractModel):
+    """CreateCustomization返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ModelId: 模型ID
+        :type ModelId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ModelId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ModelId = params.get("ModelId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateRecTaskRequest(AbstractModel):
     """CreateRecTask请求参数结构体
 
@@ -218,6 +268,40 @@ class DeleteAsrVocabResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteCustomizationRequest(AbstractModel):
+    """DeleteCustomization请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ModelId: 要删除的模型ID
+        :type ModelId: str
+        """
+        self.ModelId = None
+
+
+    def _deserialize(self, params):
+        self.ModelId = params.get("ModelId")
+
+
+class DeleteCustomizationResponse(AbstractModel):
+    """DeleteCustomization返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTaskStatusRequest(AbstractModel):
     """DescribeTaskStatus请求参数结构体
 
@@ -297,6 +381,44 @@ class DownloadAsrVocabResponse(AbstractModel):
     def _deserialize(self, params):
         self.VocabId = params.get("VocabId")
         self.WordWeightStr = params.get("WordWeightStr")
+        self.RequestId = params.get("RequestId")
+
+
+class DownloadCustomizationRequest(AbstractModel):
+    """DownloadCustomization请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ModelId: 自学习模型ID
+        :type ModelId: str
+        """
+        self.ModelId = None
+
+
+    def _deserialize(self, params):
+        self.ModelId = params.get("ModelId")
+
+
+class DownloadCustomizationResponse(AbstractModel):
+    """DownloadCustomization返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DownloadUrl: 下载地址
+        :type DownloadUrl: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DownloadUrl = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DownloadUrl = params.get("DownloadUrl")
         self.RequestId = params.get("RequestId")
 
 
@@ -544,6 +666,94 @@ class Model(AbstractModel):
         self.ModelState = params.get("ModelState")
         self.AtUpdated = params.get("AtUpdated")
         self.TagInfos = params.get("TagInfos")
+
+
+class ModifyCustomizationRequest(AbstractModel):
+    """ModifyCustomization请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ModelId: 要修改的模型ID
+        :type ModelId: str
+        :param ModelName: 要修改的模型名称，长度需在1-20个字符之间
+        :type ModelName: str
+        :param ModelType: 要修改的模型类型，为8k或者16k
+        :type ModelType: str
+        :param TextUrl: 要修改的模型语料的下载地址，目前仅支持腾讯云cos
+        :type TextUrl: str
+        """
+        self.ModelId = None
+        self.ModelName = None
+        self.ModelType = None
+        self.TextUrl = None
+
+
+    def _deserialize(self, params):
+        self.ModelId = params.get("ModelId")
+        self.ModelName = params.get("ModelName")
+        self.ModelType = params.get("ModelType")
+        self.TextUrl = params.get("TextUrl")
+
+
+class ModifyCustomizationResponse(AbstractModel):
+    """ModifyCustomization返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyCustomizationStateRequest(AbstractModel):
+    """ModifyCustomizationState请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ModelId: 自学习模型ID
+        :type ModelId: str
+        :param ToState: 想要变换的模型状态，-1代表下线，1代表上线
+        :type ToState: int
+        """
+        self.ModelId = None
+        self.ToState = None
+
+
+    def _deserialize(self, params):
+        self.ModelId = params.get("ModelId")
+        self.ToState = params.get("ToState")
+
+
+class ModifyCustomizationStateResponse(AbstractModel):
+    """ModifyCustomizationState返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ModelId: 自学习模型ID
+        :type ModelId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ModelId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ModelId = params.get("ModelId")
+        self.RequestId = params.get("RequestId")
 
 
 class SentenceDetail(AbstractModel):

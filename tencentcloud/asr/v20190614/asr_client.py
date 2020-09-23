@@ -58,6 +58,34 @@ class AsrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateCustomization(self, request):
+        """用户使用该接口可以创建自学习模型，以供识别调用
+
+        :param request: Request instance for CreateCustomization.
+        :type request: :class:`tencentcloud.asr.v20190614.models.CreateCustomizationRequest`
+        :rtype: :class:`tencentcloud.asr.v20190614.models.CreateCustomizationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateCustomization", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateCustomizationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateRecTask(self, request):
         """本接口服务对时长5小时以内的录音文件进行识别，异步返回识别全部结果。
         <br>• 支持中文普通话、英语、粤语、日语和上海话方言
@@ -124,6 +152,34 @@ class AsrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteCustomization(self, request):
+        """用户通过该接口可以删除自学习模型
+
+        :param request: Request instance for DeleteCustomization.
+        :type request: :class:`tencentcloud.asr.v20190614.models.DeleteCustomizationRequest`
+        :rtype: :class:`tencentcloud.asr.v20190614.models.DeleteCustomizationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteCustomization", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteCustomizationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTaskStatus(self, request):
         """在调用录音文件识别请求接口后，有回调和轮询两种方式获取识别结果。
         <br>• 当采用回调方式时，识别完成后会将结果通过 POST 请求的形式通知到用户在请求时填写的回调 URL，具体请参见[ 录音识别结果回调 ](https://cloud.tencent.com/document/product/1093/37139#callback)。
@@ -170,6 +226,34 @@ class AsrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DownloadAsrVocabResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DownloadCustomization(self, request):
+        """用户通过该接口可以下载自学习模型的语料
+
+        :param request: Request instance for DownloadCustomization.
+        :type request: :class:`tencentcloud.asr.v20190614.models.DownloadCustomizationRequest`
+        :rtype: :class:`tencentcloud.asr.v20190614.models.DownloadCustomizationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DownloadCustomization", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DownloadCustomizationResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -254,6 +338,62 @@ class AsrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetCustomizationListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyCustomization(self, request):
+        """用户通过该接口可以更新自学习模型，如模型名称、模型类型、模型语料。
+
+        :param request: Request instance for ModifyCustomization.
+        :type request: :class:`tencentcloud.asr.v20190614.models.ModifyCustomizationRequest`
+        :rtype: :class:`tencentcloud.asr.v20190614.models.ModifyCustomizationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyCustomization", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyCustomizationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyCustomizationState(self, request):
+        """通过该接口，用户可以修改自学习模型状态，上下线自学习模型
+
+        :param request: Request instance for ModifyCustomizationState.
+        :type request: :class:`tencentcloud.asr.v20190614.models.ModifyCustomizationStateRequest`
+        :rtype: :class:`tencentcloud.asr.v20190614.models.ModifyCustomizationStateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyCustomizationState", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyCustomizationStateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

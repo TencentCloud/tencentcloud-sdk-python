@@ -329,6 +329,8 @@ timeRollback，时间点回档
         :type HaCount: int
         :param OrderSource: 订单来源
         :type OrderSource: str
+        :param ResourceTags: 集群创建需要绑定的tag数组信息
+        :type ResourceTags: list of Tag
         """
         self.Zone = None
         self.VpcId = None
@@ -357,6 +359,7 @@ timeRollback，时间点回档
         self.AutoVoucher = None
         self.HaCount = None
         self.OrderSource = None
+        self.ResourceTags = None
 
 
     def _deserialize(self, params):
@@ -387,6 +390,12 @@ timeRollback，时间点回档
         self.AutoVoucher = params.get("AutoVoucher")
         self.HaCount = params.get("HaCount")
         self.OrderSource = params.get("OrderSource")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
 
 
 class CreateClustersResponse(AbstractModel):
@@ -488,6 +497,8 @@ class CynosdbCluster(AbstractModel):
         :type ProcessingTask: str
         :param Tasks: 集群的任务数组
         :type Tasks: list of ObjectTask
+        :param ResourceTags: 集群绑定的tag数组
+        :type ResourceTags: list of Tag
         """
         self.Status = None
         self.UpdateTime = None
@@ -514,6 +525,7 @@ class CynosdbCluster(AbstractModel):
         self.RenewFlag = None
         self.ProcessingTask = None
         self.Tasks = None
+        self.ResourceTags = None
 
 
     def _deserialize(self, params):
@@ -547,6 +559,12 @@ class CynosdbCluster(AbstractModel):
                 obj = ObjectTask()
                 obj._deserialize(item)
                 self.Tasks.append(obj)
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
 
 
 class CynosdbClusterDetail(AbstractModel):
@@ -600,6 +618,8 @@ class CynosdbClusterDetail(AbstractModel):
         :type ProjectID: int
         :param Zone: 可用区
         :type Zone: str
+        :param ResourceTags: 实例绑定的tag数组信息
+        :type ResourceTags: list of Tag
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -623,6 +643,7 @@ class CynosdbClusterDetail(AbstractModel):
         self.Vport = None
         self.ProjectID = None
         self.Zone = None
+        self.ResourceTags = None
 
 
     def _deserialize(self, params):
@@ -658,6 +679,12 @@ class CynosdbClusterDetail(AbstractModel):
         self.Vport = params.get("Vport")
         self.ProjectID = params.get("ProjectID")
         self.Zone = params.get("Zone")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
 
 
 class CynosdbInstance(AbstractModel):
@@ -2317,6 +2344,27 @@ class SetRenewFlagResponse(AbstractModel):
     def _deserialize(self, params):
         self.Count = params.get("Count")
         self.RequestId = params.get("RequestId")
+
+
+class Tag(AbstractModel):
+    """集群绑定的标签信息，包含标签键TagKey和标签值TagValue
+
+    """
+
+    def __init__(self):
+        """
+        :param TagKey: 标签键
+        :type TagKey: str
+        :param TagValue: 标签值
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
 
 
 class UpgradeInstanceRequest(AbstractModel):

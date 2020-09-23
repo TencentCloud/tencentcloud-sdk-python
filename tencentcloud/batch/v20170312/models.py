@@ -266,6 +266,9 @@ class ComputeEnvCreateInfo(AbstractModel):
         :type Notifications: list of Notification
         :param DesiredComputeNodeCount: 计算节点期望个数
         :type DesiredComputeNodeCount: int
+        :param Tags: 计算环境标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         """
         self.EnvId = None
         self.EnvName = None
@@ -277,6 +280,7 @@ class ComputeEnvCreateInfo(AbstractModel):
         self.Authentications = None
         self.Notifications = None
         self.DesiredComputeNodeCount = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -312,6 +316,12 @@ class ComputeEnvCreateInfo(AbstractModel):
                 obj._deserialize(item)
                 self.Notifications.append(obj)
         self.DesiredComputeNodeCount = params.get("DesiredComputeNodeCount")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class ComputeEnvData(AbstractModel):
@@ -358,6 +368,9 @@ class ComputeEnvView(AbstractModel):
         :type NextAction: str
         :param AttachedComputeNodeCount: 用户添加到计算环境中的计算节点个数
         :type AttachedComputeNodeCount: int
+        :param Tags: 计算环境绑定的标签列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         """
         self.EnvId = None
         self.EnvName = None
@@ -369,6 +382,7 @@ class ComputeEnvView(AbstractModel):
         self.ResourceType = None
         self.NextAction = None
         self.AttachedComputeNodeCount = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -386,6 +400,12 @@ class ComputeEnvView(AbstractModel):
         self.ResourceType = params.get("ResourceType")
         self.NextAction = params.get("NextAction")
         self.AttachedComputeNodeCount = params.get("AttachedComputeNodeCount")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class ComputeNode(AbstractModel):
@@ -625,10 +645,13 @@ class CreateTaskTemplateRequest(AbstractModel):
         :type TaskTemplateInfo: :class:`tencentcloud.batch.v20170312.models.Task`
         :param TaskTemplateDescription: 任务模板描述
         :type TaskTemplateDescription: str
+        :param Tags: 标签列表。通过指定该参数可以支持绑定标签到任务模板。每个任务模板最多绑定10个标签。
+        :type Tags: list of Tag
         """
         self.TaskTemplateName = None
         self.TaskTemplateInfo = None
         self.TaskTemplateDescription = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -637,6 +660,12 @@ class CreateTaskTemplateRequest(AbstractModel):
             self.TaskTemplateInfo = Task()
             self.TaskTemplateInfo._deserialize(params.get("TaskTemplateInfo"))
         self.TaskTemplateDescription = params.get("TaskTemplateDescription")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class CreateTaskTemplateResponse(AbstractModel):
@@ -995,6 +1024,9 @@ class DescribeComputeEnvCreateInfoResponse(AbstractModel):
         :type Notifications: list of Notification
         :param DesiredComputeNodeCount: 计算节点期望个数
         :type DesiredComputeNodeCount: int
+        :param Tags: 计算环境绑定的标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1008,6 +1040,7 @@ class DescribeComputeEnvCreateInfoResponse(AbstractModel):
         self.Authentications = None
         self.Notifications = None
         self.DesiredComputeNodeCount = None
+        self.Tags = None
         self.RequestId = None
 
 
@@ -1044,6 +1077,12 @@ class DescribeComputeEnvCreateInfoResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Notifications.append(obj)
         self.DesiredComputeNodeCount = params.get("DesiredComputeNodeCount")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1161,6 +1200,9 @@ class DescribeComputeEnvResponse(AbstractModel):
         :type NextAction: str
         :param AttachedComputeNodeCount: 用户添加到计算环境中的计算节点个数
         :type AttachedComputeNodeCount: int
+        :param Tags: 计算环境绑定的标签列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1175,6 +1217,7 @@ class DescribeComputeEnvResponse(AbstractModel):
         self.ResourceType = None
         self.NextAction = None
         self.AttachedComputeNodeCount = None
+        self.Tags = None
         self.RequestId = None
 
 
@@ -1199,6 +1242,12 @@ class DescribeComputeEnvResponse(AbstractModel):
         self.ResourceType = params.get("ResourceType")
         self.NextAction = params.get("NextAction")
         self.AttachedComputeNodeCount = params.get("AttachedComputeNodeCount")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1216,6 +1265,9 @@ class DescribeComputeEnvsRequest(AbstractModel):
 <li> env-id - String - 是否必填：否 -（过滤条件）按照计算环境ID过滤。</li>
 <li> env-name - String - 是否必填：否 -（过滤条件）按照计算环境名称过滤。</li>
 <li> resource-type - String - 是否必填：否 -（过滤条件）按照计算资源类型过滤，取值CVM或者CPM(黑石)。</li>
+<li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。</li>
+<li>tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。</li>
+<li>tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。</li>
 与EnvIds参数不能同时指定。
         :type Filters: list of Filter
         :param Offset: 偏移量
@@ -1446,6 +1498,9 @@ class DescribeJobResponse(AbstractModel):
         :type TaskInstanceMetrics: :class:`tencentcloud.batch.v20170312.models.TaskInstanceView`
         :param StateReason: 作业失败原因
         :type StateReason: str
+        :param Tags: 作业绑定的标签列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1461,6 +1516,7 @@ class DescribeJobResponse(AbstractModel):
         self.TaskMetrics = None
         self.TaskInstanceMetrics = None
         self.StateReason = None
+        self.Tags = None
         self.RequestId = None
 
 
@@ -1491,6 +1547,12 @@ class DescribeJobResponse(AbstractModel):
             self.TaskInstanceMetrics = TaskInstanceView()
             self.TaskInstanceMetrics._deserialize(params.get("TaskInstanceMetrics"))
         self.StateReason = params.get("StateReason")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1530,6 +1592,9 @@ class DescribeJobSubmitInfoResponse(AbstractModel):
         :type Tasks: list of Task
         :param Dependences: 依赖信息
         :type Dependences: list of Dependence
+        :param Tags: 作业绑定的标签列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1539,6 +1604,7 @@ class DescribeJobSubmitInfoResponse(AbstractModel):
         self.Priority = None
         self.Tasks = None
         self.Dependences = None
+        self.Tags = None
         self.RequestId = None
 
 
@@ -1559,6 +1625,12 @@ class DescribeJobSubmitInfoResponse(AbstractModel):
                 obj = Dependence()
                 obj._deserialize(item)
                 self.Dependences.append(obj)
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1576,6 +1648,9 @@ class DescribeJobsRequest(AbstractModel):
 <li> job-name - String - 是否必填：否 -（过滤条件）按照作业名称过滤。</li>
 <li> job-state - String - 是否必填：否 -（过滤条件）按照作业状态过滤。</li>
 <li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
+<li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。</li>
+<li> tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。</li>
+<li> tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。</li>
 与JobIds参数不能同时指定。
         :type Filters: list of Filter
         :param Offset: 偏移量
@@ -1800,6 +1875,9 @@ class DescribeTaskTemplatesRequest(AbstractModel):
         :type TaskTemplateIds: list of str
         :param Filters: 过滤条件
 <li> task-template-name - String - 是否必填：否 -（过滤条件）按照任务模板名称过滤。</li>
+<li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。</li>
+<li> tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。</li>
+<li> tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。</li>
 与TaskTemplateIds参数不能同时指定。
         :type Filters: list of Filter
         :param Offset: 偏移量
@@ -2653,6 +2731,8 @@ class Job(AbstractModel):
         :type TaskExecutionDependOn: str
         :param StateIfCreateCvmFailed: 表示创建 CVM 失败按照何种策略处理。取值范围包括 FAILED，RUNNABLE。FAILED 表示创建 CVM 失败按照一次执行失败处理，RUNNABLE 表示创建 CVM 失败按照继续等待处理。默认值为FAILED。StateIfCreateCvmFailed对于提交的指定计算环境的作业无效。
         :type StateIfCreateCvmFailed: str
+        :param Tags: 标签列表。通过指定该参数可以支持绑定标签到作业。每个作业最多绑定10个标签。
+        :type Tags: list of Tag
         """
         self.Tasks = None
         self.JobName = None
@@ -2662,6 +2742,7 @@ class Job(AbstractModel):
         self.Notifications = None
         self.TaskExecutionDependOn = None
         self.StateIfCreateCvmFailed = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -2688,6 +2769,12 @@ class Job(AbstractModel):
                 self.Notifications.append(obj)
         self.TaskExecutionDependOn = params.get("TaskExecutionDependOn")
         self.StateIfCreateCvmFailed = params.get("StateIfCreateCvmFailed")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class JobView(AbstractModel):
@@ -2715,6 +2802,9 @@ class JobView(AbstractModel):
         :type EndTime: str
         :param TaskMetrics: 任务统计指标
         :type TaskMetrics: :class:`tencentcloud.batch.v20170312.models.TaskMetrics`
+        :param Tags: 作业绑定的标签列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         """
         self.JobId = None
         self.JobName = None
@@ -2724,6 +2814,7 @@ class JobView(AbstractModel):
         self.CreateTime = None
         self.EndTime = None
         self.TaskMetrics = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -2739,6 +2830,12 @@ class JobView(AbstractModel):
         if params.get("TaskMetrics") is not None:
             self.TaskMetrics = TaskMetrics()
             self.TaskMetrics._deserialize(params.get("TaskMetrics"))
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class LocalDiskType(AbstractModel):
@@ -2951,6 +3048,8 @@ class NamedComputeEnv(AbstractModel):
         :type ActionIfComputeNodeInactive: str
         :param ResourceMaxRetryCount: 对于实例创建失败或异常退还的计算节点，定期重新创建实例资源的最大重试次数，最大值11，如果不设置的话，系统会设置一个默认值，当前为7
         :type ResourceMaxRetryCount: int
+        :param Tags: 标签列表。通过指定该参数可以支持绑定标签到计算环境。每个计算环境最多绑定10个标签。
+        :type Tags: list of Tag
         """
         self.EnvName = None
         self.DesiredComputeNodeCount = None
@@ -2964,6 +3063,7 @@ class NamedComputeEnv(AbstractModel):
         self.Notifications = None
         self.ActionIfComputeNodeInactive = None
         self.ResourceMaxRetryCount = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -3000,6 +3100,12 @@ class NamedComputeEnv(AbstractModel):
             self.Notifications._deserialize(params.get("Notifications"))
         self.ActionIfComputeNodeInactive = params.get("ActionIfComputeNodeInactive")
         self.ResourceMaxRetryCount = params.get("ResourceMaxRetryCount")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class NamedCpmComputeEnv(AbstractModel):
@@ -3029,6 +3135,8 @@ class NamedCpmComputeEnv(AbstractModel):
         :type ActionIfComputeNodeInactive: str
         :param ResourceMaxRetryCount: 对于实例创建失败或异常退还的计算节点，定期重新创建实例资源的最大重试次数，最大值11，如果不设置的话，系统会设置一个默认值，当前为7
         :type ResourceMaxRetryCount: int
+        :param Tags: 标签列表。通过指定该参数可以支持绑定标签到黑石计算环境。每个黑石计算环境最多绑定10个标签。
+        :type Tags: list of Tag
         """
         self.EnvName = None
         self.EnvData = None
@@ -3040,6 +3148,7 @@ class NamedCpmComputeEnv(AbstractModel):
         self.Notifications = None
         self.ActionIfComputeNodeInactive = None
         self.ResourceMaxRetryCount = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -3067,6 +3176,12 @@ class NamedCpmComputeEnv(AbstractModel):
             self.Notifications._deserialize(params.get("Notifications"))
         self.ActionIfComputeNodeInactive = params.get("ActionIfComputeNodeInactive")
         self.ResourceMaxRetryCount = params.get("ResourceMaxRetryCount")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class Notification(AbstractModel):
@@ -3465,6 +3580,29 @@ class SystemDisk(AbstractModel):
         self.DiskSize = params.get("DiskSize")
 
 
+class Tag(AbstractModel):
+    """标签。
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: 标签键。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param Value: 标签值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+
+
 class Task(AbstractModel):
     """任务
 
@@ -3801,12 +3939,16 @@ class TaskTemplateView(AbstractModel):
         :type TaskTemplateInfo: :class:`tencentcloud.batch.v20170312.models.Task`
         :param CreateTime: 创建时间
         :type CreateTime: str
+        :param Tags: 任务模板绑定的标签列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         """
         self.TaskTemplateId = None
         self.TaskTemplateName = None
         self.TaskTemplateDescription = None
         self.TaskTemplateInfo = None
         self.CreateTime = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -3817,6 +3959,12 @@ class TaskTemplateView(AbstractModel):
             self.TaskTemplateInfo = Task()
             self.TaskTemplateInfo._deserialize(params.get("TaskTemplateInfo"))
         self.CreateTime = params.get("CreateTime")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class TaskView(AbstractModel):
