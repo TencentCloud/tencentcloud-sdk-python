@@ -97,7 +97,7 @@ class BankCard4EVerificationRequest(AbstractModel):
         :param IdCard: 开户证件号，与CertType参数的证件类型一致，如：身份证，则传入身份证号。
         :type IdCard: str
         :param CertType: 证件类型，请确认该证件为开户时使用的证件类型，未用于开户的证件信息不支持验证。
-目前默认：0 身份证，其他证件类型需求可以联系小助手faceid001确认。
+目前默认为0：身份证，其他证件类型暂不支持。
         :type CertType: int
         """
         self.Name = None
@@ -1486,10 +1486,10 @@ class MinorsVerificationResponse(AbstractModel):
 收费结果码：
 0: 成年
 -1: 未成年
--2: 未查询到手机号信息
 -3: 姓名和身份证号不一致
 
 不收费结果码：
+-2: 未查询到手机号信息
 -4: 非法身份证号（长度、校验位等不正确）
 -5: 非法姓名（长度、格式等不正确）
 -6: 权威数据源服务异常

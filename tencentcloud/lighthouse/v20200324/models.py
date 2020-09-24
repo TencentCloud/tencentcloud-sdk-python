@@ -497,6 +497,61 @@ class DescribeInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeInstancesTrafficPackagesRequest(AbstractModel):
+    """DescribeInstancesTrafficPackages请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceIds: 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
+        :type InstanceIds: list of str
+        :param Offset: 偏移量，默认为 0。
+        :type Offset: int
+        :param Limit: 返回数量，默认为 20，最大值为 100。
+        :type Limit: int
+        """
+        self.InstanceIds = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeInstancesTrafficPackagesResponse(AbstractModel):
+    """DescribeInstancesTrafficPackages返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的实例流量包详情数量。
+        :type TotalCount: int
+        :param InstanceTrafficPackageSet: 实例流量包详情列表。
+        :type InstanceTrafficPackageSet: list of InstanceTrafficPackage
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.InstanceTrafficPackageSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("InstanceTrafficPackageSet") is not None:
+            self.InstanceTrafficPackageSet = []
+            for item in params.get("InstanceTrafficPackageSet"):
+                obj = InstanceTrafficPackage()
+                obj._deserialize(item)
+                self.InstanceTrafficPackageSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class Filter(AbstractModel):
     """>描述键值对过滤器，用于条件过滤查询。例如过滤名称等
     > * 若存在多个`Filter`时，`Filter`间的关系为逻辑与（`AND`）关系。
@@ -735,6 +790,32 @@ class InstancePrice(AbstractModel):
         self.DiscountPrice = params.get("DiscountPrice")
 
 
+class InstanceTrafficPackage(AbstractModel):
+    """实例流量包详情
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID。
+        :type InstanceId: str
+        :param TrafficPackageSet: 流量包详情列表。
+        :type TrafficPackageSet: list of TrafficPackage
+        """
+        self.InstanceId = None
+        self.TrafficPackageSet = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("TrafficPackageSet") is not None:
+            self.TrafficPackageSet = []
+            for item in params.get("TrafficPackageSet"):
+                obj = TrafficPackage()
+                obj._deserialize(item)
+                self.TrafficPackageSet.append(obj)
+
+
 class InternetAccessible(AbstractModel):
     """描述了启动配置创建实例的公网可访问性，声明了实例的公网使用计费模式，最大带宽等。
 
@@ -962,3 +1043,60 @@ class SystemDisk(AbstractModel):
         self.DiskType = params.get("DiskType")
         self.DiskSize = params.get("DiskSize")
         self.DiskId = params.get("DiskId")
+
+
+class TrafficPackage(AbstractModel):
+    """流量包详情
+
+    """
+
+    def __init__(self):
+        """
+        :param TrafficPackageId: 流量包ID。
+        :type TrafficPackageId: str
+        :param TrafficUsed: 流量包生效周期内的总流量，单位字节。
+        :type TrafficUsed: int
+        :param TrafficPackageTotal: 流量包生效周期内的总流量，单位字节。
+        :type TrafficPackageTotal: int
+        :param TrafficPackageRemaining: 流量包生效周期内的剩余流量，单位字节。
+        :type TrafficPackageRemaining: int
+        :param TrafficOverflow: 流量包生效周期内超出流量包额度的流量，单位字节。
+        :type TrafficOverflow: int
+        :param StartTime: 流量包生效周期开始时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
+格式为： YYYY-MM-DDThh:mm:ssZ。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param EndTime: 流量包生效周期结束时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
+格式为： YYYY-MM-DDThh:mm:ssZ。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param Deadline: 流量包到期时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
+格式为： YYYY-MM-DDThh:mm:ssZ。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Deadline: str
+        :param Status: 流量包状态：
+<li>NETWORK_NORMAL：正常</li>
+<li>OVERDUE_NETWORK_DISABLED：欠费断网</li>
+        :type Status: str
+        """
+        self.TrafficPackageId = None
+        self.TrafficUsed = None
+        self.TrafficPackageTotal = None
+        self.TrafficPackageRemaining = None
+        self.TrafficOverflow = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Deadline = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.TrafficPackageId = params.get("TrafficPackageId")
+        self.TrafficUsed = params.get("TrafficUsed")
+        self.TrafficPackageTotal = params.get("TrafficPackageTotal")
+        self.TrafficPackageRemaining = params.get("TrafficPackageRemaining")
+        self.TrafficOverflow = params.get("TrafficOverflow")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Deadline = params.get("Deadline")
+        self.Status = params.get("Status")

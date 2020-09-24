@@ -396,6 +396,8 @@ class CreateFunctionRequest(AbstractModel):
         :type CfsConfig: :class:`tencentcloud.scf.v20180416.models.CfsConfig`
         :param InitTimeout: 函数初始化超时时间
         :type InitTimeout: int
+        :param Tags: 函数 Tag 参数，以键值对数组形式传入
+        :type Tags: list of Tag
         """
         self.FunctionName = None
         self.Code = None
@@ -417,6 +419,7 @@ class CreateFunctionRequest(AbstractModel):
         self.PublicNetConfig = None
         self.CfsConfig = None
         self.InitTimeout = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -457,6 +460,12 @@ class CreateFunctionRequest(AbstractModel):
             self.CfsConfig = CfsConfig()
             self.CfsConfig._deserialize(params.get("CfsConfig"))
         self.InitTimeout = params.get("InitTimeout")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class CreateFunctionResponse(AbstractModel):

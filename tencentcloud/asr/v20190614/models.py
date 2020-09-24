@@ -781,6 +781,9 @@ class SentenceDetail(AbstractModel):
         :param Words: 单句中词详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type Words: list of SentenceWords
+        :param SpeechSpeed: 单句语速
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpeechSpeed: float
         """
         self.FinalSentence = None
         self.SliceSentence = None
@@ -788,6 +791,7 @@ class SentenceDetail(AbstractModel):
         self.EndMs = None
         self.WordsNum = None
         self.Words = None
+        self.SpeechSpeed = None
 
 
     def _deserialize(self, params):
@@ -802,6 +806,7 @@ class SentenceDetail(AbstractModel):
                 obj = SentenceWords()
                 obj._deserialize(item)
                 self.Words.append(obj)
+        self.SpeechSpeed = params.get("SpeechSpeed")
 
 
 class SentenceRecognitionRequest(AbstractModel):

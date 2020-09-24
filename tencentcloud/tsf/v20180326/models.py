@@ -2626,6 +2626,8 @@ class DeployContainerGroupRequest(AbstractModel):
         :type Envs: list of Env
         :param ServiceSetting: 容器部署组的网络设置。
         :type ServiceSetting: :class:`tencentcloud.tsf.v20180326.models.ServiceSetting`
+        :param DeployAgent: 是否部署 agent 容器。若不指定该参数，则默认不部署 agent 容器。
+        :type DeployAgent: bool
         """
         self.GroupId = None
         self.TagName = None
@@ -2654,6 +2656,7 @@ class DeployContainerGroupRequest(AbstractModel):
         self.HealthCheckSettings = None
         self.Envs = None
         self.ServiceSetting = None
+        self.DeployAgent = None
 
 
     def _deserialize(self, params):
@@ -2693,6 +2696,7 @@ class DeployContainerGroupRequest(AbstractModel):
         if params.get("ServiceSetting") is not None:
             self.ServiceSetting = ServiceSetting()
             self.ServiceSetting._deserialize(params.get("ServiceSetting"))
+        self.DeployAgent = params.get("DeployAgent")
 
 
 class DeployContainerGroupResponse(AbstractModel):
@@ -5926,6 +5930,9 @@ class Microservice(AbstractModel):
         :param RunInstanceCount: 微服务的运行实例数目
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunInstanceCount: int
+        :param CriticalInstanceCount: 微服务的离线实例数目
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CriticalInstanceCount: int
         """
         self.MicroserviceId = None
         self.MicroserviceName = None
@@ -5934,6 +5941,7 @@ class Microservice(AbstractModel):
         self.UpdateTime = None
         self.NamespaceId = None
         self.RunInstanceCount = None
+        self.CriticalInstanceCount = None
 
 
     def _deserialize(self, params):
@@ -5944,6 +5952,7 @@ class Microservice(AbstractModel):
         self.UpdateTime = params.get("UpdateTime")
         self.NamespaceId = params.get("NamespaceId")
         self.RunInstanceCount = params.get("RunInstanceCount")
+        self.CriticalInstanceCount = params.get("CriticalInstanceCount")
 
 
 class ModifyContainerGroupRequest(AbstractModel):
@@ -6368,6 +6377,21 @@ class MsInstance(AbstractModel):
         :param ApplicationType: 应用类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationType: str
+        :param ServiceStatus: 服务状态，passing 在线，critical 离线
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceStatus: str
+        :param RegistrationTime: 注册时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegistrationTime: int
+        :param LastHeartbeatTime: 上次心跳时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastHeartbeatTime: int
+        :param RegistrationId: 实例注册id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegistrationId: int
+        :param HiddenStatus: 屏蔽状态，hidden 为屏蔽，unhidden 为未屏蔽
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HiddenStatus: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -6389,6 +6413,11 @@ class MsInstance(AbstractModel):
         self.ClusterType = None
         self.ApplicationPackageVersion = None
         self.ApplicationType = None
+        self.ServiceStatus = None
+        self.RegistrationTime = None
+        self.LastHeartbeatTime = None
+        self.RegistrationId = None
+        self.HiddenStatus = None
 
 
     def _deserialize(self, params):
@@ -6412,6 +6441,11 @@ class MsInstance(AbstractModel):
         self.ClusterType = params.get("ClusterType")
         self.ApplicationPackageVersion = params.get("ApplicationPackageVersion")
         self.ApplicationType = params.get("ApplicationType")
+        self.ServiceStatus = params.get("ServiceStatus")
+        self.RegistrationTime = params.get("RegistrationTime")
+        self.LastHeartbeatTime = params.get("LastHeartbeatTime")
+        self.RegistrationId = params.get("RegistrationId")
+        self.HiddenStatus = params.get("HiddenStatus")
 
 
 class Namespace(AbstractModel):

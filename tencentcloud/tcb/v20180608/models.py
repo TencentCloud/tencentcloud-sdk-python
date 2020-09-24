@@ -470,7 +470,7 @@ class CreatePostpayPackageRequest(AbstractModel):
 用法同CreateEnv接口的Source参数
 和 Channel 参数同时传，或者同时不传；EnvId 为空时必传。
         :type EnvSource: str
-        :param Alias: 环境别名，要以a-z开头，不能包含 a-zA-z0-9- 以外的字符
+        :param Alias: 环境别名，要以a-z开头，不能包含  a-z,0-9,-  以外的字符
         :type Alias: str
         :param Channel: 如果envsource为miniapp, channel可以为ide或api;
 如果envsource为qcloud, channel可以为qc_console,cocos, qq, cloudgame,dcloud,serverless_framework
@@ -478,6 +478,10 @@ class CreatePostpayPackageRequest(AbstractModel):
         :type Channel: str
         :param ExtensionId: 扩展ID
         :type ExtensionId: str
+        :param Flag: 订单标记。建议使用方统一转大小写之后再判断。
+<li>QuickStart：快速启动来源</li>
+<li>Activity：活动来源</li>
+        :type Flag: str
         """
         self.EnvId = None
         self.WxAppId = None
@@ -487,6 +491,7 @@ class CreatePostpayPackageRequest(AbstractModel):
         self.Alias = None
         self.Channel = None
         self.ExtensionId = None
+        self.Flag = None
 
 
     def _deserialize(self, params):
@@ -498,6 +503,7 @@ class CreatePostpayPackageRequest(AbstractModel):
         self.Alias = params.get("Alias")
         self.Channel = params.get("Channel")
         self.ExtensionId = params.get("ExtensionId")
+        self.Flag = params.get("Flag")
 
 
 class CreatePostpayPackageResponse(AbstractModel):

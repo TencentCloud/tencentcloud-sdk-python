@@ -708,13 +708,13 @@ class DescribeCaptchaMiniResultRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CaptchaType: 验证码类型，9：滑块验证码
+        :param CaptchaType: 固定填值：9（滑块验证码）
         :type CaptchaType: int
         :param Ticket: 验证码返回给用户的票据
         :type Ticket: str
         :param UserIp: 用户操作来源的外网 IP
         :type UserIp: str
-        :param CaptchaAppId: 验证码应用ID
+        :param CaptchaAppId: 验证码应用APPID
         :type CaptchaAppId: int
         :param AppSecretKey: 用于服务器端校验验证码票据的验证密钥，请妥善保密，请勿泄露给第三方
         :type AppSecretKey: str
@@ -758,13 +758,14 @@ class DescribeCaptchaMiniResultResponse(AbstractModel):
     def __init__(self):
         """
         :param CaptchaCode: 1       ticket verification succeeded     票据验证成功
+7       CaptchaAppId does not match     票据与验证码应用APPID不匹配
 8       ticket expired     票据超时
 10     ticket format error     票据格式不正确
-15     ticket decryption failed     验证码解密失败
-16     CaptchaAppId wrong format      检查CaptchaAppId错误
+15     ticket decryption failed     票据解密失败
+16     CaptchaAppId wrong format     检查验证码应用APPID错误
+21     ticket error     票据验证错误
 26     system internal error     系统内部错误
-100    param err appsecretkey     参数校验错误
-21      ticket error     差别，票据验证错误
+100   param err     参数校验错误
         :type CaptchaCode: int
         :param CaptchaMsg: 状态描述及验证错误信息
 注意：此字段可能返回 null，表示取不到有效值。

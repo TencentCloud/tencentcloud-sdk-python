@@ -2026,6 +2026,7 @@ TempIdWarn，临时身份证告警
 InvalidDateWarn，身份证有效日期不合法告警
 Quality，图片质量分数（评价图片的模糊程度）
 MultiCardDetect，是否开启多卡证检测
+ReflectWarn，是否开启反光检测
 
 SDK 设置方式参考：
 Config = Json.stringify({"CropIdCard":true,"CropPortrait":true})
@@ -2083,7 +2084,8 @@ WarnInfos，告警信息，Code 告警码列表和释义：
 -9103	身份证翻拍告警，
 -9105	身份证框内遮挡告警，
 -9104	临时身份证告警，
--9106	身份证 PS 告警。
+-9106	身份证 PS 告警，
+-9107       身份证反光告警。
         :type AdvancedInfo: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

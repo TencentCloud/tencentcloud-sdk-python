@@ -206,6 +206,34 @@ class LighthouseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeInstancesTrafficPackages(self, request):
+        """本接口（DescribeInstancesTrafficPackages）用于查询一个或多个实例的流量包详情。
+
+        :param request: Request instance for DescribeInstancesTrafficPackages.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeInstancesTrafficPackagesRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DescribeInstancesTrafficPackagesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInstancesTrafficPackages", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstancesTrafficPackagesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RebootInstances(self, request):
         """本接口（RebootInstances）用于重启实例。
 

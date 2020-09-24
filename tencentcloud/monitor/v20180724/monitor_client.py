@@ -137,6 +137,62 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAlarmHistories(self, request):
+        """告警2.0-告警历史列表
+
+        :param request: Request instance for DescribeAlarmHistories.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmHistoriesRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmHistoriesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAlarmHistories", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAlarmHistoriesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAllNamespaces(self, request):
+        """拉取所有名字空间
+
+        :param request: Request instance for DescribeAllNamespaces.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAllNamespacesRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeAllNamespacesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAllNamespaces", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAllNamespacesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBaseMetrics(self, request):
         """获取基础指标详情
 

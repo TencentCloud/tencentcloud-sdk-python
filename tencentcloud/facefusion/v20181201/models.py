@@ -75,6 +75,79 @@ class DescribeMaterialListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class FaceFusionLiteRequest(AbstractModel):
+    """FaceFusionLite请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProjectId: 活动 ID，请在人脸融合控制台查看。
+        :type ProjectId: str
+        :param ModelId: 素材 ID，请在人脸融合控制台查看。
+        :type ModelId: str
+        :param MergeInfos: 用户人脸图片、素材模板图的人脸位置信息。
+        :type MergeInfos: list of MergeInfo
+        :param RspImgType: 返回图像方式（url 或 base64) ，二选一。默认url, url有效期为30天。
+        :type RspImgType: str
+        :param CelebrityIdentify: 请注意，鉴政服务开启后，您需要根据返回结果自行判断是否调整您的业务逻辑。例如提示您的用户图片非法，请更换图片。
+        :type CelebrityIdentify: int
+        :param Engine: 算法引擎参数:  1）选脸版 - youturecreat; 2）优享版 - youtu1vN； 3）畅享版 - ptu； 4）随机 - ALL;  默认为活动选择的算法
+        :type Engine: str
+        """
+        self.ProjectId = None
+        self.ModelId = None
+        self.MergeInfos = None
+        self.RspImgType = None
+        self.CelebrityIdentify = None
+        self.Engine = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.ModelId = params.get("ModelId")
+        if params.get("MergeInfos") is not None:
+            self.MergeInfos = []
+            for item in params.get("MergeInfos"):
+                obj = MergeInfo()
+                obj._deserialize(item)
+                self.MergeInfos.append(obj)
+        self.RspImgType = params.get("RspImgType")
+        self.CelebrityIdentify = params.get("CelebrityIdentify")
+        self.Engine = params.get("Engine")
+
+
+class FaceFusionLiteResponse(AbstractModel):
+    """FaceFusionLite返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Image: RspImgType 为 url 时，返回结果的 url， RspImgType 为 base64 时返回 base64 数据。
+        :type Image: str
+        :param ReviewResultSet: 鉴政结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReviewResultSet: list of FuseFaceReviewResult
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Image = None
+        self.ReviewResultSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Image = params.get("Image")
+        if params.get("ReviewResultSet") is not None:
+            self.ReviewResultSet = []
+            for item in params.get("ReviewResultSet"):
+                obj = FuseFaceReviewResult()
+                obj._deserialize(item)
+                self.ReviewResultSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class FaceFusionRequest(AbstractModel):
     """FaceFusion请求参数结构体
 
