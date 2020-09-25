@@ -2343,6 +2343,8 @@ class ModifyGroupOffsetsRequest(AbstractModel):
         :type ShiftTimestamp: int
         :param Offset: 需要重新设置的offset位置。当strategy为2，必须包含该字段。
         :type Offset: int
+        :param Partitions: 需要重新设置的partition的列表，如果没有指定Topics参数。则重置全部topics的对应的Partition列表里的partition。指定Topics时则重置指定的topic列表的对应的Partitions列表的partition。
+        :type Partitions: list of int
         """
         self.InstanceId = None
         self.Group = None
@@ -2351,6 +2353,7 @@ class ModifyGroupOffsetsRequest(AbstractModel):
         self.Shift = None
         self.ShiftTimestamp = None
         self.Offset = None
+        self.Partitions = None
 
 
     def _deserialize(self, params):
@@ -2361,6 +2364,7 @@ class ModifyGroupOffsetsRequest(AbstractModel):
         self.Shift = params.get("Shift")
         self.ShiftTimestamp = params.get("ShiftTimestamp")
         self.Offset = params.get("Offset")
+        self.Partitions = params.get("Partitions")
 
 
 class ModifyGroupOffsetsResponse(AbstractModel):

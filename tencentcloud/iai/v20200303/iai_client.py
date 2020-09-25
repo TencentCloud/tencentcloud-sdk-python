@@ -992,6 +992,9 @@ class IaiClient(AbstractClient):
         >
         - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 
+        >
+        - 不可同时搜索不同算法模型版本（FaceModelVersion）的人员库。
+
         :param request: Request instance for SearchFaces.
         :type request: :class:`tencentcloud.iai.v20200303.models.SearchFacesRequest`
         :rtype: :class:`tencentcloud.iai.v20200303.models.SearchFacesResponse`
@@ -1031,6 +1034,8 @@ class IaiClient(AbstractClient):
         >
         - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 
+        >
+        - 不可同时搜索不同算法模型版本（FaceModelVersion）的人员库。
 
         :param request: Request instance for SearchFacesReturnsByGroup.
         :type request: :class:`tencentcloud.iai.v20200303.models.SearchFacesReturnsByGroupRequest`

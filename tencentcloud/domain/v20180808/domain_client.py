@@ -53,6 +53,36 @@ class DomainClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDomainBaseInfo(self, request):
+        """本接口 (  DescribeDomainBaseInfo) 获取域名基础信息。
+
+        默认接口请求频率限制：20次/秒。
+
+        :param request: Request instance for DescribeDomainBaseInfo.
+        :type request: :class:`tencentcloud.domain.v20180808.models.DescribeDomainBaseInfoRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.DescribeDomainBaseInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDomainBaseInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDomainBaseInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDomainPriceList(self, request):
         """按照域名后缀获取对应的价格列表
 

@@ -3471,7 +3471,7 @@ class UnBindingPolicyObjectRequest(AbstractModel):
         :type Module: str
         :param GroupId: 策略组id
         :type GroupId: int
-        :param UniqueId: 待删除对象实例的唯一id列表
+        :param UniqueId: 待删除对象实例的唯一id列表，UniqueId从调用[获取已绑定对象列表接口](https://cloud.tencent.com/document/api/248/40570)的出参的List中得到
         :type UniqueId: list of str
         :param InstanceGroupId: 实例分组id, 如果按实例分组删除的话UniqueId参数是无效的
         :type InstanceGroupId: int

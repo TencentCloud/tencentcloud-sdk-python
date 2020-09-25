@@ -1282,6 +1282,34 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeEventsState(self, request):
+        """* 该接口用于业务服务器获取 [可靠回调](https://cloud.tencent.com/document/product/266/33779#.E5.8F.AF.E9.9D.A0.E5.9B.9E.E8.B0.83) 事件通知的状态。
+
+        :param request: Request instance for DescribeEventsState.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeEventsStateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeEventsStateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeEventsState", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeEventsStateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeImageSpriteTemplates(self, request):
         """查询雪碧图模板，支持根据条件，分页查询。
 

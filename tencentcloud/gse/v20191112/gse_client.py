@@ -25,6 +25,99 @@ class GseClient(AbstractClient):
     _endpoint = 'gse.tencentcloudapi.com'
 
 
+    def AttachCcnInstances(self, request):
+        """本接口（AttachCcnInstances）用于关联云联网实例
+
+        :param request: Request instance for AttachCcnInstances.
+        :type request: :class:`tencentcloud.gse.v20191112.models.AttachCcnInstancesRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.AttachCcnInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AttachCcnInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AttachCcnInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateAlias(self, request):
+        """本接口（CreateAlias）用于创建别名
+
+        :param request: Request instance for CreateAlias.
+        :type request: :class:`tencentcloud.gse.v20191112.models.CreateAliasRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.CreateAliasResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAlias", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAliasResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateAsset(self, request):
+        """本接口（CreateAsset）用于创建生成包。
+        通过获取上传cos的临时秘钥，将文件上传至cos，然后将生成包的zip名称下发给[CreateAsset](https://tcloud-dev.oa.com/document/product/1139/46582?!preview&!document=1)完成接口创建。上传文件至 cos支持俩种方式：
+
+         a.获取预签名， cos 调用上传 （小的文件 5G以内， 前端 1G 以内）
+          1). [GetUploadCredentials](https://tcloud-dev.oa.com/document/product/1139/39889?!preview&!document=1)
+          2). 使用 cos API 上传 （cos sdk ）
+         b.新的方式，适用场景，（大文件）
+          1). [GetUploadCredentials](https://tcloud-dev.oa.com/document/product/1139/39889?!preview&!document=1) （获取上传 bucket  第一次调用需要，后续可以不用调用 ）
+          2). GetUploadFederationToken（获取临时密钥）
+          3). 分块上传 API （cos sdk 有集成 upload_file）
+
+        :param request: Request instance for CreateAsset.
+        :type request: :class:`tencentcloud.gse.v20191112.models.CreateAssetRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.CreateAssetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAsset", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAssetResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateGameServerSession(self, request):
         """本接口（CreateGameServerSession）用于创建游戏服务会话
 
@@ -53,8 +146,92 @@ class GseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteAlias(self, request):
+        """本接口（DeleteAlias）用于删除别名
+
+        :param request: Request instance for DeleteAlias.
+        :type request: :class:`tencentcloud.gse.v20191112.models.DeleteAliasRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.DeleteAliasResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteAlias", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteAliasResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteAsset(self, request):
+        """本接口（DeleteAsset）用于删除生成包
+
+        :param request: Request instance for DeleteAsset.
+        :type request: :class:`tencentcloud.gse.v20191112.models.DeleteAssetRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.DeleteAssetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteAsset", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteAssetResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteFleet(self, request):
+        """本接口（DeleteFleet）用于删除服务器舰队
+
+        :param request: Request instance for DeleteFleet.
+        :type request: :class:`tencentcloud.gse.v20191112.models.DeleteFleetRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.DeleteFleetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteFleet", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteFleetResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteScalingPolicy(self, request):
-        """用于删除扩缩容配置
+        """本接口（DeleteScalingPolicy）用于删除扩缩容配置
 
         :param request: Request instance for DeleteScalingPolicy.
         :type request: :class:`tencentcloud.gse.v20191112.models.DeleteScalingPolicyRequest`
@@ -67,6 +244,230 @@ class GseClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteScalingPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAlias(self, request):
+        """本接口（DescribeAlias）用于获取别名详情
+
+        :param request: Request instance for DescribeAlias.
+        :type request: :class:`tencentcloud.gse.v20191112.models.DescribeAliasRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.DescribeAliasResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAlias", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAliasResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAsset(self, request):
+        """本接口（DescribeAsset）获取生成包信息
+
+        :param request: Request instance for DescribeAsset.
+        :type request: :class:`tencentcloud.gse.v20191112.models.DescribeAssetRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.DescribeAssetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAsset", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAssetResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAssets(self, request):
+        """本接口（DescribeAssets）用于获取生成包列表
+
+        :param request: Request instance for DescribeAssets.
+        :type request: :class:`tencentcloud.gse.v20191112.models.DescribeAssetsRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.DescribeAssetsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAssets", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAssetsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCcnInstances(self, request):
+        """本接口（DescribeCcnInstances）用于查询云联网实例
+
+        :param request: Request instance for DescribeCcnInstances.
+        :type request: :class:`tencentcloud.gse.v20191112.models.DescribeCcnInstancesRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.DescribeCcnInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCcnInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCcnInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeFleetAttributes(self, request):
+        """本接口（DescribeFleetAttributes）用于查询服务器舰队属性
+
+        :param request: Request instance for DescribeFleetAttributes.
+        :type request: :class:`tencentcloud.gse.v20191112.models.DescribeFleetAttributesRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.DescribeFleetAttributesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeFleetAttributes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeFleetAttributesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeFleetEvents(self, request):
+        """本接口（DescribeFleetEvents）用于查询部署服务器舰队相关的事件列表
+
+        :param request: Request instance for DescribeFleetEvents.
+        :type request: :class:`tencentcloud.gse.v20191112.models.DescribeFleetEventsRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.DescribeFleetEventsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeFleetEvents", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeFleetEventsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeFleetPortSettings(self, request):
+        """本接口（DescribeFleetPortSettings）用于获取服务器舰队安全组信息
+
+        :param request: Request instance for DescribeFleetPortSettings.
+        :type request: :class:`tencentcloud.gse.v20191112.models.DescribeFleetPortSettingsRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.DescribeFleetPortSettingsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeFleetPortSettings", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeFleetPortSettingsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeFleetUtilization(self, request):
+        """本接口（DescribeFleetUtilization）用于查询服务器舰队的利用率信息
+
+        :param request: Request instance for DescribeFleetUtilization.
+        :type request: :class:`tencentcloud.gse.v20191112.models.DescribeFleetUtilizationRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.DescribeFleetUtilizationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeFleetUtilization", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeFleetUtilizationResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -193,8 +594,36 @@ class GseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeInstanceTypes(self, request):
+        """本接口（DescribeInstanceTypes）用于获取服务器实例类型列表
+
+        :param request: Request instance for DescribeInstanceTypes.
+        :type request: :class:`tencentcloud.gse.v20191112.models.DescribeInstanceTypesRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.DescribeInstanceTypesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInstanceTypes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstanceTypesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeInstances(self, request):
-        """用于查询服务器实例列表
+        """本接口（DescribeInstances）用于查询服务器实例列表
 
         :param request: Request instance for DescribeInstances.
         :type request: :class:`tencentcloud.gse.v20191112.models.DescribeInstancesRequest`
@@ -249,8 +678,36 @@ class GseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeRuntimeConfiguration(self, request):
+        """本接口（DescribeRuntimeConfiguration）用于获取服务器舰队运行配置
+
+        :param request: Request instance for DescribeRuntimeConfiguration.
+        :type request: :class:`tencentcloud.gse.v20191112.models.DescribeRuntimeConfigurationRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.DescribeRuntimeConfigurationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRuntimeConfiguration", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRuntimeConfigurationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeScalingPolicies(self, request):
-        """用于查询服务部署的动态扩缩容配置
+        """本接口（DescribeScalingPolicies）用于查询服务部署的动态扩缩容配置
 
         :param request: Request instance for DescribeScalingPolicies.
         :type request: :class:`tencentcloud.gse.v20191112.models.DescribeScalingPoliciesRequest`
@@ -263,6 +720,90 @@ class GseClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeScalingPoliciesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeUserQuota(self, request):
+        """本接口（DescribeUserQuota）获取用户单个模块配额
+
+        :param request: Request instance for DescribeUserQuota.
+        :type request: :class:`tencentcloud.gse.v20191112.models.DescribeUserQuotaRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.DescribeUserQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeUserQuota", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeUserQuotaResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeUserQuotas(self, request):
+        """本接口（DescribeUserQuotas）用于获取用户配额
+
+        :param request: Request instance for DescribeUserQuotas.
+        :type request: :class:`tencentcloud.gse.v20191112.models.DescribeUserQuotasRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.DescribeUserQuotasResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeUserQuotas", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeUserQuotasResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DetachCcnInstances(self, request):
+        """本接口（DetachCcnInstances）用于解关联云联网实例
+
+        :param request: Request instance for DetachCcnInstances.
+        :type request: :class:`tencentcloud.gse.v20191112.models.DetachCcnInstancesRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.DetachCcnInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DetachCcnInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DetachCcnInstancesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -306,7 +847,7 @@ class GseClient(AbstractClient):
 
 
     def GetInstanceAccess(self, request):
-        """获取实例登录所需要的凭据
+        """本接口（GetInstanceAccess）用于获取实例登录所需要的凭据
 
         :param request: Request instance for GetInstanceAccess.
         :type request: :class:`tencentcloud.gse.v20191112.models.GetInstanceAccessRequest`
@@ -319,6 +860,63 @@ class GseClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetInstanceAccessResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetUploadCredentials(self, request):
+        """本接口（GetUploadCredentials）获取上传文件授权信息。
+        详细描述：通过[GetUploadCredentials](https://tcloud-dev.oa.com/document/product/1139/39889?!preview&!document=1)接口获取临时秘钥后，使用http put请求将数据上传至cos，然后将生成的生成包zip名称下发给[CreateAsset](https://tcloud-dev.oa.com/document/product/1139/46582?!preview&!document=1)接口进行asset创建
+
+        :param request: Request instance for GetUploadCredentials.
+        :type request: :class:`tencentcloud.gse.v20191112.models.GetUploadCredentialsRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.GetUploadCredentialsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetUploadCredentials", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetUploadCredentialsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetUploadFederationToken(self, request):
+        """本接口（GetUploadFederationToken）用于 获取生成包上传所需要的临时密钥
+
+        :param request: Request instance for GetUploadFederationToken.
+        :type request: :class:`tencentcloud.gse.v20191112.models.GetUploadFederationTokenRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.GetUploadFederationTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetUploadFederationToken", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetUploadFederationTokenResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -361,8 +959,64 @@ class GseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ListAliases(self, request):
+        """本接口（ListAliases）用于检索帐户下的所有别名
+
+        :param request: Request instance for ListAliases.
+        :type request: :class:`tencentcloud.gse.v20191112.models.ListAliasesRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.ListAliasesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListAliases", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListAliasesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ListFleets(self, request):
+        """本接口（ListFleets）用于获取服务器舰队列表
+
+        :param request: Request instance for ListFleets.
+        :type request: :class:`tencentcloud.gse.v20191112.models.ListFleetsRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.ListFleetsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListFleets", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListFleetsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def PutScalingPolicy(self, request):
-        """用于设置动态扩缩容配置
+        """本接口（PutScalingPolicy）用于设置动态扩缩容配置
 
         :param request: Request instance for PutScalingPolicy.
         :type request: :class:`tencentcloud.gse.v20191112.models.PutScalingPolicyRequest`
@@ -375,6 +1029,34 @@ class GseClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PutScalingPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ResolveAlias(self, request):
+        """本接口（ResolveAlias）用于获取别名当前指向的fleetId
+
+        :param request: Request instance for ResolveAlias.
+        :type request: :class:`tencentcloud.gse.v20191112.models.ResolveAliasRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.ResolveAliasResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ResolveAlias", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ResolveAliasResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -445,6 +1127,34 @@ class GseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def StartFleetActions(self, request):
+        """本接口（StartFleetActions）用于启用服务器舰队自动扩缩容
+
+        :param request: Request instance for StartFleetActions.
+        :type request: :class:`tencentcloud.gse.v20191112.models.StartFleetActionsRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.StartFleetActionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StartFleetActions", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StartFleetActionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def StartGameServerSessionPlacement(self, request):
         """本接口（StartGameServerSessionPlacement）用于开始放置游戏服务器会话
 
@@ -501,6 +1211,34 @@ class GseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def StopFleetActions(self, request):
+        """本接口（StopFleetActions）用于停止服务器舰队自动扩缩容，改为手动扩缩容
+
+        :param request: Request instance for StopFleetActions.
+        :type request: :class:`tencentcloud.gse.v20191112.models.StopFleetActionsRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.StopFleetActionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StopFleetActions", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StopFleetActionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def StopGameServerSessionPlacement(self, request):
         """本接口（StopGameServerSessionPlacement）用于停止放置游戏服务器会话
 
@@ -529,6 +1267,118 @@ class GseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def UpdateAlias(self, request):
+        """本接口（UpdateAlias）用于更新别名的属性
+
+        :param request: Request instance for UpdateAlias.
+        :type request: :class:`tencentcloud.gse.v20191112.models.UpdateAliasRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.UpdateAliasResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateAlias", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateAliasResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateAsset(self, request):
+        """本接口（UpdateAsset）用于修改生成包信息
+
+        :param request: Request instance for UpdateAsset.
+        :type request: :class:`tencentcloud.gse.v20191112.models.UpdateAssetRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.UpdateAssetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateAsset", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateAssetResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateFleetAttributes(self, request):
+        """本接口（UpdateFleetAttributes）用于更新服务器舰队属性
+
+        :param request: Request instance for UpdateFleetAttributes.
+        :type request: :class:`tencentcloud.gse.v20191112.models.UpdateFleetAttributesRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.UpdateFleetAttributesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateFleetAttributes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateFleetAttributesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateFleetPortSettings(self, request):
+        """本接口（UpdateFleetPortSettings）用于更新服务器舰队安全组
+
+        :param request: Request instance for UpdateFleetPortSettings.
+        :type request: :class:`tencentcloud.gse.v20191112.models.UpdateFleetPortSettingsRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.UpdateFleetPortSettingsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateFleetPortSettings", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateFleetPortSettingsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def UpdateGameServerSession(self, request):
         """本接口（UpdateGameServerSession）用于更新游戏服务器会话
 
@@ -543,6 +1393,34 @@ class GseClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateGameServerSessionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateRuntimeConfiguration(self, request):
+        """本接口（UpdateRuntimeConfiguration）用于更新服务器舰队配置
+
+        :param request: Request instance for UpdateRuntimeConfiguration.
+        :type request: :class:`tencentcloud.gse.v20191112.models.UpdateRuntimeConfigurationRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.UpdateRuntimeConfigurationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateRuntimeConfiguration", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateRuntimeConfigurationResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

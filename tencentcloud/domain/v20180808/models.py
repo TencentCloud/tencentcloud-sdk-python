@@ -110,6 +110,46 @@ class CheckDomainResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDomainBaseInfoRequest(AbstractModel):
+    """DescribeDomainBaseInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Domain: 域名
+        :type Domain: str
+        """
+        self.Domain = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+
+
+class DescribeDomainBaseInfoResponse(AbstractModel):
+    """DescribeDomainBaseInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainInfo: 域名信息
+        :type DomainInfo: :class:`tencentcloud.domain.v20180808.models.DomainBaseInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DomainInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DomainInfo") is not None:
+            self.DomainInfo = DomainBaseInfo()
+            self.DomainInfo._deserialize(params.get("DomainInfo"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDomainPriceListRequest(AbstractModel):
     """DescribeDomainPriceList请求参数结构体
 
@@ -159,6 +199,101 @@ class DescribeDomainPriceListResponse(AbstractModel):
                 obj._deserialize(item)
                 self.PriceList.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class DomainBaseInfo(AbstractModel):
+    """获取域名基础信息
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainId: 域名资源ID。
+        :type DomainId: str
+        :param DomainName: 域名名称。
+        :type DomainName: str
+        :param RealNameAuditStatus: 域名实名认证状态。
+NotUpload：未实名认证
+InAudit：实名审核中
+Approved：实名审核通过
+Reject：实名审核失败
+        :type RealNameAuditStatus: str
+        :param RealNameAuditUnpassReason: 域名实名认证不通过原因。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealNameAuditUnpassReason: str
+        :param DomainNameAuditStatus: 域名命名审核状态。
+NotAudit：命名审核未上传
+Pending：命名审核待上传
+Auditing：域名命名审核中
+Approved：域名命名审核通过
+Rejected：域名命名审核拒绝
+        :type DomainNameAuditStatus: str
+        :param DomainNameAuditUnpassReason: 域名命名审核不通过原因。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DomainNameAuditUnpassReason: str
+        :param CreationDate: 注册时间。
+        :type CreationDate: str
+        :param ExpirationDate: 到期时间
+        :type ExpirationDate: str
+        :param DomainStatus: 域名状态。
+ok：正常
+serverHold：注册局暂停解析 
+clientHold：注册商暂停解析
+pendingTransfer：转移中
+renewingPeriod：续费期
+redemptionPeriod：偿还期
+pendingDelete：删除期
+serverTransferProhibited：注册局禁止转移
+serverUpdateProhibited：注册局禁止更新
+serverDeleteProhibited：注册局禁止删除
+clientTransferProhibited：注册商禁止转移
+clientUpdateProhibited：注册商禁止更新
+clientDeleteProhibited：注册商禁止删除
+        :type DomainStatus: list of str
+        :param BuyStatus: 域名购买状态。
+ok：正常
+RegisterPending：待注册
+RegisterDoing：注册中
+RegisterFailed：注册失败
+AboutToExpire: 即将过期
+RenewPending：已进入续费期，需要进行续费
+RenewDoing：续费中
+RedemptionPending：已进入赎回期，需要进行续费
+RedemptionDoing：赎回中
+TransferPending：待转入中
+TransferTransing：转入中
+TransferFailed：转入失败
+        :type BuyStatus: str
+        :param RegistrarType: 注册类型
+epp （腾讯云自有域名）
+xinnet (新网域名)
+        :type RegistrarType: str
+        """
+        self.DomainId = None
+        self.DomainName = None
+        self.RealNameAuditStatus = None
+        self.RealNameAuditUnpassReason = None
+        self.DomainNameAuditStatus = None
+        self.DomainNameAuditUnpassReason = None
+        self.CreationDate = None
+        self.ExpirationDate = None
+        self.DomainStatus = None
+        self.BuyStatus = None
+        self.RegistrarType = None
+
+
+    def _deserialize(self, params):
+        self.DomainId = params.get("DomainId")
+        self.DomainName = params.get("DomainName")
+        self.RealNameAuditStatus = params.get("RealNameAuditStatus")
+        self.RealNameAuditUnpassReason = params.get("RealNameAuditUnpassReason")
+        self.DomainNameAuditStatus = params.get("DomainNameAuditStatus")
+        self.DomainNameAuditUnpassReason = params.get("DomainNameAuditUnpassReason")
+        self.CreationDate = params.get("CreationDate")
+        self.ExpirationDate = params.get("ExpirationDate")
+        self.DomainStatus = params.get("DomainStatus")
+        self.BuyStatus = params.get("BuyStatus")
+        self.RegistrarType = params.get("RegistrarType")
 
 
 class PriceInfo(AbstractModel):

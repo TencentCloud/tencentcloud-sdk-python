@@ -1073,16 +1073,24 @@ class GetDeviceListRequest(AbstractModel):
         :type Offset: int
         :param Limit: 分页的大小，数值范围 10-100
         :type Limit: int
+        :param FirmwareVersion: 设备固件版本号，若不带此参数会返回所有固件版本的设备。传"None-FirmwareVersion"查询无版本号的设备
+        :type FirmwareVersion: str
+        :param DeviceName: 需要过滤的设备名称
+        :type DeviceName: str
         """
         self.ProductId = None
         self.Offset = None
         self.Limit = None
+        self.FirmwareVersion = None
+        self.DeviceName = None
 
 
     def _deserialize(self, params):
         self.ProductId = params.get("ProductId")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.FirmwareVersion = params.get("FirmwareVersion")
+        self.DeviceName = params.get("DeviceName")
 
 
 class GetDeviceListResponse(AbstractModel):

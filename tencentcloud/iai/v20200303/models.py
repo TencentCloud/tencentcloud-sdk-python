@@ -3100,7 +3100,8 @@ class SearchFacesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param GroupIds: 希望搜索的人员库列表，上限100个。数组元素取值为创建人员库接口中的GroupId
+        :param GroupIds: 希望搜索的人员库列表，上限100个。数组元素取值为创建人员库接口中的GroupId。
+不可同时搜索不同算法模型版本（FaceModelVersion）的人员库。
         :type GroupIds: list of str
         :param Image: 图片 base64 数据，base64 编码后大小不可超过5M。
 jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
@@ -3205,7 +3206,8 @@ class SearchFacesReturnsByGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param GroupIds: 希望搜索的人员库列表，上限60个。数组元素取值为创建人员库接口中的GroupId
+        :param GroupIds: 希望搜索的人员库列表，上限60个。数组元素取值为创建人员库接口中的GroupId。
+不可同时搜索不同算法模型版本（FaceModelVersion）的人员库。
         :type GroupIds: list of str
         :param Image: 图片 base64 数据，base64 编码后大小不可超过5M。
 jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。

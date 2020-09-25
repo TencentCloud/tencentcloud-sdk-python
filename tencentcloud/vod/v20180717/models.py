@@ -6771,6 +6771,44 @@ class DescribeContentReviewTemplatesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeEventsStateRequest(AbstractModel):
+    """DescribeEventsState请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SubAppId: 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
+
+
+class DescribeEventsStateResponse(AbstractModel):
+    """DescribeEventsState返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CountOfEventsToPull: 待进行拉取的事件通知数，为近似值，约5秒延迟。
+        :type CountOfEventsToPull: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CountOfEventsToPull = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CountOfEventsToPull = params.get("CountOfEventsToPull")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeImageSpriteTemplatesRequest(AbstractModel):
     """DescribeImageSpriteTemplates请求参数结构体
 

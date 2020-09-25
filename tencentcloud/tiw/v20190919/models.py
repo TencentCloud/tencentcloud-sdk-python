@@ -585,7 +585,7 @@ class DescribeVideoGenerationTaskResponse(AbstractModel):
         :type RoomId: int
         :param TaskId: 任务的Id
         :type TaskId: str
-        :param Progress: 录制视频生成进度（0-100，100表示视频生成完成 ）
+        :param Progress: 已废弃
         :type Progress: int
         :param Status: 录制视频生成任务状态
 - QUEUED: 正在排队
@@ -594,8 +594,10 @@ class DescribeVideoGenerationTaskResponse(AbstractModel):
         :type Status: str
         :param TotalTime: 回放视频总时长,单位：毫秒
         :type TotalTime: int
-        :param VideoInfos: 录制视频生成列表
+        :param VideoInfos: 已废弃，请使用`VideoInfoList`参数
         :type VideoInfos: :class:`tencentcloud.tiw.v20190919.models.VideoInfo`
+        :param VideoInfoList: 录制视频生成视频列表
+        :type VideoInfoList: list of VideoInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -606,6 +608,7 @@ class DescribeVideoGenerationTaskResponse(AbstractModel):
         self.Status = None
         self.TotalTime = None
         self.VideoInfos = None
+        self.VideoInfoList = None
         self.RequestId = None
 
 
@@ -619,6 +622,12 @@ class DescribeVideoGenerationTaskResponse(AbstractModel):
         if params.get("VideoInfos") is not None:
             self.VideoInfos = VideoInfo()
             self.VideoInfos._deserialize(params.get("VideoInfos"))
+        if params.get("VideoInfoList") is not None:
+            self.VideoInfoList = []
+            for item in params.get("VideoInfoList"):
+                obj = VideoInfo()
+                obj._deserialize(item)
+                self.VideoInfoList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
