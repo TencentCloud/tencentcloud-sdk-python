@@ -386,14 +386,18 @@ class CreateSnapshotRequest(AbstractModel):
         :type DiskId: str
         :param SnapshotName: 快照名称，不传则新快照名称默认为“未命名”。
         :type SnapshotName: str
+        :param Deadline: 快照的到期时间，到期后该快照将会自动删除
+        :type Deadline: str
         """
         self.DiskId = None
         self.SnapshotName = None
+        self.Deadline = None
 
 
     def _deserialize(self, params):
         self.DiskId = params.get("DiskId")
         self.SnapshotName = params.get("SnapshotName")
+        self.Deadline = params.get("Deadline")
 
 
 class CreateSnapshotResponse(AbstractModel):
@@ -1799,18 +1803,22 @@ class ModifySnapshotAttributeRequest(AbstractModel):
         :type SnapshotId: str
         :param SnapshotName: 新的快照名称。最长为60个字符。
         :type SnapshotName: str
-        :param IsPermanent: 快照的保留时间，FALSE表示非永久保留，TRUE表示永久保留。仅支持将非永久快照修改为永久快照。
+        :param IsPermanent: 快照的保留方式，FALSE表示非永久保留，TRUE表示永久保留。
         :type IsPermanent: bool
+        :param Deadline: 快照的到期时间；设置好快照将会被同时设置为非永久保留方式；超过到期时间后快照将会被自动删除。
+        :type Deadline: str
         """
         self.SnapshotId = None
         self.SnapshotName = None
         self.IsPermanent = None
+        self.Deadline = None
 
 
     def _deserialize(self, params):
         self.SnapshotId = params.get("SnapshotId")
         self.SnapshotName = params.get("SnapshotName")
         self.IsPermanent = params.get("IsPermanent")
+        self.Deadline = params.get("Deadline")
 
 
 class ModifySnapshotAttributeResponse(AbstractModel):

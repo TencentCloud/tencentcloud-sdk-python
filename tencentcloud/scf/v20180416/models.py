@@ -1236,7 +1236,7 @@ class GetFunctionLogsRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: 查询的具体日期，例如：2017-05-16 20:59:59，只能与startTime相差一天之内
         :type EndTime: str
-        :param SearchContext: 服务日志相关参数，第一页日志 Offset 为空字符串，后续分页按响应字段里的SearchContext填写
+        :param SearchContext: 该字段已下线
         :type SearchContext: :class:`tencentcloud.scf.v20180416.models.LogSearchContext`
         """
         self.FunctionName = None
@@ -1283,7 +1283,7 @@ class GetFunctionLogsResponse(AbstractModel):
         :type TotalCount: int
         :param Data: 函数日志信息
         :type Data: list of FunctionLog
-        :param SearchContext: 日志服务分页参数
+        :param SearchContext: 该字段已下线
         :type SearchContext: :class:`tencentcloud.scf.v20180416.models.LogSearchContext`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

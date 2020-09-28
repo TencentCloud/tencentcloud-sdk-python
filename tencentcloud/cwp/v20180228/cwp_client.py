@@ -17,28 +17,28 @@ import json
 
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.common.abstract_client import AbstractClient
-from tencentcloud.tsf.v20180326 import models
+from tencentcloud.cwp.v20180228 import models
 
 
-class TsfClient(AbstractClient):
-    _apiVersion = '2018-03-26'
-    _endpoint = 'tsf.tencentcloudapi.com'
+class CwpClient(AbstractClient):
+    _apiVersion = '2018-02-28'
+    _endpoint = 'cwp.tencentcloudapi.com'
 
 
-    def AddClusterInstances(self, request):
-        """添加云主机节点至TSF集群
+    def AddLoginWhiteList(self, request):
+        """本接口（AddLoginWhiteList）用于添加白名单规则
 
-        :param request: Request instance for AddClusterInstances.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.AddClusterInstancesRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.AddClusterInstancesResponse`
+        :param request: Request instance for AddLoginWhiteList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.AddLoginWhiteListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.AddLoginWhiteListResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("AddClusterInstances", params)
+            body = self.call("AddLoginWhiteList", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.AddClusterInstancesResponse()
+                model = models.AddLoginWhiteListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -53,20 +53,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def AddInstances(self, request):
-        """添加云主机节点至TSF集群
+    def AddMachineTag(self, request):
+        """增加机器关联标签
 
-        :param request: Request instance for AddInstances.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.AddInstancesRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.AddInstancesResponse`
+        :param request: Request instance for AddMachineTag.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.AddMachineTagRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.AddMachineTagResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("AddInstances", params)
+            body = self.call("AddMachineTag", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.AddInstancesResponse()
+                model = models.AddMachineTagResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -81,20 +81,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateApplication(self, request):
-        """创建应用
+    def CloseProVersion(self, request):
+        """本接口 (CloseProVersion) 用于关闭专业版。
 
-        :param request: Request instance for CreateApplication.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.CreateApplicationRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.CreateApplicationResponse`
+        :param request: Request instance for CloseProVersion.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.CloseProVersionRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.CloseProVersionResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateApplication", params)
+            body = self.call("CloseProVersion", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateApplicationResponse()
+                model = models.CloseProVersionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -109,20 +109,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateCluster(self, request):
-        """创建集群
+    def CreateBaselineStrategy(self, request):
+        """根据策略信息创建基线策略
 
-        :param request: Request instance for CreateCluster.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.CreateClusterRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.CreateClusterResponse`
+        :param request: Request instance for CreateBaselineStrategy.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.CreateBaselineStrategyRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.CreateBaselineStrategyResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCluster", params)
+            body = self.call("CreateBaselineStrategy", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateClusterResponse()
+                model = models.CreateBaselineStrategyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -137,20 +137,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateConfig(self, request):
-        """创建配置项
+    def CreateOpenPortTask(self, request):
+        """本接口 (CreateOpenPortTask) 用于创建实时获取端口任务。
 
-        :param request: Request instance for CreateConfig.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.CreateConfigRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.CreateConfigResponse`
+        :param request: Request instance for CreateOpenPortTask.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.CreateOpenPortTaskRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.CreateOpenPortTaskResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateConfig", params)
+            body = self.call("CreateOpenPortTask", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateConfigResponse()
+                model = models.CreateOpenPortTaskResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -165,20 +165,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateContainGroup(self, request):
-        """创建容器部署组
+    def CreateProcessTask(self, request):
+        """本接口 (CreateProcessTask) 用于创建实时拉取进程任务。
 
-        :param request: Request instance for CreateContainGroup.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.CreateContainGroupRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.CreateContainGroupResponse`
+        :param request: Request instance for CreateProcessTask.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.CreateProcessTaskRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.CreateProcessTaskResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateContainGroup", params)
+            body = self.call("CreateProcessTask", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateContainGroupResponse()
+                model = models.CreateProcessTaskResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -193,20 +193,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateGroup(self, request):
-        """创建虚拟机部署组
+    def CreateUsualLoginPlaces(self, request):
+        """此接口（CreateUsualLoginPlaces）用于添加常用登录地。
 
-        :param request: Request instance for CreateGroup.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.CreateGroupRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.CreateGroupResponse`
+        :param request: Request instance for CreateUsualLoginPlaces.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.CreateUsualLoginPlacesRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.CreateUsualLoginPlacesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateGroup", params)
+            body = self.call("CreateUsualLoginPlaces", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateGroupResponse()
+                model = models.CreateUsualLoginPlacesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -221,20 +221,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateLane(self, request):
-        """创建泳道
+    def DeleteAttackLogs(self, request):
+        """删除网络攻击日志
 
-        :param request: Request instance for CreateLane.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.CreateLaneRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.CreateLaneResponse`
+        :param request: Request instance for DeleteAttackLogs.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteAttackLogsRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DeleteAttackLogsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateLane", params)
+            body = self.call("DeleteAttackLogs", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateLaneResponse()
+                model = models.DeleteAttackLogsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -249,20 +249,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateLaneRule(self, request):
-        """创建泳道规则
+    def DeleteBashEvents(self, request):
+        """根据Ids删除高危命令事件
 
-        :param request: Request instance for CreateLaneRule.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.CreateLaneRuleRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.CreateLaneRuleResponse`
+        :param request: Request instance for DeleteBashEvents.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteBashEventsRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DeleteBashEventsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateLaneRule", params)
+            body = self.call("DeleteBashEvents", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateLaneRuleResponse()
+                model = models.DeleteBashEventsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -277,20 +277,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateMicroservice(self, request):
-        """新增微服务
+    def DeleteBashRules(self, request):
+        """删除高危命令规则
 
-        :param request: Request instance for CreateMicroservice.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.CreateMicroserviceRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.CreateMicroserviceResponse`
+        :param request: Request instance for DeleteBashRules.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteBashRulesRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DeleteBashRulesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateMicroservice", params)
+            body = self.call("DeleteBashRules", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateMicroserviceResponse()
+                model = models.DeleteBashRulesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -305,20 +305,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateNamespace(self, request):
-        """创建命名空间
+    def DeleteBruteAttacks(self, request):
+        """本接口 (DeleteBruteAttacks) 用于删除暴力破解记录。
 
-        :param request: Request instance for CreateNamespace.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.CreateNamespaceRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.CreateNamespaceResponse`
+        :param request: Request instance for DeleteBruteAttacks.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteBruteAttacksRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DeleteBruteAttacksResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateNamespace", params)
+            body = self.call("DeleteBruteAttacks", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateNamespaceResponse()
+                model = models.DeleteBruteAttacksResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -333,20 +333,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreatePublicConfig(self, request):
-        """创建公共配置项
+    def DeleteLoginWhiteList(self, request):
+        """删除白名单规则
 
-        :param request: Request instance for CreatePublicConfig.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.CreatePublicConfigRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.CreatePublicConfigResponse`
+        :param request: Request instance for DeleteLoginWhiteList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteLoginWhiteListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DeleteLoginWhiteListResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreatePublicConfig", params)
+            body = self.call("DeleteLoginWhiteList", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreatePublicConfigResponse()
+                model = models.DeleteLoginWhiteListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -361,20 +361,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateRepository(self, request):
-        """创建仓库
+    def DeleteMachine(self, request):
+        """本接口（DeleteMachine）用于卸载云镜客户端。
 
-        :param request: Request instance for CreateRepository.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.CreateRepositoryRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.CreateRepositoryResponse`
+        :param request: Request instance for DeleteMachine.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteMachineRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DeleteMachineResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateRepository", params)
+            body = self.call("DeleteMachine", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateRepositoryResponse()
+                model = models.DeleteMachineResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -389,20 +389,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateServerlessGroup(self, request):
-        """创建Serverless部署组
+    def DeleteMachineTag(self, request):
+        """删除服务器关联的标签
 
-        :param request: Request instance for CreateServerlessGroup.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.CreateServerlessGroupRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.CreateServerlessGroupResponse`
+        :param request: Request instance for DeleteMachineTag.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteMachineTagRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DeleteMachineTagResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateServerlessGroup", params)
+            body = self.call("DeleteMachineTag", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateServerlessGroupResponse()
+                model = models.DeleteMachineTagResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -417,20 +417,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteApplication(self, request):
-        """删除应用
+    def DeleteMaliciousRequests(self, request):
+        """本接口 (DeleteMaliciousRequests) 用于删除恶意请求记录。
 
-        :param request: Request instance for DeleteApplication.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteApplicationRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DeleteApplicationResponse`
+        :param request: Request instance for DeleteMaliciousRequests.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteMaliciousRequestsRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DeleteMaliciousRequestsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteApplication", params)
+            body = self.call("DeleteMaliciousRequests", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteApplicationResponse()
+                model = models.DeleteMaliciousRequestsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -445,20 +445,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteConfig(self, request):
-        """删除配置项
+    def DeleteMalwares(self, request):
+        """本接口 (DeleteMalwares) 用于删除木马记录。
 
-        :param request: Request instance for DeleteConfig.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteConfigRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DeleteConfigResponse`
+        :param request: Request instance for DeleteMalwares.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteMalwaresRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DeleteMalwaresResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteConfig", params)
+            body = self.call("DeleteMalwares", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteConfigResponse()
+                model = models.DeleteMalwaresResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -473,20 +473,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteContainerGroup(self, request):
-        """删除容器部署组
+    def DeleteNonlocalLoginPlaces(self, request):
+        """本接口 (DeleteNonlocalLoginPlaces) 用于删除异地登录记录。
 
-        :param request: Request instance for DeleteContainerGroup.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteContainerGroupRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DeleteContainerGroupResponse`
+        :param request: Request instance for DeleteNonlocalLoginPlaces.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteNonlocalLoginPlacesRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DeleteNonlocalLoginPlacesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteContainerGroup", params)
+            body = self.call("DeleteNonlocalLoginPlaces", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteContainerGroupResponse()
+                model = models.DeleteNonlocalLoginPlacesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -501,20 +501,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteGroup(self, request):
-        """删除容器部署组
+    def DeletePrivilegeEvents(self, request):
+        """根据Ids删除本地提权
 
-        :param request: Request instance for DeleteGroup.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteGroupRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DeleteGroupResponse`
+        :param request: Request instance for DeletePrivilegeEvents.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DeletePrivilegeEventsRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DeletePrivilegeEventsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteGroup", params)
+            body = self.call("DeletePrivilegeEvents", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteGroupResponse()
+                model = models.DeletePrivilegeEventsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -529,20 +529,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteImageTags(self, request):
-        """批量删除镜像版本
+    def DeletePrivilegeRules(self, request):
+        """删除本地提权规则
 
-        :param request: Request instance for DeleteImageTags.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteImageTagsRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DeleteImageTagsResponse`
+        :param request: Request instance for DeletePrivilegeRules.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DeletePrivilegeRulesRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DeletePrivilegeRulesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteImageTags", params)
+            body = self.call("DeletePrivilegeRules", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteImageTagsResponse()
+                model = models.DeletePrivilegeRulesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -557,20 +557,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteLane(self, request):
-        """删除泳道
+    def DeleteReverseShellEvents(self, request):
+        """根据Ids删除反弹Shell事件
 
-        :param request: Request instance for DeleteLane.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteLaneRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DeleteLaneResponse`
+        :param request: Request instance for DeleteReverseShellEvents.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteReverseShellEventsRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DeleteReverseShellEventsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteLane", params)
+            body = self.call("DeleteReverseShellEvents", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteLaneResponse()
+                model = models.DeleteReverseShellEventsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -585,20 +585,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteMicroservice(self, request):
-        """删除微服务
+    def DeleteReverseShellRules(self, request):
+        """删除反弹Shell规则
 
-        :param request: Request instance for DeleteMicroservice.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteMicroserviceRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DeleteMicroserviceResponse`
+        :param request: Request instance for DeleteReverseShellRules.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteReverseShellRulesRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DeleteReverseShellRulesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteMicroservice", params)
+            body = self.call("DeleteReverseShellRules", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteMicroserviceResponse()
+                model = models.DeleteReverseShellRulesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -613,20 +613,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteNamespace(self, request):
-        """删除命名空间
+    def DeleteTags(self, request):
+        """删除标签
 
-        :param request: Request instance for DeleteNamespace.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteNamespaceRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DeleteNamespaceResponse`
+        :param request: Request instance for DeleteTags.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteTagsRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DeleteTagsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteNamespace", params)
+            body = self.call("DeleteTags", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteNamespaceResponse()
+                model = models.DeleteTagsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -641,21 +641,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeletePkgs(self, request):
-        """从软件仓库批量删除程序包。
-        一次最多支持删除1000个包，数量超过1000，返回UpperDeleteLimit错误。
+    def DeleteUsualLoginPlaces(self, request):
+        """本接口（DeleteUsualLoginPlaces）用于删除常用登录地。
 
-        :param request: Request instance for DeletePkgs.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DeletePkgsRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DeletePkgsResponse`
+        :param request: Request instance for DeleteUsualLoginPlaces.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteUsualLoginPlacesRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DeleteUsualLoginPlacesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeletePkgs", params)
+            body = self.call("DeleteUsualLoginPlaces", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeletePkgsResponse()
+                model = models.DeleteUsualLoginPlacesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -670,20 +669,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeletePublicConfig(self, request):
-        """删除公共配置项
+    def DescribeAccountStatistics(self, request):
+        """本接口 (DescribeAccountStatistics) 用于获取帐号统计列表数据。
 
-        :param request: Request instance for DeletePublicConfig.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DeletePublicConfigRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DeletePublicConfigResponse`
+        :param request: Request instance for DescribeAccountStatistics.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAccountStatisticsRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAccountStatisticsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeletePublicConfig", params)
+            body = self.call("DescribeAccountStatistics", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeletePublicConfigResponse()
+                model = models.DescribeAccountStatisticsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -698,20 +697,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteRepository(self, request):
-        """删除仓库
+    def DescribeAccounts(self, request):
+        """本接口 (DescribeAccounts) 用于获取帐号列表数据。
 
-        :param request: Request instance for DeleteRepository.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteRepositoryRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DeleteRepositoryResponse`
+        :param request: Request instance for DescribeAccounts.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAccountsRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAccountsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteRepository", params)
+            body = self.call("DescribeAccounts", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteRepositoryResponse()
+                model = models.DescribeAccountsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -726,20 +725,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteServerlessGroup(self, request):
-        """删除Serverless部署组
+    def DescribeAgentVuls(self, request):
+        """本接口 (DescribeAgentVuls) 用于获取单台主机的漏洞列表。
 
-        :param request: Request instance for DeleteServerlessGroup.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteServerlessGroupRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DeleteServerlessGroupResponse`
+        :param request: Request instance for DescribeAgentVuls.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAgentVulsRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAgentVulsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteServerlessGroup", params)
+            body = self.call("DescribeAgentVuls", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteServerlessGroupResponse()
+                model = models.DescribeAgentVulsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -754,20 +753,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteTask(self, request):
-        """删除任务
+    def DescribeAlarmAttribute(self, request):
+        """本接口 (DescribeAlarmAttribute) 用于获取告警设置。
 
-        :param request: Request instance for DeleteTask.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteTaskRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DeleteTaskResponse`
+        :param request: Request instance for DescribeAlarmAttribute.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAlarmAttributeRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAlarmAttributeResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteTask", params)
+            body = self.call("DescribeAlarmAttribute", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteTaskResponse()
+                model = models.DescribeAlarmAttributeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -782,20 +781,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeployContainerGroup(self, request):
-        """部署容器应用
+    def DescribeAttackLogInfo(self, request):
+        """网络攻击日志详情
 
-        :param request: Request instance for DeployContainerGroup.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DeployContainerGroupRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DeployContainerGroupResponse`
+        :param request: Request instance for DescribeAttackLogInfo.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAttackLogInfoRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAttackLogInfoResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeployContainerGroup", params)
+            body = self.call("DescribeAttackLogInfo", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeployContainerGroupResponse()
+                model = models.DescribeAttackLogInfoResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -810,20 +809,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeployGroup(self, request):
-        """部署虚拟机部署组应用
+    def DescribeAttackLogs(self, request):
+        """按分页形式展示网络攻击日志列表
 
-        :param request: Request instance for DeployGroup.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DeployGroupRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DeployGroupResponse`
+        :param request: Request instance for DescribeAttackLogs.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAttackLogsRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAttackLogsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeployGroup", params)
+            body = self.call("DescribeAttackLogs", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeployGroupResponse()
+                model = models.DescribeAttackLogsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -838,20 +837,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeployServerlessGroup(self, request):
-        """部署Serverless应用
+    def DescribeBashEvents(self, request):
+        """获取高危命令列表
 
-        :param request: Request instance for DeployServerlessGroup.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DeployServerlessGroupRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DeployServerlessGroupResponse`
+        :param request: Request instance for DescribeBashEvents.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBashEventsRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeBashEventsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeployServerlessGroup", params)
+            body = self.call("DescribeBashEvents", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeployServerlessGroupResponse()
+                model = models.DescribeBashEventsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -866,20 +865,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeApiDetail(self, request):
-        """查询API详情
+    def DescribeBashRules(self, request):
+        """获取高危命令规则列表
 
-        :param request: Request instance for DescribeApiDetail.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeApiDetailRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeApiDetailResponse`
+        :param request: Request instance for DescribeBashRules.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBashRulesRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeBashRulesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeApiDetail", params)
+            body = self.call("DescribeBashRules", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeApiDetailResponse()
+                model = models.DescribeBashRulesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -894,20 +893,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeApiVersions(self, request):
-        """查询API 版本
+    def DescribeBruteAttacks(self, request):
+        """本接口{DescribeBruteAttacks}用于获取暴力破解事件列表。
 
-        :param request: Request instance for DescribeApiVersions.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeApiVersionsRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeApiVersionsResponse`
+        :param request: Request instance for DescribeBruteAttacks.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBruteAttacksRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeBruteAttacksResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeApiVersions", params)
+            body = self.call("DescribeBruteAttacks", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeApiVersionsResponse()
+                model = models.DescribeBruteAttacksResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -922,20 +921,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeApplication(self, request):
-        """获取应用详情
+    def DescribeComponentInfo(self, request):
+        """本接口 (DescribeComponentInfo) 用于获取组件信息数据。
 
-        :param request: Request instance for DescribeApplication.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeApplicationRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeApplicationResponse`
+        :param request: Request instance for DescribeComponentInfo.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeComponentInfoRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeComponentInfoResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeApplication", params)
+            body = self.call("DescribeComponentInfo", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeApplicationResponse()
+                model = models.DescribeComponentInfoResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -950,20 +949,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeApplicationAttribute(self, request):
-        """获取应用列表其它字段，如实例数量信息等
+    def DescribeComponentStatistics(self, request):
+        """本接口 (DescribeComponentStatistics) 用于获取组件统计列表数据。
 
-        :param request: Request instance for DescribeApplicationAttribute.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeApplicationAttributeRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeApplicationAttributeResponse`
+        :param request: Request instance for DescribeComponentStatistics.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeComponentStatisticsRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeComponentStatisticsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeApplicationAttribute", params)
+            body = self.call("DescribeComponentStatistics", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeApplicationAttributeResponse()
+                model = models.DescribeComponentStatisticsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -978,20 +977,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeApplications(self, request):
-        """获取应用列表
+    def DescribeComponents(self, request):
+        """本接口 (DescribeComponents) 用于获取组件列表数据。
 
-        :param request: Request instance for DescribeApplications.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeApplicationsRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeApplicationsResponse`
+        :param request: Request instance for DescribeComponents.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeComponentsRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeComponentsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeApplications", params)
+            body = self.call("DescribeComponents", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeApplicationsResponse()
+                model = models.DescribeComponentsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1006,20 +1005,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeClusterInstances(self, request):
-        """查询集群实例
+    def DescribeHistoryAccounts(self, request):
+        """本接口 (DescribeHistoryAccounts) 用于获取帐号变更历史列表数据。
 
-        :param request: Request instance for DescribeClusterInstances.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeClusterInstancesRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeClusterInstancesResponse`
+        :param request: Request instance for DescribeHistoryAccounts.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeHistoryAccountsRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeHistoryAccountsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClusterInstances", params)
+            body = self.call("DescribeHistoryAccounts", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeClusterInstancesResponse()
+                model = models.DescribeHistoryAccountsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1034,20 +1033,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeConfig(self, request):
-        """查询配置
+    def DescribeImpactedHosts(self, request):
+        """本接口 (DescribeImpactedHosts) 用于获取漏洞受影响机器列表。
 
-        :param request: Request instance for DescribeConfig.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeConfigRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeConfigResponse`
+        :param request: Request instance for DescribeImpactedHosts.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeImpactedHostsRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeImpactedHostsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeConfig", params)
+            body = self.call("DescribeImpactedHosts", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeConfigResponse()
+                model = models.DescribeImpactedHostsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1062,20 +1061,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeConfigReleaseLogs(self, request):
-        """查询配置发布历史
+    def DescribeLoginWhiteList(self, request):
+        """获取异地登录白名单列表
 
-        :param request: Request instance for DescribeConfigReleaseLogs.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeConfigReleaseLogsRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeConfigReleaseLogsResponse`
+        :param request: Request instance for DescribeLoginWhiteList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeLoginWhiteListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeLoginWhiteListResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeConfigReleaseLogs", params)
+            body = self.call("DescribeLoginWhiteList", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeConfigReleaseLogsResponse()
+                model = models.DescribeLoginWhiteListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1090,20 +1089,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeConfigReleases(self, request):
-        """查询配置发布信息
+    def DescribeMachineInfo(self, request):
+        """本接口（DescribeMachineInfo）用于获取机器详细信息。
 
-        :param request: Request instance for DescribeConfigReleases.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeConfigReleasesRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeConfigReleasesResponse`
+        :param request: Request instance for DescribeMachineInfo.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMachineInfoRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeMachineInfoResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeConfigReleases", params)
+            body = self.call("DescribeMachineInfo", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeConfigReleasesResponse()
+                model = models.DescribeMachineInfoResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1118,20 +1117,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeConfigSummary(self, request):
-        """查询配置汇总列表
+    def DescribeMachines(self, request):
+        """本接口 (DescribeMachines) 用于获取区域主机列表。
 
-        :param request: Request instance for DescribeConfigSummary.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeConfigSummaryRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeConfigSummaryResponse`
+        :param request: Request instance for DescribeMachines.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMachinesRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeMachinesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeConfigSummary", params)
+            body = self.call("DescribeMachines", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeConfigSummaryResponse()
+                model = models.DescribeMachinesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1146,20 +1145,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeConfigs(self, request):
-        """查询配置项列表
+    def DescribeMaliciousRequests(self, request):
+        """本接口 (DescribeMaliciousRequests) 用于获取恶意请求数据。
 
-        :param request: Request instance for DescribeConfigs.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeConfigsRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeConfigsResponse`
+        :param request: Request instance for DescribeMaliciousRequests.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMaliciousRequestsRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeMaliciousRequestsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeConfigs", params)
+            body = self.call("DescribeMaliciousRequests", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeConfigsResponse()
+                model = models.DescribeMaliciousRequestsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1174,20 +1173,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeContainerGroupDetail(self, request):
-        """容器部署组详情
+    def DescribeMalwares(self, request):
+        """本接口（DescribeMalwares）用于获取木马事件列表。
 
-        :param request: Request instance for DescribeContainerGroupDetail.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeContainerGroupDetailRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeContainerGroupDetailResponse`
+        :param request: Request instance for DescribeMalwares.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMalwaresRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeMalwaresResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeContainerGroupDetail", params)
+            body = self.call("DescribeMalwares", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeContainerGroupDetailResponse()
+                model = models.DescribeMalwaresResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1202,20 +1201,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeContainerGroups(self, request):
-        """容器部署组列表
+    def DescribeNonlocalLoginPlaces(self, request):
+        """本接口(DescribeNonlocalLoginPlaces)用于获取异地登录事件。
 
-        :param request: Request instance for DescribeContainerGroups.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeContainerGroupsRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeContainerGroupsResponse`
+        :param request: Request instance for DescribeNonlocalLoginPlaces.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeNonlocalLoginPlacesRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeNonlocalLoginPlacesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeContainerGroups", params)
+            body = self.call("DescribeNonlocalLoginPlaces", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeContainerGroupsResponse()
+                model = models.DescribeNonlocalLoginPlacesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1230,21 +1229,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeDownloadInfo(self, request):
-        """TSF上传的程序包存放在腾讯云对象存储（COS）中，通过该API可以获取从COS下载程序包需要的信息，包括包所在的桶、存储路径、鉴权信息等，之后使用COS API（或SDK）进行下载。
-        COS相关文档请查阅：https://cloud.tencent.com/document/product/436
+    def DescribeOpenPortStatistics(self, request):
+        """本接口 (DescribeOpenPortStatistics) 用于获取端口统计列表。
 
-        :param request: Request instance for DescribeDownloadInfo.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeDownloadInfoRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeDownloadInfoResponse`
+        :param request: Request instance for DescribeOpenPortStatistics.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeOpenPortStatisticsRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeOpenPortStatisticsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDownloadInfo", params)
+            body = self.call("DescribeOpenPortStatistics", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeDownloadInfoResponse()
+                model = models.DescribeOpenPortStatisticsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1259,20 +1257,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeGroup(self, request):
-        """查询虚拟机部署组详情
+    def DescribeOpenPortTaskStatus(self, request):
+        """本接口 (DescribeOpenPortTaskStatus) 用于获取实时拉取端口任务状态。
 
-        :param request: Request instance for DescribeGroup.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeGroupRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeGroupResponse`
+        :param request: Request instance for DescribeOpenPortTaskStatus.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeOpenPortTaskStatusRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeOpenPortTaskStatusResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeGroup", params)
+            body = self.call("DescribeOpenPortTaskStatus", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeGroupResponse()
+                model = models.DescribeOpenPortTaskStatusResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1287,20 +1285,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeGroupInstances(self, request):
-        """查询虚拟机部署组云主机列表
+    def DescribeOpenPorts(self, request):
+        """本接口 (DescribeOpenPorts) 用于获取端口列表数据。
 
-        :param request: Request instance for DescribeGroupInstances.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeGroupInstancesRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeGroupInstancesResponse`
+        :param request: Request instance for DescribeOpenPorts.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeOpenPortsRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeOpenPortsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeGroupInstances", params)
+            body = self.call("DescribeOpenPorts", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeGroupInstancesResponse()
+                model = models.DescribeOpenPortsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1315,20 +1313,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeGroups(self, request):
-        """获取虚拟机部署组列表
+    def DescribeOverviewStatistics(self, request):
+        """本接口用于（DescribeOverviewStatistics）获取概览统计数据。
 
-        :param request: Request instance for DescribeGroups.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeGroupsRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeGroupsResponse`
+        :param request: Request instance for DescribeOverviewStatistics.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeOverviewStatisticsRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeOverviewStatisticsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeGroups", params)
+            body = self.call("DescribeOverviewStatistics", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeGroupsResponse()
+                model = models.DescribeOverviewStatisticsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1343,20 +1341,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeImageTags(self, request):
-        """镜像版本列表
+    def DescribePrivilegeEvents(self, request):
+        """获取本地提权事件列表
 
-        :param request: Request instance for DescribeImageTags.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeImageTagsRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeImageTagsResponse`
+        :param request: Request instance for DescribePrivilegeEvents.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribePrivilegeEventsRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribePrivilegeEventsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeImageTags", params)
+            body = self.call("DescribePrivilegeEvents", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeImageTagsResponse()
+                model = models.DescribePrivilegeEventsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1371,20 +1369,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeLaneRules(self, request):
-        """查询泳道规则列表
+    def DescribePrivilegeRules(self, request):
+        """获取本地提权规则列表
 
-        :param request: Request instance for DescribeLaneRules.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeLaneRulesRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeLaneRulesResponse`
+        :param request: Request instance for DescribePrivilegeRules.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribePrivilegeRulesRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribePrivilegeRulesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLaneRules", params)
+            body = self.call("DescribePrivilegeRules", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeLaneRulesResponse()
+                model = models.DescribePrivilegeRulesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1399,20 +1397,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeLanes(self, request):
-        """查询泳道列表
+    def DescribeProVersionInfo(self, request):
+        """本接口 (DescribeProVersionInfo) 用于获取专业版信息。
 
-        :param request: Request instance for DescribeLanes.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeLanesRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeLanesResponse`
+        :param request: Request instance for DescribeProVersionInfo.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeProVersionInfoRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeProVersionInfoResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLanes", params)
+            body = self.call("DescribeProVersionInfo", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeLanesResponse()
+                model = models.DescribeProVersionInfoResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1427,20 +1425,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeMicroservice(self, request):
-        """查询微服务详情
+    def DescribeProcessStatistics(self, request):
+        """本接口 (DescribeProcessStatistics) 用于获取进程统计列表数据。
 
-        :param request: Request instance for DescribeMicroservice.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeMicroserviceRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeMicroserviceResponse`
+        :param request: Request instance for DescribeProcessStatistics.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeProcessStatisticsRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeProcessStatisticsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMicroservice", params)
+            body = self.call("DescribeProcessStatistics", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeMicroserviceResponse()
+                model = models.DescribeProcessStatisticsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1455,20 +1453,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeMicroservices(self, request):
-        """获取微服务列表
+    def DescribeProcessTaskStatus(self, request):
+        """本接口 (DescribeProcessTaskStatus) 用于获取实时拉取进程任务状态。
 
-        :param request: Request instance for DescribeMicroservices.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeMicroservicesRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeMicroservicesResponse`
+        :param request: Request instance for DescribeProcessTaskStatus.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeProcessTaskStatusRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeProcessTaskStatusResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMicroservices", params)
+            body = self.call("DescribeProcessTaskStatus", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeMicroservicesResponse()
+                model = models.DescribeProcessTaskStatusResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1483,20 +1481,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeMsApiList(self, request):
-        """查询服务API列表
+    def DescribeProcesses(self, request):
+        """本接口 (DescribeProcesses) 用于获取进程列表数据。
 
-        :param request: Request instance for DescribeMsApiList.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeMsApiListRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeMsApiListResponse`
+        :param request: Request instance for DescribeProcesses.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeProcessesRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeProcessesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMsApiList", params)
+            body = self.call("DescribeProcesses", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeMsApiListResponse()
+                model = models.DescribeProcessesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1511,20 +1509,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribePkgs(self, request):
-        """无
+    def DescribeReverseShellEvents(self, request):
+        """获取反弹Shell列表
 
-        :param request: Request instance for DescribePkgs.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribePkgsRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribePkgsResponse`
+        :param request: Request instance for DescribeReverseShellEvents.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeReverseShellEventsRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeReverseShellEventsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePkgs", params)
+            body = self.call("DescribeReverseShellEvents", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribePkgsResponse()
+                model = models.DescribeReverseShellEventsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1539,20 +1537,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribePodInstances(self, request):
-        """获取部署组实例列表
+    def DescribeReverseShellRules(self, request):
+        """获取反弹Shell规则列表
 
-        :param request: Request instance for DescribePodInstances.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribePodInstancesRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribePodInstancesResponse`
+        :param request: Request instance for DescribeReverseShellRules.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeReverseShellRulesRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeReverseShellRulesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePodInstances", params)
+            body = self.call("DescribeReverseShellRules", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribePodInstancesResponse()
+                model = models.DescribeReverseShellRulesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1567,20 +1565,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribePublicConfig(self, request):
-        """查询公共配置（单条）
+    def DescribeSecurityDynamics(self, request):
+        """本接口 (DescribeSecurityDynamics) 用于获取安全事件消息数据。
 
-        :param request: Request instance for DescribePublicConfig.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribePublicConfigRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribePublicConfigResponse`
+        :param request: Request instance for DescribeSecurityDynamics.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeSecurityDynamicsRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeSecurityDynamicsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePublicConfig", params)
+            body = self.call("DescribeSecurityDynamics", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribePublicConfigResponse()
+                model = models.DescribeSecurityDynamicsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1595,20 +1593,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribePublicConfigReleaseLogs(self, request):
-        """查询公共配置发布历史
+    def DescribeSecurityTrends(self, request):
+        """本接口 (DescribeSecurityTrends) 用于获取安全事件统计数据。
 
-        :param request: Request instance for DescribePublicConfigReleaseLogs.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribePublicConfigReleaseLogsRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribePublicConfigReleaseLogsResponse`
+        :param request: Request instance for DescribeSecurityTrends.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeSecurityTrendsRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeSecurityTrendsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePublicConfigReleaseLogs", params)
+            body = self.call("DescribeSecurityTrends", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribePublicConfigReleaseLogsResponse()
+                model = models.DescribeSecurityTrendsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1623,20 +1621,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribePublicConfigReleases(self, request):
-        """查询公共配置发布信息
+    def DescribeTagMachines(self, request):
+        """获取指定标签关联的服务器信息
 
-        :param request: Request instance for DescribePublicConfigReleases.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribePublicConfigReleasesRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribePublicConfigReleasesResponse`
+        :param request: Request instance for DescribeTagMachines.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeTagMachinesRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeTagMachinesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePublicConfigReleases", params)
+            body = self.call("DescribeTagMachines", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribePublicConfigReleasesResponse()
+                model = models.DescribeTagMachinesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1651,20 +1649,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribePublicConfigSummary(self, request):
-        """查询公共配置汇总列表
+    def DescribeTags(self, request):
+        """获取所有主机标签
 
-        :param request: Request instance for DescribePublicConfigSummary.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribePublicConfigSummaryRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribePublicConfigSummaryResponse`
+        :param request: Request instance for DescribeTags.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeTagsRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeTagsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePublicConfigSummary", params)
+            body = self.call("DescribeTags", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribePublicConfigSummaryResponse()
+                model = models.DescribeTagsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1679,20 +1677,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribePublicConfigs(self, request):
-        """查询公共配置项列表
+    def DescribeUsualLoginPlaces(self, request):
+        """此接口（DescribeUsualLoginPlaces）用于查询常用登录地。
 
-        :param request: Request instance for DescribePublicConfigs.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribePublicConfigsRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribePublicConfigsResponse`
+        :param request: Request instance for DescribeUsualLoginPlaces.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeUsualLoginPlacesRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeUsualLoginPlacesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePublicConfigs", params)
+            body = self.call("DescribeUsualLoginPlaces", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribePublicConfigsResponse()
+                model = models.DescribeUsualLoginPlacesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1707,20 +1705,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeReleasedConfig(self, request):
-        """查询group发布的配置
+    def DescribeVulInfo(self, request):
+        """本接口 (DescribeVulInfo) 用于获取漏洞详情。
 
-        :param request: Request instance for DescribeReleasedConfig.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeReleasedConfigRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeReleasedConfigResponse`
+        :param request: Request instance for DescribeVulInfo.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulInfoRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeVulInfoResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeReleasedConfig", params)
+            body = self.call("DescribeVulInfo", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeReleasedConfigResponse()
+                model = models.DescribeVulInfoResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1735,20 +1733,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeRepositories(self, request):
-        """查询仓库列表
+    def DescribeVulScanResult(self, request):
+        """本接口 (DescribeVulScanResult) 用于获取漏洞检测结果。
 
-        :param request: Request instance for DescribeRepositories.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeRepositoriesRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeRepositoriesResponse`
+        :param request: Request instance for DescribeVulScanResult.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulScanResultRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeVulScanResultResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRepositories", params)
+            body = self.call("DescribeVulScanResult", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeRepositoriesResponse()
+                model = models.DescribeVulScanResultResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1763,20 +1761,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeRepository(self, request):
-        """查询仓库信息
+    def DescribeVuls(self, request):
+        """本接口 (DescribeVuls) 用于获取漏洞列表数据。
 
-        :param request: Request instance for DescribeRepository.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeRepositoryRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeRepositoryResponse`
+        :param request: Request instance for DescribeVuls.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulsRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeVulsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRepository", params)
+            body = self.call("DescribeVuls", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeRepositoryResponse()
+                model = models.DescribeVulsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1791,20 +1789,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeServerlessGroup(self, request):
-        """查询Serverless部署组明细
+    def DescribeWeeklyReportBruteAttacks(self, request):
+        """本接口 (DescribeWeeklyReportBruteAttacks) 用于获取专业周报密码破解数据。
 
-        :param request: Request instance for DescribeServerlessGroup.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeServerlessGroupRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeServerlessGroupResponse`
+        :param request: Request instance for DescribeWeeklyReportBruteAttacks.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeWeeklyReportBruteAttacksRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeWeeklyReportBruteAttacksResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeServerlessGroup", params)
+            body = self.call("DescribeWeeklyReportBruteAttacks", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeServerlessGroupResponse()
+                model = models.DescribeWeeklyReportBruteAttacksResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1819,20 +1817,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeServerlessGroups(self, request):
-        """查询Serverless部署组列表
+    def DescribeWeeklyReportInfo(self, request):
+        """本接口 (DescribeWeeklyReportInfo) 用于获取专业周报详情数据。
 
-        :param request: Request instance for DescribeServerlessGroups.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeServerlessGroupsRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeServerlessGroupsResponse`
+        :param request: Request instance for DescribeWeeklyReportInfo.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeWeeklyReportInfoRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeWeeklyReportInfoResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeServerlessGroups", params)
+            body = self.call("DescribeWeeklyReportInfo", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeServerlessGroupsResponse()
+                model = models.DescribeWeeklyReportInfoResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1847,20 +1845,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeSimpleApplications(self, request):
-        """查询简单应用列表
+    def DescribeWeeklyReportMalwares(self, request):
+        """本接口 (DescribeWeeklyReportMalwares) 用于获取专业周报木马数据。
 
-        :param request: Request instance for DescribeSimpleApplications.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeSimpleApplicationsRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeSimpleApplicationsResponse`
+        :param request: Request instance for DescribeWeeklyReportMalwares.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeWeeklyReportMalwaresRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeWeeklyReportMalwaresResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSimpleApplications", params)
+            body = self.call("DescribeWeeklyReportMalwares", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeSimpleApplicationsResponse()
+                model = models.DescribeWeeklyReportMalwaresResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1875,20 +1873,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeSimpleClusters(self, request):
-        """查询简单集群列表
+    def DescribeWeeklyReportNonlocalLoginPlaces(self, request):
+        """本接口 (DescribeWeeklyReportNonlocalLoginPlaces) 用于获取专业周报异地登录数据。
 
-        :param request: Request instance for DescribeSimpleClusters.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeSimpleClustersRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeSimpleClustersResponse`
+        :param request: Request instance for DescribeWeeklyReportNonlocalLoginPlaces.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeWeeklyReportNonlocalLoginPlacesRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeWeeklyReportNonlocalLoginPlacesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSimpleClusters", params)
+            body = self.call("DescribeWeeklyReportNonlocalLoginPlaces", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeSimpleClustersResponse()
+                model = models.DescribeWeeklyReportNonlocalLoginPlacesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1903,20 +1901,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeSimpleGroups(self, request):
-        """查询简单部署组列表
+    def DescribeWeeklyReportVuls(self, request):
+        """本接口 (DescribeWeeklyReportVuls) 用于专业版周报漏洞数据。
 
-        :param request: Request instance for DescribeSimpleGroups.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeSimpleGroupsRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeSimpleGroupsResponse`
+        :param request: Request instance for DescribeWeeklyReportVuls.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeWeeklyReportVulsRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeWeeklyReportVulsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSimpleGroups", params)
+            body = self.call("DescribeWeeklyReportVuls", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeSimpleGroupsResponse()
+                model = models.DescribeWeeklyReportVulsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1931,20 +1929,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeSimpleNamespaces(self, request):
-        """查询简单命名空间列表
+    def DescribeWeeklyReports(self, request):
+        """本接口 (DescribeWeeklyReports) 用于获取周报列表数据。
 
-        :param request: Request instance for DescribeSimpleNamespaces.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeSimpleNamespacesRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeSimpleNamespacesResponse`
+        :param request: Request instance for DescribeWeeklyReports.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeWeeklyReportsRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeWeeklyReportsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSimpleNamespaces", params)
+            body = self.call("DescribeWeeklyReports", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeSimpleNamespacesResponse()
+                model = models.DescribeWeeklyReportsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1959,21 +1957,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeUploadInfo(self, request):
-        """TSF会将软件包上传到腾讯云对象存储（COS）。调用此接口获取上传信息，如目标地域，桶，包Id，存储路径，鉴权信息等，之后请使用COS API（或SDK）进行上传。
-        COS相关文档请查阅：https://cloud.tencent.com/document/product/436
+    def EditBashRule(self, request):
+        """新增或修改高危命令规则
 
-        :param request: Request instance for DescribeUploadInfo.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeUploadInfoRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeUploadInfoResponse`
+        :param request: Request instance for EditBashRule.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.EditBashRuleRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.EditBashRuleResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUploadInfo", params)
+            body = self.call("EditBashRule", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeUploadInfoResponse()
+                model = models.EditBashRuleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1988,20 +1985,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ExpandGroup(self, request):
-        """虚拟机部署组添加实例
+    def EditPrivilegeRule(self, request):
+        """新增或修改本地提权规则
 
-        :param request: Request instance for ExpandGroup.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.ExpandGroupRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.ExpandGroupResponse`
+        :param request: Request instance for EditPrivilegeRule.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.EditPrivilegeRuleRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.EditPrivilegeRuleResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ExpandGroup", params)
+            body = self.call("EditPrivilegeRule", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ExpandGroupResponse()
+                model = models.EditPrivilegeRuleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2016,20 +2013,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyContainerGroup(self, request):
-        """修改容器部署组
+    def EditReverseShellRule(self, request):
+        """编辑反弹Shell规则
 
-        :param request: Request instance for ModifyContainerGroup.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.ModifyContainerGroupRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.ModifyContainerGroupResponse`
+        :param request: Request instance for EditReverseShellRule.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.EditReverseShellRuleRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.EditReverseShellRuleResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyContainerGroup", params)
+            body = self.call("EditReverseShellRule", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyContainerGroupResponse()
+                model = models.EditReverseShellRuleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2044,20 +2041,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyContainerReplicas(self, request):
-        """修改容器部署组实例数
+    def EditTags(self, request):
+        """新增或编辑标签
 
-        :param request: Request instance for ModifyContainerReplicas.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.ModifyContainerReplicasRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.ModifyContainerReplicasResponse`
+        :param request: Request instance for EditTags.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.EditTagsRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.EditTagsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyContainerReplicas", params)
+            body = self.call("EditTags", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyContainerReplicasResponse()
+                model = models.EditTagsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2072,20 +2069,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyLane(self, request):
-        """更新泳道信息
+    def ExportAttackLogs(self, request):
+        """导出网络攻击日志
 
-        :param request: Request instance for ModifyLane.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.ModifyLaneRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.ModifyLaneResponse`
+        :param request: Request instance for ExportAttackLogs.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.ExportAttackLogsRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.ExportAttackLogsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyLane", params)
+            body = self.call("ExportAttackLogs", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyLaneResponse()
+                model = models.ExportAttackLogsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2100,20 +2097,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyLaneRule(self, request):
-        """更新泳道规则
+    def ExportBashEvents(self, request):
+        """导出高危命令事件
 
-        :param request: Request instance for ModifyLaneRule.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.ModifyLaneRuleRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.ModifyLaneRuleResponse`
+        :param request: Request instance for ExportBashEvents.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.ExportBashEventsRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.ExportBashEventsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyLaneRule", params)
+            body = self.call("ExportBashEvents", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyLaneRuleResponse()
+                model = models.ExportBashEventsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2128,20 +2125,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyMicroservice(self, request):
-        """修改微服务详情
+    def ExportBruteAttacks(self, request):
+        """本接口 (ExportBruteAttacks) 用于导出密码破解记录成CSV文件。
 
-        :param request: Request instance for ModifyMicroservice.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.ModifyMicroserviceRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.ModifyMicroserviceResponse`
+        :param request: Request instance for ExportBruteAttacks.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.ExportBruteAttacksRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.ExportBruteAttacksResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyMicroservice", params)
+            body = self.call("ExportBruteAttacks", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyMicroserviceResponse()
+                model = models.ExportBruteAttacksResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2156,21 +2153,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyUploadInfo(self, request):
-        """调用该接口和COS的上传接口后，需要调用此接口更新TSF中保存的程序包状态。
-        调用此接口完成后，才标志上传包流程结束。
+    def ExportMaliciousRequests(self, request):
+        """本接口 (ExportMaliciousRequests) 用于导出下载恶意请求文件。
 
-        :param request: Request instance for ModifyUploadInfo.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.ModifyUploadInfoRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.ModifyUploadInfoResponse`
+        :param request: Request instance for ExportMaliciousRequests.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.ExportMaliciousRequestsRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.ExportMaliciousRequestsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyUploadInfo", params)
+            body = self.call("ExportMaliciousRequests", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyUploadInfoResponse()
+                model = models.ExportMaliciousRequestsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2185,20 +2181,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ReleaseConfig(self, request):
-        """发布配置
+    def ExportMalwares(self, request):
+        """本接口 (ExportMalwares) 用于导出木马记录CSV文件。
 
-        :param request: Request instance for ReleaseConfig.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.ReleaseConfigRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.ReleaseConfigResponse`
+        :param request: Request instance for ExportMalwares.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.ExportMalwaresRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.ExportMalwaresResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ReleaseConfig", params)
+            body = self.call("ExportMalwares", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ReleaseConfigResponse()
+                model = models.ExportMalwaresResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2213,20 +2209,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ReleasePublicConfig(self, request):
-        """发布公共配置
+    def ExportNonlocalLoginPlaces(self, request):
+        """本接口 (ExportNonlocalLoginPlaces) 用于导出异地登录事件记录CSV文件。
 
-        :param request: Request instance for ReleasePublicConfig.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.ReleasePublicConfigRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.ReleasePublicConfigResponse`
+        :param request: Request instance for ExportNonlocalLoginPlaces.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.ExportNonlocalLoginPlacesRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.ExportNonlocalLoginPlacesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ReleasePublicConfig", params)
+            body = self.call("ExportNonlocalLoginPlaces", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ReleasePublicConfigResponse()
+                model = models.ExportNonlocalLoginPlacesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2241,20 +2237,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def RemoveInstances(self, request):
-        """从 TSF 集群中批量移除云主机节点
+    def ExportPrivilegeEvents(self, request):
+        """导出本地提权事件
 
-        :param request: Request instance for RemoveInstances.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.RemoveInstancesRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.RemoveInstancesResponse`
+        :param request: Request instance for ExportPrivilegeEvents.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.ExportPrivilegeEventsRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.ExportPrivilegeEventsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("RemoveInstances", params)
+            body = self.call("ExportPrivilegeEvents", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.RemoveInstancesResponse()
+                model = models.ExportPrivilegeEventsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2269,20 +2265,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def RevocationConfig(self, request):
-        """撤回已发布的配置
+    def ExportReverseShellEvents(self, request):
+        """导出反弹Shell事件
 
-        :param request: Request instance for RevocationConfig.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.RevocationConfigRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.RevocationConfigResponse`
+        :param request: Request instance for ExportReverseShellEvents.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.ExportReverseShellEventsRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.ExportReverseShellEventsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("RevocationConfig", params)
+            body = self.call("ExportReverseShellEvents", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.RevocationConfigResponse()
+                model = models.ExportReverseShellEventsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2297,20 +2293,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def RevocationPublicConfig(self, request):
-        """撤回已发布的公共配置
+    def IgnoreImpactedHosts(self, request):
+        """本接口 (IgnoreImpactedHosts) 用于忽略漏洞。
 
-        :param request: Request instance for RevocationPublicConfig.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.RevocationPublicConfigRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.RevocationPublicConfigResponse`
+        :param request: Request instance for IgnoreImpactedHosts.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.IgnoreImpactedHostsRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.IgnoreImpactedHostsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("RevocationPublicConfig", params)
+            body = self.call("IgnoreImpactedHosts", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.RevocationPublicConfigResponse()
+                model = models.IgnoreImpactedHostsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2325,20 +2321,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def RollbackConfig(self, request):
-        """回滚配置
+    def InquiryPriceOpenProVersionPrepaid(self, request):
+        """本接口 (InquiryPriceOpenProVersionPrepaid) 用于开通专业版询价(预付费)。
 
-        :param request: Request instance for RollbackConfig.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.RollbackConfigRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.RollbackConfigResponse`
+        :param request: Request instance for InquiryPriceOpenProVersionPrepaid.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.InquiryPriceOpenProVersionPrepaidRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.InquiryPriceOpenProVersionPrepaidResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("RollbackConfig", params)
+            body = self.call("InquiryPriceOpenProVersionPrepaid", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.RollbackConfigResponse()
+                model = models.InquiryPriceOpenProVersionPrepaidResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2353,20 +2349,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ShrinkGroup(self, request):
-        """下线部署组所有机器实例
+    def MisAlarmNonlocalLoginPlaces(self, request):
+        """本接口{MisAlarmNonlocalLoginPlaces}将设置当前地点为常用登录地。
 
-        :param request: Request instance for ShrinkGroup.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.ShrinkGroupRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.ShrinkGroupResponse`
+        :param request: Request instance for MisAlarmNonlocalLoginPlaces.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.MisAlarmNonlocalLoginPlacesRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.MisAlarmNonlocalLoginPlacesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ShrinkGroup", params)
+            body = self.call("MisAlarmNonlocalLoginPlaces", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ShrinkGroupResponse()
+                model = models.MisAlarmNonlocalLoginPlacesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2381,20 +2377,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ShrinkInstances(self, request):
-        """虚拟机部署组下线实例
+    def ModifyAlarmAttribute(self, request):
+        """本接口（ModifyAlarmAttribute）用于修改告警设置。
 
-        :param request: Request instance for ShrinkInstances.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.ShrinkInstancesRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.ShrinkInstancesResponse`
+        :param request: Request instance for ModifyAlarmAttribute.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyAlarmAttributeRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.ModifyAlarmAttributeResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ShrinkInstances", params)
+            body = self.call("ModifyAlarmAttribute", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ShrinkInstancesResponse()
+                model = models.ModifyAlarmAttributeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2409,20 +2405,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def StartContainerGroup(self, request):
-        """启动容器部署组
+    def ModifyAutoOpenProVersionConfig(self, request):
+        """本接口 (ModifyAutoOpenProVersionConfig) 用于设置新增主机自动开通专业版配置。
 
-        :param request: Request instance for StartContainerGroup.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.StartContainerGroupRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.StartContainerGroupResponse`
+        :param request: Request instance for ModifyAutoOpenProVersionConfig.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyAutoOpenProVersionConfigRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.ModifyAutoOpenProVersionConfigResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("StartContainerGroup", params)
+            body = self.call("ModifyAutoOpenProVersionConfig", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.StartContainerGroupResponse()
+                model = models.ModifyAutoOpenProVersionConfigResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2437,20 +2433,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def StartGroup(self, request):
-        """启动分组
+    def ModifyLoginWhiteList(self, request):
+        """编辑白名单规则
 
-        :param request: Request instance for StartGroup.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.StartGroupRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.StartGroupResponse`
+        :param request: Request instance for ModifyLoginWhiteList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyLoginWhiteListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.ModifyLoginWhiteListResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("StartGroup", params)
+            body = self.call("ModifyLoginWhiteList", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.StartGroupResponse()
+                model = models.ModifyLoginWhiteListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2465,20 +2461,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def StopContainerGroup(self, request):
-        """停止容器部署组
+    def ModifyProVersionRenewFlag(self, request):
+        """本接口 (ModifyProVersionRenewFlag) 用于修改专业版包年包月续费标识。
 
-        :param request: Request instance for StopContainerGroup.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.StopContainerGroupRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.StopContainerGroupResponse`
+        :param request: Request instance for ModifyProVersionRenewFlag.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyProVersionRenewFlagRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.ModifyProVersionRenewFlagResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("StopContainerGroup", params)
+            body = self.call("ModifyProVersionRenewFlag", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.StopContainerGroupResponse()
+                model = models.ModifyProVersionRenewFlagResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2493,20 +2489,20 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def StopGroup(self, request):
-        """停止虚拟机部署组
+    def OpenProVersion(self, request):
+        """本接口 (OpenProVersion) 用于开通专业版。
 
-        :param request: Request instance for StopGroup.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.StopGroupRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.StopGroupResponse`
+        :param request: Request instance for OpenProVersion.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.OpenProVersionRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.OpenProVersionResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("StopGroup", params)
+            body = self.call("OpenProVersion", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.StopGroupResponse()
+                model = models.OpenProVersionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2521,20 +2517,300 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def UpdateRepository(self, request):
-        """更新仓库信息
+    def OpenProVersionPrepaid(self, request):
+        """本接口 (OpenProVersionPrepaid) 用于开通专业版(包年包月)。
 
-        :param request: Request instance for UpdateRepository.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.UpdateRepositoryRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.UpdateRepositoryResponse`
+        :param request: Request instance for OpenProVersionPrepaid.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.OpenProVersionPrepaidRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.OpenProVersionPrepaidResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateRepository", params)
+            body = self.call("OpenProVersionPrepaid", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.UpdateRepositoryResponse()
+                model = models.OpenProVersionPrepaidResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RecoverMalwares(self, request):
+        """本接口（RecoverMalwares）用于批量恢复已经被隔离的木马文件。
+
+        :param request: Request instance for RecoverMalwares.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.RecoverMalwaresRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.RecoverMalwaresResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RecoverMalwares", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RecoverMalwaresResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RenewProVersion(self, request):
+        """本接口 (RenewProVersion) 用于续费专业版(包年包月)。
+
+        :param request: Request instance for RenewProVersion.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.RenewProVersionRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.RenewProVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RenewProVersion", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RenewProVersionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RescanImpactedHost(self, request):
+        """本接口 (RescanImpactedHost) 用于漏洞重新检测。
+
+        :param request: Request instance for RescanImpactedHost.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.RescanImpactedHostRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.RescanImpactedHostResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RescanImpactedHost", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RescanImpactedHostResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SeparateMalwares(self, request):
+        """本接口（SeparateMalwares）用于隔离木马。
+
+        :param request: Request instance for SeparateMalwares.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.SeparateMalwaresRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.SeparateMalwaresResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SeparateMalwares", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SeparateMalwaresResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SetBashEventsStatus(self, request):
+        """设置高危命令事件状态
+
+        :param request: Request instance for SetBashEventsStatus.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.SetBashEventsStatusRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.SetBashEventsStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SetBashEventsStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetBashEventsStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SwitchBashRules(self, request):
+        """切换高危命令规则状态
+
+        :param request: Request instance for SwitchBashRules.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.SwitchBashRulesRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.SwitchBashRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SwitchBashRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SwitchBashRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def TrustMaliciousRequest(self, request):
+        """本接口 (TrustMaliciousRequest) 用于恶意请求添加信任。
+
+        :param request: Request instance for TrustMaliciousRequest.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.TrustMaliciousRequestRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.TrustMaliciousRequestResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("TrustMaliciousRequest", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.TrustMaliciousRequestResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def TrustMalwares(self, request):
+        """本接口(TrustMalwares)将被识别木马文件设为信任。
+
+        :param request: Request instance for TrustMalwares.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.TrustMalwaresRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.TrustMalwaresResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("TrustMalwares", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.TrustMalwaresResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UntrustMaliciousRequest(self, request):
+        """本接口 (UntrustMaliciousRequest) 用于取消信任恶意请求。
+
+        :param request: Request instance for UntrustMaliciousRequest.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.UntrustMaliciousRequestRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.UntrustMaliciousRequestResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UntrustMaliciousRequest", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UntrustMaliciousRequestResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UntrustMalwares(self, request):
+        """本接口（UntrustMalwares）用于取消信任木马文件。
+
+        :param request: Request instance for UntrustMalwares.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.UntrustMalwaresRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.UntrustMalwaresResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UntrustMalwares", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UntrustMalwaresResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

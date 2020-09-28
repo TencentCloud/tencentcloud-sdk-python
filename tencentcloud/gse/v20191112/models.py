@@ -2280,13 +2280,13 @@ class InboundPermission(AbstractModel):
 
     def __init__(self):
         """
-        :param FromPort: 起始端口号
+        :param FromPort: 起始端口号，最小值1025
         :type FromPort: int
         :param IpRange: IP 段范围，CIDR 方式划分
         :type IpRange: str
         :param Protocol: 协议类型：TCP或者UDP
         :type Protocol: str
-        :param ToPort: 终止端口号
+        :param ToPort: 终止端口号，最大值60000
         :type ToPort: int
         """
         self.FromPort = None

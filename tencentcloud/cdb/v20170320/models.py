@@ -4852,11 +4852,14 @@ class DeviceDiskInfo(AbstractModel):
         :type Read: list of int
         :param Write: 磁盘平均每秒完成的写操作次数总和*100。例如：该值为30001，表示磁盘平均每秒完成写操作为：30001/100=300.01次
         :type Write: list of int
+        :param CapacityRatio: 磁盘空间容量，每两个一组，第一个为已使用容量，第二个为磁盘总容量
+        :type CapacityRatio: list of int
         """
         self.IoRatioPerSec = None
         self.IoWaitTime = None
         self.Read = None
         self.Write = None
+        self.CapacityRatio = None
 
 
     def _deserialize(self, params):
@@ -4864,6 +4867,7 @@ class DeviceDiskInfo(AbstractModel):
         self.IoWaitTime = params.get("IoWaitTime")
         self.Read = params.get("Read")
         self.Write = params.get("Write")
+        self.CapacityRatio = params.get("CapacityRatio")
 
 
 class DeviceMemInfo(AbstractModel):

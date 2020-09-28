@@ -603,6 +603,15 @@ class DBInstance(AbstractModel):
         :param DbVersion: 数据库版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type DbVersion: str
+        :param DcnFlag: DCN标志，0-无，1-主实例，2-灾备实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DcnFlag: int
+        :param DcnStatus: DCN状态，0-无，1-创建中，2-同步中，3-已断开
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DcnStatus: int
+        :param DcnDstNum: DCN灾备实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DcnDstNum: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -650,6 +659,9 @@ class DBInstance(AbstractModel):
         self.WanStatusIpv6 = None
         self.DbEngine = None
         self.DbVersion = None
+        self.DcnFlag = None
+        self.DcnStatus = None
+        self.DcnDstNum = None
 
 
     def _deserialize(self, params):
@@ -699,6 +711,9 @@ class DBInstance(AbstractModel):
         self.WanStatusIpv6 = params.get("WanStatusIpv6")
         self.DbEngine = params.get("DbEngine")
         self.DbVersion = params.get("DbVersion")
+        self.DcnFlag = params.get("DcnFlag")
+        self.DcnStatus = params.get("DcnStatus")
+        self.DcnDstNum = params.get("DcnDstNum")
 
 
 class DBParamValue(AbstractModel):
@@ -1059,6 +1074,8 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type ExclusterIds: list of str
         :param TagKeys: 按标签key查询
         :type TagKeys: list of str
+        :param FilterInstanceType: 实例类型过滤，1-独享实例，2-主实例，3-灾备实例，多个按逗号分隔
+        :type FilterInstanceType: str
         """
         self.InstanceIds = None
         self.SearchName = None
@@ -1076,6 +1093,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.ExclusterType = None
         self.ExclusterIds = None
         self.TagKeys = None
+        self.FilterInstanceType = None
 
 
     def _deserialize(self, params):
@@ -1095,6 +1113,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.ExclusterType = params.get("ExclusterType")
         self.ExclusterIds = params.get("ExclusterIds")
         self.TagKeys = params.get("TagKeys")
+        self.FilterInstanceType = params.get("FilterInstanceType")
 
 
 class DescribeDBInstancesResponse(AbstractModel):

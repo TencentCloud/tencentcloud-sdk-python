@@ -580,6 +580,15 @@ class DCDBInstanceInfo(AbstractModel):
         :param WanStatusIpv6: 外网IPv6状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type WanStatusIpv6: int
+        :param DcnFlag: DCN标志，0-无，1-主实例，2-灾备实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DcnFlag: int
+        :param DcnStatus: DCN状态，0-无，1-创建中，2-同步中，3-已断开
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DcnStatus: int
+        :param DcnDstNum: DCN灾备实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DcnDstNum: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -625,6 +634,9 @@ class DCDBInstanceInfo(AbstractModel):
         self.WanVipv6 = None
         self.WanPortIpv6 = None
         self.WanStatusIpv6 = None
+        self.DcnFlag = None
+        self.DcnStatus = None
+        self.DcnDstNum = None
 
 
     def _deserialize(self, params):
@@ -677,6 +689,9 @@ class DCDBInstanceInfo(AbstractModel):
         self.WanVipv6 = params.get("WanVipv6")
         self.WanPortIpv6 = params.get("WanPortIpv6")
         self.WanStatusIpv6 = params.get("WanStatusIpv6")
+        self.DcnFlag = params.get("DcnFlag")
+        self.DcnStatus = params.get("DcnStatus")
+        self.DcnDstNum = params.get("DcnDstNum")
 
 
 class DCDBShardInfo(AbstractModel):
@@ -1279,6 +1294,8 @@ class DescribeDCDBInstancesRequest(AbstractModel):
         :type ExclusterIds: list of str
         :param TagKeys: 按标签key查询
         :type TagKeys: list of str
+        :param FilterInstanceType: 实例类型过滤，1-独享实例，2-主实例，3-灾备实例，多个按逗号分隔
+        :type FilterInstanceType: str
         """
         self.InstanceIds = None
         self.SearchName = None
@@ -1295,6 +1312,7 @@ class DescribeDCDBInstancesRequest(AbstractModel):
         self.IsFilterExcluster = None
         self.ExclusterIds = None
         self.TagKeys = None
+        self.FilterInstanceType = None
 
 
     def _deserialize(self, params):
@@ -1313,6 +1331,7 @@ class DescribeDCDBInstancesRequest(AbstractModel):
         self.IsFilterExcluster = params.get("IsFilterExcluster")
         self.ExclusterIds = params.get("ExclusterIds")
         self.TagKeys = params.get("TagKeys")
+        self.FilterInstanceType = params.get("FilterInstanceType")
 
 
 class DescribeDCDBInstancesResponse(AbstractModel):
@@ -1544,11 +1563,15 @@ class DescribeDCDBShardsResponse(AbstractModel):
         :type TotalCount: int
         :param Shards: 分片信息列表
         :type Shards: list of DCDBShardInfo
+        :param DcnFlag: 灾备标志，0-无，1-主实例，2-灾备实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DcnFlag: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
         self.Shards = None
+        self.DcnFlag = None
         self.RequestId = None
 
 
@@ -1560,6 +1583,7 @@ class DescribeDCDBShardsResponse(AbstractModel):
                 obj = DCDBShardInfo()
                 obj._deserialize(item)
                 self.Shards.append(obj)
+        self.DcnFlag = params.get("DcnFlag")
         self.RequestId = params.get("RequestId")
 
 

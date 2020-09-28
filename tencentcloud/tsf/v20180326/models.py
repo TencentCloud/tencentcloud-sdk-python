@@ -2565,6 +2565,44 @@ class DeleteServerlessGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteTaskRequest(AbstractModel):
+    """DeleteTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务ID
+        :type TaskId: str
+        """
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+
+
+class DeleteTaskResponse(AbstractModel):
+    """DeleteTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 删除成功or失败
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class DeployContainerGroupRequest(AbstractModel):
     """DeployContainerGroup请求参数结构体
 

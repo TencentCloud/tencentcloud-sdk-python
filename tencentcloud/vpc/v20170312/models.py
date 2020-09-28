@@ -438,8 +438,8 @@ class AllocateAddressesRequest(AbstractModel):
         :param InternetChargeType: EIP计费方式。
 <ul style="margin:0"><li>已开通带宽上移白名单的用户，可选值：<ul><li>BANDWIDTH_PACKAGE：[共享带宽包](https://cloud.tencent.com/document/product/684/15255)付费（需额外开通共享带宽包白名单）</li>
 <li>BANDWIDTH_POSTPAID_BY_HOUR：带宽按小时后付费</li>
+<li>BANDWIDTH_PREPAID_BY_MONTH：包月按带宽预付费</li>
 <li>TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费</li></ul>默认值：TRAFFIC_POSTPAID_BY_HOUR。</li>
-<li>BANDWIDTH_PREPAID_BY_MONTH：包月按带宽预付费</li></ul>默认值：BANDWIDTH_PREPAID_BY_MONTH。</li>
 <li>未开通带宽上移白名单的用户，EIP计费方式与其绑定的实例的计费方式一致，无需传递此参数。</li></ul>
         :type InternetChargeType: str
         :param InternetMaxBandwidthOut: EIP出带宽上限，单位：Mbps。
@@ -10111,9 +10111,9 @@ class ModifyAddressesBandwidthRequest(AbstractModel):
         :type AddressIds: list of str
         :param InternetMaxBandwidthOut: 调整带宽目标值
         :type InternetMaxBandwidthOut: int
-        :param StartTime: 包月带宽起始时间
+        :param StartTime: 包月带宽起始时间(已废弃，输入无效)
         :type StartTime: str
-        :param EndTime: 包月带宽结束时间
+        :param EndTime: 包月带宽结束时间(已废弃，输入无效)
         :type EndTime: str
         """
         self.AddressIds = None

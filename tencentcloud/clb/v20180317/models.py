@@ -828,7 +828,7 @@ class CreateListenerRequest(AbstractModel):
         :type TargetType: str
         :param SessionType: 会话保持类型。不传或传NORMAL表示默认会话保持类型。QUIC_CID 表示根据Quic Connection ID做会话保持。QUIC_CID只支持UDP协议。
         :type SessionType: str
-        :param KeepaliveEnable: 是否开启长连接，此参数仅适用于HTTP/HTTPS监听器
+        :param KeepaliveEnable: 是否开启长连接，此参数仅适用于HTTP/HTTPS监听器，0:关闭；1:开启， 默认关闭
         :type KeepaliveEnable: int
         """
         self.LoadBalancerId = None

@@ -716,7 +716,7 @@ class EncodeParams(AbstractModel):
         :type VideoHeight: int
         :param VideoBitrate: 混流-输出流码率，音视频输出时必填。取值范围[1,10000]，单位为Kbps。
         :type VideoBitrate: int
-        :param VideoFramerate: 混流-输出流帧率，音视频输出时必填。取值为[6,12,15,24,30,48,60]，不在上述帧率值内系统会自动调整。
+        :param VideoFramerate: 混流-输出流帧率，音视频输出时必填。取值范围[1,60]。
         :type VideoFramerate: int
         :param VideoGop: 混流-输出流gop，音视频输出时必填。取值范围[1,5]，单位为秒。
         :type VideoGop: int
