@@ -81,6 +81,34 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ContinueRunFailedTaskBatch(self, request):
+        """对执行失败的任务批次执行续跑
+
+        :param request: Request instance for ContinueRunFailedTaskBatch.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.ContinueRunFailedTaskBatchRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.ContinueRunFailedTaskBatchResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ContinueRunFailedTaskBatch", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ContinueRunFailedTaskBatchResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateApplication(self, request):
         """创建应用
 
@@ -403,6 +431,34 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateServerlessGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateTask(self, request):
+        """创建任务
+
+        :param request: Request instance for CreateTask.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.CreateTaskRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.CreateTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateTaskResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1006,6 +1062,34 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBasicResourceUsage(self, request):
+        """TSF基本资源信息概览接口
+
+        :param request: Request instance for DescribeBasicResourceUsage.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeBasicResourceUsageRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeBasicResourceUsageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBasicResourceUsage", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBasicResourceUsageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeClusterInstances(self, request):
         """查询集群实例
 
@@ -1245,6 +1329,34 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDownloadInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeFlowLastBatchState(self, request):
+        """查询工作流最新一个批次的状态信息
+
+        :param request: Request instance for DescribeFlowLastBatchState.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeFlowLastBatchStateRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeFlowLastBatchStateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeFlowLastBatchState", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeFlowLastBatchStateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1959,6 +2071,34 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeTaskLastStatus(self, request):
+        """查询任务最近一次执行状态
+
+        :param request: Request instance for DescribeTaskLastStatus.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeTaskLastStatusRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeTaskLastStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTaskLastStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTaskLastStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeUploadInfo(self, request):
         """TSF会将软件包上传到腾讯云对象存储（COS）。调用此接口获取上传信息，如目标地域，桶，包Id，存储路径，鉴权信息等，之后请使用COS API（或SDK）进行上传。
         COS相关文档请查阅：https://cloud.tencent.com/document/product/436
@@ -1974,6 +2114,174 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUploadInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DisableTask(self, request):
+        """停用任务
+
+        :param request: Request instance for DisableTask.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DisableTaskRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DisableTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DisableTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DisableTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DisableTaskFlow(self, request):
+        """停用工作流
+
+        :param request: Request instance for DisableTaskFlow.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DisableTaskFlowRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DisableTaskFlowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DisableTaskFlow", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DisableTaskFlowResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def EnableTask(self, request):
+        """启用任务
+
+        :param request: Request instance for EnableTask.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.EnableTaskRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.EnableTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("EnableTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EnableTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def EnableTaskFlow(self, request):
+        """启用工作流
+
+        :param request: Request instance for EnableTaskFlow.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.EnableTaskFlowRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.EnableTaskFlowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("EnableTaskFlow", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EnableTaskFlowResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ExecuteTask(self, request):
+        """执行一次任务。
+
+        :param request: Request instance for ExecuteTask.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.ExecuteTaskRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.ExecuteTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ExecuteTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ExecuteTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ExecuteTaskFlow(self, request):
+        """执行一次工作流
+
+        :param request: Request instance for ExecuteTaskFlow.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.ExecuteTaskFlowRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.ExecuteTaskFlowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ExecuteTaskFlow", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ExecuteTaskFlowResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2171,6 +2479,90 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyUploadInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RedoTask(self, request):
+        """重新执行任务
+
+        :param request: Request instance for RedoTask.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.RedoTaskRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.RedoTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RedoTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RedoTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RedoTaskBatch(self, request):
+        """重新执行任务批次
+
+        :param request: Request instance for RedoTaskBatch.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.RedoTaskBatchRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.RedoTaskBatchResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RedoTaskBatch", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RedoTaskBatchResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RedoTaskFlowBatch(self, request):
+        """重新执行工作流批次
+
+        :param request: Request instance for RedoTaskFlowBatch.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.RedoTaskFlowBatchRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.RedoTaskFlowBatchResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RedoTaskFlowBatch", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RedoTaskFlowBatchResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2507,6 +2899,90 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StopTaskBatch(self, request):
+        """停止执行中的任务批次， 非运行中的任务不可调用。
+
+        :param request: Request instance for StopTaskBatch.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.StopTaskBatchRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.StopTaskBatchResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StopTaskBatch", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StopTaskBatchResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StopTaskExecute(self, request):
+        """停止正在某个节点上执行的任务
+
+        :param request: Request instance for StopTaskExecute.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.StopTaskExecuteRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.StopTaskExecuteResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StopTaskExecute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StopTaskExecuteResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def TerminateTaskFlowBatch(self, request):
+        """停止一个工作流批次
+
+        :param request: Request instance for TerminateTaskFlowBatch.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.TerminateTaskFlowBatchRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.TerminateTaskFlowBatchResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("TerminateTaskFlowBatch", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.TerminateTaskFlowBatchResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

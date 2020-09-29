@@ -318,6 +318,34 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateImageProcessingTemplate(self, request):
+        """创建一个用户自定义的图片处理模板，数量上限：16。最多支持三次操作，例如：裁剪-缩略-裁剪。
+
+        :param request: Request instance for CreateImageProcessingTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateImageProcessingTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateImageProcessingTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateImageProcessingTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateImageProcessingTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateImageSpriteTemplate(self, request):
         """创建用户自定义雪碧图模板，数量上限：16。
 
@@ -755,6 +783,34 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteContentReviewTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteImageProcessingTemplate(self, request):
+        """删除用户自定义图片处理模板。
+
+        :param request: Request instance for DeleteImageProcessingTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DeleteImageProcessingTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DeleteImageProcessingTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteImageProcessingTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteImageProcessingTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1296,6 +1352,34 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEventsStateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeImageProcessingTemplates(self, request):
+        """获取图片处理模板列表，支持根据条件，分页查询。
+
+        :param request: Request instance for DescribeImageProcessingTemplates.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeImageProcessingTemplatesRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeImageProcessingTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeImageProcessingTemplates", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeImageProcessingTemplatesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

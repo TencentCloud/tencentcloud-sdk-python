@@ -4830,6 +4830,62 @@ class CreateContentReviewTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateImageProcessingTemplateRequest(AbstractModel):
+    """CreateImageProcessingTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Operations: 图片处理操作数组，操作将以其在数组中的顺序执行。
+<li>长度限制：3。</li>
+        :type Operations: list of ImageOperation
+        :param Name: 图片处理模板名称，长度限制：64 个字符。
+        :type Name: str
+        :param Comment: 模板描述信息，长度限制：256 个字符。
+        :type Comment: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Operations = None
+        self.Name = None
+        self.Comment = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Operations") is not None:
+            self.Operations = []
+            for item in params.get("Operations"):
+                obj = ImageOperation()
+                obj._deserialize(item)
+                self.Operations.append(obj)
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        self.SubAppId = params.get("SubAppId")
+
+
+class CreateImageProcessingTemplateResponse(AbstractModel):
+    """CreateImageProcessingTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 图片处理模板唯一标识。
+        :type Definition: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Definition = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateImageSpriteTask2017(AbstractModel):
     """视频截取雪碧图任务，该结构仅用于对 2017 版[截取雪碧图](https://cloud.tencent.com/document/product/266/8101)接口发起的任务。
 
@@ -5890,6 +5946,44 @@ class DeleteContentReviewTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteImageProcessingTemplateRequest(AbstractModel):
+    """DeleteImageProcessingTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 图片处理模板唯一标识。
+        :type Definition: int
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Definition = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DeleteImageProcessingTemplateResponse(AbstractModel):
+    """DeleteImageProcessingTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteImageSpriteTemplateRequest(AbstractModel):
     """DeleteImageSpriteTemplate请求参数结构体
 
@@ -6806,6 +6900,71 @@ class DescribeEventsStateResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.CountOfEventsToPull = params.get("CountOfEventsToPull")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeImageProcessingTemplatesRequest(AbstractModel):
+    """DescribeImageProcessingTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definitions: 图片处理模板标识列表。长度限制：100。
+        :type Definitions: list of int non-negative
+        :param Type: 模板类型过滤条件，可选值：
+<li>Preset：系统预置模板；</li>
+<li>Custom：用户自定义模板。</li>
+        :type Type: str
+        :param Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param Limit: 返回记录条数，默认值：10，最大值：100。
+        :type Limit: int
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Definitions = None
+        self.Type = None
+        self.Offset = None
+        self.Limit = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definitions = params.get("Definitions")
+        self.Type = params.get("Type")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DescribeImageProcessingTemplatesResponse(AbstractModel):
+    """DescribeImageProcessingTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合过滤条件的记录总数。
+        :type TotalCount: int
+        :param ImageProcessingTemplateSet: 图片处理模板详情列表。
+        :type ImageProcessingTemplateSet: list of ImageProcessingTemplate
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ImageProcessingTemplateSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ImageProcessingTemplateSet") is not None:
+            self.ImageProcessingTemplateSet = []
+            for item in params.get("ImageProcessingTemplateSet"):
+                obj = ImageProcessingTemplate()
+                obj._deserialize(item)
+                self.ImageProcessingTemplateSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -8843,6 +9002,147 @@ class HighlightsConfigureInfoForUpdate(AbstractModel):
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
+
+
+class ImageCenterCut(AbstractModel):
+    """图片中心裁剪处理。
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 图片的裁剪模式，可选 Circle 和 Rectangle。
+<li>Circle ： 内切圆裁剪，输出图片半径为 Radius。</li>
+<li>Rectangle ： 矩形裁剪，输出图片宽为 Width ， 高为 Height。</li>
+        :type Type: str
+        :param Width: 输出图片的宽度，单位为像素，当 Type 取值为 Rectangle 时有效。
+        :type Width: int
+        :param Height: 输出图片的高度，单位为像素，当 Type 取值为 Rectangle 时有效。
+        :type Height: int
+        :param Radius: 输出图片的半径，单位为像素，当 Type 取值为 Circle 时有效。
+        :type Radius: int
+        """
+        self.Type = None
+        self.Width = None
+        self.Height = None
+        self.Radius = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.Radius = params.get("Radius")
+
+
+class ImageOperation(AbstractModel):
+    """单个图片处理操作。
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 图片处理类型。可选类型有：
+<li>Scale : 图片缩略处理。</li>
+<li>CenterCut : 图片裁剪处理。</li>
+        :type Type: str
+        :param Scale: 图片缩略处理，仅当 Type 为 Scale 时有效。
+        :type Scale: :class:`tencentcloud.vod.v20180717.models.ImageScale`
+        :param CenterCut: 图片裁剪处理，仅当 Type 为 CenterCut 时有效。
+        :type CenterCut: :class:`tencentcloud.vod.v20180717.models.ImageCenterCut`
+        """
+        self.Type = None
+        self.Scale = None
+        self.CenterCut = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        if params.get("Scale") is not None:
+            self.Scale = ImageScale()
+            self.Scale._deserialize(params.get("Scale"))
+        if params.get("CenterCut") is not None:
+            self.CenterCut = ImageCenterCut()
+            self.CenterCut._deserialize(params.get("CenterCut"))
+
+
+class ImageProcessingTemplate(AbstractModel):
+    """图片处理模板， 最多支持三次操作。例如：裁剪-缩略-裁剪。
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 图片处理模板唯一标识。
+        :type Definition: int
+        :param Type: 模板类型，取值范围：
+<li>Preset：系统预置模板；</li>
+<li>Custom：用户自定义模板。</li>
+        :type Type: str
+        :param Name: 图片处理模板名称。
+        :type Name: str
+        :param Comment: 模板描述信息。
+        :type Comment: str
+        :param Operations: 图片处理操作数组，操作将以数组顺序执行。
+<li>长度限制：3。</li>
+        :type Operations: list of ImageOperation
+        """
+        self.Definition = None
+        self.Type = None
+        self.Name = None
+        self.Comment = None
+        self.Operations = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Type = params.get("Type")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        if params.get("Operations") is not None:
+            self.Operations = []
+            for item in params.get("Operations"):
+                obj = ImageOperation()
+                obj._deserialize(item)
+                self.Operations.append(obj)
+
+
+class ImageScale(AbstractModel):
+    """图片缩放处理。
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 图片缩放的操作类型。可选模式有：
+<li>WidthFirst : 指定图片的宽为 Width ，高度等比缩放。</li>
+<li>HeightFirst : 指定图片的高为 Height ，宽度等比缩放。</li>
+<li>LongEdgeFirst : 指定图片的长边为 LongEdge ，短边等比缩放。</li>
+<li>ShortEdgeFirst : 指定图片的短边为 ShortEdge ，长边等比缩放。</li>
+<li>Force : 忽略原图宽高比例，指定图片宽度为 Width，高度为 Height ，强行缩放图片，可能导致目标图片变形。</li>
+        :type Type: str
+        :param Height: 输出图片的高度，单位为像素。当 Type 取值为 HeightFirst 或 Force 时此字段有效。
+        :type Height: int
+        :param Width: 输出图片的宽度，单位为像素。当 Type 取值为 WidthFirst 或 Force 时此字段有效。
+        :type Width: int
+        :param LongEdge: 输出图片的长边长度，单位为像素。当 Type 取值为 LongEdgeFirst 时此字段有效。
+        :type LongEdge: int
+        :param ShortEdge: 输出图片的短边长度，单位为像素。当 Type 取值为 ShortEdgeFirst 时此字段有效。
+        :type ShortEdge: int
+        """
+        self.Type = None
+        self.Height = None
+        self.Width = None
+        self.LongEdge = None
+        self.ShortEdge = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Height = params.get("Height")
+        self.Width = params.get("Width")
+        self.LongEdge = params.get("LongEdge")
+        self.ShortEdge = params.get("ShortEdge")
 
 
 class ImageSpriteTaskInput(AbstractModel):

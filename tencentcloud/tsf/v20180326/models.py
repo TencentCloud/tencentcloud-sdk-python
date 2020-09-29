@@ -184,6 +184,23 @@ class AddInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AdvanceSettings(AbstractModel):
+    """高级选项设置
+
+    """
+
+    def __init__(self):
+        """
+        :param SubTaskConcurrency: 子任务单机并发数限制，默认值为2
+        :type SubTaskConcurrency: int
+        """
+        self.SubTaskConcurrency = None
+
+
+    def _deserialize(self, params):
+        self.SubTaskConcurrency = params.get("SubTaskConcurrency")
+
+
 class ApiDefinitionDescr(AbstractModel):
     """API 对象类型描述
 
@@ -1160,6 +1177,44 @@ class ContainerGroupDetail(AbstractModel):
         self.MaxUnavailable = params.get("MaxUnavailable")
 
 
+class ContinueRunFailedTaskBatchRequest(AbstractModel):
+    """ContinueRunFailedTaskBatch请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BatchId: 批次ID。
+        :type BatchId: str
+        """
+        self.BatchId = None
+
+
+    def _deserialize(self, params):
+        self.BatchId = params.get("BatchId")
+
+
+class ContinueRunFailedTaskBatchResponse(AbstractModel):
+    """ContinueRunFailedTaskBatch返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 成功或失败
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class CosCredentials(AbstractModel):
     """cos临时帐号信息
 
@@ -2042,6 +2097,109 @@ class CreateServerlessGroupResponse(AbstractModel):
         """
         :param Result: 创建成功的部署组ID，返回null表示失败
 注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateTaskRequest(AbstractModel):
+    """CreateTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskName: 任务名称，任务长度64字符
+        :type TaskName: str
+        :param TaskContent: 任务内容，长度限制65536个字节
+        :type TaskContent: str
+        :param ExecuteType: 执行类型，UNICAST/BROADCAST
+        :type ExecuteType: str
+        :param TaskType: 任务类型
+        :type TaskType: str
+        :param TimeOut: 任务超时时间， 时间单位 ms
+        :type TimeOut: int
+        :param GroupId: 部署组ID
+        :type GroupId: str
+        :param TaskRule: 触发规则
+        :type TaskRule: :class:`tencentcloud.tsf.v20180326.models.TaskRule`
+        :param RetryCount: 重试次数，0 <= RetryCount<= 10
+        :type RetryCount: int
+        :param RetryInterval: 重试间隔， 0 <= RetryInterval <= 600000， 时间单位 ms
+        :type RetryInterval: int
+        :param ShardCount: 分片数量
+        :type ShardCount: int
+        :param ShardArguments: 分片参数
+        :type ShardArguments: list of ShardArgument
+        :param SuccessOperator: 判断任务成功的操作符
+        :type SuccessOperator: str
+        :param SuccessRatio: 判断任务成功率的阈值，如99.99
+        :type SuccessRatio: str
+        :param AdvanceSettings: 高级设置
+        :type AdvanceSettings: :class:`tencentcloud.tsf.v20180326.models.AdvanceSettings`
+        :param TaskArgument: 任务参数，长度限制10000个字符
+        :type TaskArgument: str
+        """
+        self.TaskName = None
+        self.TaskContent = None
+        self.ExecuteType = None
+        self.TaskType = None
+        self.TimeOut = None
+        self.GroupId = None
+        self.TaskRule = None
+        self.RetryCount = None
+        self.RetryInterval = None
+        self.ShardCount = None
+        self.ShardArguments = None
+        self.SuccessOperator = None
+        self.SuccessRatio = None
+        self.AdvanceSettings = None
+        self.TaskArgument = None
+
+
+    def _deserialize(self, params):
+        self.TaskName = params.get("TaskName")
+        self.TaskContent = params.get("TaskContent")
+        self.ExecuteType = params.get("ExecuteType")
+        self.TaskType = params.get("TaskType")
+        self.TimeOut = params.get("TimeOut")
+        self.GroupId = params.get("GroupId")
+        if params.get("TaskRule") is not None:
+            self.TaskRule = TaskRule()
+            self.TaskRule._deserialize(params.get("TaskRule"))
+        self.RetryCount = params.get("RetryCount")
+        self.RetryInterval = params.get("RetryInterval")
+        self.ShardCount = params.get("ShardCount")
+        if params.get("ShardArguments") is not None:
+            self.ShardArguments = []
+            for item in params.get("ShardArguments"):
+                obj = ShardArgument()
+                obj._deserialize(item)
+                self.ShardArguments.append(obj)
+        self.SuccessOperator = params.get("SuccessOperator")
+        self.SuccessRatio = params.get("SuccessRatio")
+        if params.get("AdvanceSettings") is not None:
+            self.AdvanceSettings = AdvanceSettings()
+            self.AdvanceSettings._deserialize(params.get("AdvanceSettings"))
+        self.TaskArgument = params.get("TaskArgument")
+
+
+class CreateTaskResponse(AbstractModel):
+    """CreateTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 任务ID
         :type Result: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3124,6 +3282,36 @@ class DescribeApplicationsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBasicResourceUsageRequest(AbstractModel):
+    """DescribeBasicResourceUsage请求参数结构体
+
+    """
+
+
+class DescribeBasicResourceUsageResponse(AbstractModel):
+    """DescribeBasicResourceUsage返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: TSF基本资源信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.OverviewBasicResourceUsage`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = OverviewBasicResourceUsage()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeClusterInstancesRequest(AbstractModel):
     """DescribeClusterInstances请求参数结构体
 
@@ -3629,6 +3817,46 @@ class DescribeDownloadInfoResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Result") is not None:
             self.Result = CosDownloadInfo()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeFlowLastBatchStateRequest(AbstractModel):
+    """DescribeFlowLastBatchState请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: 工作流 ID
+        :type FlowId: str
+        """
+        self.FlowId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+
+
+class DescribeFlowLastBatchStateResponse(AbstractModel):
+    """DescribeFlowLastBatchState返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 工作流批次最新状态
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.TaskFlowLastBatchState`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = TaskFlowLastBatchState()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 
@@ -5015,6 +5243,46 @@ class DescribeSimpleNamespacesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTaskLastStatusRequest(AbstractModel):
+    """DescribeTaskLastStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务ID
+        :type TaskId: str
+        """
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+
+
+class DescribeTaskLastStatusResponse(AbstractModel):
+    """DescribeTaskLastStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 任务上一次执行状态
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.TaskLastExecuteStatus`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = TaskLastExecuteStatus()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeUploadInfoRequest(AbstractModel):
     """DescribeUploadInfo请求参数结构体
 
@@ -5079,6 +5347,158 @@ class DescribeUploadInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DisableTaskFlowRequest(AbstractModel):
+    """DisableTaskFlow请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: 工作流 ID
+        :type FlowId: str
+        """
+        self.FlowId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+
+
+class DisableTaskFlowResponse(AbstractModel):
+    """DisableTaskFlow返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: true成功，false: 失败
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class DisableTaskRequest(AbstractModel):
+    """DisableTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务ID
+        :type TaskId: str
+        """
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+
+
+class DisableTaskResponse(AbstractModel):
+    """DisableTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 操作成功 or 失败
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class EnableTaskFlowRequest(AbstractModel):
+    """EnableTaskFlow请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: 工作流 ID
+        :type FlowId: str
+        """
+        self.FlowId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+
+
+class EnableTaskFlowResponse(AbstractModel):
+    """EnableTaskFlow返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: true成功，false: 失败
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class EnableTaskRequest(AbstractModel):
+    """EnableTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 启用任务
+        :type TaskId: str
+        """
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+
+
+class EnableTaskResponse(AbstractModel):
+    """EnableTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 操作成功or失败
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class Env(AbstractModel):
     """环境变量
 
@@ -5098,6 +5518,82 @@ class Env(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Value = params.get("Value")
+
+
+class ExecuteTaskFlowRequest(AbstractModel):
+    """ExecuteTaskFlow请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: 工作流 ID
+        :type FlowId: str
+        """
+        self.FlowId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+
+
+class ExecuteTaskFlowResponse(AbstractModel):
+    """ExecuteTaskFlow返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 工作流批次ID
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class ExecuteTaskRequest(AbstractModel):
+    """ExecuteTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务 ID。
+        :type TaskId: str
+        """
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+
+
+class ExecuteTaskResponse(AbstractModel):
+    """ExecuteTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 成功/失败
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
 
 
 class ExpandGroupRequest(AbstractModel):
@@ -6631,6 +7127,44 @@ class OperationInfoDetail(AbstractModel):
         self.Supported = params.get("Supported")
 
 
+class OverviewBasicResourceUsage(AbstractModel):
+    """TSF基本资源信息概览
+
+    """
+
+    def __init__(self):
+        """
+        :param ApplicationCount: 应用总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationCount: int
+        :param NamespaceCount: 命名空间总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceCount: int
+        :param GroupCount: 部署组个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupCount: int
+        :param PackageSpaceUsed: 程序包存储空间用量，单位字节
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PackageSpaceUsed: int
+        :param ConsulInstanceCount: 已注册实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConsulInstanceCount: int
+        """
+        self.ApplicationCount = None
+        self.NamespaceCount = None
+        self.GroupCount = None
+        self.PackageSpaceUsed = None
+        self.ConsulInstanceCount = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationCount = params.get("ApplicationCount")
+        self.NamespaceCount = params.get("NamespaceCount")
+        self.GroupCount = params.get("GroupCount")
+        self.PackageSpaceUsed = params.get("PackageSpaceUsed")
+        self.ConsulInstanceCount = params.get("ConsulInstanceCount")
+
+
 class PkgBind(AbstractModel):
     """描述程序包关联信息
 
@@ -6813,6 +7347,124 @@ class ProtocolPort(AbstractModel):
         self.Port = params.get("Port")
         self.TargetPort = params.get("TargetPort")
         self.NodePort = params.get("NodePort")
+
+
+class RedoTaskBatchRequest(AbstractModel):
+    """RedoTaskBatch请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务ID
+        :type TaskId: str
+        :param BatchId: 批次ID
+        :type BatchId: str
+        """
+        self.TaskId = None
+        self.BatchId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.BatchId = params.get("BatchId")
+
+
+class RedoTaskBatchResponse(AbstractModel):
+    """RedoTaskBatch返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 批次ID
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class RedoTaskFlowBatchRequest(AbstractModel):
+    """RedoTaskFlowBatch请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowBatchId: 工作流批次 ID
+        :type FlowBatchId: str
+        """
+        self.FlowBatchId = None
+
+
+    def _deserialize(self, params):
+        self.FlowBatchId = params.get("FlowBatchId")
+
+
+class RedoTaskFlowBatchResponse(AbstractModel):
+    """RedoTaskFlowBatch返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 工作流批次历史 ID
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class RedoTaskRequest(AbstractModel):
+    """RedoTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务ID
+        :type TaskId: str
+        """
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+
+
+class RedoTaskResponse(AbstractModel):
+    """RedoTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 操作成功or失败
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
 
 
 class ReleaseConfigRequest(AbstractModel):
@@ -7320,6 +7972,28 @@ class ServiceSetting(AbstractModel):
         self.SubnetId = params.get("SubnetId")
 
 
+class ShardArgument(AbstractModel):
+    """分片参数
+
+    """
+
+    def __init__(self):
+        """
+        :param ShardKey: 分片参数 KEY，整形
+        :type ShardKey: int
+        :param ShardValue: 分片参数 VALUE
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShardValue: str
+        """
+        self.ShardKey = None
+        self.ShardValue = None
+
+
+    def _deserialize(self, params):
+        self.ShardKey = params.get("ShardKey")
+        self.ShardValue = params.get("ShardValue")
+
+
 class ShrinkGroupRequest(AbstractModel):
     """ShrinkGroup请求参数结构体
 
@@ -7713,6 +8387,122 @@ class StopGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class StopTaskBatchRequest(AbstractModel):
+    """StopTaskBatch请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BatchId: 批次ID
+        :type BatchId: str
+        :param TaskId: 参数ID
+        :type TaskId: str
+        """
+        self.BatchId = None
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.BatchId = params.get("BatchId")
+        self.TaskId = params.get("TaskId")
+
+
+class StopTaskBatchResponse(AbstractModel):
+    """StopTaskBatch返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 操作成功 or 失败
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class StopTaskExecuteRequest(AbstractModel):
+    """StopTaskExecute请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ExecuteId: 任务执行ID
+        :type ExecuteId: str
+        :param BatchId: 任务批次ID
+        :type BatchId: str
+        :param TaskId: 任务ID
+        :type TaskId: str
+        """
+        self.ExecuteId = None
+        self.BatchId = None
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.ExecuteId = params.get("ExecuteId")
+        self.BatchId = params.get("BatchId")
+        self.TaskId = params.get("TaskId")
+
+
+class StopTaskExecuteResponse(AbstractModel):
+    """StopTaskExecute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 操作成功 or 失败
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class TaskFlowLastBatchState(AbstractModel):
+    """工作流最近批次的状态
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowBatchId: 批次ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowBatchId: str
+        :param FlowBatchLogId: 批次历史ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowBatchLogId: str
+        :param State: 状态,WAITING/SUCCESS/FAILED/RUNNING/TERMINATING
+注意：此字段可能返回 null，表示取不到有效值。
+        :type State: str
+        """
+        self.FlowBatchId = None
+        self.FlowBatchLogId = None
+        self.State = None
+
+
+    def _deserialize(self, params):
+        self.FlowBatchId = params.get("FlowBatchId")
+        self.FlowBatchLogId = params.get("FlowBatchLogId")
+        self.State = params.get("State")
+
+
 class TaskId(AbstractModel):
     """任务id
 
@@ -7729,6 +8519,99 @@ class TaskId(AbstractModel):
 
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
+
+
+class TaskLastExecuteStatus(AbstractModel):
+    """任务最近一次执行状态
+
+    """
+
+    def __init__(self):
+        """
+        :param BatchId: 批次ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BatchId: str
+        :param State: 运行状态，RUNNING/SUCCESS/FAIL/HALF/TERMINATED
+注意：此字段可能返回 null，表示取不到有效值。
+        :type State: str
+        :param BatchLogId: 批次历史ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BatchLogId: str
+        """
+        self.BatchId = None
+        self.State = None
+        self.BatchLogId = None
+
+
+    def _deserialize(self, params):
+        self.BatchId = params.get("BatchId")
+        self.State = params.get("State")
+        self.BatchLogId = params.get("BatchLogId")
+
+
+class TaskRule(AbstractModel):
+    """任务规则
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleType: 触发规则类型, Cron/Repeat
+        :type RuleType: str
+        :param Expression: Cron类型规则，cron表达式。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Expression: str
+        :param RepeatInterval: 时间间隔， 单位毫秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RepeatInterval: int
+        """
+        self.RuleType = None
+        self.Expression = None
+        self.RepeatInterval = None
+
+
+    def _deserialize(self, params):
+        self.RuleType = params.get("RuleType")
+        self.Expression = params.get("Expression")
+        self.RepeatInterval = params.get("RepeatInterval")
+
+
+class TerminateTaskFlowBatchRequest(AbstractModel):
+    """TerminateTaskFlowBatch请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowBatchId: 工作流批次 ID
+        :type FlowBatchId: str
+        """
+        self.FlowBatchId = None
+
+
+    def _deserialize(self, params):
+        self.FlowBatchId = params.get("FlowBatchId")
+
+
+class TerminateTaskFlowBatchResponse(AbstractModel):
+    """TerminateTaskFlowBatch返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 是否停止成功
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
 
 
 class TsfApiListResponse(AbstractModel):

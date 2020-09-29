@@ -220,10 +220,10 @@ class Address(AbstractModel):
         :type InternetServiceProvider: str
         :param LocalBgp: 是否本地带宽EIP
         :type LocalBgp: bool
-        :param Bandwidth: 弹性公网IP的带宽值。注意，非带宽上移账户的弹性公网IP没有带宽属性，值为空。
+        :param Bandwidth: 弹性公网IP的带宽值。注意，传统账户类型账户的弹性公网IP没有带宽属性，值为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Bandwidth: int
-        :param InternetChargeType: 弹性公网IP的网络计费模式。注意，非带宽上移账户的弹性公网IP没有网络计费模式属性，值为空。
+        :param InternetChargeType: 弹性公网IP的网络计费模式。注意，传统账户类型账户的弹性公网IP没有网络计费模式属性，值为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InternetChargeType: str
         """
@@ -436,18 +436,18 @@ class AllocateAddressesRequest(AbstractModel):
 <li>CUCC：中国联通</li></ul>注意：仅部分地域支持静态单线IP。</li></ul>
         :type InternetServiceProvider: str
         :param InternetChargeType: EIP计费方式。
-<ul style="margin:0"><li>已开通带宽上移白名单的用户，可选值：<ul><li>BANDWIDTH_PACKAGE：[共享带宽包](https://cloud.tencent.com/document/product/684/15255)付费（需额外开通共享带宽包白名单）</li>
+<ul style="margin:0"><li>已开通标准账户类型白名单的用户，可选值：<ul><li>BANDWIDTH_PACKAGE：[共享带宽包](https://cloud.tencent.com/document/product/684/15255)付费（需额外开通共享带宽包白名单）</li>
 <li>BANDWIDTH_POSTPAID_BY_HOUR：带宽按小时后付费</li>
 <li>BANDWIDTH_PREPAID_BY_MONTH：包月按带宽预付费</li>
 <li>TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费</li></ul>默认值：TRAFFIC_POSTPAID_BY_HOUR。</li>
-<li>未开通带宽上移白名单的用户，EIP计费方式与其绑定的实例的计费方式一致，无需传递此参数。</li></ul>
+<li>未开通标准账户类型白名单的用户，EIP计费方式与其绑定的实例的计费方式一致，无需传递此参数。</li></ul>
         :type InternetChargeType: str
         :param InternetMaxBandwidthOut: EIP出带宽上限，单位：Mbps。
-<ul style="margin:0"><li>已开通带宽上移白名单的用户，可选值范围取决于EIP计费方式：<ul><li>BANDWIDTH_PACKAGE：1 Mbps 至 1000 Mbps</li>
+<ul style="margin:0"><li>已开通标准账户类型白名单的用户，可选值范围取决于EIP计费方式：<ul><li>BANDWIDTH_PACKAGE：1 Mbps 至 1000 Mbps</li>
 <li>BANDWIDTH_POSTPAID_BY_HOUR：1 Mbps 至 100 Mbps</li>
 <li>BANDWIDTH_PREPAID_BY_MONTH：1 Mbps 至 200 Mbps</li>
 <li>TRAFFIC_POSTPAID_BY_HOUR：1 Mbps 至 100 Mbps</li></ul>默认值：1 Mbps。</li>
-<li>未开通带宽上移白名单的用户，EIP出带宽上限取决于与其绑定的实例的公网出带宽上限，无需传递此参数。</li></ul>
+<li>未开通标准账户类型白名单的用户，EIP出带宽上限取决于与其绑定的实例的公网出带宽上限，无需传递此参数。</li></ul>
         :type InternetMaxBandwidthOut: int
         :param AddressChargePrepaid: 包月按带宽预付费EIP的计费参数。EIP为包月按带宽预付费时，该参数必传，其余场景不需传递
         :type AddressChargePrepaid: :class:`tencentcloud.vpc.v20170312.models.AddressChargePrepaid`
@@ -535,7 +535,7 @@ class AllocateIp6AddressesBandwidthRequest(AbstractModel):
         :type Ip6Addresses: list of str
         :param InternetMaxBandwidthOut: 带宽，单位Mbps。默认是1Mbps
         :type InternetMaxBandwidthOut: int
-        :param InternetChargeType: 网络计费模式。IPV6当前对带宽上移账户支持"TRAFFIC_POSTPAID_BY_HOUR"，对带宽非上移支持"BANDWIDTH_PACKAGE"。默认网络计费模式是"TRAFFIC_POSTPAID_BY_HOUR"。
+        :param InternetChargeType: 网络计费模式。IPV6当前对标准账户类型支持"TRAFFIC_POSTPAID_BY_HOUR"，对传统账户类型支持"BANDWIDTH_PACKAGE"。默认网络计费模式是"TRAFFIC_POSTPAID_BY_HOUR"。
         :type InternetChargeType: str
         """
         self.Ip6Addresses = None
@@ -2053,7 +2053,7 @@ class CreateBandwidthPackageRequest(AbstractModel):
         :type ChargeType: str
         :param BandwidthPackageName: 带宽包名字
         :type BandwidthPackageName: str
-        :param BandwidthPackageCount: 带宽包数量(非上移账户只能填1)
+        :param BandwidthPackageCount: 带宽包数量(传统账户类型只能填1)
         :type BandwidthPackageCount: int
         :param InternetMaxBandwidth: 带宽包限速大小。单位：Mbps，-1表示不限速。
         :type InternetMaxBandwidth: int

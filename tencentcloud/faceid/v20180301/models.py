@@ -1649,12 +1649,15 @@ class PhoneVerificationRequest(AbstractModel):
         :type CiphertextBlob: str
         :param EncryptList: 在使用加密服务时，填入要被加密的字段。本接口中可填入加密后的IdCard，Name，Phone中的一个或多个
         :type EncryptList: list of str
+        :param Iv: 有加密需求的用户，传入CBC加密的初试向量
+        :type Iv: str
         """
         self.IdCard = None
         self.Name = None
         self.Phone = None
         self.CiphertextBlob = None
         self.EncryptList = None
+        self.Iv = None
 
 
     def _deserialize(self, params):
@@ -1663,6 +1666,7 @@ class PhoneVerificationRequest(AbstractModel):
         self.Phone = params.get("Phone")
         self.CiphertextBlob = params.get("CiphertextBlob")
         self.EncryptList = params.get("EncryptList")
+        self.Iv = params.get("Iv")
 
 
 class PhoneVerificationResponse(AbstractModel):
@@ -1675,10 +1679,7 @@ class PhoneVerificationResponse(AbstractModel):
         :param Result: 认证结果码:
 收费结果码
 0: 认证通过
--1: 手机号已实名，但是身份证和姓名均与实名信息不一致 
--2: 手机号已实名，手机号和证件号一致，姓名不一致
--3: 手机号已实名，手机号和姓名一致，身份证不一致
--4: 信息不一致
+-4: 信息不一致（手机号已实名，但姓名和身份证号与实名信息不一致）
 -5: 手机号未实名
 不收费结果码
 -6: 手机号码不合法
