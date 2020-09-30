@@ -3522,7 +3522,7 @@ class DescribeLiveRecordTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateId: DescribeRecordTemplates接口获取到的模板 ID。
+        :param TemplateId: [DescribeLiveRecordTemplates](/document/product/267/32609)接口获取到的模板 ID。
         :type TemplateId: int
         """
         self.TemplateId = None

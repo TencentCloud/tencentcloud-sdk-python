@@ -2319,14 +2319,21 @@ edge：表示边缘节点
 last：表示回源层节点
 不填充情况下，默认返回边缘节点信息
         :type Layer: str
+        :param Area: 查询区域：
+mainland: 国内节点
+overseas: 海外节点
+global: 全球节点
+        :type Area: str
         """
         self.Domain = None
         self.Layer = None
+        self.Area = None
 
 
     def _deserialize(self, params):
         self.Domain = params.get("Domain")
         self.Layer = params.get("Layer")
+        self.Area = params.get("Area")
 
 
 class DescribeIpStatusResponse(AbstractModel):
@@ -4353,16 +4360,71 @@ blacklist：黑名单
 最多可填充 50 个白名单或 50 个黑名单
 注意：此字段可能返回 null，表示取不到有效值。
         :type Filters: list of str
+        :param FilterRules: IP 黑白名单分路径配置，白名单功能
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilterRules: list of IpFilterPathRule
         """
         self.Switch = None
         self.FilterType = None
         self.Filters = None
+        self.FilterRules = None
 
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
         self.FilterType = params.get("FilterType")
         self.Filters = params.get("Filters")
+        if params.get("FilterRules") is not None:
+            self.FilterRules = []
+            for item in params.get("FilterRules"):
+                obj = IpFilterPathRule()
+                obj._deserialize(item)
+                self.FilterRules.append(obj)
+
+
+class IpFilterPathRule(AbstractModel):
+    """IP黑白名单分路径配置
+
+    """
+
+    def __init__(self):
+        """
+        :param FilterType: IP 黑白名单类型
+whitelist：白名单
+blacklist：黑名单
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilterType: str
+        :param Filters: IP 黑白名单列表
+支持 X.X.X.X 形式 IP，或 /8、 /16、/24 形式网段
+最多可填充 50 个白名单或 50 个黑名单
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Filters: list of str
+        :param RuleType: 规则类型：
+all：所有文件生效
+file：指定文件后缀生效
+directory：指定路径生效
+path：指定绝对路径生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleType: str
+        :param RulePaths: RuleType 对应类型下的匹配内容：
+all 时填充 *
+file 时填充后缀名，如 jpg、txt
+directory 时填充路径，如 /xxx/test/
+path 时填充绝对路径，如 /xxx/test.html
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RulePaths: list of str
+        """
+        self.FilterType = None
+        self.Filters = None
+        self.RuleType = None
+        self.RulePaths = None
+
+
+    def _deserialize(self, params):
+        self.FilterType = params.get("FilterType")
+        self.Filters = params.get("Filters")
+        self.RuleType = params.get("RuleType")
+        self.RulePaths = params.get("RulePaths")
 
 
 class IpFreqLimit(AbstractModel):

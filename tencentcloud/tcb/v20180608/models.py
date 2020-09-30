@@ -1613,6 +1613,17 @@ class EnvInfo(AbstractModel):
         :param EnvChannel: 环境渠道
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnvChannel: str
+        :param PayMode: 支付方式。包含以下取值：
+<li> prepayment：预付费</li>
+<li> postpaid：后付费</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayMode: str
+        :param IsDefault: 是否为默认环境
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsDefault: bool
+        :param Region: 环境所属地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
         """
         self.EnvId = None
         self.Source = None
@@ -1629,6 +1640,9 @@ class EnvInfo(AbstractModel):
         self.StaticStorages = None
         self.IsAutoDegrade = None
         self.EnvChannel = None
+        self.PayMode = None
+        self.IsDefault = None
+        self.Region = None
 
 
     def _deserialize(self, params):
@@ -1672,6 +1686,9 @@ class EnvInfo(AbstractModel):
                 self.StaticStorages.append(obj)
         self.IsAutoDegrade = params.get("IsAutoDegrade")
         self.EnvChannel = params.get("EnvChannel")
+        self.PayMode = params.get("PayMode")
+        self.IsDefault = params.get("IsDefault")
+        self.Region = params.get("Region")
 
 
 class FunctionInfo(AbstractModel):

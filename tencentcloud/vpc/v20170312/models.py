@@ -1278,6 +1278,23 @@ class BandwidthPackage(AbstractModel):
         self.Bandwidth = params.get("Bandwidth")
 
 
+class BandwidthPackageBillBandwidth(AbstractModel):
+    """后付费共享带宽包的当前计费用量
+
+    """
+
+    def __init__(self):
+        """
+        :param BandwidthUsage: 当前计费用量，单位为 Mbps
+        :type BandwidthUsage: int
+        """
+        self.BandwidthUsage = None
+
+
+    def _deserialize(self, params):
+        self.BandwidthUsage = params.get("BandwidthUsage")
+
+
 class CCN(AbstractModel):
     """云联网（CCN）对象
 
@@ -5182,6 +5199,49 @@ class DescribeAssistantCidrResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBandwidthPackageBillUsageRequest(AbstractModel):
+    """DescribeBandwidthPackageBillUsage请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BandwidthPackageId: 后付费共享带宽包的唯一ID
+        :type BandwidthPackageId: str
+        """
+        self.BandwidthPackageId = None
+
+
+    def _deserialize(self, params):
+        self.BandwidthPackageId = params.get("BandwidthPackageId")
+
+
+class DescribeBandwidthPackageBillUsageResponse(AbstractModel):
+    """DescribeBandwidthPackageBillUsage返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BandwidthPackageBillBandwidthSet: 当前计费用量
+        :type BandwidthPackageBillBandwidthSet: list of BandwidthPackageBillBandwidth
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BandwidthPackageBillBandwidthSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("BandwidthPackageBillBandwidthSet") is not None:
+            self.BandwidthPackageBillBandwidthSet = []
+            for item in params.get("BandwidthPackageBillBandwidthSet"):
+                obj = BandwidthPackageBillBandwidth()
+                obj._deserialize(item)
+                self.BandwidthPackageBillBandwidthSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeBandwidthPackageQuotaRequest(AbstractModel):
     """DescribeBandwidthPackageQuota请求参数结构体
 
@@ -5211,6 +5271,72 @@ class DescribeBandwidthPackageQuotaResponse(AbstractModel):
                 obj = Quota()
                 obj._deserialize(item)
                 self.QuotaSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBandwidthPackageResourcesRequest(AbstractModel):
+    """DescribeBandwidthPackageResources请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BandwidthPackageId: 标识 共享带宽包 的唯一 ID 列表。共享带宽包 唯一 ID 形如：`bwp-11112222`。
+        :type BandwidthPackageId: str
+        :param Filters: 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`AddressIds`和`Filters`。详细的过滤条件如下：
+<li> resource-id - String - 是否必填：否 - （过滤条件）按照 共享带宽包内资源 的唯一 ID 过滤。共享带宽包内资源 唯一 ID 形如：eip-11112222。</li>
+<li> resource-type - String - 是否必填：否 - （过滤条件）按照 共享带宽包内资源 类型过滤，目前仅支持 弹性IP 和 负载均衡 两种类型，可选值为 Address 和 LoadBalance。</li>
+        :type Filters: list of Filter
+        :param Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/11646)中的相关小节。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/11646)中的相关小节。
+        :type Limit: int
+        """
+        self.BandwidthPackageId = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.BandwidthPackageId = params.get("BandwidthPackageId")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeBandwidthPackageResourcesResponse(AbstractModel):
+    """DescribeBandwidthPackageResources返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的 共享带宽包内资源 数量。
+        :type TotalCount: int
+        :param ResourceSet: 共享带宽包内资源 详细信息列表。
+        :type ResourceSet: list of Resource
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ResourceSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ResourceSet") is not None:
+            self.ResourceSet = []
+            for item in params.get("ResourceSet"):
+                obj = Resource()
+                obj._deserialize(item)
+                self.ResourceSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
