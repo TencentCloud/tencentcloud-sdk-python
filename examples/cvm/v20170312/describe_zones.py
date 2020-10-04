@@ -12,6 +12,8 @@ try:
     cred = credential.Credential(
         os.environ.get("TENCENTCLOUD_SECRET_ID"),
         os.environ.get("TENCENTCLOUD_SECRET_KEY"))
+    # 也可以使用实例角色，详见https://cloud.tencent.com/document/product/213/47668
+    #cred = credential.CVMRoleCredential()
 
     # 实例化一个client选项，可选的，没有特殊需求可以跳过。
     hp = http_profile.HttpProfile()
