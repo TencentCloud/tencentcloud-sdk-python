@@ -23,6 +23,8 @@ import sys
 import time
 import uuid
 import warnings
+import logging
+import logging.handlers
 
 try:
     from urllib.parse import urlencode
@@ -42,6 +44,17 @@ _json_content = 'application/json'
 _multipart_content = 'multipart/form-data'
 _form_urlencoded_content = 'application/x-www-form-urlencoded'
 
+
+class EmptyHandler(logging.Handler):
+    def emit(self, message):
+        pass
+
+
+LOGGER_NAME = "tencentcloud_sdk_common"
+logger = logging.getLogger(LOGGER_NAME)
+logger.addHandler(EmptyHandler())
+
+
 class AbstractClient(object):
     _requestPath = '/'
     _params = {}
@@ -49,6 +62,7 @@ class AbstractClient(object):
     _endpoint = ''
     _sdkVersion = 'SDK_PYTHON_%s' % tencentcloud.__version__
     _default_content_type = _form_urlencoded_content
+    FMT = '%(asctime)s %(process)d %(filename)s L%(lineno)s %(levelname)s %(message)s'
 
     def __init__(self, credential, region, profile=None):
         if credential is None:
@@ -289,3 +303,54 @@ class AbstractClient(object):
         else:
             data = data.decode('UTF-8')
         return data
+
+    """
+    Add a stream handler
+
+    :type level: int
+    :param level: Logging level, e.g. ``logging.INFO``
+    :type log_format: str
+    :param log_format: Log message format
+    :type stream: file
+    :param stream: e.g. ``sys.stdout`` ``sys.stdin`` ``sys.stderr``
+    """
+    def set_stream_logger(self, level=logging.DEBUG, stream=None, log_format=None):
+        log = logging.getLogger(LOGGER_NAME)
+        log.setLevel(level)
+        sh = logging.StreamHandler(stream)
+        sh.setLevel(level)
+        if log_format is None:
+            log_format = self.FMT
+        formatter = logging.Formatter(log_format)
+        sh.setFormatter(formatter)
+        log.addHandler(sh)
+
+    """
+    Add a file handler
+
+    :type file_path: str
+    :param file_path: path of log file
+    :type level: int
+    :param level: Logging level, e.g. ``logging.INFO``
+    :type log_format: str
+    :param log_format: Log message format
+    """
+    def set_file_logger(self, file_path, level=logging.DEBUG, log_format=None):
+        log = logging.getLogger(LOGGER_NAME)
+        log.setLevel(level)
+        mb = 1024 * 1024
+        fh = logging.handlers.RotatingFileHandler(file_path, maxBytes=512*mb, backupCount=10)
+        fh.setLevel(level)
+        if log_format is None:
+            log_format = self.FMT
+        formatter = logging.Formatter(log_format)
+        fh.setFormatter(formatter)
+        log.addHandler(fh)
+
+    """
+    Set default log handler
+    """
+    def set_default_logger(self):
+        log = logging.getLogger(LOGGER_NAME)
+        log.handlers = []
+        logger.addHandler(EmptyHandler())

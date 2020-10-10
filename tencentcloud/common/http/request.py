@@ -3,6 +3,8 @@
 
 import os
 import socket
+import logging
+
 try:
     from http.client import HTTPConnection, BadStatusLine, HTTPSConnection
     from urllib.parse import urlparse
@@ -11,6 +13,9 @@ except ImportError:
     from urlparse import urlparse
 
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
+
+
+logger = logging.getLogger("tencentcloud_sdk_common")
 
 
 class ProxyHTTPSConnection(HTTPSConnection):
@@ -89,8 +94,7 @@ class ApiRequest(object):
     def _request(self, req_inter):
         if self.keep_alive:
             req_inter.header["Connection"] = "Keep-Alive"
-        if self.debug:
-            print("SendRequest %s" % req_inter)
+        logger.debug("SendRequest %s" % req_inter)
         if req_inter.method == 'GET':
             req_inter_url = '%s?%s' % (req_inter.uri, req_inter.data)
             self.conn.request(req_inter.method, req_inter_url,
@@ -111,8 +115,7 @@ class ApiRequest(object):
                 # open another connection when keep-alive timeout
                 # httplib will not handle keep-alive timeout,
                 # so we must handle it ourself
-                if self.debug:
-                    print("keep-alive timeout, reopen connection")
+                logger.error("keep-alive timeout, reopen connection")
                 self.conn.close()
                 self._request(req_inter)
                 http_resp = self.conn.getresponse()
@@ -124,8 +127,7 @@ class ApiRequest(object):
             self.response_size = len(resp_inter.data)
             if not self.is_keep_alive():
                 self.conn.close()
-            if self.debug:
-                print(("GetResponse %s" % resp_inter))
+            logger.debug("GetResponse %s" % resp_inter)
             return resp_inter
         except Exception as e:
             self.conn.close()
