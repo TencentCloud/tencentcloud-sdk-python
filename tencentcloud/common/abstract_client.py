@@ -23,6 +23,7 @@ import sys
 import time
 import uuid
 import warnings
+import logging
 
 try:
     from urllib.parse import urlencode
@@ -42,6 +43,23 @@ _json_content = 'application/json'
 _multipart_content = 'multipart/form-data'
 _form_urlencoded_content = 'application/x-www-form-urlencoded'
 
+
+class EmptyHandler(logging.Handler):
+    def emit(self, message):
+        pass
+
+
+logger = logging.getLogger("abstractClient")
+logger.addHandler(EmptyHandler())
+LOG_LEVEL_DICT = {"critical": logging.CRITICAL,
+                  "fatal": logging.FATAL,
+                  "error": logging.ERROR,
+                  "warning": logging.WARNING,
+                  "warn": logging.WARNING,
+                  "info": logging.INFO,
+                  "debug": logging.DEBUG}
+
+
 class AbstractClient(object):
     _requestPath = '/'
     _params = {}
@@ -49,6 +67,7 @@ class AbstractClient(object):
     _endpoint = ''
     _sdkVersion = 'SDK_PYTHON_%s' % tencentcloud.__version__
     _default_content_type = _form_urlencoded_content
+    FMT = '%(asctime)s %(process)d %(filename)s L%(lineno)s %(levelname)s %(message)s'
 
     def __init__(self, credential, region, profile=None):
         if credential is None:
@@ -61,7 +80,7 @@ class AbstractClient(object):
         self.request = ApiRequest(self._get_endpoint(),
                                   req_timeout=self.profile.httpProfile.reqTimeout,
                                   proxy=self.profile.httpProfile.proxy,
-                                  is_http=is_http)
+                                  is_http=is_http, logger=logger)
         if self.profile.httpProfile.keepAlive:
             self.request.set_keep_alive()
 
@@ -289,3 +308,25 @@ class AbstractClient(object):
         else:
             data = data.decode('UTF-8')
         return data
+
+    def set_stream_logger(self, logger_level="debug", logger_name='abstractClient', stream_type=None, record_format=None):
+        log = logging.getLogger(logger_name)
+        log.setLevel(LOG_LEVEL_DICT.get(logger_level, logging.DEBUG))
+        sh = logging.StreamHandler(stream_type)
+        sh.setLevel(LOG_LEVEL_DICT.get(logger_level, logging.DEBUG))
+        if record_format is None:
+            record_format = self.FMT
+        formatter = logging.Formatter(record_format)
+        sh.setFormatter(formatter)
+        log.addHandler(sh)
+
+    def set_file_logger(self, file_path, logger_level="debug", logger_name='abstractClient', record_format=None):
+        log = logging.getLogger(logger_name)
+        log.setLevel(LOG_LEVEL_DICT.get(logger_level, logging.DEBUG))
+        fh = logging.FileHandler(file_path)
+        fh.setLevel(LOG_LEVEL_DICT.get(logger_level, logging.DEBUG))
+        if record_format is None:
+            record_format = self.FMT
+        formatter = logging.Formatter(record_format)
+        fh.setFormatter(formatter)
+        log.addHandler(fh)

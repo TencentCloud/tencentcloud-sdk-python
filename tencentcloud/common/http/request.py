@@ -63,7 +63,7 @@ class ProxyHTTPConnection(HTTPConnection):
 
 
 class ApiRequest(object):
-    def __init__(self, host, req_timeout=60, debug=False, proxy=None, is_http=False):
+    def __init__(self, host, req_timeout=60, debug=False, proxy=None, is_http=False, logger=None):
         if is_http:
             self.conn = ProxyHTTPConnection(host, timeout=req_timeout, proxy=proxy)
         else:
@@ -73,6 +73,7 @@ class ApiRequest(object):
         self.debug = debug
         self.request_size = 0
         self.response_size = 0
+        self.logger = logger
 
     def set_req_timeout(self, req_timeout):
         self.req_timeout = req_timeout
@@ -89,8 +90,7 @@ class ApiRequest(object):
     def _request(self, req_inter):
         if self.keep_alive:
             req_inter.header["Connection"] = "Keep-Alive"
-        if self.debug:
-            print("SendRequest %s" % req_inter)
+        self.logger.debug("SendRequest %s" % req_inter)
         if req_inter.method == 'GET':
             req_inter_url = '%s?%s' % (req_inter.uri, req_inter.data)
             self.conn.request(req_inter.method, req_inter_url,
@@ -111,8 +111,7 @@ class ApiRequest(object):
                 # open another connection when keep-alive timeout
                 # httplib will not handle keep-alive timeout,
                 # so we must handle it ourself
-                if self.debug:
-                    print("keep-alive timeout, reopen connection")
+                self.logger.error("keep-alive timeout, reopen connection")
                 self.conn.close()
                 self._request(req_inter)
                 http_resp = self.conn.getresponse()
@@ -124,8 +123,7 @@ class ApiRequest(object):
             self.response_size = len(resp_inter.data)
             if not self.is_keep_alive():
                 self.conn.close()
-            if self.debug:
-                print(("GetResponse %s" % resp_inter))
+            self.logger.debug("GetResponse %s" % resp_inter)
             return resp_inter
         except Exception as e:
             self.conn.close()
