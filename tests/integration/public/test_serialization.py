@@ -88,7 +88,10 @@ def test_serialization():
                         "BandwidthPackageId": None,
                         "InternetMaxBandwidthOut": 1
                     },
-                    "LatestOperation": "FailoverMigrateInstance"}
+                    "LatestOperation": "FailoverMigrateInstance",
+                    "HpcClusterId": None,
+                    "RdmaIpAddresses": None,
+                }
             ],
             "TotalCount": 1,
             "RequestId": "46fc254d-c862-401b-a2a0-8888888"
