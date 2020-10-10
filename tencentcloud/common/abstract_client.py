@@ -304,6 +304,18 @@ class AbstractClient(object):
             data = data.decode('UTF-8')
         return data
 
+    """
+    Add a stream handler
+
+    :type level: int
+    :param level: Logging level, e.g. ``logging.INFO``
+    :type name: string
+    :param name: Log name
+    :type log_format: str
+    :param log_format: Log message format
+    :type stream: file
+    :param stream: e.g. ``sys.stdout`` ``sys.stdin`` ``sys.stderr``
+    """
     def set_stream_logger(self, level=logging.DEBUG, name=LOGGER_NAME, stream=None, log_format=None):
         log = logging.getLogger(name)
         log.setLevel(level)
@@ -315,6 +327,18 @@ class AbstractClient(object):
         sh.setFormatter(formatter)
         log.addHandler(sh)
 
+    """
+    Add a file handler
+
+    :type file_path: str
+    :param file_path: path of log file
+    :type level: int
+    :param level: Logging level, e.g. ``logging.INFO``
+    :type name: string
+    :param name: Log name
+    :type log_format: str
+    :param log_format: Log message format
+    """
     def set_file_logger(self, file_path, level=logging.DEBUG, name=LOGGER_NAME, log_format=None):
         log = logging.getLogger(name)
         log.setLevel(level)
