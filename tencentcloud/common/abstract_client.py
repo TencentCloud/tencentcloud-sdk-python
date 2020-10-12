@@ -304,17 +304,17 @@ class AbstractClient(object):
             data = data.decode('UTF-8')
         return data
 
-    """
-    Add a stream handler
+    def set_stream_logger(self, stream=None, level=logging.DEBUG, log_format=None):
+        """
+        Add a stream handler
 
-    :type level: int
-    :param level: Logging level, e.g. ``logging.INFO``
-    :type log_format: str
-    :param log_format: Log message format
-    :type stream: file
-    :param stream: e.g. ``sys.stdout`` ``sys.stdin`` ``sys.stderr``
-    """
-    def set_stream_logger(self, level=logging.DEBUG, stream=None, log_format=None):
+        :type stream: IO[str]
+        :param stream: e.g. ``sys.stdout`` ``sys.stdin`` ``sys.stderr``
+        :type level: int
+        :param level: Logging level, e.g. ``logging.INFO``
+        :type log_format: str
+        :param log_format: Log message format
+        """
         log = logging.getLogger(LOGGER_NAME)
         log.setLevel(level)
         sh = logging.StreamHandler(stream)
@@ -325,17 +325,17 @@ class AbstractClient(object):
         sh.setFormatter(formatter)
         log.addHandler(sh)
 
-    """
-    Add a file handler
-
-    :type file_path: str
-    :param file_path: path of log file
-    :type level: int
-    :param level: Logging level, e.g. ``logging.INFO``
-    :type log_format: str
-    :param log_format: Log message format
-    """
     def set_file_logger(self, file_path, level=logging.DEBUG, log_format=None):
+        """
+        Add a file handler
+
+        :type file_path: str
+        :param file_path: path of log file
+        :type level: int
+        :param level: Logging level, e.g. ``logging.INFO``
+        :type log_format: str
+        :param log_format: Log message format
+        """
         log = logging.getLogger(LOGGER_NAME)
         log.setLevel(level)
         mb = 1024 * 1024
@@ -347,10 +347,10 @@ class AbstractClient(object):
         fh.setFormatter(formatter)
         log.addHandler(fh)
 
-    """
-    Set default log handler
-    """
     def set_default_logger(self):
+        """
+        Set default log handler
+        """
         log = logging.getLogger(LOGGER_NAME)
         log.handlers = []
         logger.addHandler(EmptyHandler())
