@@ -25,6 +25,34 @@ class TkeClient(AbstractClient):
     _endpoint = 'tke.tencentcloudapi.com'
 
 
+    def AcquireClusterAdminRole(self, request):
+        """通过此接口，可以获取集群的tke:admin的ClusterRole，即管理员角色，可以用于CAM侧高权限的用户，通过CAM策略给予子账户此接口权限，进而可以通过此接口直接获取到kubernetes集群内的管理员角色。
+
+        :param request: Request instance for AcquireClusterAdminRole.
+        :type request: :class:`tencentcloud.tke.v20180525.models.AcquireClusterAdminRoleRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.AcquireClusterAdminRoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AcquireClusterAdminRole", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AcquireClusterAdminRoleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AddExistedInstances(self, request):
         """添加已经存在的实例到集群
 

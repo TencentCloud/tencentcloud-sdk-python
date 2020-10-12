@@ -10233,7 +10233,7 @@ class ModifyAddressesBandwidthRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param AddressIds: EIP唯一标识ID，形如'eip-xxxx'
+        :param AddressIds: EIP唯一标识ID列表，形如'eip-xxxx'
         :type AddressIds: list of str
         :param InternetMaxBandwidthOut: 调整带宽目标值
         :type InternetMaxBandwidthOut: int
@@ -12501,6 +12501,46 @@ class RemoveIp6RulesRequest(AbstractModel):
 
 class RemoveIp6RulesResponse(AbstractModel):
     """RemoveIp6Rules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class RenewAddressesRequest(AbstractModel):
+    """RenewAddresses请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AddressIds: EIP唯一标识ID列表，形如'eip-xxxx'
+        :type AddressIds: list of str
+        :param AddressChargePrepaid: 续费参数
+        :type AddressChargePrepaid: :class:`tencentcloud.vpc.v20170312.models.AddressChargePrepaid`
+        """
+        self.AddressIds = None
+        self.AddressChargePrepaid = None
+
+
+    def _deserialize(self, params):
+        self.AddressIds = params.get("AddressIds")
+        if params.get("AddressChargePrepaid") is not None:
+            self.AddressChargePrepaid = AddressChargePrepaid()
+            self.AddressChargePrepaid._deserialize(params.get("AddressChargePrepaid"))
+
+
+class RenewAddressesResponse(AbstractModel):
+    """RenewAddresses返回参数结构体
 
     """
 

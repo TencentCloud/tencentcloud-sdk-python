@@ -1845,16 +1845,16 @@ class DescribeCostDetailRequest(AbstractModel):
         :type Limit: int
         :param Offset: 偏移量
         :type Offset: int
-        :param BeginTime: 周期开始时间，格式为Y-m-d H:i:s，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传。不能早于开通成本分析的月份，最多可拉取24个月内的数据。
+        :param BeginTime: 周期开始时间，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为同一月份，暂不支持跨月拉取。可拉取的数据是开通成本分析后，且距今 24 个月内的数据。
         :type BeginTime: str
-        :param EndTime: 周期结束时间，格式为Y-m-d H:i:s，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传。不能早于开通成本分析的月份，最多可拉取24个月内的数据。
+        :param EndTime: 周期结束时间，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为同一月份，暂不支持跨月拉取。可拉取的数据是开通成本分析后，且距今 24 个月内的数据。
         :type EndTime: str
         :param NeedRecordNum: 是否需要访问列表的总记录数，用于前端分页
 1-表示需要， 0-表示不需要
         :type NeedRecordNum: int
         :param Month: 月份，格式为yyyy-mm，Month和BeginTime&EndTime必传一个，如果有传BeginTime&EndTime则Month字段无效。不能早于开通成本分析的月份，最多可拉取24个月内的数据。
         :type Month: str
-        :param ProductCode: 查询指定产品信息
+        :param ProductCode: 查询指定产品信息（暂时未开放获取）
         :type ProductCode: str
         :param PayMode: 付费模式 prePay/postPay
         :type PayMode: str
@@ -1925,9 +1925,9 @@ class DescribeCostSummaryByProductRequest(AbstractModel):
         """
         :param PayerUin: 查询账单数据的用户UIN
         :type PayerUin: str
-        :param BeginTime: 目前只支持传当月1号 00:00:00，且必须和EndTime为相同月份，不支持跨月查询，例 2018-09-01 00:00:00
+        :param BeginTime: 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09-03 03:01:45，EndTime 为 2018-09-25 12:01:45，查询结果是 2018 年 9 月数据。
         :type BeginTime: str
-        :param EndTime: 目前只支持传当月最后一天 23:59:59，且必须和BeginTime为相同月份，不支持跨月查询，例 2018-09-30 23:59:59
+        :param EndTime: 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09-03 03:01:45，EndTime 为 2018-09-25 12:01:45，查询结果是 2018 年 9 月数据。
         :type EndTime: str
         :param Limit: 每次获取数据量
         :type Limit: int
@@ -2004,9 +2004,9 @@ class DescribeCostSummaryByProjectRequest(AbstractModel):
         """
         :param PayerUin: 查询账单数据的用户UIN
         :type PayerUin: str
-        :param BeginTime: 目前只支持传当月1号 00:00:00，且必须和EndTime为相同月份，不支持跨月查询，例 2018-09-01 00:00:00
+        :param BeginTime: 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09-03 03:01:45，EndTime 为 2018-09-25 12:01:45，查询结果是 2018 年 9 月数据。
         :type BeginTime: str
-        :param EndTime: 目前只支持传当月最后一天 23:59:59，且必须和BeginTime为相同月份，不支持跨月查询，例 2018-09-30 23:59:59
+        :param EndTime: 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09-03 03:01:45，EndTime 为 2018-09-25 12:01:45，查询结果是 2018 年 9 月数据。
         :type EndTime: str
         :param Limit: 每次获取数据量
         :type Limit: int
@@ -2081,9 +2081,9 @@ class DescribeCostSummaryByRegionRequest(AbstractModel):
         """
         :param PayerUin: 查询账单数据的用户UIN
         :type PayerUin: str
-        :param BeginTime: 目前只支持传当月1号 00:00:00，且必须和EndTime为相同月份，不支持跨月查询，例 2018-09-01 00:00:00
+        :param BeginTime: 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09-03 03:01:45，EndTime 为 2018-09-25 12:01:45，查询结果是 2018 年 9 月数据。
         :type BeginTime: str
-        :param EndTime: 目前只支持传当月最后一天 23:59:59，且必须和BeginTime为相同月份，不支持跨月查询，例 2018-09-30 23:59:59
+        :param EndTime: 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09-03 03:01:45，EndTime 为 2018-09-25 12:01:45，查询结果是 2018 年 9 月数据。
         :type EndTime: str
         :param Limit: 每次获取数据量
         :type Limit: int
@@ -2159,9 +2159,9 @@ class DescribeCostSummaryByResourceRequest(AbstractModel):
         """
         :param PayerUin: 查询账单数据的用户UIN
         :type PayerUin: str
-        :param BeginTime: 目前只支持传当月1号 00:00:00，且必须和EndTime为相同月份，不支持跨月查询，例 2018-09-01 00:00:00
+        :param BeginTime: 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09-03 03:01:45，EndTime 为 2018-09-25 12:01:45，查询结果是 2018 年 9 月数据。
         :type BeginTime: str
-        :param EndTime: 目前只支持传当月最后一天 23:59:59，且必须和BeginTime为相同月份，不支持跨月查询，例 2018-09-30 23:59:59
+        :param EndTime: 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09-03 03:01:45，EndTime 为 2018-09-25 12:01:45，查询结果是 2018 年 9 月数据。
         :type EndTime: str
         :param Limit: 每次获取数据量
         :type Limit: int

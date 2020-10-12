@@ -1434,6 +1434,7 @@ class CreateScdnLogTaskRequest(AbstractModel):
 Mode 映射如下：
   waf = "Web攻击"
   cc = "CC攻击"
+  bot = "Bot攻击"
         :type Mode: str
         :param StartTime: 查询起始时间，如：2018-09-04 10:40:00，返回结果大于等于指定时间
         :type StartTime: str
@@ -1458,11 +1459,15 @@ AttackType 映射如下:
   trojan_horse = "木马后门攻击"
   csrf = "CSRF攻击"
   malicious_file_upload= '恶意文件上传'
+  js = "JS主动探测"
+  cookie = "Cookie指纹"
         :type AttackType: str
         :param DefenceMode: 指定执行动作, 不填默认查询全部执行动作
 DefenceMode 映射如下：
   observe = '观察模式'
   intercept = '拦截模式'
+  captcha = "验证码"
+  redirect = "重定向"
         :type DefenceMode: str
         :param Ip: 不填为全部ip
         :type Ip: str
@@ -1632,6 +1637,44 @@ class DeleteClsLogTopicResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteScdnDomainRequest(AbstractModel):
+    """DeleteScdnDomain请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Domain: 域名
+        :type Domain: str
+        """
+        self.Domain = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+
+
+class DeleteScdnDomainResponse(AbstractModel):
+    """DeleteScdnDomain返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 创建结果，Success表示成功
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
 
 
@@ -4686,6 +4729,42 @@ class ListClsTopicDomainsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ListScdnLogTasksRequest(AbstractModel):
+    """ListScdnLogTasks请求参数结构体
+
+    """
+
+
+class ListScdnLogTasksResponse(AbstractModel):
+    """ListScdnLogTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskList: 日志下载任务详情
+        :type TaskList: list of ScdnLogTaskDetail
+        :param TotalCount: 查询到的下载任务的总数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskList = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TaskList") is not None:
+            self.TaskList = []
+            for item in params.get("TaskList"):
+                obj = ScdnLogTaskDetail()
+                obj._deserialize(item)
+                self.TaskList.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class ListTopDataRequest(AbstractModel):
     """ListTopData请求参数结构体
 
@@ -6225,6 +6304,88 @@ class RuleQueryString(AbstractModel):
         self.Switch = params.get("Switch")
         self.Action = params.get("Action")
         self.Value = params.get("Value")
+
+
+class ScdnLogTaskDetail(AbstractModel):
+    """SCDN日志事件详细信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Domain: scdn域名
+        :type Domain: str
+        :param Mode: 防护类型
+        :type Mode: str
+        :param StartTime: 查询任务开始时间
+        :type StartTime: str
+        :param EndTime: 查询任务结束时间
+        :type EndTime: str
+        :param CreateTime: 任务创建时间
+        :type CreateTime: str
+        :param DownloadUrl: 日志包下载链接
+成功返回下载链接，其他情况返回'-'
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DownloadUrl: str
+        :param Status: 任务状态
+created->任务已经创建
+processing->任务正在执行
+done->任务执行成功
+failed->任务执行失败
+no-log->没有日志产生
+        :type Status: str
+        :param TaskID: 日志任务唯一id
+        :type TaskID: str
+        :param AttackType: 攻击类型, 可以为"all"
+AttackType映射如下:
+  other = '未知类型'
+  malicious_scan = "恶意扫描"
+  sql_inject = "SQL注入攻击"
+  xss = "XSS攻击"
+  cmd_inject = "命令注入攻击"
+  ldap_inject = "LDAP注入攻击"
+  ssi_inject = "SSI注入攻击"
+  xml_inject = "XML注入攻击"
+  web_service = "WEB服务漏洞攻击"
+  web_app = "WEB应用漏洞攻击"
+  path_traversal = "路径跨越攻击"
+  illegal_access_core_file = "核心文件非法访问"
+  file_upload = "文件上传攻击"
+  trojan_horse = "木马后门攻击"
+  csrf = "CSRF攻击"
+  custom_policy = "自定义策略"
+  ai_engine= 'AI引擎检出'
+  malicious_file_upload= '恶意文件上传'
+        :type AttackType: str
+        :param DefenceMode: 防御模式,可以为"all"
+DefenceMode映射如下：
+  observe = '观察模式'
+  intercept = '防御模式'
+        :type DefenceMode: str
+        """
+        self.Domain = None
+        self.Mode = None
+        self.StartTime = None
+        self.EndTime = None
+        self.CreateTime = None
+        self.DownloadUrl = None
+        self.Status = None
+        self.TaskID = None
+        self.AttackType = None
+        self.DefenceMode = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.Mode = params.get("Mode")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.CreateTime = params.get("CreateTime")
+        self.DownloadUrl = params.get("DownloadUrl")
+        self.Status = params.get("Status")
+        self.TaskID = params.get("TaskID")
+        self.AttackType = params.get("AttackType")
+        self.DefenceMode = params.get("DefenceMode")
 
 
 class ScdnTopData(AbstractModel):

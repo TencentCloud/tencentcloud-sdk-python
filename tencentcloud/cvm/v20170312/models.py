@@ -1428,7 +1428,7 @@ duration
 类型：Integer
 计量单位：秒
 必选：否
-可选项：31536000 (1年) | 94608000（3年）
+可选项：31536000 (1年)
         :type Filters: list of Filter
         """
         self.Filters = None
@@ -4346,11 +4346,11 @@ class ReservedInstanceTypeItem(AbstractModel):
         :type Cpu: int
         :param Memory: 内存大小。
         :type Memory: int
-        :param Gpu: GPU核数。
+        :param Gpu: GPU数量。
         :type Gpu: int
-        :param Fpga: FPGA核数。
+        :param Fpga: FPGA数量。
         :type Fpga: int
-        :param StorageBlock: 存储块数。
+        :param StorageBlock: 本地存储块数量。
         :type StorageBlock: int
         :param NetworkCard: 网卡数。
         :type NetworkCard: int

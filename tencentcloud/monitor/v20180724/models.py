@@ -863,10 +863,10 @@ class DescribeBasicAlarmListAlarms(AbstractModel):
         :param ProjectName: 项目名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectName: str
-        :param Status: 告警状态ID
+        :param Status: 告警状态ID，0表示未恢复；1表示已恢复；2,3,5表示数据不足；4表示已失效
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
-        :param AlarmStatus: 告警状态
+        :param AlarmStatus: 告警状态，ALARM表示未恢复；OK表示已恢复；NO_DATA表示数据不足；NO_CONF表示已失效
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmStatus: str
         :param GroupId: 策略组ID
