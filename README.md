@@ -98,7 +98,8 @@ try:
 
     # 打印日志按照如下方式，也可以设置log_format，默认为 '%(asctime)s %(process)d %(filename)s L%(lineno)s %(levelname)s %(message)s'
     # client.set_stream_logger(stream=sys.stdout, level=logging.DEBUG)
-    # client.set_file_logger(file_path="/log", level=logging.DEBUG)
+    # client.set_file_logger(file_path="/log", level=logging.DEBUG) 日志文件滚动输出，最多10个文件，单个文件最大512MB
+    # client.set_default_logger() 去除所有log handler，默认不输出
 
     # 实例化一个cvm实例信息查询请求对象,每个接口都会对应一个request对象。
     req = models.DescribeInstancesRequest()
