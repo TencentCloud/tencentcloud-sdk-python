@@ -855,6 +855,55 @@ class DescribeDatabaseACLResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDownloadFileRequest(AbstractModel):
+    """DescribeDownloadFile请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CodeUri: 代码uri
+        :type CodeUri: str
+        """
+        self.CodeUri = None
+
+
+    def _deserialize(self, params):
+        self.CodeUri = params.get("CodeUri")
+
+
+class DescribeDownloadFileResponse(AbstractModel):
+    """DescribeDownloadFile返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FilePath: 文件路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilePath: str
+        :param CustomKey: 加密key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomKey: str
+        :param DownloadUrl: 下载链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DownloadUrl: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FilePath = None
+        self.CustomKey = None
+        self.DownloadUrl = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FilePath = params.get("FilePath")
+        self.CustomKey = params.get("CustomKey")
+        self.DownloadUrl = params.get("DownloadUrl")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeEndUserLoginStatisticRequest(AbstractModel):
     """DescribeEndUserLoginStatistic请求参数结构体
 

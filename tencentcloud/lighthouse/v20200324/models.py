@@ -43,6 +43,8 @@ class Blueprint(AbstractModel):
         :type ImageUrl: str
         :param RequiredSystemDiskSize: 镜像所需系统盘大小
         :type RequiredSystemDiskSize: int
+        :param BlueprintState: 镜像状态，取值：ONLINE、OFFLINE
+        :type BlueprintState: str
         """
         self.BlueprintId = None
         self.DisplayTitle = None
@@ -54,6 +56,7 @@ class Blueprint(AbstractModel):
         self.BlueprintType = None
         self.ImageUrl = None
         self.RequiredSystemDiskSize = None
+        self.BlueprintState = None
 
 
     def _deserialize(self, params):
@@ -67,6 +70,7 @@ class Blueprint(AbstractModel):
         self.BlueprintType = params.get("BlueprintType")
         self.ImageUrl = params.get("ImageUrl")
         self.RequiredSystemDiskSize = params.get("RequiredSystemDiskSize")
+        self.BlueprintState = params.get("BlueprintState")
 
 
 class Bundle(AbstractModel):

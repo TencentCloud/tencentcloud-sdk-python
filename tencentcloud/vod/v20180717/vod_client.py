@@ -1547,7 +1547,9 @@ class VodClient(AbstractClient):
 
 
     def DescribeReviewDetails(self, request):
-        """该接口返回查询时间范围内每天使用的视频内容审核时长数据，单位： 秒。
+        """<b>本接口已不推荐使用，用 [DescribeMediaProcessUsageData](/document/product/266/41464) 替代</b>
+
+        该接口返回查询时间范围内每天使用的视频内容审核时长数据，单位： 秒。
 
         1. 可以查询最近365天内的视频内容审核时长统计数据。
         2. 查询时间跨度不超过90天。

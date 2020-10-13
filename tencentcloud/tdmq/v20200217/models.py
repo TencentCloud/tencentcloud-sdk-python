@@ -529,6 +529,61 @@ class DescribeEnvironmentAttributesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeEnvironmentRolesRequest(AbstractModel):
+    """DescribeEnvironmentRoles请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvironmentId: 环境（命名空间）
+        :type EnvironmentId: str
+        :param Offset: 起始下标，不填默认为0。
+        :type Offset: int
+        :param Limit: 返回数量，不填则默认为10，最大值为20。
+        :type Limit: int
+        """
+        self.EnvironmentId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeEnvironmentRolesResponse(AbstractModel):
+    """DescribeEnvironmentRoles返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 记录数。
+        :type TotalCount: int
+        :param EnvironmentRoleSets: 环境角色集合。
+        :type EnvironmentRoleSets: list of EnvironmentRole
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.EnvironmentRoleSets = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("EnvironmentRoleSets") is not None:
+            self.EnvironmentRoleSets = []
+            for item in params.get("EnvironmentRoleSets"):
+                obj = EnvironmentRole()
+                obj._deserialize(item)
+                self.EnvironmentRoleSets.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeEnvironmentsRequest(AbstractModel):
     """DescribeEnvironments请求参数结构体
 
@@ -817,6 +872,43 @@ class Environment(AbstractModel):
         self.EnvironmentId = params.get("EnvironmentId")
         self.Remark = params.get("Remark")
         self.MsgTTL = params.get("MsgTTL")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+
+
+class EnvironmentRole(AbstractModel):
+    """环境角色集合
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvironmentId: 环境（命名空间）。
+        :type EnvironmentId: str
+        :param RoleName: 角色名称。
+        :type RoleName: str
+        :param Permissions: 授权项，最多只能包含produce、consume两项的非空字符串数组。
+        :type Permissions: list of str
+        :param RoleDescribe: 角色描述。
+        :type RoleDescribe: str
+        :param CreateTime: 创建时间。
+        :type CreateTime: str
+        :param UpdateTime: 更新时间。
+        :type UpdateTime: str
+        """
+        self.EnvironmentId = None
+        self.RoleName = None
+        self.Permissions = None
+        self.RoleDescribe = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.RoleName = params.get("RoleName")
+        self.Permissions = params.get("Permissions")
+        self.RoleDescribe = params.get("RoleDescribe")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
 

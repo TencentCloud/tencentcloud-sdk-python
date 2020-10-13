@@ -7109,8 +7109,13 @@ class DescribeMediaProcessUsageDataRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: 结束日期，需大于等于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
         :type EndTime: str
-        :param Type: 查询视频处理任务类型，默认查询转码。目前只支持转码类型数据查询。
-<li>Transcode: 转码</li>
+        :param Type: 查询视频处理任务类型，目前支持的任务类型包括：
+<li> Transcoding: 普通转码</li>
+<li> Transcoding-TESHD: 极速高清转码</li>
+<li> Editing: 视频编辑</li>
+<li> AdaptiveBitrateStreaming: 自适应码流</li>
+<li> ContentAudit: 内容审核</li>
+<li>Transcode: 转码，包含普通转码、极速高清和视频编辑（不推荐使用）</li>
         :type Type: str
         :param SubAppId: 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
@@ -15362,11 +15367,14 @@ class TaskStatData(AbstractModel):
     def __init__(self):
         """
         :param TaskType: 任务类型。
-<li>Transcode: 转码</li>
-<li>Snapshot: 截图</li>
+<li> Transcoding: 普通转码</li>
+<li> Transcoding-TESHD: 极速高清转码</li>
+<li> Editing: 视频编辑</li>
+<li> AdaptiveBitrateStreaming: 自适应码流</li>
+<li> ContentAudit: 内容审核</li>
+<li>Transcode: 转码，包含普通转码、极速高清和视频编辑（不推荐使用）</li>
         :type TaskType: str
-        :param Summary: 任务数统计数据概览。
-<li>Transcode: 用量单位为秒</li>
+        :param Summary: 任务数统计数据概览，用量单位为秒。
         :type Summary: list of TaskStatDataItem
         :param Details: 不同规格任务统计数据详情。
 转码规格：

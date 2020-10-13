@@ -333,6 +333,34 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDownloadFile(self, request):
+        """获取下载文件信息
+
+        :param request: Request instance for DescribeDownloadFile.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeDownloadFileRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeDownloadFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDownloadFile", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDownloadFileResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeEndUserLoginStatistic(self, request):
         """获取环境终端用户新增与登录信息
 

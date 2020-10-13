@@ -17,28 +17,28 @@ import json
 
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.common.abstract_client import AbstractClient
-from tencentcloud.tdmq.v20200217 import models
+from tencentcloud.cfw.v20190904 import models
 
 
-class TdmqClient(AbstractClient):
-    _apiVersion = '2020-02-17'
-    _endpoint = 'tdmq.tencentcloudapi.com'
+class CfwClient(AbstractClient):
+    _apiVersion = '2019-09-04'
+    _endpoint = 'cfw.tencentcloudapi.com'
 
 
-    def CreateEnvironment(self, request):
-        """用于在用户账户下创建消息队列 Tdmq环境（命名空间）
+    def CreateAcRules(self, request):
+        """创建规则
 
-        :param request: Request instance for CreateEnvironment.
-        :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateEnvironmentRequest`
-        :rtype: :class:`tencentcloud.tdmq.v20200217.models.CreateEnvironmentResponse`
+        :param request: Request instance for CreateAcRules.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.CreateAcRulesRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.CreateAcRulesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateEnvironment", params)
+            body = self.call("CreateAcRules", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateEnvironmentResponse()
+                model = models.CreateAcRulesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -53,20 +53,20 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateSubscription(self, request):
-        """创建一个主题的订阅关系
+    def DeleteAcRule(self, request):
+        """删除规则
 
-        :param request: Request instance for CreateSubscription.
-        :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateSubscriptionRequest`
-        :rtype: :class:`tencentcloud.tdmq.v20200217.models.CreateSubscriptionResponse`
+        :param request: Request instance for DeleteAcRule.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DeleteAcRuleRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DeleteAcRuleResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSubscription", params)
+            body = self.call("DeleteAcRule", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateSubscriptionResponse()
+                model = models.DeleteAcRuleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -81,20 +81,20 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateTopic(self, request):
-        """新增指定分区、类型的消息主题
+    def DeleteAllAccessControlRule(self, request):
+        """全部删除规则
 
-        :param request: Request instance for CreateTopic.
-        :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateTopicRequest`
-        :rtype: :class:`tencentcloud.tdmq.v20200217.models.CreateTopicResponse`
+        :param request: Request instance for DeleteAllAccessControlRule.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DeleteAllAccessControlRuleRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DeleteAllAccessControlRuleResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTopic", params)
+            body = self.call("DeleteAllAccessControlRule", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateTopicResponse()
+                model = models.DeleteAllAccessControlRuleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -109,20 +109,20 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteEnvironments(self, request):
-        """批量删除租户下的环境
+    def DescribeAcLists(self, request):
+        """访问控制列表
 
-        :param request: Request instance for DeleteEnvironments.
-        :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteEnvironmentsRequest`
-        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DeleteEnvironmentsResponse`
+        :param request: Request instance for DescribeAcLists.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeAcListsRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeAcListsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteEnvironments", params)
+            body = self.call("DescribeAcLists", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteEnvironmentsResponse()
+                model = models.DescribeAcListsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -137,20 +137,20 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteSubscriptions(self, request):
-        """删除订阅关系
+    def DescribeNatRuleOverview(self, request):
+        """nat规则列表概况
 
-        :param request: Request instance for DeleteSubscriptions.
-        :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteSubscriptionsRequest`
-        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DeleteSubscriptionsResponse`
+        :param request: Request instance for DescribeNatRuleOverview.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeNatRuleOverviewRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeNatRuleOverviewResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteSubscriptions", params)
+            body = self.call("DescribeNatRuleOverview", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteSubscriptionsResponse()
+                model = models.DescribeNatRuleOverviewResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -165,20 +165,20 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteTopics(self, request):
-        """批量删除topics
+    def DescribeRuleOverview(self, request):
+        """查询规则列表概况
 
-        :param request: Request instance for DeleteTopics.
-        :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteTopicsRequest`
-        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DeleteTopicsResponse`
+        :param request: Request instance for DescribeRuleOverview.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeRuleOverviewRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeRuleOverviewResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteTopics", params)
+            body = self.call("DescribeRuleOverview", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteTopicsResponse()
+                model = models.DescribeRuleOverviewResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -193,20 +193,20 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeEnvironmentAttributes(self, request):
-        """获取指定环境的属性
+    def DescribeSwitchLists(self, request):
+        """防火墙开关列表
 
-        :param request: Request instance for DescribeEnvironmentAttributes.
-        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeEnvironmentAttributesRequest`
-        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeEnvironmentAttributesResponse`
+        :param request: Request instance for DescribeSwitchLists.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeSwitchListsRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeSwitchListsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEnvironmentAttributes", params)
+            body = self.call("DescribeSwitchLists", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeEnvironmentAttributesResponse()
+                model = models.DescribeSwitchListsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -221,20 +221,20 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeEnvironmentRoles(self, request):
-        """获取环境角色列表
+    def DescribeSyncAssetStatus(self, request):
+        """同步资产状态查询-互联网&VPC
 
-        :param request: Request instance for DescribeEnvironmentRoles.
-        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeEnvironmentRolesRequest`
-        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeEnvironmentRolesResponse`
+        :param request: Request instance for DescribeSyncAssetStatus.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeSyncAssetStatusRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeSyncAssetStatusResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEnvironmentRoles", params)
+            body = self.call("DescribeSyncAssetStatus", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeEnvironmentRolesResponse()
+                model = models.DescribeSyncAssetStatusResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -249,20 +249,20 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeEnvironments(self, request):
-        """获取租户下环境列表
+    def DescribeTableStatus(self, request):
+        """查询规则表状态
 
-        :param request: Request instance for DescribeEnvironments.
-        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeEnvironmentsRequest`
-        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeEnvironmentsResponse`
+        :param request: Request instance for DescribeTableStatus.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeTableStatusRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeTableStatusResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEnvironments", params)
+            body = self.call("DescribeTableStatus", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeEnvironmentsResponse()
+                model = models.DescribeTableStatusResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -277,20 +277,20 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeProducers(self, request):
-        """获取生产者列表，仅显示在线的生产者
+    def DescribeVpcRuleOverview(self, request):
+        """vpc规则列表概况
 
-        :param request: Request instance for DescribeProducers.
-        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeProducersRequest`
-        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeProducersResponse`
+        :param request: Request instance for DescribeVpcRuleOverview.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeVpcRuleOverviewRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeVpcRuleOverviewResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProducers", params)
+            body = self.call("DescribeVpcRuleOverview", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeProducersResponse()
+                model = models.DescribeVpcRuleOverviewResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -305,20 +305,20 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeSubscriptions(self, request):
-        """查询指定环境和主题下的订阅者列表
+    def ModifyAcRule(self, request):
+        """修改规则
 
-        :param request: Request instance for DescribeSubscriptions.
-        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeSubscriptionsRequest`
-        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeSubscriptionsResponse`
+        :param request: Request instance for ModifyAcRule.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyAcRuleRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.ModifyAcRuleResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSubscriptions", params)
+            body = self.call("ModifyAcRule", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeSubscriptionsResponse()
+                model = models.ModifyAcRuleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -333,20 +333,20 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeTopics(self, request):
-        """获取环境下主题列表
+    def ModifyAllRuleStatus(self, request):
+        """启用停用全部规则
 
-        :param request: Request instance for DescribeTopics.
-        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeTopicsRequest`
-        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeTopicsResponse`
+        :param request: Request instance for ModifyAllRuleStatus.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyAllRuleStatusRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.ModifyAllRuleStatusResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTopics", params)
+            body = self.call("ModifyAllRuleStatus", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeTopicsResponse()
+                model = models.ModifyAllRuleStatusResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -361,20 +361,20 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyEnvironmentAttributes(self, request):
-        """修改指定环境的属性值
+    def ModifyAllSwitchStatus(self, request):
+        """一键开启和关闭
 
-        :param request: Request instance for ModifyEnvironmentAttributes.
-        :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyEnvironmentAttributesRequest`
-        :rtype: :class:`tencentcloud.tdmq.v20200217.models.ModifyEnvironmentAttributesResponse`
+        :param request: Request instance for ModifyAllSwitchStatus.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyAllSwitchStatusRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.ModifyAllSwitchStatusResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyEnvironmentAttributes", params)
+            body = self.call("ModifyAllSwitchStatus", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyEnvironmentAttributesResponse()
+                model = models.ModifyAllSwitchStatusResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -389,20 +389,20 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyTopic(self, request):
-        """修改主题备注和分区数
+    def ModifyItemSwitchStatus(self, request):
+        """修改单个防火墙开关
 
-        :param request: Request instance for ModifyTopic.
-        :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyTopicRequest`
-        :rtype: :class:`tencentcloud.tdmq.v20200217.models.ModifyTopicResponse`
+        :param request: Request instance for ModifyItemSwitchStatus.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyItemSwitchStatusRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.ModifyItemSwitchStatusResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyTopic", params)
+            body = self.call("ModifyItemSwitchStatus", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyTopicResponse()
+                model = models.ModifyItemSwitchStatusResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -417,20 +417,76 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ResetMsgSubOffsetByTimestamp(self, request):
-        """根据时间戳进行消息回溯，精确到毫秒
+    def ModifySequenceRules(self, request):
+        """修改规则执行顺序
 
-        :param request: Request instance for ResetMsgSubOffsetByTimestamp.
-        :type request: :class:`tencentcloud.tdmq.v20200217.models.ResetMsgSubOffsetByTimestampRequest`
-        :rtype: :class:`tencentcloud.tdmq.v20200217.models.ResetMsgSubOffsetByTimestampResponse`
+        :param request: Request instance for ModifySequenceRules.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.ModifySequenceRulesRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.ModifySequenceRulesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ResetMsgSubOffsetByTimestamp", params)
+            body = self.call("ModifySequenceRules", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ResetMsgSubOffsetByTimestampResponse()
+                model = models.ModifySequenceRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyTableStatus(self, request):
+        """修改规则表状态
+
+        :param request: Request instance for ModifyTableStatus.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyTableStatusRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.ModifyTableStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyTableStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyTableStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RunSyncAsset(self, request):
+        """同步资产-互联网&VPC
+
+        :param request: Request instance for RunSyncAsset.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.RunSyncAssetRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.RunSyncAssetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RunSyncAsset", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RunSyncAssetResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

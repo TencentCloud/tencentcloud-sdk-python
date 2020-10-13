@@ -507,9 +507,9 @@ class CertInfo(AbstractModel):
         :type CreateTime: str
         :param HttpsCrt: 证书内容。
         :type HttpsCrt: str
-        :param CertType: 证书类型:
-0：腾讯云托管证书。
-1：用户添加证书。
+        :param CertType: 证书类型。
+0：用户添加证书，
+1：腾讯云托管证书。
         :type CertType: int
         :param CertExpireTime: 证书过期时间，UTC 格式。
         :type CertExpireTime: str

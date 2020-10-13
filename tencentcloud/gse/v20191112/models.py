@@ -83,6 +83,12 @@ class Asset(AbstractModel):
         :type CreateTime: str
         :param BindFleetNum: 生成包绑定的Fleet个数，最小值为0
         :type BindFleetNum: int
+        :param AssetArn: 生成包的全局唯一资源标识符
+        :type AssetArn: str
+        :param ImageId: 生成包支持的操作系统镜像id
+        :type ImageId: str
+        :param OsType: 生成包支持的操作系统类型
+        :type OsType: str
         """
         self.AssetId = None
         self.AssetName = None
@@ -92,6 +98,9 @@ class Asset(AbstractModel):
         self.Size = None
         self.CreateTime = None
         self.BindFleetNum = None
+        self.AssetArn = None
+        self.ImageId = None
+        self.OsType = None
 
 
     def _deserialize(self, params):
@@ -103,6 +112,9 @@ class Asset(AbstractModel):
         self.Size = params.get("Size")
         self.CreateTime = params.get("CreateTime")
         self.BindFleetNum = params.get("BindFleetNum")
+        self.AssetArn = params.get("AssetArn")
+        self.ImageId = params.get("ImageId")
+        self.OsType = params.get("OsType")
 
 
 class AssetCredentials(AbstractModel):
@@ -277,12 +289,15 @@ class CreateAssetRequest(AbstractModel):
         :type AssetRegion: str
         :param OperateSystem: 生成包可运行的操作系统，暂时只有CentOS7.16
         :type OperateSystem: str
+        :param ImageId: 生成包支持的操作系统镜像id
+        :type ImageId: str
         """
         self.BucketKey = None
         self.AssetName = None
         self.AssetVersion = None
         self.AssetRegion = None
         self.OperateSystem = None
+        self.ImageId = None
 
 
     def _deserialize(self, params):
@@ -291,6 +306,7 @@ class CreateAssetRequest(AbstractModel):
         self.AssetVersion = params.get("AssetVersion")
         self.AssetRegion = params.get("AssetRegion")
         self.OperateSystem = params.get("OperateSystem")
+        self.ImageId = params.get("ImageId")
 
 
 class CreateAssetResponse(AbstractModel):
@@ -302,15 +318,19 @@ class CreateAssetResponse(AbstractModel):
         """
         :param AssetId: 生成包ID
         :type AssetId: str
+        :param AssetArn: 生成包的全局唯一资源标识符
+        :type AssetArn: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.AssetId = None
+        self.AssetArn = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.AssetId = params.get("AssetId")
+        self.AssetArn = params.get("AssetArn")
         self.RequestId = params.get("RequestId")
 
 
@@ -837,7 +857,7 @@ class DescribeAssetsRequest(AbstractModel):
         :type Offset: int
         :param Limit: 前端界面每页显示的最大条数，不超过100
         :type Limit: int
-        :param Filter: 搜索条件，支持包ID或包名字过滤
+        :param Filter: 搜索条件，支持包ID或包名字过滤，该字段会逐步废弃，建议使用 Filters 字段
         :type Filter: str
         """
         self.AssetRegion = None
