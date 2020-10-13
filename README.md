@@ -62,6 +62,9 @@ except TencentCloudSDKException as err:
 
 ```python
 # -*- coding: utf-8 -*-
+import sys
+import logging
+
 from tencentcloud.common import credential
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 # 导入对应产品模块的client models。
@@ -92,6 +95,10 @@ try:
 
     # 实例化要请求产品(以cvm为例)的client对象，clientProfile是可选的。
     client = cvm_client.CvmClient(cred, "ap-shanghai", clientProfile)
+
+    # 打印日志按照如下方式，也可以设置log_format，默认为 '%(asctime)s %(process)d %(filename)s L%(lineno)s %(levelname)s %(message)s'
+    # client.set_stream_logger(stream=sys.stdout, level=logging.DEBUG)
+    # client.set_file_logger(file_path="/log", level=logging.DEBUG)
 
     # 实例化一个cvm实例信息查询请求对象,每个接口都会对应一个request对象。
     req = models.DescribeInstancesRequest()
