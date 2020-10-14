@@ -305,6 +305,34 @@ class PartnersClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAgentSelfPayDeals(self, request):
+        """可以查询代理商下指定客户的自付订单
+
+        :param request: Request instance for DescribeAgentSelfPayDeals.
+        :type request: :class:`tencentcloud.partners.v20180321.models.DescribeAgentSelfPayDealsRequest`
+        :rtype: :class:`tencentcloud.partners.v20180321.models.DescribeAgentSelfPayDealsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAgentSelfPayDeals", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAgentSelfPayDealsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeClientBalance(self, request):
         """为合作伙伴提供查询客户余额能力。调用者必须是合作伙伴，只能查询自己名下客户余额
 

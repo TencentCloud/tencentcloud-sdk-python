@@ -853,10 +853,10 @@ class ApplyWithdrawalRequest(AbstractModel):
         :param SubAppId: 聚鑫计费SubAppId，代表子商户
         :type SubAppId: str
         :param SettleAcctNo: 用于提现
-<敏感信息>加密详见《商户端接口敏感信息加密说明》
+<敏感信息>加密详见<a href="https://cloud.tencent.com/document/product/1122/48979" target="_blank">《商户端接口敏感信息加密说明》</a>
         :type SettleAcctNo: str
         :param SettleAcctName: 结算账户户名
-<敏感信息>加密详见《商户端接口敏感信息加密说明》
+<敏感信息>加密详见<a href="https://cloud.tencent.com/document/product/1122/48979" target="_blank">《商户端接口敏感信息加密说明》</a>
         :type SettleAcctName: str
         :param CurrencyType: 币种 RMB
         :type CurrencyType: str
@@ -869,7 +869,7 @@ class ApplyWithdrawalRequest(AbstractModel):
         :param IdType: 会员证件类型
         :type IdType: str
         :param IdCode: 会员证件号码
-<敏感信息>加密详见《商户端接口敏感信息加密说明》
+<敏感信息>加密详见<a href="https://cloud.tencent.com/document/product/1122/48979" target="_blank">《商户端接口敏感信息加密说明》</a>
         :type IdCode: str
         :param MidasSecretId: 聚鑫分配的安全ID
         :type MidasSecretId: str
@@ -1029,10 +1029,10 @@ class BindAcctRequest(AbstractModel):
 每个结算账户每天只能使用一次小额转账验证
         :type BindType: int
         :param SettleAcctNo: 用于提现
-<敏感信息>加密详见《商户端接口敏感信息加密说明》
+<敏感信息>加密详见<a href="https://cloud.tencent.com/document/product/1122/48979" target="_blank">《商户端接口敏感信息加密说明》</a>
         :type SettleAcctNo: str
         :param SettleAcctName: 结算账户户名
-<敏感信息>加密详见《商户端接口敏感信息加密说明》
+<敏感信息>加密详见<a href="https://cloud.tencent.com/document/product/1122/48979" target="_blank">《商户端接口敏感信息加密说明》</a>
         :type SettleAcctName: str
         :param SettleAcctType: 1 – 本行账户
 2 – 他行账户
@@ -1040,7 +1040,7 @@ class BindAcctRequest(AbstractModel):
         :param IdType: 证件类型，见《证件类型》表
         :type IdType: str
         :param IdCode: 证件号码
-<敏感信息>加密详见《商户端接口敏感信息加密说明》
+<敏感信息>加密详见<a href="https://cloud.tencent.com/document/product/1122/48979" target="_blank">《商户端接口敏感信息加密说明》</a>
         :type IdCode: str
         :param AcctBranchName: 开户行名称
         :type AcctBranchName: str
@@ -1050,7 +1050,7 @@ class BindAcctRequest(AbstractModel):
         :type MidasSignature: str
         :param Mobile: 用于短信验证
 BindType==2时必填
-<敏感信息>加密详见《商户端接口敏感信息加密说明》
+<敏感信息>加密详见<a href="https://cloud.tencent.com/document/product/1122/48979" target="_blank">《商户端接口敏感信息加密说明》</a>
         :type Mobile: str
         :param CnapsBranchId: 大小额行号，超级网银行号和大小额行号
 二选一
@@ -1414,7 +1414,7 @@ class CheckAcctRequest(AbstractModel):
 每个结算账户每天只能使用一次小额转账验证
         :type BindType: int
         :param SettleAcctNo: 结算账户账号
-<敏感信息>加密详见《商户端接口敏感信息加密说明》
+<敏感信息>加密详见<a href="https://cloud.tencent.com/document/product/1122/48979" target="_blank">《商户端接口敏感信息加密说明》</a>
         :type SettleAcctNo: str
         :param MidasSecretId: 聚鑫分配的安全ID
         :type MidasSecretId: str
@@ -1699,13 +1699,13 @@ class CreateAcctRequest(AbstractModel):
         :param Address: 子商户地址
         :type Address: str
         :param Contact: 子商户联系人
-<敏感信息>加密详见《商户端接口敏感信息加密说明》
+<敏感信息>加密详见<a href="https://cloud.tencent.com/document/product/1122/48979" target="_blank">《商户端接口敏感信息加密说明》</a>
         :type Contact: str
         :param Mobile: 联系人手机号
-<敏感信息>加密详见《商户端接口敏感信息加密说明》
+<敏感信息>加密详见<a href="https://cloud.tencent.com/document/product/1122/48979" target="_blank">《商户端接口敏感信息加密说明》</a>
         :type Mobile: str
         :param Email: 邮箱 
-<敏感信息>加密详见《商户端接口敏感信息加密说明》
+<敏感信息>加密详见<a href="https://cloud.tencent.com/document/product/1122/48979" target="_blank">《商户端接口敏感信息加密说明》</a>
         :type Email: str
         :param MidasSecretId: 聚鑫分配的安全ID
         :type MidasSecretId: str
@@ -1724,10 +1724,10 @@ merchant: 商户子账户
 缺省: general
         :type SubMerchantMemberType: str
         :param SubMerchantKey: 子商户密钥
-<敏感信息>加密详见《商户端接口敏感信息加密说明》
+<敏感信息>加密详见<a href="https://cloud.tencent.com/document/product/1122/48979" target="_blank">《商户端接口敏感信息加密说明》</a>
         :type SubMerchantKey: str
         :param SubMerchantPrivateKey: 子商户私钥
-<敏感信息>加密详见《商户端接口敏感信息加密说明》
+<敏感信息>加密详见<a href="https://cloud.tencent.com/document/product/1122/48979" target="_blank">《商户端接口敏感信息加密说明》</a>
         :type SubMerchantPrivateKey: str
         :param EncryptType: 敏感信息加密类型:
 RSA: rsa非对称加密，使用RSA-PKCS1-v1_5
@@ -8780,7 +8780,7 @@ class UnBindAcctRequest(AbstractModel):
         :param SubAppId: 聚鑫计费SubAppId，代表子商户
         :type SubAppId: str
         :param SettleAcctNo: 用于提现
-<敏感信息>加密详见《商户端接口敏感信息加密说明》
+<敏感信息>加密详见<a href="https://cloud.tencent.com/document/product/1122/48979" target="_blank">《商户端接口敏感信息加密说明》</a>
         :type SettleAcctNo: str
         :param MidasSecretId: 聚鑫分配的安全ID
         :type MidasSecretId: str

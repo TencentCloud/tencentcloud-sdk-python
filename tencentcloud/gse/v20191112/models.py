@@ -2996,7 +2996,7 @@ class InboundPermission(AbstractModel):
         """
         :param FromPort: 起始端口号，最小值1025
         :type FromPort: int
-        :param IpRange: IP 段范围，CIDR 方式划分
+        :param IpRange: IP 段范围，合法的 CIDR 地址类型，如所有IPv4来源：0.0.0.0/0
         :type IpRange: str
         :param Protocol: 协议类型：TCP或者UDP
         :type Protocol: str

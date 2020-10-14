@@ -92,6 +92,48 @@ class AccessPoint(AbstractModel):
         self.AvailablePortType = params.get("AvailablePortType")
 
 
+class BFDInfo(AbstractModel):
+    """BFD配置信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ProbeFailedTimes: 健康检查次数
+        :type ProbeFailedTimes: int
+        :param Interval: 健康检查间隔
+        :type Interval: int
+        """
+        self.ProbeFailedTimes = None
+        self.Interval = None
+
+
+    def _deserialize(self, params):
+        self.ProbeFailedTimes = params.get("ProbeFailedTimes")
+        self.Interval = params.get("Interval")
+
+
+class BGPStatus(AbstractModel):
+    """bgp状态信息
+
+    """
+
+    def __init__(self):
+        """
+        :param TencentAddressBgpState: 腾讯侧主互联IP BGP状态
+        :type TencentAddressBgpState: str
+        :param TencentBackupAddressBgpState: 腾讯侧备互联IP BGP状态
+        :type TencentBackupAddressBgpState: str
+        """
+        self.TencentAddressBgpState = None
+        self.TencentBackupAddressBgpState = None
+
+
+    def _deserialize(self, params):
+        self.TencentAddressBgpState = params.get("TencentAddressBgpState")
+        self.TencentBackupAddressBgpState = params.get("TencentBackupAddressBgpState")
+
+
 class BgpPeer(AbstractModel):
     """bgp参数，包括Asn，AuthKey
 
@@ -451,6 +493,46 @@ class DescribeAccessPointsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDirectConnectTunnelExtraRequest(AbstractModel):
+    """DescribeDirectConnectTunnelExtra请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DirectConnectTunnelId: 专用通道ID
+        :type DirectConnectTunnelId: str
+        """
+        self.DirectConnectTunnelId = None
+
+
+    def _deserialize(self, params):
+        self.DirectConnectTunnelId = params.get("DirectConnectTunnelId")
+
+
+class DescribeDirectConnectTunnelExtraResponse(AbstractModel):
+    """DescribeDirectConnectTunnelExtra返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DirectConnectTunnelExtra: 专用通道扩展信息
+        :type DirectConnectTunnelExtra: :class:`tencentcloud.dc.v20180410.models.DirectConnectTunnelExtra`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DirectConnectTunnelExtra = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DirectConnectTunnelExtra") is not None:
+            self.DirectConnectTunnelExtra = DirectConnectTunnelExtra()
+            self.DirectConnectTunnelExtra._deserialize(params.get("DirectConnectTunnelExtra"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDirectConnectTunnelsRequest(AbstractModel):
     """DescribeDirectConnectTunnels请求参数结构体
 
@@ -585,6 +667,72 @@ class DescribeDirectConnectsResponse(AbstractModel):
                 self.DirectConnectSet.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.AllSignLaw = params.get("AllSignLaw")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePublicDirectConnectTunnelRoutesRequest(AbstractModel):
+    """DescribePublicDirectConnectTunnelRoutes请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DirectConnectTunnelId: 专用通道ID
+        :type DirectConnectTunnelId: str
+        :param Filters: 过滤条件：
+route-type：路由类型，取值：BGP/STATIC
+route-subnet：路由cidr，取值如：192.68.1.0/24
+        :type Filters: list of Filter
+        :param Offset: 偏移量，默认为0
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100
+        :type Limit: int
+        """
+        self.DirectConnectTunnelId = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.DirectConnectTunnelId = params.get("DirectConnectTunnelId")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribePublicDirectConnectTunnelRoutesResponse(AbstractModel):
+    """DescribePublicDirectConnectTunnelRoutes返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Routes: 互联网通道路由列表
+        :type Routes: list of DirectConnectTunnelRoute
+        :param TotalCount: 记录总数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Routes = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Routes") is not None:
+            self.Routes = []
+            for item in params.get("Routes"):
+                obj = DirectConnectTunnelRoute()
+                obj._deserialize(item)
+                self.Routes.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -903,6 +1051,216 @@ REJECTED:拒绝
         self.SignLaw = params.get("SignLaw")
 
 
+class DirectConnectTunnelExtra(AbstractModel):
+    """专用通道扩展信息
+
+    """
+
+    def __init__(self):
+        """
+        :param DirectConnectTunnelId: 专用通道ID
+        :type DirectConnectTunnelId: str
+        :param DirectConnectId: 物理专线ID
+        :type DirectConnectId: str
+        :param State: 专用通道状态
+AVAILABLE:就绪或者已连接
+PENDING:申请中
+ALLOCATING:配置中
+ALLOCATED:配置完成
+ALTERING:修改中
+DELETING:删除中
+DELETED:删除完成
+COMFIRMING:待接受
+REJECTED:拒绝
+        :type State: str
+        :param DirectConnectOwnerAccount: 物理专线的拥有者，开发商账号 ID
+        :type DirectConnectOwnerAccount: str
+        :param OwnerAccount: 专用通道的拥有者，开发商账号 ID
+        :type OwnerAccount: str
+        :param NetworkType: 网络类型，分别为VPC、BMVPC、CCN
+ VPC：私有网络 ，BMVPC：黑石网络，CCN：云联网
+        :type NetworkType: str
+        :param NetworkRegion: VPC地域对应的网络名，如ap-guangzhou
+        :type NetworkRegion: str
+        :param VpcId: 私有网络统一 ID 或者黑石网络统一 ID
+        :type VpcId: str
+        :param DirectConnectGatewayId: 专线网关 ID
+        :type DirectConnectGatewayId: str
+        :param RouteType: BGP ：BGP路由 STATIC：静态 默认为 BGP 路由
+        :type RouteType: str
+        :param BgpPeer: 用户侧BGP，Asn，AuthKey
+        :type BgpPeer: :class:`tencentcloud.dc.v20180410.models.BgpPeer`
+        :param RouteFilterPrefixes: 用户侧网段地址
+        :type RouteFilterPrefixes: list of RouteFilterPrefix
+        :param PublicAddresses: 互联网通道公网网段地址
+        :type PublicAddresses: list of RouteFilterPrefix
+        :param Vlan: 专用通道的Vlan
+        :type Vlan: int
+        :param TencentAddress: 腾讯侧互联 IP
+        :type TencentAddress: str
+        :param TencentBackupAddress: 腾讯侧备用互联IP
+        :type TencentBackupAddress: str
+        :param CustomerAddress: 用户侧互联 IP
+        :type CustomerAddress: str
+        :param DirectConnectTunnelName: 专用通道名称
+        :type DirectConnectTunnelName: str
+        :param CreatedTime: 专用通道创建时间
+        :type CreatedTime: str
+        :param Bandwidth: 专用通道带宽值
+        :type Bandwidth: int
+        :param NetDetectId: 关联的网络自定义探测ID
+        :type NetDetectId: str
+        :param EnableBGPCommunity: BGP community开关
+        :type EnableBGPCommunity: bool
+        :param NatType: 是否为Nat通道
+        :type NatType: int
+        :param VpcRegion: VPC地域简码，如gz、cd
+        :type VpcRegion: str
+        :param BfdEnable: 是否开启BFD
+        :type BfdEnable: int
+        :param NqaEnable: 是否开启NQA
+        :type NqaEnable: int
+        :param AccessPointType: 专用通道接入点类型
+        :type AccessPointType: str
+        :param DirectConnectGatewayName: 专线网关名称
+        :type DirectConnectGatewayName: str
+        :param VpcName: VPC名称
+        :type VpcName: str
+        :param SignLaw: 专用通道关联的物理专线是否签署了用户协议
+        :type SignLaw: bool
+        :param BfdInfo: BFD配置信息
+        :type BfdInfo: :class:`tencentcloud.dc.v20180410.models.BFDInfo`
+        :param NqaInfo: NQA配置信息
+        :type NqaInfo: :class:`tencentcloud.dc.v20180410.models.NQAInfo`
+        :param BgpStatus: BGP状态
+        :type BgpStatus: :class:`tencentcloud.dc.v20180410.models.BGPStatus`
+        """
+        self.DirectConnectTunnelId = None
+        self.DirectConnectId = None
+        self.State = None
+        self.DirectConnectOwnerAccount = None
+        self.OwnerAccount = None
+        self.NetworkType = None
+        self.NetworkRegion = None
+        self.VpcId = None
+        self.DirectConnectGatewayId = None
+        self.RouteType = None
+        self.BgpPeer = None
+        self.RouteFilterPrefixes = None
+        self.PublicAddresses = None
+        self.Vlan = None
+        self.TencentAddress = None
+        self.TencentBackupAddress = None
+        self.CustomerAddress = None
+        self.DirectConnectTunnelName = None
+        self.CreatedTime = None
+        self.Bandwidth = None
+        self.NetDetectId = None
+        self.EnableBGPCommunity = None
+        self.NatType = None
+        self.VpcRegion = None
+        self.BfdEnable = None
+        self.NqaEnable = None
+        self.AccessPointType = None
+        self.DirectConnectGatewayName = None
+        self.VpcName = None
+        self.SignLaw = None
+        self.BfdInfo = None
+        self.NqaInfo = None
+        self.BgpStatus = None
+
+
+    def _deserialize(self, params):
+        self.DirectConnectTunnelId = params.get("DirectConnectTunnelId")
+        self.DirectConnectId = params.get("DirectConnectId")
+        self.State = params.get("State")
+        self.DirectConnectOwnerAccount = params.get("DirectConnectOwnerAccount")
+        self.OwnerAccount = params.get("OwnerAccount")
+        self.NetworkType = params.get("NetworkType")
+        self.NetworkRegion = params.get("NetworkRegion")
+        self.VpcId = params.get("VpcId")
+        self.DirectConnectGatewayId = params.get("DirectConnectGatewayId")
+        self.RouteType = params.get("RouteType")
+        if params.get("BgpPeer") is not None:
+            self.BgpPeer = BgpPeer()
+            self.BgpPeer._deserialize(params.get("BgpPeer"))
+        if params.get("RouteFilterPrefixes") is not None:
+            self.RouteFilterPrefixes = []
+            for item in params.get("RouteFilterPrefixes"):
+                obj = RouteFilterPrefix()
+                obj._deserialize(item)
+                self.RouteFilterPrefixes.append(obj)
+        if params.get("PublicAddresses") is not None:
+            self.PublicAddresses = []
+            for item in params.get("PublicAddresses"):
+                obj = RouteFilterPrefix()
+                obj._deserialize(item)
+                self.PublicAddresses.append(obj)
+        self.Vlan = params.get("Vlan")
+        self.TencentAddress = params.get("TencentAddress")
+        self.TencentBackupAddress = params.get("TencentBackupAddress")
+        self.CustomerAddress = params.get("CustomerAddress")
+        self.DirectConnectTunnelName = params.get("DirectConnectTunnelName")
+        self.CreatedTime = params.get("CreatedTime")
+        self.Bandwidth = params.get("Bandwidth")
+        self.NetDetectId = params.get("NetDetectId")
+        self.EnableBGPCommunity = params.get("EnableBGPCommunity")
+        self.NatType = params.get("NatType")
+        self.VpcRegion = params.get("VpcRegion")
+        self.BfdEnable = params.get("BfdEnable")
+        self.NqaEnable = params.get("NqaEnable")
+        self.AccessPointType = params.get("AccessPointType")
+        self.DirectConnectGatewayName = params.get("DirectConnectGatewayName")
+        self.VpcName = params.get("VpcName")
+        self.SignLaw = params.get("SignLaw")
+        if params.get("BfdInfo") is not None:
+            self.BfdInfo = BFDInfo()
+            self.BfdInfo._deserialize(params.get("BfdInfo"))
+        if params.get("NqaInfo") is not None:
+            self.NqaInfo = NQAInfo()
+            self.NqaInfo._deserialize(params.get("NqaInfo"))
+        if params.get("BgpStatus") is not None:
+            self.BgpStatus = BGPStatus()
+            self.BgpStatus._deserialize(params.get("BgpStatus"))
+
+
+class DirectConnectTunnelRoute(AbstractModel):
+    """专线通道路由
+
+    """
+
+    def __init__(self):
+        """
+        :param RouteId: 专用通道路由ID
+        :type RouteId: str
+        :param DestinationCidrBlock: 网段CIDR
+        :type DestinationCidrBlock: str
+        :param RouteType: 路由类型：BGP/STATIC路由
+        :type RouteType: str
+        :param Status: ENABLE：路由启用，DISABLE：路由禁用
+        :type Status: str
+        :param ASPath: ASPath信息
+        :type ASPath: list of str
+        :param NextHop: 路由下一跳IP
+        :type NextHop: str
+        """
+        self.RouteId = None
+        self.DestinationCidrBlock = None
+        self.RouteType = None
+        self.Status = None
+        self.ASPath = None
+        self.NextHop = None
+
+
+    def _deserialize(self, params):
+        self.RouteId = params.get("RouteId")
+        self.DestinationCidrBlock = params.get("DestinationCidrBlock")
+        self.RouteType = params.get("RouteType")
+        self.Status = params.get("Status")
+        self.ASPath = params.get("ASPath")
+        self.NextHop = params.get("NextHop")
+
+
 class Filter(AbstractModel):
     """用于条件过滤查询
 
@@ -1069,6 +1427,121 @@ class ModifyDirectConnectTunnelAttributeResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class ModifyDirectConnectTunnelExtraRequest(AbstractModel):
+    """ModifyDirectConnectTunnelExtra请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DirectConnectTunnelId: 专用通道ID
+        :type DirectConnectTunnelId: str
+        :param Vlan: 专用通道的Vlan
+        :type Vlan: int
+        :param BgpPeer: 用户侧BGP，Asn，AuthKey
+        :type BgpPeer: :class:`tencentcloud.dc.v20180410.models.BgpPeer`
+        :param RouteFilterPrefixes: 用户侧网段地址
+        :type RouteFilterPrefixes: :class:`tencentcloud.dc.v20180410.models.RouteFilterPrefix`
+        :param TencentAddress: 腾讯侧互联IP
+        :type TencentAddress: str
+        :param TencentBackupAddress: 腾讯侧备用互联IP
+        :type TencentBackupAddress: str
+        :param CustomerAddress: 用户侧互联IP
+        :type CustomerAddress: str
+        :param Bandwidth: 专用通道带宽值
+        :type Bandwidth: int
+        :param EnableBGPCommunity: BGP community开关
+        :type EnableBGPCommunity: bool
+        :param BfdEnable: 是否开启BFD
+        :type BfdEnable: int
+        :param NqaEnable: 是否开启NQA
+        :type NqaEnable: int
+        :param BfdInfo: BFD配置信息
+        :type BfdInfo: :class:`tencentcloud.dc.v20180410.models.BFDInfo`
+        :param NqaInfo: NQA配置信息
+        :type NqaInfo: :class:`tencentcloud.dc.v20180410.models.NQAInfo`
+        """
+        self.DirectConnectTunnelId = None
+        self.Vlan = None
+        self.BgpPeer = None
+        self.RouteFilterPrefixes = None
+        self.TencentAddress = None
+        self.TencentBackupAddress = None
+        self.CustomerAddress = None
+        self.Bandwidth = None
+        self.EnableBGPCommunity = None
+        self.BfdEnable = None
+        self.NqaEnable = None
+        self.BfdInfo = None
+        self.NqaInfo = None
+
+
+    def _deserialize(self, params):
+        self.DirectConnectTunnelId = params.get("DirectConnectTunnelId")
+        self.Vlan = params.get("Vlan")
+        if params.get("BgpPeer") is not None:
+            self.BgpPeer = BgpPeer()
+            self.BgpPeer._deserialize(params.get("BgpPeer"))
+        if params.get("RouteFilterPrefixes") is not None:
+            self.RouteFilterPrefixes = RouteFilterPrefix()
+            self.RouteFilterPrefixes._deserialize(params.get("RouteFilterPrefixes"))
+        self.TencentAddress = params.get("TencentAddress")
+        self.TencentBackupAddress = params.get("TencentBackupAddress")
+        self.CustomerAddress = params.get("CustomerAddress")
+        self.Bandwidth = params.get("Bandwidth")
+        self.EnableBGPCommunity = params.get("EnableBGPCommunity")
+        self.BfdEnable = params.get("BfdEnable")
+        self.NqaEnable = params.get("NqaEnable")
+        if params.get("BfdInfo") is not None:
+            self.BfdInfo = BFDInfo()
+            self.BfdInfo._deserialize(params.get("BfdInfo"))
+        if params.get("NqaInfo") is not None:
+            self.NqaInfo = NQAInfo()
+            self.NqaInfo._deserialize(params.get("NqaInfo"))
+
+
+class ModifyDirectConnectTunnelExtraResponse(AbstractModel):
+    """ModifyDirectConnectTunnelExtra返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class NQAInfo(AbstractModel):
+    """nqa配置信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ProbeFailedTimes: 健康检查次数
+        :type ProbeFailedTimes: int
+        :param Interval: 健康检查间隔
+        :type Interval: int
+        :param DestinationIp: 健康检查地址
+        :type DestinationIp: str
+        """
+        self.ProbeFailedTimes = None
+        self.Interval = None
+        self.DestinationIp = None
+
+
+    def _deserialize(self, params):
+        self.ProbeFailedTimes = params.get("ProbeFailedTimes")
+        self.Interval = params.get("Interval")
+        self.DestinationIp = params.get("DestinationIp")
 
 
 class RejectDirectConnectTunnelRequest(AbstractModel):

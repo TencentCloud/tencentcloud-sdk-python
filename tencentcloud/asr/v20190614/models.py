@@ -781,7 +781,7 @@ class SentenceDetail(AbstractModel):
         :param Words: 单句中词详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type Words: list of SentenceWords
-        :param SpeechSpeed: 单句语速
+        :param SpeechSpeed: 单句语速，单位：字数/秒
 注意：此字段可能返回 null，表示取不到有效值。
         :type SpeechSpeed: float
         """

@@ -197,6 +197,34 @@ class DcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDirectConnectTunnelExtra(self, request):
+        """本接口（DescribeDirectConnectTunnelExtra）用于查询专用通道扩展信息
+
+        :param request: Request instance for DescribeDirectConnectTunnelExtra.
+        :type request: :class:`tencentcloud.dc.v20180410.models.DescribeDirectConnectTunnelExtraRequest`
+        :rtype: :class:`tencentcloud.dc.v20180410.models.DescribeDirectConnectTunnelExtraResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDirectConnectTunnelExtra", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDirectConnectTunnelExtraResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDirectConnectTunnels(self, request):
         """用于查询专用通道列表。
 
@@ -253,6 +281,34 @@ class DcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePublicDirectConnectTunnelRoutes(self, request):
+        """本接口（DescribePublicDirectConnectTunnelRoutes）用于查询互联网通道路由列表
+
+        :param request: Request instance for DescribePublicDirectConnectTunnelRoutes.
+        :type request: :class:`tencentcloud.dc.v20180410.models.DescribePublicDirectConnectTunnelRoutesRequest`
+        :rtype: :class:`tencentcloud.dc.v20180410.models.DescribePublicDirectConnectTunnelRoutesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePublicDirectConnectTunnelRoutes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePublicDirectConnectTunnelRoutesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyDirectConnectAttribute(self, request):
         """修改物理专线的属性。
 
@@ -295,6 +351,34 @@ class DcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDirectConnectTunnelAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyDirectConnectTunnelExtra(self, request):
+        """本接口（ModifyDirectConnectTunnelExtra）用于修改专用通道扩展信息
+
+        :param request: Request instance for ModifyDirectConnectTunnelExtra.
+        :type request: :class:`tencentcloud.dc.v20180410.models.ModifyDirectConnectTunnelExtraRequest`
+        :rtype: :class:`tencentcloud.dc.v20180410.models.ModifyDirectConnectTunnelExtraResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDirectConnectTunnelExtra", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDirectConnectTunnelExtraResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
