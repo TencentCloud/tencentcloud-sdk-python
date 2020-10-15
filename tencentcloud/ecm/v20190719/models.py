@@ -99,6 +99,33 @@ class Address(AbstractModel):
         self.PayMode = params.get("PayMode")
 
 
+class AddressInfo(AbstractModel):
+    """ip地址相关信息结构体。
+
+    """
+
+    def __init__(self):
+        """
+        :param PublicIPAddressInfo: 实例的外网ip相关信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicIPAddressInfo: :class:`tencentcloud.ecm.v20190719.models.PublicIPAddressInfo`
+        :param PrivateIPAddressInfo: 实例的内网ip相关信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrivateIPAddressInfo: :class:`tencentcloud.ecm.v20190719.models.PrivateIPAddressInfo`
+        """
+        self.PublicIPAddressInfo = None
+        self.PrivateIPAddressInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("PublicIPAddressInfo") is not None:
+            self.PublicIPAddressInfo = PublicIPAddressInfo()
+            self.PublicIPAddressInfo._deserialize(params.get("PublicIPAddressInfo"))
+        if params.get("PrivateIPAddressInfo") is not None:
+            self.PrivateIPAddressInfo = PrivateIPAddressInfo()
+            self.PrivateIPAddressInfo._deserialize(params.get("PrivateIPAddressInfo"))
+
+
 class AddressTemplateSpecification(AbstractModel):
     """IP地址模版
 
@@ -2619,8 +2646,6 @@ class DescribeNetworkInterfacesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EcmRegion: ECM 地域
-        :type EcmRegion: str
         :param NetworkInterfaceIds: 弹性网卡实例ID查询。形如：eni-pxir56ns。每次请求的实例的上限为100。参数不支持同时指定NetworkInterfaceIds和Filters。
         :type NetworkInterfaceIds: list of str
         :param Filters: 过滤条件，参数不支持同时指定NetworkInterfaceIds和Filters。
@@ -2640,16 +2665,17 @@ is-primary - Boolean - 是否必填：否 - （过滤条件）按照是否主网
         :type Offset: int
         :param Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
+        :param EcmRegion: ECM 地域
+        :type EcmRegion: str
         """
-        self.EcmRegion = None
         self.NetworkInterfaceIds = None
         self.Filters = None
         self.Offset = None
         self.Limit = None
+        self.EcmRegion = None
 
 
     def _deserialize(self, params):
-        self.EcmRegion = params.get("EcmRegion")
         self.NetworkInterfaceIds = params.get("NetworkInterfaceIds")
         if params.get("Filters") is not None:
             self.Filters = []
@@ -2659,6 +2685,7 @@ is-primary - Boolean - 是否必填：否 - （过滤条件）按照是否主网
                 self.Filters.append(obj)
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.EcmRegion = params.get("EcmRegion")
 
 
 class DescribeNetworkInterfacesResponse(AbstractModel):
@@ -4107,6 +4134,9 @@ PROTECTIVELY_ISOLATED：表示被安全隔离的实例。
         :param VirtualPrivateCloud: VPC属性
 注意：此字段可能返回 null，表示取不到有效值。
         :type VirtualPrivateCloud: :class:`tencentcloud.ecm.v20190719.models.VirtualPrivateCloud`
+        :param ISP: 实例运营商字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ISP: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -4134,6 +4164,7 @@ PROTECTIVELY_ISOLATED：表示被安全隔离的实例。
         self.NewFlag = None
         self.SecurityGroupIds = None
         self.VirtualPrivateCloud = None
+        self.ISP = None
 
 
     def _deserialize(self, params):
@@ -4187,6 +4218,7 @@ PROTECTIVELY_ISOLATED：表示被安全隔离的实例。
         if params.get("VirtualPrivateCloud") is not None:
             self.VirtualPrivateCloud = VirtualPrivateCloud()
             self.VirtualPrivateCloud._deserialize(params.get("VirtualPrivateCloud"))
+        self.ISP = params.get("ISP")
 
 
 class InstanceFamilyConfig(AbstractModel):
@@ -4229,6 +4261,42 @@ class InstanceFamilyTypeConfig(AbstractModel):
     def _deserialize(self, params):
         self.InstanceFamilyType = params.get("InstanceFamilyType")
         self.InstanceFamilyTypeName = params.get("InstanceFamilyTypeName")
+
+
+class InstanceNetworkInfo(AbstractModel):
+    """实例网卡ip网络信息数组
+
+    """
+
+    def __init__(self):
+        """
+        :param AddressInfoSet: 实例内外网ip相关信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AddressInfoSet: list of AddressInfo
+        :param NetworkInterfaceId: 网卡ID。
+        :type NetworkInterfaceId: str
+        :param NetworkInterfaceName: 网卡名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetworkInterfaceName: str
+        :param Primary: 主网卡属性。true为主网卡，false为辅助网卡。
+        :type Primary: bool
+        """
+        self.AddressInfoSet = None
+        self.NetworkInterfaceId = None
+        self.NetworkInterfaceName = None
+        self.Primary = None
+
+
+    def _deserialize(self, params):
+        if params.get("AddressInfoSet") is not None:
+            self.AddressInfoSet = []
+            for item in params.get("AddressInfoSet"):
+                obj = AddressInfo()
+                obj._deserialize(item)
+                self.AddressInfoSet.append(obj)
+        self.NetworkInterfaceId = params.get("NetworkInterfaceId")
+        self.NetworkInterfaceName = params.get("NetworkInterfaceName")
+        self.Primary = params.get("Primary")
 
 
 class InstanceOperator(AbstractModel):
@@ -4342,9 +4410,13 @@ class Internet(AbstractModel):
         :param PublicIPAddressSet: 实例的公网相关信息列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PublicIPAddressSet: list of PublicIPAddressInfo
+        :param InstanceNetworkInfoSet: 实例网络相关信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceNetworkInfoSet: list of InstanceNetworkInfo
         """
         self.PrivateIPAddressSet = None
         self.PublicIPAddressSet = None
+        self.InstanceNetworkInfoSet = None
 
 
     def _deserialize(self, params):
@@ -4360,6 +4432,12 @@ class Internet(AbstractModel):
                 obj = PublicIPAddressInfo()
                 obj._deserialize(item)
                 self.PublicIPAddressSet.append(obj)
+        if params.get("InstanceNetworkInfoSet") is not None:
+            self.InstanceNetworkInfoSet = []
+            for item in params.get("InstanceNetworkInfoSet"):
+                obj = InstanceNetworkInfo()
+                obj._deserialize(item)
+                self.InstanceNetworkInfoSet.append(obj)
 
 
 class Ipv6Address(AbstractModel):
@@ -5814,6 +5892,8 @@ DELETING：删除中
         :type TagSet: list of Tag
         :param EniType: 网卡类型。0 - 弹性网卡；1 - evm弹性网卡。
         :type EniType: int
+        :param EcmRegion: EcmRegion ecm区域
+        :type EcmRegion: str
         """
         self.NetworkInterfaceId = None
         self.NetworkInterfaceName = None
@@ -5831,6 +5911,7 @@ DELETING：删除中
         self.Ipv6AddressSet = None
         self.TagSet = None
         self.EniType = None
+        self.EcmRegion = None
 
 
     def _deserialize(self, params):
@@ -5867,6 +5948,7 @@ DELETING：删除中
                 obj._deserialize(item)
                 self.TagSet.append(obj)
         self.EniType = params.get("EniType")
+        self.EcmRegion = params.get("EcmRegion")
 
 
 class NetworkInterfaceAttachment(AbstractModel):
@@ -6365,7 +6447,7 @@ class PublicIPAddressInfo(AbstractModel):
         :type PublicIPAddress: str
         :param ISP: 实例的公网ip所属的运营商。
         :type ISP: :class:`tencentcloud.ecm.v20190719.models.ISP`
-        :param MaxBandwidthOut: 实例的最大出带宽上限。
+        :param MaxBandwidthOut: 实例的最大出带宽上限，单位为Mbps。
         :type MaxBandwidthOut: int
         """
         self.ChargeMode = None

@@ -4266,6 +4266,31 @@ path 时填充绝对路径，如 /xxx/test.html
         self.RulePaths = params.get("RulePaths")
 
 
+class HttpHeaderRule(AbstractModel):
+    """http头部设置规则。
+
+    """
+
+    def __init__(self):
+        """
+        :param HeaderMode: http头部设置方式，支持add，set或del，分别表示新增，设置或删除头部。
+        :type HeaderMode: str
+        :param HeaderName: http头部名称。
+        :type HeaderName: str
+        :param HeaderValue: http头部值。
+        :type HeaderValue: str
+        """
+        self.HeaderMode = None
+        self.HeaderName = None
+        self.HeaderValue = None
+
+
+    def _deserialize(self, params):
+        self.HeaderMode = params.get("HeaderMode")
+        self.HeaderName = params.get("HeaderName")
+        self.HeaderValue = params.get("HeaderValue")
+
+
 class Https(AbstractModel):
     """域名 https 加速配置，默认为关闭状态
 
@@ -5304,6 +5329,9 @@ ip：IP 列表作为源站
         :param BasePath: 回源路径
 注意：此字段可能返回 null，表示取不到有效值。
         :type BasePath: str
+        :param PathRules: 分路径回源配置规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PathRules: list of PathRule
         """
         self.Origins = None
         self.OriginType = None
@@ -5314,6 +5342,7 @@ ip：IP 列表作为源站
         self.BackupOriginType = None
         self.BackupServerName = None
         self.BasePath = None
+        self.PathRules = None
 
 
     def _deserialize(self, params):
@@ -5326,6 +5355,12 @@ ip：IP 列表作为源站
         self.BackupOriginType = params.get("BackupOriginType")
         self.BackupServerName = params.get("BackupServerName")
         self.BasePath = params.get("BasePath")
+        if params.get("PathRules") is not None:
+            self.PathRules = []
+            for item in params.get("PathRules"):
+                obj = PathRule()
+                obj._deserialize(item)
+                self.PathRules.append(obj)
 
 
 class OriginPullOptimization(AbstractModel):
@@ -5560,6 +5595,59 @@ class OverseaConfig(AbstractModel):
         if params.get("VideoSeek") is not None:
             self.VideoSeek = VideoSeek()
             self.VideoSeek._deserialize(params.get("VideoSeek"))
+
+
+class PathRule(AbstractModel):
+    """分路径回源配置规则。
+
+    """
+
+    def __init__(self):
+        """
+        :param Regex: 是否是正则匹配。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Regex: bool
+        :param Path: URL路径。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Path: str
+        :param Origin: 路径匹配时的回源源站。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Origin: str
+        :param ServerName: 路径匹配时的回源Host头部。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServerName: str
+        :param OriginArea: 源站所属区域，支持CN，OV。分别表示国内或海外。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginArea: str
+        :param ForwardUri: 路径匹配时的回源URI路径。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ForwardUri: str
+        :param RequestHeaders: 路径匹配时的回源头部设置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestHeaders: list of HttpHeaderRule
+        """
+        self.Regex = None
+        self.Path = None
+        self.Origin = None
+        self.ServerName = None
+        self.OriginArea = None
+        self.ForwardUri = None
+        self.RequestHeaders = None
+
+
+    def _deserialize(self, params):
+        self.Regex = params.get("Regex")
+        self.Path = params.get("Path")
+        self.Origin = params.get("Origin")
+        self.ServerName = params.get("ServerName")
+        self.OriginArea = params.get("OriginArea")
+        self.ForwardUri = params.get("ForwardUri")
+        if params.get("RequestHeaders") is not None:
+            self.RequestHeaders = []
+            for item in params.get("RequestHeaders"):
+                obj = HttpHeaderRule()
+                obj._deserialize(item)
+                self.RequestHeaders.append(obj)
 
 
 class PurgePathCacheRequest(AbstractModel):
