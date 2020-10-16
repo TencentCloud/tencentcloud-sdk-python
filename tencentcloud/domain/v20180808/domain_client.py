@@ -25,6 +25,36 @@ class DomainClient(AbstractClient):
     _endpoint = 'domain.tencentcloudapi.com'
 
 
+    def BatchModifyDomainInfo(self, request):
+        """本接口 ( BatchModifyDomainInfo ) 用于批量域名信息修改 。
+
+        默认接口请求频率限制：20次/秒。
+
+        :param request: Request instance for BatchModifyDomainInfo.
+        :type request: :class:`tencentcloud.domain.v20180808.models.BatchModifyDomainInfoRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.BatchModifyDomainInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("BatchModifyDomainInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.BatchModifyDomainInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CheckBatchStatus(self, request):
         """本接口 ( CheckBatchStatus ) 用于检查批量任务状态 。
 
@@ -217,6 +247,126 @@ class DomainClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTemplateListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyDomainOwnerBatch(self, request):
+        """本接口 ( ModifyDomainOwnerBatch) 用于域名批量账号间转移 。
+
+        默认接口请求频率限制：20次/秒。
+
+        :param request: Request instance for ModifyDomainOwnerBatch.
+        :type request: :class:`tencentcloud.domain.v20180808.models.ModifyDomainOwnerBatchRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.ModifyDomainOwnerBatchResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDomainOwnerBatch", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDomainOwnerBatchResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def TransferInDomainBatch(self, request):
+        """本接口 ( TransferInDomainBatch ) 用于批量转入域名 。
+
+        默认接口请求频率限制：20次/秒。
+
+        :param request: Request instance for TransferInDomainBatch.
+        :type request: :class:`tencentcloud.domain.v20180808.models.TransferInDomainBatchRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.TransferInDomainBatchResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("TransferInDomainBatch", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.TransferInDomainBatchResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def TransferProhibitionBatch(self, request):
+        """本接口 ( TransferInDomainBatch ) 用于批量禁止域名转移 。
+
+        默认接口请求频率限制：20次/秒。
+
+        :param request: Request instance for TransferProhibitionBatch.
+        :type request: :class:`tencentcloud.domain.v20180808.models.TransferProhibitionBatchRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.TransferProhibitionBatchResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("TransferProhibitionBatch", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.TransferProhibitionBatchResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateProhibitionBatch(self, request):
+        """本接口 ( UpdateProhibitionBatch ) 用于批量设置禁止域名更新 。
+
+        默认接口请求频率限制：20次/秒。
+
+        :param request: Request instance for UpdateProhibitionBatch.
+        :type request: :class:`tencentcloud.domain.v20180808.models.UpdateProhibitionBatchRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.UpdateProhibitionBatchResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateProhibitionBatch", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateProhibitionBatchResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -230,6 +230,34 @@ class EcdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeIpStatus(self, request):
+        """DescribeIpStatus 用于查询域名所在加速平台的所有节点明细。
+
+        :param request: Request instance for DescribeIpStatus.
+        :type request: :class:`tencentcloud.ecdn.v20191012.models.DescribeIpStatusRequest`
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.DescribeIpStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeIpStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeIpStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribePurgeQuota(self, request):
         """查询刷新接口的用量配额。
 

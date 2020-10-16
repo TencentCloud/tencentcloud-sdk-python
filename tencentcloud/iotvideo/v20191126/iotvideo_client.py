@@ -25,6 +25,62 @@ class IotvideoClient(AbstractClient):
     _endpoint = 'iotvideo.tencentcloudapi.com'
 
 
+    def ClearDeviceActiveCode(self, request):
+        """清除设备激活码
+
+        :param request: Request instance for ClearDeviceActiveCode.
+        :type request: :class:`tencentcloud.iotvideo.v20191126.models.ClearDeviceActiveCodeRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20191126.models.ClearDeviceActiveCodeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ClearDeviceActiveCode", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ClearDeviceActiveCodeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateAnonymousAccessToken(self, request):
+        """创建匿名访问Token
+
+        :param request: Request instance for CreateAnonymousAccessToken.
+        :type request: :class:`tencentcloud.iotvideo.v20191126.models.CreateAnonymousAccessTokenRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20191126.models.CreateAnonymousAccessTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAnonymousAccessToken", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAnonymousAccessTokenResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateAppUsr(self, request):
         """本接口（CreateAppUsr）用于接收由厂商云发送过来的注册请求,建立厂商云终端用户与IoT Video终端用户的映射关系。
 
@@ -269,6 +325,34 @@ class IotvideoClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateStorageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateStorageService(self, request):
+        """购买云存服务
+
+        :param request: Request instance for CreateStorageService.
+        :type request: :class:`tencentcloud.iotvideo.v20191126.models.CreateStorageServiceRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20191126.models.CreateStorageServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateStorageService", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateStorageServiceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -577,6 +661,34 @@ class IotvideoClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteTraceIdsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeliverStorageService(self, request):
+        """将已购买的云存服务转移到另一设备
+
+        :param request: Request instance for DeliverStorageService.
+        :type request: :class:`tencentcloud.iotvideo.v20191126.models.DeliverStorageServiceRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20191126.models.DeliverStorageServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeliverStorageService", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeliverStorageServiceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1068,6 +1180,34 @@ class IotvideoClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeStorageService(self, request):
+        """查询云存服务
+
+        :param request: Request instance for DescribeStorageService.
+        :type request: :class:`tencentcloud.iotvideo.v20191126.models.DescribeStorageServiceRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20191126.models.DescribeStorageServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeStorageService", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeStorageServiceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTraceIds(self, request):
         """本接口（DescribeTraceIds）用于查询设备日志跟踪白名单。
 
@@ -1290,6 +1430,34 @@ class IotvideoClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyProductResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RefundStorageService(self, request):
+        """退订已购买的云存服务
+
+        :param request: Request instance for RefundStorageService.
+        :type request: :class:`tencentcloud.iotvideo.v20191126.models.RefundStorageServiceRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20191126.models.RefundStorageServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RefundStorageService", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RefundStorageServiceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

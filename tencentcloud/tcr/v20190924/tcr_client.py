@@ -1061,6 +1061,62 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeReplicationInstanceCreateTasks(self, request):
+        """查询创建从实例任务状态
+
+        :param request: Request instance for DescribeReplicationInstanceCreateTasks.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeReplicationInstanceCreateTasksRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DescribeReplicationInstanceCreateTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeReplicationInstanceCreateTasks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeReplicationInstanceCreateTasksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeReplicationInstances(self, request):
+        """查询从实例列表
+
+        :param request: Request instance for DescribeReplicationInstances.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeReplicationInstancesRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DescribeReplicationInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeReplicationInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeReplicationInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRepositories(self, request):
         """查询镜像仓库列表或指定镜像仓库信息
 

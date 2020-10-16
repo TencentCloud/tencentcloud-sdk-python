@@ -16,6 +16,48 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class BatchModifyDomainInfoRequest(AbstractModel):
+    """BatchModifyDomainInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Domains: 批量修改的域名。
+        :type Domains: list of str
+        :param TemplateId: 模板ID。
+        :type TemplateId: str
+        """
+        self.Domains = None
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.Domains = params.get("Domains")
+        self.TemplateId = params.get("TemplateId")
+
+
+class BatchModifyDomainInfoResponse(AbstractModel):
+    """BatchModifyDomainInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LogId: 日志ID
+        :type LogId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LogId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.LogId = params.get("LogId")
+        self.RequestId = params.get("RequestId")
+
+
 class BatchStatus(AbstractModel):
     """批量任务状态
 
@@ -693,6 +735,48 @@ TransferFailed：转入失败
         self.BuyStatus = params.get("BuyStatus")
 
 
+class ModifyDomainOwnerBatchRequest(AbstractModel):
+    """ModifyDomainOwnerBatch请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Domains: 要过户的域名。
+        :type Domains: list of str
+        :param NewOwnerUin: 转入账户的uin。
+        :type NewOwnerUin: str
+        """
+        self.Domains = None
+        self.NewOwnerUin = None
+
+
+    def _deserialize(self, params):
+        self.Domains = params.get("Domains")
+        self.NewOwnerUin = params.get("NewOwnerUin")
+
+
+class ModifyDomainOwnerBatchResponse(AbstractModel):
+    """ModifyDomainOwnerBatch返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LogId: 日志id
+        :type LogId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LogId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.LogId = params.get("LogId")
+        self.RequestId = params.get("RequestId")
+
+
 class PriceInfo(AbstractModel):
     """域名价格信息
 
@@ -785,3 +869,141 @@ class TemplateInfo(AbstractModel):
             self.ContactInfo._deserialize(params.get("ContactInfo"))
         self.IsValidTemplate = params.get("IsValidTemplate")
         self.InvalidReason = params.get("InvalidReason")
+
+
+class TransferInDomainBatchRequest(AbstractModel):
+    """TransferInDomainBatch请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Domains: 转入的域名名称数组。
+        :type Domains: list of str
+        :param PassWords: 域名转移码数组。
+        :type PassWords: list of str
+        :param TemplateId: 模板ID。
+        :type TemplateId: str
+        :param PayMode: 付费模式 0手动在线付费，1使用余额付费。
+        :type PayMode: int
+        """
+        self.Domains = None
+        self.PassWords = None
+        self.TemplateId = None
+        self.PayMode = None
+
+
+    def _deserialize(self, params):
+        self.Domains = params.get("Domains")
+        self.PassWords = params.get("PassWords")
+        self.TemplateId = params.get("TemplateId")
+        self.PayMode = params.get("PayMode")
+
+
+class TransferInDomainBatchResponse(AbstractModel):
+    """TransferInDomainBatch返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LogId: 日志ID
+        :type LogId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LogId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.LogId = params.get("LogId")
+        self.RequestId = params.get("RequestId")
+
+
+class TransferProhibitionBatchRequest(AbstractModel):
+    """TransferProhibitionBatch请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Domains: 批量操作的域名。
+        :type Domains: list of str
+        :param Status: 是否开启禁止域名转移。
+True: 开启禁止域名转移状态。
+False：关闭禁止域名转移状态。
+        :type Status: bool
+        """
+        self.Domains = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Domains = params.get("Domains")
+        self.Status = params.get("Status")
+
+
+class TransferProhibitionBatchResponse(AbstractModel):
+    """TransferProhibitionBatch返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LogId: 日志ID
+        :type LogId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LogId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.LogId = params.get("LogId")
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateProhibitionBatchRequest(AbstractModel):
+    """UpdateProhibitionBatch请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Domains: 批量操作的域名。
+        :type Domains: list of str
+        :param Status: 是否开启禁止域名更新。
+True:开启禁止域名更新状态。
+False：关闭禁止域名更新状态。
+        :type Status: bool
+        """
+        self.Domains = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Domains = params.get("Domains")
+        self.Status = params.get("Status")
+
+
+class UpdateProhibitionBatchResponse(AbstractModel):
+    """UpdateProhibitionBatch返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LogId: 日志ID
+        :type LogId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LogId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.LogId = params.get("LogId")
+        self.RequestId = params.get("RequestId")

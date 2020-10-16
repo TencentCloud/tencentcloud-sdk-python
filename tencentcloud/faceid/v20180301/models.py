@@ -971,6 +971,141 @@ class GetDetectInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GetFaceIdResultRequest(AbstractModel):
+    """GetFaceIdResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FaceIdToken: SDK人脸核身流程的标识，调用GetFaceIdToken接口时生成。
+        :type FaceIdToken: str
+        :param IsNeedVideo: 是否需要拉取视频，默认false不需要
+        :type IsNeedVideo: bool
+        :param IsNeedBestFrame: 是否需要拉取截帧，默认false不需要
+        :type IsNeedBestFrame: bool
+        """
+        self.FaceIdToken = None
+        self.IsNeedVideo = None
+        self.IsNeedBestFrame = None
+
+
+    def _deserialize(self, params):
+        self.FaceIdToken = params.get("FaceIdToken")
+        self.IsNeedVideo = params.get("IsNeedVideo")
+        self.IsNeedBestFrame = params.get("IsNeedBestFrame")
+
+
+class GetFaceIdResultResponse(AbstractModel):
+    """GetFaceIdResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param IdCard: 身份证
+        :type IdCard: str
+        :param Name: 姓名
+        :type Name: str
+        :param Result: 业务核验结果，如下几个结果码会计费
+        :type Result: str
+        :param Description: 业务核验描述
+        :type Description: str
+        :param Similarity: 相似度，0-100，数值越大相似度越高
+        :type Similarity: float
+        :param VideoBase64: 用户核验的视频
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VideoBase64: str
+        :param BestFrameBase64: 用户核验视频的截帧
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BestFrameBase64: str
+        :param Extra: 获取token时透传的信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Extra: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.IdCard = None
+        self.Name = None
+        self.Result = None
+        self.Description = None
+        self.Similarity = None
+        self.VideoBase64 = None
+        self.BestFrameBase64 = None
+        self.Extra = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.IdCard = params.get("IdCard")
+        self.Name = params.get("Name")
+        self.Result = params.get("Result")
+        self.Description = params.get("Description")
+        self.Similarity = params.get("Similarity")
+        self.VideoBase64 = params.get("VideoBase64")
+        self.BestFrameBase64 = params.get("BestFrameBase64")
+        self.Extra = params.get("Extra")
+        self.RequestId = params.get("RequestId")
+
+
+class GetFaceIdTokenRequest(AbstractModel):
+    """GetFaceIdToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CompareLib: 本地上传照片(LOCAL)、商业库(BUSINESS)
+        :type CompareLib: str
+        :param IdCard: CompareLib为商业库时必传。
+        :type IdCard: str
+        :param Name: CompareLib为商业库库时必传。
+        :type Name: str
+        :param ImageBase64: CompareLib为上传照片比对时必传，base64后图片最大8MB。
+        :type ImageBase64: str
+        :param Meta: SDK中生成的Meta字符串
+        :type Meta: str
+        :param Extra: 透传参数 1000长度字符串
+        :type Extra: str
+        """
+        self.CompareLib = None
+        self.IdCard = None
+        self.Name = None
+        self.ImageBase64 = None
+        self.Meta = None
+        self.Extra = None
+
+
+    def _deserialize(self, params):
+        self.CompareLib = params.get("CompareLib")
+        self.IdCard = params.get("IdCard")
+        self.Name = params.get("Name")
+        self.ImageBase64 = params.get("ImageBase64")
+        self.Meta = params.get("Meta")
+        self.Extra = params.get("Extra")
+
+
+class GetFaceIdTokenResponse(AbstractModel):
+    """GetFaceIdToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FaceIdToken: 有效期 10分钟。只能完成1次核身。
+        :type FaceIdToken: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FaceIdToken = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FaceIdToken = params.get("FaceIdToken")
+        self.RequestId = params.get("RequestId")
+
+
 class GetLiveCodeRequest(AbstractModel):
     """GetLiveCode请求参数结构体
 

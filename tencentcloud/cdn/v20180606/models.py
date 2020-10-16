@@ -1106,12 +1106,16 @@ mainland：中国境内加速节点
 overseas：中国境外加速节点
 unknown：服务地域无法获取
         :type Area: str
+        :param City: 节点的所在城市
+注意：此字段可能返回 null，表示取不到有效值。
+        :type City: str
         """
         self.Ip = None
         self.Platform = None
         self.Location = None
         self.History = None
         self.Area = None
+        self.City = None
 
 
     def _deserialize(self, params):
@@ -1125,6 +1129,7 @@ unknown：服务地域无法获取
                 obj._deserialize(item)
                 self.History.append(obj)
         self.Area = params.get("Area")
+        self.City = params.get("City")
 
 
 class CdnIpHistory(AbstractModel):

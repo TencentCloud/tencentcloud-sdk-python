@@ -67,6 +67,94 @@ class BindUsrInfo(AbstractModel):
         self.Role = params.get("Role")
 
 
+class ClearDeviceActiveCodeRequest(AbstractModel):
+    """ClearDeviceActiveCode请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Tids: 设备TID列表，0<元素数量<=100
+        :type Tids: list of str
+        """
+        self.Tids = None
+
+
+    def _deserialize(self, params):
+        self.Tids = params.get("Tids")
+
+
+class ClearDeviceActiveCodeResponse(AbstractModel):
+    """ClearDeviceActiveCode返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateAnonymousAccessTokenRequest(AbstractModel):
+    """CreateAnonymousAccessToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TtlMinutes: Token的TTL(time to alive)分钟数,最大值1440(即24小时)
+        :type TtlMinutes: int
+        :param Tid: 设备ID。创建Token时, 此参数为必须项
+        :type Tid: str
+        :param OldAccessToken: 旧的AccessToken。续期Token时，此参数为必须
+        :type OldAccessToken: str
+        """
+        self.TtlMinutes = None
+        self.Tid = None
+        self.OldAccessToken = None
+
+
+    def _deserialize(self, params):
+        self.TtlMinutes = params.get("TtlMinutes")
+        self.Tid = params.get("Tid")
+        self.OldAccessToken = params.get("OldAccessToken")
+
+
+class CreateAnonymousAccessTokenResponse(AbstractModel):
+    """CreateAnonymousAccessToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AccessId: 终端用户在IoT Video上的唯一标识ID
+        :type AccessId: str
+        :param AccessToken: IoT Video平台的AccessToken
+        :type AccessToken: str
+        :param ExpireTime: Token的过期时间，单位秒(UTC时间)
+        :type ExpireTime: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AccessId = None
+        self.AccessToken = None
+        self.ExpireTime = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AccessId = params.get("AccessId")
+        self.AccessToken = params.get("AccessToken")
+        self.ExpireTime = params.get("ExpireTime")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateAppUsrRequest(AbstractModel):
     """CreateAppUsr请求参数结构体
 
@@ -279,7 +367,7 @@ class CreateGencodeRequest(AbstractModel):
         """
         :param ProductId: 产品ID
         :type ProductId: str
-        :param Revision: 物模型发布版本号，-1代表最新编辑（未发布）的版本
+        :param Revision: 物模型发布版本号,-1代表未发布的，保存的是草稿箱的版本。1代表已发布的物模型。
         :type Revision: int
         """
         self.ProductId = None
@@ -500,6 +588,109 @@ class CreateStorageResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateStorageServiceRequest(AbstractModel):
+    """CreateStorageService请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PkgId: 云存套餐ID
+        :type PkgId: str
+        :param Tid: 设备TID
+        :type Tid: str
+        :param OrderCount: 订单数量,可一次性创建多个订单
+        :type OrderCount: int
+        :param StorageRegion: 云存服务所在的区域,如ap-guangzhou,ap-singapore
+        :type StorageRegion: str
+        :param ChnNum: 视频流通道号。(对于存在多路视频流的设备，如NVR设备，与设备实际视频流通道号对应)
+        :type ChnNum: int
+        :param AccessId: 设备主人用户在IoT Video平台的注册ID。该参数用于验证Paas/Saas平台的设备/用户关系链是否一致
+        :type AccessId: str
+        :param EnableTime: 服务生效时间,若不指定此参数，服务立即生效
+        :type EnableTime: int
+        """
+        self.PkgId = None
+        self.Tid = None
+        self.OrderCount = None
+        self.StorageRegion = None
+        self.ChnNum = None
+        self.AccessId = None
+        self.EnableTime = None
+
+
+    def _deserialize(self, params):
+        self.PkgId = params.get("PkgId")
+        self.Tid = params.get("Tid")
+        self.OrderCount = params.get("OrderCount")
+        self.StorageRegion = params.get("StorageRegion")
+        self.ChnNum = params.get("ChnNum")
+        self.AccessId = params.get("AccessId")
+        self.EnableTime = params.get("EnableTime")
+
+
+class CreateStorageServiceResponse(AbstractModel):
+    """CreateStorageService返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param IsRenew: 标志是否为续订
+        :type IsRenew: bool
+        :param ServiceId: 云存服务ID
+        :type ServiceId: str
+        :param StorageRegion: 云存服务所在的区域
+        :type StorageRegion: str
+        :param Tid: 设备TID
+        :type Tid: str
+        :param ChnNum: 视频流通道号。(对于存在多路视频流的设备，如NVR设备，与设备实际视频流通道号对应)
+        :type ChnNum: int
+        :param AccessId: 终端用户在IoT Video平台的注册ID
+        :type AccessId: str
+        :param StartTime: 服务开始时间
+        :type StartTime: int
+        :param EndTime: 服务失效时间
+        :type EndTime: int
+        :param Status: 服务状态
+        :type Status: int
+        :param Data: 新增的云存定单列表
+        :type Data: list of StorageOrder
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.IsRenew = None
+        self.ServiceId = None
+        self.StorageRegion = None
+        self.Tid = None
+        self.ChnNum = None
+        self.AccessId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Status = None
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.IsRenew = params.get("IsRenew")
+        self.ServiceId = params.get("ServiceId")
+        self.StorageRegion = params.get("StorageRegion")
+        self.Tid = params.get("Tid")
+        self.ChnNum = params.get("ChnNum")
+        self.AccessId = params.get("AccessId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Status = params.get("Status")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = StorageOrder()
+                obj._deserialize(item)
+                self.Data.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -923,6 +1114,97 @@ class DeleteTraceIdsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeliverStorageServiceRequest(AbstractModel):
+    """DeliverStorageService请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SrcServiceId: 待转移的源云存服务ID
+        :type SrcServiceId: str
+        :param Tid: 设备TID
+        :type Tid: str
+        :param ChnNum: 视频流通道号。(对于存在多路视频流的设备，如NVR设备，与设备实际视频流通道号对应)
+        :type ChnNum: int
+        :param AccessId: 设备主人用户在IoT Video平台的注册ID。该参数用于验证Paas/Saas平台的设备/用户关系链是否一致
+        :type AccessId: str
+        """
+        self.SrcServiceId = None
+        self.Tid = None
+        self.ChnNum = None
+        self.AccessId = None
+
+
+    def _deserialize(self, params):
+        self.SrcServiceId = params.get("SrcServiceId")
+        self.Tid = params.get("Tid")
+        self.ChnNum = params.get("ChnNum")
+        self.AccessId = params.get("AccessId")
+
+
+class DeliverStorageServiceResponse(AbstractModel):
+    """DeliverStorageService返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SrcServiceId: 被转出的云存服务ID
+        :type SrcServiceId: str
+        :param ServiceId: 被转入的云存服务ID
+        :type ServiceId: str
+        :param StorageRegion: 云存服务所在的区域
+        :type StorageRegion: str
+        :param Tid: 设备TID
+        :type Tid: str
+        :param ChnNum: 视频流通道号。(对于存在多路视频流的设备，如NVR设备，与设备实际视频流通道号对应)
+        :type ChnNum: int
+        :param AccessId: 终端用户在IoT Video平台的注册ID
+        :type AccessId: str
+        :param StartTime: 服务开始时间
+        :type StartTime: int
+        :param EndTime: 服务失效时间
+        :type EndTime: int
+        :param Status: 服务状态
+        :type Status: int
+        :param Data: 新增的云存定单列表
+        :type Data: list of StorageOrder
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SrcServiceId = None
+        self.ServiceId = None
+        self.StorageRegion = None
+        self.Tid = None
+        self.ChnNum = None
+        self.AccessId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Status = None
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SrcServiceId = params.get("SrcServiceId")
+        self.ServiceId = params.get("ServiceId")
+        self.StorageRegion = params.get("StorageRegion")
+        self.Tid = params.get("Tid")
+        self.ChnNum = params.get("ChnNum")
+        self.AccessId = params.get("AccessId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Status = params.get("Status")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = StorageOrder()
+                obj._deserialize(item)
+                self.Data.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1746,6 +2028,85 @@ class DescribeRunLogResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeStorageServiceRequest(AbstractModel):
+    """DescribeStorageService请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ServiceId: 云存服务ID
+        :type ServiceId: str
+        :param GetFinishedOrder: 是否返回已结束的订单信息(已过期/已退订/已转移)
+        :type GetFinishedOrder: bool
+        """
+        self.ServiceId = None
+        self.GetFinishedOrder = None
+
+
+    def _deserialize(self, params):
+        self.ServiceId = params.get("ServiceId")
+        self.GetFinishedOrder = params.get("GetFinishedOrder")
+
+
+class DescribeStorageServiceResponse(AbstractModel):
+    """DescribeStorageService返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ServiceId: 云存服务ID
+        :type ServiceId: str
+        :param StorageRegion: 云存服务所在的区域
+        :type StorageRegion: str
+        :param Tid: 设备TID
+        :type Tid: str
+        :param ChnNum: 视频流通道号。(对于存在多路视频流的设备，如NVR设备，与设备实际视频流通道号对应)
+        :type ChnNum: int
+        :param AccessId: 终端用户在IoT Video平台的注册ID
+        :type AccessId: str
+        :param StartTime: 服务开始时间
+        :type StartTime: int
+        :param EndTime: 服务失效时间
+        :type EndTime: int
+        :param Status: 服务状态
+        :type Status: int
+        :param Data: 云存定单列表
+        :type Data: list of StorageOrder
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ServiceId = None
+        self.StorageRegion = None
+        self.Tid = None
+        self.ChnNum = None
+        self.AccessId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Status = None
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ServiceId = params.get("ServiceId")
+        self.StorageRegion = params.get("StorageRegion")
+        self.Tid = params.get("Tid")
+        self.ChnNum = params.get("ChnNum")
+        self.AccessId = params.get("AccessId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Status = params.get("Status")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = StorageOrder()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTraceIdsRequest(AbstractModel):
     """DescribeTraceIds请求参数结构体
 
@@ -2554,6 +2915,85 @@ Other-Overseas（其他境外地区）
         self.ProductRegion = params.get("ProductRegion")
 
 
+class RefundStorageServiceRequest(AbstractModel):
+    """RefundStorageService请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ServiceId: 云存服务ID
+        :type ServiceId: str
+        :param OrderId: 云存子订单ID。如果指定子订单ID,则仅退订该子订单，如果未指定子定单ID，则退订所有子订单
+        :type OrderId: str
+        """
+        self.ServiceId = None
+        self.OrderId = None
+
+
+    def _deserialize(self, params):
+        self.ServiceId = params.get("ServiceId")
+        self.OrderId = params.get("OrderId")
+
+
+class RefundStorageServiceResponse(AbstractModel):
+    """RefundStorageService返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ServiceId: 云存服务ID
+        :type ServiceId: str
+        :param StorageRegion: 云存服务所在的区域
+        :type StorageRegion: str
+        :param Tid: 设备TID
+        :type Tid: str
+        :param ChnNum: 视频流通道号。(对于存在多路视频流的设备，如NVR设备，与设备实际视频流通道号对应)
+        :type ChnNum: int
+        :param AccessId: 终端用户在IoT Video平台的注册ID
+        :type AccessId: str
+        :param StartTime: 服务开始时间
+        :type StartTime: int
+        :param EndTime: 服务失效时间
+        :type EndTime: int
+        :param Status: 服务状态
+        :type Status: int
+        :param Data: 有效云存定单列表
+        :type Data: list of StorageOrder
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ServiceId = None
+        self.StorageRegion = None
+        self.Tid = None
+        self.ChnNum = None
+        self.AccessId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Status = None
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ServiceId = params.get("ServiceId")
+        self.StorageRegion = params.get("StorageRegion")
+        self.Tid = params.get("Tid")
+        self.ChnNum = params.get("ChnNum")
+        self.AccessId = params.get("AccessId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Status = params.get("Status")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = StorageOrder()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class RegisteredStatus(AbstractModel):
     """终端用户注册状态
 
@@ -2896,6 +3336,39 @@ class SetMessageQueueResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class StorageOrder(AbstractModel):
+    """云存订单信息
+
+    """
+
+    def __init__(self):
+        """
+        :param OrderId: 定单唯一性ID
+        :type OrderId: str
+        :param PkgId: 云存套餐ID
+        :type PkgId: str
+        :param Status: 定单服务状态
+        :type Status: int
+        :param StartTime: 定单服务生效时间
+        :type StartTime: int
+        :param EndTime: 定单服务失效时间
+        :type EndTime: int
+        """
+        self.OrderId = None
+        self.PkgId = None
+        self.Status = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.OrderId = params.get("OrderId")
+        self.PkgId = params.get("PkgId")
+        self.Status = params.get("Status")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
 
 
 class TraceStatus(AbstractModel):

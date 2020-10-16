@@ -602,6 +602,60 @@ class DescribeEcdnStatisticsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeIpStatusRequest(AbstractModel):
+    """DescribeIpStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Domain: 加速域名
+        :type Domain: str
+        :param Area: 查询区域：
+mainland: 国内节点
+overseas: 海外节点
+global: 全球节点
+        :type Area: str
+        """
+        self.Domain = None
+        self.Area = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.Area = params.get("Area")
+
+
+class DescribeIpStatusResponse(AbstractModel):
+    """DescribeIpStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Ips: 节点列表
+        :type Ips: list of IpStatus
+        :param TotalCount: 节点总个数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Ips = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Ips") is not None:
+            self.Ips = []
+            for item in params.get("Ips"):
+                obj = IpStatus()
+                obj._deserialize(item)
+                self.Ips.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribePurgeQuotaRequest(AbstractModel):
     """DescribePurgeQuota请求参数结构体
 
@@ -1229,6 +1283,41 @@ class IpFreqLimit(AbstractModel):
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
         self.Qps = params.get("Qps")
+
+
+class IpStatus(AbstractModel):
+    """节点 IP 信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Ip: 节点 IP
+        :type Ip: str
+        :param District: 节点所属区域
+        :type District: str
+        :param Isp: 节点所属运营商
+        :type Isp: str
+        :param City: 节点所在城市
+        :type City: str
+        :param Status: 节点状态
+online：上线状态，正常调度服务中
+offline：下线状态
+        :type Status: str
+        """
+        self.Ip = None
+        self.District = None
+        self.Isp = None
+        self.City = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Ip = params.get("Ip")
+        self.District = params.get("District")
+        self.Isp = params.get("Isp")
+        self.City = params.get("City")
+        self.Status = params.get("Status")
 
 
 class Origin(AbstractModel):

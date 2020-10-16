@@ -237,7 +237,7 @@ class DescribeResourceTagsByResourceIdsRequest(AbstractModel):
         :type ServiceType: str
         :param ResourcePrefix: 资源前缀
         :type ResourcePrefix: str
-        :param ResourceIds: 资源唯一标记
+        :param ResourceIds: 资源ID数组，大小不超过50
         :type ResourceIds: list of str
         :param ResourceRegion: 资源所在地域
         :type ResourceRegion: str
@@ -476,7 +476,7 @@ class DescribeResourceTagsRequest(AbstractModel):
         :type Offset: int
         :param Limit: 每页大小，默认为 15
         :type Limit: int
-        :param CosResourceId: 是否是Cos的资源id
+        :param CosResourceId: 是否是cos的资源（0或者1），输入的ResourceId为cos资源时必填
         :type CosResourceId: int
         """
         self.CreateUin = None

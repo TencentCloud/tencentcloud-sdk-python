@@ -1793,6 +1793,113 @@ class DescribeNamespacesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeReplicationInstanceCreateTasksRequest(AbstractModel):
+    """DescribeReplicationInstanceCreateTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ReplicationRegistryId: 同步实例Id
+        :type ReplicationRegistryId: str
+        :param ReplicationRegionId: 同步实例的地域ID
+        :type ReplicationRegionId: int
+        """
+        self.ReplicationRegistryId = None
+        self.ReplicationRegionId = None
+
+
+    def _deserialize(self, params):
+        self.ReplicationRegistryId = params.get("ReplicationRegistryId")
+        self.ReplicationRegionId = params.get("ReplicationRegionId")
+
+
+class DescribeReplicationInstanceCreateTasksResponse(AbstractModel):
+    """DescribeReplicationInstanceCreateTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskDetail: 任务详情
+        :type TaskDetail: list of TaskDetail
+        :param Status: 整体任务状态
+        :type Status: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskDetail = None
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TaskDetail") is not None:
+            self.TaskDetail = []
+            for item in params.get("TaskDetail"):
+                obj = TaskDetail()
+                obj._deserialize(item)
+                self.TaskDetail.append(obj)
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeReplicationInstancesRequest(AbstractModel):
+    """DescribeReplicationInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param Offset: 偏移量,默认0
+        :type Offset: int
+        :param Limit: 最大输出条数，默认20，最大为100
+        :type Limit: int
+        """
+        self.RegistryId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeReplicationInstancesResponse(AbstractModel):
+    """DescribeReplicationInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 总实例个数
+        :type TotalCount: int
+        :param ReplicationRegistries: 同步实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReplicationRegistries: list of ReplicationRegistry
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ReplicationRegistries = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ReplicationRegistries") is not None:
+            self.ReplicationRegistries = []
+            for item in params.get("ReplicationRegistries"):
+                obj = ReplicationRegistry()
+                obj._deserialize(item)
+                self.ReplicationRegistries.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRepositoriesRequest(AbstractModel):
     """DescribeRepositories请求参数结构体
 
@@ -2962,6 +3069,43 @@ class RegistryStatus(AbstractModel):
                 self.Conditions.append(obj)
 
 
+class ReplicationRegistry(AbstractModel):
+    """企业版复制实例
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 主实例ID
+        :type RegistryId: str
+        :param ReplicationRegistryId: 复制实例ID
+        :type ReplicationRegistryId: str
+        :param ReplicationRegionId: 复制实例的地域ID
+        :type ReplicationRegionId: int
+        :param ReplicationRegionName: 复制实例的地域名称
+        :type ReplicationRegionName: str
+        :param Status: 复制实例的状态
+        :type Status: str
+        :param CreatedAt: 创建时间
+        :type CreatedAt: str
+        """
+        self.RegistryId = None
+        self.ReplicationRegistryId = None
+        self.ReplicationRegionId = None
+        self.ReplicationRegionName = None
+        self.Status = None
+        self.CreatedAt = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.ReplicationRegistryId = params.get("ReplicationRegistryId")
+        self.ReplicationRegionId = params.get("ReplicationRegionId")
+        self.ReplicationRegionName = params.get("ReplicationRegionName")
+        self.Status = params.get("Status")
+        self.CreatedAt = params.get("CreatedAt")
+
+
 class RepoInfo(AbstractModel):
     """仓库的信息
 
@@ -3345,6 +3489,45 @@ class TagSpecification(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+
+
+class TaskDetail(AbstractModel):
+    """任务详情
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskName: 任务
+        :type TaskName: str
+        :param TaskUUID: 任务UUID
+        :type TaskUUID: str
+        :param TaskStatus: 任务状态
+        :type TaskStatus: str
+        :param TaskMessage: 任务的状态信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskMessage: str
+        :param CreatedTime: 任务开始时间
+        :type CreatedTime: str
+        :param FinishedTime: 任务结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FinishedTime: str
+        """
+        self.TaskName = None
+        self.TaskUUID = None
+        self.TaskStatus = None
+        self.TaskMessage = None
+        self.CreatedTime = None
+        self.FinishedTime = None
+
+
+    def _deserialize(self, params):
+        self.TaskName = params.get("TaskName")
+        self.TaskUUID = params.get("TaskUUID")
+        self.TaskStatus = params.get("TaskStatus")
+        self.TaskMessage = params.get("TaskMessage")
+        self.CreatedTime = params.get("CreatedTime")
+        self.FinishedTime = params.get("FinishedTime")
 
 
 class TcrImageInfo(AbstractModel):
