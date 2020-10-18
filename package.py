@@ -61,11 +61,6 @@ setup(
         'Programming Language :: Python',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.1',
-        'Programming Language :: Python :: 3.2',
-        'Programming Language :: Python :: 3.3',
-        'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
     ],
@@ -155,20 +150,27 @@ if __name__ == '__main__':
     args = parser.parse_args()
     root_path = os.path.dirname(os.path.abspath(__file__))
     # 创建打包的临时目录
-    temp_dir = mk_dir(os.path.join(root_path, "temp-directory"))
-    tencentcloud_path = os.path.join(root_path, "tencentcloud")
+    temp_dir = os.path.join(root_path, "temp-directory")
+    tx_path = os.path.join(root_path, "tencentcloud")
     try:
-        for item in os.listdir(tencentcloud_path):
-            if os.path.isdir(os.path.join(tencentcloud_path, item)) and \
-                    (not args.services or item in args.services) and "__" not in item:
-                print("processing %s" % item)
-                mk_config_file(temp_dir, item)
-                tencentcloud_dir_in_temp = mk_dir(os.path.join(temp_dir, "tencentcloud"))
-                copy_file(os.path.join(tencentcloud_path, "__init__.py"),
-                          os.path.join(tencentcloud_dir_in_temp, "__init__.py"))
-                mod_dir_in_temp = mk_dir(os.path.join(tencentcloud_dir_in_temp, item))
-                generate_lib_src(os.path.join(tencentcloud_path, item), mod_dir_in_temp)
-                build_and_install_package(item, args.upload)
+        for item in sorted(os.listdir(tx_path)):
+            if not os.path.isdir(os.path.join(tx_path, item)):
+                continue
+            # __pycaches__
+            if "__" in item:
+                continue
+            if args.services and item not in args.services:
+                continue
+            print("processing %s" % item)
+            mk_dir(temp_dir)
+            mk_config_file(temp_dir, item)
+            tx_dir_in_temp = mk_dir(os.path.join(temp_dir, "tencentcloud"))
+            copy_file(os.path.join(tx_path, "__init__.py"),
+                      os.path.join(tx_dir_in_temp, "__init__.py"))
+            mod_dir_in_temp = mk_dir(os.path.join(tx_dir_in_temp, item))
+            generate_lib_src(os.path.join(tx_path, item), mod_dir_in_temp)
+            build_and_install_package(item, args.upload)
+            shutil.rmtree(temp_dir)
     except Exception as e:
         print("something wrong: %s" % str(e))
     finally:
