@@ -142,6 +142,35 @@ class AssetCredentials(AbstractModel):
         self.Token = params.get("Token")
 
 
+class AssetSupportSys(AbstractModel):
+    """生成包支持操作系统详细信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageId: 生成包操作系统的镜像Id
+        :type ImageId: str
+        :param OsType: 生成包操作系统的类型
+        :type OsType: str
+        :param OsBit: 生成包操作系统的位数
+        :type OsBit: int
+        :param OsVersion: 生成包操作系统的版本
+        :type OsVersion: str
+        """
+        self.ImageId = None
+        self.OsType = None
+        self.OsBit = None
+        self.OsVersion = None
+
+
+    def _deserialize(self, params):
+        self.ImageId = params.get("ImageId")
+        self.OsType = params.get("OsType")
+        self.OsBit = params.get("OsBit")
+        self.OsVersion = params.get("OsVersion")
+
+
 class AttachCcnInstancesRequest(AbstractModel):
     """AttachCcnInstances请求参数结构体
 
@@ -287,9 +316,9 @@ class CreateAssetRequest(AbstractModel):
         :type AssetVersion: str
         :param AssetRegion: 生成包所在地域，详见产品支持的 [地域列表](https://cloud.tencent.com/document/api/1165/42053#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8)
         :type AssetRegion: str
-        :param OperateSystem: 生成包可运行的操作系统，暂时只有CentOS7.16
+        :param OperateSystem: 生成包可运行的操作系统，若传入参数为CentOS7.16则不需要传入ImageId字段，否则，需要传入Imageid字段（该方式是为了兼容之前的版本，后续建议使用ImageId来替代该字段）
         :type OperateSystem: str
-        :param ImageId: 生成包支持的操作系统镜像id
+        :param ImageId: 生成包支持的操作系统镜像id，若传入OperateSystem字段的值是CentOS7.16，则不需要传入该值；如果不是，则需要通过DescribeAssetSystems接口获取asset支持的操作系统ImageId进行传入
         :type ImageId: str
         """
         self.BucketKey = None
@@ -347,7 +376,7 @@ class CreateFleetRequest(AbstractModel):
         :type Description: str
         :param InboundPermissions: 网络配置
         :type InboundPermissions: list of InboundPermission
-        :param InstanceType: 服务器类型，例如S5.LARGE8
+        :param InstanceType: 服务器类型，参数根据[获取服务器实例类型列表](https://cloud.tencent.com/document/product/1165/48732)接口获取。
         :type InstanceType: str
         :param FleetType: 服务器舰队类型，目前只支持ON_DEMAND类型
         :type FleetType: str
@@ -355,15 +384,15 @@ class CreateFleetRequest(AbstractModel):
         :type Name: str
         :param NewGameServerSessionProtectionPolicy: 保护策略：不保护NoProtection、完全保护FullProtection、时限保护TimeLimitProtection
         :type NewGameServerSessionProtectionPolicy: str
-        :param PeerVpcId: VPC 网络 Id，弃用，对等链接已不再使用
+        :param PeerVpcId: VPC 网络 Id，对等连接已不再使用
         :type PeerVpcId: str
         :param ResourceCreationLimitPolicy: 资源创建限制策略
         :type ResourceCreationLimitPolicy: :class:`tencentcloud.gse.v20191112.models.ResourceCreationLimitPolicy`
         :param RuntimeConfiguration: 进程配置
         :type RuntimeConfiguration: :class:`tencentcloud.gse.v20191112.models.RuntimeConfiguration`
-        :param SubNetId: VPC 子网，弃用，对等链接已不再使用
+        :param SubNetId: VPC 子网，对等连接已不再使用
         :type SubNetId: str
-        :param GameServerSessionProtectionTimeLimit: 时限保护超时时间，默认60分钟，最小值5，最大值1440
+        :param GameServerSessionProtectionTimeLimit: 时限保护超时时间，默认60分钟，最小值5，最大值1440；当NewGameSessionProtectionPolicy为TimeLimitProtection时参数有效
         :type GameServerSessionProtectionTimeLimit: int
         """
         self.AssetId = None
@@ -437,7 +466,7 @@ class CreateGameServerSessionQueueRequest(AbstractModel):
         """
         :param Name: 游戏服务器会话队列名称，长度1~128
         :type Name: str
-        :param Destinations: 目的服务部署（可为别名）列表
+        :param Destinations: 目的服务器舰队（可为别名）列表
         :type Destinations: list of GameServerSessionQueueDestination
         :param PlayerLatencyPolicies: 延迟策略集合
         :type PlayerLatencyPolicies: list of PlayerLatencyPolicy
@@ -732,9 +761,9 @@ class DeleteScalingPolicyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FleetId: 服务部署ID
+        :param FleetId: 服务器舰队ID
         :type FleetId: str
-        :param Name: 策略名称
+        :param Name: 扩缩容策略名称，最小长度为0，最大长度为1024
         :type Name: str
         """
         self.FleetId = None
@@ -844,6 +873,53 @@ class DescribeAssetResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeAssetSystemsRequest(AbstractModel):
+    """DescribeAssetSystems请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param OsType: 生成包支持的操作系统类型
+        :type OsType: str
+        :param OsBit: 生成包支持的操作系统位数
+        :type OsBit: int
+        """
+        self.OsType = None
+        self.OsBit = None
+
+
+    def _deserialize(self, params):
+        self.OsType = params.get("OsType")
+        self.OsBit = params.get("OsBit")
+
+
+class DescribeAssetSystemsResponse(AbstractModel):
+    """DescribeAssetSystems返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AssetSupportSys: 生成包支持的操作系统类型列表
+        :type AssetSupportSys: list of AssetSupportSys
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AssetSupportSys = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AssetSupportSys") is not None:
+            self.AssetSupportSys = []
+            for item in params.get("AssetSupportSys"):
+                obj = AssetSupportSys()
+                obj._deserialize(item)
+                self.AssetSupportSys.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAssetsRequest(AbstractModel):
     """DescribeAssets请求参数结构体
 
@@ -851,7 +927,7 @@ class DescribeAssetsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param AssetRegion: 生成包可部署地域
+        :param AssetRegion: 生成包支持的可部署 [地域列表](https://cloud.tencent.com/document/api/1165/42053#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8)
         :type AssetRegion: str
         :param Offset: 偏移，代表页数，与asset实际数量相关
         :type Offset: int
@@ -960,7 +1036,7 @@ class DescribeFleetAttributesRequest(AbstractModel):
         """
         :param FleetIds: 服务器舰队 Ids
         :type FleetIds: list of str
-        :param Limit: 结果返回最大数量，最小值0，最大值1000
+        :param Limit: 结果返回最大数量，默认值20，最大值100
         :type Limit: int
         :param Offset: 返回结果偏移，最小值0
         :type Offset: int
@@ -1014,11 +1090,11 @@ class DescribeFleetCapacityRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FleetIds: 服务部署 Id列表
+        :param FleetIds: 服务器舰队ID列表
         :type FleetIds: list of str
-        :param Limit: 结果返回最大数量
+        :param Limit: 结果返回最大数量，最大值 100
         :type Limit: int
-        :param Offset: 返回结果偏移
+        :param Offset: 返回结果偏移，最小值 0
         :type Offset: int
         """
         self.FleetIds = None
@@ -1039,7 +1115,7 @@ class DescribeFleetCapacityResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FleetCapacity: 服务部署容量配置
+        :param FleetCapacity: 服务器舰队的容量配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type FleetCapacity: list of FleetCapacity
         :param TotalCount: 结果返回最大数量
@@ -1073,7 +1149,7 @@ class DescribeFleetEventsRequest(AbstractModel):
         """
         :param FleetId: 服务器舰队 Id
         :type FleetId: str
-        :param Limit: 分页时返回服务部署事件的数量，默认为20，最大值为100
+        :param Limit: 分页时返回服务器舰队事件的数量，默认为20，最大值为100
         :type Limit: int
         :param Offset: 分页时的数据偏移量，默认为0
         :type Offset: int
@@ -1170,11 +1246,11 @@ class DescribeFleetStatisticDetailsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FleetId: 服务部署ID
+        :param FleetId: 服务器舰队ID
         :type FleetId: str
-        :param BeginTime: 查询开始时间
+        :param BeginTime: 查询开始时间，时间格式：YYYY-MM-DD hh:mm:ss
         :type BeginTime: str
-        :param EndTime: 查询结束时间
+        :param EndTime: 查询结束时间，时间格式：YYYY-MM-DD hh:mm:ss
         :type EndTime: str
         :param Limit: 结果返回最大数量，最小值0，最大值100
         :type Limit: int
@@ -1240,11 +1316,11 @@ class DescribeFleetStatisticFlowsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FleetId: 服务部署ID
+        :param FleetId: 服务器舰队ID
         :type FleetId: str
-        :param BeginTime: 查询开始时间
+        :param BeginTime: 查询开始时间，时间格式：YYYY-MM-DD hh:mm:ss
         :type BeginTime: str
-        :param EndTime: 查询结束时间
+        :param EndTime: 查询结束时间，时间格式：YYYY-MM-DD hh:mm:ss
         :type EndTime: str
         :param Limit: 结果返回最大数量，最小值0，最大值100
         :type Limit: int
@@ -1320,11 +1396,11 @@ class DescribeFleetStatisticSummaryRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FleetId: 服务部署 Id
+        :param FleetId: 服务器舰队ID
         :type FleetId: str
-        :param BeginTime: 查询开始时间
+        :param BeginTime: 查询开始时间，时间格式: YYYY-MM-DD hh:mm:ss
         :type BeginTime: str
-        :param EndTime: 查询结束时间
+        :param EndTime: 查询结束时间，时间格式: YYYY-MM-DD hh:mm:ss
         :type EndTime: str
         """
         self.FleetId = None
@@ -1722,7 +1798,7 @@ class DescribeInstancesExtendRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FleetId: 服务部署ID
+        :param FleetId: 服务器舰队ID
         :type FleetId: str
         :param Offset: 返回结果偏移，最小值0
         :type Offset: int
@@ -1779,7 +1855,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FleetId: 服务部署ID
+        :param FleetId: 服务器舰队ID
         :type FleetId: str
         :param InstanceId: CVM实例ID
         :type InstanceId: str
@@ -1926,7 +2002,7 @@ class DescribeRuntimeConfigurationResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param RuntimeConfiguration: 服务部署运行配置信息
+        :param RuntimeConfiguration: 服务器舰队运行配置信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuntimeConfiguration: :class:`tencentcloud.gse.v20191112.models.RuntimeConfiguration`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1950,7 +2026,7 @@ class DescribeScalingPoliciesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FleetId: 服务部署ID
+        :param FleetId: 服务器舰队ID
         :type FleetId: str
         :param StatusFilter: 状态过滤条件，取值：ACTIVE表示活跃
         :type StatusFilter: str
@@ -2261,7 +2337,7 @@ class FleetAttributes(AbstractModel):
         :param Status: 状态：新建、下载中、验证中、生成中、激活中、活跃、异常、删除中、结束
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param StoppedActions: 服务器舰队停止状态
+        :param StoppedActions: 服务器舰队停止状态，为空时表示自动扩缩容
 注意：此字段可能返回 null，表示取不到有效值。
         :type StoppedActions: list of str
         :param TerminationTime: 服务器舰队终止时间
@@ -2323,13 +2399,13 @@ class FleetCapacity(AbstractModel):
         :param FleetId: 服务部署 Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type FleetId: str
-        :param InstanceType: 服务器类型
+        :param InstanceType: 服务器类型，如S3.LARGE8,S2.LARGE8,S5.LARGE8等
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceType: str
         :param InstanceCounts: 服务器实例统计数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceCounts: :class:`tencentcloud.gse.v20191112.models.InstanceCounts`
-        :param ScalingInterval: 服务器伸缩容间隔
+        :param ScalingInterval: 服务器伸缩容间隔，单位分钟，最小值3，最大值30，默认值10
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScalingInterval: int
         """
@@ -2676,7 +2752,7 @@ class GameServerSessionPlacement(AbstractModel):
         :param GameProperties: 游戏属性
 注意：此字段可能返回 null，表示取不到有效值。
         :type GameProperties: list of GameProperty
-        :param MaximumPlayerSessionCount: 最大玩家数量
+        :param MaximumPlayerSessionCount: 游戏服务器允许同时连接到游戏会话的最大玩家数量，最小值1，最大值为玩家会话最大限额
         :type MaximumPlayerSessionCount: int
         :param GameServerSessionData: 游戏会话数据
 注意：此字段可能返回 null，表示取不到有效值。
@@ -2867,7 +2943,7 @@ class GetInstanceAccessRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FleetId: 服务部署Id
+        :param FleetId: 服务器舰队ID
         :type FleetId: str
         :param InstanceId: 实例Id
         :type InstanceId: str
@@ -3410,7 +3486,7 @@ class ListAliasesRequest(AbstractModel):
         """
         :param Name: 名字，长度不小于1字符不超过1024字符
         :type Name: str
-        :param RoutingStrategyType: 路由策略类型，有效值SIMPLE|TERMINAL
+        :param RoutingStrategyType: 路由策略类型，有效值常规别名(SIMPLE)、终止别名(TERMINAL)
         :type RoutingStrategyType: str
         :param Limit: 要返回的最大结果数，最小值1
         :type Limit: int
@@ -3478,9 +3554,9 @@ class ListFleetsRequest(AbstractModel):
         """
         :param AssetId: 生成包 Id
         :type AssetId: str
-        :param Limit: 结果返回最大值，最小值0，最大值1000
+        :param Limit: 结果返回最大值，暂未使用
         :type Limit: int
-        :param Offset: 结果返回偏移，最小值0
+        :param Offset: 结果返回偏移，暂未使用
         :type Offset: int
         """
         self.AssetId = None
@@ -3501,10 +3577,10 @@ class ListFleetsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FleetIds: 服务部署 Id 列表
+        :param FleetIds: 服务器舰队 Id 列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type FleetIds: list of str
-        :param TotalCount: 服务部署 Id 总数，最小值0
+        :param TotalCount: 服务器舰队 Id 总数，最小值0
         :type TotalCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3680,25 +3756,28 @@ class PutScalingPolicyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FleetId: 基于规则的扩缩容配置服务部署ID
+        :param FleetId: 扩缩容配置服务器舰队ID
         :type FleetId: str
-        :param Name: 策略名称
+        :param Name: 扩缩容策略名称，最小长度为1，最大长度为1024
         :type Name: str
-        :param ScalingAdjustment: 扩缩容调整值
+        :param ScalingAdjustment: 扩缩容调整值，ScalingAdjustmentType取值PercentChangeInCapacity时，取值范围-99~99
+ScalingAdjustmentType取值ChangeInCapacity或ExactCapacity时，最小值要缩容的最多CVM个数，最大值为实际最大的CVM个数限额
         :type ScalingAdjustment: int
-        :param ScalingAdjustmentType: 扩缩容调整类型
+        :param ScalingAdjustmentType: 扩缩容调整类型，取值（ChangeInCapacity，ExactCapacity，PercentChangeInCapacity）
         :type ScalingAdjustmentType: str
         :param Threshold: 扩缩容指标阈值
         :type Threshold: float
-        :param ComparisonOperator: 策略比较符，取值：>,>=,<,<=
+        :param ComparisonOperator: 扩缩容策略比较符，取值：>,>=,<,<=
         :type ComparisonOperator: str
-        :param EvaluationPeriods: 持续时间长度（分钟）
+        :param EvaluationPeriods: 单个策略持续时间长度（分钟）
         :type EvaluationPeriods: int
-        :param MetricName: 指标名称
+        :param MetricName: 扩缩容参与计算的指标名称，PolicyType取值RuleBased，
+MetricName取值（AvailableGameServerSessions，AvailableCustomCount，PercentAvailableCustomCount，ActiveInstances，IdleInstances，CurrentPlayerSessions和PercentIdleInstances）；
+PolicyType取值TargetBased时，MetricName取值PercentAvailableGameSessions
         :type MetricName: str
         :param PolicyType: 策略类型，取值：TargetBased表示基于目标的策略；RuleBased表示基于规则的策略
         :type PolicyType: str
-        :param TargetConfiguration: 扩缩容配置类型
+        :param TargetConfiguration: 扩缩容目标值配置，只有TargetBased类型的策略生效
         :type TargetConfiguration: :class:`tencentcloud.gse.v20191112.models.TargetConfiguration`
         """
         self.FleetId = None
@@ -3831,7 +3910,7 @@ class ResourceCreationLimitPolicy(AbstractModel):
         """
         :param NewGameServerSessionsPerCreator: 创建数量，最小值1，默认2
         :type NewGameServerSessionsPerCreator: int
-        :param PolicyPeriodInMinutes: 单位时间，最小值1，默认3
+        :param PolicyPeriodInMinutes: 单位时间，最小值1，默认3，单位分钟
         :type PolicyPeriodInMinutes: int
         """
         self.NewGameServerSessionsPerCreator = None
@@ -3850,12 +3929,12 @@ class RoutingStrategy(AbstractModel):
 
     def __init__(self):
         """
-        :param Type: 别名的路由策略的类型SIMPLE/TERMINAL
+        :param Type: 别名的路由策略的类型，有效值常规别名(SIMPLE)、终止别名(TERMINAL)
         :type Type: str
         :param FleetId: 别名指向的队列的唯一标识符
 注意：此字段可能返回 null，表示取不到有效值。
         :type FleetId: str
-        :param Message: 与终端路由策略一起使用的消息文本
+        :param Message: 与终端路由策略一起使用的消息文本，长度不小于1字符不超过1024字符
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         """
@@ -3877,11 +3956,11 @@ class RuntimeConfiguration(AbstractModel):
 
     def __init__(self):
         """
-        :param GameServerSessionActivationTimeoutSeconds: 游戏会话进程超时
+        :param GameServerSessionActivationTimeoutSeconds: 游戏会话进程超时，最小值1，最大值600，单位秒
         :type GameServerSessionActivationTimeoutSeconds: int
-        :param MaxConcurrentGameServerSessionActivations: 最大游戏会话数
+        :param MaxConcurrentGameServerSessionActivations: 最大游戏会话数，最小值1，最大值2147483647
         :type MaxConcurrentGameServerSessionActivations: int
-        :param ServerProcesses: 服务进程配置
+        :param ServerProcesses: 服务进程配置，至少有一个进程配置
         :type ServerProcesses: list of ServerProcesse
         """
         self.GameServerSessionActivationTimeoutSeconds = None
@@ -3983,7 +4062,7 @@ class SearchGameServerSessionsRequest(AbstractModel):
         :type FleetId: str
         :param Limit: 单次查询记录数上限
         :type Limit: int
-        :param NextToken: 页偏移，用于查询下一页
+        :param NextToken: 页偏移，用于查询下一页，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
         :type NextToken: str
         :param FilterExpression: 搜索条件表达式，支持如下变量
 gameServerSessionName 游戏会话名称 String
@@ -3996,6 +4075,32 @@ gameServerSessionProperties 游戏会话属性 String
 
 表达式String类型 等于=，不等于<>判断
 表示Number类型支持 =,<>,>,>=,<,<=
+
+例如：
+FilterExpression取值
+playerSessionCount>=2 AND hasAvailablePlayerSessions=true"
+表示查找至少有两个玩家，而且有可用玩家会话的游戏会话。
+FilterExpression取值
+gameServerSessionProperties.K1 = 'V1' AND gameServerSessionProperties.K2 = 'V2' OR gameServerSessionProperties.K3 = 'V3'
+
+表示
+查询满足如下游戏服务器会话属性的游戏会话
+{
+    "GameProperties":[
+        {
+            "Key":"K1",
+            "Value":"V1"
+        },
+        {
+            "Key":"K2",
+            "Value":"V2"
+        },
+        {
+            "Key":"K3",
+            "Value":"V3"
+        }
+    ]
+}
         :type FilterExpression: str
         :param SortExpression: 排序条件关键字
 支持排序字段
@@ -4033,7 +4138,7 @@ class SearchGameServerSessionsResponse(AbstractModel):
         :param GameServerSessions: 游戏服务器会话列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type GameServerSessions: list of GameServerSession
-        :param NextToken: 页偏移，用于查询下一页
+        :param NextToken: 页偏移，用于查询下一页，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
 注意：此字段可能返回 null，表示取不到有效值。
         :type NextToken: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4062,11 +4167,11 @@ class ServerProcesse(AbstractModel):
 
     def __init__(self):
         """
-        :param ConcurrentExecutions: 并发执行数量
+        :param ConcurrentExecutions: 并发执行数量，所有进程并发执行总数最小值1，最大值50
         :type ConcurrentExecutions: int
-        :param LaunchPath: 启动路径：/local/game/ 或 C:\game\
+        :param LaunchPath: 启动路径：Linux路径/local/game/ 或WIndows路径C:\game\，最小长度1，最大长度1024
         :type LaunchPath: str
-        :param Parameters: 启动参数
+        :param Parameters: 启动参数，最小长度0，最大长度1024
         :type Parameters: str
         """
         self.ConcurrentExecutions = None
@@ -4087,11 +4192,11 @@ class SetServerWeightRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FleetId: 服务舰队ID
+        :param FleetId: 服务器舰队ID
         :type FleetId: str
         :param InstanceId: 实例ID
         :type InstanceId: str
-        :param Weight: 权重
+        :param Weight: 权重，最小值0，最大值10，默认值5
         :type Weight: int
         """
         self.FleetId = None
@@ -4131,7 +4236,7 @@ class StartFleetActionsRequest(AbstractModel):
         """
         :param FleetId: 服务器舰队 Id
         :type FleetId: str
-        :param Actions: 扩展策略，为空或者AUTO_SCALING
+        :param Actions: 服务器舰队扩展策略，值为["AUTO_SCALING"]
         :type Actions: list of str
         """
         self.FleetId = None
@@ -4172,19 +4277,19 @@ class StartGameServerSessionPlacementRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PlacementId: 开始部署游戏服务器会话的唯一标识符
+        :param PlacementId: 开始部署游戏服务器会话的唯一标识符，最大值48个ASCII字符，模式：[a-zA-Z0-9-]+
         :type PlacementId: str
         :param GameServerSessionQueueName: 游戏服务器会话队列名称
         :type GameServerSessionQueueName: str
-        :param MaximumPlayerSessionCount: 游戏服务器允许同时连接到游戏会话的最大玩家数量
+        :param MaximumPlayerSessionCount: 游戏服务器允许同时连接到游戏会话的最大玩家数量，最小值1，最大值为玩家会话最大限额
         :type MaximumPlayerSessionCount: int
         :param DesiredPlayerSessions: 玩家游戏会话信息
         :type DesiredPlayerSessions: list of DesiredPlayerSession
         :param GameProperties: 玩家游戏会话属性
         :type GameProperties: list of GameProperty
-        :param GameServerSessionData: 游戏服务器会话数据
+        :param GameServerSessionData: 游戏服务器会话数据，最大长度不超过4096个ASCII字符
         :type GameServerSessionData: str
-        :param GameServerSessionName: 游戏服务器会话名称
+        :param GameServerSessionName: 游戏服务器会话名称，最大长度不超过4096个ASCII字符
         :type GameServerSessionName: str
         :param PlayerLatencies: 玩家延迟
         :type PlayerLatencies: list of PlayerLatency
@@ -4257,7 +4362,7 @@ class StopFleetActionsRequest(AbstractModel):
         """
         :param FleetId: 服务器舰队 Id
         :type FleetId: str
-        :param Actions: 服务器舰队扩展策略，为空或者AUTO_SCALING
+        :param Actions: 服务器舰队扩展策略，值为["AUTO_SCALING"]
         :type Actions: list of str
         """
         self.FleetId = None
@@ -4455,15 +4560,15 @@ class UpdateFleetAttributesRequest(AbstractModel):
         """
         :param FleetId: 服务器舰队 Id
         :type FleetId: str
-        :param Description: 服务器舰队描述
+        :param Description: 服务器舰队描述，最小长度0，最大长度100
         :type Description: str
-        :param Name: 服务器舰队名称
+        :param Name: 服务器舰队名称，最小长度1，最大长度50
         :type Name: str
-        :param NewGameSessionProtectionPolicy: 新建游戏会话保护策略
+        :param NewGameSessionProtectionPolicy: 保护策略：不保护NoProtection、完全保护FullProtection、时限保护TimeLimitProtection
         :type NewGameSessionProtectionPolicy: str
         :param ResourceCreationLimitPolicy: 资源创建限制策略
         :type ResourceCreationLimitPolicy: :class:`tencentcloud.gse.v20191112.models.ResourceCreationLimitPolicy`
-        :param GameServerSessionProtectionTimeLimit: 时限保护超时时间，默认60分钟
+        :param GameServerSessionProtectionTimeLimit: 时限保护超时时间，默认60分钟，最小值5，最大值1440；当NewGameSessionProtectionPolicy为TimeLimitProtection时参数有效
         :type GameServerSessionProtectionTimeLimit: int
         """
         self.FleetId = None
@@ -4492,7 +4597,7 @@ class UpdateFleetAttributesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FleetId: 服务部署Id
+        :param FleetId: 服务器舰队Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type FleetId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4514,15 +4619,15 @@ class UpdateFleetCapacityRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FleetId: 服务部署ID
+        :param FleetId: 服务器舰队ID
         :type FleetId: str
         :param DesiredInstances: 期望的服务器实例数
         :type DesiredInstances: int
-        :param MinSize: 服务器实例数最小限制
+        :param MinSize: 服务器实例数最小限制，最小值0，最大值不超过最高配额查看各地区最高配额减1
         :type MinSize: int
-        :param MaxSize: 服务器实例数最大限制
+        :param MaxSize: 服务器实例数最大限制，最小值1，最大值不超过最高配额查看各地区最高配额
         :type MaxSize: int
-        :param ScalingInterval: 服务器伸缩容间隔
+        :param ScalingInterval: 服务器伸缩容间隔，单位分钟，最小值3，最大值30，默认值10
         :type ScalingInterval: int
         """
         self.FleetId = None
@@ -4547,7 +4652,7 @@ class UpdateFleetCapacityResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FleetId: 服务部署ID
+        :param FleetId: 服务器舰队ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type FleetId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4559,6 +4664,44 @@ class UpdateFleetCapacityResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.FleetId = params.get("FleetId")
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateFleetNameRequest(AbstractModel):
+    """UpdateFleetName请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FleetId: 服务器舰队 Id
+        :type FleetId: str
+        :param Name: 服务器舰队名称，最小长度1，最大长度50
+        :type Name: str
+        """
+        self.FleetId = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.FleetId = params.get("FleetId")
+        self.Name = params.get("Name")
+
+
+class UpdateFleetNameResponse(AbstractModel):
+    """UpdateFleetName返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -4628,7 +4771,7 @@ class UpdateGameServerSessionQueueRequest(AbstractModel):
         """
         :param Name: 游戏服务器会话队列名字，长度1~128
         :type Name: str
-        :param Destinations: 目的服务部署（可为别名）列表
+        :param Destinations: 目的服务器舰队（可为别名）列表
         :type Destinations: list of GameServerSessionQueueDestination
         :param PlayerLatencyPolicies: 延迟策略集合
         :type PlayerLatencyPolicies: list of PlayerLatencyPolicy
@@ -4694,9 +4837,9 @@ class UpdateGameServerSessionRequest(AbstractModel):
         :type MaximumPlayerSessionCount: int
         :param Name: 游戏服务器会话名称，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
         :type Name: str
-        :param PlayerSessionCreationPolicy: 玩家会话创建策略（ACCEPT_ALL,DENY_ALL）
+        :param PlayerSessionCreationPolicy: 玩家会话创建策略，包括允许所有玩家加入和禁止所有玩家加入（ACCEPT_ALL,DENY_ALL）
         :type PlayerSessionCreationPolicy: str
-        :param ProtectionPolicy: 保护策略(NoProtection,TimeLimitProtection,FullProtection)
+        :param ProtectionPolicy: 保护策略，包括不保护、时限保护和完全保护(NoProtection,TimeLimitProtection,FullProtection)
         :type ProtectionPolicy: str
         """
         self.GameServerSessionId = None

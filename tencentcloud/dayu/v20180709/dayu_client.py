@@ -921,6 +921,34 @@ class DayuClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBizTrend(self, request):
+        """获取业务流量曲线
+
+        :param request: Request instance for DescribeBizTrend.
+        :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeBizTrendRequest`
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeBizTrendResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBizTrend", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBizTrendResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCCAlarmThreshold(self, request):
         """获取高防包、高防IP、高防IP专业版、棋牌盾产品设置CC攻击的告警通知阈值
 

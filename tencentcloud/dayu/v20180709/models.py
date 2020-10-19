@@ -2615,6 +2615,85 @@ class DescribeBasicDeviceThresholdResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBizTrendRequest(AbstractModel):
+    """DescribeBizTrend请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP）
+        :type Business: str
+        :param Id: 资源实例ID
+        :type Id: str
+        :param Period: 统计周期，可取值300，1800，3600，21600，86400，单位秒
+        :type Period: int
+        :param StartTime: 统计开始时间
+        :type StartTime: str
+        :param EndTime: 统计结束时间
+        :type EndTime: str
+        :param Statistics: 统计方式，可取值max, min, avg, sum, 如统计纬度是流量速率或包量速率，仅可取值max
+        :type Statistics: str
+        :param MetricName: 统计纬度，可取值connum, new_conn, inactive_conn, intraffic, outtraffic, inpkg, outpkg, qps
+        :type MetricName: str
+        :param ProtoInfo: 协议及端口列表，协议可取值TCP, UDP, HTTP, HTTPS，仅统计纬度为连接数时有效
+        :type ProtoInfo: list of ProtocolPort
+        :param Domain: 统计纬度为qps时，可选特定域名查询
+        :type Domain: str
+        """
+        self.Business = None
+        self.Id = None
+        self.Period = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Statistics = None
+        self.MetricName = None
+        self.ProtoInfo = None
+        self.Domain = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.Id = params.get("Id")
+        self.Period = params.get("Period")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Statistics = params.get("Statistics")
+        self.MetricName = params.get("MetricName")
+        if params.get("ProtoInfo") is not None:
+            self.ProtoInfo = []
+            for item in params.get("ProtoInfo"):
+                obj = ProtocolPort()
+                obj._deserialize(item)
+                self.ProtoInfo.append(obj)
+        self.Domain = params.get("Domain")
+
+
+class DescribeBizTrendResponse(AbstractModel):
+    """DescribeBizTrend返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DataList: 曲线图各个时间点的值
+        :type DataList: list of float
+        :param MetricName: 统计纬度
+        :type MetricName: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DataList = None
+        self.MetricName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DataList = params.get("DataList")
+        self.MetricName = params.get("MetricName")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCCAlarmThresholdRequest(AbstractModel):
     """DescribeCCAlarmThreshold请求参数结构体
 

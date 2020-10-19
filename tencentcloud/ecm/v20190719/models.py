@@ -958,6 +958,8 @@ class CreateModuleRequest(AbstractModel):
         :type TagSpecification: list of TagSpecification
         :param SecurityGroups: 模块默认安全组列表
         :type SecurityGroups: list of str
+        :param DefaultBandWidthIn: 默认入带宽，单位：M。范围不得超过带宽上下限，详看DescribeConfig。
+        :type DefaultBandWidthIn: int
         """
         self.ModuleName = None
         self.DefaultBandWidth = None
@@ -968,6 +970,7 @@ class CreateModuleRequest(AbstractModel):
         self.CloseIpDirect = None
         self.TagSpecification = None
         self.SecurityGroups = None
+        self.DefaultBandWidthIn = None
 
 
     def _deserialize(self, params):
@@ -985,6 +988,7 @@ class CreateModuleRequest(AbstractModel):
                 obj._deserialize(item)
                 self.TagSpecification.append(obj)
         self.SecurityGroups = params.get("SecurityGroups")
+        self.DefaultBandWidthIn = params.get("DefaultBandWidthIn")
 
 
 class CreateModuleResponse(AbstractModel):
@@ -5340,16 +5344,20 @@ class ModifyModuleNetworkRequest(AbstractModel):
         """
         :param ModuleId: 模块Id
         :type ModuleId: str
-        :param DefaultBandwidth: 默认带宽上限
+        :param DefaultBandwidth: 默认出带宽上限
         :type DefaultBandwidth: int
+        :param DefaultBandwidthIn: 默认入带宽上限
+        :type DefaultBandwidthIn: int
         """
         self.ModuleId = None
         self.DefaultBandwidth = None
+        self.DefaultBandwidthIn = None
 
 
     def _deserialize(self, params):
         self.ModuleId = params.get("ModuleId")
         self.DefaultBandwidth = params.get("DefaultBandwidth")
+        self.DefaultBandwidthIn = params.get("DefaultBandwidthIn")
 
 
 class ModifyModuleNetworkResponse(AbstractModel):
@@ -5731,7 +5739,7 @@ DELETEFAILED：删除失败
         :type DefaultImage: :class:`tencentcloud.ecm.v20190719.models.Image`
         :param CreateTime: 创建时间
         :type CreateTime: str
-        :param DefaultBandwidth: 默认带宽
+        :param DefaultBandwidth: 默认出带宽
         :type DefaultBandwidth: int
         :param TagSet: 标签集合
 注意：此字段可能返回 null，表示取不到有效值。
@@ -5740,6 +5748,8 @@ DELETEFAILED：删除失败
         :type CloseIpDirect: int
         :param SecurityGroupIds: 默认安全组id列表
         :type SecurityGroupIds: list of str
+        :param DefaultBandwidthIn: 默认入带宽
+        :type DefaultBandwidthIn: int
         """
         self.ModuleId = None
         self.ModuleName = None
@@ -5753,6 +5763,7 @@ DELETEFAILED：删除失败
         self.TagSet = None
         self.CloseIpDirect = None
         self.SecurityGroupIds = None
+        self.DefaultBandwidthIn = None
 
 
     def _deserialize(self, params):
@@ -5777,6 +5788,7 @@ DELETEFAILED：删除失败
                 self.TagSet.append(obj)
         self.CloseIpDirect = params.get("CloseIpDirect")
         self.SecurityGroupIds = params.get("SecurityGroupIds")
+        self.DefaultBandwidthIn = params.get("DefaultBandwidthIn")
 
 
 class ModuleCounter(AbstractModel):
@@ -6449,11 +6461,14 @@ class PublicIPAddressInfo(AbstractModel):
         :type ISP: :class:`tencentcloud.ecm.v20190719.models.ISP`
         :param MaxBandwidthOut: 实例的最大出带宽上限，单位为Mbps。
         :type MaxBandwidthOut: int
+        :param MaxBandwidthIn: 实例的最大入带宽上限，单位为Mbps。
+        :type MaxBandwidthIn: int
         """
         self.ChargeMode = None
         self.PublicIPAddress = None
         self.ISP = None
         self.MaxBandwidthOut = None
+        self.MaxBandwidthIn = None
 
 
     def _deserialize(self, params):
@@ -6463,6 +6478,7 @@ class PublicIPAddressInfo(AbstractModel):
             self.ISP = ISP()
             self.ISP._deserialize(params.get("ISP"))
         self.MaxBandwidthOut = params.get("MaxBandwidthOut")
+        self.MaxBandwidthIn = params.get("MaxBandwidthIn")
 
 
 class RebootInstancesRequest(AbstractModel):
@@ -6678,16 +6694,20 @@ class ResetInstancesMaxBandwidthRequest(AbstractModel):
         """
         :param InstanceIdSet: 待重置带宽上限的实例ID列表。在单次请求的过程中，单个region下的请求实例数上限为100。
         :type InstanceIdSet: list of str
-        :param MaxBandwidthOut: 修改后的最大带宽上限。
+        :param MaxBandwidthOut: 修改后的最大出带宽上限。
         :type MaxBandwidthOut: int
+        :param MaxBandwidthIn: 修改后的最大入带宽上限。
+        :type MaxBandwidthIn: int
         """
         self.InstanceIdSet = None
         self.MaxBandwidthOut = None
+        self.MaxBandwidthIn = None
 
 
     def _deserialize(self, params):
         self.InstanceIdSet = params.get("InstanceIdSet")
         self.MaxBandwidthOut = params.get("MaxBandwidthOut")
+        self.MaxBandwidthIn = params.get("MaxBandwidthIn")
 
 
 class ResetInstancesMaxBandwidthResponse(AbstractModel):

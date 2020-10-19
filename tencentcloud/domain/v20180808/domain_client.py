@@ -56,7 +56,7 @@ class DomainClient(AbstractClient):
 
 
     def CheckBatchStatus(self, request):
-        """本接口 ( CheckBatchStatus ) 用于检查批量任务状态 。
+        """本接口 ( CheckBatchStatus ) 用于查询批量操作日志状态 。
 
         默认接口请求频率限制：20次/秒。
 
@@ -129,6 +129,66 @@ class DomainClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDomainBatchResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateTemplate(self, request):
+        """本接口 ( CreateTemplate ) 用于添加域名信息模板 。
+
+        默认接口请求频率限制：20次/秒。
+
+        :param request: Request instance for CreateTemplate.
+        :type request: :class:`tencentcloud.domain.v20180808.models.CreateTemplateRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.CreateTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteTemplate(self, request):
+        """本接口 ( DeleteTemplate ) 用于删除域名信息模板。
+
+        默认接口请求频率限制：20次/秒。
+
+        :param request: Request instance for DeleteTemplate.
+        :type request: :class:`tencentcloud.domain.v20180808.models.DeleteTemplateRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.DeleteTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -261,6 +321,36 @@ class DomainClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyDomainDNSBatch(self, request):
+        """本接口 ( ModifyDomainDNSBatch) 用于批量修改域名DNS信息 。
+
+        默认接口请求频率限制：20次/秒。
+
+        :param request: Request instance for ModifyDomainDNSBatch.
+        :type request: :class:`tencentcloud.domain.v20180808.models.ModifyDomainDNSBatchRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.ModifyDomainDNSBatchResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDomainDNSBatch", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDomainDNSBatchResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyDomainOwnerBatch(self, request):
         """本接口 ( ModifyDomainOwnerBatch) 用于域名批量账号间转移 。
 
@@ -277,6 +367,66 @@ class DomainClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDomainOwnerBatchResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RenewDomainBatch(self, request):
+        """本接口 ( RenewDomainBatch ) 用于批量续费域名 。
+
+        默认接口请求频率限制：20次/秒。
+
+        :param request: Request instance for RenewDomainBatch.
+        :type request: :class:`tencentcloud.domain.v20180808.models.RenewDomainBatchRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.RenewDomainBatchResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RenewDomainBatch", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RenewDomainBatchResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SetDomainAutoRenew(self, request):
+        """本接口 ( SetDomainAutoRenew ) 用于设置域名自动续费。
+
+        默认接口请求频率限制：20次/秒。
+
+        :param request: Request instance for SetDomainAutoRenew.
+        :type request: :class:`tencentcloud.domain.v20180808.models.SetDomainAutoRenewRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.SetDomainAutoRenewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SetDomainAutoRenew", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetDomainAutoRenewResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -367,6 +517,36 @@ class DomainClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateProhibitionBatchResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UploadImage(self, request):
+        """本接口 ( UploadImage ) 用于上传资质照片 。
+
+        默认接口请求频率限制：20次/秒。
+
+        :param request: Request instance for UploadImage.
+        :type request: :class:`tencentcloud.domain.v20180808.models.UploadImageRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.UploadImageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UploadImage", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UploadImageResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

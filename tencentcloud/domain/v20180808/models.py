@@ -93,6 +93,34 @@ class CertificateInfo(AbstractModel):
         :param CertificateCode: 证件号码。
         :type CertificateCode: str
         :param CertificateType: 证件类型。
+SFZ: 身份证。
+HZ: 护照。
+TXZ: 港澳居民来往内地通行证。
+TWSFZ: 台湾居民来往大陆通行证。
+GWSFZ: 外国人永久居留身份证。
+ORG: 组织机构代码证
+YYZZ: 工商营业执照。
+TYDMZ: 统一社会信用代码证书。
+BDDH: 部队代号
+JDXKZ: 军队单位对外有偿服务许可证。
+SYZS: 事业单位法人证书。
+GWCZDJZ: 外国企业常驻代表机构登记证。
+STDJZ: 社会团体法人登记证书。
+ZJDJZ: 宗教活动场所登记证。
+MBDJZ: 民办非企业单位登记证书。
+JJDJZ: 基金会法人登记证书。
+LSXKZ: 律师事务所执业许可证。
+GWZHDJZ: 外国在华文化中心登记证。
+GWLYDJZ: 外国政府旅游部门常驻代表机构批准登记证。
+SFXKZ: 司法鉴定许可证
+GWJGZJ: 外国机构证件。
+SHFWJGZ: 社会服务机构登记证书。
+MBXXXKZ: 民办学校办学许可证。
+YLJGXKZ: 医疗机构执业许可证。
+GAJZZ: 港澳居住证
+TWJZZ: 台湾居住证。
+QTTYDM: 其他-统一社会信用代码证书。
+GZJGZY: 公证机构执业证。
         :type CertificateType: str
         :param ImgUrl: 证件照片地址。
         :type ImgUrl: str
@@ -115,7 +143,7 @@ class CheckBatchStatusRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param LogIds: 批量任务id数组，最多 200 个
+        :param LogIds: 操作日志 ID数组，最多 200 个
         :type LogIds: list of int non-negative
         """
         self.LogIds = None
@@ -370,6 +398,88 @@ class CreateDomainBatchResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.LogId = params.get("LogId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateTemplateRequest(AbstractModel):
+    """CreateTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ContactInfo: 联系人信息
+        :type ContactInfo: :class:`tencentcloud.domain.v20180808.models.ContactInfo`
+        :param CertificateInfo: 证件信息
+        :type CertificateInfo: :class:`tencentcloud.domain.v20180808.models.CertificateInfo`
+        """
+        self.ContactInfo = None
+        self.CertificateInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("ContactInfo") is not None:
+            self.ContactInfo = ContactInfo()
+            self.ContactInfo._deserialize(params.get("ContactInfo"))
+        if params.get("CertificateInfo") is not None:
+            self.CertificateInfo = CertificateInfo()
+            self.CertificateInfo._deserialize(params.get("CertificateInfo"))
+
+
+class CreateTemplateResponse(AbstractModel):
+    """CreateTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Template: 模板信息
+        :type Template: :class:`tencentcloud.domain.v20180808.models.TemplateInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Template = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Template") is not None:
+            self.Template = TemplateInfo()
+            self.Template._deserialize(params.get("Template"))
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteTemplateRequest(AbstractModel):
+    """DeleteTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 模板ID
+        :type TemplateId: str
+        """
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+
+
+class DeleteTemplateResponse(AbstractModel):
+    """DeleteTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -735,6 +845,48 @@ TransferFailed：转入失败
         self.BuyStatus = params.get("BuyStatus")
 
 
+class ModifyDomainDNSBatchRequest(AbstractModel):
+    """ModifyDomainDNSBatch请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Domains: 批量操作的域名。
+        :type Domains: list of str
+        :param Dns: 域名DNS 数组。
+        :type Dns: list of str
+        """
+        self.Domains = None
+        self.Dns = None
+
+
+    def _deserialize(self, params):
+        self.Domains = params.get("Domains")
+        self.Dns = params.get("Dns")
+
+
+class ModifyDomainDNSBatchResponse(AbstractModel):
+    """ModifyDomainDNSBatch返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LogId: 日志ID。
+        :type LogId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LogId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.LogId = params.get("LogId")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyDomainOwnerBatchRequest(AbstractModel):
     """ModifyDomainOwnerBatch请求参数结构体
 
@@ -808,6 +960,93 @@ class PriceInfo(AbstractModel):
         self.Price = params.get("Price")
         self.RealPrice = params.get("RealPrice")
         self.Operation = params.get("Operation")
+
+
+class RenewDomainBatchRequest(AbstractModel):
+    """RenewDomainBatch请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Period: 域名续费的年限。
+        :type Period: int
+        :param Domains: 批量续费的域名。
+        :type Domains: list of str
+        :param PayMode: 付费模式 0手动在线付费，1使用余额付费。
+        :type PayMode: int
+        """
+        self.Period = None
+        self.Domains = None
+        self.PayMode = None
+
+
+    def _deserialize(self, params):
+        self.Period = params.get("Period")
+        self.Domains = params.get("Domains")
+        self.PayMode = params.get("PayMode")
+
+
+class RenewDomainBatchResponse(AbstractModel):
+    """RenewDomainBatch返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LogId: 操作日志ID。
+        :type LogId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LogId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.LogId = params.get("LogId")
+        self.RequestId = params.get("RequestId")
+
+
+class SetDomainAutoRenewRequest(AbstractModel):
+    """SetDomainAutoRenew请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainId: 域名ID。
+        :type DomainId: str
+        :param AutoRenew: AutoRenew 有三个可选值：
+ 0：不设置自动续费
+1：设置自动续费
+2：设置到期后不续费
+        :type AutoRenew: int
+        """
+        self.DomainId = None
+        self.AutoRenew = None
+
+
+    def _deserialize(self, params):
+        self.DomainId = params.get("DomainId")
+        self.AutoRenew = params.get("AutoRenew")
+
+
+class SetDomainAutoRenewResponse(AbstractModel):
+    """SetDomainAutoRenew返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class TemplateInfo(AbstractModel):
@@ -1006,4 +1245,42 @@ class UpdateProhibitionBatchResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.LogId = params.get("LogId")
+        self.RequestId = params.get("RequestId")
+
+
+class UploadImageRequest(AbstractModel):
+    """UploadImage请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageFile: 资质照片，照片的base64编码。
+        :type ImageFile: str
+        """
+        self.ImageFile = None
+
+
+    def _deserialize(self, params):
+        self.ImageFile = params.get("ImageFile")
+
+
+class UploadImageResponse(AbstractModel):
+    """UploadImage返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AccessUrl: 资质照片地址。
+        :type AccessUrl: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AccessUrl = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AccessUrl = params.get("AccessUrl")
         self.RequestId = params.get("RequestId")

@@ -302,6 +302,7 @@ class CheckIdCardInformationRequest(AbstractModel):
         :param ImageBase64: 身份证人像面的 Base64 值
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
 ImageBase64、ImageUrl二者必须提供其中之一。若都提供了，则按照ImageUrl>ImageBase64的优先级使用参数。
         :type ImageBase64: str
         :param ImageUrl: 身份证人像面的 Url 地址
@@ -429,8 +430,8 @@ class DetectAuthRequest(AbstractModel):
         :type RedirectUrl: str
         :param Extra: 透传字段，在获取验证结果时返回。
         :type Extra: str
-        :param ImageBase64: 用于人脸比对的照片，图片的BASE64值；
-BASE64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
+        :param ImageBase64: 用于人脸比对的照片，图片的Base64值；
+Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
         :type ImageBase64: str
         """
         self.RuleId = None
@@ -1007,7 +1008,7 @@ class GetFaceIdResultResponse(AbstractModel):
         :type IdCard: str
         :param Name: 姓名
         :type Name: str
-        :param Result: 业务核验结果，如下几个结果码会计费
+        :param Result: 业务核验结果，参考https://cloud.tencent.com/document/product/1007/47912
         :type Result: str
         :param Description: 业务核验描述
         :type Description: str
@@ -1061,7 +1062,8 @@ class GetFaceIdTokenRequest(AbstractModel):
         :type IdCard: str
         :param Name: CompareLib为商业库库时必传。
         :type Name: str
-        :param ImageBase64: CompareLib为上传照片比对时必传，base64后图片最大8MB。
+        :param ImageBase64: CompareLib为上传照片比对时必传，Base64后图片最大8MB。
+请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
         :type ImageBase64: str
         :param Meta: SDK中生成的Meta字符串
         :type Meta: str
@@ -1147,7 +1149,7 @@ class IdCardOCRVerificationRequest(AbstractModel):
         :type Name: str
         :param ImageBase64: 身份证人像面的 Base64 值
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
         :type ImageBase64: str
         :param ImageUrl: 身份证人像面的 Url 地址
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
@@ -1295,8 +1297,9 @@ class ImageRecognitionRequest(AbstractModel):
         :type IdCard: str
         :param Name: 姓名。中文请使用UTF-8编码。
         :type Name: str
-        :param ImageBase64: 用于人脸比对的照片，图片的BASE64值；
-BASE64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
+        :param ImageBase64: 用于人脸比对的照片，图片的Base64值；
+Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
+请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
         :type ImageBase64: str
         :param Optional: 本接口不需要传递此参数。
         :type Optional: str
@@ -1350,11 +1353,13 @@ class LivenessCompareRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ImageBase64: 用于人脸比对的照片，图片的BASE64值；
-BASE64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
+        :param ImageBase64: 用于人脸比对的照片，图片的Base64值；
+Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
+请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
         :type ImageBase64: str
-        :param VideoBase64: 用于活体检测的视频，视频的BASE64值；
-BASE64编码后的大小不超过8M，支持mp4、avi、flv格式。
+        :param VideoBase64: 用于活体检测的视频，视频的Base64值；
+Base64编码后的大小不超过8M，支持mp4、avi、flv格式。
+请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
         :type VideoBase64: str
         :param LivenessType: 活体检测类型，取值：LIP/ACTION/SILENT。
 LIP为数字模式，ACTION为动作模式，SILENT为静默模式，三种模式选择一种传入。
