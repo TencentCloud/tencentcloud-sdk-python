@@ -16,6 +16,52 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class CreateSDKLoginTokenRequest(AbstractModel):
+    """CreateSDKLoginToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SdkAppId: 应用ID。
+        :type SdkAppId: int
+        :param SeatUserId: 坐席账号。
+        :type SeatUserId: str
+        """
+        self.SdkAppId = None
+        self.SeatUserId = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.SeatUserId = params.get("SeatUserId")
+
+
+class CreateSDKLoginTokenResponse(AbstractModel):
+    """CreateSDKLoginToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Token: SDK 登录 Token。
+        :type Token: str
+        :param ExpiredTime: 过期时间戳，Unix 时间戳。
+        :type ExpiredTime: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Token = None
+        self.ExpiredTime = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Token = params.get("Token")
+        self.ExpiredTime = params.get("ExpiredTime")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTelCdrRequest(AbstractModel):
     """DescribeTelCdr请求参数结构体
 

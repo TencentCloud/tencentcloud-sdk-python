@@ -4388,6 +4388,44 @@ class ReadOnlyInstanceWeightPair(AbstractModel):
         self.ReadOnlyWeight = params.get("ReadOnlyWeight")
 
 
+class RecycleDBInstanceRequest(AbstractModel):
+    """RecycleDBInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class RecycleDBInstanceResponse(AbstractModel):
+    """RecycleDBInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: 流程id
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class RegionInfo(AbstractModel):
     """地域信息
 

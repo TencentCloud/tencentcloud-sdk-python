@@ -1649,6 +1649,34 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def RecycleDBInstance(self, request):
+        """本接口（RecycleDBInstance）用于主动回收已下线的SQLSERVER实例
+
+        :param request: Request instance for RecycleDBInstance.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.RecycleDBInstanceRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.RecycleDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RecycleDBInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RecycleDBInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RemoveBackups(self, request):
         """本接口（RemoveBackups）可以删除用户手动创建的备份文件。待删除的备份策略可以是实例备份，也可以是多库备份。
 

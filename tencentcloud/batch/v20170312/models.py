@@ -1495,12 +1495,15 @@ class DescribeJobResponse(AbstractModel):
         :param TaskMetrics: 任务统计指标
         :type TaskMetrics: :class:`tencentcloud.batch.v20170312.models.TaskMetrics`
         :param TaskInstanceMetrics: 任务实例统计指标
-        :type TaskInstanceMetrics: :class:`tencentcloud.batch.v20170312.models.TaskInstanceView`
+        :type TaskInstanceMetrics: :class:`tencentcloud.batch.v20170312.models.TaskInstanceMetrics`
         :param StateReason: 作业失败原因
         :type StateReason: str
         :param Tags: 作业绑定的标签列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
+        :param NextAction: 下一步动作
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextAction: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1517,6 +1520,7 @@ class DescribeJobResponse(AbstractModel):
         self.TaskInstanceMetrics = None
         self.StateReason = None
         self.Tags = None
+        self.NextAction = None
         self.RequestId = None
 
 
@@ -1544,7 +1548,7 @@ class DescribeJobResponse(AbstractModel):
             self.TaskMetrics = TaskMetrics()
             self.TaskMetrics._deserialize(params.get("TaskMetrics"))
         if params.get("TaskInstanceMetrics") is not None:
-            self.TaskInstanceMetrics = TaskInstanceView()
+            self.TaskInstanceMetrics = TaskInstanceMetrics()
             self.TaskInstanceMetrics._deserialize(params.get("TaskInstanceMetrics"))
         self.StateReason = params.get("StateReason")
         if params.get("Tags") is not None:
@@ -1553,6 +1557,7 @@ class DescribeJobResponse(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.NextAction = params.get("NextAction")
         self.RequestId = params.get("RequestId")
 
 

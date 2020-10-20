@@ -1314,6 +1314,8 @@ class ListEventHistoryRequest(AbstractModel):
         :type Context: str
         :param Size: 单次获取的历史数据项目的最大数量
         :type Size: int
+        :param EventId: 事件标识符，可以用来指定查询特定的事件，如果不指定，则查询所有事件。
+        :type EventId: str
         """
         self.ProductId = None
         self.DeviceName = None
@@ -1322,6 +1324,7 @@ class ListEventHistoryRequest(AbstractModel):
         self.EndTime = None
         self.Context = None
         self.Size = None
+        self.EventId = None
 
 
     def _deserialize(self, params):
@@ -1332,6 +1335,7 @@ class ListEventHistoryRequest(AbstractModel):
         self.EndTime = params.get("EndTime")
         self.Context = params.get("Context")
         self.Size = params.get("Size")
+        self.EventId = params.get("EventId")
 
 
 class ListEventHistoryResponse(AbstractModel):

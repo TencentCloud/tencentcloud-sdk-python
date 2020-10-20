@@ -25,6 +25,34 @@ class CccClient(AbstractClient):
     _endpoint = 'ccc.tencentcloudapi.com'
 
 
+    def CreateSDKLoginToken(self, request):
+        """创建 SDK 登录 Token。
+
+        :param request: Request instance for CreateSDKLoginToken.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.CreateSDKLoginTokenRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.CreateSDKLoginTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateSDKLoginToken", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateSDKLoginTokenResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTelCdr(self, request):
         """获取电话服务记录与录音
 
