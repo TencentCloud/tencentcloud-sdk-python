@@ -16327,6 +16327,9 @@ class VideoTemplateInfo(AbstractModel):
 <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
 默认值：black 。
         :type FillType: str
+        :param Vcrf: 视频恒定码率控制因子，取值范围为[1, 51]。
+如果指定该参数，将使用 CRF 的码率控制方式做转码。0值表示禁用 CRF 模式。
+        :type Vcrf: int
         """
         self.Codec = None
         self.Fps = None
@@ -16335,6 +16338,7 @@ class VideoTemplateInfo(AbstractModel):
         self.Width = None
         self.Height = None
         self.FillType = None
+        self.Vcrf = None
 
 
     def _deserialize(self, params):
@@ -16345,6 +16349,7 @@ class VideoTemplateInfo(AbstractModel):
         self.Width = params.get("Width")
         self.Height = params.get("Height")
         self.FillType = params.get("FillType")
+        self.Vcrf = params.get("Vcrf")
 
 
 class VideoTemplateInfoForUpdate(AbstractModel):
@@ -16383,6 +16388,9 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
 默认值：black 。
         :type FillType: str
+        :param Vcrf: 视频恒定码率控制因子，取值范围为[0, 51]。
+如果指定该参数，将使用 CRF 的码率控制方式做转码。取0值表示禁用 CRF 模式。
+        :type Vcrf: int
         """
         self.Codec = None
         self.Fps = None
@@ -16391,6 +16399,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
         self.Width = None
         self.Height = None
         self.FillType = None
+        self.Vcrf = None
 
 
     def _deserialize(self, params):
@@ -16401,6 +16410,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
         self.Width = params.get("Width")
         self.Height = params.get("Height")
         self.FillType = params.get("FillType")
+        self.Vcrf = params.get("Vcrf")
 
 
 class VideoTrackItem(AbstractModel):
@@ -16523,8 +16533,10 @@ class WatermarkInput(AbstractModel):
         :param Definition: 水印模板 ID。
         :type Definition: int
         :param TextContent: 文字内容，长度不超过100个字符。仅当水印类型为文字水印时填写。
+文字水印不支持截图打水印。
         :type TextContent: str
         :param SvgContent: SVG 内容。长度不超过 2000000 个字符。仅当水印类型为 SVG 水印时填写。
+SVG 水印不支持截图打水印。
         :type SvgContent: str
         :param StartTimeOffset: 水印的起始时间偏移，单位：秒。不填或填0，表示水印从画面出现时开始显现。
 <li>不填或填0，表示水印从画面开始就出现；</li>

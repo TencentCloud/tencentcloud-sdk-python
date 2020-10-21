@@ -277,6 +277,34 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreatePrometheusDashboard(self, request):
+        """创建grafana监控面板
+
+        :param request: Request instance for CreatePrometheusDashboard.
+        :type request: :class:`tencentcloud.tke.v20180525.models.CreatePrometheusDashboardRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.CreatePrometheusDashboardResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreatePrometheusDashboard", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreatePrometheusDashboardResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteCluster(self, request):
         """删除集群(YUNAPI V3版本)
 
@@ -795,6 +823,34 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImagesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePrometheusAgentInstances(self, request):
+        """获取关联目标集群的实例列表
+
+        :param request: Request instance for DescribePrometheusAgentInstances.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribePrometheusAgentInstancesRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribePrometheusAgentInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePrometheusAgentInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePrometheusAgentInstancesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

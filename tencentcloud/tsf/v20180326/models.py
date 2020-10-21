@@ -558,6 +558,9 @@ class Cluster(AbstractModel):
         :param OperationInfo: 返回给前端的控制信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type OperationInfo: :class:`tencentcloud.tsf.v20180326.models.OperationInfo`
+        :param ClusterVersion: 集群版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterVersion: str
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -586,6 +589,7 @@ class Cluster(AbstractModel):
         self.RunServiceInstanceCount = None
         self.SubnetId = None
         self.OperationInfo = None
+        self.ClusterVersion = None
 
 
     def _deserialize(self, params):
@@ -618,6 +622,7 @@ class Cluster(AbstractModel):
         if params.get("OperationInfo") is not None:
             self.OperationInfo = OperationInfo()
             self.OperationInfo._deserialize(params.get("OperationInfo"))
+        self.ClusterVersion = params.get("ClusterVersion")
 
 
 class Config(AbstractModel):
@@ -1901,6 +1906,8 @@ class CreateNamespaceRequest(AbstractModel):
         :type NamespaceType: str
         :param NamespaceId: 命名空间ID
         :type NamespaceId: str
+        :param IsHaEnable: 是否开启高可用
+        :type IsHaEnable: str
         """
         self.NamespaceName = None
         self.ClusterId = None
@@ -1908,6 +1915,7 @@ class CreateNamespaceRequest(AbstractModel):
         self.NamespaceResourceType = None
         self.NamespaceType = None
         self.NamespaceId = None
+        self.IsHaEnable = None
 
 
     def _deserialize(self, params):
@@ -1917,6 +1925,7 @@ class CreateNamespaceRequest(AbstractModel):
         self.NamespaceResourceType = params.get("NamespaceResourceType")
         self.NamespaceType = params.get("NamespaceType")
         self.NamespaceId = params.get("NamespaceId")
+        self.IsHaEnable = params.get("IsHaEnable")
 
 
 class CreateNamespaceResponse(AbstractModel):
@@ -2824,6 +2833,8 @@ class DeployContainerGroupRequest(AbstractModel):
         :type ServiceSetting: :class:`tencentcloud.tsf.v20180326.models.ServiceSetting`
         :param DeployAgent: 是否部署 agent 容器。若不指定该参数，则默认不部署 agent 容器。
         :type DeployAgent: bool
+        :param SchedulingStrategy: 节点调度策略。若不指定改参数，则默认不使用节点调度策略。
+        :type SchedulingStrategy: :class:`tencentcloud.tsf.v20180326.models.SchedulingStrategy`
         """
         self.GroupId = None
         self.TagName = None
@@ -2853,6 +2864,7 @@ class DeployContainerGroupRequest(AbstractModel):
         self.Envs = None
         self.ServiceSetting = None
         self.DeployAgent = None
+        self.SchedulingStrategy = None
 
 
     def _deserialize(self, params):
@@ -2893,6 +2905,9 @@ class DeployContainerGroupRequest(AbstractModel):
             self.ServiceSetting = ServiceSetting()
             self.ServiceSetting._deserialize(params.get("ServiceSetting"))
         self.DeployAgent = params.get("DeployAgent")
+        if params.get("SchedulingStrategy") is not None:
+            self.SchedulingStrategy = SchedulingStrategy()
+            self.SchedulingStrategy._deserialize(params.get("SchedulingStrategy"))
 
 
 class DeployContainerGroupResponse(AbstractModel):
@@ -2933,11 +2948,14 @@ class DeployGroupRequest(AbstractModel):
         :type StartupParameters: str
         :param DeployDesc: 部署应用描述信息
         :type DeployDesc: str
+        :param ForceStart: 是否允许强制启动
+        :type ForceStart: bool
         """
         self.GroupId = None
         self.PkgId = None
         self.StartupParameters = None
         self.DeployDesc = None
+        self.ForceStart = None
 
 
     def _deserialize(self, params):
@@ -2945,6 +2963,7 @@ class DeployGroupRequest(AbstractModel):
         self.PkgId = params.get("PkgId")
         self.StartupParameters = params.get("StartupParameters")
         self.DeployDesc = params.get("DeployDesc")
+        self.ForceStart = params.get("ForceStart")
 
 
 class DeployGroupResponse(AbstractModel):
@@ -4262,6 +4281,8 @@ class DescribeMicroservicesRequest(AbstractModel):
         :type Offset: int
         :param Limit: 分页个数
         :type Limit: int
+        :param Status: 状态过滤，online、offline、single_online
+        :type Status: list of str
         """
         self.NamespaceId = None
         self.SearchWord = None
@@ -4269,6 +4290,7 @@ class DescribeMicroservicesRequest(AbstractModel):
         self.OrderType = None
         self.Offset = None
         self.Limit = None
+        self.Status = None
 
 
     def _deserialize(self, params):
@@ -4278,6 +4300,7 @@ class DescribeMicroservicesRequest(AbstractModel):
         self.OrderType = params.get("OrderType")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.Status = params.get("Status")
 
 
 class DescribeMicroservicesResponse(AbstractModel):
@@ -7028,6 +7051,9 @@ class Namespace(AbstractModel):
         :param NamespaceType: 命名空间类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type NamespaceType: str
+        :param IsHaEnable: 是否开启高可用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsHaEnable: str
         """
         self.NamespaceId = None
         self.NamespaceCode = None
@@ -7042,6 +7068,7 @@ class Namespace(AbstractModel):
         self.ClusterId = None
         self.NamespaceResourceType = None
         self.NamespaceType = None
+        self.IsHaEnable = None
 
 
     def _deserialize(self, params):
@@ -7063,6 +7090,7 @@ class Namespace(AbstractModel):
         self.ClusterId = params.get("ClusterId")
         self.NamespaceResourceType = params.get("NamespaceResourceType")
         self.NamespaceType = params.get("NamespaceType")
+        self.IsHaEnable = params.get("IsHaEnable")
 
 
 class OperationInfo(AbstractModel):
@@ -7804,6 +7832,24 @@ class RollbackConfigResponse(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
+
+
+class SchedulingStrategy(AbstractModel):
+    """tsf 容器集群节点调度策略
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: NONE：不使用调度策略；CROSS_AZ：跨可用区部署
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        """
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
 
 
 class ServerlessGroup(AbstractModel):

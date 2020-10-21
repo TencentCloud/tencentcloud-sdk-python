@@ -7428,13 +7428,17 @@ class MediaInputInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Type: 输入来源对象的类型，现在仅支持 COS。
+        :param Type: 输入来源对象的类型，可以支持 COS 和 URL 两种。
         :type Type: str
         :param CosInputInfo: 当 Type 为 COS 时有效，则该项为必填，表示视频处理 COS 对象信息。
         :type CosInputInfo: :class:`tencentcloud.mps.v20190612.models.CosInputInfo`
+        :param UrlInputInfo: 当 Type 为 URL 时有效，则该项为必填，表示视频处理 URL 对象信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UrlInputInfo: :class:`tencentcloud.mps.v20190612.models.UrlInputInfo`
         """
         self.Type = None
         self.CosInputInfo = None
+        self.UrlInputInfo = None
 
 
     def _deserialize(self, params):
@@ -7442,6 +7446,9 @@ class MediaInputInfo(AbstractModel):
         if params.get("CosInputInfo") is not None:
             self.CosInputInfo = CosInputInfo()
             self.CosInputInfo._deserialize(params.get("CosInputInfo"))
+        if params.get("UrlInputInfo") is not None:
+            self.UrlInputInfo = UrlInputInfo()
+            self.UrlInputInfo._deserialize(params.get("UrlInputInfo"))
 
 
 class MediaMetaData(AbstractModel):
@@ -11257,6 +11264,23 @@ class TranscodeTemplate(AbstractModel):
         self.UpdateTime = params.get("UpdateTime")
 
 
+class UrlInputInfo(AbstractModel):
+    """视频处理 URL 对象信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param Url: 视频的 URL。
+        :type Url: str
+        """
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
+
+
 class UserDefineAsrTextReviewTemplateInfo(AbstractModel):
     """用户自定义语音审核任务控制参数
 
@@ -11557,6 +11581,9 @@ class VideoTemplateInfo(AbstractModel):
 <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
 默认值：black 。
         :type FillType: str
+        :param Vcrf: 视频恒定码率控制因子，取值范围为[1, 51]。
+如果指定该参数，将使用 CRF 的码率控制方式做转码。0值表示禁用 CRF 模式。
+        :type Vcrf: int
         """
         self.Codec = None
         self.Fps = None
@@ -11566,6 +11593,7 @@ class VideoTemplateInfo(AbstractModel):
         self.Height = None
         self.Gop = None
         self.FillType = None
+        self.Vcrf = None
 
 
     def _deserialize(self, params):
@@ -11577,6 +11605,7 @@ class VideoTemplateInfo(AbstractModel):
         self.Height = params.get("Height")
         self.Gop = params.get("Gop")
         self.FillType = params.get("FillType")
+        self.Vcrf = params.get("Vcrf")
 
 
 class VideoTemplateInfoForUpdate(AbstractModel):
@@ -11616,6 +11645,9 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
 <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
         :type FillType: str
+        :param Vcrf: 视频恒定码率控制因子，取值范围为[0, 51]。
+如果指定该参数，将使用 CRF 的码率控制方式做转码。取0值表示禁用 CRF 模式。
+        :type Vcrf: int
         """
         self.Codec = None
         self.Fps = None
@@ -11625,6 +11657,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
         self.Height = None
         self.Gop = None
         self.FillType = None
+        self.Vcrf = None
 
 
     def _deserialize(self, params):
@@ -11636,6 +11669,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
         self.Height = params.get("Height")
         self.Gop = params.get("Gop")
         self.FillType = params.get("FillType")
+        self.Vcrf = params.get("Vcrf")
 
 
 class WatermarkInput(AbstractModel):
@@ -11649,10 +11683,13 @@ class WatermarkInput(AbstractModel):
         :type Definition: int
         :param RawParameter: 水印自定义参数，当 Definition 填 0 时有效。
 该参数用于高度定制场景，建议您优先使用 Definition 指定水印参数。
+水印自定义参数不支持截图打水印。
         :type RawParameter: :class:`tencentcloud.mps.v20190612.models.RawWatermarkParameter`
         :param TextContent: 文字内容，长度不超过100个字符。仅当水印类型为文字水印时填写。
+文字水印不支持截图打水印。
         :type TextContent: str
         :param SvgContent: SVG 内容。长度不超过 2000000 个字符。仅当水印类型为 SVG 水印时填写。
+SVG 水印不支持截图打水印。
         :type SvgContent: str
         :param StartTimeOffset: 水印的起始时间偏移，单位：秒。不填或填0，表示水印从画面出现时开始显现。
 <li>不填或填0，表示水印从画面开始就出现；</li>

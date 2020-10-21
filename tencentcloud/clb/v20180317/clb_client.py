@@ -852,6 +852,62 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeClusterResources(self, request):
+        """查询独占集群中资源列表，支持按集群ID、vip、负载均衡ID、是否闲置为过滤条件检索
+
+        :param request: Request instance for DescribeClusterResources.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeClusterResourcesRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeClusterResourcesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeClusterResources", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClusterResourcesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeExclusiveClusters(self, request):
+        """查询集群信息列表，支持以集群类型、集群唯一ID、集群名字、集群标签、集群内vip、集群内负载均衡唯一id、集群网络类型、可用区等条件进行检索
+
+        :param request: Request instance for DescribeExclusiveClusters.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeExclusiveClustersRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeExclusiveClustersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeExclusiveClusters", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeExclusiveClustersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeListeners(self, request):
         """DescribeListeners 接口可根据负载均衡器 ID，监听器的协议或端口作为过滤条件获取监听器列表。如果不指定任何过滤条件，则返回该负载均衡实例下的所有监听器。
 

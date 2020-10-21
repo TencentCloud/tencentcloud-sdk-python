@@ -280,6 +280,8 @@ class ClusterAdvancedSettings(AbstractModel):
         :type AuditLogsetId: str
         :param AuditLogTopicId: 审计日志上传到的topic
         :type AuditLogTopicId: str
+        :param VpcCniType: 区分单网卡多IP模式和独立网卡模式
+        :type VpcCniType: str
         """
         self.IPVS = None
         self.AsEnabled = None
@@ -293,6 +295,7 @@ class ClusterAdvancedSettings(AbstractModel):
         self.AuditEnabled = None
         self.AuditLogsetId = None
         self.AuditLogTopicId = None
+        self.VpcCniType = None
 
 
     def _deserialize(self, params):
@@ -310,6 +313,7 @@ class ClusterAdvancedSettings(AbstractModel):
         self.AuditEnabled = params.get("AuditEnabled")
         self.AuditLogsetId = params.get("AuditLogsetId")
         self.AuditLogTopicId = params.get("AuditLogTopicId")
+        self.VpcCniType = params.get("VpcCniType")
 
 
 class ClusterAsGroup(AbstractModel):
@@ -989,6 +993,49 @@ class CreateClusterRouteTableRequest(AbstractModel):
 
 class CreateClusterRouteTableResponse(AbstractModel):
     """CreateClusterRouteTable返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreatePrometheusDashboardRequest(AbstractModel):
+    """CreatePrometheusDashboard请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例id
+        :type InstanceId: str
+        :param DashboardName: 面板组名称
+        :type DashboardName: str
+        :param Contents: 面板列表
+每一项是一个grafana dashboard的json定义
+        :type Contents: list of str
+        """
+        self.InstanceId = None
+        self.DashboardName = None
+        self.Contents = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.DashboardName = params.get("DashboardName")
+        self.Contents = params.get("Contents")
+
+
+class CreatePrometheusDashboardResponse(AbstractModel):
+    """CreatePrometheusDashboard返回参数结构体
 
     """
 
@@ -1969,6 +2016,46 @@ class DescribeImagesResponse(AbstractModel):
                 obj = ImageInstance()
                 obj._deserialize(item)
                 self.ImageInstanceSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePrometheusAgentInstancesRequest(AbstractModel):
+    """DescribePrometheusAgentInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群id
+可以是tke, eks, edge的集群id
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+
+
+class DescribePrometheusAgentInstancesResponse(AbstractModel):
+    """DescribePrometheusAgentInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Instances: 关联该集群的实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Instances: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Instances = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Instances = params.get("Instances")
         self.RequestId = params.get("RequestId")
 
 

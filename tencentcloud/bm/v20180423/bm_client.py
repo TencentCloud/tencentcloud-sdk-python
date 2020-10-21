@@ -364,7 +364,7 @@ class BmClient(AbstractClient):
 
 
     def DescribeDeviceClass(self, request):
-        """获取获取设备类型
+        """获取设备类型
 
         :param request: Request instance for DescribeDeviceClass.
         :type request: :class:`tencentcloud.bm.v20180423.models.DescribeDeviceClassRequest`

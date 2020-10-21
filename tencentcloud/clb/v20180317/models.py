@@ -729,6 +729,120 @@ class ClassicalTargetInfo(AbstractModel):
         self.Weight = params.get("Weight")
 
 
+class Cluster(AbstractModel):
+    """集群的详细信息，如集群ID，名称，类型，可用区，标签等
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群唯一ID
+        :type ClusterId: str
+        :param ClusterName: 集群名称
+        :type ClusterName: str
+        :param ClusterType: 集群类型，如TGW，STGW，VPCGW
+        :type ClusterType: str
+        :param ClusterTag: 集群标签，只有STGW集群有标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterTag: str
+        :param Zone: 集群所在可用区，如ap-guangzhou-1
+        :type Zone: str
+        :param Network: 集群网络类型，如Public，Private
+        :type Network: str
+        :param MaxConn: 最大连接数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxConn: int
+        :param MaxInFlow: 最大入带宽
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxInFlow: int
+        :param MaxInPkg: 最大入包量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxInPkg: int
+        :param MaxOutFlow: 最大出带宽
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxOutFlow: int
+        :param MaxOutPkg: 最大出包量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxOutPkg: int
+        :param MaxNewConn: 最大新建连接数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxNewConn: int
+        :param HTTPMaxNewConn: http最大新建连接数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HTTPMaxNewConn: int
+        :param HTTPSMaxNewConn: https最大新建连接数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HTTPSMaxNewConn: int
+        :param HTTPQps: http QPS
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HTTPQps: int
+        :param HTTPSQps: https QPS
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HTTPSQps: int
+        :param ResourceCount: 集群内资源总数目
+        :type ResourceCount: int
+        :param IdleResourceCount: 集群内空闲资源数目
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdleResourceCount: int
+        :param LoadBalanceDirectorCount: 集群内转发机的数目
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalanceDirectorCount: int
+        :param Isp: 集群的Isp属性，如："BGP","CMCC","CUCC","CTCC","INTERNAL"。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Isp: str
+        :param ClustersZone: 集群所在的可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClustersZone: :class:`tencentcloud.clb.v20180317.models.ClustersZone`
+        """
+        self.ClusterId = None
+        self.ClusterName = None
+        self.ClusterType = None
+        self.ClusterTag = None
+        self.Zone = None
+        self.Network = None
+        self.MaxConn = None
+        self.MaxInFlow = None
+        self.MaxInPkg = None
+        self.MaxOutFlow = None
+        self.MaxOutPkg = None
+        self.MaxNewConn = None
+        self.HTTPMaxNewConn = None
+        self.HTTPSMaxNewConn = None
+        self.HTTPQps = None
+        self.HTTPSQps = None
+        self.ResourceCount = None
+        self.IdleResourceCount = None
+        self.LoadBalanceDirectorCount = None
+        self.Isp = None
+        self.ClustersZone = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterName = params.get("ClusterName")
+        self.ClusterType = params.get("ClusterType")
+        self.ClusterTag = params.get("ClusterTag")
+        self.Zone = params.get("Zone")
+        self.Network = params.get("Network")
+        self.MaxConn = params.get("MaxConn")
+        self.MaxInFlow = params.get("MaxInFlow")
+        self.MaxInPkg = params.get("MaxInPkg")
+        self.MaxOutFlow = params.get("MaxOutFlow")
+        self.MaxOutPkg = params.get("MaxOutPkg")
+        self.MaxNewConn = params.get("MaxNewConn")
+        self.HTTPMaxNewConn = params.get("HTTPMaxNewConn")
+        self.HTTPSMaxNewConn = params.get("HTTPSMaxNewConn")
+        self.HTTPQps = params.get("HTTPQps")
+        self.HTTPSQps = params.get("HTTPSQps")
+        self.ResourceCount = params.get("ResourceCount")
+        self.IdleResourceCount = params.get("IdleResourceCount")
+        self.LoadBalanceDirectorCount = params.get("LoadBalanceDirectorCount")
+        self.Isp = params.get("Isp")
+        if params.get("ClustersZone") is not None:
+            self.ClustersZone = ClustersZone()
+            self.ClustersZone._deserialize(params.get("ClustersZone"))
+
+
 class ClusterItem(AbstractModel):
     """独占集群信息
 
@@ -754,6 +868,64 @@ class ClusterItem(AbstractModel):
         self.ClusterId = params.get("ClusterId")
         self.ClusterName = params.get("ClusterName")
         self.Zone = params.get("Zone")
+
+
+class ClusterResource(AbstractModel):
+    """集群内资源类型
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群唯一ID，如tgw-12345678。
+        :type ClusterId: str
+        :param Vip: ip地址。
+        :type Vip: str
+        :param LoadBalancerId: 负载均衡唯一ID，如lb-12345678。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancerId: str
+        :param Idle: 资源是否闲置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Idle: str
+        :param ClusterName: 集群名称。
+        :type ClusterName: str
+        """
+        self.ClusterId = None
+        self.Vip = None
+        self.LoadBalancerId = None
+        self.Idle = None
+        self.ClusterName = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Vip = params.get("Vip")
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.Idle = params.get("Idle")
+        self.ClusterName = params.get("ClusterName")
+
+
+class ClustersZone(AbstractModel):
+    """集群所在的可用区。
+
+    """
+
+    def __init__(self):
+        """
+        :param MasterZone: 集群所在的主可用区。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MasterZone: list of str
+        :param SlaveZone: 集群所在的备可用区。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SlaveZone: list of str
+        """
+        self.MasterZone = None
+        self.SlaveZone = None
+
+
+    def _deserialize(self, params):
+        self.MasterZone = params.get("MasterZone")
+        self.SlaveZone = params.get("SlaveZone")
 
 
 class CreateClsLogSetRequest(AbstractModel):
@@ -1929,6 +2101,139 @@ class DescribeClsLogSetResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.LogsetId = params.get("LogsetId")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClusterResourcesRequest(AbstractModel):
+    """DescribeClusterResources请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Limit: 返回集群中资源列表数目，默认20，最大值100
+        :type Limit: int
+        :param Offset: 返回集群中资源列表起始偏移量，默认0
+        :type Offset: int
+        :param Filters: 查询集群中资源列表条件，详细的过滤条件如下：
+<li> cluster-id - String - 是否必填：否 - （过滤条件）按照 集群 的唯一ID过滤，如 ："tgw-12345678","stgw-12345678","vpcgw-12345678"。</li>
+<li> vip - String - 是否必填：否 - （过滤条件）按照vip过滤。</li>
+<li> loadblancer-id - String - 是否必填：否 - （过滤条件）按照负载均衡唯一ID过滤。</li>
+<li> idle - String 是否必填：否 - （过滤条件）按照是否闲置过滤，如"True","False"。</li>
+        :type Filters: list of Filter
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class DescribeClusterResourcesResponse(AbstractModel):
+    """DescribeClusterResources返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterResourceSet: 集群中资源列表
+        :type ClusterResourceSet: list of ClusterResource
+        :param TotalCount: 集群中资源总数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ClusterResourceSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ClusterResourceSet") is not None:
+            self.ClusterResourceSet = []
+            for item in params.get("ClusterResourceSet"):
+                obj = ClusterResource()
+                obj._deserialize(item)
+                self.ClusterResourceSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeExclusiveClustersRequest(AbstractModel):
+    """DescribeExclusiveClusters请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Limit: 返回集群列表数目，默认20，最大值100
+        :type Limit: int
+        :param Offset: 返回集群列表起始偏移量，默认0
+        :type Offset: int
+        :param Filters: 查询集群列表条件，详细的过滤条件如下：
+<li> cluster-type - String - 是否必填：否 - （过滤条件）按照 集群 的类型过滤，包括"TGW","STGW","VPCGW"。</li>
+<li> cluster-id - String - 是否必填：否 - （过滤条件）按照 集群 的唯一ID过滤，如 ："tgw-12345678","stgw-12345678","vpcgw-12345678"。</li>
+<li> cluster-name - String - 是否必填：否 - （过滤条件）按照 集群 的名称过滤。</li>
+<li> cluster-tag - String - 是否必填：否 - （过滤条件）按照 集群 的标签过滤。（只有TGW/STGW集群有集群标签） </li>
+<li> vip - String - 是否必填：否 - （过滤条件）按照 集群 内的vip过滤。</li>
+<li> loadblancer-id - String - 是否必填：否 - （过滤条件）按照 集群 内的负载均衡唯一ID过滤。</li>
+<li> network - String - 是否必填：否 - （过滤条件）按照 集群 的网络类型过滤，如："Public","Private"。</li>
+<li> zone - String - 是否必填：否 - （过滤条件）按照 集群 所在可用区过滤，如："ap-guangzhou-1"（广州一区）。</li>
+<li> isp -- String - 是否必填：否 - （过滤条件）按照TGW集群的 Isp 类型过滤，如："BGP","CMCC","CUCC","CTCC","INTERNAL"。</li>
+        :type Filters: list of Filter
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class DescribeExclusiveClustersResponse(AbstractModel):
+    """DescribeExclusiveClusters返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterSet: 集群列表
+        :type ClusterSet: list of Cluster
+        :param TotalCount: 集群总数目
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ClusterSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ClusterSet") is not None:
+            self.ClusterSet = []
+            for item in params.get("ClusterSet"):
+                obj = Cluster()
+                obj._deserialize(item)
+                self.ClusterSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
