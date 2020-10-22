@@ -2888,6 +2888,9 @@ Other-Overseas（其他境外地区）
         :param AccessMode: 接入模型，bit0是0：公版小程序未接入，bit0是1：公版小程序已接入
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccessMode: int
+        :param Os: linux,android,liteos
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Os: str
         """
         self.ProductId = None
         self.ProductName = None
@@ -2902,6 +2905,7 @@ Other-Overseas（其他境外地区）
         self.ProductCate = None
         self.ProductRegion = None
         self.AccessMode = None
+        self.Os = None
 
 
     def _deserialize(self, params):
@@ -2918,6 +2922,7 @@ Other-Overseas（其他境外地区）
         self.ProductCate = params.get("ProductCate")
         self.ProductRegion = params.get("ProductRegion")
         self.AccessMode = params.get("AccessMode")
+        self.Os = params.get("Os")
 
 
 class RefundStorageServiceRequest(AbstractModel):

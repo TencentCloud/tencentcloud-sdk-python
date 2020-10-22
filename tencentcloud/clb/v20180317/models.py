@@ -1093,6 +1093,8 @@ OPEN：公网属性， INTERNAL：内网属性。
         :type VipIsp: str
         :param Tags: 购买负载均衡同时，给负载均衡打上标签
         :type Tags: list of TagInfo
+        :param Vip: 指定Vip申请负载均衡
+        :type Vip: str
         :param ExclusiveCluster: 独占集群信息
         :type ExclusiveCluster: :class:`tencentcloud.clb.v20180317.models.ExclusiveCluster`
         :param ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
@@ -1113,6 +1115,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.InternetAccessible = None
         self.VipIsp = None
         self.Tags = None
+        self.Vip = None
         self.ExclusiveCluster = None
         self.ClientToken = None
         self.ClusterTag = None
@@ -1139,6 +1142,7 @@ OPEN：公网属性， INTERNAL：内网属性。
                 obj = TagInfo()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.Vip = params.get("Vip")
         if params.get("ExclusiveCluster") is not None:
             self.ExclusiveCluster = ExclusiveCluster()
             self.ExclusiveCluster._deserialize(params.get("ExclusiveCluster"))

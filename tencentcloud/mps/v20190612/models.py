@@ -2915,6 +2915,7 @@ class AudioTemplateInfo(AbstractModel):
 <li>1：单通道</li>
 <li>2：双通道</li>
 <li>6：立体声</li>
+当媒体的封装格式是音频格式时（flac，ogg，mp3，m4a）时，声道数不允许设为立体声。
 默认值：2。
         :type AudioChannel: int
         """
@@ -2967,6 +2968,7 @@ class AudioTemplateInfoForUpdate(AbstractModel):
 <li>1：单通道</li>
 <li>2：双通道</li>
 <li>6：立体声</li>
+当媒体的封装格式是音频格式时（flac，ogg，mp3，m4a）时，声道数不允许设为立体声。
         :type AudioChannel: int
         """
         self.Codec = None
