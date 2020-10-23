@@ -81,6 +81,34 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateDiagnoseUrl(self, request):
+        """CreateDiagnoseUrl 用于添加域名诊断任务URL
+
+        :param request: Request instance for CreateDiagnoseUrl.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.CreateDiagnoseUrlRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.CreateDiagnoseUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateDiagnoseUrl", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateDiagnoseUrlResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateScdnLogTask(self, request):
         """CreateScdnLogTask 用于创建事件日志任务
 
@@ -357,6 +385,34 @@ class CdnClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCertDomainsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDiagnoseReport(self, request):
+        """DescribeDiagnoseReport 用于获取指定报告id的内容
+
+        :param request: Request instance for DescribeDiagnoseReport.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeDiagnoseReportRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeDiagnoseReportResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDiagnoseReport", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDiagnoseReportResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1045,6 +1101,34 @@ class CdnClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListClsTopicDomainsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ListDiagnoseReport(self, request):
+        """ListDiagnoseReport 用于获取用户诊断URL访问后各个子任务的简要详情。
+
+        :param request: Request instance for ListDiagnoseReport.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.ListDiagnoseReportRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.ListDiagnoseReportResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListDiagnoseReport", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListDiagnoseReportResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

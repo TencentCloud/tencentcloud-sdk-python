@@ -1193,6 +1193,39 @@ PEM 格式，需要进行 Base 64 编码
         self.DeployTime = params.get("DeployTime")
 
 
+class ClientInfo(AbstractModel):
+    """客户端信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ProvName: 省份。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProvName: str
+        :param Country: 国家。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Country: str
+        :param IspName: 运营商。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IspName: str
+        :param Ip: 客户端IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ip: str
+        """
+        self.ProvName = None
+        self.Country = None
+        self.IspName = None
+        self.Ip = None
+
+
+    def _deserialize(self, params):
+        self.ProvName = params.get("ProvName")
+        self.Country = params.get("Country")
+        self.IspName = params.get("IspName")
+        self.Ip = params.get("Ip")
+
+
 class ClsLogObject(AbstractModel):
     """CLS日志搜索对象
 
@@ -1425,6 +1458,44 @@ class CreateClsLogTopicResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.TopicId = params.get("TopicId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateDiagnoseUrlRequest(AbstractModel):
+    """CreateDiagnoseUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Url: 需诊断的url，形如：http://www.test.com/test.txt。
+        :type Url: str
+        """
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
+
+
+class CreateDiagnoseUrlResponse(AbstractModel):
+    """CreateDiagnoseUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DiagnoseLink: 系统生成的诊断链接，一个诊断链接最多可访问10次，有效期为24h。
+        :type DiagnoseLink: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DiagnoseLink = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DiagnoseLink = params.get("DiagnoseLink")
         self.RequestId = params.get("RequestId")
 
 
@@ -2082,6 +2153,88 @@ class DescribeCertDomainsResponse(AbstractModel):
     def _deserialize(self, params):
         self.Domains = params.get("Domains")
         self.CertifiedDomains = params.get("CertifiedDomains")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDiagnoseReportRequest(AbstractModel):
+    """DescribeDiagnoseReport请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ReportId: 报告ID
+        :type ReportId: str
+        """
+        self.ReportId = None
+
+
+    def _deserialize(self, params):
+        self.ReportId = params.get("ReportId")
+
+
+class DescribeDiagnoseReportResponse(AbstractModel):
+    """DescribeDiagnoseReport返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BaskInfo: 诊断报告基础信息
+        :type BaskInfo: :class:`tencentcloud.cdn.v20180606.models.DiagnoseData`
+        :param CnameInfo: CNAME检测信息
+        :type CnameInfo: :class:`tencentcloud.cdn.v20180606.models.DiagnoseData`
+        :param ClientInfo: 客户端检测信息
+        :type ClientInfo: :class:`tencentcloud.cdn.v20180606.models.DiagnoseData`
+        :param DnsInfo: DNS检测信息
+        :type DnsInfo: :class:`tencentcloud.cdn.v20180606.models.DiagnoseData`
+        :param NetworkInfo: 网络检测信息
+        :type NetworkInfo: :class:`tencentcloud.cdn.v20180606.models.DiagnoseData`
+        :param OcNodeInfo: 边缘节点检测信息
+        :type OcNodeInfo: :class:`tencentcloud.cdn.v20180606.models.DiagnoseData`
+        :param MidNodeInfo: 中间源节点检测信息
+        :type MidNodeInfo: :class:`tencentcloud.cdn.v20180606.models.DiagnoseData`
+        :param OriginInfo: 源站检测信息
+        :type OriginInfo: :class:`tencentcloud.cdn.v20180606.models.DiagnoseData`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BaskInfo = None
+        self.CnameInfo = None
+        self.ClientInfo = None
+        self.DnsInfo = None
+        self.NetworkInfo = None
+        self.OcNodeInfo = None
+        self.MidNodeInfo = None
+        self.OriginInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("BaskInfo") is not None:
+            self.BaskInfo = DiagnoseData()
+            self.BaskInfo._deserialize(params.get("BaskInfo"))
+        if params.get("CnameInfo") is not None:
+            self.CnameInfo = DiagnoseData()
+            self.CnameInfo._deserialize(params.get("CnameInfo"))
+        if params.get("ClientInfo") is not None:
+            self.ClientInfo = DiagnoseData()
+            self.ClientInfo._deserialize(params.get("ClientInfo"))
+        if params.get("DnsInfo") is not None:
+            self.DnsInfo = DiagnoseData()
+            self.DnsInfo._deserialize(params.get("DnsInfo"))
+        if params.get("NetworkInfo") is not None:
+            self.NetworkInfo = DiagnoseData()
+            self.NetworkInfo._deserialize(params.get("NetworkInfo"))
+        if params.get("OcNodeInfo") is not None:
+            self.OcNodeInfo = DiagnoseData()
+            self.OcNodeInfo._deserialize(params.get("OcNodeInfo"))
+        if params.get("MidNodeInfo") is not None:
+            self.MidNodeInfo = DiagnoseData()
+            self.MidNodeInfo._deserialize(params.get("MidNodeInfo"))
+        if params.get("OriginInfo") is not None:
+            self.OriginInfo = DiagnoseData()
+            self.OriginInfo._deserialize(params.get("OriginInfo"))
         self.RequestId = params.get("RequestId")
 
 
@@ -3621,6 +3774,166 @@ off：不支持
                 self.Tag.append(obj)
 
 
+class DiagnoseData(AbstractModel):
+    """诊断报告内容数据
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 诊断报告内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of DiagnoseUnit
+        :param Status: 当前诊断项是否正常。
+"ok"：正常
+"error"：异常
+"warning"："警告"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        """
+        self.Data = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = DiagnoseUnit()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.Status = params.get("Status")
+
+
+class DiagnoseInfo(AbstractModel):
+    """诊断信息
+
+    """
+
+    def __init__(self):
+        """
+        :param DiagnoseUrl: 待诊断的URL。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiagnoseUrl: str
+        :param DiagnoseLink: 由系统生成的诊断链接。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiagnoseLink: str
+        :param CreateTime: 诊断创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param ExpireDate: 诊断链接过期时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireDate: str
+        :param VisitCount: 诊断链接当前访问次数，一个诊断链接最多可访问10次。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VisitCount: int
+        :param ClientList: 访问诊断链接的客户端简易信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientList: list of DiagnoseList
+        """
+        self.DiagnoseUrl = None
+        self.DiagnoseLink = None
+        self.CreateTime = None
+        self.ExpireDate = None
+        self.VisitCount = None
+        self.ClientList = None
+
+
+    def _deserialize(self, params):
+        self.DiagnoseUrl = params.get("DiagnoseUrl")
+        self.DiagnoseLink = params.get("DiagnoseLink")
+        self.CreateTime = params.get("CreateTime")
+        self.ExpireDate = params.get("ExpireDate")
+        self.VisitCount = params.get("VisitCount")
+        if params.get("ClientList") is not None:
+            self.ClientList = []
+            for item in params.get("ClientList"):
+                obj = DiagnoseList()
+                obj._deserialize(item)
+                self.ClientList.append(obj)
+
+
+class DiagnoseList(AbstractModel):
+    """客户端访问诊断URL信息列表
+
+    """
+
+    def __init__(self):
+        """
+        :param DiagnoseTag: 诊断任务标签。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiagnoseTag: str
+        :param ReportId: 报告ID，用于获取详细诊断报告。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReportId: str
+        :param ClientInfo: 客户端信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientInfo: list of ClientInfo
+        :param FinalDiagnose: 最终诊断结果。
+-1：已提交
+0  ：检测中
+1  ：检测正常
+2  ： 检测异常
+3  ： 诊断页面异常关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FinalDiagnose: int
+        :param CreateTime: 诊断任务创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        """
+        self.DiagnoseTag = None
+        self.ReportId = None
+        self.ClientInfo = None
+        self.FinalDiagnose = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.DiagnoseTag = params.get("DiagnoseTag")
+        self.ReportId = params.get("ReportId")
+        if params.get("ClientInfo") is not None:
+            self.ClientInfo = []
+            for item in params.get("ClientInfo"):
+                obj = ClientInfo()
+                obj._deserialize(item)
+                self.ClientInfo.append(obj)
+        self.FinalDiagnose = params.get("FinalDiagnose")
+        self.CreateTime = params.get("CreateTime")
+
+
+class DiagnoseUnit(AbstractModel):
+    """诊断报告单元信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: 内容单元英文名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param KeyText: 内容单元中文名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeyText: str
+        :param Value: 报告内容。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        :param ValueText: 报告内容。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValueText: str
+        """
+        self.Key = None
+        self.KeyText = None
+        self.Value = None
+        self.ValueText = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.KeyText = params.get("KeyText")
+        self.Value = params.get("Value")
+        self.ValueText = params.get("ValueText")
+
+
 class DisableCachesRequest(AbstractModel):
     """DisableCaches请求参数结构体
 
@@ -4759,6 +5072,49 @@ class ListClsTopicDomainsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ListDiagnoseReportRequest(AbstractModel):
+    """ListDiagnoseReport请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyWords: 用于搜索诊断URL的关键字，不填时返回用户所有的诊断任务。
+        :type KeyWords: str
+        """
+        self.KeyWords = None
+
+
+    def _deserialize(self, params):
+        self.KeyWords = params.get("KeyWords")
+
+
+class ListDiagnoseReportResponse(AbstractModel):
+    """ListDiagnoseReport返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 诊断信息。
+        :type Data: list of DiagnoseInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = DiagnoseInfo()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class ListScdnLogTasksRequest(AbstractModel):
     """ListScdnLogTasks请求参数结构体
 
@@ -5612,22 +5968,22 @@ class PathRule(AbstractModel):
         :param Regex: 是否是正则匹配。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Regex: bool
-        :param Path: URL路径。
+        :param Path: 匹配的URL路径。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Path: str
-        :param Origin: 路径匹配时的回源源站。
+        :param Origin: 路径匹配时的回源源站。暂不支持开了私有读写的COS源。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Origin: str
-        :param ServerName: 路径匹配时的回源Host头部。
+        :param ServerName: 路径匹配时回源的Host头部。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServerName: str
         :param OriginArea: 源站所属区域，支持CN，OV。分别表示国内或海外。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OriginArea: str
-        :param ForwardUri: 路径匹配时的回源URI路径。
+        :param ForwardUri: 路径匹配时回源的URI路径。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ForwardUri: str
-        :param RequestHeaders: 路径匹配时的回源头部设置。
+        :param RequestHeaders: 路径匹配时回源的头部设置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RequestHeaders: list of HttpHeaderRule
         """

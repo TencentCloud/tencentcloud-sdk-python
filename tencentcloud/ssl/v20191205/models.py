@@ -336,6 +336,52 @@ class Certificates(AbstractModel):
         self.Deployable = params.get("Deployable")
 
 
+class CheckCertificateChainRequest(AbstractModel):
+    """CheckCertificateChain请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CertificateChain: 待检查的证书链
+        :type CertificateChain: str
+        """
+        self.CertificateChain = None
+
+
+    def _deserialize(self, params):
+        self.CertificateChain = params.get("CertificateChain")
+
+
+class CheckCertificateChainResponse(AbstractModel):
+    """CheckCertificateChain返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param IsValid: 1为通过检查，0为未通过检查。
+        :type IsValid: bool
+        :param IsTrustedCA: 1为可信CA，0为不可信CA。
+        :type IsTrustedCA: bool
+        :param Chains: 包含证书链中每一段证书的通用名称。
+        :type Chains: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.IsValid = None
+        self.IsTrustedCA = None
+        self.Chains = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.IsValid = params.get("IsValid")
+        self.IsTrustedCA = params.get("IsTrustedCA")
+        self.Chains = params.get("Chains")
+        self.RequestId = params.get("RequestId")
+
+
 class CommitCertificateInformationRequest(AbstractModel):
     """CommitCertificateInformation请求参数结构体
 
@@ -375,6 +421,44 @@ class CommitCertificateInformationResponse(AbstractModel):
     def _deserialize(self, params):
         self.OrderId = params.get("OrderId")
         self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
+class CompleteCertificateRequest(AbstractModel):
+    """CompleteCertificate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CertificateId: 证书ID
+        :type CertificateId: str
+        """
+        self.CertificateId = None
+
+
+    def _deserialize(self, params):
+        self.CertificateId = params.get("CertificateId")
+
+
+class CompleteCertificateResponse(AbstractModel):
+    """CompleteCertificate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CertificateId: 证书ID
+        :type CertificateId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CertificateId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CertificateId = params.get("CertificateId")
         self.RequestId = params.get("RequestId")
 
 

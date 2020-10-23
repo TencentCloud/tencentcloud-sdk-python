@@ -110,7 +110,7 @@ class CaptchaClient(AbstractClient):
 
 
     def DescribeCaptchaMiniData(self, request):
-        """安全验证码小程序插件分类查询数据接口（内测中），请求量type=0、通过量type=1、验证量type=2、拦截量type=3 小时级查询（五小时左右延迟）
+        """安全验证码小程序插件分类查询数据接口，请求量type=0、通过量type=1、验证量type=2、拦截量type=3 小时级查询（五小时左右延迟）
 
         :param request: Request instance for DescribeCaptchaMiniData.
         :type request: :class:`tencentcloud.captcha.v20190722.models.DescribeCaptchaMiniDataRequest`
@@ -138,7 +138,7 @@ class CaptchaClient(AbstractClient):
 
 
     def DescribeCaptchaMiniDataSum(self, request):
-        """安全验证码小程序插件查询请求数据概况（内测中）
+        """安全验证码小程序插件查询请求数据概况
 
         :param request: Request instance for DescribeCaptchaMiniDataSum.
         :type request: :class:`tencentcloud.captcha.v20190722.models.DescribeCaptchaMiniDataSumRequest`
@@ -166,7 +166,7 @@ class CaptchaClient(AbstractClient):
 
 
     def DescribeCaptchaMiniOperData(self, request):
-        """安全验证码小程序插件用户操作数据查询（内测中）
+        """安全验证码小程序插件用户操作数据查询
 
         :param request: Request instance for DescribeCaptchaMiniOperData.
         :type request: :class:`tencentcloud.captcha.v20190722.models.DescribeCaptchaMiniOperDataRequest`
@@ -194,7 +194,7 @@ class CaptchaClient(AbstractClient):
 
 
     def DescribeCaptchaMiniResult(self, request):
-        """核查验证码小程序插件票据结果（内测中）
+        """核查验证码小程序插件票据结果
 
         :param request: Request instance for DescribeCaptchaMiniResult.
         :type request: :class:`tencentcloud.captcha.v20190722.models.DescribeCaptchaMiniResultRequest`

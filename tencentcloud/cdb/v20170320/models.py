@@ -3069,6 +3069,9 @@ class DescribeDBInstanceInfoResponse(AbstractModel):
         :param KeyRegion: 密钥所在地域。
 注意：此字段可能返回 null，表示取不到有效值。
         :type KeyRegion: str
+        :param DefaultKmsRegion: 当前 CDB 后端服务使用的 KMS 服务的默认地域。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultKmsRegion: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3077,6 +3080,7 @@ class DescribeDBInstanceInfoResponse(AbstractModel):
         self.Encryption = None
         self.KeyId = None
         self.KeyRegion = None
+        self.DefaultKmsRegion = None
         self.RequestId = None
 
 
@@ -3086,6 +3090,7 @@ class DescribeDBInstanceInfoResponse(AbstractModel):
         self.Encryption = params.get("Encryption")
         self.KeyId = params.get("KeyId")
         self.KeyRegion = params.get("KeyRegion")
+        self.DefaultKmsRegion = params.get("DefaultKmsRegion")
         self.RequestId = params.get("RequestId")
 
 

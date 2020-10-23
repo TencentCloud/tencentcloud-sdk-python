@@ -78,19 +78,11 @@ class TextToVoiceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Audio: base64编码的wav/mp3音频数据
-        :type Audio: str
-        :param SessionId: 一次请求对应一个SessionId
-        :type SessionId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Audio = None
-        self.SessionId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
-        self.Audio = params.get("Audio")
-        self.SessionId = params.get("SessionId")
         self.RequestId = params.get("RequestId")

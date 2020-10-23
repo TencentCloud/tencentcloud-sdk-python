@@ -504,6 +504,10 @@ Other-Overseas（其他境外地区）
         :type ProductRegion: str
         :param ProductCate: 设备类型, 0-普通视频设备，1-NVR设备
         :type ProductCate: int
+        :param AccessMode: 接入模型，bit0是0：公版小程序未接入，bit0是1：公版小程序已接入
+        :type AccessMode: int
+        :param Os: linux,android,liteos
+        :type Os: str
         """
         self.ProductModel = None
         self.ProductName = None
@@ -513,6 +517,8 @@ Other-Overseas（其他境外地区）
         self.ChipId = None
         self.ProductRegion = None
         self.ProductCate = None
+        self.AccessMode = None
+        self.Os = None
 
 
     def _deserialize(self, params):
@@ -524,6 +530,8 @@ Other-Overseas（其他境外地区）
         self.ChipId = params.get("ChipId")
         self.ProductRegion = params.get("ProductRegion")
         self.ProductCate = params.get("ProductCate")
+        self.AccessMode = params.get("AccessMode")
+        self.Os = params.get("Os")
 
 
 class CreateProductResponse(AbstractModel):

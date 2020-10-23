@@ -132,12 +132,12 @@ class SeatUserInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Phone: 坐席电话号码
-        :type Phone: str
         :param Name: 坐席名称
         :type Name: str
         :param Mail: 坐席邮箱
         :type Mail: str
+        :param Phone: 坐席电话号码
+        :type Phone: str
         :param Nick: 坐席昵称
         :type Nick: str
         :param UserId: 用户ID
@@ -145,22 +145,27 @@ class SeatUserInfo(AbstractModel):
         :param SkillGroupNameList: 坐席关联的技能组列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type SkillGroupNameList: list of str
+        :param StaffNumber: 工号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StaffNumber: str
         """
-        self.Phone = None
         self.Name = None
         self.Mail = None
+        self.Phone = None
         self.Nick = None
         self.UserId = None
         self.SkillGroupNameList = None
+        self.StaffNumber = None
 
 
     def _deserialize(self, params):
-        self.Phone = params.get("Phone")
         self.Name = params.get("Name")
         self.Mail = params.get("Mail")
+        self.Phone = params.get("Phone")
         self.Nick = params.get("Nick")
         self.UserId = params.get("UserId")
         self.SkillGroupNameList = params.get("SkillGroupNameList")
+        self.StaffNumber = params.get("StaffNumber")
 
 
 class TelCdrInfo(AbstractModel):

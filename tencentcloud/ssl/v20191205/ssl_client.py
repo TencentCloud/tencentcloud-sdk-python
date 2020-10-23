@@ -81,6 +81,34 @@ class SslClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CheckCertificateChain(self, request):
+        """本接口（CheckCertificateChain）用于检查证书链是否完整。
+
+        :param request: Request instance for CheckCertificateChain.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.CheckCertificateChainRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.CheckCertificateChainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CheckCertificateChain", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CheckCertificateChainResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CommitCertificateInformation(self, request):
         """提交证书订单。
 
@@ -95,6 +123,34 @@ class SslClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CommitCertificateInformationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CompleteCertificate(self, request):
+        """本接口（CompleteCertificate）用于主动触发证书验证。
+
+        :param request: Request instance for CompleteCertificate.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.CompleteCertificateRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.CompleteCertificateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CompleteCertificate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CompleteCertificateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

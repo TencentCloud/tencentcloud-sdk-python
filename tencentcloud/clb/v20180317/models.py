@@ -5317,19 +5317,21 @@ class Target(AbstractModel):
 
     def __init__(self):
         """
-        :param Port: 后端服务的监听端口
+        :param Port: 后端服务的监听端口。
+注意：绑定CVM（云服务器）或ENI（弹性网卡）时必传此参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
         :param Type: 后端服务的类型，可取：CVM（云服务器）、ENI（弹性网卡）；作为入参时，目前本参数暂不生效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param InstanceId: 绑定CVM时需要传入此参数，代表CVM的唯一 ID，可通过 DescribeInstances 接口返回字段中的 InstanceId 字段获取。
-注意：参数 InstanceId 和 EniIp 只能传入一个且必须传入一个。
+注意：参数 InstanceId、EniIp 只能传入一个且必须传入一个。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param Weight: 后端服务的转发权重，取值范围：[0, 100]，默认为 10。
         :type Weight: int
-        :param EniIp: 绑定弹性网卡时需要传入此参数，代表弹性网卡的IP，弹性网卡必须先绑定至CVM，然后才能绑定到负载均衡实例。注意：参数 InstanceId 和 EniIp 只能传入一个且必须传入一个。注意：绑定弹性网卡需要先提交工单开白名单使用。
+        :param EniIp: 绑定弹性网卡时需要传入此参数，代表弹性网卡的IP，弹性网卡必须先绑定至CVM，然后才能绑定到负载均衡实例。
+注意：参数 InstanceId、EniIp 只能传入一个且必须传入一个。注意：绑定弹性网卡需要先提交工单开白名单使用。
 注意：此字段可能返回 null，表示取不到有效值。
         :type EniIp: str
         """
