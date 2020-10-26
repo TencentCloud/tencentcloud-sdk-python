@@ -113,12 +113,16 @@ class AddExistedInstancesResponse(AbstractModel):
         :param TimeoutInstanceIds: 超时未返回出来节点的ID(可能失败，也可能成功)
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimeoutInstanceIds: list of str
+        :param FailedReasons: 失败的节点的失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailedReasons: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.FailedInstanceIds = None
         self.SuccInstanceIds = None
         self.TimeoutInstanceIds = None
+        self.FailedReasons = None
         self.RequestId = None
 
 
@@ -126,6 +130,7 @@ class AddExistedInstancesResponse(AbstractModel):
         self.FailedInstanceIds = params.get("FailedInstanceIds")
         self.SuccInstanceIds = params.get("SuccInstanceIds")
         self.TimeoutInstanceIds = params.get("TimeoutInstanceIds")
+        self.FailedReasons = params.get("FailedReasons")
         self.RequestId = params.get("RequestId")
 
 

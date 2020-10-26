@@ -95,7 +95,7 @@ class CertificateInfo(AbstractModel):
         :param CertificateType: 证件类型。
 SFZ: 身份证。
 HZ: 护照。
-TXZ: 港澳居民来往内地通行证。
+TXZ: 中国港澳居民来往内地通行证。
 TWSFZ: 中国台湾居民来往大陆通行证。
 GWSFZ: 外国人永久居留身份证。
 ORG: 组织机构代码证
@@ -117,7 +117,7 @@ GWJGZJ: 外国机构证件。
 SHFWJGZ: 社会服务机构登记证书。
 MBXXXKZ: 民办学校办学许可证。
 YLJGXKZ: 医疗机构执业许可证。
-GAJZZ: 港澳居住证
+GAJZZ: 中国港澳居住证。
 TWJZZ: 中国台湾居住证。
 QTTYDM: 其他-统一社会信用代码证书。
 GZJGZY: 公证机构执业证。
@@ -483,6 +483,114 @@ class DeleteTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBatchOperationLogDetailsRequest(AbstractModel):
+    """DescribeBatchOperationLogDetails请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LogId: 日志ID。
+        :type LogId: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为200。
+        :type Limit: int
+        """
+        self.LogId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.LogId = params.get("LogId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeBatchOperationLogDetailsResponse(AbstractModel):
+    """DescribeBatchOperationLogDetails返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 总数量。
+        :type TotalCount: int
+        :param DomainBatchDetailSet: 日志详情列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DomainBatchDetailSet: list of DomainBatchDetailSet
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.DomainBatchDetailSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("DomainBatchDetailSet") is not None:
+            self.DomainBatchDetailSet = []
+            for item in params.get("DomainBatchDetailSet"):
+                obj = DomainBatchDetailSet()
+                obj._deserialize(item)
+                self.DomainBatchDetailSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBatchOperationLogsRequest(AbstractModel):
+    """DescribeBatchOperationLogs请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为200。
+        :type Limit: int
+        """
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeBatchOperationLogsResponse(AbstractModel):
+    """DescribeBatchOperationLogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 总数量
+        :type TotalCount: int
+        :param DomainBatchLogSet: 日志列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DomainBatchLogSet: list of DomainBatchLogSet
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.DomainBatchLogSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("DomainBatchLogSet") is not None:
+            self.DomainBatchLogSet = []
+            for item in params.get("DomainBatchLogSet"):
+                obj = DomainBatchLogSet()
+                obj._deserialize(item)
+                self.DomainBatchLogSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDomainBaseInfoRequest(AbstractModel):
     """DescribeDomainBaseInfo请求参数结构体
 
@@ -778,6 +886,78 @@ xinnet (新网域名)
         self.DomainStatus = params.get("DomainStatus")
         self.BuyStatus = params.get("BuyStatus")
         self.RegistrarType = params.get("RegistrarType")
+
+
+class DomainBatchDetailSet(AbstractModel):
+    """批量操作日志详情
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 详情ID
+        :type Id: int
+        :param Domain: 域名
+        :type Domain: str
+        :param Status: 执行状态：
+doing 执行中。
+failed 操作失败。
+success  操作成功。
+        :type Status: str
+        :param Reason: 失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Reason: str
+        :param CreatedOn: 创建时间
+        :type CreatedOn: str
+        :param UpdatedOn: 更新时间
+        :type UpdatedOn: str
+        """
+        self.Id = None
+        self.Domain = None
+        self.Status = None
+        self.Reason = None
+        self.CreatedOn = None
+        self.UpdatedOn = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Domain = params.get("Domain")
+        self.Status = params.get("Status")
+        self.Reason = params.get("Reason")
+        self.CreatedOn = params.get("CreatedOn")
+        self.UpdatedOn = params.get("UpdatedOn")
+
+
+class DomainBatchLogSet(AbstractModel):
+    """批量操作记录
+
+    """
+
+    def __init__(self):
+        """
+        :param LogId: 日志ID
+        :type LogId: int
+        :param Number: 数量
+        :type Number: int
+        :param Status: 执行状态：
+doing 执行中。
+done 执行完成。
+        :type Status: str
+        :param CreatedOn: 提交时间
+        :type CreatedOn: str
+        """
+        self.LogId = None
+        self.Number = None
+        self.Status = None
+        self.CreatedOn = None
+
+
+    def _deserialize(self, params):
+        self.LogId = params.get("LogId")
+        self.Number = params.get("Number")
+        self.Status = params.get("Status")
+        self.CreatedOn = params.get("CreatedOn")
 
 
 class DomainList(AbstractModel):

@@ -203,6 +203,62 @@ class DomainClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBatchOperationLogDetails(self, request):
+        """本接口 ( DescribeBatchOperationLogDetails ) 用于获取批量操作日志详情。
+
+        :param request: Request instance for DescribeBatchOperationLogDetails.
+        :type request: :class:`tencentcloud.domain.v20180808.models.DescribeBatchOperationLogDetailsRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.DescribeBatchOperationLogDetailsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBatchOperationLogDetails", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBatchOperationLogDetailsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBatchOperationLogs(self, request):
+        """本接口 ( DescribeBatchOperationLogs ) 用于获取批量操作日志 。
+
+        :param request: Request instance for DescribeBatchOperationLogs.
+        :type request: :class:`tencentcloud.domain.v20180808.models.DescribeBatchOperationLogsRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.DescribeBatchOperationLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBatchOperationLogs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBatchOperationLogsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDomainBaseInfo(self, request):
         """本接口 (  DescribeDomainBaseInfo) 获取域名基础信息。
 
@@ -503,8 +559,6 @@ class DomainClient(AbstractClient):
 
     def UpdateProhibitionBatch(self, request):
         """本接口 ( UpdateProhibitionBatch ) 用于批量设置禁止域名更新 。
-
-        默认接口请求频率限制：20次/秒。
 
         :param request: Request instance for UpdateProhibitionBatch.
         :type request: :class:`tencentcloud.domain.v20180808.models.UpdateProhibitionBatchRequest`
