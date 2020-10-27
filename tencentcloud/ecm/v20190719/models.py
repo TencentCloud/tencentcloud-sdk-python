@@ -3815,6 +3815,8 @@ class Image(AbstractModel):
         :type SrcImage: :class:`tencentcloud.ecm.v20190719.models.SrcImage`
         :param ImageSource: 镜像来源类型
         :type ImageSource: str
+        :param TaskId: 中间态和失败时候的任务ID
+        :type TaskId: str
         """
         self.ImageId = None
         self.ImageName = None
@@ -3831,6 +3833,7 @@ class Image(AbstractModel):
         self.ImageSize = None
         self.SrcImage = None
         self.ImageSource = None
+        self.TaskId = None
 
 
     def _deserialize(self, params):
@@ -3851,6 +3854,7 @@ class Image(AbstractModel):
             self.SrcImage = SrcImage()
             self.SrcImage._deserialize(params.get("SrcImage"))
         self.ImageSource = params.get("ImageSource")
+        self.TaskId = params.get("TaskId")
 
 
 class ImageOsList(AbstractModel):

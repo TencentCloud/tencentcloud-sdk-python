@@ -28,8 +28,6 @@ class DomainClient(AbstractClient):
     def BatchModifyDomainInfo(self, request):
         """本接口 ( BatchModifyDomainInfo ) 用于批量域名信息修改 。
 
-        默认接口请求频率限制：20次/秒。
-
         :param request: Request instance for BatchModifyDomainInfo.
         :type request: :class:`tencentcloud.domain.v20180808.models.BatchModifyDomainInfoRequest`
         :rtype: :class:`tencentcloud.domain.v20180808.models.BatchModifyDomainInfoResponse`
@@ -146,8 +144,6 @@ class DomainClient(AbstractClient):
     def CreateTemplate(self, request):
         """本接口 ( CreateTemplate ) 用于添加域名信息模板 。
 
-        默认接口请求频率限制：20次/秒。
-
         :param request: Request instance for CreateTemplate.
         :type request: :class:`tencentcloud.domain.v20180808.models.CreateTemplateRequest`
         :rtype: :class:`tencentcloud.domain.v20180808.models.CreateTemplateResponse`
@@ -175,8 +171,6 @@ class DomainClient(AbstractClient):
 
     def DeleteTemplate(self, request):
         """本接口 ( DeleteTemplate ) 用于删除域名信息模板。
-
-        默认接口请求频率限制：20次/秒。
 
         :param request: Request instance for DeleteTemplate.
         :type request: :class:`tencentcloud.domain.v20180808.models.DeleteTemplateRequest`
@@ -292,8 +286,6 @@ class DomainClient(AbstractClient):
     def DescribeDomainNameList(self, request):
         """本接口 (  DescribeDomainNameList ) 获取域名列表。
 
-        默认接口请求频率限制：20次/秒。
-
         :param request: Request instance for DescribeDomainNameList.
         :type request: :class:`tencentcloud.domain.v20180808.models.DescribeDomainNameListRequest`
         :rtype: :class:`tencentcloud.domain.v20180808.models.DescribeDomainNameListResponse`
@@ -349,8 +341,6 @@ class DomainClient(AbstractClient):
 
     def DescribeTemplateList(self, request):
         """本接口 (DescribeTemplateList) 用于获取模板列表。
-
-        默认接口请求频率限制：20次/秒。
 
         :param request: Request instance for DescribeTemplateList.
         :type request: :class:`tencentcloud.domain.v20180808.models.DescribeTemplateListRequest`
@@ -409,8 +399,6 @@ class DomainClient(AbstractClient):
 
     def ModifyDomainOwnerBatch(self, request):
         """本接口 ( ModifyDomainOwnerBatch) 用于域名批量账号间转移 。
-
-        默认接口请求频率限制：20次/秒。
 
         :param request: Request instance for ModifyDomainOwnerBatch.
         :type request: :class:`tencentcloud.domain.v20180808.models.ModifyDomainOwnerBatchRequest`
@@ -587,8 +575,6 @@ class DomainClient(AbstractClient):
 
     def UploadImage(self, request):
         """本接口 ( UploadImage ) 用于上传资质照片 。
-
-        默认接口请求频率限制：20次/秒。
 
         :param request: Request instance for UploadImage.
         :type request: :class:`tencentcloud.domain.v20180808.models.UploadImageRequest`

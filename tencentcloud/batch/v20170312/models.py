@@ -2669,7 +2669,7 @@ class ItemPrice(AbstractModel):
         :param DiscountPrice: 预支合计费用的折扣价，预付费模式使用，单位：元。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiscountPrice: float
-        :param Discount: 折扣，如20.0代表2折
+        :param Discount: 折扣，如20.0代表2折。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Discount: float
         :param UnitPriceDiscount: 后续合计费用的折扣价，后付费模式使用，单位：元<br><li>如返回了其他时间区间项，如UnitPriceDiscountSecondStep，则本项代表时间区间在(0, 96)小时；若未返回其他时间区间项，则本项代表全时段，即(0, ∞)小时
@@ -2687,6 +2687,42 @@ class ItemPrice(AbstractModel):
         :param UnitPriceDiscountThirdStep: 使用时间区间在(360, ∞)小时的后续合计费用的折扣价，后付费模式使用，单位：元
 注意：此字段可能返回 null，表示取不到有效值。
         :type UnitPriceDiscountThirdStep: float
+        :param OriginalPriceThreeYear: 预支三年合计费用的原价，预付费模式使用，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginalPriceThreeYear: float
+        :param DiscountPriceThreeYear: 预支三年合计费用的折扣价，预付费模式使用，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiscountPriceThreeYear: float
+        :param DiscountThreeYear: 预支三年应用的折扣，如20.0代表2折。
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiscountThreeYear: float
+        :param OriginalPriceFiveYear: 预支五年合计费用的原价，预付费模式使用，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginalPriceFiveYear: float
+        :param DiscountPriceFiveYear: 预支五年合计费用的折扣价，预付费模式使用，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiscountPriceFiveYear: float
+        :param DiscountFiveYear: 预支五年应用的折扣，如20.0代表2折。
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiscountFiveYear: float
+        :param OriginalPriceOneYear: 预支一年合计费用的原价，预付费模式使用，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginalPriceOneYear: float
+        :param DiscountPriceOneYear: 预支一年合计费用的折扣价，预付费模式使用，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiscountPriceOneYear: float
+        :param DiscountOneYear: 预支一年应用的折扣，如20.0代表2折。
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiscountOneYear: float
         """
         self.UnitPrice = None
         self.ChargeUnit = None
@@ -2698,6 +2734,15 @@ class ItemPrice(AbstractModel):
         self.UnitPriceDiscountSecondStep = None
         self.UnitPriceThirdStep = None
         self.UnitPriceDiscountThirdStep = None
+        self.OriginalPriceThreeYear = None
+        self.DiscountPriceThreeYear = None
+        self.DiscountThreeYear = None
+        self.OriginalPriceFiveYear = None
+        self.DiscountPriceFiveYear = None
+        self.DiscountFiveYear = None
+        self.OriginalPriceOneYear = None
+        self.DiscountPriceOneYear = None
+        self.DiscountOneYear = None
 
 
     def _deserialize(self, params):
@@ -2711,6 +2756,15 @@ class ItemPrice(AbstractModel):
         self.UnitPriceDiscountSecondStep = params.get("UnitPriceDiscountSecondStep")
         self.UnitPriceThirdStep = params.get("UnitPriceThirdStep")
         self.UnitPriceDiscountThirdStep = params.get("UnitPriceDiscountThirdStep")
+        self.OriginalPriceThreeYear = params.get("OriginalPriceThreeYear")
+        self.DiscountPriceThreeYear = params.get("DiscountPriceThreeYear")
+        self.DiscountThreeYear = params.get("DiscountThreeYear")
+        self.OriginalPriceFiveYear = params.get("OriginalPriceFiveYear")
+        self.DiscountPriceFiveYear = params.get("DiscountPriceFiveYear")
+        self.DiscountFiveYear = params.get("DiscountFiveYear")
+        self.OriginalPriceOneYear = params.get("OriginalPriceOneYear")
+        self.DiscountPriceOneYear = params.get("DiscountPriceOneYear")
+        self.DiscountOneYear = params.get("DiscountOneYear")
 
 
 class Job(AbstractModel):

@@ -134,6 +134,48 @@ class AddExistedInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AddNodeToNodePoolRequest(AbstractModel):
+    """AddNodeToNodePool请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群id
+        :type ClusterId: str
+        :param NodePoolId: 节点池id
+        :type NodePoolId: str
+        :param InstanceIds: 节点id
+        :type InstanceIds: list of str
+        """
+        self.ClusterId = None
+        self.NodePoolId = None
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.NodePoolId = params.get("NodePoolId")
+        self.InstanceIds = params.get("InstanceIds")
+
+
+class AddNodeToNodePoolResponse(AbstractModel):
+    """AddNodeToNodePool返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class AutoScalingGroupRange(AbstractModel):
     """集群关联的伸缩组最大实例数最小值实例数
 
@@ -827,6 +869,126 @@ class CreateClusterInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateClusterNodePoolFromExistingAsgRequest(AbstractModel):
+    """CreateClusterNodePoolFromExistingAsg请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param AutoscalingGroupId: 伸缩组ID
+        :type AutoscalingGroupId: str
+        """
+        self.ClusterId = None
+        self.AutoscalingGroupId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.AutoscalingGroupId = params.get("AutoscalingGroupId")
+
+
+class CreateClusterNodePoolFromExistingAsgResponse(AbstractModel):
+    """CreateClusterNodePoolFromExistingAsg返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NodePoolId: 节点池ID
+        :type NodePoolId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NodePoolId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.NodePoolId = params.get("NodePoolId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateClusterNodePoolRequest(AbstractModel):
+    """CreateClusterNodePool请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: cluster id
+        :type ClusterId: str
+        :param AutoScalingGroupPara: AutoScalingGroupPara AS组参数
+        :type AutoScalingGroupPara: str
+        :param LaunchConfigurePara: LaunchConfigurePara 运行参数
+        :type LaunchConfigurePara: str
+        :param InstanceAdvancedSettings: InstanceAdvancedSettings 示例参数
+        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
+        :param EnableAutoscale: 是否启用自动伸缩
+        :type EnableAutoscale: bool
+        :param Name: 节点池名称
+        :type Name: str
+        :param Labels: Labels标签
+        :type Labels: list of Label
+        :param Taints: Taints互斥
+        :type Taints: list of Taint
+        """
+        self.ClusterId = None
+        self.AutoScalingGroupPara = None
+        self.LaunchConfigurePara = None
+        self.InstanceAdvancedSettings = None
+        self.EnableAutoscale = None
+        self.Name = None
+        self.Labels = None
+        self.Taints = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.AutoScalingGroupPara = params.get("AutoScalingGroupPara")
+        self.LaunchConfigurePara = params.get("LaunchConfigurePara")
+        if params.get("InstanceAdvancedSettings") is not None:
+            self.InstanceAdvancedSettings = InstanceAdvancedSettings()
+            self.InstanceAdvancedSettings._deserialize(params.get("InstanceAdvancedSettings"))
+        self.EnableAutoscale = params.get("EnableAutoscale")
+        self.Name = params.get("Name")
+        if params.get("Labels") is not None:
+            self.Labels = []
+            for item in params.get("Labels"):
+                obj = Label()
+                obj._deserialize(item)
+                self.Labels.append(obj)
+        if params.get("Taints") is not None:
+            self.Taints = []
+            for item in params.get("Taints"):
+                obj = Taint()
+                obj._deserialize(item)
+                self.Taints.append(obj)
+
+
+class CreateClusterNodePoolResponse(AbstractModel):
+    """CreateClusterNodePool返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NodePoolId: 节点池id
+        :type NodePoolId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NodePoolId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.NodePoolId = params.get("NodePoolId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateClusterRequest(AbstractModel):
     """CreateCluster请求参数结构体
 
@@ -1269,6 +1431,48 @@ class DeleteClusterInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteClusterNodePoolRequest(AbstractModel):
+    """DeleteClusterNodePool请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 节点池对应的 ClusterId
+        :type ClusterId: str
+        :param NodePoolIds: 需要删除的节点池 Id 列表
+        :type NodePoolIds: list of str
+        :param KeepInstance: 删除节点池时是否保留节点池内节点(节点仍然会被移出集群，但对应的实例不会被销毁)
+        :type KeepInstance: bool
+        """
+        self.ClusterId = None
+        self.NodePoolIds = None
+        self.KeepInstance = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.NodePoolIds = params.get("NodePoolIds")
+        self.KeepInstance = params.get("KeepInstance")
+
+
+class DeleteClusterNodePoolResponse(AbstractModel):
+    """DeleteClusterNodePool返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteClusterRequest(AbstractModel):
     """DeleteCluster请求参数结构体
 
@@ -1676,6 +1880,78 @@ class DescribeClusterKubeconfigResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Kubeconfig = params.get("Kubeconfig")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClusterNodePoolDetailRequest(AbstractModel):
+    """DescribeClusterNodePoolDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群id
+        :type ClusterId: str
+        :param NodePoolId: 节点池id
+        :type NodePoolId: str
+        """
+        self.ClusterId = None
+        self.NodePoolId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.NodePoolId = params.get("NodePoolId")
+
+
+class DescribeClusterNodePoolDetailResponse(AbstractModel):
+    """DescribeClusterNodePoolDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClusterNodePoolsRequest(AbstractModel):
+    """DescribeClusterNodePools请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: ClusterId（集群id）
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+
+
+class DescribeClusterNodePoolsResponse(AbstractModel):
+    """DescribeClusterNodePools返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -2776,6 +3052,78 @@ class ModifyClusterEndpointSPResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyClusterNodePoolRequest(AbstractModel):
+    """ModifyClusterNodePool请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param NodePoolId: 节点池ID
+        :type NodePoolId: str
+        :param Name: 名称
+        :type Name: str
+        :param MaxNodesNum: 最大节点数
+        :type MaxNodesNum: int
+        :param MinNodesNum: 最小节点数
+        :type MinNodesNum: int
+        :param Labels: 标签
+        :type Labels: list of Label
+        :param Taints: 污点
+        :type Taints: list of Taint
+        :param EnableAutoscale: 是否开启伸缩
+        :type EnableAutoscale: bool
+        """
+        self.ClusterId = None
+        self.NodePoolId = None
+        self.Name = None
+        self.MaxNodesNum = None
+        self.MinNodesNum = None
+        self.Labels = None
+        self.Taints = None
+        self.EnableAutoscale = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.NodePoolId = params.get("NodePoolId")
+        self.Name = params.get("Name")
+        self.MaxNodesNum = params.get("MaxNodesNum")
+        self.MinNodesNum = params.get("MinNodesNum")
+        if params.get("Labels") is not None:
+            self.Labels = []
+            for item in params.get("Labels"):
+                obj = Label()
+                obj._deserialize(item)
+                self.Labels.append(obj)
+        if params.get("Taints") is not None:
+            self.Taints = []
+            for item in params.get("Taints"):
+                obj = Taint()
+                obj._deserialize(item)
+                self.Taints.append(obj)
+        self.EnableAutoscale = params.get("EnableAutoscale")
+
+
+class ModifyClusterNodePoolResponse(AbstractModel):
+    """ModifyClusterNodePool返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class RegionInstance(AbstractModel):
     """地域属性信息
 
@@ -2817,6 +3165,48 @@ class RegionInstance(AbstractModel):
         self.FeatureGates = params.get("FeatureGates")
         self.Alias = params.get("Alias")
         self.Remark = params.get("Remark")
+
+
+class RemoveNodeFromNodePoolRequest(AbstractModel):
+    """RemoveNodeFromNodePool请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群id
+        :type ClusterId: str
+        :param NodePoolId: 节点池id
+        :type NodePoolId: str
+        :param InstanceIds: 节点id列表
+        :type InstanceIds: list of str
+        """
+        self.ClusterId = None
+        self.NodePoolId = None
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.NodePoolId = params.get("NodePoolId")
+        self.InstanceIds = params.get("InstanceIds")
+
+
+class RemoveNodeFromNodePoolResponse(AbstractModel):
+    """RemoveNodeFromNodePool返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class ResourceDeleteOption(AbstractModel):
@@ -3033,3 +3423,28 @@ class TagSpecification(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+
+
+class Taint(AbstractModel):
+    """kubernetes Taint
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: Key
+        :type Key: str
+        :param Value: Value
+        :type Value: str
+        :param Effect: Effect
+        :type Effect: str
+        """
+        self.Key = None
+        self.Value = None
+        self.Effect = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        self.Effect = params.get("Effect")

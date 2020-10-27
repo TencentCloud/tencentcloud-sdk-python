@@ -165,6 +165,34 @@ class SslClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateCertificate(self, request):
+        """本接口（CreateCertificate）用于创建付费证书。
+
+        :param request: Request instance for CreateCertificate.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.CreateCertificateRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.CreateCertificateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateCertificate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateCertificateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteCertificate(self, request):
         """本接口（DeleteCertificate）用于删除证书。
 
@@ -417,6 +445,34 @@ class SslClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def RevokeCertificate(self, request):
+        """本接口（RevokeCertificate）用于吊销证书。
+
+        :param request: Request instance for RevokeCertificate.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.RevokeCertificateRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.RevokeCertificateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RevokeCertificate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RevokeCertificateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def SubmitCertificateInformation(self, request):
         """提交证书资料。
 
@@ -459,6 +515,62 @@ class SslClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UploadCertificateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UploadConfirmLetter(self, request):
+        """本接口（UploadConfirmLetter）用于上传证书确认函。
+
+        :param request: Request instance for UploadConfirmLetter.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.UploadConfirmLetterRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.UploadConfirmLetterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UploadConfirmLetter", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UploadConfirmLetterResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UploadRevokeLetter(self, request):
+        """本接口（UploadRevokeLetter）用于上传证书吊销确认函。
+
+        :param request: Request instance for UploadRevokeLetter.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.UploadRevokeLetterRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.UploadRevokeLetterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UploadRevokeLetter", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UploadRevokeLetterResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

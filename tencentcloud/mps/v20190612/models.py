@@ -11586,7 +11586,8 @@ class VideoTemplateInfo(AbstractModel):
 默认值：black 。
         :type FillType: str
         :param Vcrf: 视频恒定码率控制因子，取值范围为[1, 51]。
-如果指定该参数，将使用 CRF 的码率控制方式做转码。0值表示禁用 CRF 模式。
+如果指定该参数，将使用 CRF 的码率控制方式做转码（视频码率将不再生效）。
+如果没有特殊需求，不建议指定该参数。
         :type Vcrf: int
         """
         self.Codec = None
@@ -11651,8 +11652,8 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 <li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
 <li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊填充。</li>
         :type FillType: str
-        :param Vcrf: 视频恒定码率控制因子，取值范围为[0, 51]。
-如果指定该参数，将使用 CRF 的码率控制方式做转码。取0值表示禁用 CRF 模式。
+        :param Vcrf: 视频恒定码率控制因子。取值范围为[0, 51]，填0表示禁用该参数。
+如果没有特殊需求，不建议指定该参数。
         :type Vcrf: int
         """
         self.Codec = None

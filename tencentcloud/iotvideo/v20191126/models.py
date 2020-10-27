@@ -101,6 +101,34 @@ class ClearDeviceActiveCodeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class Contents(AbstractModel):
+    """版本发布的描述信息，需要国际化，可以为空
+
+    """
+
+    def __init__(self):
+        """
+        :param En: 英文，长度不超过300个字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :type En: str
+        :param Cn: 中文简体，长度不超过300个字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cn: str
+        :param Tc: 中文繁体(Traditional Chinese)，长度不超过300个字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tc: str
+        """
+        self.En = None
+        self.Cn = None
+        self.Tc = None
+
+
+    def _deserialize(self, params):
+        self.En = params.get("En")
+        self.Cn = params.get("Cn")
+        self.Tc = params.get("Tc")
+
+
 class CreateAnonymousAccessTokenRequest(AbstractModel):
     """CreateAnonymousAccessToken请求参数结构体
 
@@ -3156,12 +3184,18 @@ class RunOtaVersionRequest(AbstractModel):
         :type OldVersions: list of str
         :param Operator: 操作人
         :type Operator: str
+        :param Remark: 备注信息
+        :type Remark: str
+        :param Contents: 版本发布的描述信息，需要国际化，可以为空
+        :type Contents: :class:`tencentcloud.iotvideo.v20191126.models.Contents`
         """
         self.ProductId = None
         self.OtaVersion = None
         self.GrayValue = None
         self.OldVersions = None
         self.Operator = None
+        self.Remark = None
+        self.Contents = None
 
 
     def _deserialize(self, params):
@@ -3170,6 +3204,10 @@ class RunOtaVersionRequest(AbstractModel):
         self.GrayValue = params.get("GrayValue")
         self.OldVersions = params.get("OldVersions")
         self.Operator = params.get("Operator")
+        self.Remark = params.get("Remark")
+        if params.get("Contents") is not None:
+            self.Contents = Contents()
+            self.Contents._deserialize(params.get("Contents"))
 
 
 class RunOtaVersionResponse(AbstractModel):
@@ -3204,11 +3242,14 @@ class RunTestOtaVersionRequest(AbstractModel):
         :type Tids: list of str
         :param Operator: 操作人
         :type Operator: str
+        :param Remark: 备注信息
+        :type Remark: str
         """
         self.ProductId = None
         self.OtaVersion = None
         self.Tids = None
         self.Operator = None
+        self.Remark = None
 
 
     def _deserialize(self, params):
@@ -3216,6 +3257,7 @@ class RunTestOtaVersionRequest(AbstractModel):
         self.OtaVersion = params.get("OtaVersion")
         self.Tids = params.get("Tids")
         self.Operator = params.get("Operator")
+        self.Remark = params.get("Remark")
 
 
 class RunTestOtaVersionResponse(AbstractModel):
@@ -3563,6 +3605,12 @@ class VersionData(AbstractModel):
         :param ModifyTimes: 该固件版本发布的变更次数
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyTimes: int
+        :param Remark: 备注信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param Contents: 版本发布的描述信息，需要国际化，可以为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Contents: :class:`tencentcloud.iotvideo.v20191126.models.Contents`
         """
         self.ProductId = None
         self.OtaVersion = None
@@ -3579,6 +3627,8 @@ class VersionData(AbstractModel):
         self.UpdateTime = None
         self.UploadTime = None
         self.ModifyTimes = None
+        self.Remark = None
+        self.Contents = None
 
 
     def _deserialize(self, params):
@@ -3597,3 +3647,7 @@ class VersionData(AbstractModel):
         self.UpdateTime = params.get("UpdateTime")
         self.UploadTime = params.get("UploadTime")
         self.ModifyTimes = params.get("ModifyTimes")
+        self.Remark = params.get("Remark")
+        if params.get("Contents") is not None:
+            self.Contents = Contents()
+            self.Contents._deserialize(params.get("Contents"))

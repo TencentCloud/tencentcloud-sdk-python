@@ -462,6 +462,56 @@ class CompleteCertificateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateCertificateRequest(AbstractModel):
+    """CreateCertificate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductId: 证书商品ID
+        :type ProductId: int
+        :param DomainNum: 证书包含的域名数量
+        :type DomainNum: int
+        :param TimeSpan: 证书年限，当前只支持 1 年证书的购买
+        :type TimeSpan: int
+        """
+        self.ProductId = None
+        self.DomainNum = None
+        self.TimeSpan = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DomainNum = params.get("DomainNum")
+        self.TimeSpan = params.get("TimeSpan")
+
+
+class CreateCertificateResponse(AbstractModel):
+    """CreateCertificate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CertificateIds: 证书ID列表
+        :type CertificateIds: list of str
+        :param DealIds: 子订单ID
+        :type DealIds: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CertificateIds = None
+        self.DealIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CertificateIds = params.get("CertificateIds")
+        self.DealIds = params.get("DealIds")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteCertificateRequest(AbstractModel):
     """DeleteCertificate请求参数结构体
 
@@ -1347,12 +1397,15 @@ class ReplaceCertificateRequest(AbstractModel):
         :type CsrContent: str
         :param CsrkeyPassword: KEY 密码。
         :type CsrkeyPassword: str
+        :param Reason: 重颁发原因。
+        :type Reason: str
         """
         self.CertificateId = None
         self.ValidType = None
         self.CsrType = None
         self.CsrContent = None
         self.CsrkeyPassword = None
+        self.Reason = None
 
 
     def _deserialize(self, params):
@@ -1361,6 +1414,7 @@ class ReplaceCertificateRequest(AbstractModel):
         self.CsrType = params.get("CsrType")
         self.CsrContent = params.get("CsrContent")
         self.CsrkeyPassword = params.get("CsrkeyPassword")
+        self.Reason = params.get("Reason")
 
 
 class ReplaceCertificateResponse(AbstractModel):
@@ -1382,6 +1436,87 @@ class ReplaceCertificateResponse(AbstractModel):
     def _deserialize(self, params):
         self.CertificateId = params.get("CertificateId")
         self.RequestId = params.get("RequestId")
+
+
+class RevokeCertificateRequest(AbstractModel):
+    """RevokeCertificate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CertificateId: 证书 ID。
+        :type CertificateId: str
+        :param Reason: 吊销证书原因。
+        :type Reason: str
+        """
+        self.CertificateId = None
+        self.Reason = None
+
+
+    def _deserialize(self, params):
+        self.CertificateId = params.get("CertificateId")
+        self.Reason = params.get("Reason")
+
+
+class RevokeCertificateResponse(AbstractModel):
+    """RevokeCertificate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RevokeDomainValidateAuths: 吊销证书域名验证信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RevokeDomainValidateAuths: list of RevokeDomainValidateAuths
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RevokeDomainValidateAuths = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("RevokeDomainValidateAuths") is not None:
+            self.RevokeDomainValidateAuths = []
+            for item in params.get("RevokeDomainValidateAuths"):
+                obj = RevokeDomainValidateAuths()
+                obj._deserialize(item)
+                self.RevokeDomainValidateAuths.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class RevokeDomainValidateAuths(AbstractModel):
+    """返回参数键为 RevokeDomainValidateAuths 的内容。
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainValidateAuthPath: DV 认证值路径。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DomainValidateAuthPath: str
+        :param DomainValidateAuthKey: DV 认证 KEY。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DomainValidateAuthKey: str
+        :param DomainValidateAuthValue: DV 认证值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DomainValidateAuthValue: str
+        :param DomainValidateAuthDomain: DV 认证域名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DomainValidateAuthDomain: str
+        """
+        self.DomainValidateAuthPath = None
+        self.DomainValidateAuthKey = None
+        self.DomainValidateAuthValue = None
+        self.DomainValidateAuthDomain = None
+
+
+    def _deserialize(self, params):
+        self.DomainValidateAuthPath = params.get("DomainValidateAuthPath")
+        self.DomainValidateAuthKey = params.get("DomainValidateAuthKey")
+        self.DomainValidateAuthValue = params.get("DomainValidateAuthValue")
+        self.DomainValidateAuthDomain = params.get("DomainValidateAuthDomain")
 
 
 class SubmitCertificateInformationRequest(AbstractModel):
@@ -1711,4 +1846,96 @@ class UploadCertificateResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.CertificateId = params.get("CertificateId")
+        self.RequestId = params.get("RequestId")
+
+
+class UploadConfirmLetterRequest(AbstractModel):
+    """UploadConfirmLetter请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CertificateId: 证书ID
+        :type CertificateId: str
+        :param ConfirmLetter: base64编码后的证书确认函文件，格式应为jpg、jpeg、png、pdf，大小应在1kb与1.4M之间。
+        :type ConfirmLetter: str
+        """
+        self.CertificateId = None
+        self.ConfirmLetter = None
+
+
+    def _deserialize(self, params):
+        self.CertificateId = params.get("CertificateId")
+        self.ConfirmLetter = params.get("ConfirmLetter")
+
+
+class UploadConfirmLetterResponse(AbstractModel):
+    """UploadConfirmLetter返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CertificateId: 证书ID
+        :type CertificateId: str
+        :param IsSuccess: 是否成功
+        :type IsSuccess: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CertificateId = None
+        self.IsSuccess = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CertificateId = params.get("CertificateId")
+        self.IsSuccess = params.get("IsSuccess")
+        self.RequestId = params.get("RequestId")
+
+
+class UploadRevokeLetterRequest(AbstractModel):
+    """UploadRevokeLetter请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CertificateId: 证书 ID。
+        :type CertificateId: str
+        :param RevokeLetter: base64编码后的证书确认函文件，格式应为jpg、jpeg、png、pdf，大小应在1kb与1.4M之间。
+        :type RevokeLetter: str
+        """
+        self.CertificateId = None
+        self.RevokeLetter = None
+
+
+    def _deserialize(self, params):
+        self.CertificateId = params.get("CertificateId")
+        self.RevokeLetter = params.get("RevokeLetter")
+
+
+class UploadRevokeLetterResponse(AbstractModel):
+    """UploadRevokeLetter返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CertificateId: 证书 ID。
+        :type CertificateId: str
+        :param IsSuccess: 是否成功。
+        :type IsSuccess: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CertificateId = None
+        self.IsSuccess = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CertificateId = params.get("CertificateId")
+        self.IsSuccess = params.get("IsSuccess")
         self.RequestId = params.get("RequestId")

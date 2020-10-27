@@ -81,6 +81,34 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AddNodeToNodePool(self, request):
+        """将集群内节点移入节点池
+
+        :param request: Request instance for AddNodeToNodePool.
+        :type request: :class:`tencentcloud.tke.v20180525.models.AddNodeToNodePoolRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.AddNodeToNodePoolResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AddNodeToNodePool", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddNodeToNodePoolResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateCluster(self, request):
         """创建集群
 
@@ -207,6 +235,62 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateClusterInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateClusterNodePool(self, request):
+        """创建节点池
+
+        :param request: Request instance for CreateClusterNodePool.
+        :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterNodePoolRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.CreateClusterNodePoolResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateClusterNodePool", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateClusterNodePoolResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateClusterNodePoolFromExistingAsg(self, request):
+        """从伸缩组创建节点池
+
+        :param request: Request instance for CreateClusterNodePoolFromExistingAsg.
+        :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterNodePoolFromExistingAsgRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.CreateClusterNodePoolFromExistingAsgResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateClusterNodePoolFromExistingAsg", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateClusterNodePoolFromExistingAsgResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -445,6 +529,34 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteClusterNodePool(self, request):
+        """删除节点池
+
+        :param request: Request instance for DeleteClusterNodePool.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterNodePoolRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DeleteClusterNodePoolResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteClusterNodePool", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteClusterNodePoolResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteClusterRoute(self, request):
         """删除集群路由
 
@@ -655,6 +767,62 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClusterKubeconfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeClusterNodePoolDetail(self, request):
+        """查询节点池详情
+
+        :param request: Request instance for DescribeClusterNodePoolDetail.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterNodePoolDetailRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClusterNodePoolDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeClusterNodePoolDetail", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClusterNodePoolDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeClusterNodePools(self, request):
+        """查询节点池列表
+
+        :param request: Request instance for DescribeClusterNodePools.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterNodePoolsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClusterNodePoolsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeClusterNodePools", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClusterNodePoolsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -991,6 +1159,62 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyClusterEndpointSPResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyClusterNodePool(self, request):
+        """编辑节点池
+
+        :param request: Request instance for ModifyClusterNodePool.
+        :type request: :class:`tencentcloud.tke.v20180525.models.ModifyClusterNodePoolRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ModifyClusterNodePoolResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyClusterNodePool", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyClusterNodePoolResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RemoveNodeFromNodePool(self, request):
+        """移出节点池节点，但保留在集群内
+
+        :param request: Request instance for RemoveNodeFromNodePool.
+        :type request: :class:`tencentcloud.tke.v20180525.models.RemoveNodeFromNodePoolRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.RemoveNodeFromNodePoolResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RemoveNodeFromNodePool", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RemoveNodeFromNodePoolResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -394,6 +394,12 @@ class DescribeVsmAttributesResponse(AbstractModel):
         :param SubnetCidrBlock: 子网的CIDR
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetCidrBlock: str
+        :param Tags: 资源所关联的Tag
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        :param RenewFlag: 资源续费标识，0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RenewFlag: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -417,6 +423,8 @@ class DescribeVsmAttributesResponse(AbstractModel):
         self.VpcName = None
         self.VpcCidrBlock = None
         self.SubnetCidrBlock = None
+        self.Tags = None
+        self.RenewFlag = None
         self.RequestId = None
 
 
@@ -446,6 +454,13 @@ class DescribeVsmAttributesResponse(AbstractModel):
         self.VpcName = params.get("VpcName")
         self.VpcCidrBlock = params.get("VpcCidrBlock")
         self.SubnetCidrBlock = params.get("SubnetCidrBlock")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.RenewFlag = params.get("RenewFlag")
         self.RequestId = params.get("RequestId")
 
 
@@ -462,16 +477,25 @@ class DescribeVsmsRequest(AbstractModel):
         :type Limit: int
         :param SearchWord: 查询关键字
         :type SearchWord: str
+        :param TagFilters: 标签过滤条件
+        :type TagFilters: list of TagFilter
         """
         self.Offset = None
         self.Limit = None
         self.SearchWord = None
+        self.TagFilters = None
 
 
     def _deserialize(self, params):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.SearchWord = params.get("SearchWord")
+        if params.get("TagFilters") is not None:
+            self.TagFilters = []
+            for item in params.get("TagFilters"):
+                obj = TagFilter()
+                obj._deserialize(item)
+                self.TagFilters.append(obj)
 
 
 class DescribeVsmsResponse(AbstractModel):
@@ -702,6 +726,15 @@ class ResourceInfo(AbstractModel):
         :param VpcName: Vpc名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type VpcName: str
+        :param CreateUin: 创建者Uin账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateUin: str
+        :param RenewFlag: 自动续费状态标识， 0-手动续费，1-自动续费，2-到期不续
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RenewFlag: int
+        :param Tags: 标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         """
         self.ResourceId = None
         self.ResourceName = None
@@ -721,6 +754,9 @@ class ResourceInfo(AbstractModel):
         self.Expired = None
         self.RemainSeconds = None
         self.VpcName = None
+        self.CreateUin = None
+        self.RenewFlag = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -747,6 +783,14 @@ class ResourceInfo(AbstractModel):
         self.Expired = params.get("Expired")
         self.RemainSeconds = params.get("RemainSeconds")
         self.VpcName = params.get("VpcName")
+        self.CreateUin = params.get("CreateUin")
+        self.RenewFlag = params.get("RenewFlag")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class SgUnit(AbstractModel):
@@ -838,6 +882,48 @@ class Subnet(AbstractModel):
         self.Ipv6CidrBlock = params.get("Ipv6CidrBlock")
         self.TotalIpAddressCount = params.get("TotalIpAddressCount")
         self.IsDefault = params.get("IsDefault")
+
+
+class Tag(AbstractModel):
+    """标签
+
+    """
+
+    def __init__(self):
+        """
+        :param TagKey: 标签键
+        :type TagKey: str
+        :param TagValue: 标签值
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
+
+
+class TagFilter(AbstractModel):
+    """标签过滤参数
+
+    """
+
+    def __init__(self):
+        """
+        :param TagKey: 标签键
+        :type TagKey: str
+        :param TagValue: 标签值
+        :type TagValue: list of str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
 
 
 class UsgPolicy(AbstractModel):

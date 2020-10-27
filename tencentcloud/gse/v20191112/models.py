@@ -935,11 +935,14 @@ class DescribeAssetsRequest(AbstractModel):
         :type Limit: int
         :param Filter: 搜索条件，支持包ID或包名字过滤，该字段会逐步废弃，建议使用 Filters 字段
         :type Filter: str
+        :param Filters: 资源过滤字段，可以按照资源名称、资源ID和标签进行过滤- 资源名称过滤    - Key: 固定字符串 "resource:name"    - Values: 资源名称数组（生成包当前仅支持单个名称的过滤）- 资源ID过滤    - Key: 固定字符串 "resource:resourceId"    - Values: 生成包ID数组（生成包当前仅支持单个生成包ID的过滤）- 标签过滤    - 通过标签键过滤        - Key: 固定字符串 "tag:key"        - Values 不传    - 通过标签键值过滤        - Key: 固定字符串 "tag:key-value"        - Values: 标签键值对数组，例如 ["key1:value1", "key1:value2", "key2:value2"]
+        :type Filters: list of Filter
         """
         self.AssetRegion = None
         self.Offset = None
         self.Limit = None
         self.Filter = None
+        self.Filters = None
 
 
     def _deserialize(self, params):
@@ -947,6 +950,12 @@ class DescribeAssetsRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.Filter = params.get("Filter")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
 
 
 class DescribeAssetsResponse(AbstractModel):
@@ -1611,16 +1620,25 @@ class DescribeGameServerSessionQueuesRequest(AbstractModel):
         :type Limit: int
         :param Offset: 返回结果偏移，最小值0
         :type Offset: int
+        :param Filters: 资源过滤字段，可以按照资源名称、资源ID和标签进行过滤- 资源名称过滤    - Key: 固定字符串 "resource:name"    - Values: 资源名称数组（游戏服务器会话队列支持多个名称的过滤）- 标签过滤    - 通过标签键过滤        - Key: 固定字符串 "tag:key"        - Values 不传    - 通过标签键值过滤        - Key: 固定字符串 "tag:key-value"        - Values: 标签键值对数组，例如 ["key1:value1", "key1:value2", "key2:value2"]
+        :type Filters: list of Filter
         """
         self.Names = None
         self.Limit = None
         self.Offset = None
+        self.Filters = None
 
 
     def _deserialize(self, params):
         self.Names = params.get("Names")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
 
 
 class DescribeGameServerSessionQueuesResponse(AbstractModel):
@@ -2295,6 +2313,27 @@ class ExtraInfos(AbstractModel):
     def _deserialize(self, params):
         self.InstanceType = params.get("InstanceType")
         self.TotalInstances = params.get("TotalInstances")
+
+
+class Filter(AbstractModel):
+    """过滤字段内容
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: 过滤属性的 key
+        :type Key: str
+        :param Values: 过滤属性的 values 值
+        :type Values: list of str
+        """
+        self.Key = None
+        self.Values = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Values = params.get("Values")
 
 
 class FleetAttributes(AbstractModel):
@@ -3496,6 +3535,8 @@ class ListAliasesRequest(AbstractModel):
         :type OrderBy: str
         :param OrderWay: 排序方式，有效值asc|desc
         :type OrderWay: str
+        :param Filters: 资源过滤字段，可以按照资源名称和标签进行过滤- 资源名称过滤    - Key: 固定字符串 "resource:name"    - Values: 资源名称数组（舰队当前仅支持单个名称的过滤）- 标签过滤    - 通过标签键过滤        - Key: 固定字符串 "tag:key"        - Values 不传    - 通过标签键值过滤        - Key: 固定字符串 "tag:key-value"        - Values: 标签键值对数组，例如 ["key1:value1", "key1:value2", "key2:value2"]
+        :type Filters: list of Filter
         """
         self.Name = None
         self.RoutingStrategyType = None
@@ -3503,6 +3544,7 @@ class ListAliasesRequest(AbstractModel):
         self.Offset = None
         self.OrderBy = None
         self.OrderWay = None
+        self.Filters = None
 
 
     def _deserialize(self, params):
@@ -3512,6 +3554,12 @@ class ListAliasesRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.OrderBy = params.get("OrderBy")
         self.OrderWay = params.get("OrderWay")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
 
 
 class ListAliasesResponse(AbstractModel):
@@ -3558,16 +3606,25 @@ class ListFleetsRequest(AbstractModel):
         :type Limit: int
         :param Offset: 结果返回偏移，暂未使用
         :type Offset: int
+        :param Filters: 资源过滤字段，可以按照资源名称和标签进行过滤- 资源名称过滤    - Key: 固定字符串 "resource:name"    - Values: 资源名称数组（当前仅支持单个名称的过滤）- 标签过滤    - 通过标签键过滤        - Key: 固定字符串 "tag:key"        - Values 不传    - 通过标签键值过滤        - Key: 固定字符串 "tag:key-value"        - Values: 标签键值对数组，例如 ["key1:value1", "key1:value2", "key2:value2"]
+        :type Filters: list of Filter
         """
         self.AssetId = None
         self.Limit = None
         self.Offset = None
+        self.Filters = None
 
 
     def _deserialize(self, params):
         self.AssetId = params.get("AssetId")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
 
 
 class ListFleetsResponse(AbstractModel):

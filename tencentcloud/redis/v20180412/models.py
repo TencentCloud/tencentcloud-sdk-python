@@ -333,7 +333,8 @@ class CreateInstancesRequest(AbstractModel):
         :type ZoneId: int
         :param TypeId: 实例类型：2 – Redis2.8内存版（标准架构），3 – CKV 3.2内存版(标准架构)，4 – CKV 3.2内存版(集群架构)，6 – Redis4.0内存版（标准架构），7 – Redis4.0内存版（集群架构），8 – Redis5.0内存版（标准架构），9 – Redis5.0内存版（集群架构）。
         :type TypeId: int
-        :param MemSize: 实例容量，单位MB， 数值需为1024的整数倍，取值大小以 [查询产品售卖规格](https://cloud.tencent.com/document/api/239/30600) 返回的规格为准。
+        :param MemSize: 内存容量，单位为MB， 数值需为1024的整数倍，具体规格以 [查询产品售卖规格](https://cloud.tencent.com/document/api/239/30600) 返回的规格为准。
+TypeId为标准架构时，MemSize是实例总内存容量；TypeId为集群架构时，MemSize是单分片内存容量。
         :type MemSize: int
         :param GoodsNum: 实例数量，单次购买实例数量以 [查询产品售卖规格](https://cloud.tencent.com/document/api/239/30600) 返回的规格为准。
         :type GoodsNum: int
@@ -341,7 +342,8 @@ class CreateInstancesRequest(AbstractModel):
         :type Period: int
         :param BillingMode: 付费方式:0-按量计费，1-包年包月。
         :type BillingMode: int
-        :param Password: 实例密码，8-30个字符，至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&*-+=_|{}[]:;<>,.?/ 中的2种，不能以"/"开头。
+        :param Password: 实例密码，当输入参数NoAuth为true且使用私有网络VPC时，Password为非必填，否则Password为必填。
+密码格式为：8-30个字符，至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&*-+=_|{}[]:;<>,.?/ 中的2种，不能以"/"开头。
         :type Password: str
         :param VpcId: 私有网络ID，如果不传则默认选择基础网络，请使用私有网络列表查询，如：vpc-sad23jfdfk。
         :type VpcId: str
@@ -588,6 +590,101 @@ class DescribeBackupUrlResponse(AbstractModel):
     def _deserialize(self, params):
         self.DownloadUrl = params.get("DownloadUrl")
         self.InnerDownloadUrl = params.get("InnerDownloadUrl")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCommonDBInstancesRequest(AbstractModel):
+    """DescribeCommonDBInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcIds: 实例Vip信息列表
+        :type VpcIds: list of int
+        :param SubnetIds: 子网id信息列表
+        :type SubnetIds: list of int
+        :param PayMode: 计费类型过滤列表；0表示包年包月，1表示按量计费
+        :type PayMode: int
+        :param InstanceIds: 实例id过滤信息列表
+        :type InstanceIds: list of str
+        :param InstanceNames: 实例名称过滤信息列表
+        :type InstanceNames: list of str
+        :param Status: 实例状态信息过滤列表
+        :type Status: list of str
+        :param OrderBy: 排序字段
+        :type OrderBy: str
+        :param OrderByType: 排序方式
+        :type OrderByType: str
+        :param Vips: 实例vip信息列表
+        :type Vips: list of str
+        :param UniqVpcIds: vpc网络统一Id列表
+        :type UniqVpcIds: list of str
+        :param UniqSubnetIds: 子网统一id列表
+        :type UniqSubnetIds: list of str
+        :param Limit: 数量限制，默认推荐100
+        :type Limit: int
+        :param Offset: 偏移量，默认0
+        :type Offset: int
+        """
+        self.VpcIds = None
+        self.SubnetIds = None
+        self.PayMode = None
+        self.InstanceIds = None
+        self.InstanceNames = None
+        self.Status = None
+        self.OrderBy = None
+        self.OrderByType = None
+        self.Vips = None
+        self.UniqVpcIds = None
+        self.UniqSubnetIds = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.VpcIds = params.get("VpcIds")
+        self.SubnetIds = params.get("SubnetIds")
+        self.PayMode = params.get("PayMode")
+        self.InstanceIds = params.get("InstanceIds")
+        self.InstanceNames = params.get("InstanceNames")
+        self.Status = params.get("Status")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderByType = params.get("OrderByType")
+        self.Vips = params.get("Vips")
+        self.UniqVpcIds = params.get("UniqVpcIds")
+        self.UniqSubnetIds = params.get("UniqSubnetIds")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class DescribeCommonDBInstancesResponse(AbstractModel):
+    """DescribeCommonDBInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 实例数
+        :type TotalCount: int
+        :param InstanceDetails: 实例信息
+        :type InstanceDetails: list of RedisCommonInstanceList
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.InstanceDetails = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("InstanceDetails") is not None:
+            self.InstanceDetails = []
+            for item in params.get("InstanceDetails"):
+                obj = RedisCommonInstanceList()
+                obj._deserialize(item)
+                self.InstanceDetails.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3982,6 +4079,75 @@ class RedisBackupSet(AbstractModel):
         self.Status = params.get("Status")
         self.Remark = params.get("Remark")
         self.Locked = params.get("Locked")
+
+
+class RedisCommonInstanceList(AbstractModel):
+    """单个实例信息
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceName: 实例名称
+        :type InstanceName: str
+        :param InstanceId: 实例id
+        :type InstanceId: str
+        :param AppId: 用户id
+        :type AppId: int
+        :param ProjectId: 实例所属项目id
+        :type ProjectId: int
+        :param Region: 实例接入区域
+        :type Region: str
+        :param Zone: 实例接入zone
+        :type Zone: str
+        :param VpcId: 实例网络id
+        :type VpcId: str
+        :param SubnetId: 子网id
+        :type SubnetId: str
+        :param Status: 实例状态信息，0-创建中，1-运行中
+        :type Status: str
+        :param Vips: 实例网络ip
+        :type Vips: list of str
+        :param Vport: 实例网络端口
+        :type Vport: int
+        :param Createtime: 实例创建时间
+        :type Createtime: str
+        :param PayMode: 计费类型，0-按量计费，1-包年包月
+        :type PayMode: int
+        :param NetType: 网络类型，0-基础网络，1-VPC网络
+        :type NetType: int
+        """
+        self.InstanceName = None
+        self.InstanceId = None
+        self.AppId = None
+        self.ProjectId = None
+        self.Region = None
+        self.Zone = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.Status = None
+        self.Vips = None
+        self.Vport = None
+        self.Createtime = None
+        self.PayMode = None
+        self.NetType = None
+
+
+    def _deserialize(self, params):
+        self.InstanceName = params.get("InstanceName")
+        self.InstanceId = params.get("InstanceId")
+        self.AppId = params.get("AppId")
+        self.ProjectId = params.get("ProjectId")
+        self.Region = params.get("Region")
+        self.Zone = params.get("Zone")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.Status = params.get("Status")
+        self.Vips = params.get("Vips")
+        self.Vport = params.get("Vport")
+        self.Createtime = params.get("Createtime")
+        self.PayMode = params.get("PayMode")
+        self.NetType = params.get("NetType")
 
 
 class RedisNodes(AbstractModel):
