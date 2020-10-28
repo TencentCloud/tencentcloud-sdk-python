@@ -156,7 +156,7 @@ class Backend(AbstractModel):
 
     def __init__(self):
         """
-        :param Type: 后端服务的类型，可取：CVM、ENI（即将支持）
+        :param Type: 后端服务的类型，可取：CVM、ENI
         :type Type: str
         :param InstanceId: 后端服务的唯一 ID，如 ins-abcd1234
         :type InstanceId: str

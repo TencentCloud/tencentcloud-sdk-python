@@ -1489,7 +1489,7 @@ class CreateLiveTranscodeTemplateRequest(AbstractModel):
         :param AudioBitrate: 音频码率，默认0。
 范围：0-500。
         :type AudioBitrate: int
-        :param Vcodec: 视频编码：h264/h265/origin，默认h264。
+        :param Vcodec: 视频编码：h264/h265/origin，默认origin。
 
 origin: 保持原始编码格式
         :type Vcodec: str
@@ -6445,7 +6445,7 @@ class ModifyLiveTranscodeTemplateRequest(AbstractModel):
         """
         :param TemplateId: 模板 Id。
         :type TemplateId: int
-        :param Vcodec: 视频编码：h264/h265/origin，默认h264。
+        :param Vcodec: 视频编码：h264/h265/origin，默认origin。
 
 origin: 保持原始编码格式
         :type Vcodec: str

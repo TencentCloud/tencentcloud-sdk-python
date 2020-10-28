@@ -197,6 +197,35 @@ class AutoScalingGroupRange(AbstractModel):
         self.MaxSize = params.get("MaxSize")
 
 
+class AutoscalingAdded(AbstractModel):
+    """自动扩所容的节点
+
+    """
+
+    def __init__(self):
+        """
+        :param Joining: 正在加入中的节点数量
+        :type Joining: int
+        :param Initializing: 初始化中的节点数量
+        :type Initializing: int
+        :param Normal: 正常的节点数量
+        :type Normal: int
+        :param Total: 节点总数
+        :type Total: int
+        """
+        self.Joining = None
+        self.Initializing = None
+        self.Normal = None
+        self.Total = None
+
+
+    def _deserialize(self, params):
+        self.Joining = params.get("Joining")
+        self.Initializing = params.get("Initializing")
+        self.Normal = params.get("Normal")
+        self.Total = params.get("Total")
+
+
 class Cluster(AbstractModel):
     """集群信息结构体
 
@@ -1911,13 +1940,19 @@ class DescribeClusterNodePoolDetailResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param NodePool: 节点池详情
+        :type NodePool: :class:`tencentcloud.tke.v20180525.models.NodePool`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.NodePool = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("NodePool") is not None:
+            self.NodePool = NodePool()
+            self.NodePool._deserialize(params.get("NodePool"))
         self.RequestId = params.get("RequestId")
 
 
@@ -1945,13 +1980,27 @@ class DescribeClusterNodePoolsResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param NodePoolSet: NodePools（节点池列表）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodePoolSet: list of NodePool
+        :param TotalCount: 资源总数
+        :type TotalCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.NodePoolSet = None
+        self.TotalCount = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("NodePoolSet") is not None:
+            self.NodePoolSet = []
+            for item in params.get("NodePoolSet"):
+                obj = NodePool()
+                obj._deserialize(item)
+                self.NodePoolSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -2913,6 +2962,35 @@ class LoginSettings(AbstractModel):
         self.KeepImageLogin = params.get("KeepImageLogin")
 
 
+class ManuallyAdded(AbstractModel):
+    """手动加入的节点
+
+    """
+
+    def __init__(self):
+        """
+        :param Joining: 加入中节的点数量
+        :type Joining: int
+        :param Initializing: 初始化中的节点数量
+        :type Initializing: int
+        :param Normal: 正常的节点数量
+        :type Normal: int
+        :param Total: 节点总数
+        :type Total: int
+        """
+        self.Joining = None
+        self.Initializing = None
+        self.Normal = None
+        self.Total = None
+
+
+    def _deserialize(self, params):
+        self.Joining = params.get("Joining")
+        self.Initializing = params.get("Initializing")
+        self.Normal = params.get("Normal")
+        self.Total = params.get("Total")
+
+
 class ModifyClusterAsGroupAttributeRequest(AbstractModel):
     """ModifyClusterAsGroupAttribute请求参数结构体
 
@@ -3122,6 +3200,114 @@ class ModifyClusterNodePoolResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class NodeCountSummary(AbstractModel):
+    """节点统计列表
+
+    """
+
+    def __init__(self):
+        """
+        :param ManuallyAdded: 手动管理的节点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ManuallyAdded: :class:`tencentcloud.tke.v20180525.models.ManuallyAdded`
+        :param AutoscalingAdded: 自动管理的节点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoscalingAdded: :class:`tencentcloud.tke.v20180525.models.AutoscalingAdded`
+        """
+        self.ManuallyAdded = None
+        self.AutoscalingAdded = None
+
+
+    def _deserialize(self, params):
+        if params.get("ManuallyAdded") is not None:
+            self.ManuallyAdded = ManuallyAdded()
+            self.ManuallyAdded._deserialize(params.get("ManuallyAdded"))
+        if params.get("AutoscalingAdded") is not None:
+            self.AutoscalingAdded = AutoscalingAdded()
+            self.AutoscalingAdded._deserialize(params.get("AutoscalingAdded"))
+
+
+class NodePool(AbstractModel):
+    """节点池描述
+
+    """
+
+    def __init__(self):
+        """
+        :param NodePoolId: NodePoolId 资源池id
+        :type NodePoolId: str
+        :param Name: Name 资源池名称
+        :type Name: str
+        :param ClusterInstanceId: ClusterInstanceId 集群实例id
+        :type ClusterInstanceId: str
+        :param LifeState: LifeState 状态
+        :type LifeState: str
+        :param LaunchConfigurationId: LaunchConfigurationId 配置
+        :type LaunchConfigurationId: str
+        :param AutoscalingGroupId: AutoscalingGroupId 分组id
+        :type AutoscalingGroupId: str
+        :param Labels: Labels 标签
+        :type Labels: list of Label
+        :param Taints: Taints 污点标记
+        :type Taints: list of Taint
+        :param NodeCountSummary: NodeCountSummary 节点列表
+        :type NodeCountSummary: :class:`tencentcloud.tke.v20180525.models.NodeCountSummary`
+        :param AutoscalingGroupStatus: 状态信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoscalingGroupStatus: str
+        :param MaxNodesNum: 最大节点数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxNodesNum: int
+        :param MinNodesNum: 最小节点数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MinNodesNum: int
+        :param DesiredNodesNum: 期望的节点数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DesiredNodesNum: int
+        """
+        self.NodePoolId = None
+        self.Name = None
+        self.ClusterInstanceId = None
+        self.LifeState = None
+        self.LaunchConfigurationId = None
+        self.AutoscalingGroupId = None
+        self.Labels = None
+        self.Taints = None
+        self.NodeCountSummary = None
+        self.AutoscalingGroupStatus = None
+        self.MaxNodesNum = None
+        self.MinNodesNum = None
+        self.DesiredNodesNum = None
+
+
+    def _deserialize(self, params):
+        self.NodePoolId = params.get("NodePoolId")
+        self.Name = params.get("Name")
+        self.ClusterInstanceId = params.get("ClusterInstanceId")
+        self.LifeState = params.get("LifeState")
+        self.LaunchConfigurationId = params.get("LaunchConfigurationId")
+        self.AutoscalingGroupId = params.get("AutoscalingGroupId")
+        if params.get("Labels") is not None:
+            self.Labels = []
+            for item in params.get("Labels"):
+                obj = Label()
+                obj._deserialize(item)
+                self.Labels.append(obj)
+        if params.get("Taints") is not None:
+            self.Taints = []
+            for item in params.get("Taints"):
+                obj = Taint()
+                obj._deserialize(item)
+                self.Taints.append(obj)
+        if params.get("NodeCountSummary") is not None:
+            self.NodeCountSummary = NodeCountSummary()
+            self.NodeCountSummary._deserialize(params.get("NodeCountSummary"))
+        self.AutoscalingGroupStatus = params.get("AutoscalingGroupStatus")
+        self.MaxNodesNum = params.get("MaxNodesNum")
+        self.MinNodesNum = params.get("MinNodesNum")
+        self.DesiredNodesNum = params.get("DesiredNodesNum")
 
 
 class RegionInstance(AbstractModel):

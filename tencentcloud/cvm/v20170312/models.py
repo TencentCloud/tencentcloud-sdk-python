@@ -297,7 +297,7 @@ class CreateImageRequest(AbstractModel):
         :param ForcePoweroff: 是否执行强制关机以制作镜像。
 取值范围：<br><li>TRUE：表示关机之后制作镜像<br><li>FALSE：表示开机状态制作镜像<br><br>默认取值：FALSE。<br><br>开机状态制作镜像，可能导致部分数据未备份，影响数据安全。
         :type ForcePoweroff: str
-        :param Sysprep: 创建Windows镜像时是否启用Sysprep
+        :param Sysprep: 创建Windows镜像时是否启用Sysprep，关于Sysprep的详情请参考[链接](https://cloud.tencent.com/document/product/213/43498)
         :type Sysprep: str
         :param DataDiskIds: 基于实例创建整机镜像时，指定包含在镜像里的数据盘Id
         :type DataDiskIds: list of str
@@ -334,18 +334,13 @@ class CreateImageResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ImageId: 镜像ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ImageId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ImageId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
-        self.ImageId = params.get("ImageId")
         self.RequestId = params.get("RequestId")
 
 

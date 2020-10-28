@@ -106,6 +106,10 @@ class Bundle(AbstractModel):
         :type InternetChargeType: str
         :param BundleSalesState: 套餐售卖状态,取值:‘AVAILABLE’(可用) , ‘SOLD_OUT’(售罄)
         :type BundleSalesState: str
+        :param BundleType: 套餐类型。
+取值范围：
+<li> GENERAL_BUNDLE：通用型</li><li> STORAGE_BUNDLE：存储型 </li>
+        :type BundleType: str
         """
         self.BundleId = None
         self.Memory = None
@@ -119,6 +123,7 @@ class Bundle(AbstractModel):
         self.InternetMaxBandwidthOut = None
         self.InternetChargeType = None
         self.BundleSalesState = None
+        self.BundleType = None
 
 
     def _deserialize(self, params):
@@ -136,6 +141,7 @@ class Bundle(AbstractModel):
         self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
         self.InternetChargeType = params.get("InternetChargeType")
         self.BundleSalesState = params.get("BundleSalesState")
+        self.BundleType = params.get("BundleType")
 
 
 class CreateFirewallRulesRequest(AbstractModel):
