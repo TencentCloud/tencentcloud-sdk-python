@@ -640,8 +640,12 @@ class FileSampleInfo(AbstractModel):
 2：白库
         :type Label: int
         :param Status: 任务状态
-1：已完成
-2：处理中
+1：添加完成
+2：添加处理中
+3：下载中
+4：下载完成
+5：上传完成
+6：步骤完成
         :type Status: int
         :param CompressFileUrl: 文件压缩后云url
         :type CompressFileUrl: str

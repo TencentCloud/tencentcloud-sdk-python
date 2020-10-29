@@ -1012,6 +1012,34 @@ class IotvideoClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeOsList(self, request):
+        """查看操作系统支持的芯片列表
+
+        :param request: Request instance for DescribeOsList.
+        :type request: :class:`tencentcloud.iotvideo.v20191126.models.DescribeOsListRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20191126.models.DescribeOsListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeOsList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeOsListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeOtaVersions(self, request):
         """本接口（DescribeOtaVersions）用于查询固件版本信息列表。
 
@@ -1430,6 +1458,34 @@ class IotvideoClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyProductResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyVerContent(self, request):
+        """编辑版本描述信息
+
+        :param request: Request instance for ModifyVerContent.
+        :type request: :class:`tencentcloud.iotvideo.v20191126.models.ModifyVerContentRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20191126.models.ModifyVerContentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyVerContent", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyVerContentResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

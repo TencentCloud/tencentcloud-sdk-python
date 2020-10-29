@@ -7620,6 +7620,22 @@ class DescribeSubAppIdsRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        """
+        :param Tags: 标签信息，查询指定标签的子应用列表。
+        :type Tags: list of ResourceTag
+        """
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+
 
 class DescribeSubAppIdsResponse(AbstractModel):
     """DescribeSubAppIds返回参数结构体
@@ -12298,8 +12314,10 @@ class ModifySubAppIdStatusRequest(AbstractModel):
         :param SubAppId: 子应用 ID。
         :type SubAppId: int
         :param Status: 子应用状态，取值范围：
-<li>On：启用</li>
-<li>Off：停用</li>
+<li>On：启用。</li>
+<li>Off：停用。</li>
+<li>Destroyed：销毁。</li>
+当前状态如果是 Destoying ，不能进行启用操作，需要等待销毁完成后才能重新启用。
         :type Status: str
         """
         self.SubAppId = None
@@ -14404,6 +14422,27 @@ class ResolutionNameInfo(AbstractModel):
         self.Name = params.get("Name")
 
 
+class ResourceTag(AbstractModel):
+    """标签键值。参考[标签](https://cloud.tencent.com/document/product/651)。
+
+    """
+
+    def __init__(self):
+        """
+        :param TagKey: 标签键。
+        :type TagKey: str
+        :param TagValue: 标签值。
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
+
+
 class SampleSnapshotTaskInput(AbstractModel):
     """对视频做采样截图任务输入参数类型
 
@@ -15130,6 +15169,8 @@ class SubAppIdInfo(AbstractModel):
         :param Status: 子应用状态，有效值：
 <li>On：启用；</li>
 <li>Off：停用。</li>
+<li>Destroying：销毁中。</li>
+<li>Destroyed：销毁完成。</li>
         :type Status: str
         """
         self.SubAppId = None

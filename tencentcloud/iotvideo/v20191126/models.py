@@ -1769,6 +1769,36 @@ class DescribeModelDataRetResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeOsListRequest(AbstractModel):
+    """DescribeOsList请求参数结构体
+
+    """
+
+
+class DescribeOsListResponse(AbstractModel):
+    """DescribeOsList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 系统类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.iotvideo.v20191126.models.SystemType`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = SystemType()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeOtaVersionsRequest(AbstractModel):
     """DescribeOtaVersions请求参数结构体
 
@@ -2750,6 +2780,58 @@ class ModifyProductResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyVerContentRequest(AbstractModel):
+    """ModifyVerContent请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductId: 产品id,大于0的有符号长整型
+        :type ProductId: int
+        :param OtaVersion: 需要修改的版本号
+        :type OtaVersion: str
+        :param Operator: 操作人,字符长度<=64
+        :type Operator: str
+        :param Remark: 备注信息
+        :type Remark: str
+        :param Contents: 版本发布的描述信息，需要国际化，可以为空
+        :type Contents: :class:`tencentcloud.iotvideo.v20191126.models.Contents`
+        """
+        self.ProductId = None
+        self.OtaVersion = None
+        self.Operator = None
+        self.Remark = None
+        self.Contents = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.OtaVersion = params.get("OtaVersion")
+        self.Operator = params.get("Operator")
+        self.Remark = params.get("Remark")
+        if params.get("Contents") is not None:
+            self.Contents = Contents()
+            self.Contents._deserialize(params.get("Contents"))
+
+
+class ModifyVerContentResponse(AbstractModel):
+    """ModifyVerContent返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class MsgQueueData(AbstractModel):
     """产品转发消息队列配置
 
@@ -2781,6 +2863,29 @@ class MsgQueueData(AbstractModel):
         self.Topic = params.get("Topic")
         self.Instance = params.get("Instance")
         self.MsgRegion = params.get("MsgRegion")
+
+
+class OsData(AbstractModel):
+    """操作系统信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ChipId: 芯片型号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChipId: str
+        :param ChipManufacture: 芯片厂商
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChipManufacture: str
+        """
+        self.ChipId = None
+        self.ChipManufacture = None
+
+
+    def _deserialize(self, params):
+        self.ChipId = params.get("ChipId")
+        self.ChipManufacture = params.get("ChipManufacture")
 
 
 class OtaPubHistory(AbstractModel):
@@ -3429,6 +3534,49 @@ class StorageOrder(AbstractModel):
         self.Status = params.get("Status")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+
+
+class SystemType(AbstractModel):
+    """系统类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Android: 安卓系统
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Android: list of OsData
+        :param Linux: linux系统
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Linux: list of OsData
+        :param LiteOs: LiteOs系统
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LiteOs: list of OsData
+        """
+        self.Android = None
+        self.Linux = None
+        self.LiteOs = None
+
+
+    def _deserialize(self, params):
+        if params.get("Android") is not None:
+            self.Android = []
+            for item in params.get("Android"):
+                obj = OsData()
+                obj._deserialize(item)
+                self.Android.append(obj)
+        if params.get("Linux") is not None:
+            self.Linux = []
+            for item in params.get("Linux"):
+                obj = OsData()
+                obj._deserialize(item)
+                self.Linux.append(obj)
+        if params.get("LiteOs") is not None:
+            self.LiteOs = []
+            for item in params.get("LiteOs"):
+                obj = OsData()
+                obj._deserialize(item)
+                self.LiteOs.append(obj)
 
 
 class TraceStatus(AbstractModel):

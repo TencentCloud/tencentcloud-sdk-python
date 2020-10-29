@@ -54,7 +54,7 @@ class CdnClient(AbstractClient):
 
 
     def CreateClsLogTopic(self, request):
-        """CreatClsLogTopic 用于创建日志主题。注意：一个日志集下至多可创建10个日志主题。
+        """CreateClsLogTopic 用于创建日志主题。注意：一个日志集下至多可创建10个日志主题。
 
         :param request: Request instance for CreateClsLogTopic.
         :type request: :class:`tencentcloud.cdn.v20180606.models.CreateClsLogTopicRequest`

@@ -109,6 +109,34 @@ class ChdfsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateLifeCycleRules(self, request):
+        """批量创建生命周期规则，生命周期规则ID和创建时间无需填写。
+
+        :param request: Request instance for CreateLifeCycleRules.
+        :type request: :class:`tencentcloud.chdfs.v20190718.models.CreateLifeCycleRulesRequest`
+        :rtype: :class:`tencentcloud.chdfs.v20190718.models.CreateLifeCycleRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateLifeCycleRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateLifeCycleRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateMountPoint(self, request):
         """创建文件系统挂载点，仅限于创建成功的文件系统。
 
@@ -123,6 +151,34 @@ class ChdfsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateMountPointResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateRestoreTasks(self, request):
+        """批量创建回热任务，回热任务ID、状态和创建时间无需填写。
+
+        :param request: Request instance for CreateRestoreTasks.
+        :type request: :class:`tencentcloud.chdfs.v20190718.models.CreateRestoreTasksRequest`
+        :rtype: :class:`tencentcloud.chdfs.v20190718.models.CreateRestoreTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateRestoreTasks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateRestoreTasksResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -207,6 +263,34 @@ class ChdfsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteFileSystemResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteLifeCycleRules(self, request):
+        """批量删除生命周期规则。
+
+        :param request: Request instance for DeleteLifeCycleRules.
+        :type request: :class:`tencentcloud.chdfs.v20190718.models.DeleteLifeCycleRulesRequest`
+        :rtype: :class:`tencentcloud.chdfs.v20190718.models.DeleteLifeCycleRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteLifeCycleRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteLifeCycleRulesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -361,6 +445,34 @@ class ChdfsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeLifeCycleRules(self, request):
+        """通过文件系统ID查看生命周期规则列表。
+
+        :param request: Request instance for DescribeLifeCycleRules.
+        :type request: :class:`tencentcloud.chdfs.v20190718.models.DescribeLifeCycleRulesRequest`
+        :rtype: :class:`tencentcloud.chdfs.v20190718.models.DescribeLifeCycleRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLifeCycleRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLifeCycleRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeMountPoint(self, request):
         """查看挂载点详细信息。
 
@@ -417,6 +529,62 @@ class ChdfsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeResourceTags(self, request):
+        """通过文件系统ID查看资源标签列表。
+
+        :param request: Request instance for DescribeResourceTags.
+        :type request: :class:`tencentcloud.chdfs.v20190718.models.DescribeResourceTagsRequest`
+        :rtype: :class:`tencentcloud.chdfs.v20190718.models.DescribeResourceTagsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeResourceTags", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeResourceTagsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRestoreTasks(self, request):
+        """通过文件系统ID查看回热任务列表。
+
+        :param request: Request instance for DescribeRestoreTasks.
+        :type request: :class:`tencentcloud.chdfs.v20190718.models.DescribeRestoreTasksRequest`
+        :rtype: :class:`tencentcloud.chdfs.v20190718.models.DescribeRestoreTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRestoreTasks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRestoreTasksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyAccessGroup(self, request):
         """修改权限组属性。
 
@@ -446,7 +614,7 @@ class ChdfsClient(AbstractClient):
 
 
     def ModifyAccessRules(self, request):
-        """批量修改权限规则属性，需要指定权限规则ID。
+        """批量修改权限规则属性，需要指定权限规则ID，支持修改权限规则地址、访问模式和优先级。
 
         :param request: Request instance for ModifyAccessRules.
         :type request: :class:`tencentcloud.chdfs.v20190718.models.ModifyAccessRulesRequest`
@@ -501,6 +669,34 @@ class ChdfsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyLifeCycleRules(self, request):
+        """批量修改生命周期规则属性，需要指定生命周期规则ID，支持修改生命周期规则名称、路径、转换列表和状态。
+
+        :param request: Request instance for ModifyLifeCycleRules.
+        :type request: :class:`tencentcloud.chdfs.v20190718.models.ModifyLifeCycleRulesRequest`
+        :rtype: :class:`tencentcloud.chdfs.v20190718.models.ModifyLifeCycleRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyLifeCycleRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyLifeCycleRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyMountPoint(self, request):
         """修改挂载点属性。
 
@@ -515,6 +711,34 @@ class ChdfsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyMountPointResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyResourceTags(self, request):
+        """修改资源标签列表，全量覆盖。
+
+        :param request: Request instance for ModifyResourceTags.
+        :type request: :class:`tencentcloud.chdfs.v20190718.models.ModifyResourceTagsRequest`
+        :rtype: :class:`tencentcloud.chdfs.v20190718.models.ModifyResourceTagsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyResourceTags", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyResourceTagsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -16,6 +16,92 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AdvertiseOCRRequest(AbstractModel):
+    """AdvertiseOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 图片的 Base64 值。
+要求图片经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 Url 地址。
+要求图片经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+
+
+class AdvertiseOCRResponse(AbstractModel):
+    """AdvertiseOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TextDetections: 检测到的文本信息，包括文本行内容、置信度、文本行坐标以及文本行旋转纠正后的坐标，具体内容请点击左侧链接。
+        :type TextDetections: list of AdvertiseTextDetection
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TextDetections = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TextDetections") is not None:
+            self.TextDetections = []
+            for item in params.get("TextDetections"):
+                obj = AdvertiseTextDetection()
+                obj._deserialize(item)
+                self.TextDetections.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class AdvertiseTextDetection(AbstractModel):
+    """广告文字识别结果
+
+    """
+
+    def __init__(self):
+        """
+        :param DetectedText: 识别出的文本行内容
+        :type DetectedText: str
+        :param Confidence: 置信度 0 ~100
+        :type Confidence: int
+        :param Polygon: 文本行坐标，以四个顶点坐标表示
+        :type Polygon: list of Coord
+        :param AdvancedInfo: 此字段为扩展字段。
+GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。
+        :type AdvancedInfo: str
+        """
+        self.DetectedText = None
+        self.Confidence = None
+        self.Polygon = None
+        self.AdvancedInfo = None
+
+
+    def _deserialize(self, params):
+        self.DetectedText = params.get("DetectedText")
+        self.Confidence = params.get("Confidence")
+        if params.get("Polygon") is not None:
+            self.Polygon = []
+            for item in params.get("Polygon"):
+                obj = Coord()
+                obj._deserialize(item)
+                self.Polygon.append(obj)
+        self.AdvancedInfo = params.get("AdvancedInfo")
+
+
 class ArithmeticOCRRequest(AbstractModel):
     """ArithmeticOCR请求参数结构体
 
@@ -550,6 +636,29 @@ class CarInvoiceOCRResponse(AbstractModel):
                 obj._deserialize(item)
                 self.CarInvoiceInfos.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class CellContent(AbstractModel):
+    """单元格识别结果
+
+    """
+
+    def __init__(self):
+        """
+        :param ParagNo: 段落编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParagNo: int
+        :param WordSize: 字体大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WordSize: int
+        """
+        self.ParagNo = None
+        self.WordSize = None
+
+
+    def _deserialize(self, params):
+        self.ParagNo = params.get("ParagNo")
+        self.WordSize = params.get("WordSize")
 
 
 class ClassifyDetectInfo(AbstractModel):
@@ -3603,6 +3712,73 @@ class QuotaInvoiceOCRResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RecognizeTableOCRRequest(AbstractModel):
+    """RecognizeTableOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 图片/PDF的 Base64 值。
+要求图片/PDF经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 图片/PDF的 Url 地址。
+要求图片/PDF经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        :param IsPdf: 是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+        :type IsPdf: bool
+        :param PdfPageNumber: 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        :type PdfPageNumber: int
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+        self.IsPdf = None
+        self.PdfPageNumber = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+        self.IsPdf = params.get("IsPdf")
+        self.PdfPageNumber = params.get("PdfPageNumber")
+
+
+class RecognizeTableOCRResponse(AbstractModel):
+    """RecognizeTableOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TableDetections: 检测到的文本信息，具体内容请点击左侧链接。
+        :type TableDetections: list of TableDetectInfo
+        :param Data: Base64 编码后的 Excel 数据。
+        :type Data: str
+        :param PdfPageSize: 图片为PDF时，返回PDF的总页数，默认为0
+        :type PdfPageSize: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TableDetections = None
+        self.Data = None
+        self.PdfPageSize = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TableDetections") is not None:
+            self.TableDetections = []
+            for item in params.get("TableDetections"):
+                obj = TableDetectInfo()
+                obj._deserialize(item)
+                self.TableDetections.append(obj)
+        self.Data = params.get("Data")
+        self.PdfPageSize = params.get("PdfPageSize")
+        self.RequestId = params.get("RequestId")
+
+
 class RecognizeThaiIDCardOCRRequest(AbstractModel):
     """RecognizeThaiIDCardOCR请求参数结构体
 
@@ -4081,6 +4257,103 @@ class SingleInvoiceInfo(AbstractModel):
         self.Value = params.get("Value")
 
 
+class TableCell(AbstractModel):
+    """单元格数据
+
+    """
+
+    def __init__(self):
+        """
+        :param ColTl: 单元格左上角的列索引
+        :type ColTl: int
+        :param RowTl: 单元格左上角的行索引
+        :type RowTl: int
+        :param ColBr: 单元格右下角的列索引
+        :type ColBr: int
+        :param RowBr: 单元格右下角的行索引
+        :type RowBr: int
+        :param Text: 单元格内识别出的字符串文本，若文本存在多行，以换行符"\n"隔开
+        :type Text: str
+        :param Type: 单元格类型
+        :type Type: str
+        :param Confidence: 单元格置信度
+        :type Confidence: float
+        :param Polygon: 单元格在图像中的四点坐标
+        :type Polygon: list of Coord
+        :param AdvancedInfo: 此字段为扩展字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdvancedInfo: str
+        :param Contents: 单元格文本属性
+        :type Contents: list of CellContent
+        """
+        self.ColTl = None
+        self.RowTl = None
+        self.ColBr = None
+        self.RowBr = None
+        self.Text = None
+        self.Type = None
+        self.Confidence = None
+        self.Polygon = None
+        self.AdvancedInfo = None
+        self.Contents = None
+
+
+    def _deserialize(self, params):
+        self.ColTl = params.get("ColTl")
+        self.RowTl = params.get("RowTl")
+        self.ColBr = params.get("ColBr")
+        self.RowBr = params.get("RowBr")
+        self.Text = params.get("Text")
+        self.Type = params.get("Type")
+        self.Confidence = params.get("Confidence")
+        if params.get("Polygon") is not None:
+            self.Polygon = []
+            for item in params.get("Polygon"):
+                obj = Coord()
+                obj._deserialize(item)
+                self.Polygon.append(obj)
+        self.AdvancedInfo = params.get("AdvancedInfo")
+        if params.get("Contents") is not None:
+            self.Contents = []
+            for item in params.get("Contents"):
+                obj = CellContent()
+                obj._deserialize(item)
+                self.Contents.append(obj)
+
+
+class TableDetectInfo(AbstractModel):
+    """表格内容检测
+
+    """
+
+    def __init__(self):
+        """
+        :param Cells: 单元格内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cells: list of TableCell
+        :param Titles: 表格标题
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Titles: list of TableTitle
+        """
+        self.Cells = None
+        self.Titles = None
+
+
+    def _deserialize(self, params):
+        if params.get("Cells") is not None:
+            self.Cells = []
+            for item in params.get("Cells"):
+                obj = TableCell()
+                obj._deserialize(item)
+                self.Cells.append(obj)
+        if params.get("Titles") is not None:
+            self.Titles = []
+            for item in params.get("Titles"):
+                obj = TableTitle()
+                obj._deserialize(item)
+                self.Titles.append(obj)
+
+
 class TableOCRRequest(AbstractModel):
     """TableOCR请求参数结构体
 
@@ -4137,6 +4410,24 @@ class TableOCRResponse(AbstractModel):
                 self.TextDetections.append(obj)
         self.Data = params.get("Data")
         self.RequestId = params.get("RequestId")
+
+
+class TableTitle(AbstractModel):
+    """表格标题
+
+    """
+
+    def __init__(self):
+        """
+        :param Text: 表格名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        """
+        self.Text = None
+
+
+    def _deserialize(self, params):
+        self.Text = params.get("Text")
 
 
 class TaxiInvoiceOCRRequest(AbstractModel):

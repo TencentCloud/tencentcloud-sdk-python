@@ -1226,73 +1226,6 @@ class ClientInfo(AbstractModel):
         self.Ip = params.get("Ip")
 
 
-class ClsLogObject(AbstractModel):
-    """CLS日志搜索对象
-
-    """
-
-    def __init__(self):
-        """
-        :param TopicId: 主题ID
-        :type TopicId: str
-        :param TopicName: 主题名字
-        :type TopicName: str
-        :param Timestamp: 日志时间
-        :type Timestamp: str
-        :param Content: 日志内容
-        :type Content: str
-        :param Filename: 采集路径
-        :type Filename: str
-        :param Source: 日志来源设备
-        :type Source: str
-        """
-        self.TopicId = None
-        self.TopicName = None
-        self.Timestamp = None
-        self.Content = None
-        self.Filename = None
-        self.Source = None
-
-
-    def _deserialize(self, params):
-        self.TopicId = params.get("TopicId")
-        self.TopicName = params.get("TopicName")
-        self.Timestamp = params.get("Timestamp")
-        self.Content = params.get("Content")
-        self.Filename = params.get("Filename")
-        self.Source = params.get("Source")
-
-
-class ClsSearchLogs(AbstractModel):
-    """Cls日志搜索结果
-
-    """
-
-    def __init__(self):
-        """
-        :param Context: 获取更多检索结果的游标
-        :type Context: str
-        :param Listover: 搜索结果是否已经全部返回
-        :type Listover: bool
-        :param Results: 日志内容信息
-        :type Results: list of ClsLogObject
-        """
-        self.Context = None
-        self.Listover = None
-        self.Results = None
-
-
-    def _deserialize(self, params):
-        self.Context = params.get("Context")
-        self.Listover = params.get("Listover")
-        if params.get("Results") is not None:
-            self.Results = []
-            for item in params.get("Results"):
-                obj = ClsLogObject()
-                obj._deserialize(item)
-                self.Results.append(obj)
-
-
 class Compatibility(AbstractModel):
     """是否兼容旧版配置
 
@@ -4970,29 +4903,13 @@ class ListClsLogTopicsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Logset: 日志集信息
-        :type Logset: :class:`tencentcloud.cdn.v20180606.models.LogSetInfo`
-        :param Topics: 日志主题信息列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Topics: list of TopicInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Logset = None
-        self.Topics = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
-        if params.get("Logset") is not None:
-            self.Logset = LogSetInfo()
-            self.Logset._deserialize(params.get("Logset"))
-        if params.get("Topics") is not None:
-            self.Topics = []
-            for item in params.get("Topics"):
-                obj = TopicInfo()
-                obj._deserialize(item)
-                self.Topics.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -5028,47 +4945,13 @@ class ListClsTopicDomainsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param AppId: 开发者ID
-        :type AppId: int
-        :param Channel: 渠道
-        :type Channel: str
-        :param LogsetId: 日志集ID
-        :type LogsetId: str
-        :param TopicId: 日志主题ID
-        :type TopicId: str
-        :param DomainAreaConfigs: 域名区域配置，其中可能含有已删除的域名，如果要再传回ManageClsTopicDomains接口，需要结合ListCdnDomains接口排除掉已删除的域名
-        :type DomainAreaConfigs: list of DomainAreaConfig
-        :param TopicName: 日志主题名称
-        :type TopicName: str
-        :param UpdateTime: 日志主题最近更新时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UpdateTime: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.AppId = None
-        self.Channel = None
-        self.LogsetId = None
-        self.TopicId = None
-        self.DomainAreaConfigs = None
-        self.TopicName = None
-        self.UpdateTime = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
-        self.AppId = params.get("AppId")
-        self.Channel = params.get("Channel")
-        self.LogsetId = params.get("LogsetId")
-        self.TopicId = params.get("TopicId")
-        if params.get("DomainAreaConfigs") is not None:
-            self.DomainAreaConfigs = []
-            for item in params.get("DomainAreaConfigs"):
-                obj = DomainAreaConfig()
-                obj._deserialize(item)
-                self.DomainAreaConfigs.append(obj)
-        self.TopicName = params.get("TopicName")
-        self.UpdateTime = params.get("UpdateTime")
         self.RequestId = params.get("RequestId")
 
 
@@ -5260,52 +5143,6 @@ class ListTopDataResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Data.append(obj)
         self.RequestId = params.get("RequestId")
-
-
-class LogSetInfo(AbstractModel):
-    """日志集信息
-
-    """
-
-    def __init__(self):
-        """
-        :param AppId: 开发者ID
-        :type AppId: int
-        :param Channel: 渠道
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Channel: str
-        :param LogsetId: 日志集ID
-        :type LogsetId: str
-        :param LogsetName: 日志集名字
-        :type LogsetName: str
-        :param IsDefault: 是否默认日志集
-        :type IsDefault: int
-        :param LogsetSavePeriod: 日志保存时间，单位为天
-        :type LogsetSavePeriod: int
-        :param CreateTime: 创建日期
-        :type CreateTime: str
-        :param Region: 区域
-        :type Region: str
-        """
-        self.AppId = None
-        self.Channel = None
-        self.LogsetId = None
-        self.LogsetName = None
-        self.IsDefault = None
-        self.LogsetSavePeriod = None
-        self.CreateTime = None
-        self.Region = None
-
-
-    def _deserialize(self, params):
-        self.AppId = params.get("AppId")
-        self.Channel = params.get("Channel")
-        self.LogsetId = params.get("LogsetId")
-        self.LogsetName = params.get("LogsetName")
-        self.IsDefault = params.get("IsDefault")
-        self.LogsetSavePeriod = params.get("LogsetSavePeriod")
-        self.CreateTime = params.get("CreateTime")
-        self.Region = params.get("Region")
 
 
 class MainlandConfig(AbstractModel):
@@ -6990,19 +6827,13 @@ class SearchClsLogResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Logs: 查询结果
-        :type Logs: :class:`tencentcloud.cdn.v20180606.models.ClsSearchLogs`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Logs = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
-        if params.get("Logs") is not None:
-            self.Logs = ClsSearchLogs()
-            self.Logs._deserialize(params.get("Logs"))
         self.RequestId = params.get("RequestId")
 
 
@@ -7493,36 +7324,6 @@ class TopDetailData(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Value = params.get("Value")
-
-
-class TopicInfo(AbstractModel):
-    """CLS主题信息
-
-    """
-
-    def __init__(self):
-        """
-        :param TopicId: 主题ID
-        :type TopicId: str
-        :param TopicName: 主题名字
-        :type TopicName: str
-        :param Enabled: 是否启用投递
-        :type Enabled: int
-        :param CreateTime: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CreateTime: str
-        """
-        self.TopicId = None
-        self.TopicName = None
-        self.Enabled = None
-        self.CreateTime = None
-
-
-    def _deserialize(self, params):
-        self.TopicId = params.get("TopicId")
-        self.TopicName = params.get("TopicName")
-        self.Enabled = params.get("Enabled")
-        self.CreateTime = params.get("CreateTime")
 
 
 class TpgAdapter(AbstractModel):

@@ -4055,6 +4055,48 @@ class DescribeGroupsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeImageRepositoryRequest(AbstractModel):
+    """DescribeImageRepository请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SearchWord: 仓库名，搜索关键字,不带命名空间的
+        :type SearchWord: str
+        :param Offset: 偏移量，取值从0开始
+        :type Offset: int
+        :param Limit: 分页个数，默认为20， 取值应为1~100
+        :type Limit: int
+        """
+        self.SearchWord = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.SearchWord = params.get("SearchWord")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeImageRepositoryResponse(AbstractModel):
+    """DescribeImageRepository返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeImageTagsRequest(AbstractModel):
     """DescribeImageTags请求参数结构体
 

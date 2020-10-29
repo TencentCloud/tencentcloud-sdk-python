@@ -1602,17 +1602,36 @@ class GetServiceStatusResponse(AbstractModel):
         :param InvalidType: 服务不可用类型： 0-未购买，1-正常， 2-欠费停服， 3-资源释放
 注意：此字段可能返回 null，表示取不到有效值。
         :type InvalidType: int
+        :param UserLevel: 0-普通版，1-旗舰版
+        :type UserLevel: int
+        :param ProExpireTime: 旗舰版到期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProExpireTime: int
+        :param ProRenewFlag: 旗舰版是否自动续费：0-不自动续费，1-自动续费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProRenewFlag: int
+        :param ProResourceId: 旗舰版购买记录的唯一性标识。如果为开通旗舰版，则返回值为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProResourceId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.ServiceEnabled = None
         self.InvalidType = None
+        self.UserLevel = None
+        self.ProExpireTime = None
+        self.ProRenewFlag = None
+        self.ProResourceId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.ServiceEnabled = params.get("ServiceEnabled")
         self.InvalidType = params.get("InvalidType")
+        self.UserLevel = params.get("UserLevel")
+        self.ProExpireTime = params.get("ProExpireTime")
+        self.ProRenewFlag = params.get("ProRenewFlag")
+        self.ProResourceId = params.get("ProResourceId")
         self.RequestId = params.get("RequestId")
 
 

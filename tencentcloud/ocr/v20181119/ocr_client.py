@@ -25,6 +25,36 @@ class OcrClient(AbstractClient):
     _endpoint = 'ocr.tencentcloudapi.com'
 
 
+    def AdvertiseOCR(self, request):
+        """本接口支持广告商品图片内文字的检测和识别，返回文本框位置与文字内容。
+
+        产品优势：针对广告商品图片普遍存在较多繁体字、艺术字的特点，进行了识别能力的增强。支持中英文、横排、竖排以及倾斜场景文字识别。文字识别的召回率和准确率能达到96%以上。
+
+        :param request: Request instance for AdvertiseOCR.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.AdvertiseOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.AdvertiseOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AdvertiseOCR", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AdvertiseOCRResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ArithmeticOCR(self, request):
         """本接口支持作业算式题目的自动识别，目前覆盖 K12 学力范围内的 14 种题型，包括加减乘除四则运算、分数四则运算、竖式四则运算、脱式计算等。
 
@@ -1410,6 +1440,34 @@ class OcrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QuotaInvoiceOCRResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RecognizeTableOCR(self, request):
+        """本接口支持图片/ PDF内常规表格、无线表格、多表格的检测和识别，返回每个单元格的文字内容，支持对0度至180度旋转的表格图片识别，且支持将识别结果保存为 Excel 格式。
+
+        :param request: Request instance for RecognizeTableOCR.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizeTableOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.RecognizeTableOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RecognizeTableOCR", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RecognizeTableOCRResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

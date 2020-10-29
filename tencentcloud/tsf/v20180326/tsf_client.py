@@ -1455,6 +1455,34 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeImageRepository(self, request):
+        """镜像仓库列表
+
+        :param request: Request instance for DescribeImageRepository.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeImageRepositoryRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeImageRepositoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeImageRepository", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeImageRepositoryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeImageTags(self, request):
         """镜像版本列表
 
