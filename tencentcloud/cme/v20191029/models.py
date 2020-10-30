@@ -155,6 +155,41 @@ class AudioStreamInfo(AbstractModel):
         self.Codec = params.get("Codec")
 
 
+class AudioTrackItem(AbstractModel):
+    """音频轨道上的音频片段信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param SourceType: 音频素材来源类型。取值有：
+<ul>
+<li>VOD ：素材来源 VOD 。</li>
+<li>CME ：视频来源 CME 。</li>
+</ul>
+        :type SourceType: str
+        :param SourceMedia: 音频片段的媒体素材来源，可以是：
+<li>VOD 的媒体文件 ID 。</li>
+<li>CME 的素材 ID 。</li>
+        :type SourceMedia: str
+        :param SourceMediaStartTime: 音频片段取自素材文件的起始时间，单位为秒。0 表示从素材开始位置截取。默认为0。
+        :type SourceMediaStartTime: float
+        :param Duration: 音频片段的时长，单位为秒。默认和素材本身长度一致，表示截取全部素材。
+        :type Duration: float
+        """
+        self.SourceType = None
+        self.SourceMedia = None
+        self.SourceMediaStartTime = None
+        self.Duration = None
+
+
+    def _deserialize(self, params):
+        self.SourceType = params.get("SourceType")
+        self.SourceMedia = params.get("SourceMedia")
+        self.SourceMediaStartTime = params.get("SourceMediaStartTime")
+        self.Duration = params.get("Duration")
+
+
 class AuthorizationInfo(AbstractModel):
     """资源权限信息
 
@@ -410,6 +445,10 @@ class CreateProjectRequest(AbstractModel):
         :type Description: str
         :param SwitcherProjectInput: 导播台信息，仅当项目类型为 SWITCHER 时有效。
         :type SwitcherProjectInput: :class:`tencentcloud.cme.v20191029.models.SwitcherProjectInput`
+        :param LiveStreamClipProjectInput: 直播剪辑信息，暂未开放，请勿使用。
+        :type LiveStreamClipProjectInput: :class:`tencentcloud.cme.v20191029.models.LiveStreamClipProjectInput`
+        :param VideoEditProjectInput: 视频编辑信息。
+        :type VideoEditProjectInput: :class:`tencentcloud.cme.v20191029.models.VideoEditProjectInput`
         """
         self.Platform = None
         self.Category = None
@@ -418,6 +457,8 @@ class CreateProjectRequest(AbstractModel):
         self.Owner = None
         self.Description = None
         self.SwitcherProjectInput = None
+        self.LiveStreamClipProjectInput = None
+        self.VideoEditProjectInput = None
 
 
     def _deserialize(self, params):
@@ -432,6 +473,12 @@ class CreateProjectRequest(AbstractModel):
         if params.get("SwitcherProjectInput") is not None:
             self.SwitcherProjectInput = SwitcherProjectInput()
             self.SwitcherProjectInput._deserialize(params.get("SwitcherProjectInput"))
+        if params.get("LiveStreamClipProjectInput") is not None:
+            self.LiveStreamClipProjectInput = LiveStreamClipProjectInput()
+            self.LiveStreamClipProjectInput._deserialize(params.get("LiveStreamClipProjectInput"))
+        if params.get("VideoEditProjectInput") is not None:
+            self.VideoEditProjectInput = VideoEditProjectInput()
+            self.VideoEditProjectInput._deserialize(params.get("VideoEditProjectInput"))
 
 
 class CreateProjectResponse(AbstractModel):
@@ -1444,6 +1491,23 @@ class DescribeTeamsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class EmptyTrackItem(AbstractModel):
+    """空的轨道片段，用来进行时间轴的占位。如需要两个音频片段之间有一段时间的静音，可以用 EmptyTrackItem 来进行占位。
+
+    """
+
+    def __init__(self):
+        """
+        :param Duration: 持续时间，单位为秒。
+        :type Duration: float
+        """
+        self.Duration = None
+
+
+    def _deserialize(self, params):
+        self.Duration = params.get("Duration")
+
+
 class Entity(AbstractModel):
     """用于描述资源的归属实体。
 
@@ -2120,6 +2184,27 @@ class ListMediaResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class LiveStreamClipProjectInput(AbstractModel):
+    """直播剪辑项目输入参数。
+
+    """
+
+    def __init__(self):
+        """
+        :param Url: 直播流播放地址，目前仅支持 HLS 和 FLV 格式。
+        :type Url: str
+        :param StreamRecordDuration: 直播流录制时长，单位为秒，最大值为 7200。
+        :type StreamRecordDuration: int
+        """
+        self.Url = None
+        self.StreamRecordDuration = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
+        self.StreamRecordDuration = params.get("StreamRecordDuration")
+
+
 class LoginStatusInfo(AbstractModel):
     """登录态信息
 
@@ -2383,6 +2468,75 @@ class MediaMetaData(AbstractModel):
                 obj = AudioStreamInfo()
                 obj._deserialize(item)
                 self.AudioStreamInfoSet.append(obj)
+
+
+class MediaTrack(AbstractModel):
+    """轨道信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 轨道类型，取值有：
+<ul>
+<li>Video ：视频轨道。视频轨道由以下 Item 组成：<ul><li>VideoTrackItem</li><li>EmptyTrackItem</li></ul> </li>
+<li>Audio ：音频轨道。音频轨道由以下 Item 组成：<ul><li>AudioTrackItem</li><li>EmptyTrackItem</li></ul> </li>
+</ul>
+        :type Type: str
+        :param TrackItems: 轨道上的媒体片段列表。
+        :type TrackItems: list of MediaTrackItem
+        """
+        self.Type = None
+        self.TrackItems = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        if params.get("TrackItems") is not None:
+            self.TrackItems = []
+            for item in params.get("TrackItems"):
+                obj = MediaTrackItem()
+                obj._deserialize(item)
+                self.TrackItems.append(obj)
+
+
+class MediaTrackItem(AbstractModel):
+    """媒体轨道的片段信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 片段类型。取值有：
+<li>Video：视频片段。</li>
+<li>Audio：音频片段。</li>
+<li>Empty：空白片段。</li>
+        :type Type: str
+        :param VideoItem: 视频片段，当 Type = Video 时有效。
+        :type VideoItem: :class:`tencentcloud.cme.v20191029.models.VideoTrackItem`
+        :param AudioItem: 音频片段，当 Type = Audio 时有效。
+        :type AudioItem: :class:`tencentcloud.cme.v20191029.models.AudioTrackItem`
+        :param EmptyItem: 空白片段，当 Type = Empty 时有效。空片段用于时间轴的占位。<li>如需要两个音频片段之间有一段时间的静音，可以用 EmptyTrackItem 来进行占位。</li>
+<li>使用 EmptyTrackItem 进行占位，来定位某个Item。</li>
+        :type EmptyItem: :class:`tencentcloud.cme.v20191029.models.EmptyTrackItem`
+        """
+        self.Type = None
+        self.VideoItem = None
+        self.AudioItem = None
+        self.EmptyItem = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        if params.get("VideoItem") is not None:
+            self.VideoItem = VideoTrackItem()
+            self.VideoItem._deserialize(params.get("VideoItem"))
+        if params.get("AudioItem") is not None:
+            self.AudioItem = AudioTrackItem()
+            self.AudioItem._deserialize(params.get("AudioItem"))
+        if params.get("EmptyItem") is not None:
+            self.EmptyItem = EmptyTrackItem()
+            self.EmptyItem._deserialize(params.get("EmptyItem"))
 
 
 class ModifyMaterialRequest(AbstractModel):
@@ -3147,6 +3301,28 @@ class VODExportInfo(AbstractModel):
         self.ClassId = params.get("ClassId")
 
 
+class VideoEditProjectInput(AbstractModel):
+    """视频编辑项目输入参数
+
+    """
+
+    def __init__(self):
+        """
+        :param InitTracks: 输入的媒体轨道列表，包括视频、音频，等素材组成的多个轨道信息，其中：<li>输入的多个轨道在时间轴上和输出媒体文件的时间轴对齐；</li><li>时间轴上相同时间点的各个轨道的素材进行重叠，视频或者图片按轨道顺序进行图像的叠加，轨道顺序高的素材叠加在上面，音频素材进行混音；</li><li>视频、音频，每一种类型的轨道最多支持10个。</li>
+        :type InitTracks: list of MediaTrack
+        """
+        self.InitTracks = None
+
+
+    def _deserialize(self, params):
+        if params.get("InitTracks") is not None:
+            self.InitTracks = []
+            for item in params.get("InitTracks"):
+                obj = MediaTrack()
+                obj._deserialize(item)
+                self.InitTracks.append(obj)
+
+
 class VideoEditProjectOutput(AbstractModel):
     """项目导出信息。
 
@@ -3262,3 +3438,76 @@ class VideoStreamInfo(AbstractModel):
         self.Width = params.get("Width")
         self.Codec = params.get("Codec")
         self.Fps = params.get("Fps")
+
+
+class VideoTrackItem(AbstractModel):
+    """视频轨的视频片段信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param SourceType: 视频素材来源类型。取值有：
+<ul>
+<li>VOD ：素材来源 VOD 。</li>
+<li>CME ：视频来源 CME 。</li>
+</ul>
+        :type SourceType: str
+        :param SourceMedia: 视频片段的媒体素材来源，可以是：
+<li>VOD 的媒体文件 ID 。</li>
+<li>CME 的素材 ID 。</li>
+        :type SourceMedia: str
+        :param SourceMediaStartTime: 视频片段取自素材文件的起始时间，单位为秒。默认为0。
+        :type SourceMediaStartTime: float
+        :param Duration: 视频片段时长，单位为秒。默认取视频素材本身长度，表示截取全部素材。如果源文件是图片，Duration需要大于0。
+        :type Duration: float
+        :param XPos: 视频片段原点距离画布原点的水平位置。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示视频片段 XPos 为画布宽度指定百分比的位置，如 10% 表示 XPos 为画布口宽度的 10%。</li>
+<li>当字符串以 px 结尾，表示视频片段 XPos 单位为像素，如 100px 表示 XPos 为100像素。</li>
+默认值：0px。
+        :type XPos: str
+        :param YPos: 视频片段原点距离画布原点的垂直位置。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示视频片段 YPos 为画布高度指定百分比的位置，如 10% 表示 YPos 为画布高度的 10%。</li>
+<li>当字符串以 px 结尾，表示视频片段 YPos 单位为像素，如 100px 表示 YPos 为100像素。</li>
+默认值：0px。
+        :type YPos: str
+        :param CoordinateOrigin: 视频原点位置，取值有：
+<li>Center：坐标原点为中心位置，如画布中心。</li>
+默认值 ：Center。
+        :type CoordinateOrigin: str
+        :param Height: 视频片段的高度。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示视频片段 Height 为画布高度的百分比大小，如 10% 表示 Height 为画布高度的 10%；
+</li><li>当字符串以 px 结尾，表示视频片段 Height 单位为像素，如 100px 表示 Height 为100像素。</li>
+<li>当 Width、Height 均为空，则 Width 和 Height 取视频素材本身的 Width、Height。</li>
+<li>当 Width 为空，Height 非空，则 Width 按比例缩放</li>
+<li>当 Width 非空，Height 为空，则 Height 按比例缩放。</li>
+        :type Height: str
+        :param Width: 视频片段的宽度。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示视频片段 Width 为画布宽度的百分比大小，如 10% 表示 Width 为画布宽度的 10%。</li>
+<li>当字符串以 px 结尾，表示视频片段 Width 单位为像素，如 100px 表示 Width 为100像素。</li>
+<li>当 Width、Height 均为空，则 Width 和 Height 取视频素材本身的 Width、Height。</li>
+<li>当 Width 为空，Height 非空，则 Width 按比例缩放</li>
+<li>当 Width 非空，Height 为空，则 Height 按比例缩放。</li>
+        :type Width: str
+        """
+        self.SourceType = None
+        self.SourceMedia = None
+        self.SourceMediaStartTime = None
+        self.Duration = None
+        self.XPos = None
+        self.YPos = None
+        self.CoordinateOrigin = None
+        self.Height = None
+        self.Width = None
+
+
+    def _deserialize(self, params):
+        self.SourceType = params.get("SourceType")
+        self.SourceMedia = params.get("SourceMedia")
+        self.SourceMediaStartTime = params.get("SourceMediaStartTime")
+        self.Duration = params.get("Duration")
+        self.XPos = params.get("XPos")
+        self.YPos = params.get("YPos")
+        self.CoordinateOrigin = params.get("CoordinateOrigin")
+        self.Height = params.get("Height")
+        self.Width = params.get("Width")

@@ -192,12 +192,16 @@ class CreateAppUsrRequest(AbstractModel):
         """
         :param CunionId: 标识用户的唯一ID，防止同一个用户多次注册
         :type CunionId: str
+        :param Mobile: 用于小程序关联手机号
+        :type Mobile: str
         """
         self.CunionId = None
+        self.Mobile = None
 
 
     def _deserialize(self, params):
         self.CunionId = params.get("CunionId")
+        self.Mobile = params.get("Mobile")
 
 
 class CreateAppUsrResponse(AbstractModel):

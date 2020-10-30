@@ -277,6 +277,34 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeUserInformation(self, request):
+        """查询指定时间内的用户列表，可查询14天内数据。默认每页查询6个用户，支持每页最大查询100个用户PageSize不超过100）。
+
+        :param request: Request instance for DescribeUserInformation.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeUserInformationRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeUserInformationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeUserInformation", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeUserInformationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DismissRoom(self, request):
         """接口说明：把房间所有用户从房间移出，解散房间。支持所有平台，Android、iOS、Windows 和 macOS 需升级到 TRTC SDK 6.6及以上版本。
 

@@ -4087,13 +4087,19 @@ class DescribeImageRepositoryResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param Result: 查询的权限数据对象
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.ImageRepositoryResult`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.Result = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = ImageRepositoryResult()
+            self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 
 
@@ -5905,6 +5911,107 @@ class HealthCheckSettings(AbstractModel):
         if params.get("ReadinessProbe") is not None:
             self.ReadinessProbe = HealthCheckSetting()
             self.ReadinessProbe._deserialize(params.get("ReadinessProbe"))
+
+
+class ImageRepository(AbstractModel):
+    """镜像仓库
+
+    """
+
+    def __init__(self):
+        """
+        :param Reponame: 仓库名,含命名空间,如tsf/nginx
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Reponame: str
+        :param Repotype: 仓库类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Repotype: str
+        :param TagCount: 镜像版本数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagCount: int
+        :param IsPublic: 是否公共,1:公有,0:私有
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsPublic: int
+        :param IsUserFavor: 是否被用户收藏。true：是，false：否
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsUserFavor: bool
+        :param IsQcloudOfficial: 是否是腾讯云官方仓库。 是否是腾讯云官方仓库。true：是，false：否
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsQcloudOfficial: bool
+        :param FavorCount: 被所有用户收藏次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FavorCount: int
+        :param PullCount: 拉取次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PullCount: int
+        :param Description: 描述内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param CreationTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreationTime: str
+        :param UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
+        self.Reponame = None
+        self.Repotype = None
+        self.TagCount = None
+        self.IsPublic = None
+        self.IsUserFavor = None
+        self.IsQcloudOfficial = None
+        self.FavorCount = None
+        self.PullCount = None
+        self.Description = None
+        self.CreationTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Reponame = params.get("Reponame")
+        self.Repotype = params.get("Repotype")
+        self.TagCount = params.get("TagCount")
+        self.IsPublic = params.get("IsPublic")
+        self.IsUserFavor = params.get("IsUserFavor")
+        self.IsQcloudOfficial = params.get("IsQcloudOfficial")
+        self.FavorCount = params.get("FavorCount")
+        self.PullCount = params.get("PullCount")
+        self.Description = params.get("Description")
+        self.CreationTime = params.get("CreationTime")
+        self.UpdateTime = params.get("UpdateTime")
+
+
+class ImageRepositoryResult(AbstractModel):
+    """镜像仓库列表
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 总记录数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param Server: 镜像服务器地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Server: str
+        :param Content: 列表信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: list of ImageRepository
+        """
+        self.TotalCount = None
+        self.Server = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        self.Server = params.get("Server")
+        if params.get("Content") is not None:
+            self.Content = []
+            for item in params.get("Content"):
+                obj = ImageRepository()
+                obj._deserialize(item)
+                self.Content.append(obj)
 
 
 class ImageTag(AbstractModel):

@@ -3146,73 +3146,13 @@ class PassportOCRResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Country: 国家码
-        :type Country: str
-        :param PassportNo: 护照号
-        :type PassportNo: str
-        :param Sex: 性别
-        :type Sex: str
-        :param Nationality: 国籍
-        :type Nationality: str
-        :param BirthDate: 出生日期
-        :type BirthDate: str
-        :param BirthPlace: 出生地点
-        :type BirthPlace: str
-        :param IssueDate: 签发日期
-        :type IssueDate: str
-        :param IssuePlace: 签发地点
-        :type IssuePlace: str
-        :param ExpiryDate: 有效期
-        :type ExpiryDate: str
-        :param Signature: 持证人签名
-        :type Signature: str
-        :param CodeSet: 最下方第一行 MRZ Code 序列
-        :type CodeSet: str
-        :param CodeCrc: 最下方第二行 MRZ Code 序列
-        :type CodeCrc: str
-        :param Name: 姓名
-        :type Name: str
-        :param FamilyName: 姓
-        :type FamilyName: str
-        :param FirstName: 名
-        :type FirstName: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Country = None
-        self.PassportNo = None
-        self.Sex = None
-        self.Nationality = None
-        self.BirthDate = None
-        self.BirthPlace = None
-        self.IssueDate = None
-        self.IssuePlace = None
-        self.ExpiryDate = None
-        self.Signature = None
-        self.CodeSet = None
-        self.CodeCrc = None
-        self.Name = None
-        self.FamilyName = None
-        self.FirstName = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
-        self.Country = params.get("Country")
-        self.PassportNo = params.get("PassportNo")
-        self.Sex = params.get("Sex")
-        self.Nationality = params.get("Nationality")
-        self.BirthDate = params.get("BirthDate")
-        self.BirthPlace = params.get("BirthPlace")
-        self.IssueDate = params.get("IssueDate")
-        self.IssuePlace = params.get("IssuePlace")
-        self.ExpiryDate = params.get("ExpiryDate")
-        self.Signature = params.get("Signature")
-        self.CodeSet = params.get("CodeSet")
-        self.CodeCrc = params.get("CodeCrc")
-        self.Name = params.get("Name")
-        self.FamilyName = params.get("FamilyName")
-        self.FirstName = params.get("FirstName")
         self.RequestId = params.get("RequestId")
 
 
@@ -6223,14 +6163,18 @@ class WaybillOCRRequest(AbstractModel):
 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :type ImageUrl: str
+        :param EnablePreDetect: 预检测开关，当待识别运单占整个输入图像的比例较小时，建议打开预检测开关。默认值为false。
+        :type EnablePreDetect: bool
         """
         self.ImageBase64 = None
         self.ImageUrl = None
+        self.EnablePreDetect = None
 
 
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        self.EnablePreDetect = params.get("EnablePreDetect")
 
 
 class WaybillOCRResponse(AbstractModel):
