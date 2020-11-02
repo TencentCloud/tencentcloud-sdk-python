@@ -4329,7 +4329,7 @@ class TableOCRResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TextDetections: 检测到的文本信息，具体内容请点击左侧链接。
+        :param TextDetections: 检测到的文本信息，具体内容请点击左侧链接
         :type TextDetections: list of TextTable
         :param Data: Base64 编码后的 Excel 数据。
         :type Data: str

@@ -975,6 +975,34 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DuplicateDomainConfig(self, request):
+        """拷贝参考域名的配置至新域名。暂不支持自有证书以及定制化配置
+
+        :param request: Request instance for DuplicateDomainConfig.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DuplicateDomainConfigRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DuplicateDomainConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DuplicateDomainConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DuplicateDomainConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def EnableCaches(self, request):
         """EnableCaches 用于解禁手工封禁的 URL，解禁成功后，全网生效时间约 5~10 分钟。（接口尚在内测中，暂未全量开放使用）
 

@@ -4134,6 +4134,44 @@ off：关闭
                 self.CappingRules.append(obj)
 
 
+class DuplicateDomainConfigRequest(AbstractModel):
+    """DuplicateDomainConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Domain: 新增域名
+        :type Domain: str
+        :param ReferenceDomain: 被拷贝配置的域名
+        :type ReferenceDomain: str
+        """
+        self.Domain = None
+        self.ReferenceDomain = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.ReferenceDomain = params.get("ReferenceDomain")
+
+
+class DuplicateDomainConfigResponse(AbstractModel):
+    """DuplicateDomainConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class EnableCachesRequest(AbstractModel):
     """EnableCaches请求参数结构体
 

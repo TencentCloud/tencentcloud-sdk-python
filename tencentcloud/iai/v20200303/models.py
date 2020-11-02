@@ -3688,6 +3688,8 @@ class VerifyPersonRequest(AbstractModel):
 
     def __init__(self):
         """
+        :param PersonId: 待验证的人员ID。人员ID具体信息请参考人员库管理相关接口。
+        :type PersonId: str
         :param Image: 图片 base64 数据。
 jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
@@ -3701,8 +3703,6 @@ jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2
 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Url: str
-        :param PersonId: 待验证的人员ID。人员ID具体信息请参考人员库管理相关接口。
-        :type PersonId: str
         :param QualityControl: 图片质量控制。 
 0: 不进行控制； 
 1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况； 
@@ -3715,17 +3715,17 @@ jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2
         :param NeedRotateDetection: 是否开启图片旋转识别支持。0为不开启，1为开启。默认为0。本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
         :type NeedRotateDetection: int
         """
+        self.PersonId = None
         self.Image = None
         self.Url = None
-        self.PersonId = None
         self.QualityControl = None
         self.NeedRotateDetection = None
 
 
     def _deserialize(self, params):
+        self.PersonId = params.get("PersonId")
         self.Image = params.get("Image")
         self.Url = params.get("Url")
-        self.PersonId = params.get("PersonId")
         self.QualityControl = params.get("QualityControl")
         self.NeedRotateDetection = params.get("NeedRotateDetection")
 
@@ -3737,23 +3737,11 @@ class VerifyPersonResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Score: 给定的人脸照片与 PersonId 对应的相似度。若 PersonId 下有多张人脸（Face），会融合多张人脸信息进行验证。
-        :type Score: float
-        :param IsMatch: 是否为同一人的判断。
-        :type IsMatch: bool
-        :param FaceModelVersion: 人脸识别所用的算法模型版本，是该 Person 所在的人员库的算法模型版本。在创建人员库时设置，详情可参考[算法模型版本](https://cloud.tencent.com/document/product/867/40042)
-        :type FaceModelVersion: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Score = None
-        self.IsMatch = None
-        self.FaceModelVersion = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
-        self.Score = params.get("Score")
-        self.IsMatch = params.get("IsMatch")
-        self.FaceModelVersion = params.get("FaceModelVersion")
         self.RequestId = params.get("RequestId")

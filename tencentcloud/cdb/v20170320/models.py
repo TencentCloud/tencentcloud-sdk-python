@@ -1146,6 +1146,10 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type ClientToken: str
         :param DeviceType: 实例类型。支持值包括： "HA" - 高可用版实例， "BASIC" - 基础版实例。 不指定则默认为高可用版。
         :type DeviceType: str
+        :param ParamTemplateId: 参数模板id。
+        :type ParamTemplateId: int
+        :param AlarmPolicyList: 告警策略id数组。
+        :type AlarmPolicyList: list of int
         """
         self.GoodsNum = None
         self.Memory = None
@@ -1173,6 +1177,8 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self.DeployGroupId = None
         self.ClientToken = None
         self.DeviceType = None
+        self.ParamTemplateId = None
+        self.AlarmPolicyList = None
 
 
     def _deserialize(self, params):
@@ -1214,6 +1220,8 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self.DeployGroupId = params.get("DeployGroupId")
         self.ClientToken = params.get("ClientToken")
         self.DeviceType = params.get("DeviceType")
+        self.ParamTemplateId = params.get("ParamTemplateId")
+        self.AlarmPolicyList = params.get("AlarmPolicyList")
 
 
 class CreateDBInstanceHourResponse(AbstractModel):
@@ -1302,6 +1310,10 @@ class CreateDBInstanceRequest(AbstractModel):
         :type ClientToken: str
         :param DeviceType: 实例类型。支持值包括： "HA" - 高可用版实例， "BASIC" - 基础版实例。 不指定则默认为高可用版。
         :type DeviceType: str
+        :param ParamTemplateId: 参数模板id。
+        :type ParamTemplateId: int
+        :param AlarmPolicyList: 告警策略id数组。
+        :type AlarmPolicyList: list of int
         """
         self.Memory = None
         self.Volume = None
@@ -1330,6 +1342,8 @@ class CreateDBInstanceRequest(AbstractModel):
         self.DeployGroupId = None
         self.ClientToken = None
         self.DeviceType = None
+        self.ParamTemplateId = None
+        self.AlarmPolicyList = None
 
 
     def _deserialize(self, params):
@@ -1372,6 +1386,8 @@ class CreateDBInstanceRequest(AbstractModel):
         self.DeployGroupId = params.get("DeployGroupId")
         self.ClientToken = params.get("ClientToken")
         self.DeviceType = params.get("DeviceType")
+        self.ParamTemplateId = params.get("ParamTemplateId")
+        self.AlarmPolicyList = params.get("AlarmPolicyList")
 
 
 class CreateDBInstanceResponse(AbstractModel):

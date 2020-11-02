@@ -538,7 +538,7 @@ Other-Overseas（其他境外地区）
         :type ProductCate: int
         :param AccessMode: 接入模型，bit0是0：公版小程序未接入，bit0是1：公版小程序已接入
         :type AccessMode: int
-        :param Os: linux,android,liteos
+        :param Os: Linux,Android,Liteos等系统
         :type Os: str
         """
         self.ProductModel = None
