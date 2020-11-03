@@ -721,6 +721,50 @@ class DescribeRulesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTokenRequest(AbstractModel):
+    """DescribeToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MatchCode: 匹配code
+        :type MatchCode: str
+        """
+        self.MatchCode = None
+
+
+    def _deserialize(self, params):
+        self.MatchCode = params.get("MatchCode")
+
+
+class DescribeTokenResponse(AbstractModel):
+    """DescribeToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MatchToken: 当前的MatchCode对应的Token。如果当前MatchCode没有Token，该参数可能取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MatchToken: str
+        :param CompatibleSpan: 当Token被替换后，GPM将兼容推送原始Token的时间（秒）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompatibleSpan: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MatchToken = None
+        self.CompatibleSpan = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MatchToken = params.get("MatchToken")
+        self.CompatibleSpan = params.get("CompatibleSpan")
+        self.RequestId = params.get("RequestId")
+
+
 class MTicket(AbstractModel):
     """matchCode和TicketId组合结构
 
@@ -1161,6 +1205,57 @@ class ModifyRuleResponse(AbstractModel):
         if params.get("RuleInfo") is not None:
             self.RuleInfo = RuleInfo()
             self.RuleInfo._deserialize(params.get("RuleInfo"))
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyTokenRequest(AbstractModel):
+    """ModifyToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MatchCode: 匹配Code。
+        :type MatchCode: str
+        :param CompatibleSpan: 单位秒，取值0-1800。此参数表示当前Token被替换后，GPM将持续推送原Token的时间。在CompatibleSpan时间范围内，用户将在事件消息中收到当前和原始Token。
+        :type CompatibleSpan: int
+        :param MatchToken: Token，[a-zA-Z0-9-_.], 长度0-64。如果为空，将由GPM随机生成。
+        :type MatchToken: str
+        """
+        self.MatchCode = None
+        self.CompatibleSpan = None
+        self.MatchToken = None
+
+
+    def _deserialize(self, params):
+        self.MatchCode = params.get("MatchCode")
+        self.CompatibleSpan = params.get("CompatibleSpan")
+        self.MatchToken = params.get("MatchToken")
+
+
+class ModifyTokenResponse(AbstractModel):
+    """ModifyToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MatchToken: 成功设置的Token。
+        :type MatchToken: str
+        :param CompatibleSpan: 当前Token被替换后，GPM将持续推送原Token的时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompatibleSpan: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MatchToken = None
+        self.CompatibleSpan = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MatchToken = params.get("MatchToken")
+        self.CompatibleSpan = params.get("CompatibleSpan")
         self.RequestId = params.get("RequestId")
 
 

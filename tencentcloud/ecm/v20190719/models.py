@@ -371,17 +371,13 @@ class AssociateAddressResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 异步任务TaskId。可以使用DescribeTaskResult接口查询任务状态。
-        :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.TaskId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
 
 

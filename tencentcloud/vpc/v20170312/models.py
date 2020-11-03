@@ -7147,6 +7147,53 @@ class DescribeNetworkInterfacesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeProductQuotaRequest(AbstractModel):
+    """DescribeProductQuota请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Product: 查询的网络产品名称，如vpc、ccn等
+        :type Product: str
+        """
+        self.Product = None
+
+
+    def _deserialize(self, params):
+        self.Product = params.get("Product")
+
+
+class DescribeProductQuotaResponse(AbstractModel):
+    """DescribeProductQuota返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductQuotaSet: ProductQuota对象数组
+        :type ProductQuotaSet: list of ProductQuota
+        :param TotalCount: 符合条件的产品类型个数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ProductQuotaSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ProductQuotaSet") is not None:
+            self.ProductQuotaSet = []
+            for item in params.get("ProductQuotaSet"):
+                obj = ProductQuota()
+                obj._deserialize(item)
+                self.ProductQuotaSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRouteConflictsRequest(AbstractModel):
     """DescribeRouteConflicts请求参数结构体
 
@@ -12265,6 +12312,39 @@ AVAILABLE：可用的
         self.Description = params.get("Description")
         self.IsWanIpBlocked = params.get("IsWanIpBlocked")
         self.State = params.get("State")
+
+
+class ProductQuota(AbstractModel):
+    """描述网络中心每个产品的配额信息
+
+    """
+
+    def __init__(self):
+        """
+        :param QuotaId: 产品配额ID
+        :type QuotaId: str
+        :param QuotaName: 产品配额名称
+        :type QuotaName: str
+        :param QuotaCurrent: 产品当前配额
+        :type QuotaCurrent: int
+        :param QuotaLimit: 产品配额上限
+        :type QuotaLimit: int
+        :param QuotaRegion: 产品配额是否有地域属性
+        :type QuotaRegion: bool
+        """
+        self.QuotaId = None
+        self.QuotaName = None
+        self.QuotaCurrent = None
+        self.QuotaLimit = None
+        self.QuotaRegion = None
+
+
+    def _deserialize(self, params):
+        self.QuotaId = params.get("QuotaId")
+        self.QuotaName = params.get("QuotaName")
+        self.QuotaCurrent = params.get("QuotaCurrent")
+        self.QuotaLimit = params.get("QuotaLimit")
+        self.QuotaRegion = params.get("QuotaRegion")
 
 
 class Quota(AbstractModel):

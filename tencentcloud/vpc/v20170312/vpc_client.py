@@ -3431,6 +3431,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeProductQuota(self, request):
+        """本接口用于查询网络产品的配额信息
+
+        :param request: Request instance for DescribeProductQuota.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeProductQuotaRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeProductQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeProductQuota", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeProductQuotaResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRouteConflicts(self, request):
         """本接口（DescribeRouteConflicts）用于查询自定义路由策略与云联网路由策略冲突列表
 

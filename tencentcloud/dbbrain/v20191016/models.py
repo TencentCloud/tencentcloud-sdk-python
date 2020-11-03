@@ -131,13 +131,22 @@ class DescribeDBDiagHistoryResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param Events: 事件描述。
+        :type Events: list of DiagHistoryEventItem
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.Events = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("Events") is not None:
+            self.Events = []
+            for item in params.get("Events"):
+                obj = DiagHistoryEventItem()
+                obj._deserialize(item)
+                self.Events.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -227,13 +236,32 @@ class DescribeSlowLogTimeSeriesStatsResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param Period: 柱间单位时间间隔，单位为秒。
+        :type Period: int
+        :param TimeSeries: 单位时间间隔内慢日志数量统计。
+        :type TimeSeries: list of TimeSlice
+        :param SeriesData: 单位时间间隔内的实例 cpu 利用率监控数据。
+        :type SeriesData: :class:`tencentcloud.dbbrain.v20191016.models.MonitorMetricSeriesData`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.Period = None
+        self.TimeSeries = None
+        self.SeriesData = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.Period = params.get("Period")
+        if params.get("TimeSeries") is not None:
+            self.TimeSeries = []
+            for item in params.get("TimeSeries"):
+                obj = TimeSlice()
+                obj._deserialize(item)
+                self.TimeSeries.append(obj)
+        if params.get("SeriesData") is not None:
+            self.SeriesData = MonitorMetricSeriesData()
+            self.SeriesData._deserialize(params.get("SeriesData"))
         self.RequestId = params.get("RequestId")
 
 
@@ -285,13 +313,26 @@ class DescribeSlowLogTopSqlsResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param TotalCount: 符合条件的记录总数。
+        :type TotalCount: int
+        :param Rows: 慢日志 top sql 列表
+        :type Rows: list of SlowLogTopSqlItem
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.TotalCount = None
+        self.Rows = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Rows") is not None:
+            self.Rows = []
+            for item in params.get("Rows"):
+                obj = SlowLogTopSqlItem()
+                obj._deserialize(item)
+                self.Rows.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -335,13 +376,22 @@ class DescribeTopSpaceTableTimeSeriesResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param TopSpaceTableTimeSeries: 返回的Top表空间统计信息的时序数据列表。
+        :type TopSpaceTableTimeSeries: list of TableSpaceTimeSeries
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.TopSpaceTableTimeSeries = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("TopSpaceTableTimeSeries") is not None:
+            self.TopSpaceTableTimeSeries = []
+            for item in params.get("TopSpaceTableTimeSeries"):
+                obj = TableSpaceTimeSeries()
+                obj._deserialize(item)
+                self.TopSpaceTableTimeSeries.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -377,11 +427,382 @@ class DescribeTopSpaceTablesResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param TopSpaceTables: 返回的Top表空间统计信息列表。
+        :type TopSpaceTables: list of TableSpaceData
+        :param Timestamp: 采集表空间数据的时间戳（秒）。
+        :type Timestamp: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.TopSpaceTables = None
+        self.Timestamp = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("TopSpaceTables") is not None:
+            self.TopSpaceTables = []
+            for item in params.get("TopSpaceTables"):
+                obj = TableSpaceData()
+                obj._deserialize(item)
+                self.TopSpaceTables.append(obj)
+        self.Timestamp = params.get("Timestamp")
         self.RequestId = params.get("RequestId")
+
+
+class DiagHistoryEventItem(AbstractModel):
+    """实例诊断历史事件
+
+    """
+
+    def __init__(self):
+        """
+        :param DiagType: 诊断类型。
+        :type DiagType: str
+        :param EndTime: 结束时间。
+        :type EndTime: str
+        :param StartTime: 开始时间。
+        :type StartTime: str
+        :param EventId: 事件 ID 。
+        :type EventId: int
+        :param Severity: 严重程度。严重程度分为5级，按影响程度从高至低分别为：1：致命，2：严重，3：告警，4：提示，5：健康。
+        :type Severity: int
+        :param Outline: 概要。
+        :type Outline: str
+        :param DiagItem: 诊断项。
+        :type DiagItem: str
+        :param InstanceId: 实例 ID 。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param Metric: 保留字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Metric: str
+        :param Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        """
+        self.DiagType = None
+        self.EndTime = None
+        self.StartTime = None
+        self.EventId = None
+        self.Severity = None
+        self.Outline = None
+        self.DiagItem = None
+        self.InstanceId = None
+        self.Metric = None
+        self.Region = None
+
+
+    def _deserialize(self, params):
+        self.DiagType = params.get("DiagType")
+        self.EndTime = params.get("EndTime")
+        self.StartTime = params.get("StartTime")
+        self.EventId = params.get("EventId")
+        self.Severity = params.get("Severity")
+        self.Outline = params.get("Outline")
+        self.DiagItem = params.get("DiagItem")
+        self.InstanceId = params.get("InstanceId")
+        self.Metric = params.get("Metric")
+        self.Region = params.get("Region")
+
+
+class MonitorFloatMetric(AbstractModel):
+    """监控数据（浮点型）
+
+    """
+
+    def __init__(self):
+        """
+        :param Metric: 指标名称。
+        :type Metric: str
+        :param Unit: 指标单位。
+        :type Unit: str
+        :param Values: 指标值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Values: list of float
+        """
+        self.Metric = None
+        self.Unit = None
+        self.Values = None
+
+
+    def _deserialize(self, params):
+        self.Metric = params.get("Metric")
+        self.Unit = params.get("Unit")
+        self.Values = params.get("Values")
+
+
+class MonitorFloatMetricSeriesData(AbstractModel):
+    """单位时间间隔内的监控指标数据（浮点型）
+
+    """
+
+    def __init__(self):
+        """
+        :param Series: 监控指标。
+        :type Series: list of MonitorFloatMetric
+        :param Timestamp: 监控指标对应的时间戳。
+        :type Timestamp: list of int
+        """
+        self.Series = None
+        self.Timestamp = None
+
+
+    def _deserialize(self, params):
+        if params.get("Series") is not None:
+            self.Series = []
+            for item in params.get("Series"):
+                obj = MonitorFloatMetric()
+                obj._deserialize(item)
+                self.Series.append(obj)
+        self.Timestamp = params.get("Timestamp")
+
+
+class MonitorMetric(AbstractModel):
+    """监控数据
+
+    """
+
+    def __init__(self):
+        """
+        :param Metric: 指标名称。
+        :type Metric: str
+        :param Unit: 指标单位。
+        :type Unit: str
+        :param Values: 指标值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Values: list of int
+        """
+        self.Metric = None
+        self.Unit = None
+        self.Values = None
+
+
+    def _deserialize(self, params):
+        self.Metric = params.get("Metric")
+        self.Unit = params.get("Unit")
+        self.Values = params.get("Values")
+
+
+class MonitorMetricSeriesData(AbstractModel):
+    """单位时间间隔内的监控指标数据
+
+    """
+
+    def __init__(self):
+        """
+        :param Series: 监控指标。
+        :type Series: list of MonitorMetric
+        :param Timestamp: 监控指标对应的时间戳。
+        :type Timestamp: list of int
+        """
+        self.Series = None
+        self.Timestamp = None
+
+
+    def _deserialize(self, params):
+        if params.get("Series") is not None:
+            self.Series = []
+            for item in params.get("Series"):
+                obj = MonitorMetric()
+                obj._deserialize(item)
+                self.Series.append(obj)
+        self.Timestamp = params.get("Timestamp")
+
+
+class SlowLogTopSqlItem(AbstractModel):
+    """慢日志TopSql
+
+    """
+
+    def __init__(self):
+        """
+        :param LockTime: sql总锁等待时间
+        :type LockTime: float
+        :param LockTimeMax: 最大锁等待时间
+        :type LockTimeMax: float
+        :param LockTimeMin: 最小锁等待时间
+        :type LockTimeMin: float
+        :param RowsExamined: 总扫描行数
+        :type RowsExamined: int
+        :param RowsExaminedMax: 最大扫描行数
+        :type RowsExaminedMax: int
+        :param RowsExaminedMin: 最小扫描行数
+        :type RowsExaminedMin: int
+        :param QueryTime: 总耗时
+        :type QueryTime: float
+        :param QueryTimeMax: 最大执行时间
+        :type QueryTimeMax: float
+        :param QueryTimeMin: 最小执行时间
+        :type QueryTimeMin: float
+        :param RowsSent: 总返回行数
+        :type RowsSent: int
+        :param RowsSentMax: 最大返回行数
+        :type RowsSentMax: int
+        :param RowsSentMin: 最小返回行数
+        :type RowsSentMin: int
+        :param ExecTimes: 执行次数
+        :type ExecTimes: int
+        :param SqlTemplate: sql模板
+        :type SqlTemplate: str
+        :param SqlText: 带参数SQL（随机）
+        :type SqlText: str
+        :param Schema: 数据库名
+        :type Schema: str
+        :param QueryTimeRatio: 总耗时占比
+        :type QueryTimeRatio: float
+        :param LockTimeRatio: sql总锁等待时间占比
+        :type LockTimeRatio: float
+        :param RowsExaminedRatio: 总扫描行数占比
+        :type RowsExaminedRatio: float
+        :param RowsSentRatio: 总返回行数占比
+        :type RowsSentRatio: float
+        """
+        self.LockTime = None
+        self.LockTimeMax = None
+        self.LockTimeMin = None
+        self.RowsExamined = None
+        self.RowsExaminedMax = None
+        self.RowsExaminedMin = None
+        self.QueryTime = None
+        self.QueryTimeMax = None
+        self.QueryTimeMin = None
+        self.RowsSent = None
+        self.RowsSentMax = None
+        self.RowsSentMin = None
+        self.ExecTimes = None
+        self.SqlTemplate = None
+        self.SqlText = None
+        self.Schema = None
+        self.QueryTimeRatio = None
+        self.LockTimeRatio = None
+        self.RowsExaminedRatio = None
+        self.RowsSentRatio = None
+
+
+    def _deserialize(self, params):
+        self.LockTime = params.get("LockTime")
+        self.LockTimeMax = params.get("LockTimeMax")
+        self.LockTimeMin = params.get("LockTimeMin")
+        self.RowsExamined = params.get("RowsExamined")
+        self.RowsExaminedMax = params.get("RowsExaminedMax")
+        self.RowsExaminedMin = params.get("RowsExaminedMin")
+        self.QueryTime = params.get("QueryTime")
+        self.QueryTimeMax = params.get("QueryTimeMax")
+        self.QueryTimeMin = params.get("QueryTimeMin")
+        self.RowsSent = params.get("RowsSent")
+        self.RowsSentMax = params.get("RowsSentMax")
+        self.RowsSentMin = params.get("RowsSentMin")
+        self.ExecTimes = params.get("ExecTimes")
+        self.SqlTemplate = params.get("SqlTemplate")
+        self.SqlText = params.get("SqlText")
+        self.Schema = params.get("Schema")
+        self.QueryTimeRatio = params.get("QueryTimeRatio")
+        self.LockTimeRatio = params.get("LockTimeRatio")
+        self.RowsExaminedRatio = params.get("RowsExaminedRatio")
+        self.RowsSentRatio = params.get("RowsSentRatio")
+
+
+class TableSpaceData(AbstractModel):
+    """库表空间统计数据。
+
+    """
+
+    def __init__(self):
+        """
+        :param TableName: 表名。
+        :type TableName: str
+        :param TableSchema: 库名。
+        :type TableSchema: str
+        :param Engine: 库表的存储引擎。
+        :type Engine: str
+        :param DataLength: 数据空间（MB）。
+        :type DataLength: float
+        :param IndexLength: 索引空间（MB）。
+        :type IndexLength: float
+        :param DataFree: 碎片空间（MB）。
+        :type DataFree: float
+        :param TotalLength: 总使用空间（MB）。
+        :type TotalLength: float
+        :param FragRatio: 碎片率（%）。
+        :type FragRatio: float
+        :param TableRows: 行数。
+        :type TableRows: int
+        :param PhysicalFileSize: 表对应的独立物理文件大小（MB）。
+        :type PhysicalFileSize: float
+        """
+        self.TableName = None
+        self.TableSchema = None
+        self.Engine = None
+        self.DataLength = None
+        self.IndexLength = None
+        self.DataFree = None
+        self.TotalLength = None
+        self.FragRatio = None
+        self.TableRows = None
+        self.PhysicalFileSize = None
+
+
+    def _deserialize(self, params):
+        self.TableName = params.get("TableName")
+        self.TableSchema = params.get("TableSchema")
+        self.Engine = params.get("Engine")
+        self.DataLength = params.get("DataLength")
+        self.IndexLength = params.get("IndexLength")
+        self.DataFree = params.get("DataFree")
+        self.TotalLength = params.get("TotalLength")
+        self.FragRatio = params.get("FragRatio")
+        self.TableRows = params.get("TableRows")
+        self.PhysicalFileSize = params.get("PhysicalFileSize")
+
+
+class TableSpaceTimeSeries(AbstractModel):
+    """库表空间时序数据
+
+    """
+
+    def __init__(self):
+        """
+        :param TableName: 表名。
+        :type TableName: str
+        :param TableSchema: 库名。
+        :type TableSchema: str
+        :param Engine: 库表的存储引擎。
+        :type Engine: str
+        :param SeriesData: 单位时间间隔内的空间指标数据。
+        :type SeriesData: :class:`tencentcloud.dbbrain.v20191016.models.MonitorFloatMetricSeriesData`
+        """
+        self.TableName = None
+        self.TableSchema = None
+        self.Engine = None
+        self.SeriesData = None
+
+
+    def _deserialize(self, params):
+        self.TableName = params.get("TableName")
+        self.TableSchema = params.get("TableSchema")
+        self.Engine = params.get("Engine")
+        if params.get("SeriesData") is not None:
+            self.SeriesData = MonitorFloatMetricSeriesData()
+            self.SeriesData._deserialize(params.get("SeriesData"))
+
+
+class TimeSlice(AbstractModel):
+    """单位时间间隔内的慢日志统计
+
+    """
+
+    def __init__(self):
+        """
+        :param Count: 总数
+        :type Count: int
+        :param Timestamp: 统计开始时间
+        :type Timestamp: int
+        """
+        self.Count = None
+        self.Timestamp = None
+
+
+    def _deserialize(self, params):
+        self.Count = params.get("Count")
+        self.Timestamp = params.get("Timestamp")

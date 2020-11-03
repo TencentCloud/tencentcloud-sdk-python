@@ -361,6 +361,34 @@ class GpmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeToken(self, request):
+        """查询匹配Token，Token用于push消息验证。
+
+        :param request: Request instance for DescribeToken.
+        :type request: :class:`tencentcloud.gpm.v20200820.models.DescribeTokenRequest`
+        :rtype: :class:`tencentcloud.gpm.v20200820.models.DescribeTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeToken", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTokenResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyMatch(self, request):
         """修改匹配
 
@@ -403,6 +431,34 @@ class GpmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyToken(self, request):
+        """修改匹配Token。
+
+        :param request: Request instance for ModifyToken.
+        :type request: :class:`tencentcloud.gpm.v20200820.models.ModifyTokenRequest`
+        :rtype: :class:`tencentcloud.gpm.v20200820.models.ModifyTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyToken", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyTokenResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

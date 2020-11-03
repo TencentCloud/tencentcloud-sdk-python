@@ -130,6 +130,54 @@ class CloudBaseCodeRepoName(AbstractModel):
         self.FullName = params.get("FullName")
 
 
+class CloudBaseEsInfo(AbstractModel):
+    """es信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: es的id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param SecretName: secret名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretName: str
+        :param Ip: ip地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ip: str
+        :param Port: 端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param Index: 索引
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Index: str
+        :param Account: 用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Account: str
+        :param Password: 密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Password: str
+        """
+        self.Id = None
+        self.SecretName = None
+        self.Ip = None
+        self.Port = None
+        self.Index = None
+        self.Account = None
+        self.Password = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.SecretName = params.get("SecretName")
+        self.Ip = params.get("Ip")
+        self.Port = params.get("Port")
+        self.Index = params.get("Index")
+        self.Account = params.get("Account")
+        self.Password = params.get("Password")
+
+
 class CloudBaseRunImageInfo(AbstractModel):
     """CloudBaseRun 镜像信息
 
@@ -161,6 +209,94 @@ class CloudBaseRunImageInfo(AbstractModel):
         self.TagName = params.get("TagName")
         self.ServerAddr = params.get("ServerAddr")
         self.ImageUrl = params.get("ImageUrl")
+
+
+class CloudBaseRunImageSecretInfo(AbstractModel):
+    """ImageSecretInfo的信息
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryServer: 镜像地址
+        :type RegistryServer: str
+        :param UserName: 用户名
+        :type UserName: str
+        :param Password: 仓库密码
+        :type Password: str
+        :param Email: 邮箱
+        :type Email: str
+        """
+        self.RegistryServer = None
+        self.UserName = None
+        self.Password = None
+        self.Email = None
+
+
+    def _deserialize(self, params):
+        self.RegistryServer = params.get("RegistryServer")
+        self.UserName = params.get("UserName")
+        self.Password = params.get("Password")
+        self.Email = params.get("Email")
+
+
+class CloudBaseRunNfsVolumeSource(AbstractModel):
+    """nfs挂载资源
+
+    """
+
+    def __init__(self):
+        """
+        :param Server: NFS挂载Server
+        :type Server: str
+        :param Path: Server路径
+        :type Path: str
+        :param ReadOnly: 是否只读
+        :type ReadOnly: bool
+        """
+        self.Server = None
+        self.Path = None
+        self.ReadOnly = None
+
+
+    def _deserialize(self, params):
+        self.Server = params.get("Server")
+        self.Path = params.get("Path")
+        self.ReadOnly = params.get("ReadOnly")
+
+
+class CloudBaseRunVolumeMount(AbstractModel):
+    """cfs挂载点
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 资源名
+        :type Name: str
+        :param MountPath: 挂载路径
+        :type MountPath: str
+        :param ReadOnly: 是否只读
+        :type ReadOnly: bool
+        :param NfsVolumes: Nfs挂载信息
+        :type NfsVolumes: list of CloudBaseRunNfsVolumeSource
+        """
+        self.Name = None
+        self.MountPath = None
+        self.ReadOnly = None
+        self.NfsVolumes = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.MountPath = params.get("MountPath")
+        self.ReadOnly = params.get("ReadOnly")
+        if params.get("NfsVolumes") is not None:
+            self.NfsVolumes = []
+            for item in params.get("NfsVolumes"):
+                obj = CloudBaseRunNfsVolumeSource()
+                obj._deserialize(item)
+                self.NfsVolumes.append(obj)
 
 
 class CloudRunServiceSimpleVersionSnapshot(AbstractModel):
@@ -402,6 +538,226 @@ class CreateAuthDomainResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateCloudBaseRunResourceRequest(AbstractModel):
+    """CreateCloudBaseRunResource请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境ID
+        :type EnvId: str
+        :param VpcId: vpc的ID
+        :type VpcId: str
+        :param SubnetIds: 子网ID列表，当VpcId不为空，SubnetIds也不能为空
+        :type SubnetIds: list of str
+        """
+        self.EnvId = None
+        self.VpcId = None
+        self.SubnetIds = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.VpcId = params.get("VpcId")
+        self.SubnetIds = params.get("SubnetIds")
+
+
+class CreateCloudBaseRunResourceResponse(AbstractModel):
+    """CreateCloudBaseRunResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 返回集群创建是否成功 succ为成功。并且中间无err
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateCloudBaseRunServerVersionRequest(AbstractModel):
+    """CreateCloudBaseRunServerVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境ID
+        :type EnvId: str
+        :param UploadType: 枚举（package/repository/image)
+        :type UploadType: str
+        :param FlowRatio: 流量占比
+        :type FlowRatio: int
+        :param Cpu: Cpu的大小，单位：核
+        :type Cpu: float
+        :param Mem: Mem的大小，单位：G
+        :type Mem: float
+        :param MinNum: 最小副本数，最小值：0
+        :type MinNum: int
+        :param MaxNum: 副本最大数，最大值：50
+        :type MaxNum: int
+        :param PolicyType: 策略类型(枚举值：比如cpu)
+        :type PolicyType: str
+        :param PolicyThreshold: 策略阈值
+        :type PolicyThreshold: int
+        :param ContainerPort: 服务端口
+        :type ContainerPort: int
+        :param ServerName: 服务名称
+        :type ServerName: str
+        :param RepositoryType: repository的类型(coding/gitlab/github/coding)
+        :type RepositoryType: str
+        :param DockerfilePath: Dockerfile地址
+        :type DockerfilePath: str
+        :param BuildDir: 构建目录
+        :type BuildDir: str
+        :param EnvParams: 环境变量
+        :type EnvParams: str
+        :param Repository: repository地址
+        :type Repository: str
+        :param Branch: 分支
+        :type Branch: str
+        :param VersionRemark: 版本备注
+        :type VersionRemark: str
+        :param PackageName: 代码包名字
+        :type PackageName: str
+        :param PackageVersion: 代码包的版本
+        :type PackageVersion: str
+        :param ImageInfo: Image的详情
+        :type ImageInfo: :class:`tencentcloud.tcb.v20180608.models.CloudBaseRunImageInfo`
+        :param CodeDetail: Github等拉取代码的详情
+        :type CodeDetail: :class:`tencentcloud.tcb.v20180608.models.CloudBaseCodeRepoDetail`
+        :param ImageSecretInfo: 私有镜像秘钥信息
+        :type ImageSecretInfo: :class:`tencentcloud.tcb.v20180608.models.CloudBaseRunImageSecretInfo`
+        :param ImagePullSecret: 私有镜像 认证名称
+        :type ImagePullSecret: str
+        :param CustomLogs: 用户自定义采集日志路径
+        :type CustomLogs: str
+        :param InitialDelaySeconds: 延迟多长时间开始健康检查（单位s）
+        :type InitialDelaySeconds: int
+        :param MountVolumeInfo: cfs挂载信息
+        :type MountVolumeInfo: list of CloudBaseRunVolumeMount
+        :param AccessType: 4 代表只能微信链路访问
+        :type AccessType: int
+        :param EsInfo: es信息
+        :type EsInfo: :class:`tencentcloud.tcb.v20180608.models.CloudBaseEsInfo`
+        :param EnableUnion: 是否使用统一域名
+        :type EnableUnion: bool
+        """
+        self.EnvId = None
+        self.UploadType = None
+        self.FlowRatio = None
+        self.Cpu = None
+        self.Mem = None
+        self.MinNum = None
+        self.MaxNum = None
+        self.PolicyType = None
+        self.PolicyThreshold = None
+        self.ContainerPort = None
+        self.ServerName = None
+        self.RepositoryType = None
+        self.DockerfilePath = None
+        self.BuildDir = None
+        self.EnvParams = None
+        self.Repository = None
+        self.Branch = None
+        self.VersionRemark = None
+        self.PackageName = None
+        self.PackageVersion = None
+        self.ImageInfo = None
+        self.CodeDetail = None
+        self.ImageSecretInfo = None
+        self.ImagePullSecret = None
+        self.CustomLogs = None
+        self.InitialDelaySeconds = None
+        self.MountVolumeInfo = None
+        self.AccessType = None
+        self.EsInfo = None
+        self.EnableUnion = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.UploadType = params.get("UploadType")
+        self.FlowRatio = params.get("FlowRatio")
+        self.Cpu = params.get("Cpu")
+        self.Mem = params.get("Mem")
+        self.MinNum = params.get("MinNum")
+        self.MaxNum = params.get("MaxNum")
+        self.PolicyType = params.get("PolicyType")
+        self.PolicyThreshold = params.get("PolicyThreshold")
+        self.ContainerPort = params.get("ContainerPort")
+        self.ServerName = params.get("ServerName")
+        self.RepositoryType = params.get("RepositoryType")
+        self.DockerfilePath = params.get("DockerfilePath")
+        self.BuildDir = params.get("BuildDir")
+        self.EnvParams = params.get("EnvParams")
+        self.Repository = params.get("Repository")
+        self.Branch = params.get("Branch")
+        self.VersionRemark = params.get("VersionRemark")
+        self.PackageName = params.get("PackageName")
+        self.PackageVersion = params.get("PackageVersion")
+        if params.get("ImageInfo") is not None:
+            self.ImageInfo = CloudBaseRunImageInfo()
+            self.ImageInfo._deserialize(params.get("ImageInfo"))
+        if params.get("CodeDetail") is not None:
+            self.CodeDetail = CloudBaseCodeRepoDetail()
+            self.CodeDetail._deserialize(params.get("CodeDetail"))
+        if params.get("ImageSecretInfo") is not None:
+            self.ImageSecretInfo = CloudBaseRunImageSecretInfo()
+            self.ImageSecretInfo._deserialize(params.get("ImageSecretInfo"))
+        self.ImagePullSecret = params.get("ImagePullSecret")
+        self.CustomLogs = params.get("CustomLogs")
+        self.InitialDelaySeconds = params.get("InitialDelaySeconds")
+        if params.get("MountVolumeInfo") is not None:
+            self.MountVolumeInfo = []
+            for item in params.get("MountVolumeInfo"):
+                obj = CloudBaseRunVolumeMount()
+                obj._deserialize(item)
+                self.MountVolumeInfo.append(obj)
+        self.AccessType = params.get("AccessType")
+        if params.get("EsInfo") is not None:
+            self.EsInfo = CloudBaseEsInfo()
+            self.EsInfo._deserialize(params.get("EsInfo"))
+        self.EnableUnion = params.get("EnableUnion")
+
+
+class CreateCloudBaseRunServerVersionResponse(AbstractModel):
+    """CreateCloudBaseRunServerVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 状态(creating/succ)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: str
+        :param VersionName: 版本名称（只有Result为succ的时候，才会返回VersionName)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionName: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.VersionName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.VersionName = params.get("VersionName")
         self.RequestId = params.get("RequestId")
 
 
@@ -1738,6 +2094,66 @@ class EnvInfo(AbstractModel):
         self.PayMode = params.get("PayMode")
         self.IsDefault = params.get("IsDefault")
         self.Region = params.get("Region")
+
+
+class EstablishCloudBaseRunServerRequest(AbstractModel):
+    """EstablishCloudBaseRunServer请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境id
+        :type EnvId: str
+        :param ServiceName: 服务名称
+        :type ServiceName: str
+        :param IsPublic: 是否开通外网访问
+        :type IsPublic: bool
+        :param ImageRepo: 镜像仓库
+        :type ImageRepo: str
+        :param Remark: 服务描述
+        :type Remark: str
+        :param EsInfo: es信息
+        :type EsInfo: :class:`tencentcloud.tcb.v20180608.models.CloudBaseEsInfo`
+        :param LogType: 日志类型; es/cls
+        :type LogType: str
+        """
+        self.EnvId = None
+        self.ServiceName = None
+        self.IsPublic = None
+        self.ImageRepo = None
+        self.Remark = None
+        self.EsInfo = None
+        self.LogType = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.ServiceName = params.get("ServiceName")
+        self.IsPublic = params.get("IsPublic")
+        self.ImageRepo = params.get("ImageRepo")
+        self.Remark = params.get("Remark")
+        if params.get("EsInfo") is not None:
+            self.EsInfo = CloudBaseEsInfo()
+            self.EsInfo._deserialize(params.get("EsInfo"))
+        self.LogType = params.get("LogType")
+
+
+class EstablishCloudBaseRunServerResponse(AbstractModel):
+    """EstablishCloudBaseRunServer返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class FunctionInfo(AbstractModel):

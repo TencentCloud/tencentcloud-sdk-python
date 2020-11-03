@@ -109,6 +109,62 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateCloudBaseRunResource(self, request):
+        """开通容器托管的资源，包括集群创建，VPC配置，异步任务创建，镜像托管，Coding等，查看创建结果需要根据DescribeCloudBaseRunResource接口来查看
+
+        :param request: Request instance for CreateCloudBaseRunResource.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.CreateCloudBaseRunResourceRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.CreateCloudBaseRunResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateCloudBaseRunResource", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateCloudBaseRunResourceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateCloudBaseRunServerVersion(self, request):
+        """创建服务版本
+
+        :param request: Request instance for CreateCloudBaseRunServerVersion.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.CreateCloudBaseRunServerVersionRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.CreateCloudBaseRunServerVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateCloudBaseRunServerVersion", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateCloudBaseRunServerVersionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateHostingDomain(self, request):
         """创建托管域名
 
@@ -655,6 +711,34 @@ class TcbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DestroyStaticStoreResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def EstablishCloudBaseRunServer(self, request):
+        """创建云应用服务
+
+        :param request: Request instance for EstablishCloudBaseRunServer.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.EstablishCloudBaseRunServerRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.EstablishCloudBaseRunServerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("EstablishCloudBaseRunServer", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EstablishCloudBaseRunServerResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

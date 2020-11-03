@@ -170,6 +170,8 @@ class CreateCfsFileSystemRequest(AbstractModel):
         :type FsName: str
         :param ResourceTags: 文件系统标签
         :type ResourceTags: list of TagInfo
+        :param ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。用于保证请求幂等性的字符串失效时间为2小时。
+        :type ClientToken: str
         """
         self.Zone = None
         self.NetInterface = None
@@ -181,6 +183,7 @@ class CreateCfsFileSystemRequest(AbstractModel):
         self.MountIP = None
         self.FsName = None
         self.ResourceTags = None
+        self.ClientToken = None
 
 
     def _deserialize(self, params):
@@ -199,6 +202,7 @@ class CreateCfsFileSystemRequest(AbstractModel):
                 obj = TagInfo()
                 obj._deserialize(item)
                 self.ResourceTags.append(obj)
+        self.ClientToken = params.get("ClientToken")
 
 
 class CreateCfsFileSystemResponse(AbstractModel):
@@ -208,45 +212,13 @@ class CreateCfsFileSystemResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CreationTime: 文件系统创建时间
-        :type CreationTime: str
-        :param CreationToken: 用户自定义文件系统名称
-        :type CreationToken: str
-        :param FileSystemId: 文件系统 ID
-        :type FileSystemId: str
-        :param LifeCycleState: 文件系统状态
-        :type LifeCycleState: str
-        :param SizeByte: 文件系统已使用容量大小
-        :type SizeByte: int
-        :param ZoneId: 可用区 ID
-        :type ZoneId: int
-        :param FsName: 用户自定义文件系统名称
-        :type FsName: str
-        :param Encrypted: 文件系统是否加密
-        :type Encrypted: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.CreationTime = None
-        self.CreationToken = None
-        self.FileSystemId = None
-        self.LifeCycleState = None
-        self.SizeByte = None
-        self.ZoneId = None
-        self.FsName = None
-        self.Encrypted = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
-        self.CreationTime = params.get("CreationTime")
-        self.CreationToken = params.get("CreationToken")
-        self.FileSystemId = params.get("FileSystemId")
-        self.LifeCycleState = params.get("LifeCycleState")
-        self.SizeByte = params.get("SizeByte")
-        self.ZoneId = params.get("ZoneId")
-        self.FsName = params.get("FsName")
-        self.Encrypted = params.get("Encrypted")
         self.RequestId = params.get("RequestId")
 
 

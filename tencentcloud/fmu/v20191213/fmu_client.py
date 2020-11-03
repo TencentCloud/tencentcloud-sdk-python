@@ -223,6 +223,62 @@ class FmuClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def StyleImage(self, request):
+        """上传一张照片，输出滤镜处理后的图片。
+
+        :param request: Request instance for StyleImage.
+        :type request: :class:`tencentcloud.fmu.v20191213.models.StyleImageRequest`
+        :rtype: :class:`tencentcloud.fmu.v20191213.models.StyleImageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StyleImage", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StyleImageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StyleImagePro(self, request):
+        """上传一张照片，输出滤镜处理后的图片。
+
+        :param request: Request instance for StyleImagePro.
+        :type request: :class:`tencentcloud.fmu.v20191213.models.StyleImageProRequest`
+        :rtype: :class:`tencentcloud.fmu.v20191213.models.StyleImageProResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StyleImagePro", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StyleImageProResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def TryLipstickPic(self, request):
         """对图片中的人脸嘴唇进行着色，最多支持同时对一张图中的3张人脸进行试唇色。
 
