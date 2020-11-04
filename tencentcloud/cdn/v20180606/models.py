@@ -5002,12 +5002,16 @@ class ListDiagnoseReportRequest(AbstractModel):
         """
         :param KeyWords: 用于搜索诊断URL的关键字，不填时返回用户所有的诊断任务。
         :type KeyWords: str
+        :param DiagnoseLink: 用于搜索诊断系统返回的诊断链接，形如：http://cdn.cloud.tencent.com/self_diagnose/xxxxx
+        :type DiagnoseLink: str
         """
         self.KeyWords = None
+        self.DiagnoseLink = None
 
 
     def _deserialize(self, params):
         self.KeyWords = params.get("KeyWords")
+        self.DiagnoseLink = params.get("DiagnoseLink")
 
 
 class ListDiagnoseReportResponse(AbstractModel):

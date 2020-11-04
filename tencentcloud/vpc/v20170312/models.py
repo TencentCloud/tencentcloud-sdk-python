@@ -1940,7 +1940,7 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
         :type NetworkInterfaceName: str
         :param SubnetId: 弹性网卡所在的子网实例ID，例如：subnet-0ap8nwca。
         :type SubnetId: str
-        :param InstanceId: 云主机实例ID。
+        :param InstanceId: 云服务器实例ID。
         :type InstanceId: str
         :param PrivateIpAddresses: 指定的内网IP信息，单次最多指定10个。
         :type PrivateIpAddresses: list of PrivateIpAddressSpecification
@@ -1993,19 +1993,13 @@ class CreateAndAttachNetworkInterfaceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param NetworkInterface: 弹性网卡实例。
-        :type NetworkInterface: :class:`tencentcloud.vpc.v20170312.models.NetworkInterface`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.NetworkInterface = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
-        if params.get("NetworkInterface") is not None:
-            self.NetworkInterface = NetworkInterface()
-            self.NetworkInterface._deserialize(params.get("NetworkInterface"))
         self.RequestId = params.get("RequestId")
 
 
@@ -9264,9 +9258,9 @@ class GatewayFlowMonitorDetail(AbstractModel):
         :type InPkg: int
         :param OutPkg: 出包量。
         :type OutPkg: int
-        :param InTraffic: 入带宽，单位：`Byte`。
+        :param InTraffic: 入流量，单位：`Byte`。
         :type InTraffic: int
-        :param OutTraffic: 出带宽，单位：`Byte`。
+        :param OutTraffic: 出流量，单位：`Byte`。
         :type OutTraffic: int
         """
         self.PrivateIpAddress = None

@@ -368,6 +368,8 @@ TypeId为标准架构时，MemSize是实例总内存容量；TypeId为集群架�
         :type InstanceName: str
         :param NoAuth: 是否支持免密，true-免密实例，false-非免密实例，默认为非免密实例，仅VPC网络的实例支持免密码访问。
         :type NoAuth: bool
+        :param NodeSet: 实例的节点信息，目前支持传入节点的类型（主节点或者副本节点），节点的可用区。单可用区部署不需要传递此参数。
+        :type NodeSet: list of RedisNodeInfo
         """
         self.ZoneId = None
         self.TypeId = None
@@ -387,6 +389,7 @@ TypeId为标准架构时，MemSize是实例总内存容量；TypeId为集群架�
         self.ReplicasReadonly = None
         self.InstanceName = None
         self.NoAuth = None
+        self.NodeSet = None
 
 
     def _deserialize(self, params):
@@ -408,6 +411,12 @@ TypeId为标准架构时，MemSize是实例总内存容量；TypeId为集群架�
         self.ReplicasReadonly = params.get("ReplicasReadonly")
         self.InstanceName = params.get("InstanceName")
         self.NoAuth = params.get("NoAuth")
+        if params.get("NodeSet") is not None:
+            self.NodeSet = []
+            for item in params.get("NodeSet"):
+                obj = RedisNodeInfo()
+                obj._deserialize(item)
+                self.NodeSet.append(obj)
 
 
 class CreateInstancesResponse(AbstractModel):
@@ -3588,6 +3597,54 @@ class ModifyAutoBackupConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyConnectionConfigRequest(AbstractModel):
+    """ModifyConnectionConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例的ID，长度在12-36之间。
+        :type InstanceId: str
+        :param Bandwidth: 附加带宽，大于0，单位MB。
+        :type Bandwidth: int
+        :param ClientLimit: 单分片的总连接数。
+未开启副本只读时，下限为10000，上限为40000；
+开启副本只读时，下限为10000，上限为10000×(只读副本数+3)。
+        :type ClientLimit: int
+        """
+        self.InstanceId = None
+        self.Bandwidth = None
+        self.ClientLimit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Bandwidth = params.get("Bandwidth")
+        self.ClientLimit = params.get("ClientLimit")
+
+
+class ModifyConnectionConfigResponse(AbstractModel):
+    """ModifyConnectionConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
     """ModifyDBInstanceSecurityGroups请求参数结构体
 
@@ -4149,6 +4206,31 @@ class RedisCommonInstanceList(AbstractModel):
         self.Createtime = params.get("Createtime")
         self.PayMode = params.get("PayMode")
         self.NetType = params.get("NetType")
+
+
+class RedisNodeInfo(AbstractModel):
+    """描述Redis实例的主节点或者副本节点信息
+
+    """
+
+    def __init__(self):
+        """
+        :param NodeType: 节点类型，0 为主节点，1 为副本节点
+        :type NodeType: int
+        :param ZoneId: 主节点或者副本节点的可用区ID
+        :type ZoneId: int
+        :param NodeId: 主节点或者副本节点的ID，创建时不需要传递此参数。
+        :type NodeId: int
+        """
+        self.NodeType = None
+        self.ZoneId = None
+        self.NodeId = None
+
+
+    def _deserialize(self, params):
+        self.NodeType = params.get("NodeType")
+        self.ZoneId = params.get("ZoneId")
+        self.NodeId = params.get("NodeId")
 
 
 class RedisNodes(AbstractModel):

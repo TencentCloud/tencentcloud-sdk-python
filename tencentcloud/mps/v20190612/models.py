@@ -9197,6 +9197,53 @@ class OcrWordsConfigureInfoForUpdate(AbstractModel):
         self.LabelSet = params.get("LabelSet")
 
 
+class OverrideTranscodeParameter(AbstractModel):
+    """自定义转码的规格参数。用于覆盖模板中对应参数值。
+
+    """
+
+    def __init__(self):
+        """
+        :param Container: 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a。其中，mp3、flac、ogg、m4a 为纯音频文件。
+        :type Container: str
+        :param RemoveVideo: 是否去除视频数据，取值：
+<li>0：保留；</li>
+<li>1：去除。</li>
+        :type RemoveVideo: int
+        :param RemoveAudio: 是否去除音频数据，取值：
+<li>0：保留；</li>
+<li>1：去除。</li>
+        :type RemoveAudio: int
+        :param VideoTemplate: 视频流配置参数。
+        :type VideoTemplate: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfoForUpdate`
+        :param AudioTemplate: 音频流配置参数。
+        :type AudioTemplate: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfoForUpdate`
+        :param TEHDConfig: 极速高清转码参数。
+        :type TEHDConfig: :class:`tencentcloud.mps.v20190612.models.TEHDConfigForUpdate`
+        """
+        self.Container = None
+        self.RemoveVideo = None
+        self.RemoveAudio = None
+        self.VideoTemplate = None
+        self.AudioTemplate = None
+        self.TEHDConfig = None
+
+
+    def _deserialize(self, params):
+        self.Container = params.get("Container")
+        self.RemoveVideo = params.get("RemoveVideo")
+        self.RemoveAudio = params.get("RemoveAudio")
+        if params.get("VideoTemplate") is not None:
+            self.VideoTemplate = VideoTemplateInfoForUpdate()
+            self.VideoTemplate._deserialize(params.get("VideoTemplate"))
+        if params.get("AudioTemplate") is not None:
+            self.AudioTemplate = AudioTemplateInfoForUpdate()
+            self.AudioTemplate._deserialize(params.get("AudioTemplate"))
+        if params.get("TEHDConfig") is not None:
+            self.TEHDConfig = TEHDConfigForUpdate()
+            self.TEHDConfig._deserialize(params.get("TEHDConfig"))
+
+
 class ParseLiveStreamProcessNotificationRequest(AbstractModel):
     """ParseLiveStreamProcessNotification请求参数结构体
 
@@ -11135,6 +11182,11 @@ class TranscodeTaskInput(AbstractModel):
 该参数用于高度定制场景，建议您优先使用 Definition 指定转码参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RawParameter: :class:`tencentcloud.mps.v20190612.models.RawTranscodeParameter`
+        :param OverrideParameter: 视频转码自定义参数，当 Definition 不填 0 时有效。
+当填写了该结构中的部分转码参数时，将使用填写的参数覆盖转码模板中的参数。
+该参数用于高度定制场景，建议您仅使用 Definition 指定转码参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OverrideParameter: :class:`tencentcloud.mps.v20190612.models.OverrideTranscodeParameter`
         :param WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。
 注意：此字段可能返回 null，表示取不到有效值。
         :type WatermarkSet: list of WatermarkInput
@@ -11153,6 +11205,7 @@ class TranscodeTaskInput(AbstractModel):
         """
         self.Definition = None
         self.RawParameter = None
+        self.OverrideParameter = None
         self.WatermarkSet = None
         self.MosaicSet = None
         self.OutputStorage = None
@@ -11166,6 +11219,9 @@ class TranscodeTaskInput(AbstractModel):
         if params.get("RawParameter") is not None:
             self.RawParameter = RawTranscodeParameter()
             self.RawParameter._deserialize(params.get("RawParameter"))
+        if params.get("OverrideParameter") is not None:
+            self.OverrideParameter = OverrideTranscodeParameter()
+            self.OverrideParameter._deserialize(params.get("OverrideParameter"))
         if params.get("WatermarkSet") is not None:
             self.WatermarkSet = []
             for item in params.get("WatermarkSet"):

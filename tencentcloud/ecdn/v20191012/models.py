@@ -45,6 +45,8 @@ class AddEcdnDomainRequest(AbstractModel):
         :type Https: :class:`tencentcloud.ecdn.v20191012.models.Https`
         :param ForceRedirect: 访问协议强制跳转配置。
         :type ForceRedirect: :class:`tencentcloud.ecdn.v20191012.models.ForceRedirect`
+        :param Tag: 域名绑定的标签
+        :type Tag: list of Tag
         """
         self.Domain = None
         self.Origin = None
@@ -57,6 +59,7 @@ class AddEcdnDomainRequest(AbstractModel):
         self.Cache = None
         self.Https = None
         self.ForceRedirect = None
+        self.Tag = None
 
 
     def _deserialize(self, params):
@@ -87,6 +90,12 @@ class AddEcdnDomainRequest(AbstractModel):
         if params.get("ForceRedirect") is not None:
             self.ForceRedirect = ForceRedirect()
             self.ForceRedirect._deserialize(params.get("ForceRedirect"))
+        if params.get("Tag") is not None:
+            self.Tag = []
+            for item in params.get("Tag"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tag.append(obj)
 
 
 class AddEcdnDomainResponse(AbstractModel):
@@ -932,6 +941,9 @@ class DomainDetailInfo(AbstractModel):
         :param Readonly: 域名锁定状态，normal、global 分别表示未被锁定，全球锁定。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Readonly: str
+        :param Tag: 域名标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tag: list of Tag
         """
         self.ResourceId = None
         self.AppId = None
@@ -952,6 +964,7 @@ class DomainDetailInfo(AbstractModel):
         self.ForceRedirect = None
         self.Area = None
         self.Readonly = None
+        self.Tag = None
 
 
     def _deserialize(self, params):
@@ -990,6 +1003,12 @@ class DomainDetailInfo(AbstractModel):
             self.ForceRedirect._deserialize(params.get("ForceRedirect"))
         self.Area = params.get("Area")
         self.Readonly = params.get("Readonly")
+        if params.get("Tag") is not None:
+            self.Tag = []
+            for item in params.get("Tag"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tag.append(obj)
 
 
 class DomainFilter(AbstractModel):
@@ -1697,6 +1716,29 @@ class StopEcdnDomainResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class Tag(AbstractModel):
+    """标签键和标签值
+
+    """
+
+    def __init__(self):
+        """
+        :param TagKey: 标签键
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagKey: str
+        :param TagValue: 标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
 
 
 class TimestampData(AbstractModel):

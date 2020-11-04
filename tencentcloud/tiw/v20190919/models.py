@@ -113,13 +113,17 @@ class CreateTranscodeResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param TaskId: 文档转码任务的唯一标识Id，用于查询该任务的进度以及转码结果
+        :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.TaskId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
 
 
@@ -249,13 +253,21 @@ class DescribeOnlineRecordCallbackResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param Callback: 实时录制事件回调地址，如果未设置回调地址，该字段为空字符串
+        :type Callback: str
+        :param CallbackKey: 实时录制回调鉴权密钥
+        :type CallbackKey: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.Callback = None
+        self.CallbackKey = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.Callback = params.get("Callback")
+        self.CallbackKey = params.get("CallbackKey")
         self.RequestId = params.get("RequestId")
 
 
@@ -392,13 +404,21 @@ class DescribeTranscodeCallbackResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param Callback: 文档转码回调地址
+        :type Callback: str
+        :param CallbackKey: 文档转码回调鉴权密钥
+        :type CallbackKey: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.Callback = None
+        self.CallbackKey = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.Callback = params.get("Callback")
+        self.CallbackKey = params.get("CallbackKey")
         self.RequestId = params.get("RequestId")
 
 
@@ -430,13 +450,62 @@ class DescribeTranscodeResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param Pages: 文档的总页数
+        :type Pages: int
+        :param Progress: 转码的当前进度,取值范围为0~100
+        :type Progress: int
+        :param Resolution: 文档的分辨率
+        :type Resolution: str
+        :param ResultUrl: 转码完成后结果的URL
+动态转码：PPT转动态H5的链接
+静态转码：文档每一页的图片URL前缀，比如，该URL前缀为`http://example.com/g0jb42ps49vtebjshilb/`，那么文档第1页的图片URL为
+`http://example.com/g0jb42ps49vtebjshilb/1.jpg`，其它页以此类推
+        :type ResultUrl: str
+        :param Status: 任务的当前状态
+- QUEUED: 正在排队等待转换
+- PROCESSING: 转换中
+- FINISHED: 转换完成
+        :type Status: str
+        :param TaskId: 转码任务的唯一标识Id
+        :type TaskId: str
+        :param Title: 文档的文件名
+        :type Title: str
+        :param ThumbnailUrl: 缩略图URL前缀，比如，该URL前缀为`http://example.com/g0jb42ps49vtebjshilb/ `，那么动态PPT第1页的缩略图URL为
+`http://example.com/g0jb42ps49vtebjshilb/1.jpg`，其它页以此类推
+
+如果发起文档转码请求参数中带了ThumbnailResolution参数，并且转码类型为动态转码，该参数不为空，其余情况该参数为空字符串
+        :type ThumbnailUrl: str
+        :param ThumbnailResolution: 动态转码缩略图生成分辨率
+        :type ThumbnailResolution: str
+        :param CompressFileUrl: 转码压缩文件下载的URL，如果发起文档转码请求参数中`CompressFileType`为空或者不是支持的压缩格式，该参数为空字符串
+        :type CompressFileUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.Pages = None
+        self.Progress = None
+        self.Resolution = None
+        self.ResultUrl = None
+        self.Status = None
+        self.TaskId = None
+        self.Title = None
+        self.ThumbnailUrl = None
+        self.ThumbnailResolution = None
+        self.CompressFileUrl = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.Pages = params.get("Pages")
+        self.Progress = params.get("Progress")
+        self.Resolution = params.get("Resolution")
+        self.ResultUrl = params.get("ResultUrl")
+        self.Status = params.get("Status")
+        self.TaskId = params.get("TaskId")
+        self.Title = params.get("Title")
+        self.ThumbnailUrl = params.get("ThumbnailUrl")
+        self.ThumbnailResolution = params.get("ThumbnailResolution")
+        self.CompressFileUrl = params.get("CompressFileUrl")
         self.RequestId = params.get("RequestId")
 
 

@@ -360,9 +360,9 @@ class CheckCertificateChainResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param IsValid: 1为通过检查，0为未通过检查。
+        :param IsValid: true为通过检查，false为未通过检查。
         :type IsValid: bool
-        :param IsTrustedCA: 1为可信CA，0为不可信CA。
+        :param IsTrustedCA: true为可信CA，false为不可信CA。
         :type IsTrustedCA: bool
         :param Chains: 包含证书链中每一段证书的通用名称。
         :type Chains: list of str

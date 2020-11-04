@@ -1341,6 +1341,34 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyConnectionConfig(self, request):
+        """修改实例的连接配置，包括带宽和最大连接数
+
+        :param request: Request instance for ModifyConnectionConfig.
+        :type request: :class:`tencentcloud.redis.v20180412.models.ModifyConnectionConfigRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ModifyConnectionConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyConnectionConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyConnectionConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyDBInstanceSecurityGroups(self, request):
         """本接口(ModifyDBInstanceSecurityGroups)用于修改实例绑定的安全组。
 
