@@ -212,13 +212,45 @@ class CreateCfsFileSystemResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param CreationTime: 文件系统创建时间
+        :type CreationTime: str
+        :param CreationToken: 用户自定义文件系统名称
+        :type CreationToken: str
+        :param FileSystemId: 文件系统 ID
+        :type FileSystemId: str
+        :param LifeCycleState: 文件系统状态
+        :type LifeCycleState: str
+        :param SizeByte: 文件系统已使用容量大小
+        :type SizeByte: int
+        :param ZoneId: 可用区 ID
+        :type ZoneId: int
+        :param FsName: 用户自定义文件系统名称
+        :type FsName: str
+        :param Encrypted: 文件系统是否加密
+        :type Encrypted: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.CreationTime = None
+        self.CreationToken = None
+        self.FileSystemId = None
+        self.LifeCycleState = None
+        self.SizeByte = None
+        self.ZoneId = None
+        self.FsName = None
+        self.Encrypted = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.CreationTime = params.get("CreationTime")
+        self.CreationToken = params.get("CreationToken")
+        self.FileSystemId = params.get("FileSystemId")
+        self.LifeCycleState = params.get("LifeCycleState")
+        self.SizeByte = params.get("SizeByte")
+        self.ZoneId = params.get("ZoneId")
+        self.FsName = params.get("FsName")
+        self.Encrypted = params.get("Encrypted")
         self.RequestId = params.get("RequestId")
 
 

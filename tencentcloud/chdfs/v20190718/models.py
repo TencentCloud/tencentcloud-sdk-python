@@ -300,13 +300,19 @@ class CreateMountPointResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param MountPoint: 挂载点
+        :type MountPoint: :class:`tencentcloud.chdfs.v20190718.models.MountPoint`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.MountPoint = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("MountPoint") is not None:
+            self.MountPoint = MountPoint()
+            self.MountPoint._deserialize(params.get("MountPoint"))
         self.RequestId = params.get("RequestId")
 
 

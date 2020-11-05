@@ -1993,13 +1993,19 @@ class CreateAndAttachNetworkInterfaceResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param NetworkInterface: 弹性网卡实例。
+        :type NetworkInterface: :class:`tencentcloud.vpc.v20170312.models.NetworkInterface`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.NetworkInterface = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("NetworkInterface") is not None:
+            self.NetworkInterface = NetworkInterface()
+            self.NetworkInterface._deserialize(params.get("NetworkInterface"))
         self.RequestId = params.get("RequestId")
 
 

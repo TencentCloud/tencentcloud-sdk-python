@@ -62,6 +62,187 @@ class CreateSDKLoginTokenResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateStaffRequest(AbstractModel):
+    """CreateStaff请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SdkAppId: 应用ID
+        :type SdkAppId: int
+        :param Staffs: 客服信息，个数不超过 10
+        :type Staffs: list of SeatUserInfo
+        """
+        self.SdkAppId = None
+        self.Staffs = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        if params.get("Staffs") is not None:
+            self.Staffs = []
+            for item in params.get("Staffs"):
+                obj = SeatUserInfo()
+                obj._deserialize(item)
+                self.Staffs.append(obj)
+
+
+class CreateStaffResponse(AbstractModel):
+    """CreateStaff返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeChatMessagesRequest(AbstractModel):
+    """DescribeChatMessages请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CdrId: 服务记录ID
+        :type CdrId: str
+        :param InstanceId: 实例ID
+        :type InstanceId: int
+        :param SdkAppId: 应用ID
+        :type SdkAppId: int
+        :param Limit: 返回记录条数 最大为100默认20
+        :type Limit: int
+        :param Offset: 返回记录偏移 默认为0
+        :type Offset: int
+        :param Order: 1为从早到晚，2为从晚到早，默认为2
+        :type Order: int
+        """
+        self.CdrId = None
+        self.InstanceId = None
+        self.SdkAppId = None
+        self.Limit = None
+        self.Offset = None
+        self.Order = None
+
+
+    def _deserialize(self, params):
+        self.CdrId = params.get("CdrId")
+        self.InstanceId = params.get("InstanceId")
+        self.SdkAppId = params.get("SdkAppId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Order = params.get("Order")
+
+
+class DescribeChatMessagesResponse(AbstractModel):
+    """DescribeChatMessages返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 总记录数
+        :type TotalCount: int
+        :param Messages: 消息列表
+        :type Messages: list of MessageBody
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Messages = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Messages") is not None:
+            self.Messages = []
+            for item in params.get("Messages"):
+                obj = MessageBody()
+                obj._deserialize(item)
+                self.Messages.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeIMCdrsRequest(AbstractModel):
+    """DescribeIMCdrs请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTimestamp: 起始时间
+        :type StartTimestamp: int
+        :param EndTimestamp: 结束时间
+        :type EndTimestamp: int
+        :param InstanceId: 实例ID
+        :type InstanceId: int
+        :param SdkAppId: 应用ID
+        :type SdkAppId: int
+        :param Limit: 返回记录条数 最大为100默认20
+        :type Limit: int
+        :param Offset: 返回记录偏移 默认为0
+        :type Offset: int
+        :param Type: 1为全媒体，2为文本客服，不填则查询全部
+        :type Type: int
+        """
+        self.StartTimestamp = None
+        self.EndTimestamp = None
+        self.InstanceId = None
+        self.SdkAppId = None
+        self.Limit = None
+        self.Offset = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.StartTimestamp = params.get("StartTimestamp")
+        self.EndTimestamp = params.get("EndTimestamp")
+        self.InstanceId = params.get("InstanceId")
+        self.SdkAppId = params.get("SdkAppId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Type = params.get("Type")
+
+
+class DescribeIMCdrsResponse(AbstractModel):
+    """DescribeIMCdrs返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 总记录数
+        :type TotalCount: int
+        :param IMCdrs: 服务记录列表
+        :type IMCdrs: list of IMCdrInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.IMCdrs = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("IMCdrs") is not None:
+            self.IMCdrs = []
+            for item in params.get("IMCdrs"):
+                obj = IMCdrInfo()
+                obj._deserialize(item)
+                self.IMCdrs.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTelCdrRequest(AbstractModel):
     """DescribeTelCdr请求参数结构体
 
@@ -69,30 +250,34 @@ class DescribeTelCdrRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例 ID
-        :type InstanceId: int
         :param StartTimeStamp: 起始时间戳，Unix 时间戳
         :type StartTimeStamp: int
         :param EndTimeStamp: 结束时间戳，Unix 时间戳
         :type EndTimeStamp: int
-        :param Limit: 返回记录条数
+        :param Limit: 返回记录条数，上限 100
         :type Limit: int
         :param Offset: 偏移量
         :type Offset: int
+        :param InstanceId: 实例 ID
+        :type InstanceId: int
+        :param SdkAppId: 应用ID。
+        :type SdkAppId: int
         """
-        self.InstanceId = None
         self.StartTimeStamp = None
         self.EndTimeStamp = None
         self.Limit = None
         self.Offset = None
+        self.InstanceId = None
+        self.SdkAppId = None
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
         self.StartTimeStamp = params.get("StartTimeStamp")
         self.EndTimeStamp = params.get("EndTimeStamp")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        self.InstanceId = params.get("InstanceId")
+        self.SdkAppId = params.get("SdkAppId")
 
 
 class DescribeTelCdrResponse(AbstractModel):
@@ -123,6 +308,98 @@ class DescribeTelCdrResponse(AbstractModel):
                 obj._deserialize(item)
                 self.TelCdrs.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class IMCdrInfo(AbstractModel):
+    """全媒体服务记录信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 服务记录ID
+        :type Id: str
+        :param Duration: 服务时长秒数
+        :type Duration: int
+        :param EndStatus: 结束状态
+        :type EndStatus: int
+        :param Nickname: 用户昵称
+        :type Nickname: str
+        :param Type: 服务类型 1为全媒体，2为文本客服
+        :type Type: int
+        :param StaffId: 客服ID
+        :type StaffId: str
+        :param Timestamp: 服务时间戳
+        :type Timestamp: int
+        """
+        self.Id = None
+        self.Duration = None
+        self.EndStatus = None
+        self.Nickname = None
+        self.Type = None
+        self.StaffId = None
+        self.Timestamp = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Duration = params.get("Duration")
+        self.EndStatus = params.get("EndStatus")
+        self.Nickname = params.get("Nickname")
+        self.Type = params.get("Type")
+        self.StaffId = params.get("StaffId")
+        self.Timestamp = params.get("Timestamp")
+
+
+class Message(AbstractModel):
+    """单条消息
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 消息类型
+        :type Type: str
+        :param Content: 消息内容
+        :type Content: str
+        """
+        self.Type = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Content = params.get("Content")
+
+
+class MessageBody(AbstractModel):
+    """聊天消息
+
+    """
+
+    def __init__(self):
+        """
+        :param Timestamp: 消息时间戳
+        :type Timestamp: int
+        :param From: 发消息的用户ID
+        :type From: str
+        :param Messages: 消息列表
+        :type Messages: list of Message
+        """
+        self.Timestamp = None
+        self.From = None
+        self.Messages = None
+
+
+    def _deserialize(self, params):
+        self.Timestamp = params.get("Timestamp")
+        self.From = params.get("From")
+        if params.get("Messages") is not None:
+            self.Messages = []
+            for item in params.get("Messages"):
+                obj = Message()
+                obj._deserialize(item)
+                self.Messages.append(obj)
 
 
 class SeatUserInfo(AbstractModel):

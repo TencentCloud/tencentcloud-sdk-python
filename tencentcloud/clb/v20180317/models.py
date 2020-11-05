@@ -3505,7 +3505,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         :param ExpireTime: 负载均衡实例的过期时间，仅对预付费负载均衡生效
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: str
-        :param ChargeType: 负载均衡实例的计费类型
+        :param ChargeType: 负载均衡实例的计费类型，PREPAID：包年包月，POSTPAID_BY_HOUR：按量计费
 注意：此字段可能返回 null，表示取不到有效值。
         :type ChargeType: str
         :param NetworkAttributes: 负载均衡实例的网络属性

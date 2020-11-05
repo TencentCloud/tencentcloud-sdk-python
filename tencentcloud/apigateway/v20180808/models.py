@@ -1404,13 +1404,46 @@ class CreateServiceResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param ServiceId: 服务唯一ID。
+        :type ServiceId: str
+        :param ServiceName: 用户自定义服务名称。
+        :type ServiceName: str
+        :param ServiceDesc: 用户自定义服务描述。
+        :type ServiceDesc: str
+        :param OuterSubDomain: 外网默认域名。
+        :type OuterSubDomain: str
+        :param InnerSubDomain: vpc内网默认域名。
+        :type InnerSubDomain: str
+        :param CreatedTime: 服务创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
+        :type CreatedTime: str
+        :param NetTypes: 网络类型列表，INNER为内网访问，OUTER为外网访问。
+        :type NetTypes: list of str
+        :param IpVersion: IP版本号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpVersion: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.ServiceId = None
+        self.ServiceName = None
+        self.ServiceDesc = None
+        self.OuterSubDomain = None
+        self.InnerSubDomain = None
+        self.CreatedTime = None
+        self.NetTypes = None
+        self.IpVersion = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.ServiceId = params.get("ServiceId")
+        self.ServiceName = params.get("ServiceName")
+        self.ServiceDesc = params.get("ServiceDesc")
+        self.OuterSubDomain = params.get("OuterSubDomain")
+        self.InnerSubDomain = params.get("InnerSubDomain")
+        self.CreatedTime = params.get("CreatedTime")
+        self.NetTypes = params.get("NetTypes")
+        self.IpVersion = params.get("IpVersion")
         self.RequestId = params.get("RequestId")
 
 
