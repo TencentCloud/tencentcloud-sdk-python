@@ -93,7 +93,7 @@ class CreateAcRulesRequest(AbstractModel):
         :type Enable: int
         :param Overwrite: 0：添加，1：覆盖
         :type Overwrite: int
-        :param InstanceId: NAT实例ID, Area存在的时候这个必传
+        :param InstanceId: NAT实例ID, 参数Area存在的时候这个必传
         :type InstanceId: str
         :param From: portScan: 来自于端口扫描, patchImport: 来自于批量导入
         :type From: str
@@ -133,7 +133,7 @@ class CreateAcRulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 状态值
+        :param Status: 状态值，0:操作成功
         :type Status: int
         :param Info: 返回多余的信息
 注意：此字段可能返回 null，表示取不到有效值。
@@ -216,7 +216,7 @@ class DeleteAllAccessControlRuleRequest(AbstractModel):
         """
         :param Direction: 方向，0：出站，1：入站
         :type Direction: int
-        :param EdgeId: 边ID
+        :param EdgeId: VPC间防火墙开关ID
         :type EdgeId: str
         :param Area: nat地域
         :type Area: str
@@ -742,7 +742,7 @@ class ModifyAcRuleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 装填值
+        :param Status: 状态值，0:操作成功
         :type Status: int
         :param Info: 返回多余的信息
 注意：此字段可能返回 null，表示取不到有效值。
@@ -852,7 +852,7 @@ class ModifyAllSwitchStatusResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 修改成功与否状态值
+        :param Status: 开启或者关闭成功与否状态值
         :type Status: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -875,7 +875,7 @@ class ModifyItemSwitchStatusRequest(AbstractModel):
         """
         :param Id: id值
         :type Id: int
-        :param Status: 状态值
+        :param Status: 状态值，0: 关闭 ,1:开启
         :type Status: int
         :param Type: 0: 边界防火墙开关，1：vpc防火墙开关
         :type Type: int
@@ -953,7 +953,7 @@ class ModifySequenceRulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 0: 修改成功, !0: 修改失败
+        :param Status: 0: 修改成功, 其他: 修改失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

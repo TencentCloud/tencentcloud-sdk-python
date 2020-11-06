@@ -23,7 +23,7 @@ class AttributeMap(AbstractModel):
 
     def __init__(self):
         """
-        :param Key: 属性字典 key
+        :param Key: 属性字典 key [a-zA-Z0-9-\.]*
         :type Key: str
         :param Value: 属性字典 value
         :type Value: int
@@ -793,7 +793,7 @@ class MatchAttribute(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 属性名 长度 128
+        :param Name: 属性名 长度 128 [a-zA-Z0-9-\.]*
         :type Name: str
         :param Type: 属性类型: 0 数值; 1 string; 默认 0
         :type Type: int
@@ -993,7 +993,7 @@ class MatchTicket(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: MatchTicketId 长度 128
+        :param Id: MatchTicketId 长度 128 [a-zA-Z0-9-\.]*
         :type Id: str
         :param MatchCode: 匹配 Code
         :type MatchCode: str
@@ -1266,13 +1266,13 @@ class Player(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: 玩家 PlayerId 长度 128
+        :param Id: 玩家 PlayerId 长度 128 [a-zA-Z\d-\._]*
         :type Id: str
         :param Name: 玩家昵称，长度 128
         :type Name: str
         :param MatchAttributes: 玩家匹配属性，最多 10 条
         :type MatchAttributes: list of MatchAttribute
-        :param Team: 队伍名，可以传递不同队伍名，长度 128
+        :param Team: 队伍名，可以传递不同队伍名，长度 128 [a-zA-Z0-9-\.]*
         :type Team: str
         :param CustomPlayerStatus: 自定义玩家状态 透传参数 [0, 99999]
         :type CustomPlayerStatus: int
@@ -1318,6 +1318,21 @@ class RegionLatency(AbstractModel):
     def __init__(self):
         """
         :param Region: 地域
+ap-beijing          华北地区(北京)
+ap-chengdu          西南地区(成都)
+ap-guangzhou          华南地区(广州)
+ap-hongkong          港澳台地区(中国香港)
+ap-seoul          亚太地区(首尔)
+ap-shanghai          华东地区(上海)
+ap-singapore          东南亚地区(新加坡)
+eu-frankfurt          欧洲地区(法兰克福)
+na-siliconvalley          美国西部(硅谷)
+na-toronto          北美地区(多伦多)
+ap-mumbai          亚太地区(孟买)
+na-ashburn          美国东部(弗吉尼亚)
+ap-bangkok          亚太地区(曼谷)
+eu-moscow          欧洲地区(莫斯科)
+ap-tokyo          亚太地区(东京)
         :type Region: str
         :param Latency: 毫秒延迟 0～999999
         :type Latency: int
@@ -1408,7 +1423,7 @@ class RuleBriefInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param RuleName: 规则名称
+        :param RuleName: 规则名称 [a-zA-Z\d-\.]*
         :type RuleName: str
         :param MatchCodeList: 关联匹配
         :type MatchCodeList: list of StringKV
@@ -1442,7 +1457,7 @@ class RuleInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param RuleName: 规则名称
+        :param RuleName: 规则名称 [a-zA-Z0-9-\.]*
         :type RuleName: str
         :param CreateTime: 创建时间
         :type CreateTime: str

@@ -1656,7 +1656,7 @@ class DescribeBackupByFlowIdRequest(AbstractModel):
         """
         :param InstanceId: 实例ID，格式如：mssql-3l3fgqn7
         :type InstanceId: str
-        :param FlowId: 创建备份流程ID
+        :param FlowId: 创建备份流程ID，可通过 [CreateBackup](https://cloud.tencent.com/document/product/238/19946) 接口获取
         :type FlowId: str
         """
         self.InstanceId = None
@@ -2440,7 +2440,7 @@ class DescribeProjectSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ProjectId: 项目ID。
+        :param ProjectId: 项目ID，可通过控制台项目管理中查看
         :type ProjectId: int
         """
         self.ProjectId = None
@@ -3510,7 +3510,7 @@ class ModifyBackupNameRequest(AbstractModel):
         """
         :param InstanceId: 实例ID，格式如：mssql-3l3fgqn7
         :type InstanceId: str
-        :param BackupId: 要修改名称的备份ID，可通过DescribeBackups 接口获取。
+        :param BackupId: 要修改名称的备份ID，可通过 [DescribeBackups](https://cloud.tencent.com/document/product/238/19943)  接口获取。
         :type BackupId: int
         :param BackupName: 修改的备份名称
         :type BackupName: str

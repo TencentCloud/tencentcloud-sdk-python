@@ -363,6 +363,80 @@ class CreateAssetResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateAssetWithImageRequest(AbstractModel):
+    """CreateAssetWithImage请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AssetName: 生成包名字，最小长度为1，最大长度为64
+        :type AssetName: str
+        :param AssetVersion: 生成包版本，最小长度为1，最大长度为64
+        :type AssetVersion: str
+        :param AssetRegion: 生成包所在地域，详见产品支持的 [地域列表](https://cloud.tencent.com/document/api/1165/42053#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8)
+        :type AssetRegion: str
+        :param ImageId: 生成包支持的操作系统镜像id
+        :type ImageId: str
+        :param ImageSize: 操作系统镜像包大小，比如：40GB，支持单位 KB、MB、GB
+        :type ImageSize: str
+        :param ImageOs: 操作系统镜像包名称，最小长度为1，最大长度为64
+        :type ImageOs: str
+        :param OsType: 操作系统镜像包类型，CentOS 或者 Windows
+        :type OsType: str
+        :param ImageType: 操作系统镜像包类型，当前只支持 SHARED_IMAGE
+        :type ImageType: str
+        :param OsBit: 操作系统镜像包位数，32 或者 64
+        :type OsBit: int
+        """
+        self.AssetName = None
+        self.AssetVersion = None
+        self.AssetRegion = None
+        self.ImageId = None
+        self.ImageSize = None
+        self.ImageOs = None
+        self.OsType = None
+        self.ImageType = None
+        self.OsBit = None
+
+
+    def _deserialize(self, params):
+        self.AssetName = params.get("AssetName")
+        self.AssetVersion = params.get("AssetVersion")
+        self.AssetRegion = params.get("AssetRegion")
+        self.ImageId = params.get("ImageId")
+        self.ImageSize = params.get("ImageSize")
+        self.ImageOs = params.get("ImageOs")
+        self.OsType = params.get("OsType")
+        self.ImageType = params.get("ImageType")
+        self.OsBit = params.get("OsBit")
+
+
+class CreateAssetWithImageResponse(AbstractModel):
+    """CreateAssetWithImage返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AssetId: 生成包ID
+        :type AssetId: str
+        :param AssetArn: 生成包的全局唯一资源标识符
+        :type AssetArn: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AssetId = None
+        self.AssetArn = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AssetId = params.get("AssetId")
+        self.AssetArn = params.get("AssetArn")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateFleetRequest(AbstractModel):
     """CreateFleet请求参数结构体
 

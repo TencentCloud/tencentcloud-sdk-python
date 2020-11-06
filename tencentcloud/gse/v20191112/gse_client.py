@@ -122,6 +122,34 @@ class GseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateAssetWithImage(self, request):
+        """本接口（CreateAssetWithImage）用于创建生成包镜像信息。
+
+        :param request: Request instance for CreateAssetWithImage.
+        :type request: :class:`tencentcloud.gse.v20191112.models.CreateAssetWithImageRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.CreateAssetWithImageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAssetWithImage", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAssetWithImageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateFleet(self, request):
         """本接口（CreateFleet）用于创建服务器舰队。
 

@@ -7430,13 +7430,11 @@ class MediaInputInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Type: 输入来源对象的类型，目前仅支持 COS。
+        :param Type: 输入来源对象的类型，支持 COS 和 URL 两种。
         :type Type: str
         :param CosInputInfo: 当 Type 为 COS 时有效，则该项为必填，表示视频处理 COS 对象信息。
         :type CosInputInfo: :class:`tencentcloud.mps.v20190612.models.CosInputInfo`
         :param UrlInputInfo: 当 Type 为 URL 时有效，则该项为必填，表示视频处理 URL 对象信息。
-
-目前尚不支持 URL 输入，该能力将于近期支持。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UrlInputInfo: :class:`tencentcloud.mps.v20190612.models.UrlInputInfo`
         """
