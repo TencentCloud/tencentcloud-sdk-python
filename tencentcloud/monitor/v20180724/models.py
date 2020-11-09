@@ -409,6 +409,65 @@ class CreatePolicyGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateServiceDiscoveryRequest(AbstractModel):
+    """CreateServiceDiscovery请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Prometheus 实例 ID
+        :type InstanceId: str
+        :param KubeClusterId: <li>类型为TKE：对应集成的腾讯云容器服务集群 ID</li>
+        :type KubeClusterId: str
+        :param KubeType: 用户 Kubernetes 集群类型：
+<li> 1 = 容器服务集群(TKE) </li>
+        :type KubeType: int
+        :param Type: 服务发现类型，取值如下：
+<li> 1 = ServiceMonitor</li>
+<li> 2 = PodMonitor</li>
+        :type Type: int
+        :param Yaml: 服务发现配置信息
+        :type Yaml: str
+        """
+        self.InstanceId = None
+        self.KubeClusterId = None
+        self.KubeType = None
+        self.Type = None
+        self.Yaml = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.KubeClusterId = params.get("KubeClusterId")
+        self.KubeType = params.get("KubeType")
+        self.Type = params.get("Type")
+        self.Yaml = params.get("Yaml")
+
+
+class CreateServiceDiscoveryResponse(AbstractModel):
+    """CreateServiceDiscovery返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ServiceDiscovery: 创建成功之后，返回对应服务发现信息
+        :type ServiceDiscovery: :class:`tencentcloud.monitor.v20180724.models.ServiceDiscoveryItem`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ServiceDiscovery = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ServiceDiscovery") is not None:
+            self.ServiceDiscovery = ServiceDiscoveryItem()
+            self.ServiceDiscovery._deserialize(params.get("ServiceDiscovery"))
+        self.RequestId = params.get("RequestId")
+
+
 class DataPoint(AbstractModel):
     """监控数据点
 
@@ -462,6 +521,59 @@ class DeletePolicyGroupRequest(AbstractModel):
 
 class DeletePolicyGroupResponse(AbstractModel):
     """DeletePolicyGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteServiceDiscoveryRequest(AbstractModel):
+    """DeleteServiceDiscovery请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Prometheus 实例 ID
+        :type InstanceId: str
+        :param KubeClusterId: <li>类型是 TKE，为对应的腾讯云容器服务集群 ID</li>
+        :type KubeClusterId: str
+        :param KubeType: 用户 Kubernetes 集群类型：
+<li> 1 = 容器服务集群(TKE) </li>
+        :type KubeType: int
+        :param Type: 服务发现类型，取值如下：
+<li> 1 = ServiceMonitor</li>
+<li> 2 = PodMonitor</li>
+        :type Type: int
+        :param Yaml: 服务发现配置信息
+        :type Yaml: str
+        """
+        self.InstanceId = None
+        self.KubeClusterId = None
+        self.KubeType = None
+        self.Type = None
+        self.Yaml = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.KubeClusterId = params.get("KubeClusterId")
+        self.KubeType = params.get("KubeType")
+        self.Type = params.get("Type")
+        self.Yaml = params.get("Yaml")
+
+
+class DeleteServiceDiscoveryResponse(AbstractModel):
+    """DeleteServiceDiscovery返回参数结构体
 
     """
 
@@ -2704,6 +2816,59 @@ class DescribeProductListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeServiceDiscoveryRequest(AbstractModel):
+    """DescribeServiceDiscovery请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Prometheus 实例 ID
+        :type InstanceId: str
+        :param KubeClusterId: <li>类型是 TKE，为对应的腾讯云容器服务集群 ID</li>
+        :type KubeClusterId: str
+        :param KubeType: 用户 Kubernetes 集群类型：
+<li> 1 = 容器服务集群(TKE) </li>
+        :type KubeType: int
+        """
+        self.InstanceId = None
+        self.KubeClusterId = None
+        self.KubeType = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.KubeClusterId = params.get("KubeClusterId")
+        self.KubeType = params.get("KubeType")
+
+
+class DescribeServiceDiscoveryResponse(AbstractModel):
+    """DescribeServiceDiscovery返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ServiceDiscoverySet: 返回服务发现列表信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceDiscoverySet: list of ServiceDiscoveryItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ServiceDiscoverySet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ServiceDiscoverySet") is not None:
+            self.ServiceDiscoverySet = []
+            for item in params.get("ServiceDiscoverySet"):
+                obj = ServiceDiscoveryItem()
+                obj._deserialize(item)
+                self.ServiceDiscoverySet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class Dimension(AbstractModel):
     """实例对象的维度组合
 
@@ -3422,6 +3587,50 @@ class SendCustomAlarmMsgResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ServiceDiscoveryItem(AbstractModel):
+    """Prometheus 服务发现信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 服务发现名称
+        :type Name: str
+        :param Namespace: 服务发现属于的 Namespace
+        :type Namespace: str
+        :param Kind: 服务发现类型: ServiceMonitor/PodMonitor
+        :type Kind: str
+        :param NamespaceSelector: Namespace 选取方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceSelector: str
+        :param Selector: Label 选取方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Selector: str
+        :param Endpoints: Endpoints 信息（PodMonitor 不含该参数）
+        :type Endpoints: str
+        :param Yaml: 服务发现对应的配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Yaml: str
+        """
+        self.Name = None
+        self.Namespace = None
+        self.Kind = None
+        self.NamespaceSelector = None
+        self.Selector = None
+        self.Endpoints = None
+        self.Yaml = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Namespace = params.get("Namespace")
+        self.Kind = params.get("Kind")
+        self.NamespaceSelector = params.get("NamespaceSelector")
+        self.Selector = params.get("Selector")
+        self.Endpoints = params.get("Endpoints")
+        self.Yaml = params.get("Yaml")
+
+
 class UnBindingAllPolicyObjectRequest(AbstractModel):
     """UnBindingAllPolicyObject请求参数结构体
 
@@ -3503,4 +3712,63 @@ class UnBindingPolicyObjectResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateServiceDiscoveryRequest(AbstractModel):
+    """UpdateServiceDiscovery请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Prometheus 实例 ID
+        :type InstanceId: str
+        :param KubeClusterId: <li>类型是 TKE，为对应的腾讯云容器服务集群 ID</li>
+        :type KubeClusterId: str
+        :param KubeType: 用户 Kubernetes 集群类型：
+<li> 1 = 容器服务集群(TKE) </li>
+        :type KubeType: int
+        :param Type: 服务发现类型，取值如下：
+<li> 1 = ServiceMonitor</li>
+<li> 2 = PodMonitor</li>
+        :type Type: int
+        :param Yaml: 服务发现配置信息
+        :type Yaml: str
+        """
+        self.InstanceId = None
+        self.KubeClusterId = None
+        self.KubeType = None
+        self.Type = None
+        self.Yaml = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.KubeClusterId = params.get("KubeClusterId")
+        self.KubeType = params.get("KubeType")
+        self.Type = params.get("Type")
+        self.Yaml = params.get("Yaml")
+
+
+class UpdateServiceDiscoveryResponse(AbstractModel):
+    """UpdateServiceDiscovery返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ServiceDiscovery: 更新成功之后，返回对应服务发现的信息
+        :type ServiceDiscovery: :class:`tencentcloud.monitor.v20180724.models.ServiceDiscoveryItem`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ServiceDiscovery = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ServiceDiscovery") is not None:
+            self.ServiceDiscovery = ServiceDiscoveryItem()
+            self.ServiceDiscovery._deserialize(params.get("ServiceDiscovery"))
         self.RequestId = params.get("RequestId")

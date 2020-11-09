@@ -286,6 +286,8 @@ class DescribeSlowLogTopSqlsRequest(AbstractModel):
         :type Limit: int
         :param Offset: 偏移量，默认为0。
         :type Offset: int
+        :param SchemaList: 数据库名称数组。
+        :type SchemaList: list of SchemaItem
         """
         self.InstanceId = None
         self.StartTime = None
@@ -294,6 +296,7 @@ class DescribeSlowLogTopSqlsRequest(AbstractModel):
         self.OrderBy = None
         self.Limit = None
         self.Offset = None
+        self.SchemaList = None
 
 
     def _deserialize(self, params):
@@ -304,6 +307,12 @@ class DescribeSlowLogTopSqlsRequest(AbstractModel):
         self.OrderBy = params.get("OrderBy")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        if params.get("SchemaList") is not None:
+            self.SchemaList = []
+            for item in params.get("SchemaList"):
+                obj = SchemaItem()
+                obj._deserialize(item)
+                self.SchemaList.append(obj)
 
 
 class DescribeSlowLogTopSqlsResponse(AbstractModel):
@@ -608,6 +617,23 @@ class MonitorMetricSeriesData(AbstractModel):
                 obj._deserialize(item)
                 self.Series.append(obj)
         self.Timestamp = params.get("Timestamp")
+
+
+class SchemaItem(AbstractModel):
+    """SchemaItem数组
+
+    """
+
+    def __init__(self):
+        """
+        :param Schema: 数据库名称
+        :type Schema: str
+        """
+        self.Schema = None
+
+
+    def _deserialize(self, params):
+        self.Schema = params.get("Schema")
 
 
 class SlowLogTopSqlItem(AbstractModel):

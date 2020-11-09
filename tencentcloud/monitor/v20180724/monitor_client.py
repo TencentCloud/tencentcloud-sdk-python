@@ -81,6 +81,36 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateServiceDiscovery(self, request):
+        """在腾讯云容器服务下创建 Prometheus 服务发现。
+        <p>注意：前提条件，已经通过 Prometheus 控制台集成了对应的腾讯云容器服务，具体请参考
+        <a href="https://cloud.tencent.com/document/product/248/48859" target="_blank">Agent 安装</a>。</p>
+
+        :param request: Request instance for CreateServiceDiscovery.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.CreateServiceDiscoveryRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.CreateServiceDiscoveryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateServiceDiscovery", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateServiceDiscoveryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeletePolicyGroup(self, request):
         """删除告警策略组
 
@@ -95,6 +125,36 @@ class MonitorClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeletePolicyGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteServiceDiscovery(self, request):
+        """删除在腾讯云容器服务下创建的 Prometheus 服务发现。
+        <p>注意：前提条件，已经通过 Prometheus 控制台集成了对应的腾讯云容器服务，具体请参考
+        <a href="https://cloud.tencent.com/document/product/248/48859" target="_blank">Agent 安装</a>。</p>
+
+        :param request: Request instance for DeleteServiceDiscovery.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DeleteServiceDiscoveryRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DeleteServiceDiscoveryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteServiceDiscovery", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteServiceDiscoveryResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -417,6 +477,36 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeServiceDiscovery(self, request):
+        """列出在腾讯云容器服务下创建的 Prometheus 服务发现。
+        <p>注意：前提条件，已经通过 Prometheus 控制台集成了对应的腾讯云容器服务，具体请参考
+        <a href="https://cloud.tencent.com/document/product/248/48859" target="_blank">Agent 安装</a>。</p>
+
+        :param request: Request instance for DescribeServiceDiscovery.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeServiceDiscoveryRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeServiceDiscoveryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeServiceDiscovery", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeServiceDiscoveryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetMonitorData(self, request):
         """获取云产品的监控数据。传入产品的命名空间、对象维度描述和监控指标即可获得相应的监控数据。
         接口调用频率限制为：20次/秒，1200次/分钟。单请求最多可支持批量拉取10个实例的监控数据，单请求的数据点数限制为1440个。
@@ -607,6 +697,36 @@ class MonitorClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnBindingPolicyObjectResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateServiceDiscovery(self, request):
+        """在腾讯云容器服务下更新 Prometheus 服务发现。
+        <p>注意：前提条件，已经通过 Prometheus 控制台集成了对应的腾讯云容器服务，具体请参考
+        <a href="https://cloud.tencent.com/document/product/248/48859" target="_blank">Agent 安装</a>。</p>
+
+        :param request: Request instance for UpdateServiceDiscovery.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.UpdateServiceDiscoveryRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.UpdateServiceDiscoveryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateServiceDiscovery", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateServiceDiscoveryResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

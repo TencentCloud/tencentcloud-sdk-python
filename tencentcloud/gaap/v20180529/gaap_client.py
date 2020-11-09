@@ -1456,7 +1456,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeRealServers(self, request):
-        """本接口（DescribeRealServers）用于查询源站信息，可以根据项目名查询所有的源站信息，此外支持指定IP机或者域名的源站模糊查询。
+        """本接口（DescribeRealServers）用于查询源站信息，可以根据项目名查询所有的源站信息，此外支持指定IP或者域名的源站模糊查询。
 
         :param request: Request instance for DescribeRealServers.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeRealServersRequest`
@@ -1848,7 +1848,7 @@ class GaapClient(AbstractClient):
 
 
     def ModifyCertificateAttributes(self, request):
-        """本接口（ModifyCertificateAttributes）用于修改证书，包括证明名字以及证书内容。
+        """本接口（ModifyCertificateAttributes）用于修改证书，包括证书名字以及证书内容。
 
         :param request: Request instance for ModifyCertificateAttributes.
         :type request: :class:`tencentcloud.gaap.v20180529.models.ModifyCertificateAttributesRequest`
