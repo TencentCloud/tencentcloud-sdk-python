@@ -22,7 +22,6 @@ from tencentcloud.sqlserver.v20180328 import models
 
 class SqlserverClient(AbstractClient):
     _apiVersion = '2018-03-28'
-    _endpoint = 'sqlserver.tencentcloudapi.com'
 
 
     def AssociateSecurityGroups(self, request):

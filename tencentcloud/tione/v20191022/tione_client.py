@@ -22,7 +22,6 @@ from tencentcloud.tione.v20191022 import models
 
 class TioneClient(AbstractClient):
     _apiVersion = '2019-10-22'
-    _endpoint = 'tione.tencentcloudapi.com'
 
 
     def CreateCodeRepository(self, request):

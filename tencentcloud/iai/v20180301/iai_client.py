@@ -22,7 +22,6 @@ from tencentcloud.iai.v20180301 import models
 
 class IaiClient(AbstractClient):
     _apiVersion = '2018-03-01'
-    _endpoint = 'iai.tencentcloudapi.com'
 
 
     def AnalyzeDenseLandmarks(self, request):

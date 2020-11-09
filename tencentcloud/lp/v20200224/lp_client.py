@@ -22,7 +22,6 @@ from tencentcloud.lp.v20200224 import models
 
 class LpClient(AbstractClient):
     _apiVersion = '2020-02-24'
-    _endpoint = 'lp.tencentcloudapi.com'
 
 
     def QueryLoginProtection(self, request):

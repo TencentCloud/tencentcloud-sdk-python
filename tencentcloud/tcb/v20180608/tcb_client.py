@@ -22,7 +22,6 @@ from tencentcloud.tcb.v20180608 import models
 
 class TcbClient(AbstractClient):
     _apiVersion = '2018-06-08'
-    _endpoint = 'tcb.tencentcloudapi.com'
 
 
     def CheckTcbService(self, request):

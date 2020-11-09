@@ -22,7 +22,6 @@ from tencentcloud.soe.v20180724 import models
 
 class SoeClient(AbstractClient):
     _apiVersion = '2018-07-24'
-    _endpoint = 'soe.tencentcloudapi.com'
 
 
     def InitOralProcess(self, request):

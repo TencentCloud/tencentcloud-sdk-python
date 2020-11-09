@@ -22,7 +22,6 @@ from tencentcloud.live.v20180801 import models
 
 class LiveClient(AbstractClient):
     _apiVersion = '2018-08-01'
-    _endpoint = 'live.tencentcloudapi.com'
 
 
     def AddDelayLiveStream(self, request):

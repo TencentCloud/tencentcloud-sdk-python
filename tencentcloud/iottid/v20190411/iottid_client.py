@@ -22,7 +22,6 @@ from tencentcloud.iottid.v20190411 import models
 
 class IottidClient(AbstractClient):
     _apiVersion = '2019-04-11'
-    _endpoint = 'iottid.tencentcloudapi.com'
 
 
     def AuthTestTid(self, request):

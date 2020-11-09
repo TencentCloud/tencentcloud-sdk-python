@@ -22,7 +22,6 @@ from tencentcloud.afc.v20200226 import models
 
 class AfcClient(AbstractClient):
     _apiVersion = '2020-02-26'
-    _endpoint = 'afc.tencentcloudapi.com'
 
 
     def QueryAntiFraudVip(self, request):

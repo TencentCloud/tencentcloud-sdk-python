@@ -22,7 +22,6 @@ from tencentcloud.monitor.v20180724 import models
 
 class MonitorClient(AbstractClient):
     _apiVersion = '2018-07-24'
-    _endpoint = 'monitor.tencentcloudapi.com'
 
 
     def BindingPolicyObject(self, request):

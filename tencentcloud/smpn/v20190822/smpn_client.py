@@ -22,7 +22,6 @@ from tencentcloud.smpn.v20190822 import models
 
 class SmpnClient(AbstractClient):
     _apiVersion = '2019-08-22'
-    _endpoint = 'smpn.tencentcloudapi.com'
 
 
     def CreateSmpnEpa(self, request):

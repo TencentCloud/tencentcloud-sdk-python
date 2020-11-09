@@ -22,7 +22,6 @@ from tencentcloud.tts.v20190823 import models
 
 class TtsClient(AbstractClient):
     _apiVersion = '2019-08-23'
-    _endpoint = 'tts.tencentcloudapi.com'
 
 
     def TextToVoice(self, request):

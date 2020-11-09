@@ -22,7 +22,6 @@ from tencentcloud.npp.v20190823 import models
 
 class NppClient(AbstractClient):
     _apiVersion = '2019-08-23'
-    _endpoint = 'npp.tencentcloudapi.com'
 
 
     def CreateCallBack(self, request):

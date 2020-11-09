@@ -22,7 +22,6 @@ from tencentcloud.scf.v20180416 import models
 
 class ScfClient(AbstractClient):
     _apiVersion = '2018-04-16'
-    _endpoint = 'scf.tencentcloudapi.com'
 
 
     def CopyFunction(self, request):

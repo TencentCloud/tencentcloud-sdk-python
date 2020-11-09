@@ -22,7 +22,6 @@ from tencentcloud.cloudhsm.v20191112 import models
 
 class CloudhsmClient(AbstractClient):
     _apiVersion = '2019-11-12'
-    _endpoint = 'cloudhsm.tencentcloudapi.com'
 
 
     def DescribeHSMBySubnetId(self, request):

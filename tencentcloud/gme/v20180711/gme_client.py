@@ -22,7 +22,6 @@ from tencentcloud.gme.v20180711 import models
 
 class GmeClient(AbstractClient):
     _apiVersion = '2018-07-11'
-    _endpoint = 'gme.tencentcloudapi.com'
 
 
     def CreateApp(self, request):

@@ -22,7 +22,6 @@ from tencentcloud.ocr.v20181119 import models
 
 class OcrClient(AbstractClient):
     _apiVersion = '2018-11-19'
-    _endpoint = 'ocr.tencentcloudapi.com'
 
 
     def AdvertiseOCR(self, request):

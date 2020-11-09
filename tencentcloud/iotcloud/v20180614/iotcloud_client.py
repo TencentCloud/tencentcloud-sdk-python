@@ -22,7 +22,6 @@ from tencentcloud.iotcloud.v20180614 import models
 
 class IotcloudClient(AbstractClient):
     _apiVersion = '2018-06-14'
-    _endpoint = 'iotcloud.tencentcloudapi.com'
 
 
     def BindDevices(self, request):

@@ -22,7 +22,6 @@ from tencentcloud.sms.v20190711 import models
 
 class SmsClient(AbstractClient):
     _apiVersion = '2019-07-11'
-    _endpoint = 'sms.tencentcloudapi.com'
 
 
     def AddSmsSign(self, request):

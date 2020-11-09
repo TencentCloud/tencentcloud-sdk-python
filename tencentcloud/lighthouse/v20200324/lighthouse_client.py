@@ -22,7 +22,6 @@ from tencentcloud.lighthouse.v20200324 import models
 
 class LighthouseClient(AbstractClient):
     _apiVersion = '2020-03-24'
-    _endpoint = 'lighthouse.tencentcloudapi.com'
 
 
     def CreateFirewallRules(self, request):

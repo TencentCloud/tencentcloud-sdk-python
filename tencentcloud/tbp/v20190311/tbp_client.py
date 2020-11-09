@@ -22,7 +22,6 @@ from tencentcloud.tbp.v20190311 import models
 
 class TbpClient(AbstractClient):
     _apiVersion = '2019-03-11'
-    _endpoint = 'tbp.tencentcloudapi.com'
 
 
     def CreateBot(self, request):

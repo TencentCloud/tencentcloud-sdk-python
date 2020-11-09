@@ -17,7 +17,7 @@ class HttpProfile(object):
     scheme = "https"
 
     def __init__(self, protocol=None, endpoint=None, reqMethod="POST", reqTimeout=60,
-                 keepAlive=False, proxy=None):
+                 keepAlive=False, proxy=None, SetRootDomain=None):
         """HTTP profile.
         :param protocol: http or https, default is https.
         :type protocol: str
@@ -36,3 +36,4 @@ class HttpProfile(object):
         self.scheme = self.protocol
         self.keepAlive = keepAlive
         self.proxy = proxy
+        self.SetRootDomain = SetRootDomain

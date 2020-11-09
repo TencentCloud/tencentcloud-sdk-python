@@ -22,7 +22,6 @@ from tencentcloud.ccc.v20200210 import models
 
 class CccClient(AbstractClient):
     _apiVersion = '2020-02-10'
-    _endpoint = 'ccc.tencentcloudapi.com'
 
 
     def CreateSDKLoginToken(self, request):

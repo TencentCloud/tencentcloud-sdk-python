@@ -22,7 +22,6 @@ from tencentcloud.cr.v20180321 import models
 
 class CrClient(AbstractClient):
     _apiVersion = '2018-03-21'
-    _endpoint = 'cr.tencentcloudapi.com'
 
 
     def ApplyBlackList(self, request):

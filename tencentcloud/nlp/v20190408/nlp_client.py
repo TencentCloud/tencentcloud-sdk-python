@@ -22,7 +22,6 @@ from tencentcloud.nlp.v20190408 import models
 
 class NlpClient(AbstractClient):
     _apiVersion = '2019-04-08'
-    _endpoint = 'nlp.tencentcloudapi.com'
 
 
     def AutoSummarization(self, request):

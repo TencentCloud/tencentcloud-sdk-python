@@ -22,7 +22,6 @@ from tencentcloud.mvj.v20190926 import models
 
 class MvjClient(AbstractClient):
     _apiVersion = '2019-09-26'
-    _endpoint = 'mvj.tencentcloudapi.com'
 
 
     def MarketingValueJudgement(self, request):

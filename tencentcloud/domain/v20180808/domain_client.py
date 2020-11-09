@@ -22,7 +22,6 @@ from tencentcloud.domain.v20180808 import models
 
 class DomainClient(AbstractClient):
     _apiVersion = '2018-08-08'
-    _endpoint = 'domain.tencentcloudapi.com'
 
 
     def BatchModifyDomainInfo(self, request):

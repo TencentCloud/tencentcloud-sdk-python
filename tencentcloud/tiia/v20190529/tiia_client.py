@@ -22,7 +22,6 @@ from tencentcloud.tiia.v20190529 import models
 
 class TiiaClient(AbstractClient):
     _apiVersion = '2019-05-29'
-    _endpoint = 'tiia.tencentcloudapi.com'
 
 
     def AssessQuality(self, request):

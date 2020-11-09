@@ -22,7 +22,6 @@ from tencentcloud.cdb.v20170320 import models
 
 class CdbClient(AbstractClient):
     _apiVersion = '2017-03-20'
-    _endpoint = 'cdb.tencentcloudapi.com'
 
 
     def AddTimeWindow(self, request):

@@ -22,7 +22,6 @@ from tencentcloud.ams.v20200608 import models
 
 class AmsClient(AbstractClient):
     _apiVersion = '2020-06-08'
-    _endpoint = 'ams.tencentcloudapi.com'
 
 
     def CancelTask(self, request):

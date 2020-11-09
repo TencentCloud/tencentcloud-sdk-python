@@ -22,7 +22,6 @@ from tencentcloud.ecdn.v20191012 import models
 
 class EcdnClient(AbstractClient):
     _apiVersion = '2019-10-12'
-    _endpoint = 'ecdn.tencentcloudapi.com'
 
 
     def AddEcdnDomain(self, request):

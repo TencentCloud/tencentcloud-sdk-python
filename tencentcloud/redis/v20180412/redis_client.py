@@ -22,7 +22,6 @@ from tencentcloud.redis.v20180412 import models
 
 class RedisClient(AbstractClient):
     _apiVersion = '2018-04-12'
-    _endpoint = 'redis.tencentcloudapi.com'
 
 
     def AssociateSecurityGroups(self, request):

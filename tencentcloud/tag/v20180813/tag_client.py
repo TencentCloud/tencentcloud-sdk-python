@@ -22,7 +22,6 @@ from tencentcloud.tag.v20180813 import models
 
 class TagClient(AbstractClient):
     _apiVersion = '2018-08-13'
-    _endpoint = 'tag.tencentcloudapi.com'
 
 
     def AddResourceTag(self, request):

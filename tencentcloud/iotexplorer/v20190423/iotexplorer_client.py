@@ -22,7 +22,6 @@ from tencentcloud.iotexplorer.v20190423 import models
 
 class IotexplorerClient(AbstractClient):
     _apiVersion = '2019-04-23'
-    _endpoint = 'iotexplorer.tencentcloudapi.com'
 
 
     def CallDeviceActionAsync(self, request):

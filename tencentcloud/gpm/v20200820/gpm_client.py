@@ -22,7 +22,6 @@ from tencentcloud.gpm.v20200820 import models
 
 class GpmClient(AbstractClient):
     _apiVersion = '2020-08-20'
-    _endpoint = 'gpm.tencentcloudapi.com'
 
 
     def CancelMatching(self, request):

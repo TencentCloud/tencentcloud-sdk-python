@@ -22,7 +22,6 @@ from tencentcloud.tics.v20181115 import models
 
 class TicsClient(AbstractClient):
     _apiVersion = '2018-11-15'
-    _endpoint = 'tics.tencentcloudapi.com'
 
 
     def DescribeDomainInfo(self, request):

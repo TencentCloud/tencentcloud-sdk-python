@@ -22,7 +22,6 @@ from tencentcloud.bmvpc.v20180625 import models
 
 class BmvpcClient(AbstractClient):
     _apiVersion = '2018-06-25'
-    _endpoint = 'bmvpc.tencentcloudapi.com'
 
 
     def AcceptVpcPeerConnection(self, request):

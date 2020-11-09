@@ -22,7 +22,6 @@ from tencentcloud.af.v20200226 import models
 
 class AfClient(AbstractClient):
     _apiVersion = '2020-02-26'
-    _endpoint = 'af.tencentcloudapi.com'
 
 
     def QueryAntiFraud(self, request):

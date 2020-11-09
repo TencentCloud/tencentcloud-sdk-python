@@ -22,7 +22,6 @@ from tencentcloud.asr.v20190614 import models
 
 class AsrClient(AbstractClient):
     _apiVersion = '2019-06-14'
-    _endpoint = 'asr.tencentcloudapi.com'
 
 
     def CreateAsrVocab(self, request):

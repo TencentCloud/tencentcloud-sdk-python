@@ -22,7 +22,6 @@ from tencentcloud.ic.v20190307 import models
 
 class IcClient(AbstractClient):
     _apiVersion = '2019-03-07'
-    _endpoint = 'ic.tencentcloudapi.com'
 
 
     def DescribeApp(self, request):

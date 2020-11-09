@@ -22,7 +22,6 @@ from tencentcloud.cms.v20190321 import models
 
 class CmsClient(AbstractClient):
     _apiVersion = '2019-03-21'
-    _endpoint = 'cms.tencentcloudapi.com'
 
 
     def CreateFileSample(self, request):

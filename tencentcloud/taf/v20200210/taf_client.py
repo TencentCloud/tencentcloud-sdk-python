@@ -22,7 +22,6 @@ from tencentcloud.taf.v20200210 import models
 
 class TafClient(AbstractClient):
     _apiVersion = '2020-02-10'
-    _endpoint = 'taf.tencentcloudapi.com'
 
 
     def DetectFraudKOL(self, request):

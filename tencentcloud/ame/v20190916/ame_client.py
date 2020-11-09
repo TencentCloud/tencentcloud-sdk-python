@@ -22,7 +22,6 @@ from tencentcloud.ame.v20190916 import models
 
 class AmeClient(AbstractClient):
     _apiVersion = '2019-09-16'
-    _endpoint = 'ame.tencentcloudapi.com'
 
 
     def DescribeItemById(self, request):

@@ -22,7 +22,6 @@ from tencentcloud.bmeip.v20180625 import models
 
 class BmeipClient(AbstractClient):
     _apiVersion = '2018-06-25'
-    _endpoint = 'bmeip.tencentcloudapi.com'
 
 
     def BindEipAcls(self, request):

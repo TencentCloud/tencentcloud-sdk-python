@@ -22,7 +22,6 @@ from tencentcloud.asw.v20200722 import models
 
 class AswClient(AbstractClient):
     _apiVersion = '2020-07-22'
-    _endpoint = 'asw.tencentcloudapi.com'
 
 
     def CreateFlowService(self, request):

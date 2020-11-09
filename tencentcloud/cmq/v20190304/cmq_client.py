@@ -22,7 +22,6 @@ from tencentcloud.cmq.v20190304 import models
 
 class CmqClient(AbstractClient):
     _apiVersion = '2019-03-04'
-    _endpoint = 'cmq.tencentcloudapi.com'
 
 
     def ClearQueue(self, request):

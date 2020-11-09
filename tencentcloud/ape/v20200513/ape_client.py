@@ -22,7 +22,6 @@ from tencentcloud.ape.v20200513 import models
 
 class ApeClient(AbstractClient):
     _apiVersion = '2020-05-13'
-    _endpoint = 'ape.tencentcloudapi.com'
 
 
     def BatchDescribeOrderCertificate(self, request):

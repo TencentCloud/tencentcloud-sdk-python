@@ -22,7 +22,6 @@ from tencentcloud.tci.v20190318 import models
 
 class TciClient(AbstractClient):
     _apiVersion = '2019-03-18'
-    _endpoint = 'tci.tencentcloudapi.com'
 
 
     def AIAssistant(self, request):

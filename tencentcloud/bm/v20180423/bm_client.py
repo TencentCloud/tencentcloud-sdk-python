@@ -22,7 +22,6 @@ from tencentcloud.bm.v20180423 import models
 
 class BmClient(AbstractClient):
     _apiVersion = '2018-04-23'
-    _endpoint = 'bm.tencentcloudapi.com'
 
 
     def AttachCamRole(self, request):

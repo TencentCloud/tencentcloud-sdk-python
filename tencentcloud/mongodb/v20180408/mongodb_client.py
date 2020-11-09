@@ -22,7 +22,6 @@ from tencentcloud.mongodb.v20180408 import models
 
 class MongodbClient(AbstractClient):
     _apiVersion = '2018-04-08'
-    _endpoint = 'mongodb.tencentcloudapi.com'
 
 
     def AssignProject(self, request):

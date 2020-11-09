@@ -22,7 +22,6 @@ from tencentcloud.cim.v20190318 import models
 
 class CimClient(AbstractClient):
     _apiVersion = '2019-03-18'
-    _endpoint = 'cim.tencentcloudapi.com'
 
 
     def DescribeSdkAppid(self, request):

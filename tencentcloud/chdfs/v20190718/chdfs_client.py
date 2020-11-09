@@ -22,7 +22,6 @@ from tencentcloud.chdfs.v20190718 import models
 
 class ChdfsClient(AbstractClient):
     _apiVersion = '2019-07-18'
-    _endpoint = 'chdfs.tencentcloudapi.com'
 
 
     def CreateAccessGroup(self, request):

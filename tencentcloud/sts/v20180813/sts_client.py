@@ -22,7 +22,6 @@ from tencentcloud.sts.v20180813 import models
 
 class StsClient(AbstractClient):
     _apiVersion = '2018-08-13'
-    _endpoint = 'sts.tencentcloudapi.com'
 
 
     def AssumeRole(self, request):

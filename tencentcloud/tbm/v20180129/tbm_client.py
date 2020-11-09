@@ -22,7 +22,6 @@ from tencentcloud.tbm.v20180129 import models
 
 class TbmClient(AbstractClient):
     _apiVersion = '2018-01-29'
-    _endpoint = 'tbm.tencentcloudapi.com'
 
 
     def DescribeBrandCommentCount(self, request):

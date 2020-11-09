@@ -22,7 +22,6 @@ from tencentcloud.tia.v20180226 import models
 
 class TiaClient(AbstractClient):
     _apiVersion = '2018-02-26'
-    _endpoint = 'tia.tencentcloudapi.com'
 
 
     def CreateJob(self, request):

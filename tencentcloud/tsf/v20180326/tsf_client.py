@@ -22,7 +22,6 @@ from tencentcloud.tsf.v20180326 import models
 
 class TsfClient(AbstractClient):
     _apiVersion = '2018-03-26'
-    _endpoint = 'tsf.tencentcloudapi.com'
 
 
     def AddClusterInstances(self, request):

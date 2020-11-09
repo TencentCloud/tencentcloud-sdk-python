@@ -22,7 +22,6 @@ from tencentcloud.rkp.v20191209 import models
 
 class RkpClient(AbstractClient):
     _apiVersion = '2019-12-09'
-    _endpoint = 'rkp.tencentcloudapi.com'
 
 
     def GetOpenId(self, request):

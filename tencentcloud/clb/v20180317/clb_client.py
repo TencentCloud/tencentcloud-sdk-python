@@ -22,7 +22,6 @@ from tencentcloud.clb.v20180317 import models
 
 class ClbClient(AbstractClient):
     _apiVersion = '2018-03-17'
-    _endpoint = 'clb.tencentcloudapi.com'
 
 
     def AssociateTargetGroups(self, request):

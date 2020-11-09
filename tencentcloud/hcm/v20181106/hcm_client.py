@@ -22,7 +22,6 @@ from tencentcloud.hcm.v20181106 import models
 
 class HcmClient(AbstractClient):
     _apiVersion = '2018-11-06'
-    _endpoint = 'hcm.tencentcloudapi.com'
 
 
     def Evaluation(self, request):

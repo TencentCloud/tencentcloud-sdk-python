@@ -22,7 +22,6 @@ from tencentcloud.bizlive.v20190313 import models
 
 class BizliveClient(AbstractClient):
     _apiVersion = '2019-03-13'
-    _endpoint = 'bizlive.tencentcloudapi.com'
 
 
     def CreateSession(self, request):

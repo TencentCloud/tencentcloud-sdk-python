@@ -22,7 +22,6 @@ from tencentcloud.gs.v20191118 import models
 
 class GsClient(AbstractClient):
     _apiVersion = '2019-11-18'
-    _endpoint = 'gs.tencentcloudapi.com'
 
 
     def CreateSession(self, request):

@@ -22,7 +22,6 @@ from tencentcloud.dc.v20180410 import models
 
 class DcClient(AbstractClient):
     _apiVersion = '2018-04-10'
-    _endpoint = 'dc.tencentcloudapi.com'
 
 
     def AcceptDirectConnectTunnel(self, request):

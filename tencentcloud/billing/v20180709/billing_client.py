@@ -22,7 +22,6 @@ from tencentcloud.billing.v20180709 import models
 
 class BillingClient(AbstractClient):
     _apiVersion = '2018-07-09'
-    _endpoint = 'billing.tencentcloudapi.com'
 
 
     def DescribeAccountBalance(self, request):

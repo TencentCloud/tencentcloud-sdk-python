@@ -22,7 +22,6 @@ from tencentcloud.vod.v20180717 import models
 
 class VodClient(AbstractClient):
     _apiVersion = '2018-07-17'
-    _endpoint = 'vod.tencentcloudapi.com'
 
 
     def ApplyUpload(self, request):

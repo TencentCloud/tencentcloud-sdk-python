@@ -22,7 +22,6 @@ from tencentcloud.mgobe.v20201014 import models
 
 class MgobeClient(AbstractClient):
     _apiVersion = '2020-10-14'
-    _endpoint = 'mgobe.tencentcloudapi.com'
 
 
     def DismissRoom(self, request):

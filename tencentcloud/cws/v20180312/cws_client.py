@@ -22,7 +22,6 @@ from tencentcloud.cws.v20180312 import models
 
 class CwsClient(AbstractClient):
     _apiVersion = '2018-03-12'
-    _endpoint = 'cws.tencentcloudapi.com'
 
 
     def CreateMonitors(self, request):

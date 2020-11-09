@@ -22,7 +22,6 @@ from tencentcloud.cis.v20180408 import models
 
 class CisClient(AbstractClient):
     _apiVersion = '2018-04-08'
-    _endpoint = 'cis.tencentcloudapi.com'
 
 
     def CreateContainerInstance(self, request):

@@ -22,7 +22,6 @@ from tencentcloud.bmlb.v20180625 import models
 
 class BmlbClient(AbstractClient):
     _apiVersion = '2018-06-25'
-    _endpoint = 'bmlb.tencentcloudapi.com'
 
 
     def BindL4Backends(self, request):

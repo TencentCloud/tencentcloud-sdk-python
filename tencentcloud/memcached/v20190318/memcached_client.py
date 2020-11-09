@@ -22,7 +22,6 @@ from tencentcloud.memcached.v20190318 import models
 
 class MemcachedClient(AbstractClient):
     _apiVersion = '2019-03-18'
-    _endpoint = 'memcached.tencentcloudapi.com'
 
 
     def DescribeInstances(self, request):
