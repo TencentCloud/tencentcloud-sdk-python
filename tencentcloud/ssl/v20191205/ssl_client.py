@@ -22,7 +22,7 @@ from tencentcloud.ssl.v20191205 import models
 
 class SslClient(AbstractClient):
     _apiVersion = '2019-12-05'
-    _endpoint = 'ssl.tencentcloudapi.com'
+    _service = 'ssl'
 
 
     def ApplyCertificate(self, request):

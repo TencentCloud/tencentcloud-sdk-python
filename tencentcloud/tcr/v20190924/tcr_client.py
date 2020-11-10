@@ -22,7 +22,7 @@ from tencentcloud.tcr.v20190924 import models
 
 class TcrClient(AbstractClient):
     _apiVersion = '2019-09-24'
-    _endpoint = 'tcr.tencentcloudapi.com'
+    _service = 'tcr'
 
 
     def BatchDeleteImagePersonal(self, request):

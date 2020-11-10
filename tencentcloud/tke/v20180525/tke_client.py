@@ -22,7 +22,7 @@ from tencentcloud.tke.v20180525 import models
 
 class TkeClient(AbstractClient):
     _apiVersion = '2018-05-25'
-    _endpoint = 'tke.tencentcloudapi.com'
+    _service = 'tke'
 
 
     def AcquireClusterAdminRole(self, request):

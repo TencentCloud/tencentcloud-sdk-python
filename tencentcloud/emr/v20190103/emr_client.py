@@ -22,7 +22,7 @@ from tencentcloud.emr.v20190103 import models
 
 class EmrClient(AbstractClient):
     _apiVersion = '2019-01-03'
-    _endpoint = 'emr.tencentcloudapi.com'
+    _service = 'emr'
 
 
     def CreateInstance(self, request):

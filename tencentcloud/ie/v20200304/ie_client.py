@@ -22,7 +22,7 @@ from tencentcloud.ie.v20200304 import models
 
 class IeClient(AbstractClient):
     _apiVersion = '2020-03-04'
-    _endpoint = 'ie.tencentcloudapi.com'
+    _service = 'ie'
 
 
     def CreateEditingTask(self, request):

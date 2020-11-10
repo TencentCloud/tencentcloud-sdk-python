@@ -22,7 +22,7 @@ from tencentcloud.ds.v20180523 import models
 
 class DsClient(AbstractClient):
     _apiVersion = '2018-05-23'
-    _endpoint = 'ds.tencentcloudapi.com'
+    _service = 'ds'
 
 
     def CheckVcode(self, request):

@@ -22,7 +22,7 @@ from tencentcloud.cdn.v20180606 import models
 
 class CdnClient(AbstractClient):
     _apiVersion = '2018-06-06'
-    _endpoint = 'cdn.tencentcloudapi.com'
+    _service = 'cdn'
 
 
     def AddCdnDomain(self, request):

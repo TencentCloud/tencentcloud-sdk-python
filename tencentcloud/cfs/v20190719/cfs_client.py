@@ -22,7 +22,7 @@ from tencentcloud.cfs.v20190719 import models
 
 class CfsClient(AbstractClient):
     _apiVersion = '2019-07-19'
-    _endpoint = 'cfs.tencentcloudapi.com'
+    _service = 'cfs'
 
 
     def CreateCfsFileSystem(self, request):

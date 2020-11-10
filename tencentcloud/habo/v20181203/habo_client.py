@@ -22,7 +22,7 @@ from tencentcloud.habo.v20181203 import models
 
 class HaboClient(AbstractClient):
     _apiVersion = '2018-12-03'
-    _endpoint = 'habo.tencentcloudapi.com'
+    _service = 'habo'
 
 
     def DescribeStatus(self, request):

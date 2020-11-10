@@ -22,7 +22,7 @@ from tencentcloud.cfw.v20190904 import models
 
 class CfwClient(AbstractClient):
     _apiVersion = '2019-09-04'
-    _endpoint = 'cfw.tencentcloudapi.com'
+    _service = 'cfw'
 
 
     def CreateAcRules(self, request):

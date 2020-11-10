@@ -22,7 +22,7 @@ from tencentcloud.trtc.v20190722 import models
 
 class TrtcClient(AbstractClient):
     _apiVersion = '2019-07-22'
-    _endpoint = 'trtc.tencentcloudapi.com'
+    _service = 'trtc'
 
 
     def CreateTroubleInfo(self, request):

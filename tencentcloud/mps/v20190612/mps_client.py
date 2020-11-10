@@ -22,7 +22,7 @@ from tencentcloud.mps.v20190612 import models
 
 class MpsClient(AbstractClient):
     _apiVersion = '2019-06-12'
-    _endpoint = 'mps.tencentcloudapi.com'
+    _service = 'mps'
 
 
     def CreateAIAnalysisTemplate(self, request):

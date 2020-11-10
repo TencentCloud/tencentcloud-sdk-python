@@ -22,7 +22,7 @@ from tencentcloud.cwp.v20180228 import models
 
 class CwpClient(AbstractClient):
     _apiVersion = '2018-02-28'
-    _endpoint = 'cwp.tencentcloudapi.com'
+    _service = 'cwp'
 
 
     def AddLoginWhiteList(self, request):

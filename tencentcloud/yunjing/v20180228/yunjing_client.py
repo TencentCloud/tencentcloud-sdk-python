@@ -22,7 +22,7 @@ from tencentcloud.yunjing.v20180228 import models
 
 class YunjingClient(AbstractClient):
     _apiVersion = '2018-02-28'
-    _endpoint = 'yunjing.tencentcloudapi.com'
+    _service = 'yunjing'
 
 
     def AddLoginWhiteList(self, request):

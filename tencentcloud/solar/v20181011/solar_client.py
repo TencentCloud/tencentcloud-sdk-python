@@ -22,7 +22,7 @@ from tencentcloud.solar.v20181011 import models
 
 class SolarClient(AbstractClient):
     _apiVersion = '2018-10-11'
-    _endpoint = 'solar.tencentcloudapi.com'
+    _service = 'solar'
 
 
     def CheckStaffChUser(self, request):

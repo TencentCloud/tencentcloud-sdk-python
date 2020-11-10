@@ -22,7 +22,7 @@ from tencentcloud.cbs.v20170312 import models
 
 class CbsClient(AbstractClient):
     _apiVersion = '2017-03-12'
-    _endpoint = 'cbs.tencentcloudapi.com'
+    _service = 'cbs'
 
 
     def ApplySnapshot(self, request):

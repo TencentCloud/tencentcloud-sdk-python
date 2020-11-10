@@ -22,7 +22,7 @@ from tencentcloud.apigateway.v20180808 import models
 
 class ApigatewayClient(AbstractClient):
     _apiVersion = '2018-08-08'
-    _endpoint = 'apigateway.tencentcloudapi.com'
+    _service = 'apigateway'
 
 
     def BindEnvironment(self, request):

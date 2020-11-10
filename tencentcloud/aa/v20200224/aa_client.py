@@ -22,7 +22,7 @@ from tencentcloud.aa.v20200224 import models
 
 class AaClient(AbstractClient):
     _apiVersion = '2020-02-24'
-    _endpoint = 'aa.tencentcloudapi.com'
+    _service = 'aa'
 
 
     def ManageMarketingRisk(self, request):

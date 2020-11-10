@@ -22,7 +22,7 @@ from tencentcloud.cme.v20191029 import models
 
 class CmeClient(AbstractClient):
     _apiVersion = '2019-10-29'
-    _endpoint = 'cme.tencentcloudapi.com'
+    _service = 'cme'
 
 
     def AddTeamMember(self, request):

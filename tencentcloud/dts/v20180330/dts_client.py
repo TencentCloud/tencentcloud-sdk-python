@@ -22,7 +22,7 @@ from tencentcloud.dts.v20180330 import models
 
 class DtsClient(AbstractClient):
     _apiVersion = '2018-03-30'
-    _endpoint = 'dts.tencentcloudapi.com'
+    _service = 'dts'
 
 
     def ActivateSubscribe(self, request):

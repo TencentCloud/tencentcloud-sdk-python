@@ -22,7 +22,7 @@ from tencentcloud.mariadb.v20170312 import models
 
 class MariadbClient(AbstractClient):
     _apiVersion = '2017-03-12'
-    _endpoint = 'mariadb.tencentcloudapi.com'
+    _service = 'mariadb'
 
 
     def CloneAccount(self, request):

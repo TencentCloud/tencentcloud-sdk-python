@@ -22,7 +22,7 @@ from tencentcloud.bda.v20200324 import models
 
 class BdaClient(AbstractClient):
     _apiVersion = '2020-03-24'
-    _endpoint = 'bda.tencentcloudapi.com'
+    _service = 'bda'
 
 
     def CreateGroup(self, request):

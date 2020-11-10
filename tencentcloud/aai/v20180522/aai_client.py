@@ -22,7 +22,7 @@ from tencentcloud.aai.v20180522 import models
 
 class AaiClient(AbstractClient):
     _apiVersion = '2018-05-22'
-    _endpoint = 'aai.tencentcloudapi.com'
+    _service = 'aai'
 
 
     def Chat(self, request):

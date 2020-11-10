@@ -22,7 +22,7 @@ from tencentcloud.organization.v20181225 import models
 
 class OrganizationClient(AbstractClient):
     _apiVersion = '2018-12-25'
-    _endpoint = 'organization.tencentcloudapi.com'
+    _service = 'organization'
 
 
     def AcceptOrganizationInvitation(self, request):

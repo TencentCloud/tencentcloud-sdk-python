@@ -22,7 +22,7 @@ from tencentcloud.cds.v20180420 import models
 
 class CdsClient(AbstractClient):
     _apiVersion = '2018-04-20'
-    _endpoint = 'cds.tencentcloudapi.com'
+    _service = 'cds'
 
 
     def DescribeDasbImageIds(self, request):

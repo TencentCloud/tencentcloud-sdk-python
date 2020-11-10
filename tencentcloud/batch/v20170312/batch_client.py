@@ -22,7 +22,7 @@ from tencentcloud.batch.v20170312 import models
 
 class BatchClient(AbstractClient):
     _apiVersion = '2017-03-12'
-    _endpoint = 'batch.tencentcloudapi.com'
+    _service = 'batch'
 
 
     def AttachInstances(self, request):

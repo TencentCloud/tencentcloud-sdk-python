@@ -22,7 +22,7 @@ from tencentcloud.captcha.v20190722 import models
 
 class CaptchaClient(AbstractClient):
     _apiVersion = '2019-07-22'
-    _endpoint = 'captcha.tencentcloudapi.com'
+    _service = 'captcha'
 
 
     def DescribeCaptchaAppIdInfo(self, request):

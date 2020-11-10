@@ -22,7 +22,7 @@ from tencentcloud.tdmq.v20200217 import models
 
 class TdmqClient(AbstractClient):
     _apiVersion = '2020-02-17'
-    _endpoint = 'tdmq.tencentcloudapi.com'
+    _service = 'tdmq'
 
 
     def CreateEnvironment(self, request):

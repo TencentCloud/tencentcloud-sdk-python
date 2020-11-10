@@ -22,7 +22,7 @@ from tencentcloud.tms.v20200713 import models
 
 class TmsClient(AbstractClient):
     _apiVersion = '2020-07-13'
-    _endpoint = 'tms.tencentcloudapi.com'
+    _service = 'tms'
 
 
     def AccountTipoffAccess(self, request):

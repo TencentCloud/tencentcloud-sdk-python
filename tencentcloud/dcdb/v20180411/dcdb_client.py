@@ -22,7 +22,7 @@ from tencentcloud.dcdb.v20180411 import models
 
 class DcdbClient(AbstractClient):
     _apiVersion = '2018-04-11'
-    _endpoint = 'dcdb.tencentcloudapi.com'
+    _service = 'dcdb'
 
 
     def CloneAccount(self, request):

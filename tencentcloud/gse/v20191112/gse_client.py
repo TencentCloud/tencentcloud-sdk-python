@@ -22,7 +22,7 @@ from tencentcloud.gse.v20191112 import models
 
 class GseClient(AbstractClient):
     _apiVersion = '2019-11-12'
-    _endpoint = 'gse.tencentcloudapi.com'
+    _service = 'gse'
 
 
     def AttachCcnInstances(self, request):

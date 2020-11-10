@@ -22,7 +22,7 @@ from tencentcloud.ticm.v20181127 import models
 
 class TicmClient(AbstractClient):
     _apiVersion = '2018-11-27'
-    _endpoint = 'ticm.tencentcloudapi.com'
+    _service = 'ticm'
 
 
     def DescribeVideoTask(self, request):

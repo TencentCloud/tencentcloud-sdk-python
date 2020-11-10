@@ -22,7 +22,7 @@ from tencentcloud.wss.v20180426 import models
 
 class WssClient(AbstractClient):
     _apiVersion = '2018-04-26'
-    _endpoint = 'wss.tencentcloudapi.com'
+    _service = 'wss'
 
 
     def DeleteCert(self, request):

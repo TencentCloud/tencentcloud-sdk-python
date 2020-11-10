@@ -22,7 +22,7 @@ from tencentcloud.tkgdq.v20190411 import models
 
 class TkgdqClient(AbstractClient):
     _apiVersion = '2019-04-11'
-    _endpoint = 'tkgdq.tencentcloudapi.com'
+    _service = 'tkgdq'
 
 
     def DescribeEntity(self, request):

@@ -22,7 +22,7 @@ from tencentcloud.faceid.v20180301 import models
 
 class FaceidClient(AbstractClient):
     _apiVersion = '2018-03-01'
-    _endpoint = 'faceid.tencentcloudapi.com'
+    _service = 'faceid'
 
 
     def BankCard2EVerification(self, request):

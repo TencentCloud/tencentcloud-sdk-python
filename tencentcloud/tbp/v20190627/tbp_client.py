@@ -22,7 +22,7 @@ from tencentcloud.tbp.v20190627 import models
 
 class TbpClient(AbstractClient):
     _apiVersion = '2019-06-27'
-    _endpoint = 'tbp.tencentcloudapi.com'
+    _service = 'tbp'
 
 
     def TextProcess(self, request):

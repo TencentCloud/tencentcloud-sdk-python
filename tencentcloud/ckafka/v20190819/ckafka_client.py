@@ -22,7 +22,7 @@ from tencentcloud.ckafka.v20190819 import models
 
 class CkafkaClient(AbstractClient):
     _apiVersion = '2019-08-19'
-    _endpoint = 'ckafka.tencentcloudapi.com'
+    _service = 'ckafka'
 
 
     def CreateAcl(self, request):

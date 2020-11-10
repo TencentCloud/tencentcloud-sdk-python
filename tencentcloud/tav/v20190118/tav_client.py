@@ -22,7 +22,7 @@ from tencentcloud.tav.v20190118 import models
 
 class TavClient(AbstractClient):
     _apiVersion = '2019-01-18'
-    _endpoint = 'tav.tencentcloudapi.com'
+    _service = 'tav'
 
 
     def GetLocalEngine(self, request):

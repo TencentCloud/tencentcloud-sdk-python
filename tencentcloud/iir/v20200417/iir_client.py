@@ -22,7 +22,7 @@ from tencentcloud.iir.v20200417 import models
 
 class IirClient(AbstractClient):
     _apiVersion = '2020-04-17'
-    _endpoint = 'iir.tencentcloudapi.com'
+    _service = 'iir'
 
 
     def RecognizeProduct(self, request):

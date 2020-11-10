@@ -22,7 +22,7 @@ from tencentcloud.drm.v20181115 import models
 
 class DrmClient(AbstractClient):
     _apiVersion = '2018-11-15'
-    _endpoint = 'drm.tencentcloudapi.com'
+    _service = 'drm'
 
 
     def AddFairPlayPem(self, request):

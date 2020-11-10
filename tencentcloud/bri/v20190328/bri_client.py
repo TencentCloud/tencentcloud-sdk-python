@@ -22,7 +22,7 @@ from tencentcloud.bri.v20190328 import models
 
 class BriClient(AbstractClient):
     _apiVersion = '2019-03-28'
-    _endpoint = 'bri.tencentcloudapi.com'
+    _service = 'bri'
 
 
     def DescribeBRI(self, request):

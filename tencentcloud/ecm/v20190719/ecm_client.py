@@ -22,7 +22,7 @@ from tencentcloud.ecm.v20190719 import models
 
 class EcmClient(AbstractClient):
     _apiVersion = '2019-07-19'
-    _endpoint = 'ecm.tencentcloudapi.com'
+    _service = 'ecm'
 
 
     def AllocateAddresses(self, request):

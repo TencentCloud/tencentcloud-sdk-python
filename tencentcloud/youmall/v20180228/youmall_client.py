@@ -22,7 +22,7 @@ from tencentcloud.youmall.v20180228 import models
 
 class YoumallClient(AbstractClient):
     _apiVersion = '2018-02-28'
-    _endpoint = 'youmall.tencentcloudapi.com'
+    _service = 'youmall'
 
 
     def CreateAccount(self, request):

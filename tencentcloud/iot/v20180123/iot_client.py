@@ -22,7 +22,7 @@ from tencentcloud.iot.v20180123 import models
 
 class IotClient(AbstractClient):
     _apiVersion = '2018-01-23'
-    _endpoint = 'iot.tencentcloudapi.com'
+    _service = 'iot'
 
 
     def ActivateRule(self, request):
