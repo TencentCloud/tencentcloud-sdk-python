@@ -445,6 +445,34 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDosageCosDetailByDate(self, request):
+        """获取COS产品用量明细
+
+        :param request: Request instance for DescribeDosageCosDetailByDate.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeDosageCosDetailByDateRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeDosageCosDetailByDateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDosageCosDetailByDate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDosageCosDetailByDateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDosageDetailByDate(self, request):
         """按日期获取产品用量明细
 

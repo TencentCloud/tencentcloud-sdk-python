@@ -6685,6 +6685,48 @@ class DescribeIp6TranslatorsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeIpGeolocationDatabaseUrlRequest(AbstractModel):
+    """DescribeIpGeolocationDatabaseUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: ip地址库协议类型，目前支持"ipv4"和"ipv6"。
+        :type Type: str
+        """
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+
+
+class DescribeIpGeolocationDatabaseUrlResponse(AbstractModel):
+    """DescribeIpGeolocationDatabaseUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DownLoadUrl: IP地址库下载链接地址
+        :type DownLoadUrl: str
+        :param ExpiredAt: 链接到期时间。按照`ISO8601`标准表示，并且使用`UTC`时间。
+        :type ExpiredAt: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DownLoadUrl = None
+        self.ExpiredAt = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DownLoadUrl = params.get("DownLoadUrl")
+        self.ExpiredAt = params.get("ExpiredAt")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeNatGatewayDestinationIpPortTranslationNatRulesRequest(AbstractModel):
     """DescribeNatGatewayDestinationIpPortTranslationNatRules请求参数结构体
 

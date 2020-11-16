@@ -5860,6 +5860,9 @@ class HealthCheckSetting(AbstractModel):
         :param Command: 执行命令检查方式，执行的命令。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Command: list of str
+        :param Type: TSF_DEFAULT：tsf 默认就绪探针。K8S_NATIVE：k8s 原生探针。不填默认为 k8s 原生探针。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
         """
         self.ActionType = None
         self.InitialDelaySeconds = None
@@ -5871,6 +5874,7 @@ class HealthCheckSetting(AbstractModel):
         self.Port = None
         self.Path = None
         self.Command = None
+        self.Type = None
 
 
     def _deserialize(self, params):
@@ -5884,6 +5888,7 @@ class HealthCheckSetting(AbstractModel):
         self.Port = params.get("Port")
         self.Path = params.get("Path")
         self.Command = params.get("Command")
+        self.Type = params.get("Type")
 
 
 class HealthCheckSettings(AbstractModel):
@@ -9293,6 +9298,21 @@ class VmGroup(AbstractModel):
         :param DeployDesc: 部署应用描述信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeployDesc: str
+        :param UpdateType: 滚动发布的更新方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateType: int
+        :param DeployBetaEnable: 发布是否启用beta批次
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeployBetaEnable: bool
+        :param DeployBatch: 滚动发布的批次比例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeployBatch: list of float
+        :param DeployExeMode: 滚动发布的批次执行方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeployExeMode: str
+        :param DeployWaitTime: 滚动发布的每个批次的等待时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeployWaitTime: int
         """
         self.GroupId = None
         self.GroupName = None
@@ -9318,6 +9338,11 @@ class VmGroup(AbstractModel):
         self.GroupResourceType = None
         self.UpdatedTime = None
         self.DeployDesc = None
+        self.UpdateType = None
+        self.DeployBetaEnable = None
+        self.DeployBatch = None
+        self.DeployExeMode = None
+        self.DeployWaitTime = None
 
 
     def _deserialize(self, params):
@@ -9345,6 +9370,11 @@ class VmGroup(AbstractModel):
         self.GroupResourceType = params.get("GroupResourceType")
         self.UpdatedTime = params.get("UpdatedTime")
         self.DeployDesc = params.get("DeployDesc")
+        self.UpdateType = params.get("UpdateType")
+        self.DeployBetaEnable = params.get("DeployBetaEnable")
+        self.DeployBatch = params.get("DeployBatch")
+        self.DeployExeMode = params.get("DeployExeMode")
+        self.DeployWaitTime = params.get("DeployWaitTime")
 
 
 class VmGroupSimple(AbstractModel):

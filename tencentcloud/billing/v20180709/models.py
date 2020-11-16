@@ -1014,6 +1014,47 @@ class ConsumptionSummaryTrend(AbstractModel):
         self.Value = params.get("Value")
 
 
+class CosDetailSets(AbstractModel):
+    """cos产品用量明细返回数据结构
+
+    """
+
+    def __init__(self):
+        """
+        :param BucketName: 存储桶名称
+        :type BucketName: str
+        :param DosageBeginTime: 用量开始时间
+        :type DosageBeginTime: str
+        :param DosageEndTime: 用量结束时间
+        :type DosageEndTime: str
+        :param SubProductCodeName: 一级产品类型名称
+        :type SubProductCodeName: str
+        :param BillingItemCodeName: 二级产品类型名称
+        :type BillingItemCodeName: str
+        :param DosageValue: 用量
+        :type DosageValue: str
+        :param Unit: 单位
+        :type Unit: str
+        """
+        self.BucketName = None
+        self.DosageBeginTime = None
+        self.DosageEndTime = None
+        self.SubProductCodeName = None
+        self.BillingItemCodeName = None
+        self.DosageValue = None
+        self.Unit = None
+
+
+    def _deserialize(self, params):
+        self.BucketName = params.get("BucketName")
+        self.DosageBeginTime = params.get("DosageBeginTime")
+        self.DosageEndTime = params.get("DosageEndTime")
+        self.SubProductCodeName = params.get("SubProductCodeName")
+        self.BillingItemCodeName = params.get("BillingItemCodeName")
+        self.DosageValue = params.get("DosageValue")
+        self.Unit = params.get("Unit")
+
+
 class CostComponentSet(AbstractModel):
     """消耗组件明细
 
@@ -1445,6 +1486,16 @@ class DescribeBillListResponse(AbstractModel):
         :type UnblockAmount: float
         :param DeductAmount: 扣费总额，单位（分）
         :type DeductAmount: float
+        :param AgentInAmount: 资金转入总额，单位（分）
+        :type AgentInAmount: float
+        :param AdvanceRechargeAmount: 垫付充值总额，单位（分）
+        :type AdvanceRechargeAmount: float
+        :param WithdrawAmount: 提现扣减总额，单位（分）
+        :type WithdrawAmount: float
+        :param AgentOutAmount: 资金转出总额，单位（分）
+        :type AgentOutAmount: float
+        :param AdvancePayAmount: 还垫付总额，单位（分）
+        :type AdvancePayAmount: float
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1455,6 +1506,11 @@ class DescribeBillListResponse(AbstractModel):
         self.BlockAmount = None
         self.UnblockAmount = None
         self.DeductAmount = None
+        self.AgentInAmount = None
+        self.AdvanceRechargeAmount = None
+        self.WithdrawAmount = None
+        self.AgentOutAmount = None
+        self.AdvancePayAmount = None
         self.RequestId = None
 
 
@@ -1471,6 +1527,11 @@ class DescribeBillListResponse(AbstractModel):
         self.BlockAmount = params.get("BlockAmount")
         self.UnblockAmount = params.get("UnblockAmount")
         self.DeductAmount = params.get("DeductAmount")
+        self.AgentInAmount = params.get("AgentInAmount")
+        self.AdvanceRechargeAmount = params.get("AdvanceRechargeAmount")
+        self.WithdrawAmount = params.get("WithdrawAmount")
+        self.AgentOutAmount = params.get("AgentOutAmount")
+        self.AdvancePayAmount = params.get("AdvancePayAmount")
         self.RequestId = params.get("RequestId")
 
 
@@ -2327,6 +2388,57 @@ class DescribeDealsByCondResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Deals.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDosageCosDetailByDateRequest(AbstractModel):
+    """DescribeDosageCosDetailByDate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StartDate: 查询用量开始时间
+        :type StartDate: str
+        :param EndDate: 查询用量结束时间（与开始时间同月，不支持跨月查询）
+        :type EndDate: str
+        :param BucketName: COS 存储桶名称，可通过Get Service 接口是用来获取请求者名下的所有存储空间列表（Bucket list）https://tcloud-dev.oa.com/document/product/555/30925?!preview&!document=1
+        :type BucketName: str
+        """
+        self.StartDate = None
+        self.EndDate = None
+        self.BucketName = None
+
+
+    def _deserialize(self, params):
+        self.StartDate = params.get("StartDate")
+        self.EndDate = params.get("EndDate")
+        self.BucketName = params.get("BucketName")
+
+
+class DescribeDosageCosDetailByDateResponse(AbstractModel):
+    """DescribeDosageCosDetailByDate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DetailSets: 用量数组
+        :type DetailSets: list of CosDetailSets
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DetailSets = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DetailSets") is not None:
+            self.DetailSets = []
+            for item in params.get("DetailSets"):
+                obj = CosDetailSets()
+                obj._deserialize(item)
+                self.DetailSets.append(obj)
         self.RequestId = params.get("RequestId")
 
 

@@ -897,12 +897,16 @@ class CreateStaticStoreRequest(AbstractModel):
         """
         :param EnvId: 环境ID
         :type EnvId: str
+        :param EnableUnion: 是否启用统一域名
+        :type EnableUnion: bool
         """
         self.EnvId = None
+        self.EnableUnion = None
 
 
     def _deserialize(self, params):
         self.EnvId = params.get("EnvId")
+        self.EnableUnion = params.get("EnableUnion")
 
 
 class CreateStaticStoreResponse(AbstractModel):

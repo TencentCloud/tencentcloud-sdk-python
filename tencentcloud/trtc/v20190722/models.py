@@ -892,7 +892,7 @@ class LayoutParams(AbstractModel):
 
     def __init__(self):
         """
-        :param Template: 混流布局模板ID，0为悬浮模板(默认);1为九宫格模板;2为屏幕分享模板;3为画中画模板。
+        :param Template: 混流布局模板ID，0为悬浮模板(默认);1为九宫格模板;2为屏幕分享模板;3为画中画模板;4为自定义模板。
         :type Template: int
         :param MainVideoUserId: 屏幕分享模板、悬浮模板、画中画模板中有效，代表大画面对应的用户ID。
         :type MainVideoUserId: str
@@ -904,6 +904,8 @@ class LayoutParams(AbstractModel):
         :type MainVideoRightAlign: int
         :param MixVideoUids: 悬浮模板、九宫格、屏幕分享模板有效。设置此参数后，输出流混合此参数中包含用户的音视频，以及其他用户的纯音频。最多可设置16个用户。
         :type MixVideoUids: list of str
+        :param PresetLayoutConfig: 自定义模板中有效，指定用户视频在混合画面中的位置。
+        :type PresetLayoutConfig: list of PresetLayoutConfig
         """
         self.Template = None
         self.MainVideoUserId = None
@@ -911,6 +913,7 @@ class LayoutParams(AbstractModel):
         self.SmallVideoLayoutParams = None
         self.MainVideoRightAlign = None
         self.MixVideoUids = None
+        self.PresetLayoutConfig = None
 
 
     def _deserialize(self, params):
@@ -922,6 +925,12 @@ class LayoutParams(AbstractModel):
             self.SmallVideoLayoutParams._deserialize(params.get("SmallVideoLayoutParams"))
         self.MainVideoRightAlign = params.get("MainVideoRightAlign")
         self.MixVideoUids = params.get("MixVideoUids")
+        if params.get("PresetLayoutConfig") is not None:
+            self.PresetLayoutConfig = []
+            for item in params.get("PresetLayoutConfig"):
+                obj = PresetLayoutConfig()
+                obj._deserialize(item)
+                self.PresetLayoutConfig.append(obj)
 
 
 class OutputParams(AbstractModel):
@@ -951,6 +960,51 @@ class OutputParams(AbstractModel):
         self.PureAudioStream = params.get("PureAudioStream")
         self.RecordId = params.get("RecordId")
         self.RecordAudioOnly = params.get("RecordAudioOnly")
+
+
+class PresetLayoutConfig(AbstractModel):
+    """自定义模板中有效，指定用户视频在混合画面中的位置。
+
+    """
+
+    def __init__(self):
+        """
+        :param UserId: 指定显示在该画面上的用户ID。如果不指定用户ID，会按照用户加入房间的顺序自动匹配PresetLayoutConfig中的画面设置。
+        :type UserId: str
+        :param StreamType: 当该画面指定用户时，代表用户的流类型。0为摄像头，1为屏幕分享。小画面为web用户时此值填0。
+        :type StreamType: int
+        :param ImageWidth: 该画面在输出时的宽度，单位为像素值，不填默认为0。
+        :type ImageWidth: int
+        :param ImageHeight: 该画面在输出时的高度，单位为像素值，不填默认为0。
+        :type ImageHeight: int
+        :param LocationX: 该画面在输出时的X偏移，单位为像素值，LocationX与ImageWidth之和不能超过混流输出的总宽度，不填默认为0。
+        :type LocationX: int
+        :param LocationY: 该画面在输出时的Y偏移，单位为像素值，LocationY与ImageHeight之和不能超过混流输出的总高度，不填默认为0。
+        :type LocationY: int
+        :param ZOrder: 该画面在输出时的层级，单位为像素值，不填默认为0。
+        :type ZOrder: int
+        :param RenderMode: 该画面在输出时的显示模式：0为裁剪，1为缩放，不填默认为0。
+        :type RenderMode: int
+        """
+        self.UserId = None
+        self.StreamType = None
+        self.ImageWidth = None
+        self.ImageHeight = None
+        self.LocationX = None
+        self.LocationY = None
+        self.ZOrder = None
+        self.RenderMode = None
+
+
+    def _deserialize(self, params):
+        self.UserId = params.get("UserId")
+        self.StreamType = params.get("StreamType")
+        self.ImageWidth = params.get("ImageWidth")
+        self.ImageHeight = params.get("ImageHeight")
+        self.LocationX = params.get("LocationX")
+        self.LocationY = params.get("LocationY")
+        self.ZOrder = params.get("ZOrder")
+        self.RenderMode = params.get("RenderMode")
 
 
 class QualityData(AbstractModel):

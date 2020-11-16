@@ -48,17 +48,21 @@ class CreateSDKLoginTokenResponse(AbstractModel):
         :type Token: str
         :param ExpiredTime: 过期时间戳，Unix 时间戳。
         :type ExpiredTime: int
+        :param SdkURL: SDK 加载路径会随着 SDK 的发布而变动。
+        :type SdkURL: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Token = None
         self.ExpiredTime = None
+        self.SdkURL = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.Token = params.get("Token")
         self.ExpiredTime = params.get("ExpiredTime")
+        self.SdkURL = params.get("SdkURL")
         self.RequestId = params.get("RequestId")
 
 

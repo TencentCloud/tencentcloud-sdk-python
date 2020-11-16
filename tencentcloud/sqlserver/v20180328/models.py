@@ -77,6 +77,8 @@ class AccountDetail(AbstractModel):
         :type InternalStatus: str
         :param Dbs: 该账户对相关db的读写权限信息
         :type Dbs: list of DBPrivilege
+        :param IsAdmin: 是否为管理员账户
+        :type IsAdmin: bool
         """
         self.Name = None
         self.Remark = None
@@ -86,6 +88,7 @@ class AccountDetail(AbstractModel):
         self.PassTime = None
         self.InternalStatus = None
         self.Dbs = None
+        self.IsAdmin = None
 
 
     def _deserialize(self, params):
@@ -102,6 +105,7 @@ class AccountDetail(AbstractModel):
                 obj = DBPrivilege()
                 obj._deserialize(item)
                 self.Dbs.append(obj)
+        self.IsAdmin = params.get("IsAdmin")
 
 
 class AccountPassword(AbstractModel):
@@ -1104,7 +1108,7 @@ class DBInstance(AbstractModel):
         :type VersionName: str
         :param RenewFlag: 实例续费标记，0-正常续费，1-自动续费，2-到期不续费
         :type RenewFlag: int
-        :param Model: 实例高可用， 1-双机高可用，2-单机
+        :param Model: 实例高可用， 1-双机高可用，2-单机，3-跨可用区，4-集群跨可用区，5-集群，9-自研机房
         :type Model: int
         :param Region: 实例所在地域名称，如 ap-guangzhou
         :type Region: str

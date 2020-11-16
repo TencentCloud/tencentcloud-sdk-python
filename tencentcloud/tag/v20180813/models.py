@@ -65,7 +65,7 @@ class AttachResourcesTagRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ServiceType: 资源所属业务名称
+        :param ServiceType: 资源所属业务名称（资源六段式中的第三段）
         :type ServiceType: str
         :param ResourceIds: 资源ID数组，资源个数最多为50
         :type ResourceIds: list of str
@@ -73,9 +73,9 @@ class AttachResourcesTagRequest(AbstractModel):
         :type TagKey: str
         :param TagValue: 标签值
         :type TagValue: str
-        :param ResourceRegion: 资源所在地域，不区分地域的资源不需要传入该字段
+        :param ResourceRegion: 资源所在地域，不区分地域的资源不需要传入该字段，区分地域的资源必填
         :type ResourceRegion: str
-        :param ResourcePrefix: 资源前缀，cos存储桶不需要传入该字段
+        :param ResourcePrefix: 资源前缀（资源六段式中最后一段"/"前面的部分），cos存储桶不需要传入该字段，其他云资源必填
         :type ResourcePrefix: str
         """
         self.ServiceType = None
@@ -1077,15 +1077,15 @@ class DetachResourcesTagRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ServiceType: 资源所属业务名称
+        :param ServiceType: 资源所属业务名称（资源六段式中的第三段）
         :type ServiceType: str
         :param ResourceIds: 资源ID数组，资源个数最多为50
         :type ResourceIds: list of str
         :param TagKey: 需要解绑的标签键
         :type TagKey: str
-        :param ResourceRegion: 资源所在地域不区分地域的资源不需要传入该字段
+        :param ResourceRegion: 资源所在地域，不区分地域的资源不需要传入该字段，区分地域的资源必填
         :type ResourceRegion: str
-        :param ResourcePrefix: 资源前缀，cos存储桶不需要传入该字段
+        :param ResourcePrefix: 资源前缀（资源六段式中最后一段"/"前面的部分），cos存储桶不需要传入该字段，其他云资源必填
         :type ResourcePrefix: str
         """
         self.ServiceType = None
@@ -1179,7 +1179,7 @@ class ModifyResourcesTagValueRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ServiceType: 资源所属业务名称
+        :param ServiceType: 资源所属业务名称（资源六段式中的第三段）
         :type ServiceType: str
         :param ResourceIds: 资源ID数组，资源个数最多为50
         :type ResourceIds: list of str
@@ -1187,9 +1187,9 @@ class ModifyResourcesTagValueRequest(AbstractModel):
         :type TagKey: str
         :param TagValue: 标签值
         :type TagValue: str
-        :param ResourceRegion: 资源所在地域，不区分地域的资源不需要传入该字段
+        :param ResourceRegion: 资源所在地域，不区分地域的资源不需要传入该字段，区分地域的资源必填
         :type ResourceRegion: str
-        :param ResourcePrefix: 资源前缀，cos存储桶不需要传入该字段
+        :param ResourcePrefix: 资源前缀（资源六段式中最后一段"/"前面的部分），cos存储桶不需要传入该字段，其他云资源必填
         :type ResourcePrefix: str
         """
         self.ServiceType = None

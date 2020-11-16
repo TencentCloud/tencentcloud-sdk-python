@@ -4580,7 +4580,6 @@ class HttpHeaderPathRule(AbstractModel):
         """
         :param HeaderMode: http 头部设置方式
 add：添加头部，若已存在头部，则会存在重复头部
-set：仅回源头部配置支持，若头部已存在则会覆盖原有头部值，若不存在，则会增加该头部及值
 del：删除头部
 注意：此字段可能返回 null，表示取不到有效值。
         :type HeaderMode: str
@@ -6156,14 +6155,18 @@ class PurgeUrlsCacheRequest(AbstractModel):
 填充 overseas 时，仅刷新中国境外加速节点上缓存内容
 指定刷新区域时，需要与域名加速区域匹配
         :type Area: str
+        :param UrlEncode: 是否对中文字符进行编码后刷新
+        :type UrlEncode: bool
         """
         self.Urls = None
         self.Area = None
+        self.UrlEncode = None
 
 
     def _deserialize(self, params):
         self.Urls = params.get("Urls")
         self.Area = params.get("Area")
+        self.UrlEncode = params.get("UrlEncode")
 
 
 class PurgeUrlsCacheResponse(AbstractModel):
