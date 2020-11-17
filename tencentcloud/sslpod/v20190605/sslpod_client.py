@@ -23,6 +23,7 @@ from tencentcloud.sslpod.v20190605 import models
 class SslpodClient(AbstractClient):
     _apiVersion = '2019-06-05'
     _endpoint = 'sslpod.tencentcloudapi.com'
+    _service = 'sslpod'
 
 
     def CreateDomain(self, request):

@@ -22,6 +22,7 @@ try:
     httpProfile.reqMethod = "GET"  # post请求(默认为post请求)
     httpProfile.reqTimeout = 30    # 请求超时时间，单位为秒(默认60秒)
     httpProfile.endpoint = "cvm.ap-shanghai.tencentcloudapi.com"  # 指定接入地域域名(默认就近接入)
+    # httpProfile.rootDomain = 'ap-shanghai.tencentcloudapi.com'    # 指定根域名, 默认为 tencentcloudapi.com
 
     # 实例化一个client选项，可选的，没有特殊需求可以跳过。
     clientProfile = ClientProfile()

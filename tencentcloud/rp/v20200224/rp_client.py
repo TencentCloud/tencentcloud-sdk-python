@@ -23,6 +23,7 @@ from tencentcloud.rp.v20200224 import models
 class RpClient(AbstractClient):
     _apiVersion = '2020-02-24'
     _endpoint = 'rp.tencentcloudapi.com'
+    _service = 'rp'
 
 
     def QueryRegisterProtection(self, request):

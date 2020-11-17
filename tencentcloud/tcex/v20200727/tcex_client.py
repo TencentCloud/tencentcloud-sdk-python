@@ -23,6 +23,7 @@ from tencentcloud.tcex.v20200727 import models
 class TcexClient(AbstractClient):
     _apiVersion = '2020-07-27'
     _endpoint = 'tcex.tencentcloudapi.com'
+    _service = 'tcex'
 
 
     def DescribeInvocationResult(self, request):

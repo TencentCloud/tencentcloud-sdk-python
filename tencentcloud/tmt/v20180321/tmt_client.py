@@ -23,6 +23,7 @@ from tencentcloud.tmt.v20180321 import models
 class TmtClient(AbstractClient):
     _apiVersion = '2018-03-21'
     _endpoint = 'tmt.tencentcloudapi.com'
+    _service = 'tmt'
 
 
     def ImageTranslate(self, request):

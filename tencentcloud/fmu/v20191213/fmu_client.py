@@ -23,6 +23,7 @@ from tencentcloud.fmu.v20191213 import models
 class FmuClient(AbstractClient):
     _apiVersion = '2019-12-13'
     _endpoint = 'fmu.tencentcloudapi.com'
+    _service = 'fmu'
 
 
     def BeautifyPic(self, request):

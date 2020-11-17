@@ -23,6 +23,7 @@ from tencentcloud.tiems.v20190416 import models
 class TiemsClient(AbstractClient):
     _apiVersion = '2019-04-16'
     _endpoint = 'tiems.tencentcloudapi.com'
+    _service = 'tiems'
 
 
     def CreateJob(self, request):

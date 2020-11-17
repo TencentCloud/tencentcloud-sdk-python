@@ -60,6 +60,7 @@ class AbstractClient(object):
     _params = {}
     _apiVersion = ''
     _endpoint = ''
+    _service = ''
     _sdkVersion = 'SDK_PYTHON_%s' % tencentcloud.__version__
     _default_content_type = _form_urlencoded_content
     FMT = '%(asctime)s %(process)d %(filename)s L%(lineno)s %(levelname)s %(message)s'
@@ -281,10 +282,14 @@ class AbstractClient(object):
         msg = '%s%s%s?%s' % (self.profile.httpProfile.reqMethod, self._get_endpoint(), self._requestPath, strParam)
         return msg
 
+    def _get_service_domain(self):
+        rootDomain = self.profile.httpProfile.rootDomain
+        return self._service + "." + rootDomain
+
     def _get_endpoint(self):
         endpoint = self.profile.httpProfile.endpoint
         if endpoint is None:
-            endpoint = self._endpoint
+            endpoint = self._get_service_domain()
         return endpoint
 
     def call(self, action, params, options=None):

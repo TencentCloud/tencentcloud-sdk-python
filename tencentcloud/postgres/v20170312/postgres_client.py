@@ -23,6 +23,7 @@ from tencentcloud.postgres.v20170312 import models
 class PostgresClient(AbstractClient):
     _apiVersion = '2017-03-12'
     _endpoint = 'postgres.tencentcloudapi.com'
+    _service = 'postgres'
 
 
     def CloseDBExtranetAccess(self, request):

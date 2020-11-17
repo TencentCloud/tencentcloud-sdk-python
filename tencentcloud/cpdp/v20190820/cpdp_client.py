@@ -23,6 +23,7 @@ from tencentcloud.cpdp.v20190820 import models
 class CpdpClient(AbstractClient):
     _apiVersion = '2019-08-20'
     _endpoint = 'cpdp.tencentcloudapi.com'
+    _service = 'cpdp'
 
 
     def ApplyApplicationMaterial(self, request):

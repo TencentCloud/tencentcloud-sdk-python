@@ -23,6 +23,7 @@ from tencentcloud.ecc.v20181213 import models
 class EccClient(AbstractClient):
     _apiVersion = '2018-12-13'
     _endpoint = 'ecc.tencentcloudapi.com'
+    _service = 'ecc'
 
 
     def CorrectMultiImage(self, request):

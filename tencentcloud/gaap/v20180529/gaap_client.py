@@ -23,6 +23,7 @@ from tencentcloud.gaap.v20180529 import models
 class GaapClient(AbstractClient):
     _apiVersion = '2018-05-29'
     _endpoint = 'gaap.tencentcloudapi.com'
+    _service = 'gaap'
 
 
     def AddRealServers(self, request):

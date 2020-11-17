@@ -23,6 +23,7 @@ from tencentcloud.cvm.v20170312 import models
 class CvmClient(AbstractClient):
     _apiVersion = '2017-03-12'
     _endpoint = 'cvm.tencentcloudapi.com'
+    _service = 'cvm'
 
 
     def AllocateHosts(self, request):

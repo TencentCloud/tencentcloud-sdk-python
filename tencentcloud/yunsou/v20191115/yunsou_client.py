@@ -23,6 +23,7 @@ from tencentcloud.yunsou.v20191115 import models
 class YunsouClient(AbstractClient):
     _apiVersion = '2019-11-15'
     _endpoint = 'yunsou.tencentcloudapi.com'
+    _service = 'yunsou'
 
 
     def DataManipulation(self, request):

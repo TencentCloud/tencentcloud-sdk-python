@@ -23,6 +23,7 @@ from tencentcloud.cam.v20190116 import models
 class CamClient(AbstractClient):
     _apiVersion = '2019-01-16'
     _endpoint = 'cam.tencentcloudapi.com'
+    _service = 'cam'
 
 
     def AddUser(self, request):

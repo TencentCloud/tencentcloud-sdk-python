@@ -23,6 +23,7 @@ from tencentcloud.zj.v20190121 import models
 class ZjClient(AbstractClient):
     _apiVersion = '2019-01-21'
     _endpoint = 'zj.tencentcloudapi.com'
+    _service = 'zj'
 
 
     def AddCrowdPackInfo(self, request):

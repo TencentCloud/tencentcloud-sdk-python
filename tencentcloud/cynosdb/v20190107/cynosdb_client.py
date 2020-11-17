@@ -23,6 +23,7 @@ from tencentcloud.cynosdb.v20190107 import models
 class CynosdbClient(AbstractClient):
     _apiVersion = '2019-01-07'
     _endpoint = 'cynosdb.tencentcloudapi.com'
+    _service = 'cynosdb'
 
 
     def AddInstances(self, request):

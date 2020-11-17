@@ -23,6 +23,7 @@ from tencentcloud.ms.v20180408 import models
 class MsClient(AbstractClient):
     _apiVersion = '2018-04-08'
     _endpoint = 'ms.tencentcloudapi.com'
+    _service = 'ms'
 
 
     def CreateBindInstance(self, request):

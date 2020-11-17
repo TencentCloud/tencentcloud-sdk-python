@@ -23,6 +23,7 @@ from tencentcloud.tiw.v20190919 import models
 class TiwClient(AbstractClient):
     _apiVersion = '2019-09-19'
     _endpoint = 'tiw.tencentcloudapi.com'
+    _service = 'tiw'
 
 
     def CreateTranscode(self, request):

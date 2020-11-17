@@ -23,6 +23,7 @@ from tencentcloud.cloudaudit.v20190319 import models
 class CloudauditClient(AbstractClient):
     _apiVersion = '2019-03-19'
     _endpoint = 'cloudaudit.tencentcloudapi.com'
+    _service = 'cloudaudit'
 
 
     def CreateAudit(self, request):

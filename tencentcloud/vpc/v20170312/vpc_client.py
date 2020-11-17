@@ -23,6 +23,7 @@ from tencentcloud.vpc.v20170312 import models
 class VpcClient(AbstractClient):
     _apiVersion = '2017-03-12'
     _endpoint = 'vpc.tencentcloudapi.com'
+    _service = 'vpc'
 
 
     def AcceptAttachCcnInstances(self, request):
