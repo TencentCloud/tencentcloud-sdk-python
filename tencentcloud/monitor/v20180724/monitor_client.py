@@ -337,6 +337,34 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeMonitorTypes(self, request):
+        """云监控支持多种类型的监控，此接口列出支持的所有类型
+
+        :param request: Request instance for DescribeMonitorTypes.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeMonitorTypesRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeMonitorTypesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMonitorTypes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMonitorTypesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribePolicyConditionList(self, request):
         """获取基础告警策略条件
 

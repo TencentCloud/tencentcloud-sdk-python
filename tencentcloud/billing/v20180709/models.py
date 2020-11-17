@@ -1611,22 +1611,22 @@ class DescribeBillSummaryByPayModeRequest(AbstractModel):
 
     def __init__(self):
         """
+        :param BeginTime: 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        :type BeginTime: str
+        :param EndTime: 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        :type EndTime: str
         :param PayerUin: 查询账单数据的用户UIN
         :type PayerUin: str
-        :param BeginTime: 目前只支持传当月开始，且必须和EndTime为相同月份，例 2018-09-01 00:00:00
-        :type BeginTime: str
-        :param EndTime: 目前只支持传当月结束，且必须和BeginTime为相同月份，例 2018-09-30 23:59:59
-        :type EndTime: str
         """
-        self.PayerUin = None
         self.BeginTime = None
         self.EndTime = None
+        self.PayerUin = None
 
 
     def _deserialize(self, params):
-        self.PayerUin = params.get("PayerUin")
         self.BeginTime = params.get("BeginTime")
         self.EndTime = params.get("EndTime")
+        self.PayerUin = params.get("PayerUin")
 
 
 class DescribeBillSummaryByPayModeResponse(AbstractModel):
@@ -1667,22 +1667,22 @@ class DescribeBillSummaryByProductRequest(AbstractModel):
 
     def __init__(self):
         """
+        :param BeginTime: 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        :type BeginTime: str
+        :param EndTime: 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        :type EndTime: str
         :param PayerUin: 查询账单数据的用户UIN
         :type PayerUin: str
-        :param BeginTime: 目前只支持传当月开始，且必须和EndTime为相同月份，例 2018-09-01 00:00:00
-        :type BeginTime: str
-        :param EndTime: 目前只支持传当月结束，且必须和BeginTime为相同月份，例 2018-09-30 23:59:59
-        :type EndTime: str
         """
-        self.PayerUin = None
         self.BeginTime = None
         self.EndTime = None
+        self.PayerUin = None
 
 
     def _deserialize(self, params):
-        self.PayerUin = params.get("PayerUin")
         self.BeginTime = params.get("BeginTime")
         self.EndTime = params.get("EndTime")
+        self.PayerUin = params.get("PayerUin")
 
 
 class DescribeBillSummaryByProductResponse(AbstractModel):
@@ -1730,22 +1730,22 @@ class DescribeBillSummaryByProjectRequest(AbstractModel):
 
     def __init__(self):
         """
+        :param BeginTime: 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        :type BeginTime: str
+        :param EndTime: 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        :type EndTime: str
         :param PayerUin: 查询账单数据的用户UIN
         :type PayerUin: str
-        :param BeginTime: 目前只支持传当月开始，且必须和EndTime为相同月份，例 2018-09-01 00:00:00
-        :type BeginTime: str
-        :param EndTime: 目前只支持传当月结束，且必须和BeginTime为相同月份，例 2018-09-30 23:59:59
-        :type EndTime: str
         """
-        self.PayerUin = None
         self.BeginTime = None
         self.EndTime = None
+        self.PayerUin = None
 
 
     def _deserialize(self, params):
-        self.PayerUin = params.get("PayerUin")
         self.BeginTime = params.get("BeginTime")
         self.EndTime = params.get("EndTime")
+        self.PayerUin = params.get("PayerUin")
 
 
 class DescribeBillSummaryByProjectResponse(AbstractModel):
@@ -1786,22 +1786,22 @@ class DescribeBillSummaryByRegionRequest(AbstractModel):
 
     def __init__(self):
         """
+        :param BeginTime: 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        :type BeginTime: str
+        :param EndTime: 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        :type EndTime: str
         :param PayerUin: 查询账单数据的用户UIN
         :type PayerUin: str
-        :param BeginTime: 目前只支持传当月开始，且必须和EndTime为相同月份，例 2018-09-01 00:00:00
-        :type BeginTime: str
-        :param EndTime: 目前只支持传当月结束，且必须和BeginTime为相同月份，例 2018-09-30 23:59:59
-        :type EndTime: str
         """
-        self.PayerUin = None
         self.BeginTime = None
         self.EndTime = None
+        self.PayerUin = None
 
 
     def _deserialize(self, params):
-        self.PayerUin = params.get("PayerUin")
         self.BeginTime = params.get("BeginTime")
         self.EndTime = params.get("EndTime")
+        self.PayerUin = params.get("PayerUin")
 
 
 class DescribeBillSummaryByRegionResponse(AbstractModel):
@@ -1842,26 +1842,26 @@ class DescribeBillSummaryByTagRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PayerUin: 查询账单数据的用户UIN
-        :type PayerUin: str
-        :param BeginTime: 目前只支持传当月开始，且必须和EndTime为相同月份，例 2018-09-01 00:00:00
+        :param BeginTime: 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
         :type BeginTime: str
-        :param EndTime: 目前只支持传当月结束，且必须和BeginTime为相同月份，例 2018-09-30 23:59:59
+        :param EndTime: 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
         :type EndTime: str
         :param TagKey: 分账标签键
         :type TagKey: str
+        :param PayerUin: 查询账单数据的用户UIN
+        :type PayerUin: str
         """
-        self.PayerUin = None
         self.BeginTime = None
         self.EndTime = None
         self.TagKey = None
+        self.PayerUin = None
 
 
     def _deserialize(self, params):
-        self.PayerUin = params.get("PayerUin")
         self.BeginTime = params.get("BeginTime")
         self.EndTime = params.get("EndTime")
         self.TagKey = params.get("TagKey")
+        self.PayerUin = params.get("PayerUin")
 
 
 class DescribeBillSummaryByTagResponse(AbstractModel):
@@ -1984,33 +1984,33 @@ class DescribeCostSummaryByProductRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PayerUin: 查询账单数据的用户UIN
-        :type PayerUin: str
-        :param BeginTime: 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09-03 03:01:45，EndTime 为 2018-09-25 12:01:45，查询结果是 2018 年 9 月数据。
+        :param BeginTime: 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
         :type BeginTime: str
-        :param EndTime: 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09-03 03:01:45，EndTime 为 2018-09-25 12:01:45，查询结果是 2018 年 9 月数据。
+        :param EndTime: 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
         :type EndTime: str
         :param Limit: 每次获取数据量
         :type Limit: int
         :param Offset: 偏移量
         :type Offset: int
+        :param PayerUin: 查询账单数据的用户UIN
+        :type PayerUin: str
         :param NeedRecordNum: 是否需要返回记录数量，0不需要，1需要，默认不需要
         :type NeedRecordNum: int
         """
-        self.PayerUin = None
         self.BeginTime = None
         self.EndTime = None
         self.Limit = None
         self.Offset = None
+        self.PayerUin = None
         self.NeedRecordNum = None
 
 
     def _deserialize(self, params):
-        self.PayerUin = params.get("PayerUin")
         self.BeginTime = params.get("BeginTime")
         self.EndTime = params.get("EndTime")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        self.PayerUin = params.get("PayerUin")
         self.NeedRecordNum = params.get("NeedRecordNum")
 
 
@@ -2063,33 +2063,33 @@ class DescribeCostSummaryByProjectRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PayerUin: 查询账单数据的用户UIN
-        :type PayerUin: str
-        :param BeginTime: 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09-03 03:01:45，EndTime 为 2018-09-25 12:01:45，查询结果是 2018 年 9 月数据。
+        :param BeginTime: 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
         :type BeginTime: str
-        :param EndTime: 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09-03 03:01:45，EndTime 为 2018-09-25 12:01:45，查询结果是 2018 年 9 月数据。
+        :param EndTime: 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
         :type EndTime: str
         :param Limit: 每次获取数据量
         :type Limit: int
         :param Offset: 偏移量
         :type Offset: int
+        :param PayerUin: 查询账单数据的用户UIN
+        :type PayerUin: str
         :param NeedRecordNum: 是否需要返回记录数量，0不需要，1需要，默认不需要
         :type NeedRecordNum: int
         """
-        self.PayerUin = None
         self.BeginTime = None
         self.EndTime = None
         self.Limit = None
         self.Offset = None
+        self.PayerUin = None
         self.NeedRecordNum = None
 
 
     def _deserialize(self, params):
-        self.PayerUin = params.get("PayerUin")
         self.BeginTime = params.get("BeginTime")
         self.EndTime = params.get("EndTime")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        self.PayerUin = params.get("PayerUin")
         self.NeedRecordNum = params.get("NeedRecordNum")
 
 
@@ -2140,33 +2140,33 @@ class DescribeCostSummaryByRegionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PayerUin: 查询账单数据的用户UIN
-        :type PayerUin: str
-        :param BeginTime: 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09-03 03:01:45，EndTime 为 2018-09-25 12:01:45，查询结果是 2018 年 9 月数据。
+        :param BeginTime: 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
         :type BeginTime: str
-        :param EndTime: 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09-03 03:01:45，EndTime 为 2018-09-25 12:01:45，查询结果是 2018 年 9 月数据。
+        :param EndTime: 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
         :type EndTime: str
         :param Limit: 每次获取数据量
         :type Limit: int
         :param Offset: 偏移量
         :type Offset: int
+        :param PayerUin: 查询账单数据的用户UIN
+        :type PayerUin: str
         :param NeedRecordNum: 是否需要返回记录数量，0不需要，1需要，默认不需要
         :type NeedRecordNum: int
         """
-        self.PayerUin = None
         self.BeginTime = None
         self.EndTime = None
         self.Limit = None
         self.Offset = None
+        self.PayerUin = None
         self.NeedRecordNum = None
 
 
     def _deserialize(self, params):
-        self.PayerUin = params.get("PayerUin")
         self.BeginTime = params.get("BeginTime")
         self.EndTime = params.get("EndTime")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        self.PayerUin = params.get("PayerUin")
         self.NeedRecordNum = params.get("NeedRecordNum")
 
 
@@ -2218,16 +2218,16 @@ class DescribeCostSummaryByResourceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PayerUin: 查询账单数据的用户UIN
-        :type PayerUin: str
-        :param BeginTime: 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09-03 03:01:45，EndTime 为 2018-09-25 12:01:45，查询结果是 2018 年 9 月数据。
+        :param BeginTime: 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
         :type BeginTime: str
-        :param EndTime: 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09-03 03:01:45，EndTime 为 2018-09-25 12:01:45，查询结果是 2018 年 9 月数据。
+        :param EndTime: 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
         :type EndTime: str
         :param Limit: 每次获取数据量
         :type Limit: int
         :param Offset: 偏移量
         :type Offset: int
+        :param PayerUin: 查询账单数据的用户UIN
+        :type PayerUin: str
         :param NeedRecordNum: 是否需要返回记录数量，0不需要，1需要，默认不需要
         :type NeedRecordNum: int
         :param NeedConditionValue: 是否需要返回过滤条件，0不需要，1需要，默认不需要
@@ -2235,22 +2235,22 @@ class DescribeCostSummaryByResourceRequest(AbstractModel):
         :param Conditions: 过滤条件，只支持ResourceKeyword(资源关键字，支持资源id及资源名称模糊查询)，ProjectIds（项目id），RegionIds(地域id)，PayModes(付费模式，可选prePay和postPay)，HideFreeCost（是否隐藏0元流水，可选0和1），OrderByCost（按费用排序规则，可选desc和asc）
         :type Conditions: :class:`tencentcloud.billing.v20180709.models.Conditions`
         """
-        self.PayerUin = None
         self.BeginTime = None
         self.EndTime = None
         self.Limit = None
         self.Offset = None
+        self.PayerUin = None
         self.NeedRecordNum = None
         self.NeedConditionValue = None
         self.Conditions = None
 
 
     def _deserialize(self, params):
-        self.PayerUin = params.get("PayerUin")
         self.BeginTime = params.get("BeginTime")
         self.EndTime = params.get("EndTime")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        self.PayerUin = params.get("PayerUin")
         self.NeedRecordNum = params.get("NeedRecordNum")
         self.NeedConditionValue = params.get("NeedConditionValue")
         if params.get("Conditions") is not None:

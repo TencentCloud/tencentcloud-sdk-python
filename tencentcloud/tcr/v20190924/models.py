@@ -794,6 +794,44 @@ class DeleteImageResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteInstanceRequest(AbstractModel):
+    """DeleteInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 实例id
+        :type RegistryId: str
+        :param DeleteBucket: 是否删除存储桶，默认为false
+        :type DeleteBucket: bool
+        """
+        self.RegistryId = None
+        self.DeleteBucket = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.DeleteBucket = params.get("DeleteBucket")
+
+
+class DeleteInstanceResponse(AbstractModel):
+    """DeleteInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteInstanceTokenRequest(AbstractModel):
     """DeleteInstanceToken请求参数结构体
 

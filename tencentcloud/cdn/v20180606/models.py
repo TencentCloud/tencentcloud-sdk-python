@@ -1499,6 +1499,52 @@ class CreateDiagnoseUrlResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateEdgePackTaskRequest(AbstractModel):
+    """CreateEdgePackTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CosBucket: apk 所在的 cos 存储桶, 如 edgepack-xxxxxxxx
+        :type CosBucket: str
+        :param CosUriFrom: apk 源文件的存储路径, 如 /apk/xxxx.apk
+        :type CosUriFrom: str
+        :param CosUriTo: 拓展之后的 apk 目标存储路径,如 /out/xxxx.apk
+        :type CosUriTo: str
+        :param BlockID: BlockID 的值, WALLE为1903654775(0x71777777)，VasDolly为2282837503(0x881155ff),传0或不传时默认为 WALLE 方案
+        :type BlockID: int
+        """
+        self.CosBucket = None
+        self.CosUriFrom = None
+        self.CosUriTo = None
+        self.BlockID = None
+
+
+    def _deserialize(self, params):
+        self.CosBucket = params.get("CosBucket")
+        self.CosUriFrom = params.get("CosUriFrom")
+        self.CosUriTo = params.get("CosUriTo")
+        self.BlockID = params.get("BlockID")
+
+
+class CreateEdgePackTaskResponse(AbstractModel):
+    """CreateEdgePackTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateScdnLogTaskRequest(AbstractModel):
     """CreateScdnLogTask请求参数结构体
 

@@ -1364,6 +1364,44 @@ class DescribeBindingPolicyObjectListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeMonitorTypesRequest(AbstractModel):
+    """DescribeMonitorTypes请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 固定值，为"monitor"
+        :type Module: str
+        """
+        self.Module = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+
+
+class DescribeMonitorTypesResponse(AbstractModel):
+    """DescribeMonitorTypes返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MonitorTypes: 监控类型
+        :type MonitorTypes: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MonitorTypes = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MonitorTypes = params.get("MonitorTypes")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribePolicyConditionListCondition(AbstractModel):
     """DescribePolicyConditionList策略条件
 

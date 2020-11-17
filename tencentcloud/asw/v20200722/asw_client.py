@@ -137,6 +137,34 @@ class AswClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeFlowServices(self, request):
+        """查询指定用户下所有状态机，以列表形式返回
+
+        :param request: Request instance for DescribeFlowServices.
+        :type request: :class:`tencentcloud.asw.v20200722.models.DescribeFlowServicesRequest`
+        :rtype: :class:`tencentcloud.asw.v20200722.models.DescribeFlowServicesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeFlowServices", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeFlowServicesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyFlowService(self, request):
         """该接口用于修改状态机
 

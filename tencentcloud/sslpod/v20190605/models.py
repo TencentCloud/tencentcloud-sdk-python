@@ -128,7 +128,7 @@ class CreateDomainRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ServerType: 监控的服务器类型 Enums(0,1,2,3)
+        :param ServerType: 监控的服务器类型（0：web，1：smtp，2：imap，3：pops）
         :type ServerType: int
         :param Domain: 添加的域名
         :type Domain: str
@@ -249,7 +249,7 @@ class DeleteDomainRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainId: 域名列表中的ID
+        :param DomainId: 域名ID，可通过搜索域名接口获得
         :type DomainId: int
         """
         self.DomainId = None
@@ -313,7 +313,7 @@ class DescribeDomainCertsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainId: 域名ID
+        :param DomainId: 域名ID，可通过搜索域名接口获得
         :type DomainId: int
         """
         self.DomainId = None
@@ -432,7 +432,7 @@ class DescribeDomainsRequest(AbstractModel):
         :type Limit: int
         :param SearchType: 搜索的类型 Enums(none,tags,grade,brand,code,hash,limit)
         :type SearchType: str
-        :param Tag: 标签
+        :param Tag: 标签，多个标签用逗号分隔
         :type Tag: str
         :param Grade: 等级
         :type Grade: str
@@ -690,7 +690,7 @@ class RefreshDomainRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DomainId: 域名列表中的ID
+        :param DomainId: 域名列表中的ID，可通过搜索域名接口获得
         :type DomainId: int
         """
         self.DomainId = None

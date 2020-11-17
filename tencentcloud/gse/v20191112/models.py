@@ -89,6 +89,10 @@ class Asset(AbstractModel):
         :type ImageId: str
         :param OsType: 生成包支持的操作系统类型
         :type OsType: str
+        :param ResourceType: 生成包资源类型，ASSET 或者 IMAGE；ASSET 代表是原有生成包类型，IMAGE 为扩充使用镜像类型
+        :type ResourceType: str
+        :param SharingStatus: 镜像资源共享类型，当 ResourceType 为 IMAGE 时该字段有意义，SHARED 表示共享、SHARED_IMAGE 表示未共享；ResourceType 为 ASSET 时这里返回 UNKNOWN_SHARED 用于占位
+        :type SharingStatus: str
         """
         self.AssetId = None
         self.AssetName = None
@@ -101,6 +105,8 @@ class Asset(AbstractModel):
         self.AssetArn = None
         self.ImageId = None
         self.OsType = None
+        self.ResourceType = None
+        self.SharingStatus = None
 
 
     def _deserialize(self, params):
@@ -115,6 +121,8 @@ class Asset(AbstractModel):
         self.AssetArn = params.get("AssetArn")
         self.ImageId = params.get("ImageId")
         self.OsType = params.get("OsType")
+        self.ResourceType = params.get("ResourceType")
+        self.SharingStatus = params.get("SharingStatus")
 
 
 class AssetCredentials(AbstractModel):

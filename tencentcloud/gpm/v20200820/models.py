@@ -96,7 +96,7 @@ class CreateMatchRequest(AbstractModel):
         :type ServerType: int
         :param MatchDesc: 匹配描述，最长1024
         :type MatchDesc: str
-        :param NotifyUrl: 只支持https协议
+        :param NotifyUrl: 只支持https 和 http 协议
         :type NotifyUrl: str
         :param ServerRegion: 游戏服务器队列地域
         :type ServerRegion: str
@@ -369,7 +369,7 @@ class DescribeMatchCodesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: 偏移量
+        :param Offset: 偏移量，页码
         :type Offset: int
         :param Limit: 每页数量
         :type Limit: int
@@ -917,7 +917,7 @@ class MatchInfo(AbstractModel):
         :param RuleName: 规则名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleName: str
-        :param LogStatus: 日志状态，0表示正常，1表示日志集不存在，2表示日志主题不存在，3表示日志集和日志主题都不存在
+        :param LogStatus: 日志状态，0表示正常，1表示日志集不存在，2表示日志主题不存在，3表示日志集和日志主题都不存在。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogStatus: int
         """
@@ -1068,7 +1068,7 @@ class ModifyMatchRequest(AbstractModel):
         :type MatchCode: str
         :param MatchDesc: 匹配描述，最长1024
         :type MatchDesc: str
-        :param NotifyUrl: 只支持https协议
+        :param NotifyUrl: 只支持 http 和 https 协议
         :type NotifyUrl: str
         :param ServerRegion: 游戏服务器队列地域
         :type ServerRegion: str
@@ -1160,7 +1160,7 @@ class ModifyRuleRequest(AbstractModel):
         """
         :param RuleCode: 规则code
         :type RuleCode: str
-        :param RuleName: 规则名称
+        :param RuleName: 规则名称，只能包含数字、字母、. 和 -
         :type RuleName: str
         :param RuleDesc: 规则描述，最长1024
         :type RuleDesc: str
@@ -1535,7 +1535,7 @@ class StartMatchingRequest(AbstractModel):
         :type MatchCode: str
         :param Players: 玩家信息 最多 200 条。
         :type Players: list of Player
-        :param MatchTicketId: 请求 Id 默认 "" 为空则由 GPM 自动生成 长度 128。
+        :param MatchTicketId: 请求 Id 默认空字符串，为空则由 GPM 自动生成 长度 128，只能包含数字、字母、. 和 -
         :type MatchTicketId: str
         """
         self.MatchCode = None

@@ -27,14 +27,18 @@ class DescribeDBDiagEventRequest(AbstractModel):
         :type InstanceId: str
         :param EventId: 事件 ID 。通过“获取实例诊断历史DescribeDBDiagHistory”获取。
         :type EventId: int
+        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        :type Product: str
         """
         self.InstanceId = None
         self.EventId = None
+        self.Product = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.EventId = params.get("EventId")
+        self.Product = params.get("Product")
 
 
 class DescribeDBDiagEventResponse(AbstractModel):
@@ -112,16 +116,20 @@ class DescribeDBDiagHistoryRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: 结束时间，如“2019-09-11 12:13:14”，结束时间与开始时间的间隔最大可为2天。
         :type EndTime: str
+        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        :type Product: str
         """
         self.InstanceId = None
         self.StartTime = None
         self.EndTime = None
+        self.Product = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        self.Product = params.get("Product")
 
 
 class DescribeDBDiagHistoryResponse(AbstractModel):
@@ -161,14 +169,18 @@ class DescribeDBSpaceStatusRequest(AbstractModel):
         :type InstanceId: str
         :param RangeDays: 时间段天数，截止日期为当日，默认为7天。
         :type RangeDays: int
+        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        :type Product: str
         """
         self.InstanceId = None
         self.RangeDays = None
+        self.Product = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.RangeDays = params.get("RangeDays")
+        self.Product = params.get("Product")
 
 
 class DescribeDBSpaceStatusResponse(AbstractModel):
@@ -217,16 +229,20 @@ class DescribeSlowLogTimeSeriesStatsRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: 结束时间，如“2019-09-10 12:13:14”，结束时间与开始时间的间隔最大可为7天。
         :type EndTime: str
+        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        :type Product: str
         """
         self.InstanceId = None
         self.StartTime = None
         self.EndTime = None
+        self.Product = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        self.Product = params.get("Product")
 
 
 class DescribeSlowLogTimeSeriesStatsResponse(AbstractModel):
@@ -288,6 +304,8 @@ class DescribeSlowLogTopSqlsRequest(AbstractModel):
         :type Offset: int
         :param SchemaList: 数据库名称数组。
         :type SchemaList: list of SchemaItem
+        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        :type Product: str
         """
         self.InstanceId = None
         self.StartTime = None
@@ -297,6 +315,7 @@ class DescribeSlowLogTopSqlsRequest(AbstractModel):
         self.Limit = None
         self.Offset = None
         self.SchemaList = None
+        self.Product = None
 
 
     def _deserialize(self, params):
@@ -313,6 +332,7 @@ class DescribeSlowLogTopSqlsRequest(AbstractModel):
                 obj = SchemaItem()
                 obj._deserialize(item)
                 self.SchemaList.append(obj)
+        self.Product = params.get("Product")
 
 
 class DescribeSlowLogTopSqlsResponse(AbstractModel):
@@ -362,12 +382,15 @@ class DescribeTopSpaceTableTimeSeriesRequest(AbstractModel):
         :type StartDate: str
         :param EndDate: 截止日期，最早为当日的前第29天，默认为当日。
         :type EndDate: str
+        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        :type Product: str
         """
         self.InstanceId = None
         self.Limit = None
         self.SortBy = None
         self.StartDate = None
         self.EndDate = None
+        self.Product = None
 
 
     def _deserialize(self, params):
@@ -376,6 +399,7 @@ class DescribeTopSpaceTableTimeSeriesRequest(AbstractModel):
         self.SortBy = params.get("SortBy")
         self.StartDate = params.get("StartDate")
         self.EndDate = params.get("EndDate")
+        self.Product = params.get("Product")
 
 
 class DescribeTopSpaceTableTimeSeriesResponse(AbstractModel):
@@ -417,16 +441,20 @@ class DescribeTopSpaceTablesRequest(AbstractModel):
         :type Limit: int
         :param SortBy: 筛选Top表所用的排序字段，可选字段包含DataLength、IndexLength、TotalLength、DataFree、FragRatio、TableRows、PhysicalFileSize，默认为 PhysicalFileSize。
         :type SortBy: str
+        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        :type Product: str
         """
         self.InstanceId = None
         self.Limit = None
         self.SortBy = None
+        self.Product = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.Limit = params.get("Limit")
         self.SortBy = params.get("SortBy")
+        self.Product = params.get("Product")
 
 
 class DescribeTopSpaceTablesResponse(AbstractModel):

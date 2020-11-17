@@ -274,6 +274,87 @@ class DescribeFlowServiceDetailResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeFlowServicesRequest(AbstractModel):
+    """DescribeFlowServices请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        :param Filters: 过滤条件，详见下表：实例过滤条件表。每次请求的Filter.Values的上限为5。参数名字仅支持FlowServiceName， Status, Type三种情况
+        :type Filters: list of Filter
+        """
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class DescribeFlowServicesResponse(AbstractModel):
+    """DescribeFlowServices返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowServiceSet: 用户的状态机列表
+        :type FlowServiceSet: list of StateMachine
+        :param TotalCount: 用户的状态机总数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowServiceSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("FlowServiceSet") is not None:
+            self.FlowServiceSet = []
+            for item in params.get("FlowServiceSet"):
+                obj = StateMachine()
+                obj._deserialize(item)
+                self.FlowServiceSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class Filter(AbstractModel):
+    """模版过滤类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 过滤器名字
+        :type Name: str
+        :param Values: 过滤器值的数组
+        :type Values: list of str
+        """
+        self.Name = None
+        self.Values = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Values = params.get("Values")
+
+
 class ModifyFlowServiceRequest(AbstractModel):
     """ModifyFlowService请求参数结构体
 
@@ -392,3 +473,66 @@ class StartExecutionResponse(AbstractModel):
         self.ExecutionResourceName = params.get("ExecutionResourceName")
         self.StartDate = params.get("StartDate")
         self.RequestId = params.get("RequestId")
+
+
+class StateMachine(AbstractModel):
+    """状态机
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowServiceResource: 状态机资源
+        :type FlowServiceResource: str
+        :param Type: 状态机类型。EXPRESS，STANDARD
+        :type Type: str
+        :param FlowServiceName: 状态机名称
+        :type FlowServiceName: str
+        :param FlowServiceChineseName: 状态机中文名
+        :type FlowServiceChineseName: str
+        :param CreateDate: 创建时间。timestamp
+        :type CreateDate: str
+        :param ModifyDate: 修改时间。timestamp
+        :type ModifyDate: str
+        :param Status: 状态机状态
+        :type Status: str
+        :param Creator: 创建者的subAccountUin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Creator: str
+        :param Modifier: 修改者的subAccountUin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Modifier: str
+        :param FlowServiceId: 状态机id
+        :type FlowServiceId: str
+        :param TemplateId: 模板id
+        :type TemplateId: str
+        :param Description: 备注
+        :type Description: str
+        """
+        self.FlowServiceResource = None
+        self.Type = None
+        self.FlowServiceName = None
+        self.FlowServiceChineseName = None
+        self.CreateDate = None
+        self.ModifyDate = None
+        self.Status = None
+        self.Creator = None
+        self.Modifier = None
+        self.FlowServiceId = None
+        self.TemplateId = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.FlowServiceResource = params.get("FlowServiceResource")
+        self.Type = params.get("Type")
+        self.FlowServiceName = params.get("FlowServiceName")
+        self.FlowServiceChineseName = params.get("FlowServiceChineseName")
+        self.CreateDate = params.get("CreateDate")
+        self.ModifyDate = params.get("ModifyDate")
+        self.Status = params.get("Status")
+        self.Creator = params.get("Creator")
+        self.Modifier = params.get("Modifier")
+        self.FlowServiceId = params.get("FlowServiceId")
+        self.TemplateId = params.get("TemplateId")
+        self.Description = params.get("Description")

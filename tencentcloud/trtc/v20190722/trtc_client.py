@@ -249,6 +249,39 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeRecordStatistic(self, request):
+        """查询云端录制计费时长。
+
+        - 查询时间小于等于1天时，返回每5分钟粒度的数据；查询时间大于1天时，返回按天汇总的数据。
+        - 单次查询统计区间最多不能超过31天。
+        - 若查询当天用量，由于统计延迟等原因，返回数据可能不够准确。
+        - 日结后付费将于次日上午推送账单，建议次日上午9点以后再来查询前一天的用量。
+
+        :param request: Request instance for DescribeRecordStatistic.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeRecordStatisticRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeRecordStatisticResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRecordStatistic", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRecordStatisticResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRoomInformation(self, request):
         """查询sdkappid下的房间列表。默认返回10条通话，一次最多返回100条通话。可查询14天内的数据。
 
@@ -263,6 +296,70 @@ class TrtcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRoomInformationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTrtcInteractiveTime(self, request):
+        """查询音视频互动计费时长。
+        - 查询时间小于等于1天时，返回每5分钟粒度的数据；查询时间大于1天时，返回按天汇总的数据。
+        - 单次查询统计区间最多不能超过31天。
+        - 若查询当天用量，由于统计延迟等原因，返回数据可能不够准确。
+        - 日结后付费将于次日上午推送账单，建议次日上午9点以后再来查询前一天的用量。
+
+        :param request: Request instance for DescribeTrtcInteractiveTime.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeTrtcInteractiveTimeRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeTrtcInteractiveTimeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTrtcInteractiveTime", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTrtcInteractiveTimeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTrtcMcuTranscodeTime(self, request):
+        """查询旁路转码计费时长。
+        - 查询时间小于等于1天时，返回每5分钟粒度的数据；查询时间大于1天时，返回按天汇总的数据。
+        - 单次查询统计区间最多不能超过31天。
+        - 若查询当天用量，由于统计延迟等原因，返回数据可能不够准确。
+        - 日结后付费将于次日上午推送账单，建议次日上午9点以后再来查询前一天的用量。
+
+        :param request: Request instance for DescribeTrtcMcuTranscodeTime.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeTrtcMcuTranscodeTimeRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeTrtcMcuTranscodeTimeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTrtcMcuTranscodeTime", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTrtcMcuTranscodeTimeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -333,6 +430,34 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DismissRoomByStrRoomId(self, request):
+        """接口说明：把房间所有用户从房间移出，解散房间。支持所有平台，Android、iOS、Windows 和 macOS 需升级到 TRTC SDK 6.6及以上版本。
+
+        :param request: Request instance for DismissRoomByStrRoomId.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DismissRoomByStrRoomIdRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DismissRoomByStrRoomIdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DismissRoomByStrRoomId", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DismissRoomByStrRoomIdResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RemoveUser(self, request):
         """接口说明：将用户从房间移出，适用于主播/房主/管理员踢人等场景。支持所有平台，Android、iOS、Windows 和 macOS 需升级到 TRTC SDK 6.6及以上版本。
 
@@ -347,6 +472,34 @@ class TrtcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RemoveUserResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RemoveUserByStrRoomId(self, request):
+        """接口说明：将用户从房间移出，适用于主播/房主/管理员踢人等场景。支持所有平台，Android、iOS、Windows 和 macOS 需升级到 TRTC SDK 6.6及以上版本。
+
+        :param request: Request instance for RemoveUserByStrRoomId.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.RemoveUserByStrRoomIdRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.RemoveUserByStrRoomIdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RemoveUserByStrRoomId", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RemoveUserByStrRoomIdResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

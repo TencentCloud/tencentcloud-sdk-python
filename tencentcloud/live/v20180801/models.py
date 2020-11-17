@@ -5258,6 +5258,64 @@ class DescribeTopClientIpSumInfoListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeUploadStreamNumsRequest(AbstractModel):
+    """DescribeUploadStreamNums请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 起始时间点，格式为yyyy-mm-dd HH:MM:SS。
+        :type StartTime: str
+        :param EndTime: 结束时间点，格式为yyyy-mm-dd HH:MM:SS，起始和结束时间跨度不支持超过31天。支持最近31天的数据查询
+        :type EndTime: str
+        :param Domains: 直播域名，若不填，表示总体数据。
+        :type Domains: list of str
+        :param Granularity: 数据粒度，支持如下粒度：
+5：5分钟粒度，（跨度不支持超过1天），
+1440：天粒度（跨度不支持超过一个月）。
+默认值：5。
+        :type Granularity: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.Domains = None
+        self.Granularity = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Domains = params.get("Domains")
+        self.Granularity = params.get("Granularity")
+
+
+class DescribeUploadStreamNumsResponse(AbstractModel):
+    """DescribeUploadStreamNums返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DataInfoList: 明细数据信息
+        :type DataInfoList: list of ConcurrentRecordStreamNum
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DataInfoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DataInfoList") is not None:
+            self.DataInfoList = []
+            for item in params.get("DataInfoList"):
+                obj = ConcurrentRecordStreamNum()
+                obj._deserialize(item)
+                self.DataInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeVisitTopSumInfoListRequest(AbstractModel):
     """DescribeVisitTopSumInfoList请求参数结构体
 

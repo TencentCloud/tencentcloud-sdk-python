@@ -2429,6 +2429,34 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeUploadStreamNums(self, request):
+        """直播上行路数查询
+
+        :param request: Request instance for DescribeUploadStreamNums.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeUploadStreamNumsRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeUploadStreamNumsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeUploadStreamNums", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeUploadStreamNumsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeVisitTopSumInfoList(self, request):
         """查询某时间段top n的域名或流id信息（暂支持top 1000）。
 

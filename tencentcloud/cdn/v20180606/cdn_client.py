@@ -109,6 +109,34 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateEdgePackTask(self, request):
+        """动态打包任务提交接口
+
+        :param request: Request instance for CreateEdgePackTask.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.CreateEdgePackTaskRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.CreateEdgePackTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateEdgePackTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateEdgePackTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateScdnLogTask(self, request):
         """CreateScdnLogTask 用于创建事件日志任务
 

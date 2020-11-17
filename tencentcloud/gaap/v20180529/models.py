@@ -1386,6 +1386,8 @@ class CreateTCPListenersRequest(AbstractModel):
         :type ConnectTimeout: int
         :param RealServerPorts: 源站端口列表，该参数仅支持v1版本监听器和通道组监听器。
         :type RealServerPorts: list of int non-negative
+        :param ClientIPMethod: 监听器获取客户端 IP 的方式，0表示 TOA, 1表示Proxy Protocol
+        :type ClientIPMethod: int
         """
         self.ListenerName = None
         self.Ports = None
@@ -1397,6 +1399,7 @@ class CreateTCPListenersRequest(AbstractModel):
         self.DelayLoop = None
         self.ConnectTimeout = None
         self.RealServerPorts = None
+        self.ClientIPMethod = None
 
 
     def _deserialize(self, params):
@@ -1410,6 +1413,7 @@ class CreateTCPListenersRequest(AbstractModel):
         self.DelayLoop = params.get("DelayLoop")
         self.ConnectTimeout = params.get("ConnectTimeout")
         self.RealServerPorts = params.get("RealServerPorts")
+        self.ClientIPMethod = params.get("ClientIPMethod")
 
 
 class CreateTCPListenersResponse(AbstractModel):
@@ -5345,6 +5349,15 @@ class ProxyGroupDetail(AbstractModel):
         :param TagSet: 标签列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagSet: list of TagPair
+        :param PolicyId: 安全策略ID，当设置了安全策略时，存在该字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyId: str
+        :param Version: 通道组版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: str
+        :param ClientIPMethod: 通道获取客户端IP的方式，0表示TOA，1表示Proxy Protocol
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientIPMethod: list of int
         """
         self.CreateTime = None
         self.ProjectId = None
@@ -5359,6 +5372,9 @@ class ProxyGroupDetail(AbstractModel):
         self.IsOldGroup = None
         self.GroupId = None
         self.TagSet = None
+        self.PolicyId = None
+        self.Version = None
+        self.ClientIPMethod = None
 
 
     def _deserialize(self, params):
@@ -5382,6 +5398,9 @@ class ProxyGroupDetail(AbstractModel):
                 obj = TagPair()
                 obj._deserialize(item)
                 self.TagSet.append(obj)
+        self.PolicyId = params.get("PolicyId")
+        self.Version = params.get("Version")
+        self.ClientIPMethod = params.get("ClientIPMethod")
 
 
 class ProxyGroupInfo(AbstractModel):
@@ -5553,6 +5572,9 @@ UNKNOWN表示未知状态。
         :param ProxyType: 通道类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyType: int
+        :param ClientIPMethod: 通道获取客户端IP的方式，0表示TOA，1表示Proxy Protocol
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientIPMethod: list of int
         """
         self.InstanceId = None
         self.CreateTime = None
@@ -5580,6 +5602,7 @@ UNKNOWN表示未知状态。
         self.RelatedGlobalDomains = None
         self.ModifyConfigTime = None
         self.ProxyType = None
+        self.ClientIPMethod = None
 
 
     def _deserialize(self, params):
@@ -5618,6 +5641,7 @@ UNKNOWN表示未知状态。
         self.RelatedGlobalDomains = params.get("RelatedGlobalDomains")
         self.ModifyConfigTime = params.get("ModifyConfigTime")
         self.ProxyType = params.get("ProxyType")
+        self.ClientIPMethod = params.get("ClientIPMethod")
 
 
 class ProxySimpleInfo(AbstractModel):
@@ -6160,6 +6184,9 @@ lc表示最小连接数。
         :type RealServerSet: list of BindRealServer
         :param CreateTime: 监听器创建时间，Unix时间戳
         :type CreateTime: int
+        :param ClientIPMethod: 监听器获取客户端 IP 的方式，0表示TOA, 1表示Proxy Protocol
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientIPMethod: int
         """
         self.ListenerId = None
         self.ListenerName = None
@@ -6175,6 +6202,7 @@ lc表示最小连接数。
         self.BindStatus = None
         self.RealServerSet = None
         self.CreateTime = None
+        self.ClientIPMethod = None
 
 
     def _deserialize(self, params):
@@ -6197,6 +6225,7 @@ lc表示最小连接数。
                 obj._deserialize(item)
                 self.RealServerSet.append(obj)
         self.CreateTime = params.get("CreateTime")
+        self.ClientIPMethod = params.get("ClientIPMethod")
 
 
 class TagPair(AbstractModel):

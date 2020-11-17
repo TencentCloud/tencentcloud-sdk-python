@@ -1099,6 +1099,10 @@ OPEN：公网属性， INTERNAL：内网属性。
         :type ExclusiveCluster: :class:`tencentcloud.clb.v20180317.models.ExclusiveCluster`
         :param ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
         :type ClientToken: str
+        :param SnatPro: 是否支持绑定跨地域/跨Vpc绑定IP的功能。
+        :type SnatPro: bool
+        :param SnatIps: 开启绑定跨地域/跨Vpc绑定IP的功能后，创建SnatIp。
+        :type SnatIps: list of SnatIp
         :param ClusterTag: Stgw独占集群的标签。
         :type ClusterTag: str
         """
@@ -1118,6 +1122,8 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.Vip = None
         self.ExclusiveCluster = None
         self.ClientToken = None
+        self.SnatPro = None
+        self.SnatIps = None
         self.ClusterTag = None
 
 
@@ -1147,6 +1153,13 @@ OPEN：公网属性， INTERNAL：内网属性。
             self.ExclusiveCluster = ExclusiveCluster()
             self.ExclusiveCluster._deserialize(params.get("ExclusiveCluster"))
         self.ClientToken = params.get("ClientToken")
+        self.SnatPro = params.get("SnatPro")
+        if params.get("SnatIps") is not None:
+            self.SnatIps = []
+            for item in params.get("SnatIps"):
+                obj = SnatIp()
+                obj._deserialize(item)
+                self.SnatIps.append(obj)
         self.ClusterTag = params.get("ClusterTag")
 
 
