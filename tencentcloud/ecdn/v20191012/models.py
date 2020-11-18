@@ -941,7 +941,7 @@ class DomainDetailInfo(AbstractModel):
         :param Readonly: 域名锁定状态，normal、global 分别表示未被锁定，全球锁定。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Readonly: str
-        :param Tag: 域名标签
+        :param Tag: 域名标签。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tag: list of Tag
         """

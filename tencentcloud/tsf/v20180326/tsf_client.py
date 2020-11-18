@@ -3025,6 +3025,34 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def UpdateHealthCheckSettings(self, request):
+        """更新健康检查配置
+
+        :param request: Request instance for UpdateHealthCheckSettings.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.UpdateHealthCheckSettingsRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.UpdateHealthCheckSettingsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateHealthCheckSettings", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateHealthCheckSettingsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def UpdateRepository(self, request):
         """更新仓库信息
 

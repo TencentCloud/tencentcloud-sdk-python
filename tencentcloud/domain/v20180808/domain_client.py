@@ -339,6 +339,34 @@ class DomainClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeTemplate(self, request):
+        """本接口 (DescribeTemplate) 用于获取模板信息。
+
+        :param request: Request instance for DescribeTemplate.
+        :type request: :class:`tencentcloud.domain.v20180808.models.DescribeTemplateRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.DescribeTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTemplateList(self, request):
         """本接口 (DescribeTemplateList) 用于获取模板列表。
 

@@ -793,6 +793,46 @@ class DescribeTemplateListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTemplateRequest(AbstractModel):
+    """DescribeTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 模板ID
+        :type TemplateId: str
+        """
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+
+
+class DescribeTemplateResponse(AbstractModel):
+    """DescribeTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Template: 模板信息
+        :type Template: :class:`tencentcloud.domain.v20180808.models.TemplateInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Template = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Template") is not None:
+            self.Template = TemplateInfo()
+            self.Template._deserialize(params.get("Template"))
+        self.RequestId = params.get("RequestId")
+
+
 class DomainBaseInfo(AbstractModel):
     """获取域名基础信息
 
@@ -1238,7 +1278,7 @@ class TemplateInfo(AbstractModel):
         """
         :param TemplateId: 模板ID
         :type TemplateId: str
-        :param AuditStatus: 认证状态
+        :param AuditStatus: 认证状态：未实名认证:NotUpload, 实名审核中:InAudit，已实名认证:Approved，实名审核失败:Reject
         :type AuditStatus: str
         :param CreatedOn: 创建时间
         :type CreatedOn: str
@@ -1246,7 +1286,7 @@ class TemplateInfo(AbstractModel):
         :type UpdatedOn: str
         :param UserUin: 用户UIN
         :type UserUin: str
-        :param IsDefault: 是否是默认模板
+        :param IsDefault: 是否是默认模板: 是:yes，否:no
         :type IsDefault: str
         :param AuditReason: 认证失败原因
         :type AuditReason: str

@@ -2950,12 +2950,33 @@ class DeployGroupRequest(AbstractModel):
         :type DeployDesc: str
         :param ForceStart: 是否允许强制启动
         :type ForceStart: bool
+        :param EnableHealthCheck: 是否开启健康检查
+        :type EnableHealthCheck: bool
+        :param HealthCheckSettings: 开启健康检查时，配置健康检查
+        :type HealthCheckSettings: :class:`tencentcloud.tsf.v20180326.models.HealthCheckSettings`
+        :param UpdateType: 部署方式，0表示快速更新，1表示滚动更新
+        :type UpdateType: int
+        :param DeployBetaEnable: 是否启用beta批次
+        :type DeployBetaEnable: bool
+        :param DeployBatch: 滚动发布每个批次参与的实例比率
+        :type DeployBatch: list of float
+        :param DeployExeMode: 滚动发布的执行方式
+        :type DeployExeMode: str
+        :param DeployWaitTime: 滚动发布每个批次的时间间隔
+        :type DeployWaitTime: int
         """
         self.GroupId = None
         self.PkgId = None
         self.StartupParameters = None
         self.DeployDesc = None
         self.ForceStart = None
+        self.EnableHealthCheck = None
+        self.HealthCheckSettings = None
+        self.UpdateType = None
+        self.DeployBetaEnable = None
+        self.DeployBatch = None
+        self.DeployExeMode = None
+        self.DeployWaitTime = None
 
 
     def _deserialize(self, params):
@@ -2964,6 +2985,15 @@ class DeployGroupRequest(AbstractModel):
         self.StartupParameters = params.get("StartupParameters")
         self.DeployDesc = params.get("DeployDesc")
         self.ForceStart = params.get("ForceStart")
+        self.EnableHealthCheck = params.get("EnableHealthCheck")
+        if params.get("HealthCheckSettings") is not None:
+            self.HealthCheckSettings = HealthCheckSettings()
+            self.HealthCheckSettings._deserialize(params.get("HealthCheckSettings"))
+        self.UpdateType = params.get("UpdateType")
+        self.DeployBetaEnable = params.get("DeployBetaEnable")
+        self.DeployBatch = params.get("DeployBatch")
+        self.DeployExeMode = params.get("DeployExeMode")
+        self.DeployWaitTime = params.get("DeployWaitTime")
 
 
 class DeployGroupResponse(AbstractModel):
@@ -6210,30 +6240,33 @@ class Instance(AbstractModel):
         :param OperationState: 实例执行状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type OperationState: int
-        :param NamespaceId: NamespaceId
+        :param NamespaceId: NamespaceId Ns ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type NamespaceId: str
-        :param InstanceZoneId: InstanceZoneId
+        :param InstanceZoneId: InstanceZoneId 可用区ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceZoneId: str
-        :param InstanceImportMode: InstanceImportMode
+        :param InstanceImportMode: InstanceImportMode 导入模式
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceImportMode: str
-        :param ApplicationType: ApplicationType
+        :param ApplicationType: ApplicationType应用类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationType: str
-        :param ApplicationResourceType: ApplicationResourceType
+        :param ApplicationResourceType: ApplicationResourceType 资源类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationResourceType: str
-        :param ServiceSidecarStatus: ServiceSidecarStatus
+        :param ServiceSidecarStatus: sidecar状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceSidecarStatus: str
-        :param GroupName: GroupName
+        :param GroupName: 部署组名
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupName: str
-        :param NamespaceName: NamespaceName
+        :param NamespaceName: NS名
 注意：此字段可能返回 null，表示取不到有效值。
         :type NamespaceName: str
+        :param Reason: 健康检查原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Reason: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -6271,6 +6304,7 @@ class Instance(AbstractModel):
         self.ServiceSidecarStatus = None
         self.GroupName = None
         self.NamespaceName = None
+        self.Reason = None
 
 
     def _deserialize(self, params):
@@ -6310,6 +6344,7 @@ class Instance(AbstractModel):
         self.ServiceSidecarStatus = params.get("ServiceSidecarStatus")
         self.GroupName = params.get("GroupName")
         self.NamespaceName = params.get("NamespaceName")
+        self.Reason = params.get("Reason")
 
 
 class LaneGroup(AbstractModel):
@@ -9176,6 +9211,57 @@ class TsfPageVmGroup(AbstractModel):
                 self.Content.append(obj)
 
 
+class UpdateHealthCheckSettingsRequest(AbstractModel):
+    """UpdateHealthCheckSettings请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupId: 部署组ID
+        :type GroupId: str
+        :param EnableHealthCheck: 是否能使健康检查
+        :type EnableHealthCheck: bool
+        :param HealthCheckSettings: 健康检查配置
+        :type HealthCheckSettings: :class:`tencentcloud.tsf.v20180326.models.HealthCheckSettings`
+        """
+        self.GroupId = None
+        self.EnableHealthCheck = None
+        self.HealthCheckSettings = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.EnableHealthCheck = params.get("EnableHealthCheck")
+        if params.get("HealthCheckSettings") is not None:
+            self.HealthCheckSettings = HealthCheckSettings()
+            self.HealthCheckSettings._deserialize(params.get("HealthCheckSettings"))
+
+
+class UpdateHealthCheckSettingsResponse(AbstractModel):
+    """UpdateHealthCheckSettings返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 更新健康检查配置操作是否成功。
+true：操作成功。
+false：操作失败。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class UpdateRepositoryRequest(AbstractModel):
     """UpdateRepository请求参数结构体
 
@@ -9313,6 +9399,12 @@ class VmGroup(AbstractModel):
         :param DeployWaitTime: 滚动发布的每个批次的等待时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeployWaitTime: int
+        :param EnableHealthCheck: 是否开启了健康检查
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableHealthCheck: bool
+        :param HealthCheckSettings: 健康检查配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HealthCheckSettings: :class:`tencentcloud.tsf.v20180326.models.HealthCheckSettings`
         """
         self.GroupId = None
         self.GroupName = None
@@ -9343,6 +9435,8 @@ class VmGroup(AbstractModel):
         self.DeployBatch = None
         self.DeployExeMode = None
         self.DeployWaitTime = None
+        self.EnableHealthCheck = None
+        self.HealthCheckSettings = None
 
 
     def _deserialize(self, params):
@@ -9375,6 +9469,10 @@ class VmGroup(AbstractModel):
         self.DeployBatch = params.get("DeployBatch")
         self.DeployExeMode = params.get("DeployExeMode")
         self.DeployWaitTime = params.get("DeployWaitTime")
+        self.EnableHealthCheck = params.get("EnableHealthCheck")
+        if params.get("HealthCheckSettings") is not None:
+            self.HealthCheckSettings = HealthCheckSettings()
+            self.HealthCheckSettings._deserialize(params.get("HealthCheckSettings"))
 
 
 class VmGroupSimple(AbstractModel):
