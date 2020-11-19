@@ -6111,14 +6111,18 @@ class PurgePathCacheRequest(AbstractModel):
 flush：刷新产生更新的资源
 delete：刷新全部资源
         :type FlushType: str
+        :param UrlEncode: 是否对中文字符进行编码后刷新
+        :type UrlEncode: bool
         """
         self.Paths = None
         self.FlushType = None
+        self.UrlEncode = None
 
 
     def _deserialize(self, params):
         self.Paths = params.get("Paths")
         self.FlushType = params.get("FlushType")
+        self.UrlEncode = params.get("UrlEncode")
 
 
 class PurgePathCacheResponse(AbstractModel):

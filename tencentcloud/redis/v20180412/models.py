@@ -2318,6 +2318,73 @@ class DescribeTaskListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTendisSlowLogRequest(AbstractModel):
+    """DescribeTendisSlowLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例Id：crs-ngvou0i1
+        :type InstanceId: str
+        :param BeginTime: 开始时间：2019-09-08 12:12:41
+        :type BeginTime: str
+        :param EndTime: 结束时间：2019-09-09 12:12:41
+        :type EndTime: str
+        :param MinQueryTime: 慢查询阈值（毫秒）
+        :type MinQueryTime: int
+        :param Limit: 页面大小：20
+        :type Limit: int
+        :param Offset: 偏移量，取Limit整数倍
+        :type Offset: int
+        """
+        self.InstanceId = None
+        self.BeginTime = None
+        self.EndTime = None
+        self.MinQueryTime = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
+        self.MinQueryTime = params.get("MinQueryTime")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class DescribeTendisSlowLogResponse(AbstractModel):
+    """DescribeTendisSlowLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 慢查询总数
+        :type TotalCount: int
+        :param TendisSlowLogDetail: 慢查询详情
+        :type TendisSlowLogDetail: list of TendisSlowLogDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.TendisSlowLogDetail = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("TendisSlowLogDetail") is not None:
+            self.TendisSlowLogDetail = []
+            for item in params.get("TendisSlowLogDetail"):
+                obj = TendisSlowLogDetail()
+                obj._deserialize(item)
+                self.TendisSlowLogDetail.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DestroyPostpaidInstanceRequest(AbstractModel):
     """DestroyPostpaidInstance请求参数结构体
 
@@ -2593,23 +2660,24 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ZoneId: 实例所属的可用区id
+        :param ZoneId: 实例所属的可用区ID，可参考[地域和可用区](https://cloud.tencent.com/document/product/239/4106)  。
         :type ZoneId: int
-        :param TypeId: 实例类型：2 – Redis2.8主从版，3 – Redis3.2主从版(CKV主从版)，4 – Redis3.2集群版(CKV集群版)，5-Redis2.8单机版，6 – Redis4.0主从版，7 – Redis4.0集群版，
+        :param TypeId: 实例类型：2 – Redis2.8内存版(标准架构)，3 – CKV 3.2内存版(标准架构)，4 – CKV 3.2内存版(集群架构)，6 – Redis4.0内存版(标准架构)，7 – Redis4.0内存版(集群架构)，8 – Redis5.0内存版(标准架构)，9 – Redis5.0内存版(集群架构)。
         :type TypeId: int
-        :param MemSize: 实例容量，单位MB， 取值大小以 查询售卖规格接口返回的规格为准
+        :param MemSize: 内存容量，单位为MB， 数值需为1024的整数倍，具体规格以 [查询产品售卖规格](https://cloud.tencent.com/document/api/239/30600) 返回的规格为准。
+TypeId为标准架构时，MemSize是实例总内存容量；TypeId为集群架构时，MemSize是单分片内存容量。
         :type MemSize: int
-        :param GoodsNum: 实例数量，单次购买实例数量以 查询售卖规格接口返回的规格为准
+        :param GoodsNum: 实例数量，单次购买实例数量以 [查询产品售卖规格](https://cloud.tencent.com/document/api/239/30600) 返回的规格为准。
         :type GoodsNum: int
-        :param Period: 购买时长，在创建包年包月实例的时候需要填写，按量计费实例填1即可，单位：月，取值范围 [1,2,3,4,5,6,7,8,9,10,11,12,24,36]
+        :param Period: 购买时长，在创建包年包月实例的时候需要填写，按量计费实例填1即可，单位：月，取值范围 [1,2,3,4,5,6,7,8,9,10,11,12,24,36]。
         :type Period: int
         :param BillingMode: 付费方式:0-按量计费，1-包年包月。
         :type BillingMode: int
-        :param RedisShardNum: 实例分片数量，Redis2.8主从版、CKV主从版和Redis2.8单机版、Redis4.0主从版不需要填写
+        :param RedisShardNum: 实例分片数量，Redis2.8主从版、CKV主从版和Redis2.8单机版、Redis4.0主从版不需要填写。
         :type RedisShardNum: int
-        :param RedisReplicasNum: 实例副本数量，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写
+        :param RedisReplicasNum: 实例副本数量，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写。
         :type RedisReplicasNum: int
-        :param ReplicasReadonly: 是否支持副本只读，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写
+        :param ReplicasReadonly: 是否支持副本只读，Redis2.8主从版、CKV主从版和Redis2.8单机版不需要填写。
         :type ReplicasReadonly: bool
         """
         self.ZoneId = None
@@ -4782,6 +4850,39 @@ class TendisNodes(AbstractModel):
     def _deserialize(self, params):
         self.NodeId = params.get("NodeId")
         self.NodeRole = params.get("NodeRole")
+
+
+class TendisSlowLogDetail(AbstractModel):
+    """Tendis慢查询详情
+
+    """
+
+    def __init__(self):
+        """
+        :param ExecuteTime: 执行时间
+        :type ExecuteTime: str
+        :param Duration: 慢查询耗时（毫秒）
+        :type Duration: int
+        :param Command: 命令
+        :type Command: str
+        :param CommandLine: 详细命令行信息
+        :type CommandLine: str
+        :param Node: 节点ID
+        :type Node: str
+        """
+        self.ExecuteTime = None
+        self.Duration = None
+        self.Command = None
+        self.CommandLine = None
+        self.Node = None
+
+
+    def _deserialize(self, params):
+        self.ExecuteTime = params.get("ExecuteTime")
+        self.Duration = params.get("Duration")
+        self.Command = params.get("Command")
+        self.CommandLine = params.get("CommandLine")
+        self.Node = params.get("Node")
 
 
 class TradeDealDetail(AbstractModel):

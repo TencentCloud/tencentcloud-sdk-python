@@ -473,6 +473,34 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateTaskFlow(self, request):
+        """创建工作流
+
+        :param request: Request instance for CreateTaskFlow.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.CreateTaskFlowRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.CreateTaskFlowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateTaskFlow", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateTaskFlowResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteApplication(self, request):
         """删除应用
 
@@ -2492,6 +2520,34 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyTask(self, request):
+        """修改任务
+
+        :param request: Request instance for ModifyTask.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.ModifyTaskRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.ModifyTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyUploadInfo(self, request):
         """调用该接口和COS的上传接口后，需要调用此接口更新TSF中保存的程序包状态。
         调用此接口完成后，才标志上传包流程结束。
@@ -2563,6 +2619,34 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RedoTaskBatchResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RedoTaskExecute(self, request):
+        """重新执行在某个节点上执行任务。
+
+        :param request: Request instance for RedoTaskExecute.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.RedoTaskExecuteRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.RedoTaskExecuteResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RedoTaskExecute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RedoTaskExecuteResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

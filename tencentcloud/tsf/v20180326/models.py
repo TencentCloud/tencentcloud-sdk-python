@@ -2119,6 +2119,63 @@ class CreateServerlessGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateTaskFlowRequest(AbstractModel):
+    """CreateTaskFlow请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowName: 工作流名称
+        :type FlowName: str
+        :param TriggerRule: 触发方式
+        :type TriggerRule: :class:`tencentcloud.tsf.v20180326.models.TaskRule`
+        :param FlowEdges: 工作流任务节点列表
+        :type FlowEdges: list of TaskFlowEdge
+        :param TimeOut: 工作流执行超时时间
+        :type TimeOut: int
+        """
+        self.FlowName = None
+        self.TriggerRule = None
+        self.FlowEdges = None
+        self.TimeOut = None
+
+
+    def _deserialize(self, params):
+        self.FlowName = params.get("FlowName")
+        if params.get("TriggerRule") is not None:
+            self.TriggerRule = TaskRule()
+            self.TriggerRule._deserialize(params.get("TriggerRule"))
+        if params.get("FlowEdges") is not None:
+            self.FlowEdges = []
+            for item in params.get("FlowEdges"):
+                obj = TaskFlowEdge()
+                obj._deserialize(item)
+                self.FlowEdges.append(obj)
+        self.TimeOut = params.get("TimeOut")
+
+
+class CreateTaskFlowResponse(AbstractModel):
+    """CreateTaskFlow返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 工作流 ID
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateTaskRequest(AbstractModel):
     """CreateTask请求参数结构体
 
@@ -6967,6 +7024,110 @@ false：操作失败。
         self.RequestId = params.get("RequestId")
 
 
+class ModifyTaskRequest(AbstractModel):
+    """ModifyTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务ID
+        :type TaskId: str
+        :param TaskName: 任务名称
+        :type TaskName: str
+        :param TaskType: 任务类型
+        :type TaskType: str
+        :param TaskContent: 任务内容
+        :type TaskContent: str
+        :param ExecuteType: 任务执行类型
+        :type ExecuteType: str
+        :param TaskRule: 触发规则
+        :type TaskRule: :class:`tencentcloud.tsf.v20180326.models.TaskRule`
+        :param TimeOut: 超时时间，单位 ms
+        :type TimeOut: int
+        :param GroupId: 分组ID
+        :type GroupId: str
+        :param ShardCount: 分片数量
+        :type ShardCount: int
+        :param ShardArguments: 分片参数
+        :type ShardArguments: :class:`tencentcloud.tsf.v20180326.models.ShardArgument`
+        :param AdvanceSettings: 高级设置
+        :type AdvanceSettings: :class:`tencentcloud.tsf.v20180326.models.AdvanceSettings`
+        :param SuccessOperator: 判断任务成功的操作符 GT/GTE
+        :type SuccessOperator: str
+        :param SuccessRatio: 判断任务成功率的阈值
+        :type SuccessRatio: int
+        :param RetryCount: 重试次数
+        :type RetryCount: int
+        :param RetryInterval: 重试间隔
+        :type RetryInterval: int
+        :param TaskArgument: 任务参数，长度限制10000个字符
+        :type TaskArgument: str
+        """
+        self.TaskId = None
+        self.TaskName = None
+        self.TaskType = None
+        self.TaskContent = None
+        self.ExecuteType = None
+        self.TaskRule = None
+        self.TimeOut = None
+        self.GroupId = None
+        self.ShardCount = None
+        self.ShardArguments = None
+        self.AdvanceSettings = None
+        self.SuccessOperator = None
+        self.SuccessRatio = None
+        self.RetryCount = None
+        self.RetryInterval = None
+        self.TaskArgument = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.TaskName = params.get("TaskName")
+        self.TaskType = params.get("TaskType")
+        self.TaskContent = params.get("TaskContent")
+        self.ExecuteType = params.get("ExecuteType")
+        if params.get("TaskRule") is not None:
+            self.TaskRule = TaskRule()
+            self.TaskRule._deserialize(params.get("TaskRule"))
+        self.TimeOut = params.get("TimeOut")
+        self.GroupId = params.get("GroupId")
+        self.ShardCount = params.get("ShardCount")
+        if params.get("ShardArguments") is not None:
+            self.ShardArguments = ShardArgument()
+            self.ShardArguments._deserialize(params.get("ShardArguments"))
+        if params.get("AdvanceSettings") is not None:
+            self.AdvanceSettings = AdvanceSettings()
+            self.AdvanceSettings._deserialize(params.get("AdvanceSettings"))
+        self.SuccessOperator = params.get("SuccessOperator")
+        self.SuccessRatio = params.get("SuccessRatio")
+        self.RetryCount = params.get("RetryCount")
+        self.RetryInterval = params.get("RetryInterval")
+        self.TaskArgument = params.get("TaskArgument")
+
+
+class ModifyTaskResponse(AbstractModel):
+    """ModifyTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 更新是否成功
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyUploadInfoRequest(AbstractModel):
     """ModifyUploadInfo请求参数结构体
 
@@ -7608,6 +7769,52 @@ class RedoTaskBatchResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RedoTaskExecuteRequest(AbstractModel):
+    """RedoTaskExecute请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BatchId: 任务批次ID
+        :type BatchId: str
+        :param ExecuteId: 任务执行ID
+        :type ExecuteId: str
+        :param TaskId: 任务ID
+        :type TaskId: str
+        """
+        self.BatchId = None
+        self.ExecuteId = None
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.BatchId = params.get("BatchId")
+        self.ExecuteId = params.get("ExecuteId")
+        self.TaskId = params.get("TaskId")
+
+
+class RedoTaskExecuteResponse(AbstractModel):
+    """RedoTaskExecute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 成功失败
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class RedoTaskFlowBatchRequest(AbstractModel):
     """RedoTaskFlowBatch请求参数结构体
 
@@ -8189,7 +8396,7 @@ class ServiceSetting(AbstractModel):
         :type AccessType: int
         :param ProtocolPorts: 容器端口映射
 注意：此字段可能返回 null，表示取不到有效值。
-        :type ProtocolPorts: :class:`tencentcloud.tsf.v20180326.models.ProtocolPort`
+        :type ProtocolPorts: list of ProtocolPort
         :param SubnetId: 子网ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
@@ -8202,8 +8409,11 @@ class ServiceSetting(AbstractModel):
     def _deserialize(self, params):
         self.AccessType = params.get("AccessType")
         if params.get("ProtocolPorts") is not None:
-            self.ProtocolPorts = ProtocolPort()
-            self.ProtocolPorts._deserialize(params.get("ProtocolPorts"))
+            self.ProtocolPorts = []
+            for item in params.get("ProtocolPorts"):
+                obj = ProtocolPort()
+                obj._deserialize(item)
+                self.ProtocolPorts.append(obj)
         self.SubnetId = params.get("SubnetId")
 
 
@@ -8708,6 +8918,77 @@ class StopTaskExecuteResponse(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
+
+
+class TaskFlowEdge(AbstractModel):
+    """工作流图中的边
+
+    """
+
+    def __init__(self):
+        """
+        :param NodeId: 节点 ID
+        :type NodeId: str
+        :param ChildNodeId: 子节点 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChildNodeId: str
+        :param CoreNode: 是否核心任务,Y/N
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CoreNode: str
+        :param EdgeType: 边类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EdgeType: str
+        :param NodeType: 任务节点类型
+        :type NodeType: str
+        :param PositionX: X轴坐标位置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PositionX: str
+        :param PositionY: Y轴坐标位置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PositionY: str
+        :param GraphId: 图 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GraphId: str
+        :param FlowId: 工作流 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowId: str
+        :param NodeName: 节点名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeName: str
+        :param TaskId: 任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param TaskLogId: 任务历史ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskLogId: str
+        """
+        self.NodeId = None
+        self.ChildNodeId = None
+        self.CoreNode = None
+        self.EdgeType = None
+        self.NodeType = None
+        self.PositionX = None
+        self.PositionY = None
+        self.GraphId = None
+        self.FlowId = None
+        self.NodeName = None
+        self.TaskId = None
+        self.TaskLogId = None
+
+
+    def _deserialize(self, params):
+        self.NodeId = params.get("NodeId")
+        self.ChildNodeId = params.get("ChildNodeId")
+        self.CoreNode = params.get("CoreNode")
+        self.EdgeType = params.get("EdgeType")
+        self.NodeType = params.get("NodeType")
+        self.PositionX = params.get("PositionX")
+        self.PositionY = params.get("PositionY")
+        self.GraphId = params.get("GraphId")
+        self.FlowId = params.get("FlowId")
+        self.NodeName = params.get("NodeName")
+        self.TaskId = params.get("TaskId")
+        self.TaskLogId = params.get("TaskLogId")
 
 
 class TaskFlowLastBatchState(AbstractModel):

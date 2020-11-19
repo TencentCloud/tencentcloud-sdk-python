@@ -6887,7 +6887,9 @@ class RunInstancesRequest(AbstractModel):
         :param Password: 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：
 Linux实例密码必须8到30位，至少包括两项[a-z]，[A-Z]、[0-9] 和 [( ) ` ~ ! @ # $ % ^ & - + = | { } [ ] : ; ' , . ? / ]中的特殊符。Windows实例密码必须12到30位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) ` ~ ! @ # $ % ^ & - + = | { } [ ] : ; ' , . ? /]中的特殊符号。
         :type Password: str
-        :param InternetMaxBandwidthOut: 公网出带宽上限，单位：Mbps。如果未传该参数或者传的值为0，则使用模块下的默认值
+        :param InternetMaxBandwidthOut: 公网出带宽上限，单位：Mbps。
+1.如果未传该参数或者传的值为0，则使用模块下的默认值。
+2.如果未传该参数或者传的值为0且未指定模块，则使用InternetMaxBandwidthIn的值
         :type InternetMaxBandwidthOut: int
         :param ModuleId: 模块ID。如果未传该参数，则必须传ImageId，InstanceType，DataDiskSize，InternetMaxBandwidthOut参数
         :type ModuleId: str
@@ -6922,6 +6924,10 @@ Windows 实例：名字符长度为[2, 15]，允许字母（不限制大小写�
         :type SecurityGroupIds: list of str
         :param SystemDiskSize: 系统盘大小，单位是G。如果未传该参数或者传的值为0，则使用模块下的默认值
         :type SystemDiskSize: int
+        :param InternetMaxBandwidthIn: 公网入带宽上限，单位：Mbps。
+1.如果未传该参数或者传的值为0，则使用对应模块的默认值。
+2.如果未传该参数或者传的值为0且未指定模块，则使用InternetMaxBandwidthOut
+        :type InternetMaxBandwidthIn: int
         """
         self.ZoneInstanceCountISPSet = None
         self.Password = None
@@ -6938,6 +6944,7 @@ Windows 实例：名字符长度为[2, 15]，允许字母（不限制大小写�
         self.DataDiskSize = None
         self.SecurityGroupIds = None
         self.SystemDiskSize = None
+        self.InternetMaxBandwidthIn = None
 
 
     def _deserialize(self, params):
@@ -6968,6 +6975,7 @@ Windows 实例：名字符长度为[2, 15]，允许字母（不限制大小写�
         self.DataDiskSize = params.get("DataDiskSize")
         self.SecurityGroupIds = params.get("SecurityGroupIds")
         self.SystemDiskSize = params.get("SystemDiskSize")
+        self.InternetMaxBandwidthIn = params.get("InternetMaxBandwidthIn")
 
 
 class RunInstancesResponse(AbstractModel):
