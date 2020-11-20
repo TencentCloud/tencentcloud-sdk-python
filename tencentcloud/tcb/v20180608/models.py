@@ -299,6 +299,54 @@ class CloudBaseRunVolumeMount(AbstractModel):
                 self.NfsVolumes.append(obj)
 
 
+class CloudBaseRunVpcSubnet(AbstractModel):
+    """子网信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 子网id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param Cidr: 子网的ipv4
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cidr: str
+        :param Zone: 可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        :param Type: 类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param Target: subnet类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Target: str
+        :param Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param Name: 名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        """
+        self.Id = None
+        self.Cidr = None
+        self.Zone = None
+        self.Type = None
+        self.Target = None
+        self.Region = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Cidr = params.get("Cidr")
+        self.Zone = params.get("Zone")
+        self.Type = params.get("Type")
+        self.Target = params.get("Target")
+        self.Region = params.get("Region")
+        self.Name = params.get("Name")
+
+
 class CloudRunServiceSimpleVersionSnapshot(AbstractModel):
     """CloudRunServiceSimpleVersionSnapshot 信息
 
@@ -1102,6 +1150,70 @@ class DescribeCloudBaseBuildServiceResponse(AbstractModel):
                 self.UploadHeaders.append(obj)
         self.PackageName = params.get("PackageName")
         self.PackageVersion = params.get("PackageVersion")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCloudBaseRunResourceRequest(AbstractModel):
+    """DescribeCloudBaseRunResource请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境ID
+        :type EnvId: str
+        """
+        self.EnvId = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+
+
+class DescribeCloudBaseRunResourceResponse(AbstractModel):
+    """DescribeCloudBaseRunResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterStatus: 集群状态(creating/succ)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterStatus: str
+        :param VirtualClusterId: 虚拟集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VirtualClusterId: str
+        :param VpcId: vpc id信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param Region: 地域信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param SubnetIds: 子网信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetIds: list of CloudBaseRunVpcSubnet
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ClusterStatus = None
+        self.VirtualClusterId = None
+        self.VpcId = None
+        self.Region = None
+        self.SubnetIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterStatus = params.get("ClusterStatus")
+        self.VirtualClusterId = params.get("VirtualClusterId")
+        self.VpcId = params.get("VpcId")
+        self.Region = params.get("Region")
+        if params.get("SubnetIds") is not None:
+            self.SubnetIds = []
+            for item in params.get("SubnetIds"):
+                obj = CloudBaseRunVpcSubnet()
+                obj._deserialize(item)
+                self.SubnetIds.append(obj)
         self.RequestId = params.get("RequestId")
 
 

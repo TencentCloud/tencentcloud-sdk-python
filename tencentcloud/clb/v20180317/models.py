@@ -3578,6 +3578,9 @@ OPEN：公网属性， INTERNAL：内网属性。
         :param MixIpTarget: 开启IPv6FullChain负载均衡7层监听器支持混绑IPv4/IPv6目标功能。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MixIpTarget: bool
+        :param Zones: 私有网络内网负载均衡，就近接入模式下规则所落在的可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zones: list of str
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
@@ -3626,6 +3629,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.LocalBgp = None
         self.ClusterTag = None
         self.MixIpTarget = None
+        self.Zones = None
 
 
     def _deserialize(self, params):
@@ -3703,6 +3707,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.LocalBgp = params.get("LocalBgp")
         self.ClusterTag = params.get("ClusterTag")
         self.MixIpTarget = params.get("MixIpTarget")
+        self.Zones = params.get("Zones")
 
 
 class LoadBalancerDetail(AbstractModel):

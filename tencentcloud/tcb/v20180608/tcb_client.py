@@ -333,6 +333,34 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCloudBaseRunResource(self, request):
+        """查看容器托管的集群状态
+
+        :param request: Request instance for DescribeCloudBaseRunResource.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunResourceRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCloudBaseRunResource", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCloudBaseRunResourceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCloudBaseRunServerVersion(self, request):
         """查询服务版本的详情，CPU和MEM  请使用CPUSize和MemSize
 

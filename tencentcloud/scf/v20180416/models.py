@@ -358,9 +358,9 @@ class CreateFunctionRequest(AbstractModel):
         """
         :param FunctionName: 创建的函数名称，函数名称支持26个英文字母大小写、数字、连接符和下划线，第一个字符只能以字母开头，最后一个字符不能为连接符或者下划线，名称长度2-60
         :type FunctionName: str
-        :param Code: 函数的代码. 注意：不能同时指定Cos与ZipFile
+        :param Code: 函数代码. 注意：不能同时指定Cos、ZipFile或 DemoId。
         :type Code: :class:`tencentcloud.scf.v20180416.models.Code`
-        :param Handler: 函数处理方法名称，名称格式支持 "文件名称.方法名称" 形式，文件名称和函数名称之间以"."隔开，文件名称和函数名称要求以字母开始和结尾，中间允许插入字母、数字、下划线和连接符，文件名称和函数名字的长度要求是 2-60 个字符
+        :param Handler: 函数处理方法名称，名称格式支持 "文件名称.方法名称" 形式（java 名称格式 包名.类名::方法名），文件名称和函数名称之间以"."隔开，文件名称和函数名称要求以字母开始和结尾，中间允许插入字母、数字、下划线和连接符，文件名称和函数名字的长度要求是 2-60 个字符
         :type Handler: str
         :param Description: 函数描述,最大支持 1000 个英文字母、数字、空格、逗号、换行符和英文句号，支持中文
         :type Description: str
@@ -370,7 +370,7 @@ class CreateFunctionRequest(AbstractModel):
         :type Timeout: int
         :param Environment: 函数的环境变量
         :type Environment: :class:`tencentcloud.scf.v20180416.models.Environment`
-        :param Runtime: 函数运行环境，目前仅支持 Python2.7，Python3.6，Nodejs6.10，Nodejs8.9，Nodejs10.15，Nodejs12.16， PHP5， PHP7，Golang1 ， Java8和CustomRuntime，默认Python2.7
+        :param Runtime: 函数运行环境，目前仅支持 Python2.7，Python3.6，Nodejs6.10，Nodejs8.9，Nodejs10.15，Nodejs12.16， PHP5， PHP7，Go1，Java8和CustomRuntime，默认Python2.7
         :type Runtime: str
         :param VpcConfig: 函数的私有网络配置
         :type VpcConfig: :class:`tencentcloud.scf.v20180416.models.VpcConfig`
@@ -384,7 +384,7 @@ class CreateFunctionRequest(AbstractModel):
         :type ClsTopicId: str
         :param Type: 函数类型，默认值为Event，创建触发器函数请填写Event，创建HTTP函数级服务请填写HTTP
         :type Type: str
-        :param CodeSource: CodeSource 代码来源，支持以下'ZipFile', 'Cos', 'Demo', 'TempCos', 'Git'之一，使用Git来源必须指定此字段
+        :param CodeSource: CodeSource 代码来源，支持ZipFile, Cos, Demo 其中之一
         :type CodeSource: str
         :param Layers: 函数要关联的Layer版本列表，Layer会按照在列表中顺序依次覆盖。
         :type Layers: list of LayerVersionSimple
@@ -950,7 +950,7 @@ class Function(AbstractModel):
         :type FunctionId: str
         :param Namespace: 命名空间
         :type Namespace: str
-        :param Status: 函数状态
+        :param Status: 函数状态，状态值及流转[参考此处](https://cloud.tencent.com/document/product/583/47175)
         :type Status: str
         :param StatusDesc: 函数状态详情
         :type StatusDesc: str
@@ -960,6 +960,14 @@ class Function(AbstractModel):
         :type Tags: list of Tag
         :param Type: 函数类型，取值为 HTTP 或者 Event
         :type Type: str
+        :param StatusReasons: 函数状态失败原因
+        :type StatusReasons: list of StatusReason
+        :param TotalProvisionedConcurrencyMem: 函数所有版本预置并发内存总和
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalProvisionedConcurrencyMem: int
+        :param ReservedConcurrencyMem: 函数并发保留内存
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReservedConcurrencyMem: int
         """
         self.ModTime = None
         self.AddTime = None
@@ -972,6 +980,9 @@ class Function(AbstractModel):
         self.Description = None
         self.Tags = None
         self.Type = None
+        self.StatusReasons = None
+        self.TotalProvisionedConcurrencyMem = None
+        self.ReservedConcurrencyMem = None
 
 
     def _deserialize(self, params):
@@ -991,6 +1002,14 @@ class Function(AbstractModel):
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.Type = params.get("Type")
+        if params.get("StatusReasons") is not None:
+            self.StatusReasons = []
+            for item in params.get("StatusReasons"):
+                obj = StatusReason()
+                obj._deserialize(item)
+                self.StatusReasons.append(obj)
+        self.TotalProvisionedConcurrencyMem = params.get("TotalProvisionedConcurrencyMem")
+        self.ReservedConcurrencyMem = params.get("ReservedConcurrencyMem")
 
 
 class FunctionLog(AbstractModel):
@@ -2629,6 +2648,12 @@ class Trigger(AbstractModel):
         :type CustomArgument: str
         :param AvailableStatus: 触发器状态
         :type AvailableStatus: str
+        :param ResourceId: 触发器最小资源ID
+        :type ResourceId: str
+        :param BindStatus: 触发器和云函数绑定状态
+        :type BindStatus: str
+        :param TriggerAttribute: 触发器类型，双向表示两侧控制台均可操作，单向表示SCF控制台单向创建
+        :type TriggerAttribute: str
         """
         self.ModTime = None
         self.Type = None
@@ -2638,6 +2663,9 @@ class Trigger(AbstractModel):
         self.Enable = None
         self.CustomArgument = None
         self.AvailableStatus = None
+        self.ResourceId = None
+        self.BindStatus = None
+        self.TriggerAttribute = None
 
 
     def _deserialize(self, params):
@@ -2649,6 +2677,9 @@ class Trigger(AbstractModel):
         self.Enable = params.get("Enable")
         self.CustomArgument = params.get("CustomArgument")
         self.AvailableStatus = params.get("AvailableStatus")
+        self.ResourceId = params.get("ResourceId")
+        self.BindStatus = params.get("BindStatus")
+        self.TriggerAttribute = params.get("TriggerAttribute")
 
 
 class TriggerInfo(AbstractModel):
@@ -2677,6 +2708,12 @@ class TriggerInfo(AbstractModel):
         :type AddTime: str
         :param ModTime: 触发器最后修改时间
         :type ModTime: str
+        :param ResourceId: 触发器最小资源ID
+        :type ResourceId: str
+        :param BindStatus: 触发器和云函数绑定状态
+        :type BindStatus: str
+        :param TriggerAttribute: 触发器类型，双向表示两侧控制台均可操作，单向表示SCF控制台单向创建
+        :type TriggerAttribute: str
         """
         self.Enable = None
         self.Qualifier = None
@@ -2687,6 +2724,9 @@ class TriggerInfo(AbstractModel):
         self.CustomArgument = None
         self.AddTime = None
         self.ModTime = None
+        self.ResourceId = None
+        self.BindStatus = None
+        self.TriggerAttribute = None
 
 
     def _deserialize(self, params):
@@ -2699,6 +2739,9 @@ class TriggerInfo(AbstractModel):
         self.CustomArgument = params.get("CustomArgument")
         self.AddTime = params.get("AddTime")
         self.ModTime = params.get("ModTime")
+        self.ResourceId = params.get("ResourceId")
+        self.BindStatus = params.get("BindStatus")
+        self.TriggerAttribute = params.get("TriggerAttribute")
 
 
 class UpdateAliasRequest(AbstractModel):
@@ -2784,7 +2827,7 @@ class UpdateFunctionCodeRequest(AbstractModel):
         :type Publish: str
         :param Code: 函数代码
         :type Code: :class:`tencentcloud.scf.v20180416.models.Code`
-        :param CodeSource: 代码来源方式，支持以下'ZipFile', 'Cos', 'Inline', 'TempCos', 'Git' 之一，使用Git来源必须指定此字段
+        :param CodeSource: 代码来源方式，支持 ZipFile, Cos, Inline 之一
         :type CodeSource: str
         """
         self.Handler = None
@@ -2848,7 +2891,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         :type MemorySize: int
         :param Timeout: 函数最长执行时间，单位为秒，可选值范 1-900 秒，默认为 3 秒
         :type Timeout: int
-        :param Runtime: 函数运行环境，目前仅支持 Python2.7，Python3.6，Nodejs6.10，Nodejs8.9，Nodejs10.15，Nodejs12.16， PHP5， PHP7，Golang1 ， Java8和CustomRuntime
+        :param Runtime: 函数运行环境，目前仅支持 Python2.7，Python3.6，Nodejs6.10，Nodejs8.9，Nodejs10.15，Nodejs12.16， PHP5， PHP7，Go1 ， Java8和CustomRuntime
         :type Runtime: str
         :param Environment: 函数的环境变量
         :type Environment: :class:`tencentcloud.scf.v20180416.models.Environment`
@@ -2862,7 +2905,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         :type ClsLogsetId: str
         :param ClsTopicId: 日志投递到的cls Topic ID
         :type ClsTopicId: str
-        :param Publish: 在更新时是否同步发布新版本，默认为：FALSE，不发布
+        :param Publish: 在更新时是否同步发布新版本，默认为：FALSE，不发布新版本
         :type Publish: str
         :param L5Enable: 是否开启L5访问能力，TRUE 为开启，FALSE为关闭
         :type L5Enable: str
@@ -2872,7 +2915,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         :type DeadLetterConfig: :class:`tencentcloud.scf.v20180416.models.DeadLetterConfig`
         :param PublicNetConfig: 公网访问配置
         :type PublicNetConfig: :class:`tencentcloud.scf.v20180416.models.PublicNetConfigIn`
-        :param CfsConfig: 文件系统配置入参，用于云函数绑定文件系统
+        :param CfsConfig: 文件系统配置入参，用于云函数绑定CFS文件系统
         :type CfsConfig: :class:`tencentcloud.scf.v20180416.models.CfsConfig`
         :param InitTimeout: 函数初始化执行超时时间，默认15秒
         :type InitTimeout: int

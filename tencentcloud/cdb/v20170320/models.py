@@ -83,19 +83,19 @@ class AddTimeWindowRequest(AbstractModel):
         """
         :param InstanceId: 实例ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
         :type InstanceId: str
-        :param Monday: 星期一的可维护时间段，其中每一个时间段的格式形如：10:00-12:00；起始时间按半个小时对齐；最短半个小时，最长三个小时；最多设置两个时间段；下同。
+        :param Monday: 星期一的可维护时间段，其中每一个时间段的格式形如：10:00-12:00；起始时间按半个小时对齐；最短半个小时，最长三个小时；可设置多个时间段。 一周中应至少设置一天的时间窗。下同。
         :type Monday: list of str
-        :param Tuesday: 星期二的可维护时间窗口。
+        :param Tuesday: 星期二的可维护时间窗口。 一周中应至少设置一天的时间窗。
         :type Tuesday: list of str
-        :param Wednesday: 星期三的可维护时间窗口。
+        :param Wednesday: 星期三的可维护时间窗口。 一周中应至少设置一天的时间窗。
         :type Wednesday: list of str
-        :param Thursday: 星期四的可维护时间窗口。
+        :param Thursday: 星期四的可维护时间窗口。 一周中应至少设置一天的时间窗。
         :type Thursday: list of str
-        :param Friday: 星期五的可维护时间窗口。
+        :param Friday: 星期五的可维护时间窗口。 一周中应至少设置一天的时间窗。
         :type Friday: list of str
-        :param Saturday: 星期六的可维护时间窗口。
+        :param Saturday: 星期六的可维护时间窗口。 一周中应至少设置一天的时间窗。
         :type Saturday: list of str
-        :param Sunday: 星期日的可维护时间窗口。
+        :param Sunday: 星期日的可维护时间窗口。 一周中应至少设置一天的时间窗。
         :type Sunday: list of str
         """
         self.InstanceId = None

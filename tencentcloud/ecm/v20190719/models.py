@@ -812,6 +812,8 @@ class CreateListenerRequest(AbstractModel):
         :param Scheduler: 监听器转发的方式。可选值：WRR、LEAST_CONN
 分别表示按权重轮询、最小连接数， 默认为 WRR。
         :type Scheduler: str
+        :param SessionType: 会话保持类型。不传或传NORMAL表示默认会话保持类型。QUIC_CID 表示根据Quic Connection ID做会话保持。QUIC_CID只支持UDP协议。
+        :type SessionType: str
         """
         self.LoadBalancerId = None
         self.Ports = None
@@ -820,6 +822,7 @@ class CreateListenerRequest(AbstractModel):
         self.HealthCheck = None
         self.SessionExpireTime = None
         self.Scheduler = None
+        self.SessionType = None
 
 
     def _deserialize(self, params):
@@ -832,6 +835,7 @@ class CreateListenerRequest(AbstractModel):
             self.HealthCheck._deserialize(params.get("HealthCheck"))
         self.SessionExpireTime = params.get("SessionExpireTime")
         self.Scheduler = params.get("Scheduler")
+        self.SessionType = params.get("SessionType")
 
 
 class CreateListenerResponse(AbstractModel):
@@ -4520,6 +4524,9 @@ class Listener(AbstractModel):
         :param CreateTime: 监听器的创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
+        :param SessionType: 监听器的会话类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionType: str
         """
         self.ListenerId = None
         self.Protocol = None
@@ -4529,6 +4536,7 @@ class Listener(AbstractModel):
         self.SessionExpireTime = None
         self.ListenerName = None
         self.CreateTime = None
+        self.SessionType = None
 
 
     def _deserialize(self, params):
@@ -4542,6 +4550,7 @@ class Listener(AbstractModel):
         self.SessionExpireTime = params.get("SessionExpireTime")
         self.ListenerName = params.get("ListenerName")
         self.CreateTime = params.get("CreateTime")
+        self.SessionType = params.get("SessionType")
 
 
 class ListenerBackend(AbstractModel):
