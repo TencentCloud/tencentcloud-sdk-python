@@ -278,6 +278,34 @@ class CrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def QueryProducts(self, request):
+        """查询产品列表
+
+        :param request: Request instance for QueryProducts.
+        :type request: :class:`tencentcloud.cr.v20180321.models.QueryProductsRequest`
+        :rtype: :class:`tencentcloud.cr.v20180321.models.QueryProductsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryProducts", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryProductsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def UploadDataFile(self, request):
         """上传文件，接口返回数据任务ID，支持xlsx、xls、csv、zip格式。
 

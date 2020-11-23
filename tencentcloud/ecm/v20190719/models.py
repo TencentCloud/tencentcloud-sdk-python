@@ -737,6 +737,29 @@ class Country(AbstractModel):
         self.CountryName = params.get("CountryName")
 
 
+class CreateHaVipRequest(AbstractModel):
+    """CreateHaVip请求参数结构体
+
+    """
+
+
+class CreateHaVipResponse(AbstractModel):
+    """CreateHaVip返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateImageRequest(AbstractModel):
     """CreateImage请求参数结构体
 
@@ -1098,6 +1121,111 @@ class CreateNetworkInterfaceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateRouteTableRequest(AbstractModel):
+    """CreateRouteTable请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: 待操作的VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+        :type VpcId: str
+        :param RouteTableName: 路由表名称，最大长度不能超过60个字节。
+        :type RouteTableName: str
+        :param EcmRegion: ecm地域
+        :type EcmRegion: str
+        """
+        self.VpcId = None
+        self.RouteTableName = None
+        self.EcmRegion = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.RouteTableName = params.get("RouteTableName")
+        self.EcmRegion = params.get("EcmRegion")
+
+
+class CreateRouteTableResponse(AbstractModel):
+    """CreateRouteTable返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RouteTable: 路由表对象
+        :type RouteTable: :class:`tencentcloud.ecm.v20190719.models.RouteTable`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RouteTable = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("RouteTable") is not None:
+            self.RouteTable = RouteTable()
+            self.RouteTable._deserialize(params.get("RouteTable"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateRoutesRequest(AbstractModel):
+    """CreateRoutes请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RouteTableId: 路由表实例ID。
+        :type RouteTableId: str
+        :param Routes: 要创建的路由策略对象。
+        :type Routes: list of Route
+        """
+        self.RouteTableId = None
+        self.Routes = None
+
+
+    def _deserialize(self, params):
+        self.RouteTableId = params.get("RouteTableId")
+        if params.get("Routes") is not None:
+            self.Routes = []
+            for item in params.get("Routes"):
+                obj = Route()
+                obj._deserialize(item)
+                self.Routes.append(obj)
+
+
+class CreateRoutesResponse(AbstractModel):
+    """CreateRoutes返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 新增的实例个数。
+        :type TotalCount: int
+        :param RouteTableSet: 路由表对象。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RouteTableSet: list of RouteTable
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.RouteTableSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("RouteTableSet") is not None:
+            self.RouteTableSet = []
+            for item in params.get("RouteTableSet"):
+                obj = RouteTable()
+                obj._deserialize(item)
+                self.RouteTableSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class CreateSecurityGroupPoliciesRequest(AbstractModel):
     """CreateSecurityGroupPolicies请求参数结构体
 
@@ -1329,6 +1457,29 @@ class CreateVpcResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteHaVipRequest(AbstractModel):
+    """DeleteHaVip请求参数结构体
+
+    """
+
+
+class DeleteHaVipResponse(AbstractModel):
+    """DeleteHaVip返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteImageRequest(AbstractModel):
     """DeleteImage请求参数结构体
 
@@ -1530,6 +1681,83 @@ class DeleteNetworkInterfaceRequest(AbstractModel):
 
 class DeleteNetworkInterfaceResponse(AbstractModel):
     """DeleteNetworkInterface返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteRouteTableRequest(AbstractModel):
+    """DeleteRouteTable请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RouteTableId: 路由表实例ID，例如：rtb-azd4dt1c
+        :type RouteTableId: str
+        """
+        self.RouteTableId = None
+
+
+    def _deserialize(self, params):
+        self.RouteTableId = params.get("RouteTableId")
+
+
+class DeleteRouteTableResponse(AbstractModel):
+    """DeleteRouteTable返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteRoutesRequest(AbstractModel):
+    """DeleteRoutes请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RouteTableId: 路由表唯一ID。
+        :type RouteTableId: str
+        :param Routes: 路由策略对象。
+        :type Routes: list of Route
+        """
+        self.RouteTableId = None
+        self.Routes = None
+
+
+    def _deserialize(self, params):
+        self.RouteTableId = params.get("RouteTableId")
+        if params.get("Routes") is not None:
+            self.Routes = []
+            for item in params.get("Routes"):
+                obj = Route()
+                obj._deserialize(item)
+                self.Routes.append(obj)
+
+
+class DeleteRoutesResponse(AbstractModel):
+    """DeleteRoutes返回参数结构体
 
     """
 
@@ -2012,6 +2240,29 @@ class DescribeDefaultSubnetResponse(AbstractModel):
         if params.get("Subnet") is not None:
             self.Subnet = Subnet()
             self.Subnet._deserialize(params.get("Subnet"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeHaVipsRequest(AbstractModel):
+    """DescribeHaVips请求参数结构体
+
+    """
+
+
+class DescribeHaVipsResponse(AbstractModel):
+    """DescribeHaVips返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -2891,6 +3142,127 @@ class DescribePeakNetworkOverviewResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeRouteConflictsRequest(AbstractModel):
+    """DescribeRouteConflicts请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RouteTableId: 路由表实例ID，例如：rtb-azd4dt1c。
+        :type RouteTableId: str
+        :param DestinationCidrBlocks: 要检查的与之冲突的目的端列表
+        :type DestinationCidrBlocks: list of str
+        """
+        self.RouteTableId = None
+        self.DestinationCidrBlocks = None
+
+
+    def _deserialize(self, params):
+        self.RouteTableId = params.get("RouteTableId")
+        self.DestinationCidrBlocks = params.get("DestinationCidrBlocks")
+
+
+class DescribeRouteConflictsResponse(AbstractModel):
+    """DescribeRouteConflicts返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RouteConflictSet: 路由策略冲突列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RouteConflictSet: list of RouteConflict
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RouteConflictSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("RouteConflictSet") is not None:
+            self.RouteConflictSet = []
+            for item in params.get("RouteConflictSet"):
+                obj = RouteConflict()
+                obj._deserialize(item)
+                self.RouteConflictSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRouteTablesRequest(AbstractModel):
+    """DescribeRouteTables请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RouteTableIds: 路由表实例ID，例如：rtb-azd4dt1c。
+        :type RouteTableIds: list of str
+        :param Filters: 过滤条件，参数不支持同时指定RouteTableIds和Filters。
+route-table-id - String - （过滤条件）路由表实例ID。
+route-table-name - String - （过滤条件）路由表名称。
+vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。
+association.main - String - （过滤条件）是否主路由表。
+        :type Filters: list of Filter
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 限数
+        :type Limit: int
+        :param EcmRegion: ECM 地域，传空或不传表示所有区域
+        :type EcmRegion: str
+        """
+        self.RouteTableIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+        self.EcmRegion = None
+
+
+    def _deserialize(self, params):
+        self.RouteTableIds = params.get("RouteTableIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.EcmRegion = params.get("EcmRegion")
+
+
+class DescribeRouteTablesResponse(AbstractModel):
+    """DescribeRouteTables返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的实例数量
+        :type TotalCount: int
+        :param RouteTableSet: 路由表列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RouteTableSet: list of RouteTable
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.RouteTableSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("RouteTableSet") is not None:
+            self.RouteTableSet = []
+            for item in params.get("RouteTableSet"):
+                obj = RouteTable()
+                obj._deserialize(item)
+                self.RouteTableSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSecurityGroupAssociationStatisticsRequest(AbstractModel):
     """DescribeSecurityGroupAssociationStatistics请求参数结构体
 
@@ -3468,6 +3840,44 @@ class DetachNetworkInterfaceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DisableRoutesRequest(AbstractModel):
+    """DisableRoutes请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RouteTableId: 路由表唯一ID。
+        :type RouteTableId: str
+        :param RouteIds: 路由策略ID。
+        :type RouteIds: list of int non-negative
+        """
+        self.RouteTableId = None
+        self.RouteIds = None
+
+
+    def _deserialize(self, params):
+        self.RouteTableId = params.get("RouteTableId")
+        self.RouteIds = params.get("RouteIds")
+
+
+class DisableRoutesResponse(AbstractModel):
+    """DisableRoutes返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DisassociateAddressRequest(AbstractModel):
     """DisassociateAddress请求参数结构体
 
@@ -3610,6 +4020,44 @@ DAILY_PUBLIC_IP_ASSIGN：用户当前地域下，重新分配公网 IP次数。
         self.QuotaId = params.get("QuotaId")
         self.QuotaCurrent = params.get("QuotaCurrent")
         self.QuotaLimit = params.get("QuotaLimit")
+
+
+class EnableRoutesRequest(AbstractModel):
+    """EnableRoutes请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RouteTableId: 路由表唯一ID。
+        :type RouteTableId: str
+        :param RouteIds: 路由策略ID。
+        :type RouteIds: list of int non-negative
+        """
+        self.RouteTableId = None
+        self.RouteIds = None
+
+
+    def _deserialize(self, params):
+        self.RouteTableId = params.get("RouteTableId")
+        self.RouteIds = params.get("RouteIds")
+
+
+class EnableRoutesResponse(AbstractModel):
+    """EnableRoutes返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class EnhancedService(AbstractModel):
@@ -5002,6 +5450,29 @@ class ModifyDefaultSubnetResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyHaVipAttributeRequest(AbstractModel):
+    """ModifyHaVipAttribute请求参数结构体
+
+    """
+
+
+class ModifyHaVipAttributeResponse(AbstractModel):
+    """ModifyHaVipAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyImageAttributeRequest(AbstractModel):
     """ModifyImageAttribute请求参数结构体
 
@@ -5413,6 +5884,44 @@ class ModifyModuleSecurityGroupsRequest(AbstractModel):
 
 class ModifyModuleSecurityGroupsResponse(AbstractModel):
     """ModifyModuleSecurityGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyRouteTableAttributeRequest(AbstractModel):
+    """ModifyRouteTableAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RouteTableId: 路由表实例ID，例如：rtb-azd4dt1c
+        :type RouteTableId: str
+        :param RouteTableName: 路由表名称
+        :type RouteTableName: str
+        """
+        self.RouteTableId = None
+        self.RouteTableName = None
+
+
+    def _deserialize(self, params):
+        self.RouteTableId = params.get("RouteTableId")
+        self.RouteTableName = params.get("RouteTableName")
+
+
+class ModifyRouteTableAttributeResponse(AbstractModel):
+    """ModifyRouteTableAttribute返回参数结构体
 
     """
 
@@ -6658,6 +7167,91 @@ class RemovePrivateIpAddressesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ReplaceRouteTableAssociationRequest(AbstractModel):
+    """ReplaceRouteTableAssociation请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SubnetId: 子网实例ID，例如：subnet-3x5lf5q0。可通过DescribeSubnets接口查询。
+        :type SubnetId: str
+        :param RouteTableId: 路由表实例ID，例如：rtb-azd4dt1c。
+        :type RouteTableId: str
+        :param EcmRegion: ECM 地域
+        :type EcmRegion: str
+        """
+        self.SubnetId = None
+        self.RouteTableId = None
+        self.EcmRegion = None
+
+
+    def _deserialize(self, params):
+        self.SubnetId = params.get("SubnetId")
+        self.RouteTableId = params.get("RouteTableId")
+        self.EcmRegion = params.get("EcmRegion")
+
+
+class ReplaceRouteTableAssociationResponse(AbstractModel):
+    """ReplaceRouteTableAssociation返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ReplaceRoutesRequest(AbstractModel):
+    """ReplaceRoutes请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RouteTableId: 路由表实例ID。
+        :type RouteTableId: str
+        :param Routes: 路由策略对象。
+        :type Routes: list of Route
+        """
+        self.RouteTableId = None
+        self.Routes = None
+
+
+    def _deserialize(self, params):
+        self.RouteTableId = params.get("RouteTableId")
+        if params.get("Routes") is not None:
+            self.Routes = []
+            for item in params.get("Routes"):
+                obj = Route()
+                obj._deserialize(item)
+                self.Routes.append(obj)
+
+
+class ReplaceRoutesResponse(AbstractModel):
+    """ReplaceRoutes返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ReplaceSecurityGroupPolicyRequest(AbstractModel):
     """ReplaceSecurityGroupPolicy请求参数结构体
 
@@ -6838,6 +7432,210 @@ class ResetInstancesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class ResetRoutesRequest(AbstractModel):
+    """ResetRoutes请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RouteTableId: 路由表实例ID，例如：rtb-azd4dt1c。
+        :type RouteTableId: str
+        :param RouteTableName: 路由表名称，最大长度不能超过60个字节。
+        :type RouteTableName: str
+        :param Routes: 路由策略。
+        :type Routes: list of Route
+        """
+        self.RouteTableId = None
+        self.RouteTableName = None
+        self.Routes = None
+
+
+    def _deserialize(self, params):
+        self.RouteTableId = params.get("RouteTableId")
+        self.RouteTableName = params.get("RouteTableName")
+        if params.get("Routes") is not None:
+            self.Routes = []
+            for item in params.get("Routes"):
+                obj = Route()
+                obj._deserialize(item)
+                self.Routes.append(obj)
+
+
+class ResetRoutesResponse(AbstractModel):
+    """ResetRoutes返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class Route(AbstractModel):
+    """路由策略
+
+    """
+
+    def __init__(self):
+        """
+        :param DestinationCidrBlock: 目的IPv4网段
+        :type DestinationCidrBlock: str
+        :param GatewayType: 下一跳类型
+NORMAL_CVM：普通云服务器；
+        :type GatewayType: str
+        :param GatewayId: 下一跳地址
+这里只需要指定不同下一跳类型的网关ID，系统会自动匹配到下一跳地址
+当 GatewayType 为 EIP 时，GatewayId 固定值 '0'
+        :type GatewayId: str
+        :param RouteItemId: 路由策略唯一ID
+        :type RouteItemId: str
+        :param RouteDescription: 路由策略描述
+        :type RouteDescription: str
+        :param Enabled: 是否启用
+        :type Enabled: bool
+        :param RouteType: 路由类型，目前我们支持的类型有：
+USER：用户路由；
+NETD：网络探测路由，创建网络探测实例时，系统默认下发，不可编辑与删除；
+CCN：云联网路由，系统默认下发，不可编辑与删除。
+用户只能添加和操作 USER 类型的路由。
+        :type RouteType: str
+        :param RouteId: 路由策略ID。IPv4路由策略ID是有意义的值，IPv6路由策略是无意义的值0。后续建议完全使用字符串唯一ID `RouteItemId`操作路由策略
+        :type RouteId: int
+        """
+        self.DestinationCidrBlock = None
+        self.GatewayType = None
+        self.GatewayId = None
+        self.RouteItemId = None
+        self.RouteDescription = None
+        self.Enabled = None
+        self.RouteType = None
+        self.RouteId = None
+
+
+    def _deserialize(self, params):
+        self.DestinationCidrBlock = params.get("DestinationCidrBlock")
+        self.GatewayType = params.get("GatewayType")
+        self.GatewayId = params.get("GatewayId")
+        self.RouteItemId = params.get("RouteItemId")
+        self.RouteDescription = params.get("RouteDescription")
+        self.Enabled = params.get("Enabled")
+        self.RouteType = params.get("RouteType")
+        self.RouteId = params.get("RouteId")
+
+
+class RouteConflict(AbstractModel):
+    """路由冲突对象
+
+    """
+
+    def __init__(self):
+        """
+        :param RouteTableId: 路由表实例ID
+        :type RouteTableId: str
+        :param DestinationCidrBlock: 要检查的与之冲突的目的端
+        :type DestinationCidrBlock: str
+        :param ConflictSet: 冲突的路由策略列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConflictSet: list of Route
+        """
+        self.RouteTableId = None
+        self.DestinationCidrBlock = None
+        self.ConflictSet = None
+
+
+    def _deserialize(self, params):
+        self.RouteTableId = params.get("RouteTableId")
+        self.DestinationCidrBlock = params.get("DestinationCidrBlock")
+        if params.get("ConflictSet") is not None:
+            self.ConflictSet = []
+            for item in params.get("ConflictSet"):
+                obj = Route()
+                obj._deserialize(item)
+                self.ConflictSet.append(obj)
+
+
+class RouteTable(AbstractModel):
+    """路由表
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: VPC实例ID
+        :type VpcId: str
+        :param RouteTableId: 路由表实例ID
+        :type RouteTableId: str
+        :param RouteTableName: 路由表名称
+        :type RouteTableName: str
+        :param AssociationSet: 路由表关联关系
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssociationSet: list of RouteTableAssociation
+        :param RouteSet: IPv4路由策略集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RouteSet: list of Route
+        :param Main: 是否默认路由表
+        :type Main: bool
+        :param CreatedTime: 创建时间
+        :type CreatedTime: str
+        """
+        self.VpcId = None
+        self.RouteTableId = None
+        self.RouteTableName = None
+        self.AssociationSet = None
+        self.RouteSet = None
+        self.Main = None
+        self.CreatedTime = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.RouteTableId = params.get("RouteTableId")
+        self.RouteTableName = params.get("RouteTableName")
+        if params.get("AssociationSet") is not None:
+            self.AssociationSet = []
+            for item in params.get("AssociationSet"):
+                obj = RouteTableAssociation()
+                obj._deserialize(item)
+                self.AssociationSet.append(obj)
+        if params.get("RouteSet") is not None:
+            self.RouteSet = []
+            for item in params.get("RouteSet"):
+                obj = Route()
+                obj._deserialize(item)
+                self.RouteSet.append(obj)
+        self.Main = params.get("Main")
+        self.CreatedTime = params.get("CreatedTime")
+
+
+class RouteTableAssociation(AbstractModel):
+    """路由表关联关系
+
+    """
+
+    def __init__(self):
+        """
+        :param SubnetId: 子网实例ID
+        :type SubnetId: str
+        :param RouteTableId: 路由表实例ID
+        :type RouteTableId: str
+        """
+        self.SubnetId = None
+        self.RouteTableId = None
+
+
+    def _deserialize(self, params):
+        self.SubnetId = params.get("SubnetId")
+        self.RouteTableId = params.get("RouteTableId")
 
 
 class RuleHealth(AbstractModel):

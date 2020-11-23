@@ -33,7 +33,7 @@ class CreateFlowServiceRequest(AbstractModel):
         :type Type: str
         :param FlowServiceChineseName: 状态机所属服务中文名
         :type FlowServiceChineseName: str
-        :param RoleResource: 角色资源名
+        :param RoleResource: 角色资源名, 比如: qcs::cam::uin/20103392:roleName/SomeRoleForYourStateMachine
         :type RoleResource: str
         :param Description: 备注
         :type Description: str

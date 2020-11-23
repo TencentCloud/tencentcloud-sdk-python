@@ -703,6 +703,8 @@ class CreateCloudBaseRunServerVersionRequest(AbstractModel):
         :type EsInfo: :class:`tencentcloud.tcb.v20180608.models.CloudBaseEsInfo`
         :param EnableUnion: 是否使用统一域名
         :type EnableUnion: bool
+        :param OperatorRemark: 操作备注
+        :type OperatorRemark: str
         """
         self.EnvId = None
         self.UploadType = None
@@ -734,6 +736,7 @@ class CreateCloudBaseRunServerVersionRequest(AbstractModel):
         self.AccessType = None
         self.EsInfo = None
         self.EnableUnion = None
+        self.OperatorRemark = None
 
 
     def _deserialize(self, params):
@@ -780,6 +783,7 @@ class CreateCloudBaseRunServerVersionRequest(AbstractModel):
             self.EsInfo = CloudBaseEsInfo()
             self.EsInfo._deserialize(params.get("EsInfo"))
         self.EnableUnion = params.get("EnableUnion")
+        self.OperatorRemark = params.get("OperatorRemark")
 
 
 class CreateCloudBaseRunServerVersionResponse(AbstractModel):
@@ -2426,6 +2430,10 @@ class EstablishCloudBaseRunServerRequest(AbstractModel):
         :type EsInfo: :class:`tencentcloud.tcb.v20180608.models.CloudBaseEsInfo`
         :param LogType: 日志类型; es/cls
         :type LogType: str
+        :param OperatorRemark: 操作备注
+        :type OperatorRemark: str
+        :param Source: 来源方（默认值：qcloud，微信侧来源miniapp)
+        :type Source: str
         """
         self.EnvId = None
         self.ServiceName = None
@@ -2434,6 +2442,8 @@ class EstablishCloudBaseRunServerRequest(AbstractModel):
         self.Remark = None
         self.EsInfo = None
         self.LogType = None
+        self.OperatorRemark = None
+        self.Source = None
 
 
     def _deserialize(self, params):
@@ -2446,6 +2456,8 @@ class EstablishCloudBaseRunServerRequest(AbstractModel):
             self.EsInfo = CloudBaseEsInfo()
             self.EsInfo._deserialize(params.get("EsInfo"))
         self.LogType = params.get("LogType")
+        self.OperatorRemark = params.get("OperatorRemark")
+        self.Source = params.get("Source")
 
 
 class EstablishCloudBaseRunServerResponse(AbstractModel):

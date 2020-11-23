@@ -117,16 +117,21 @@ class Contents(AbstractModel):
         :param Tc: 中文繁体(Traditional Chinese)，长度不超过300个字符
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tc: str
+        :param Default: 默认语言，最多不超过300个字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Default: str
         """
         self.En = None
         self.Cn = None
         self.Tc = None
+        self.Default = None
 
 
     def _deserialize(self, params):
         self.En = params.get("En")
         self.Cn = params.get("Cn")
         self.Tc = params.get("Tc")
+        self.Default = params.get("Default")
 
 
 class CreateAnonymousAccessTokenRequest(AbstractModel):

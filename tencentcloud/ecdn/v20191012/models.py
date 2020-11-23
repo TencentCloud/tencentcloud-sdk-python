@@ -47,6 +47,8 @@ class AddEcdnDomainRequest(AbstractModel):
         :type ForceRedirect: :class:`tencentcloud.ecdn.v20191012.models.ForceRedirect`
         :param Tag: 域名绑定的标签
         :type Tag: list of Tag
+        :param WebSocket: WebSocket配置
+        :type WebSocket: :class:`tencentcloud.ecdn.v20191012.models.WebSocket`
         """
         self.Domain = None
         self.Origin = None
@@ -60,6 +62,7 @@ class AddEcdnDomainRequest(AbstractModel):
         self.Https = None
         self.ForceRedirect = None
         self.Tag = None
+        self.WebSocket = None
 
 
     def _deserialize(self, params):
@@ -96,6 +99,9 @@ class AddEcdnDomainRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tag.append(obj)
+        if params.get("WebSocket") is not None:
+            self.WebSocket = WebSocket()
+            self.WebSocket._deserialize(params.get("WebSocket"))
 
 
 class AddEcdnDomainResponse(AbstractModel):
@@ -944,6 +950,9 @@ class DomainDetailInfo(AbstractModel):
         :param Tag: 域名标签。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tag: list of Tag
+        :param WebSocket: WebSocket配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WebSocket: :class:`tencentcloud.ecdn.v20191012.models.WebSocket`
         """
         self.ResourceId = None
         self.AppId = None
@@ -965,6 +974,7 @@ class DomainDetailInfo(AbstractModel):
         self.Area = None
         self.Readonly = None
         self.Tag = None
+        self.WebSocket = None
 
 
     def _deserialize(self, params):
@@ -1009,6 +1019,9 @@ class DomainDetailInfo(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tag.append(obj)
+        if params.get("WebSocket") is not None:
+            self.WebSocket = WebSocket()
+            self.WebSocket._deserialize(params.get("WebSocket"))
 
 
 class DomainFilter(AbstractModel):
@@ -1792,6 +1805,8 @@ class UpdateDomainConfigRequest(AbstractModel):
         :type ForceRedirect: :class:`tencentcloud.ecdn.v20191012.models.ForceRedirect`
         :param Area: 域名加速区域，mainland，overseas或global，分别表示中国境内加速，海外加速或全球加速。
         :type Area: str
+        :param WebSocket: WebSocket配置
+        :type WebSocket: :class:`tencentcloud.ecdn.v20191012.models.WebSocket`
         """
         self.Domain = None
         self.Origin = None
@@ -1804,6 +1819,7 @@ class UpdateDomainConfigRequest(AbstractModel):
         self.Https = None
         self.ForceRedirect = None
         self.Area = None
+        self.WebSocket = None
 
 
     def _deserialize(self, params):
@@ -1834,6 +1850,9 @@ class UpdateDomainConfigRequest(AbstractModel):
             self.ForceRedirect = ForceRedirect()
             self.ForceRedirect._deserialize(params.get("ForceRedirect"))
         self.Area = params.get("Area")
+        if params.get("WebSocket") is not None:
+            self.WebSocket = WebSocket()
+            self.WebSocket._deserialize(params.get("WebSocket"))
 
 
 class UpdateDomainConfigResponse(AbstractModel):
@@ -1851,3 +1870,25 @@ class UpdateDomainConfigResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class WebSocket(AbstractModel):
+    """WebSocket配置。
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: WebSocket配置开关，on或off。
+        :type Switch: str
+        :param Timeout: 设置超时时间，单位为秒，最大超时时间65秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timeout: int
+        """
+        self.Switch = None
+        self.Timeout = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Timeout = params.get("Timeout")

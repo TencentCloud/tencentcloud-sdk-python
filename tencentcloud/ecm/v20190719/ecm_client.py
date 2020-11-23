@@ -255,6 +255,34 @@ class EcmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateHaVip(self, request):
+        """本接口（CreateHaVip）用于创建高可用虚拟IP（HAVIP）
+
+        :param request: Request instance for CreateHaVip.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.CreateHaVipRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.CreateHaVipResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateHaVip", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateHaVipResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateImage(self, request):
         """本接口(CreateImage)用于将实例的系统盘制作为新镜像，创建后的镜像可以用于创建实例。
 
@@ -395,6 +423,62 @@ class EcmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateRouteTable(self, request):
+        """创建了VPC后，系统会创建一个默认路由表，所有新建的子网都会关联到默认路由表。默认情况下您可以直接使用默认路由表来管理您的路由策略。当您的路由策略较多时，您可以调用创建路由表接口创建更多路由表管理您的路由策略。
+
+        :param request: Request instance for CreateRouteTable.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.CreateRouteTableRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.CreateRouteTableResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateRouteTable", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateRouteTableResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateRoutes(self, request):
+        """创建路由策略
+
+        :param request: Request instance for CreateRoutes.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.CreateRoutesRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.CreateRoutesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateRoutes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateRoutesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateSecurityGroup(self, request):
         """创建安全组
 
@@ -504,6 +588,34 @@ class EcmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateVpcResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteHaVip(self, request):
+        """用于删除高可用虚拟IP（HAVIP）
+
+        :param request: Request instance for DeleteHaVip.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.DeleteHaVipRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.DeleteHaVipResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteHaVip", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteHaVipResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -672,6 +784,62 @@ class EcmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteNetworkInterfaceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteRouteTable(self, request):
+        """删除路由表
+
+        :param request: Request instance for DeleteRouteTable.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.DeleteRouteTableRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.DeleteRouteTableResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteRouteTable", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteRouteTableResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteRoutes(self, request):
+        """对某个路由表批量删除路由策略
+
+        :param request: Request instance for DeleteRoutes.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.DeleteRoutesRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.DeleteRoutesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteRoutes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteRoutesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -954,6 +1122,34 @@ class EcmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDefaultSubnetResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeHaVips(self, request):
+        """用于查询高可用虚拟IP（HAVIP）列表。
+
+        :param request: Request instance for DescribeHaVips.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeHaVipsRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.DescribeHaVipsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeHaVips", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeHaVipsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1388,6 +1584,62 @@ class EcmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeRouteConflicts(self, request):
+        """查询自定义路由策略与云联网路由策略冲突列表
+
+        :param request: Request instance for DescribeRouteConflicts.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeRouteConflictsRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.DescribeRouteConflictsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRouteConflicts", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRouteConflictsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRouteTables(self, request):
+        """查询路由表对象列表
+
+        :param request: Request instance for DescribeRouteTables.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeRouteTablesRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.DescribeRouteTablesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRouteTables", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRouteTablesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeSecurityGroupAssociationStatistics(self, request):
         """查询安全组关联实例统计
 
@@ -1696,6 +1948,34 @@ class EcmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DisableRoutes(self, request):
+        """禁用已启用的子网路由
+
+        :param request: Request instance for DisableRoutes.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.DisableRoutesRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.DisableRoutesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DisableRoutes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DisableRoutesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DisassociateAddress(self, request):
         """解绑弹性公网IP（简称 EIP）
         只有状态为 BIND 和 BIND_ENI 的 EIP 才能进行解绑定操作。
@@ -1740,6 +2020,35 @@ class EcmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisassociateSecurityGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def EnableRoutes(self, request):
+        """启用已禁用的子网路由。
+        本接口会校验启用后，是否与已有路由冲突，如果冲突，则无法启用，失败处理。路由冲突时，需要先禁用与之冲突的路由，才能启用该路由。
+
+        :param request: Request instance for EnableRoutes.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.EnableRoutesRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.EnableRoutesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("EnableRoutes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EnableRoutesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1938,6 +2247,34 @@ class EcmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDefaultSubnetResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyHaVipAttribute(self, request):
+        """用于修改高可用虚拟IP（HAVIP）属性
+
+        :param request: Request instance for ModifyHaVipAttribute.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.ModifyHaVipAttributeRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.ModifyHaVipAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyHaVipAttribute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyHaVipAttributeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2232,6 +2569,34 @@ class EcmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyRouteTableAttribute(self, request):
+        """修改路由表属性
+
+        :param request: Request instance for ModifyRouteTableAttribute.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.ModifyRouteTableAttributeRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.ModifyRouteTableAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyRouteTableAttribute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyRouteTableAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifySecurityGroupAttribute(self, request):
         """修改安全组属性
 
@@ -2487,6 +2852,62 @@ class EcmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ReplaceRouteTableAssociation(self, request):
+        """修改子网关联的路由表，一个子网只能关联一个路由表。
+
+        :param request: Request instance for ReplaceRouteTableAssociation.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.ReplaceRouteTableAssociationRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.ReplaceRouteTableAssociationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ReplaceRouteTableAssociation", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ReplaceRouteTableAssociationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ReplaceRoutes(self, request):
+        """替换路由策略
+
+        :param request: Request instance for ReplaceRoutes.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.ReplaceRoutesRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.ReplaceRoutesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ReplaceRoutes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ReplaceRoutesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ReplaceSecurityGroupPolicy(self, request):
         """替换单条安全组路由规则, 单个请求中只能替换单个方向的一条规则, 必须要指定索引（PolicyIndex）。
 
@@ -2585,6 +3006,34 @@ class EcmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetInstancesPasswordResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ResetRoutes(self, request):
+        """对某个路由表名称和所有路由策略（Route）进行重新设置
+
+        :param request: Request instance for ResetRoutes.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.ResetRoutesRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.ResetRoutesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ResetRoutes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ResetRoutesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

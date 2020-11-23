@@ -440,6 +440,15 @@ class DBInstance(AbstractModel):
         :param TagList: 实例绑定的标签信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagList: list of Tag
+        :param MasterDBInstanceId: 主实例信息，仅在实例为只读实例时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MasterDBInstanceId: str
+        :param ReadOnlyInstanceNum: 只读实例数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReadOnlyInstanceNum: int
+        :param StatusInReadonlyGroup: 只读实例在只读组中的状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatusInReadonlyGroup: str
         """
         self.Region = None
         self.Zone = None
@@ -469,6 +478,9 @@ class DBInstance(AbstractModel):
         self.Uid = None
         self.SupportIpv6 = None
         self.TagList = None
+        self.MasterDBInstanceId = None
+        self.ReadOnlyInstanceNum = None
+        self.StatusInReadonlyGroup = None
 
 
     def _deserialize(self, params):
@@ -510,6 +522,9 @@ class DBInstance(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.TagList.append(obj)
+        self.MasterDBInstanceId = params.get("MasterDBInstanceId")
+        self.ReadOnlyInstanceNum = params.get("ReadOnlyInstanceNum")
+        self.StatusInReadonlyGroup = params.get("StatusInReadonlyGroup")
 
 
 class DBInstanceNetInfo(AbstractModel):

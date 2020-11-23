@@ -529,6 +529,42 @@ class DownloadReportResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ProductQueryInfo(AbstractModel):
+    """QueryProducts接口对应数据结构。产品对应的相关信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductId: 产品Id
+        :type ProductId: str
+        :param ProductName: 产品名称
+        :type ProductName: str
+        :param ProductCode: 产品编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductCode: str
+        :param ProductStatus: 产品状态 0 禁用 1 启用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductStatus: int
+        :param SceneType: 场景类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SceneType: str
+        """
+        self.ProductId = None
+        self.ProductName = None
+        self.ProductCode = None
+        self.ProductStatus = None
+        self.SceneType = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.ProductName = params.get("ProductName")
+        self.ProductCode = params.get("ProductCode")
+        self.ProductStatus = params.get("ProductStatus")
+        self.SceneType = params.get("SceneType")
+
+
 class QueryInstantDataRequest(AbstractModel):
     """QueryInstantData请求参数结构体
 
@@ -590,6 +626,57 @@ class QueryInstantDataResponse(AbstractModel):
     def _deserialize(self, params):
         self.TotalCount = params.get("TotalCount")
         self.Data = params.get("Data")
+        self.RequestId = params.get("RequestId")
+
+
+class QueryProductsRequest(AbstractModel):
+    """QueryProducts请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名。默认值（固定）：Product
+        :type Module: str
+        :param Operation: 操作名。默认值（固定）：QueryProducts
+        :type Operation: str
+        :param InstanceId: 实例Id。
+        :type InstanceId: str
+        """
+        self.Module = None
+        self.Operation = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+        self.InstanceId = params.get("InstanceId")
+
+
+class QueryProductsResponse(AbstractModel):
+    """QueryProducts返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductList: 产品信息。
+        :type ProductList: list of ProductQueryInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ProductList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ProductList") is not None:
+            self.ProductList = []
+            for item in params.get("ProductList"):
+                obj = ProductQueryInfo()
+                obj._deserialize(item)
+                self.ProductList.append(obj)
         self.RequestId = params.get("RequestId")
 
 

@@ -247,6 +247,60 @@ class DescribeIMCdrsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTelCallInfoRequest(AbstractModel):
+    """DescribeTelCallInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTimeStamp: 起始时间戳，Unix 时间戳
+        :type StartTimeStamp: int
+        :param EndTimeStamp: 结束时间戳，Unix 时间戳
+        :type EndTimeStamp: int
+        :param SdkAppIdList: 应用ID列表，多个ID时，返回值为多个ID使用总和
+        :type SdkAppIdList: list of int
+        """
+        self.StartTimeStamp = None
+        self.EndTimeStamp = None
+        self.SdkAppIdList = None
+
+
+    def _deserialize(self, params):
+        self.StartTimeStamp = params.get("StartTimeStamp")
+        self.EndTimeStamp = params.get("EndTimeStamp")
+        self.SdkAppIdList = params.get("SdkAppIdList")
+
+
+class DescribeTelCallInfoResponse(AbstractModel):
+    """DescribeTelCallInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TelCallOutCount: 电话呼出统计分钟数
+        :type TelCallOutCount: int
+        :param TelCallInCount: 电话呼入统计分钟数
+        :type TelCallInCount: int
+        :param SeatUsedCount: 坐席使用统计个数
+        :type SeatUsedCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TelCallOutCount = None
+        self.TelCallInCount = None
+        self.SeatUsedCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TelCallOutCount = params.get("TelCallOutCount")
+        self.TelCallInCount = params.get("TelCallInCount")
+        self.SeatUsedCount = params.get("SeatUsedCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTelCdrRequest(AbstractModel):
     """DescribeTelCdr请求参数结构体
 

@@ -2143,7 +2143,7 @@ class CreateCcnRequest(AbstractModel):
         :type QosLevel: str
         :param InstanceChargeType: 计费模式，PREPAID：表示预付费，即包年包月，POSTPAID：表示后付费，即按量计费。默认：POSTPAID。
         :type InstanceChargeType: str
-        :param BandwidthLimitType: 限速类型，OUTER_REGION_LIMIT表示地域出口限速，INTER_REGION_LIMIT为地域间限速，默认为OUTER_REGION_LIMIT
+        :param BandwidthLimitType: 限速类型，OUTER_REGION_LIMIT表示地域出口限速，INTER_REGION_LIMIT为地域间限速，默认为OUTER_REGION_LIMIT。预付费模式仅支持地域间限速，后付费模式支持地域间限速和地域出口限速。
         :type BandwidthLimitType: str
         :param Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
         :type Tags: list of Tag
@@ -12853,9 +12853,12 @@ class ReplaceSecurityGroupPolicyRequest(AbstractModel):
         :type SecurityGroupId: str
         :param SecurityGroupPolicySet: 安全组规则集合对象。
         :type SecurityGroupPolicySet: :class:`tencentcloud.vpc.v20170312.models.SecurityGroupPolicySet`
+        :param OriginalSecurityGroupPolicySet: 旧的安全组规则集合对象，可选，日志记录用。
+        :type OriginalSecurityGroupPolicySet: :class:`tencentcloud.vpc.v20170312.models.SecurityGroupPolicySet`
         """
         self.SecurityGroupId = None
         self.SecurityGroupPolicySet = None
+        self.OriginalSecurityGroupPolicySet = None
 
 
     def _deserialize(self, params):
@@ -12863,6 +12866,9 @@ class ReplaceSecurityGroupPolicyRequest(AbstractModel):
         if params.get("SecurityGroupPolicySet") is not None:
             self.SecurityGroupPolicySet = SecurityGroupPolicySet()
             self.SecurityGroupPolicySet._deserialize(params.get("SecurityGroupPolicySet"))
+        if params.get("OriginalSecurityGroupPolicySet") is not None:
+            self.OriginalSecurityGroupPolicySet = SecurityGroupPolicySet()
+            self.OriginalSecurityGroupPolicySet._deserialize(params.get("OriginalSecurityGroupPolicySet"))
 
 
 class ReplaceSecurityGroupPolicyResponse(AbstractModel):
