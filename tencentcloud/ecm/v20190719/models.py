@@ -742,6 +742,29 @@ class CreateHaVipRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        """
+        :param VpcId: HAVIP所在私有网络ID。
+        :type VpcId: str
+        :param SubnetId: HAVIP所在子网ID。
+        :type SubnetId: str
+        :param HaVipName: HAVIP名称。
+        :type HaVipName: str
+        :param Vip: 指定虚拟IP地址，必须在VPC网段内且未被占用。不指定则自动分配。
+        :type Vip: str
+        """
+        self.VpcId = None
+        self.SubnetId = None
+        self.HaVipName = None
+        self.Vip = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.HaVipName = params.get("HaVipName")
+        self.Vip = params.get("Vip")
+
 
 class CreateHaVipResponse(AbstractModel):
     """CreateHaVip返回参数结构体
@@ -750,13 +773,19 @@ class CreateHaVipResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param HaVip: HAVIP对象。
+        :type HaVip: :class:`tencentcloud.ecm.v20190719.models.HaVip`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.HaVip = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("HaVip") is not None:
+            self.HaVip = HaVip()
+            self.HaVip._deserialize(params.get("HaVip"))
         self.RequestId = params.get("RequestId")
 
 
@@ -1461,6 +1490,17 @@ class DeleteHaVipRequest(AbstractModel):
     """DeleteHaVip请求参数结构体
 
     """
+
+    def __init__(self):
+        """
+        :param HaVipId: HAVIP唯一ID，形如：havip-9o233uri。
+        :type HaVipId: str
+        """
+        self.HaVipId = None
+
+
+    def _deserialize(self, params):
+        self.HaVipId = params.get("HaVipId")
 
 
 class DeleteHaVipResponse(AbstractModel):
@@ -2248,6 +2288,42 @@ class DescribeHaVipsRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        """
+        :param HaVipIds: HAVIP数组，HAVIP唯一ID，形如：havip-9o233uri。
+        :type HaVipIds: list of str
+        :param Filters: 过滤条件，参数不支持同时指定HaVipIds和Filters。
+havip-id - String - HAVIP唯一ID，形如：havip-9o233uri。
+havip-name - String - HAVIP名称。
+vpc-id - String - HAVIP所在私有网络ID。
+subnet-id - String - HAVIP所在子网ID。
+        :type Filters: list of Filter
+        :param Offset: 偏移量。
+        :type Offset: int
+        :param Limit: 返回数量。
+        :type Limit: int
+        :param EcmRegion: Ecm 区域，不填代表全部区域。
+        :type EcmRegion: str
+        """
+        self.HaVipIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+        self.EcmRegion = None
+
+
+    def _deserialize(self, params):
+        self.HaVipIds = params.get("HaVipIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.EcmRegion = params.get("EcmRegion")
+
 
 class DescribeHaVipsResponse(AbstractModel):
     """DescribeHaVips返回参数结构体
@@ -2256,13 +2332,27 @@ class DescribeHaVipsResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param TotalCount: 符合条件的对象数。
+        :type TotalCount: int
+        :param HaVipSet: HAVIP对象数组。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HaVipSet: list of HaVip
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.TotalCount = None
+        self.HaVipSet = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("HaVipSet") is not None:
+            self.HaVipSet = []
+            for item in params.get("HaVipSet"):
+                obj = HaVip()
+                obj._deserialize(item)
+                self.HaVipSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -4112,6 +4202,69 @@ class Filter(AbstractModel):
         self.Values = params.get("Values")
 
 
+class HaVip(AbstractModel):
+    """HAVIP对象。
+
+    """
+
+    def __init__(self):
+        """
+        :param HaVipId: HAVIP的ID，是HAVIP的唯一标识。
+        :type HaVipId: str
+        :param HaVipName: HAVIP名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HaVipName: str
+        :param Vip: 虚拟IP地址。
+        :type Vip: str
+        :param VpcId: HAVIP所在私有网络ID。
+        :type VpcId: str
+        :param SubnetId: HAVIP所在子网ID。
+        :type SubnetId: str
+        :param NetworkInterfaceId: HAVIP关联弹性网卡ID。
+        :type NetworkInterfaceId: str
+        :param InstanceId: 被绑定的实例ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param AddressIp: 绑定EIP。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AddressIp: str
+        :param State: 状态：
+AVAILABLE：运行中。
+UNBIND：未绑定。
+        :type State: str
+        :param CreatedTime: 创建时间。
+        :type CreatedTime: str
+        :param Business: 使用havip的业务标识。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Business: str
+        """
+        self.HaVipId = None
+        self.HaVipName = None
+        self.Vip = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.NetworkInterfaceId = None
+        self.InstanceId = None
+        self.AddressIp = None
+        self.State = None
+        self.CreatedTime = None
+        self.Business = None
+
+
+    def _deserialize(self, params):
+        self.HaVipId = params.get("HaVipId")
+        self.HaVipName = params.get("HaVipName")
+        self.Vip = params.get("Vip")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.NetworkInterfaceId = params.get("NetworkInterfaceId")
+        self.InstanceId = params.get("InstanceId")
+        self.AddressIp = params.get("AddressIp")
+        self.State = params.get("State")
+        self.CreatedTime = params.get("CreatedTime")
+        self.Business = params.get("Business")
+
+
 class HealthCheck(AbstractModel):
     """负载均衡健康检查
 
@@ -5454,6 +5607,21 @@ class ModifyHaVipAttributeRequest(AbstractModel):
     """ModifyHaVipAttribute请求参数结构体
 
     """
+
+    def __init__(self):
+        """
+        :param HaVipId: HAVIP唯一ID，形如：havip-9o233uri。
+        :type HaVipId: str
+        :param HaVipName: HAVIP名称，可任意命名，但不得超过60个字符。
+        :type HaVipName: str
+        """
+        self.HaVipId = None
+        self.HaVipName = None
+
+
+    def _deserialize(self, params):
+        self.HaVipId = params.get("HaVipId")
+        self.HaVipName = params.get("HaVipName")
 
 
 class ModifyHaVipAttributeResponse(AbstractModel):

@@ -545,6 +545,8 @@ Other-Overseas（其他境外地区）
         :type AccessMode: int
         :param Os: Linux,Android,Liteos等系统
         :type Os: str
+        :param ChipArch: 芯片架构，只是针对操作系统为android的
+        :type ChipArch: str
         """
         self.ProductModel = None
         self.ProductName = None
@@ -556,6 +558,7 @@ Other-Overseas（其他境外地区）
         self.ProductCate = None
         self.AccessMode = None
         self.Os = None
+        self.ChipArch = None
 
 
     def _deserialize(self, params):
@@ -569,6 +572,7 @@ Other-Overseas（其他境外地区）
         self.ProductCate = params.get("ProductCate")
         self.AccessMode = params.get("AccessMode")
         self.Os = params.get("Os")
+        self.ChipArch = params.get("ChipArch")
 
 
 class CreateProductResponse(AbstractModel):
@@ -2808,8 +2812,8 @@ class ModifyVerContentRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ProductId: 产品id,大于0的有符号长整型
-        :type ProductId: int
+        :param ProductId: 产品id
+        :type ProductId: str
         :param OtaVersion: 需要修改的版本号
         :type OtaVersion: str
         :param Operator: 操作人,字符长度<=64

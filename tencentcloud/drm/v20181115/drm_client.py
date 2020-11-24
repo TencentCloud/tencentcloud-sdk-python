@@ -256,7 +256,8 @@ class DrmClient(AbstractClient):
 
 
     def StartEncryption(self, request):
-        """开发者调用该接口，启动一次内容文件的DRM加密工作流
+        """开发者调用该接口，启动一次内容文件的DRM加密工作流。
+        注意：该接口已下线。
 
         :param request: Request instance for StartEncryption.
         :type request: :class:`tencentcloud.drm.v20181115.models.StartEncryptionRequest`

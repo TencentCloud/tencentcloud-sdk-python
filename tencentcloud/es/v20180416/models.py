@@ -1139,6 +1139,40 @@ class RestartInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RestartKibanaRequest(AbstractModel):
+    """RestartKibana请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: ES实例ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class RestartKibanaResponse(AbstractModel):
+    """RestartKibana返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class RestartNodesRequest(AbstractModel):
     """RestartNodes请求参数结构体
 
@@ -1295,7 +1329,7 @@ class UpdateInstanceRequest(AbstractModel):
         :param NodeNum: 已废弃请使用NodeInfoList
 节点个数（2-50个）
         :type NodeNum: int
-        :param EsConfig: 配置项（JSON格式字符串）
+        :param EsConfig: ES配置项（JSON格式字符串）
         :type EsConfig: str
         :param Password: 默认用户elastic的密码（8到16位，至少包括两项（[a-z,A-Z],[0-9]和[-!@#$%&^*+=_:;,.?]的特殊符号）
         :type Password: str
@@ -1340,6 +1374,8 @@ class UpdateInstanceRequest(AbstractModel):
         :type MultiZoneInfo: list of ZoneDetail
         :param SceneType: 场景化模板类型 -1：不启用 1：通用 2：日志 3：搜索
         :type SceneType: int
+        :param KibanaConfig: Kibana配置项（JSON格式字符串）
+        :type KibanaConfig: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -1364,6 +1400,7 @@ class UpdateInstanceRequest(AbstractModel):
         self.ScaleType = None
         self.MultiZoneInfo = None
         self.SceneType = None
+        self.KibanaConfig = None
 
 
     def _deserialize(self, params):
@@ -1406,6 +1443,7 @@ class UpdateInstanceRequest(AbstractModel):
                 obj._deserialize(item)
                 self.MultiZoneInfo.append(obj)
         self.SceneType = params.get("SceneType")
+        self.KibanaConfig = params.get("KibanaConfig")
 
 
 class UpdateInstanceResponse(AbstractModel):

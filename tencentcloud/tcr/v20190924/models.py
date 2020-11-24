@@ -351,12 +351,16 @@ class CreateInstanceTokenResponse(AbstractModel):
         :type Token: str
         :param ExpTime: 访问凭证过期时间戳
         :type ExpTime: int
+        :param TokenId: 长期凭证的TokenId，短期凭证没有TokenId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TokenId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Username = None
         self.Token = None
         self.ExpTime = None
+        self.TokenId = None
         self.RequestId = None
 
 
@@ -364,6 +368,7 @@ class CreateInstanceTokenResponse(AbstractModel):
         self.Username = params.get("Username")
         self.Token = params.get("Token")
         self.ExpTime = params.get("ExpTime")
+        self.TokenId = params.get("TokenId")
         self.RequestId = params.get("RequestId")
 
 

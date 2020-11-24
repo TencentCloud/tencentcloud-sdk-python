@@ -435,6 +435,46 @@ class CreateStudioProductResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateTopicRuleRequest(AbstractModel):
+    """CreateTopicRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleName: 规则名称
+        :type RuleName: str
+        :param TopicRulePayload: 规则内容
+        :type TopicRulePayload: :class:`tencentcloud.iotexplorer.v20190423.models.TopicRulePayload`
+        """
+        self.RuleName = None
+        self.TopicRulePayload = None
+
+
+    def _deserialize(self, params):
+        self.RuleName = params.get("RuleName")
+        if params.get("TopicRulePayload") is not None:
+            self.TopicRulePayload = TopicRulePayload()
+            self.TopicRulePayload._deserialize(params.get("TopicRulePayload"))
+
+
+class CreateTopicRuleResponse(AbstractModel):
+    """CreateTopicRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteDeviceRequest(AbstractModel):
     """DeleteDevice请求参数结构体
 
@@ -570,6 +610,40 @@ class DeleteStudioProductRequest(AbstractModel):
 
 class DeleteStudioProductResponse(AbstractModel):
     """DeleteStudioProduct返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteTopicRuleRequest(AbstractModel):
+    """DeleteTopicRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleName: 规则名
+        :type RuleName: str
+        """
+        self.RuleName = None
+
+
+    def _deserialize(self, params):
+        self.RuleName = params.get("RuleName")
+
+
+class DeleteTopicRuleResponse(AbstractModel):
+    """DeleteTopicRule返回参数结构体
 
     """
 
@@ -882,6 +956,47 @@ class DescribeStudioProductResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTopicRuleRequest(AbstractModel):
+    """DescribeTopicRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleName: 规则名称。
+        :type RuleName: str
+        """
+        self.RuleName = None
+
+
+    def _deserialize(self, params):
+        self.RuleName = params.get("RuleName")
+
+
+class DescribeTopicRuleResponse(AbstractModel):
+    """DescribeTopicRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Rule: 规则描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rule: :class:`tencentcloud.iotexplorer.v20190423.models.TopicRule`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Rule = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Rule") is not None:
+            self.Rule = TopicRule()
+            self.Rule._deserialize(params.get("Rule"))
+        self.RequestId = params.get("RequestId")
+
+
 class DeviceData(AbstractModel):
     """DeviceData
 
@@ -1015,6 +1130,74 @@ class DeviceInfo(AbstractModel):
         self.DevEUI = params.get("DevEUI")
         self.AppSKey = params.get("AppSKey")
         self.NwkSKey = params.get("NwkSKey")
+
+
+class DisableTopicRuleRequest(AbstractModel):
+    """DisableTopicRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleName: 规则名称
+        :type RuleName: str
+        """
+        self.RuleName = None
+
+
+    def _deserialize(self, params):
+        self.RuleName = params.get("RuleName")
+
+
+class DisableTopicRuleResponse(AbstractModel):
+    """DisableTopicRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class EnableTopicRuleRequest(AbstractModel):
+    """EnableTopicRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleName: 规则名称
+        :type RuleName: str
+        """
+        self.RuleName = None
+
+
+    def _deserialize(self, params):
+        self.RuleName = params.get("RuleName")
+
+
+class EnableTopicRuleResponse(AbstractModel):
+    """EnableTopicRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class EventHistoryItem(AbstractModel):
@@ -1290,6 +1473,57 @@ class GetStudioProductListResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Products.append(obj)
         self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
+class GetTopicRuleListRequest(AbstractModel):
+    """GetTopicRuleList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PageNum: 请求的页数
+        :type PageNum: int
+        :param PageSize: 分页的大小
+        :type PageSize: int
+        """
+        self.PageNum = None
+        self.PageSize = None
+
+
+    def _deserialize(self, params):
+        self.PageNum = params.get("PageNum")
+        self.PageSize = params.get("PageSize")
+
+
+class GetTopicRuleListResponse(AbstractModel):
+    """GetTopicRuleList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCnt: 规则总数量
+        :type TotalCnt: int
+        :param Rules: 规则列表
+        :type Rules: list of TopicRuleInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCnt = None
+        self.Rules = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCnt = params.get("TotalCnt")
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = TopicRuleInfo()
+                obj._deserialize(item)
+                self.Rules.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1672,6 +1906,46 @@ class ModifyStudioProductResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyTopicRuleRequest(AbstractModel):
+    """ModifyTopicRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleName: 规则名称
+        :type RuleName: str
+        :param TopicRulePayload: 替换的规则包体
+        :type TopicRulePayload: :class:`tencentcloud.iotexplorer.v20190423.models.TopicRulePayload`
+        """
+        self.RuleName = None
+        self.TopicRulePayload = None
+
+
+    def _deserialize(self, params):
+        self.RuleName = params.get("RuleName")
+        if params.get("TopicRulePayload") is not None:
+            self.TopicRulePayload = TopicRulePayload()
+            self.TopicRulePayload._deserialize(params.get("TopicRulePayload"))
+
+
+class ModifyTopicRuleResponse(AbstractModel):
+    """ModifyTopicRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ProductEntry(AbstractModel):
     """产品详情
 
@@ -1957,3 +2231,192 @@ class SearchStudioProductResponse(AbstractModel):
                 self.Products.append(obj)
         self.Total = params.get("Total")
         self.RequestId = params.get("RequestId")
+
+
+class SearchTopicRuleRequest(AbstractModel):
+    """SearchTopicRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleName: 规则名
+        :type RuleName: str
+        """
+        self.RuleName = None
+
+
+    def _deserialize(self, params):
+        self.RuleName = params.get("RuleName")
+
+
+class SearchTopicRuleResponse(AbstractModel):
+    """SearchTopicRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCnt: 搜索到的规则总数
+        :type TotalCnt: int
+        :param Rules: 规则信息列表
+        :type Rules: list of TopicRuleInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCnt = None
+        self.Rules = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCnt = params.get("TotalCnt")
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = TopicRuleInfo()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class TopicRule(AbstractModel):
+    """TopicRule结构
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleName: 规则名称。
+        :type RuleName: str
+        :param Sql: 规则的SQL语句，如： SELECT * FROM 'pid/dname/event'，然后对其进行base64编码，得：U0VMRUNUICogRlJPTSAncGlkL2RuYW1lL2V2ZW50Jw==
+        :type Sql: str
+        :param Description: 规则描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param Actions: 行为的JSON字符串。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Actions: str
+        :param RuleDisabled: 是否禁用规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleDisabled: bool
+        """
+        self.RuleName = None
+        self.Sql = None
+        self.Description = None
+        self.Actions = None
+        self.RuleDisabled = None
+
+
+    def _deserialize(self, params):
+        self.RuleName = params.get("RuleName")
+        self.Sql = params.get("Sql")
+        self.Description = params.get("Description")
+        self.Actions = params.get("Actions")
+        self.RuleDisabled = params.get("RuleDisabled")
+
+
+class TopicRuleInfo(AbstractModel):
+    """规则信息
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleName: 规则名称
+        :type RuleName: str
+        :param Description: 规则描述
+        :type Description: str
+        :param CreatedAt: 创建时间
+        :type CreatedAt: int
+        :param RuleDisabled: 规则是否禁用
+        :type RuleDisabled: bool
+        """
+        self.RuleName = None
+        self.Description = None
+        self.CreatedAt = None
+        self.RuleDisabled = None
+
+
+    def _deserialize(self, params):
+        self.RuleName = params.get("RuleName")
+        self.Description = params.get("Description")
+        self.CreatedAt = params.get("CreatedAt")
+        self.RuleDisabled = params.get("RuleDisabled")
+
+
+class TopicRulePayload(AbstractModel):
+    """TopicRulePayload结构
+
+    """
+
+    def __init__(self):
+        """
+        :param Sql: 规则的SQL语句，如： SELECT * FROM 'pid/dname/event'，然后对其进行base64编码，得：U0VMRUNUICogRlJPTSAncGlkL2RuYW1lL2V2ZW50Jw==
+        :type Sql: str
+        :param Actions: 行为的JSON字符串，大部分种类举例如下：
+[
+{
+"republish": {
+"topic": "TEST/test"
+}
+},
+{
+"forward": {
+"api": "http://127.0.0.1:8080"
+}
+},
+{
+"ckafka": {
+"instance": {
+"id": "ckafka-test",
+"name": ""
+},
+"topic": {
+"id": "topic-test",
+"name": "test"
+},
+"region": "gz"
+}
+},
+{
+"cmqqueue": {
+"queuename": "queue-test-TEST",
+"region": "gz"
+}
+},
+{
+"mysql": {
+"instanceid": "cdb-test",
+"region": "gz",
+"username": "test",
+"userpwd": "*****",
+"dbname": "d_mqtt",
+"tablename": "t_test",
+"fieldpairs": [
+{
+"field": "test",
+"value": "test"
+}
+],
+"devicetype": "CUSTOM"
+}
+}
+]
+        :type Actions: str
+        :param Description: 规则描述
+        :type Description: str
+        :param RuleDisabled: 是否禁用规则
+        :type RuleDisabled: bool
+        """
+        self.Sql = None
+        self.Actions = None
+        self.Description = None
+        self.RuleDisabled = None
+
+
+    def _deserialize(self, params):
+        self.Sql = params.get("Sql")
+        self.Actions = params.get("Actions")
+        self.Description = params.get("Description")
+        self.RuleDisabled = params.get("RuleDisabled")

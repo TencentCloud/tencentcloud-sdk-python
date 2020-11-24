@@ -6727,6 +6727,59 @@ class DescribeIpGeolocationDatabaseUrlResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeIpGeolocationInfosRequest(AbstractModel):
+    """DescribeIpGeolocationInfos请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AddressIps: 查询IP地址列表，支持IPv4和IPv6。
+        :type AddressIps: list of str
+        :param Fields: 查询IP地址的字段信息，包括"Country","Province","City","Region","Isp","AsName","AsId"
+        :type Fields: :class:`tencentcloud.vpc.v20170312.models.IpField`
+        """
+        self.AddressIps = None
+        self.Fields = None
+
+
+    def _deserialize(self, params):
+        self.AddressIps = params.get("AddressIps")
+        if params.get("Fields") is not None:
+            self.Fields = IpField()
+            self.Fields._deserialize(params.get("Fields"))
+
+
+class DescribeIpGeolocationInfosResponse(AbstractModel):
+    """DescribeIpGeolocationInfos返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AddressInfo: IP地址信息列表
+        :type AddressInfo: list of IpGeolocationInfo
+        :param Total: IP地址信息个数
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AddressInfo = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AddressInfo") is not None:
+            self.AddressInfo = []
+            for item in params.get("AddressInfo"):
+                obj = IpGeolocationInfo()
+                obj._deserialize(item)
+                self.AddressInfo.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeNatGatewayDestinationIpPortTranslationNatRulesRequest(AbstractModel):
     """DescribeNatGatewayDestinationIpPortTranslationNatRules请求参数结构体
 
@@ -9964,6 +10017,109 @@ class Ip6Translator(AbstractModel):
                 obj = Ip6Rule()
                 obj._deserialize(item)
                 self.IP6RuleSet.append(obj)
+
+
+class IpField(AbstractModel):
+    """IP在线查询的字段信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Country: 国家字段信息
+        :type Country: bool
+        :param Province: 省、州、郡一级行政区域字段信息
+        :type Province: bool
+        :param City: 市一级行政区域字段信息
+        :type City: bool
+        :param Region: 市内区域字段信息
+        :type Region: bool
+        :param Isp: 接入运营商字段信息
+        :type Isp: bool
+        :param AsName: 骨干运营商字段信息
+        :type AsName: bool
+        :param AsId: 骨干As号
+        :type AsId: bool
+        :param Comment: 注释字段
+        :type Comment: bool
+        """
+        self.Country = None
+        self.Province = None
+        self.City = None
+        self.Region = None
+        self.Isp = None
+        self.AsName = None
+        self.AsId = None
+        self.Comment = None
+
+
+    def _deserialize(self, params):
+        self.Country = params.get("Country")
+        self.Province = params.get("Province")
+        self.City = params.get("City")
+        self.Region = params.get("Region")
+        self.Isp = params.get("Isp")
+        self.AsName = params.get("AsName")
+        self.AsId = params.get("AsId")
+        self.Comment = params.get("Comment")
+
+
+class IpGeolocationInfo(AbstractModel):
+    """IP地理位置信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Country: 国家信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Country: str
+        :param Province: 省、州、郡一级行政区域信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Province: str
+        :param City: 市一级行政区域信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type City: str
+        :param Region: 市内区域信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param Isp: 接入运营商信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Isp: str
+        :param AsName: 骨干运营商名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsName: str
+        :param AsId: 骨干运营商AS号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsId: str
+        :param Comment: 注释信息。目前的填充值为移动接入用户的APN值，如无APN属性则为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Comment: str
+        :param AddressIp: IP地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AddressIp: str
+        """
+        self.Country = None
+        self.Province = None
+        self.City = None
+        self.Region = None
+        self.Isp = None
+        self.AsName = None
+        self.AsId = None
+        self.Comment = None
+        self.AddressIp = None
+
+
+    def _deserialize(self, params):
+        self.Country = params.get("Country")
+        self.Province = params.get("Province")
+        self.City = params.get("City")
+        self.Region = params.get("Region")
+        self.Isp = params.get("Isp")
+        self.AsName = params.get("AsName")
+        self.AsId = params.get("AsId")
+        self.Comment = params.get("Comment")
+        self.AddressIp = params.get("AddressIp")
 
 
 class Ipv6Address(AbstractModel):

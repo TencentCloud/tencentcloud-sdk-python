@@ -193,6 +193,34 @@ class EsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def RestartKibana(self, request):
+        """重启Kibana
+
+        :param request: Request instance for RestartKibana.
+        :type request: :class:`tencentcloud.es.v20180416.models.RestartKibanaRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.RestartKibanaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RestartKibana", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RestartKibanaResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RestartNodes(self, request):
         """用于重启集群节点
 
