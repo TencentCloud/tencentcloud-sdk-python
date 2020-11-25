@@ -1677,6 +1677,34 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def RecycleReadOnlyGroup(self, request):
+        """本接口（RecycleReadOnlyGroup）立即回收只读组的资源，只读组占用的vip等资源将立即释放且不可找回。
+
+        :param request: Request instance for RecycleReadOnlyGroup.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.RecycleReadOnlyGroupRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.RecycleReadOnlyGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RecycleReadOnlyGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RecycleReadOnlyGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RemoveBackups(self, request):
         """本接口（RemoveBackups）可以删除用户手动创建的备份文件。待删除的备份策略可以是实例备份，也可以是多库备份。
 
@@ -1958,7 +1986,7 @@ class SqlserverClient(AbstractClient):
 
 
     def TerminateDBInstance(self, request):
-        """本接口(TerminateDBInstance)用于主动销毁按量计费实例。
+        """本接口(TerminateDBInstance)用于主动隔离实例，使得实例进入回收站。
 
         :param request: Request instance for TerminateDBInstance.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.TerminateDBInstanceRequest`

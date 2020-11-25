@@ -1644,6 +1644,62 @@ class SmallVideoLayoutParams(AbstractModel):
         self.LocationY = params.get("LocationY")
 
 
+class StartMCUMixTranscodeByStrRoomIdRequest(AbstractModel):
+    """StartMCUMixTranscodeByStrRoomId请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SdkAppId: TRTC的SDKAppId。
+        :type SdkAppId: int
+        :param StrRoomId: 字符串房间号。
+        :type StrRoomId: str
+        :param OutputParams: 混流输出控制参数。
+        :type OutputParams: :class:`tencentcloud.trtc.v20190722.models.OutputParams`
+        :param EncodeParams: 混流输出编码参数。
+        :type EncodeParams: :class:`tencentcloud.trtc.v20190722.models.EncodeParams`
+        :param LayoutParams: 混流输出布局参数。
+        :type LayoutParams: :class:`tencentcloud.trtc.v20190722.models.LayoutParams`
+        """
+        self.SdkAppId = None
+        self.StrRoomId = None
+        self.OutputParams = None
+        self.EncodeParams = None
+        self.LayoutParams = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.StrRoomId = params.get("StrRoomId")
+        if params.get("OutputParams") is not None:
+            self.OutputParams = OutputParams()
+            self.OutputParams._deserialize(params.get("OutputParams"))
+        if params.get("EncodeParams") is not None:
+            self.EncodeParams = EncodeParams()
+            self.EncodeParams._deserialize(params.get("EncodeParams"))
+        if params.get("LayoutParams") is not None:
+            self.LayoutParams = LayoutParams()
+            self.LayoutParams._deserialize(params.get("LayoutParams"))
+
+
+class StartMCUMixTranscodeByStrRoomIdResponse(AbstractModel):
+    """StartMCUMixTranscodeByStrRoomId返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class StartMCUMixTranscodeRequest(AbstractModel):
     """StartMCUMixTranscode请求参数结构体
 
@@ -1685,6 +1741,44 @@ class StartMCUMixTranscodeRequest(AbstractModel):
 
 class StartMCUMixTranscodeResponse(AbstractModel):
     """StartMCUMixTranscode返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class StopMCUMixTranscodeByStrRoomIdRequest(AbstractModel):
+    """StopMCUMixTranscodeByStrRoomId请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SdkAppId: TRTC的SDKAppId。
+        :type SdkAppId: int
+        :param StrRoomId: 字符串房间号。
+        :type StrRoomId: str
+        """
+        self.SdkAppId = None
+        self.StrRoomId = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.StrRoomId = params.get("StrRoomId")
+
+
+class StopMCUMixTranscodeByStrRoomIdResponse(AbstractModel):
+    """StopMCUMixTranscodeByStrRoomId返回参数结构体
 
     """
 

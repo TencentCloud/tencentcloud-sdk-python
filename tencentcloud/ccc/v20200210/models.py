@@ -256,7 +256,7 @@ class DescribeTelCallInfoRequest(AbstractModel):
         """
         :param StartTimeStamp: 起始时间戳，Unix 时间戳
         :type StartTimeStamp: int
-        :param EndTimeStamp: 结束时间戳，Unix 时间戳
+        :param EndTimeStamp: 结束时间戳，Unix 时间戳，查询时间范围最大为90天
         :type EndTimeStamp: int
         :param SdkAppIdList: 应用ID列表，多个ID时，返回值为多个ID使用总和
         :type SdkAppIdList: list of int

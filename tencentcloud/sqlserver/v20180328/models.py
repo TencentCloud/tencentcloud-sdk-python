@@ -2399,12 +2399,16 @@ class DescribeProductConfigRequest(AbstractModel):
         """
         :param Zone: 可用区英文ID，形如ap-guangzhou-1
         :type Zone: str
+        :param InstanceType: 购买实例的类型 HA-高可用型(包括双机高可用，alwaysOn集群)，RO-只读副本型，SI-基础版本型
+        :type InstanceType: str
         """
         self.Zone = None
+        self.InstanceType = None
 
 
     def _deserialize(self, params):
         self.Zone = params.get("Zone")
+        self.InstanceType = params.get("InstanceType")
 
 
 class DescribeProductConfigResponse(AbstractModel):
@@ -4430,6 +4434,33 @@ class RecycleDBInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RecycleReadOnlyGroupRequest(AbstractModel):
+    """RecycleReadOnlyGroup请求参数结构体
+
+    """
+
+
+class RecycleReadOnlyGroupResponse(AbstractModel):
+    """RecycleReadOnlyGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: 任务流ID
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class RegionInfo(AbstractModel):
     """地域信息
 
@@ -5010,6 +5041,10 @@ class SpecInfo(AbstractModel):
         :type PostPid: list of int
         :param PayModeStatus: 此规格下支持的付费模式，POST-仅支持按量计费 PRE-仅支持包年包月 ALL-支持所有
         :type PayModeStatus: str
+        :param InstanceType: 产品类型，HA-高可用型(包括双机高可用，alwaysOn集群)，RO-只读副本型，SI-基础版本型
+        :type InstanceType: str
+        :param MultiZonesStatus: 跨可用区类型，MultiZones-只支持跨可用区，SameZones-只支持同可用区，ALL-支持所有
+        :type MultiZonesStatus: str
         """
         self.SpecId = None
         self.MachineType = None
@@ -5025,6 +5060,8 @@ class SpecInfo(AbstractModel):
         self.Pid = None
         self.PostPid = None
         self.PayModeStatus = None
+        self.InstanceType = None
+        self.MultiZonesStatus = None
 
 
     def _deserialize(self, params):
@@ -5042,6 +5079,8 @@ class SpecInfo(AbstractModel):
         self.Pid = params.get("Pid")
         self.PostPid = params.get("PostPid")
         self.PayModeStatus = params.get("PayModeStatus")
+        self.InstanceType = params.get("InstanceType")
+        self.MultiZonesStatus = params.get("MultiZonesStatus")
 
 
 class StartMigrationCheckRequest(AbstractModel):

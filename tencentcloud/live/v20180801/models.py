@@ -2462,7 +2462,7 @@ class DescribeAllStreamPlayInfoListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param QueryTime: 查询时间点，精确到分钟粒度，支持最近1个月的数据查询，数据延迟为5分钟左右，如果要查询实时的数据，建议传递5分钟前的时间点，格式为yyyy-mm-dd HH:MM:SS。
+        :param QueryTime: 查询时间点，精确到分钟粒度，支持最近1个月的数据查询，数据延迟为5分钟左右，如果要查询实时的数据，建议传递5分钟前的时间点，格式为yyyy-mm-dd HH:MM:00。（只精确至分钟，秒数填00）。
         :type QueryTime: str
         """
         self.QueryTime = None
@@ -3920,7 +3920,7 @@ UTC 格式，例如：2016-06-29T19:00:00Z。
         :type PageNum: int
         :param PageSize: 分页大小。
 最大值：100。
-取值范围：1~100 之前的任意整数。
+取值范围：10~100 之前的任意整数。
 默认值：10。
         :type PageSize: int
         :param StreamName: 流名称，支持模糊匹配。
@@ -4614,7 +4614,7 @@ class DescribePlayErrorCodeSumInfoListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ProIspInfoList: 分省份分运营商错误码为4或5开头的状态码数据信息。
+        :param ProIspInfoList: 分省份分运营商错误码为2或3或4或5开头的状态码数据信息。
         :type ProIspInfoList: list of ProIspPlayCodeDataInfo
         :param TotalCodeAll: 所有状态码的加和的次数。
         :type TotalCodeAll: int
@@ -5053,7 +5053,7 @@ class DescribeStreamPlayInfoListRequest(AbstractModel):
         :param StartTime: 开始时间，北京时间，格式为yyyy-mm-dd HH:MM:SS
         :type StartTime: str
         :param EndTime: 结束时间，北京时间，格式为yyyy-mm-dd HH:MM:SS，
-结束时间 和 开始时间  必须在同一天内，支持距当前时间30天内的数据查询。
+结束时间 和 开始时间跨度不支持超过24小时，支持距当前时间30天内的数据查询。
         :type EndTime: str
         :param PlayDomain: 播放域名，
 若不填，则为查询所有播放域名的在线流数据。

@@ -138,7 +138,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeTelCallInfo(self, request):
-        """获取电话呼叫统计信息
+        """按实例获取电话消耗统计
 
         :param request: Request instance for DescribeTelCallInfo.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeTelCallInfoRequest`

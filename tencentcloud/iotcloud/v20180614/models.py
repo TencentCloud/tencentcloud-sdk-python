@@ -338,7 +338,7 @@ class CreateLoraDeviceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ProductId: 产品 ID ，创建产品时腾讯云为用户分配全局唯一的 ID
+        :param ProductId: 产品Id ，创建产品时腾讯云为用户分配全局唯一的Id
         :type ProductId: str
         :param DeviceName: 设备名称
         :type DeviceName: str
