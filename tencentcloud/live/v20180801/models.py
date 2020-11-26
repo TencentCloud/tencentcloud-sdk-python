@@ -139,6 +139,8 @@ class AddLiveWatermarkRequest(AbstractModel):
     def __init__(self):
         """
         :param PictureUrl: 水印图片 URL。
+URL中禁止包含的字符：
+ ;(){}$>`#"\'|
         :type PictureUrl: str
         :param WatermarkName: 水印名称。
 最长16字节。
@@ -149,7 +151,7 @@ class AddLiveWatermarkRequest(AbstractModel):
         :type YPosition: int
         :param Width: 水印宽度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始宽度。
         :type Width: int
-        :param Height: 水印高度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始高度。
+        :param Height: 水印高度，占直播原始画面高度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始高度。
         :type Height: int
         """
         self.PictureUrl = None
@@ -5441,6 +5443,13 @@ class DomainCertInfo(AbstractModel):
         :type DomainName: str
         :param Status: 证书状态。
         :type Status: int
+        :param CertDomains: 证书本身标识的域名列表。
+比如: ["*.x.com"]
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CertDomains: list of str
+        :param CloudCertId: 腾讯云ssl的证书Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CloudCertId: str
         """
         self.CertId = None
         self.CertName = None
@@ -5451,6 +5460,8 @@ class DomainCertInfo(AbstractModel):
         self.CertExpireTime = None
         self.DomainName = None
         self.Status = None
+        self.CertDomains = None
+        self.CloudCertId = None
 
 
     def _deserialize(self, params):
@@ -5463,6 +5474,8 @@ class DomainCertInfo(AbstractModel):
         self.CertExpireTime = params.get("CertExpireTime")
         self.DomainName = params.get("DomainName")
         self.Status = params.get("Status")
+        self.CertDomains = params.get("CertDomains")
+        self.CloudCertId = params.get("CloudCertId")
 
 
 class DomainDetailInfo(AbstractModel):
@@ -8026,6 +8039,8 @@ class UpdateLiveWatermarkRequest(AbstractModel):
 在添加水印接口 [AddLiveWatermark](/document/product/267/30154) 调用返回值中获取水印 ID。
         :type WatermarkId: int
         :param PictureUrl: 水印图片 URL。
+URL中禁止包含的字符：
+ ;(){}$>`#"\'|
         :type PictureUrl: str
         :param XPosition: 显示位置，X轴偏移，单位是百分比，默认 0。
         :type XPosition: int

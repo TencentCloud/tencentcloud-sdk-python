@@ -705,6 +705,8 @@ class CreateCloudBaseRunServerVersionRequest(AbstractModel):
         :type EnableUnion: bool
         :param OperatorRemark: 操作备注
         :type OperatorRemark: str
+        :param ServerPath: 服务路劲
+        :type ServerPath: str
         """
         self.EnvId = None
         self.UploadType = None
@@ -737,6 +739,7 @@ class CreateCloudBaseRunServerVersionRequest(AbstractModel):
         self.EsInfo = None
         self.EnableUnion = None
         self.OperatorRemark = None
+        self.ServerPath = None
 
 
     def _deserialize(self, params):
@@ -784,6 +787,7 @@ class CreateCloudBaseRunServerVersionRequest(AbstractModel):
             self.EsInfo._deserialize(params.get("EsInfo"))
         self.EnableUnion = params.get("EnableUnion")
         self.OperatorRemark = params.get("OperatorRemark")
+        self.ServerPath = params.get("ServerPath")
 
 
 class CreateCloudBaseRunServerVersionResponse(AbstractModel):
@@ -1154,6 +1158,70 @@ class DescribeCloudBaseBuildServiceResponse(AbstractModel):
                 self.UploadHeaders.append(obj)
         self.PackageName = params.get("PackageName")
         self.PackageVersion = params.get("PackageVersion")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCloudBaseRunResourceForExtendRequest(AbstractModel):
+    """DescribeCloudBaseRunResourceForExtend请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境ID
+        :type EnvId: str
+        """
+        self.EnvId = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+
+
+class DescribeCloudBaseRunResourceForExtendResponse(AbstractModel):
+    """DescribeCloudBaseRunResourceForExtend返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterStatus: 集群状态(creating/succ)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterStatus: str
+        :param VirtualClusterId: 虚拟集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VirtualClusterId: str
+        :param VpcId: vpc id信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param Region: 地域信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param SubnetIds: 子网信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetIds: list of CloudBaseRunVpcSubnet
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ClusterStatus = None
+        self.VirtualClusterId = None
+        self.VpcId = None
+        self.Region = None
+        self.SubnetIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterStatus = params.get("ClusterStatus")
+        self.VirtualClusterId = params.get("VirtualClusterId")
+        self.VpcId = params.get("VpcId")
+        self.Region = params.get("Region")
+        if params.get("SubnetIds") is not None:
+            self.SubnetIds = []
+            for item in params.get("SubnetIds"):
+                obj = CloudBaseRunVpcSubnet()
+                obj._deserialize(item)
+                self.SubnetIds.append(obj)
         self.RequestId = params.get("RequestId")
 
 

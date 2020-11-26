@@ -1736,6 +1736,53 @@ class DescribeInstanceShardsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeInstanceZoneInfoRequest(AbstractModel):
+    """DescribeInstanceZoneInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例Id，如：crs-6ubhgouj
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class DescribeInstanceZoneInfoResponse(AbstractModel):
+    """DescribeInstanceZoneInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 实例节点组的个数
+        :type TotalCount: int
+        :param ReplicaGroups: 实例节点组列表
+        :type ReplicaGroups: list of ReplicaGroup
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ReplicaGroups = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ReplicaGroups") is not None:
+            self.ReplicaGroups = []
+            for item in params.get("ReplicaGroups"):
+                obj = ReplicaGroup()
+                obj._deserialize(item)
+                self.ReplicaGroups.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeInstancesRequest(AbstractModel):
     """DescribeInstances请求参数结构体
 
@@ -4282,6 +4329,35 @@ class RedisCommonInstanceList(AbstractModel):
         self.NetType = params.get("NetType")
 
 
+class RedisNode(AbstractModel):
+    """Redis节点的运行信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Keys: 节点key的个数
+        :type Keys: int
+        :param Slot: 节点slot分布
+        :type Slot: str
+        :param NodeId: 节点的序列ID
+        :type NodeId: str
+        :param Status: 节点的状态
+        :type Status: str
+        """
+        self.Keys = None
+        self.Slot = None
+        self.NodeId = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Keys = params.get("Keys")
+        self.Slot = params.get("Slot")
+        self.NodeId = params.get("NodeId")
+        self.Status = params.get("Status")
+
+
 class RedisNodeInfo(AbstractModel):
     """描述Redis实例的主节点或者副本节点信息
 
@@ -4410,6 +4486,44 @@ class RenewInstanceResponse(AbstractModel):
     def _deserialize(self, params):
         self.DealId = params.get("DealId")
         self.RequestId = params.get("RequestId")
+
+
+class ReplicaGroup(AbstractModel):
+    """实例节点信息
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupId: 节点组ID
+        :type GroupId: int
+        :param GroupName: 节点组的名称，主节点为空
+        :type GroupName: str
+        :param ZoneId: 节点的可用区ID，比如ap-guangzhou-1
+        :type ZoneId: str
+        :param Role: 节点组类型，master为主节点，replica为副本节点
+        :type Role: str
+        :param RedisNodes: 节点组节点列表
+        :type RedisNodes: list of RedisNode
+        """
+        self.GroupId = None
+        self.GroupName = None
+        self.ZoneId = None
+        self.Role = None
+        self.RedisNodes = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.GroupName = params.get("GroupName")
+        self.ZoneId = params.get("ZoneId")
+        self.Role = params.get("Role")
+        if params.get("RedisNodes") is not None:
+            self.RedisNodes = []
+            for item in params.get("RedisNodes"):
+                obj = RedisNode()
+                obj._deserialize(item)
+                self.RedisNodes.append(obj)
 
 
 class ResetPasswordRequest(AbstractModel):
