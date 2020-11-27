@@ -1638,29 +1638,6 @@ class DescribeReservedInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeSpotTypeConfigRequest(AbstractModel):
-    """DescribeSpotTypeConfig请求参数结构体
-
-    """
-
-
-class DescribeSpotTypeConfigResponse(AbstractModel):
-    """DescribeSpotTypeConfig返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
 class DescribeZoneInstanceConfigInfosRequest(AbstractModel):
     """DescribeZoneInstanceConfigInfos请求参数结构体
 
@@ -5303,7 +5280,7 @@ class TagSpecification(AbstractModel):
 
     def __init__(self):
         """
-        :param ResourceType: 标签绑定的资源类型，当前支持类型："instance"和"host"
+        :param ResourceType: 标签绑定的资源类型，云服务器为“instance”，专用宿主机为“host”
         :type ResourceType: str
         :param Tags: 标签对列表
         :type Tags: list of Tag
@@ -5400,6 +5377,7 @@ class ZoneInfo(AbstractModel):
 全网可用区名称如下：
 <li> ap-chongqing-1 </li>
 <li> ap-seoul-1 </li>
+<li> ap-seoul-2 </li>
 <li> ap-chengdu-1 </li>
 <li> ap-chengdu-2 </li>
 <li> ap-hongkong-1 </li>

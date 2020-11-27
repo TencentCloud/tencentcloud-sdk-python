@@ -165,6 +165,34 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CheckPhoneAndName(self, request):
+        """本接口用于校验手机号和姓名的真实性和一致性。
+
+        :param request: Request instance for CheckPhoneAndName.
+        :type request: :class:`tencentcloud.faceid.v20180301.models.CheckPhoneAndNameRequest`
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.CheckPhoneAndNameResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CheckPhoneAndName", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CheckPhoneAndNameResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DetectAuth(self, request):
         """每次调用人脸核身SaaS化服务前，需先调用本接口获取BizToken，用来串联核身流程，在验证完成后，用于获取验证结果信息。
 

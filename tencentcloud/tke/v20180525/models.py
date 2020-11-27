@@ -226,6 +226,88 @@ class AutoscalingAdded(AbstractModel):
         self.Total = params.get("Total")
 
 
+class CheckInstancesUpgradeAbleRequest(AbstractModel):
+    """CheckInstancesUpgradeAble请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param InstanceIds: 节点列表，空为全部节点
+        :type InstanceIds: list of str
+        :param UpgradeType: 升级类型
+        :type UpgradeType: str
+        :param Offset: 分页Offset
+        :type Offset: int
+        :param Limit: 分页Limit
+        :type Limit: int
+        :param Filter: 过滤
+        :type Filter: list of Filter
+        """
+        self.ClusterId = None
+        self.InstanceIds = None
+        self.UpgradeType = None
+        self.Offset = None
+        self.Limit = None
+        self.Filter = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.InstanceIds = params.get("InstanceIds")
+        self.UpgradeType = params.get("UpgradeType")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filter") is not None:
+            self.Filter = []
+            for item in params.get("Filter"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filter.append(obj)
+
+
+class CheckInstancesUpgradeAbleResponse(AbstractModel):
+    """CheckInstancesUpgradeAble返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterVersion: 集群master当前小版本
+        :type ClusterVersion: str
+        :param LatestVersion: 集群master对应的大版本目前最新小版本
+        :type LatestVersion: str
+        :param UpgradeAbleInstances: 可升级节点列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpgradeAbleInstances: list of UpgradeAbleInstancesItem
+        :param Total: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ClusterVersion = None
+        self.LatestVersion = None
+        self.UpgradeAbleInstances = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterVersion = params.get("ClusterVersion")
+        self.LatestVersion = params.get("LatestVersion")
+        if params.get("UpgradeAbleInstances") is not None:
+            self.UpgradeAbleInstances = []
+            for item in params.get("UpgradeAbleInstances"):
+                obj = UpgradeAbleInstancesItem()
+                obj._deserialize(item)
+                self.UpgradeAbleInstances.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
 class Cluster(AbstractModel):
     """集群信息结构体
 
@@ -3644,3 +3726,130 @@ class Taint(AbstractModel):
         self.Key = params.get("Key")
         self.Value = params.get("Value")
         self.Effect = params.get("Effect")
+
+
+class UpgradeAbleInstancesItem(AbstractModel):
+    """可升级节点信息
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 节点Id
+        :type InstanceId: str
+        :param Version: 节点的当前版本
+        :type Version: str
+        :param LatestVersion: 当前版本的最新小版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LatestVersion: str
+        """
+        self.InstanceId = None
+        self.Version = None
+        self.LatestVersion = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Version = params.get("Version")
+        self.LatestVersion = params.get("LatestVersion")
+
+
+class UpgradeClusterInstancesRequest(AbstractModel):
+    """UpgradeClusterInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param Operation: create 表示开始一次升级任务
+pause 表示停止任务
+resume表示继续任务
+abort表示终止任务
+        :type Operation: str
+        :param UpgradeType: 升级类型，只有Operation是create需要设置
+reset 大版本重装升级
+hot 小版本热升级
+major 大版本原地升级
+        :type UpgradeType: str
+        :param InstanceIds: 需要升级的节点列表
+        :type InstanceIds: list of str
+        :param ResetParam: 当节点重新加入集群时候所使用的参数，参考添加已有节点接口
+        :type ResetParam: :class:`tencentcloud.tke.v20180525.models.UpgradeNodeResetParam`
+        :param SkipPreCheck: 是否忽略节点升级前检查
+        :type SkipPreCheck: bool
+        :param MaxNotReadyPercent: 最大可容忍的不可用Pod比例
+        :type MaxNotReadyPercent: float
+        """
+        self.ClusterId = None
+        self.Operation = None
+        self.UpgradeType = None
+        self.InstanceIds = None
+        self.ResetParam = None
+        self.SkipPreCheck = None
+        self.MaxNotReadyPercent = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Operation = params.get("Operation")
+        self.UpgradeType = params.get("UpgradeType")
+        self.InstanceIds = params.get("InstanceIds")
+        if params.get("ResetParam") is not None:
+            self.ResetParam = UpgradeNodeResetParam()
+            self.ResetParam._deserialize(params.get("ResetParam"))
+        self.SkipPreCheck = params.get("SkipPreCheck")
+        self.MaxNotReadyPercent = params.get("MaxNotReadyPercent")
+
+
+class UpgradeClusterInstancesResponse(AbstractModel):
+    """UpgradeClusterInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpgradeNodeResetParam(AbstractModel):
+    """节点升级重装参数
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceAdvancedSettings: 实例额外需要设置参数信息
+        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
+        :param EnhancedService: 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务。
+        :type EnhancedService: :class:`tencentcloud.tke.v20180525.models.EnhancedService`
+        :param LoginSettings: 节点登录信息（目前仅支持使用Password或者单个KeyIds）
+        :type LoginSettings: :class:`tencentcloud.tke.v20180525.models.LoginSettings`
+        :param SecurityGroupIds: 实例所属安全组。该参数可以通过调用 DescribeSecurityGroups 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。（目前仅支持设置单个sgId）
+        :type SecurityGroupIds: list of str
+        """
+        self.InstanceAdvancedSettings = None
+        self.EnhancedService = None
+        self.LoginSettings = None
+        self.SecurityGroupIds = None
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceAdvancedSettings") is not None:
+            self.InstanceAdvancedSettings = InstanceAdvancedSettings()
+            self.InstanceAdvancedSettings._deserialize(params.get("InstanceAdvancedSettings"))
+        if params.get("EnhancedService") is not None:
+            self.EnhancedService = EnhancedService()
+            self.EnhancedService._deserialize(params.get("EnhancedService"))
+        if params.get("LoginSettings") is not None:
+            self.LoginSettings = LoginSettings()
+            self.LoginSettings._deserialize(params.get("LoginSettings"))
+        self.SecurityGroupIds = params.get("SecurityGroupIds")

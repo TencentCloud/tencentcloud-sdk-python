@@ -9709,6 +9709,39 @@ class IPSECOptionsSpecification(AbstractModel):
         self.IPSECSaLifetimeTraffic = params.get("IPSECSaLifetimeTraffic")
 
 
+class InquirePriceCreateDirectConnectGatewayRequest(AbstractModel):
+    """InquirePriceCreateDirectConnectGateway请求参数结构体
+
+    """
+
+
+class InquirePriceCreateDirectConnectGatewayResponse(AbstractModel):
+    """InquirePriceCreateDirectConnectGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCost: 专线网关标准接入费用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCost: int
+        :param RealTotalCost: 专线网关真实接入费用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealTotalCost: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCost = None
+        self.RealTotalCost = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCost = params.get("TotalCost")
+        self.RealTotalCost = params.get("RealTotalCost")
+        self.RequestId = params.get("RequestId")
+
+
 class InquiryPriceCreateVpnGatewayRequest(AbstractModel):
     """InquiryPriceCreateVpnGateway请求参数结构体
 

@@ -94,6 +94,34 @@ class BdaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateSegmentationTask(self, request):
+        """本接口为离线人像分割处理接口组中的提交任务接口，可以对提交的资源进行处理视频流/图片流识别视频作品中的人像区域，进行一键抠像、背景替换、人像虚化等后期处理。
+
+        :param request: Request instance for CreateSegmentationTask.
+        :type request: :class:`tencentcloud.bda.v20200324.models.CreateSegmentationTaskRequest`
+        :rtype: :class:`tencentcloud.bda.v20200324.models.CreateSegmentationTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateSegmentationTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateSegmentationTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateTrace(self, request):
         """将一个人体轨迹添加到一个人员中。一个人员最多允许包含 5 个人体轨迹。同一人的人体轨迹越多，搜索识别效果越好。
 
@@ -171,6 +199,34 @@ class BdaClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeletePersonResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSegmentationTask(self, request):
+        """可以查看单条任务的处理情况，包括处理状态，处理结果。
+
+        :param request: Request instance for DescribeSegmentationTask.
+        :type request: :class:`tencentcloud.bda.v20200324.models.DescribeSegmentationTaskRequest`
+        :rtype: :class:`tencentcloud.bda.v20200324.models.DescribeSegmentationTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSegmentationTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSegmentationTaskResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -430,6 +486,34 @@ class BdaClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SegmentPortraitPicResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def TerminateSegmentationTask(self, request):
+        """终止指定视频人像分割处理任务
+
+        :param request: Request instance for TerminateSegmentationTask.
+        :type request: :class:`tencentcloud.bda.v20200324.models.TerminateSegmentationTaskRequest`
+        :rtype: :class:`tencentcloud.bda.v20200324.models.TerminateSegmentationTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("TerminateSegmentationTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.TerminateSegmentationTaskResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

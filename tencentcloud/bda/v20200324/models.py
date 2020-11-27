@@ -428,6 +428,58 @@ RetCode 的顺序和入参中Images 或 Urls 的顺序一致。
         self.RequestId = params.get("RequestId")
 
 
+class CreateSegmentationTaskRequest(AbstractModel):
+    """CreateSegmentationTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VideoUrl: 需要分割的视频URL，可外网访问。
+        :type VideoUrl: str
+        :param BackgroundImageUrl: 背景图片URL。 
+可以将视频背景替换为输入的图片。 
+如果不输入背景图片，则输出人像区域mask。
+        :type BackgroundImageUrl: str
+        :param Config: 预留字段，后期用于展示更多识别信息。
+        :type Config: str
+        """
+        self.VideoUrl = None
+        self.BackgroundImageUrl = None
+        self.Config = None
+
+
+    def _deserialize(self, params):
+        self.VideoUrl = params.get("VideoUrl")
+        self.BackgroundImageUrl = params.get("BackgroundImageUrl")
+        self.Config = params.get("Config")
+
+
+class CreateSegmentationTaskResponse(AbstractModel):
+    """CreateSegmentationTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskID: 任务标识ID,可以用与追溯任务状态，查看任务结果
+        :type TaskID: str
+        :param EstimatedProcessingTime: 预估处理时间，单位为秒
+        :type EstimatedProcessingTime: float
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskID = None
+        self.EstimatedProcessingTime = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskID = params.get("TaskID")
+        self.EstimatedProcessingTime = params.get("EstimatedProcessingTime")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateTraceRequest(AbstractModel):
     """CreateTrace请求参数结构体
 
@@ -552,6 +604,69 @@ class DeletePersonResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSegmentationTaskRequest(AbstractModel):
+    """DescribeSegmentationTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskID: 在提交分割任务成功时返回的任务标识ID。
+        :type TaskID: str
+        """
+        self.TaskID = None
+
+
+    def _deserialize(self, params):
+        self.TaskID = params.get("TaskID")
+
+
+class DescribeSegmentationTaskResponse(AbstractModel):
+    """DescribeSegmentationTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskStatus: 当前任务状态：
+QUEUING 排队中
+PROCESSING 处理中
+FINISHED 处理完成
+        :type TaskStatus: str
+        :param ResultVideoUrl: 分割后视频URL, 存储于腾讯云COS
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultVideoUrl: str
+        :param ResultVideoMD5: 分割后视频MD5，用于校验
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultVideoMD5: str
+        :param VideoBasicInformation: 视频基本信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VideoBasicInformation: :class:`tencentcloud.bda.v20200324.models.VideoBasicInformation`
+        :param ErrorMsg: 分割任务错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskStatus = None
+        self.ResultVideoUrl = None
+        self.ResultVideoMD5 = None
+        self.VideoBasicInformation = None
+        self.ErrorMsg = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskStatus = params.get("TaskStatus")
+        self.ResultVideoUrl = params.get("ResultVideoUrl")
+        self.ResultVideoMD5 = params.get("ResultVideoMD5")
+        if params.get("VideoBasicInformation") is not None:
+            self.VideoBasicInformation = VideoBasicInformation()
+            self.VideoBasicInformation._deserialize(params.get("VideoBasicInformation"))
+        self.ErrorMsg = params.get("ErrorMsg")
         self.RequestId = params.get("RequestId")
 
 
@@ -1383,6 +1498,40 @@ class SegmentationOptions(AbstractModel):
         self.Belongings = params.get("Belongings")
 
 
+class TerminateSegmentationTaskRequest(AbstractModel):
+    """TerminateSegmentationTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskID: 在提交分割任务成功时返回的任务标识ID。
+        :type TaskID: str
+        """
+        self.TaskID = None
+
+
+    def _deserialize(self, params):
+        self.TaskID = params.get("TaskID")
+
+
+class TerminateSegmentationTaskResponse(AbstractModel):
+    """TerminateSegmentationTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class Trace(AbstractModel):
     """人体轨迹信息
 
@@ -1538,3 +1687,36 @@ class UpperBodyClothTexture(AbstractModel):
     def _deserialize(self, params):
         self.Type = params.get("Type")
         self.Probability = params.get("Probability")
+
+
+class VideoBasicInformation(AbstractModel):
+    """视频基础信息
+
+    """
+
+    def __init__(self):
+        """
+        :param FrameWidth: 视频宽度
+        :type FrameWidth: int
+        :param FrameHeight: 视频高度
+        :type FrameHeight: int
+        :param FramesPerSecond: 视频帧速率(FPS)
+        :type FramesPerSecond: int
+        :param Duration: 视频时长
+        :type Duration: float
+        :param TotalFrames: 视频帧数
+        :type TotalFrames: int
+        """
+        self.FrameWidth = None
+        self.FrameHeight = None
+        self.FramesPerSecond = None
+        self.Duration = None
+        self.TotalFrames = None
+
+
+    def _deserialize(self, params):
+        self.FrameWidth = params.get("FrameWidth")
+        self.FrameHeight = params.get("FrameHeight")
+        self.FramesPerSecond = params.get("FramesPerSecond")
+        self.Duration = params.get("Duration")
+        self.TotalFrames = params.get("TotalFrames")

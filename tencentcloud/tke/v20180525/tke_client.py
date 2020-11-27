@@ -109,6 +109,34 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CheckInstancesUpgradeAble(self, request):
+        """检查给定节点列表中哪些是可升级的
+
+        :param request: Request instance for CheckInstancesUpgradeAble.
+        :type request: :class:`tencentcloud.tke.v20180525.models.CheckInstancesUpgradeAbleRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.CheckInstancesUpgradeAbleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CheckInstancesUpgradeAble", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CheckInstancesUpgradeAbleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateCluster(self, request):
         """创建集群
 
@@ -1215,6 +1243,34 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RemoveNodeFromNodePoolResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpgradeClusterInstances(self, request):
+        """给集群的一批work节点进行升级
+
+        :param request: Request instance for UpgradeClusterInstances.
+        :type request: :class:`tencentcloud.tke.v20180525.models.UpgradeClusterInstancesRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.UpgradeClusterInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpgradeClusterInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpgradeClusterInstancesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

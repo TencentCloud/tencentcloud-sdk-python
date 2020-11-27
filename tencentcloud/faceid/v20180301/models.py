@@ -410,6 +410,59 @@ class CheckIdCardInformationResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CheckPhoneAndNameRequest(AbstractModel):
+    """CheckPhoneAndName请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Mobile: ⼿机号
+        :type Mobile: str
+        :param Name: 姓名
+        :type Name: str
+        """
+        self.Mobile = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.Mobile = params.get("Mobile")
+        self.Name = params.get("Name")
+
+
+class CheckPhoneAndNameResponse(AbstractModel):
+    """CheckPhoneAndName返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 认证结果码，收费情况如下。
+收费结果码：
+0: 验证结果一致
+1: 验证结果不一致
+不收费结果码：
+-1:查无记录
+-2:引擎未知错误
+-3:引擎服务异常
+        :type Result: str
+        :param Description: 业务结果描述
+        :type Description: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.Description = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.Description = params.get("Description")
+        self.RequestId = params.get("RequestId")
+
+
 class DetectAuthRequest(AbstractModel):
     """DetectAuth请求参数结构体
 
@@ -522,6 +575,13 @@ class DetectDetail(AbstractModel):
         :param Comparemsg: 本次一比一结果描述。（仅描述用，文案更新时不会通知。）
 注意：此字段可能返回 null，表示取不到有效值。
         :type Comparemsg: str
+        :param CompareLibType: 比对库源类型。包括：
+公安商业库；
+业务方自有库（用户上传照片、客户的混合库、混合部署库）；
+二次验证库；
+人工审核库；
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompareLibType: str
         """
         self.ReqTime = None
         self.Seq = None
@@ -535,6 +595,7 @@ class DetectDetail(AbstractModel):
         self.Livemsg = None
         self.Comparestatus = None
         self.Comparemsg = None
+        self.CompareLibType = None
 
 
     def _deserialize(self, params):
@@ -550,6 +611,7 @@ class DetectDetail(AbstractModel):
         self.Livemsg = params.get("Livemsg")
         self.Comparestatus = params.get("Comparestatus")
         self.Comparemsg = params.get("Comparemsg")
+        self.CompareLibType = params.get("CompareLibType")
 
 
 class DetectInfoBestFrame(AbstractModel):
@@ -683,6 +745,13 @@ class DetectInfoText(AbstractModel):
         :param Mobile: 手机号码。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Mobile: str
+        :param CompareLibType: 本次流程最终比对库源类型。包括：
+公安商业库；
+业务方自有库（用户上传照片、客户的混合库、混合部署库）；
+二次验证库；
+人工审核库；
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompareLibType: str
         """
         self.ErrCode = None
         self.ErrMsg = None
@@ -705,6 +774,7 @@ class DetectInfoText(AbstractModel):
         self.Extra = None
         self.LivenessDetail = None
         self.Mobile = None
+        self.CompareLibType = None
 
 
     def _deserialize(self, params):
@@ -734,6 +804,7 @@ class DetectInfoText(AbstractModel):
                 obj._deserialize(item)
                 self.LivenessDetail.append(obj)
         self.Mobile = params.get("Mobile")
+        self.CompareLibType = params.get("CompareLibType")
 
 
 class DetectInfoVideoData(AbstractModel):

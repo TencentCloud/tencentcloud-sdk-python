@@ -328,6 +328,9 @@ class ApiInfo(AbstractModel):
         :param Tags: API绑定的tag信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
+        :param Environments: API已发布的环境信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Environments: list of str
         """
         self.ServiceId = None
         self.ServiceName = None
@@ -376,6 +379,7 @@ class ApiInfo(AbstractModel):
         self.ServiceTsfHealthCheckConf = None
         self.EnableCORS = None
         self.Tags = None
+        self.Environments = None
 
 
     def _deserialize(self, params):
@@ -466,6 +470,7 @@ class ApiInfo(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.Environments = params.get("Environments")
 
 
 class ApiKey(AbstractModel):
