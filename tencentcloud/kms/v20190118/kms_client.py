@@ -23,6 +23,7 @@ from tencentcloud.kms.v20190118 import models
 class KmsClient(AbstractClient):
     _apiVersion = '2019-01-18'
     _endpoint = 'kms.tencentcloudapi.com'
+    _service = 'kms'
 
 
     def ArchiveKey(self, request):

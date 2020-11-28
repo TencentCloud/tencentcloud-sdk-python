@@ -23,6 +23,7 @@ from tencentcloud.ft.v20200304 import models
 class FtClient(AbstractClient):
     _apiVersion = '2020-03-04'
     _endpoint = 'ft.tencentcloudapi.com'
+    _service = 'ft'
 
 
     def CancelFaceMorphJob(self, request):

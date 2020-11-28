@@ -23,6 +23,7 @@ from tencentcloud.partners.v20180321 import models
 class PartnersClient(AbstractClient):
     _apiVersion = '2018-03-21'
     _endpoint = 'partners.tencentcloudapi.com'
+    _service = 'partners'
 
 
     def AgentPayDeals(self, request):

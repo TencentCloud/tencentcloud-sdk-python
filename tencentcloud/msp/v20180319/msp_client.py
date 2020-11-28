@@ -23,6 +23,7 @@ from tencentcloud.msp.v20180319 import models
 class MspClient(AbstractClient):
     _apiVersion = '2018-03-19'
     _endpoint = 'msp.tencentcloudapi.com'
+    _service = 'msp'
 
 
     def DeregisterMigrationTask(self, request):

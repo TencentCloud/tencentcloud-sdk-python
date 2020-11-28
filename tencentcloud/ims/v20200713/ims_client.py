@@ -23,6 +23,7 @@ from tencentcloud.ims.v20200713 import models
 class ImsClient(AbstractClient):
     _apiVersion = '2020-07-13'
     _endpoint = 'ims.tencentcloudapi.com'
+    _service = 'ims'
 
 
     def ImageModeration(self, request):

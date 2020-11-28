@@ -23,6 +23,7 @@ from tencentcloud.iotvideo.v20191126 import models
 class IotvideoClient(AbstractClient):
     _apiVersion = '2019-11-26'
     _endpoint = 'iotvideo.tencentcloudapi.com'
+    _service = 'iotvideo'
 
 
     def ClearDeviceActiveCode(self, request):

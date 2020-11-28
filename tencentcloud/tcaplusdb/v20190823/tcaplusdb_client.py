@@ -23,6 +23,7 @@ from tencentcloud.tcaplusdb.v20190823 import models
 class TcaplusdbClient(AbstractClient):
     _apiVersion = '2019-08-23'
     _endpoint = 'tcaplusdb.tencentcloudapi.com'
+    _service = 'tcaplusdb'
 
 
     def ClearTables(self, request):

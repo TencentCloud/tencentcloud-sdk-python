@@ -23,6 +23,7 @@ from tencentcloud.tbaas.v20180416 import models
 class TbaasClient(AbstractClient):
     _apiVersion = '2018-04-16'
     _endpoint = 'tbaas.tencentcloudapi.com'
+    _service = 'tbaas'
 
 
     def ApplyUserCert(self, request):

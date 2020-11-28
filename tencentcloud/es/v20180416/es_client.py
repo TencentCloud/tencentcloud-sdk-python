@@ -23,6 +23,7 @@ from tencentcloud.es.v20180416 import models
 class EsClient(AbstractClient):
     _apiVersion = '2018-04-16'
     _endpoint = 'es.tencentcloudapi.com'
+    _service = 'es'
 
 
     def CreateInstance(self, request):

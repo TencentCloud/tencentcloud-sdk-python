@@ -23,6 +23,7 @@ from tencentcloud.cat.v20180409 import models
 class CatClient(AbstractClient):
     _apiVersion = '2018-04-09'
     _endpoint = 'cat.tencentcloudapi.com'
+    _service = 'cat'
 
 
     def BindAlarmPolicy(self, request):

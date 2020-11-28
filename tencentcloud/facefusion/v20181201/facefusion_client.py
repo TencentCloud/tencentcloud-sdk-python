@@ -23,6 +23,7 @@ from tencentcloud.facefusion.v20181201 import models
 class FacefusionClient(AbstractClient):
     _apiVersion = '2018-12-01'
     _endpoint = 'facefusion.tencentcloudapi.com'
+    _service = 'facefusion'
 
 
     def DescribeMaterialList(self, request):
