@@ -23,6 +23,7 @@ from tencentcloud.ba.v20200720 import models
 class BaClient(AbstractClient):
     _apiVersion = '2020-07-20'
     _endpoint = 'ba.tencentcloudapi.com'
+    _service = 'ba'
 
 
     def CreateWeappQRUrl(self, request):

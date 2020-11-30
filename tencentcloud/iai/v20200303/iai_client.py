@@ -156,6 +156,38 @@ class IaiClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CompareMaskFace(self, request):
+        """对两张图片中的人脸进行相似度比对，返回人脸相似度分数。
+
+        戴口罩人脸比对接口可在查询照人脸戴口罩情况下使用，口罩遮挡程度最高可以遮挡鼻尖。
+
+        如图片人脸不存在戴口罩情况，建议使用人脸比对服务。
+
+        :param request: Request instance for CompareMaskFace.
+        :type request: :class:`tencentcloud.iai.v20200303.models.CompareMaskFaceRequest`
+        :rtype: :class:`tencentcloud.iai.v20200303.models.CompareMaskFaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CompareMaskFace", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CompareMaskFaceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CopyPerson(self, request):
         """将已存在于某人员库的人员复制到其他人员库，该人员的描述信息不会被复制。单个人员最多只能同时存在100个人员库中。
         >

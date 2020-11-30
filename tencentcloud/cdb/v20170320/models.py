@@ -644,6 +644,51 @@ class BinlogInfo(AbstractModel):
         self.BinlogFinishTime = params.get("BinlogFinishTime")
 
 
+class CloneItem(AbstractModel):
+    """克隆任务记录。
+
+    """
+
+    def __init__(self):
+        """
+        :param SrcInstanceId: 克隆任务的源实例Id。
+        :type SrcInstanceId: str
+        :param DstInstanceId: 克隆任务的新产生实例Id。
+        :type DstInstanceId: str
+        :param CloneJobId: 克隆任务对应的任务列表Id。
+        :type CloneJobId: int
+        :param RollbackStrategy: 克隆实例使用的策略， 包括以下类型：  timepoint:指定时间点回档，  backupset: 指定备份文件回档。
+        :type RollbackStrategy: str
+        :param RollbackTargetTime: 克隆实例回档的时间点。
+        :type RollbackTargetTime: str
+        :param StartTime: 任务开始时间。
+        :type StartTime: str
+        :param EndTime: 任务结束时间。
+        :type EndTime: str
+        :param TaskStatus: 任务状态，包括以下状态：initial,running,wait_complete,success,failed
+        :type TaskStatus: str
+        """
+        self.SrcInstanceId = None
+        self.DstInstanceId = None
+        self.CloneJobId = None
+        self.RollbackStrategy = None
+        self.RollbackTargetTime = None
+        self.StartTime = None
+        self.EndTime = None
+        self.TaskStatus = None
+
+
+    def _deserialize(self, params):
+        self.SrcInstanceId = params.get("SrcInstanceId")
+        self.DstInstanceId = params.get("DstInstanceId")
+        self.CloneJobId = params.get("CloneJobId")
+        self.RollbackStrategy = params.get("RollbackStrategy")
+        self.RollbackTargetTime = params.get("RollbackTargetTime")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.TaskStatus = params.get("TaskStatus")
+
+
 class CloseWanServiceRequest(AbstractModel):
     """CloseWanService请求参数结构体
 
@@ -1030,6 +1075,109 @@ class CreateBackupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.BackupId = params.get("BackupId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateCloneInstanceRequest(AbstractModel):
+    """CreateCloneInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 克隆源实例Id。
+        :type InstanceId: str
+        :param SpecifiedRollbackTime: 如果需要克隆实例回档到指定时间，则指定该值。时间格式为： yyyy-mm-dd hh:mm:ss 。
+        :type SpecifiedRollbackTime: str
+        :param SpecifiedBackupId: 如果需要克隆实例回档到指定备份的时间点，则指定该值为物理备份的Id。请使用 [查询数据备份文件列表](/document/api/236/15842) 。
+        :type SpecifiedBackupId: int
+        :param UniqVpcId: 私有网络 ID，如果不传则默认选择基础网络，请使用 [查询私有网络列表](/document/api/215/15778) 。
+        :type UniqVpcId: str
+        :param UniqSubnetId: 私有网络下的子网 ID，如果设置了 UniqVpcId，则 UniqSubnetId 必填，请使用 [查询子网列表](/document/api/215/15784)。
+        :type UniqSubnetId: str
+        :param Memory: 实例内存大小，单位：MB，需要不低于克隆源实例，默认和源实例相同。
+        :type Memory: int
+        :param Volume: 实例硬盘大小，单位：GB，需要不低于克隆源实例，默认和源实例相同。
+        :type Volume: int
+        :param InstanceName: 新产生的克隆实例名称。
+        :type InstanceName: str
+        :param SecurityGroup: 安全组参数，可使用 [查询项目安全组信息](https://cloud.tencent.com/document/api/236/15850) 接口查询某个项目的安全组详情。
+        :type SecurityGroup: list of str
+        :param ResourceTags: 实例标签信息。
+        :type ResourceTags: list of TagInfo
+        :param Cpu: 实例Cpu核数，需要不低于克隆源实例。
+        :type Cpu: int
+        :param ProtectMode: 数据复制方式，默认为 0，支持值包括：0 - 表示异步复制，1 - 表示半同步复制，2 - 表示强同步复制。
+        :type ProtectMode: int
+        :param DeployMode: 多可用区域，默认为 0，支持值包括：0 - 表示单可用区，1 - 表示多可用区。
+        :type DeployMode: int
+        :param SlaveZone: 新产生的克隆实例备库 1 的可用区信息，默认同源实例 Zone 的值。
+        :type SlaveZone: str
+        :param BackupZone: 备库 2 的可用区信息，默认为空，克隆强同步主实例时可指定该参数。
+        :type BackupZone: str
+        :param DeviceType: 克隆实例类型。支持值包括： "HA" - 高可用版实例， "EXCLUSIVE" - 独享型实例。 不指定则默认为高可用版。
+        :type DeviceType: str
+        """
+        self.InstanceId = None
+        self.SpecifiedRollbackTime = None
+        self.SpecifiedBackupId = None
+        self.UniqVpcId = None
+        self.UniqSubnetId = None
+        self.Memory = None
+        self.Volume = None
+        self.InstanceName = None
+        self.SecurityGroup = None
+        self.ResourceTags = None
+        self.Cpu = None
+        self.ProtectMode = None
+        self.DeployMode = None
+        self.SlaveZone = None
+        self.BackupZone = None
+        self.DeviceType = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.SpecifiedRollbackTime = params.get("SpecifiedRollbackTime")
+        self.SpecifiedBackupId = params.get("SpecifiedBackupId")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.UniqSubnetId = params.get("UniqSubnetId")
+        self.Memory = params.get("Memory")
+        self.Volume = params.get("Volume")
+        self.InstanceName = params.get("InstanceName")
+        self.SecurityGroup = params.get("SecurityGroup")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
+        self.Cpu = params.get("Cpu")
+        self.ProtectMode = params.get("ProtectMode")
+        self.DeployMode = params.get("DeployMode")
+        self.SlaveZone = params.get("SlaveZone")
+        self.BackupZone = params.get("BackupZone")
+        self.DeviceType = params.get("DeviceType")
+
+
+class CreateCloneInstanceResponse(AbstractModel):
+    """CreateCloneInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncRequestId: 异步任务的请求ID，可使用此 ID 查询异步任务的执行结果。
+        :type AsyncRequestId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
         self.RequestId = params.get("RequestId")
 
 
@@ -2852,6 +3000,61 @@ class DescribeBinlogsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCloneListRequest(AbstractModel):
+    """DescribeCloneList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 查询指定源实例的克隆任务列表。
+        :type InstanceId: str
+        :param Offset: 分页查询时的偏移量。
+        :type Offset: int
+        :param Limit: 分页查询时的每页条目数。
+        :type Limit: int
+        """
+        self.InstanceId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeCloneListResponse(AbstractModel):
+    """DescribeCloneList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 满足条件的条目数。
+        :type TotalCount: int
+        :param Items: 克隆任务列表。
+        :type Items: list of CloneItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = CloneItem()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDBImportRecordsRequest(AbstractModel):
     """DescribeDBImportRecords请求参数结构体
 
@@ -3808,7 +4011,7 @@ class DescribeErrorLogDataRequest(AbstractModel):
         :type EndTime: int
         :param KeyWords: 要匹配的关键字列表，最多支持15个关键字。
         :type KeyWords: list of str
-        :param Limit: 分页的返回数量，最大为400。
+        :param Limit: 分页的返回数量，默认为100，最大为400。
         :type Limit: int
         :param Offset: 偏移量，默认为0。
         :type Offset: int
@@ -4322,7 +4525,7 @@ class DescribeSlowLogDataRequest(AbstractModel):
         :type OrderBy: str
         :param Offset: 偏移量，默认为0。
         :type Offset: int
-        :param Limit: 一次性返回的记录数量，最大为400。
+        :param Limit: 一次性返回的记录数量，默认为100，最大为400。
         :type Limit: int
         """
         self.InstanceId = None
@@ -7893,6 +8096,44 @@ class StopDBImportJobResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class StopRollbackRequest(AbstractModel):
+    """StopRollback请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 撤销回档任务对应的实例Id。
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class StopRollbackResponse(AbstractModel):
+    """StopRollback返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncRequestId: 执行请求的异步任务ID
+        :type AsyncRequestId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
         self.RequestId = params.get("RequestId")
 
 

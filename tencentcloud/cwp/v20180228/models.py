@@ -2411,6 +2411,10 @@ class DescribeMachineInfoResponse(AbstractModel):
         :type FreeMalwaresLeft: int
         :param FreeVulsLeft: 免费漏洞剩余检测数量。
         :type FreeVulsLeft: int
+        :param AgentVersion: agent版本号
+        :type AgentVersion: str
+        :param ProVersionDeadline: 专业版到期时间(仅预付费)
+        :type ProVersionDeadline: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2430,6 +2434,8 @@ class DescribeMachineInfoResponse(AbstractModel):
         self.PayMode = None
         self.FreeMalwaresLeft = None
         self.FreeVulsLeft = None
+        self.AgentVersion = None
+        self.ProVersionDeadline = None
         self.RequestId = None
 
 
@@ -2450,6 +2456,8 @@ class DescribeMachineInfoResponse(AbstractModel):
         self.PayMode = params.get("PayMode")
         self.FreeMalwaresLeft = params.get("FreeMalwaresLeft")
         self.FreeVulsLeft = params.get("FreeVulsLeft")
+        self.AgentVersion = params.get("AgentVersion")
+        self.ProVersionDeadline = params.get("ProVersionDeadline")
         self.RequestId = params.get("RequestId")
 
 
@@ -3452,6 +3460,101 @@ class DescribeSecurityDynamicsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.SecurityDynamics.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSecurityEventsCntRequest(AbstractModel):
+    """DescribeSecurityEventsCnt请求参数结构体
+
+    """
+
+
+class DescribeSecurityEventsCntResponse(AbstractModel):
+    """DescribeSecurityEventsCnt返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Malware: 木马文件相关风险事件
+        :type Malware: :class:`tencentcloud.cwp.v20180228.models.SecurityEventInfo`
+        :param HostLogin: 登录审计相关风险事件
+        :type HostLogin: :class:`tencentcloud.cwp.v20180228.models.SecurityEventInfo`
+        :param BruteAttack: 密码破解相关风险事件
+        :type BruteAttack: :class:`tencentcloud.cwp.v20180228.models.SecurityEventInfo`
+        :param RiskDns: 恶意请求相关风险事件
+        :type RiskDns: :class:`tencentcloud.cwp.v20180228.models.SecurityEventInfo`
+        :param Bash: 高危命令相关风险事件
+        :type Bash: :class:`tencentcloud.cwp.v20180228.models.SecurityEventInfo`
+        :param PrivilegeRules: 本地提权相关风险事件
+        :type PrivilegeRules: :class:`tencentcloud.cwp.v20180228.models.SecurityEventInfo`
+        :param ReverseShell: 反弹Shell相关风险事件
+        :type ReverseShell: :class:`tencentcloud.cwp.v20180228.models.SecurityEventInfo`
+        :param SysVul: 系统组件相关风险事件
+        :type SysVul: :class:`tencentcloud.cwp.v20180228.models.SecurityEventInfo`
+        :param WebVul: Web应用漏洞相关风险事件
+        :type WebVul: :class:`tencentcloud.cwp.v20180228.models.SecurityEventInfo`
+        :param EmergencyVul: 应急漏洞相关风险事件
+        :type EmergencyVul: :class:`tencentcloud.cwp.v20180228.models.SecurityEventInfo`
+        :param BaseLine: 安全基线相关风险事件
+        :type BaseLine: :class:`tencentcloud.cwp.v20180228.models.SecurityEventInfo`
+        :param AttackLogs: 攻击检测相关风险事件
+        :type AttackLogs: :class:`tencentcloud.cwp.v20180228.models.SecurityEventInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Malware = None
+        self.HostLogin = None
+        self.BruteAttack = None
+        self.RiskDns = None
+        self.Bash = None
+        self.PrivilegeRules = None
+        self.ReverseShell = None
+        self.SysVul = None
+        self.WebVul = None
+        self.EmergencyVul = None
+        self.BaseLine = None
+        self.AttackLogs = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Malware") is not None:
+            self.Malware = SecurityEventInfo()
+            self.Malware._deserialize(params.get("Malware"))
+        if params.get("HostLogin") is not None:
+            self.HostLogin = SecurityEventInfo()
+            self.HostLogin._deserialize(params.get("HostLogin"))
+        if params.get("BruteAttack") is not None:
+            self.BruteAttack = SecurityEventInfo()
+            self.BruteAttack._deserialize(params.get("BruteAttack"))
+        if params.get("RiskDns") is not None:
+            self.RiskDns = SecurityEventInfo()
+            self.RiskDns._deserialize(params.get("RiskDns"))
+        if params.get("Bash") is not None:
+            self.Bash = SecurityEventInfo()
+            self.Bash._deserialize(params.get("Bash"))
+        if params.get("PrivilegeRules") is not None:
+            self.PrivilegeRules = SecurityEventInfo()
+            self.PrivilegeRules._deserialize(params.get("PrivilegeRules"))
+        if params.get("ReverseShell") is not None:
+            self.ReverseShell = SecurityEventInfo()
+            self.ReverseShell._deserialize(params.get("ReverseShell"))
+        if params.get("SysVul") is not None:
+            self.SysVul = SecurityEventInfo()
+            self.SysVul._deserialize(params.get("SysVul"))
+        if params.get("WebVul") is not None:
+            self.WebVul = SecurityEventInfo()
+            self.WebVul._deserialize(params.get("WebVul"))
+        if params.get("EmergencyVul") is not None:
+            self.EmergencyVul = SecurityEventInfo()
+            self.EmergencyVul._deserialize(params.get("EmergencyVul"))
+        if params.get("BaseLine") is not None:
+            self.BaseLine = SecurityEventInfo()
+            self.BaseLine._deserialize(params.get("BaseLine"))
+        if params.get("AttackLogs") is not None:
+            self.AttackLogs = SecurityEventInfo()
+            self.AttackLogs._deserialize(params.get("AttackLogs"))
         self.RequestId = params.get("RequestId")
 
 
@@ -4505,6 +4608,22 @@ class ExportBashEventsRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        """
+        :param Filters: 过滤参数
+        :type Filters: list of Filters
+        """
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
 
 class ExportBashEventsResponse(AbstractModel):
     """ExportBashEvents返回参数结构体
@@ -4515,15 +4634,19 @@ class ExportBashEventsResponse(AbstractModel):
         """
         :param DownloadUrl: 导出文件下载链接地址。
         :type DownloadUrl: str
+        :param TaskId: 导出任务ID
+        :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.DownloadUrl = None
+        self.TaskId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.DownloadUrl = params.get("DownloadUrl")
+        self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
 
 
@@ -4531,6 +4654,22 @@ class ExportBruteAttacksRequest(AbstractModel):
     """ExportBruteAttacks请求参数结构体
 
     """
+
+    def __init__(self):
+        """
+        :param Filters: 过滤参数
+        :type Filters: list of Filters
+        """
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
 
 
 class ExportBruteAttacksResponse(AbstractModel):
@@ -4542,15 +4681,19 @@ class ExportBruteAttacksResponse(AbstractModel):
         """
         :param DownloadUrl: 导出文件下载链接地址。
         :type DownloadUrl: str
+        :param TaskId: 导出任务ID
+        :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.DownloadUrl = None
+        self.TaskId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.DownloadUrl = params.get("DownloadUrl")
+        self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
 
 
@@ -4586,6 +4729,36 @@ class ExportMalwaresRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        """
+        :param Limit: 限制条数,默认10
+        :type Limit: int
+        :param Offset: 偏移量 默认0
+        :type Offset: int
+        :param Filters: 过滤参数。
+<li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
+<li>FilePath - String - 是否必填：否 - 路径筛选</li>
+<li>VirusName - String - 是否必填：否 - 描述筛选</li>
+<li>CreateBeginTime - String - 是否必填：否 - 创建时间筛选-开始时间</li>
+<li>CreateEndTime - String - 是否必填：否 - 创建时间筛选-结束时间</li>
+<li>Status - String - 是否必填：否 - 状态筛选</li>
+        :type Filters: list of Filters
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
 
 class ExportMalwaresResponse(AbstractModel):
     """ExportMalwares返回参数结构体
@@ -4612,6 +4785,22 @@ class ExportNonlocalLoginPlacesRequest(AbstractModel):
     """ExportNonlocalLoginPlaces请求参数结构体
 
     """
+
+    def __init__(self):
+        """
+        :param Filters: <li>Status - int - 是否必填：否 - 状态筛选1:正常登录；2：异地登录</li>
+        :type Filters: list of Filter
+        """
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
 
 
 class ExportNonlocalLoginPlacesResponse(AbstractModel):
@@ -4671,6 +4860,22 @@ class ExportReverseShellEventsRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        """
+        :param Filters: 过滤参数
+        :type Filters: list of Filters
+        """
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
 
 class ExportReverseShellEventsResponse(AbstractModel):
     """ExportReverseShellEvents返回参数结构体
@@ -4681,15 +4886,19 @@ class ExportReverseShellEventsResponse(AbstractModel):
         """
         :param DownloadUrl: 导出文件下载链接地址。
         :type DownloadUrl: str
+        :param TaskId: 任务id
+        :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.DownloadUrl = None
+        self.TaskId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.DownloadUrl = params.get("DownloadUrl")
+        self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
 
 
@@ -4701,6 +4910,30 @@ class Filter(AbstractModel):
 
     * 最多只能有5个Filter
     * 同一个Filter存在多个Values，Values值数量最多不能超过5个。
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 过滤键的名称。
+        :type Name: str
+        :param Values: 一个或者多个过滤值。
+        :type Values: list of str
+        """
+        self.Name = None
+        self.Values = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Values = params.get("Values")
+
+
+class Filters(AbstractModel):
+    """描述键值对过滤器，用于条件过滤查询。例如过滤ID、名称、状态等
+
+    若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
+    若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
 
     """
 
@@ -5070,6 +5303,10 @@ class Machine(AbstractModel):
         :type InvasionNum: int
         :param RegionInfo: 地域信息
         :type RegionInfo: :class:`tencentcloud.cwp.v20180228.models.RegionInfo`
+        :param InstanceState: 实例状态 TERMINATED_PRO_VERSION 已销毁
+        :type InstanceState: str
+        :param LicenseStatus: 授权状态 1 授权 0 未授权
+        :type LicenseStatus: int
         """
         self.MachineName = None
         self.MachineOs = None
@@ -5088,6 +5325,8 @@ class Machine(AbstractModel):
         self.SecurityStatus = None
         self.InvasionNum = None
         self.RegionInfo = None
+        self.InstanceState = None
+        self.LicenseStatus = None
 
 
     def _deserialize(self, params):
@@ -5115,6 +5354,8 @@ class Machine(AbstractModel):
         if params.get("RegionInfo") is not None:
             self.RegionInfo = RegionInfo()
             self.RegionInfo._deserialize(params.get("RegionInfo"))
+        self.InstanceState = params.get("InstanceState")
+        self.LicenseStatus = params.get("LicenseStatus")
 
 
 class MachineTag(AbstractModel):
@@ -6294,6 +6535,27 @@ class SecurityDynamic(AbstractModel):
         self.EventType = params.get("EventType")
         self.Message = params.get("Message")
         self.SecurityLevel = params.get("SecurityLevel")
+
+
+class SecurityEventInfo(AbstractModel):
+    """安全事件统计列表
+
+    """
+
+    def __init__(self):
+        """
+        :param EventCnt: 安全事件数
+        :type EventCnt: int
+        :param UuidCnt: 受影响机器数
+        :type UuidCnt: int
+        """
+        self.EventCnt = None
+        self.UuidCnt = None
+
+
+    def _deserialize(self, params):
+        self.EventCnt = params.get("EventCnt")
+        self.UuidCnt = params.get("UuidCnt")
 
 
 class SecurityTrend(AbstractModel):

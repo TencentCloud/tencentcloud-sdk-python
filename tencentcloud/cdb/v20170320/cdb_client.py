@@ -278,6 +278,34 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateCloneInstance(self, request):
+        """本接口(CreateCloneInstance) 用于从目标源实例创建一个克隆实例，可以指定克隆实例回档到源实例的指定物理备份文件或者指定的回档时间点。
+
+        :param request: Request instance for CreateCloneInstance.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.CreateCloneInstanceRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.CreateCloneInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateCloneInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateCloneInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateDBImportJob(self, request):
         """本接口(CreateDBImportJob)用于创建云数据库数据导入任务。
 
@@ -1098,6 +1126,34 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBinlogsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCloneList(self, request):
+        """本接口(DescribeCloneList) 用于查询用户实例的克隆任务列表。
+
+        :param request: Request instance for DescribeCloneList.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeCloneListRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeCloneListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCloneList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCloneListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2877,6 +2933,34 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopDBImportJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StopRollback(self, request):
+        """本接口(StopRollback) 用于撤销实例正在进行的回档任务，该接口返回一个异步任务id。 撤销结果可以通过 DescribeRequestResult 查询任务的执行情况。
+
+        :param request: Request instance for StopRollback.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.StopRollbackRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.StopRollbackResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StopRollback", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StopRollbackResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
