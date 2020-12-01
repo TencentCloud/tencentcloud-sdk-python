@@ -320,7 +320,7 @@ class DescribeBundlesRequest(AbstractModel):
         :param Limit: 返回数量，默认为 20，最大值为 100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
         :type Limit: int
         :param Filters: 过滤器列表。
-<li>bundle-id</li>按照【镜像 ID】进行过滤。
+<li>bundle-id</li>按照【套餐 ID】进行过滤。
 类型：String
 必选：否
 <li>support-platform-type</li>按照【系统类型】进行过滤。

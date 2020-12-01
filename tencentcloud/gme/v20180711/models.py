@@ -445,6 +445,82 @@ class DescribeScanResultListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeUserInAndOutTimeRequest(AbstractModel):
+    """DescribeUserInAndOutTime请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BizId: 应用ID
+        :type BizId: int
+        :param RoomId: 房间ID
+        :type RoomId: int
+        :param UserId: 用户ID
+        :type UserId: int
+        """
+        self.BizId = None
+        self.RoomId = None
+        self.UserId = None
+
+
+    def _deserialize(self, params):
+        self.BizId = params.get("BizId")
+        self.RoomId = params.get("RoomId")
+        self.UserId = params.get("UserId")
+
+
+class DescribeUserInAndOutTimeResponse(AbstractModel):
+    """DescribeUserInAndOutTime返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InOutList: 用户在房间得进出时间列表
+        :type InOutList: list of InOutTimeInfo
+        :param Duration: 用户在房间中总时长
+        :type Duration: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InOutList = None
+        self.Duration = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("InOutList") is not None:
+            self.InOutList = []
+            for item in params.get("InOutList"):
+                obj = InOutTimeInfo()
+                obj._deserialize(item)
+                self.InOutList.append(obj)
+        self.Duration = params.get("Duration")
+        self.RequestId = params.get("RequestId")
+
+
+class InOutTimeInfo(AbstractModel):
+    """用户进出房间信息
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 进入房间时间
+        :type StartTime: int
+        :param EndTime: 退出房间时间
+        :type EndTime: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+
+
 class ModifyAppStatusRequest(AbstractModel):
     """ModifyAppStatus请求参数结构体
 

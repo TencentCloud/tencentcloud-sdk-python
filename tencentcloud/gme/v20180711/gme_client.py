@@ -167,6 +167,34 @@ class GmeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeUserInAndOutTime(self, request):
+        """拉取用户在房间得进出时间
+
+        :param request: Request instance for DescribeUserInAndOutTime.
+        :type request: :class:`tencentcloud.gme.v20180711.models.DescribeUserInAndOutTimeRequest`
+        :rtype: :class:`tencentcloud.gme.v20180711.models.DescribeUserInAndOutTimeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeUserInAndOutTime", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeUserInAndOutTimeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyAppStatus(self, request):
         """本接口(ModifyAppStatus)用于修改应用总开关状态。
 

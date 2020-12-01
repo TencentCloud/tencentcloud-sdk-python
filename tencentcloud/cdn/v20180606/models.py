@@ -341,6 +341,314 @@ default 时填充 "no max-age"
         self.CacheTime = params.get("CacheTime")
 
 
+class AdvancedAuthentication(AbstractModel):
+    """时间戳防盗链高级版配置，白名单功能
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 防盗链配置开关，on或off，开启时必须且只能配置一种模式，其余模式为null。
+        :type Switch: str
+        :param TypeA: 时间戳防盗链高级版模式A配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TypeA: :class:`tencentcloud.cdn.v20180606.models.AdvancedAuthenticationTypeA`
+        :param TypeB: 时间戳防盗链高级版模式B配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TypeB: :class:`tencentcloud.cdn.v20180606.models.AdvancedAuthenticationTypeB`
+        :param TypeC: 时间戳防盗链高级版模式C配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TypeC: :class:`tencentcloud.cdn.v20180606.models.AdvancedAuthenticationTypeC`
+        :param TypeD: 时间戳防盗链高级版模式D配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TypeD: :class:`tencentcloud.cdn.v20180606.models.AdvancedAuthenticationTypeD`
+        :param TypeE: 时间戳防盗链高级版模式E配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TypeE: :class:`tencentcloud.cdn.v20180606.models.AdvancedAuthenticationTypeE`
+        :param TypeF: 时间戳防盗链高级版模式F配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TypeF: :class:`tencentcloud.cdn.v20180606.models.AdvancedAuthenticationTypeF`
+        """
+        self.Switch = None
+        self.TypeA = None
+        self.TypeB = None
+        self.TypeC = None
+        self.TypeD = None
+        self.TypeE = None
+        self.TypeF = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("TypeA") is not None:
+            self.TypeA = AdvancedAuthenticationTypeA()
+            self.TypeA._deserialize(params.get("TypeA"))
+        if params.get("TypeB") is not None:
+            self.TypeB = AdvancedAuthenticationTypeB()
+            self.TypeB._deserialize(params.get("TypeB"))
+        if params.get("TypeC") is not None:
+            self.TypeC = AdvancedAuthenticationTypeC()
+            self.TypeC._deserialize(params.get("TypeC"))
+        if params.get("TypeD") is not None:
+            self.TypeD = AdvancedAuthenticationTypeD()
+            self.TypeD._deserialize(params.get("TypeD"))
+        if params.get("TypeE") is not None:
+            self.TypeE = AdvancedAuthenticationTypeE()
+            self.TypeE._deserialize(params.get("TypeE"))
+        if params.get("TypeF") is not None:
+            self.TypeF = AdvancedAuthenticationTypeF()
+            self.TypeF._deserialize(params.get("TypeF"))
+
+
+class AdvancedAuthenticationTypeA(AbstractModel):
+    """时间戳防盗链高级版模式A配置。
+
+    """
+
+    def __init__(self):
+        """
+        :param SecretKey: 用于计算签名的密钥，只允许字母和数字，长度6-32字节。
+        :type SecretKey: str
+        :param SignParam: uri串中签名的字段名，字母，数字或下划线构成，同时必须以字母开头。
+        :type SignParam: str
+        :param TimeParam: uri串中时间的字段名，字母，数字或下划线构成，同时必须以字母开头。
+        :type TimeParam: str
+        :param ExpireTime: 过期时间，单位秒。
+        :type ExpireTime: int
+        :param ExpireTimeRequired: 是否必须提供过期时间参数。
+        :type ExpireTimeRequired: bool
+        :param Format: Url组成格式，如：${private_key}${schema}${host}${full_uri。
+        :type Format: str
+        :param TimeFormat: 时间格式，dec，hex分别表示十进制，十六进制。
+        :type TimeFormat: str
+        :param FailCode: 鉴权失败时返回的状态码。
+        :type FailCode: int
+        :param ExpireCode: 链接过期时返回的状态码。
+        :type ExpireCode: int
+        :param RulePaths: 需要鉴权的url路径列表。
+        :type RulePaths: list of str
+        :param Transformation: 保留字段。
+        :type Transformation: int
+        """
+        self.SecretKey = None
+        self.SignParam = None
+        self.TimeParam = None
+        self.ExpireTime = None
+        self.ExpireTimeRequired = None
+        self.Format = None
+        self.TimeFormat = None
+        self.FailCode = None
+        self.ExpireCode = None
+        self.RulePaths = None
+        self.Transformation = None
+
+
+    def _deserialize(self, params):
+        self.SecretKey = params.get("SecretKey")
+        self.SignParam = params.get("SignParam")
+        self.TimeParam = params.get("TimeParam")
+        self.ExpireTime = params.get("ExpireTime")
+        self.ExpireTimeRequired = params.get("ExpireTimeRequired")
+        self.Format = params.get("Format")
+        self.TimeFormat = params.get("TimeFormat")
+        self.FailCode = params.get("FailCode")
+        self.ExpireCode = params.get("ExpireCode")
+        self.RulePaths = params.get("RulePaths")
+        self.Transformation = params.get("Transformation")
+
+
+class AdvancedAuthenticationTypeB(AbstractModel):
+    """时间戳防盗链高级版模式B配置。
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyAlpha: alpha键名。
+        :type KeyAlpha: str
+        :param KeyBeta: beta键名。
+        :type KeyBeta: str
+        :param KeyGamma: gamma键名。
+        :type KeyGamma: str
+        :param SignParam: uri串中签名的字段名，字母，数字或下划线构成，同时必须以字母开头。
+        :type SignParam: str
+        :param TimeParam: uri串中时间的字段名，字母，数字或下划线构成，同时必须以字母开头。
+        :type TimeParam: str
+        :param ExpireTime: 过期时间，单位秒。
+        :type ExpireTime: int
+        :param TimeFormat: 时间格式，dec，hex分别表示十进制，十六进制。
+        :type TimeFormat: str
+        :param FailCode: 鉴权失败时返回的状态码。
+        :type FailCode: int
+        :param ExpireCode: 链接过期时返回的状态码。
+        :type ExpireCode: int
+        :param RulePaths: 需要鉴权的url路径列表。
+        :type RulePaths: list of str
+        """
+        self.KeyAlpha = None
+        self.KeyBeta = None
+        self.KeyGamma = None
+        self.SignParam = None
+        self.TimeParam = None
+        self.ExpireTime = None
+        self.TimeFormat = None
+        self.FailCode = None
+        self.ExpireCode = None
+        self.RulePaths = None
+
+
+    def _deserialize(self, params):
+        self.KeyAlpha = params.get("KeyAlpha")
+        self.KeyBeta = params.get("KeyBeta")
+        self.KeyGamma = params.get("KeyGamma")
+        self.SignParam = params.get("SignParam")
+        self.TimeParam = params.get("TimeParam")
+        self.ExpireTime = params.get("ExpireTime")
+        self.TimeFormat = params.get("TimeFormat")
+        self.FailCode = params.get("FailCode")
+        self.ExpireCode = params.get("ExpireCode")
+        self.RulePaths = params.get("RulePaths")
+
+
+class AdvancedAuthenticationTypeC(AbstractModel):
+    """时间戳防盗链高级版模式C配置。
+
+    """
+
+    def __init__(self):
+        """
+        :param AccessKey: 访问密钥。
+        :type AccessKey: str
+        :param SecretKey: 鉴权密钥。
+        :type SecretKey: str
+        """
+        self.AccessKey = None
+        self.SecretKey = None
+
+
+    def _deserialize(self, params):
+        self.AccessKey = params.get("AccessKey")
+        self.SecretKey = params.get("SecretKey")
+
+
+class AdvancedAuthenticationTypeD(AbstractModel):
+    """时间戳防盗链高级版模式D配置。
+
+    """
+
+    def __init__(self):
+        """
+        :param SecretKey: 用于计算签名的密钥，只允许字母和数字，长度6-32字节。
+        :type SecretKey: str
+        :param BackupSecretKey: 备份密钥，当使用SecretKey鉴权失败时会使用该密钥重新鉴权。
+        :type BackupSecretKey: str
+        :param SignParam: uri串中签名的字段名，字母，数字或下划线构成，同时必须以字母开头。
+        :type SignParam: str
+        :param TimeParam: uri串中时间的字段名，字母，数字或下划线构成，同时必须以字母开头。
+        :type TimeParam: str
+        :param ExpireTime: 过期时间，单位秒。
+        :type ExpireTime: int
+        :param TimeFormat: 时间格式，dec，hex分别表示十进制，十六进制。
+        :type TimeFormat: str
+        """
+        self.SecretKey = None
+        self.BackupSecretKey = None
+        self.SignParam = None
+        self.TimeParam = None
+        self.ExpireTime = None
+        self.TimeFormat = None
+
+
+    def _deserialize(self, params):
+        self.SecretKey = params.get("SecretKey")
+        self.BackupSecretKey = params.get("BackupSecretKey")
+        self.SignParam = params.get("SignParam")
+        self.TimeParam = params.get("TimeParam")
+        self.ExpireTime = params.get("ExpireTime")
+        self.TimeFormat = params.get("TimeFormat")
+
+
+class AdvancedAuthenticationTypeE(AbstractModel):
+    """时间戳防盗链高级版模式E配置。
+
+    """
+
+    def __init__(self):
+        """
+        :param SecretKey: 用于计算签名的密钥，只允许字母和数字，长度6-32字节。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretKey: str
+        :param SignParam: uri串中签名的字段名，字母，数字或下划线构成，同时必须以字母开头。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SignParam: str
+        :param AclSignParam: uri串中Acl签名的字段名，字母，数字或下划线构成，同时必须以字母开头。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AclSignParam: str
+        :param StartTimeParam: uri串中开始时间字段名，字母，数字或下划线构成，同时必须以字母开头。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTimeParam: str
+        :param ExpireTimeParam: uri串中过期时间字段名，字母，数字或下划线构成，同时必须以字母开头。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireTimeParam: str
+        :param TimeFormat: 时间格式，dec
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeFormat: str
+        """
+        self.SecretKey = None
+        self.SignParam = None
+        self.AclSignParam = None
+        self.StartTimeParam = None
+        self.ExpireTimeParam = None
+        self.TimeFormat = None
+
+
+    def _deserialize(self, params):
+        self.SecretKey = params.get("SecretKey")
+        self.SignParam = params.get("SignParam")
+        self.AclSignParam = params.get("AclSignParam")
+        self.StartTimeParam = params.get("StartTimeParam")
+        self.ExpireTimeParam = params.get("ExpireTimeParam")
+        self.TimeFormat = params.get("TimeFormat")
+
+
+class AdvancedAuthenticationTypeF(AbstractModel):
+    """时间戳防盗链高级鉴权模式TypeF配置
+
+    """
+
+    def __init__(self):
+        """
+        :param SignParam: uri串中签名的字段名，字母，数字或下划线构成，同时必须以字母开头。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SignParam: str
+        :param TimeParam: uri串中时间的字段名，字母，数字或下划线构成，同时必须以字母开头。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeParam: str
+        :param TransactionParam: uri串中Transaction字段名，字母，数字或下划线构成，同时必须以字母开头。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransactionParam: str
+        :param SecretKey: 用于计算签名的主密钥，只允许字母和数字，长度6-32字节。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretKey: str
+        :param BackupSecretKey: 用于计算签名的备选密钥，主密钥校验失败后再次尝试备选密钥，只允许字母和数字，长度6-32字节。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupSecretKey: str
+        """
+        self.SignParam = None
+        self.TimeParam = None
+        self.TransactionParam = None
+        self.SecretKey = None
+        self.BackupSecretKey = None
+
+
+    def _deserialize(self, params):
+        self.SignParam = params.get("SignParam")
+        self.TimeParam = params.get("TimeParam")
+        self.TransactionParam = params.get("TransactionParam")
+        self.SecretKey = params.get("SecretKey")
+        self.BackupSecretKey = params.get("BackupSecretKey")
+
+
 class AdvancedCache(AbstractModel):
     """缓存过期配置高级版（功能灰度中，尚未全量）
     注意：该版本不支持设置首页缓存规则
@@ -3593,7 +3901,7 @@ readonly：域名存在特殊配置，被锁定
         :param MaxAge: 浏览器缓存过期规则配置（功能灰度中，敬请期待）
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxAge: :class:`tencentcloud.cdn.v20180606.models.MaxAge`
-        :param Ipv6: Ipv6 配置（功能灰度中，敬请期待）
+        :param Ipv6: Ipv6 回源配置（功能灰度中，敬请期待）
 注意：此字段可能返回 null，表示取不到有效值。
         :type Ipv6: :class:`tencentcloud.cdn.v20180606.models.Ipv6`
         :param Compatibility: 是否兼容旧版本配置（内部兼容性字段）
@@ -3647,6 +3955,12 @@ off：不支持
         :param Tag: 标签配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tag: list of Tag
+        :param AdvancedAuthentication: 时间戳防盗链高级配置，白名单功能
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdvancedAuthentication: :class:`tencentcloud.cdn.v20180606.models.AdvancedAuthentication`
+        :param OriginAuthentication: 回源鉴权高级配置，白名单功能
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginAuthentication: :class:`tencentcloud.cdn.v20180606.models.OriginAuthentication`
         """
         self.ResourceId = None
         self.AppId = None
@@ -3696,6 +4010,8 @@ off：不支持
         self.UrlRedirect = None
         self.AccessPort = None
         self.Tag = None
+        self.AdvancedAuthentication = None
+        self.OriginAuthentication = None
 
 
     def _deserialize(self, params):
@@ -3818,6 +4134,12 @@ off：不支持
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tag.append(obj)
+        if params.get("AdvancedAuthentication") is not None:
+            self.AdvancedAuthentication = AdvancedAuthentication()
+            self.AdvancedAuthentication._deserialize(params.get("AdvancedAuthentication"))
+        if params.get("OriginAuthentication") is not None:
+            self.OriginAuthentication = OriginAuthentication()
+            self.OriginAuthentication._deserialize(params.get("OriginAuthentication"))
 
 
 class DiagnoseData(AbstractModel):
@@ -5694,12 +6016,14 @@ all：所有文件生效
 file：指定文件后缀生效
 directory：指定路径生效
 path：指定绝对路径生效
+index: 指定主页生效
         :type MaxAgeType: str
         :param MaxAgeContents: MaxAgeType 对应类型下的匹配内容：
 all 时填充 *
 file 时填充后缀名，如 jpg、txt
 directory 时填充路径，如 /xxx/test/
 path 时填充绝对路径，如 /xxx/test.html
+index 时填充 /
         :type MaxAgeContents: list of str
         :param MaxAgeTime: MaxAge 时间设置，单位秒
         :type MaxAgeTime: int
@@ -5809,6 +6133,49 @@ ip：IP 列表作为源站
                 obj = PathRule()
                 obj._deserialize(item)
                 self.PathRules.append(obj)
+
+
+class OriginAuthentication(AbstractModel):
+    """回源鉴权高级配置
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 鉴权开关，on或off
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: str
+        :param TypeA: 鉴权类型A配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TypeA: :class:`tencentcloud.cdn.v20180606.models.OriginAuthenticationTypeA`
+        """
+        self.Switch = None
+        self.TypeA = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("TypeA") is not None:
+            self.TypeA = OriginAuthenticationTypeA()
+            self.TypeA._deserialize(params.get("TypeA"))
+
+
+class OriginAuthenticationTypeA(AbstractModel):
+    """回源鉴权高级配置TypeA
+
+    """
+
+    def __init__(self):
+        """
+        :param SecretKey: 用于计算签名的密钥，只允许字母和数字，长度6-32字节。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretKey: str
+        """
+        self.SecretKey = None
+
+
+    def _deserialize(self, params):
+        self.SecretKey = params.get("SecretKey")
 
 
 class OriginPullOptimization(AbstractModel):
@@ -6055,19 +6422,19 @@ class PathRule(AbstractModel):
         :param Regex: 是否是正则匹配。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Regex: bool
-        :param Path: 匹配的URL路径。
+        :param Path: 匹配的URL路径，仅支持Url路径，不支持参数。默认完全匹配，正则模式下支持通配符 *，最多支持5个通配符，最大长度1024字符。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Path: str
-        :param Origin: 路径匹配时的回源源站。暂不支持开了私有读写的COS源。
+        :param Origin: 路径匹配时的回源源站。暂不支持开了私有读写的COS源。不填写时沿用默认源站。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Origin: str
-        :param ServerName: 路径匹配时回源的Host头部。
+        :param ServerName: 路径匹配时回源的Host头部。不填写时沿用默认ServerName。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServerName: str
-        :param OriginArea: 源站所属区域，支持CN，OV。分别表示国内或海外。
+        :param OriginArea: 源站所属区域，支持CN，OV。分别表示国内或海外。默认为CN。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OriginArea: str
-        :param ForwardUri: 路径匹配时回源的URI路径。
+        :param ForwardUri: 路径匹配时回源的URI路径，必须以“/”开头，不包含参数部分。最大长度1024字符。可使用$1, $2, $3, $4, $5分别捕获匹配路径中的通配符号，最多支持10个捕获值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ForwardUri: str
         :param RequestHeaders: 路径匹配时回源的头部设置。
@@ -6761,6 +7128,7 @@ file 时填充后缀名，如 jpg、txt
 directory 时填充路径，如 /xxx/test
 path 时填充绝对路径，如 /xxx/test.html
 index 时填充 /
+default 时填充 "no max-age"
 注意：此字段可能返回 null，表示取不到有效值。
         :type RulePaths: list of str
         :param RuleType: 规则类型：
@@ -6769,6 +7137,7 @@ file：指定文件后缀生效
 directory：指定路径生效
 path：指定绝对路径生效
 index：首页
+default: 源站无max-age时生效
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleType: str
         :param CacheConfig: 缓存配置。
@@ -7780,6 +8149,10 @@ global：全球加速
         :type UrlRedirect: :class:`tencentcloud.cdn.v20180606.models.UrlRedirect`
         :param AccessPort: 访问端口配置
         :type AccessPort: list of int
+        :param AdvancedAuthentication: 时间戳防盗链高级版配置，白名单功能
+        :type AdvancedAuthentication: :class:`tencentcloud.cdn.v20180606.models.AdvancedAuthentication`
+        :param OriginAuthentication: 回源鉴权高级版配置，白名单功能
+        :type OriginAuthentication: :class:`tencentcloud.cdn.v20180606.models.OriginAuthentication`
         """
         self.Domain = None
         self.ProjectId = None
@@ -7815,6 +8188,8 @@ global：全球加速
         self.AccessControl = None
         self.UrlRedirect = None
         self.AccessPort = None
+        self.AdvancedAuthentication = None
+        self.OriginAuthentication = None
 
 
     def _deserialize(self, params):
@@ -7910,6 +8285,12 @@ global：全球加速
             self.UrlRedirect = UrlRedirect()
             self.UrlRedirect._deserialize(params.get("UrlRedirect"))
         self.AccessPort = params.get("AccessPort")
+        if params.get("AdvancedAuthentication") is not None:
+            self.AdvancedAuthentication = AdvancedAuthentication()
+            self.AdvancedAuthentication._deserialize(params.get("AdvancedAuthentication"))
+        if params.get("OriginAuthentication") is not None:
+            self.OriginAuthentication = OriginAuthentication()
+            self.OriginAuthentication._deserialize(params.get("OriginAuthentication"))
 
 
 class UpdateDomainConfigResponse(AbstractModel):
@@ -8090,9 +8471,9 @@ class UrlRedirectRule(AbstractModel):
         """
         :param RedirectStatusCode: 重定向状态码，301 | 302
         :type RedirectStatusCode: int
-        :param Pattern: 待匹配的Url模式，支持完全路径匹配和正则匹配，最大长度1024字符。
+        :param Pattern: 待匹配的Url，仅支持Url路径，不支持参数。默认完全匹配，支持通配符 *，最多支持5个通配符，最大长度1024字符。
         :type Pattern: str
-        :param RedirectUrl: 目标URL，必须以“/”开头，最大长度1024字符。
+        :param RedirectUrl: 目标URL，必须以“/”开头，不包含参数部分。最大长度1024字符。可使用$1, $2, $3, $4, $5分别捕获匹配路径中的通配符号，最多支持10个捕获值。
         :type RedirectUrl: str
         """
         self.RedirectStatusCode = None

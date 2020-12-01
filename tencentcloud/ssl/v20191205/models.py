@@ -1802,7 +1802,7 @@ class UploadCertificateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CertificatePublicKey: 证书公钥。
+        :param CertificatePublicKey: 证书内容。
         :type CertificatePublicKey: str
         :param CertificatePrivateKey: 私钥内容，证书类型为 SVR 时必填，为 CA 时可不填。
         :type CertificatePrivateKey: str

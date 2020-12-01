@@ -506,9 +506,9 @@ class DescribeMatchesResponse(AbstractModel):
         :type MatchInfoList: list of MatchInfo
         :param TotalCount: 总记录数
         :type TotalCount: int
-        :param PageNumber: 当前页号
+        :param PageNumber: 当前页号，不填默认返回第一页
         :type PageNumber: int
-        :param PageSize: 单页大小
+        :param PageSize: 单页大小，不填默认取 30，最大值不能超过 30
         :type PageSize: int
         :param SearchType: 查询类型（可选）：matchName表示匹配名称，matchCode表示匹配code，ruleName表示规则名称，tag表示标签Key/Value
         :type SearchType: str
@@ -643,9 +643,9 @@ class DescribeRulesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PageNumber: 当前页号，不传则获取所有有权限的资源。
+        :param PageNumber: 当前页号，不传则返回第一页
         :type PageNumber: int
-        :param PageSize: 单页大小，不传则获取所有有权限的资源。
+        :param PageSize: 单页大小，最大 30，不填默认30
         :type PageSize: int
         :param SearchType: 查询类型（可选）：match表示通过matchCode或者matchName来搜索，rule表示通过ruleCode或者ruleName来搜索，其余类型不做过滤处理。
         :type SearchType: str

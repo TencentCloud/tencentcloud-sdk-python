@@ -107,10 +107,10 @@ class BillDetail(AbstractModel):
         :param Tags: Tag 信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of BillTagInfo
-        :param BusinessCode: 商品名称代码（未开放的字段）
+        :param BusinessCode: 商品名称代码
 注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessCode: str
-        :param ProductCode: 子商品名称代码 （未开放的字段）
+        :param ProductCode: 子商品名称代码
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductCode: str
         :param ActionType: 交易类型代码（未开放的字段）
@@ -220,10 +220,10 @@ class BillDetailComponent(AbstractModel):
         :type CashPayAmount: str
         :param IncentivePayAmount: 赠送账户支付金额
         :type IncentivePayAmount: str
-        :param ItemCode: 组件类型代码（未开放的字段）
+        :param ItemCode: 组件类型代码
 注意：此字段可能返回 null，表示取不到有效值。
         :type ItemCode: str
-        :param ComponentCode: 组件名称代码（未开放的字段）
+        :param ComponentCode: 组件名称代码
 注意：此字段可能返回 null，表示取不到有效值。
         :type ComponentCode: str
         :param ContractPrice: 合同价

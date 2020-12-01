@@ -1012,11 +1012,11 @@ class CreateApiRequest(AbstractModel):
         """
         :param ServiceId: API 所在的服务唯一 ID。
         :type ServiceId: str
-        :param ServiceType: API 的后端服务类型。支持HTTP、MOCK、TSF、CLB、SCF、WEBSOCKET、TARGET（内测）。
+        :param ServiceType: API 的后端服务类型。支持HTTP、MOCK、TSF、SCF、WEBSOCKET、TARGET（内测）。
         :type ServiceType: str
         :param ServiceTimeout: API 的后端服务超时时间，单位是秒。
         :type ServiceTimeout: int
-        :param Protocol: API 的前端请求类型，如 HTTP 或 HTTPS 或者 HTTP 和 HTTPS。
+        :param Protocol: API 的前端请求协议，支持HTTP和WEBSOCKET。
         :type Protocol: str
         :param RequestConfig: 请求的前端配置。
         :type RequestConfig: :class:`tencentcloud.apigateway.v20180808.models.ApiRequestConfig`
@@ -1355,7 +1355,7 @@ class CreateServiceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ServiceName: 用户自定义的服务名称。如果没传，则系统自动生成一个唯一名称。
+        :param ServiceName: 用户自定义的服务名称。
         :type ServiceName: str
         :param Protocol: 服务的前端请求类型。如 http、https、http&https。
         :type Protocol: str

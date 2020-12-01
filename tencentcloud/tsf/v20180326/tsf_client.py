@@ -2298,7 +2298,7 @@ class TsfClient(AbstractClient):
 
 
     def ExecuteTask(self, request):
-        """执行一次任务。
+        """手动执行一次任务。
 
         :param request: Request instance for ExecuteTask.
         :type request: :class:`tencentcloud.tsf.v20180326.models.ExecuteTaskRequest`
