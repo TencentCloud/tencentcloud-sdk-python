@@ -6673,6 +6673,142 @@ class DescribeAnimatedGraphicsTemplatesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCDNStatDetailsRequest(AbstractModel):
+    """DescribeCDNStatDetails请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Metric: 查询指标，取值有：
+<li>Traffic：流量，单位为 Byte。</li>
+<li>Bandwidth：带宽，单位为 Bps。</li>
+        :type Metric: str
+        :param StartTime: 起始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type StartTime: str
+        :param EndTime: 结束时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type EndTime: str
+        :param DomainNames: 域名列表。一次最多查询20个域名的数据。默认返回所有域名叠加的用量数据。
+        :type DomainNames: list of str
+        :param Area: 服务区域，取值有：
+<li>Chinese Mainland：中国大陆。 </li>
+<li>Asia Pacific Region 1：亚太一区，包括中国香港、中国澳门、新加坡、越南、泰国。 </li>
+<li>Asia Pacific Region 2：亚太二区，包括中国台湾、日本、马来西亚、印度尼西亚、韩国。 </li>
+<li>Asia Pacific Region 3：亚太三区，包括菲律宾、印度、澳大利亚和亚太其它国家和地区。 </li>
+<li>Middle East：中东。 </li>
+<li>Europe：欧洲。</li>
+<li>North America：北美。</li>
+<li>South America：南美。</li>
+<li>Africa：非洲。</li>
+默认为中国大陆。
+        :type Area: str
+        :param Districts: 用户所在地区，Area 为 Chinese Mainland 时，取值为以下地区信息，当 Area 为其它值时， 忽略 Districts 参数。
+<li>Beijing：北京。</li>
+<li>Inner Mongoria：内蒙古。</li>
+<li>Shanxi：山西。</li>
+<li>Hebei：河北。</li>
+<li>Tianjin：天津。</li>
+<li>Ningxia：宁夏。</li>
+<li>Shaanxi：陕西。</li>
+<li>Gansu：甘肃。</li>
+<li>Qinghai：青海。</li>
+<li>Xinjiang：新疆。</li>
+<li>Heilongjiang：黑龙江。</li>
+<li>Jilin：吉林。</li>
+<li>Liaoning：辽宁。</li>
+<li>Fujian：福建。</li>
+<li>Jiangsu：江苏。</li>
+<li>Anhui：安徽。</li>
+<li>Shandong：山东。</li>
+<li>Shanghai：上海。</li>
+<li>Zhejiang：浙江。</li>
+<li>Henan：河南。</li>
+<li>Hubei：湖北。</li>
+<li>Jiangxi：江西。</li>
+<li>Hunan：湖南。</li>
+<li>Guizhou：贵州。</li>
+<li>Yunnan：云南。</li>
+<li>Chongqing：重庆。</li>
+<li>Sichuan：四川。</li>
+<li>Tibet：西藏。</li>
+<li>Guangdong：广东。</li>
+<li>Guangxi：广西。</li>
+<li>Hainan：海南。</li>
+<li>Hongkong Macao And Taiwan：港澳台。</li>
+<li>outside Chinese Mainland：海外。</li>
+<li>Other：其他 。</li>
+        :type Districts: list of str
+        :param Isps: 用户所属运营商信息，Area 为 Chinese Mainland 时，取值为以下运营商信息。当 Area 为其它值时忽略 Isps 参数。
+<li>China Telecom：中国电信。 </li>
+<li>China Unicom：中国联通。 </li>
+<li>CERNET：教育网。</li>
+<li>Great Wall Broadband Network：长城宽带。</li>
+<li>China Mobile：中国移动。</li>
+<li>China Mobile Tieton：中国铁通。</li>
+<li>ISPs outside Chinese Mainland：海外运营商。</li>
+<li>Other ISPs：其他运营商。</li>
+        :type Isps: list of str
+        :param DataInterval: 每条数据的时间粒度，单位：分钟，取值有：
+<li>5：5 分钟粒度，返回指定查询时间内5分钟粒度的明细数据。</li>
+<li>1440：天粒度，返回指定查询时间内1天粒度的数据。起始时间和结束时间跨度大于24小时，只支持天粒度的数据。</li>
+当 StartTime 和 EndTime 时间跨度大于24小时时，DataInterval 默认为 1440。
+        :type DataInterval: int
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Metric = None
+        self.StartTime = None
+        self.EndTime = None
+        self.DomainNames = None
+        self.Area = None
+        self.Districts = None
+        self.Isps = None
+        self.DataInterval = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Metric = params.get("Metric")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.DomainNames = params.get("DomainNames")
+        self.Area = params.get("Area")
+        self.Districts = params.get("Districts")
+        self.Isps = params.get("Isps")
+        self.DataInterval = params.get("DataInterval")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DescribeCDNStatDetailsResponse(AbstractModel):
+    """DescribeCDNStatDetails返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DataInterval: 每条数据的时间粒度，单位：分钟。
+        :type DataInterval: int
+        :param Data: CDN 用量数据。
+        :type Data: list of StatDataItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DataInterval = None
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DataInterval = params.get("DataInterval")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = StatDataItem()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCDNUsageDataRequest(AbstractModel):
     """DescribeCDNUsageData请求参数结构体
 
@@ -7529,6 +7665,8 @@ class DescribeStorageDataResponse(AbstractModel):
         :type InfrequentStorage: int
         :param StandardStorage: 当前标准存储量，单位是字节。
         :type StandardStorage: int
+        :param StorageStat: 各计费区域的存储用量。
+        :type StorageStat: list of StorageStatData
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7536,6 +7674,7 @@ class DescribeStorageDataResponse(AbstractModel):
         self.TotalStorage = None
         self.InfrequentStorage = None
         self.StandardStorage = None
+        self.StorageStat = None
         self.RequestId = None
 
 
@@ -7544,6 +7683,12 @@ class DescribeStorageDataResponse(AbstractModel):
         self.TotalStorage = params.get("TotalStorage")
         self.InfrequentStorage = params.get("InfrequentStorage")
         self.StandardStorage = params.get("StandardStorage")
+        if params.get("StorageStat") is not None:
+            self.StorageStat = []
+            for item in params.get("StorageStat"):
+                obj = StorageStatData()
+                obj._deserialize(item)
+                self.StorageStat.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -7554,15 +7699,14 @@ class DescribeStorageDetailsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: 起始时间，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)。
+        :param StartTime: 起始时间，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)。
         :type StartTime: str
-        :param EndTime: 结束时间，需大于开始日期，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)。
+        :param EndTime: 结束时间，需大于开始日期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)。
         :type EndTime: str
-        :param Interval: 查询时间间隔，有效值：
-<li>Minute：每分钟一个统计数据。</li>
-<li>Hour：每小时一个统计数据。</li>
-<li>Day：每天一个统计数据。</li>
-默认按时间跨度决定，小于1小时按分钟，小于等于7天按小时，大于7天按天展示。
+        :param Interval: 统计时间粒度，有效值：
+<li>Minute：以5分钟为粒度。</li>
+<li>Day：以天为粒度。</li>
+默认按时间跨度决定，小于等于1天以5分钟为粒度，大于1天则以天为粒度。
         :type Interval: str
         :param StorageType: 查询的存储类型，有效值：
 <li>TotalStorage：存储总量。</li>
@@ -7573,12 +7717,18 @@ class DescribeStorageDetailsRequest(AbstractModel):
         :param SubAppId: 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
 当该字段为1时，表示以管理员身份查询所有子应用（含主应用）的用量合计。
         :type SubAppId: int
+        :param Area: 查询的存储区域，有效值：
+<li>Chinese Mainland：中国境内（不包含港澳台）。</li>
+<li>outside Chinese Mainland：中国境外。</li>
+默认值为 Chinese Mainland。
+        :type Area: str
         """
         self.StartTime = None
         self.EndTime = None
         self.Interval = None
         self.StorageType = None
         self.SubAppId = None
+        self.Area = None
 
 
     def _deserialize(self, params):
@@ -7587,6 +7737,7 @@ class DescribeStorageDetailsRequest(AbstractModel):
         self.Interval = params.get("Interval")
         self.StorageType = params.get("StorageType")
         self.SubAppId = params.get("SubAppId")
+        self.Area = params.get("Area")
 
 
 class DescribeStorageDetailsResponse(AbstractModel):
@@ -7596,7 +7747,7 @@ class DescribeStorageDetailsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Data: 存储统计数据，每分钟/小时/天一条数据。
+        :param Data: 存储统计数据，每5分钟或每天一条数据。
         :type Data: list of StatDataItem
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15149,6 +15300,37 @@ class StickerTrackItem(AbstractModel):
                 obj = ImageTransform()
                 obj._deserialize(item)
                 self.ImageOperations.append(obj)
+
+
+class StorageStatData(AbstractModel):
+    """云点播存储用量的分区统计数据
+
+    """
+
+    def __init__(self):
+        """
+        :param Area: 点播存储的计费区域，可能值：
+<li>Chinese Mainland：中国境内（不包含港澳台）。</li>
+<li>outside Chinese Mainland：中国境外。</li>
+        :type Area: str
+        :param TotalStorage: 当前总存储量，单位是字节。
+        :type TotalStorage: int
+        :param InfrequentStorage: 当前低频存储量，单位是字节。
+        :type InfrequentStorage: int
+        :param StandardStorage: 当前标准存储量，单位是字节。
+        :type StandardStorage: int
+        """
+        self.Area = None
+        self.TotalStorage = None
+        self.InfrequentStorage = None
+        self.StandardStorage = None
+
+
+    def _deserialize(self, params):
+        self.Area = params.get("Area")
+        self.TotalStorage = params.get("TotalStorage")
+        self.InfrequentStorage = params.get("InfrequentStorage")
+        self.StandardStorage = params.get("StandardStorage")
 
 
 class SubAppIdInfo(AbstractModel):

@@ -26,6 +26,118 @@ class DbbrainClient(AbstractClient):
     _service = 'dbbrain'
 
 
+    def CreateDBDiagReportTask(self, request):
+        """创建健康报告，并可以选择是否发送邮件。
+
+        :param request: Request instance for CreateDBDiagReportTask.
+        :type request: :class:`tencentcloud.dbbrain.v20191016.models.CreateDBDiagReportTaskRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.CreateDBDiagReportTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateDBDiagReportTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateDBDiagReportTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateMailProfile(self, request):
+        """创建邮件配置。其中入参ProfileType表示所创建配置的类型，ProfileType 取值包括：dbScan_mail_configuration（数据库巡检邮件配置）、scheduler_mail_configuration（定期生成邮件配置）。
+
+        :param request: Request instance for CreateMailProfile.
+        :type request: :class:`tencentcloud.dbbrain.v20191016.models.CreateMailProfileRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.CreateMailProfileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateMailProfile", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateMailProfileResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAllUserContact(self, request):
+        """获取邮件发送中联系人的相关信息。
+
+        :param request: Request instance for DescribeAllUserContact.
+        :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeAllUserContactRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.DescribeAllUserContactResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAllUserContact", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAllUserContactResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAllUserGroup(self, request):
+        """获取邮件发送联系组的相关信息。
+
+        :param request: Request instance for DescribeAllUserGroup.
+        :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeAllUserGroupRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.DescribeAllUserGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAllUserGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAllUserGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDBDiagEvent(self, request):
         """获取实例异常诊断事件的详情信息。
 
@@ -208,6 +320,34 @@ class DbbrainClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTopSpaceTablesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyDiagDBInstanceConf(self, request):
+        """修改实例巡检开关。
+
+        :param request: Request instance for ModifyDiagDBInstanceConf.
+        :type request: :class:`tencentcloud.dbbrain.v20191016.models.ModifyDiagDBInstanceConfRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.ModifyDiagDBInstanceConfResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDiagDBInstanceConf", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDiagDBInstanceConfResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -2466,6 +2466,42 @@ class DescribeCdnIpResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCdnOriginIpRequest(AbstractModel):
+    """DescribeCdnOriginIp请求参数结构体
+
+    """
+
+
+class DescribeCdnOriginIpResponse(AbstractModel):
+    """DescribeCdnOriginIp返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Ips: 回源节点IP详情。
+        :type Ips: list of OriginIp
+        :param TotalCount: 回源节点IP总个数。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Ips = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Ips") is not None:
+            self.Ips = []
+            for item in params.get("Ips"):
+                obj = OriginIp()
+                obj._deserialize(item)
+                self.Ips.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCertDomainsRequest(AbstractModel):
     """DescribeCertDomains请求参数结构体
 
@@ -6176,6 +6212,23 @@ class OriginAuthenticationTypeA(AbstractModel):
 
     def _deserialize(self, params):
         self.SecretKey = params.get("SecretKey")
+
+
+class OriginIp(AbstractModel):
+    """CDN回源节点IP信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Ip: 回源IP段/回源IP，默认返回IP段信息。
+        :type Ip: str
+        """
+        self.Ip = None
+
+
+    def _deserialize(self, params):
+        self.Ip = params.get("Ip")
 
 
 class OriginPullOptimization(AbstractModel):

@@ -1248,6 +1248,37 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCDNStatDetails(self, request):
+        """该接口用于查询点播域名的 CDN 带宽、流量等统计数据。
+        * 查询的起始时间和结束时间跨度不超过90天。
+        * 可以查询不同服务区域的数据。
+        * 中国境内的数据支持查询指定地区、运营商的统计数据。
+
+        :param request: Request instance for DescribeCDNStatDetails.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeCDNStatDetailsRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeCDNStatDetailsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCDNStatDetails", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCDNStatDetailsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCDNUsageData(self, request):
         """该接口用于查询点播 CDN 的流量、带宽等统计数据。
            1. 可以查询最近365天内的 CDN 用量数据。
@@ -1666,10 +1697,9 @@ class VodClient(AbstractClient):
 
     def DescribeStorageDetails(self, request):
         """该接口返回查询时间范围内使用的点播存储空间，单位：字节。
-           1. 可以查询最近365天内的存储空间数据；
-           2. 查询时间跨度不超过90天；
-           3. 分钟粒度查询跨度不超过5天；
-           4. 小时粒度查询跨度不超过10天。
+            1. 可以查询最近365天内的存储空间数据；
+            2. 查询时间跨度不超过90天；
+            3. 分钟粒度查询跨度不超过7天；
 
         :param request: Request instance for DescribeStorageDetails.
         :type request: :class:`tencentcloud.vod.v20180717.models.DescribeStorageDetailsRequest`

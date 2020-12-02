@@ -400,6 +400,34 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCdnOriginIp(self, request):
+        """本接口（DescribeCdnOriginIp）用于查询 CDN 回源节点的IP信息。（注：使用此接口需开启对应白名单）
+
+        :param request: Request instance for DescribeCdnOriginIp.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeCdnOriginIpRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeCdnOriginIpResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCdnOriginIp", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCdnOriginIpResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCertDomains(self, request):
         """DescribeCertDomains 用于校验SSL证书并提取证书中包含的域名。
 

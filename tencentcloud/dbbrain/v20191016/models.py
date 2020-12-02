@@ -16,6 +16,254 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ContactItem(AbstractModel):
+    """联系人contact描述。
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 联系人id。
+        :type Id: int
+        :param Name: 联系人姓名。
+        :type Name: str
+        :param Mail: 联系人绑定的邮箱。
+        :type Mail: str
+        """
+        self.Id = None
+        self.Name = None
+        self.Mail = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        self.Mail = params.get("Mail")
+
+
+class CreateDBDiagReportTaskRequest(AbstractModel):
+    """CreateDBDiagReportTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID。
+        :type InstanceId: str
+        :param StartTime: 开始时间，如“2020-11-08T14:00:00+08:00”。
+        :type StartTime: str
+        :param EndTime: 结束时间，如“2020-11-09T14:00:00+08:00”。
+        :type EndTime: str
+        :param SendMailFlag: 是否发送邮件: 0 - 否，1 - 是。
+        :type SendMailFlag: int
+        :param ContactPerson: 接收邮件的联系人ID数组。
+        :type ContactPerson: list of int
+        :param ContactGroup: 接收邮件的联系组ID数组。
+        :type ContactGroup: list of int
+        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认值为"mysql"。
+        :type Product: str
+        """
+        self.InstanceId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.SendMailFlag = None
+        self.ContactPerson = None
+        self.ContactGroup = None
+        self.Product = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.SendMailFlag = params.get("SendMailFlag")
+        self.ContactPerson = params.get("ContactPerson")
+        self.ContactGroup = params.get("ContactGroup")
+        self.Product = params.get("Product")
+
+
+class CreateDBDiagReportTaskResponse(AbstractModel):
+    """CreateDBDiagReportTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncRequestId: 异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsyncRequestId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateMailProfileRequest(AbstractModel):
+    """CreateMailProfile请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProfileInfo: 邮件配置内容。
+        :type ProfileInfo: :class:`tencentcloud.dbbrain.v20191016.models.ProfileInfo`
+        :param ProfileLevel: 配置级别，支持值包括："User" - 用户级别，"Instance" - 实例级别，其中数据库巡检邮件配置为用户级别，定期生成邮件配置为实例级别。
+        :type ProfileLevel: str
+        :param ProfileName: 配置名称，需要保持唯一性，数据库巡检邮件配置名称自拟；定期生成邮件配置命名格式："scheduler_" + {instanceId}，如"schduler_cdb-test"。
+        :type ProfileName: str
+        :param ProfileType: 配置类型，支持值包括："dbScan_mail_configuration" - 数据库巡检邮件配置，"scheduler_mail_configuration" - 定期生成邮件配置。
+        :type ProfileType: str
+        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL。
+        :type Product: str
+        :param BindInstanceIds: 配置绑定的实例ID，当配置级别为"Instance"时需要传入。
+        :type BindInstanceIds: list of str
+        """
+        self.ProfileInfo = None
+        self.ProfileLevel = None
+        self.ProfileName = None
+        self.ProfileType = None
+        self.Product = None
+        self.BindInstanceIds = None
+
+
+    def _deserialize(self, params):
+        if params.get("ProfileInfo") is not None:
+            self.ProfileInfo = ProfileInfo()
+            self.ProfileInfo._deserialize(params.get("ProfileInfo"))
+        self.ProfileLevel = params.get("ProfileLevel")
+        self.ProfileName = params.get("ProfileName")
+        self.ProfileType = params.get("ProfileType")
+        self.Product = params.get("Product")
+        self.BindInstanceIds = params.get("BindInstanceIds")
+
+
+class CreateMailProfileResponse(AbstractModel):
+    """CreateMailProfile返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAllUserContactRequest(AbstractModel):
+    """DescribeAllUserContact请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL。
+        :type Product: str
+        :param Names: 联系人名数组，支持模糊搜索。
+        :type Names: list of str
+        """
+        self.Product = None
+        self.Names = None
+
+
+    def _deserialize(self, params):
+        self.Product = params.get("Product")
+        self.Names = params.get("Names")
+
+
+class DescribeAllUserContactResponse(AbstractModel):
+    """DescribeAllUserContact返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 联系人的总数量。
+        :type TotalCount: int
+        :param Contacts: 联系人的信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Contacts: list of ContactItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Contacts = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Contacts") is not None:
+            self.Contacts = []
+            for item in params.get("Contacts"):
+                obj = ContactItem()
+                obj._deserialize(item)
+                self.Contacts.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAllUserGroupRequest(AbstractModel):
+    """DescribeAllUserGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL。
+        :type Product: str
+        :param Names: 联系组名称数组，支持模糊搜索。
+        :type Names: list of str
+        """
+        self.Product = None
+        self.Names = None
+
+
+    def _deserialize(self, params):
+        self.Product = params.get("Product")
+        self.Names = params.get("Names")
+
+
+class DescribeAllUserGroupResponse(AbstractModel):
+    """DescribeAllUserGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 组总数。
+        :type TotalCount: int
+        :param Groups: 组信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Groups: list of GroupItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Groups = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Groups") is not None:
+            self.Groups = []
+            for item in params.get("Groups"):
+                obj = GroupItem()
+                obj._deserialize(item)
+                self.Groups.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDBDiagEventRequest(AbstractModel):
     """DescribeDBDiagEvent请求参数结构体
 
@@ -543,6 +791,129 @@ class DiagHistoryEventItem(AbstractModel):
         self.Region = params.get("Region")
 
 
+class GroupItem(AbstractModel):
+    """描述组信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 组id。
+        :type Id: int
+        :param Name: 组名称。
+        :type Name: str
+        :param MemberCount: 组成员数量。
+        :type MemberCount: int
+        """
+        self.Id = None
+        self.Name = None
+        self.MemberCount = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        self.MemberCount = params.get("MemberCount")
+
+
+class InstanceConfs(AbstractModel):
+    """实例配置。
+
+    """
+
+    def __init__(self):
+        """
+        :param DailyInspection: 数据库巡检开关, Yes/No。
+        :type DailyInspection: str
+        """
+        self.DailyInspection = None
+
+
+    def _deserialize(self, params):
+        self.DailyInspection = params.get("DailyInspection")
+
+
+class MailConfiguration(AbstractModel):
+    """邮件发送配置
+
+    """
+
+    def __init__(self):
+        """
+        :param SendMail: 是否开启邮件发送: 0, 否; 1, 是。
+        :type SendMail: int
+        :param Region: 地域配置, 如["ap-guangzhou", "ap-shanghai"]。
+        :type Region: list of str
+        :param HealthStatus: 发送指定的健康等级的报告, 如["HEALTH", "SUB_HEALTH", "RISK", "HIGH_RISK"]。
+        :type HealthStatus: list of str
+        :param ContactPerson: 联系人id, 联系人/联系组不能都为空。
+        :type ContactPerson: list of int
+        :param ContactGroup: 联系组id, 联系人/联系组不能都为空。
+        :type ContactGroup: list of int
+        """
+        self.SendMail = None
+        self.Region = None
+        self.HealthStatus = None
+        self.ContactPerson = None
+        self.ContactGroup = None
+
+
+    def _deserialize(self, params):
+        self.SendMail = params.get("SendMail")
+        self.Region = params.get("Region")
+        self.HealthStatus = params.get("HealthStatus")
+        self.ContactPerson = params.get("ContactPerson")
+        self.ContactGroup = params.get("ContactGroup")
+
+
+class ModifyDiagDBInstanceConfRequest(AbstractModel):
+    """ModifyDiagDBInstanceConf请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceConfs: 巡检开关。
+        :type InstanceConfs: :class:`tencentcloud.dbbrain.v20191016.models.InstanceConfs`
+        :param Regions: 生效实例地域，取值为"All"，代表全地域。
+        :type Regions: str
+        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL。
+        :type Product: str
+        :param InstanceIds: 指定更改巡检状态的实例ID。
+        :type InstanceIds: list of str
+        """
+        self.InstanceConfs = None
+        self.Regions = None
+        self.Product = None
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceConfs") is not None:
+            self.InstanceConfs = InstanceConfs()
+            self.InstanceConfs._deserialize(params.get("InstanceConfs"))
+        self.Regions = params.get("Regions")
+        self.Product = params.get("Product")
+        self.InstanceIds = params.get("InstanceIds")
+
+
+class ModifyDiagDBInstanceConfResponse(AbstractModel):
+    """ModifyDiagDBInstanceConf返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class MonitorFloatMetric(AbstractModel):
     """监控数据（浮点型）
 
@@ -645,6 +1016,29 @@ class MonitorMetricSeriesData(AbstractModel):
                 obj._deserialize(item)
                 self.Series.append(obj)
         self.Timestamp = params.get("Timestamp")
+
+
+class ProfileInfo(AbstractModel):
+    """用户配置的信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Language: 语言, 如"zh"。
+        :type Language: str
+        :param MailConfiguration: 邮件模板的内容。
+        :type MailConfiguration: :class:`tencentcloud.dbbrain.v20191016.models.MailConfiguration`
+        """
+        self.Language = None
+        self.MailConfiguration = None
+
+
+    def _deserialize(self, params):
+        self.Language = params.get("Language")
+        if params.get("MailConfiguration") is not None:
+            self.MailConfiguration = MailConfiguration()
+            self.MailConfiguration._deserialize(params.get("MailConfiguration"))
 
 
 class SchemaItem(AbstractModel):
