@@ -41,6 +41,8 @@ class AddClusterInstancesRequest(AbstractModel):
         :type InstanceImportMode: str
         :param OsCustomizeType: 镜像定制类型
         :type OsCustomizeType: str
+        :param FeatureIdList: 镜像特征ID列表
+        :type FeatureIdList: list of str
         """
         self.ClusterId = None
         self.InstanceIdList = None
@@ -51,6 +53,7 @@ class AddClusterInstancesRequest(AbstractModel):
         self.SgId = None
         self.InstanceImportMode = None
         self.OsCustomizeType = None
+        self.FeatureIdList = None
 
 
     def _deserialize(self, params):
@@ -63,6 +66,7 @@ class AddClusterInstancesRequest(AbstractModel):
         self.SgId = params.get("SgId")
         self.InstanceImportMode = params.get("InstanceImportMode")
         self.OsCustomizeType = params.get("OsCustomizeType")
+        self.FeatureIdList = params.get("FeatureIdList")
 
 
 class AddClusterInstancesResponse(AbstractModel):
@@ -227,6 +231,124 @@ class ApiDefinitionDescr(AbstractModel):
                 self.Properties.append(obj)
 
 
+class ApiDetailInfo(AbstractModel):
+    """API 明细
+
+    """
+
+    def __init__(self):
+        """
+        :param ApiId: API ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiId: str
+        :param NamespaceId: 命名空间ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceId: str
+        :param NamespaceName: 命名空间名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceName: str
+        :param MicroserviceId: 服务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MicroserviceId: str
+        :param MicroserviceName: 服务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MicroserviceName: str
+        :param Path: API 请求路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Path: str
+        :param PathMapping: Api 映射路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PathMapping: str
+        :param Method: 请求方法
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Method: str
+        :param GroupId: 所属分组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
+        :param UsableStatus: 是否禁用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsableStatus: str
+        :param ReleaseStatus: 发布状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReleaseStatus: str
+        :param RateLimitStatus: 开启限流
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RateLimitStatus: str
+        :param MockStatus: 是否开启mock
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MockStatus: str
+        :param CreatedTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedTime: str
+        :param UpdatedTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatedTime: str
+        :param ReleasedTime: 发布时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReleasedTime: str
+        :param GroupName: 所属分组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
+        :param Timeout: API 超时，单位毫秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timeout: int
+        :param Host: Api所在服务host
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Host: str
+        :param ApiType: API类型。 ms ： 微服务API； external :外部服务Api
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiType: str
+        :param Description: Api描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        """
+        self.ApiId = None
+        self.NamespaceId = None
+        self.NamespaceName = None
+        self.MicroserviceId = None
+        self.MicroserviceName = None
+        self.Path = None
+        self.PathMapping = None
+        self.Method = None
+        self.GroupId = None
+        self.UsableStatus = None
+        self.ReleaseStatus = None
+        self.RateLimitStatus = None
+        self.MockStatus = None
+        self.CreatedTime = None
+        self.UpdatedTime = None
+        self.ReleasedTime = None
+        self.GroupName = None
+        self.Timeout = None
+        self.Host = None
+        self.ApiType = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.ApiId = params.get("ApiId")
+        self.NamespaceId = params.get("NamespaceId")
+        self.NamespaceName = params.get("NamespaceName")
+        self.MicroserviceId = params.get("MicroserviceId")
+        self.MicroserviceName = params.get("MicroserviceName")
+        self.Path = params.get("Path")
+        self.PathMapping = params.get("PathMapping")
+        self.Method = params.get("Method")
+        self.GroupId = params.get("GroupId")
+        self.UsableStatus = params.get("UsableStatus")
+        self.ReleaseStatus = params.get("ReleaseStatus")
+        self.RateLimitStatus = params.get("RateLimitStatus")
+        self.MockStatus = params.get("MockStatus")
+        self.CreatedTime = params.get("CreatedTime")
+        self.UpdatedTime = params.get("UpdatedTime")
+        self.ReleasedTime = params.get("ReleasedTime")
+        self.GroupName = params.get("GroupName")
+        self.Timeout = params.get("Timeout")
+        self.Host = params.get("Host")
+        self.ApiType = params.get("ApiType")
+        self.Description = params.get("Description")
+
+
 class ApiDetailResponse(AbstractModel):
     """ApiDetailResponse
 
@@ -281,6 +403,188 @@ class ApiDetailResponse(AbstractModel):
         self.RequestContentType = params.get("RequestContentType")
         self.CanRun = params.get("CanRun")
         self.Status = params.get("Status")
+
+
+class ApiGroupInfo(AbstractModel):
+    """API分组信息
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupId: Api Group Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
+        :param GroupName: Api Group 名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
+        :param GroupContext: 分组上下文
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupContext: str
+        :param AuthType: 鉴权类型。 secret： 秘钥鉴权； none:无鉴权
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthType: str
+        :param Status: 发布状态, drafted: 未发布。 released: 发布
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param CreatedTime: 分组创建时间 如:2019-06-20 15:51:28
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedTime: str
+        :param UpdatedTime: 分组更新时间 如:2019-06-20 15:51:28
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatedTime: str
+        :param BindedGatewayDeployGroups: api分组已绑定的网关部署组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BindedGatewayDeployGroups: list of GatewayDeployGroup
+        :param ApiCount: api 个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiCount: int
+        :param AclMode: 访问group的ACL类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AclMode: str
+        :param Description: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param GroupType: 分组类型。 ms： 微服务分组； external:外部Api分组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupType: str
+        """
+        self.GroupId = None
+        self.GroupName = None
+        self.GroupContext = None
+        self.AuthType = None
+        self.Status = None
+        self.CreatedTime = None
+        self.UpdatedTime = None
+        self.BindedGatewayDeployGroups = None
+        self.ApiCount = None
+        self.AclMode = None
+        self.Description = None
+        self.GroupType = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.GroupName = params.get("GroupName")
+        self.GroupContext = params.get("GroupContext")
+        self.AuthType = params.get("AuthType")
+        self.Status = params.get("Status")
+        self.CreatedTime = params.get("CreatedTime")
+        self.UpdatedTime = params.get("UpdatedTime")
+        if params.get("BindedGatewayDeployGroups") is not None:
+            self.BindedGatewayDeployGroups = []
+            for item in params.get("BindedGatewayDeployGroups"):
+                obj = GatewayDeployGroup()
+                obj._deserialize(item)
+                self.BindedGatewayDeployGroups.append(obj)
+        self.ApiCount = params.get("ApiCount")
+        self.AclMode = params.get("AclMode")
+        self.Description = params.get("Description")
+        self.GroupType = params.get("GroupType")
+
+
+class ApiInfo(AbstractModel):
+    """微服务网关API信息
+
+    """
+
+    def __init__(self):
+        """
+        :param NamespaceId: 命名空间Id，若为外部API,为固定值："namespace-external"
+        :type NamespaceId: str
+        :param MicroserviceId: 服务Id，若为外部API,为固定值："ms-external"
+        :type MicroserviceId: str
+        :param Path: API path
+        :type Path: str
+        :param Method: Api 请求
+        :type Method: str
+        :param PathMapping: 请求映射
+        :type PathMapping: str
+        :param Host: api所在服务host
+        :type Host: str
+        :param Description: api描述信息
+        :type Description: str
+        """
+        self.NamespaceId = None
+        self.MicroserviceId = None
+        self.Path = None
+        self.Method = None
+        self.PathMapping = None
+        self.Host = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.NamespaceId = params.get("NamespaceId")
+        self.MicroserviceId = params.get("MicroserviceId")
+        self.Path = params.get("Path")
+        self.Method = params.get("Method")
+        self.PathMapping = params.get("PathMapping")
+        self.Host = params.get("Host")
+        self.Description = params.get("Description")
+
+
+class ApiRateLimitRule(AbstractModel):
+    """微服务网关API限流规则
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleId: rule Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleId: str
+        :param ApiId: API ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiId: str
+        :param RuleName: 限流名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleName: str
+        :param MaxQps: 最大限流qps
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxQps: int
+        :param UsableStatus: 生效/禁用, enabled/disabled
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsableStatus: str
+        :param RuleContent: 规则内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleContent: str
+        :param TsfRuleId: Tsf Rule ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TsfRuleId: str
+        :param Description: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param CreatedTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedTime: str
+        :param UpdatedTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatedTime: str
+        """
+        self.RuleId = None
+        self.ApiId = None
+        self.RuleName = None
+        self.MaxQps = None
+        self.UsableStatus = None
+        self.RuleContent = None
+        self.TsfRuleId = None
+        self.Description = None
+        self.CreatedTime = None
+        self.UpdatedTime = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        self.ApiId = params.get("ApiId")
+        self.RuleName = params.get("RuleName")
+        self.MaxQps = params.get("MaxQps")
+        self.UsableStatus = params.get("UsableStatus")
+        self.RuleContent = params.get("RuleContent")
+        self.TsfRuleId = params.get("TsfRuleId")
+        self.Description = params.get("Description")
+        self.CreatedTime = params.get("CreatedTime")
+        self.UpdatedTime = params.get("UpdatedTime")
 
 
 class ApiRequestDescr(AbstractModel):
@@ -344,6 +648,31 @@ class ApiResponseDescr(AbstractModel):
         self.Name = params.get("Name")
         self.Type = params.get("Type")
         self.Description = params.get("Description")
+
+
+class ApiUseStatisticsEntity(AbstractModel):
+    """API 日统计数据点
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 名称
+        :type Name: str
+        :param Count: 次数
+        :type Count: str
+        :param Ratio: 比率
+        :type Ratio: str
+        """
+        self.Name = None
+        self.Count = None
+        self.Ratio = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Count = params.get("Count")
+        self.Ratio = params.get("Ratio")
 
 
 class ApiVersionArray(AbstractModel):
@@ -468,6 +797,93 @@ class ApplicationForPage(AbstractModel):
         self.ApplicationResourceType = params.get("ApplicationResourceType")
         self.ApplicationRuntimeType = params.get("ApplicationRuntimeType")
         self.ApigatewayServiceId = params.get("ApigatewayServiceId")
+
+
+class BindApiGroupRequest(AbstractModel):
+    """BindApiGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupGatewayList: 分组绑定网关列表
+        :type GroupGatewayList: list of GatewayGroupIds
+        """
+        self.GroupGatewayList = None
+
+
+    def _deserialize(self, params):
+        if params.get("GroupGatewayList") is not None:
+            self.GroupGatewayList = []
+            for item in params.get("GroupGatewayList"):
+                obj = GatewayGroupIds()
+                obj._deserialize(item)
+                self.GroupGatewayList.append(obj)
+
+
+class BindApiGroupResponse(AbstractModel):
+    """BindApiGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 返回结果，成功失败
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class ChangeApiUsableStatusRequest(AbstractModel):
+    """ChangeApiUsableStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ApiId: API ID
+        :type ApiId: str
+        :param UsableStatus: 切换状态，enabled/disabled
+        :type UsableStatus: str
+        """
+        self.ApiId = None
+        self.UsableStatus = None
+
+
+    def _deserialize(self, params):
+        self.ApiId = params.get("ApiId")
+        self.UsableStatus = params.get("UsableStatus")
+
+
+class ChangeApiUsableStatusResponse(AbstractModel):
+    """ChangeApiUsableStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: API 信息
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.ApiDetailInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = ApiDetailInfo()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
 
 
 class Cluster(AbstractModel):
@@ -1337,6 +1753,149 @@ class CosUploadInfo(AbstractModel):
             self.Credentials._deserialize(params.get("Credentials"))
 
 
+class CreateAllGatewayApiAsyncRequest(AbstractModel):
+    """CreateAllGatewayApiAsync请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupId: API分组ID
+        :type GroupId: str
+        :param MicroserviceId: 微服务ID
+        :type MicroserviceId: str
+        """
+        self.GroupId = None
+        self.MicroserviceId = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.MicroserviceId = params.get("MicroserviceId")
+
+
+class CreateAllGatewayApiAsyncResponse(AbstractModel):
+    """CreateAllGatewayApiAsync返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 是否成功
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateApiGroupRequest(AbstractModel):
+    """CreateApiGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupName: 分组名称, 不能包含中文
+        :type GroupName: str
+        :param GroupContext: 分组上下文
+        :type GroupContext: str
+        :param AuthType: 鉴权类型。secret： 秘钥鉴权； none:无鉴权
+        :type AuthType: str
+        :param Description: 备注
+        :type Description: str
+        :param GroupType: 分组类型,默认ms。 ms： 微服务分组； external:外部Api分组
+        :type GroupType: str
+        """
+        self.GroupName = None
+        self.GroupContext = None
+        self.AuthType = None
+        self.Description = None
+        self.GroupType = None
+
+
+    def _deserialize(self, params):
+        self.GroupName = params.get("GroupName")
+        self.GroupContext = params.get("GroupContext")
+        self.AuthType = params.get("AuthType")
+        self.Description = params.get("Description")
+        self.GroupType = params.get("GroupType")
+
+
+class CreateApiGroupResponse(AbstractModel):
+    """CreateApiGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: API分组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateApiRateLimitRuleRequest(AbstractModel):
+    """CreateApiRateLimitRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ApiId: Api Id
+        :type ApiId: str
+        :param MaxQps: qps值
+        :type MaxQps: int
+        :param UsableStatus: 开启/禁用，enabled/disabled, 不传默认开启
+        :type UsableStatus: str
+        """
+        self.ApiId = None
+        self.MaxQps = None
+        self.UsableStatus = None
+
+
+    def _deserialize(self, params):
+        self.ApiId = params.get("ApiId")
+        self.MaxQps = params.get("MaxQps")
+        self.UsableStatus = params.get("UsableStatus")
+
+
+class CreateApiRateLimitRuleResponse(AbstractModel):
+    """CreateApiRateLimitRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 是否成功
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateApplicationRequest(AbstractModel):
     """CreateApplication请求参数结构体
 
@@ -1656,6 +2215,53 @@ class CreateContainGroupResponse(AbstractModel):
         """
         :param Result: 返回创建成功的部署组ID，返回null表示失败
         :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateGatewayApiRequest(AbstractModel):
+    """CreateGatewayApi请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupId: API 分组ID
+        :type GroupId: str
+        :param ApiList: Api信息
+        :type ApiList: list of ApiInfo
+        """
+        self.GroupId = None
+        self.ApiList = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        if params.get("ApiList") is not None:
+            self.ApiList = []
+            for item in params.get("ApiList"):
+                obj = ApiInfo()
+                obj._deserialize(item)
+                self.ApiList.append(obj)
+
+
+class CreateGatewayApiResponse(AbstractModel):
+    """CreateGatewayApi返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 是否成功
+        :type Result: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2267,6 +2873,44 @@ class CreateTaskResponse(AbstractModel):
         """
         :param Result: 任务ID
         :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteApiGroupRequest(AbstractModel):
+    """DeleteApiGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupId: API 分组ID
+        :type GroupId: str
+        """
+        self.GroupId = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+
+
+class DeleteApiGroupResponse(AbstractModel):
+    """DeleteApiGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 成功失败
+        :type Result: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3187,6 +3831,209 @@ class DescribeApiDetailResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeApiGroupRequest(AbstractModel):
+    """DescribeApiGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupId: API 分组ID
+        :type GroupId: str
+        """
+        self.GroupId = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+
+
+class DescribeApiGroupResponse(AbstractModel):
+    """DescribeApiGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: API分组信息
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.ApiGroupInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = ApiGroupInfo()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeApiGroupsRequest(AbstractModel):
+    """DescribeApiGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SearchWord: 搜索关键字
+        :type SearchWord: str
+        :param Offset: 偏移量，默认为0
+        :type Offset: int
+        :param Limit: 每页条数，默认为20
+        :type Limit: int
+        :param GroupType: 分组类型。 ms： 微服务分组； external:外部Api分组
+        :type GroupType: str
+        :param AuthType: 鉴权类型。 secret： 秘钥鉴权； none:无鉴权
+        :type AuthType: str
+        :param Status: 发布状态, drafted: 未发布。 released: 发布
+        :type Status: str
+        :param OrderBy: 排序字段："created_time"或"group_context"
+        :type OrderBy: str
+        :param OrderType: 排序类型：0(ASC)或1(DESC)
+        :type OrderType: int
+        """
+        self.SearchWord = None
+        self.Offset = None
+        self.Limit = None
+        self.GroupType = None
+        self.AuthType = None
+        self.Status = None
+        self.OrderBy = None
+        self.OrderType = None
+
+
+    def _deserialize(self, params):
+        self.SearchWord = params.get("SearchWord")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.GroupType = params.get("GroupType")
+        self.AuthType = params.get("AuthType")
+        self.Status = params.get("Status")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderType = params.get("OrderType")
+
+
+class DescribeApiGroupsResponse(AbstractModel):
+    """DescribeApiGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 翻页结构体
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageApiGroupInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = TsfPageApiGroupInfo()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeApiRateLimitRulesRequest(AbstractModel):
+    """DescribeApiRateLimitRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ApiId: Api ID
+        :type ApiId: str
+        """
+        self.ApiId = None
+
+
+    def _deserialize(self, params):
+        self.ApiId = params.get("ApiId")
+
+
+class DescribeApiRateLimitRulesResponse(AbstractModel):
+    """DescribeApiRateLimitRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 限流结果
+        :type Result: list of ApiRateLimitRule
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = []
+            for item in params.get("Result"):
+                obj = ApiRateLimitRule()
+                obj._deserialize(item)
+                self.Result.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeApiUseDetailRequest(AbstractModel):
+    """DescribeApiUseDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GatewayDeployGroupId: 网关部署组ID
+        :type GatewayDeployGroupId: str
+        :param ApiId: 网关分组Api ID
+        :type ApiId: str
+        :param StartTime: 查询的日期,格式：yyyy-MM-dd HH:mm:ss
+        :type StartTime: str
+        :param EndTime: 查询的日期,格式：yyyy-MM-dd HH:mm:ss
+        :type EndTime: str
+        """
+        self.GatewayDeployGroupId = None
+        self.ApiId = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.GatewayDeployGroupId = params.get("GatewayDeployGroupId")
+        self.ApiId = params.get("ApiId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+
+
+class DescribeApiUseDetailResponse(AbstractModel):
+    """DescribeApiUseDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 日使用统计对象
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.GroupApiUseStatistics`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = GroupApiUseStatistics()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeApiVersionsRequest(AbstractModel):
     """DescribeApiVersions请求参数结构体
 
@@ -3875,6 +4722,48 @@ class DescribeContainerGroupsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCreateGatewayApiStatusRequest(AbstractModel):
+    """DescribeCreateGatewayApiStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupId: 请求方法
+        :type GroupId: str
+        :param MicroserviceId: 微服务ID
+        :type MicroserviceId: str
+        """
+        self.GroupId = None
+        self.MicroserviceId = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.MicroserviceId = params.get("MicroserviceId")
+
+
+class DescribeCreateGatewayApiStatusResponse(AbstractModel):
+    """DescribeCreateGatewayApiStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 是否已完成导入任务
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDownloadInfoRequest(AbstractModel):
     """DescribeDownloadInfo请求参数结构体
 
@@ -3963,6 +4852,194 @@ class DescribeFlowLastBatchStateResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Result") is not None:
             self.Result = TaskFlowLastBatchState()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeGatewayAllGroupApisRequest(AbstractModel):
+    """DescribeGatewayAllGroupApis请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GatewayDeployGroupId: 网关部署组ID
+        :type GatewayDeployGroupId: str
+        :param SearchWord: 搜索关键字，支持分组名称或API Path
+        :type SearchWord: str
+        """
+        self.GatewayDeployGroupId = None
+        self.SearchWord = None
+
+
+    def _deserialize(self, params):
+        self.GatewayDeployGroupId = params.get("GatewayDeployGroupId")
+        self.SearchWord = params.get("SearchWord")
+
+
+class DescribeGatewayAllGroupApisResponse(AbstractModel):
+    """DescribeGatewayAllGroupApis返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 网关分组和API列表信息
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.GatewayVo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = GatewayVo()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeGatewayMonitorOverviewRequest(AbstractModel):
+    """DescribeGatewayMonitorOverview请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GatewayDeployGroupId: 网关部署组ID
+        :type GatewayDeployGroupId: str
+        """
+        self.GatewayDeployGroupId = None
+
+
+    def _deserialize(self, params):
+        self.GatewayDeployGroupId = params.get("GatewayDeployGroupId")
+
+
+class DescribeGatewayMonitorOverviewResponse(AbstractModel):
+    """DescribeGatewayMonitorOverview返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 监控概览对象
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.MonitorOverview`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = MonitorOverview()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeGroupBindedGatewaysRequest(AbstractModel):
+    """DescribeGroupBindedGateways请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupId: API 分组ID
+        :type GroupId: str
+        :param Offset: 翻页查询偏移量
+        :type Offset: int
+        :param Limit: 翻页查询每页记录数
+        :type Limit: int
+        :param SearchWord: 搜索关键字
+        :type SearchWord: str
+        """
+        self.GroupId = None
+        self.Offset = None
+        self.Limit = None
+        self.SearchWord = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.SearchWord = params.get("SearchWord")
+
+
+class DescribeGroupBindedGatewaysResponse(AbstractModel):
+    """DescribeGroupBindedGateways返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 翻页结构体
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageGatewayDeployGroup`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = TsfPageGatewayDeployGroup()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeGroupGatewaysRequest(AbstractModel):
+    """DescribeGroupGateways请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GatewayDeployGroupId: 网关部署组ID
+        :type GatewayDeployGroupId: str
+        :param Offset: 翻页查询偏移量
+        :type Offset: int
+        :param Limit: 翻页查询每页记录数
+        :type Limit: int
+        :param SearchWord: 搜索关键字
+        :type SearchWord: str
+        """
+        self.GatewayDeployGroupId = None
+        self.Offset = None
+        self.Limit = None
+        self.SearchWord = None
+
+
+    def _deserialize(self, params):
+        self.GatewayDeployGroupId = params.get("GatewayDeployGroupId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.SearchWord = params.get("SearchWord")
+
+
+class DescribeGroupGatewaysResponse(AbstractModel):
+    """DescribeGroupGateways返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: API分组信息
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageApiGroupInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = TsfPageApiGroupInfo()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 
@@ -4065,6 +5142,62 @@ class DescribeGroupResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Result") is not None:
             self.Result = VmGroup()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeGroupUseDetailRequest(AbstractModel):
+    """DescribeGroupUseDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GatewayDeployGroupId: 网关部署组ID
+        :type GatewayDeployGroupId: str
+        :param GroupId: 网关分组ID
+        :type GroupId: str
+        :param StartTime: 查询的日期,格式：yyyy-MM-dd HH:mm:ss
+        :type StartTime: str
+        :param EndTime: 查询的日期,格式：yyyy-MM-dd HH:mm:ss
+        :type EndTime: str
+        :param Count: 指定top的条数,默认为10
+        :type Count: int
+        """
+        self.GatewayDeployGroupId = None
+        self.GroupId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Count = None
+
+
+    def _deserialize(self, params):
+        self.GatewayDeployGroupId = params.get("GatewayDeployGroupId")
+        self.GroupId = params.get("GroupId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Count = params.get("Count")
+
+
+class DescribeGroupUseDetailResponse(AbstractModel):
+    """DescribeGroupUseDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 日使用统计对象
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.GroupDailyUseStatistics`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = GroupDailyUseStatistics()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 
@@ -5581,6 +6714,44 @@ class DisableTaskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DraftApiGroupRequest(AbstractModel):
+    """DraftApiGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupId: Api 分组ID
+        :type GroupId: str
+        """
+        self.GroupId = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+
+
+class DraftApiGroupResponse(AbstractModel):
+    """DraftApiGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: true: 成功, false: 失败
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class EnableTaskFlowRequest(AbstractModel):
     """EnableTaskFlow请求参数结构体
 
@@ -5799,6 +6970,266 @@ class ExpandGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GatewayApiGroupVo(AbstractModel):
+    """网关分组简单信息
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupId: 分组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
+        :param GroupName: 分组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
+        :param GroupApiCount: 分组下API个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupApiCount: int
+        :param GroupApis: 分组API列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupApis: list of GatewayGroupApiVo
+        """
+        self.GroupId = None
+        self.GroupName = None
+        self.GroupApiCount = None
+        self.GroupApis = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.GroupName = params.get("GroupName")
+        self.GroupApiCount = params.get("GroupApiCount")
+        if params.get("GroupApis") is not None:
+            self.GroupApis = []
+            for item in params.get("GroupApis"):
+                obj = GatewayGroupApiVo()
+                obj._deserialize(item)
+                self.GroupApis.append(obj)
+
+
+class GatewayDeployGroup(AbstractModel):
+    """api分组已绑定的网关部署组
+
+    """
+
+    def __init__(self):
+        """
+        :param DeployGroupId: 网关部署组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeployGroupId: str
+        :param DeployGroupName: 网关部署组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeployGroupName: str
+        :param ApplicationId: 应用ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationId: str
+        :param ApplicationName: 应用名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationName: str
+        :param ApplicationType: 应用分类：V：虚拟机应用，C：容器应用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationType: str
+        :param GroupStatus: 部署组应用状态,取值: Running、Waiting、Paused、Updating、RollingBack、Abnormal、Unknown
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupStatus: str
+        :param ClusterType: 集群类型，C ：容器，V：虚拟机
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterType: str
+        """
+        self.DeployGroupId = None
+        self.DeployGroupName = None
+        self.ApplicationId = None
+        self.ApplicationName = None
+        self.ApplicationType = None
+        self.GroupStatus = None
+        self.ClusterType = None
+
+
+    def _deserialize(self, params):
+        self.DeployGroupId = params.get("DeployGroupId")
+        self.DeployGroupName = params.get("DeployGroupName")
+        self.ApplicationId = params.get("ApplicationId")
+        self.ApplicationName = params.get("ApplicationName")
+        self.ApplicationType = params.get("ApplicationType")
+        self.GroupStatus = params.get("GroupStatus")
+        self.ClusterType = params.get("ClusterType")
+
+
+class GatewayGroupApiVo(AbstractModel):
+    """网关API简单信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ApiId: API ID
+        :type ApiId: str
+        :param Path: API 请求路径
+        :type Path: str
+        :param MicroserviceName: API 微服务名称
+        :type MicroserviceName: str
+        :param Method: API 请求方法
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Method: str
+        :param NamespaceName: 命名空间名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceName: str
+        """
+        self.ApiId = None
+        self.Path = None
+        self.MicroserviceName = None
+        self.Method = None
+        self.NamespaceName = None
+
+
+    def _deserialize(self, params):
+        self.ApiId = params.get("ApiId")
+        self.Path = params.get("Path")
+        self.MicroserviceName = params.get("MicroserviceName")
+        self.Method = params.get("Method")
+        self.NamespaceName = params.get("NamespaceName")
+
+
+class GatewayGroupIds(AbstractModel):
+    """网关部署组ID和网关API分组ID元组
+
+    """
+
+    def __init__(self):
+        """
+        :param GatewayDeployGroupId: 网关部署组ID
+        :type GatewayDeployGroupId: str
+        :param GroupId: 分组id
+        :type GroupId: str
+        """
+        self.GatewayDeployGroupId = None
+        self.GroupId = None
+
+
+    def _deserialize(self, params):
+        self.GatewayDeployGroupId = params.get("GatewayDeployGroupId")
+        self.GroupId = params.get("GroupId")
+
+
+class GatewayVo(AbstractModel):
+    """网关部署组、分组、API列表数据
+
+    """
+
+    def __init__(self):
+        """
+        :param GatewayDeployGroupId: 网关部署组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GatewayDeployGroupId: str
+        :param GatewayDeployGroupName: 网关部署组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GatewayDeployGroupName: str
+        :param GroupNum: API 分组个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupNum: int
+        :param Groups: API 分组列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Groups: list of GatewayApiGroupVo
+        """
+        self.GatewayDeployGroupId = None
+        self.GatewayDeployGroupName = None
+        self.GroupNum = None
+        self.Groups = None
+
+
+    def _deserialize(self, params):
+        self.GatewayDeployGroupId = params.get("GatewayDeployGroupId")
+        self.GatewayDeployGroupName = params.get("GatewayDeployGroupName")
+        self.GroupNum = params.get("GroupNum")
+        if params.get("Groups") is not None:
+            self.Groups = []
+            for item in params.get("Groups"):
+                obj = GatewayApiGroupVo()
+                obj._deserialize(item)
+                self.Groups.append(obj)
+
+
+class GroupApiUseStatistics(AbstractModel):
+    """API监控明细数据
+
+    """
+
+    def __init__(self):
+        """
+        :param TopStatusCode: 总调用数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopStatusCode: list of ApiUseStatisticsEntity
+        :param TopTimeCost: 平均错误率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopTimeCost: list of ApiUseStatisticsEntity
+        :param Quantile: 分位值对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Quantile: :class:`tencentcloud.tsf.v20180326.models.QuantileEntity`
+        """
+        self.TopStatusCode = None
+        self.TopTimeCost = None
+        self.Quantile = None
+
+
+    def _deserialize(self, params):
+        if params.get("TopStatusCode") is not None:
+            self.TopStatusCode = []
+            for item in params.get("TopStatusCode"):
+                obj = ApiUseStatisticsEntity()
+                obj._deserialize(item)
+                self.TopStatusCode.append(obj)
+        if params.get("TopTimeCost") is not None:
+            self.TopTimeCost = []
+            for item in params.get("TopTimeCost"):
+                obj = ApiUseStatisticsEntity()
+                obj._deserialize(item)
+                self.TopTimeCost.append(obj)
+        if params.get("Quantile") is not None:
+            self.Quantile = QuantileEntity()
+            self.Quantile._deserialize(params.get("Quantile"))
+
+
+class GroupDailyUseStatistics(AbstractModel):
+    """分组日使用统计对象
+
+    """
+
+    def __init__(self):
+        """
+        :param TopReqAmount: 总调用数
+        :type TopReqAmount: list of GroupUseStatisticsEntity
+        :param TopFailureRate: 平均错误率
+        :type TopFailureRate: list of GroupUseStatisticsEntity
+        :param TopAvgTimeCost: 平均响应耗时
+        :type TopAvgTimeCost: list of GroupUseStatisticsEntity
+        """
+        self.TopReqAmount = None
+        self.TopFailureRate = None
+        self.TopAvgTimeCost = None
+
+
+    def _deserialize(self, params):
+        if params.get("TopReqAmount") is not None:
+            self.TopReqAmount = []
+            for item in params.get("TopReqAmount"):
+                obj = GroupUseStatisticsEntity()
+                obj._deserialize(item)
+                self.TopReqAmount.append(obj)
+        if params.get("TopFailureRate") is not None:
+            self.TopFailureRate = []
+            for item in params.get("TopFailureRate"):
+                obj = GroupUseStatisticsEntity()
+                obj._deserialize(item)
+                self.TopFailureRate.append(obj)
+        if params.get("TopAvgTimeCost") is not None:
+            self.TopAvgTimeCost = []
+            for item in params.get("TopAvgTimeCost"):
+                obj = GroupUseStatisticsEntity()
+                obj._deserialize(item)
+                self.TopAvgTimeCost.append(obj)
+
+
 class GroupPod(AbstractModel):
     """部署组实例列表
 
@@ -5908,6 +7339,39 @@ class GroupPodResult(AbstractModel):
                 obj = GroupPod()
                 obj._deserialize(item)
                 self.Content.append(obj)
+
+
+class GroupUseStatisticsEntity(AbstractModel):
+    """API分组日使用统计对象数据点
+
+    """
+
+    def __init__(self):
+        """
+        :param ApiPath: API 路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiPath: str
+        :param ServiceName: 服务名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceName: str
+        :param Value: 统计值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        :param ApiId: API ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiId: str
+        """
+        self.ApiPath = None
+        self.ServiceName = None
+        self.Value = None
+        self.ApiId = None
+
+
+    def _deserialize(self, params):
+        self.ApiPath = params.get("ApiPath")
+        self.ServiceName = params.get("ServiceName")
+        self.Value = params.get("Value")
+        self.ApiId = params.get("ApiId")
 
 
 class HealthCheckSetting(AbstractModel):
@@ -7186,6 +8650,49 @@ class ModifyUploadInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class MonitorOverview(AbstractModel):
+    """监控概览对象
+
+    """
+
+    def __init__(self):
+        """
+        :param InvocationCountOfDay: 近24小时调用数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InvocationCountOfDay: str
+        :param InvocationCount: 总调用数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InvocationCount: str
+        :param ErrorCountOfDay: 近24小时调用错误数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorCountOfDay: str
+        :param ErrorCount: 总调用错误数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorCount: str
+        :param SuccessRatioOfDay: 近24小时调用成功率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuccessRatioOfDay: str
+        :param SuccessRatio: 总调用成功率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuccessRatio: str
+        """
+        self.InvocationCountOfDay = None
+        self.InvocationCount = None
+        self.ErrorCountOfDay = None
+        self.ErrorCount = None
+        self.SuccessRatioOfDay = None
+        self.SuccessRatio = None
+
+
+    def _deserialize(self, params):
+        self.InvocationCountOfDay = params.get("InvocationCountOfDay")
+        self.InvocationCount = params.get("InvocationCount")
+        self.ErrorCountOfDay = params.get("ErrorCountOfDay")
+        self.ErrorCount = params.get("ErrorCount")
+        self.SuccessRatioOfDay = params.get("SuccessRatioOfDay")
+        self.SuccessRatio = params.get("SuccessRatio")
+
+
 class MsApiArray(AbstractModel):
     """微服务API数组
 
@@ -7727,6 +9234,39 @@ class ProtocolPort(AbstractModel):
         self.NodePort = params.get("NodePort")
 
 
+class QuantileEntity(AbstractModel):
+    """分位数据模型
+
+    """
+
+    def __init__(self):
+        """
+        :param MaxValue: 最大值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxValue: str
+        :param MinValue: 最小值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MinValue: str
+        :param FifthPositionValue: 五分位值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FifthPositionValue: str
+        :param NinthPositionValue: 九分位值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NinthPositionValue: str
+        """
+        self.MaxValue = None
+        self.MinValue = None
+        self.FifthPositionValue = None
+        self.NinthPositionValue = None
+
+
+    def _deserialize(self, params):
+        self.MaxValue = params.get("MaxValue")
+        self.MinValue = params.get("MinValue")
+        self.FifthPositionValue = params.get("FifthPositionValue")
+        self.NinthPositionValue = params.get("NinthPositionValue")
+
+
 class RedoTaskBatchRequest(AbstractModel):
     """RedoTaskBatch请求参数结构体
 
@@ -7879,6 +9419,44 @@ class RedoTaskResponse(AbstractModel):
         """
         :param Result: 操作成功or失败
         :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class ReleaseApiGroupRequest(AbstractModel):
+    """ReleaseApiGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupId: Api 分组ID
+        :type GroupId: str
+        """
+        self.GroupId = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+
+
+class ReleaseApiGroupResponse(AbstractModel):
+    """ReleaseApiGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 成功/失败
+        :type Result: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -9158,6 +10736,32 @@ class TsfApiListResponse(AbstractModel):
                 self.Content.append(obj)
 
 
+class TsfPageApiGroupInfo(AbstractModel):
+    """ApiGroupInfo翻页结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 总记录数
+        :type TotalCount: int
+        :param Content: API分组信息
+        :type Content: list of ApiGroupInfo
+        """
+        self.TotalCount = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Content") is not None:
+            self.Content = []
+            for item in params.get("Content"):
+                obj = ApiGroupInfo()
+                obj._deserialize(item)
+                self.Content.append(obj)
+
+
 class TsfPageApplication(AbstractModel):
     """应用分页信息
 
@@ -9292,6 +10896,32 @@ class TsfPageConfigReleaseLog(AbstractModel):
             self.Content = []
             for item in params.get("Content"):
                 obj = ConfigReleaseLog()
+                obj._deserialize(item)
+                self.Content.append(obj)
+
+
+class TsfPageGatewayDeployGroup(AbstractModel):
+    """GatewayDeployGroup 翻页对象
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 记录总数
+        :type TotalCount: int
+        :param Content: 记录实体列表
+        :type Content: list of GatewayDeployGroup
+        """
+        self.TotalCount = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Content") is not None:
+            self.Content = []
+            for item in params.get("Content"):
+                obj = GatewayDeployGroup()
                 obj._deserialize(item)
                 self.Content.append(obj)
 
@@ -9490,6 +11120,253 @@ class TsfPageVmGroup(AbstractModel):
                 obj = VmGroupSimple()
                 obj._deserialize(item)
                 self.Content.append(obj)
+
+
+class UnbindApiGroupRequest(AbstractModel):
+    """UnbindApiGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupGatewayList: 分组网关id列表
+        :type GroupGatewayList: list of GatewayGroupIds
+        """
+        self.GroupGatewayList = None
+
+
+    def _deserialize(self, params):
+        if params.get("GroupGatewayList") is not None:
+            self.GroupGatewayList = []
+            for item in params.get("GroupGatewayList"):
+                obj = GatewayGroupIds()
+                obj._deserialize(item)
+                self.GroupGatewayList.append(obj)
+
+
+class UnbindApiGroupResponse(AbstractModel):
+    """UnbindApiGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 返回结果，成功失败
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateApiGroupRequest(AbstractModel):
+    """UpdateApiGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupId: Api 分组ID
+        :type GroupId: str
+        :param GroupName: Api 分组名称
+        :type GroupName: str
+        :param Description: Api 分组描述
+        :type Description: str
+        :param AuthType: 鉴权类型
+        :type AuthType: str
+        :param GroupContext: 分组上下文
+        :type GroupContext: str
+        """
+        self.GroupId = None
+        self.GroupName = None
+        self.Description = None
+        self.AuthType = None
+        self.GroupContext = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.GroupName = params.get("GroupName")
+        self.Description = params.get("Description")
+        self.AuthType = params.get("AuthType")
+        self.GroupContext = params.get("GroupContext")
+
+
+class UpdateApiGroupResponse(AbstractModel):
+    """UpdateApiGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 返回结果，true: 成功, false: 失败
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateApiRateLimitRuleRequest(AbstractModel):
+    """UpdateApiRateLimitRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleId: 限流规则ID
+        :type RuleId: str
+        :param UsableStatus: 开启/禁用，enabled/disabled
+        :type UsableStatus: str
+        :param MaxQps: qps值，开启限流规则时，必填
+        :type MaxQps: int
+        """
+        self.RuleId = None
+        self.UsableStatus = None
+        self.MaxQps = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        self.UsableStatus = params.get("UsableStatus")
+        self.MaxQps = params.get("MaxQps")
+
+
+class UpdateApiRateLimitRuleResponse(AbstractModel):
+    """UpdateApiRateLimitRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 是否成功
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateApiRateLimitRulesRequest(AbstractModel):
+    """UpdateApiRateLimitRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ApiIds: API ID 列表
+        :type ApiIds: list of str
+        :param UsableStatus: 开启/禁用，enabled/disabled
+        :type UsableStatus: str
+        :param MaxQps: QPS值。开启限流规则时，必填
+        :type MaxQps: int
+        """
+        self.ApiIds = None
+        self.UsableStatus = None
+        self.MaxQps = None
+
+
+    def _deserialize(self, params):
+        self.ApiIds = params.get("ApiIds")
+        self.UsableStatus = params.get("UsableStatus")
+        self.MaxQps = params.get("MaxQps")
+
+
+class UpdateApiRateLimitRulesResponse(AbstractModel):
+    """UpdateApiRateLimitRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 是否成功
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateGatewayApiRequest(AbstractModel):
+    """UpdateGatewayApi请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ApiId: API ID
+        :type ApiId: str
+        :param Path: API 路径
+        :type Path: str
+        :param Method: Api 请求方法
+        :type Method: str
+        :param PathMapping: 请求映射
+        :type PathMapping: str
+        :param Host: api所在服务host
+        :type Host: str
+        :param Description: api描述信息
+        :type Description: str
+        """
+        self.ApiId = None
+        self.Path = None
+        self.Method = None
+        self.PathMapping = None
+        self.Host = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.ApiId = params.get("ApiId")
+        self.Path = params.get("Path")
+        self.Method = params.get("Method")
+        self.PathMapping = params.get("PathMapping")
+        self.Host = params.get("Host")
+        self.Description = params.get("Description")
+
+
+class UpdateGatewayApiResponse(AbstractModel):
+    """UpdateGatewayApi返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 返回结果，成功失败
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
 
 
 class UpdateHealthCheckSettingsRequest(AbstractModel):

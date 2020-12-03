@@ -643,7 +643,7 @@ class IotcloudClient(AbstractClient):
 
 
     def DescribeFirmwareTask(self, request):
-        """查询固件升级任务列表
+        """查询固件升级任务详情
 
         :param request: Request instance for DescribeFirmwareTask.
         :type request: :class:`tencentcloud.iotcloud.v20180614.models.DescribeFirmwareTaskRequest`

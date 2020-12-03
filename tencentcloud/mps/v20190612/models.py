@@ -417,7 +417,9 @@ class AiAnalysisTaskClassificationResult(AbstractModel):
         """
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
@@ -428,6 +430,7 @@ class AiAnalysisTaskClassificationResult(AbstractModel):
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskClassificationOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -436,6 +439,7 @@ class AiAnalysisTaskClassificationResult(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -500,7 +504,9 @@ class AiAnalysisTaskCoverResult(AbstractModel):
         """
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
@@ -511,6 +517,7 @@ class AiAnalysisTaskCoverResult(AbstractModel):
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCoverOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -519,6 +526,7 @@ class AiAnalysisTaskCoverResult(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -577,7 +585,9 @@ class AiAnalysisTaskFrameTagResult(AbstractModel):
         """
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
@@ -588,6 +598,7 @@ class AiAnalysisTaskFrameTagResult(AbstractModel):
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskFrameTagOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -596,6 +607,7 @@ class AiAnalysisTaskFrameTagResult(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -671,7 +683,9 @@ class AiAnalysisTaskTagResult(AbstractModel):
         """
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
@@ -682,6 +696,7 @@ class AiAnalysisTaskTagResult(AbstractModel):
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskTagOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -690,6 +705,7 @@ class AiAnalysisTaskTagResult(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -893,7 +909,9 @@ class AiRecognitionTaskAsrFullTextResult(AbstractModel):
         """
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
@@ -904,6 +922,7 @@ class AiRecognitionTaskAsrFullTextResult(AbstractModel):
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrFullTextResultOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -912,6 +931,7 @@ class AiRecognitionTaskAsrFullTextResult(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -1009,7 +1029,9 @@ class AiRecognitionTaskAsrWordsResult(AbstractModel):
         """
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
@@ -1020,6 +1042,7 @@ class AiRecognitionTaskAsrWordsResult(AbstractModel):
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrWordsResultOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -1028,6 +1051,7 @@ class AiRecognitionTaskAsrWordsResult(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -1137,7 +1161,9 @@ class AiRecognitionTaskFaceResult(AbstractModel):
         """
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
@@ -1148,6 +1174,7 @@ class AiRecognitionTaskFaceResult(AbstractModel):
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskFaceResultOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -1156,6 +1183,7 @@ class AiRecognitionTaskFaceResult(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -1296,7 +1324,9 @@ class AiRecognitionTaskOcrFullTextResult(AbstractModel):
         """
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
@@ -1307,6 +1337,7 @@ class AiRecognitionTaskOcrFullTextResult(AbstractModel):
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrFullTextResultOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -1315,6 +1346,7 @@ class AiRecognitionTaskOcrFullTextResult(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -1428,7 +1460,9 @@ class AiRecognitionTaskOcrWordsResult(AbstractModel):
         """
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
@@ -1439,6 +1473,7 @@ class AiRecognitionTaskOcrWordsResult(AbstractModel):
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrWordsResultOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -1447,6 +1482,7 @@ class AiRecognitionTaskOcrWordsResult(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -1976,7 +2012,9 @@ class AiReviewTaskPoliticalAsrResult(AbstractModel):
         """
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
@@ -1987,6 +2025,7 @@ class AiReviewTaskPoliticalAsrResult(AbstractModel):
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalAsrTaskOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -1995,6 +2034,7 @@ class AiReviewTaskPoliticalAsrResult(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -2012,9 +2052,11 @@ class AiReviewTaskPoliticalOcrResult(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 任务状态，有 PROCESSING，SUCCESS �� FAIL 三种。
+        :param Status: 任务状态，有 PROCESSING，SUCCESS，FAIL 三种。
         :type Status: str
-        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
@@ -2025,6 +2067,7 @@ class AiReviewTaskPoliticalOcrResult(AbstractModel):
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalOcrTaskOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -2033,6 +2076,7 @@ class AiReviewTaskPoliticalOcrResult(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -2052,7 +2096,9 @@ class AiReviewTaskPoliticalResult(AbstractModel):
         """
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
@@ -2063,6 +2109,7 @@ class AiReviewTaskPoliticalResult(AbstractModel):
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalTaskOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -2071,6 +2118,7 @@ class AiReviewTaskPoliticalResult(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -2090,7 +2138,9 @@ class AiReviewTaskPornAsrResult(AbstractModel):
         """
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
@@ -2101,6 +2151,7 @@ class AiReviewTaskPornAsrResult(AbstractModel):
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewPornAsrTaskOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -2109,6 +2160,7 @@ class AiReviewTaskPornAsrResult(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -2128,7 +2180,9 @@ class AiReviewTaskPornOcrResult(AbstractModel):
         """
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
@@ -2139,6 +2193,7 @@ class AiReviewTaskPornOcrResult(AbstractModel):
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewPornOcrTaskOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -2147,6 +2202,7 @@ class AiReviewTaskPornOcrResult(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -2166,7 +2222,9 @@ class AiReviewTaskPornResult(AbstractModel):
         """
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
@@ -2177,6 +2235,7 @@ class AiReviewTaskPornResult(AbstractModel):
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewPornTaskOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -2185,6 +2244,7 @@ class AiReviewTaskPornResult(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -2204,10 +2264,9 @@ class AiReviewTaskProhibitedAsrResult(AbstractModel):
         """
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCode: 错误码，0 表示成功，其他值表示失败：
-<li>40000：输入参数不合法，请检查输入参数；</li>
-<li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
-<li>70000：内部服务错误，建议重试。</li>
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
@@ -2218,6 +2277,7 @@ class AiReviewTaskProhibitedAsrResult(AbstractModel):
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewProhibitedAsrTaskOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -2226,6 +2286,7 @@ class AiReviewTaskProhibitedAsrResult(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -2245,10 +2306,9 @@ class AiReviewTaskProhibitedOcrResult(AbstractModel):
         """
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCode: 错误码，0 表示成功，其他值表示失败：
-<li>40000：输入参数不合法，请检查输入参数；</li>
-<li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
-<li>70000：内部服务错误，建议重试。</li>
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
@@ -2259,6 +2319,7 @@ class AiReviewTaskProhibitedOcrResult(AbstractModel):
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewProhibitedOcrTaskOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -2267,6 +2328,7 @@ class AiReviewTaskProhibitedOcrResult(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -2286,10 +2348,9 @@ class AiReviewTaskTerrorismOcrResult(AbstractModel):
         """
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCode: 错误码，0 表示成功，其他值表示失败：
-<li>40000：输入参数不合法，请检查输入参数；</li>
-<li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
-<li>70000：内部服务错误，建议重试。</li>
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
@@ -2300,6 +2361,7 @@ class AiReviewTaskTerrorismOcrResult(AbstractModel):
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewTerrorismOcrTaskOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -2308,6 +2370,7 @@ class AiReviewTaskTerrorismOcrResult(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -2327,7 +2390,9 @@ class AiReviewTaskTerrorismResult(AbstractModel):
         """
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
@@ -2338,6 +2403,7 @@ class AiReviewTaskTerrorismResult(AbstractModel):
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewTerrorismTaskOutput`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -2346,6 +2412,7 @@ class AiReviewTaskTerrorismResult(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -7529,7 +7596,9 @@ class MediaProcessTaskAdaptiveDynamicStreamingResult(AbstractModel):
         """
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCode: 错误码，0：成功，其他值：失败。
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
@@ -7540,6 +7609,7 @@ class MediaProcessTaskAdaptiveDynamicStreamingResult(AbstractModel):
         :type Output: :class:`tencentcloud.mps.v20190612.models.AdaptiveDynamicStreamingInfoItem`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -7548,6 +7618,7 @@ class MediaProcessTaskAdaptiveDynamicStreamingResult(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -7567,10 +7638,9 @@ class MediaProcessTaskAnimatedGraphicResult(AbstractModel):
         """
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCode: 错误码，0 表示成功，其他值表示失败：
-<li>40000：输入参数不合法，请检查输入参数；</li>
-<li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
-<li>70000：内部服务错误，建议重试。</li>
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
@@ -7581,6 +7651,7 @@ class MediaProcessTaskAnimatedGraphicResult(AbstractModel):
         :type Output: :class:`tencentcloud.mps.v20190612.models.MediaAnimatedGraphicsItem`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -7589,6 +7660,7 @@ class MediaProcessTaskAnimatedGraphicResult(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -7608,10 +7680,9 @@ class MediaProcessTaskImageSpriteResult(AbstractModel):
         """
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCode: 错误码，0 表示成功，其他值表示失败：
-<li>40000：输入参数不合法，请检查输入参数；</li>
-<li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
-<li>70000：内部服务错误，建议重试。</li>
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
@@ -7622,6 +7693,7 @@ class MediaProcessTaskImageSpriteResult(AbstractModel):
         :type Output: :class:`tencentcloud.mps.v20190612.models.MediaImageSpriteItem`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -7630,6 +7702,7 @@ class MediaProcessTaskImageSpriteResult(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -7782,10 +7855,9 @@ class MediaProcessTaskSampleSnapshotResult(AbstractModel):
         """
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCode: 错误码，0 表示成功，其他值表示失败：
-<li>40000：输入参数不合法，请检查输入参数；</li>
-<li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
-<li>70000：内部服务错误，建议重试。</li>
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
@@ -7796,6 +7868,7 @@ class MediaProcessTaskSampleSnapshotResult(AbstractModel):
         :type Output: :class:`tencentcloud.mps.v20190612.models.MediaSampleSnapshotItem`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -7804,6 +7877,7 @@ class MediaProcessTaskSampleSnapshotResult(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -7823,10 +7897,9 @@ class MediaProcessTaskSnapshotByTimeOffsetResult(AbstractModel):
         """
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCode: 错误码，0 表示成功，其他值表示失败：
-<li>40000：输入参数不合法，请检查输入参数；</li>
-<li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
-<li>70000：内部服务错误，建议重试。</li>
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
@@ -7837,6 +7910,7 @@ class MediaProcessTaskSnapshotByTimeOffsetResult(AbstractModel):
         :type Output: :class:`tencentcloud.mps.v20190612.models.MediaSnapshotByTimeOffsetItem`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -7845,6 +7919,7 @@ class MediaProcessTaskSnapshotByTimeOffsetResult(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
@@ -7864,10 +7939,9 @@ class MediaProcessTaskTranscodeResult(AbstractModel):
         """
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCode: 错误码，0 表示成功，其他值表示失败：
-<li>40000：输入参数不合法，请检查输入参数；</li>
-<li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
-<li>70000：内部服务错误，建议重试。</li>
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
@@ -7878,6 +7952,7 @@ class MediaProcessTaskTranscodeResult(AbstractModel):
         :type Output: :class:`tencentcloud.mps.v20190612.models.MediaTranscodeItem`
         """
         self.Status = None
+        self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
         self.Input = None
@@ -7886,6 +7961,7 @@ class MediaProcessTaskTranscodeResult(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
         if params.get("Input") is not None:

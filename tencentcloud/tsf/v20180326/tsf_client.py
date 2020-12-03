@@ -82,6 +82,62 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def BindApiGroup(self, request):
+        """网关与API分组批量绑定
+
+        :param request: Request instance for BindApiGroup.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.BindApiGroupRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.BindApiGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("BindApiGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.BindApiGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ChangeApiUsableStatus(self, request):
+        """启用或禁用API
+
+        :param request: Request instance for ChangeApiUsableStatus.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.ChangeApiUsableStatusRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.ChangeApiUsableStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ChangeApiUsableStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ChangeApiUsableStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ContinueRunFailedTaskBatch(self, request):
         """对执行失败的任务批次执行续跑
 
@@ -96,6 +152,90 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ContinueRunFailedTaskBatchResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateAllGatewayApiAsync(self, request):
+        """一键导入API分组
+
+        :param request: Request instance for CreateAllGatewayApiAsync.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.CreateAllGatewayApiAsyncRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.CreateAllGatewayApiAsyncResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAllGatewayApiAsync", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAllGatewayApiAsyncResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateApiGroup(self, request):
+        """创建API分组
+
+        :param request: Request instance for CreateApiGroup.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.CreateApiGroupRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.CreateApiGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateApiGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateApiGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateApiRateLimitRule(self, request):
+        """创建API限流规则
+
+        :param request: Request instance for CreateApiRateLimitRule.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.CreateApiRateLimitRuleRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.CreateApiRateLimitRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateApiRateLimitRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateApiRateLimitRuleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -208,6 +348,34 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateContainGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateGatewayApi(self, request):
+        """批量导入API至api分组(也支持新建API到分组)
+
+        :param request: Request instance for CreateGatewayApi.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.CreateGatewayApiRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.CreateGatewayApiResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateGatewayApi", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateGatewayApiResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -488,6 +656,34 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTaskFlowResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteApiGroup(self, request):
+        """删除Api分组
+
+        :param request: Request instance for DeleteApiGroup.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteApiGroupRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DeleteApiGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteApiGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteApiGroupResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -979,6 +1175,118 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeApiGroup(self, request):
+        """查询API分组
+
+        :param request: Request instance for DescribeApiGroup.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeApiGroupRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeApiGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeApiGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeApiGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeApiGroups(self, request):
+        """查询API 分组信息列表
+
+        :param request: Request instance for DescribeApiGroups.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeApiGroupsRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeApiGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeApiGroups", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeApiGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeApiRateLimitRules(self, request):
+        """查询API限流规则
+
+        :param request: Request instance for DescribeApiRateLimitRules.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeApiRateLimitRulesRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeApiRateLimitRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeApiRateLimitRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeApiRateLimitRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeApiUseDetail(self, request):
+        """查询网关API监控明细数据
+
+        :param request: Request instance for DescribeApiUseDetail.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeApiUseDetailRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeApiUseDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeApiUseDetail", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeApiUseDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeApiVersions(self, request):
         """查询API 版本
 
@@ -1343,6 +1651,34 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCreateGatewayApiStatus(self, request):
+        """查询一键导入API分组任务的状态
+
+        :param request: Request instance for DescribeCreateGatewayApiStatus.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeCreateGatewayApiStatusRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeCreateGatewayApiStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCreateGatewayApiStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCreateGatewayApiStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDownloadInfo(self, request):
         """TSF上传的程序包存放在腾讯云对象存储（COS）中，通过该API可以获取从COS下载程序包需要的信息，包括包所在的桶、存储路径、鉴权信息等，之后使用COS API（或SDK）进行下载。
         COS相关文档请查阅：https://cloud.tencent.com/document/product/436
@@ -1400,6 +1736,62 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeGatewayAllGroupApis(self, request):
+        """查询网关所有分组下Api列表
+
+        :param request: Request instance for DescribeGatewayAllGroupApis.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeGatewayAllGroupApisRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeGatewayAllGroupApisResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeGatewayAllGroupApis", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeGatewayAllGroupApisResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeGatewayMonitorOverview(self, request):
+        """查询网关监控概览
+
+        :param request: Request instance for DescribeGatewayMonitorOverview.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeGatewayMonitorOverviewRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeGatewayMonitorOverviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeGatewayMonitorOverview", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeGatewayMonitorOverviewResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeGroup(self, request):
         """查询虚拟机部署组详情
 
@@ -1428,6 +1820,62 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeGroupBindedGateways(self, request):
+        """查询某个API分组已绑定的网关部署组信息列表
+
+        :param request: Request instance for DescribeGroupBindedGateways.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeGroupBindedGatewaysRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeGroupBindedGatewaysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeGroupBindedGateways", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeGroupBindedGatewaysResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeGroupGateways(self, request):
+        """查询某个网关绑定的API 分组信息列表
+
+        :param request: Request instance for DescribeGroupGateways.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeGroupGatewaysRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeGroupGatewaysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeGroupGateways", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeGroupGatewaysResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeGroupInstances(self, request):
         """查询虚拟机部署组云主机列表
 
@@ -1442,6 +1890,34 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeGroupInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeGroupUseDetail(self, request):
+        """查询网关分组监控明细数据
+
+        :param request: Request instance for DescribeGroupUseDetail.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeGroupUseDetailRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeGroupUseDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeGroupUseDetail", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeGroupUseDetailResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2241,6 +2717,34 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DraftApiGroup(self, request):
+        """下线Api分组
+
+        :param request: Request instance for DraftApiGroup.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DraftApiGroupRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DraftApiGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DraftApiGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DraftApiGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def EnableTask(self, request):
         """启用任务
 
@@ -2690,6 +3194,34 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ReleaseApiGroup(self, request):
+        """发布Api分组
+
+        :param request: Request instance for ReleaseApiGroup.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.ReleaseApiGroupRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.ReleaseApiGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ReleaseApiGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ReleaseApiGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ReleaseConfig(self, request):
         """发布配置
 
@@ -3096,6 +3628,146 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TerminateTaskFlowBatchResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UnbindApiGroup(self, request):
+        """API分组批量与网关解绑
+
+        :param request: Request instance for UnbindApiGroup.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.UnbindApiGroupRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.UnbindApiGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UnbindApiGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UnbindApiGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateApiGroup(self, request):
+        """更新Api分组
+
+        :param request: Request instance for UpdateApiGroup.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.UpdateApiGroupRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.UpdateApiGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateApiGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateApiGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateApiRateLimitRule(self, request):
+        """更新API限流规则
+
+        :param request: Request instance for UpdateApiRateLimitRule.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.UpdateApiRateLimitRuleRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.UpdateApiRateLimitRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateApiRateLimitRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateApiRateLimitRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateApiRateLimitRules(self, request):
+        """批量更新API限流规则
+
+        :param request: Request instance for UpdateApiRateLimitRules.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.UpdateApiRateLimitRulesRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.UpdateApiRateLimitRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateApiRateLimitRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateApiRateLimitRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateGatewayApi(self, request):
+        """更新API
+
+        :param request: Request instance for UpdateGatewayApi.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.UpdateGatewayApiRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.UpdateGatewayApiResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateGatewayApi", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateGatewayApiResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

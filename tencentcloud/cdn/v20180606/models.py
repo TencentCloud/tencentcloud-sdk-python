@@ -4234,6 +4234,9 @@ class DiagnoseInfo(AbstractModel):
         :param ClientList: 访问诊断链接的客户端简易信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClientList: list of DiagnoseList
+        :param Area: 域名加速区域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Area: str
         """
         self.DiagnoseUrl = None
         self.DiagnoseLink = None
@@ -4241,6 +4244,7 @@ class DiagnoseInfo(AbstractModel):
         self.ExpireDate = None
         self.VisitCount = None
         self.ClientList = None
+        self.Area = None
 
 
     def _deserialize(self, params):
@@ -4255,6 +4259,7 @@ class DiagnoseInfo(AbstractModel):
                 obj = DiagnoseList()
                 obj._deserialize(item)
                 self.ClientList.append(obj)
+        self.Area = params.get("Area")
 
 
 class DiagnoseList(AbstractModel):

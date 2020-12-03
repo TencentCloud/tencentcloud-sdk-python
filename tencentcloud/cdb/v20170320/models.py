@@ -6662,6 +6662,90 @@ class ModifyRoGroupInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyRoReplicationDelayRequest(AbstractModel):
+    """ModifyRoReplicationDelay请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例 ID。
+        :type InstanceId: str
+        :param ReplicationDelay: 延迟时间（s）。最小值1，最大值259200。
+        :type ReplicationDelay: int
+        """
+        self.InstanceId = None
+        self.ReplicationDelay = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ReplicationDelay = params.get("ReplicationDelay")
+
+
+class ModifyRoReplicationDelayResponse(AbstractModel):
+    """ModifyRoReplicationDelay返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyRoTypeRequest(AbstractModel):
+    """ModifyRoType请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例 ID。
+        :type InstanceId: str
+        :param SrcRoInstType: 只读实例源类型，取值 NORMAL（普通只读实例）、DELAY_REPLICATION（延迟只读实例）。
+        :type SrcRoInstType: str
+        :param DstRoInstType: 只读实例目标类型，取值 NORMAL（普通只读实例）、DELAY_REPLICATION（延迟只读实例）。
+        :type DstRoInstType: str
+        :param ReplicationDelay: 延迟时间（s），将实例修改为延迟只读实例时必传。最小值1，最大值259200。
+        :type ReplicationDelay: int
+        """
+        self.InstanceId = None
+        self.SrcRoInstType = None
+        self.DstRoInstType = None
+        self.ReplicationDelay = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.SrcRoInstType = params.get("SrcRoInstType")
+        self.DstRoInstType = params.get("DstRoInstType")
+        self.ReplicationDelay = params.get("ReplicationDelay")
+
+
+class ModifyRoTypeResponse(AbstractModel):
+    """ModifyRoType返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyTimeWindowRequest(AbstractModel):
     """ModifyTimeWindow请求参数结构体
 
@@ -8065,6 +8149,57 @@ class StartBatchRollbackResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class StartDelayReplicationRequest(AbstractModel):
+    """StartDelayReplication请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例 ID。
+        :type InstanceId: str
+        :param DelayReplicationType: 延迟复制类型。可选值 DEFAULT（按照延迟复制时间进行复制）、GTID（回放到指定GTID）、DUE_TIME（回放到指定时间点）。
+        :type DelayReplicationType: str
+        :param DueTime: 指定时间点，默认为0，最大值不能超过当前时间。
+        :type DueTime: int
+        :param Gtid: 指定GITD。回放到指定GTID时必传。
+        :type Gtid: str
+        """
+        self.InstanceId = None
+        self.DelayReplicationType = None
+        self.DueTime = None
+        self.Gtid = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.DelayReplicationType = params.get("DelayReplicationType")
+        self.DueTime = params.get("DueTime")
+        self.Gtid = params.get("Gtid")
+
+
+class StartDelayReplicationResponse(AbstractModel):
+    """StartDelayReplication返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncRequestId: 延迟复制任务 ID。DelayReplicationType不为DEFAULT时返回，可用来查询回放任务状态。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsyncRequestId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+
+
 class StopDBImportJobRequest(AbstractModel):
     """StopDBImportJob请求参数结构体
 
@@ -8084,6 +8219,40 @@ class StopDBImportJobRequest(AbstractModel):
 
 class StopDBImportJobResponse(AbstractModel):
     """StopDBImportJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class StopDelayReplicationRequest(AbstractModel):
+    """StopDelayReplication请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例 ID。
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class StopDelayReplicationResponse(AbstractModel):
+    """StopDelayReplication返回参数结构体
 
     """
 
