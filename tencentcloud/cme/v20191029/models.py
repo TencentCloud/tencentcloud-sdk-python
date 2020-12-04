@@ -257,12 +257,15 @@ class CMEExportInfo(AbstractModel):
         :type ClassPath: str
         :param TagSet: 导出的素材标签，单个标签不得超过10个字符。
         :type TagSet: list of str
+        :param ThirdPartyPublishInfos: 第三方平台发布信息列表。
+        :type ThirdPartyPublishInfos: list of ThirdPartyPublishInfo
         """
         self.Owner = None
         self.Name = None
         self.Description = None
         self.ClassPath = None
         self.TagSet = None
+        self.ThirdPartyPublishInfos = None
 
 
     def _deserialize(self, params):
@@ -273,6 +276,12 @@ class CMEExportInfo(AbstractModel):
         self.Description = params.get("Description")
         self.ClassPath = params.get("ClassPath")
         self.TagSet = params.get("TagSet")
+        if params.get("ThirdPartyPublishInfos") is not None:
+            self.ThirdPartyPublishInfos = []
+            for item in params.get("ThirdPartyPublishInfos"):
+                obj = ThirdPartyPublishInfo()
+                obj._deserialize(item)
+                self.ThirdPartyPublishInfos.append(obj)
 
 
 class ClassInfo(AbstractModel):
@@ -443,11 +452,11 @@ class CreateProjectRequest(AbstractModel):
         :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
         :param Description: 项目描述信息。
         :type Description: str
-        :param SwitcherProjectInput: 导播台信息，仅当项目类型为 SWITCHER 时有效。
+        :param SwitcherProjectInput: 导播台信息，仅当项目类型为 SWITCHER 时必填。
         :type SwitcherProjectInput: :class:`tencentcloud.cme.v20191029.models.SwitcherProjectInput`
         :param LiveStreamClipProjectInput: 直播剪辑信息，暂未开放，请勿使用。
         :type LiveStreamClipProjectInput: :class:`tencentcloud.cme.v20191029.models.LiveStreamClipProjectInput`
-        :param VideoEditProjectInput: 视频编辑信息。
+        :param VideoEditProjectInput: 视频编辑信息，仅当项目类型为 VIDEO_EDIT 时必填。
         :type VideoEditProjectInput: :class:`tencentcloud.cme.v20191029.models.VideoEditProjectInput`
         """
         self.Platform = None
@@ -2027,6 +2036,23 @@ class JoinTeamInfo(AbstractModel):
         self.Role = params.get("Role")
 
 
+class KuaishouPublishInfo(AbstractModel):
+    """快手视频发布信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param Title: 视频发布标题，限30个字符。
+        :type Title: str
+        """
+        self.Title = None
+
+
+    def _deserialize(self, params):
+        self.Title = params.get("Title")
+
+
 class LinkMaterial(AbstractModel):
     """链接类型的素材信息
 
@@ -2803,6 +2829,35 @@ class MoveClassResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class PenguinMediaPlatformPublishInfo(AbstractModel):
+    """企鹅号发布信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param Title: 视频发布标题。
+        :type Title: str
+        :param Description: 视频发布描述信息。
+        :type Description: str
+        :param Tags: 视频标签。
+        :type Tags: list of str
+        :param Category: 视频分类，详见企鹅号官网视频分类。
+        :type Category: int
+        """
+        self.Title = None
+        self.Description = None
+        self.Tags = None
+        self.Category = None
+
+
+    def _deserialize(self, params):
+        self.Title = params.get("Title")
+        self.Description = params.get("Description")
+        self.Tags = params.get("Tags")
+        self.Category = params.get("Category")
+
+
 class ProjectInfo(AbstractModel):
     """项目信息。
 
@@ -3259,6 +3314,41 @@ class TeamMemberInfo(AbstractModel):
         self.Role = params.get("Role")
 
 
+class ThirdPartyPublishInfo(AbstractModel):
+    """第三方平台视频发布信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param ChannelMaterialId: 发布通道  ID。
+        :type ChannelMaterialId: str
+        :param PenguinMediaPlatformPublishInfo: 企鹅号发布信息，如果使用的发布通道为企鹅号时必填。
+        :type PenguinMediaPlatformPublishInfo: :class:`tencentcloud.cme.v20191029.models.PenguinMediaPlatformPublishInfo`
+        :param WeiboPublishInfo: 新浪微博发布信息，如果使用的发布通道为新浪微博时必填。
+        :type WeiboPublishInfo: :class:`tencentcloud.cme.v20191029.models.WeiboPublishInfo`
+        :param KuaishouPublishInfo: 快手发布信息，如果使用的发布通道为快手时必填。
+        :type KuaishouPublishInfo: :class:`tencentcloud.cme.v20191029.models.KuaishouPublishInfo`
+        """
+        self.ChannelMaterialId = None
+        self.PenguinMediaPlatformPublishInfo = None
+        self.WeiboPublishInfo = None
+        self.KuaishouPublishInfo = None
+
+
+    def _deserialize(self, params):
+        self.ChannelMaterialId = params.get("ChannelMaterialId")
+        if params.get("PenguinMediaPlatformPublishInfo") is not None:
+            self.PenguinMediaPlatformPublishInfo = PenguinMediaPlatformPublishInfo()
+            self.PenguinMediaPlatformPublishInfo._deserialize(params.get("PenguinMediaPlatformPublishInfo"))
+        if params.get("WeiboPublishInfo") is not None:
+            self.WeiboPublishInfo = WeiboPublishInfo()
+            self.WeiboPublishInfo._deserialize(params.get("WeiboPublishInfo"))
+        if params.get("KuaishouPublishInfo") is not None:
+            self.KuaishouPublishInfo = KuaishouPublishInfo()
+            self.KuaishouPublishInfo._deserialize(params.get("KuaishouPublishInfo"))
+
+
 class TimeRange(AbstractModel):
     """时间范围
 
@@ -3291,14 +3381,23 @@ class VODExportInfo(AbstractModel):
         :type Name: str
         :param ClassId: 导出的媒资分类 Id。
         :type ClassId: int
+        :param ThirdPartyPublishInfos: 第三方平台发布信息列表。
+        :type ThirdPartyPublishInfos: list of ThirdPartyPublishInfo
         """
         self.Name = None
         self.ClassId = None
+        self.ThirdPartyPublishInfos = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.ClassId = params.get("ClassId")
+        if params.get("ThirdPartyPublishInfos") is not None:
+            self.ThirdPartyPublishInfos = []
+            for item in params.get("ThirdPartyPublishInfos"):
+                obj = ThirdPartyPublishInfo()
+                obj._deserialize(item)
+                self.ThirdPartyPublishInfos.append(obj)
 
 
 class VideoEditProjectInput(AbstractModel):
@@ -3308,13 +3407,18 @@ class VideoEditProjectInput(AbstractModel):
 
     def __init__(self):
         """
-        :param InitTracks: 输入的媒体轨道列表，包括视频、音频，等素材组成的多个轨道信息，其中：<li>输入的多个轨道在时间轴上和输出媒体文件的时间轴对齐；</li><li>时间轴上相同时间点的各个轨道的素材进行重叠，视频或者图片按轨道顺序进行图像的叠加，轨道顺序高的素材叠加在上面，音频素材进行混音；</li><li>视频、音频，每一种类型的轨道最多支持10个。</li>
+        :param VideoEditTemplateId: 视频编辑模板 ID ，通过模板导入项目时填写。
+        :type VideoEditTemplateId: str
+        :param InitTracks: 输入的媒体轨道列表，包括视频、音频，等素材组成的多个轨道信息。其中：<li>输入的多个轨道在时间轴上和输出媒体文件的时间轴对齐；</li><li>时间轴上相同时间点的各个轨道的素材进行重叠，视频或者图片按轨道顺序进行图像的叠加，轨道顺序高的素材叠加在上面，音频素材进行混音；</li><li>视频、音频，每一种类型的轨道最多支持10个。</li>
+注：当从模板导入项目时（即 VideoEditTemplateId 不为空时），该参数无效。
         :type InitTracks: list of MediaTrack
         """
+        self.VideoEditTemplateId = None
         self.InitTracks = None
 
 
     def _deserialize(self, params):
+        self.VideoEditTemplateId = params.get("VideoEditTemplateId")
         if params.get("InitTracks") is not None:
             self.InitTracks = []
             for item in params.get("InitTracks"):
@@ -3511,3 +3615,32 @@ class VideoTrackItem(AbstractModel):
         self.CoordinateOrigin = params.get("CoordinateOrigin")
         self.Height = params.get("Height")
         self.Width = params.get("Width")
+
+
+class WeiboPublishInfo(AbstractModel):
+    """微博发布信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param Title: 视频发布标题。
+        :type Title: str
+        :param Description: 视频发布描述信息。
+        :type Description: str
+        :param Visible: 微博可见性，可取值为：
+<li>Public：公开，所有人可见；</li>
+<li>Private：私有，仅自己可见。</li>
+
+默认为 Public，所有人可见。
+        :type Visible: str
+        """
+        self.Title = None
+        self.Description = None
+        self.Visible = None
+
+
+    def _deserialize(self, params):
+        self.Title = params.get("Title")
+        self.Description = params.get("Description")
+        self.Visible = params.get("Visible")

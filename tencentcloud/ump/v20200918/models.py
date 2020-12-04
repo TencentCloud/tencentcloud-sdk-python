@@ -386,6 +386,45 @@ class CreateCameraAlertsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateCaptureRequest(AbstractModel):
+    """CreateCapture请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 原始抓拍报文
+        :type Data: str
+        """
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        self.Data = params.get("Data")
+
+
+class CreateCaptureResponse(AbstractModel):
+    """CreateCapture返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RspData: 原始应答报文
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RspData: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RspData = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RspData = params.get("RspData")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateMultiBizAlertRequest(AbstractModel):
     """CreateMultiBizAlert请求参数结构体
 

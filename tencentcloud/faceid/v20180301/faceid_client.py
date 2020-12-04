@@ -335,7 +335,7 @@ class FaceidClient(AbstractClient):
 
 
     def GetFaceIdToken(self, request):
-        """每次调用人脸核身SaaS化服务前，需先调用本接口获取FaceIdToken，用来串联核身流程，在验证完成后，用于获取验证结果信息，该token仅能核身一次。
+        """每次调用人脸核身SDK服务前，需先调用本接口获取SDKToken，用来串联核身流程，在验证完成后，用于获取验证结果信息，该token仅能核身一次。
 
         :param request: Request instance for GetFaceIdToken.
         :type request: :class:`tencentcloud.faceid.v20180301.models.GetFaceIdTokenRequest`
