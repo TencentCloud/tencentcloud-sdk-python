@@ -4439,6 +4439,21 @@ class RecycleReadOnlyGroupRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        """
+        :param InstanceId: 主实例的ID
+        :type InstanceId: str
+        :param ReadOnlyGroupId: 只读组的ID
+        :type ReadOnlyGroupId: str
+        """
+        self.InstanceId = None
+        self.ReadOnlyGroupId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ReadOnlyGroupId = params.get("ReadOnlyGroupId")
+
 
 class RecycleReadOnlyGroupResponse(AbstractModel):
     """RecycleReadOnlyGroup返回参数结构体

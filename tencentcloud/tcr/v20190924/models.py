@@ -16,6 +16,35 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AccessVpc(AbstractModel):
+    """内网接入信息
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: Vpc的Id
+        :type VpcId: str
+        :param SubnetId: 子网Id
+        :type SubnetId: str
+        :param Status: 内网接入状态
+        :type Status: str
+        :param AccessIp: 内网接入Ip
+        :type AccessIp: str
+        """
+        self.VpcId = None
+        self.SubnetId = None
+        self.Status = None
+        self.AccessIp = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.Status = params.get("Status")
+        self.AccessIp = params.get("AccessIp")
+
+
 class AutoDelStrategyInfo(AbstractModel):
     """自动删除策略信息
 
@@ -1729,6 +1758,54 @@ class DescribeInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeInternalEndpointsRequest(AbstractModel):
+    """DescribeInternalEndpoints请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        """
+        self.RegistryId = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+
+
+class DescribeInternalEndpointsResponse(AbstractModel):
+    """DescribeInternalEndpoints返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AccessVpcSet: 内网接入信息的列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessVpcSet: list of AccessVpc
+        :param TotalCount: 内网接入总数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AccessVpcSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AccessVpcSet") is not None:
+            self.AccessVpcSet = []
+            for item in params.get("AccessVpcSet"):
+                obj = AccessVpc()
+                obj._deserialize(item)
+                self.AccessVpcSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeNamespacePersonalRequest(AbstractModel):
     """DescribeNamespacePersonal请求参数结构体
 
@@ -2554,6 +2631,60 @@ class ManageImageLifecycleGlobalPersonalResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ManageInternalEndpointRequest(AbstractModel):
+    """ManageInternalEndpoint请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param Operation: Create/Delete
+        :type Operation: str
+        :param VpcId: 需要接入的用户vpcid
+        :type VpcId: str
+        :param SubnetId: 需要接入的用户子网id
+        :type SubnetId: str
+        :param RegionId: 请求的地域ID
+        :type RegionId: int
+        """
+        self.RegistryId = None
+        self.Operation = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.RegionId = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.Operation = params.get("Operation")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.RegionId = params.get("RegionId")
+
+
+class ManageInternalEndpointResponse(AbstractModel):
+    """ManageInternalEndpoint返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RegistryId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
         self.RequestId = params.get("RequestId")
 
 

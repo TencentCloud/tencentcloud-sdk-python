@@ -421,7 +421,7 @@ class ApiGroupInfo(AbstractModel):
         :param GroupContext: 分组上下文
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupContext: str
-        :param AuthType: 鉴权类型。 secret： 秘钥鉴权； none:无鉴权
+        :param AuthType: 鉴权类型。 secret： 密钥鉴权； none:无鉴权
 注意：此字段可能返回 null，表示取不到有效值。
         :type AuthType: str
         :param Status: 发布状态, drafted: 未发布。 released: 发布
@@ -500,7 +500,7 @@ class ApiInfo(AbstractModel):
         :type Method: str
         :param PathMapping: 请求映射
         :type PathMapping: str
-        :param Host: api所在服务host
+        :param Host: api所在服务host,限定外部Api填写。格式: "http://127.0.0.1:8080"
         :type Host: str
         :param Description: api描述信息
         :type Description: str
@@ -1806,7 +1806,7 @@ class CreateApiGroupRequest(AbstractModel):
         :type GroupName: str
         :param GroupContext: 分组上下文
         :type GroupContext: str
-        :param AuthType: 鉴权类型。secret： 秘钥鉴权； none:无鉴权
+        :param AuthType: 鉴权类型。secret： 密钥鉴权； none:无鉴权
         :type AuthType: str
         :param Description: 备注
         :type Description: str

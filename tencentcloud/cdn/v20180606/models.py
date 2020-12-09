@@ -976,6 +976,84 @@ RETURN_404：全部请求返回 404
         self.LastTriggerTime = params.get("LastTriggerTime")
 
 
+class BotCookie(AbstractModel):
+    """Bot cookie策略
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: on|off
+        :type Switch: str
+        :param RuleType: 规则类型，当前只有all
+        :type RuleType: str
+        :param RuleValue: 规则值，['*']
+        :type RuleValue: list of str
+        :param Action: 执行动作，monitor|intercept|redirect|captcha
+        :type Action: str
+        :param RedirectUrl: 重定向时设置的重定向页面
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RedirectUrl: str
+        :param UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
+        self.Switch = None
+        self.RuleType = None
+        self.RuleValue = None
+        self.Action = None
+        self.RedirectUrl = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.RuleType = params.get("RuleType")
+        self.RuleValue = params.get("RuleValue")
+        self.Action = params.get("Action")
+        self.RedirectUrl = params.get("RedirectUrl")
+        self.UpdateTime = params.get("UpdateTime")
+
+
+class BotJavaScript(AbstractModel):
+    """Bot js策略
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: on|off
+        :type Switch: str
+        :param RuleType: 规则类型，当前只有file
+        :type RuleType: str
+        :param RuleValue: 规则值，['html', 'htm']
+        :type RuleValue: list of str
+        :param Action: 执行动作，monitor|intercept|redirect|captcha
+        :type Action: str
+        :param RedirectUrl: 重定向时设置的重定向页面
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RedirectUrl: str
+        :param UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
+        self.Switch = None
+        self.RuleType = None
+        self.RuleValue = None
+        self.Action = None
+        self.RedirectUrl = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.RuleType = params.get("RuleType")
+        self.RuleValue = params.get("RuleValue")
+        self.Action = params.get("Action")
+        self.RedirectUrl = params.get("RedirectUrl")
+        self.UpdateTime = params.get("UpdateTime")
+
+
 class BriefDomain(AbstractModel):
     """域名基础配置信息，含 CNAME、状态、业务类型、加速区域、创建时间、更新时间、源站配置等。
 
@@ -5107,6 +5185,9 @@ failed：部署失败
         :param Hsts: Hsts配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type Hsts: :class:`tencentcloud.cdn.v20180606.models.Hsts`
+        :param TlsVersion: Tls版本设置，仅支持部分Advance域名，支持设置 TLSv1, TLSV1.1, TLSV1.2, TLSv1.3，修改时必须开启连续的版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TlsVersion: list of str
         """
         self.Switch = None
         self.Http2 = None
@@ -5117,6 +5198,7 @@ failed：部署失败
         self.Spdy = None
         self.SslStatus = None
         self.Hsts = None
+        self.TlsVersion = None
 
 
     def _deserialize(self, params):
@@ -5135,6 +5217,7 @@ failed：部署失败
         if params.get("Hsts") is not None:
             self.Hsts = Hsts()
             self.Hsts._deserialize(params.get("Hsts"))
+        self.TlsVersion = params.get("TlsVersion")
 
 
 class ImageOptimization(AbstractModel):
@@ -6065,19 +6148,26 @@ file 时填充后缀名，如 jpg、txt
 directory 时填充路径，如 /xxx/test/
 path 时填充绝对路径，如 /xxx/test.html
 index 时填充 /
+注意：all规则不可删除，默认遵循源站，可修改。
         :type MaxAgeContents: list of str
         :param MaxAgeTime: MaxAge 时间设置，单位秒
+注意：时间为0，即不缓存。
         :type MaxAgeTime: int
+        :param FollowOrigin: 是否遵循源站，on或off，开启时忽略时间设置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FollowOrigin: str
         """
         self.MaxAgeType = None
         self.MaxAgeContents = None
         self.MaxAgeTime = None
+        self.FollowOrigin = None
 
 
     def _deserialize(self, params):
         self.MaxAgeType = params.get("MaxAgeType")
         self.MaxAgeContents = params.get("MaxAgeContents")
         self.MaxAgeTime = params.get("MaxAgeTime")
+        self.FollowOrigin = params.get("FollowOrigin")
 
 
 class Origin(AbstractModel):
@@ -6477,10 +6567,12 @@ class PathRule(AbstractModel):
 
     def __init__(self):
         """
-        :param Regex: 是否是正则匹配。
+        :param Regex: 是否开启通配符“*”匹配：
+false：关闭
+true：开启
 注意：此字段可能返回 null，表示取不到有效值。
         :type Regex: bool
-        :param Path: 匹配的URL路径，仅支持Url路径，不支持参数。默认完全匹配，正则模式下支持通配符 *，最多支持5个通配符，最大长度1024字符。
+        :param Path: 匹配的URL路径，仅支持Url路径，不支持参数。默认完全匹配，开启通配符“*”匹配后，最多支持5个通配符，最大长度为1024个字符。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Path: str
         :param Origin: 路径匹配时的回源源站。暂不支持开了私有读写的COS源。不填写时沿用默认源站。
@@ -6489,10 +6581,13 @@ class PathRule(AbstractModel):
         :param ServerName: 路径匹配时回源的Host头部。不填写时沿用默认ServerName。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServerName: str
-        :param OriginArea: 源站所属区域，支持CN，OV。分别表示国内或海外。默认为CN。
+        :param OriginArea: 源站所属区域，支持CN，OV：
+CN：中国境内
+OV：中国境外
+默认为CN。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OriginArea: str
-        :param ForwardUri: 路径匹配时回源的URI路径，必须以“/”开头，不包含参数部分。最大长度1024字符。可使用$1, $2, $3, $4, $5分别捕获匹配路径中的通配符号，最多支持10个捕获值。
+        :param ForwardUri: 路径匹配时回源的URI路径，必须以“/”开头，不包含参数部分。最大长度为1024个字符。可使用$1, $2, $3, $4, $5分别捕获匹配路径中的通配符号“*”，最多支持10个捕获值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ForwardUri: str
         :param RequestHeaders: 路径匹配时回源的头部设置。
@@ -7277,6 +7372,261 @@ class RuleQueryString(AbstractModel):
         self.Value = params.get("Value")
 
 
+class ScdnAclConfig(AbstractModel):
+    """SCDN访问控制
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 是否开启，on | off
+        :type Switch: str
+        :param ScriptData: Acl规则组，switch为on时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScriptData: list of ScdnAclGroup
+        :param ErrorPage: 错误页面配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorPage: :class:`tencentcloud.cdn.v20180606.models.ScdnErrorPage`
+        """
+        self.Switch = None
+        self.ScriptData = None
+        self.ErrorPage = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("ScriptData") is not None:
+            self.ScriptData = []
+            for item in params.get("ScriptData"):
+                obj = ScdnAclGroup()
+                obj._deserialize(item)
+                self.ScriptData.append(obj)
+        if params.get("ErrorPage") is not None:
+            self.ErrorPage = ScdnErrorPage()
+            self.ErrorPage._deserialize(params.get("ErrorPage"))
+
+
+class ScdnAclGroup(AbstractModel):
+    """SCDN精准访问控制配置
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleName: 规则名称
+        :type RuleName: str
+        :param Configure: 具体配置
+        :type Configure: list of ScdnAclRule
+        :param Result: 规则行为，一般为refuse
+        :type Result: str
+        :param Status: 规则是否生效中active|inactive
+        :type Status: str
+        """
+        self.RuleName = None
+        self.Configure = None
+        self.Result = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.RuleName = params.get("RuleName")
+        if params.get("Configure") is not None:
+            self.Configure = []
+            for item in params.get("Configure"):
+                obj = ScdnAclRule()
+                obj._deserialize(item)
+                self.Configure.append(obj)
+        self.Result = params.get("Result")
+        self.Status = params.get("Status")
+
+
+class ScdnAclRule(AbstractModel):
+    """精准访问控制匹配规则
+
+    """
+
+    def __init__(self):
+        """
+        :param MatchKey: 匹配关键字, params | url | ip | referer | user-agent
+        :type MatchKey: str
+        :param LogiOperator: 逻辑操作符，取值 exclude, include, notequal, equal, len-less, len-equal, len-more
+        :type LogiOperator: str
+        :param MatchValue: 匹配值
+        :type MatchValue: str
+        """
+        self.MatchKey = None
+        self.LogiOperator = None
+        self.MatchValue = None
+
+
+    def _deserialize(self, params):
+        self.MatchKey = params.get("MatchKey")
+        self.LogiOperator = params.get("LogiOperator")
+        self.MatchValue = params.get("MatchValue")
+
+
+class ScdnBotConfig(AbstractModel):
+    """bot配置类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: on|off
+        :type Switch: str
+        :param BotCookie: Bot cookie策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BotCookie: list of BotCookie
+        :param BotJavaScript: Bot Js策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BotJavaScript: list of BotJavaScript
+        """
+        self.Switch = None
+        self.BotCookie = None
+        self.BotJavaScript = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("BotCookie") is not None:
+            self.BotCookie = []
+            for item in params.get("BotCookie"):
+                obj = BotCookie()
+                obj._deserialize(item)
+                self.BotCookie.append(obj)
+        if params.get("BotJavaScript") is not None:
+            self.BotJavaScript = []
+            for item in params.get("BotJavaScript"):
+                obj = BotJavaScript()
+                obj._deserialize(item)
+                self.BotJavaScript.append(obj)
+
+
+class ScdnCCRules(AbstractModel):
+    """scdn 的自定义 cc 规则
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleType: 规则类型：
+all：所有文件生效
+file：指定文件后缀生效
+directory：指定路径生效
+path：指定绝对路径生效
+index：首页
+        :type RuleType: str
+        :param RuleValue: 规则值
+        :type RuleValue: list of str
+        :param Qps: 规则限频
+        :type Qps: int
+        :param DetectionTime: 探测时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DetectionTime: int
+        :param FrequencyLimit: 限频阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FrequencyLimit: int
+        :param PunishmentSwitch: IP 惩罚开关，可选on|off
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PunishmentSwitch: str
+        :param PunishmentTime: IP 惩罚时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PunishmentTime: int
+        :param Action: 执行动作，intercept|redirect
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Action: str
+        :param RedirectUrl: 动作为 redirect 时，重定向的url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RedirectUrl: str
+        """
+        self.RuleType = None
+        self.RuleValue = None
+        self.Qps = None
+        self.DetectionTime = None
+        self.FrequencyLimit = None
+        self.PunishmentSwitch = None
+        self.PunishmentTime = None
+        self.Action = None
+        self.RedirectUrl = None
+
+
+    def _deserialize(self, params):
+        self.RuleType = params.get("RuleType")
+        self.RuleValue = params.get("RuleValue")
+        self.Qps = params.get("Qps")
+        self.DetectionTime = params.get("DetectionTime")
+        self.FrequencyLimit = params.get("FrequencyLimit")
+        self.PunishmentSwitch = params.get("PunishmentSwitch")
+        self.PunishmentTime = params.get("PunishmentTime")
+        self.Action = params.get("Action")
+        self.RedirectUrl = params.get("RedirectUrl")
+
+
+class ScdnConfig(AbstractModel):
+    """cc的配置类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: on | off
+        :type Switch: str
+        :param Rules: 自定义 cc 防护规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rules: list of ScdnCCRules
+        """
+        self.Switch = None
+        self.Rules = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = ScdnCCRules()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+
+
+class ScdnDdosConfig(AbstractModel):
+    """ddos配置类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: on|off
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
+class ScdnErrorPage(AbstractModel):
+    """acl的错误页面
+
+    """
+
+    def __init__(self):
+        """
+        :param RedirectCode: 状态码
+        :type RedirectCode: int
+        :param RedirectUrl: 重定向url
+        :type RedirectUrl: str
+        """
+        self.RedirectCode = None
+        self.RedirectUrl = None
+
+
+    def _deserialize(self, params):
+        self.RedirectCode = params.get("RedirectCode")
+        self.RedirectUrl = params.get("RedirectUrl")
+
+
 class ScdnLogTaskDetail(AbstractModel):
     """SCDN日志事件详细信息
 
@@ -7436,6 +7786,71 @@ class ScdnTypeData(AbstractModel):
     def _deserialize(self, params):
         self.AttackType = params.get("AttackType")
         self.Value = params.get("Value")
+
+
+class ScdnWafConfig(AbstractModel):
+    """waf配置类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: on|off
+        :type Switch: str
+        :param Mode: intercept|observe，默认intercept
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Mode: str
+        :param ErrorPage: 重定向的错误页面
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorPage: :class:`tencentcloud.cdn.v20180606.models.ScdnErrorPage`
+        :param WebShellSwitch: webshell拦截开关，on|off，默认off
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WebShellSwitch: str
+        :param Rules: 类型拦截规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rules: list of ScdnWafRule
+        """
+        self.Switch = None
+        self.Mode = None
+        self.ErrorPage = None
+        self.WebShellSwitch = None
+        self.Rules = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Mode = params.get("Mode")
+        if params.get("ErrorPage") is not None:
+            self.ErrorPage = ScdnErrorPage()
+            self.ErrorPage._deserialize(params.get("ErrorPage"))
+        self.WebShellSwitch = params.get("WebShellSwitch")
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = ScdnWafRule()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+
+
+class ScdnWafRule(AbstractModel):
+    """Waf 规则信息
+
+    """
+
+    def __init__(self):
+        """
+        :param AttackType: 攻击类型
+        :type AttackType: str
+        :param Operate: 防护措施，observe
+        :type Operate: str
+        """
+        self.AttackType = None
+        self.Operate = None
+
+
+    def _deserialize(self, params):
+        self.AttackType = params.get("AttackType")
+        self.Operate = params.get("Operate")
 
 
 class SchemeKey(AbstractModel):
@@ -8458,6 +8873,74 @@ class UpdatePayTypeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class UpdateScdnDomainRequest(AbstractModel):
+    """UpdateScdnDomain请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Domain: 域名
+        :type Domain: str
+        :param Waf: Web 攻击防护（WAF）配置
+        :type Waf: :class:`tencentcloud.cdn.v20180606.models.ScdnWafConfig`
+        :param Acl: 自定义防护策略配置
+        :type Acl: :class:`tencentcloud.cdn.v20180606.models.ScdnAclConfig`
+        :param CC: CC 防护配置，目前 CC 防护默认开启
+        :type CC: :class:`tencentcloud.cdn.v20180606.models.ScdnConfig`
+        :param Ddos: DDOS 防护配置，目前 DDoS 防护默认开启
+        :type Ddos: :class:`tencentcloud.cdn.v20180606.models.ScdnDdosConfig`
+        :param Bot: BOT 防护配置
+        :type Bot: :class:`tencentcloud.cdn.v20180606.models.ScdnBotConfig`
+        """
+        self.Domain = None
+        self.Waf = None
+        self.Acl = None
+        self.CC = None
+        self.Ddos = None
+        self.Bot = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        if params.get("Waf") is not None:
+            self.Waf = ScdnWafConfig()
+            self.Waf._deserialize(params.get("Waf"))
+        if params.get("Acl") is not None:
+            self.Acl = ScdnAclConfig()
+            self.Acl._deserialize(params.get("Acl"))
+        if params.get("CC") is not None:
+            self.CC = ScdnConfig()
+            self.CC._deserialize(params.get("CC"))
+        if params.get("Ddos") is not None:
+            self.Ddos = ScdnDdosConfig()
+            self.Ddos._deserialize(params.get("Ddos"))
+        if params.get("Bot") is not None:
+            self.Bot = ScdnBotConfig()
+            self.Bot._deserialize(params.get("Bot"))
+
+
+class UpdateScdnDomainResponse(AbstractModel):
+    """UpdateScdnDomain返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 提交结果，Success表示成功
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class UrlRecord(AbstractModel):
     """封禁url的详细信息
 
@@ -8533,16 +9016,21 @@ class UrlRedirectRule(AbstractModel):
         :type Pattern: str
         :param RedirectUrl: 目标URL，必须以“/”开头，不包含参数部分。最大长度1024字符。可使用$1, $2, $3, $4, $5分别捕获匹配路径中的通配符号，最多支持10个捕获值。
         :type RedirectUrl: str
+        :param RedirectHost: 目标host，必须以http://或https://开头，并填写标准格式域名，如果不填写，默认为http:// + 当前域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RedirectHost: str
         """
         self.RedirectStatusCode = None
         self.Pattern = None
         self.RedirectUrl = None
+        self.RedirectHost = None
 
 
     def _deserialize(self, params):
         self.RedirectStatusCode = params.get("RedirectStatusCode")
         self.Pattern = params.get("Pattern")
         self.RedirectUrl = params.get("RedirectUrl")
+        self.RedirectHost = params.get("RedirectHost")
 
 
 class UserAgentFilter(AbstractModel):

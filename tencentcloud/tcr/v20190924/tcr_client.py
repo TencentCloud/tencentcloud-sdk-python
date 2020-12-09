@@ -1034,6 +1034,34 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeInternalEndpoints(self, request):
+        """查询实例内网访问VPC链接
+
+        :param request: Request instance for DescribeInternalEndpoints.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeInternalEndpointsRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DescribeInternalEndpointsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInternalEndpoints", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInternalEndpointsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeNamespacePersonal(self, request):
         """查询个人版命名空间信息
 
@@ -1384,6 +1412,34 @@ class TcrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ManageImageLifecycleGlobalPersonalResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ManageInternalEndpoint(self, request):
+        """管理实例内网访问VPC链接
+
+        :param request: Request instance for ManageInternalEndpoint.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.ManageInternalEndpointRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.ManageInternalEndpointResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ManageInternalEndpoint", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ManageInternalEndpointResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

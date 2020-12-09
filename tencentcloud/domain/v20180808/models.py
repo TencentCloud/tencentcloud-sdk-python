@@ -902,6 +902,8 @@ qcloud: Tencent Cloud Computing (Beijing) Limited Liability Company（腾讯云�
 yunxun: Guangzhou Yunxun Information Technology Co., Ltd.（广州云讯信息科技有限公司）
 xinnet: Xin Net Technology Corporation（北京新网数码信息技术有限公司）
         :type RegistrarType: str
+        :param NameServer: 域名绑定的ns
+        :type NameServer: list of str
         """
         self.DomainId = None
         self.DomainName = None
@@ -914,6 +916,7 @@ xinnet: Xin Net Technology Corporation（北京新网数码信息技术有限公
         self.DomainStatus = None
         self.BuyStatus = None
         self.RegistrarType = None
+        self.NameServer = None
 
 
     def _deserialize(self, params):
@@ -928,6 +931,7 @@ xinnet: Xin Net Technology Corporation（北京新网数码信息技术有限公
         self.DomainStatus = params.get("DomainStatus")
         self.BuyStatus = params.get("BuyStatus")
         self.RegistrarType = params.get("RegistrarType")
+        self.NameServer = params.get("NameServer")
 
 
 class DomainBatchDetailSet(AbstractModel):

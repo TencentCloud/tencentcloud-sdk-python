@@ -299,6 +299,34 @@ class CloudBaseRunVolumeMount(AbstractModel):
                 self.NfsVolumes.append(obj)
 
 
+class CloudBaseRunVpcInfo(AbstractModel):
+    """vpc信息
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: vpc的id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param SubnetIds: 子网id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetIds: list of str
+        :param CreateType: 创建类型(0=继承; 1=新建; 2=指定)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateType: int
+        """
+        self.VpcId = None
+        self.SubnetIds = None
+        self.CreateType = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.SubnetIds = params.get("SubnetIds")
+        self.CreateType = params.get("CreateType")
+
+
 class CloudBaseRunVpcSubnet(AbstractModel):
     """子网信息
 
@@ -2502,6 +2530,10 @@ class EstablishCloudBaseRunServerRequest(AbstractModel):
         :type OperatorRemark: str
         :param Source: 来源方（默认值：qcloud，微信侧来源miniapp)
         :type Source: str
+        :param VpcInfo: vpc信息
+        :type VpcInfo: :class:`tencentcloud.tcb.v20180608.models.CloudBaseRunVpcInfo`
+        :param PublicAccess: 0/1=允许公网访问;2=关闭公网访问
+        :type PublicAccess: int
         """
         self.EnvId = None
         self.ServiceName = None
@@ -2512,6 +2544,8 @@ class EstablishCloudBaseRunServerRequest(AbstractModel):
         self.LogType = None
         self.OperatorRemark = None
         self.Source = None
+        self.VpcInfo = None
+        self.PublicAccess = None
 
 
     def _deserialize(self, params):
@@ -2526,6 +2560,10 @@ class EstablishCloudBaseRunServerRequest(AbstractModel):
         self.LogType = params.get("LogType")
         self.OperatorRemark = params.get("OperatorRemark")
         self.Source = params.get("Source")
+        if params.get("VpcInfo") is not None:
+            self.VpcInfo = CloudBaseRunVpcInfo()
+            self.VpcInfo._deserialize(params.get("VpcInfo"))
+        self.PublicAccess = params.get("PublicAccess")
 
 
 class EstablishCloudBaseRunServerResponse(AbstractModel):

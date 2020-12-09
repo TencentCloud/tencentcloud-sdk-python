@@ -1155,7 +1155,7 @@ class InvokeRequest(AbstractModel):
         :type FuncName: str
         :param GroupName: 调用合约的组织名称，可以在组织管理列表中获取当前组织的名称
         :type GroupName: str
-        :param Args: 被调用的函数参数列表
+        :param Args: 被调用的函数参数列表，参数列表大小总和要求小于2M
         :type Args: list of str
         :param AsyncFlag: 同步调用标识，可选参数，值为0或者不传表示使用同步方法调用，调用后会等待交易执行后再返回执行结果；值为1时表示使用异步方式调用Invoke，执行后会立即返回交易对应的Txid，后续需要通过GetInvokeTx这个API查询该交易的执行结果。（对于逻辑较为简单的交易，可以使用同步模式；对于逻辑较为复杂的交易，建议使用异步模式，否则容易导致API因等待时间过长，返回等待超时）
         :type AsyncFlag: int

@@ -965,6 +965,34 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeLoadBalancerTraffic(self, request):
+        """查询账号下高流量负载均衡，返回前10个负载均衡。如果是子账号登录，只返回子账号有权限的负载均衡。
+
+        :param request: Request instance for DescribeLoadBalancerTraffic.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeLoadBalancerTrafficRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeLoadBalancerTrafficResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLoadBalancerTraffic", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLoadBalancerTrafficResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeLoadBalancers(self, request):
         """查询一个地域的负载均衡实例列表
 

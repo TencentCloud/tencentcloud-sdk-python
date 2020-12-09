@@ -2448,11 +2448,14 @@ class CreateDirectConnectGatewayRequest(AbstractModel):
 <li>NORMAL - （默认）标准型，注：云联网只支持标准型</li>
 <li>NAT - NAT型</li>NAT类型支持网络地址转换配置，类型确定后不能修改；一个私有网络可以创建一个NAT类型的专线网关和一个非NAT类型的专线网关
         :type GatewayType: str
+        :param ModeType: 云联网路由发布模式，可选值：`standard`（标准模式）、`exquisite`（精细模式）。只有云联网类型专线网关才支持`ModeType`。
+        :type ModeType: str
         """
         self.DirectConnectGatewayName = None
         self.NetworkType = None
         self.NetworkInstanceId = None
         self.GatewayType = None
+        self.ModeType = None
 
 
     def _deserialize(self, params):
@@ -2460,6 +2463,7 @@ class CreateDirectConnectGatewayRequest(AbstractModel):
         self.NetworkType = params.get("NetworkType")
         self.NetworkInstanceId = params.get("NetworkInstanceId")
         self.GatewayType = params.get("GatewayType")
+        self.ModeType = params.get("ModeType")
 
 
 class CreateDirectConnectGatewayResponse(AbstractModel):
@@ -8676,6 +8680,12 @@ NAT类型支持网络地址转换配置，类型确定后不能修改；一个�
         :param NatGatewayId: 绑定的NAT网关ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type NatGatewayId: str
+        :param VXLANSupport: 专线网关是否支持VXLAN架构
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VXLANSupport: list of bool
+        :param ModeType: 云联网路由发布模式：`standard`（标准模式）、`exquisite`（精细模式）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModeType: str
         """
         self.DirectConnectGatewayId = None
         self.DirectConnectGatewayName = None
@@ -8690,6 +8700,8 @@ NAT类型支持网络地址转换配置，类型确定后不能修改；一个�
         self.EnableBGP = None
         self.EnableBGPCommunity = None
         self.NatGatewayId = None
+        self.VXLANSupport = None
+        self.ModeType = None
 
 
     def _deserialize(self, params):
@@ -8706,6 +8718,8 @@ NAT类型支持网络地址转换配置，类型确定后不能修改；一个�
         self.EnableBGP = params.get("EnableBGP")
         self.EnableBGPCommunity = params.get("EnableBGPCommunity")
         self.NatGatewayId = params.get("NatGatewayId")
+        self.VXLANSupport = params.get("VXLANSupport")
+        self.ModeType = params.get("ModeType")
 
 
 class DirectConnectGatewayCcnRoute(AbstractModel):
@@ -10817,16 +10831,20 @@ class ModifyDirectConnectGatewayAttributeRequest(AbstractModel):
         :type DirectConnectGatewayName: str
         :param CcnRouteType: 云联网路由学习类型，可选值：`BGP`（自动学习）、`STATIC`（静态，即用户配置）。只有云联网类型专线网关且开启了BGP功能才支持修改`CcnRouteType`。
         :type CcnRouteType: str
+        :param ModeType: 云联网路由发布模式，可选值：`standard`（标准模式）、`exquisite`（精细模式）。只有云联网类型专线网关才支持修改`ModeType`。
+        :type ModeType: str
         """
         self.DirectConnectGatewayId = None
         self.DirectConnectGatewayName = None
         self.CcnRouteType = None
+        self.ModeType = None
 
 
     def _deserialize(self, params):
         self.DirectConnectGatewayId = params.get("DirectConnectGatewayId")
         self.DirectConnectGatewayName = params.get("DirectConnectGatewayName")
         self.CcnRouteType = params.get("CcnRouteType")
+        self.ModeType = params.get("ModeType")
 
 
 class ModifyDirectConnectGatewayAttributeResponse(AbstractModel):

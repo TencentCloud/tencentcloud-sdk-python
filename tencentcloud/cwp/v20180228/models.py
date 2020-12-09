@@ -4919,14 +4919,18 @@ class Filter(AbstractModel):
         :type Name: str
         :param Values: 一个或者多个过滤值。
         :type Values: list of str
+        :param ExactMatch: 模糊搜索
+        :type ExactMatch: bool
         """
         self.Name = None
         self.Values = None
+        self.ExactMatch = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Values = params.get("Values")
+        self.ExactMatch = params.get("ExactMatch")
 
 
 class Filters(AbstractModel):

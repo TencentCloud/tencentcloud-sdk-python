@@ -2580,7 +2580,7 @@ Oversea：则查询国外数据，
 1440：天粒度（跨度不支持超过一个月）。
 默认值：5。
         :type Granularity: int
-        :param ServiceName: 服务名称，可选值包括LVB(标准直播)，LEB(快直播)，默认值是LVB。
+        :param ServiceName: 服务名称，可选值包括LVB(标准直播)，LEB(快直播)，不填则查LVB+LEB总值。
         :type ServiceName: str
         """
         self.StartTime = None

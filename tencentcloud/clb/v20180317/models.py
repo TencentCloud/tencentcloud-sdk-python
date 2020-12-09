@@ -1095,6 +1095,8 @@ OPEN：公网属性， INTERNAL：内网属性。
         :type Tags: list of TagInfo
         :param Vip: 指定Vip申请负载均衡
         :type Vip: str
+        :param BandwidthPackageId: 带宽包ID，指定此参数时，网络计费方式（InternetAccessible.InternetChargeType）只支持按带宽包计费（BANDWIDTH_PACKAGE）
+        :type BandwidthPackageId: str
         :param ExclusiveCluster: 独占集群信息
         :type ExclusiveCluster: :class:`tencentcloud.clb.v20180317.models.ExclusiveCluster`
         :param ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
@@ -1120,6 +1122,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.VipIsp = None
         self.Tags = None
         self.Vip = None
+        self.BandwidthPackageId = None
         self.ExclusiveCluster = None
         self.ClientToken = None
         self.SnatPro = None
@@ -1149,6 +1152,7 @@ OPEN：公网属性， INTERNAL：内网属性。
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.Vip = params.get("Vip")
+        self.BandwidthPackageId = params.get("BandwidthPackageId")
         if params.get("ExclusiveCluster") is not None:
             self.ExclusiveCluster = ExclusiveCluster()
             self.ExclusiveCluster._deserialize(params.get("ExclusiveCluster"))
@@ -2357,6 +2361,50 @@ class DescribeLoadBalancerListByCertIdResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeLoadBalancerTrafficRequest(AbstractModel):
+    """DescribeLoadBalancerTraffic请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerRegion: 负载均衡所在地域，不传默认返回所有地域负载均衡。
+        :type LoadBalancerRegion: str
+        """
+        self.LoadBalancerRegion = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerRegion = params.get("LoadBalancerRegion")
+
+
+class DescribeLoadBalancerTrafficResponse(AbstractModel):
+    """DescribeLoadBalancerTraffic返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerTraffic: 按出带宽从高到低排序后的负载均衡信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancerTraffic: list of LoadBalancerTraffic
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LoadBalancerTraffic = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("LoadBalancerTraffic") is not None:
+            self.LoadBalancerTraffic = []
+            for item in params.get("LoadBalancerTraffic"):
+                obj = LoadBalancerTraffic()
+                obj._deserialize(item)
+                self.LoadBalancerTraffic.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeLoadBalancersDetailRequest(AbstractModel):
     """DescribeLoadBalancersDetail请求参数结构体
 
@@ -2485,6 +2533,8 @@ OPEN：公网属性， INTERNAL：内网属性。
 <li> internet-charge-type - String - 是否必填：否 - （过滤条件）按照 CLB 的网络计费模式过滤，包括"BANDWIDTH_PREPAID","TRAFFIC_POSTPAID_BY_HOUR","BANDWIDTH_POSTPAID_BY_HOUR","BANDWIDTH_PACKAGE"。</li>
 <li> master-zone-id - String - 是否必填：否 - （过滤条件）按照 CLB 的主可用区ID过滤，如 ："100001" （对应的是广州一区）。</li>
 <li> tag-key - String - 是否必填：否 - （过滤条件）按照 CLB 标签的键过滤。</li>
+<li> tag-value - String - 是否必填：否 - （过滤条件）按照 CLB 标签的值过滤。</li>
+<li> function-name - String - 是否必填：否 - （过滤条件）按照 CLB 后端绑定的SCF云函数的函数名称过滤。</li>
         :type Filters: list of Filter
         """
         self.LoadBalancerIds = None
@@ -3916,6 +3966,39 @@ class LoadBalancerHealth(AbstractModel):
                 self.Listeners.append(obj)
 
 
+class LoadBalancerTraffic(AbstractModel):
+    """负载均衡流量数据。
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: 负载均衡ID
+        :type LoadBalancerId: str
+        :param LoadBalancerName: 负载均衡名字
+        :type LoadBalancerName: str
+        :param Region: 负载均衡所在地域
+        :type Region: str
+        :param Vip: 负载均衡的vip
+        :type Vip: str
+        :param OutBandwidth: 最大出带宽，单位：Mbps
+        :type OutBandwidth: float
+        """
+        self.LoadBalancerId = None
+        self.LoadBalancerName = None
+        self.Region = None
+        self.Vip = None
+        self.OutBandwidth = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.LoadBalancerName = params.get("LoadBalancerName")
+        self.Region = params.get("Region")
+        self.Vip = params.get("Vip")
+        self.OutBandwidth = params.get("OutBandwidth")
+
+
 class ManualRewriteRequest(AbstractModel):
     """ManualRewrite请求参数结构体
 
@@ -4921,7 +5004,7 @@ class RuleHealth(AbstractModel):
         :param Url: 转发规则的Url
 注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
-        :param Targets: 本规则上绑定的后端的健康检查状态
+        :param Targets: 本规则上绑定的后端服务的健康检查状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type Targets: list of TargetHealth
         """

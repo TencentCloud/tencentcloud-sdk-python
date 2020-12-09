@@ -1577,6 +1577,34 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def UpdateScdnDomain(self, request):
+        """UpdateScdnDomain 用于修改 SCDN 加速域名安全相关配置
+
+        :param request: Request instance for UpdateScdnDomain.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.UpdateScdnDomainRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.UpdateScdnDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateScdnDomain", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateScdnDomainResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def VerifyDomainRecord(self, request):
         """验证域名解析值
 

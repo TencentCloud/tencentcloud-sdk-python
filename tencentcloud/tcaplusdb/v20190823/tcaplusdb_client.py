@@ -418,6 +418,34 @@ class TcaplusdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeMachine(self, request):
+        """查询独占集群可以申请的剩余机器
+
+        :param request: Request instance for DescribeMachine.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DescribeMachineRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.DescribeMachineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMachine", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMachineResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRegions(self, request):
         """查询TcaplusDB服务支持的地域列表
 
@@ -628,6 +656,34 @@ class TcaplusdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUinInWhitelistResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyClusterMachine(self, request):
+        """修改独占集群机器
+
+        :param request: Request instance for ModifyClusterMachine.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.ModifyClusterMachineRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ModifyClusterMachineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyClusterMachine", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyClusterMachineResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

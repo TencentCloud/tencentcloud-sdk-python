@@ -111,6 +111,27 @@ class ClusterInfo(AbstractModel):
         :param ApiAccessIpv6: TcaplusDB SDK连接参数，接入ipv6地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApiAccessIpv6: str
+        :param ClusterType: 集群类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterType: int
+        :param ClusterStatus: 集群状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterStatus: int
+        :param ReadCapacityUnit: 读CU
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReadCapacityUnit: int
+        :param WriteCapacityUnit: 写CU
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WriteCapacityUnit: int
+        :param DiskVolume: 磁盘容量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskVolume: int
+        :param ServerList: 独占server机器信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServerList: list of ServerDetailInfo
+        :param ProxyList: 独占proxy机器信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxyList: list of ProxyDetailInfo
         """
         self.ClusterName = None
         self.ClusterId = None
@@ -127,6 +148,13 @@ class ClusterInfo(AbstractModel):
         self.ApiAccessPort = None
         self.OldPasswordExpireTime = None
         self.ApiAccessIpv6 = None
+        self.ClusterType = None
+        self.ClusterStatus = None
+        self.ReadCapacityUnit = None
+        self.WriteCapacityUnit = None
+        self.DiskVolume = None
+        self.ServerList = None
+        self.ProxyList = None
 
 
     def _deserialize(self, params):
@@ -145,6 +173,23 @@ class ClusterInfo(AbstractModel):
         self.ApiAccessPort = params.get("ApiAccessPort")
         self.OldPasswordExpireTime = params.get("OldPasswordExpireTime")
         self.ApiAccessIpv6 = params.get("ApiAccessIpv6")
+        self.ClusterType = params.get("ClusterType")
+        self.ClusterStatus = params.get("ClusterStatus")
+        self.ReadCapacityUnit = params.get("ReadCapacityUnit")
+        self.WriteCapacityUnit = params.get("WriteCapacityUnit")
+        self.DiskVolume = params.get("DiskVolume")
+        if params.get("ServerList") is not None:
+            self.ServerList = []
+            for item in params.get("ServerList"):
+                obj = ServerDetailInfo()
+                obj._deserialize(item)
+                self.ServerList.append(obj)
+        if params.get("ProxyList") is not None:
+            self.ProxyList = []
+            for item in params.get("ProxyList"):
+                obj = ProxyDetailInfo()
+                obj._deserialize(item)
+                self.ProxyList.append(obj)
 
 
 class CompareIdlFilesRequest(AbstractModel):
@@ -302,6 +347,12 @@ class CreateClusterRequest(AbstractModel):
         :type ResourceTags: list of TagInfoUnit
         :param Ipv6Enable: 集群是否开启IPv6功能
         :type Ipv6Enable: int
+        :param ServerList: 独占集群占用的svr机器
+        :type ServerList: list of MachineInfo
+        :param ProxyList: 独占集群占用的proxy机器
+        :type ProxyList: list of MachineInfo
+        :param ClusterType: 集群类型1共享2独占
+        :type ClusterType: int
         """
         self.IdlType = None
         self.ClusterName = None
@@ -310,6 +361,9 @@ class CreateClusterRequest(AbstractModel):
         self.Password = None
         self.ResourceTags = None
         self.Ipv6Enable = None
+        self.ServerList = None
+        self.ProxyList = None
+        self.ClusterType = None
 
 
     def _deserialize(self, params):
@@ -325,6 +379,19 @@ class CreateClusterRequest(AbstractModel):
                 obj._deserialize(item)
                 self.ResourceTags.append(obj)
         self.Ipv6Enable = params.get("Ipv6Enable")
+        if params.get("ServerList") is not None:
+            self.ServerList = []
+            for item in params.get("ServerList"):
+                obj = MachineInfo()
+                obj._deserialize(item)
+                self.ServerList.append(obj)
+        if params.get("ProxyList") is not None:
+            self.ProxyList = []
+            for item in params.get("ProxyList"):
+                obj = MachineInfo()
+                obj._deserialize(item)
+                self.ProxyList.append(obj)
+        self.ClusterType = params.get("ClusterType")
 
 
 class CreateClusterResponse(AbstractModel):
@@ -902,6 +969,49 @@ class DescribeIdlFileInfosResponse(AbstractModel):
                 obj = IdlFileInfo()
                 obj._deserialize(item)
                 self.IdlFileInfos.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeMachineRequest(AbstractModel):
+    """DescribeMachine请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Ipv6Enable: 是否按ipv6过滤
+        :type Ipv6Enable: int
+        """
+        self.Ipv6Enable = None
+
+
+    def _deserialize(self, params):
+        self.Ipv6Enable = params.get("Ipv6Enable")
+
+
+class DescribeMachineResponse(AbstractModel):
+    """DescribeMachine返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PoolList: 独占机器资源列表
+        :type PoolList: list of PoolInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PoolList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("PoolList") is not None:
+            self.PoolList = []
+            for item in params.get("PoolList"):
+                obj = PoolInfo()
+                obj._deserialize(item)
+                self.PoolList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1513,6 +1623,87 @@ class IdlFileInfoWithoutContent(AbstractModel):
             self.Error._deserialize(params.get("Error"))
 
 
+class MachineInfo(AbstractModel):
+    """机器类型和数量
+
+    """
+
+    def __init__(self):
+        """
+        :param MachineType: 机器类型
+        :type MachineType: str
+        :param MachineNum: 机器数量
+        :type MachineNum: int
+        """
+        self.MachineType = None
+        self.MachineNum = None
+
+
+    def _deserialize(self, params):
+        self.MachineType = params.get("MachineType")
+        self.MachineNum = params.get("MachineNum")
+
+
+class ModifyClusterMachineRequest(AbstractModel):
+    """ModifyClusterMachine请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群id
+        :type ClusterId: str
+        :param ServerList: svr占用的机器
+        :type ServerList: list of MachineInfo
+        :param ProxyList: proxy占用的机器
+        :type ProxyList: list of MachineInfo
+        :param ClusterType: 集群类型1共享集群2独占集群
+        :type ClusterType: int
+        """
+        self.ClusterId = None
+        self.ServerList = None
+        self.ProxyList = None
+        self.ClusterType = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("ServerList") is not None:
+            self.ServerList = []
+            for item in params.get("ServerList"):
+                obj = MachineInfo()
+                obj._deserialize(item)
+                self.ServerList.append(obj)
+        if params.get("ProxyList") is not None:
+            self.ProxyList = []
+            for item in params.get("ProxyList"):
+                obj = MachineInfo()
+                obj._deserialize(item)
+                self.ProxyList.append(obj)
+        self.ClusterType = params.get("ClusterType")
+
+
+class ModifyClusterMachineResponse(AbstractModel):
+    """ModifyClusterMachine返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群id
+        :type ClusterId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ClusterId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyClusterNameRequest(AbstractModel):
     """ModifyClusterName请求参数结构体
 
@@ -2117,6 +2308,103 @@ class ParsedTableInfoNew(AbstractModel):
         self.SortRule = params.get("SortRule")
 
 
+class PoolInfo(AbstractModel):
+    """center资源池中的机器信息
+
+    """
+
+    def __init__(self):
+        """
+        :param PoolUid: 唯一id
+        :type PoolUid: int
+        :param Ipv6Enable: 是否支持ipv6
+        :type Ipv6Enable: int
+        :param AvailableAppCount: 剩余可用app
+        :type AvailableAppCount: int
+        :param ServerList: svr机器列表
+        :type ServerList: list of ServerMachineInfo
+        :param ProxyList: proxy机器列表
+        :type ProxyList: list of ProxyMachineInfo
+        """
+        self.PoolUid = None
+        self.Ipv6Enable = None
+        self.AvailableAppCount = None
+        self.ServerList = None
+        self.ProxyList = None
+
+
+    def _deserialize(self, params):
+        self.PoolUid = params.get("PoolUid")
+        self.Ipv6Enable = params.get("Ipv6Enable")
+        self.AvailableAppCount = params.get("AvailableAppCount")
+        if params.get("ServerList") is not None:
+            self.ServerList = []
+            for item in params.get("ServerList"):
+                obj = ServerMachineInfo()
+                obj._deserialize(item)
+                self.ServerList.append(obj)
+        if params.get("ProxyList") is not None:
+            self.ProxyList = []
+            for item in params.get("ProxyList"):
+                obj = ProxyMachineInfo()
+                obj._deserialize(item)
+                self.ProxyList.append(obj)
+
+
+class ProxyDetailInfo(AbstractModel):
+    """独占的proxy详细信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ProxyUid: proxy的唯一id
+        :type ProxyUid: str
+        :param MachineType: 机器类型
+        :type MachineType: str
+        :param ProcessSpeed: 请求包速度
+        :type ProcessSpeed: int
+        :param AverageProcessDelay: 请求包时延
+        :type AverageProcessDelay: int
+        :param SlowProcessSpeed: 慢处理包速度
+        :type SlowProcessSpeed: int
+        """
+        self.ProxyUid = None
+        self.MachineType = None
+        self.ProcessSpeed = None
+        self.AverageProcessDelay = None
+        self.SlowProcessSpeed = None
+
+
+    def _deserialize(self, params):
+        self.ProxyUid = params.get("ProxyUid")
+        self.MachineType = params.get("MachineType")
+        self.ProcessSpeed = params.get("ProcessSpeed")
+        self.AverageProcessDelay = params.get("AverageProcessDelay")
+        self.SlowProcessSpeed = params.get("SlowProcessSpeed")
+
+
+class ProxyMachineInfo(AbstractModel):
+    """proxy机器信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ProxyUid: 唯一id
+        :type ProxyUid: str
+        :param MachineType: 机器类型
+        :type MachineType: str
+        """
+        self.ProxyUid = None
+        self.MachineType = None
+
+
+    def _deserialize(self, params):
+        self.ProxyUid = params.get("ProxyUid")
+        self.MachineType = params.get("MachineType")
+
+
 class RecoverRecycleTablesRequest(AbstractModel):
     """RecoverRecycleTables请求参数结构体
 
@@ -2379,6 +2667,64 @@ class SelectedTableWithField(AbstractModel):
                 obj._deserialize(item)
                 self.SelectedFields.append(obj)
         self.ShardNum = params.get("ShardNum")
+
+
+class ServerDetailInfo(AbstractModel):
+    """server独占机器的详细信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ServerUid: svr唯一id
+        :type ServerUid: str
+        :param MachineType: 机器类型
+        :type MachineType: str
+        :param MemoryRate: 内存占用量
+        :type MemoryRate: int
+        :param DiskRate: 磁盘占用量
+        :type DiskRate: int
+        :param ReadNum: 读次数
+        :type ReadNum: int
+        :param WriteNum: 写次数
+        :type WriteNum: int
+        """
+        self.ServerUid = None
+        self.MachineType = None
+        self.MemoryRate = None
+        self.DiskRate = None
+        self.ReadNum = None
+        self.WriteNum = None
+
+
+    def _deserialize(self, params):
+        self.ServerUid = params.get("ServerUid")
+        self.MachineType = params.get("MachineType")
+        self.MemoryRate = params.get("MemoryRate")
+        self.DiskRate = params.get("DiskRate")
+        self.ReadNum = params.get("ReadNum")
+        self.WriteNum = params.get("WriteNum")
+
+
+class ServerMachineInfo(AbstractModel):
+    """svr的机器列表ServerList
+
+    """
+
+    def __init__(self):
+        """
+        :param ServerUid: 机器唯一id
+        :type ServerUid: str
+        :param MachineType: 机器类型
+        :type MachineType: str
+        """
+        self.ServerUid = None
+        self.MachineType = None
+
+
+    def _deserialize(self, params):
+        self.ServerUid = params.get("ServerUid")
+        self.MachineType = params.get("MachineType")
 
 
 class SetTableIndexRequest(AbstractModel):

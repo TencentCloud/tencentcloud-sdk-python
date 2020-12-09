@@ -803,6 +803,7 @@ class DriverLicenseOCRRequest(AbstractModel):
         :type ImageUrl: str
         :param CardSide: FRONT 为驾驶证主页正面（有红色印章的一面），
 BACK 为驾驶证副页正面（有档案编号的一面）。
+默认值为：FRONT。
         :type CardSide: str
         """
         self.ImageBase64 = None
@@ -4814,12 +4815,12 @@ class TextDetectionEn(AbstractModel):
         :type DetectedText: str
         :param Confidence: 置信度 0 ~100。
         :type Confidence: int
-        :param Polygon: 文本行坐标，以四个顶点坐标表示。
+        :param Polygon: 文本行在原图中的四点坐标。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Polygon: list of Coord
         :param AdvancedInfo: 此字段为扩展字段。目前EnglishOCR接口返回内容为空。
         :type AdvancedInfo: str
-        :param WordCoordPoint: 单词在原图中的四点坐标。
+        :param WordCoordPoint: 英文单词在原图中的四点坐标。
         :type WordCoordPoint: list of WordCoordPoint
         :param CandWord: 候选字符集(包含候选字Character以及置信度Confidence)。
         :type CandWord: list of CandWord
@@ -5807,6 +5808,7 @@ class VehicleLicenseOCRRequest(AbstractModel):
         :type ImageUrl: str
         :param CardSide: FRONT 为行驶证主页正面（有红色印章的一面），
 BACK 为行驶证副页正面（有号码号牌的一面）。
+默认值为：FRONT。
         :type CardSide: str
         """
         self.ImageBase64 = None
