@@ -305,27 +305,21 @@ class DescribeStackEventsRequest(AbstractModel):
         """
         :param EventIds: 按照⼀个或者多个事件ID查询
         :type EventIds: list of str
-        :param Filters: 过滤条件
-
-# VersionId
-按照版本ID过滤，VersionId形如 ver-kg8hn58h
+        :param Filters: <li>**VersionId**</li>
+按照【**版本ID**】过滤，VersionId形如 `ver-kg8hn58h`
 类型：string
-必须：否
 
-# StackId
-按照资源栈ID过滤，StackId形如 stk-hz5vn3te
+<li>**StackId**</li>
+按照【**资源栈ID**】过滤，StackId形如 `stk-hz5vn3te`
 类型：string
-必选：否
 
-# Type
-按照事件类型过滤，Type形如 plan, apply, destroy
+<li>**Type**</li>
+按照【**事件类型**】过滤，Type 形如 plan, apply, destroy
 类型：string
-必选：否
 
-# Status
-按照事件状态过滤，Status形如 queueing, running, success, failed
+<li>**Status**</li>
+按照【**事件状态**】过滤，Status形如 queueing, running, success, failed
 类型：string
-必选：否
         :type Filters: list of Filter
         :param Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节
         :type Offset: int
@@ -393,12 +387,16 @@ class DescribeStackVersionsRequest(AbstractModel):
         :type Offset: int
         :param Limit: 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节
         :type Limit: int
-        :param Filters: # Name
-按照名称进行过滤，可选
+        :param Filters: <li>**Name**</li>
+按照【**版本名称**】进行过滤
 类型：string
 
-# Status
-按照版本状态过滤，形如VERSION_EDITING，PLAN_IN_PROGRESS等，可选
+<li>**Status**</li>
+按照【**版本状态**】过滤，形如`VERSION_EDITING`，`PLAN_IN_PROGRESS`等
+类型：string
+
+<li>**StackId**</li>
+按照版本所属的【**资源栈ID**】进行过滤，形如`stk-xxxxxx`
 类型：string
         :type Filters: list of Filter
         """

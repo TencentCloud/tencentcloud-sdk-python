@@ -1339,6 +1339,46 @@ class CreatePrometheusDashboardResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreatePrometheusTemplateRequest(AbstractModel):
+    """CreatePrometheusTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Template: 模板设置
+        :type Template: :class:`tencentcloud.tke.v20180525.models.PrometheusTemplate`
+        """
+        self.Template = None
+
+
+    def _deserialize(self, params):
+        if params.get("Template") is not None:
+            self.Template = PrometheusTemplate()
+            self.Template._deserialize(params.get("Template"))
+
+
+class CreatePrometheusTemplateResponse(AbstractModel):
+    """CreatePrometheusTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 模板Id
+        :type TemplateId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TemplateId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.RequestId = params.get("RequestId")
+
+
 class DataDisk(AbstractModel):
     """描述了k8s节点数据盘相关配置与信息。
 
@@ -1702,6 +1742,83 @@ class DeleteClusterRouteTableRequest(AbstractModel):
 
 class DeleteClusterRouteTableResponse(AbstractModel):
     """DeleteClusterRouteTable返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeletePrometheusTemplateRequest(AbstractModel):
+    """DeletePrometheusTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 模板id
+        :type TemplateId: str
+        """
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+
+
+class DeletePrometheusTemplateResponse(AbstractModel):
+    """DeletePrometheusTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeletePrometheusTemplateSyncRequest(AbstractModel):
+    """DeletePrometheusTemplateSync请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 模板id
+        :type TemplateId: str
+        :param Targets: 取消同步的对象列表
+        :type Targets: list of PrometheusTemplateSyncTarget
+        """
+        self.TemplateId = None
+        self.Targets = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        if params.get("Targets") is not None:
+            self.Targets = []
+            for item in params.get("Targets"):
+                obj = PrometheusTemplateSyncTarget()
+                obj._deserialize(item)
+                self.Targets.append(obj)
+
+
+class DeletePrometheusTemplateSyncResponse(AbstractModel):
+    """DeletePrometheusTemplateSync返回参数结构体
 
     """
 
@@ -2478,6 +2595,358 @@ class DescribePrometheusAgentInstancesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Instances = params.get("Instances")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePrometheusAgentsRequest(AbstractModel):
+    """DescribePrometheusAgents请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例id
+        :type InstanceId: str
+        :param Offset: 用于分页
+        :type Offset: int
+        :param Limit: 用于分页
+        :type Limit: int
+        """
+        self.InstanceId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribePrometheusAgentsResponse(AbstractModel):
+    """DescribePrometheusAgents返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Agents: 被关联集群信息
+        :type Agents: list of PrometheusAgentOverview
+        :param Total: 被关联集群总量
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Agents = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Agents") is not None:
+            self.Agents = []
+            for item in params.get("Agents"):
+                obj = PrometheusAgentOverview()
+                obj._deserialize(item)
+                self.Agents.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePrometheusAlertRuleRequest(AbstractModel):
+    """DescribePrometheusAlertRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例id
+        :type InstanceId: str
+        :param Offset: 分页
+        :type Offset: int
+        :param Limit: 分页
+        :type Limit: int
+        :param Filters: 过滤
+支持ID，Name
+        :type Filters: list of Filter
+        """
+        self.InstanceId = None
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class DescribePrometheusAlertRuleResponse(AbstractModel):
+    """DescribePrometheusAlertRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AlertRules: 告警详情
+        :type AlertRules: list of PrometheusAlertRuleDetail
+        :param Total: 总数
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AlertRules = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AlertRules") is not None:
+            self.AlertRules = []
+            for item in params.get("AlertRules"):
+                obj = PrometheusAlertRuleDetail()
+                obj._deserialize(item)
+                self.AlertRules.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePrometheusOverviewsRequest(AbstractModel):
+    """DescribePrometheusOverviews请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: 用于分页
+        :type Offset: int
+        :param Limit: 用于分页
+        :type Limit: int
+        :param Filters: 过滤实例，目前支持：
+ID: 通过实例ID来过滤 
+Name: 通过实例名称来过滤
+        :type Filters: list of Filter
+        """
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class DescribePrometheusOverviewsResponse(AbstractModel):
+    """DescribePrometheusOverviews返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Instances: 实例列表
+        :type Instances: list of PrometheusInstanceOverview
+        :param Total: 实例总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Instances = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Instances") is not None:
+            self.Instances = []
+            for item in params.get("Instances"):
+                obj = PrometheusInstanceOverview()
+                obj._deserialize(item)
+                self.Instances.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePrometheusTargetsRequest(AbstractModel):
+    """DescribePrometheusTargets请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例id
+        :type InstanceId: str
+        :param ClusterType: 集群类型
+        :type ClusterType: str
+        :param ClusterId: 集群id
+        :type ClusterId: str
+        :param Filters: 过滤条件，当前支持
+Name=state
+Value=up, down, unknown
+        :type Filters: list of Filter
+        """
+        self.InstanceId = None
+        self.ClusterType = None
+        self.ClusterId = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ClusterType = params.get("ClusterType")
+        self.ClusterId = params.get("ClusterId")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class DescribePrometheusTargetsResponse(AbstractModel):
+    """DescribePrometheusTargets返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Jobs: 所有Job的targets信息
+        :type Jobs: list of PrometheusJobTargets
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Jobs = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Jobs") is not None:
+            self.Jobs = []
+            for item in params.get("Jobs"):
+                obj = PrometheusJobTargets()
+                obj._deserialize(item)
+                self.Jobs.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePrometheusTemplateSyncRequest(AbstractModel):
+    """DescribePrometheusTemplateSync请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 模板ID
+        :type TemplateId: str
+        """
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+
+
+class DescribePrometheusTemplateSyncResponse(AbstractModel):
+    """DescribePrometheusTemplateSync返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Targets: 同步目标详情
+        :type Targets: list of PrometheusTemplateSyncTarget
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Targets = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Targets") is not None:
+            self.Targets = []
+            for item in params.get("Targets"):
+                obj = PrometheusTemplateSyncTarget()
+                obj._deserialize(item)
+                self.Targets.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePrometheusTemplatesRequest(AbstractModel):
+    """DescribePrometheusTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Filters: 模糊过滤条件，支持
+Level 按模板级别过滤
+Name 按名称过滤
+Describe 按描述过滤
+ID 按templateId过滤
+        :type Filters: list of Filter
+        :param Offset: 分页偏移
+        :type Offset: int
+        :param Limit: 总数限制
+        :type Limit: int
+        """
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribePrometheusTemplatesResponse(AbstractModel):
+    """DescribePrometheusTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Templates: 模板列表
+        :type Templates: list of PrometheusTemplate
+        :param Total: 总数
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Templates = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Templates") is not None:
+            self.Templates = []
+            for item in params.get("Templates"):
+                obj = PrometheusTemplate()
+                obj._deserialize(item)
+                self.Templates.append(obj)
+        self.Total = params.get("Total")
         self.RequestId = params.get("RequestId")
 
 
@@ -3294,6 +3763,88 @@ class ModifyClusterNodePoolResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyNodePoolDesiredCapacityAboutAsgRequest(AbstractModel):
+    """ModifyNodePoolDesiredCapacityAboutAsg请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群id
+        :type ClusterId: str
+        :param NodePoolId: 节点池id
+        :type NodePoolId: str
+        :param DesiredCapacity: 节点池所关联的伸缩组的期望实例数
+        :type DesiredCapacity: int
+        """
+        self.ClusterId = None
+        self.NodePoolId = None
+        self.DesiredCapacity = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.NodePoolId = params.get("NodePoolId")
+        self.DesiredCapacity = params.get("DesiredCapacity")
+
+
+class ModifyNodePoolDesiredCapacityAboutAsgResponse(AbstractModel):
+    """ModifyNodePoolDesiredCapacityAboutAsg返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyPrometheusTemplateRequest(AbstractModel):
+    """ModifyPrometheusTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 模板ID
+        :type TemplateId: str
+        :param Template: 修改内容
+        :type Template: :class:`tencentcloud.tke.v20180525.models.PrometheusTemplateModify`
+        """
+        self.TemplateId = None
+        self.Template = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        if params.get("Template") is not None:
+            self.Template = PrometheusTemplateModify()
+            self.Template._deserialize(params.get("Template"))
+
+
+class ModifyPrometheusTemplateResponse(AbstractModel):
+    """ModifyPrometheusTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class NodeCountSummary(AbstractModel):
     """节点统计列表
 
@@ -3400,6 +3951,603 @@ class NodePool(AbstractModel):
         self.MaxNodesNum = params.get("MaxNodesNum")
         self.MinNodesNum = params.get("MinNodesNum")
         self.DesiredNodesNum = params.get("DesiredNodesNum")
+
+
+class PrometheusAgentOverview(AbstractModel):
+    """托管prometheus agent概览
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterType: 集群类型
+        :type ClusterType: str
+        :param ClusterId: 集群id
+        :type ClusterId: str
+        :param Status: agent状态
+normal = 正常
+abnormal = 异常
+        :type Status: str
+        :param ClusterName: 集群名称
+        :type ClusterName: str
+        """
+        self.ClusterType = None
+        self.ClusterId = None
+        self.Status = None
+        self.ClusterName = None
+
+
+    def _deserialize(self, params):
+        self.ClusterType = params.get("ClusterType")
+        self.ClusterId = params.get("ClusterId")
+        self.Status = params.get("Status")
+        self.ClusterName = params.get("ClusterName")
+
+
+class PrometheusAlertRule(AbstractModel):
+    """Prometheus告警规则
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 规则名称
+        :type Name: str
+        :param Rule: prometheus语句
+        :type Rule: str
+        :param Labels: 额外标签
+        :type Labels: list of Label
+        :param Template: 告警发送模板
+        :type Template: str
+        :param For: 持续时间
+        :type For: str
+        :param Describe: 该条规则的描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Describe: str
+        """
+        self.Name = None
+        self.Rule = None
+        self.Labels = None
+        self.Template = None
+        self.For = None
+        self.Describe = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Rule = params.get("Rule")
+        if params.get("Labels") is not None:
+            self.Labels = []
+            for item in params.get("Labels"):
+                obj = Label()
+                obj._deserialize(item)
+                self.Labels.append(obj)
+        self.Template = params.get("Template")
+        self.For = params.get("For")
+        self.Describe = params.get("Describe")
+
+
+class PrometheusAlertRuleDetail(AbstractModel):
+    """托管prometheus告警配置实例
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 规则名称
+        :type Name: str
+        :param Rules: 规则列表
+        :type Rules: list of PrometheusAlertRule
+        :param UpdatedAt: 最后修改时间
+        :type UpdatedAt: str
+        :param Notification: 告警渠道
+        :type Notification: :class:`tencentcloud.tke.v20180525.models.PrometheusNotification`
+        :param Id: 告警 id
+        :type Id: str
+        :param TemplateId: 如果该告警来至模板下发，则TemplateId为模板id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TemplateId: str
+        """
+        self.Name = None
+        self.Rules = None
+        self.UpdatedAt = None
+        self.Notification = None
+        self.Id = None
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = PrometheusAlertRule()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+        self.UpdatedAt = params.get("UpdatedAt")
+        if params.get("Notification") is not None:
+            self.Notification = PrometheusNotification()
+            self.Notification._deserialize(params.get("Notification"))
+        self.Id = params.get("Id")
+        self.TemplateId = params.get("TemplateId")
+
+
+class PrometheusConfigItem(AbstractModel):
+    """prometheus配置
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 名称
+        :type Name: str
+        :param Config: 配置内容
+        :type Config: str
+        :param TemplateId: 用于出参，如果该配置来至模板，则为模板id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TemplateId: str
+        """
+        self.Name = None
+        self.Config = None
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Config = params.get("Config")
+        self.TemplateId = params.get("TemplateId")
+
+
+class PrometheusInstanceOverview(AbstractModel):
+    """托管prometheus实例概览
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例id
+        :type InstanceId: str
+        :param Name: 实例名称
+        :type Name: str
+        :param VpcId: 实例vpcId
+        :type VpcId: str
+        :param SubnetId: 实例子网Id
+        :type SubnetId: str
+        :param Status: 实例当前的状态
+prepare_env = 初始化环境
+install_suit = 安装组件
+running = 运行中
+        :type Status: str
+        :param COSBucket: COS桶存储
+        :type COSBucket: str
+        """
+        self.InstanceId = None
+        self.Name = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.Status = None
+        self.COSBucket = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Name = params.get("Name")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.Status = params.get("Status")
+        self.COSBucket = params.get("COSBucket")
+
+
+class PrometheusJobTargets(AbstractModel):
+    """prometheus一个job的targets
+
+    """
+
+    def __init__(self):
+        """
+        :param Targets: 该Job的targets列表
+        :type Targets: list of PrometheusTarget
+        :param JobName: job的名称
+        :type JobName: str
+        :param Total: targets总数
+        :type Total: int
+        :param Up: 健康的target总数
+        :type Up: int
+        """
+        self.Targets = None
+        self.JobName = None
+        self.Total = None
+        self.Up = None
+
+
+    def _deserialize(self, params):
+        if params.get("Targets") is not None:
+            self.Targets = []
+            for item in params.get("Targets"):
+                obj = PrometheusTarget()
+                obj._deserialize(item)
+                self.Targets.append(obj)
+        self.JobName = params.get("JobName")
+        self.Total = params.get("Total")
+        self.Up = params.get("Up")
+
+
+class PrometheusNotification(AbstractModel):
+    """amp告警渠道配置
+
+    """
+
+    def __init__(self):
+        """
+        :param Enabled: 是否启用
+        :type Enabled: bool
+        :param RepeatInterval: 收敛时间
+        :type RepeatInterval: str
+        :param TimeRangeStart: 生效起始时间
+        :type TimeRangeStart: str
+        :param TimeRangeEnd: 生效结束时间
+        :type TimeRangeEnd: str
+        :param NotifyWay: 告警通知方式。目前有SMS、EMAIL、CALL、WECHAT方式。
+分别代表：短信、邮件、电话、微信
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NotifyWay: list of str
+        :param ReceiverGroups: 告警接收组（用户组）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReceiverGroups: list of int non-negative
+        :param PhoneNotifyOrder: 电话告警顺序。
+注：NotifyWay选择CALL，采用该参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PhoneNotifyOrder: list of int non-negative
+        :param PhoneCircleTimes: 电话告警次数。
+注：NotifyWay选择CALL，采用该参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PhoneCircleTimes: int
+        :param PhoneInnerInterval: 电话告警轮内间隔。单位：秒
+注：NotifyWay选择CALL，采用该参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PhoneInnerInterval: int
+        :param PhoneCircleInterval: 电话告警轮外间隔。单位：秒
+注：NotifyWay选择CALL，采用该参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PhoneCircleInterval: int
+        :param PhoneArriveNotice: 电话告警触达通知
+注：NotifyWay选择CALL，采用该参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PhoneArriveNotice: bool
+        :param Type: 通道类型，默认为amp，支持以下
+amp
+webhook
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param WebHook: 如果Type为webhook, 则该字段为必填项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WebHook: str
+        """
+        self.Enabled = None
+        self.RepeatInterval = None
+        self.TimeRangeStart = None
+        self.TimeRangeEnd = None
+        self.NotifyWay = None
+        self.ReceiverGroups = None
+        self.PhoneNotifyOrder = None
+        self.PhoneCircleTimes = None
+        self.PhoneInnerInterval = None
+        self.PhoneCircleInterval = None
+        self.PhoneArriveNotice = None
+        self.Type = None
+        self.WebHook = None
+
+
+    def _deserialize(self, params):
+        self.Enabled = params.get("Enabled")
+        self.RepeatInterval = params.get("RepeatInterval")
+        self.TimeRangeStart = params.get("TimeRangeStart")
+        self.TimeRangeEnd = params.get("TimeRangeEnd")
+        self.NotifyWay = params.get("NotifyWay")
+        self.ReceiverGroups = params.get("ReceiverGroups")
+        self.PhoneNotifyOrder = params.get("PhoneNotifyOrder")
+        self.PhoneCircleTimes = params.get("PhoneCircleTimes")
+        self.PhoneInnerInterval = params.get("PhoneInnerInterval")
+        self.PhoneCircleInterval = params.get("PhoneCircleInterval")
+        self.PhoneArriveNotice = params.get("PhoneArriveNotice")
+        self.Type = params.get("Type")
+        self.WebHook = params.get("WebHook")
+
+
+class PrometheusTarget(AbstractModel):
+    """prometheus一个抓取目标的信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Url: 抓取目标的URL
+        :type Url: str
+        :param State: target当前状态,当前支持
+up = 健康
+down = 不健康
+unknown = 未知
+        :type State: str
+        :param Labels: target的元label
+        :type Labels: list of Label
+        :param LastScrape: 上一次抓取的时间
+        :type LastScrape: str
+        :param ScrapeDuration: 上一次抓取的耗时，单位是s
+        :type ScrapeDuration: float
+        :param Error: 上一次抓取如果错误，该字段存储错误信息
+        :type Error: str
+        """
+        self.Url = None
+        self.State = None
+        self.Labels = None
+        self.LastScrape = None
+        self.ScrapeDuration = None
+        self.Error = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
+        self.State = params.get("State")
+        if params.get("Labels") is not None:
+            self.Labels = []
+            for item in params.get("Labels"):
+                obj = Label()
+                obj._deserialize(item)
+                self.Labels.append(obj)
+        self.LastScrape = params.get("LastScrape")
+        self.ScrapeDuration = params.get("ScrapeDuration")
+        self.Error = params.get("Error")
+
+
+class PrometheusTemplate(AbstractModel):
+    """模板实例
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 模板名称
+        :type Name: str
+        :param Level: 模板维度，支持以下类型
+instance 实例级别
+cluster 集群级别
+        :type Level: str
+        :param Describe: 模板描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Describe: str
+        :param AlertRules: 当Level为instance时有效，
+模板中的告警配置列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlertRules: list of PrometheusAlertRule
+        :param RecordRules: 当Level为instance时有效，
+模板中的聚合规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordRules: list of PrometheusConfigItem
+        :param ServiceMonitors: 当Level为cluster时有效，
+模板中的ServiceMonitor规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceMonitors: list of PrometheusConfigItem
+        :param PodMonitors: 当Level为cluster时有效，
+模板中的PodMonitors规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PodMonitors: list of PrometheusConfigItem
+        :param RawJobs: 当Level为cluster时有效，
+模板中的RawJobs规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RawJobs: list of PrometheusConfigItem
+        :param TemplateId: 模板的ID, 用于出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TemplateId: str
+        :param UpdateTime: 最近更新时间，用于出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param Version: 当前版本，用于出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: str
+        :param IsDefault: 是否系统提供的默认模板，用于出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsDefault: bool
+        :param AlertDetailRules: 当Level为instance时有效，
+模板中的告警配置列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlertDetailRules: list of PrometheusAlertRuleDetail
+        """
+        self.Name = None
+        self.Level = None
+        self.Describe = None
+        self.AlertRules = None
+        self.RecordRules = None
+        self.ServiceMonitors = None
+        self.PodMonitors = None
+        self.RawJobs = None
+        self.TemplateId = None
+        self.UpdateTime = None
+        self.Version = None
+        self.IsDefault = None
+        self.AlertDetailRules = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Level = params.get("Level")
+        self.Describe = params.get("Describe")
+        if params.get("AlertRules") is not None:
+            self.AlertRules = []
+            for item in params.get("AlertRules"):
+                obj = PrometheusAlertRule()
+                obj._deserialize(item)
+                self.AlertRules.append(obj)
+        if params.get("RecordRules") is not None:
+            self.RecordRules = []
+            for item in params.get("RecordRules"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.RecordRules.append(obj)
+        if params.get("ServiceMonitors") is not None:
+            self.ServiceMonitors = []
+            for item in params.get("ServiceMonitors"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.ServiceMonitors.append(obj)
+        if params.get("PodMonitors") is not None:
+            self.PodMonitors = []
+            for item in params.get("PodMonitors"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.PodMonitors.append(obj)
+        if params.get("RawJobs") is not None:
+            self.RawJobs = []
+            for item in params.get("RawJobs"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.RawJobs.append(obj)
+        self.TemplateId = params.get("TemplateId")
+        self.UpdateTime = params.get("UpdateTime")
+        self.Version = params.get("Version")
+        self.IsDefault = params.get("IsDefault")
+        if params.get("AlertDetailRules") is not None:
+            self.AlertDetailRules = []
+            for item in params.get("AlertDetailRules"):
+                obj = PrometheusAlertRuleDetail()
+                obj._deserialize(item)
+                self.AlertDetailRules.append(obj)
+
+
+class PrometheusTemplateModify(AbstractModel):
+    """云原生Prometheus模板可修改项
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 修改名称
+        :type Name: str
+        :param Describe: 修改描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Describe: str
+        :param AlertRules: 修改内容，只有当模板类型是Alert时生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlertRules: list of PrometheusAlertRule
+        :param RecordRules: 当Level为instance时有效，
+模板中的聚合规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordRules: list of PrometheusConfigItem
+        :param ServiceMonitors: 当Level为cluster时有效，
+模板中的ServiceMonitor规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceMonitors: list of PrometheusConfigItem
+        :param PodMonitors: 当Level为cluster时有效，
+模板中的PodMonitors规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PodMonitors: list of PrometheusConfigItem
+        :param RawJobs: 当Level为cluster时有效，
+模板中的RawJobs规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RawJobs: list of PrometheusConfigItem
+        :param AlertDetailRules: 修改内容，只有当模板类型是Alert时生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlertDetailRules: list of PrometheusAlertRuleDetail
+        """
+        self.Name = None
+        self.Describe = None
+        self.AlertRules = None
+        self.RecordRules = None
+        self.ServiceMonitors = None
+        self.PodMonitors = None
+        self.RawJobs = None
+        self.AlertDetailRules = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Describe = params.get("Describe")
+        if params.get("AlertRules") is not None:
+            self.AlertRules = []
+            for item in params.get("AlertRules"):
+                obj = PrometheusAlertRule()
+                obj._deserialize(item)
+                self.AlertRules.append(obj)
+        if params.get("RecordRules") is not None:
+            self.RecordRules = []
+            for item in params.get("RecordRules"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.RecordRules.append(obj)
+        if params.get("ServiceMonitors") is not None:
+            self.ServiceMonitors = []
+            for item in params.get("ServiceMonitors"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.ServiceMonitors.append(obj)
+        if params.get("PodMonitors") is not None:
+            self.PodMonitors = []
+            for item in params.get("PodMonitors"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.PodMonitors.append(obj)
+        if params.get("RawJobs") is not None:
+            self.RawJobs = []
+            for item in params.get("RawJobs"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.RawJobs.append(obj)
+        if params.get("AlertDetailRules") is not None:
+            self.AlertDetailRules = []
+            for item in params.get("AlertDetailRules"):
+                obj = PrometheusAlertRuleDetail()
+                obj._deserialize(item)
+                self.AlertDetailRules.append(obj)
+
+
+class PrometheusTemplateSyncTarget(AbstractModel):
+    """云原生Prometheus模板同步目标
+
+    """
+
+    def __init__(self):
+        """
+        :param Region: 目标所在地域
+        :type Region: str
+        :param InstanceId: 目标实例
+        :type InstanceId: str
+        :param ClusterId: 集群id，只有当采集模板的Level为cluster的时候需要
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param SyncTime: 最后一次同步时间， 用于出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SyncTime: str
+        :param Version: 当前使用的模板版本，用于出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: str
+        :param ClusterType: 集群类型，只有当采集模板的Level为cluster的时候需要
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterType: str
+        :param InstanceName: 用于出参，实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param ClusterName: 用于出参，集群名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterName: str
+        """
+        self.Region = None
+        self.InstanceId = None
+        self.ClusterId = None
+        self.SyncTime = None
+        self.Version = None
+        self.ClusterType = None
+        self.InstanceName = None
+        self.ClusterName = None
+
+
+    def _deserialize(self, params):
+        self.Region = params.get("Region")
+        self.InstanceId = params.get("InstanceId")
+        self.ClusterId = params.get("ClusterId")
+        self.SyncTime = params.get("SyncTime")
+        self.Version = params.get("Version")
+        self.ClusterType = params.get("ClusterType")
+        self.InstanceName = params.get("InstanceName")
+        self.ClusterName = params.get("ClusterName")
 
 
 class RegionInstance(AbstractModel):
@@ -3652,6 +4800,49 @@ class RunSecurityServiceEnabled(AbstractModel):
 
     def _deserialize(self, params):
         self.Enabled = params.get("Enabled")
+
+
+class SyncPrometheusTemplateRequest(AbstractModel):
+    """SyncPrometheusTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 实例id
+        :type TemplateId: str
+        :param Targets: 同步目标
+        :type Targets: list of PrometheusTemplateSyncTarget
+        """
+        self.TemplateId = None
+        self.Targets = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        if params.get("Targets") is not None:
+            self.Targets = []
+            for item in params.get("Targets"):
+                obj = PrometheusTemplateSyncTarget()
+                obj._deserialize(item)
+                self.Targets.append(obj)
+
+
+class SyncPrometheusTemplateResponse(AbstractModel):
+    """SyncPrometheusTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class Tag(AbstractModel):

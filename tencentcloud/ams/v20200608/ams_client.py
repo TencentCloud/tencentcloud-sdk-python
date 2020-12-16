@@ -137,6 +137,62 @@ class AmsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAmsList(self, request):
+        """音频审核明细列表
+
+        :param request: Request instance for DescribeAmsList.
+        :type request: :class:`tencentcloud.ams.v20200608.models.DescribeAmsListRequest`
+        :rtype: :class:`tencentcloud.ams.v20200608.models.DescribeAmsListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAmsList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAmsListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAudioStat(self, request):
+        """控制台识别统计
+
+        :param request: Request instance for DescribeAudioStat.
+        :type request: :class:`tencentcloud.ams.v20200608.models.DescribeAudioStatRequest`
+        :rtype: :class:`tencentcloud.ams.v20200608.models.DescribeAudioStatResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAudioStat", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAudioStatResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBizConfig(self, request):
         """查看单个配置
 

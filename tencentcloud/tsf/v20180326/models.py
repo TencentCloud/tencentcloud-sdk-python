@@ -500,7 +500,7 @@ class ApiInfo(AbstractModel):
         :type Method: str
         :param PathMapping: 请求映射
         :type PathMapping: str
-        :param Host: api所在服务host,限定外部Api填写。格式: "http://127.0.0.1:8080"
+        :param Host: api所在服务host,限定外部Api填写。格式: `http://127.0.0.1:8080`
         :type Host: str
         :param Description: api描述信息
         :type Description: str

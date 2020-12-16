@@ -1269,6 +1269,60 @@ class DeliverStorageServiceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeAccountBalanceRequest(AbstractModel):
+    """DescribeAccountBalance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AccountType: 账户类型 1:设备接入 2:云存
+        :type AccountType: int
+        """
+        self.AccountType = None
+
+
+    def _deserialize(self, params):
+        self.AccountType = params.get("AccountType")
+
+
+class DescribeAccountBalanceResponse(AbstractModel):
+    """DescribeAccountBalance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AccountType: 账户类型 1=设备接入;2=云存
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccountType: int
+        :param Balance: 余额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Balance: int
+        :param State: 账户状态，1=正常；8=冻结；9=销户
+注意：此字段可能返回 null，表示取不到有效值。
+        :type State: int
+        :param LastUpdateTime: 最后修改时间，UTC值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastUpdateTime: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AccountType = None
+        self.Balance = None
+        self.State = None
+        self.LastUpdateTime = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AccountType = params.get("AccountType")
+        self.Balance = params.get("Balance")
+        self.State = params.get("State")
+        self.LastUpdateTime = params.get("LastUpdateTime")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeBindDevRequest(AbstractModel):
     """DescribeBindDev请求参数结构体
 
@@ -2034,6 +2088,63 @@ class DescribePubVersionsResponse(AbstractModel):
                 obj = OtaPubHistory()
                 obj._deserialize(item)
                 self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRechargeRecordsRequest(AbstractModel):
+    """DescribeRechargeRecords请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AccountType: 账户类型 1:设备接入 2:云存
+        :type AccountType: int
+        :param Offset: 从第几条记录开始显示
+        :type Offset: int
+        :param Limit: 总共查询多少条记录
+        :type Limit: int
+        """
+        self.AccountType = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.AccountType = params.get("AccountType")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeRechargeRecordsResponse(AbstractModel):
+    """DescribeRechargeRecords返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AccountType: 账户类型 1:设备接入 2:云存
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccountType: int
+        :param Records: 充值记录列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Records: list of RechargeRecord
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AccountType = None
+        self.Records = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AccountType = params.get("AccountType")
+        if params.get("Records") is not None:
+            self.Records = []
+            for item in params.get("Records"):
+                obj = RechargeRecord()
+                obj._deserialize(item)
+                self.Records.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3089,6 +3200,39 @@ Other-Overseas（其他境外地区）
         self.ProductRegion = params.get("ProductRegion")
         self.AccessMode = params.get("AccessMode")
         self.Os = params.get("Os")
+
+
+class RechargeRecord(AbstractModel):
+    """充值记录列表
+
+    """
+
+    def __init__(self):
+        """
+        :param WaterId: 流水记录号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WaterId: int
+        :param BalanceBeforeRecharge: 充值前的余额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BalanceBeforeRecharge: int
+        :param Money: 充值金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Money: int
+        :param OperateTime: 充值时间, UTC值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperateTime: int
+        """
+        self.WaterId = None
+        self.BalanceBeforeRecharge = None
+        self.Money = None
+        self.OperateTime = None
+
+
+    def _deserialize(self, params):
+        self.WaterId = params.get("WaterId")
+        self.BalanceBeforeRecharge = params.get("BalanceBeforeRecharge")
+        self.Money = params.get("Money")
+        self.OperateTime = params.get("OperateTime")
 
 
 class RefundStorageServiceRequest(AbstractModel):

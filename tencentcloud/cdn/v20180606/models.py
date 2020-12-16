@@ -160,6 +160,8 @@ global：全球加速
         :type OriginPullTimeout: :class:`tencentcloud.cdn.v20180606.models.OriginPullTimeout`
         :param Tag: 标签配置
         :type Tag: list of Tag
+        :param Ipv6Access: Ipv6 访问配置
+        :type Ipv6Access: :class:`tencentcloud.cdn.v20180606.models.Ipv6Access`
         """
         self.Domain = None
         self.ServiceType = None
@@ -192,6 +194,7 @@ global：全球加速
         self.Area = None
         self.OriginPullTimeout = None
         self.Tag = None
+        self.Ipv6Access = None
 
 
     def _deserialize(self, params):
@@ -283,6 +286,9 @@ global：全球加速
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tag.append(obj)
+        if params.get("Ipv6Access") is not None:
+            self.Ipv6Access = Ipv6Access()
+            self.Ipv6Access._deserialize(params.get("Ipv6Access"))
 
 
 class AddCdnDomainResponse(AbstractModel):
@@ -4075,6 +4081,9 @@ off：不支持
         :param OriginAuthentication: 回源鉴权高级配置，白名单功能
 注意：此字段可能返回 null，表示取不到有效值。
         :type OriginAuthentication: :class:`tencentcloud.cdn.v20180606.models.OriginAuthentication`
+        :param Ipv6Access: Ipv6访问配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ipv6Access: :class:`tencentcloud.cdn.v20180606.models.Ipv6Access`
         """
         self.ResourceId = None
         self.AppId = None
@@ -4126,6 +4135,7 @@ off：不支持
         self.Tag = None
         self.AdvancedAuthentication = None
         self.OriginAuthentication = None
+        self.Ipv6Access = None
 
 
     def _deserialize(self, params):
@@ -4254,6 +4264,9 @@ off：不支持
         if params.get("OriginAuthentication") is not None:
             self.OriginAuthentication = OriginAuthentication()
             self.OriginAuthentication._deserialize(params.get("OriginAuthentication"))
+        if params.get("Ipv6Access") is not None:
+            self.Ipv6Access = Ipv6Access()
+            self.Ipv6Access._deserialize(params.get("Ipv6Access"))
 
 
 class DiagnoseData(AbstractModel):
@@ -5410,6 +5423,24 @@ class Ipv6(AbstractModel):
     def __init__(self):
         """
         :param Switch: 域名是否开启ipv6功能，on或off。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
+class Ipv6Access(AbstractModel):
+    """Ipv6访问配置
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 域名是否开启ipv6访问功能，on或off。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
         """
@@ -8626,6 +8657,8 @@ global：全球加速
         :type AdvancedAuthentication: :class:`tencentcloud.cdn.v20180606.models.AdvancedAuthentication`
         :param OriginAuthentication: 回源鉴权高级版配置，白名单功能
         :type OriginAuthentication: :class:`tencentcloud.cdn.v20180606.models.OriginAuthentication`
+        :param Ipv6Access: Ipv6 访问配置
+        :type Ipv6Access: :class:`tencentcloud.cdn.v20180606.models.Ipv6Access`
         """
         self.Domain = None
         self.ProjectId = None
@@ -8663,6 +8696,7 @@ global：全球加速
         self.AccessPort = None
         self.AdvancedAuthentication = None
         self.OriginAuthentication = None
+        self.Ipv6Access = None
 
 
     def _deserialize(self, params):
@@ -8764,6 +8798,9 @@ global：全球加速
         if params.get("OriginAuthentication") is not None:
             self.OriginAuthentication = OriginAuthentication()
             self.OriginAuthentication._deserialize(params.get("OriginAuthentication"))
+        if params.get("Ipv6Access") is not None:
+            self.Ipv6Access = Ipv6Access()
+            self.Ipv6Access._deserialize(params.get("Ipv6Access"))
 
 
 class UpdateDomainConfigResponse(AbstractModel):

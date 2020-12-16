@@ -7070,6 +7070,57 @@ class DescribeContentReviewTemplatesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDailyPlayStatFileListRequest(AbstractModel):
+    """DescribeDailyPlayStatFileList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 起始日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type StartTime: str
+        :param EndTime: 结束日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type EndTime: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DescribeDailyPlayStatFileListResponse(AbstractModel):
+    """DescribeDailyPlayStatFileList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PlayStatFileSet: 播放统计文件列表。
+        :type PlayStatFileSet: list of PlayStatFileInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PlayStatFileSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("PlayStatFileSet") is not None:
+            self.PlayStatFileSet = []
+            for item in params.get("PlayStatFileSet"):
+                obj = PlayStatFileInfo()
+                obj._deserialize(item)
+                self.PlayStatFileSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeEventsStateRequest(AbstractModel):
     """DescribeEventsState请求参数结构体
 
@@ -7834,13 +7885,21 @@ class DescribeSubAppIdsRequest(AbstractModel):
 
     def __init__(self):
         """
+        :param Limit: 分页拉取的最大返回结果数。默认值：200；最大值：200。
+        :type Limit: int
+        :param Offset: 分页拉取的起始偏移量。默认值：0。
+        :type Offset: int
         :param Tags: 标签信息，查询指定标签的子应用列表。
         :type Tags: list of ResourceTag
         """
+        self.Limit = None
+        self.Offset = None
         self.Tags = None
 
 
     def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
         if params.get("Tags") is not None:
             self.Tags = []
             for item in params.get("Tags"):
@@ -7858,10 +7917,13 @@ class DescribeSubAppIdsResponse(AbstractModel):
         """
         :param SubAppIdInfoSet: 子应用信息集合。
         :type SubAppIdInfoSet: list of SubAppIdInfo
+        :param TotalCount: 子应用总数量。
+        :type TotalCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.SubAppIdInfoSet = None
+        self.TotalCount = None
         self.RequestId = None
 
 
@@ -7872,6 +7934,7 @@ class DescribeSubAppIdsResponse(AbstractModel):
                 obj = SubAppIdInfo()
                 obj._deserialize(item)
                 self.SubAppIdInfoSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -11162,6 +11225,8 @@ class MediaProcessTaskTranscodeResult(AbstractModel):
         :param Output: 转码任务的输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.MediaTranscodeItem`
+        :param Progress: 转码进度，取值范围 [0-100] 。
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -11169,6 +11234,7 @@ class MediaProcessTaskTranscodeResult(AbstractModel):
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -11182,6 +11248,7 @@ class MediaProcessTaskTranscodeResult(AbstractModel):
         if params.get("Output") is not None:
             self.Output = MediaTranscodeItem()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
 
 
 class MediaSampleSnapshotInfo(AbstractModel):
@@ -13173,6 +13240,37 @@ class ParseStreamingManifestResponse(AbstractModel):
     def _deserialize(self, params):
         self.MediaSegmentSet = params.get("MediaSegmentSet")
         self.RequestId = params.get("RequestId")
+
+
+class PlayStatFileInfo(AbstractModel):
+    """播放统计文件信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Date: 播放统计数据所属日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type Date: str
+        :param Url: 播放统计文件的 URL 地址。播放统计文件内容为：
+<li> date：播放日期。</li>
+<li> file_id：视频文件 ID。</li>
+<li> ip_count：去重后的客户端 IP 数。</li>
+<li> flux：播放流量，单位：字节。</li>
+<li> play_times：总的播放次数。</li>
+<li> pc_play_times：PC 端播放次数。</li>
+<li> mobile_play_times：移动端播放次数。</li>
+<li> iphone_play_times：iPhone 端播放次数。</li>
+<li> android_play_times：Android 端播放次数。</li>
+<li> host_name	域名。</li>
+        :type Url: str
+        """
+        self.Date = None
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        self.Date = params.get("Date")
+        self.Url = params.get("Url")
 
 
 class PlayerConfig(AbstractModel):

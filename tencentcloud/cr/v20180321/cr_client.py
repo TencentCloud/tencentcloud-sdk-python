@@ -82,6 +82,62 @@ class CrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateBotTask(self, request):
+        """创建机器人任务
+
+        :param request: Request instance for CreateBotTask.
+        :type request: :class:`tencentcloud.cr.v20180321.models.CreateBotTaskRequest`
+        :rtype: :class:`tencentcloud.cr.v20180321.models.CreateBotTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateBotTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateBotTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBotFlow(self, request):
+        """查询机器人对话流
+
+        :param request: Request instance for DescribeBotFlow.
+        :type request: :class:`tencentcloud.cr.v20180321.models.DescribeBotFlowRequest`
+        :rtype: :class:`tencentcloud.cr.v20180321.models.DescribeBotFlowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBotFlow", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBotFlowResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCreditResult(self, request):
         """根据信审任务ID和请求日期，获取相关信审结果。
 
@@ -96,6 +152,34 @@ class CrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCreditResultResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeFileModel(self, request):
+        """查询机器人文件模板
+
+        :param request: Request instance for DescribeFileModel.
+        :type request: :class:`tencentcloud.cr.v20180321.models.DescribeFileModelRequest`
+        :rtype: :class:`tencentcloud.cr.v20180321.models.DescribeFileModelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeFileModel", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeFileModelResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -293,6 +377,34 @@ class CrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryProductsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UploadBotFile(self, request):
+        """上传机器人文件
+
+        :param request: Request instance for UploadBotFile.
+        :type request: :class:`tencentcloud.cr.v20180321.models.UploadBotFileRequest`
+        :rtype: :class:`tencentcloud.cr.v20180321.models.UploadBotFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UploadBotFile", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UploadBotFileResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

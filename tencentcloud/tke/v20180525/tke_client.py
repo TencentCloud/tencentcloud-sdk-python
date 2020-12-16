@@ -418,6 +418,34 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreatePrometheusTemplate(self, request):
+        """创建一个云原生Prometheus模板实例
+
+        :param request: Request instance for CreatePrometheusTemplate.
+        :type request: :class:`tencentcloud.tke.v20180525.models.CreatePrometheusTemplateRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.CreatePrometheusTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreatePrometheusTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreatePrometheusTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteCluster(self, request):
         """删除集群(YUNAPI V3版本)
 
@@ -628,6 +656,62 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteClusterRouteTableResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeletePrometheusTemplate(self, request):
+        """删除一个云原生Promehtheus配置模板
+
+        :param request: Request instance for DeletePrometheusTemplate.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DeletePrometheusTemplateRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DeletePrometheusTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeletePrometheusTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeletePrometheusTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeletePrometheusTemplateSync(self, request):
+        """取消模板同步，这将会删除目标中该模板所生产的配置
+
+        :param request: Request instance for DeletePrometheusTemplateSync.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DeletePrometheusTemplateSyncRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DeletePrometheusTemplateSyncResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeletePrometheusTemplateSync", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeletePrometheusTemplateSyncResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1062,6 +1146,174 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePrometheusAgents(self, request):
+        """获取被关联集群列表
+
+        :param request: Request instance for DescribePrometheusAgents.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribePrometheusAgentsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribePrometheusAgentsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePrometheusAgents", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePrometheusAgentsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePrometheusAlertRule(self, request):
+        """获取告警规则列表
+
+        :param request: Request instance for DescribePrometheusAlertRule.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribePrometheusAlertRuleRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribePrometheusAlertRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePrometheusAlertRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePrometheusAlertRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePrometheusOverviews(self, request):
+        """获取实例列表
+
+        :param request: Request instance for DescribePrometheusOverviews.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribePrometheusOverviewsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribePrometheusOverviewsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePrometheusOverviews", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePrometheusOverviewsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePrometheusTargets(self, request):
+        """获取targets信息
+
+        :param request: Request instance for DescribePrometheusTargets.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribePrometheusTargetsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribePrometheusTargetsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePrometheusTargets", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePrometheusTargetsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePrometheusTemplateSync(self, request):
+        """获取模板同步信息
+
+        :param request: Request instance for DescribePrometheusTemplateSync.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribePrometheusTemplateSyncRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribePrometheusTemplateSyncResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePrometheusTemplateSync", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePrometheusTemplateSyncResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePrometheusTemplates(self, request):
+        """拉取模板列表，默认模板将总是在最前面
+
+        :param request: Request instance for DescribePrometheusTemplates.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribePrometheusTemplatesRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribePrometheusTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePrometheusTemplates", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePrometheusTemplatesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRegions(self, request):
         """获取容器服务支持的所有地域
 
@@ -1230,6 +1482,62 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyNodePoolDesiredCapacityAboutAsg(self, request):
+        """修改节点池关联伸缩组的期望实例数
+
+        :param request: Request instance for ModifyNodePoolDesiredCapacityAboutAsg.
+        :type request: :class:`tencentcloud.tke.v20180525.models.ModifyNodePoolDesiredCapacityAboutAsgRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ModifyNodePoolDesiredCapacityAboutAsgResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyNodePoolDesiredCapacityAboutAsg", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyNodePoolDesiredCapacityAboutAsgResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyPrometheusTemplate(self, request):
+        """修改模板内容
+
+        :param request: Request instance for ModifyPrometheusTemplate.
+        :type request: :class:`tencentcloud.tke.v20180525.models.ModifyPrometheusTemplateRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ModifyPrometheusTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyPrometheusTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyPrometheusTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RemoveNodeFromNodePool(self, request):
         """移出节点池节点，但保留在集群内
 
@@ -1244,6 +1552,34 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RemoveNodeFromNodePoolResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SyncPrometheusTemplate(self, request):
+        """同步模板到实例或者集群
+
+        :param request: Request instance for SyncPrometheusTemplate.
+        :type request: :class:`tencentcloud.tke.v20180525.models.SyncPrometheusTemplateRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.SyncPrometheusTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SyncPrometheusTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SyncPrometheusTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

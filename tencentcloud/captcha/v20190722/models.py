@@ -809,7 +809,7 @@ class DescribeCaptchaMiniRiskResultRequest(AbstractModel):
         :type MacAddress: str
         :param Imei: 手机设备号
         :type Imei: str
-        :param SceneCode: 验证场景：1 活动防刷场景，2 登陆保护场景，3 注册保护场景。根据需求选择场景参数。
+        :param SceneCode: 验证场景：1 活动防刷场景，2 登录保护场景，3 注册保护场景。根据需求选择场景参数。
         :type SceneCode: int
         :param WeChatOpenId: 用户操作来源的微信开放账号
         :type WeChatOpenId: str

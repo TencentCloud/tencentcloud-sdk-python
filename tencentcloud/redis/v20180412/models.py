@@ -370,6 +370,8 @@ TypeId为标准架构时，MemSize是实例总内存容量；TypeId为集群架�
         :type NoAuth: bool
         :param NodeSet: 实例的节点信息，目前支持传入节点的类型（主节点或者副本节点），节点的可用区。单可用区部署不需要传递此参数。
         :type NodeSet: list of RedisNodeInfo
+        :param ResourceTags: 购买实例绑定标签
+        :type ResourceTags: list of ResourceTag
         """
         self.ZoneId = None
         self.TypeId = None
@@ -390,6 +392,7 @@ TypeId为标准架构时，MemSize是实例总内存容量；TypeId为集群架�
         self.InstanceName = None
         self.NoAuth = None
         self.NodeSet = None
+        self.ResourceTags = None
 
 
     def _deserialize(self, params):
@@ -417,6 +420,12 @@ TypeId为标准架构时，MemSize是实例总内存容量；TypeId为集群架�
                 obj = RedisNodeInfo()
                 obj._deserialize(item)
                 self.NodeSet.append(obj)
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
 
 
 class CreateInstancesResponse(AbstractModel):
@@ -4570,6 +4579,27 @@ class ResetPasswordResponse(AbstractModel):
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
+
+
+class ResourceTag(AbstractModel):
+    """API购买实例绑定标签
+
+    """
+
+    def __init__(self):
+        """
+        :param TagKey: 标签key
+        :type TagKey: str
+        :param TagValue: 标签value
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
 
 
 class RestoreInstanceRequest(AbstractModel):

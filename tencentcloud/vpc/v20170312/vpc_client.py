@@ -677,6 +677,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CloneSecurityGroup(self, request):
+        """本接口（CloneSecurityGroup）用于根据存量的安全组，克隆创建出同样规则配置的安全组。仅克隆安全组及其规则信息，不会克隆安全组标签信息。
+
+        :param request: Request instance for CloneSecurityGroup.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CloneSecurityGroupRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CloneSecurityGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CloneSecurityGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CloneSecurityGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateAddressTemplate(self, request):
         """本接口（CreateAddressTemplate）用于创建IP地址模版
 

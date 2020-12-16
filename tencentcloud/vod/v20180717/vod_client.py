@@ -1370,6 +1370,41 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDailyPlayStatFileList(self, request):
+        """该接口用于查询播放统计文件的下载地址。
+        * 可以查询最近30天的播放统计文件下载地址。
+        * 云点播每天对前一天的 CDN 请求日志进行分析处理，生成播放统计文件。
+        * 播放统计文件内容包含媒体文件的播放次数、播放流量等统计信息。
+        * 播放次数统计说明：
+            1. HLS 文件：访问M3U8 文件时统计播放次数；访问TS 文件不统计播放次数。
+            2. 其它文件文件（如 MP4 文件）：播放请求带有 range 参数且 range 的 start 参数不等于0时不统计播放次数，其它情况统计播放次数。
+        * 播放设备的统计：播放请求带了 UserAgent 参数，并且 UserAgent 包含 Android 或者 iPhone 等标识，会统计为移动端播放次数，否则统计为 PC 端播放次数。
+
+        :param request: Request instance for DescribeDailyPlayStatFileList.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeDailyPlayStatFileListRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeDailyPlayStatFileListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDailyPlayStatFileList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDailyPlayStatFileListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeEventsState(self, request):
         """* 该接口用于业务服务器获取 [可靠回调](https://cloud.tencent.com/document/product/266/33779#.E5.8F.AF.E9.9D.A0.E5.9B.9E.E8.B0.83) 事件通知的状态。
 

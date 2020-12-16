@@ -678,6 +678,34 @@ class CmeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ExportVideoByVideoSegmentationData(self, request):
+        """使用视频智能拆条数据导出视频，将指定的视频拆条片段导出为一个视频。
+
+        :param request: Request instance for ExportVideoByVideoSegmentationData.
+        :type request: :class:`tencentcloud.cme.v20191029.models.ExportVideoByVideoSegmentationDataRequest`
+        :rtype: :class:`tencentcloud.cme.v20191029.models.ExportVideoByVideoSegmentationDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ExportVideoByVideoSegmentationData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ExportVideoByVideoSegmentationDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ExportVideoEditProject(self, request):
         """导出视频编辑项目，支持指定输出的模板。
 
@@ -720,6 +748,34 @@ class CmeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.FlattenListMediaResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GenerateVideoSegmentationSchemeByAi(self, request):
+        """发起视频智能拆条任务，支持智能生成和平精英集锦、王者荣耀集锦、足球集锦、篮球集锦 、人物集锦、新闻拆条等任务。
+
+        :param request: Request instance for GenerateVideoSegmentationSchemeByAi.
+        :type request: :class:`tencentcloud.cme.v20191029.models.GenerateVideoSegmentationSchemeByAiRequest`
+        :rtype: :class:`tencentcloud.cme.v20191029.models.GenerateVideoSegmentationSchemeByAiResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GenerateVideoSegmentationSchemeByAi", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GenerateVideoSegmentationSchemeByAiResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

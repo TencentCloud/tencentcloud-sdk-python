@@ -259,6 +259,115 @@ class CcnInstanceSets(AbstractModel):
         self.State = params.get("State")
 
 
+class CopyFleetRequest(AbstractModel):
+    """CopyFleet请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FleetId: 服务器舰队 Id
+        :type FleetId: str
+        :param CopyNumber: 复制数量，最小值1，最大值为剩余配额，可以根据[获取用户配额](https://cloud.tencent.com/document/product/1165/48732)接口获取。
+        :type CopyNumber: int
+        :param AssetId: 生成包 Id
+        :type AssetId: str
+        :param Description: 描述，最小长度0，最大长度100
+        :type Description: str
+        :param InboundPermissions: 网络配置
+        :type InboundPermissions: list of InboundPermission
+        :param InstanceType: 服务器类型，参数根据[获取服务器实例类型列表](https://cloud.tencent.com/document/product/1165/48732)接口获取。
+        :type InstanceType: str
+        :param FleetType: 服务器舰队类型，目前只支持ON_DEMAND类型
+        :type FleetType: str
+        :param Name: 服务器舰队名称，最小长度1，最大长度50
+        :type Name: str
+        :param NewGameServerSessionProtectionPolicy: 保护策略：不保护NoProtection、完全保护FullProtection、时限保护TimeLimitProtection
+        :type NewGameServerSessionProtectionPolicy: str
+        :param ResourceCreationLimitPolicy: 资源创建限制策略
+        :type ResourceCreationLimitPolicy: :class:`tencentcloud.gse.v20191112.models.ResourceCreationLimitPolicy`
+        :param RuntimeConfiguration: 进程配置
+        :type RuntimeConfiguration: :class:`tencentcloud.gse.v20191112.models.RuntimeConfiguration`
+        :param GameServerSessionProtectionTimeLimit: 时限保护超时时间，默认60分钟，最小值5，最大值1440；当NewGameSessionProtectionPolicy为TimeLimitProtection时参数有效
+        :type GameServerSessionProtectionTimeLimit: int
+        :param SelectedScalingType: 是否选择扩缩容：SCALING_SELECTED 或者 SCALING_UNSELECTED；默认是 SCALING_UNSELECTED
+        :type SelectedScalingType: str
+        :param SelectedCcnType: 是否选择云联网：CCN_SELECTED 或者 CCN_UNSELECTED；默认是 CCN_UNSELECTED
+        :type SelectedCcnType: str
+        """
+        self.FleetId = None
+        self.CopyNumber = None
+        self.AssetId = None
+        self.Description = None
+        self.InboundPermissions = None
+        self.InstanceType = None
+        self.FleetType = None
+        self.Name = None
+        self.NewGameServerSessionProtectionPolicy = None
+        self.ResourceCreationLimitPolicy = None
+        self.RuntimeConfiguration = None
+        self.GameServerSessionProtectionTimeLimit = None
+        self.SelectedScalingType = None
+        self.SelectedCcnType = None
+
+
+    def _deserialize(self, params):
+        self.FleetId = params.get("FleetId")
+        self.CopyNumber = params.get("CopyNumber")
+        self.AssetId = params.get("AssetId")
+        self.Description = params.get("Description")
+        if params.get("InboundPermissions") is not None:
+            self.InboundPermissions = []
+            for item in params.get("InboundPermissions"):
+                obj = InboundPermission()
+                obj._deserialize(item)
+                self.InboundPermissions.append(obj)
+        self.InstanceType = params.get("InstanceType")
+        self.FleetType = params.get("FleetType")
+        self.Name = params.get("Name")
+        self.NewGameServerSessionProtectionPolicy = params.get("NewGameServerSessionProtectionPolicy")
+        if params.get("ResourceCreationLimitPolicy") is not None:
+            self.ResourceCreationLimitPolicy = ResourceCreationLimitPolicy()
+            self.ResourceCreationLimitPolicy._deserialize(params.get("ResourceCreationLimitPolicy"))
+        if params.get("RuntimeConfiguration") is not None:
+            self.RuntimeConfiguration = RuntimeConfiguration()
+            self.RuntimeConfiguration._deserialize(params.get("RuntimeConfiguration"))
+        self.GameServerSessionProtectionTimeLimit = params.get("GameServerSessionProtectionTimeLimit")
+        self.SelectedScalingType = params.get("SelectedScalingType")
+        self.SelectedCcnType = params.get("SelectedCcnType")
+
+
+class CopyFleetResponse(AbstractModel):
+    """CopyFleet返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FleetAttributes: 服务器舰队属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FleetAttributes: list of FleetAttributes
+        :param TotalCount: 服务器舰队数量
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FleetAttributes = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("FleetAttributes") is not None:
+            self.FleetAttributes = []
+            for item in params.get("FleetAttributes"):
+                obj = FleetAttributes()
+                obj._deserialize(item)
+                self.FleetAttributes.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateAliasRequest(AbstractModel):
     """CreateAlias请求参数结构体
 

@@ -331,6 +331,21 @@ timeRollback，时间点回档
         :type OrderSource: str
         :param ResourceTags: 集群创建需要绑定的tag数组信息
         :type ResourceTags: list of Tag
+        :param DbMode: Db类型
+当DbType为MYSQL时可选(默认NORMAL)：
+<li>NORMAL</li>
+<li>SERVERLESS</li>
+        :type DbMode: str
+        :param MinCpu: 当DbMode为SEVERLESS时的cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+        :type MinCpu: float
+        :param MaxCpu: 当DbMode为SEVERLESS时的cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+        :type MaxCpu: float
+        :param AutoPause: 当DbMode为SEVERLESS时，指定集群是否自动暂停，可选范围
+<li>yes</li>
+<li>no</li>
+        :type AutoPause: str
+        :param AutoPauseDelay: 当DbMode为SEVERLESS时，指定集群自动暂停的延迟，可选范围[60,INF]
+        :type AutoPauseDelay: int
         """
         self.Zone = None
         self.VpcId = None
@@ -360,6 +375,11 @@ timeRollback，时间点回档
         self.HaCount = None
         self.OrderSource = None
         self.ResourceTags = None
+        self.DbMode = None
+        self.MinCpu = None
+        self.MaxCpu = None
+        self.AutoPause = None
+        self.AutoPauseDelay = None
 
 
     def _deserialize(self, params):
@@ -396,6 +416,11 @@ timeRollback，时间点回档
                 obj = Tag()
                 obj._deserialize(item)
                 self.ResourceTags.append(obj)
+        self.DbMode = params.get("DbMode")
+        self.MinCpu = params.get("MinCpu")
+        self.MaxCpu = params.get("MaxCpu")
+        self.AutoPause = params.get("AutoPause")
+        self.AutoPauseDelay = params.get("AutoPauseDelay")
 
 
 class CreateClustersResponse(AbstractModel):
@@ -499,6 +524,12 @@ class CynosdbCluster(AbstractModel):
         :type Tasks: list of ObjectTask
         :param ResourceTags: 集群绑定的tag数组
         :type ResourceTags: list of Tag
+        :param DbMode: Db类型(NORMAL, SERVERLESS)
+        :type DbMode: str
+        :param ServerlessStatus: 当Db类型为SERVERLESS时，serverless集群状态，可选值:
+resume
+pause
+        :type ServerlessStatus: str
         """
         self.Status = None
         self.UpdateTime = None
@@ -526,6 +557,8 @@ class CynosdbCluster(AbstractModel):
         self.ProcessingTask = None
         self.Tasks = None
         self.ResourceTags = None
+        self.DbMode = None
+        self.ServerlessStatus = None
 
 
     def _deserialize(self, params):
@@ -565,6 +598,8 @@ class CynosdbCluster(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.ResourceTags.append(obj)
+        self.DbMode = params.get("DbMode")
+        self.ServerlessStatus = params.get("ServerlessStatus")
 
 
 class CynosdbClusterDetail(AbstractModel):
@@ -768,6 +803,14 @@ class CynosdbInstance(AbstractModel):
         :type ProcessingTask: str
         :param RenewFlag: 续费标志
         :type RenewFlag: int
+        :param MinCpu: serverless实例cpu下限
+        :type MinCpu: float
+        :param MaxCpu: serverless实例cpu上限
+        :type MaxCpu: float
+        :param ServerlessStatus: serverless实例状态, 可选值：
+resume
+pause
+        :type ServerlessStatus: str
         """
         self.Uin = None
         self.AppId = None
@@ -806,6 +849,9 @@ class CynosdbInstance(AbstractModel):
         self.CynosVersion = None
         self.ProcessingTask = None
         self.RenewFlag = None
+        self.MinCpu = None
+        self.MaxCpu = None
+        self.ServerlessStatus = None
 
 
     def _deserialize(self, params):
@@ -846,6 +892,9 @@ class CynosdbInstance(AbstractModel):
         self.CynosVersion = params.get("CynosVersion")
         self.ProcessingTask = params.get("ProcessingTask")
         self.RenewFlag = params.get("RenewFlag")
+        self.MinCpu = params.get("MinCpu")
+        self.MaxCpu = params.get("MaxCpu")
+        self.ServerlessStatus = params.get("ServerlessStatus")
 
 
 class CynosdbInstanceDetail(AbstractModel):

@@ -1788,6 +1788,63 @@ class ClassicLinkInstance(AbstractModel):
         self.InstanceId = params.get("InstanceId")
 
 
+class CloneSecurityGroupRequest(AbstractModel):
+    """CloneSecurityGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityGroupId: 安全组实例ID，例如sg-33ocnj9n，可通过DescribeSecurityGroups获取。
+        :type SecurityGroupId: str
+        :param GroupName: 安全组名称，可任意命名，但不得超过60个字符。未提供参数时，克隆后的安全组名称和SecurityGroupId对应的安全组名称相同。
+        :type GroupName: str
+        :param GroupDescription: 安全组备注，最多100个字符。未提供参数时，克隆后的安全组备注和SecurityGroupId对应的安全组备注相同。
+        :type GroupDescription: str
+        :param ProjectId: 项目ID，默认0。可在qcloud控制台项目管理页面查询到。
+        :type ProjectId: str
+        :param RemoteRegion: 源Region,跨地域克隆安全组时，需要传入源安全组所属地域信息，例如：克隆广州的安全组到上海，则这里需要传入广州安全的地域信息：ap-guangzhou。
+        :type RemoteRegion: str
+        """
+        self.SecurityGroupId = None
+        self.GroupName = None
+        self.GroupDescription = None
+        self.ProjectId = None
+        self.RemoteRegion = None
+
+
+    def _deserialize(self, params):
+        self.SecurityGroupId = params.get("SecurityGroupId")
+        self.GroupName = params.get("GroupName")
+        self.GroupDescription = params.get("GroupDescription")
+        self.ProjectId = params.get("ProjectId")
+        self.RemoteRegion = params.get("RemoteRegion")
+
+
+class CloneSecurityGroupResponse(AbstractModel):
+    """CloneSecurityGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityGroup: 安全组对象。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecurityGroup: :class:`tencentcloud.vpc.v20170312.models.SecurityGroup`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SecurityGroup = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SecurityGroup") is not None:
+            self.SecurityGroup = SecurityGroup()
+            self.SecurityGroup._deserialize(params.get("SecurityGroup"))
+        self.RequestId = params.get("RequestId")
+
+
 class ConflictItem(AbstractModel):
     """冲突资源条目信息。
 

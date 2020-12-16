@@ -112,9 +112,13 @@ class AddressInfo(AbstractModel):
         :param PrivateIPAddressInfo: 实例的内网ip相关信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PrivateIPAddressInfo: :class:`tencentcloud.ecm.v20190719.models.PrivateIPAddressInfo`
+        :param PublicIPv6AddressInfo: 实例的外网ipv6相关信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicIPv6AddressInfo: :class:`tencentcloud.ecm.v20190719.models.PublicIPAddressInfo`
         """
         self.PublicIPAddressInfo = None
         self.PrivateIPAddressInfo = None
+        self.PublicIPv6AddressInfo = None
 
 
     def _deserialize(self, params):
@@ -124,6 +128,9 @@ class AddressInfo(AbstractModel):
         if params.get("PrivateIPAddressInfo") is not None:
             self.PrivateIPAddressInfo = PrivateIPAddressInfo()
             self.PrivateIPAddressInfo._deserialize(params.get("PrivateIPAddressInfo"))
+        if params.get("PublicIPv6AddressInfo") is not None:
+            self.PublicIPv6AddressInfo = PublicIPAddressInfo()
+            self.PublicIPv6AddressInfo._deserialize(params.get("PublicIPv6AddressInfo"))
 
 
 class AddressTemplateSpecification(AbstractModel):
@@ -4551,7 +4558,7 @@ class ImportCustomImageRequest(AbstractModel):
         :type ImageDescription: str
         :param InitFlag: 镜像启动方式，cloudinit或nbd， 默认cloudinit
         :type InitFlag: str
-        :param ImageUrls: 镜像描述，多层镜像按顺序传入
+        :param ImageUrls: 镜像文件描述，多层镜像按顺序传入
         :type ImageUrls: list of ImageUrl
         """
         self.ImageName = None
@@ -8973,6 +8980,8 @@ class ZoneInstanceCountISP(AbstractModel):
         :type SubnetId: str
         :param PrivateIpAddresses: 指定主网卡内网IP。条件：SubnetId与VpcId必须同时指定，并且IP数量与InstanceCount相同，多IP主机副网卡内网IP在相同子网内通过DHCP获取。
         :type PrivateIpAddresses: list of str
+        :param Ipv6AddressCount: 为弹性网卡指定随机生成的IPv6地址数量，目前数量不能大于1。
+        :type Ipv6AddressCount: int
         """
         self.Zone = None
         self.InstanceCount = None
@@ -8980,6 +8989,7 @@ class ZoneInstanceCountISP(AbstractModel):
         self.VpcId = None
         self.SubnetId = None
         self.PrivateIpAddresses = None
+        self.Ipv6AddressCount = None
 
 
     def _deserialize(self, params):
@@ -8989,6 +8999,7 @@ class ZoneInstanceCountISP(AbstractModel):
         self.VpcId = params.get("VpcId")
         self.SubnetId = params.get("SubnetId")
         self.PrivateIpAddresses = params.get("PrivateIpAddresses")
+        self.Ipv6AddressCount = params.get("Ipv6AddressCount")
 
 
 class ZoneInstanceInfo(AbstractModel):

@@ -612,6 +612,9 @@ class DBInstance(AbstractModel):
         :param DcnDstNum: DCN灾备实例数
 注意：此字段可能返回 null，表示取不到有效值。
         :type DcnDstNum: int
+        :param InstanceType: 1： 主实例（独享型）, 2: 主实例, 3： 灾备实例, 4： 灾备实例（独享型）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceType: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -662,6 +665,7 @@ class DBInstance(AbstractModel):
         self.DcnFlag = None
         self.DcnStatus = None
         self.DcnDstNum = None
+        self.InstanceType = None
 
 
     def _deserialize(self, params):
@@ -714,6 +718,7 @@ class DBInstance(AbstractModel):
         self.DcnFlag = params.get("DcnFlag")
         self.DcnStatus = params.get("DcnStatus")
         self.DcnDstNum = params.get("DcnDstNum")
+        self.InstanceType = params.get("InstanceType")
 
 
 class DBParamValue(AbstractModel):

@@ -1546,7 +1546,7 @@ class ListEventHistoryRequest(AbstractModel):
         :type EndTime: int
         :param Context: 搜索上下文, 用作查询游标
         :type Context: str
-        :param Size: 单次获取的历史数据项目的最大数量
+        :param Size: 单次获取的历史数据项目的最大数量, 缺省10
         :type Size: int
         :param EventId: 事件标识符，可以用来指定查询特定的事件，如果不指定，则查询所有事件。
         :type EventId: str
@@ -2130,6 +2130,60 @@ class ProjectEntryEx(AbstractModel):
         self.ProductCount = params.get("ProductCount")
         self.NativeAppCount = params.get("NativeAppCount")
         self.WebAppCount = params.get("WebAppCount")
+
+
+class PublishMessageRequest(AbstractModel):
+    """PublishMessage请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        :param Topic: 消息发往的主题
+        :type Topic: str
+        :param Payload: 云端下发到设备的控制报文
+        :type Payload: str
+        :param Qos: 消息服务质量等级，取值为0或1
+        :type Qos: int
+        :param PayloadEncoding: Payload的内容编码格式，取值为base64或空。base64表示云端将接收到的base64编码后的报文再转换成二进制报文下发至设备，为空表示不作转换，透传下发至设备
+        :type PayloadEncoding: str
+        """
+        self.ProductId = None
+        self.DeviceName = None
+        self.Topic = None
+        self.Payload = None
+        self.Qos = None
+        self.PayloadEncoding = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+        self.Topic = params.get("Topic")
+        self.Payload = params.get("Payload")
+        self.Qos = params.get("Qos")
+        self.PayloadEncoding = params.get("PayloadEncoding")
+
+
+class PublishMessageResponse(AbstractModel):
+    """PublishMessage返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class ReleaseStudioProductRequest(AbstractModel):

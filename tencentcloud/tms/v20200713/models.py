@@ -81,6 +81,117 @@ class AccountTipoffAccessResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTextLibRequest(AbstractModel):
+    """DescribeTextLib请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StrategyType: 内容类型 text: 1; image: 2; audio: 3; video: 4
+        :type StrategyType: int
+        """
+        self.StrategyType = None
+
+
+    def _deserialize(self, params):
+        self.StrategyType = params.get("StrategyType")
+
+
+class DescribeTextLibResponse(AbstractModel):
+    """DescribeTextLib返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TextLib: 文本库id和name列表
+        :type TextLib: list of TextLib
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TextLib = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TextLib") is not None:
+            self.TextLib = []
+            for item in params.get("TextLib"):
+                obj = TextLib()
+                obj._deserialize(item)
+                self.TextLib.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTextStatRequest(AbstractModel):
+    """DescribeTextStat请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AuditType: 审核类型 1: 机器审核; 2: 人工审核
+        :type AuditType: int
+        :param Filters: 查询条件
+        :type Filters: list of Filters
+        """
+        self.AuditType = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.AuditType = params.get("AuditType")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class DescribeTextStatResponse(AbstractModel):
+    """DescribeTextStat返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Overview: 识别结果统计
+        :type Overview: :class:`tencentcloud.tms.v20200713.models.Overview`
+        :param TrendCount: 识别量统计
+        :type TrendCount: list of TrendCount
+        :param EvilCount: 违规数据分布
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EvilCount: list of EvilCount
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Overview = None
+        self.TrendCount = None
+        self.EvilCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Overview") is not None:
+            self.Overview = Overview()
+            self.Overview._deserialize(params.get("Overview"))
+        if params.get("TrendCount") is not None:
+            self.TrendCount = []
+            for item in params.get("TrendCount"):
+                obj = TrendCount()
+                obj._deserialize(item)
+                self.TrendCount.append(obj)
+        if params.get("EvilCount") is not None:
+            self.EvilCount = []
+            for item in params.get("EvilCount"):
+                obj = EvilCount()
+                obj._deserialize(item)
+                self.EvilCount.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DetailResults(AbstractModel):
     """文本返回的详细结果
 
@@ -169,6 +280,104 @@ class Device(AbstractModel):
         self.IDFV = params.get("IDFV")
 
 
+class EvilCount(AbstractModel):
+    """违规数据分布
+
+    """
+
+    def __init__(self):
+        """
+        :param EvilType: 违规类型：
+Terror	24001
+Porn	20002
+Polity	20001
+Ad	20105
+Abuse	20007	
+Illegal	20006	
+Spam	25001	
+Moan	26001
+        :type EvilType: str
+        :param Count: 分布类型总量
+        :type Count: int
+        """
+        self.EvilType = None
+        self.Count = None
+
+
+    def _deserialize(self, params):
+        self.EvilType = params.get("EvilType")
+        self.Count = params.get("Count")
+
+
+class Filters(AbstractModel):
+    """文本过滤条件
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 查询字段：
+策略BizType
+子账号SubUin
+日期区间DateRange
+        :type Name: str
+        :param Values: 查询值
+        :type Values: list of str
+        """
+        self.Name = None
+        self.Values = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Values = params.get("Values")
+
+
+class Overview(AbstractModel):
+    """识别结果统计
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 总调用量
+        :type TotalCount: int
+        :param TotalHour: 总调用时长
+        :type TotalHour: int
+        :param PassCount: 通过量
+        :type PassCount: int
+        :param PassHour: 通过时长
+        :type PassHour: int
+        :param EvilCount: 违规量
+        :type EvilCount: int
+        :param EvilHour: 违规时长
+        :type EvilHour: int
+        :param SuspectCount: 疑似违规量
+        :type SuspectCount: int
+        :param SuspectHour: 疑似违规时长
+        :type SuspectHour: int
+        """
+        self.TotalCount = None
+        self.TotalHour = None
+        self.PassCount = None
+        self.PassHour = None
+        self.EvilCount = None
+        self.EvilHour = None
+        self.SuspectCount = None
+        self.SuspectHour = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        self.TotalHour = params.get("TotalHour")
+        self.PassCount = params.get("PassCount")
+        self.PassHour = params.get("PassHour")
+        self.EvilCount = params.get("EvilCount")
+        self.EvilHour = params.get("EvilHour")
+        self.SuspectCount = params.get("SuspectCount")
+        self.SuspectHour = params.get("SuspectHour")
+
+
 class RiskDetails(AbstractModel):
     """账号风险检测结果
 
@@ -188,6 +397,27 @@ class RiskDetails(AbstractModel):
     def _deserialize(self, params):
         self.Label = params.get("Label")
         self.Level = params.get("Level")
+
+
+class TextLib(AbstractModel):
+    """自定义库列表
+
+    """
+
+    def __init__(self):
+        """
+        :param LibId: 库id
+        :type LibId: int
+        :param LibName: 库名
+        :type LibName: str
+        """
+        self.LibId = None
+        self.LibName = None
+
+
+    def _deserialize(self, params):
+        self.LibId = params.get("LibId")
+        self.LibName = params.get("LibName")
 
 
 class TextModerationRequest(AbstractModel):
@@ -318,6 +548,64 @@ class TipoffResponse(AbstractModel):
     def _deserialize(self, params):
         self.ResultCode = params.get("ResultCode")
         self.ResultMsg = params.get("ResultMsg")
+
+
+class TrendCount(AbstractModel):
+    """识别量统计
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 总调用量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param TotalHour: 总调用时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalHour: int
+        :param PassCount: 通过量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PassCount: int
+        :param PassHour: 通过时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PassHour: int
+        :param EvilCount: 违规量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EvilCount: int
+        :param EvilHour: 违规时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EvilHour: int
+        :param SuspectCount: 疑似违规量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuspectCount: int
+        :param SuspectHour: 疑似违规时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuspectHour: int
+        :param Date: 日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Date: str
+        """
+        self.TotalCount = None
+        self.TotalHour = None
+        self.PassCount = None
+        self.PassHour = None
+        self.EvilCount = None
+        self.EvilHour = None
+        self.SuspectCount = None
+        self.SuspectHour = None
+        self.Date = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        self.TotalHour = params.get("TotalHour")
+        self.PassCount = params.get("PassCount")
+        self.PassHour = params.get("PassHour")
+        self.EvilCount = params.get("EvilCount")
+        self.EvilHour = params.get("EvilHour")
+        self.SuspectCount = params.get("SuspectCount")
+        self.SuspectHour = params.get("SuspectHour")
+        self.Date = params.get("Date")
 
 
 class User(AbstractModel):

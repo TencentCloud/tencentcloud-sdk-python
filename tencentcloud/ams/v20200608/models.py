@@ -16,6 +16,75 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AmsDetailInfo(AbstractModel):
+    """机器审核详情列表数据项
+
+    """
+
+    def __init__(self):
+        """
+        :param Label: 标签
+        :type Label: list of str
+        :param Duration: 时长(秒/s)
+        :type Duration: int
+        :param Name: 任务名
+        :type Name: str
+        :param TaskID: 任务ID，创建任务后返回的TaskId字段
+        :type TaskID: str
+        :param InsertTime: 插入时间
+        :type InsertTime: str
+        :param DataForm: 数据来源 0机审，其他为自主审核
+        :type DataForm: int
+        :param Operator: 操作人
+        :type Operator: str
+        :param OriginalLabel: 原始命中标签
+        :type OriginalLabel: list of str
+        :param OperateTime: 操作时间
+        :type OperateTime: str
+        :param Url: 视频原始地址
+        :type Url: str
+        :param Thumbnail: 封面图地址
+        :type Thumbnail: str
+        :param Content: 短音频内容
+        :type Content: str
+        :param DetailCount: 短音频个数
+        :type DetailCount: int
+        :param RequestId: 音频审核的请求 id
+        :type RequestId: str
+        """
+        self.Label = None
+        self.Duration = None
+        self.Name = None
+        self.TaskID = None
+        self.InsertTime = None
+        self.DataForm = None
+        self.Operator = None
+        self.OriginalLabel = None
+        self.OperateTime = None
+        self.Url = None
+        self.Thumbnail = None
+        self.Content = None
+        self.DetailCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Label = params.get("Label")
+        self.Duration = params.get("Duration")
+        self.Name = params.get("Name")
+        self.TaskID = params.get("TaskID")
+        self.InsertTime = params.get("InsertTime")
+        self.DataForm = params.get("DataForm")
+        self.Operator = params.get("Operator")
+        self.OriginalLabel = params.get("OriginalLabel")
+        self.OperateTime = params.get("OperateTime")
+        self.Url = params.get("Url")
+        self.Thumbnail = params.get("Thumbnail")
+        self.Content = params.get("Content")
+        self.DetailCount = params.get("DetailCount")
+        self.RequestId = params.get("RequestId")
+
+
 class AudioResult(AbstractModel):
     """音频输出参数
 
@@ -425,6 +494,141 @@ class CreateBizConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeAmsListRequest(AbstractModel):
+    """DescribeAmsList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PageToken: 页码
+        :type PageToken: str
+        :param Limit: 过滤条件
+        :type Limit: int
+        :param PageDirection: 查询方向
+        :type PageDirection: str
+        :param Filters: 过滤条件
+        :type Filters: list of Filter
+        """
+        self.PageToken = None
+        self.Limit = None
+        self.PageDirection = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.PageToken = params.get("PageToken")
+        self.Limit = params.get("Limit")
+        self.PageDirection = params.get("PageDirection")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class DescribeAmsListResponse(AbstractModel):
+    """DescribeAmsList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AmsDetailSet: 返回列表数据
+        :type AmsDetailSet: list of AmsDetailInfo
+        :param Total: 总条数
+        :type Total: int
+        :param PageToken: 分页 token
+        :type PageToken: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AmsDetailSet = None
+        self.Total = None
+        self.PageToken = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AmsDetailSet") is not None:
+            self.AmsDetailSet = []
+            for item in params.get("AmsDetailSet"):
+                obj = AmsDetailInfo()
+                obj._deserialize(item)
+                self.AmsDetailSet.append(obj)
+        self.Total = params.get("Total")
+        self.PageToken = params.get("PageToken")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAudioStatRequest(AbstractModel):
+    """DescribeAudioStat请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AuditType: 审核类型 1: 机器审核; 2: 人工审核
+        :type AuditType: int
+        :param Filters: 查询条件
+        :type Filters: list of Filters
+        """
+        self.AuditType = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.AuditType = params.get("AuditType")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class DescribeAudioStatResponse(AbstractModel):
+    """DescribeAudioStat返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Overview: 识别结果统计
+        :type Overview: :class:`tencentcloud.ams.v20200608.models.Overview`
+        :param TrendCount: 识别量统计
+        :type TrendCount: list of TrendCount
+        :param EvilCount: 违规数据分布
+        :type EvilCount: list of EvilCount
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Overview = None
+        self.TrendCount = None
+        self.EvilCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Overview") is not None:
+            self.Overview = Overview()
+            self.Overview._deserialize(params.get("Overview"))
+        if params.get("TrendCount") is not None:
+            self.TrendCount = []
+            for item in params.get("TrendCount"):
+                obj = TrendCount()
+                obj._deserialize(item)
+                self.TrendCount.append(obj)
+        if params.get("EvilCount") is not None:
+            self.EvilCount = []
+            for item in params.get("EvilCount"):
+                obj = EvilCount()
+                obj._deserialize(item)
+                self.EvilCount.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeBizConfigRequest(AbstractModel):
     """DescribeBizConfig请求参数结构体
 
@@ -634,6 +838,35 @@ Block 建议屏蔽；
         self.RequestId = params.get("RequestId")
 
 
+class EvilCount(AbstractModel):
+    """违规数据分布
+
+    """
+
+    def __init__(self):
+        """
+        :param EvilType: 违规类型：
+Terror	24001
+Porn	20002
+Polity	20001
+Ad	20105
+Abuse	20007	
+Illegal	20006	
+Spam	25001	
+Moan	26001
+        :type EvilType: str
+        :param Count: 分布类型总量
+        :type Count: int
+        """
+        self.EvilType = None
+        self.Count = None
+
+
+    def _deserialize(self, params):
+        self.EvilType = params.get("EvilType")
+        self.Count = params.get("Count")
+
+
 class FileOutput(AbstractModel):
     """Cos FileOutput
 
@@ -657,6 +890,51 @@ class FileOutput(AbstractModel):
         self.Bucket = params.get("Bucket")
         self.Region = params.get("Region")
         self.ObjectPrefix = params.get("ObjectPrefix")
+
+
+class Filter(AbstractModel):
+    """描述键值对过滤器，用于条件过滤查询。例如过滤ID、名称、状态等
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 过滤键的名称。
+        :type Name: str
+        :param Values: 一个或者多个过滤值。
+        :type Values: list of str
+        """
+        self.Name = None
+        self.Values = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Values = params.get("Values")
+
+
+class Filters(AbstractModel):
+    """音频过滤条件
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 查询字段：
+策略BizType
+子账号SubUin
+日期区间DateRange
+        :type Name: str
+        :param Values: 查询值
+        :type Values: list of str
+        """
+        self.Name = None
+        self.Values = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Values = params.get("Values")
 
 
 class ImageResult(AbstractModel):
@@ -1021,6 +1299,51 @@ class MediaModerationConfig(AbstractModel):
         self.UseAudio = params.get("UseAudio")
 
 
+class Overview(AbstractModel):
+    """识别结果统计
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 总调用量
+        :type TotalCount: int
+        :param TotalHour: 总调用时长
+        :type TotalHour: int
+        :param PassCount: 通过量
+        :type PassCount: int
+        :param PassHour: 通过时长
+        :type PassHour: int
+        :param EvilCount: 违规量
+        :type EvilCount: int
+        :param EvilHour: 违规时长
+        :type EvilHour: int
+        :param SuspectCount: 疑似违规量
+        :type SuspectCount: int
+        :param SuspectHour: 疑似违规时长
+        :type SuspectHour: int
+        """
+        self.TotalCount = None
+        self.TotalHour = None
+        self.PassCount = None
+        self.PassHour = None
+        self.EvilCount = None
+        self.EvilHour = None
+        self.SuspectCount = None
+        self.SuspectHour = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        self.TotalHour = params.get("TotalHour")
+        self.PassCount = params.get("PassCount")
+        self.PassHour = params.get("PassHour")
+        self.EvilCount = params.get("EvilCount")
+        self.EvilHour = params.get("EvilHour")
+        self.SuspectCount = params.get("SuspectCount")
+        self.SuspectHour = params.get("SuspectHour")
+
+
 class StorageInfo(AbstractModel):
     """数据存储信息
 
@@ -1146,3 +1469,52 @@ class TaskResult(AbstractModel):
         self.TaskId = params.get("TaskId")
         self.Code = params.get("Code")
         self.Message = params.get("Message")
+
+
+class TrendCount(AbstractModel):
+    """识别量统计
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 总调用量
+        :type TotalCount: int
+        :param TotalHour: 总调用时长
+        :type TotalHour: int
+        :param PassCount: 通过量
+        :type PassCount: int
+        :param PassHour: 通过时长
+        :type PassHour: int
+        :param EvilCount: 违规量
+        :type EvilCount: int
+        :param EvilHour: 违规时长
+        :type EvilHour: int
+        :param SuspectCount: 疑似违规量
+        :type SuspectCount: int
+        :param SuspectHour: 疑似违规时长
+        :type SuspectHour: int
+        :param Date: 日期
+        :type Date: str
+        """
+        self.TotalCount = None
+        self.TotalHour = None
+        self.PassCount = None
+        self.PassHour = None
+        self.EvilCount = None
+        self.EvilHour = None
+        self.SuspectCount = None
+        self.SuspectHour = None
+        self.Date = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        self.TotalHour = params.get("TotalHour")
+        self.PassCount = params.get("PassCount")
+        self.PassHour = params.get("PassHour")
+        self.EvilCount = params.get("EvilCount")
+        self.EvilHour = params.get("EvilHour")
+        self.SuspectCount = params.get("SuspectCount")
+        self.SuspectHour = params.get("SuspectHour")
+        self.Date = params.get("Date")

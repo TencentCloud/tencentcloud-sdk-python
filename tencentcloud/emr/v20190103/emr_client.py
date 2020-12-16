@@ -110,6 +110,34 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeJobFlow(self, request):
+        """查询流程任务
+
+        :param request: Request instance for DescribeJobFlow.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeJobFlowRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeJobFlowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeJobFlow", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeJobFlowResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def InquiryPriceCreateInstance(self, request):
         """创建实例询价
 
@@ -208,6 +236,34 @@ class EmrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquiryPriceUpdateInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RunJobFlow(self, request):
+        """创建流程作业
+
+        :param request: Request instance for RunJobFlow.
+        :type request: :class:`tencentcloud.emr.v20190103.models.RunJobFlowRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.RunJobFlowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RunJobFlow", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RunJobFlowResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

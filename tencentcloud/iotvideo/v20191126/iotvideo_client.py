@@ -704,6 +704,34 @@ class IotvideoClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAccountBalance(self, request):
+        """客户可通过本接口获取账户余额信息, 默认接口请求频率限制：1次/秒
+
+        :param request: Request instance for DescribeAccountBalance.
+        :type request: :class:`tencentcloud.iotvideo.v20191126.models.DescribeAccountBalanceRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20191126.models.DescribeAccountBalanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAccountBalance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAccountBalanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBindDev(self, request):
         """本接口（DescribeBindDev）用于查询终端用户绑定的设备列表。
 
@@ -1139,6 +1167,34 @@ class IotvideoClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePubVersionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRechargeRecords(self, request):
+        """客户可通过本接口获取充值记录信息, 一次最多返回50条记录。
+
+        :param request: Request instance for DescribeRechargeRecords.
+        :type request: :class:`tencentcloud.iotvideo.v20191126.models.DescribeRechargeRecordsRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20191126.models.DescribeRechargeRecordsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRechargeRecords", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRechargeRecordsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

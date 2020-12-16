@@ -129,6 +129,272 @@ class ApplyCreditAuditResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class BotFlow(AbstractModel):
+    """机器人对话流信息
+
+    """
+
+    def __init__(self):
+        """
+        :param BotFlowId: 对话流ID
+        :type BotFlowId: str
+        :param BotFlowName: 对话流名称
+        :type BotFlowName: str
+        :param PhonePoolList: 号码组信息列表
+        :type PhonePoolList: list of PhonePool
+        """
+        self.BotFlowId = None
+        self.BotFlowName = None
+        self.PhonePoolList = None
+
+
+    def _deserialize(self, params):
+        self.BotFlowId = params.get("BotFlowId")
+        self.BotFlowName = params.get("BotFlowName")
+        if params.get("PhonePoolList") is not None:
+            self.PhonePoolList = []
+            for item in params.get("PhonePoolList"):
+                obj = PhonePool()
+                obj._deserialize(item)
+                self.PhonePoolList.append(obj)
+
+
+class CallTimeDict(AbstractModel):
+    """产品拨打时间集合
+
+    """
+
+    def __init__(self):
+        """
+        :param Monday: 周一
+        :type Monday: :class:`tencentcloud.cr.v20180321.models.CallTimeInfo`
+        :param Tuesday: 周二
+        :type Tuesday: :class:`tencentcloud.cr.v20180321.models.CallTimeInfo`
+        :param Wednesday: 周三
+        :type Wednesday: :class:`tencentcloud.cr.v20180321.models.CallTimeInfo`
+        :param Thursday: 周四
+        :type Thursday: :class:`tencentcloud.cr.v20180321.models.CallTimeInfo`
+        :param Friday: 周五
+        :type Friday: :class:`tencentcloud.cr.v20180321.models.CallTimeInfo`
+        :param Saturday: 周六
+        :type Saturday: :class:`tencentcloud.cr.v20180321.models.CallTimeInfo`
+        :param Sunday: 周日
+        :type Sunday: :class:`tencentcloud.cr.v20180321.models.CallTimeInfo`
+        """
+        self.Monday = None
+        self.Tuesday = None
+        self.Wednesday = None
+        self.Thursday = None
+        self.Friday = None
+        self.Saturday = None
+        self.Sunday = None
+
+
+    def _deserialize(self, params):
+        if params.get("Monday") is not None:
+            self.Monday = CallTimeInfo()
+            self.Monday._deserialize(params.get("Monday"))
+        if params.get("Tuesday") is not None:
+            self.Tuesday = CallTimeInfo()
+            self.Tuesday._deserialize(params.get("Tuesday"))
+        if params.get("Wednesday") is not None:
+            self.Wednesday = CallTimeInfo()
+            self.Wednesday._deserialize(params.get("Wednesday"))
+        if params.get("Thursday") is not None:
+            self.Thursday = CallTimeInfo()
+            self.Thursday._deserialize(params.get("Thursday"))
+        if params.get("Friday") is not None:
+            self.Friday = CallTimeInfo()
+            self.Friday._deserialize(params.get("Friday"))
+        if params.get("Saturday") is not None:
+            self.Saturday = CallTimeInfo()
+            self.Saturday._deserialize(params.get("Saturday"))
+        if params.get("Sunday") is not None:
+            self.Sunday = CallTimeInfo()
+            self.Sunday._deserialize(params.get("Sunday"))
+
+
+class CallTimeInfo(AbstractModel):
+    """产品拨打时间信息
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 产品开始拨打时间，HHmmss格式
+        :type StartTime: str
+        :param EndTime: 产品结束拨打时间，HHmmss格式
+        :type EndTime: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+
+
+class CreateBotTaskRequest(AbstractModel):
+    """CreateBotTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名。默认值（固定）：AiApi
+        :type Module: str
+        :param Operation: 操作名。默认值（固定）：CreateTask
+        :type Operation: str
+        :param BotName: 任务名称
+        :type BotName: str
+        :param FlowId: 对话流ID
+        :type FlowId: str
+        :param CallTimeCollection: 产品拨打时间集合
+        :type CallTimeCollection: :class:`tencentcloud.cr.v20180321.models.CallTimeDict`
+        :param BanCall: 是否禁止拨打
+        :type BanCall: str
+        :param StartTimeBan: 禁止拨打起始时间
+        :type StartTimeBan: str
+        :param EndTimeBan: 禁止拨打结束时间
+        :type EndTimeBan: str
+        :param PhoneCollection: 拨打线路集合
+        :type PhoneCollection: str
+        :param CodeType: 重播方式，NON：未接通、LABEL：意向分级，可多选，用竖线分隔：NON|LABEL
+        :type CodeType: str
+        :param CodeCollection: 重播值集合，A：强意向、B：中意向、C：低意向、D：无意向、E：在忙、F：未接通、G：无效号码，可多选，用竖线分隔：A|B|C|D|E|F|G
+        :type CodeCollection: str
+        :param CallCount: 继续拨打次数
+        :type CallCount: int
+        :param CallInterval: 拨打间隔
+        :type CallInterval: int
+        :param SmsSignId: 未接通引用短信签名ID
+        :type SmsSignId: str
+        :param SmsTemplateId: 未接通引用短信模板ID
+        :type SmsTemplateId: str
+        """
+        self.Module = None
+        self.Operation = None
+        self.BotName = None
+        self.FlowId = None
+        self.CallTimeCollection = None
+        self.BanCall = None
+        self.StartTimeBan = None
+        self.EndTimeBan = None
+        self.PhoneCollection = None
+        self.CodeType = None
+        self.CodeCollection = None
+        self.CallCount = None
+        self.CallInterval = None
+        self.SmsSignId = None
+        self.SmsTemplateId = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+        self.BotName = params.get("BotName")
+        self.FlowId = params.get("FlowId")
+        if params.get("CallTimeCollection") is not None:
+            self.CallTimeCollection = CallTimeDict()
+            self.CallTimeCollection._deserialize(params.get("CallTimeCollection"))
+        self.BanCall = params.get("BanCall")
+        self.StartTimeBan = params.get("StartTimeBan")
+        self.EndTimeBan = params.get("EndTimeBan")
+        self.PhoneCollection = params.get("PhoneCollection")
+        self.CodeType = params.get("CodeType")
+        self.CodeCollection = params.get("CodeCollection")
+        self.CallCount = params.get("CallCount")
+        self.CallInterval = params.get("CallInterval")
+        self.SmsSignId = params.get("SmsSignId")
+        self.SmsTemplateId = params.get("SmsTemplateId")
+
+
+class CreateBotTaskResponse(AbstractModel):
+    """CreateBotTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBotFlowRequest(AbstractModel):
+    """DescribeBotFlow请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名。默认值（固定）：AiApi
+        :type Module: str
+        :param Operation: 操作名。默认值（固定）：GetFlow
+        :type Operation: str
+        """
+        self.Module = None
+        self.Operation = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+
+
+class DescribeBotFlowResponse(AbstractModel):
+    """DescribeBotFlow返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BotFlowList: 机器人对话流列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BotFlowList: list of BotFlow
+        :param SmsSignList: 短信签名列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SmsSignList: list of SmsSign
+        :param SmsTemplateList: 短信模板列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SmsTemplateList: list of SmsTemplate
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BotFlowList = None
+        self.SmsSignList = None
+        self.SmsTemplateList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("BotFlowList") is not None:
+            self.BotFlowList = []
+            for item in params.get("BotFlowList"):
+                obj = BotFlow()
+                obj._deserialize(item)
+                self.BotFlowList.append(obj)
+        if params.get("SmsSignList") is not None:
+            self.SmsSignList = []
+            for item in params.get("SmsSignList"):
+                obj = SmsSign()
+                obj._deserialize(item)
+                self.SmsSignList.append(obj)
+        if params.get("SmsTemplateList") is not None:
+            self.SmsTemplateList = []
+            for item in params.get("SmsTemplateList"):
+                obj = SmsTemplate()
+                obj._deserialize(item)
+                self.SmsTemplateList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCreditResultRequest(AbstractModel):
     """DescribeCreditResult请求参数结构体
 
@@ -207,6 +473,60 @@ class DescribeCreditResultResponse(AbstractModel):
         self.RingDuration = params.get("RingDuration")
         self.AnswerDuration = params.get("AnswerDuration")
         self.ContextValue = params.get("ContextValue")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeFileModelRequest(AbstractModel):
+    """DescribeFileModel请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名。默认值（固定）：AiApi
+        :type Module: str
+        :param Operation: 操作名。默认值（固定）：DescribeFileModel
+        :type Operation: str
+        :param FileType: 模板文件类型，输入input，停拨stop
+        :type FileType: str
+        :param BotId: 任务ID，二者必填一个
+        :type BotId: str
+        :param BotName: 任务名称，二者必填一个
+        :type BotName: str
+        """
+        self.Module = None
+        self.Operation = None
+        self.FileType = None
+        self.BotId = None
+        self.BotName = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+        self.FileType = params.get("FileType")
+        self.BotId = params.get("BotId")
+        self.BotName = params.get("BotName")
+
+
+class DescribeFileModelResponse(AbstractModel):
+    """DescribeFileModel返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CosUrl: 模板下载链接
+        :type CosUrl: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CosUrl = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CosUrl = params.get("CosUrl")
         self.RequestId = params.get("RequestId")
 
 
@@ -529,6 +849,27 @@ class DownloadReportResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class PhonePool(AbstractModel):
+    """号码组信息
+
+    """
+
+    def __init__(self):
+        """
+        :param PoolId: 号码组ID
+        :type PoolId: str
+        :param PoolName: 号码组名称
+        :type PoolName: str
+        """
+        self.PoolId = None
+        self.PoolName = None
+
+
+    def _deserialize(self, params):
+        self.PoolId = params.get("PoolId")
+        self.PoolName = params.get("PoolName")
+
+
 class ProductQueryInfo(AbstractModel):
     """QueryProducts接口对应数据结构。产品对应的相关信息。
 
@@ -758,6 +1099,106 @@ class SingleRecord(AbstractModel):
         self.Duration = params.get("Duration")
         self.ProductId = params.get("ProductId")
         self.RecordCosUrl = params.get("RecordCosUrl")
+
+
+class SmsSign(AbstractModel):
+    """短信签名信息
+
+    """
+
+    def __init__(self):
+        """
+        :param SignId: 短信签名ID
+        :type SignId: str
+        :param SignName: 短信签名名称
+        :type SignName: str
+        """
+        self.SignId = None
+        self.SignName = None
+
+
+    def _deserialize(self, params):
+        self.SignId = params.get("SignId")
+        self.SignName = params.get("SignName")
+
+
+class SmsTemplate(AbstractModel):
+    """短信模板信息
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 短信模板ID
+        :type TemplateId: str
+        :param TemplateName: 短信模板名称
+        :type TemplateName: str
+        """
+        self.TemplateId = None
+        self.TemplateName = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.TemplateName = params.get("TemplateName")
+
+
+class UploadBotFileRequest(AbstractModel):
+    """UploadBotFile请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名。默认值（固定）：AiApi
+        :type Module: str
+        :param Operation: 操作名。默认值（固定）：Upload
+        :type Operation: str
+        :param FileType: 文件类型，输入input，停拨stop
+        :type FileType: str
+        :param FileUrl: 文件链接
+        :type FileUrl: str
+        :param FileName: 文件名
+        :type FileName: str
+        :param BotId: 任务ID，二者必填一个
+        :type BotId: str
+        :param BotName: 任务名称，二者必填一个
+        :type BotName: str
+        """
+        self.Module = None
+        self.Operation = None
+        self.FileType = None
+        self.FileUrl = None
+        self.FileName = None
+        self.BotId = None
+        self.BotName = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+        self.FileType = params.get("FileType")
+        self.FileUrl = params.get("FileUrl")
+        self.FileName = params.get("FileName")
+        self.BotId = params.get("BotId")
+        self.BotName = params.get("BotName")
+
+
+class UploadBotFileResponse(AbstractModel):
+    """UploadBotFile返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class UploadDataFileRequest(AbstractModel):

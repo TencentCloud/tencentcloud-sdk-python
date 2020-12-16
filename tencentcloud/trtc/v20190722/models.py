@@ -656,7 +656,7 @@ class DescribeRoomInformationRequest(AbstractModel):
         :type StartTime: int
         :param EndTime: 查询结束时间，本地unix时间戳（1588031999s）
         :type EndTime: int
-        :param RoomId: 数字房间号
+        :param RoomId: 字符串房间号
         :type RoomId: str
         :param PageNumber: 分页index，从0开始（PageNumber和PageSize 其中一个不填均默认返回10条数据）
         :type PageNumber: str

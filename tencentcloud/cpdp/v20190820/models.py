@@ -7367,6 +7367,113 @@ TRANSFER_RISK：转账存在风险
         self.RequestId = params.get("RequestId")
 
 
+class QueryTransferResultData(AbstractModel):
+    """智能代发-单笔代发转账查询接口返回内容
+
+    """
+
+    def __init__(self):
+        """
+        :param TradeSerialNo: 平台交易流水号
+        :type TradeSerialNo: str
+        :param OrderId: 订单号
+        :type OrderId: str
+        :param TradeStatus: 交易状态。
+0 处理中  
+1 提交成功 
+2 交易成功 
+3 交易失败 
+4 未知渠道异常 
+99 未知系统异常
+        :type TradeStatus: int
+        :param Remark: 业务备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        """
+        self.TradeSerialNo = None
+        self.OrderId = None
+        self.TradeStatus = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.TradeSerialNo = params.get("TradeSerialNo")
+        self.OrderId = params.get("OrderId")
+        self.TradeStatus = params.get("TradeStatus")
+        self.Remark = params.get("Remark")
+
+
+class QueryTransferResultRequest(AbstractModel):
+    """QueryTransferResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MerchantId: 商户号
+        :type MerchantId: str
+        :param MerchantAppId: 申请商户号的appid或者商户号绑定的appid
+        :type MerchantAppId: str
+        :param TransferType: 1、 微信企业付款 
+2、 支付宝转账 
+3、 平安银企直联代发转账
+        :type TransferType: int
+        :param TradeSerialNo: 交易流水流水号（与 OrderId 不能同时为空）
+        :type TradeSerialNo: str
+        :param OrderId: 订单号（与 TradeSerialNo 不能同时为空）
+        :type OrderId: str
+        :param Profile: 接入环境。沙箱环境填sandbox。
+        :type Profile: str
+        """
+        self.MerchantId = None
+        self.MerchantAppId = None
+        self.TransferType = None
+        self.TradeSerialNo = None
+        self.OrderId = None
+        self.Profile = None
+
+
+    def _deserialize(self, params):
+        self.MerchantId = params.get("MerchantId")
+        self.MerchantAppId = params.get("MerchantAppId")
+        self.TransferType = params.get("TransferType")
+        self.TradeSerialNo = params.get("TradeSerialNo")
+        self.OrderId = params.get("OrderId")
+        self.Profile = params.get("Profile")
+
+
+class QueryTransferResultResponse(AbstractModel):
+    """QueryTransferResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ErrCode: 错误码。响应成功："SUCCESS"，其他为不成功
+        :type ErrCode: str
+        :param ErrMessage: 响应消息
+        :type ErrMessage: str
+        :param Result: 返回结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.QueryTransferResultData`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = QueryTransferResultData()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class RechargeByThirdPayRequest(AbstractModel):
     """RechargeByThirdPay请求参数结构体
 
@@ -8766,6 +8873,125 @@ class TransferItem(AbstractModel):
         self.BankName = params.get("BankName")
         self.Remark = params.get("Remark")
         self.FrontSeqNo = params.get("FrontSeqNo")
+
+
+class TransferSinglePayData(AbstractModel):
+    """智能代发-单笔代发转账接口返回数据
+
+    """
+
+    def __init__(self):
+        """
+        :param TradeSerialNo: 平台交易流水号，唯一
+        :type TradeSerialNo: str
+        """
+        self.TradeSerialNo = None
+
+
+    def _deserialize(self, params):
+        self.TradeSerialNo = params.get("TradeSerialNo")
+
+
+class TransferSinglePayRequest(AbstractModel):
+    """TransferSinglePay请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MerchantId: 商户号
+        :type MerchantId: str
+        :param MerchantAppId: 微信申请商户号的appid或者商户号绑定的appid
+支付宝、平安填入MerchantId
+        :type MerchantAppId: str
+        :param TransferType: 1、 微信企业付款 
+2、 支付宝转账 
+3、 平安银企直联代发转账
+        :type TransferType: int
+        :param OrderId: 订单流水号，唯一，不能包含特殊字符，长度最大限制64位，推荐使用字母，数字组合，"_","-"组合
+        :type OrderId: str
+        :param TransferAmount: 转账金额，单位分
+        :type TransferAmount: int
+        :param PayeeId: 收款方标识。
+微信为open_id；
+支付宝为会员alipay_user_id;
+平安为收款方银行账号
+        :type PayeeId: str
+        :param PayeeName: 收款方姓名，微信，支付宝可选；平安模式下必传
+        :type PayeeName: str
+        :param PayeeExtends: 收款方附加信息，平安接入使用。需要以JSON格式提供以下字段：
+PayeeBankName：收款人开户行名称
+ CcyCode：货币类型（RMB-人民币）
+ UnionFlag：行内跨行标志（1：行内转账，0：跨行转账）。
+        :type PayeeExtends: str
+        :param ReqReserved: 请求预留字段，原样透传返回
+        :type ReqReserved: str
+        :param Remark: 业务备注
+        :type Remark: str
+        :param NotifyUrl: 转账结果回调通知URL。若不填，则不进行回调。
+        :type NotifyUrl: str
+        :param Profile: 接入环境。沙箱环境填sandbox。
+        :type Profile: str
+        """
+        self.MerchantId = None
+        self.MerchantAppId = None
+        self.TransferType = None
+        self.OrderId = None
+        self.TransferAmount = None
+        self.PayeeId = None
+        self.PayeeName = None
+        self.PayeeExtends = None
+        self.ReqReserved = None
+        self.Remark = None
+        self.NotifyUrl = None
+        self.Profile = None
+
+
+    def _deserialize(self, params):
+        self.MerchantId = params.get("MerchantId")
+        self.MerchantAppId = params.get("MerchantAppId")
+        self.TransferType = params.get("TransferType")
+        self.OrderId = params.get("OrderId")
+        self.TransferAmount = params.get("TransferAmount")
+        self.PayeeId = params.get("PayeeId")
+        self.PayeeName = params.get("PayeeName")
+        self.PayeeExtends = params.get("PayeeExtends")
+        self.ReqReserved = params.get("ReqReserved")
+        self.Remark = params.get("Remark")
+        self.NotifyUrl = params.get("NotifyUrl")
+        self.Profile = params.get("Profile")
+
+
+class TransferSinglePayResponse(AbstractModel):
+    """TransferSinglePay返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ErrCode: 错误码。响应成功："SUCCESS"，其他为不成功
+        :type ErrCode: str
+        :param ErrMessage: 响应消息
+        :type ErrMessage: str
+        :param Result: 返回结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.TransferSinglePayData`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = TransferSinglePayData()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
 
 
 class UnBindAcctRequest(AbstractModel):

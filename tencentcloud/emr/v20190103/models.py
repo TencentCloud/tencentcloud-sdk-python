@@ -16,6 +16,34 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class BootstrapAction(AbstractModel):
+    """引导脚本
+
+    """
+
+    def __init__(self):
+        """
+        :param Path: 脚本位置，支持cos上的文件，且只支持https协议。
+        :type Path: str
+        :param WhenRun: 执行时间。
+resourceAfter 表示在机器资源申请成功后执行。
+clusterBefore 表示在集群初始化前执行。
+clusterAfter 表示在集群初始化后执行。
+        :type WhenRun: str
+        :param Args: 脚本参数
+        :type Args: list of str
+        """
+        self.Path = None
+        self.WhenRun = None
+        self.Args = None
+
+
+    def _deserialize(self, params):
+        self.Path = params.get("Path")
+        self.WhenRun = params.get("WhenRun")
+        self.Args = params.get("Args")
+
+
 class COSSettings(AbstractModel):
     """COS 相关配置
 
@@ -319,6 +347,110 @@ class ClusterInstancesInfo(AbstractModel):
         self.ServiceClass = params.get("ServiceClass")
         self.AliasInfo = params.get("AliasInfo")
         self.ProductId = params.get("ProductId")
+
+
+class ClusterSetting(AbstractModel):
+    """集群配置。
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceChargeType: 付费方式。
+PREPAID 包年包月。
+POSTPAID_BY_HOUR 按量计费，默认方式。
+        :type InstanceChargeType: str
+        :param SupportHA: 是否为HA集群。
+        :type SupportHA: bool
+        :param SecurityGroupIds: 集群所使用的安全组，目前仅支持一个。
+        :type SecurityGroupIds: list of str
+        :param Placement: 实例位置。
+        :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
+        :param VPCSettings: 实例所在VPC。
+        :type VPCSettings: :class:`tencentcloud.emr.v20190103.models.VPCSettings`
+        :param LoginSettings: 实例登陆配置。
+        :type LoginSettings: :class:`tencentcloud.emr.v20190103.models.LoginSettings`
+        :param TagSpecification: 实例标签。
+        :type TagSpecification: list of str
+        :param MetaDB: 元数据库配置。
+        :type MetaDB: :class:`tencentcloud.emr.v20190103.models.MetaDbInfo`
+        :param ResourceSpec: 实例硬件配置。
+        :type ResourceSpec: :class:`tencentcloud.emr.v20190103.models.JobFlowResourceSpec`
+        :param PublicIpAssigned: 是否申请公网IP，默认为false。
+        :type PublicIpAssigned: bool
+        :param InstanceChargePrepaid: 包年包月配置，只对包年包月集群生效。
+        :type InstanceChargePrepaid: :class:`tencentcloud.emr.v20190103.models.InstanceChargePrepaid`
+        :param DisasterRecoverGroupIds: 集群置放群组。
+        :type DisasterRecoverGroupIds: str
+        :param CbsEncryptFlag: 是否使用cbs加密。
+        :type CbsEncryptFlag: bool
+        :param RemoteTcpDefaultPort: 是否使用远程登陆，默认为false。
+        :type RemoteTcpDefaultPort: bool
+        """
+        self.InstanceChargeType = None
+        self.SupportHA = None
+        self.SecurityGroupIds = None
+        self.Placement = None
+        self.VPCSettings = None
+        self.LoginSettings = None
+        self.TagSpecification = None
+        self.MetaDB = None
+        self.ResourceSpec = None
+        self.PublicIpAssigned = None
+        self.InstanceChargePrepaid = None
+        self.DisasterRecoverGroupIds = None
+        self.CbsEncryptFlag = None
+        self.RemoteTcpDefaultPort = None
+
+
+    def _deserialize(self, params):
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        self.SupportHA = params.get("SupportHA")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        if params.get("Placement") is not None:
+            self.Placement = Placement()
+            self.Placement._deserialize(params.get("Placement"))
+        if params.get("VPCSettings") is not None:
+            self.VPCSettings = VPCSettings()
+            self.VPCSettings._deserialize(params.get("VPCSettings"))
+        if params.get("LoginSettings") is not None:
+            self.LoginSettings = LoginSettings()
+            self.LoginSettings._deserialize(params.get("LoginSettings"))
+        self.TagSpecification = params.get("TagSpecification")
+        if params.get("MetaDB") is not None:
+            self.MetaDB = MetaDbInfo()
+            self.MetaDB._deserialize(params.get("MetaDB"))
+        if params.get("ResourceSpec") is not None:
+            self.ResourceSpec = JobFlowResourceSpec()
+            self.ResourceSpec._deserialize(params.get("ResourceSpec"))
+        self.PublicIpAssigned = params.get("PublicIpAssigned")
+        if params.get("InstanceChargePrepaid") is not None:
+            self.InstanceChargePrepaid = InstanceChargePrepaid()
+            self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        self.DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
+        self.CbsEncryptFlag = params.get("CbsEncryptFlag")
+        self.RemoteTcpDefaultPort = params.get("RemoteTcpDefaultPort")
+
+
+class Configuration(AbstractModel):
+    """自定义配置参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Classification: 配置文件名，支持SPARK、HIVE、HDFS、YARN的部分配置文件自定义。
+        :type Classification: str
+        :param Properties: 配置参数通过KV的形式传入，部分文件支持自定义，可以通过特殊的键"content"传入所有内容。
+        :type Properties: str
+        """
+        self.Classification = None
+        self.Properties = None
+
+
+    def _deserialize(self, params):
+        self.Classification = params.get("Classification")
+        self.Properties = params.get("Properties")
 
 
 class CreateInstanceRequest(AbstractModel):
@@ -713,6 +845,110 @@ class DescribeInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeJobFlowRequest(AbstractModel):
+    """DescribeJobFlow请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param JobFlowId: 流程任务Id，RunJobFlow接口返回的值。
+        :type JobFlowId: int
+        """
+        self.JobFlowId = None
+
+
+    def _deserialize(self, params):
+        self.JobFlowId = params.get("JobFlowId")
+
+
+class DescribeJobFlowResponse(AbstractModel):
+    """DescribeJobFlow返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param State: 流程任务状态，可以为以下值：
+JobFlowInit，流程任务初始化。
+JobFlowResourceApplied，资源申请中，通常为JobFlow需要新建集群时的状态。
+JobFlowResourceReady，执行流程任务的资源就绪。
+JobFlowStepsRunning，流程任务步骤已提交。
+JobFlowStepsComplete，流程任务步骤已完成。
+JobFlowTerminating，流程任务所需资源销毁中。
+JobFlowFinish，流程任务已完成。
+        :type State: str
+        :param Details: 流程任务步骤结果。
+        :type Details: list of JobResult
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.State = None
+        self.Details = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.State = params.get("State")
+        if params.get("Details") is not None:
+            self.Details = []
+            for item in params.get("Details"):
+                obj = JobResult()
+                obj._deserialize(item)
+                self.Details.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DiskGroup(AbstractModel):
+    """磁盘组。
+
+    """
+
+    def __init__(self):
+        """
+        :param Spec: 磁盘规格。
+        :type Spec: :class:`tencentcloud.emr.v20190103.models.DiskSpec`
+        :param Count: 同类型磁盘数量。
+        :type Count: int
+        """
+        self.Spec = None
+        self.Count = None
+
+
+    def _deserialize(self, params):
+        if params.get("Spec") is not None:
+            self.Spec = DiskSpec()
+            self.Spec._deserialize(params.get("Spec"))
+        self.Count = params.get("Count")
+
+
+class DiskSpec(AbstractModel):
+    """磁盘描述。
+
+    """
+
+    def __init__(self):
+        """
+        :param DiskType: 磁盘类型。
+LOCAL_BASIC  本地盘。
+CLOUD_BASIC 云硬盘。
+LOCAL_SSD 本地SSD。
+CLOUD_SSD 云SSD。
+CLOUD_PREMIUM 高效云盘。
+CLOUD_HSSD 增强型云SSD。
+        :type DiskType: str
+        :param DiskSize: 磁盘大小，单位GB。
+        :type DiskSize: int
+        """
+        self.DiskType = None
+        self.DiskSize = None
+
+
+    def _deserialize(self, params):
+        self.DiskType = params.get("DiskType")
+        self.DiskSize = params.get("DiskSize")
+
+
 class EmrProductConfigOutter(AbstractModel):
     """EMR产品配置
 
@@ -812,6 +1048,30 @@ class EmrProductConfigOutter(AbstractModel):
         self.SecurityOn = params.get("SecurityOn")
         self.SecurityGroup = params.get("SecurityGroup")
         self.CbsEncrypt = params.get("CbsEncrypt")
+
+
+class Execution(AbstractModel):
+    """执行动作。
+
+    """
+
+    def __init__(self):
+        """
+        :param JobType: 任务类型，目前支持以下类型。
+1. “MR”，将通过hadoop jar的方式提交。
+2. "HIVE"，将通过hive -f的方式提交。
+3. "SPARK"，将通过spark-submit的方式提交。
+        :type JobType: str
+        :param Args: 任务参数，提供除提交指令以外的参数。
+        :type Args: list of str
+        """
+        self.JobType = None
+        self.Args = None
+
+
+    def _deserialize(self, params):
+        self.JobType = params.get("JobType")
+        self.Args = params.get("Args")
 
 
 class HostVolumeContext(AbstractModel):
@@ -1227,6 +1487,155 @@ class InquiryPriceUpdateInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class InstanceChargePrepaid(AbstractModel):
+    """实例预付费参数，只有在付费类型为PREPAID时生效。
+
+    """
+
+    def __init__(self):
+        """
+        :param Period: 包年包月时间，默认为1，单位：月。
+取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11, 12, 24, 36, 48, 60。
+        :type Period: int
+        :param RenewFlag: 是否自动续费，默认为否。
+        :type RenewFlag: bool
+        """
+        self.Period = None
+        self.RenewFlag = None
+
+
+    def _deserialize(self, params):
+        self.Period = params.get("Period")
+        self.RenewFlag = params.get("RenewFlag")
+
+
+class JobFlowResource(AbstractModel):
+    """机器资源描述。
+
+    """
+
+    def __init__(self):
+        """
+        :param Spec: 机器类型描述。
+        :type Spec: str
+        :param InstanceType: 机器类型描述，可参考CVM的该含义。
+        :type InstanceType: str
+        :param Tags: 标签KV对。
+        :type Tags: list of Tag
+        :param DiskGroups: 磁盘描述列表。
+        :type DiskGroups: list of DiskGroup
+        """
+        self.Spec = None
+        self.InstanceType = None
+        self.Tags = None
+        self.DiskGroups = None
+
+
+    def _deserialize(self, params):
+        self.Spec = params.get("Spec")
+        self.InstanceType = params.get("InstanceType")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        if params.get("DiskGroups") is not None:
+            self.DiskGroups = []
+            for item in params.get("DiskGroups"):
+                obj = DiskGroup()
+                obj._deserialize(item)
+                self.DiskGroups.append(obj)
+
+
+class JobFlowResourceSpec(AbstractModel):
+    """流程作业资源描述
+
+    """
+
+    def __init__(self):
+        """
+        :param MasterCount: 主节点数量。
+        :type MasterCount: int
+        :param MasterResourceSpec: 主节点配置。
+        :type MasterResourceSpec: :class:`tencentcloud.emr.v20190103.models.JobFlowResource`
+        :param CoreCount: Core节点数量
+        :type CoreCount: int
+        :param CoreResourceSpec: Core节点配置。
+        :type CoreResourceSpec: :class:`tencentcloud.emr.v20190103.models.JobFlowResource`
+        :param TaskCount: Task节点数量。
+        :type TaskCount: int
+        :param CommonCount: Common节点数量。
+        :type CommonCount: int
+        :param TaskResourceSpec: Task节点配置。
+        :type TaskResourceSpec: :class:`tencentcloud.emr.v20190103.models.JobFlowResource`
+        :param CommonResourceSpec: Common节点配置。
+        :type CommonResourceSpec: :class:`tencentcloud.emr.v20190103.models.JobFlowResource`
+        """
+        self.MasterCount = None
+        self.MasterResourceSpec = None
+        self.CoreCount = None
+        self.CoreResourceSpec = None
+        self.TaskCount = None
+        self.CommonCount = None
+        self.TaskResourceSpec = None
+        self.CommonResourceSpec = None
+
+
+    def _deserialize(self, params):
+        self.MasterCount = params.get("MasterCount")
+        if params.get("MasterResourceSpec") is not None:
+            self.MasterResourceSpec = JobFlowResource()
+            self.MasterResourceSpec._deserialize(params.get("MasterResourceSpec"))
+        self.CoreCount = params.get("CoreCount")
+        if params.get("CoreResourceSpec") is not None:
+            self.CoreResourceSpec = JobFlowResource()
+            self.CoreResourceSpec._deserialize(params.get("CoreResourceSpec"))
+        self.TaskCount = params.get("TaskCount")
+        self.CommonCount = params.get("CommonCount")
+        if params.get("TaskResourceSpec") is not None:
+            self.TaskResourceSpec = JobFlowResource()
+            self.TaskResourceSpec._deserialize(params.get("TaskResourceSpec"))
+        if params.get("CommonResourceSpec") is not None:
+            self.CommonResourceSpec = JobFlowResource()
+            self.CommonResourceSpec._deserialize(params.get("CommonResourceSpec"))
+
+
+class JobResult(AbstractModel):
+    """任务步骤结果描述
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 任务步骤名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param ActionOnFailure: 任务步骤失败时的处理策略，可以为以下值：
+"CONTINUE"，跳过当前失败步骤，继续后续步骤。
+“TERMINATE_CLUSTER”，终止当前及后续步骤，并销毁集群。
+“CANCEL_AND_WAIT”，取消当前步骤并阻塞等待处理。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActionOnFailure: str
+        :param JobState: 当前步骤的状态，可以为以下值：
+“JobFlowStepStatusInit”，初始化状态，等待执行。
+“JobFlowStepStatusRunning”，任务步骤正在执行。
+“JobFlowStepStatusFailed”，任务步骤执行失败。
+“JobFlowStepStatusSucceed”，任务步骤执行成功。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobState: str
+        """
+        self.Name = None
+        self.ActionOnFailure = None
+        self.JobState = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.ActionOnFailure = params.get("ActionOnFailure")
+        self.JobState = params.get("JobState")
+
+
 class LoginSettings(AbstractModel):
     """登录设置
 
@@ -1246,6 +1655,33 @@ class LoginSettings(AbstractModel):
     def _deserialize(self, params):
         self.Password = params.get("Password")
         self.PublicKeyId = params.get("PublicKeyId")
+
+
+class MetaDbInfo(AbstractModel):
+    """元数据库信息
+
+    """
+
+    def __init__(self):
+        """
+        :param MetaType: 元数据类型。
+        :type MetaType: str
+        :param UnifyMetaInstanceId: 统一元数据库实例ID。
+        :type UnifyMetaInstanceId: str
+        :param MetaDBInfo: 自建元数据库信息。
+        :type MetaDBInfo: :class:`tencentcloud.emr.v20190103.models.CustomMetaInfo`
+        """
+        self.MetaType = None
+        self.UnifyMetaInstanceId = None
+        self.MetaDBInfo = None
+
+
+    def _deserialize(self, params):
+        self.MetaType = params.get("MetaType")
+        self.UnifyMetaInstanceId = params.get("UnifyMetaInstanceId")
+        if params.get("MetaDBInfo") is not None:
+            self.MetaDBInfo = CustomMetaInfo()
+            self.MetaDBInfo._deserialize(params.get("MetaDBInfo"))
 
 
 class MultiDisk(AbstractModel):
@@ -1986,6 +2422,119 @@ class Resource(AbstractModel):
         self.DiskNum = params.get("DiskNum")
 
 
+class RunJobFlowRequest(AbstractModel):
+    """RunJobFlow请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 作业名称。
+        :type Name: str
+        :param CreateCluster: 是否新创建集群。
+true，新创建集群，则使用Instance中的参数进行集群创建。
+false，使用已有集群，则通过InstanceId传入。
+        :type CreateCluster: bool
+        :param Steps: 作业流程执行步骤。
+        :type Steps: list of Step
+        :param InstancePolicy: 作业流程正常完成时，集群的处理方式，可选择:
+Terminate 销毁集群。
+Reserve 保留集群。
+        :type InstancePolicy: str
+        :param ProductVersion: 只有CreateCluster为true时生效，目前只支持EMR版本，例如EMR-2.2.0，不支持ClickHouse和Druid版本。
+        :type ProductVersion: str
+        :param SecurityClusterFlag: 只在CreateCluster为true时生效。
+true 表示安装kerberos，false表示不安装kerberos。
+        :type SecurityClusterFlag: bool
+        :param Software: 只在CreateCluster为true时生效。
+新建集群时，要安装的软件列表。
+        :type Software: list of str
+        :param BootstrapActions: 引导脚本。
+        :type BootstrapActions: list of BootstrapAction
+        :param Configurations: 指定配置创建集群。
+        :type Configurations: list of Configuration
+        :param LogUri: 作业日志保存地址。
+        :type LogUri: str
+        :param InstanceId: 只在CreateCluster为false时生效。
+        :type InstanceId: str
+        :param ApplicationRole: 自定义应用角色，大数据应用访问外部服务时使用的角色，默认为"EME_QCSRole"。
+        :type ApplicationRole: str
+        :param ClientToken: 重入标签，用来可重入检查，防止在一段时间内，创建相同的流程作业。
+        :type ClientToken: str
+        :param Instance: 只在CreateCluster为true时生效，使用该配置创建集群。
+        :type Instance: :class:`tencentcloud.emr.v20190103.models.ClusterSetting`
+        """
+        self.Name = None
+        self.CreateCluster = None
+        self.Steps = None
+        self.InstancePolicy = None
+        self.ProductVersion = None
+        self.SecurityClusterFlag = None
+        self.Software = None
+        self.BootstrapActions = None
+        self.Configurations = None
+        self.LogUri = None
+        self.InstanceId = None
+        self.ApplicationRole = None
+        self.ClientToken = None
+        self.Instance = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.CreateCluster = params.get("CreateCluster")
+        if params.get("Steps") is not None:
+            self.Steps = []
+            for item in params.get("Steps"):
+                obj = Step()
+                obj._deserialize(item)
+                self.Steps.append(obj)
+        self.InstancePolicy = params.get("InstancePolicy")
+        self.ProductVersion = params.get("ProductVersion")
+        self.SecurityClusterFlag = params.get("SecurityClusterFlag")
+        self.Software = params.get("Software")
+        if params.get("BootstrapActions") is not None:
+            self.BootstrapActions = []
+            for item in params.get("BootstrapActions"):
+                obj = BootstrapAction()
+                obj._deserialize(item)
+                self.BootstrapActions.append(obj)
+        if params.get("Configurations") is not None:
+            self.Configurations = []
+            for item in params.get("Configurations"):
+                obj = Configuration()
+                obj._deserialize(item)
+                self.Configurations.append(obj)
+        self.LogUri = params.get("LogUri")
+        self.InstanceId = params.get("InstanceId")
+        self.ApplicationRole = params.get("ApplicationRole")
+        self.ClientToken = params.get("ClientToken")
+        if params.get("Instance") is not None:
+            self.Instance = ClusterSetting()
+            self.Instance._deserialize(params.get("Instance"))
+
+
+class RunJobFlowResponse(AbstractModel):
+    """RunJobFlow返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param JobFlowId: 作业流程ID。
+        :type JobFlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.JobFlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.JobFlowId = params.get("JobFlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class ScaleOutInstanceRequest(AbstractModel):
     """ScaleOutInstance请求参数结构体
 
@@ -2155,6 +2704,40 @@ class SearchItem(AbstractModel):
     def _deserialize(self, params):
         self.SearchType = params.get("SearchType")
         self.SearchValue = params.get("SearchValue")
+
+
+class Step(AbstractModel):
+    """执行步骤
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 执行步骤名称。
+        :type Name: str
+        :param ExecutionStep: 执行动作。
+        :type ExecutionStep: :class:`tencentcloud.emr.v20190103.models.Execution`
+        :param ActionOnFailure: 执行失败策略。
+1. TERMINATE_CLUSTER 执行失败时退出并销毁集群。
+2. CANCEL_AND_WAIT 执行失败时阻塞等待。
+3. CONTINUE 执行失败时跳过并执行后续步骤。
+        :type ActionOnFailure: str
+        :param User: 指定执行Step时的用户名，非必须，默认为hadoop。
+        :type User: str
+        """
+        self.Name = None
+        self.ExecutionStep = None
+        self.ActionOnFailure = None
+        self.User = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        if params.get("ExecutionStep") is not None:
+            self.ExecutionStep = Execution()
+            self.ExecutionStep._deserialize(params.get("ExecutionStep"))
+        self.ActionOnFailure = params.get("ActionOnFailure")
+        self.User = params.get("User")
 
 
 class Tag(AbstractModel):

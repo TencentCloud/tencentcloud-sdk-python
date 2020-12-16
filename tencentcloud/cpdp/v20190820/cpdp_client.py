@@ -1743,6 +1743,34 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def QueryTransferResult(self, request):
+        """智能代发-单笔代发转账查询接口
+
+        :param request: Request instance for QueryTransferResult.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryTransferResultRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryTransferResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryTransferResult", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryTransferResultResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RechargeByThirdPay(self, request):
         """会员在途充值(经第三方支付渠道)接口
 
@@ -2009,6 +2037,34 @@ class CpdpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RevokeRechargeByThirdPayResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def TransferSinglePay(self, request):
+        """智能代发-单笔代发转账接口
+
+        :param request: Request instance for TransferSinglePay.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.TransferSinglePayRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.TransferSinglePayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("TransferSinglePay", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.TransferSinglePayResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
