@@ -54,6 +54,34 @@ class EcmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AssignIpv6Addresses(self, request):
+        """本接口（AssignIpv6Addresses）用于弹性网卡申请IPv6地址。
+
+        :param request: Request instance for AssignIpv6Addresses.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.AssignIpv6AddressesRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.AssignIpv6AddressesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AssignIpv6Addresses", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AssignIpv6AddressesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AssignPrivateIpAddresses(self, request):
         """弹性网卡申请内网 IP
 
@@ -2346,6 +2374,34 @@ class EcmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyIpv6AddressesAttribute(self, request):
+        """本接口（ModifyIpv6AddressesAttribute）用于修改弹性网卡IPv6地址属性。
+
+        :param request: Request instance for ModifyIpv6AddressesAttribute.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.ModifyIpv6AddressesAttributeRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.ModifyIpv6AddressesAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyIpv6AddressesAttribute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyIpv6AddressesAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyListener(self, request):
         """修改负载均衡监听器属性。
 
@@ -2810,6 +2866,34 @@ class EcmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReleaseAddressesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ReleaseIpv6Addresses(self, request):
+        """本接口（UnassignIpv6Addresses）用于释放弹性网卡IPv6地址。
+
+        :param request: Request instance for ReleaseIpv6Addresses.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.ReleaseIpv6AddressesRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.ReleaseIpv6AddressesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ReleaseIpv6Addresses", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ReleaseIpv6AddressesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

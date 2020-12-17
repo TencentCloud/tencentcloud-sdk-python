@@ -241,6 +241,66 @@ class Area(AbstractModel):
         self.AreaName = params.get("AreaName")
 
 
+class AssignIpv6AddressesRequest(AbstractModel):
+    """AssignIpv6Addresses请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EcmRegion: ECM 地域
+        :type EcmRegion: str
+        :param NetworkInterfaceId: 弹性网卡实例ID，形如：eni-1snva0vd。目前只支持主网卡上分配。
+        :type NetworkInterfaceId: str
+        :param Ipv6Addresses: 指定的IPv6地址列表，单次最多指定10个。与入参Ipv6AddressCount合并计算配额。与Ipv6AddressCount必填一个。
+        :type Ipv6Addresses: list of Ipv6Address
+        :param Ipv6AddressCount: 自动分配IPv6地址个数，内网IP地址个数总和不能超过配数。与入参Ipv6Addresses合并计算配额。与Ipv6Addresses必填一个。
+        :type Ipv6AddressCount: int
+        """
+        self.EcmRegion = None
+        self.NetworkInterfaceId = None
+        self.Ipv6Addresses = None
+        self.Ipv6AddressCount = None
+
+
+    def _deserialize(self, params):
+        self.EcmRegion = params.get("EcmRegion")
+        self.NetworkInterfaceId = params.get("NetworkInterfaceId")
+        if params.get("Ipv6Addresses") is not None:
+            self.Ipv6Addresses = []
+            for item in params.get("Ipv6Addresses"):
+                obj = Ipv6Address()
+                obj._deserialize(item)
+                self.Ipv6Addresses.append(obj)
+        self.Ipv6AddressCount = params.get("Ipv6AddressCount")
+
+
+class AssignIpv6AddressesResponse(AbstractModel):
+    """AssignIpv6Addresses返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Ipv6AddressSet: 分配给弹性网卡的IPv6地址列表。
+        :type Ipv6AddressSet: list of Ipv6Address
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Ipv6AddressSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Ipv6AddressSet") is not None:
+            self.Ipv6AddressSet = []
+            for item in params.get("Ipv6AddressSet"):
+                obj = Ipv6Address()
+                obj._deserialize(item)
+                self.Ipv6AddressSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class AssignPrivateIpAddressesRequest(AbstractModel):
     """AssignPrivateIpAddresses请求参数结构体
 
@@ -5735,6 +5795,53 @@ class ModifyInstancesAttributeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyIpv6AddressesAttributeRequest(AbstractModel):
+    """ModifyIpv6AddressesAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EcmRegion: ECM 地域
+        :type EcmRegion: str
+        :param NetworkInterfaceId: 弹性网卡实例ID，形如：eni-m6dyj72l。
+        :type NetworkInterfaceId: str
+        :param Ipv6Addresses: 指定的IPv6地址信息。
+        :type Ipv6Addresses: list of Ipv6Address
+        """
+        self.EcmRegion = None
+        self.NetworkInterfaceId = None
+        self.Ipv6Addresses = None
+
+
+    def _deserialize(self, params):
+        self.EcmRegion = params.get("EcmRegion")
+        self.NetworkInterfaceId = params.get("NetworkInterfaceId")
+        if params.get("Ipv6Addresses") is not None:
+            self.Ipv6Addresses = []
+            for item in params.get("Ipv6Addresses"):
+                obj = Ipv6Address()
+                obj._deserialize(item)
+                self.Ipv6Addresses.append(obj)
+
+
+class ModifyIpv6AddressesAttributeResponse(AbstractModel):
+    """ModifyIpv6AddressesAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyListenerRequest(AbstractModel):
     """ModifyListener请求参数结构体
 
@@ -7283,6 +7390,57 @@ class ReleaseAddressesResponse(AbstractModel):
         """
         :param TaskId: 异步任务TaskId。可以使用DescribeTaskResult接口查询任务状态。
         :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class ReleaseIpv6AddressesRequest(AbstractModel):
+    """ReleaseIpv6Addresses请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EcmRegion: ECM 地域
+        :type EcmRegion: str
+        :param NetworkInterfaceId: 弹性网卡实例ID，形如：eni-m6dyj72l。
+        :type NetworkInterfaceId: str
+        :param Ipv6Addresses: 指定的IPv6地址列表，单次最多指定10个。
+        :type Ipv6Addresses: list of Ipv6Address
+        """
+        self.EcmRegion = None
+        self.NetworkInterfaceId = None
+        self.Ipv6Addresses = None
+
+
+    def _deserialize(self, params):
+        self.EcmRegion = params.get("EcmRegion")
+        self.NetworkInterfaceId = params.get("NetworkInterfaceId")
+        if params.get("Ipv6Addresses") is not None:
+            self.Ipv6Addresses = []
+            for item in params.get("Ipv6Addresses"):
+                obj = Ipv6Address()
+                obj._deserialize(item)
+                self.Ipv6Addresses.append(obj)
+
+
+class ReleaseIpv6AddressesResponse(AbstractModel):
+    """ReleaseIpv6Addresses返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务ID，可以通过DescribeTaskResult查询任务状态
+        :type TaskId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """

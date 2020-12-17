@@ -1036,31 +1036,31 @@ class RuleInfoData(AbstractModel):
         :type Protocol: str
         :param Strategy: 策略
         :type Strategy: str
-        :param Detail: 描述
-        :type Detail: str
+        :param SourceType: 访问源类型，1是IP，3是域名，4是IP地址模版，5是域名地址模版
+        :type SourceType: int
         :param Direction: 方向，0：出站，1：入站
         :type Direction: int
-        :param SourceType: 源类型,1是ip,2是域名,3是ip地址簿，4是ip组地址簿
-        :type SourceType: int
-        :param TargetType: 目的类型,1是ip,2是域名,3是ip地址簿，4是ip组地址簿
+        :param Detail: 描述
+        :type Detail: str
+        :param TargetType: 访问目的类型，1是IP，3是域名，4是IP地址模版，5是域名地址模版
         :type TargetType: int
         :param Port: 端口
         :type Port: str
         :param Id: id值
         :type Id: int
-        :param LogId: log
+        :param LogId: 日志id，从告警处创建必传，其它为空
         :type LogId: str
         :param City: 城市Code
         :type City: int
         :param Country: 国家Code
         :type Country: int
-        :param CloudCode: 云厂商，支持多个，以逗号分隔， 1:腾讯云（仅海外）,2:阿里云,3:亚马逊云,4:华为云,5:微软云
+        :param CloudCode: 云厂商，支持多个，以逗号分隔， 1:腾讯云（仅中国香港及海外）,2:阿里云,3:亚马逊云,4:华为云,5:微软云
         :type CloudCode: str
         :param IsRegion: 是否为地域
         :type IsRegion: int
-        :param CityName: 地域名
+        :param CityName: 城市名
         :type CityName: str
-        :param CountryName: 地域名
+        :param CountryName: 国家名
         :type CountryName: str
         """
         self.OrderIndex = None
@@ -1068,9 +1068,9 @@ class RuleInfoData(AbstractModel):
         self.TargetIp = None
         self.Protocol = None
         self.Strategy = None
-        self.Detail = None
-        self.Direction = None
         self.SourceType = None
+        self.Direction = None
+        self.Detail = None
         self.TargetType = None
         self.Port = None
         self.Id = None
@@ -1089,9 +1089,9 @@ class RuleInfoData(AbstractModel):
         self.TargetIp = params.get("TargetIp")
         self.Protocol = params.get("Protocol")
         self.Strategy = params.get("Strategy")
-        self.Detail = params.get("Detail")
-        self.Direction = params.get("Direction")
         self.SourceType = params.get("SourceType")
+        self.Direction = params.get("Direction")
+        self.Detail = params.get("Detail")
         self.TargetType = params.get("TargetType")
         self.Port = params.get("Port")
         self.Id = params.get("Id")

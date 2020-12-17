@@ -365,11 +365,16 @@ class CreateDomainBatchRequest(AbstractModel):
         :type Domains: list of str
         :param PayMode: 付费模式 0手动在线付费，1使用余额付费
         :type PayMode: int
+        :param AutoRenewFlag: 自动续费开关。有两个可选值：
+0 表示关闭，不自动续费（默认值）
+1 表示开启，将自动续费
+        :type AutoRenewFlag: int
         """
         self.TemplateId = None
         self.Period = None
         self.Domains = None
         self.PayMode = None
+        self.AutoRenewFlag = None
 
 
     def _deserialize(self, params):
@@ -377,6 +382,7 @@ class CreateDomainBatchRequest(AbstractModel):
         self.Period = params.get("Period")
         self.Domains = params.get("Domains")
         self.PayMode = params.get("PayMode")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
 
 
 class CreateDomainBatchResponse(AbstractModel):
@@ -1201,16 +1207,23 @@ class RenewDomainBatchRequest(AbstractModel):
         :type Domains: list of str
         :param PayMode: 付费模式 0手动在线付费，1使用余额付费。
         :type PayMode: int
+        :param AutoRenewFlag: 自动续费开关。有三个可选值：
+0 表示关闭，不自动续费
+1 表示开启，将自动续费
+2 表示不处理，保留域名原有状态（默认值）
+        :type AutoRenewFlag: int
         """
         self.Period = None
         self.Domains = None
         self.PayMode = None
+        self.AutoRenewFlag = None
 
 
     def _deserialize(self, params):
         self.Period = params.get("Period")
         self.Domains = params.get("Domains")
         self.PayMode = params.get("PayMode")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
 
 
 class RenewDomainBatchResponse(AbstractModel):
@@ -1351,11 +1364,16 @@ class TransferInDomainBatchRequest(AbstractModel):
         :type TemplateId: str
         :param PayMode: 付费模式 0手动在线付费，1使用余额付费。
         :type PayMode: int
+        :param AutoRenewFlag: 自动续费开关。有两个可选值：
+0 表示关闭，不自动续费（默认值）
+1 表示开启，将自动续费
+        :type AutoRenewFlag: int
         """
         self.Domains = None
         self.PassWords = None
         self.TemplateId = None
         self.PayMode = None
+        self.AutoRenewFlag = None
 
 
     def _deserialize(self, params):
@@ -1363,6 +1381,7 @@ class TransferInDomainBatchRequest(AbstractModel):
         self.PassWords = params.get("PassWords")
         self.TemplateId = params.get("TemplateId")
         self.PayMode = params.get("PayMode")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
 
 
 class TransferInDomainBatchResponse(AbstractModel):

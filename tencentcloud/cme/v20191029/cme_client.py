@@ -452,6 +452,36 @@ class CmeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePlatforms(self, request):
+        """<li>支持获取所创建的所有平台列表信息；</li>
+        <li>支持获取指定的平台列表信息。</li>
+
+
+        :param request: Request instance for DescribePlatforms.
+        :type request: :class:`tencentcloud.cme.v20191029.models.DescribePlatformsRequest`
+        :rtype: :class:`tencentcloud.cme.v20191029.models.DescribePlatformsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePlatforms", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePlatformsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeProjects(self, request):
         """支持根据多种条件过滤出项目列表。
 

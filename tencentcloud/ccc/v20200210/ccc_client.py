@@ -138,6 +138,34 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePSTNActiveSessionList(self, request):
+        """获取 PSTN 活动会话列表。
+
+        :param request: Request instance for DescribePSTNActiveSessionList.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.DescribePSTNActiveSessionListRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.DescribePSTNActiveSessionListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePSTNActiveSessionList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePSTNActiveSessionListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTelCallInfo(self, request):
         """按实例获取电话消耗统计
 

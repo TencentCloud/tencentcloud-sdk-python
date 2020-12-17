@@ -7786,16 +7786,21 @@ class ScdnTopUrlData(AbstractModel):
         :type Value: int
         :param Time: 时间
         :type Time: str
+        :param Domain: 域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Domain: str
         """
         self.Url = None
         self.Value = None
         self.Time = None
+        self.Domain = None
 
 
     def _deserialize(self, params):
         self.Url = params.get("Url")
         self.Value = params.get("Value")
         self.Time = params.get("Time")
+        self.Domain = params.get("Domain")
 
 
 class ScdnTypeData(AbstractModel):

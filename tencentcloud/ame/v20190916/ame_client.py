@@ -223,7 +223,7 @@ class AmeClient(AbstractClient):
 
 
     def ReportData(self, request):
-        """客户上报用户数据功能，为了更好的为用户提供优质服务
+        """客户上报用户数据功能，为了更好地为用户提供优质服务
 
         :param request: Request instance for ReportData.
         :type request: :class:`tencentcloud.ame.v20190916.models.ReportDataRequest`

@@ -247,6 +247,61 @@ class DescribeIMCdrsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribePSTNActiveSessionListRequest(AbstractModel):
+    """DescribePSTNActiveSessionList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SdkAppId: 应用 ID
+        :type SdkAppId: int
+        :param Offset: 数据偏移
+        :type Offset: int
+        :param Limit: 返回的数据条数，最大 25
+        :type Limit: int
+        """
+        self.SdkAppId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribePSTNActiveSessionListResponse(AbstractModel):
+    """DescribePSTNActiveSessionList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Total: 列表总条数
+        :type Total: int
+        :param Sessions: 列表内容
+        :type Sessions: list of PSTNSessionInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.Sessions = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("Sessions") is not None:
+            self.Sessions = []
+            for item in params.get("Sessions"):
+                obj = PSTNSessionInfo()
+                obj._deserialize(item)
+                self.Sessions.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTelCallInfoRequest(AbstractModel):
     """DescribeTelCallInfo请求参数结构体
 
@@ -458,6 +513,63 @@ class MessageBody(AbstractModel):
                 obj = Message()
                 obj._deserialize(item)
                 self.Messages.append(obj)
+
+
+class PSTNSessionInfo(AbstractModel):
+    """PSTN 会话信息
+
+    """
+
+    def __init__(self):
+        """
+        :param SessionID: 会话 ID
+        :type SessionID: str
+        :param RoomID: 会话临时房间 ID
+        :type RoomID: str
+        :param Caller: 主叫
+        :type Caller: str
+        :param Callee: 被叫
+        :type Callee: str
+        :param StartTimestamp: 开始时间，Unix 时间戳
+        :type StartTimestamp: str
+        :param AcceptTimestamp: 接听时间，Unix 时间戳
+        :type AcceptTimestamp: str
+        :param StaffEmail: 坐席邮箱
+        :type StaffEmail: str
+        :param StaffNumber: 坐席工号
+        :type StaffNumber: str
+        :param SessionStatus: 坐席状态 inProgress 进行中
+        :type SessionStatus: str
+        :param Direction: 会话呼叫方向， 0 呼入 | 1 - 呼出
+        :type Direction: int
+        :param RingTimestamp: 振铃时间，Unix 时间戳
+        :type RingTimestamp: int
+        """
+        self.SessionID = None
+        self.RoomID = None
+        self.Caller = None
+        self.Callee = None
+        self.StartTimestamp = None
+        self.AcceptTimestamp = None
+        self.StaffEmail = None
+        self.StaffNumber = None
+        self.SessionStatus = None
+        self.Direction = None
+        self.RingTimestamp = None
+
+
+    def _deserialize(self, params):
+        self.SessionID = params.get("SessionID")
+        self.RoomID = params.get("RoomID")
+        self.Caller = params.get("Caller")
+        self.Callee = params.get("Callee")
+        self.StartTimestamp = params.get("StartTimestamp")
+        self.AcceptTimestamp = params.get("AcceptTimestamp")
+        self.StaffEmail = params.get("StaffEmail")
+        self.StaffNumber = params.get("StaffNumber")
+        self.SessionStatus = params.get("SessionStatus")
+        self.Direction = params.get("Direction")
+        self.RingTimestamp = params.get("RingTimestamp")
 
 
 class SeatUserInfo(AbstractModel):

@@ -1045,6 +1045,44 @@ class DatabasesInfo(AbstractModel):
         self.Region = params.get("Region")
 
 
+class DeleteCloudBaseProjectLatestVersionRequest(AbstractModel):
+    """DeleteCloudBaseProjectLatestVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境id
+        :type EnvId: str
+        :param ProjectName: 项目名
+        :type ProjectName: str
+        """
+        self.EnvId = None
+        self.ProjectName = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.ProjectName = params.get("ProjectName")
+
+
+class DeleteCloudBaseProjectLatestVersionResponse(AbstractModel):
+    """DeleteCloudBaseProjectLatestVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteEndUserRequest(AbstractModel):
     """DeleteEndUser请求参数结构体
 

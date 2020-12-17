@@ -2945,6 +2945,34 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def SplitMedia(self, request):
+        """对点播视频进行拆条，生成多个新的点播视频。
+
+        :param request: Request instance for SplitMedia.
+        :type request: :class:`tencentcloud.vod.v20180717.models.SplitMediaRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.SplitMediaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SplitMedia", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SplitMediaResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def WeChatMiniProgramPublish(self, request):
         """将点播视频发布到微信小程序，供微信小程序播放器播放。
 

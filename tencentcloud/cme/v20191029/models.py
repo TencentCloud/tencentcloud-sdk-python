@@ -1048,6 +1048,65 @@ class DescribeMaterialsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribePlatformsRequest(AbstractModel):
+    """DescribePlatforms请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Platforms: 平台集合。
+        :type Platforms: list of str
+        :param LicenseIds: 平台绑定的 license Id 集合。
+        :type LicenseIds: list of str
+        :param Offset: 分页返回的起始偏移量，默认值：0。
+        :type Offset: int
+        :param Limit: 分页返回的记录条数，默认值：10。
+        :type Limit: int
+        """
+        self.Platforms = None
+        self.LicenseIds = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Platforms = params.get("Platforms")
+        self.LicenseIds = params.get("LicenseIds")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribePlatformsResponse(AbstractModel):
+    """DescribePlatforms返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合搜索条件的记录总数。
+        :type TotalCount: int
+        :param PlatformInfoSet: 平台信息列表。
+        :type PlatformInfoSet: list of PlatformInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.PlatformInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("PlatformInfoSet") is not None:
+            self.PlatformInfoSet = []
+            for item in params.get("PlatformInfoSet"):
+                obj = PlatformInfo()
+                obj._deserialize(item)
+                self.PlatformInfoSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeProjectsRequest(AbstractModel):
     """DescribeProjects请求参数结构体
 
@@ -2992,6 +3051,43 @@ class PenguinMediaPlatformPublishInfo(AbstractModel):
         self.Description = params.get("Description")
         self.Tags = params.get("Tags")
         self.Category = params.get("Category")
+
+
+class PlatformInfo(AbstractModel):
+    """平台信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param Platform: 平台名称。
+        :type Platform: str
+        :param Description: 平台描述。
+        :type Description: str
+        :param VodSubAppId: 云点播子应用 Id。
+        :type VodSubAppId: int
+        :param LicenseId: 平台绑定的 license Id。
+        :type LicenseId: str
+        :param CreateTime: 创建时间，格式按照 ISO 8601 标准表示。
+        :type CreateTime: str
+        :param UpdateTime: 更新时间，格式按照 ISO 8601 标准表示。
+        :type UpdateTime: str
+        """
+        self.Platform = None
+        self.Description = None
+        self.VodSubAppId = None
+        self.LicenseId = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Platform = params.get("Platform")
+        self.Description = params.get("Description")
+        self.VodSubAppId = params.get("VodSubAppId")
+        self.LicenseId = params.get("LicenseId")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
 
 
 class ProjectInfo(AbstractModel):

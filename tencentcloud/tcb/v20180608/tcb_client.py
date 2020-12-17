@@ -250,6 +250,34 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteCloudBaseProjectLatestVersion(self, request):
+        """删除云项目
+
+        :param request: Request instance for DeleteCloudBaseProjectLatestVersion.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DeleteCloudBaseProjectLatestVersionRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DeleteCloudBaseProjectLatestVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteCloudBaseProjectLatestVersion", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteCloudBaseProjectLatestVersionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteEndUser(self, request):
         """删除终端用户
 

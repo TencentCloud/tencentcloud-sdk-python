@@ -8034,9 +8034,10 @@ class DescribeTaskDetailResponse(AbstractModel):
         :param TaskType: 任务类型，取值：
 <li>Procedure：视频处理任务；</li>
 <li>EditMedia：视频编辑任务；</li>
+<li>SplitMedia：视频拆条任务；</li>
+<li>ComposeMedia：制作媒体文件任务；</li>
 <li>WechatPublish：微信发布任务；</li>
 <li>WechatMiniProgramPublish：微信小程序视频发布任务；</li>
-<li>ComposeMedia：制作媒体文件任务；</li>
 <li>PullUpload：拉取上传媒体文件任务。</li>
 
 兼容 2017 版的任务类型：
@@ -8069,15 +8070,18 @@ class DescribeTaskDetailResponse(AbstractModel):
         :param ComposeMediaTask: 制作媒体文件任务信息，仅当 TaskType 为 ComposeMedia，该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ComposeMediaTask: :class:`tencentcloud.vod.v20180717.models.ComposeMediaTask`
+        :param SplitMediaTask: 视频拆条任务信息，仅当 TaskType 为 SplitMedia，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SplitMediaTask: :class:`tencentcloud.vod.v20180717.models.SplitMediaTask`
+        :param WechatMiniProgramPublishTask: 微信小程序发布任务信息，仅当 TaskType 为 WechatMiniProgramPublish，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WechatMiniProgramPublishTask: :class:`tencentcloud.vod.v20180717.models.WechatMiniProgramPublishTask`
         :param PullUploadTask: 拉取上传媒体文件任务信息，仅当 TaskType 为 PullUpload，该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PullUploadTask: :class:`tencentcloud.vod.v20180717.models.PullUploadTask`
         :param TranscodeTask: 视频转码任务信息，仅当 TaskType 为 Transcode，该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TranscodeTask: :class:`tencentcloud.vod.v20180717.models.TranscodeTask2017`
-        :param SnapshotByTimeOffsetTask: 视频指定时间点截图任务信息，仅当 TaskType 为 SnapshotByTimeOffset，该字段有值。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SnapshotByTimeOffsetTask: :class:`tencentcloud.vod.v20180717.models.SnapshotByTimeOffsetTask2017`
         :param ConcatTask: 视频拼接任务信息，仅当 TaskType 为 Concat，该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConcatTask: :class:`tencentcloud.vod.v20180717.models.ConcatTask2017`
@@ -8087,9 +8091,9 @@ class DescribeTaskDetailResponse(AbstractModel):
         :param CreateImageSpriteTask: 截取雪碧图任务信息，仅当 TaskType 为 ImageSprite，该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateImageSpriteTask: :class:`tencentcloud.vod.v20180717.models.CreateImageSpriteTask2017`
-        :param WechatMiniProgramPublishTask: 微信小程序发布任务信息，仅当 TaskType 为 WechatMiniProgramPublish，该字段有值。
+        :param SnapshotByTimeOffsetTask: 视频指定时间点截图任务信息，仅当 TaskType 为 SnapshotByTimeOffset，该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
-        :type WechatMiniProgramPublishTask: :class:`tencentcloud.vod.v20180717.models.WechatMiniProgramPublishTask`
+        :type SnapshotByTimeOffsetTask: :class:`tencentcloud.vod.v20180717.models.SnapshotByTimeOffsetTask2017`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -8102,13 +8106,14 @@ class DescribeTaskDetailResponse(AbstractModel):
         self.EditMediaTask = None
         self.WechatPublishTask = None
         self.ComposeMediaTask = None
+        self.SplitMediaTask = None
+        self.WechatMiniProgramPublishTask = None
         self.PullUploadTask = None
         self.TranscodeTask = None
-        self.SnapshotByTimeOffsetTask = None
         self.ConcatTask = None
         self.ClipTask = None
         self.CreateImageSpriteTask = None
-        self.WechatMiniProgramPublishTask = None
+        self.SnapshotByTimeOffsetTask = None
         self.RequestId = None
 
 
@@ -8130,15 +8135,18 @@ class DescribeTaskDetailResponse(AbstractModel):
         if params.get("ComposeMediaTask") is not None:
             self.ComposeMediaTask = ComposeMediaTask()
             self.ComposeMediaTask._deserialize(params.get("ComposeMediaTask"))
+        if params.get("SplitMediaTask") is not None:
+            self.SplitMediaTask = SplitMediaTask()
+            self.SplitMediaTask._deserialize(params.get("SplitMediaTask"))
+        if params.get("WechatMiniProgramPublishTask") is not None:
+            self.WechatMiniProgramPublishTask = WechatMiniProgramPublishTask()
+            self.WechatMiniProgramPublishTask._deserialize(params.get("WechatMiniProgramPublishTask"))
         if params.get("PullUploadTask") is not None:
             self.PullUploadTask = PullUploadTask()
             self.PullUploadTask._deserialize(params.get("PullUploadTask"))
         if params.get("TranscodeTask") is not None:
             self.TranscodeTask = TranscodeTask2017()
             self.TranscodeTask._deserialize(params.get("TranscodeTask"))
-        if params.get("SnapshotByTimeOffsetTask") is not None:
-            self.SnapshotByTimeOffsetTask = SnapshotByTimeOffsetTask2017()
-            self.SnapshotByTimeOffsetTask._deserialize(params.get("SnapshotByTimeOffsetTask"))
         if params.get("ConcatTask") is not None:
             self.ConcatTask = ConcatTask2017()
             self.ConcatTask._deserialize(params.get("ConcatTask"))
@@ -8148,9 +8156,9 @@ class DescribeTaskDetailResponse(AbstractModel):
         if params.get("CreateImageSpriteTask") is not None:
             self.CreateImageSpriteTask = CreateImageSpriteTask2017()
             self.CreateImageSpriteTask._deserialize(params.get("CreateImageSpriteTask"))
-        if params.get("WechatMiniProgramPublishTask") is not None:
-            self.WechatMiniProgramPublishTask = WechatMiniProgramPublishTask()
-            self.WechatMiniProgramPublishTask._deserialize(params.get("WechatMiniProgramPublishTask"))
+        if params.get("SnapshotByTimeOffsetTask") is not None:
+            self.SnapshotByTimeOffsetTask = SnapshotByTimeOffsetTask2017()
+            self.SnapshotByTimeOffsetTask._deserialize(params.get("SnapshotByTimeOffsetTask"))
         self.RequestId = params.get("RequestId")
 
 
@@ -8810,6 +8818,7 @@ class EventContent(AbstractModel):
 <li>FileDeleted：视频删除完成；</li>
 <li>PullComplete：视频转拉完成；</li>
 <li>EditMediaComplete：视频编辑完成；</li>
+<li>SplitMediaComplete：视频拆分完成；</li>
 <li>WechatPublishComplete：微信发布完成；</li>
 <li>ComposeMediaComplete：制作媒体文件完成；</li>
 <li>WechatMiniProgramPublishComplete：微信小程序发布完成。</li>
@@ -8835,27 +8844,30 @@ class EventContent(AbstractModel):
         :param EditMediaCompleteEvent: 视频编辑完成事件，当事件类型为 EditMediaComplete 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type EditMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.EditMediaTask`
-        :param WechatPublishCompleteEvent: 微信发布完成事件，当事件类型为 WechatPublishComplete 时有效。
+        :param SplitMediaCompleteEvent: 视频拆条完成事件，当事件类型为 SplitMediaComplete 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
-        :type WechatPublishCompleteEvent: :class:`tencentcloud.vod.v20180717.models.WechatPublishTask`
-        :param TranscodeCompleteEvent: 视频转码完成事件，当事件类型为 TranscodeComplete 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TranscodeCompleteEvent: :class:`tencentcloud.vod.v20180717.models.TranscodeTask2017`
-        :param ConcatCompleteEvent: 视频拼接完成事件，当事件类型为 ConcatComplete 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ConcatCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ConcatTask2017`
-        :param ClipCompleteEvent: 视频剪辑完成事件，当事件类型为 ClipComplete 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ClipCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ClipTask2017`
-        :param CreateImageSpriteCompleteEvent: 视频截取雪碧图完成事件，当事件类型为 CreateImageSpriteComplete 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CreateImageSpriteCompleteEvent: :class:`tencentcloud.vod.v20180717.models.CreateImageSpriteTask2017`
-        :param SnapshotByTimeOffsetCompleteEvent: 视频按时间点截图完成事件，当事件类型为 CreateSnapshotByTimeOffsetComplete 时有效。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SnapshotByTimeOffsetCompleteEvent: :class:`tencentcloud.vod.v20180717.models.SnapshotByTimeOffsetTask2017`
+        :type SplitMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.SplitMediaTask`
         :param ComposeMediaCompleteEvent: 制作媒体文件任务完成事件，当事件类型为 ComposeMediaComplete 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ComposeMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ComposeMediaTask`
+        :param ClipCompleteEvent: 视频剪辑完成事件，当事件类型为 ClipComplete 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClipCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ClipTask2017`
+        :param TranscodeCompleteEvent: 视频转码完成事件，当事件类型为 TranscodeComplete 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TranscodeCompleteEvent: :class:`tencentcloud.vod.v20180717.models.TranscodeTask2017`
+        :param CreateImageSpriteCompleteEvent: 视频截取雪碧图完成事件，当事件类型为 CreateImageSpriteComplete 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateImageSpriteCompleteEvent: :class:`tencentcloud.vod.v20180717.models.CreateImageSpriteTask2017`
+        :param ConcatCompleteEvent: 视频拼接完成事件，当事件类型为 ConcatComplete 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConcatCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ConcatTask2017`
+        :param SnapshotByTimeOffsetCompleteEvent: 视频按时间点截图完成事件，当事件类型为 CreateSnapshotByTimeOffsetComplete 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SnapshotByTimeOffsetCompleteEvent: :class:`tencentcloud.vod.v20180717.models.SnapshotByTimeOffsetTask2017`
+        :param WechatPublishCompleteEvent: 微信发布完成事件，当事件类型为 WechatPublishComplete 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WechatPublishCompleteEvent: :class:`tencentcloud.vod.v20180717.models.WechatPublishTask`
         :param WechatMiniProgramPublishCompleteEvent: 微信小程序发布任务完成事件，当事件类型为 WechatMiniProgramPublishComplete 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type WechatMiniProgramPublishCompleteEvent: :class:`tencentcloud.vod.v20180717.models.WechatMiniProgramPublishTask`
@@ -8867,13 +8879,14 @@ class EventContent(AbstractModel):
         self.FileDeleteEvent = None
         self.PullCompleteEvent = None
         self.EditMediaCompleteEvent = None
-        self.WechatPublishCompleteEvent = None
-        self.TranscodeCompleteEvent = None
-        self.ConcatCompleteEvent = None
-        self.ClipCompleteEvent = None
-        self.CreateImageSpriteCompleteEvent = None
-        self.SnapshotByTimeOffsetCompleteEvent = None
+        self.SplitMediaCompleteEvent = None
         self.ComposeMediaCompleteEvent = None
+        self.ClipCompleteEvent = None
+        self.TranscodeCompleteEvent = None
+        self.CreateImageSpriteCompleteEvent = None
+        self.ConcatCompleteEvent = None
+        self.SnapshotByTimeOffsetCompleteEvent = None
+        self.WechatPublishCompleteEvent = None
         self.WechatMiniProgramPublishCompleteEvent = None
 
 
@@ -8895,27 +8908,30 @@ class EventContent(AbstractModel):
         if params.get("EditMediaCompleteEvent") is not None:
             self.EditMediaCompleteEvent = EditMediaTask()
             self.EditMediaCompleteEvent._deserialize(params.get("EditMediaCompleteEvent"))
-        if params.get("WechatPublishCompleteEvent") is not None:
-            self.WechatPublishCompleteEvent = WechatPublishTask()
-            self.WechatPublishCompleteEvent._deserialize(params.get("WechatPublishCompleteEvent"))
-        if params.get("TranscodeCompleteEvent") is not None:
-            self.TranscodeCompleteEvent = TranscodeTask2017()
-            self.TranscodeCompleteEvent._deserialize(params.get("TranscodeCompleteEvent"))
-        if params.get("ConcatCompleteEvent") is not None:
-            self.ConcatCompleteEvent = ConcatTask2017()
-            self.ConcatCompleteEvent._deserialize(params.get("ConcatCompleteEvent"))
-        if params.get("ClipCompleteEvent") is not None:
-            self.ClipCompleteEvent = ClipTask2017()
-            self.ClipCompleteEvent._deserialize(params.get("ClipCompleteEvent"))
-        if params.get("CreateImageSpriteCompleteEvent") is not None:
-            self.CreateImageSpriteCompleteEvent = CreateImageSpriteTask2017()
-            self.CreateImageSpriteCompleteEvent._deserialize(params.get("CreateImageSpriteCompleteEvent"))
-        if params.get("SnapshotByTimeOffsetCompleteEvent") is not None:
-            self.SnapshotByTimeOffsetCompleteEvent = SnapshotByTimeOffsetTask2017()
-            self.SnapshotByTimeOffsetCompleteEvent._deserialize(params.get("SnapshotByTimeOffsetCompleteEvent"))
+        if params.get("SplitMediaCompleteEvent") is not None:
+            self.SplitMediaCompleteEvent = SplitMediaTask()
+            self.SplitMediaCompleteEvent._deserialize(params.get("SplitMediaCompleteEvent"))
         if params.get("ComposeMediaCompleteEvent") is not None:
             self.ComposeMediaCompleteEvent = ComposeMediaTask()
             self.ComposeMediaCompleteEvent._deserialize(params.get("ComposeMediaCompleteEvent"))
+        if params.get("ClipCompleteEvent") is not None:
+            self.ClipCompleteEvent = ClipTask2017()
+            self.ClipCompleteEvent._deserialize(params.get("ClipCompleteEvent"))
+        if params.get("TranscodeCompleteEvent") is not None:
+            self.TranscodeCompleteEvent = TranscodeTask2017()
+            self.TranscodeCompleteEvent._deserialize(params.get("TranscodeCompleteEvent"))
+        if params.get("CreateImageSpriteCompleteEvent") is not None:
+            self.CreateImageSpriteCompleteEvent = CreateImageSpriteTask2017()
+            self.CreateImageSpriteCompleteEvent._deserialize(params.get("CreateImageSpriteCompleteEvent"))
+        if params.get("ConcatCompleteEvent") is not None:
+            self.ConcatCompleteEvent = ConcatTask2017()
+            self.ConcatCompleteEvent._deserialize(params.get("ConcatCompleteEvent"))
+        if params.get("SnapshotByTimeOffsetCompleteEvent") is not None:
+            self.SnapshotByTimeOffsetCompleteEvent = SnapshotByTimeOffsetTask2017()
+            self.SnapshotByTimeOffsetCompleteEvent._deserialize(params.get("SnapshotByTimeOffsetCompleteEvent"))
+        if params.get("WechatPublishCompleteEvent") is not None:
+            self.WechatPublishCompleteEvent = WechatPublishTask()
+            self.WechatPublishCompleteEvent._deserialize(params.get("WechatPublishCompleteEvent"))
         if params.get("WechatMiniProgramPublishCompleteEvent") is not None:
             self.WechatMiniProgramPublishCompleteEvent = WechatMiniProgramPublishTask()
             self.WechatMiniProgramPublishCompleteEvent._deserialize(params.get("WechatMiniProgramPublishCompleteEvent"))
@@ -15375,6 +15391,259 @@ class SpecificationDataItem(AbstractModel):
                 self.Data.append(obj)
 
 
+class SplitMediaOutputConfig(AbstractModel):
+    """视频拆条的结果文件输出。
+
+    """
+
+    def __init__(self):
+        """
+        :param MediaName: 输出文件名，最长 64 个字符。缺省由系统指定生成文件名。
+        :type MediaName: str
+        :param Type: 输出文件格式，可选值：mp4、hls。默认是 mp4。
+        :type Type: str
+        :param ClassId: 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
+<li>默认值：0，表示其他分类。</li>
+        :type ClassId: int
+        :param ExpireTime: 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type ExpireTime: str
+        """
+        self.MediaName = None
+        self.Type = None
+        self.ClassId = None
+        self.ExpireTime = None
+
+
+    def _deserialize(self, params):
+        self.MediaName = params.get("MediaName")
+        self.Type = params.get("Type")
+        self.ClassId = params.get("ClassId")
+        self.ExpireTime = params.get("ExpireTime")
+
+
+class SplitMediaRequest(AbstractModel):
+    """SplitMedia请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FileId: 视频的 ID。
+        :type FileId: str
+        :param Segments: 视频拆条任务信息列表，最多同时支持100个拆条信息。
+        :type Segments: list of SplitMediaTaskConfig
+        :param SessionContext: 标识来源上下文，用于透传用户请求信息，在 SplitMediaComplete 回调和任务流状态变更回调将返回该字段值，最长 1000个字符。
+        :type SessionContext: str
+        :param SessionId: 用于任务去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :type SessionId: str
+        :param TasksPriority: 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+        :type TasksPriority: int
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.FileId = None
+        self.Segments = None
+        self.SessionContext = None
+        self.SessionId = None
+        self.TasksPriority = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
+        if params.get("Segments") is not None:
+            self.Segments = []
+            for item in params.get("Segments"):
+                obj = SplitMediaTaskConfig()
+                obj._deserialize(item)
+                self.Segments.append(obj)
+        self.SessionContext = params.get("SessionContext")
+        self.SessionId = params.get("SessionId")
+        self.TasksPriority = params.get("TasksPriority")
+        self.SubAppId = params.get("SubAppId")
+
+
+class SplitMediaResponse(AbstractModel):
+    """SplitMedia返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 视频拆条的任务 ID，可以通过该 ID 查询拆条任务（任务类型为 SplitMedia）的状态。
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class SplitMediaTask(AbstractModel):
+    """视频拆条任务信息，仅当 TaskType 为 SplitMedia，该字段有值。
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务 ID。
+        :type TaskId: str
+        :param Status: 任务流状态，取值：
+<li>PROCESSING：处理中；</li>
+<li>FINISH：已完成。</li>
+        :type Status: str
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+        :type ErrCode: int
+        :param Message: 错误信息。
+        :type Message: str
+        :param FileInfoSet: 视频拆条任务详细信息列表。
+        :type FileInfoSet: list of SplitMediaTaskSegmentInfo
+        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        :type SessionContext: str
+        :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :type SessionId: str
+        """
+        self.TaskId = None
+        self.Status = None
+        self.ErrCodeExt = None
+        self.ErrCode = None
+        self.Message = None
+        self.FileInfoSet = None
+        self.SessionContext = None
+        self.SessionId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("FileInfoSet") is not None:
+            self.FileInfoSet = []
+            for item in params.get("FileInfoSet"):
+                obj = SplitMediaTaskSegmentInfo()
+                obj._deserialize(item)
+                self.FileInfoSet.append(obj)
+        self.SessionContext = params.get("SessionContext")
+        self.SessionId = params.get("SessionId")
+
+
+class SplitMediaTaskConfig(AbstractModel):
+    """视频拆条任务配置信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTimeOffset: 视频拆条起始的偏移时间，单位：秒。
+<li>不填或填0，表示转码后的视频从原始视频的起始位置开始；</li>
+<li>当数值大于0时（假设为 n），表示转码后的视频从原始视频的第 n 秒位置开始；</li>
+<li>当数值小于0时（假设为 -n），表示转码后的视频从原始视频结束 n 秒前的位置开始。</li>
+        :type StartTimeOffset: float
+        :param EndTimeOffset: 视频拆条结束的偏移时间，单位：秒。
+<li>不填或填0，表示转码后的视频持续到原始视频的末尾终止；</li>
+<li>当数值大于0时（假设为 n），表示转码后的视频持续到原始视频第 n 秒时终止；</li>
+<li>当数值小于0时（假设为 -n），表示转码后的视频持续到原始视频结束 n 秒前终止。</li>
+        :type EndTimeOffset: float
+        :param ProcedureName: [任务流模板](/document/product/266/11700#.E4.BB.BB.E5.8A.A1.E6.B5.81.E6.A8.A1.E6.9D.BF)名字，如果要对生成的新视频执行任务流时填写。
+        :type ProcedureName: str
+        :param OutputConfig: 视频拆条输出信息。
+        :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.SplitMediaOutputConfig`
+        """
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
+        self.ProcedureName = None
+        self.OutputConfig = None
+
+
+    def _deserialize(self, params):
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
+        self.ProcedureName = params.get("ProcedureName")
+        if params.get("OutputConfig") is not None:
+            self.OutputConfig = SplitMediaOutputConfig()
+            self.OutputConfig._deserialize(params.get("OutputConfig"))
+
+
+class SplitMediaTaskInput(AbstractModel):
+    """视频拆条任务输入信息
+
+    """
+
+    def __init__(self):
+        """
+        :param FileId: 视频的 ID。
+        :type FileId: str
+        :param StartTimeOffset: 视频拆条起始的偏移时间，单位：秒。
+<li>不填或填0，表示转码后的视频从原始视频的起始位置开始；</li>
+<li>当数值大于0时（假设为 n），表示转码后的视频从原始视频的第 n 秒位置开始；</li>
+<li>当数值小于0时（假设为 -n），表示转码后的视频从原始视频结束 n 秒前的位置开始。</li>
+        :type StartTimeOffset: float
+        :param EndTimeOffset: 视频拆条结束的偏移时间，单位：秒。
+<li>不填或填0，表示转码后的视频持续到原始视频的末尾终止；</li>
+<li>当数值大于0时（假设为 n），表示转码后的视频持续到原始视频第 n 秒时终止；</li>
+<li>当数值小于0时（假设为 -n），表示转码后的视频持续到原始视频结束 n 秒前终止。</li>
+        :type EndTimeOffset: float
+        :param ProcedureName: [任务流模板](/document/product/266/11700#.E4.BB.BB.E5.8A.A1.E6.B5.81.E6.A8.A1.E6.9D.BF)名字，如果要对生成的新视频执行任务流时填写。
+        :type ProcedureName: str
+        :param OutputConfig: 视频拆条输出信息。
+        :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.SplitMediaOutputConfig`
+        """
+        self.FileId = None
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
+        self.ProcedureName = None
+        self.OutputConfig = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
+        self.ProcedureName = params.get("ProcedureName")
+        if params.get("OutputConfig") is not None:
+            self.OutputConfig = SplitMediaOutputConfig()
+            self.OutputConfig._deserialize(params.get("OutputConfig"))
+
+
+class SplitMediaTaskSegmentInfo(AbstractModel):
+    """视频拆条任务信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param Input: 视频拆条任务输入信息。
+        :type Input: :class:`tencentcloud.vod.v20180717.models.SplitMediaTaskInput`
+        :param Output: 视频拆条任务输出信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.vod.v20180717.models.TaskOutputMediaInfo`
+        :param ProcedureTaskId: 若发起视频拆条任务时指定了视频处理流程，则该字段为流程任务 ID。
+        :type ProcedureTaskId: str
+        """
+        self.Input = None
+        self.Output = None
+        self.ProcedureTaskId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Input") is not None:
+            self.Input = SplitMediaTaskInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = TaskOutputMediaInfo()
+            self.Output._deserialize(params.get("Output"))
+        self.ProcedureTaskId = params.get("ProcedureTaskId")
+
+
 class StatDataItem(AbstractModel):
     """统计数据
 
@@ -15712,6 +15981,29 @@ class TagConfigureInfoForUpdate(AbstractModel):
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
+
+
+class TaskOutputMediaInfo(AbstractModel):
+    """视频处理任务的输出媒体文件信息
+
+    """
+
+    def __init__(self):
+        """
+        :param FileId: 媒体文件 ID。
+        :type FileId: str
+        :param MediaBasicInfo: 转拉完成后生成的媒体文件基础信息。
+        :type MediaBasicInfo: :class:`tencentcloud.vod.v20180717.models.MediaBasicInfo`
+        """
+        self.FileId = None
+        self.MediaBasicInfo = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
+        if params.get("MediaBasicInfo") is not None:
+            self.MediaBasicInfo = MediaBasicInfo()
+            self.MediaBasicInfo._deserialize(params.get("MediaBasicInfo"))
 
 
 class TaskSimpleInfo(AbstractModel):

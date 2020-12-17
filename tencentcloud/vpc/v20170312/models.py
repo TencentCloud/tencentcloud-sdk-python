@@ -537,16 +537,20 @@ class AllocateIp6AddressesBandwidthRequest(AbstractModel):
         :type InternetMaxBandwidthOut: int
         :param InternetChargeType: 网络计费模式。IPV6当前对标准账户类型支持"TRAFFIC_POSTPAID_BY_HOUR"，对传统账户类型支持"BANDWIDTH_PACKAGE"。默认网络计费模式是"TRAFFIC_POSTPAID_BY_HOUR"。
         :type InternetChargeType: str
+        :param BandwidthPackageId: 带宽包id，上移账号，申请带宽包计费模式的ipv6地址需要传入.
+        :type BandwidthPackageId: str
         """
         self.Ip6Addresses = None
         self.InternetMaxBandwidthOut = None
         self.InternetChargeType = None
+        self.BandwidthPackageId = None
 
 
     def _deserialize(self, params):
         self.Ip6Addresses = params.get("Ip6Addresses")
         self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
         self.InternetChargeType = params.get("InternetChargeType")
+        self.BandwidthPackageId = params.get("BandwidthPackageId")
 
 
 class AllocateIp6AddressesBandwidthResponse(AbstractModel):
