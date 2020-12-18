@@ -326,24 +326,25 @@ class ImageModerationResponse(AbstractModel):
         :param Suggestion: 建议您拿到判断结果后的执行操作。
 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
         :type Suggestion: str
-        :param Label: 恶意标签，Normal：正常，Polity：涉政，Porn：色情，Illegal：违法，Abuse：谩骂，Terror：暴恐，Ad：广告，Custom：自定义图片。
+        :param Label: 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义图片。
+以及令人反感、不安全或不适宜的内容类型。
         :type Label: str
         :param SubLabel: 子标签名称，如色情--性行为；当未命中子标签时，返回空字符串；
         :type SubLabel: str
         :param Score: 机器判断当前分类的置信度，取值范围：0.00~100.00。分数越高，表示越有可能属于当前分类。
 （如：色情 99.99，则该样本属于色情的置信度非常高。）
         :type Score: int
-        :param LabelResults: 识别模型的审核结果，包括涉黄、性感、涉暴、违法违规、等审核结果。
+        :param LabelResults: 智能模型的识别结果，包括涉黄、广告等令人反感、不安全或不适宜的内容类型识别结果。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LabelResults: list of LabelResult
-        :param ObjectResults: 物体检测模型的审核结果，包括涉政实体、广告台标/二维码等物体坐标信息与内容审核信息。
+        :param ObjectResults: 物体检测模型的审核结果，包括实体、广告台标/二维码等物体坐标信息与内容审核信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ObjectResults: list of ObjectResult
-        :param OcrResults: OCR识别后的文本审核结果，包括文本所处图片的OCR坐标信息以及图片文本的审核结果。
+        :param OcrResults: OCR识别后的文本识别结果，包括文本所处图片的OCR坐标信息以及图片文本的识别结果。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OcrResults: list of OcrResult
         :param LibResults: 基于图片风险库识别的结果。
-风险库包括违规黑库与正常白库的结果。
+风险库包括不安全黑库与正常白库的结果。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LibResults: list of LibResult
         :param DataId: 请求参数中的DataId。
@@ -490,9 +491,11 @@ class LabelResult(AbstractModel):
         """
         :param Scene: 场景识别结果
         :type Scene: str
-        :param Suggestion: 建议值，Block：打击，Review：待复审，Pass：正常
+        :param Suggestion: 建议您拿到判断结果后的执行操作。
+建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
         :type Suggestion: str
-        :param Label: 恶意标签，Normal：正常，Polity：涉政，Porn：色情，Illegal：违法，Abuse：谩骂，Terror：暴恐，Ad：广告，Custom：自定义图片
+        :param Label: 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义图片。
+以及令人反感、不安全或不适宜的内容类型。
         :type Label: str
         :param SubLabel: 子标签检测结果
 注意：此字段可能返回 null，表示取不到有效值。
@@ -534,14 +537,15 @@ class LibDetail(AbstractModel):
         """
         :param Id: 序号
         :type Id: int
-        :param LibId: 仅当Lable为Custom自定义关键词时有效，表示自定义库id
+        :param LibId: 仅当Label为Custom自定义关键词时有效，表示自定义库id
         :type LibId: str
-        :param LibName: 仅当Lable为Custom自定义关键词时有效，表示自定义库名称
+        :param LibName: 仅当Label为Custom自定义关键词时有效，表示自定义库名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type LibName: str
         :param ImageId: 图片ID
         :type ImageId: str
-        :param Label: 恶意标签，Normal：正常，Polity：涉政，Porn：色情，Illegal：违法，Abuse：谩骂，Terror：暴恐，Ad：广告，Custom：自定义图片
+        :param Label: 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
+以及其他令人反感、不安全或不适宜的内容类型。
         :type Label: str
         :param Tag: 自定义标签
 注意：此字段可能返回 null，表示取不到有效值。
@@ -577,9 +581,11 @@ class LibResult(AbstractModel):
         """
         :param Scene: 场景识别结果
         :type Scene: str
-        :param Suggestion: 建议值，Block：打击，Review：待复审，Pass：正常
+        :param Suggestion: 建议您拿到判断结果后的执行操作。
+建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
         :type Suggestion: str
-        :param Label: 恶意标签，Normal：正常，Polity：涉政，Porn：色情，Illegal：违法，Abuse：谩骂，Terror：暴恐，Ad：广告，Custom：自定义图片
+        :param Label: 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
+以及令人反感、不安全或不适宜的内容类型。
         :type Label: str
         :param SubLabel: 子标签检测结果
 注意：此字段可能返回 null，表示取不到有效值。
@@ -646,7 +652,7 @@ class Location(AbstractModel):
 
 
 class ObjectDetail(AbstractModel):
-    """实体检测结果明细，当检测场景为政治实体、广告台标、二维码和人脸属性时表示模型检测目标框的标签名称、标签值、标签分数以及检测框的位置信息。
+    """实体检测结果明细，当检测场景为实体、广告台标、二维码时表示模型检测目标框的标签名称、标签值、标签分数以及检测框的位置信息。
 
     """
 
@@ -658,7 +664,6 @@ class ObjectDetail(AbstractModel):
         :type Name: str
         :param Value: 标签值，
 当标签为二维码时，表示URL地址，如Name为QrCode时，Value为"http//abc.com/aaa"
-当标签为人脸属性，表示属性值，如Name为Age时 Value为18
         :type Value: str
         :param Score: 分数
         :type Score: int
@@ -683,7 +688,7 @@ class ObjectDetail(AbstractModel):
 
 
 class ObjectResult(AbstractModel):
-    """实体检测结果详情：政治实体、广告台标、二维码
+    """实体检测结果详情：实体、广告台标、二维码
 
     """
 
@@ -691,9 +696,11 @@ class ObjectResult(AbstractModel):
         """
         :param Scene: 场景识别结果
         :type Scene: str
-        :param Suggestion: 建议值，Block：打击，Review：待复审，Pass：正常
+        :param Suggestion: 建议您拿到判断结果后的执行操作。
+建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
         :type Suggestion: str
-        :param Label: 恶意标签，Normal：正常，Polity：涉政，Porn：色情，Illegal：违法，Abuse：谩骂，Terror：暴恐，Ad：广告，Custom：自定义图片
+        :param Label: 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义图片。
+以及令人反感、不安全或不适宜的内容类型。
         :type Label: str
         :param SubLabel: 子标签检测结果
 注意：此字段可能返回 null，表示取不到有效值。
@@ -740,9 +747,11 @@ class OcrResult(AbstractModel):
         """
         :param Scene: 场景识别结果
         :type Scene: str
-        :param Suggestion: 建议值，Block：打击，Review：待复审，Pass：正常
+        :param Suggestion: 建议您拿到判断结果后的执行操作。
+建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
         :type Suggestion: str
-        :param Label: 恶意标签，Normal：正常，Polity：涉政，Porn：色情，Illegal：违法，Abuse：谩骂，Terror：暴恐，Ad：广告
+        :param Label: 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
+以及令人反感、不安全或不适宜的内容类型。
         :type Label: str
         :param SubLabel: 子标签检测结果
         :type SubLabel: str
@@ -750,6 +759,8 @@ class OcrResult(AbstractModel):
         :type Score: int
         :param Details: ocr结果详情
         :type Details: list of OcrTextDetail
+        :param Text: ocr识别出的文本结果
+        :type Text: str
         """
         self.Scene = None
         self.Suggestion = None
@@ -757,6 +768,7 @@ class OcrResult(AbstractModel):
         self.SubLabel = None
         self.Score = None
         self.Details = None
+        self.Text = None
 
 
     def _deserialize(self, params):
@@ -771,6 +783,7 @@ class OcrResult(AbstractModel):
                 obj = OcrTextDetail()
                 obj._deserialize(item)
                 self.Details.append(obj)
+        self.Text = params.get("Text")
 
 
 class OcrTextDetail(AbstractModel):
@@ -782,11 +795,12 @@ class OcrTextDetail(AbstractModel):
         """
         :param Text: OCR文本内容
         :type Text: str
-        :param Label: 恶意标签，Normal：正常，Polity：涉政，Porn：色情，Illegal：违法，Abuse：谩骂，Terror：暴恐，Ad：广告，Custom：自定义关键词
+        :param Label: 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
+以及令人反感、不安全或不适宜的内容类型。
         :type Label: str
-        :param LibId: 仅当Lable为Custom自定义关键词时有效，表示自定义库id
+        :param LibId: 仅当Label为Custom自定义关键词时有效，表示自定义库id
         :type LibId: str
-        :param LibName: 仅当Lable为Custom自定义关键词时有效，表示自定义库名称
+        :param LibName: 仅当Label为Custom自定义关键词时有效，表示自定义库名称
         :type LibName: str
         :param Keywords: 该标签下命中的关键词
         :type Keywords: list of str

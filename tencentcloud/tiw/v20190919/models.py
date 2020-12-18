@@ -80,8 +80,6 @@ class CreateTranscodeRequest(AbstractModel):
 注意分辨率宽高中间为英文字母"xyz"的"x"
         :type MinResolution: str
         :param ThumbnailResolution: 动态PPT转码可以为文件生成该分辨率的缩略图，不传、传空字符串或分辨率格式错误则不生成缩略图，分辨率格式同MinResolution
-
-静态转码这个参数不起作用
         :type ThumbnailResolution: str
         :param CompressFileType: 转码文件压缩格式，不传、传空字符串或不是指定的格式则不生成压缩文件，目前支持如下压缩格式：
 

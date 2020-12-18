@@ -1,0 +1,928 @@
+# -*- coding: utf8 -*-
+# Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+from tencentcloud.common.abstract_model import AbstractModel
+
+
+class AccessGroup(AbstractModel):
+    """权限组
+
+    """
+
+    def __init__(self):
+        """
+        :param AccessGroupId: 权限组ID
+        :type AccessGroupId: str
+        :param AccessGroupName: 权限组名称
+        :type AccessGroupName: str
+        :param Description: 权限组描述
+        :type Description: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param VpcType: VPC网络类型（1：CVM；2：黑石1.0）
+        :type VpcType: int
+        :param VpcId: VPC网络ID
+        :type VpcId: str
+        """
+        self.AccessGroupId = None
+        self.AccessGroupName = None
+        self.Description = None
+        self.CreateTime = None
+        self.VpcType = None
+        self.VpcId = None
+
+
+    def _deserialize(self, params):
+        self.AccessGroupId = params.get("AccessGroupId")
+        self.AccessGroupName = params.get("AccessGroupName")
+        self.Description = params.get("Description")
+        self.CreateTime = params.get("CreateTime")
+        self.VpcType = params.get("VpcType")
+        self.VpcId = params.get("VpcId")
+
+
+class AccessRule(AbstractModel):
+    """权限规则
+
+    """
+
+    def __init__(self):
+        """
+        :param AccessRuleId: 权限规则ID
+        :type AccessRuleId: int
+        :param Address: 权限规则地址（网段或IP）
+        :type Address: str
+        :param AccessMode: 权限规则访问模式（1：只读；2：读写）
+        :type AccessMode: int
+        :param Priority: 优先级（取值范围1~100，值越小优先级越高）
+        :type Priority: int
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        """
+        self.AccessRuleId = None
+        self.Address = None
+        self.AccessMode = None
+        self.Priority = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.AccessRuleId = params.get("AccessRuleId")
+        self.Address = params.get("Address")
+        self.AccessMode = params.get("AccessMode")
+        self.Priority = params.get("Priority")
+        self.CreateTime = params.get("CreateTime")
+
+
+class AssociateAccessGroupsRequest(AbstractModel):
+    """AssociateAccessGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MountPointId: 挂载点ID
+        :type MountPointId: str
+        :param AccessGroupIds: 权限组ID列表
+        :type AccessGroupIds: list of str
+        """
+        self.MountPointId = None
+        self.AccessGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.MountPointId = params.get("MountPointId")
+        self.AccessGroupIds = params.get("AccessGroupIds")
+
+
+class AssociateAccessGroupsResponse(AbstractModel):
+    """AssociateAccessGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateAccessGroupRequest(AbstractModel):
+    """CreateAccessGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AccessGroupName: 权限组名称
+        :type AccessGroupName: str
+        :param VpcType: VPC网络类型（1：CVM；2：黑石1.0）
+        :type VpcType: int
+        :param VpcId: VPC网络ID
+        :type VpcId: str
+        :param Description: 权限组描述，默认为空字符串
+        :type Description: str
+        """
+        self.AccessGroupName = None
+        self.VpcType = None
+        self.VpcId = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.AccessGroupName = params.get("AccessGroupName")
+        self.VpcType = params.get("VpcType")
+        self.VpcId = params.get("VpcId")
+        self.Description = params.get("Description")
+
+
+class CreateAccessGroupResponse(AbstractModel):
+    """CreateAccessGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AccessGroup: 权限组
+        :type AccessGroup: :class:`tencentcloud.chdfs.v20201112.models.AccessGroup`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AccessGroup = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AccessGroup") is not None:
+            self.AccessGroup = AccessGroup()
+            self.AccessGroup._deserialize(params.get("AccessGroup"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateFileSystemRequest(AbstractModel):
+    """CreateFileSystem请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FileSystemName: 文件系统名称
+        :type FileSystemName: str
+        :param CapacityQuota: 文件系统容量（byte），下限为1G，上限为1P，且必须是1G的整数倍
+        :type CapacityQuota: int
+        :param PosixAcl: 是否校验POSIX ACL
+        :type PosixAcl: bool
+        :param Description: 文件系统描述，默认为空字符串
+        :type Description: str
+        :param SuperUsers: 超级用户名列表，默认为空数组
+        :type SuperUsers: list of str
+        :param RootInodeUser: 根目录Inode用户名，默认为hadoop
+        :type RootInodeUser: str
+        :param RootInodeGroup: 根目录Inode组名，默认为supergroup
+        :type RootInodeGroup: str
+        """
+        self.FileSystemName = None
+        self.CapacityQuota = None
+        self.PosixAcl = None
+        self.Description = None
+        self.SuperUsers = None
+        self.RootInodeUser = None
+        self.RootInodeGroup = None
+
+
+    def _deserialize(self, params):
+        self.FileSystemName = params.get("FileSystemName")
+        self.CapacityQuota = params.get("CapacityQuota")
+        self.PosixAcl = params.get("PosixAcl")
+        self.Description = params.get("Description")
+        self.SuperUsers = params.get("SuperUsers")
+        self.RootInodeUser = params.get("RootInodeUser")
+        self.RootInodeGroup = params.get("RootInodeGroup")
+
+
+class CreateFileSystemResponse(AbstractModel):
+    """CreateFileSystem返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FileSystem: 文件系统
+        :type FileSystem: :class:`tencentcloud.chdfs.v20201112.models.FileSystem`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FileSystem = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("FileSystem") is not None:
+            self.FileSystem = FileSystem()
+            self.FileSystem._deserialize(params.get("FileSystem"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateMountPointRequest(AbstractModel):
+    """CreateMountPoint请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MountPointName: 挂载点名称
+        :type MountPointName: str
+        :param FileSystemId: 文件系统ID
+        :type FileSystemId: str
+        :param MountPointStatus: 挂载点状态（1：打开；2：关闭）
+        :type MountPointStatus: int
+        """
+        self.MountPointName = None
+        self.FileSystemId = None
+        self.MountPointStatus = None
+
+
+    def _deserialize(self, params):
+        self.MountPointName = params.get("MountPointName")
+        self.FileSystemId = params.get("FileSystemId")
+        self.MountPointStatus = params.get("MountPointStatus")
+
+
+class CreateMountPointResponse(AbstractModel):
+    """CreateMountPoint返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MountPoint: 挂载点
+        :type MountPoint: :class:`tencentcloud.chdfs.v20201112.models.MountPoint`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MountPoint = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("MountPoint") is not None:
+            self.MountPoint = MountPoint()
+            self.MountPoint._deserialize(params.get("MountPoint"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAccessGroupRequest(AbstractModel):
+    """DescribeAccessGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AccessGroupId: 权限组ID
+        :type AccessGroupId: str
+        """
+        self.AccessGroupId = None
+
+
+    def _deserialize(self, params):
+        self.AccessGroupId = params.get("AccessGroupId")
+
+
+class DescribeAccessGroupResponse(AbstractModel):
+    """DescribeAccessGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AccessGroup: 权限组
+        :type AccessGroup: :class:`tencentcloud.chdfs.v20201112.models.AccessGroup`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AccessGroup = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AccessGroup") is not None:
+            self.AccessGroup = AccessGroup()
+            self.AccessGroup._deserialize(params.get("AccessGroup"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAccessGroupsRequest(AbstractModel):
+    """DescribeAccessGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: VPC网络ID
+备注：入参只能指定VpcId和OwnerUin的其中一个
+        :type VpcId: str
+        :param OwnerUin: 资源所属者Uin
+        :type OwnerUin: int
+        """
+        self.VpcId = None
+        self.OwnerUin = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.OwnerUin = params.get("OwnerUin")
+
+
+class DescribeAccessGroupsResponse(AbstractModel):
+    """DescribeAccessGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AccessGroups: 权限组列表
+        :type AccessGroups: list of AccessGroup
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AccessGroups = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AccessGroups") is not None:
+            self.AccessGroups = []
+            for item in params.get("AccessGroups"):
+                obj = AccessGroup()
+                obj._deserialize(item)
+                self.AccessGroups.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAccessRulesRequest(AbstractModel):
+    """DescribeAccessRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AccessGroupId: 权限组ID
+        :type AccessGroupId: str
+        """
+        self.AccessGroupId = None
+
+
+    def _deserialize(self, params):
+        self.AccessGroupId = params.get("AccessGroupId")
+
+
+class DescribeAccessRulesResponse(AbstractModel):
+    """DescribeAccessRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AccessRules: 权限规则列表
+        :type AccessRules: list of AccessRule
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AccessRules = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AccessRules") is not None:
+            self.AccessRules = []
+            for item in params.get("AccessRules"):
+                obj = AccessRule()
+                obj._deserialize(item)
+                self.AccessRules.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeFileSystemRequest(AbstractModel):
+    """DescribeFileSystem请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FileSystemId: 文件系统ID
+        :type FileSystemId: str
+        """
+        self.FileSystemId = None
+
+
+    def _deserialize(self, params):
+        self.FileSystemId = params.get("FileSystemId")
+
+
+class DescribeFileSystemResponse(AbstractModel):
+    """DescribeFileSystem返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FileSystem: 文件系统
+        :type FileSystem: :class:`tencentcloud.chdfs.v20201112.models.FileSystem`
+        :param CapacityUsed: 已使用容量（byte），包括标准和归档存储
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CapacityUsed: int
+        :param ArchiveCapacityUsed: 已使用归档存储容量（byte）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ArchiveCapacityUsed: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FileSystem = None
+        self.CapacityUsed = None
+        self.ArchiveCapacityUsed = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("FileSystem") is not None:
+            self.FileSystem = FileSystem()
+            self.FileSystem._deserialize(params.get("FileSystem"))
+        self.CapacityUsed = params.get("CapacityUsed")
+        self.ArchiveCapacityUsed = params.get("ArchiveCapacityUsed")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeFileSystemsRequest(AbstractModel):
+    """DescribeFileSystems请求参数结构体
+
+    """
+
+
+class DescribeFileSystemsResponse(AbstractModel):
+    """DescribeFileSystems返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FileSystems: 文件系统列表
+        :type FileSystems: list of FileSystem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FileSystems = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("FileSystems") is not None:
+            self.FileSystems = []
+            for item in params.get("FileSystems"):
+                obj = FileSystem()
+                obj._deserialize(item)
+                self.FileSystems.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeMountPointRequest(AbstractModel):
+    """DescribeMountPoint请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MountPointId: 挂载点ID
+        :type MountPointId: str
+        """
+        self.MountPointId = None
+
+
+    def _deserialize(self, params):
+        self.MountPointId = params.get("MountPointId")
+
+
+class DescribeMountPointResponse(AbstractModel):
+    """DescribeMountPoint返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MountPoint: 挂载点
+        :type MountPoint: :class:`tencentcloud.chdfs.v20201112.models.MountPoint`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MountPoint = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("MountPoint") is not None:
+            self.MountPoint = MountPoint()
+            self.MountPoint._deserialize(params.get("MountPoint"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeMountPointsRequest(AbstractModel):
+    """DescribeMountPoints请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FileSystemId: 文件系统ID
+备注：入参只能指定AccessGroupId、FileSystemId和OwnerUin的其中一个
+        :type FileSystemId: str
+        :param AccessGroupId: 权限组ID
+        :type AccessGroupId: str
+        :param OwnerUin: 资源所属者Uin
+        :type OwnerUin: int
+        """
+        self.FileSystemId = None
+        self.AccessGroupId = None
+        self.OwnerUin = None
+
+
+    def _deserialize(self, params):
+        self.FileSystemId = params.get("FileSystemId")
+        self.AccessGroupId = params.get("AccessGroupId")
+        self.OwnerUin = params.get("OwnerUin")
+
+
+class DescribeMountPointsResponse(AbstractModel):
+    """DescribeMountPoints返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MountPoints: 挂载点列表
+        :type MountPoints: list of MountPoint
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MountPoints = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("MountPoints") is not None:
+            self.MountPoints = []
+            for item in params.get("MountPoints"):
+                obj = MountPoint()
+                obj._deserialize(item)
+                self.MountPoints.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DisassociateAccessGroupsRequest(AbstractModel):
+    """DisassociateAccessGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MountPointId: 挂载点ID
+        :type MountPointId: str
+        :param AccessGroupIds: 权限组ID列表
+        :type AccessGroupIds: list of str
+        """
+        self.MountPointId = None
+        self.AccessGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.MountPointId = params.get("MountPointId")
+        self.AccessGroupIds = params.get("AccessGroupIds")
+
+
+class DisassociateAccessGroupsResponse(AbstractModel):
+    """DisassociateAccessGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class FileSystem(AbstractModel):
+    """文件系统
+
+    """
+
+    def __init__(self):
+        """
+        :param AppId: 资源所属用户AppId
+        :type AppId: int
+        :param FileSystemName: 文件系统名称
+        :type FileSystemName: str
+        :param Description: 文件系统描述
+        :type Description: str
+        :param Region: 地域
+        :type Region: str
+        :param FileSystemId: 文件系统ID
+        :type FileSystemId: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param BlockSize: 文件系统块大小（byte）
+        :type BlockSize: int
+        :param CapacityQuota: 文件系统容量（byte）
+        :type CapacityQuota: int
+        :param Status: 文件系统状态（1：创建中；2：创建成功；3：创建失败）
+        :type Status: int
+        :param SuperUsers: 超级用户名列表
+        :type SuperUsers: list of str
+        :param PosixAcl: POSIX权限控制
+        :type PosixAcl: bool
+        """
+        self.AppId = None
+        self.FileSystemName = None
+        self.Description = None
+        self.Region = None
+        self.FileSystemId = None
+        self.CreateTime = None
+        self.BlockSize = None
+        self.CapacityQuota = None
+        self.Status = None
+        self.SuperUsers = None
+        self.PosixAcl = None
+
+
+    def _deserialize(self, params):
+        self.AppId = params.get("AppId")
+        self.FileSystemName = params.get("FileSystemName")
+        self.Description = params.get("Description")
+        self.Region = params.get("Region")
+        self.FileSystemId = params.get("FileSystemId")
+        self.CreateTime = params.get("CreateTime")
+        self.BlockSize = params.get("BlockSize")
+        self.CapacityQuota = params.get("CapacityQuota")
+        self.Status = params.get("Status")
+        self.SuperUsers = params.get("SuperUsers")
+        self.PosixAcl = params.get("PosixAcl")
+
+
+class ModifyAccessGroupRequest(AbstractModel):
+    """ModifyAccessGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AccessGroupId: 权限组ID
+        :type AccessGroupId: str
+        :param AccessGroupName: 权限组名称
+        :type AccessGroupName: str
+        :param Description: 权限组描述
+        :type Description: str
+        """
+        self.AccessGroupId = None
+        self.AccessGroupName = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.AccessGroupId = params.get("AccessGroupId")
+        self.AccessGroupName = params.get("AccessGroupName")
+        self.Description = params.get("Description")
+
+
+class ModifyAccessGroupResponse(AbstractModel):
+    """ModifyAccessGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyFileSystemRequest(AbstractModel):
+    """ModifyFileSystem请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FileSystemId: 文件系统ID
+        :type FileSystemId: str
+        :param FileSystemName: 文件系统名称
+        :type FileSystemName: str
+        :param Description: 文件系统描述
+        :type Description: str
+        :param CapacityQuota: 文件系统容量（byte），下限为1G，上限为1P，且必须是1G的整数倍
+注意：修改的文件系统容量不能小于当前使用量
+        :type CapacityQuota: int
+        :param SuperUsers: 超级用户名列表，可以为空数组
+        :type SuperUsers: list of str
+        :param PosixAcl: 是否校验POSIX ACL
+        :type PosixAcl: bool
+        """
+        self.FileSystemId = None
+        self.FileSystemName = None
+        self.Description = None
+        self.CapacityQuota = None
+        self.SuperUsers = None
+        self.PosixAcl = None
+
+
+    def _deserialize(self, params):
+        self.FileSystemId = params.get("FileSystemId")
+        self.FileSystemName = params.get("FileSystemName")
+        self.Description = params.get("Description")
+        self.CapacityQuota = params.get("CapacityQuota")
+        self.SuperUsers = params.get("SuperUsers")
+        self.PosixAcl = params.get("PosixAcl")
+
+
+class ModifyFileSystemResponse(AbstractModel):
+    """ModifyFileSystem返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyMountPointRequest(AbstractModel):
+    """ModifyMountPoint请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MountPointId: 挂载点ID
+        :type MountPointId: str
+        :param MountPointName: 挂载点名称
+        :type MountPointName: str
+        :param MountPointStatus: 挂载点状态
+        :type MountPointStatus: int
+        """
+        self.MountPointId = None
+        self.MountPointName = None
+        self.MountPointStatus = None
+
+
+    def _deserialize(self, params):
+        self.MountPointId = params.get("MountPointId")
+        self.MountPointName = params.get("MountPointName")
+        self.MountPointStatus = params.get("MountPointStatus")
+
+
+class ModifyMountPointResponse(AbstractModel):
+    """ModifyMountPoint返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyResourceTagsRequest(AbstractModel):
+    """ModifyResourceTags请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FileSystemId: 文件系统ID
+        :type FileSystemId: str
+        :param Tags: 多个资源标签，可以为空数组
+        :type Tags: list of Tag
+        """
+        self.FileSystemId = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.FileSystemId = params.get("FileSystemId")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+
+
+class ModifyResourceTagsResponse(AbstractModel):
+    """ModifyResourceTags返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class MountPoint(AbstractModel):
+    """挂载点
+
+    """
+
+    def __init__(self):
+        """
+        :param MountPointId: 挂载点ID
+        :type MountPointId: str
+        :param MountPointName: 挂载点名称
+        :type MountPointName: str
+        :param FileSystemId: 文件系统ID
+        :type FileSystemId: str
+        :param Status: 挂载点状态（1：打开；2：关闭）
+        :type Status: int
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param AccessGroupIds: 绑定的权限组ID列表
+        :type AccessGroupIds: list of str
+        """
+        self.MountPointId = None
+        self.MountPointName = None
+        self.FileSystemId = None
+        self.Status = None
+        self.CreateTime = None
+        self.AccessGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.MountPointId = params.get("MountPointId")
+        self.MountPointName = params.get("MountPointName")
+        self.FileSystemId = params.get("FileSystemId")
+        self.Status = params.get("Status")
+        self.CreateTime = params.get("CreateTime")
+        self.AccessGroupIds = params.get("AccessGroupIds")
+
+
+class Tag(AbstractModel):
+    """资源标签。
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: 标签键
+        :type Key: str
+        :param Value: 标签值
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")

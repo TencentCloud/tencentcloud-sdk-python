@@ -165,8 +165,8 @@ class FaceFusionRequest(AbstractModel):
         :type RspImgType: str
         :param PornDetect: 历史遗留字段，无需填写。因为融合只需提取人脸特征，不需要鉴黄。
         :type PornDetect: int
-        :param CelebrityIdentify: 0表示不需要鉴政，1表示需要鉴政。默认值为0。
-请注意，鉴政服务开启后，您需要根据返回结果自行判断是否调整您的业务逻辑。例如提示您的用户图片非法，请更换图片。
+        :param CelebrityIdentify: 0表示不需要不适宜内容识别，1表示需要不适宜内容识别。默认值为0。
+请注意，不适宜内容识别服务开启后，您需要根据返回结果自行判断是否调整您的业务逻辑。例如提示您的用户图片非法，请更换图片。
         :type CelebrityIdentify: int
         """
         self.ProjectId = None
@@ -195,7 +195,7 @@ class FaceFusionResponse(AbstractModel):
         """
         :param Image: RspImgType 为 url 时，返回结果的 url， RspImgType 为 base64 时返回 base64 数据。
         :type Image: str
-        :param ReviewResultSet: 鉴政结果
+        :param ReviewResultSet: 不适宜内容识别结果
         :type ReviewResultSet: list of FuseFaceReviewResult
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -295,8 +295,8 @@ class FuseFaceRequest(AbstractModel):
         :param FuseFaceDegree: 五官融合比例，数值越高，融合后的五官越像素材人物。取值范围[0,100] 
 若此参数不填写，则使用人脸融合控制台中五官参数数值。（换脸版算法暂不支持此参数调整）
         :type FuseFaceDegree: int
-        :param CelebrityIdentify: 0表示不需要鉴政，1表示需要鉴政。默认值为0。
-请注意，鉴政服务开启后，您需要根据返回结果自行判断是否调整您的业务逻辑。例如提示您的用户图片非法，请更换图片。
+        :param CelebrityIdentify: 0表示不需要不适宜内容识别，1表示需要不适宜内容识别。默认值为0。
+请注意，不适宜内容识别服务开启后，您需要根据返回结果自行判断是否调整您的业务逻辑。例如提示您的用户图片非法，请更换图片。
         :type CelebrityIdentify: int
         """
         self.ProjectId = None
@@ -332,7 +332,7 @@ class FuseFaceResponse(AbstractModel):
         """
         :param FusedImage: RspImgType 为 url 时，返回结果的 url， RspImgType 为 base64 时返回 base64 数据。
         :type FusedImage: str
-        :param ReviewResultSet: 鉴政结果。该数组的顺序和请求中mergeinfo的顺序一致，一一对应
+        :param ReviewResultSet: 不适宜内容识别结果。该数组的顺序和请求中mergeinfo的顺序一致，一一对应
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReviewResultSet: list of FuseFaceReviewResult
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

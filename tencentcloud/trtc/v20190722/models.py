@@ -687,7 +687,7 @@ class DescribeRoomInformationResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Total: 返回的数据总条数
+        :param Total: 返回当页数据总数
         :type Total: int
         :param RoomList: 房间信息列表
         :type RoomList: list of RoomState

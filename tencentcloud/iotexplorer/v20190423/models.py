@@ -278,6 +278,8 @@ class CreateLoRaGatewayRequest(AbstractModel):
         :type PositionDetails: str
         :param IsPublic: 是否公开
         :type IsPublic: bool
+        :param FrequencyId: 频点ID
+        :type FrequencyId: str
         """
         self.GatewayId = None
         self.Name = None
@@ -286,6 +288,7 @@ class CreateLoRaGatewayRequest(AbstractModel):
         self.Position = None
         self.PositionDetails = None
         self.IsPublic = None
+        self.FrequencyId = None
 
 
     def _deserialize(self, params):
@@ -298,6 +301,7 @@ class CreateLoRaGatewayRequest(AbstractModel):
         self.Position = params.get("Position")
         self.PositionDetails = params.get("PositionDetails")
         self.IsPublic = params.get("IsPublic")
+        self.FrequencyId = params.get("FrequencyId")
 
 
 class CreateLoRaGatewayResponse(AbstractModel):
@@ -1641,6 +1645,8 @@ class LoRaGatewayItem(AbstractModel):
         :type CreatedAt: str
         :param LastSeenAt: 最后上报时间
         :type LastSeenAt: str
+        :param FrequencyId: 频点ID
+        :type FrequencyId: str
         """
         self.GatewayId = None
         self.IsPublic = None
@@ -1652,6 +1658,7 @@ class LoRaGatewayItem(AbstractModel):
         self.UpdatedAt = None
         self.CreatedAt = None
         self.LastSeenAt = None
+        self.FrequencyId = None
 
 
     def _deserialize(self, params):
@@ -1667,6 +1674,7 @@ class LoRaGatewayItem(AbstractModel):
         self.UpdatedAt = params.get("UpdatedAt")
         self.CreatedAt = params.get("CreatedAt")
         self.LastSeenAt = params.get("LastSeenAt")
+        self.FrequencyId = params.get("FrequencyId")
 
 
 class LoRaGatewayLocation(AbstractModel):
@@ -1719,6 +1727,8 @@ class ModifyLoRaGatewayRequest(AbstractModel):
         :type Position: str
         :param PositionDetails: 位置详情
         :type PositionDetails: str
+        :param FrequencyId: 频点ID
+        :type FrequencyId: str
         """
         self.Description = None
         self.GatewayId = None
@@ -1727,6 +1737,7 @@ class ModifyLoRaGatewayRequest(AbstractModel):
         self.IsPublic = None
         self.Position = None
         self.PositionDetails = None
+        self.FrequencyId = None
 
 
     def _deserialize(self, params):
@@ -1739,6 +1750,7 @@ class ModifyLoRaGatewayRequest(AbstractModel):
         self.IsPublic = params.get("IsPublic")
         self.Position = params.get("Position")
         self.PositionDetails = params.get("PositionDetails")
+        self.FrequencyId = params.get("FrequencyId")
 
 
 class ModifyLoRaGatewayResponse(AbstractModel):

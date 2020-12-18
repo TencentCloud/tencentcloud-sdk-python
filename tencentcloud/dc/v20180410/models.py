@@ -304,6 +304,8 @@ STATIC：静态
         :type CustomerAddress: str
         :param TencentBackupAddress: TencentBackupAddress，腾讯侧备用互联 IP
         :type TencentBackupAddress: str
+        :param CloudAttachId: 高速上云服务ID
+        :type CloudAttachId: str
         """
         self.DirectConnectId = None
         self.DirectConnectTunnelName = None
@@ -320,6 +322,7 @@ STATIC：静态
         self.TencentAddress = None
         self.CustomerAddress = None
         self.TencentBackupAddress = None
+        self.CloudAttachId = None
 
 
     def _deserialize(self, params):
@@ -345,6 +348,7 @@ STATIC：静态
         self.TencentAddress = params.get("TencentAddress")
         self.CustomerAddress = params.get("CustomerAddress")
         self.TencentBackupAddress = params.get("TencentBackupAddress")
+        self.CloudAttachId = params.get("CloudAttachId")
 
 
 class CreateDirectConnectTunnelResponse(AbstractModel):
@@ -975,6 +979,9 @@ REJECTED:拒绝
         :param SignLaw: 专用通道关联的物理专线是否签署了用户协议
 注意：此字段可能返回 null，表示取不到有效值。
         :type SignLaw: bool
+        :param CloudAttachId: 高速上云服务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CloudAttachId: str
         """
         self.DirectConnectTunnelId = None
         self.DirectConnectId = None
@@ -1005,6 +1012,7 @@ REJECTED:拒绝
         self.VpcName = None
         self.TencentBackupAddress = None
         self.SignLaw = None
+        self.CloudAttachId = None
 
 
     def _deserialize(self, params):
@@ -1049,6 +1057,7 @@ REJECTED:拒绝
         self.VpcName = params.get("VpcName")
         self.TencentBackupAddress = params.get("TencentBackupAddress")
         self.SignLaw = params.get("SignLaw")
+        self.CloudAttachId = params.get("CloudAttachId")
 
 
 class DirectConnectTunnelExtra(AbstractModel):
