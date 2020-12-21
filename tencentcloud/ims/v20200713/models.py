@@ -121,7 +121,7 @@ class DescribeImsListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ImsDetailSet: 返回列表数据
+        :param ImsDetailSet: 返回列表数据----非必选，该参数暂未对外开放
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImsDetailSet: list of ImsDetail
         :param TotalCount: 总条数
@@ -197,15 +197,7 @@ class EvilCount(AbstractModel):
 
     def __init__(self):
         """
-        :param EvilType: 违规类型：
-Terror	24001
-Porn	20002
-Polity	20001
-Ad	20105
-Abuse	20007	
-Illegal	20006	
-Spam	25001	
-Moan	26001
+        :param EvilType: ----非必选，该参数功能暂未对外开放
         :type EvilType: str
         :param Count: 分布类型总量
         :type Count: int
@@ -422,7 +414,7 @@ class ImsDetail(AbstractModel):
         :type DataSource: int
         :param UpdateTime: 最后更新时间
         :type UpdateTime: str
-        :param EvilType: 机器审核结果code 100 正常, 20001 政治 20002 色情 20006 涉毒违法 20007 谩骂 24001 暴恐 21000 综合 20105 广告引流 20103 性感
+        :param EvilType: ----非必选，该参数暂未对外开放
         :type EvilType: int
         :param ModerationTime: 机器审核时间
         :type ModerationTime: str

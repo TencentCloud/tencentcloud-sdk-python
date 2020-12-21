@@ -347,6 +347,31 @@ default 时填充 "no max-age"
         self.CacheTime = params.get("CacheTime")
 
 
+class AdvanceConfig(AbstractModel):
+    """高级配置集合
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 高级配置名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Value: 是否支持高级配置，
+on：支持
+off：不支持
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self.Name = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
+
+
 class AdvancedAuthentication(AbstractModel):
     """时间戳防盗链高级版配置，白名单功能
 
@@ -1987,6 +2012,10 @@ DefenceMode 映射如下：
         :type Ip: str
         :param Domains: 指定域名查询, 与 Domain 参数同时有值时使用 Domains 参数，不填默认查询全部域名，指定域名查询时最多支持同时选择 5 个域名查询
         :type Domains: list of str
+        :param AttackTypes: 指定攻击类型查询, 与 AttackType 参数同时有值时使用 AttackTypes 参数，不填默认查询全部攻击类型
+        :type AttackTypes: list of str
+        :param Conditions: 查询条件
+        :type Conditions: list of ScdnEventLogConditions
         """
         self.Mode = None
         self.StartTime = None
@@ -1996,6 +2025,8 @@ DefenceMode 映射如下：
         self.DefenceMode = None
         self.Ip = None
         self.Domains = None
+        self.AttackTypes = None
+        self.Conditions = None
 
 
     def _deserialize(self, params):
@@ -2007,6 +2038,13 @@ DefenceMode 映射如下：
         self.DefenceMode = params.get("DefenceMode")
         self.Ip = params.get("Ip")
         self.Domains = params.get("Domains")
+        self.AttackTypes = params.get("AttackTypes")
+        if params.get("Conditions") is not None:
+            self.Conditions = []
+            for item in params.get("Conditions"):
+                obj = ScdnEventLogConditions()
+                obj._deserialize(item)
+                self.Conditions.append(obj)
 
 
 class CreateScdnLogTaskResponse(AbstractModel):
@@ -4084,6 +4122,9 @@ off：不支持
         :param Ipv6Access: Ipv6访问配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type Ipv6Access: :class:`tencentcloud.cdn.v20180606.models.Ipv6Access`
+        :param AdvanceSet: 高级配置集合。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdvanceSet: list of AdvanceConfig
         """
         self.ResourceId = None
         self.AppId = None
@@ -4136,6 +4177,7 @@ off：不支持
         self.AdvancedAuthentication = None
         self.OriginAuthentication = None
         self.Ipv6Access = None
+        self.AdvanceSet = None
 
 
     def _deserialize(self, params):
@@ -4267,6 +4309,12 @@ off：不支持
         if params.get("Ipv6Access") is not None:
             self.Ipv6Access = Ipv6Access()
             self.Ipv6Access._deserialize(params.get("Ipv6Access"))
+        if params.get("AdvanceSet") is not None:
+            self.AdvanceSet = []
+            for item in params.get("AdvanceSet"):
+                obj = AdvanceConfig()
+                obj._deserialize(item)
+                self.AdvanceSet.append(obj)
 
 
 class DiagnoseData(AbstractModel):
@@ -7658,6 +7706,31 @@ class ScdnErrorPage(AbstractModel):
         self.RedirectUrl = params.get("RedirectUrl")
 
 
+class ScdnEventLogConditions(AbstractModel):
+    """SCDN 事件日志查询条件
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: 匹配关键字，ip, attack_location
+        :type Key: str
+        :param Operator: 逻辑操作符，取值 exclude, include
+        :type Operator: str
+        :param Value: 匹配值，允许使用通配符(*)查询，匹配零个、单个、多个字符，例如 1.2.*
+        :type Value: str
+        """
+        self.Key = None
+        self.Operator = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Operator = params.get("Operator")
+        self.Value = params.get("Value")
+
+
 class ScdnLogTaskDetail(AbstractModel):
     """SCDN日志事件详细信息
 
@@ -7714,6 +7787,9 @@ DefenceMode映射如下：
   observe = '观察模式'
   intercept = '防御模式'
         :type DefenceMode: str
+        :param Conditions: 查询条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Conditions: list of ScdnEventLogConditions
         """
         self.Domain = None
         self.Mode = None
@@ -7725,6 +7801,7 @@ DefenceMode映射如下：
         self.TaskID = None
         self.AttackType = None
         self.DefenceMode = None
+        self.Conditions = None
 
 
     def _deserialize(self, params):
@@ -7738,6 +7815,12 @@ DefenceMode映射如下：
         self.TaskID = params.get("TaskID")
         self.AttackType = params.get("AttackType")
         self.DefenceMode = params.get("DefenceMode")
+        if params.get("Conditions") is not None:
+            self.Conditions = []
+            for item in params.get("Conditions"):
+                obj = ScdnEventLogConditions()
+                obj._deserialize(item)
+                self.Conditions.append(obj)
 
 
 class ScdnTopData(AbstractModel):

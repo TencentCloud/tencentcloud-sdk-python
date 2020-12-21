@@ -4819,25 +4819,25 @@ class CreateContentReviewTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ReviewWallSwitch: 审核结果是否进入审核墙（对审核结果进行人工复核）的开关。
+        :param ReviewWallSwitch: 智能识别结果是否进入智能识别墙（对识别结果进行人工复核）的开关。
 <li>ON：是；</li>
 <li>OFF：否。</li>
         :type ReviewWallSwitch: str
-        :param Name: 内容审核模板名称，长度限制：64 个字符。
+        :param Name: 内容智能识别模板名称，长度限制：64 个字符。
         :type Name: str
-        :param Comment: 内容审核模板描述信息，长度限制：256 个字符。
+        :param Comment: 内容智能识别模板描述信息，长度限制：256 个字符。
         :type Comment: str
-        :param PornConfigure: 鉴黄控制参数。
+        :param PornConfigure: 令人反感的信息的控制参数。
         :type PornConfigure: :class:`tencentcloud.vod.v20180717.models.PornConfigureInfo`
-        :param TerrorismConfigure: 鉴恐控制参数。
+        :param TerrorismConfigure: 令人不安全的信息的控制参数。
         :type TerrorismConfigure: :class:`tencentcloud.vod.v20180717.models.TerrorismConfigureInfo`
-        :param PoliticalConfigure: 鉴政控制参数。
+        :param PoliticalConfigure: 令人不适宜的控制参数。
         :type PoliticalConfigure: :class:`tencentcloud.vod.v20180717.models.PoliticalConfigureInfo`
         :param ProhibitedConfigure: 违禁控制参数。违禁内容包括：
 <li>谩骂；</li>
 <li>涉毒违法。</li>
         :type ProhibitedConfigure: :class:`tencentcloud.vod.v20180717.models.ProhibitedConfigureInfo`
-        :param UserDefineConfigure: 用户自定义内容审核控制参数。
+        :param UserDefineConfigure: 用户自定义内容智能识别控制参数。
         :type UserDefineConfigure: :class:`tencentcloud.vod.v20180717.models.UserDefineConfigureInfo`
         :param ScreenshotInterval: 截帧间隔，单位为秒。当不填时，默认截帧间隔为 1 秒，最小值为 0.5 秒。
         :type ScreenshotInterval: float
@@ -4886,7 +4886,7 @@ class CreateContentReviewTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 内容审核模板唯一标识。
+        :param Definition: 内容智能识别模板唯一标识。
         :type Definition: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5108,19 +5108,19 @@ class CreatePersonSampleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 人物名称，长度限制：20 个字符。
+        :param Name: 素材名称，长度限制：20 个字符。
         :type Name: str
-        :param Usages: 人物应用场景，可选值：
+        :param Usages: 素材应用场景，可选值：
 1. Recognition：用于内容识别，等价于 Recognition.Face。
-2. Review：用于内容审核，等价于 Review.Face。
-3. All：用于内容识别、内容审核，等价于 1+2。
+2. Review：用于内容不适宜，等价于 Review.Face。
+3. All：包含以上全部，等价于 1+2。
         :type Usages: list of str
-        :param Description: 人物描述，长度限制：1024 个字符。
+        :param Description: 素材描述，长度限制：1024 个字符。
         :type Description: str
-        :param FaceContents: 人脸图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串，仅支持 jpeg、png 图片格式。数组长度限制：5 张图片。
-注意：图片必须是单人像正面人脸较清晰的照片，像素不低于 200*200。
+        :param FaceContents: 素材图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串，仅支持 jpeg、png 图片格式。数组长度限制：5 张图片。
+注意：图片必须是单人像五官较清晰的照片，像素不低于 200*200。
         :type FaceContents: list of str
-        :param Tags: 人物标签
+        :param Tags: 素材标签
 <li>数组长度限制：20 个标签；</li>
 <li>单个标签长度限制：128 个字符。</li>
         :type Tags: list of str
@@ -5151,9 +5151,9 @@ class CreatePersonSampleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Person: 人物信息。
+        :param Person: 素材信息。
         :type Person: :class:`tencentcloud.vod.v20180717.models.AiSamplePerson`
-        :param FailFaceInfoSet: 处理失败的人脸信息。
+        :param FailFaceInfoSet: 处理失败的五官定位信息。
         :type FailFaceInfoSet: list of AiSampleFailFaceInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5742,13 +5742,13 @@ class CreateWordSamplesRequest(AbstractModel):
         """
         :param Usages: <b>关键词应用场景，可选值：</b>
 1. Recognition.Ocr：通过光学字符识别技术，进行内容识别；
-2. Recognition.Asr：通过语音识别技术，进行内容识别；
-3. Review.Ocr：通过光学字符识别技术，进行内容审核；
-4. Review.Asr：通过语音识别技术，进行内容审核；
+2. Recognition.Asr：通过音频识别技术，进行内容识别；
+3. Review.Ocr：通过光学字符识别技术，进行不适宜内容识别；
+4. Review.Asr：通过音频识别技术，进行不适宜内容识别；
 <b>可合并简写为：</b>
-5. Recognition：通过光学字符识别技术、语音识别技术，进行内容识别，等价于 1+2；
-6. Review：通过光学字符识别技术、语音识别技术，进行内容审核，等价于 3+4；
-7. All：通过光学字符识别技术、语音识别技术，进行内容识别、内容审核，等价于 1+2+3+4。
+5. Recognition：通过光学字符识别技术、音频识别技术，进行内容识别，等价于 1+2；
+6. Review：通过光学字符识别技术、音频识别技术，进行不适宜内容识别，等价于 3+4；
+7. All：通过光学字符识别技术、音频识别技术，进行内容识别、不适宜内容识别，等价于 1+2+3+4。
         :type Usages: list of str
         :param Words: 关键词，数组长度限制：100。
         :type Words: list of AiSampleWordInfo
@@ -5985,7 +5985,7 @@ class DeleteContentReviewTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 内容审核模板唯一标识。
+        :param Definition: 内容智能识别模板唯一标识。
         :type Definition: int
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
@@ -6146,7 +6146,7 @@ class DeletePersonSampleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PersonId: 人物 ID。
+        :param PersonId: 素材 ID。
         :type PersonId: str
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
@@ -7018,7 +7018,7 @@ class DescribeContentReviewTemplatesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definitions: 内容审核模板唯一标识过滤条件，数组长度限制：100。
+        :param Definitions: 内容智能识别模板唯一标识过滤条件，数组长度限制：100。
         :type Definitions: list of int
         :param Offset: 分页偏移量，默认值：0。
         :type Offset: int
@@ -7049,7 +7049,7 @@ class DescribeContentReviewTemplatesResponse(AbstractModel):
         """
         :param TotalCount: 符合过滤条件的记录总数。
         :type TotalCount: int
-        :param ContentReviewTemplateSet: 内容审核模板详情列表。
+        :param ContentReviewTemplateSet: 内容智能识别模板详情列表。
         :type ContentReviewTemplateSet: list of ContentReviewTemplateItem
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7422,18 +7422,18 @@ class DescribePersonSamplesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Type: 拉取的人物类型，可选值：
-<li>UserDefine：用户自定义人物库；</li>
-<li>Default：系统默认人物库。</li>
+        :param Type: 拉取的素材类型，可选值：
+<li>UserDefine：用户自定义素材库；</li>
+<li>Default：系统默认素材库。</li>
 
-默认值：UserDefine，拉取用户自定义人物库人物。
-说明：如果是拉取系统默认人物库，只能使用人物名字或者人物 ID + 人物名字的方式进行拉取，且人脸图片只返回一张。
+默认值：UserDefine，拉取用户自定义素材库素材。
+说明：如果是拉取系统默认素材库，只能使用素材名字或者素材 ID + 素材名字的方式进行拉取，且五官图片只返回一张。
         :type Type: str
-        :param PersonIds: 人物 ID，数组长度限制：100。
+        :param PersonIds: 素材 ID，数组长度限制：100。
         :type PersonIds: list of str
-        :param Names: 人物名称，数组长度限制：20。
+        :param Names: 素材名称，数组长度限制：20。
         :type Names: list of str
-        :param Tags: 人物标签，数组长度限制：20。
+        :param Tags: 素材标签，数组长度限制：20。
         :type Tags: list of str
         :param Offset: 分页偏移量，默认值：0。
         :type Offset: int
@@ -7588,11 +7588,11 @@ class DescribeReviewDetailsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 发起内容审核次数。
+        :param TotalCount: 发起内容智能识别次数。
         :type TotalCount: int
-        :param TotalDuration: 内容审核总时长。
+        :param TotalDuration: 内容智能识别总时长。
         :type TotalDuration: int
-        :param Data: 内容审核时长统计数据，每天一个数据。
+        :param Data: 内容智能识别时长统计数据，每天一个数据。
         :type Data: list of StatDataItem
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8381,12 +8381,12 @@ class DescribeWordSamplesRequest(AbstractModel):
         """
         :param Usages: <b>关键词应用场景过滤条件，可选值：</b>
 1. Recognition.Ocr：通过光学字符识别技术，进行内容识别；
-2. Recognition.Asr：通过语音识别技术，进行内容识别；
-3. Review.Ocr：通过光学字符识别技术，进行内容审核；
-4. Review.Asr：通过语音识别技术，进行内容审核；
+2. Recognition.Asr：通过音频识别技术，进行内容识别；
+3. Review.Ocr：通过光学字符识别技术，进行不适宜的内容识别；
+4. Review.Asr：通过音频识别技术，进行不适宜的内容识别；
 <b>可合并简写为：</b>
-5. Recognition：通过光学字符识别技术、语音识别技术，进行内容识别，等价于 1+2；
-6. Review：通过光学字符识别技术、语音识别技术，进行内容审核，等价于 3+4；
+5. Recognition：通过光学字符识别技术、音频识别技术，进行内容识别，等价于 1+2；
+6. Review：通过光学字符识别技术、音频识别技术，进行不适宜的内容识别，等价于 3+4；
 可多选，元素间关系为 or，即关键词的应用场景包含该字段集合中任意元素的记录，均符合该条件。
         :type Usages: list of str
         :param Keywords: 关键词过滤条件，数组长度限制：100 个词。
@@ -12040,27 +12040,27 @@ class ModifyContentReviewTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 内容审核模板唯一标识。
+        :param Definition: 内容智能识别模板唯一标识。
         :type Definition: int
-        :param Name: 内容审核模板名称，长度限制：64 个字符。
+        :param Name: 内容智能识别模板名称，长度限制：64 个字符。
         :type Name: str
-        :param Comment: 内容审核模板描述信息，长度限制：256 个字符。
+        :param Comment: 内容智能识别模板描述信息，长度限制：256 个字符。
         :type Comment: str
-        :param PornConfigure: 鉴黄控制参数。
-        :type PornConfigure: :class:`tencentcloud.vod.v20180717.models.PornConfigureInfoForUpdate`
-        :param TerrorismConfigure: 鉴恐控制参数。
+        :param TerrorismConfigure: 令人不安全的信息的控制参数。
         :type TerrorismConfigure: :class:`tencentcloud.vod.v20180717.models.TerrorismConfigureInfoForUpdate`
-        :param PoliticalConfigure: 鉴政控制参数。
+        :param PornConfigure: 令人反感的信息的控制参数。
+        :type PornConfigure: :class:`tencentcloud.vod.v20180717.models.PornConfigureInfoForUpdate`
+        :param PoliticalConfigure: 令人不适宜的信息控制参数。
         :type PoliticalConfigure: :class:`tencentcloud.vod.v20180717.models.PoliticalConfigureInfoForUpdate`
         :param ProhibitedConfigure: 违禁控制参数。违禁内容包括：
 <li>谩骂；</li>
 <li>涉毒违法。</li>
         :type ProhibitedConfigure: :class:`tencentcloud.vod.v20180717.models.ProhibitedConfigureInfoForUpdate`
-        :param UserDefineConfigure: 用户自定义内容审核控制参数。
+        :param UserDefineConfigure: 用户自定义内容智能识别控制参数。
         :type UserDefineConfigure: :class:`tencentcloud.vod.v20180717.models.UserDefineConfigureInfoForUpdate`
         :param ScreenshotInterval: 截帧间隔，单位为秒，最小值为 0.5 秒。
         :type ScreenshotInterval: float
-        :param ReviewWallSwitch: 审核结果是否进入审核墙（对审核结果进行人工复核）的开关。
+        :param ReviewWallSwitch: 智能识别结果是否进入智能识别墙（对智能识别结果进行人工识别）的开关。
 <li>ON：是；</li>
 <li>OFF：否。</li>
         :type ReviewWallSwitch: str
@@ -12070,8 +12070,8 @@ class ModifyContentReviewTemplateRequest(AbstractModel):
         self.Definition = None
         self.Name = None
         self.Comment = None
-        self.PornConfigure = None
         self.TerrorismConfigure = None
+        self.PornConfigure = None
         self.PoliticalConfigure = None
         self.ProhibitedConfigure = None
         self.UserDefineConfigure = None
@@ -12084,12 +12084,12 @@ class ModifyContentReviewTemplateRequest(AbstractModel):
         self.Definition = params.get("Definition")
         self.Name = params.get("Name")
         self.Comment = params.get("Comment")
-        if params.get("PornConfigure") is not None:
-            self.PornConfigure = PornConfigureInfoForUpdate()
-            self.PornConfigure._deserialize(params.get("PornConfigure"))
         if params.get("TerrorismConfigure") is not None:
             self.TerrorismConfigure = TerrorismConfigureInfoForUpdate()
             self.TerrorismConfigure._deserialize(params.get("TerrorismConfigure"))
+        if params.get("PornConfigure") is not None:
+            self.PornConfigure = PornConfigureInfoForUpdate()
+            self.PornConfigure._deserialize(params.get("PornConfigure"))
         if params.get("PoliticalConfigure") is not None:
             self.PoliticalConfigure = PoliticalConfigureInfoForUpdate()
             self.PoliticalConfigure._deserialize(params.get("PoliticalConfigure"))
@@ -12310,18 +12310,18 @@ class ModifyPersonSampleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param PersonId: 人物 ID。
+        :param PersonId: 素材 ID。
         :type PersonId: str
         :param Name: 名称，长度限制：128 个字符。
         :type Name: str
         :param Description: 描述，长度限制：1024 个字符。
         :type Description: str
-        :param Usages: 人物应用场景，可选值：
+        :param Usages: 素材应用场景，可选值：
 1. Recognition：用于内容识别，等价于 Recognition.Face。
-2. Review：用于内容审核，等价于 Review.Face。
-3. All：用于内容识别、内容审核，等价于 1+2。
+2. Review：用于不适宜的内容识别，等价于 Review.Face。
+3. All：用于内容识别、不适宜的内容识别，等价于 1+2。
         :type Usages: list of str
-        :param FaceOperationInfo: 人脸操作信息。
+        :param FaceOperationInfo: 五官操作信息。
         :type FaceOperationInfo: :class:`tencentcloud.vod.v20180717.models.AiSampleFaceOperation`
         :param TagOperationInfo: 标签操作信息。
         :type TagOperationInfo: :class:`tencentcloud.vod.v20180717.models.AiSampleTagOperation`
@@ -12358,9 +12358,9 @@ class ModifyPersonSampleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Person: 人物信息。
+        :param Person: 素材信息。
         :type Person: :class:`tencentcloud.vod.v20180717.models.AiSamplePerson`
-        :param FailFaceInfoSet: 处理失败的人脸信息。
+        :param FailFaceInfoSet: 处理失败的五官信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailFaceInfoSet: list of AiSampleFailFaceInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -12909,13 +12909,13 @@ class ModifyWordSampleRequest(AbstractModel):
         :type Keyword: str
         :param Usages: <b>关键词应用场景，可选值：</b>
 1. Recognition.Ocr：通过光学字符识别技术，进行内容识别；
-2. Recognition.Asr：通过语音识别技术，进行内容识别；
-3. Review.Ocr：通过光学字符识别技术，进行内容审核；
-4. Review.Asr：通过语音识别技术，进行内容审核；
+2. Recognition.Asr：通过音频识别技术，进行内容识别；
+3. Review.Ocr：通过光学字符识别技术，进行不适宜的内容识别；
+4. Review.Asr：通过音频识别技术，进行不适宜的内容识别；
 <b>可合并简写为：</b>
-5. Recognition：通过光学字符识别技术、语音识别技术，进行内容识别，等价于 1+2；
-6. Review：通过光学字符识别技术、语音识别技术，进行内容审核，等价于 3+4；
-7. All：通过光学字符识别技术、语音识别技术，进行内容识别、内容审核，等价于 1+2+3+4。
+5. Recognition：通过光学字符识别技术、音频识别技术，进行内容识别，等价于 1+2；
+6. Review：通过光学字符识别技术、音频识别技术，进行不适宜的内容识别，等价于 3+4；
+7. All：包含以上全部，等价于 1+2+3+4。
         :type Usages: list of str
         :param TagOperationInfo: 标签操作信息。
         :type TagOperationInfo: :class:`tencentcloud.vod.v20180717.models.AiSampleTagOperation`

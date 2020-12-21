@@ -97,20 +97,12 @@ class AudioResult(AbstractModel):
 1 命中
 注意：此字段可能返回 null，表示取不到有效值。
         :type HitFlag: int
-        :param Label: 命中的标签
-Porn 色情
-Polity 政治
-Illegal 违法
-Abuse 谩骂
-Terror 暴恐
-Ad 广告
-Moan 呻吟
+        :param Label: 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
+以及令人反感、不安全或不适宜的内容类型。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
-        :param Suggestion: 审核建议，可选值：
-Pass 通过，
-Review 建议人审，
-Block 确认违规
+        :param Suggestion: 建议您拿到判断结果后的执行操作。
+建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
 注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
         :param Score: 得分，0-100
@@ -126,11 +118,11 @@ Block 确认违规
         :type Duration: str
         :param Extra: 拓展字段
         :type Extra: str
-        :param TextResults: 文本审核结果
+        :param TextResults: 文本识别结果
         :type TextResults: list of AudioResultDetailTextResult
-        :param MoanResults: 音频呻吟审核结果
+        :param MoanResults: 音频呻吟检测结果
         :type MoanResults: list of AudioResultDetailMoanResult
-        :param LanguageResults: 音频语种检测结果
+        :param LanguageResults: 音频语言检测结果
         :type LanguageResults: list of AudioResultDetailLanguageResult
         """
         self.HitFlag = None
@@ -182,7 +174,7 @@ class AudioResultDetailLanguageResult(AbstractModel):
 
     def __init__(self):
         """
-        :param Label: 语种
+        :param Label: 语言信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
         :param Score: 得分
@@ -220,7 +212,7 @@ class AudioResultDetailMoanResult(AbstractModel):
 
     def __init__(self):
         """
-        :param Label: 固定为Moan
+        :param Label: 固定为Moan（呻吟）
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
         :param Score: 分数
@@ -535,7 +527,7 @@ class DescribeAmsListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param AmsDetailSet: 返回列表数据
+        :param AmsDetailSet: 返回列表数据----非必选，该参数暂未对外开放
         :type AmsDetailSet: list of AmsDetailInfo
         :param Total: 总条数
         :type Total: int
@@ -845,15 +837,7 @@ class EvilCount(AbstractModel):
 
     def __init__(self):
         """
-        :param EvilType: 违规类型：
-Terror	24001
-Porn	20002
-Polity	20001
-Ad	20105
-Abuse	20007	
-Illegal	20006	
-Spam	25001	
-Moan	26001
+        :param EvilType: ----非必选，该参数功能暂未对外开放
         :type EvilType: str
         :param Count: 分布类型总量
         :type Count: int
@@ -949,21 +933,13 @@ class ImageResult(AbstractModel):
 1 命中
 注意：此字段可能返回 null，表示取不到有效值。
         :type HitFlag: int
-        :param Label: 命中的标签
-Porn 色情
-Sexy 性感
-Polity 政治
-Illegal 违法
-Abuse 谩骂
-Terror 暴恐
-Ad 广告
+        :param Suggestion: 建议您拿到判断结果后的执行操作。
+建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
+        :type Suggestion: str
+        :param Label: 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
+以及令人反感、不安全或不适宜的内容类型。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
-        :param Suggestion: 审核建议，可选值：
-Pass 通过，
-Review 建议人审，
-Block 确认违规
-        :type Suggestion: str
         :param Score: 得分
         :type Score: int
         :param Results: 画面截帧图片结果集
@@ -974,8 +950,8 @@ Block 确认违规
         :type Extra: str
         """
         self.HitFlag = None
-        self.Label = None
         self.Suggestion = None
+        self.Label = None
         self.Score = None
         self.Results = None
         self.Url = None
@@ -984,8 +960,8 @@ Block 确认违规
 
     def _deserialize(self, params):
         self.HitFlag = params.get("HitFlag")
-        self.Label = params.get("Label")
         self.Suggestion = params.get("Suggestion")
+        self.Label = params.get("Label")
         self.Score = params.get("Score")
         if params.get("Results") is not None:
             self.Results = []
@@ -1007,11 +983,9 @@ class ImageResultResult(AbstractModel):
         :param Scene: 场景
 Porn 色情
 Sexy 性感
-Polity 政治
-Illegal 违法
 Abuse 谩骂
-Terror 暴恐
 Ad 广告
+等多个识别场景
 注意：此字段可能返回 null，表示取不到有效值。
         :type Scene: str
         :param HitFlag: 是否命中
@@ -1019,10 +993,8 @@ Ad 广告
 1 命中
 注意：此字段可能返回 null，表示取不到有效值。
         :type HitFlag: int
-        :param Suggestion: 审核建议，可选值：
-Pass 通过，
-Review 建议人审，
-Block 确认违规
+        :param Suggestion: 建议您拿到判断结果后的执行操作。
+建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
 注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
         :param Label: 标签
@@ -1246,11 +1218,14 @@ class MediaInfo(AbstractModel):
         :type Width: int
         :param Height: 高，单位为像素
         :type Height: int
+        :param Thumbnail: 缩略图
+        :type Thumbnail: str
         """
         self.Codecs = None
         self.Duration = None
         self.Width = None
         self.Height = None
+        self.Thumbnail = None
 
 
     def _deserialize(self, params):
@@ -1258,6 +1233,7 @@ class MediaInfo(AbstractModel):
         self.Duration = params.get("Duration")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        self.Thumbnail = params.get("Thumbnail")
 
 
 class MediaModerationConfig(AbstractModel):
@@ -1407,20 +1383,12 @@ class TaskLabel(AbstractModel):
 
     def __init__(self):
         """
-        :param Label: 命中的标签
-Porn 色情
-Sexy 性感
-Polity 政治
-Illegal 违法
-Abuse 谩骂
-Terror 暴恐
-Ad 广告
+        :param Label: 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
+以及令人反感、不安全或不适宜的内容类型。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
-        :param Suggestion: 审核建议，可选值：
-Pass 通过，
-Review 建议人审，
-Block 确认违规
+        :param Suggestion: 建议您拿到判断结果后的执行操作。
+建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
 注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
         :param Score: 得分，分数是 0 ～ 100

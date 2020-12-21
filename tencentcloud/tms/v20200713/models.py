@@ -199,9 +199,11 @@ class DetailResults(AbstractModel):
 
     def __init__(self):
         """
-        :param Label: 恶意标签，Normal：正常，Polity：涉政，Porn：色情，Illegal：违法，Abuse：谩骂，Terror：暴恐，Ad：广告，Custom：自定义关键词
+        :param Label: 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
+以及令人反感、不安全或不适宜的内容类型。
         :type Label: str
-        :param Suggestion: 建议值,Block：打击,Review：待复审,Pass：正常
+        :param Suggestion: 建议您拿到判断结果后的执行操作。
+建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
 注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
         :param Keywords: 该标签下命中的关键词
@@ -210,13 +212,13 @@ class DetailResults(AbstractModel):
         :param Score: 该标签模型命中的分值
 注意：此字段可能返回 null，表示取不到有效值。
         :type Score: int
-        :param LibType: 仅当Lable为Custom自定义关键词时有效，表示自定义关键词库类型，1:黑白库，2：自定义库
+        :param LibType: 仅当Label为Custom自定义关键词时有效，表示自定义关键词库类型，1:黑白库，2：自定义库
 注意：此字段可能返回 null，表示取不到有效值。
         :type LibType: int
-        :param LibId: 仅当Lable为Custom自定义关键词时有效，表示自定义库id
+        :param LibId: 仅当Label为Custom自定义关键词时有效，表示自定义库id
 注意：此字段可能返回 null，表示取不到有效值。
         :type LibId: str
-        :param LibName: 仅当Lable为Custom自定义关键词时有效，表示自定义库名称
+        :param LibName: 仅当Labe为Custom自定义关键词时有效，表示自定义库名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type LibName: str
         """
@@ -287,15 +289,7 @@ class EvilCount(AbstractModel):
 
     def __init__(self):
         """
-        :param EvilType: 违规类型：
-Terror	24001
-Porn	20002
-Polity	20001
-Ad	20105
-Abuse	20007	
-Illegal	20006	
-Spam	25001	
-Moan	26001
+        :param EvilType: ----非必选，该参数功能暂未对外开放
         :type EvilType: str
         :param Count: 分布类型总量
         :type Count: int
@@ -429,26 +423,26 @@ class TextModerationRequest(AbstractModel):
         """
         :param Content: 文本内容Base64编码。原文长度需小于15000字节，即5000个汉字以内。
         :type Content: str
-        :param DataId: 数据ID，英文字母、下划线、-组成，不超过64个字符
-        :type DataId: str
         :param BizType: 该字段用于标识业务场景。您可以在内容安全控制台创建对应的ID，配置不同的内容审核策略，通过接口调用，默认不填为0，后端使用默认策略。 -- 该字段暂未开放。
         :type BizType: str
+        :param DataId: 数据ID，英文字母、下划线、-组成，不超过64个字符
+        :type DataId: str
         :param User: 账号相关信息字段，填入后可识别违规风险账号。
         :type User: :class:`tencentcloud.tms.v20200713.models.User`
         :param Device: 设备相关信息字段，填入后可识别违规风险设备。
         :type Device: :class:`tencentcloud.tms.v20200713.models.Device`
         """
         self.Content = None
-        self.DataId = None
         self.BizType = None
+        self.DataId = None
         self.User = None
         self.Device = None
 
 
     def _deserialize(self, params):
         self.Content = params.get("Content")
-        self.DataId = params.get("DataId")
         self.BizType = params.get("BizType")
+        self.DataId = params.get("DataId")
         if params.get("User") is not None:
             self.User = User()
             self.User._deserialize(params.get("User"))
@@ -469,11 +463,11 @@ class TextModerationResponse(AbstractModel):
         :param EvilFlag: 数据是否属于恶意类型。
  0：正常 1：可疑
         :type EvilFlag: int
-        :param Label: 机器识别后判断违规所属类型。
-Normal：正常，Polity：涉政，Porn：色情，Illegal：违法，Abuse：谩骂，Terror：暴恐，Ad：广告，Custom：自定义关键词
+        :param Label: 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
+以及令人反感、不安全或不适宜的内容类型。
         :type Label: str
         :param Suggestion: 建议您拿到判断结果后的执行操作。
-Block：建议打击，Review：建议复审，Normal：建议通过。
+建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
         :type Suggestion: str
         :param Keywords: 文本命中的关键词信息，用于提示您文本违规的具体原因，可能会返回多个命中的关键词。（如：加我微信）
 如返回值为空，Score不为空，即识别结果（Label）是来自于语义模型判断的返回值。
@@ -491,6 +485,9 @@ Block：建议打击，Review：建议复审，Normal：建议通过。
         :param Extra: 扩展字段，用于特定信息返回，不同客户/Biztype下返回信息不同。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Extra: str
+        :param DataId: 请求参数中的DataId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -503,6 +500,7 @@ Block：建议打击，Review：建议复审，Normal：建议通过。
         self.DetailResults = None
         self.RiskDetails = None
         self.Extra = None
+        self.DataId = None
         self.RequestId = None
 
 
@@ -526,6 +524,7 @@ Block：建议打击，Review：建议复审，Normal：建议通过。
                 obj._deserialize(item)
                 self.RiskDetails.append(obj)
         self.Extra = params.get("Extra")
+        self.DataId = params.get("DataId")
         self.RequestId = params.get("RequestId")
 
 

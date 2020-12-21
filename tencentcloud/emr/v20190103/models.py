@@ -368,7 +368,7 @@ POSTPAID_BY_HOUR 按量计费，默认方式。
         :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
         :param VPCSettings: 实例所在VPC。
         :type VPCSettings: :class:`tencentcloud.emr.v20190103.models.VPCSettings`
-        :param LoginSettings: 实例登陆配置。
+        :param LoginSettings: 实例登录配置。
         :type LoginSettings: :class:`tencentcloud.emr.v20190103.models.LoginSettings`
         :param TagSpecification: 实例标签。
         :type TagSpecification: list of str
@@ -384,7 +384,7 @@ POSTPAID_BY_HOUR 按量计费，默认方式。
         :type DisasterRecoverGroupIds: str
         :param CbsEncryptFlag: 是否使用cbs加密。
         :type CbsEncryptFlag: bool
-        :param RemoteTcpDefaultPort: 是否使用远程登陆，默认为false。
+        :param RemoteTcpDefaultPort: 是否使用远程登录，默认为false。
         :type RemoteTcpDefaultPort: bool
         """
         self.InstanceChargeType = None

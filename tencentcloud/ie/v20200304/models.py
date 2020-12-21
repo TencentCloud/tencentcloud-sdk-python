@@ -442,6 +442,74 @@ class CreateEditingTaskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateMediaProcessTaskRequest(AbstractModel):
+    """CreateMediaProcessTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MediaProcessInfo: 编辑处理任务参数。
+        :type MediaProcessInfo: :class:`tencentcloud.ie.v20200304.models.MediaProcessInfo`
+        :param SourceInfoSet: 编辑处理任务输入源列表。
+        :type SourceInfoSet: list of MediaSourceInfo
+        :param SaveInfoSet: 结果存储信息，对于涉及存储的请求必选。部子任务支持数组备份写，具体以对应任务文档为准。
+        :type SaveInfoSet: list of SaveInfo
+        :param CallbackInfoSet: 任务结果回调地址信息。部子任务支持数组备份回调，具体以对应任务文档为准。
+        :type CallbackInfoSet: list of CallbackInfo
+        """
+        self.MediaProcessInfo = None
+        self.SourceInfoSet = None
+        self.SaveInfoSet = None
+        self.CallbackInfoSet = None
+
+
+    def _deserialize(self, params):
+        if params.get("MediaProcessInfo") is not None:
+            self.MediaProcessInfo = MediaProcessInfo()
+            self.MediaProcessInfo._deserialize(params.get("MediaProcessInfo"))
+        if params.get("SourceInfoSet") is not None:
+            self.SourceInfoSet = []
+            for item in params.get("SourceInfoSet"):
+                obj = MediaSourceInfo()
+                obj._deserialize(item)
+                self.SourceInfoSet.append(obj)
+        if params.get("SaveInfoSet") is not None:
+            self.SaveInfoSet = []
+            for item in params.get("SaveInfoSet"):
+                obj = SaveInfo()
+                obj._deserialize(item)
+                self.SaveInfoSet.append(obj)
+        if params.get("CallbackInfoSet") is not None:
+            self.CallbackInfoSet = []
+            for item in params.get("CallbackInfoSet"):
+                obj = CallbackInfo()
+                obj._deserialize(item)
+                self.CallbackInfoSet.append(obj)
+
+
+class CreateMediaProcessTaskResponse(AbstractModel):
+    """CreateMediaProcessTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 编辑任务 ID，可以通过该 ID 查询任务状态和结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateMediaQualityRestorationTaskRequest(AbstractModel):
     """CreateMediaQualityRestorationTask请求参数结构体
 
@@ -643,6 +711,47 @@ class DescribeEditingTaskResultResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("TaskResult") is not None:
             self.TaskResult = EditingTaskResult()
+            self.TaskResult._deserialize(params.get("TaskResult"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeMediaProcessTaskResultRequest(AbstractModel):
+    """DescribeMediaProcessTaskResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 编辑处理任务ID。
+        :type TaskId: str
+        """
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+
+
+class DescribeMediaProcessTaskResultResponse(AbstractModel):
+    """DescribeMediaProcessTaskResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskResult: 任务处理结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskResult: :class:`tencentcloud.ie.v20200304.models.MediaProcessTaskResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskResult = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TaskResult") is not None:
+            self.TaskResult = MediaProcessTaskResult()
             self.TaskResult._deserialize(params.get("TaskResult"))
         self.RequestId = params.get("RequestId")
 
@@ -1089,6 +1198,27 @@ class HighlightsTaskResultItemSegment(AbstractModel):
         self.EndTimeOffset = params.get("EndTimeOffset")
 
 
+class IntervalTime(AbstractModel):
+    """周期时间点信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param Interval: 间隔周期，单位ms
+        :type Interval: int
+        :param StartTime: 开始时间点，单位ms
+        :type StartTime: int
+        """
+        self.Interval = None
+        self.StartTime = None
+
+
+    def _deserialize(self, params):
+        self.Interval = params.get("Interval")
+        self.StartTime = params.get("StartTime")
+
+
 class LowLightEnhance(AbstractModel):
     """低光照增强参数
 
@@ -1104,6 +1234,303 @@ class LowLightEnhance(AbstractModel):
 
     def _deserialize(self, params):
         self.Type = params.get("Type")
+
+
+class MediaCuttingInfo(AbstractModel):
+    """编辑处理/剪切任务信息
+
+    """
+
+    def __init__(self):
+        """
+        :param TimeInfo: 截取时间信息。
+        :type TimeInfo: :class:`tencentcloud.ie.v20200304.models.MediaCuttingTimeInfo`
+        :param TargetInfo: 输出结果信息。
+        :type TargetInfo: :class:`tencentcloud.ie.v20200304.models.MediaTargetInfo`
+        :param OutForm: 截取结果形式信息。
+        :type OutForm: :class:`tencentcloud.ie.v20200304.models.MediaCuttingOutForm`
+        :param ResultListSaveType: 列表文件形式，存储到用户存储服务中，可选值：
+UseSaveInfo：默认，结果列表和结果存储同一位置；
+NoListFile：不存储结果列表。
+        :type ResultListSaveType: str
+        """
+        self.TimeInfo = None
+        self.TargetInfo = None
+        self.OutForm = None
+        self.ResultListSaveType = None
+
+
+    def _deserialize(self, params):
+        if params.get("TimeInfo") is not None:
+            self.TimeInfo = MediaCuttingTimeInfo()
+            self.TimeInfo._deserialize(params.get("TimeInfo"))
+        if params.get("TargetInfo") is not None:
+            self.TargetInfo = MediaTargetInfo()
+            self.TargetInfo._deserialize(params.get("TargetInfo"))
+        if params.get("OutForm") is not None:
+            self.OutForm = MediaCuttingOutForm()
+            self.OutForm._deserialize(params.get("OutForm"))
+        self.ResultListSaveType = params.get("ResultListSaveType")
+
+
+class MediaCuttingOutForm(AbstractModel):
+    """编辑处理/剪切任务/输出形式信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 输出类型，可选值：
+Static：静态图；
+Dynamic：动态图；
+Sprite：雪碧图；
+Video：视频。
+
+注1：不同类型时，对应的 TargetInfo.Format 格式支持如下：
+Static：jpg、png；
+Dynamic：gif；
+Sprite：jpg、png；
+Video：mp4。
+
+注2：当 Type=Sprite时，TargetInfo指定的尺寸表示小图的大小，最终结果尺寸以输出为准。
+        :type Type: str
+        :param FillType: 背景填充方式，可选值：
+White：白色填充；
+Black：黑色填充；
+Stretch：拉伸；
+Gaussian：高斯模糊；
+默认White。
+        :type FillType: str
+        :param SpriteRowCount: Type=Sprite时有效，表示雪碧图行数，范围为 [1,200]，默认100。
+        :type SpriteRowCount: int
+        :param SpriteColumnCount: Type=Sprite时有效，表示雪碧图列数，范围为 [1,200]，默认100。
+        :type SpriteColumnCount: int
+        """
+        self.Type = None
+        self.FillType = None
+        self.SpriteRowCount = None
+        self.SpriteColumnCount = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.FillType = params.get("FillType")
+        self.SpriteRowCount = params.get("SpriteRowCount")
+        self.SpriteColumnCount = params.get("SpriteColumnCount")
+
+
+class MediaCuttingTaskResult(AbstractModel):
+    """编辑处理/剪切任务/处理结果
+
+    """
+
+    def __init__(self):
+        """
+        :param ListFile: 如果ResultListType不为NoListFile时，结果（TaskResultFile）列表文件的存储位置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ListFile: :class:`tencentcloud.ie.v20200304.models.TaskResultFile`
+        :param ResultCount: 结果个数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultCount: int
+        :param FirstFile: 第一个结果文件。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FirstFile: :class:`tencentcloud.ie.v20200304.models.TaskResultFile`
+        :param LastFile: 最后一个结果文件。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastFile: :class:`tencentcloud.ie.v20200304.models.TaskResultFile`
+        """
+        self.ListFile = None
+        self.ResultCount = None
+        self.FirstFile = None
+        self.LastFile = None
+
+
+    def _deserialize(self, params):
+        if params.get("ListFile") is not None:
+            self.ListFile = TaskResultFile()
+            self.ListFile._deserialize(params.get("ListFile"))
+        self.ResultCount = params.get("ResultCount")
+        if params.get("FirstFile") is not None:
+            self.FirstFile = TaskResultFile()
+            self.FirstFile._deserialize(params.get("FirstFile"))
+        if params.get("LastFile") is not None:
+            self.LastFile = TaskResultFile()
+            self.LastFile._deserialize(params.get("LastFile"))
+
+
+class MediaCuttingTimeInfo(AbstractModel):
+    """编辑处理/剪切任务/时间信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 时间类型，可选值：
+PointSet：时间点集合；
+IntervalPoint：周期采样点；
+SectionSet：时间片段集合。
+        :type Type: str
+        :param PointSet: 截取时间点集合，单位毫秒，Type=PointSet时必选。
+        :type PointSet: list of int
+        :param IntervalPoint: 周期采样点信息，Type=IntervalPoint时必选。
+        :type IntervalPoint: :class:`tencentcloud.ie.v20200304.models.IntervalTime`
+        :param SectionSet: 时间区间集合信息，Type=SectionSet时必选。
+        :type SectionSet: list of SectionTime
+        """
+        self.Type = None
+        self.PointSet = None
+        self.IntervalPoint = None
+        self.SectionSet = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.PointSet = params.get("PointSet")
+        if params.get("IntervalPoint") is not None:
+            self.IntervalPoint = IntervalTime()
+            self.IntervalPoint._deserialize(params.get("IntervalPoint"))
+        if params.get("SectionSet") is not None:
+            self.SectionSet = []
+            for item in params.get("SectionSet"):
+                obj = SectionTime()
+                obj._deserialize(item)
+                self.SectionSet.append(obj)
+
+
+class MediaJoiningInfo(AbstractModel):
+    """编辑处理/拼接任务信息
+
+    """
+
+    def __init__(self):
+        """
+        :param TargetInfo: 输出目标信息，拼接只采用FileName和Format，用于指定目标文件名和格式。
+其中Format只支持mp4.
+        :type TargetInfo: :class:`tencentcloud.ie.v20200304.models.MediaTargetInfo`
+        """
+        self.TargetInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("TargetInfo") is not None:
+            self.TargetInfo = MediaTargetInfo()
+            self.TargetInfo._deserialize(params.get("TargetInfo"))
+
+
+class MediaJoiningTaskResult(AbstractModel):
+    """编辑处理/拼接任务/处理结果
+
+    """
+
+    def __init__(self):
+        """
+        :param File: 拼接结果文件。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type File: :class:`tencentcloud.ie.v20200304.models.TaskResultFile`
+        """
+        self.File = None
+
+
+    def _deserialize(self, params):
+        if params.get("File") is not None:
+            self.File = TaskResultFile()
+            self.File._deserialize(params.get("File"))
+
+
+class MediaProcessInfo(AbstractModel):
+    """编辑处理/任务信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 编辑处理任务类型，可选值：
+MediaEditing：媒体编辑（待上线）；
+MediaCutting：媒体剪切；
+MediaJoining：媒体拼接。
+        :type Type: str
+        :param MediaCuttingInfo: 视频剪切任务参数，Type=MediaCutting时必选。
+        :type MediaCuttingInfo: :class:`tencentcloud.ie.v20200304.models.MediaCuttingInfo`
+        :param MediaJoiningInfo: 视频拼接任务参数，Type=MediaJoining时必选。
+        :type MediaJoiningInfo: :class:`tencentcloud.ie.v20200304.models.MediaJoiningInfo`
+        """
+        self.Type = None
+        self.MediaCuttingInfo = None
+        self.MediaJoiningInfo = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        if params.get("MediaCuttingInfo") is not None:
+            self.MediaCuttingInfo = MediaCuttingInfo()
+            self.MediaCuttingInfo._deserialize(params.get("MediaCuttingInfo"))
+        if params.get("MediaJoiningInfo") is not None:
+            self.MediaJoiningInfo = MediaJoiningInfo()
+            self.MediaJoiningInfo._deserialize(params.get("MediaJoiningInfo"))
+
+
+class MediaProcessTaskResult(AbstractModel):
+    """编辑处理/任务处理结果
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 编辑处理任务ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param Type: 编辑处理任务类型，取值：
+MediaEditing：视频编辑（待上线）；
+MediaCutting：视频剪切；
+MediaJoining：视频拼接。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param Progress: 处理进度，范围：[0,100]
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Progress: int
+        :param Status: 任务状态：
+1100：等待中；
+1200：执行中；
+2000：成功；
+5000：失败。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param ErrCode: 任务错误码。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrCode: int
+        :param ErrMsg: 任务错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrMsg: str
+        :param MediaCuttingTaskResult: 剪切任务处理结果，当Type=MediaCutting时才有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MediaCuttingTaskResult: :class:`tencentcloud.ie.v20200304.models.MediaCuttingTaskResult`
+        :param MediaJoiningTaskResult: 拼接任务处理结果，当Type=MediaJoining时才有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MediaJoiningTaskResult: :class:`tencentcloud.ie.v20200304.models.MediaJoiningTaskResult`
+        """
+        self.TaskId = None
+        self.Type = None
+        self.Progress = None
+        self.Status = None
+        self.ErrCode = None
+        self.ErrMsg = None
+        self.MediaCuttingTaskResult = None
+        self.MediaJoiningTaskResult = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Type = params.get("Type")
+        self.Progress = params.get("Progress")
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMsg = params.get("ErrMsg")
+        if params.get("MediaCuttingTaskResult") is not None:
+            self.MediaCuttingTaskResult = MediaCuttingTaskResult()
+            self.MediaCuttingTaskResult._deserialize(params.get("MediaCuttingTaskResult"))
+        if params.get("MediaJoiningTaskResult") is not None:
+            self.MediaJoiningTaskResult = MediaJoiningTaskResult()
+            self.MediaJoiningTaskResult._deserialize(params.get("MediaJoiningTaskResult"))
 
 
 class MediaQualityRestorationTaskResult(AbstractModel):
@@ -1130,6 +1557,73 @@ class MediaQualityRestorationTaskResult(AbstractModel):
                 obj = SubTaskResultItem()
                 obj._deserialize(item)
                 self.SubTaskResult.append(obj)
+
+
+class MediaSourceInfo(AbstractModel):
+    """编辑处理的媒体源
+
+    """
+
+    def __init__(self):
+        """
+        :param DownInfo: 媒体源资源下载信息。
+        :type DownInfo: :class:`tencentcloud.ie.v20200304.models.DownInfo`
+        :param Id: 媒体源ID标记，用于多个输入源时，请内媒体源的定位，对于多输入的任务，一般要求必选。
+        :type Id: str
+        :param Type: 媒体源类型，具体类型如下：
+Video：视频
+Image：图片
+Audio：音频
+        :type Type: str
+        """
+        self.DownInfo = None
+        self.Id = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        if params.get("DownInfo") is not None:
+            self.DownInfo = DownInfo()
+            self.DownInfo._deserialize(params.get("DownInfo"))
+        self.Id = params.get("Id")
+        self.Type = params.get("Type")
+
+
+class MediaTargetInfo(AbstractModel):
+    """目标媒体信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param FileName: 目标文件名，不能带特殊字符（如/等），无需后缀名，最长200字符。
+
+注1：部分子服务支持站位符，形式为： {parameter}
+预设parameter：
+index：序号；
+        :type FileName: str
+        :param Format: 媒体封装格式，最长5字符，具体格式支持根据子任务确定。
+        :type Format: str
+        :param TargetVideoInfo: 视频流信息。
+        :type TargetVideoInfo: :class:`tencentcloud.ie.v20200304.models.TargetVideoInfo`
+        :param ResultListSaveType: 【不再使用】 对于多输出任务，部分子服务推荐结果信息以列表文件形式，存储到用户存储服务中，可选值：
+UseSaveInfo：默认，结果列表和结果存储同一位置；
+NoListFile：不存储结果列表。
+        :type ResultListSaveType: str
+        """
+        self.FileName = None
+        self.Format = None
+        self.TargetVideoInfo = None
+        self.ResultListSaveType = None
+
+
+    def _deserialize(self, params):
+        self.FileName = params.get("FileName")
+        self.Format = params.get("Format")
+        if params.get("TargetVideoInfo") is not None:
+            self.TargetVideoInfo = TargetVideoInfo()
+            self.TargetVideoInfo._deserialize(params.get("TargetVideoInfo"))
+        self.ResultListSaveType = params.get("ResultListSaveType")
 
 
 class MuxInfo(AbstractModel):
@@ -1607,6 +2101,27 @@ class ScratchRepair(AbstractModel):
         self.Ratio = params.get("Ratio")
 
 
+class SectionTime(AbstractModel):
+    """时间区间。
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 开始时间点，单位ms
+        :type StartTime: int
+        :param Duration: 时间区间时长，单位ms
+        :type Duration: int
+        """
+        self.StartTime = None
+        self.Duration = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.Duration = params.get("Duration")
+
+
 class SegmentInfo(AbstractModel):
     """输出文件切片信息
 
@@ -1653,6 +2168,40 @@ class Sharp(AbstractModel):
     def _deserialize(self, params):
         self.Type = params.get("Type")
         self.Ratio = params.get("Ratio")
+
+
+class StopMediaProcessTaskRequest(AbstractModel):
+    """StopMediaProcessTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 编辑处理任务ID。
+        :type TaskId: str
+        """
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+
+
+class StopMediaProcessTaskResponse(AbstractModel):
+    """StopMediaProcessTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class StopMediaQualityRestorationTaskRequest(AbstractModel):
@@ -1983,6 +2532,49 @@ class TargetInfo(AbstractModel):
         if params.get("SegmentInfo") is not None:
             self.SegmentInfo = SegmentInfo()
             self.SegmentInfo._deserialize(params.get("SegmentInfo"))
+
+
+class TargetVideoInfo(AbstractModel):
+    """目标视频信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param Width: 视频宽度，单位像素
+        :type Width: int
+        :param Height: 视频高度，单位像素
+        :type Height: int
+        :param FrameRate: 视频帧率，范围在1到120之间
+        :type FrameRate: int
+        """
+        self.Width = None
+        self.Height = None
+        self.FrameRate = None
+
+
+    def _deserialize(self, params):
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.FrameRate = params.get("FrameRate")
+
+
+class TaskResultFile(AbstractModel):
+    """任务结果文件信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Url: 文件链接。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
+        """
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
 
 
 class UrlInfo(AbstractModel):

@@ -772,6 +772,86 @@ class DeleteNamespaceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteProvisionedConcurrencyConfigRequest(AbstractModel):
+    """DeleteProvisionedConcurrencyConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FunctionName: 需要删除预置并发的函数的名称
+        :type FunctionName: str
+        :param Qualifier: 函数的版本号
+        :type Qualifier: str
+        :param Namespace: 函数所属命名空间，默认为default
+        :type Namespace: str
+        """
+        self.FunctionName = None
+        self.Qualifier = None
+        self.Namespace = None
+
+
+    def _deserialize(self, params):
+        self.FunctionName = params.get("FunctionName")
+        self.Qualifier = params.get("Qualifier")
+        self.Namespace = params.get("Namespace")
+
+
+class DeleteProvisionedConcurrencyConfigResponse(AbstractModel):
+    """DeleteProvisionedConcurrencyConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteReservedConcurrencyConfigRequest(AbstractModel):
+    """DeleteReservedConcurrencyConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FunctionName: 需要删除预置并发的函数的名称
+        :type FunctionName: str
+        :param Namespace: 函数所属命名空间，默认为default
+        :type Namespace: str
+        """
+        self.FunctionName = None
+        self.Namespace = None
+
+
+    def _deserialize(self, params):
+        self.FunctionName = params.get("FunctionName")
+        self.Namespace = params.get("Namespace")
+
+
+class DeleteReservedConcurrencyConfigResponse(AbstractModel):
+    """DeleteReservedConcurrencyConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteTriggerRequest(AbstractModel):
     """DeleteTrigger请求参数结构体
 
@@ -1655,6 +1735,104 @@ Deleted 已删除
         self.RequestId = params.get("RequestId")
 
 
+class GetProvisionedConcurrencyConfigRequest(AbstractModel):
+    """GetProvisionedConcurrencyConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FunctionName: 需要获取预置并发详情的函数名称。
+        :type FunctionName: str
+        :param Namespace: 函数所在的命名空间，默认为default。
+        :type Namespace: str
+        :param Qualifier: 函数版本号，不传则返回函数所有版本的预置并发信息。
+        :type Qualifier: str
+        """
+        self.FunctionName = None
+        self.Namespace = None
+        self.Qualifier = None
+
+
+    def _deserialize(self, params):
+        self.FunctionName = params.get("FunctionName")
+        self.Namespace = params.get("Namespace")
+        self.Qualifier = params.get("Qualifier")
+
+
+class GetProvisionedConcurrencyConfigResponse(AbstractModel):
+    """GetProvisionedConcurrencyConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param UnallocatedConcurrencyNum: 该函数剩余可配置的预置并发数。
+        :type UnallocatedConcurrencyNum: int
+        :param Allocated: 函数已预置的并发配置详情。
+        :type Allocated: list of VersionProvisionedConcurrencyInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.UnallocatedConcurrencyNum = None
+        self.Allocated = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.UnallocatedConcurrencyNum = params.get("UnallocatedConcurrencyNum")
+        if params.get("Allocated") is not None:
+            self.Allocated = []
+            for item in params.get("Allocated"):
+                obj = VersionProvisionedConcurrencyInfo()
+                obj._deserialize(item)
+                self.Allocated.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class GetReservedConcurrencyConfigRequest(AbstractModel):
+    """GetReservedConcurrencyConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FunctionName: 需要获取预置并发详情的函数名称。
+        :type FunctionName: str
+        :param Namespace: 函数所在的命名空间，默认为default。
+        :type Namespace: str
+        """
+        self.FunctionName = None
+        self.Namespace = None
+
+
+    def _deserialize(self, params):
+        self.FunctionName = params.get("FunctionName")
+        self.Namespace = params.get("Namespace")
+
+
+class GetReservedConcurrencyConfigResponse(AbstractModel):
+    """GetReservedConcurrencyConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ReservedMem: 该函数的保留并发内存。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReservedMem: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ReservedMem = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ReservedMem = params.get("ReservedMem")
+        self.RequestId = params.get("RequestId")
+
+
 class InvokeRequest(AbstractModel):
     """Invoke请求参数结构体
 
@@ -2507,6 +2685,132 @@ class PublishVersionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class PutProvisionedConcurrencyConfigRequest(AbstractModel):
+    """PutProvisionedConcurrencyConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FunctionName: 需要设置预置并发的函数的名称
+        :type FunctionName: str
+        :param Qualifier: 函数的版本号，注：$LATEST版本不支持预置并发
+        :type Qualifier: str
+        :param VersionProvisionedConcurrencyNum: 预置并发数量，注：所有版本的预置并发数总和存在上限限制，当前的上限是：函数最大并发配额 - 100
+        :type VersionProvisionedConcurrencyNum: int
+        :param Namespace: 函数所属命名空间，默认为default
+        :type Namespace: str
+        """
+        self.FunctionName = None
+        self.Qualifier = None
+        self.VersionProvisionedConcurrencyNum = None
+        self.Namespace = None
+
+
+    def _deserialize(self, params):
+        self.FunctionName = params.get("FunctionName")
+        self.Qualifier = params.get("Qualifier")
+        self.VersionProvisionedConcurrencyNum = params.get("VersionProvisionedConcurrencyNum")
+        self.Namespace = params.get("Namespace")
+
+
+class PutProvisionedConcurrencyConfigResponse(AbstractModel):
+    """PutProvisionedConcurrencyConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class PutReservedConcurrencyConfigRequest(AbstractModel):
+    """PutReservedConcurrencyConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FunctionName: 需要设置预置并发的函数的名称
+        :type FunctionName: str
+        :param ReservedConcurrencyMem: 函数保留并发内存，注：函数的保留并发内存总和上限：用户总并发内存配额 - 12800
+        :type ReservedConcurrencyMem: int
+        :param Namespace: 函数所属命名空间，默认为default
+        :type Namespace: str
+        """
+        self.FunctionName = None
+        self.ReservedConcurrencyMem = None
+        self.Namespace = None
+
+
+    def _deserialize(self, params):
+        self.FunctionName = params.get("FunctionName")
+        self.ReservedConcurrencyMem = params.get("ReservedConcurrencyMem")
+        self.Namespace = params.get("Namespace")
+
+
+class PutReservedConcurrencyConfigResponse(AbstractModel):
+    """PutReservedConcurrencyConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class PutTotalConcurrencyConfigRequest(AbstractModel):
+    """PutTotalConcurrencyConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalConcurrencyMem: 账号并发内存配额，注：账号并发内存配额下限：用户已用并发内存总额 + 12800
+        :type TotalConcurrencyMem: int
+        :param Namespace: 命名空间，默认为default
+        :type Namespace: str
+        """
+        self.TotalConcurrencyMem = None
+        self.Namespace = None
+
+
+    def _deserialize(self, params):
+        self.TotalConcurrencyMem = params.get("TotalConcurrencyMem")
+        self.Namespace = params.get("Namespace")
+
+
+class PutTotalConcurrencyConfigResponse(AbstractModel):
+    """PutTotalConcurrencyConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class Result(AbstractModel):
     """运行函数的返回
 
@@ -3086,6 +3390,39 @@ exact 匹配规则要求：
         self.Key = params.get("Key")
         self.Method = params.get("Method")
         self.Expression = params.get("Expression")
+
+
+class VersionProvisionedConcurrencyInfo(AbstractModel):
+    """函数版本的预置并发信息，包括设置预置并发数、已完成预置的并发数和预置任务状态。
+
+    """
+
+    def __init__(self):
+        """
+        :param AllocatedProvisionedConcurrencyNum: 设置的预置并发数。
+        :type AllocatedProvisionedConcurrencyNum: int
+        :param AvailableProvisionedConcurrencyNum: 当前已完成预置的并发数。
+        :type AvailableProvisionedConcurrencyNum: int
+        :param Status: 预置任务状态，Done表示已完成，InProgress表示进行中，Failed表示部分或全部失败。
+        :type Status: str
+        :param StatusReason: 对预置任务状态Status的说明。
+        :type StatusReason: str
+        :param Qualifier: 函数版本号
+        :type Qualifier: str
+        """
+        self.AllocatedProvisionedConcurrencyNum = None
+        self.AvailableProvisionedConcurrencyNum = None
+        self.Status = None
+        self.StatusReason = None
+        self.Qualifier = None
+
+
+    def _deserialize(self, params):
+        self.AllocatedProvisionedConcurrencyNum = params.get("AllocatedProvisionedConcurrencyNum")
+        self.AvailableProvisionedConcurrencyNum = params.get("AvailableProvisionedConcurrencyNum")
+        self.Status = params.get("Status")
+        self.StatusReason = params.get("StatusReason")
+        self.Qualifier = params.get("Qualifier")
 
 
 class VersionWeight(AbstractModel):

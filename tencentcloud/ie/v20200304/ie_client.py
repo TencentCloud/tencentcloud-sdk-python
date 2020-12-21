@@ -54,6 +54,34 @@ class IeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateMediaProcessTask(self, request):
+        """用于创建编辑处理任务，如媒体截取、媒体编辑、媒体拼接、媒体字幕。
+
+        :param request: Request instance for CreateMediaProcessTask.
+        :type request: :class:`tencentcloud.ie.v20200304.models.CreateMediaProcessTaskRequest`
+        :rtype: :class:`tencentcloud.ie.v20200304.models.CreateMediaProcessTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateMediaProcessTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateMediaProcessTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateMediaQualityRestorationTask(self, request):
         """创建画质重生任务，对视频进行转码、去噪、去划痕、去毛刺、超分、细节增强和色彩增强。
 
@@ -138,6 +166,34 @@ class IeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeMediaProcessTaskResult(self, request):
+        """用于获取编辑处理任务的结果。
+
+        :param request: Request instance for DescribeMediaProcessTaskResult.
+        :type request: :class:`tencentcloud.ie.v20200304.models.DescribeMediaProcessTaskResultRequest`
+        :rtype: :class:`tencentcloud.ie.v20200304.models.DescribeMediaProcessTaskResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMediaProcessTaskResult", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMediaProcessTaskResultResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeMediaQualityRestorationTaskRusult(self, request):
         """获取画质重生任务结果，查看结束后的文件信息
 
@@ -180,6 +236,34 @@ class IeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeQualityControlTaskResultResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StopMediaProcessTask(self, request):
+        """用于停止正在进行中的编辑处理任务。
+
+        :param request: Request instance for StopMediaProcessTask.
+        :type request: :class:`tencentcloud.ie.v20200304.models.StopMediaProcessTaskRequest`
+        :rtype: :class:`tencentcloud.ie.v20200304.models.StopMediaProcessTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StopMediaProcessTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StopMediaProcessTaskResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -139,7 +139,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateContentReviewTemplate(self, request):
-        """创建用户自定义内容审核模板，数量上限：50。
+        """创建用户自定义内容智能识别模板，数量上限：50。
 
         :param request: Request instance for CreateContentReviewTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateContentReviewTemplateRequest`
@@ -195,7 +195,7 @@ class MpsClient(AbstractClient):
 
 
     def CreatePersonSample(self, request):
-        """该接口用于创建人物样本，用于通过人脸识别等技术，进行内容识别、内容审核等视频处理。
+        """该接口用于创建素材样本，用于通过五官定位等技术，进行内容识别、内容不适宜等视频处理。
 
         :param request: Request instance for CreatePersonSample.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreatePersonSampleRequest`
@@ -335,7 +335,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateWordSamples(self, request):
-        """该接口用于批量创建关键词样本，样本用于通过OCR、ASR技术，进行内容审核、内容识别等视频处理。
+        """该接口用于批量创建关键词样本，样本用于通过OCR、ASR技术，进行不适宜内容识别、内容识别等视频处理。
 
         :param request: Request instance for CreateWordSamples.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateWordSamplesRequest`
@@ -516,7 +516,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteContentReviewTemplate(self, request):
-        """删除用户自定义内容审核模板。
+        """删除用户自定义内容智能识别模板。
 
         :param request: Request instance for DeleteContentReviewTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteContentReviewTemplateRequest`
@@ -572,7 +572,7 @@ class MpsClient(AbstractClient):
 
 
     def DeletePersonSample(self, request):
-        """该接口用于根据人物 ID，删除人物样本。
+        """该接口用于根据素材 ID，删除素材样本。
 
         :param request: Request instance for DeletePersonSample.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeletePersonSampleRequest`
@@ -880,7 +880,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeContentReviewTemplates(self, request):
-        """根据内容审核模板唯一标识，获取内容审核模板详情列表。返回结果包含符合条件的所有用户自定义模板及系统预置内容审核模板。
+        """根据内容智能识别模板唯一标识，获取内容智能识别模板详情列表。返回结果包含符合条件的所有用户自定义模板及系统预置内容智能识别模板。
 
         :param request: Request instance for DescribeContentReviewTemplates.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeContentReviewTemplatesRequest`
@@ -964,7 +964,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribePersonSamples(self, request):
-        """该接口用于查询人物样本信息，支持根据人物 ID、名称、标签，分页查询。
+        """该接口用于查询素材样本信息，支持根据素材 ID、名称、标签，分页查询。
 
         :param request: Request instance for DescribePersonSamples.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribePersonSamplesRequest`
@@ -1477,7 +1477,7 @@ class MpsClient(AbstractClient):
 
 
     def ModifyContentReviewTemplate(self, request):
-        """修改用户自定义内容审核模板。
+        """修改用户自定义内容智能识别模板。
 
         :param request: Request instance for ModifyContentReviewTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.ModifyContentReviewTemplateRequest`
@@ -1533,7 +1533,7 @@ class MpsClient(AbstractClient):
 
 
     def ModifyPersonSample(self, request):
-        """该接口用于根据人物 ID，修改人物样本信息，包括名称、描述的修改，以及人脸、标签的添加、删除、重置操作。人脸删除操作需保证至少剩余 1 张图片，否则，请使用重置操作。
+        """该接口用于根据素材 ID，修改素材样本信息，包括名称、描述的修改，以及五官、标签的添加、删除、重置操作。五官删除操作需保证至少剩余 1 张图片，否则，请使用重置操作。
 
         :param request: Request instance for ModifyPersonSample.
         :type request: :class:`tencentcloud.mps.v20190612.models.ModifyPersonSampleRequest`

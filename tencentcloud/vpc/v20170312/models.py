@@ -11240,16 +11240,24 @@ class ModifyNatGatewayAttributeRequest(AbstractModel):
         :type NatGatewayName: str
         :param InternetMaxBandwidthOut: NAT网关最大外网出带宽(单位:Mbps)。
         :type InternetMaxBandwidthOut: int
+        :param ModifySecurityGroup: 是否修改NAT网关绑定的安全组。
+        :type ModifySecurityGroup: bool
+        :param SecurityGroupIds: NAT网关绑定的安全组列表，最终状态，空列表表示删除所有安全组，形如: `['sg-1n232323', 'sg-o4242424']`
+        :type SecurityGroupIds: list of str
         """
         self.NatGatewayId = None
         self.NatGatewayName = None
         self.InternetMaxBandwidthOut = None
+        self.ModifySecurityGroup = None
+        self.SecurityGroupIds = None
 
 
     def _deserialize(self, params):
         self.NatGatewayId = params.get("NatGatewayId")
         self.NatGatewayName = params.get("NatGatewayName")
         self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        self.ModifySecurityGroup = params.get("ModifySecurityGroup")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
 
 
 class ModifyNatGatewayAttributeResponse(AbstractModel):
@@ -12033,6 +12041,9 @@ class NatGateway(AbstractModel):
         :type SubnetId: str
         :param TagSet: 标签键值对。
         :type TagSet: list of Tag
+        :param SecurityGroupSet: NAT网关绑定的安全组列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecurityGroupSet: list of str
         """
         self.NatGatewayId = None
         self.NatGatewayName = None
@@ -12048,6 +12059,7 @@ class NatGateway(AbstractModel):
         self.DirectConnectGatewayIds = None
         self.SubnetId = None
         self.TagSet = None
+        self.SecurityGroupSet = None
 
 
     def _deserialize(self, params):
@@ -12080,6 +12092,7 @@ class NatGateway(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.TagSet.append(obj)
+        self.SecurityGroupSet = params.get("SecurityGroupSet")
 
 
 class NatGatewayAddress(AbstractModel):
