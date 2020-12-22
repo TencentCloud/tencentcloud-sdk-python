@@ -82,7 +82,7 @@ class CreateEmailIdentityRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EmailIdentity: 您的发信域名，建议使用三级以上域名。比如：mail.qcloud.com。
+        :param EmailIdentity: 您的发信域名，建议使用三级以上域名。例如：mail.qcloud.com。
         :type EmailIdentity: str
         """
         self.EmailIdentity = None
@@ -491,7 +491,7 @@ class GetStatisticsReportRequest(AbstractModel):
         :type EndDate: str
         :param Domain: 发信域名
         :type Domain: str
-        :param ReceivingMailboxType: 收件方邮箱类型，比如gmail.com
+        :param ReceivingMailboxType: 收件方邮箱类型，例如gmail.com
         :type ReceivingMailboxType: str
         """
         self.StartDate = None
@@ -729,7 +729,7 @@ class SendEmailRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FromEmailAddress: 发信邮件地址。比如：noreply@mail.qcloud.com。
+        :param FromEmailAddress: 发信邮件地址。例如：noreply@mail.qcloud.com。
         :type FromEmailAddress: str
         :param Destination: 收信人邮箱地址
         :type Destination: list of str
@@ -791,9 +791,9 @@ class Simple(AbstractModel):
 
     def __init__(self):
         """
-        :param Html: Html代码。需要包含所有的代码信息，不要包含外部css，否则会导致显示格式错乱
+        :param Html: base64之后的Html代码。需要包含所有的代码信息，不要包含外部css，否则会导致显示格式错乱
         :type Html: str
-        :param Text: 纯文本信息，如果没有Html，邮件中会直接显示纯文本；如果有Html，它代表邮件的纯文本样式
+        :param Text: base64之后的纯文本信息，如果没有Html，邮件中会直接显示纯文本；如果有Html，它代表邮件的纯文本样式
         :type Text: str
         """
         self.Html = None
@@ -858,15 +858,18 @@ class TemplatesMetadata(AbstractModel):
         :type CreatedTimestamp: int
         :param TemplateName: 模板名称
         :type TemplateName: str
-        :param TemplateStatus: 模板状态。1-审核中|0-已通过|其它-不可用
+        :param TemplateStatus: 模板状态。1-审核中|0-已通过|2-拒绝|其它-不可用
         :type TemplateStatus: int
         :param TemplateID: 模板ID
         :type TemplateID: int
+        :param ReviewReason: 审核原因
+        :type ReviewReason: str
         """
         self.CreatedTimestamp = None
         self.TemplateName = None
         self.TemplateStatus = None
         self.TemplateID = None
+        self.ReviewReason = None
 
 
     def _deserialize(self, params):
@@ -874,6 +877,7 @@ class TemplatesMetadata(AbstractModel):
         self.TemplateName = params.get("TemplateName")
         self.TemplateStatus = params.get("TemplateStatus")
         self.TemplateID = params.get("TemplateID")
+        self.ReviewReason = params.get("ReviewReason")
 
 
 class UpdateEmailIdentityRequest(AbstractModel):

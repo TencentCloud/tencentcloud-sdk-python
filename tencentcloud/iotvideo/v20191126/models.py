@@ -1293,16 +1293,16 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param AccountType: 账户类型 1=设备接入;2=云存
+        :param AccountType: 账户类型 1=设备接入;2=云存。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccountType: int
-        :param Balance: 余额
+        :param Balance: 余额, 单位 : 分(人民币)。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Balance: int
-        :param State: 账户状态，1=正常；8=冻结；9=销户
+        :param State: 账户状态，1=正常；8=冻结；9=销户。
 注意：此字段可能返回 null，表示取不到有效值。
         :type State: int
-        :param LastUpdateTime: 最后修改时间，UTC值
+        :param LastUpdateTime: 最后修改时间，UTC值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastUpdateTime: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3209,16 +3209,16 @@ class RechargeRecord(AbstractModel):
 
     def __init__(self):
         """
-        :param WaterId: 流水记录号
+        :param WaterId: 流水记录号。
 注意：此字段可能返回 null，表示取不到有效值。
         :type WaterId: int
-        :param BalanceBeforeRecharge: 充值前的余额
+        :param BalanceBeforeRecharge: 充值前的余额，单位0.01元。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BalanceBeforeRecharge: int
-        :param Money: 充值金额
+        :param Money: 充值金额，单位0.01元。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Money: int
-        :param OperateTime: 充值时间, UTC值
+        :param OperateTime: 充值时间, UTC值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OperateTime: int
         """

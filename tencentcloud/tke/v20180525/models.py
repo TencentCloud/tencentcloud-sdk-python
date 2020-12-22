@@ -59,7 +59,7 @@ class AddExistedInstancesRequest(AbstractModel):
         """
         :param ClusterId: 集群ID
         :type ClusterId: str
-        :param InstanceIds: 实例列表
+        :param InstanceIds: 实例列表，不支持竞价实例
         :type InstanceIds: list of str
         :param InstanceAdvancedSettings: 实例额外需要设置参数信息
         :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
@@ -71,6 +71,8 @@ class AddExistedInstancesRequest(AbstractModel):
         :type SecurityGroupIds: list of str
         :param HostName: 重装系统时，可以指定修改实例的HostName(集群为HostName模式时，此参数必传，规则名称除不支持大写字符外与[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口HostName一致)
         :type HostName: str
+        :param NodePool: 节点池选项
+        :type NodePool: :class:`tencentcloud.tke.v20180525.models.NodePoolOption`
         """
         self.ClusterId = None
         self.InstanceIds = None
@@ -79,6 +81,7 @@ class AddExistedInstancesRequest(AbstractModel):
         self.LoginSettings = None
         self.SecurityGroupIds = None
         self.HostName = None
+        self.NodePool = None
 
 
     def _deserialize(self, params):
@@ -95,6 +98,9 @@ class AddExistedInstancesRequest(AbstractModel):
             self.LoginSettings._deserialize(params.get("LoginSettings"))
         self.SecurityGroupIds = params.get("SecurityGroupIds")
         self.HostName = params.get("HostName")
+        if params.get("NodePool") is not None:
+            self.NodePool = NodePoolOption()
+            self.NodePool._deserialize(params.get("NodePool"))
 
 
 class AddExistedInstancesResponse(AbstractModel):
@@ -3592,6 +3598,46 @@ class ModifyClusterAsGroupAttributeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyClusterAsGroupOptionAttributeRequest(AbstractModel):
+    """ModifyClusterAsGroupOptionAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param ClusterAsGroupOption: 集群弹性伸缩属性
+        :type ClusterAsGroupOption: :class:`tencentcloud.tke.v20180525.models.ClusterAsGroupOption`
+        """
+        self.ClusterId = None
+        self.ClusterAsGroupOption = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("ClusterAsGroupOption") is not None:
+            self.ClusterAsGroupOption = ClusterAsGroupOption()
+            self.ClusterAsGroupOption._deserialize(params.get("ClusterAsGroupOption"))
+
+
+class ModifyClusterAsGroupOptionAttributeResponse(AbstractModel):
+    """ModifyClusterAsGroupOptionAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyClusterAttributeRequest(AbstractModel):
     """ModifyClusterAttribute请求参数结构体
 
@@ -3714,6 +3760,10 @@ class ModifyClusterNodePoolRequest(AbstractModel):
         :type Taints: list of Taint
         :param EnableAutoscale: 是否开启伸缩
         :type EnableAutoscale: bool
+        :param OsName: 操作系统名称
+        :type OsName: str
+        :param OsCustomizeType: 镜像版本，"DOCKER_CUSTOMIZE"(容器定制版),"GENERAL"(普通版本，默认值)
+        :type OsCustomizeType: str
         """
         self.ClusterId = None
         self.NodePoolId = None
@@ -3723,6 +3773,8 @@ class ModifyClusterNodePoolRequest(AbstractModel):
         self.Labels = None
         self.Taints = None
         self.EnableAutoscale = None
+        self.OsName = None
+        self.OsCustomizeType = None
 
 
     def _deserialize(self, params):
@@ -3744,6 +3796,8 @@ class ModifyClusterNodePoolRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Taints.append(obj)
         self.EnableAutoscale = params.get("EnableAutoscale")
+        self.OsName = params.get("OsName")
+        self.OsCustomizeType = params.get("OsCustomizeType")
 
 
 class ModifyClusterNodePoolResponse(AbstractModel):
@@ -3951,6 +4005,31 @@ class NodePool(AbstractModel):
         self.MaxNodesNum = params.get("MaxNodesNum")
         self.MinNodesNum = params.get("MinNodesNum")
         self.DesiredNodesNum = params.get("DesiredNodesNum")
+
+
+class NodePoolOption(AbstractModel):
+    """加入存量节点时的节点池选项
+
+    """
+
+    def __init__(self):
+        """
+        :param AddToNodePool: 是否加入节点池
+        :type AddToNodePool: bool
+        :param NodePoolId: 节点池id
+        :type NodePoolId: str
+        :param InheritConfigurationFromNodePool: 是否继承节点池相关配置
+        :type InheritConfigurationFromNodePool: bool
+        """
+        self.AddToNodePool = None
+        self.NodePoolId = None
+        self.InheritConfigurationFromNodePool = None
+
+
+    def _deserialize(self, params):
+        self.AddToNodePool = params.get("AddToNodePool")
+        self.NodePoolId = params.get("NodePoolId")
+        self.InheritConfigurationFromNodePool = params.get("InheritConfigurationFromNodePool")
 
 
 class PrometheusAgentOverview(AbstractModel):

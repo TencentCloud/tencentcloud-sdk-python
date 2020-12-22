@@ -54,6 +54,62 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateAlarmNotice(self, request):
+        """云监控告警创建告警通知模板
+
+        :param request: Request instance for CreateAlarmNotice.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.CreateAlarmNoticeRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.CreateAlarmNoticeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAlarmNotice", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAlarmNoticeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateAlarmPolicy(self, request):
+        """创建告警策略
+
+        :param request: Request instance for CreateAlarmPolicy.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.CreateAlarmPolicyRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.CreateAlarmPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAlarmPolicy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAlarmPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreatePolicyGroup(self, request):
         """增加策略组
 
@@ -98,6 +154,62 @@ class MonitorClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateServiceDiscoveryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteAlarmNotices(self, request):
+        """云监控告警删除告警通知模板
+
+        :param request: Request instance for DeleteAlarmNotices.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DeleteAlarmNoticesRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DeleteAlarmNoticesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteAlarmNotices", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteAlarmNoticesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteAlarmPolicy(self, request):
+        """删除告警策略
+
+        :param request: Request instance for DeleteAlarmPolicy.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DeleteAlarmPolicyRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DeleteAlarmPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteAlarmPolicy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteAlarmPolicyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -198,8 +310,36 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAlarmEvents(self, request):
+        """查询告警事件列表
+
+        :param request: Request instance for DescribeAlarmEvents.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmEventsRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmEventsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAlarmEvents", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAlarmEventsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeAlarmHistories(self, request):
-        """告警2.0-告警历史列表
+        """告警历史列表
 
         :param request: Request instance for DescribeAlarmHistories.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmHistoriesRequest`
@@ -212,6 +352,174 @@ class MonitorClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAlarmHistoriesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAlarmMetrics(self, request):
+        """查询告警指标列表
+
+        :param request: Request instance for DescribeAlarmMetrics.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmMetricsRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmMetricsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAlarmMetrics", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAlarmMetricsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAlarmNotice(self, request):
+        """云监控告警获取告警通知模板详情
+
+        :param request: Request instance for DescribeAlarmNotice.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmNoticeRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmNoticeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAlarmNotice", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAlarmNoticeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAlarmNoticeCallbacks(self, request):
+        """云监控告警获取告警通知模板所有回调URL
+
+        :param request: Request instance for DescribeAlarmNoticeCallbacks.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmNoticeCallbacksRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmNoticeCallbacksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAlarmNoticeCallbacks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAlarmNoticeCallbacksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAlarmNotices(self, request):
+        """云监控告警查询告警通知模板列表
+
+        :param request: Request instance for DescribeAlarmNotices.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmNoticesRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmNoticesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAlarmNotices", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAlarmNoticesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAlarmPolicies(self, request):
+        """告警策略列表
+
+        :param request: Request instance for DescribeAlarmPolicies.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmPoliciesRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmPoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAlarmPolicies", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAlarmPoliciesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAlarmPolicy(self, request):
+        """告警策略详情
+
+        :param request: Request instance for DescribeAlarmPolicy.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmPolicyRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAlarmPolicy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAlarmPolicyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -566,6 +874,174 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyAlarmNotice(self, request):
+        """云监控告警编辑告警通知模板
+
+        :param request: Request instance for ModifyAlarmNotice.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyAlarmNoticeRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.ModifyAlarmNoticeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyAlarmNotice", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyAlarmNoticeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyAlarmPolicyCondition(self, request):
+        """编辑告警策略触发条件
+
+        :param request: Request instance for ModifyAlarmPolicyCondition.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyAlarmPolicyConditionRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.ModifyAlarmPolicyConditionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyAlarmPolicyCondition", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyAlarmPolicyConditionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyAlarmPolicyInfo(self, request):
+        """告警2.0编辑告警策略基本信息，包括策略名、备注
+
+        :param request: Request instance for ModifyAlarmPolicyInfo.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyAlarmPolicyInfoRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.ModifyAlarmPolicyInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyAlarmPolicyInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyAlarmPolicyInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyAlarmPolicyNotice(self, request):
+        """云监控告警修改告警策略绑定的告警通知模板
+
+        :param request: Request instance for ModifyAlarmPolicyNotice.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyAlarmPolicyNoticeRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.ModifyAlarmPolicyNoticeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyAlarmPolicyNotice", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyAlarmPolicyNoticeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyAlarmPolicyStatus(self, request):
+        """修改告警策略的启停状态
+
+        :param request: Request instance for ModifyAlarmPolicyStatus.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyAlarmPolicyStatusRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.ModifyAlarmPolicyStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyAlarmPolicyStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyAlarmPolicyStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyAlarmPolicyTasks(self, request):
+        """云监控告警修改告警策略的触发任务，TriggerTasks字段放触发任务列表，TriggerTasks传空数组时，代表解绑该策略的所有触发任务。
+
+        :param request: Request instance for ModifyAlarmPolicyTasks.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyAlarmPolicyTasksRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.ModifyAlarmPolicyTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyAlarmPolicyTasks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyAlarmPolicyTasksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyAlarmReceivers(self, request):
         """修改告警接收人
 
@@ -670,6 +1146,35 @@ class MonitorClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SendCustomAlarmMsgResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SetDefaultAlarmPolicy(self, request):
+        """设置一个策略为该告警策略类型、该项目的默认告警策略。
+        同一项目下相同的告警策略类型，就会被设置为非默认。
+
+        :param request: Request instance for SetDefaultAlarmPolicy.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.SetDefaultAlarmPolicyRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.SetDefaultAlarmPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SetDefaultAlarmPolicy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetDefaultAlarmPolicyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

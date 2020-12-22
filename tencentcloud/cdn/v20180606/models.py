@@ -4968,16 +4968,21 @@ https：强制 https 跳转
 支持 301、302
 注意：此字段可能返回 null，表示取不到有效值。
         :type RedirectStatusCode: int
+        :param CarryHeaders: 强制跳转时是否返回增加的头部。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CarryHeaders: str
         """
         self.Switch = None
         self.RedirectType = None
         self.RedirectStatusCode = None
+        self.CarryHeaders = None
 
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
         self.RedirectType = params.get("RedirectType")
         self.RedirectStatusCode = params.get("RedirectStatusCode")
+        self.CarryHeaders = params.get("CarryHeaders")
 
 
 class GetDisableRecordsRequest(AbstractModel):
@@ -6311,7 +6316,7 @@ ip：IP 列表作为源站
         :param BasePath: 回源路径
 注意：此字段可能返回 null，表示取不到有效值。
         :type BasePath: str
-        :param PathRules: 分路径回源配置规则
+        :param PathRules: 回源路径重写规则配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type PathRules: list of PathRule
         """

@@ -16,6 +16,31 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AlarmEvent(AbstractModel):
+    """告警事件
+
+    """
+
+    def __init__(self):
+        """
+        :param EventName: 事件名
+        :type EventName: str
+        :param Description: 展示的事件名
+        :type Description: str
+        :param Namespace: 告警策略类型
+        :type Namespace: str
+        """
+        self.EventName = None
+        self.Description = None
+        self.Namespace = None
+
+
+    def _deserialize(self, params):
+        self.EventName = params.get("EventName")
+        self.Description = params.get("Description")
+        self.Namespace = params.get("Namespace")
+
+
 class AlarmHistory(AbstractModel):
     """告警历史数据
 
@@ -65,6 +90,8 @@ class AlarmHistory(AbstractModel):
         :type EventId: int
         :param Region: 地域
         :type Region: str
+        :param PolicyExists: 策略是否存在 0=不存在 1=存在
+        :type PolicyExists: int
         """
         self.AlarmId = None
         self.MonitorType = None
@@ -87,6 +114,7 @@ class AlarmHistory(AbstractModel):
         self.AlarmType = None
         self.EventId = None
         self.Region = None
+        self.PolicyExists = None
 
 
     def _deserialize(self, params):
@@ -116,6 +144,436 @@ class AlarmHistory(AbstractModel):
         self.AlarmType = params.get("AlarmType")
         self.EventId = params.get("EventId")
         self.Region = params.get("Region")
+        self.PolicyExists = params.get("PolicyExists")
+
+
+class AlarmNotice(AbstractModel):
+    """告警通知模板详情
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 告警通知模板 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param Name: 告警通知模板名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param UpdatedAt: 上次修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatedAt: str
+        :param UpdatedBy: 上次修改人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatedBy: str
+        :param NoticeType: 告警通知类型 ALARM=未恢复通知 OK=已恢复通知 ALL=全部通知
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NoticeType: str
+        :param UserNotices: 用户通知列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserNotices: list of UserNotice
+        :param URLNotices: 回调通知列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type URLNotices: list of URLNotice
+        :param IsPreset: 是否是系统预设通知模板 0=否 1=是
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsPreset: int
+        :param NoticeLanguage: 通知语言 zh-CN=中文 en-US=英文
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NoticeLanguage: str
+        :param PolicyIds: 告警通知模板绑定的告警策略ID列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyIds: list of str
+        """
+        self.Id = None
+        self.Name = None
+        self.UpdatedAt = None
+        self.UpdatedBy = None
+        self.NoticeType = None
+        self.UserNotices = None
+        self.URLNotices = None
+        self.IsPreset = None
+        self.NoticeLanguage = None
+        self.PolicyIds = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        self.UpdatedAt = params.get("UpdatedAt")
+        self.UpdatedBy = params.get("UpdatedBy")
+        self.NoticeType = params.get("NoticeType")
+        if params.get("UserNotices") is not None:
+            self.UserNotices = []
+            for item in params.get("UserNotices"):
+                obj = UserNotice()
+                obj._deserialize(item)
+                self.UserNotices.append(obj)
+        if params.get("URLNotices") is not None:
+            self.URLNotices = []
+            for item in params.get("URLNotices"):
+                obj = URLNotice()
+                obj._deserialize(item)
+                self.URLNotices.append(obj)
+        self.IsPreset = params.get("IsPreset")
+        self.NoticeLanguage = params.get("NoticeLanguage")
+        self.PolicyIds = params.get("PolicyIds")
+
+
+class AlarmPolicy(AbstractModel):
+    """告警策略详情
+
+    """
+
+    def __init__(self):
+        """
+        :param PolicyId: 告警策略 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyId: str
+        :param PolicyName: 告警策略名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyName: str
+        :param Remark: 备注信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param MonitorType: 监控类型 MT_QCE=云产品监控
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MonitorType: str
+        :param Enable: 启停状态 0=停用 1=启用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enable: int
+        :param UseSum: 策略组绑定的实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UseSum: int
+        :param ProjectId: 项目 Id -1=无项目 0=默认项目
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: int
+        :param ProjectName: 项目名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectName: str
+        :param Namespace: 告警策略类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Namespace: str
+        :param ConditionTemplateId: 触发条件模板 Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConditionTemplateId: str
+        :param Condition: 指标触发条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Condition: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyCondition`
+        :param EventCondition: 事件触发条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventCondition: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyEventCondition`
+        :param NoticeIds: 通知规则 id 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NoticeIds: list of str
+        :param Notices: 通知规则 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Notices: list of AlarmNotice
+        :param TriggerTasks: 触发任务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerTasks: list of AlarmPolicyTriggerTask
+        :param ConditionsTemp: 模板策略组
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConditionsTemp: :class:`tencentcloud.monitor.v20180724.models.ConditionsTemp`
+        :param LastEditUin: 最后编辑的用户uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastEditUin: str
+        :param UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: int
+        :param InsertTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InsertTime: int
+        :param Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: list of str
+        :param NamespaceShowName: namespace显示名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceShowName: str
+        :param IsDefault: 是否默认策略，1是，0否
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsDefault: int
+        :param CanSetDefault: 能否设置默认策略，1是，0否
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CanSetDefault: int
+        :param InstanceGroupId: 实例分组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceGroupId: int
+        :param InstanceSum: 实例分组总实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceSum: int
+        :param InstanceGroupName: 实例分组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceGroupName: str
+        :param RuleType: 触发条件类型 STATIC=静态阈值 DYNAMIC=动态类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleType: str
+        :param OriginId: 用于实例、实例组绑定和解绑接口（BindingPolicyObject、UnBindingAllPolicyObject、UnBindingPolicyObject）的策略 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginId: str
+        """
+        self.PolicyId = None
+        self.PolicyName = None
+        self.Remark = None
+        self.MonitorType = None
+        self.Enable = None
+        self.UseSum = None
+        self.ProjectId = None
+        self.ProjectName = None
+        self.Namespace = None
+        self.ConditionTemplateId = None
+        self.Condition = None
+        self.EventCondition = None
+        self.NoticeIds = None
+        self.Notices = None
+        self.TriggerTasks = None
+        self.ConditionsTemp = None
+        self.LastEditUin = None
+        self.UpdateTime = None
+        self.InsertTime = None
+        self.Region = None
+        self.NamespaceShowName = None
+        self.IsDefault = None
+        self.CanSetDefault = None
+        self.InstanceGroupId = None
+        self.InstanceSum = None
+        self.InstanceGroupName = None
+        self.RuleType = None
+        self.OriginId = None
+
+
+    def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
+        self.PolicyName = params.get("PolicyName")
+        self.Remark = params.get("Remark")
+        self.MonitorType = params.get("MonitorType")
+        self.Enable = params.get("Enable")
+        self.UseSum = params.get("UseSum")
+        self.ProjectId = params.get("ProjectId")
+        self.ProjectName = params.get("ProjectName")
+        self.Namespace = params.get("Namespace")
+        self.ConditionTemplateId = params.get("ConditionTemplateId")
+        if params.get("Condition") is not None:
+            self.Condition = AlarmPolicyCondition()
+            self.Condition._deserialize(params.get("Condition"))
+        if params.get("EventCondition") is not None:
+            self.EventCondition = AlarmPolicyEventCondition()
+            self.EventCondition._deserialize(params.get("EventCondition"))
+        self.NoticeIds = params.get("NoticeIds")
+        if params.get("Notices") is not None:
+            self.Notices = []
+            for item in params.get("Notices"):
+                obj = AlarmNotice()
+                obj._deserialize(item)
+                self.Notices.append(obj)
+        if params.get("TriggerTasks") is not None:
+            self.TriggerTasks = []
+            for item in params.get("TriggerTasks"):
+                obj = AlarmPolicyTriggerTask()
+                obj._deserialize(item)
+                self.TriggerTasks.append(obj)
+        if params.get("ConditionsTemp") is not None:
+            self.ConditionsTemp = ConditionsTemp()
+            self.ConditionsTemp._deserialize(params.get("ConditionsTemp"))
+        self.LastEditUin = params.get("LastEditUin")
+        self.UpdateTime = params.get("UpdateTime")
+        self.InsertTime = params.get("InsertTime")
+        self.Region = params.get("Region")
+        self.NamespaceShowName = params.get("NamespaceShowName")
+        self.IsDefault = params.get("IsDefault")
+        self.CanSetDefault = params.get("CanSetDefault")
+        self.InstanceGroupId = params.get("InstanceGroupId")
+        self.InstanceSum = params.get("InstanceSum")
+        self.InstanceGroupName = params.get("InstanceGroupName")
+        self.RuleType = params.get("RuleType")
+        self.OriginId = params.get("OriginId")
+
+
+class AlarmPolicyCondition(AbstractModel):
+    """告警策略指标触发条件
+
+    """
+
+    def __init__(self):
+        """
+        :param IsUnionRule: 指标触发与或条件，0=或，1=与
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsUnionRule: int
+        :param Rules: 告警触发条件列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rules: list of AlarmPolicyRule
+        """
+        self.IsUnionRule = None
+        self.Rules = None
+
+
+    def _deserialize(self, params):
+        self.IsUnionRule = params.get("IsUnionRule")
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = AlarmPolicyRule()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+
+
+class AlarmPolicyEventCondition(AbstractModel):
+    """告警策略事件触发条件
+
+    """
+
+    def __init__(self):
+        """
+        :param Rules: 告警触发条件列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rules: list of AlarmPolicyRule
+        """
+        self.Rules = None
+
+
+    def _deserialize(self, params):
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = AlarmPolicyRule()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+
+
+class AlarmPolicyFilter(AbstractModel):
+    """告警策略过滤条件
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 过滤条件类型 DIMENSION=使用 Dimensions 做过滤
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param Dimensions: AlarmPolicyDimension 二维数组序列化后的json字符串，一维数组之间互为或关系，一维数组内的元素互为与关系
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Dimensions: str
+        """
+        self.Type = None
+        self.Dimensions = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Dimensions = params.get("Dimensions")
+
+
+class AlarmPolicyRule(AbstractModel):
+    """告警策略触发条件
+
+    """
+
+    def __init__(self):
+        """
+        :param MetricName: 指标名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricName: str
+        :param Period: 秒数 统计周期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Period: int
+        :param Operator: 英文运算符
+intelligent=无阈值智能检测
+eq=等于
+ge=大于等于
+gt=大于
+le=小于等于
+lt=小于
+ne=不等于
+day_increase=天同比增长
+day_decrease=天同比下降
+day_wave=天同比波动
+week_increase=周同比增长
+week_decrease=周同比下降
+week_wave=周同比波动
+cycle_increase=环比增长
+cycle_decrease=环比下降
+cycle_wave=环比波动
+re=正则匹配
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Operator: str
+        :param Value: 阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        :param ContinuePeriod: 周期数 持续通知周期 1=持续1个周期 2=持续2个周期...
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContinuePeriod: int
+        :param NoticeFrequency: 秒数 告警间隔  0=不重复 300=每5分钟告警一次 600=每10分钟告警一次 900=每15分钟告警一次 1800=每30分钟告警一次 3600=每1小时告警一次 7200=每2小时告警一次 10800=每3小时告警一次 21600=每6小时告警一次 43200=每12小时告警一次 86400=每1天告警一次
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NoticeFrequency: int
+        :param IsPowerNotice: 告警频率是否指数增长 0=否 1=是
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsPowerNotice: int
+        :param Filter: 对于单个触发规则的过滤条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Filter: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyFilter`
+        :param Description: 指标展示名，用于出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param Unit: 单位，用于出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Unit: str
+        :param RuleType: 触发条件类型 STATIC=静态阈值 DYNAMIC=动态阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleType: str
+        """
+        self.MetricName = None
+        self.Period = None
+        self.Operator = None
+        self.Value = None
+        self.ContinuePeriod = None
+        self.NoticeFrequency = None
+        self.IsPowerNotice = None
+        self.Filter = None
+        self.Description = None
+        self.Unit = None
+        self.RuleType = None
+
+
+    def _deserialize(self, params):
+        self.MetricName = params.get("MetricName")
+        self.Period = params.get("Period")
+        self.Operator = params.get("Operator")
+        self.Value = params.get("Value")
+        self.ContinuePeriod = params.get("ContinuePeriod")
+        self.NoticeFrequency = params.get("NoticeFrequency")
+        self.IsPowerNotice = params.get("IsPowerNotice")
+        if params.get("Filter") is not None:
+            self.Filter = AlarmPolicyFilter()
+            self.Filter._deserialize(params.get("Filter"))
+        self.Description = params.get("Description")
+        self.Unit = params.get("Unit")
+        self.RuleType = params.get("RuleType")
+
+
+class AlarmPolicyTriggerTask(AbstractModel):
+    """告警策略触发任务
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 触发任务类型 AS=弹性伸缩
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param TaskConfig: 用 json 表示配置信息 {"Key1":"Value1","Key2":"Value2"}
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskConfig: str
+        """
+        self.Type = None
+        self.TaskConfig = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.TaskConfig = params.get("TaskConfig")
 
 
 class BindingPolicyObjectDimension(AbstractModel):
@@ -241,6 +699,197 @@ class CommonNamespace(AbstractModel):
         self.AvailableRegions = params.get("AvailableRegions")
         self.SortId = params.get("SortId")
         self.DashboardId = params.get("DashboardId")
+
+
+class ConditionsTemp(AbstractModel):
+    """告警条件模版
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateName: 模版名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TemplateName: str
+        :param Condition: 指标触发条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Condition: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyCondition`
+        :param EventCondition: 事件触发条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventCondition: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyEventCondition`
+        """
+        self.TemplateName = None
+        self.Condition = None
+        self.EventCondition = None
+
+
+    def _deserialize(self, params):
+        self.TemplateName = params.get("TemplateName")
+        if params.get("Condition") is not None:
+            self.Condition = AlarmPolicyCondition()
+            self.Condition._deserialize(params.get("Condition"))
+        if params.get("EventCondition") is not None:
+            self.EventCondition = AlarmPolicyEventCondition()
+            self.EventCondition._deserialize(params.get("EventCondition"))
+
+
+class CreateAlarmNoticeRequest(AbstractModel):
+    """CreateAlarmNotice请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名，这里填“monitor”
+        :type Module: str
+        :param Name: 通知模板名称 60字符以内
+        :type Name: str
+        :param NoticeType: 通知类型 ALARM=未恢复通知 OK=已恢复通知 ALL=都通知
+        :type NoticeType: str
+        :param NoticeLanguage: 通知语言 zh-CN=中文 en-US=英文
+        :type NoticeLanguage: str
+        :param UserNotices: 用户通知 最多5个
+        :type UserNotices: list of UserNotice
+        :param URLNotices: 回调通知 最多3个
+        :type URLNotices: list of URLNotice
+        """
+        self.Module = None
+        self.Name = None
+        self.NoticeType = None
+        self.NoticeLanguage = None
+        self.UserNotices = None
+        self.URLNotices = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Name = params.get("Name")
+        self.NoticeType = params.get("NoticeType")
+        self.NoticeLanguage = params.get("NoticeLanguage")
+        if params.get("UserNotices") is not None:
+            self.UserNotices = []
+            for item in params.get("UserNotices"):
+                obj = UserNotice()
+                obj._deserialize(item)
+                self.UserNotices.append(obj)
+        if params.get("URLNotices") is not None:
+            self.URLNotices = []
+            for item in params.get("URLNotices"):
+                obj = URLNotice()
+                obj._deserialize(item)
+                self.URLNotices.append(obj)
+
+
+class CreateAlarmNoticeResponse(AbstractModel):
+    """CreateAlarmNotice返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NoticeId: 告警通知模板ID
+        :type NoticeId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NoticeId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.NoticeId = params.get("NoticeId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateAlarmPolicyRequest(AbstractModel):
+    """CreateAlarmPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 固定值，为"monitor"
+        :type Module: str
+        :param PolicyName: 策略名称，不超过20字符
+        :type PolicyName: str
+        :param MonitorType: 监控类型 MT_QCE=云产品监控
+        :type MonitorType: str
+        :param Namespace: 告警策略类型，由 DescribeAllNamespaces 获得，例如 cvm_device
+        :type Namespace: str
+        :param Remark: 备注，不超过100字符，仅支持中英文、数字、下划线、-
+        :type Remark: str
+        :param Enable: 是否启用 0=停用 1=启用，可不传 默认为1
+        :type Enable: int
+        :param ProjectId: 项目 Id -1=无项目 0=默认项目，可不传 默认为-1
+        :type ProjectId: int
+        :param Condition: 指标触发条件
+        :type Condition: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyCondition`
+        :param EventCondition: 事件触发条件
+        :type EventCondition: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyEventCondition`
+        :param NoticeIds: 通知规则 Id 列表，由 DescribeAlarmNotices 获得
+        :type NoticeIds: list of str
+        :param TriggerTasks: 触发任务列表
+        :type TriggerTasks: list of AlarmPolicyTriggerTask
+        """
+        self.Module = None
+        self.PolicyName = None
+        self.MonitorType = None
+        self.Namespace = None
+        self.Remark = None
+        self.Enable = None
+        self.ProjectId = None
+        self.Condition = None
+        self.EventCondition = None
+        self.NoticeIds = None
+        self.TriggerTasks = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.PolicyName = params.get("PolicyName")
+        self.MonitorType = params.get("MonitorType")
+        self.Namespace = params.get("Namespace")
+        self.Remark = params.get("Remark")
+        self.Enable = params.get("Enable")
+        self.ProjectId = params.get("ProjectId")
+        if params.get("Condition") is not None:
+            self.Condition = AlarmPolicyCondition()
+            self.Condition._deserialize(params.get("Condition"))
+        if params.get("EventCondition") is not None:
+            self.EventCondition = AlarmPolicyEventCondition()
+            self.EventCondition._deserialize(params.get("EventCondition"))
+        self.NoticeIds = params.get("NoticeIds")
+        if params.get("TriggerTasks") is not None:
+            self.TriggerTasks = []
+            for item in params.get("TriggerTasks"):
+                obj = AlarmPolicyTriggerTask()
+                obj._deserialize(item)
+                self.TriggerTasks.append(obj)
+
+
+class CreateAlarmPolicyResponse(AbstractModel):
+    """CreateAlarmPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PolicyId: 告警策略 ID
+        :type PolicyId: str
+        :param OriginId: 用于实例、实例组绑定和解绑接口（BindingPolicyObject、UnBindingAllPolicyObject、UnBindingPolicyObject）的策略 ID
+        :type OriginId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PolicyId = None
+        self.OriginId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
+        self.OriginId = params.get("OriginId")
+        self.RequestId = params.get("RequestId")
 
 
 class CreatePolicyGroupCondition(AbstractModel):
@@ -498,6 +1147,82 @@ class DataPoint(AbstractModel):
         self.Values = params.get("Values")
 
 
+class DeleteAlarmNoticesRequest(AbstractModel):
+    """DeleteAlarmNotices请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名，这里填“monitor”
+        :type Module: str
+        :param NoticeIds: 告警通知模板id列表
+        :type NoticeIds: list of str
+        """
+        self.Module = None
+        self.NoticeIds = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.NoticeIds = params.get("NoticeIds")
+
+
+class DeleteAlarmNoticesResponse(AbstractModel):
+    """DeleteAlarmNotices返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteAlarmPolicyRequest(AbstractModel):
+    """DeleteAlarmPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名，固定值 monitor
+        :type Module: str
+        :param PolicyIds: 告警策略 ID 列表
+        :type PolicyIds: list of str
+        """
+        self.Module = None
+        self.PolicyIds = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.PolicyIds = params.get("PolicyIds")
+
+
+class DeleteAlarmPolicyResponse(AbstractModel):
+    """DeleteAlarmPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeletePolicyGroupRequest(AbstractModel):
     """DeletePolicyGroup请求参数结构体
 
@@ -735,6 +1460,53 @@ class DescribeAccidentEventListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeAlarmEventsRequest(AbstractModel):
+    """DescribeAlarmEvents请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名，固定值 monitor
+        :type Module: str
+        :param Namespace: 告警策略类型，由 DescribeAllNamespaces 获得，例如 cvm_device
+        :type Namespace: str
+        """
+        self.Module = None
+        self.Namespace = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Namespace = params.get("Namespace")
+
+
+class DescribeAlarmEventsResponse(AbstractModel):
+    """DescribeAlarmEvents返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Events: 告警事件列表
+        :type Events: list of AlarmEvent
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Events = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Events") is not None:
+            self.Events = []
+            for item in params.get("Events"):
+                obj = AlarmEvent()
+                obj._deserialize(item)
+                self.Events.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAlarmHistoriesRequest(AbstractModel):
     """DescribeAlarmHistories请求参数结构体
 
@@ -754,13 +1526,13 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
         :type StartTime: int
         :param EndTime: 结束时间，默认当前时间戳
         :type EndTime: int
-        :param MonitorTypes: 根据监控类型过滤 不选默认查所有类型 "MT_QCE"=云产品监控 "MT_CUSTOM"=自定义监控 "MT_PROME"=prometheus监控
+        :param MonitorTypes: 根据监控类型过滤 不选默认查所有类型 "MT_QCE"=云产品监控 "
         :type MonitorTypes: list of str
         :param AlarmObject: 根据告警对象过滤 字符串模糊搜索
         :type AlarmObject: str
         :param AlarmStatus: 根据告警状态过滤 ALARM=未恢复 OK=已恢复 NO_CONF=已失效 NO_DATA=数据不足，不选默认查所有
         :type AlarmStatus: list of str
-        :param ProjectIds: 根据项目ID过滤，-1=“-“项目 0=默认项目
+        :param ProjectIds: 根据项目ID过滤，-1=无项目 0=默认项目
         :type ProjectIds: list of int
         :param InstanceGroupIds: 根据实例组ID过滤
         :type InstanceGroupIds: list of int
@@ -855,6 +1627,375 @@ class DescribeAlarmHistoriesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeAlarmMetricsRequest(AbstractModel):
+    """DescribeAlarmMetrics请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 固定值，为"monitor"
+        :type Module: str
+        :param MonitorType: 监控类型过滤 "MT_QCE"=云产品监控
+        :type MonitorType: str
+        :param Namespace: 告警策略类型，由 DescribeAllNamespaces 获得，例如 cvm_device
+        :type Namespace: str
+        """
+        self.Module = None
+        self.MonitorType = None
+        self.Namespace = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.MonitorType = params.get("MonitorType")
+        self.Namespace = params.get("Namespace")
+
+
+class DescribeAlarmMetricsResponse(AbstractModel):
+    """DescribeAlarmMetrics返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Metrics: 告警指标列表
+        :type Metrics: list of Metric
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Metrics = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Metrics") is not None:
+            self.Metrics = []
+            for item in params.get("Metrics"):
+                obj = Metric()
+                obj._deserialize(item)
+                self.Metrics.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAlarmNoticeCallbacksRequest(AbstractModel):
+    """DescribeAlarmNoticeCallbacks请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名，这里填“monitor”
+        :type Module: str
+        """
+        self.Module = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+
+
+class DescribeAlarmNoticeCallbacksResponse(AbstractModel):
+    """DescribeAlarmNoticeCallbacks返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param URLNotices: 告警回调通知
+注意：此字段可能返回 null，表示取不到有效值。
+        :type URLNotices: list of URLNotice
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.URLNotices = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("URLNotices") is not None:
+            self.URLNotices = []
+            for item in params.get("URLNotices"):
+                obj = URLNotice()
+                obj._deserialize(item)
+                self.URLNotices.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAlarmNoticeRequest(AbstractModel):
+    """DescribeAlarmNotice请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名，这里填“monitor”
+        :type Module: str
+        :param NoticeId: 告警通知模板 id
+        :type NoticeId: str
+        """
+        self.Module = None
+        self.NoticeId = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.NoticeId = params.get("NoticeId")
+
+
+class DescribeAlarmNoticeResponse(AbstractModel):
+    """DescribeAlarmNotice返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Notice: 告警通知模板详细信息
+        :type Notice: :class:`tencentcloud.monitor.v20180724.models.AlarmNotice`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Notice = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Notice") is not None:
+            self.Notice = AlarmNotice()
+            self.Notice._deserialize(params.get("Notice"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAlarmNoticesRequest(AbstractModel):
+    """DescribeAlarmNotices请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名，这里填“monitor”
+        :type Module: str
+        :param PageNumber: 页码 最小为1
+        :type PageNumber: int
+        :param PageSize: 分页大小 1～200
+        :type PageSize: int
+        :param Order: 按更新时间排序方式 ASC=正序 DESC=倒序
+        :type Order: str
+        :param OwnerUid: 主账号 uid 用于创建预设通知
+        :type OwnerUid: int
+        :param Name: 告警通知模板名称 用来模糊搜索
+        :type Name: str
+        :param ReceiverType: 根据接收人过滤告警通知模板需要选定通知用户类型 USER=用户 GROUP=用户组 传空=不按接收人过滤
+        :type ReceiverType: str
+        :param UserIds: 接收对象列表
+        :type UserIds: list of int
+        :param GroupIds: 接收组列表
+        :type GroupIds: list of int
+        """
+        self.Module = None
+        self.PageNumber = None
+        self.PageSize = None
+        self.Order = None
+        self.OwnerUid = None
+        self.Name = None
+        self.ReceiverType = None
+        self.UserIds = None
+        self.GroupIds = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.PageNumber = params.get("PageNumber")
+        self.PageSize = params.get("PageSize")
+        self.Order = params.get("Order")
+        self.OwnerUid = params.get("OwnerUid")
+        self.Name = params.get("Name")
+        self.ReceiverType = params.get("ReceiverType")
+        self.UserIds = params.get("UserIds")
+        self.GroupIds = params.get("GroupIds")
+
+
+class DescribeAlarmNoticesResponse(AbstractModel):
+    """DescribeAlarmNotices返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 告警通知模板总数
+        :type TotalCount: int
+        :param Notices: 告警通知模板列表
+        :type Notices: list of AlarmNotice
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Notices = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Notices") is not None:
+            self.Notices = []
+            for item in params.get("Notices"):
+                obj = AlarmNotice()
+                obj._deserialize(item)
+                self.Notices.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAlarmPoliciesRequest(AbstractModel):
+    """DescribeAlarmPolicies请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 固定值，为"monitor"
+        :type Module: str
+        :param PageNumber: 页数，从 1 开始计数，默认 1
+        :type PageNumber: int
+        :param PageSize: 每页的数量，取值1~100，默认20
+        :type PageSize: int
+        :param PolicyName: 按策略名称模糊搜索
+        :type PolicyName: str
+        :param MonitorTypes: 根据监控类型过滤 不选默认查所有类型 "MT_QCE"=云产品监控
+        :type MonitorTypes: list of str
+        :param Namespaces: 根据命名空间过滤
+        :type Namespaces: list of str
+        :param Dimensions: 告警对象列表
+        :type Dimensions: str
+        :param ReceiverUids: 根据接收人搜索
+        :type ReceiverUids: list of int
+        :param ReceiverGroups: 根据接收组搜索
+        :type ReceiverGroups: list of int
+        :param PolicyType: 根据默认策略筛选 不传展示全部策略 DEFAULT=展示默认策略 NOT_DEFAULT=展示非默认策略
+        :type PolicyType: list of str
+        :param Field: 排序字段
+        :type Field: str
+        :param Order: 排序顺序：升序：ASC  降序：DESC
+        :type Order: str
+        :param ProjectIds: 项目id数组
+        :type ProjectIds: list of int
+        :param NoticeIds: 告警通知id列表
+        :type NoticeIds: list of str
+        :param RuleTypes: 根据触发条件筛选 不传展示全部策略 STATIC=展示静态阈值策略 DYNAMIC=展示动态阈值策略
+        :type RuleTypes: list of str
+        :param Enable: 启停，1：启用   0：停止
+        :type Enable: list of int
+        """
+        self.Module = None
+        self.PageNumber = None
+        self.PageSize = None
+        self.PolicyName = None
+        self.MonitorTypes = None
+        self.Namespaces = None
+        self.Dimensions = None
+        self.ReceiverUids = None
+        self.ReceiverGroups = None
+        self.PolicyType = None
+        self.Field = None
+        self.Order = None
+        self.ProjectIds = None
+        self.NoticeIds = None
+        self.RuleTypes = None
+        self.Enable = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.PageNumber = params.get("PageNumber")
+        self.PageSize = params.get("PageSize")
+        self.PolicyName = params.get("PolicyName")
+        self.MonitorTypes = params.get("MonitorTypes")
+        self.Namespaces = params.get("Namespaces")
+        self.Dimensions = params.get("Dimensions")
+        self.ReceiverUids = params.get("ReceiverUids")
+        self.ReceiverGroups = params.get("ReceiverGroups")
+        self.PolicyType = params.get("PolicyType")
+        self.Field = params.get("Field")
+        self.Order = params.get("Order")
+        self.ProjectIds = params.get("ProjectIds")
+        self.NoticeIds = params.get("NoticeIds")
+        self.RuleTypes = params.get("RuleTypes")
+        self.Enable = params.get("Enable")
+
+
+class DescribeAlarmPoliciesResponse(AbstractModel):
+    """DescribeAlarmPolicies返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 策略总数
+        :type TotalCount: int
+        :param Policies: 策略数组
+        :type Policies: list of AlarmPolicy
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Policies = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Policies") is not None:
+            self.Policies = []
+            for item in params.get("Policies"):
+                obj = AlarmPolicy()
+                obj._deserialize(item)
+                self.Policies.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAlarmPolicyRequest(AbstractModel):
+    """DescribeAlarmPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 固定值，为"monitor"
+        :type Module: str
+        :param PolicyId: 告警策略ID
+        :type PolicyId: str
+        """
+        self.Module = None
+        self.PolicyId = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.PolicyId = params.get("PolicyId")
+
+
+class DescribeAlarmPolicyResponse(AbstractModel):
+    """DescribeAlarmPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Policy: 策略详情
+        :type Policy: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicy`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Policy = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Policy") is not None:
+            self.Policy = AlarmPolicy()
+            self.Policy._deserialize(params.get("Policy"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAllNamespacesRequest(AbstractModel):
     """DescribeAllNamespaces请求参数结构体
 
@@ -866,7 +2007,7 @@ class DescribeAllNamespacesRequest(AbstractModel):
         :type SceneType: str
         :param Module: 固定值，为"monitor"
         :type Module: str
-        :param MonitorTypes: 根据监控类型过滤 不填默认查所有类型 "MT_QCE"=云产品监控 "MT_CUSTOM"=自定义监控
+        :param MonitorTypes: 根据监控类型过滤 不填默认查所有类型 "MT_QCE"=云产品监控
         :type MonitorTypes: list of str
         :param Ids: 根据namespace的Id过滤 不填默认查询所有
         :type Ids: list of str
@@ -891,15 +2032,21 @@ class DescribeAllNamespacesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param QceNamespaces: 云产品的名字空间
+        :param QceNamespaces: 云产品的告警策略类型，已废弃
         :type QceNamespaces: :class:`tencentcloud.monitor.v20180724.models.CommonNamespace`
-        :param CustomNamespaces: 自定义监控的命名空间
+        :param CustomNamespaces: 其他告警策略类型，已废弃
         :type CustomNamespaces: :class:`tencentcloud.monitor.v20180724.models.CommonNamespace`
+        :param QceNamespacesNew: 云产品的告警策略类型
+        :type QceNamespacesNew: list of CommonNamespace
+        :param CustomNamespacesNew: 其他告警策略类型，暂不支持
+        :type CustomNamespacesNew: list of CommonNamespace
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.QceNamespaces = None
         self.CustomNamespaces = None
+        self.QceNamespacesNew = None
+        self.CustomNamespacesNew = None
         self.RequestId = None
 
 
@@ -910,6 +2057,18 @@ class DescribeAllNamespacesResponse(AbstractModel):
         if params.get("CustomNamespaces") is not None:
             self.CustomNamespaces = CommonNamespace()
             self.CustomNamespaces._deserialize(params.get("CustomNamespaces"))
+        if params.get("QceNamespacesNew") is not None:
+            self.QceNamespacesNew = []
+            for item in params.get("QceNamespacesNew"):
+                obj = CommonNamespace()
+                obj._deserialize(item)
+                self.QceNamespacesNew.append(obj)
+        if params.get("CustomNamespacesNew") is not None:
+            self.CustomNamespacesNew = []
+            for item in params.get("CustomNamespacesNew"):
+                obj = CommonNamespace()
+                obj._deserialize(item)
+                self.CustomNamespacesNew.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1371,7 +2530,7 @@ class DescribeMonitorTypesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Module: 固定值，为"monitor"
+        :param Module: 模块名，固定值 monitor
         :type Module: str
         """
         self.Module = None
@@ -1388,7 +2547,7 @@ class DescribeMonitorTypesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param MonitorTypes: 监控类型
+        :param MonitorTypes: 监控类型，云产品监控为 MT_QCE
         :type MonitorTypes: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3095,6 +4254,79 @@ class InstanceGroups(AbstractModel):
         self.Name = params.get("Name")
 
 
+class Metric(AbstractModel):
+    """指标，可用于设置告警、查询数据
+
+    """
+
+    def __init__(self):
+        """
+        :param Namespace: 告警策略类型
+        :type Namespace: str
+        :param MetricName: 指标名
+        :type MetricName: str
+        :param Description: 指标展示名
+        :type Description: str
+        :param Min: 最小值
+        :type Min: float
+        :param Max: 最大值
+        :type Max: float
+        :param Dimensions: 维度列表
+        :type Dimensions: list of str
+        :param Unit: 单位
+        :type Unit: str
+        :param MetricConfig: 指标配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricConfig: :class:`tencentcloud.monitor.v20180724.models.MetricConfig`
+        """
+        self.Namespace = None
+        self.MetricName = None
+        self.Description = None
+        self.Min = None
+        self.Max = None
+        self.Dimensions = None
+        self.Unit = None
+        self.MetricConfig = None
+
+
+    def _deserialize(self, params):
+        self.Namespace = params.get("Namespace")
+        self.MetricName = params.get("MetricName")
+        self.Description = params.get("Description")
+        self.Min = params.get("Min")
+        self.Max = params.get("Max")
+        self.Dimensions = params.get("Dimensions")
+        self.Unit = params.get("Unit")
+        if params.get("MetricConfig") is not None:
+            self.MetricConfig = MetricConfig()
+            self.MetricConfig._deserialize(params.get("MetricConfig"))
+
+
+class MetricConfig(AbstractModel):
+    """指标配置
+
+    """
+
+    def __init__(self):
+        """
+        :param Operator: 允许使用的运算符
+        :type Operator: list of str
+        :param Period: 允许配置的数据周期，以秒为单位
+        :type Period: list of int
+        :param ContinuePeriod: 允许配置的持续周期个数
+        :type ContinuePeriod: list of int
+        """
+        self.Operator = None
+        self.Period = None
+        self.ContinuePeriod = None
+
+
+    def _deserialize(self, params):
+        self.Operator = params.get("Operator")
+        self.Period = params.get("Period")
+        self.ContinuePeriod = params.get("ContinuePeriod")
+
+
 class MetricDatum(AbstractModel):
     """指标名称和值的封装
 
@@ -3192,6 +4424,301 @@ class MetricSet(AbstractModel):
                 obj = DimensionsDesc()
                 obj._deserialize(item)
                 self.Dimensions.append(obj)
+
+
+class ModifyAlarmNoticeRequest(AbstractModel):
+    """ModifyAlarmNotice请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名，这里填“monitor”
+        :type Module: str
+        :param Name: 告警通知规则名称 60字符以内
+        :type Name: str
+        :param NoticeType: 通知类型 ALARM=未恢复通知 OK=已恢复通知 ALL=都通知
+        :type NoticeType: str
+        :param NoticeLanguage: 通知语言 zh-CN=中文 en-US=英文
+        :type NoticeLanguage: str
+        :param NoticeId: 告警通知模板 ID
+        :type NoticeId: str
+        :param UserNotices: 用户通知 最多5个
+        :type UserNotices: list of UserNotice
+        :param URLNotices: 回调通知 最多3个
+        :type URLNotices: list of URLNotice
+        """
+        self.Module = None
+        self.Name = None
+        self.NoticeType = None
+        self.NoticeLanguage = None
+        self.NoticeId = None
+        self.UserNotices = None
+        self.URLNotices = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Name = params.get("Name")
+        self.NoticeType = params.get("NoticeType")
+        self.NoticeLanguage = params.get("NoticeLanguage")
+        self.NoticeId = params.get("NoticeId")
+        if params.get("UserNotices") is not None:
+            self.UserNotices = []
+            for item in params.get("UserNotices"):
+                obj = UserNotice()
+                obj._deserialize(item)
+                self.UserNotices.append(obj)
+        if params.get("URLNotices") is not None:
+            self.URLNotices = []
+            for item in params.get("URLNotices"):
+                obj = URLNotice()
+                obj._deserialize(item)
+                self.URLNotices.append(obj)
+
+
+class ModifyAlarmNoticeResponse(AbstractModel):
+    """ModifyAlarmNotice返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyAlarmPolicyConditionRequest(AbstractModel):
+    """ModifyAlarmPolicyCondition请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名，固定值 monitor
+        :type Module: str
+        :param PolicyId: 告警策略 ID
+        :type PolicyId: str
+        :param Condition: 指标触发条件
+        :type Condition: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyCondition`
+        :param EventCondition: 事件触发条件
+        :type EventCondition: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyEventCondition`
+        """
+        self.Module = None
+        self.PolicyId = None
+        self.Condition = None
+        self.EventCondition = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.PolicyId = params.get("PolicyId")
+        if params.get("Condition") is not None:
+            self.Condition = AlarmPolicyCondition()
+            self.Condition._deserialize(params.get("Condition"))
+        if params.get("EventCondition") is not None:
+            self.EventCondition = AlarmPolicyEventCondition()
+            self.EventCondition._deserialize(params.get("EventCondition"))
+
+
+class ModifyAlarmPolicyConditionResponse(AbstractModel):
+    """ModifyAlarmPolicyCondition返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyAlarmPolicyInfoRequest(AbstractModel):
+    """ModifyAlarmPolicyInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名，这里填“monitor”
+        :type Module: str
+        :param PolicyId: 告警策略 ID
+        :type PolicyId: str
+        :param Key: 要修改的字段 NAME=策略名称 REMARK=策略备注
+        :type Key: str
+        :param Value: 修改后的值
+        :type Value: str
+        """
+        self.Module = None
+        self.PolicyId = None
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.PolicyId = params.get("PolicyId")
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+
+
+class ModifyAlarmPolicyInfoResponse(AbstractModel):
+    """ModifyAlarmPolicyInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyAlarmPolicyNoticeRequest(AbstractModel):
+    """ModifyAlarmPolicyNotice请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名，这里填“monitor”
+        :type Module: str
+        :param PolicyId: 告警策略 ID
+        :type PolicyId: str
+        :param NoticeIds: 告警通知模板 ID 列表
+        :type NoticeIds: list of str
+        """
+        self.Module = None
+        self.PolicyId = None
+        self.NoticeIds = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.PolicyId = params.get("PolicyId")
+        self.NoticeIds = params.get("NoticeIds")
+
+
+class ModifyAlarmPolicyNoticeResponse(AbstractModel):
+    """ModifyAlarmPolicyNotice返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyAlarmPolicyStatusRequest(AbstractModel):
+    """ModifyAlarmPolicyStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名，固定值 monitor
+        :type Module: str
+        :param PolicyId: 告警策略 ID
+        :type PolicyId: str
+        :param Enable: 启停状态 0=停用 1=启用
+        :type Enable: int
+        """
+        self.Module = None
+        self.PolicyId = None
+        self.Enable = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.PolicyId = params.get("PolicyId")
+        self.Enable = params.get("Enable")
+
+
+class ModifyAlarmPolicyStatusResponse(AbstractModel):
+    """ModifyAlarmPolicyStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyAlarmPolicyTasksRequest(AbstractModel):
+    """ModifyAlarmPolicyTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名，这里填“monitor”
+        :type Module: str
+        :param PolicyId: 告警策略 ID
+        :type PolicyId: str
+        :param TriggerTasks: 告警策略触发任务列表，空数据代表解绑
+        :type TriggerTasks: list of AlarmPolicyTriggerTask
+        """
+        self.Module = None
+        self.PolicyId = None
+        self.TriggerTasks = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.PolicyId = params.get("PolicyId")
+        if params.get("TriggerTasks") is not None:
+            self.TriggerTasks = []
+            for item in params.get("TriggerTasks"):
+                obj = AlarmPolicyTriggerTask()
+                obj._deserialize(item)
+                self.TriggerTasks.append(obj)
+
+
+class ModifyAlarmPolicyTasksResponse(AbstractModel):
+    """ModifyAlarmPolicyTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class ModifyAlarmReceiversRequest(AbstractModel):
@@ -3669,6 +5196,72 @@ class ServiceDiscoveryItem(AbstractModel):
         self.Yaml = params.get("Yaml")
 
 
+class SetDefaultAlarmPolicyRequest(AbstractModel):
+    """SetDefaultAlarmPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名，固定值 monitor
+        :type Module: str
+        :param PolicyId: 告警策略 ID
+        :type PolicyId: str
+        """
+        self.Module = None
+        self.PolicyId = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.PolicyId = params.get("PolicyId")
+
+
+class SetDefaultAlarmPolicyResponse(AbstractModel):
+    """SetDefaultAlarmPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class URLNotice(AbstractModel):
+    """云监控告警通知模板 - 回调通知详情
+
+    """
+
+    def __init__(self):
+        """
+        :param URL: 回调 url（限长256字符）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type URL: str
+        :param IsValid: 是否通过验证 0=否 1=是
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsValid: int
+        :param ValidationCode: 验证码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValidationCode: str
+        """
+        self.URL = None
+        self.IsValid = None
+        self.ValidationCode = None
+
+
+    def _deserialize(self, params):
+        self.URL = params.get("URL")
+        self.IsValid = params.get("IsValid")
+        self.ValidationCode = params.get("ValidationCode")
+
+
 class UnBindingAllPolicyObjectRequest(AbstractModel):
     """UnBindingAllPolicyObject请求参数结构体
 
@@ -3810,3 +5403,71 @@ class UpdateServiceDiscoveryResponse(AbstractModel):
             self.ServiceDiscovery = ServiceDiscoveryItem()
             self.ServiceDiscovery._deserialize(params.get("ServiceDiscovery"))
         self.RequestId = params.get("RequestId")
+
+
+class UserNotice(AbstractModel):
+    """云监控告警通知模板 - 用户通知详情
+
+    """
+
+    def __init__(self):
+        """
+        :param ReceiverType: 接收者类型 USER=用户 GROUP=用户组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReceiverType: str
+        :param StartTime: 通知开始时间 00:00:00 开始的秒数（取值范围0-86399）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: int
+        :param EndTime: 通知结束时间 00:00:00 开始的秒数（取值范围0-86399）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: int
+        :param NoticeWay: 通知渠道列表 EMAIL=邮件 SMS=短信 CALL=电话 WECHAT=微信
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NoticeWay: list of str
+        :param UserIds: 用户 uid 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserIds: list of int
+        :param GroupIds: 用户组 group id 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupIds: list of int
+        :param PhoneOrder: 电话轮询列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PhoneOrder: list of int
+        :param PhoneCircleTimes: 电话轮询次数 （取值范围1-5）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PhoneCircleTimes: int
+        :param PhoneInnerInterval: 单次轮询内拨打间隔 秒数 （取值范围60-900）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PhoneInnerInterval: int
+        :param PhoneCircleInterval: 两次轮询间隔 秒数（取值范围60-900）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PhoneCircleInterval: int
+        :param NeedPhoneArriveNotice: 是否需要触达通知 0=否 1=是
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NeedPhoneArriveNotice: int
+        """
+        self.ReceiverType = None
+        self.StartTime = None
+        self.EndTime = None
+        self.NoticeWay = None
+        self.UserIds = None
+        self.GroupIds = None
+        self.PhoneOrder = None
+        self.PhoneCircleTimes = None
+        self.PhoneInnerInterval = None
+        self.PhoneCircleInterval = None
+        self.NeedPhoneArriveNotice = None
+
+
+    def _deserialize(self, params):
+        self.ReceiverType = params.get("ReceiverType")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.NoticeWay = params.get("NoticeWay")
+        self.UserIds = params.get("UserIds")
+        self.GroupIds = params.get("GroupIds")
+        self.PhoneOrder = params.get("PhoneOrder")
+        self.PhoneCircleTimes = params.get("PhoneCircleTimes")
+        self.PhoneInnerInterval = params.get("PhoneInnerInterval")
+        self.PhoneCircleInterval = params.get("PhoneCircleInterval")
+        self.NeedPhoneArriveNotice = params.get("NeedPhoneArriveNotice")

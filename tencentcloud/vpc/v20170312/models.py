@@ -2354,9 +2354,9 @@ class CreateDefaultVpcRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Zone: 子网所在的可用区ID，不指定将随机选择可用区
+        :param Zone: 子网所在的可用区，该参数可通过[DescribeZones](https://cloud.tencent.com/document/product/213/15707)接口获取，例如ap-guangzhou-1，不指定时将随机选择可用区。
         :type Zone: str
-        :param Force: 是否强制返回默认VPC
+        :param Force: 是否强制返回默认VPC。
         :type Force: bool
         """
         self.Zone = None
@@ -3526,15 +3526,15 @@ class CreateVpcRequest(AbstractModel):
         """
         :param VpcName: vpc名称，最大长度不能超过60个字节。
         :type VpcName: str
-        :param CidrBlock: vpc的cidr，只能为10.0.0.0/16，172.16.0.0/16，192.168.0.0/16这三个内网网段内。
+        :param CidrBlock: vpc的cidr，仅能在10.0.0.0/16，172.16.0.0/16，192.168.0.0/16这三个内网网段内。
         :type CidrBlock: str
         :param EnableMulticast: 是否开启组播。true: 开启, false: 不开启。
         :type EnableMulticast: str
-        :param DnsServers: DNS地址，最多支持4个
+        :param DnsServers: DNS地址，最多支持4个。
         :type DnsServers: list of str
-        :param DomainName: 域名
+        :param DomainName: DHCP使用的域名。
         :type DomainName: str
-        :param Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+        :param Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
         :type Tags: list of Tag
         """
         self.VpcName = None
@@ -3675,7 +3675,7 @@ class CreateVpnGatewayRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param VpcId: VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+        :param VpcId: VPC实例ID。可通过[DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)接口返回值中的VpcId获取。
         :type VpcId: str
         :param VpnGatewayName: VPN网关名称，最大长度不能超过60个字节。
         :type VpnGatewayName: str
@@ -6757,7 +6757,7 @@ class DescribeIpGeolocationDatabaseUrlRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Type: ip地址库协议类型，目前支持"ipv4"和"ipv6"。
+        :param Type: IP地理位置库协议类型，目前支持"ipv4"和"ipv6"。
         :type Type: str
         """
         self.Type = None
@@ -6774,7 +6774,7 @@ class DescribeIpGeolocationDatabaseUrlResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DownLoadUrl: IP地址库下载链接地址
+        :param DownLoadUrl: IP地理位置库下载链接地址。
         :type DownLoadUrl: str
         :param ExpiredAt: 链接到期时间。按照`ISO8601`标准表示，并且使用`UTC`时间。
         :type ExpiredAt: str
@@ -8892,9 +8892,9 @@ class DisableRoutesRequest(AbstractModel):
         """
         :param RouteTableId: 路由表唯一ID。
         :type RouteTableId: str
-        :param RouteIds: 路由策略ID。不能和RouteItemIds同时使用。
+        :param RouteIds: 路由策略ID。不能和RouteItemIds同时使用，但至少输入一个。该参数取值可通过查询路由列表（[DescribeRouteTables](https://cloud.tencent.com/document/product/215/15763)）获取。
         :type RouteIds: list of int non-negative
-        :param RouteItemIds: 路由策略唯一ID。不能和RouteIds同时使用。
+        :param RouteItemIds: 路由策略唯一ID。不能和RouteIds同时使用，但至少输入一个。该参数取值可通过查询路由列表（[DescribeRouteTables](https://cloud.tencent.com/document/product/215/15763)）获取。
         :type RouteItemIds: list of str
         """
         self.RouteTableId = None
@@ -9293,9 +9293,9 @@ class EnableRoutesRequest(AbstractModel):
         """
         :param RouteTableId: 路由表唯一ID。
         :type RouteTableId: str
-        :param RouteIds: 路由策略ID。不能和RouteItemIds同时使用。
+        :param RouteIds: 路由策略ID。不能和RouteItemIds同时使用，但至少输入一个。该参数取值可通过查询路由列表（[DescribeRouteTables](https://cloud.tencent.com/document/product/215/15763)）获取。
         :type RouteIds: list of int non-negative
-        :param RouteItemIds: 路由策略唯一ID。不能和RouteIds同时使用。
+        :param RouteItemIds: 路由策略唯一ID。不能和RouteIds同时使用，但至少输入一个。该参数取值可通过查询路由列表（[DescribeRouteTables](https://cloud.tencent.com/document/product/215/15763)）获取。
         :type RouteItemIds: list of str
         """
         self.RouteTableId = None
@@ -10638,9 +10638,9 @@ class ModifyAssistantCidrRequest(AbstractModel):
         """
         :param VpcId: `VPC`实例`ID`。形如：`vpc-6v2ht8q5`
         :type VpcId: str
-        :param NewCidrBlocks: 待添加的负载CIDR。CIDR数组，格式如["10.0.0.0/16", "172.16.0.0/16"]
+        :param NewCidrBlocks: 待添加的负载CIDR。CIDR数组，格式如["10.0.0.0/16", "172.16.0.0/16"]，入参NewCidrBlocks和OldCidrBlocks至少需要其一。
         :type NewCidrBlocks: list of str
-        :param OldCidrBlocks: 待删除的负载CIDR。CIDR数组，格式如["10.0.0.0/16", "172.16.0.0/16"]
+        :param OldCidrBlocks: 待删除的负载CIDR。CIDR数组，格式如["10.0.0.0/16", "172.16.0.0/16"]，入参NewCidrBlocks和OldCidrBlocks至少需要其一。
         :type OldCidrBlocks: list of str
         """
         self.VpcId = None
@@ -13818,7 +13818,7 @@ class SecurityGroupAssociationStatistics(AbstractModel):
         :type SecurityGroupId: str
         :param CVM: 云服务器实例数。
         :type CVM: int
-        :param CDB: 数据库实例数。
+        :param CDB: MySQL数据库实例数。
         :type CDB: int
         :param ENI: 弹性网卡实例数。
         :type ENI: int
