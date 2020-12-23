@@ -1107,6 +1107,34 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCallbackRecordsList(self, request):
+        """回调事件查询
+
+        :param request: Request instance for DescribeCallbackRecordsList.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeCallbackRecordsListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeCallbackRecordsListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCallbackRecordsList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCallbackRecordsListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeConcurrentRecordStreamNum(self, request):
         """查询并发录制路数，对慢直播和普通直播适用。
 

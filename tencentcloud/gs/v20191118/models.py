@@ -37,7 +37,7 @@ class CreateSessionRequest(AbstractModel):
         :type Resolution: str
         :param ImageUrl: 背景图url，格式为png或jpeg，宽高1920*1080
         :type ImageUrl: str
-        :param SetNo: 【将废弃】资源池编号，比如1表示正式，2表示测试
+        :param SetNo: 【废弃】资源池编号
         :type SetNo: int
         :param Bitrate: 单位Mbps，固定码率，后端不动态调整(MaxBitrate和MinBitrate将无效)
         :type Bitrate: int
@@ -102,19 +102,23 @@ class CreateSessionResponse(AbstractModel):
         """
         :param ServerSession: 服务端session信息，返回给JSSDK
         :type ServerSession: str
-        :param RoleNumber: 【多人游戏】角色编号；比如Player1、Player2、Viewer1
+        :param RoleNumber: 【多人游戏】角色编号；比如1、2、3、4
         :type RoleNumber: str
+        :param Role: 【多人云游】角色；Player表示玩家；Viewer表示观察者
+        :type Role: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.ServerSession = None
         self.RoleNumber = None
+        self.Role = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.ServerSession = params.get("ServerSession")
         self.RoleNumber = params.get("RoleNumber")
+        self.Role = params.get("Role")
         self.RequestId = params.get("RequestId")
 
 
@@ -127,7 +131,7 @@ class StopGameRequest(AbstractModel):
         """
         :param UserId: 游戏用户ID
         :type UserId: str
-        :param HostUserId: 用于多人游戏，游戏主机用户ID
+        :param HostUserId: 【多人游戏】游戏主机用户ID
         :type HostUserId: str
         """
         self.UserId = None
@@ -167,9 +171,9 @@ class TrylockWorkerRequest(AbstractModel):
         :type UserId: str
         :param GameId: 游戏ID
         :type GameId: str
-        :param GameRegion: 游戏区域，ap-guangzhou、ap-shanghai、ap-beijing等
+        :param GameRegion: 游戏区域，ap-guangzhou、ap-shanghai、ap-beijing等，如果不为空，优先按照该区域进行调度分配机器
         :type GameRegion: str
-        :param SetNo: 资源池编号，1表示共用，2表示测试
+        :param SetNo: 【废弃】资源池编号
         :type SetNo: int
         :param UserIp: 游戏用户IP，用于就近调度，例如125.127.178.228
         :type UserIp: str

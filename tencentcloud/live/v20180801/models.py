@@ -424,6 +424,47 @@ class CallBackTemplateInfo(AbstractModel):
         self.CallbackKey = params.get("CallbackKey")
 
 
+class CallbackEventInfo(AbstractModel):
+    """回调事件信息
+
+    """
+
+    def __init__(self):
+        """
+        :param EventTime: 事件时间
+        :type EventTime: str
+        :param EventType: 事件类型
+        :type EventType: int
+        :param Request: 回调请求
+        :type Request: str
+        :param Response: 回调响应
+        :type Response: str
+        :param ResponseTime: 客户接口响应时间
+        :type ResponseTime: str
+        :param ResultCode: 回调结果
+        :type ResultCode: int
+        :param StreamId: 流名称
+        :type StreamId: str
+        """
+        self.EventTime = None
+        self.EventType = None
+        self.Request = None
+        self.Response = None
+        self.ResponseTime = None
+        self.ResultCode = None
+        self.StreamId = None
+
+
+    def _deserialize(self, params):
+        self.EventTime = params.get("EventTime")
+        self.EventType = params.get("EventType")
+        self.Request = params.get("Request")
+        self.Response = params.get("Response")
+        self.ResponseTime = params.get("ResponseTime")
+        self.ResultCode = params.get("ResultCode")
+        self.StreamId = params.get("StreamId")
+
+
 class CancelCommonMixStreamRequest(AbstractModel):
     """CancelCommonMixStream请求参数结构体
 
@@ -2643,6 +2684,92 @@ class DescribeBillBandwidthAndFluxListResponse(AbstractModel):
                 obj = BillDataInfo()
                 obj._deserialize(item)
                 self.DataInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCallbackRecordsListRequest(AbstractModel):
+    """DescribeCallbackRecordsList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 起始时间点，格式为yyyy-mm-dd HH:MM:SS。
+        :type StartTime: str
+        :param EndTime: 结束时间点，格式为yyyy-mm-dd HH:MM:SS，起始和结束时间跨度不支持超过1天。
+        :type EndTime: str
+        :param StreamName: 流名称，精确匹配。
+        :type StreamName: str
+        :param PageNum: 页码
+        :type PageNum: int
+        :param PageSize: 每页条数
+        :type PageSize: int
+        :param EventType: 事件类型。
+0: "断流",
+1: "推流",
+100: "录制"
+        :type EventType: int
+        :param ResultCode: 回调结果。0为成功，其他为失败
+        :type ResultCode: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.StreamName = None
+        self.PageNum = None
+        self.PageSize = None
+        self.EventType = None
+        self.ResultCode = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.StreamName = params.get("StreamName")
+        self.PageNum = params.get("PageNum")
+        self.PageSize = params.get("PageSize")
+        self.EventType = params.get("EventType")
+        self.ResultCode = params.get("ResultCode")
+
+
+class DescribeCallbackRecordsListResponse(AbstractModel):
+    """DescribeCallbackRecordsList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DataInfoList: 回调事件列表
+        :type DataInfoList: list of CallbackEventInfo
+        :param PageNum: 页码
+        :type PageNum: int
+        :param PageSize: 每页条数
+        :type PageSize: int
+        :param TotalNum: 总条数
+        :type TotalNum: int
+        :param TotalPage: 总页数
+        :type TotalPage: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DataInfoList = None
+        self.PageNum = None
+        self.PageSize = None
+        self.TotalNum = None
+        self.TotalPage = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DataInfoList") is not None:
+            self.DataInfoList = []
+            for item in params.get("DataInfoList"):
+                obj = CallbackEventInfo()
+                obj._deserialize(item)
+                self.DataInfoList.append(obj)
+        self.PageNum = params.get("PageNum")
+        self.PageSize = params.get("PageSize")
+        self.TotalNum = params.get("TotalNum")
+        self.TotalPage = params.get("TotalPage")
         self.RequestId = params.get("RequestId")
 
 

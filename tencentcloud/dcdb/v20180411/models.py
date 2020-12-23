@@ -2033,6 +2033,81 @@ class DescribeSqlLogsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeUserTasksRequest(AbstractModel):
+    """DescribeUserTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Statuses: 任务的状态列表。0-任务启动中；1-任务运行中；2-任务成功；3-任务失败
+        :type Statuses: list of int
+        :param InstanceIds: 实例ID列表
+        :type InstanceIds: list of str
+        :param FlowTypes: 任务类型列表，当前支持的任务类型有：0-回档任务；1-创建实例任务；2-扩容任务；3-迁移任务；4-删除实例任务；5-重启任务
+        :type FlowTypes: list of int
+        :param StartTime: 任务的创建时间
+        :type StartTime: str
+        :param EndTime: 任务的结束时间
+        :type EndTime: str
+        :param UTaskIds: 任务ID的数组
+        :type UTaskIds: list of int
+        :param Limit: 每次最多返回多少条任务，取值范围为(0,100]，不传的话默认值为20
+        :type Limit: int
+        :param Offset: 返回任务默认是按照创建时间降序排列，从偏移值Offset处开始返回
+        :type Offset: int
+        """
+        self.Statuses = None
+        self.InstanceIds = None
+        self.FlowTypes = None
+        self.StartTime = None
+        self.EndTime = None
+        self.UTaskIds = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.Statuses = params.get("Statuses")
+        self.InstanceIds = params.get("InstanceIds")
+        self.FlowTypes = params.get("FlowTypes")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.UTaskIds = params.get("UTaskIds")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class DescribeUserTasksResponse(AbstractModel):
+    """DescribeUserTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 任务总数
+        :type TotalCount: int
+        :param FlowSet: 任务列表
+        :type FlowSet: list of UserTaskInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.FlowSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("FlowSet") is not None:
+            self.FlowSet = []
+            for item in params.get("FlowSet"):
+                obj = UserTaskInfo()
+                obj._deserialize(item)
+                self.FlowSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class ExpandShardConfig(AbstractModel):
     """升级实例 -- 扩容分片类型
 
@@ -3098,6 +3173,63 @@ class UpgradeDCDBInstanceResponse(AbstractModel):
     def _deserialize(self, params):
         self.DealName = params.get("DealName")
         self.RequestId = params.get("RequestId")
+
+
+class UserTaskInfo(AbstractModel):
+    """用户任务信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 任务ID
+        :type Id: int
+        :param AppId: 用户账户ID
+        :type AppId: int
+        :param Status: 任务状态，0-任务初始化中；1-任务运行中；2-任务成功；3-任务失败
+        :type Status: int
+        :param UserTaskType: 任务类型，0-实例回档；1-实例创建；2-实例扩容；3-实例迁移；4-实例删除；5-实例重启
+        :type UserTaskType: int
+        :param CreateTime: 任务创建时间
+        :type CreateTime: str
+        :param EndTime: 任务结束时间
+        :type EndTime: str
+        :param ErrMsg: 任务错误信息
+        :type ErrMsg: str
+        :param InputData: 客户端参数
+        :type InputData: str
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param InstanceName: 实例名称
+        :type InstanceName: str
+        :param RegionId: 地域ID
+        :type RegionId: int
+        """
+        self.Id = None
+        self.AppId = None
+        self.Status = None
+        self.UserTaskType = None
+        self.CreateTime = None
+        self.EndTime = None
+        self.ErrMsg = None
+        self.InputData = None
+        self.InstanceId = None
+        self.InstanceName = None
+        self.RegionId = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.AppId = params.get("AppId")
+        self.Status = params.get("Status")
+        self.UserTaskType = params.get("UserTaskType")
+        self.CreateTime = params.get("CreateTime")
+        self.EndTime = params.get("EndTime")
+        self.ErrMsg = params.get("ErrMsg")
+        self.InputData = params.get("InputData")
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.RegionId = params.get("RegionId")
 
 
 class ZonesInfo(AbstractModel):

@@ -5227,6 +5227,8 @@ class DescribeGroupsRequest(AbstractModel):
         :type ClusterId: str
         :param GroupResourceTypeList: 部署组资源类型列表
         :type GroupResourceTypeList: list of str
+        :param Status: 部署组状态过滤字段
+        :type Status: str
         """
         self.SearchWord = None
         self.ApplicationId = None
@@ -5237,6 +5239,7 @@ class DescribeGroupsRequest(AbstractModel):
         self.NamespaceId = None
         self.ClusterId = None
         self.GroupResourceTypeList = None
+        self.Status = None
 
 
     def _deserialize(self, params):
@@ -5249,6 +5252,7 @@ class DescribeGroupsRequest(AbstractModel):
         self.NamespaceId = params.get("NamespaceId")
         self.ClusterId = params.get("ClusterId")
         self.GroupResourceTypeList = params.get("GroupResourceTypeList")
+        self.Status = params.get("Status")
 
 
 class DescribeGroupsResponse(AbstractModel):

@@ -48,9 +48,14 @@ class AssumeRoleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param RoleArn: 角色的资源描述。例如：qcs::cam::uin/12345678:role/4611686018427397919、qcs::cam::uin/12345678:roleName/testRoleName
+        :param RoleArn: 角色的资源描述，可在[访问管理](https://console.cloud.tencent.com/cam/role)，点击角色名获取。
+普通角色：
+qcs::cam::uin/12345678:role/4611686018427397919、qcs::cam::uin/12345678:roleName/testRoleName
+服务角色：
+qcs::cam::uin/12345678:role/tencentcloudServiceRole/4611686018427397920、qcs::cam::uin/12345678:role/tencentcloudServiceRoleName/testServiceRoleName
         :type RoleArn: str
-        :param RoleSessionName: 临时会话名称，由用户自定义名称
+        :param RoleSessionName: 临时会话名称，由用户自定义名称。
+长度在2到128之间，可包含大小写字符，数字以及特殊字符：=,.@_-。 正则为：[\w+=,.@_-]*
         :type RoleSessionName: str
         :param DurationSeconds: 指定临时证书的有效期，单位：秒，默认 7200 秒，最长可设定有效期为 43200 秒
         :type DurationSeconds: int
@@ -60,11 +65,15 @@ class AssumeRoleRequest(AbstractModel):
 2、策略语法参照[ CAM 策略语法](https://cloud.tencent.com/document/product/598/10603)。
 3、策略中不能包含 principal 元素。
         :type Policy: str
+        :param ExternalId: 角色外部ID，可在[访问管理](https://console.cloud.tencent.com/cam/role)，点击角色名获取。
+长度在2到128之间，可包含大小写字符，数字以及特殊字符：=,.@:/-。 正则为：[\w+=,.@:\/-]*
+        :type ExternalId: str
         """
         self.RoleArn = None
         self.RoleSessionName = None
         self.DurationSeconds = None
         self.Policy = None
+        self.ExternalId = None
 
 
     def _deserialize(self, params):
@@ -72,6 +81,7 @@ class AssumeRoleRequest(AbstractModel):
         self.RoleSessionName = params.get("RoleSessionName")
         self.DurationSeconds = params.get("DurationSeconds")
         self.Policy = params.get("Policy")
+        self.ExternalId = params.get("ExternalId")
 
 
 class AssumeRoleResponse(AbstractModel):

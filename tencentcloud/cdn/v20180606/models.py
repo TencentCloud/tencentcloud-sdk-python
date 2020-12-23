@@ -3710,6 +3710,70 @@ class DescribeReportDataResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeScdnConfigRequest(AbstractModel):
+    """DescribeScdnConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Domain: 域名
+        :type Domain: str
+        """
+        self.Domain = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+
+
+class DescribeScdnConfigResponse(AbstractModel):
+    """DescribeScdnConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Acl: 自定义防护策略配置
+        :type Acl: :class:`tencentcloud.cdn.v20180606.models.ScdnAclConfig`
+        :param Waf: Web 攻击防护（WAF）配置
+        :type Waf: :class:`tencentcloud.cdn.v20180606.models.ScdnWafConfig`
+        :param CC: CC 防护配置
+        :type CC: :class:`tencentcloud.cdn.v20180606.models.ScdnConfig`
+        :param Ddos: DDOS 防护配置
+        :type Ddos: :class:`tencentcloud.cdn.v20180606.models.ScdnDdosConfig`
+        :param Bot: BOT 防护配置
+        :type Bot: :class:`tencentcloud.cdn.v20180606.models.ScdnBotConfig`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Acl = None
+        self.Waf = None
+        self.CC = None
+        self.Ddos = None
+        self.Bot = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Acl") is not None:
+            self.Acl = ScdnAclConfig()
+            self.Acl._deserialize(params.get("Acl"))
+        if params.get("Waf") is not None:
+            self.Waf = ScdnWafConfig()
+            self.Waf._deserialize(params.get("Waf"))
+        if params.get("CC") is not None:
+            self.CC = ScdnConfig()
+            self.CC._deserialize(params.get("CC"))
+        if params.get("Ddos") is not None:
+            self.Ddos = ScdnDdosConfig()
+            self.Ddos._deserialize(params.get("Ddos"))
+        if params.get("Bot") is not None:
+            self.Bot = ScdnBotConfig()
+            self.Bot._deserialize(params.get("Bot"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeScdnTopDataRequest(AbstractModel):
     """DescribeScdnTopData请求参数结构体
 
@@ -5732,6 +5796,59 @@ class ListDiagnoseReportResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ListScdnDomainsRequest(AbstractModel):
+    """ListScdnDomains请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: 分页起始地址
+        :type Offset: int
+        :param Limit: 列表分页记录条数，最大1000
+        :type Limit: int
+        """
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class ListScdnDomainsResponse(AbstractModel):
+    """ListScdnDomains返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainList: 域名列表信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DomainList: list of ScdnDomain
+        :param TotalCount: 域名的总条数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DomainList = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DomainList") is not None:
+            self.DomainList = []
+            for item in params.get("DomainList"):
+                obj = ScdnDomain()
+                obj._deserialize(item)
+                self.DomainList.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class ListScdnLogTasksRequest(AbstractModel):
     """ListScdnLogTasks请求参数结构体
 
@@ -7690,6 +7807,55 @@ class ScdnDdosConfig(AbstractModel):
         self.Switch = params.get("Switch")
 
 
+class ScdnDomain(AbstractModel):
+    """聚合了SCDN域名的基本信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Domain: 域名
+        :type Domain: str
+        :param Status: 当前状态，取值online | offline | process
+        :type Status: str
+        :param Waf: Waf 状态默认为‘/’，取值 close | intercept | observe
+        :type Waf: str
+        :param Acl: Acl 状态默认为‘/’，取值 close | open
+        :type Acl: str
+        :param CC: CC 状态默认为‘/’，取值 close | open
+        :type CC: str
+        :param Ddos: Ddos 状态默认为‘/’，取值 close | open
+        :type Ddos: str
+        :param ProjectId: 项目ID
+        :type ProjectId: str
+        :param AclRuleNumbers: Acl 规则数
+        :type AclRuleNumbers: int
+        :param Bot: Bot 状态默认为‘/’，取值 close | open
+        :type Bot: str
+        """
+        self.Domain = None
+        self.Status = None
+        self.Waf = None
+        self.Acl = None
+        self.CC = None
+        self.Ddos = None
+        self.ProjectId = None
+        self.AclRuleNumbers = None
+        self.Bot = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.Status = params.get("Status")
+        self.Waf = params.get("Waf")
+        self.Acl = params.get("Acl")
+        self.CC = params.get("CC")
+        self.Ddos = params.get("Ddos")
+        self.ProjectId = params.get("ProjectId")
+        self.AclRuleNumbers = params.get("AclRuleNumbers")
+        self.Bot = params.get("Bot")
+
+
 class ScdnErrorPage(AbstractModel):
     """acl的错误页面
 
@@ -8349,6 +8515,44 @@ class StartCdnDomainResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class StartScdnDomainRequest(AbstractModel):
+    """StartScdnDomain请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Domain: 域名
+        :type Domain: str
+        """
+        self.Domain = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+
+
+class StartScdnDomainResponse(AbstractModel):
+    """StartScdnDomain返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 开启结果，Success表示成功
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class StatusCodeCache(AbstractModel):
     """状态码缓存过期配置，默认情况下会对 404 状态码缓存 10 秒
 
@@ -8433,6 +8637,44 @@ class StopCdnDomainResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class StopScdnDomainRequest(AbstractModel):
+    """StopScdnDomain请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Domain: 域名
+        :type Domain: str
+        """
+        self.Domain = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+
+
+class StopScdnDomainResponse(AbstractModel):
+    """StopScdnDomain返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 关闭结果，Success表示成功
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
 
 

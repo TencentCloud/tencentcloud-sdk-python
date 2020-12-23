@@ -891,6 +891,34 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeScdnConfig(self, request):
+        """DescribeScdnConfig 用于查询指定 SCDN 加速域名的安全相关配置
+
+        :param request: Request instance for DescribeScdnConfig.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeScdnConfigRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeScdnConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeScdnConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeScdnConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeScdnTopData(self, request):
         """获取SCDN的Top数据
 
@@ -1228,6 +1256,34 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ListScdnDomains(self, request):
+        """ListScdnDomains 用于查询 SCDN 安全加速域名列表，及域名基本配置信息
+
+        :param request: Request instance for ListScdnDomains.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.ListScdnDomainsRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.ListScdnDomainsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListScdnDomains", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListScdnDomainsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ListScdnLogTasks(self, request):
         """ListScdnLogTasks 用于查询SCDN日志下载任务列表,以及展示下载任务基本信息
 
@@ -1463,6 +1519,34 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def StartScdnDomain(self, request):
+        """StartScdnDomain 用于开启域名的安全防护配置
+
+        :param request: Request instance for StartScdnDomain.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.StartScdnDomainRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.StartScdnDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StartScdnDomain", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StartScdnDomainResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def StopCdnDomain(self, request):
         """StopCdnDomain 用于停止域名的加速服务。
         注意：停止加速服务后，访问至加速节点的请求将会直接返回 404。为避免对您的业务造成影响，请在停止加速服务前将解析切走。
@@ -1478,6 +1562,34 @@ class CdnClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopCdnDomainResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StopScdnDomain(self, request):
+        """StopScdnDomain 用于关闭域名的安全防护配置
+
+        :param request: Request instance for StopScdnDomain.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.StopScdnDomainRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.StopScdnDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StopScdnDomain", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StopScdnDomainResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
