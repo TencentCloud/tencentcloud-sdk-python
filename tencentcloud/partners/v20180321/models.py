@@ -297,6 +297,9 @@ class AgentDealElem(AbstractModel):
         :param OverdueTime: 订单过期时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type OverdueTime: str
+        :param ProductInfo: 产品详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductInfo: list of ProductInfoElem
         """
         self.DealId = None
         self.DealName = None
@@ -323,6 +326,7 @@ class AgentDealElem(AbstractModel):
         self.PayerMode = None
         self.ActivityId = None
         self.OverdueTime = None
+        self.ProductInfo = None
 
 
     def _deserialize(self, params):
@@ -353,6 +357,12 @@ class AgentDealElem(AbstractModel):
         self.PayerMode = params.get("PayerMode")
         self.ActivityId = params.get("ActivityId")
         self.OverdueTime = params.get("OverdueTime")
+        if params.get("ProductInfo") is not None:
+            self.ProductInfo = []
+            for item in params.get("ProductInfo"):
+                obj = ProductInfoElem()
+                obj._deserialize(item)
+                self.ProductInfo.append(obj)
 
 
 class AgentPayDealsRequest(AbstractModel):
@@ -1285,6 +1295,27 @@ class ModifyClientRemarkResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class ProductInfoElem(AbstractModel):
+    """产品详情
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 产品属性
+        :type Name: str
+        :param Value: 产品属性值
+        :type Value: str
+        """
+        self.Name = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
 
 
 class RebateInfoElem(AbstractModel):

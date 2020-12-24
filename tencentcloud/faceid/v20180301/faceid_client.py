@@ -390,6 +390,62 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetRealNameAuthResult(self, request):
+        """获取微信实名认证结果
+
+        :param request: Request instance for GetRealNameAuthResult.
+        :type request: :class:`tencentcloud.faceid.v20180301.models.GetRealNameAuthResultRequest`
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.GetRealNameAuthResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetRealNameAuthResult", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetRealNameAuthResultResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetRealNameAuthToken(self, request):
+        """微信实名认证授权
+
+        :param request: Request instance for GetRealNameAuthToken.
+        :type request: :class:`tencentcloud.faceid.v20180301.models.GetRealNameAuthTokenRequest`
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.GetRealNameAuthTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetRealNameAuthToken", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetRealNameAuthTokenResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def IdCardOCRVerification(self, request):
         """本接口用于校验姓名和身份证号的真实性和一致性，您可以通过输入姓名和身份证号或传入身份证人像面照片提供所需验证信息。
 

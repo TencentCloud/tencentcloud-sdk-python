@@ -877,6 +877,8 @@ class BindSubDomainRequest(AbstractModel):
         :type CertificateId: str
         :param PathMappingSet: 自定义域名路径映射，最多输入三个Environment，并且只能分别取值“test”、 ”prepub“、”release“。
         :type PathMappingSet: list of PathMapping
+        :param IsForcedHttps: 是否将HTTP请求强制跳转 HTTPS，默认为false。参数为 true时，API网关会将所有使用该自定义域名的 HTTP 协议的请求重定向至 HTTPS 协议进行转发。
+        :type IsForcedHttps: bool
         """
         self.ServiceId = None
         self.SubDomain = None
@@ -886,6 +888,7 @@ class BindSubDomainRequest(AbstractModel):
         self.NetSubDomain = None
         self.CertificateId = None
         self.PathMappingSet = None
+        self.IsForcedHttps = None
 
 
     def _deserialize(self, params):
@@ -902,6 +905,7 @@ class BindSubDomainRequest(AbstractModel):
                 obj = PathMapping()
                 obj._deserialize(item)
                 self.PathMappingSet.append(obj)
+        self.IsForcedHttps = params.get("IsForcedHttps")
 
 
 class BindSubDomainResponse(AbstractModel):
@@ -911,13 +915,18 @@ class BindSubDomainResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param Result: 绑定操作是否成功。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.Result = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
 
 
@@ -4351,6 +4360,8 @@ class ModifySubDomainRequest(AbstractModel):
         :type PathMappingSet: list of PathMapping
         :param NetType: 网络类型 （'INNER' 或 'OUTER'）
         :type NetType: str
+        :param IsForcedHttps: 是否将HTTP请求强制跳转 HTTPS，默认为false。参数为 true时，API网关会将所有使用该自定义域名的 HTTP 协议的请求重定向至 HTTPS 协议进行转发。
+        :type IsForcedHttps: bool
         """
         self.ServiceId = None
         self.SubDomain = None
@@ -4359,6 +4370,7 @@ class ModifySubDomainRequest(AbstractModel):
         self.Protocol = None
         self.PathMappingSet = None
         self.NetType = None
+        self.IsForcedHttps = None
 
 
     def _deserialize(self, params):
@@ -4374,6 +4386,7 @@ class ModifySubDomainRequest(AbstractModel):
                 obj._deserialize(item)
                 self.PathMappingSet.append(obj)
         self.NetType = params.get("NetType")
+        self.IsForcedHttps = params.get("IsForcedHttps")
 
 
 class ModifySubDomainResponse(AbstractModel):

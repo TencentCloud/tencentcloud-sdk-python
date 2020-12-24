@@ -1206,6 +1206,102 @@ class GetLiveCodeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GetRealNameAuthResultRequest(AbstractModel):
+    """GetRealNameAuthResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AuthToken: 实名认证凭证
+        :type AuthToken: str
+        """
+        self.AuthToken = None
+
+
+    def _deserialize(self, params):
+        self.AuthToken = params.get("AuthToken")
+
+
+class GetRealNameAuthResultResponse(AbstractModel):
+    """GetRealNameAuthResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ResultType: 认证结果码，收费情况如下：
+
+收费码：
+0:  姓名和身份证号一致
+-1: 姓名和身份证号不一致
+-2: 姓名和微信实名姓名不一致
+
+不收费码：
+-3: 微信号未实名
+        :type ResultType: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ResultType = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ResultType = params.get("ResultType")
+        self.RequestId = params.get("RequestId")
+
+
+class GetRealNameAuthTokenRequest(AbstractModel):
+    """GetRealNameAuthToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 姓名
+        :type Name: str
+        :param IDCard: 身份证号
+        :type IDCard: str
+        :param CallbackURL: 回调地址。实名认证完成后，将会重定向到这个地址通知认证发起方
+        :type CallbackURL: str
+        """
+        self.Name = None
+        self.IDCard = None
+        self.CallbackURL = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.IDCard = params.get("IDCard")
+        self.CallbackURL = params.get("CallbackURL")
+
+
+class GetRealNameAuthTokenResponse(AbstractModel):
+    """GetRealNameAuthToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AuthToken: 查询实名认证结果的唯一凭证
+        :type AuthToken: str
+        :param RedirectURL: 实名认证授权地址，认证发起方需要重定向到这个地址获取认证用户的授权
+        :type RedirectURL: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AuthToken = None
+        self.RedirectURL = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AuthToken = params.get("AuthToken")
+        self.RedirectURL = params.get("RedirectURL")
+        self.RequestId = params.get("RequestId")
+
+
 class IdCardOCRVerificationRequest(AbstractModel):
     """IdCardOCRVerification请求参数结构体
 

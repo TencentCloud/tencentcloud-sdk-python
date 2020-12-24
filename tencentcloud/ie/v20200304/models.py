@@ -61,11 +61,14 @@ class AudioInfo(AbstractModel):
         :type Channel: int
         :param SampleRate: 采样率，单位：Hz。可选项：32000，44100,48000
         :type SampleRate: int
+        :param Denoise: 音频降噪信息
+        :type Denoise: :class:`tencentcloud.ie.v20200304.models.Denoise`
         """
         self.Bitrate = None
         self.Codec = None
         self.Channel = None
         self.SampleRate = None
+        self.Denoise = None
 
 
     def _deserialize(self, params):
@@ -73,6 +76,9 @@ class AudioInfo(AbstractModel):
         self.Codec = params.get("Codec")
         self.Channel = params.get("Channel")
         self.SampleRate = params.get("SampleRate")
+        if params.get("Denoise") is not None:
+            self.Denoise = Denoise()
+            self.Denoise._deserialize(params.get("Denoise"))
 
 
 class AudioInfoResultItem(AbstractModel):
@@ -642,6 +648,27 @@ class DarInfo(AbstractModel):
 
     def _deserialize(self, params):
         self.FillMode = params.get("FillMode")
+
+
+class Denoise(AbstractModel):
+    """音频降噪
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 音频降噪强度，可选项：
+1. weak
+2.normal，
+3.strong
+默认为weak
+        :type Type: str
+        """
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
 
 
 class Denoising(AbstractModel):

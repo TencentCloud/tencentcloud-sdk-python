@@ -7029,11 +7029,18 @@ global：预热全球节点
         :type Area: str
         :param Layer: 填写"middle"或不填充时预热至中间层节点
         :type Layer: str
+        :param ParseM3U8: 是否递归解析m3u8文件中的ts分片预热
+注意事项：
+1. 该功能要求m3u8索引文件能直接请求获取
+2. 当前只支持递归解析一级索引和子索引中的ts分片，递归深度不超过3层
+3. 解析获取的ts分片会正常累加每日预热用量，当用量超出配额时，会静默处理，不再执行预热
+        :type ParseM3U8: bool
         """
         self.Urls = None
         self.UserAgent = None
         self.Area = None
         self.Layer = None
+        self.ParseM3U8 = None
 
 
     def _deserialize(self, params):
@@ -7041,6 +7048,7 @@ global：预热全球节点
         self.UserAgent = params.get("UserAgent")
         self.Area = params.get("Area")
         self.Layer = params.get("Layer")
+        self.ParseM3U8 = params.get("ParseM3U8")
 
 
 class PushUrlsCacheResponse(AbstractModel):

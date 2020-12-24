@@ -3938,6 +3938,9 @@ class VersionData(AbstractModel):
         :param Contents: 版本发布的描述信息，需要国际化，可以为空
 注意：此字段可能返回 null，表示取不到有效值。
         :type Contents: :class:`tencentcloud.iotvideo.v20191126.models.Contents`
+        :param AliveInMonthCnt: 月活设备数，当月第一天开始有上线的设备数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AliveInMonthCnt: int
         """
         self.ProductId = None
         self.OtaVersion = None
@@ -3956,6 +3959,7 @@ class VersionData(AbstractModel):
         self.ModifyTimes = None
         self.Remark = None
         self.Contents = None
+        self.AliveInMonthCnt = None
 
 
     def _deserialize(self, params):
@@ -3978,3 +3982,4 @@ class VersionData(AbstractModel):
         if params.get("Contents") is not None:
             self.Contents = Contents()
             self.Contents._deserialize(params.get("Contents"))
+        self.AliveInMonthCnt = params.get("AliveInMonthCnt")

@@ -1441,7 +1441,7 @@ class InquiryPriceCreateDisksRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DiskType: 云硬盘类型。取值范围：<br><li>普通云硬盘：CLOUD_BASIC<br><li>高性能云硬盘：CLOUD_PREMIUM<br><li>SSD云硬盘：CLOUD_SSD。
+        :param DiskType: 硬盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘<br><li>CLOUD_HSSD：表示增强型SSD云硬盘<br><li>CLOUD_TSSD：表示极速型SSD云硬盘。
         :type DiskType: str
         :param DiskSize: 云硬盘大小，单位为GB。云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
         :type DiskSize: int
@@ -1453,6 +1453,8 @@ class InquiryPriceCreateDisksRequest(AbstractModel):
         :type DiskCount: int
         :param ProjectId: 云盘所属项目ID。
         :type ProjectId: int
+        :param ThroughputPerformance: 额外购买的云硬盘性能值，单位MB/s。<br>目前仅支持增强型SSD云硬盘（CLOUD_HSSD）和极速型SSD云硬盘（CLOUD_TSSD）
+        :type ThroughputPerformance: int
         """
         self.DiskType = None
         self.DiskSize = None
@@ -1460,6 +1462,7 @@ class InquiryPriceCreateDisksRequest(AbstractModel):
         self.DiskChargePrepaid = None
         self.DiskCount = None
         self.ProjectId = None
+        self.ThroughputPerformance = None
 
 
     def _deserialize(self, params):
@@ -1471,6 +1474,7 @@ class InquiryPriceCreateDisksRequest(AbstractModel):
             self.DiskChargePrepaid._deserialize(params.get("DiskChargePrepaid"))
         self.DiskCount = params.get("DiskCount")
         self.ProjectId = params.get("ProjectId")
+        self.ThroughputPerformance = params.get("ThroughputPerformance")
 
 
 class InquiryPriceCreateDisksResponse(AbstractModel):
@@ -1980,12 +1984,28 @@ class Price(AbstractModel):
         :param UnitPriceDiscount: 后付费云盘折扣单价，单位：元。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UnitPriceDiscount: float
+        :param OriginalPriceHigh: 高精度预付费云盘预支费用的原价, 单位：元	。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginalPriceHigh: str
+        :param DiscountPriceHigh: 高精度预付费云盘预支费用的折扣价, 单位：元
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiscountPriceHigh: str
+        :param UnitPriceHigh: 高精度后付费云盘原单价, 单位：元
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnitPriceHigh: str
+        :param UnitPriceDiscountHigh: 高精度后付费云盘折扣单价, 单位：元
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnitPriceDiscountHigh: str
         """
         self.OriginalPrice = None
         self.DiscountPrice = None
         self.UnitPrice = None
         self.ChargeUnit = None
         self.UnitPriceDiscount = None
+        self.OriginalPriceHigh = None
+        self.DiscountPriceHigh = None
+        self.UnitPriceHigh = None
+        self.UnitPriceDiscountHigh = None
 
 
     def _deserialize(self, params):
@@ -1994,6 +2014,10 @@ class Price(AbstractModel):
         self.UnitPrice = params.get("UnitPrice")
         self.ChargeUnit = params.get("ChargeUnit")
         self.UnitPriceDiscount = params.get("UnitPriceDiscount")
+        self.OriginalPriceHigh = params.get("OriginalPriceHigh")
+        self.DiscountPriceHigh = params.get("DiscountPriceHigh")
+        self.UnitPriceHigh = params.get("UnitPriceHigh")
+        self.UnitPriceDiscountHigh = params.get("UnitPriceDiscountHigh")
 
 
 class RenewDiskRequest(AbstractModel):
