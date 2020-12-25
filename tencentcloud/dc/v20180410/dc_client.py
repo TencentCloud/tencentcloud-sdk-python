@@ -54,6 +54,34 @@ class DcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ApplyInternetAddress(self, request):
+        """申请互联网CIDR地址
+
+        :param request: Request instance for ApplyInternetAddress.
+        :type request: :class:`tencentcloud.dc.v20180410.models.ApplyInternetAddressRequest`
+        :rtype: :class:`tencentcloud.dc.v20180410.models.ApplyInternetAddressResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ApplyInternetAddress", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ApplyInternetAddressResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateDirectConnect(self, request):
         """申请物理专线接入。
         调用该接口时，请注意：
@@ -282,6 +310,90 @@ class DcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeInternetAddress(self, request):
+        """获取用户互联网公网地址信息
+
+        :param request: Request instance for DescribeInternetAddress.
+        :type request: :class:`tencentcloud.dc.v20180410.models.DescribeInternetAddressRequest`
+        :rtype: :class:`tencentcloud.dc.v20180410.models.DescribeInternetAddressResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInternetAddress", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInternetAddressResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeInternetAddressQuota(self, request):
+        """获取用户互联网公网地址配额
+
+        :param request: Request instance for DescribeInternetAddressQuota.
+        :type request: :class:`tencentcloud.dc.v20180410.models.DescribeInternetAddressQuotaRequest`
+        :rtype: :class:`tencentcloud.dc.v20180410.models.DescribeInternetAddressQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInternetAddressQuota", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInternetAddressQuotaResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeInternetAddressStatistics(self, request):
+        """获取用户互联网公网地址分配统计信息
+
+        :param request: Request instance for DescribeInternetAddressStatistics.
+        :type request: :class:`tencentcloud.dc.v20180410.models.DescribeInternetAddressStatisticsRequest`
+        :rtype: :class:`tencentcloud.dc.v20180410.models.DescribeInternetAddressStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInternetAddressStatistics", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInternetAddressStatisticsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribePublicDirectConnectTunnelRoutes(self, request):
         """本接口（DescribePublicDirectConnectTunnelRoutes）用于查询互联网通道路由列表
 
@@ -296,6 +408,62 @@ class DcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePublicDirectConnectTunnelRoutesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DisableInternetAddress(self, request):
+        """停用用户申请的公网互联网地址
+
+        :param request: Request instance for DisableInternetAddress.
+        :type request: :class:`tencentcloud.dc.v20180410.models.DisableInternetAddressRequest`
+        :rtype: :class:`tencentcloud.dc.v20180410.models.DisableInternetAddressResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DisableInternetAddress", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DisableInternetAddressResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def EnableInternetAddress(self, request):
+        """启用已停用的互联网公网地址
+
+        :param request: Request instance for EnableInternetAddress.
+        :type request: :class:`tencentcloud.dc.v20180410.models.EnableInternetAddressRequest`
+        :rtype: :class:`tencentcloud.dc.v20180410.models.EnableInternetAddressResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("EnableInternetAddress", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EnableInternetAddressResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -408,6 +576,34 @@ class DcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RejectDirectConnectTunnelResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ReleaseInternetAddress(self, request):
+        """释放已申请的互联网地址
+
+        :param request: Request instance for ReleaseInternetAddress.
+        :type request: :class:`tencentcloud.dc.v20180410.models.ReleaseInternetAddressRequest`
+        :rtype: :class:`tencentcloud.dc.v20180410.models.ReleaseInternetAddressResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ReleaseInternetAddress", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ReleaseInternetAddressResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

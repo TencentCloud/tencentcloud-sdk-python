@@ -601,6 +601,34 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def InquirePriceModifyDiskExtraPerformance(self, request):
+        """本接口（InquirePriceModifyDiskExtraPerformance）用于调整云硬盘额外性能询价。
+
+        :param request: Request instance for InquirePriceModifyDiskExtraPerformance.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.InquirePriceModifyDiskExtraPerformanceRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.InquirePriceModifyDiskExtraPerformanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("InquirePriceModifyDiskExtraPerformance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.InquirePriceModifyDiskExtraPerformanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def InquiryPriceCreateDisks(self, request):
         """本接口（InquiryPriceCreateDisks）用于创建云硬盘询价。
 
@@ -740,6 +768,36 @@ class CbsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDiskAttributesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyDiskExtraPerformance(self, request):
+        """本接口（ModifyDiskExtraPerformance）用于调整云硬盘额外的性能。
+
+        * 目前仅支持极速型SSD云硬盘（CLOUD_TSSD）和高性能SSD云硬盘(CLOUD_HSSD)。
+
+        :param request: Request instance for ModifyDiskExtraPerformance.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.ModifyDiskExtraPerformanceRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.ModifyDiskExtraPerformanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDiskExtraPerformance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDiskExtraPerformanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

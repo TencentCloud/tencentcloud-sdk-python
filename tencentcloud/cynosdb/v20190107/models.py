@@ -282,14 +282,12 @@ class CreateClustersRequest(AbstractModel):
         :param DbVersion: 数据库版本，取值范围: 
 <li> MYSQL可选值：5.7 </li>
         :type DbVersion: str
-        :param Cpu: Cpu核数
-        :type Cpu: int
-        :param Memory: 内存
-        :type Memory: int
-        :param StorageLimit: 存储上限，单位GB
-        :type StorageLimit: int
         :param ProjectId: 所属项目ID
         :type ProjectId: int
+        :param Cpu: 普通实例Cpu核数
+        :type Cpu: int
+        :param Memory: 普通实例内存
+        :type Memory: int
         :param Storage: 存储
         :type Storage: int
         :param ClusterName: 集群名称
@@ -315,6 +313,8 @@ timeRollback，时间点回档
         :type ExpectTime: str
         :param ExpectTimeThresh: 时间点回档，指定时间允许范围
         :type ExpectTimeThresh: int
+        :param StorageLimit: 普通实例存储上限，单位GB
+        :type StorageLimit: int
         :param InstanceCount: 实例数量
         :type InstanceCount: int
         :param TimeSpan: 包年包月购买时长
@@ -336,15 +336,19 @@ timeRollback，时间点回档
 <li>NORMAL</li>
 <li>SERVERLESS</li>
         :type DbMode: str
-        :param MinCpu: 当DbMode为SEVERLESS时的cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+        :param MinCpu: 当DbMode为SEVERLESS时必填
+cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回
         :type MinCpu: float
-        :param MaxCpu: 当DbMode为SEVERLESS时的cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+        :param MaxCpu: 当DbMode为SEVERLESS时必填：
+cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
         :type MaxCpu: float
         :param AutoPause: 当DbMode为SEVERLESS时，指定集群是否自动暂停，可选范围
 <li>yes</li>
 <li>no</li>
+默认值:yes
         :type AutoPause: str
-        :param AutoPauseDelay: 当DbMode为SEVERLESS时，指定集群自动暂停的延迟，可选范围[60,INF]
+        :param AutoPauseDelay: 当DbMode为SEVERLESS时，指定集群自动暂停的延迟，单位秒，可选范围[600,691200]
+默认值:600
         :type AutoPauseDelay: int
         """
         self.Zone = None
@@ -352,10 +356,9 @@ timeRollback，时间点回档
         self.SubnetId = None
         self.DbType = None
         self.DbVersion = None
+        self.ProjectId = None
         self.Cpu = None
         self.Memory = None
-        self.StorageLimit = None
-        self.ProjectId = None
         self.Storage = None
         self.ClusterName = None
         self.AdminPassword = None
@@ -367,6 +370,7 @@ timeRollback，时间点回档
         self.OriginalClusterId = None
         self.ExpectTime = None
         self.ExpectTimeThresh = None
+        self.StorageLimit = None
         self.InstanceCount = None
         self.TimeSpan = None
         self.TimeUnit = None
@@ -388,10 +392,9 @@ timeRollback，时间点回档
         self.SubnetId = params.get("SubnetId")
         self.DbType = params.get("DbType")
         self.DbVersion = params.get("DbVersion")
+        self.ProjectId = params.get("ProjectId")
         self.Cpu = params.get("Cpu")
         self.Memory = params.get("Memory")
-        self.StorageLimit = params.get("StorageLimit")
-        self.ProjectId = params.get("ProjectId")
         self.Storage = params.get("Storage")
         self.ClusterName = params.get("ClusterName")
         self.AdminPassword = params.get("AdminPassword")
@@ -403,6 +406,7 @@ timeRollback，时间点回档
         self.OriginalClusterId = params.get("OriginalClusterId")
         self.ExpectTime = params.get("ExpectTime")
         self.ExpectTimeThresh = params.get("ExpectTimeThresh")
+        self.StorageLimit = params.get("StorageLimit")
         self.InstanceCount = params.get("InstanceCount")
         self.TimeSpan = params.get("TimeSpan")
         self.TimeUnit = params.get("TimeUnit")
@@ -436,10 +440,10 @@ class CreateClustersResponse(AbstractModel):
         :param DealNames: 订单号
 注意：此字段可能返回 null，表示取不到有效值。
         :type DealNames: list of str
-        :param ResourceIds: 资源ID列表
+        :param ResourceIds: 资源ID列表（异步发货可能无法返回该字段, 强烈建议使用dealNames字段查询接口DescribeResourcesByDealName获取异步发货的资源ID）
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceIds: list of str
-        :param ClusterIds: 集群ID列表
+        :param ClusterIds: 集群ID列表（异步发货可能不返回该字段, 强烈建议使用dealNames查询接口DescribeResourcesByDealName获取异步发货的集群ID）
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterIds: list of str
         :param BigDealIds: 大订单号

@@ -55,7 +55,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreateAlarmNotice(self, request):
-        """云监控告警创建告警通知模板
+        """创建通知模板
 
         :param request: Request instance for CreateAlarmNotice.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreateAlarmNoticeRequest`
@@ -339,7 +339,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeAlarmHistories(self, request):
-        """告警历史列表
+        """查询告警历史
 
         :param request: Request instance for DescribeAlarmHistories.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmHistoriesRequest`
@@ -395,7 +395,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeAlarmNotice(self, request):
-        """云监控告警获取告警通知模板详情
+        """查询单个通知模板的详情
 
         :param request: Request instance for DescribeAlarmNotice.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmNoticeRequest`
@@ -451,7 +451,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeAlarmNotices(self, request):
-        """云监控告警查询告警通知模板列表
+        """查询通知模板列表
 
         :param request: Request instance for DescribeAlarmNotices.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmNoticesRequest`
@@ -479,7 +479,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeAlarmPolicies(self, request):
-        """告警策略列表
+        """查询告警策略列表
 
         :param request: Request instance for DescribeAlarmPolicies.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmPoliciesRequest`
@@ -507,7 +507,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeAlarmPolicy(self, request):
-        """告警策略详情
+        """获取单个告警策略详情
 
         :param request: Request instance for DescribeAlarmPolicy.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmPolicyRequest`
@@ -535,7 +535,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeAllNamespaces(self, request):
-        """拉取所有名字空间
+        """查询所有名字空间
 
         :param request: Request instance for DescribeAllNamespaces.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAllNamespacesRequest`
@@ -987,7 +987,7 @@ class MonitorClient(AbstractClient):
 
 
     def ModifyAlarmPolicyStatus(self, request):
-        """修改告警策略的启停状态
+        """启停告警策略
 
         :param request: Request instance for ModifyAlarmPolicyStatus.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyAlarmPolicyStatusRequest`

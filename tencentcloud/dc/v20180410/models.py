@@ -92,6 +92,57 @@ class AccessPoint(AbstractModel):
         self.AvailablePortType = params.get("AvailablePortType")
 
 
+class ApplyInternetAddressRequest(AbstractModel):
+    """ApplyInternetAddress请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MaskLen: CIDR地址掩码长度
+        :type MaskLen: int
+        :param AddrType: 0:BGP类型地址
+1：中国电信
+2：中国移动
+3：中国联通
+        :type AddrType: int
+        :param AddrProto: 0：IPv4
+1:IPv6
+        :type AddrProto: int
+        """
+        self.MaskLen = None
+        self.AddrType = None
+        self.AddrProto = None
+
+
+    def _deserialize(self, params):
+        self.MaskLen = params.get("MaskLen")
+        self.AddrType = params.get("AddrType")
+        self.AddrProto = params.get("AddrProto")
+
+
+class ApplyInternetAddressResponse(AbstractModel):
+    """ApplyInternetAddress返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 互联网公网地址ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.RequestId = params.get("RequestId")
+
+
 class BFDInfo(AbstractModel):
     """BFD配置信息
 
@@ -674,6 +725,157 @@ class DescribeDirectConnectsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeInternetAddressQuotaRequest(AbstractModel):
+    """DescribeInternetAddressQuota请求参数结构体
+
+    """
+
+
+class DescribeInternetAddressQuotaResponse(AbstractModel):
+    """DescribeInternetAddressQuota返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Ipv6PrefixLen: IPv6互联网公网允许的最小前缀长度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ipv6PrefixLen: int
+        :param Ipv4BgpQuota: BGP类型IPv4互联网地址配额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ipv4BgpQuota: int
+        :param Ipv4OtherQuota: 非BGP类型IPv4互联网地址配额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ipv4OtherQuota: int
+        :param Ipv4BgpNum: BGP类型IPv4互联网地址已使用数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ipv4BgpNum: int
+        :param Ipv4OtherNum: 非BGP类型互联网地址已使用数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ipv4OtherNum: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Ipv6PrefixLen = None
+        self.Ipv4BgpQuota = None
+        self.Ipv4OtherQuota = None
+        self.Ipv4BgpNum = None
+        self.Ipv4OtherNum = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Ipv6PrefixLen = params.get("Ipv6PrefixLen")
+        self.Ipv4BgpQuota = params.get("Ipv4BgpQuota")
+        self.Ipv4OtherQuota = params.get("Ipv4OtherQuota")
+        self.Ipv4BgpNum = params.get("Ipv4BgpNum")
+        self.Ipv4OtherNum = params.get("Ipv4OtherNum")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInternetAddressRequest(AbstractModel):
+    """DescribeInternetAddress请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: 偏移量，默认为0
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值100
+        :type Limit: int
+        :param Filters: 过滤条件：
+<li>AddrType, 地址类型。0：BGP 1; 1: 电信， 2：移动， 3：联通</li>
+<li>AddrProto地址类型。0：IPv4 1:IPv6</li>
+<li>Status 地址状态。 0：使用中， 1：已停用， 2：已退还</li>
+<li>Subnet 互联网公网地址，数组</li>
+<InstanceIds>互联网公网地址ID，数组</li>
+        :type Filters: list of Filter
+        """
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class DescribeInternetAddressResponse(AbstractModel):
+    """DescribeInternetAddress返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 互联网公网地址数量
+        :type TotalCount: int
+        :param Subnets: 互联网公网地址列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Subnets: list of InternetAddressDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Subnets = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Subnets") is not None:
+            self.Subnets = []
+            for item in params.get("Subnets"):
+                obj = InternetAddressDetail()
+                obj._deserialize(item)
+                self.Subnets.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInternetAddressStatisticsRequest(AbstractModel):
+    """DescribeInternetAddressStatistics请求参数结构体
+
+    """
+
+
+class DescribeInternetAddressStatisticsResponse(AbstractModel):
+    """DescribeInternetAddressStatistics返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 互联网公网地址统计信息数量
+        :type TotalCount: int
+        :param InternetAddressStatistics: 互联网公网地址统计信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InternetAddressStatistics: list of InternetAddressStatistics
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.InternetAddressStatistics = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("InternetAddressStatistics") is not None:
+            self.InternetAddressStatistics = []
+            for item in params.get("InternetAddressStatistics"):
+                obj = InternetAddressStatistics()
+                obj._deserialize(item)
+                self.InternetAddressStatistics.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribePublicDirectConnectTunnelRoutesRequest(AbstractModel):
     """DescribePublicDirectConnectTunnelRoutes请求参数结构体
 
@@ -1143,6 +1345,21 @@ REJECTED:拒绝
         :type NqaInfo: :class:`tencentcloud.dc.v20180410.models.NQAInfo`
         :param BgpStatus: BGP状态
         :type BgpStatus: :class:`tencentcloud.dc.v20180410.models.BGPStatus`
+        :param IPv6Enable: 是否开启IPv6
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IPv6Enable: int
+        :param TencentIPv6Address: 腾讯侧互联IPv6地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TencentIPv6Address: str
+        :param TencentBackupIPv6Address: 腾讯侧备用互联IPv6地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TencentBackupIPv6Address: str
+        :param BgpIPv6Status: BGPv6状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BgpIPv6Status: :class:`tencentcloud.dc.v20180410.models.BGPStatus`
+        :param CustomerIPv6Address: 用户侧互联IPv6地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomerIPv6Address: str
         """
         self.DirectConnectTunnelId = None
         self.DirectConnectId = None
@@ -1177,6 +1394,11 @@ REJECTED:拒绝
         self.BfdInfo = None
         self.NqaInfo = None
         self.BgpStatus = None
+        self.IPv6Enable = None
+        self.TencentIPv6Address = None
+        self.TencentBackupIPv6Address = None
+        self.BgpIPv6Status = None
+        self.CustomerIPv6Address = None
 
 
     def _deserialize(self, params):
@@ -1231,6 +1453,13 @@ REJECTED:拒绝
         if params.get("BgpStatus") is not None:
             self.BgpStatus = BGPStatus()
             self.BgpStatus._deserialize(params.get("BgpStatus"))
+        self.IPv6Enable = params.get("IPv6Enable")
+        self.TencentIPv6Address = params.get("TencentIPv6Address")
+        self.TencentBackupIPv6Address = params.get("TencentBackupIPv6Address")
+        if params.get("BgpIPv6Status") is not None:
+            self.BgpIPv6Status = BGPStatus()
+            self.BgpIPv6Status._deserialize(params.get("BgpIPv6Status"))
+        self.CustomerIPv6Address = params.get("CustomerIPv6Address")
 
 
 class DirectConnectTunnelRoute(AbstractModel):
@@ -1270,6 +1499,74 @@ class DirectConnectTunnelRoute(AbstractModel):
         self.NextHop = params.get("NextHop")
 
 
+class DisableInternetAddressRequest(AbstractModel):
+    """DisableInternetAddress请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 公网互联网地址ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class DisableInternetAddressResponse(AbstractModel):
+    """DisableInternetAddress返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class EnableInternetAddressRequest(AbstractModel):
+    """EnableInternetAddress请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 互联网公网地址ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class EnableInternetAddressResponse(AbstractModel):
+    """EnableInternetAddress返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class Filter(AbstractModel):
     """用于条件过滤查询
 
@@ -1289,6 +1586,106 @@ class Filter(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Values = params.get("Values")
+
+
+class InternetAddressDetail(AbstractModel):
+    """互联网地址详细信息
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 互联网地址ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param Subnet: 互联网网络地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Subnet: str
+        :param MaskLen: 网络地址掩码长度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaskLen: int
+        :param AddrType: 0:BGP
+1:电信
+2:移动
+3:联通
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AddrType: int
+        :param Status: 0:使用中
+1:已停用
+2:已退还
+        :type Status: int
+        :param ApplyTime: 申请时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplyTime: str
+        :param StopTime: 停用时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StopTime: str
+        :param ReleaseTime: 退还时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReleaseTime: str
+        :param Region: 地域信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param AppId: 用户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: int
+        :param AddrProto: 0:IPv4 1:IPv6
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AddrProto: int
+        :param ReserveTime: 释放状态的IP地址保留的天数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReserveTime: int
+        """
+        self.InstanceId = None
+        self.Subnet = None
+        self.MaskLen = None
+        self.AddrType = None
+        self.Status = None
+        self.ApplyTime = None
+        self.StopTime = None
+        self.ReleaseTime = None
+        self.Region = None
+        self.AppId = None
+        self.AddrProto = None
+        self.ReserveTime = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Subnet = params.get("Subnet")
+        self.MaskLen = params.get("MaskLen")
+        self.AddrType = params.get("AddrType")
+        self.Status = params.get("Status")
+        self.ApplyTime = params.get("ApplyTime")
+        self.StopTime = params.get("StopTime")
+        self.ReleaseTime = params.get("ReleaseTime")
+        self.Region = params.get("Region")
+        self.AppId = params.get("AppId")
+        self.AddrProto = params.get("AddrProto")
+        self.ReserveTime = params.get("ReserveTime")
+
+
+class InternetAddressStatistics(AbstractModel):
+    """互联网公网地址统计
+
+    """
+
+    def __init__(self):
+        """
+        :param Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param SubnetNum: 互联网公网地址数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetNum: int
+        """
+        self.Region = None
+        self.SubnetNum = None
+
+
+    def _deserialize(self, params):
+        self.Region = params.get("Region")
+        self.SubnetNum = params.get("SubnetNum")
 
 
 class ModifyDirectConnectAttributeRequest(AbstractModel):
@@ -1471,6 +1868,9 @@ class ModifyDirectConnectTunnelExtraRequest(AbstractModel):
         :type BfdInfo: :class:`tencentcloud.dc.v20180410.models.BFDInfo`
         :param NqaInfo: NQA配置信息
         :type NqaInfo: :class:`tencentcloud.dc.v20180410.models.NQAInfo`
+        :param IPv6Enable: 0：停用IPv6
+1: 启用IPv6
+        :type IPv6Enable: int
         """
         self.DirectConnectTunnelId = None
         self.Vlan = None
@@ -1485,6 +1885,7 @@ class ModifyDirectConnectTunnelExtraRequest(AbstractModel):
         self.NqaEnable = None
         self.BfdInfo = None
         self.NqaInfo = None
+        self.IPv6Enable = None
 
 
     def _deserialize(self, params):
@@ -1509,6 +1910,7 @@ class ModifyDirectConnectTunnelExtraRequest(AbstractModel):
         if params.get("NqaInfo") is not None:
             self.NqaInfo = NQAInfo()
             self.NqaInfo._deserialize(params.get("NqaInfo"))
+        self.IPv6Enable = params.get("IPv6Enable")
 
 
 class ModifyDirectConnectTunnelExtraResponse(AbstractModel):
@@ -1572,6 +1974,40 @@ class RejectDirectConnectTunnelRequest(AbstractModel):
 
 class RejectDirectConnectTunnelResponse(AbstractModel):
     """RejectDirectConnectTunnel返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ReleaseInternetAddressRequest(AbstractModel):
+    """ReleaseInternetAddress请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 公网互联网地址ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class ReleaseInternetAddressResponse(AbstractModel):
+    """ReleaseInternetAddress返回参数结构体
 
     """
 

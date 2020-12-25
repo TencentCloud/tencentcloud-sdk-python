@@ -291,7 +291,7 @@ class CreateDisksRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DiskType: 硬盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘<br><li>CLOUD_HSSD：表示增强型SSD云硬盘。
+        :param DiskType: 硬盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘<br><li>CLOUD_HSSD：表示增强型SSD云硬盘<br><li>CLOUD_TSSD：表示极速型SSD云硬盘。
         :type DiskType: str
         :param DiskChargeType: 云硬盘计费类型。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>CDCPAID：独享集群付费<br>各类型价格请参考云硬盘[价格总览](/document/product/362/2413)。
         :type DiskChargeType: str
@@ -315,6 +315,8 @@ class CreateDisksRequest(AbstractModel):
         :type Tags: list of Tag
         :param Shareable: 可选参数，默认为False。传入True时，云盘将创建为共享型云盘。
         :type Shareable: bool
+        :param ThroughputPerformance: 可选参数。使用此参数可给云硬盘购买额外的性能。<br>当前仅支持极速型云盘（CLOUD_TSSD）和增强型SSD云硬盘（CLOUD_HSSD）
+        :type ThroughputPerformance: int
         """
         self.DiskType = None
         self.DiskChargeType = None
@@ -328,6 +330,7 @@ class CreateDisksRequest(AbstractModel):
         self.Encrypt = None
         self.Tags = None
         self.Shareable = None
+        self.ThroughputPerformance = None
 
 
     def _deserialize(self, params):
@@ -352,6 +355,7 @@ class CreateDisksRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.Shareable = params.get("Shareable")
+        self.ThroughputPerformance = params.get("ThroughputPerformance")
 
 
 class CreateDisksResponse(AbstractModel):
@@ -1434,6 +1438,50 @@ class Image(AbstractModel):
         self.ImageName = params.get("ImageName")
 
 
+class InquirePriceModifyDiskExtraPerformanceRequest(AbstractModel):
+    """InquirePriceModifyDiskExtraPerformance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DiskId: 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
+        :type DiskId: str
+        :param ThroughputPerformance: 额外购买的云硬盘性能值，单位MB/s。
+        :type ThroughputPerformance: int
+        """
+        self.DiskId = None
+        self.ThroughputPerformance = None
+
+
+    def _deserialize(self, params):
+        self.DiskId = params.get("DiskId")
+        self.ThroughputPerformance = params.get("ThroughputPerformance")
+
+
+class InquirePriceModifyDiskExtraPerformanceResponse(AbstractModel):
+    """InquirePriceModifyDiskExtraPerformance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DiskPrice: 描述了调整云盘额外性能时对应的价格。
+        :type DiskPrice: :class:`tencentcloud.cbs.v20170312.models.Price`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DiskPrice = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DiskPrice") is not None:
+            self.DiskPrice = Price()
+            self.DiskPrice._deserialize(params.get("DiskPrice"))
+        self.RequestId = params.get("RequestId")
+
+
 class InquiryPriceCreateDisksRequest(AbstractModel):
     """InquiryPriceCreateDisks请求参数结构体
 
@@ -1703,6 +1751,44 @@ class ModifyDiskAttributesRequest(AbstractModel):
 
 class ModifyDiskAttributesResponse(AbstractModel):
     """ModifyDiskAttributes返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyDiskExtraPerformanceRequest(AbstractModel):
+    """ModifyDiskExtraPerformance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DiskId: 需要创建快照的云硬盘ID，可通过[DescribeDisks](/document/product/362/16315)接口查询。
+        :type DiskId: str
+        :param ThroughputPerformance: 额外购买的云硬盘性能值，单位MB/s。
+        :type ThroughputPerformance: int
+        """
+        self.DiskId = None
+        self.ThroughputPerformance = None
+
+
+    def _deserialize(self, params):
+        self.DiskId = params.get("DiskId")
+        self.ThroughputPerformance = params.get("ThroughputPerformance")
+
+
+class ModifyDiskExtraPerformanceResponse(AbstractModel):
+    """ModifyDiskExtraPerformance返回参数结构体
 
     """
 

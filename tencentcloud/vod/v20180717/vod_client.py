@@ -2110,6 +2110,34 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ManageTask(self, request):
+        """对已发起的任务进行管理。
+
+        :param request: Request instance for ManageTask.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ManageTaskRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ManageTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ManageTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ManageTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyAIAnalysisTemplate(self, request):
         """修改用户自定义视频内容分析模板。
 

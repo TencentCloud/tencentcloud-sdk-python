@@ -419,7 +419,7 @@ class FaceidClient(AbstractClient):
 
 
     def GetRealNameAuthToken(self, request):
-        """微信实名认证授权
+        """输入姓名和身份证号验证与微信实名的信息是否一致
 
         :param request: Request instance for GetRealNameAuthToken.
         :type request: :class:`tencentcloud.faceid.v20180301.models.GetRealNameAuthTokenRequest`

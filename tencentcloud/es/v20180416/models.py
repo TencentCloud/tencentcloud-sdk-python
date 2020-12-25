@@ -588,6 +588,44 @@ class EsPublicAcl(AbstractModel):
         self.WhiteIpList = params.get("WhiteIpList")
 
 
+class GetRequestTargetNodeTypesRequest(AbstractModel):
+    """GetRequestTargetNodeTypes请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class GetRequestTargetNodeTypesResponse(AbstractModel):
+    """GetRequestTargetNodeTypes返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TargetNodeTypes: 接收请求的目标节点类型列表
+        :type TargetNodeTypes: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TargetNodeTypes = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TargetNodeTypes = params.get("TargetNodeTypes")
+        self.RequestId = params.get("RequestId")
+
+
 class InstanceInfo(AbstractModel):
     """实例详细信息
 
@@ -1494,6 +1532,44 @@ class UpdatePluginsRequest(AbstractModel):
 
 class UpdatePluginsResponse(AbstractModel):
     """UpdatePlugins返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateRequestTargetNodeTypesRequest(AbstractModel):
+    """UpdateRequestTargetNodeTypes请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param TargetNodeTypes: 接收请求的目标节点类型列表
+        :type TargetNodeTypes: list of str
+        """
+        self.InstanceId = None
+        self.TargetNodeTypes = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.TargetNodeTypes = params.get("TargetNodeTypes")
+
+
+class UpdateRequestTargetNodeTypesResponse(AbstractModel):
+    """UpdateRequestTargetNodeTypes返回参数结构体
 
     """
 
