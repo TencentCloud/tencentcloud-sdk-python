@@ -54,6 +54,34 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateSecurityGroupApiRules(self, request):
+        """创建安全组API规则
+
+        :param request: Request instance for CreateSecurityGroupApiRules.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.CreateSecurityGroupApiRulesRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.CreateSecurityGroupApiRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateSecurityGroupApiRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateSecurityGroupApiRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteAcRule(self, request):
         """删除规则
 
@@ -110,6 +138,62 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteSecurityGroupAllRule(self, request):
+        """删除全部规则
+
+        :param request: Request instance for DeleteSecurityGroupAllRule.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DeleteSecurityGroupAllRuleRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DeleteSecurityGroupAllRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteSecurityGroupAllRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteSecurityGroupAllRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteSecurityGroupRule(self, request):
+        """删除规则
+
+        :param request: Request instance for DeleteSecurityGroupRule.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DeleteSecurityGroupRuleRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DeleteSecurityGroupRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteSecurityGroupRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteSecurityGroupRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeAcLists(self, request):
         """访问控制列表
 
@@ -124,6 +208,34 @@ class CfwClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAcListsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAssociatedInstanceList(self, request):
+        """获取安全组关联实例列表
+
+        :param request: Request instance for DescribeAssociatedInstanceList.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeAssociatedInstanceListRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeAssociatedInstanceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAssociatedInstanceList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAssociatedInstanceListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -180,6 +292,34 @@ class CfwClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRuleOverviewResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSecurityGroupList(self, request):
+        """查询安全组规则列表
+
+        :param request: Request instance for DescribeSecurityGroupList.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeSecurityGroupListRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeSecurityGroupListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSecurityGroupList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSecurityGroupListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -404,6 +544,34 @@ class CfwClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyItemSwitchStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifySecurityGroupAllRuleStatus(self, request):
+        """启用停用全部规则
+
+        :param request: Request instance for ModifySecurityGroupAllRuleStatus.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.ModifySecurityGroupAllRuleStatusRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.ModifySecurityGroupAllRuleStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifySecurityGroupAllRuleStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifySecurityGroupAllRuleStatusResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

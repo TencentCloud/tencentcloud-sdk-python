@@ -76,6 +76,59 @@ class AcListsData(AbstractModel):
         self.LogId = params.get("LogId")
 
 
+class AssociatedInstanceInfo(AbstractModel):
+    """企业安全组关联实例信息
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param InstanceName: 实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param Type: 实例类型，3是cvm实例,4是clb实例,5是eni实例,6是云数据库
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: int
+        :param VpcId: 私有网络ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param VpcName: 私有网络名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcName: str
+        :param PublicIp: 公网IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicIp: str
+        :param Ip: 内网IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ip: str
+        :param SecurityGroupCount: 关联安全组数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecurityGroupCount: int
+        """
+        self.InstanceId = None
+        self.InstanceName = None
+        self.Type = None
+        self.VpcId = None
+        self.VpcName = None
+        self.PublicIp = None
+        self.Ip = None
+        self.SecurityGroupCount = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.Type = params.get("Type")
+        self.VpcId = params.get("VpcId")
+        self.VpcName = params.get("VpcName")
+        self.PublicIp = params.get("PublicIp")
+        self.Ip = params.get("Ip")
+        self.SecurityGroupCount = params.get("SecurityGroupCount")
+
+
 class CreateAcRulesRequest(AbstractModel):
     """CreateAcRules请求参数结构体
 
@@ -149,6 +202,61 @@ class CreateAcRulesResponse(AbstractModel):
     def _deserialize(self, params):
         self.Status = params.get("Status")
         self.Info = params.get("Info")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateSecurityGroupApiRulesRequest(AbstractModel):
+    """CreateSecurityGroupApiRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 创建规则数据
+        :type Data: list of SecurityGroupApiRuleData
+        :param Direction: 方向，0：出站，1：入站
+        :type Direction: int
+        :param Type: 0：后插，1：前插，2：中插
+        :type Type: int
+        :param Area: 腾讯云地域的英文简写
+        :type Area: str
+        """
+        self.Data = None
+        self.Direction = None
+        self.Type = None
+        self.Area = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = SecurityGroupApiRuleData()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.Direction = params.get("Direction")
+        self.Type = params.get("Type")
+        self.Area = params.get("Area")
+
+
+class CreateSecurityGroupApiRulesResponse(AbstractModel):
+    """CreateSecurityGroupApiRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 状态值，0:添加成功，非0：添加失败
+        :type Status: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
         self.RequestId = params.get("RequestId")
 
 
@@ -258,6 +366,108 @@ class DeleteAllAccessControlRuleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteSecurityGroupAllRuleRequest(AbstractModel):
+    """DeleteSecurityGroupAllRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Direction: 方向，0：出站，1：入站
+        :type Direction: int
+        :param Area: 腾讯云地域的英文简写
+        :type Area: str
+        """
+        self.Direction = None
+        self.Area = None
+
+
+    def _deserialize(self, params):
+        self.Direction = params.get("Direction")
+        self.Area = params.get("Area")
+
+
+class DeleteSecurityGroupAllRuleResponse(AbstractModel):
+    """DeleteSecurityGroupAllRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 0: 操作成功，非0：操作失败
+        :type Status: int
+        :param Info: 返回数据的json字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Info: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.Info = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.Info = params.get("Info")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteSecurityGroupRuleRequest(AbstractModel):
+    """DeleteSecurityGroupRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 所需要删除规则的ID
+        :type Id: int
+        :param Area: 腾讯云地域的英文简写
+        :type Area: str
+        :param Direction: 方向，0：出站，1：入站
+        :type Direction: int
+        :param IsDelReverse: 是否删除反向规则，0：否，1：是
+        :type IsDelReverse: int
+        """
+        self.Id = None
+        self.Area = None
+        self.Direction = None
+        self.IsDelReverse = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Area = params.get("Area")
+        self.Direction = params.get("Direction")
+        self.IsDelReverse = params.get("IsDelReverse")
+
+
+class DeleteSecurityGroupRuleResponse(AbstractModel):
+    """DeleteSecurityGroupRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 状态值
+        :type Status: int
+        :param Info: 返回多余的信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Info: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.Info = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.Info = params.get("Info")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAcListsRequest(AbstractModel):
     """DescribeAcLists请求参数结构体
 
@@ -347,6 +557,83 @@ class DescribeAcListsResponse(AbstractModel):
                 self.Data.append(obj)
         self.AllTotal = params.get("AllTotal")
         self.Enable = params.get("Enable")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAssociatedInstanceListRequest(AbstractModel):
+    """DescribeAssociatedInstanceList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: 列表偏移量
+        :type Offset: int
+        :param Limit: 每页记录条数
+        :type Limit: int
+        :param Area: 地域代码（例：ap-guangzhou）,支持腾讯云全地域
+        :type Area: str
+        :param SearchValue: 额外检索条件（JSON字符串）
+        :type SearchValue: str
+        :param By: 排序字段
+        :type By: str
+        :param Order: 排序方式（asc:升序,desc:降序）
+        :type Order: str
+        :param SecurityGroupId: 安全组ID
+        :type SecurityGroupId: str
+        :param Type: 实例类型,'3'是cvm实例,'4'是clb实例,'5'是eni实例,'6'是云数据库
+        :type Type: str
+        """
+        self.Offset = None
+        self.Limit = None
+        self.Area = None
+        self.SearchValue = None
+        self.By = None
+        self.Order = None
+        self.SecurityGroupId = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Area = params.get("Area")
+        self.SearchValue = params.get("SearchValue")
+        self.By = params.get("By")
+        self.Order = params.get("Order")
+        self.SecurityGroupId = params.get("SecurityGroupId")
+        self.Type = params.get("Type")
+
+
+class DescribeAssociatedInstanceListResponse(AbstractModel):
+    """DescribeAssociatedInstanceList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Total: 实例数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param Data: 实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of AssociatedInstanceInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = AssociatedInstanceInfo()
+                obj._deserialize(item)
+                self.Data.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -476,6 +763,86 @@ class DescribeRuleOverviewResponse(AbstractModel):
         self.StartRuleNum = params.get("StartRuleNum")
         self.StopRuleNum = params.get("StopRuleNum")
         self.RemainingNum = params.get("RemainingNum")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSecurityGroupListRequest(AbstractModel):
+    """DescribeSecurityGroupList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Direction: 0: 出站规则，1：入站规则
+        :type Direction: int
+        :param Area: 腾讯云地域的英文简写
+        :type Area: str
+        :param SearchValue: 搜索值
+        :type SearchValue: str
+        :param Limit: 每页条数
+        :type Limit: int
+        :param Offset: 偏移值
+        :type Offset: int
+        :param Status: '': 全部，'0'：筛选停用规则，'1'：筛选启用规则
+        :type Status: str
+        :param Filter: 0: 不过滤，1：过滤掉正常规则，保留下发异常规则
+        :type Filter: int
+        """
+        self.Direction = None
+        self.Area = None
+        self.SearchValue = None
+        self.Limit = None
+        self.Offset = None
+        self.Status = None
+        self.Filter = None
+
+
+    def _deserialize(self, params):
+        self.Direction = params.get("Direction")
+        self.Area = params.get("Area")
+        self.SearchValue = params.get("SearchValue")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Status = params.get("Status")
+        self.Filter = params.get("Filter")
+
+
+class DescribeSecurityGroupListResponse(AbstractModel):
+    """DescribeSecurityGroupList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Total: 总条数
+        :type Total: int
+        :param Data: 安全组规则列表数据
+        :type Data: list of SecurityGroupListData
+        :param AllTotal: 不算筛选条数的总条数
+        :type AllTotal: int
+        :param Enable: 访问控制规则全部启用/全部停用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enable: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.Data = None
+        self.AllTotal = None
+        self.Enable = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = SecurityGroupListData()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.AllTotal = params.get("AllTotal")
+        self.Enable = params.get("Enable")
         self.RequestId = params.get("RequestId")
 
 
@@ -912,6 +1279,57 @@ class ModifyItemSwitchStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifySecurityGroupAllRuleStatusRequest(AbstractModel):
+    """ModifySecurityGroupAllRuleStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 状态，0：全部停用，1：全部启用
+        :type Status: int
+        :param Direction: 方向，0：出站，1：入站
+        :type Direction: int
+        :param EdgeId: Edge ID值
+        :type EdgeId: str
+        :param Area: NAT地域
+        :type Area: str
+        """
+        self.Status = None
+        self.Direction = None
+        self.EdgeId = None
+        self.Area = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.Direction = params.get("Direction")
+        self.EdgeId = params.get("EdgeId")
+        self.Area = params.get("Area")
+
+
+class ModifySecurityGroupAllRuleStatusResponse(AbstractModel):
+    """ModifySecurityGroupAllRuleStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 0: 修改成功, 其他: 修改失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifySequenceRulesRequest(AbstractModel):
     """ModifySequenceRules请求参数结构体
 
@@ -1140,6 +1558,150 @@ class RunSyncAssetResponse(AbstractModel):
     def _deserialize(self, params):
         self.Status = params.get("Status")
         self.RequestId = params.get("RequestId")
+
+
+class SecurityGroupApiRuleData(AbstractModel):
+    """添加安全组Api规则对象
+
+    """
+
+    def __init__(self):
+        """
+        :param SourceId: 访问源，入站时为Ip/Cidr，默认为0.0.0.0/0； 出站时当RuleType为1时，支持内网Ip/Cidr, 当RuleType为2时，填实例ID
+        :type SourceId: str
+        :param TargetId: 访问目的，出站时为Ip/Cidr，默认为0.0.0.0/0；入站时当RuleType为1时，支持内网Ip/Cidr, 当RuleType为2时，填实例ID
+        :type TargetId: str
+        :param Protocol: 协议，支持ANY/TCP/UDP/ICMP
+        :type Protocol: str
+        :param Port: 端口, 当Protocol为ANY或ICMP时，Port为-1/-1
+        :type Port: str
+        :param Strategy: 策略, 1：阻断，2：放行
+        :type Strategy: str
+        :param Detail: 描述
+        :type Detail: str
+        :param RuleType: 规则类型，1：VpcId+Ip/Cidr, 2: 实例ID，入站时为访问目的类型，出站时为访问源类型
+        :type RuleType: int
+        :param OrderIndex: 执行顺序，中间插入必传，前插、后插非必传
+        :type OrderIndex: int
+        :param VpcId: 私有网络ID，当RuleType为1时必传
+        :type VpcId: str
+        """
+        self.SourceId = None
+        self.TargetId = None
+        self.Protocol = None
+        self.Port = None
+        self.Strategy = None
+        self.Detail = None
+        self.RuleType = None
+        self.OrderIndex = None
+        self.VpcId = None
+
+
+    def _deserialize(self, params):
+        self.SourceId = params.get("SourceId")
+        self.TargetId = params.get("TargetId")
+        self.Protocol = params.get("Protocol")
+        self.Port = params.get("Port")
+        self.Strategy = params.get("Strategy")
+        self.Detail = params.get("Detail")
+        self.RuleType = params.get("RuleType")
+        self.OrderIndex = params.get("OrderIndex")
+        self.VpcId = params.get("VpcId")
+
+
+class SecurityGroupListData(AbstractModel):
+    """安全组列表数据
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 规则ID
+        :type Id: int
+        :param OrderIndex: 执行顺序
+        :type OrderIndex: int
+        :param SourceId: 访问源
+        :type SourceId: str
+        :param SourceType: 访问源类型，默认为0，1: VPC, 2: SUBNET, 3: CVM, 4: CLB, 5: ENI, 6: CDB
+        :type SourceType: int
+        :param TargetId: 访问目的
+        :type TargetId: str
+        :param TargetType: 访问目的类型，默认为0，1: VPC, 2: SUBNET, 3: CVM, 4: CLB, 5: ENI, 6: CDB
+        :type TargetType: int
+        :param Protocol: 协议
+        :type Protocol: str
+        :param Port: 目的端口
+        :type Port: str
+        :param Strategy: 策略, 1：阻断，2：放行
+        :type Strategy: int
+        :param Detail: 描述
+        :type Detail: str
+        :param Status: 是否开关开启，0：未开启，1：开启
+        :type Status: int
+        :param IsNew: 是否是正常规则，0：正常，1：异常
+        :type IsNew: int
+        :param BothWay: 单/双向下发，0:单向下发，1：双向下发
+        :type BothWay: int
+        :param VpcId: 私有网络ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param SubnetId: 子网ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
+        :param InstanceName: 实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param PublicIp: 公网IP，多个以英文逗号分隔
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicIp: str
+        :param PrivateIp: 内网IP，多个以英文逗号分隔
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrivateIp: str
+        :param Cidr: 掩码地址，多个以英文逗号分隔
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cidr: str
+        """
+        self.Id = None
+        self.OrderIndex = None
+        self.SourceId = None
+        self.SourceType = None
+        self.TargetId = None
+        self.TargetType = None
+        self.Protocol = None
+        self.Port = None
+        self.Strategy = None
+        self.Detail = None
+        self.Status = None
+        self.IsNew = None
+        self.BothWay = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.InstanceName = None
+        self.PublicIp = None
+        self.PrivateIp = None
+        self.Cidr = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.OrderIndex = params.get("OrderIndex")
+        self.SourceId = params.get("SourceId")
+        self.SourceType = params.get("SourceType")
+        self.TargetId = params.get("TargetId")
+        self.TargetType = params.get("TargetType")
+        self.Protocol = params.get("Protocol")
+        self.Port = params.get("Port")
+        self.Strategy = params.get("Strategy")
+        self.Detail = params.get("Detail")
+        self.Status = params.get("Status")
+        self.IsNew = params.get("IsNew")
+        self.BothWay = params.get("BothWay")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.InstanceName = params.get("InstanceName")
+        self.PublicIp = params.get("PublicIp")
+        self.PrivateIp = params.get("PrivateIp")
+        self.Cidr = params.get("Cidr")
 
 
 class SequenceData(AbstractModel):

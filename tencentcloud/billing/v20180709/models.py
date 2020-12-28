@@ -119,6 +119,8 @@ class BillDetail(AbstractModel):
         :param RegionId: 区域ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type RegionId: str
+        :param ProjectId: 项目ID:资源所属项目ID
+        :type ProjectId: int
         """
         self.BusinessCodeName = None
         self.ProductCodeName = None
@@ -143,6 +145,7 @@ class BillDetail(AbstractModel):
         self.ProductCode = None
         self.ActionType = None
         self.RegionId = None
+        self.ProjectId = None
 
 
     def _deserialize(self, params):
@@ -179,6 +182,7 @@ class BillDetail(AbstractModel):
         self.ProductCode = params.get("ProductCode")
         self.ActionType = params.get("ActionType")
         self.RegionId = params.get("RegionId")
+        self.ProjectId = params.get("ProjectId")
 
 
 class BillDetailComponent(AbstractModel):
@@ -1365,6 +1369,8 @@ class DescribeBillDetailRequest(AbstractModel):
         :type ResourceId: str
         :param ActionType: 查询交易类型。如 按量计费日结，按量计费小时结 等
         :type ActionType: str
+        :param ProjectId: 项目ID:资源所属项目ID
+        :type ProjectId: int
         """
         self.Offset = None
         self.Limit = None
@@ -1377,6 +1383,7 @@ class DescribeBillDetailRequest(AbstractModel):
         self.PayMode = None
         self.ResourceId = None
         self.ActionType = None
+        self.ProjectId = None
 
 
     def _deserialize(self, params):
@@ -1391,6 +1398,7 @@ class DescribeBillDetailRequest(AbstractModel):
         self.PayMode = params.get("PayMode")
         self.ResourceId = params.get("ResourceId")
         self.ActionType = params.get("ActionType")
+        self.ProjectId = params.get("ProjectId")
 
 
 class DescribeBillDetailResponse(AbstractModel):

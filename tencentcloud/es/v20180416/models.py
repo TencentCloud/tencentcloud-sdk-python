@@ -756,6 +756,9 @@ class InstanceInfo(AbstractModel):
         :param SceneType: 场景化模板类型：0、不开启；1、通用场景；2、日志场景；3、搜索场景
 注意：此字段可能返回 null，表示取不到有效值。
         :type SceneType: int
+        :param KibanaConfig: Kibana配置项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KibanaConfig: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -810,6 +813,7 @@ class InstanceInfo(AbstractModel):
         self.KibanaPrivateAccess = None
         self.SecurityType = None
         self.SceneType = None
+        self.KibanaConfig = None
 
 
     def _deserialize(self, params):
@@ -891,6 +895,7 @@ class InstanceInfo(AbstractModel):
         self.KibanaPrivateAccess = params.get("KibanaPrivateAccess")
         self.SecurityType = params.get("SecurityType")
         self.SceneType = params.get("SceneType")
+        self.KibanaConfig = params.get("KibanaConfig")
 
 
 class InstanceLog(AbstractModel):

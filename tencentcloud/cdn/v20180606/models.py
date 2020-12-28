@@ -3744,6 +3744,9 @@ class DescribeScdnConfigResponse(AbstractModel):
         :type Ddos: :class:`tencentcloud.cdn.v20180606.models.ScdnDdosConfig`
         :param Bot: BOT 防护配置
         :type Bot: :class:`tencentcloud.cdn.v20180606.models.ScdnBotConfig`
+        :param Status: 当前状态，取值online | offline
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3752,6 +3755,7 @@ class DescribeScdnConfigResponse(AbstractModel):
         self.CC = None
         self.Ddos = None
         self.Bot = None
+        self.Status = None
         self.RequestId = None
 
 
@@ -3771,6 +3775,7 @@ class DescribeScdnConfigResponse(AbstractModel):
         if params.get("Bot") is not None:
             self.Bot = ScdnBotConfig()
             self.Bot._deserialize(params.get("Bot"))
+        self.Status = params.get("Status")
         self.RequestId = params.get("RequestId")
 
 
@@ -5807,14 +5812,18 @@ class ListScdnDomainsRequest(AbstractModel):
         :type Offset: int
         :param Limit: 列表分页记录条数，最大1000
         :type Limit: int
+        :param Domain: 域名信息
+        :type Domain: str
         """
         self.Offset = None
         self.Limit = None
+        self.Domain = None
 
 
     def _deserialize(self, params):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.Domain = params.get("Domain")
 
 
 class ListScdnDomainsResponse(AbstractModel):

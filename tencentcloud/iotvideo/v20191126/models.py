@@ -2098,11 +2098,11 @@ class DescribeRechargeRecordsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param AccountType: 账户类型 1:设备接入 2:云存
+        :param AccountType: 账户类型 1:设备接入 2:云存。
         :type AccountType: int
-        :param Offset: 从第几条记录开始显示
+        :param Offset: 从第几条记录开始显示, 默认值为0。
         :type Offset: int
-        :param Limit: 总共查询多少条记录
+        :param Limit: 总共查询多少条记录，默认为值50。
         :type Limit: int
         """
         self.AccountType = None

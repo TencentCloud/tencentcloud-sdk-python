@@ -3963,6 +3963,15 @@ class NodePool(AbstractModel):
         :param DesiredNodesNum: 期望的节点数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type DesiredNodesNum: int
+        :param NodePoolOs: 节点池osName
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodePoolOs: str
+        :param OsCustomizeType: 容器的镜像版本，"DOCKER_CUSTOMIZE"(容器定制版),"GENERAL"(普通版本，默认值)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OsCustomizeType: str
+        :param ImageId: 镜像id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageId: str
         """
         self.NodePoolId = None
         self.Name = None
@@ -3977,6 +3986,9 @@ class NodePool(AbstractModel):
         self.MaxNodesNum = None
         self.MinNodesNum = None
         self.DesiredNodesNum = None
+        self.NodePoolOs = None
+        self.OsCustomizeType = None
+        self.ImageId = None
 
 
     def _deserialize(self, params):
@@ -4005,6 +4017,9 @@ class NodePool(AbstractModel):
         self.MaxNodesNum = params.get("MaxNodesNum")
         self.MinNodesNum = params.get("MinNodesNum")
         self.DesiredNodesNum = params.get("DesiredNodesNum")
+        self.NodePoolOs = params.get("NodePoolOs")
+        self.OsCustomizeType = params.get("OsCustomizeType")
+        self.ImageId = params.get("ImageId")
 
 
 class NodePoolOption(AbstractModel):
