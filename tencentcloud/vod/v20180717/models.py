@@ -7885,27 +7885,31 @@ class DescribeSubAppIdsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Limit: 分页拉取的最大返回结果数。默认值：200；最大值：200。
-        :type Limit: int
-        :param Offset: 分页拉取的起始偏移量。默认值：0。
-        :type Offset: int
+        :param Name: 子应用名称。
+        :type Name: str
         :param Tags: 标签信息，查询指定标签的子应用列表。
         :type Tags: list of ResourceTag
+        :param Offset: 分页拉取的起始偏移量。默认值：0。
+        :type Offset: int
+        :param Limit: 分页拉取的最大返回结果数。默认值：200；最大值：200。
+        :type Limit: int
         """
-        self.Limit = None
-        self.Offset = None
+        self.Name = None
         self.Tags = None
+        self.Offset = None
+        self.Limit = None
 
 
     def _deserialize(self, params):
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self.Name = params.get("Name")
         if params.get("Tags") is not None:
             self.Tags = []
             for item in params.get("Tags"):
                 obj = ResourceTag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
 
 
 class DescribeSubAppIdsResponse(AbstractModel):

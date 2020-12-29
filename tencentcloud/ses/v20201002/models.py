@@ -729,13 +729,15 @@ class SendEmailRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param FromEmailAddress: 发信邮件地址。例如：noreply@mail.qcloud.com。
+        :param FromEmailAddress: 发信邮件地址。请填写发件人邮箱地址，例如：noreply@mail.qcloud.com。如需填写发件人说明，请按照 
+发信人 &lt;邮件地址&gt; 的方式填写，例如：
+腾讯云团队 &lt;noreply@mail.qcloud.com&gt;
         :type FromEmailAddress: str
         :param Destination: 收信人邮箱地址
         :type Destination: list of str
         :param Subject: 邮件主题
         :type Subject: str
-        :param ReplyToAddresses: 邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人将会回复到腾讯云。
+        :param ReplyToAddresses: 邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人将会回复到腾讯云。注意：邮件内容会显示所有收件人地址，非群发邮件请多次调用API发送。
         :type ReplyToAddresses: str
         :param Template: 使用模板发送时，填写的模板相关参数
         :type Template: :class:`tencentcloud.ses.v20201002.models.Template`

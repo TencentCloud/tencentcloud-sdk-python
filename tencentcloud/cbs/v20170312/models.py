@@ -2038,14 +2038,47 @@ class PrepayPrice(AbstractModel):
         :type OriginalPrice: float
         :param DiscountPrice: 预付费云盘或快照预支费用的折扣价，单位：元。
         :type DiscountPrice: float
+        :param OriginalPriceHigh: 高精度预付费云盘或快照预支费用的原价，单位：元
+        :type OriginalPriceHigh: str
+        :param DiscountPriceHigh: 高精度预付费云盘或快照预支费用的折扣价，单位：元
+        :type DiscountPriceHigh: str
+        :param UnitPrice: 后付费云盘原单价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnitPrice: str
+        :param ChargeUnit: 后付费云盘的计价单元，取值范围：<br><li>HOUR：表示后付费云盘的计价单元是按小时计算。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChargeUnit: str
+        :param UnitPriceDiscount: 后付费云盘折扣单价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnitPriceDiscount: str
+        :param UnitPriceHigh: 高精度后付费云盘原单价, 单位：元
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnitPriceHigh: str
+        :param UnitPriceDiscountHigh: 高精度后付费云盘折扣单价, 单位：元
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnitPriceDiscountHigh: str
         """
         self.OriginalPrice = None
         self.DiscountPrice = None
+        self.OriginalPriceHigh = None
+        self.DiscountPriceHigh = None
+        self.UnitPrice = None
+        self.ChargeUnit = None
+        self.UnitPriceDiscount = None
+        self.UnitPriceHigh = None
+        self.UnitPriceDiscountHigh = None
 
 
     def _deserialize(self, params):
         self.OriginalPrice = params.get("OriginalPrice")
         self.DiscountPrice = params.get("DiscountPrice")
+        self.OriginalPriceHigh = params.get("OriginalPriceHigh")
+        self.DiscountPriceHigh = params.get("DiscountPriceHigh")
+        self.UnitPrice = params.get("UnitPrice")
+        self.ChargeUnit = params.get("ChargeUnit")
+        self.UnitPriceDiscount = params.get("UnitPriceDiscount")
+        self.UnitPriceHigh = params.get("UnitPriceHigh")
+        self.UnitPriceDiscountHigh = params.get("UnitPriceDiscountHigh")
 
 
 class Price(AbstractModel):

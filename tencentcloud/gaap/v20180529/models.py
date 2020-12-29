@@ -3338,12 +3338,20 @@ class DescribeRuleRealServersRequest(AbstractModel):
         """
         :param RuleId: 转发规则ID
         :type RuleId: str
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为1000。
+        :type Limit: int
         """
         self.RuleId = None
+        self.Offset = None
+        self.Limit = None
 
 
     def _deserialize(self, params):
         self.RuleId = params.get("RuleId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
 
 
 class DescribeRuleRealServersResponse(AbstractModel):
@@ -3977,6 +3985,12 @@ class DomainRuleSet(AbstractModel):
         :param PolyRealServerCertificateAliasInfo: 多源站证书时，返回多个证书的id和别名
 注意：此字段可能返回 null，表示取不到有效值。
         :type PolyRealServerCertificateAliasInfo: list of CertificateAliasInfo
+        :param DomainStatus: 域名的状态。
+0表示运行中，
+1表示变更中，
+2表示删除中。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DomainStatus: int
         """
         self.Domain = None
         self.RuleSet = None
@@ -3996,6 +4010,7 @@ class DomainRuleSet(AbstractModel):
         self.RealServerCertificateDomain = None
         self.PolyClientCertificateAliasInfo = None
         self.PolyRealServerCertificateAliasInfo = None
+        self.DomainStatus = None
 
 
     def _deserialize(self, params):
@@ -4032,6 +4047,7 @@ class DomainRuleSet(AbstractModel):
                 obj = CertificateAliasInfo()
                 obj._deserialize(item)
                 self.PolyRealServerCertificateAliasInfo.append(obj)
+        self.DomainStatus = params.get("DomainStatus")
 
 
 class Filter(AbstractModel):
@@ -5569,7 +5585,7 @@ UNKNOWN表示未知状态。
         :param ModifyConfigTime: 配置变更时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyConfigTime: int
-        :param ProxyType: 通道类型
+        :param ProxyType: 通道类型，104表示新的银牌质量通道类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyType: int
         :param ClientIPMethod: 通道获取客户端IP的方式，0表示TOA，1表示Proxy Protocol
@@ -5864,6 +5880,15 @@ class RuleCheckParams(AbstractModel):
         :param Domain: 健康检查的检查域名。
 当调用ModifyRuleAttribute时，不支持修改该参数。
         :type Domain: str
+        :param FailedCountInter: 源站服务失败统计频率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailedCountInter: int
+        :param FailedThreshold: 源站健康性检查阀值，超过该阀值会屏蔽服务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailedThreshold: int
+        :param BlockInter: 源站健康性检测超出阀值后，屏蔽的时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockInter: int
         """
         self.DelayLoop = None
         self.ConnectTimeout = None
@@ -5871,6 +5896,9 @@ class RuleCheckParams(AbstractModel):
         self.Method = None
         self.StatusCode = None
         self.Domain = None
+        self.FailedCountInter = None
+        self.FailedThreshold = None
+        self.BlockInter = None
 
 
     def _deserialize(self, params):
@@ -5880,6 +5908,9 @@ class RuleCheckParams(AbstractModel):
         self.Method = params.get("Method")
         self.StatusCode = params.get("StatusCode")
         self.Domain = params.get("Domain")
+        self.FailedCountInter = params.get("FailedCountInter")
+        self.FailedThreshold = params.get("FailedThreshold")
+        self.BlockInter = params.get("BlockInter")
 
 
 class RuleInfo(AbstractModel):

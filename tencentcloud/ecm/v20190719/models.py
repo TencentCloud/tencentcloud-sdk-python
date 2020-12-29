@@ -1083,6 +1083,8 @@ class CreateModuleRequest(AbstractModel):
         :type SecurityGroups: list of str
         :param DefaultBandWidthIn: 默认入带宽，单位：M。范围不得超过带宽上下限，详看DescribeConfig。
         :type DefaultBandWidthIn: int
+        :param DisableWanIp: 是否禁止分配外网IP
+        :type DisableWanIp: bool
         """
         self.ModuleName = None
         self.DefaultBandWidth = None
@@ -1094,6 +1096,7 @@ class CreateModuleRequest(AbstractModel):
         self.TagSpecification = None
         self.SecurityGroups = None
         self.DefaultBandWidthIn = None
+        self.DisableWanIp = None
 
 
     def _deserialize(self, params):
@@ -1112,6 +1115,7 @@ class CreateModuleRequest(AbstractModel):
                 self.TagSpecification.append(obj)
         self.SecurityGroups = params.get("SecurityGroups")
         self.DefaultBandWidthIn = params.get("DefaultBandWidthIn")
+        self.DisableWanIp = params.get("DisableWanIp")
 
 
 class CreateModuleResponse(AbstractModel):
@@ -5970,6 +5974,44 @@ class ModifyModuleConfigRequest(AbstractModel):
 
 class ModifyModuleConfigResponse(AbstractModel):
     """ModifyModuleConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyModuleDisableWanIpRequest(AbstractModel):
+    """ModifyModuleDisableWanIp请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ModuleId: 模块ID
+        :type ModuleId: str
+        :param DisableWanIp: 是否禁止分配外网ip
+        :type DisableWanIp: bool
+        """
+        self.ModuleId = None
+        self.DisableWanIp = None
+
+
+    def _deserialize(self, params):
+        self.ModuleId = params.get("ModuleId")
+        self.DisableWanIp = params.get("DisableWanIp")
+
+
+class ModifyModuleDisableWanIpResponse(AbstractModel):
+    """ModifyModuleDisableWanIp返回参数结构体
 
     """
 

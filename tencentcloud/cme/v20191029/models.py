@@ -27,14 +27,20 @@ class AddMemberInfo(AbstractModel):
         :type MemberId: str
         :param Remark: 团队成员备注。
         :type Remark: str
+        :param Role: 团队成员角色，不填则默认添加普通成员。可选值：
+<li>Admin：团队管理员；</li>
+<li>Member：普通成员。</li>
+        :type Role: str
         """
         self.MemberId = None
         self.Remark = None
+        self.Role = None
 
 
     def _deserialize(self, params):
         self.MemberId = params.get("MemberId")
         self.Remark = params.get("Remark")
+        self.Role = params.get("Role")
 
 
 class AddTeamMemberRequest(AbstractModel):
@@ -1534,14 +1540,22 @@ class DescribeTeamsRequest(AbstractModel):
         :type Platform: str
         :param TeamIds: 团队 ID 列表，限30个。
         :type TeamIds: list of str
+        :param Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param Limit: 返回记录条数，默认值：20，最大值：30。
+        :type Limit: int
         """
         self.Platform = None
         self.TeamIds = None
+        self.Offset = None
+        self.Limit = None
 
 
     def _deserialize(self, params):
         self.Platform = params.get("Platform")
         self.TeamIds = params.get("TeamIds")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
 
 
 class DescribeTeamsResponse(AbstractModel):
@@ -1551,16 +1565,20 @@ class DescribeTeamsResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param TotalCount: 符合条件的记录总数。
+        :type TotalCount: int
         :param TeamSet: 团队列表。
         :type TeamSet: list of TeamInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.TotalCount = None
         self.TeamSet = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
         if params.get("TeamSet") is not None:
             self.TeamSet = []
             for item in params.get("TeamSet"):
@@ -1827,6 +1845,27 @@ class ExportVideoEditProjectResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ExternalMediaInfo(AbstractModel):
+    """媒资绑定资源信息，包含媒资绑定模板 ID 和文件信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 媒资绑定模板 ID。
+        :type Definition: int
+        :param MediaKey: 媒资绑定媒体路径或文件 ID。
+        :type MediaKey: str
+        """
+        self.Definition = None
+        self.MediaKey = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.MediaKey = params.get("MediaKey")
+
+
 class FlattenListMediaRequest(AbstractModel):
     """FlattenListMedia请求参数结构体
 
@@ -2058,24 +2097,33 @@ class ImportMaterialRequest(AbstractModel):
         """
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
-        :param VodFileId: 云点播媒资 FileId。
-        :type VodFileId: str
-        :param Owner: 素材归属者。
+        :param Owner: 媒体归属者，团队或个人。
         :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
-        :param Name: 素材名称，不能超过30个字符。
+        :param Name: 媒体名称，不能超过30个字符。
         :type Name: str
-        :param ClassPath: 素材分类路径，形如："/a/b"，层级数不能超过10，每个层级长度不能超过15字符。若不填则默认为根路径。
+        :param SourceType: 导入媒资类型，取值：
+<li>VOD：云点播文件；</li>
+<li>EXTERNAL：媒资绑定。</li>
+注意：如果不填默认为云点播文件。
+        :type SourceType: str
+        :param VodFileId: 云点播媒资 FileId，仅当 SourceType 为 VOD 时有效。
+        :type VodFileId: str
+        :param ExternalMediaInfo: 原始媒资文件信息，当 SourceType 取值 EXTERNAL 的时候必填。
+        :type ExternalMediaInfo: :class:`tencentcloud.cme.v20191029.models.ExternalMediaInfo`
+        :param ClassPath: 媒体分类路径，形如："/a/b"，层级数不能超过10，每个层级长度不能超过15字符。若不填则默认为根路径。
         :type ClassPath: str
-        :param PreProcessDefinition: 素材预处理任务模板 ID。取值：
+        :param PreProcessDefinition: 媒体预处理任务模板 ID。取值：
 <li>10：进行编辑预处理。</li>
         :type PreProcessDefinition: int
         :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
         :type Operator: str
         """
         self.Platform = None
-        self.VodFileId = None
         self.Owner = None
         self.Name = None
+        self.SourceType = None
+        self.VodFileId = None
+        self.ExternalMediaInfo = None
         self.ClassPath = None
         self.PreProcessDefinition = None
         self.Operator = None
@@ -2083,11 +2131,15 @@ class ImportMaterialRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.Platform = params.get("Platform")
-        self.VodFileId = params.get("VodFileId")
         if params.get("Owner") is not None:
             self.Owner = Entity()
             self.Owner._deserialize(params.get("Owner"))
         self.Name = params.get("Name")
+        self.SourceType = params.get("SourceType")
+        self.VodFileId = params.get("VodFileId")
+        if params.get("ExternalMediaInfo") is not None:
+            self.ExternalMediaInfo = ExternalMediaInfo()
+            self.ExternalMediaInfo._deserialize(params.get("ExternalMediaInfo"))
         self.ClassPath = params.get("ClassPath")
         self.PreProcessDefinition = params.get("PreProcessDefinition")
         self.Operator = params.get("Operator")
@@ -2129,18 +2181,27 @@ class ImportMediaToProjectRequest(AbstractModel):
         :type Platform: str
         :param ProjectId: 项目 Id。
         :type ProjectId: str
-        :param VodFileId: 云点播媒资 FileId。
+        :param SourceType: 导入媒资类型，取值：
+<li>VOD：云点播文件；</li>
+<li>EXTERNAL：媒资绑定。</li>
+注意：如果不填默认为云点播文件。
+        :type SourceType: str
+        :param VodFileId: 云点播媒资文件Id，当 SourceType 取值 VOD 或者缺省的时候必填。
         :type VodFileId: str
-        :param Name: 素材名称，不能超过30个字符。
+        :param ExternalMediaInfo: 原始媒资文件信息，当 SourceType 取值 EXTERNAL 的时候必填。
+        :type ExternalMediaInfo: :class:`tencentcloud.cme.v20191029.models.ExternalMediaInfo`
+        :param Name: 媒体名称，不能超过30个字符。
         :type Name: str
-        :param PreProcessDefinition: 素材预处理任务模板 ID，取值：
+        :param PreProcessDefinition: 媒体预处理任务模板 ID，取值：
 <li>10：进行编辑预处理。</li>
 注意：如果填0则不进行处理。
         :type PreProcessDefinition: int
         """
         self.Platform = None
         self.ProjectId = None
+        self.SourceType = None
         self.VodFileId = None
+        self.ExternalMediaInfo = None
         self.Name = None
         self.PreProcessDefinition = None
 
@@ -2148,7 +2209,11 @@ class ImportMediaToProjectRequest(AbstractModel):
     def _deserialize(self, params):
         self.Platform = params.get("Platform")
         self.ProjectId = params.get("ProjectId")
+        self.SourceType = params.get("SourceType")
         self.VodFileId = params.get("VodFileId")
+        if params.get("ExternalMediaInfo") is not None:
+            self.ExternalMediaInfo = ExternalMediaInfo()
+            self.ExternalMediaInfo._deserialize(params.get("ExternalMediaInfo"))
         self.Name = params.get("Name")
         self.PreProcessDefinition = params.get("PreProcessDefinition")
 

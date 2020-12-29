@@ -1263,7 +1263,7 @@ class GetRealNameAuthTokenRequest(AbstractModel):
         :type Name: str
         :param IDCard: 身份证号
         :type IDCard: str
-        :param CallbackURL: 回调地址。实名认证完成后，将会重定向到这个地址通知认证发起方
+        :param CallbackURL: 回调地址。实名认证完成后，将会重定向到这个地址通知认证发起方。仅支持http或https协议。
         :type CallbackURL: str
         """
         self.Name = None
@@ -1286,7 +1286,7 @@ class GetRealNameAuthTokenResponse(AbstractModel):
         """
         :param AuthToken: 查询实名认证结果的唯一凭证
         :type AuthToken: str
-        :param RedirectURL: 实名认证授权地址，认证发起方需要重定向到这个地址获取认证用户的授权
+        :param RedirectURL: 实名认证授权地址，认证发起方需要重定向到这个地址获取认证用户的授权，仅能在微信环境下打开。
         :type RedirectURL: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

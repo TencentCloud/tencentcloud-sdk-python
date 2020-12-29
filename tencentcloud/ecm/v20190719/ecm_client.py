@@ -2486,6 +2486,34 @@ class EcmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyModuleDisableWanIp(self, request):
+        """修改模块是否禁止分配外网ip的属性。
+
+        :param request: Request instance for ModifyModuleDisableWanIp.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.ModifyModuleDisableWanIpRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.ModifyModuleDisableWanIpResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyModuleDisableWanIp", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyModuleDisableWanIpResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyModuleImage(self, request):
         """修改模块的默认镜像
 
