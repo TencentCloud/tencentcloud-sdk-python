@@ -599,9 +599,10 @@ class DescribeRecordStatisticRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: 查询开始日期。
+        :param StartTime: 查询开始日期，格式为YYYY-MM-DD。
         :type StartTime: str
-        :param EndTime: 查询结束日期。
+        :param EndTime: 查询结束日期，格式为YYYY-MM-DD。
+单次查询统计区间最多不能超过31天。
         :type EndTime: str
         :param SdkAppId: 应用ID，可不传。传应用ID时返回的是该应用的用量，不传时返回多个应用的合计值。
         :type SdkAppId: int
@@ -1099,6 +1100,8 @@ class LayoutParams(AbstractModel):
         :type MixVideoUids: list of str
         :param PresetLayoutConfig: 自定义模板中有效，指定用户视频在混合画面中的位置。
         :type PresetLayoutConfig: list of PresetLayoutConfig
+        :param PlaceHolderMode: 自定义模板中有效，设置为1时代表启用占位图功能，0时代表不启用占位图功能，默认为0。启用占位图功能时，在预设位置的用户没有上行视频时可显示对应的占位图。
+        :type PlaceHolderMode: int
         """
         self.Template = None
         self.MainVideoUserId = None
@@ -1107,6 +1110,7 @@ class LayoutParams(AbstractModel):
         self.MainVideoRightAlign = None
         self.MixVideoUids = None
         self.PresetLayoutConfig = None
+        self.PlaceHolderMode = None
 
 
     def _deserialize(self, params):
@@ -1124,6 +1128,7 @@ class LayoutParams(AbstractModel):
                 obj = PresetLayoutConfig()
                 obj._deserialize(item)
                 self.PresetLayoutConfig.append(obj)
+        self.PlaceHolderMode = params.get("PlaceHolderMode")
 
 
 class OneSdkAppIdTranscodeTimeUsagesInfo(AbstractModel):
@@ -1236,8 +1241,12 @@ class PresetLayoutConfig(AbstractModel):
         :type LocationY: int
         :param ZOrder: 该画面在输出时的层级，单位为像素值，不填默认为0。
         :type ZOrder: int
-        :param RenderMode: 该画面在输出时的显示模式：0为裁剪，1为缩放，不填默认为0。
+        :param RenderMode: 该画面在输出时的显示模式：0为裁剪，1为缩放，2为缩放并显示黑底。不填默认为0。
         :type RenderMode: int
+        :param MixInputType: 该当前位置用户混入的流类型：0为混入音视频，1为只混入视频，2为只混入音频。默认为0，建议配合指定用户ID使用。
+        :type MixInputType: int
+        :param PlaceImageId: 占位图ID。实时音视频控制台上传并生成，https://cloud.tencent.com/document/product/647/50769
+        :type PlaceImageId: int
         """
         self.UserId = None
         self.StreamType = None
@@ -1247,6 +1256,8 @@ class PresetLayoutConfig(AbstractModel):
         self.LocationY = None
         self.ZOrder = None
         self.RenderMode = None
+        self.MixInputType = None
+        self.PlaceImageId = None
 
 
     def _deserialize(self, params):
@@ -1258,6 +1269,8 @@ class PresetLayoutConfig(AbstractModel):
         self.LocationY = params.get("LocationY")
         self.ZOrder = params.get("ZOrder")
         self.RenderMode = params.get("RenderMode")
+        self.MixInputType = params.get("MixInputType")
+        self.PlaceImageId = params.get("PlaceImageId")
 
 
 class QualityData(AbstractModel):

@@ -6445,6 +6445,9 @@ ip：IP 列表作为源站
         :param PathRules: 回源路径重写规则配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type PathRules: list of PathRule
+        :param PathBasedOrigin: 分路径回源配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PathBasedOrigin: list of PathBasedOriginRule
         """
         self.Origins = None
         self.OriginType = None
@@ -6456,6 +6459,7 @@ ip：IP 列表作为源站
         self.BackupServerName = None
         self.BasePath = None
         self.PathRules = None
+        self.PathBasedOrigin = None
 
 
     def _deserialize(self, params):
@@ -6474,6 +6478,12 @@ ip：IP 列表作为源站
                 obj = PathRule()
                 obj._deserialize(item)
                 self.PathRules.append(obj)
+        if params.get("PathBasedOrigin") is not None:
+            self.PathBasedOrigin = []
+            for item in params.get("PathBasedOrigin"):
+                obj = PathBasedOriginRule()
+                obj._deserialize(item)
+                self.PathBasedOrigin.append(obj)
 
 
 class OriginAuthentication(AbstractModel):
@@ -6768,6 +6778,39 @@ class OverseaConfig(AbstractModel):
         if params.get("VideoSeek") is not None:
             self.VideoSeek = VideoSeek()
             self.VideoSeek._deserialize(params.get("VideoSeek"))
+
+
+class PathBasedOriginRule(AbstractModel):
+    """分路径回源规则
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleType: 规则类型：
+file：指定文件后缀生效
+directory：指定路径生效
+path：指定绝对路径生效
+index: 指定主页生效
+        :type RuleType: str
+        :param RulePaths: RuleType 对应类型下的匹配内容：
+file 时填充后缀名，如 jpg、txt
+directory 时填充路径，如 /xxx/test/
+path 时填充绝对路径，如 /xxx/test.html
+index 时填充 /
+        :type RulePaths: list of str
+        :param Origin: 源站列表，支持域名或ipv4地址
+        :type Origin: list of str
+        """
+        self.RuleType = None
+        self.RulePaths = None
+        self.Origin = None
+
+
+    def _deserialize(self, params):
+        self.RuleType = params.get("RuleType")
+        self.RulePaths = params.get("RulePaths")
+        self.Origin = params.get("Origin")
 
 
 class PathRule(AbstractModel):

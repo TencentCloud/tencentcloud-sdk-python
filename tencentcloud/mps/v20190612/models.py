@@ -11270,6 +11270,16 @@ class TranscodeTaskInput(AbstractModel):
         :type WatermarkSet: list of WatermarkInput
         :param MosaicSet: 马赛克列表，最大可支持 10 张。
         :type MosaicSet: list of MosaicInput
+        :param StartTimeOffset: 转码后的视频的起始时间偏移，单位：秒。
+<li>不填或填0，表示转码后的视频从原始视频的起始位置开始；</li>
+<li>当数值大于0时（假设为 n），表示转码后的视频从原始视频的第 n 秒位置开始；</li>
+<li>当数值小于0时（假设为 -n），表示转码后的视频从原始视频结束 n 秒前的位置开始。</li>
+        :type StartTimeOffset: float
+        :param EndTimeOffset: 转码后视频的终止时间偏移，单位：秒。
+<li>不填或填0，表示转码后的视频持续到原始视频的末尾终止；</li>
+<li>当数值大于0时（假设为 n），表示转码后的视频持续到原始视频第 n 秒时终止；</li>
+<li>当数值小于0时（假设为 -n），表示转码后的视频持续到原始视频结束 n 秒前终止。</li>
+        :type EndTimeOffset: float
         :param OutputStorage: 转码后文件的目标存储，不填则继承上层的 OutputStorage 值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
@@ -11286,6 +11296,8 @@ class TranscodeTaskInput(AbstractModel):
         self.OverrideParameter = None
         self.WatermarkSet = None
         self.MosaicSet = None
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
         self.OutputStorage = None
         self.OutputObjectPath = None
         self.SegmentObjectName = None
@@ -11312,6 +11324,8 @@ class TranscodeTaskInput(AbstractModel):
                 obj = MosaicInput()
                 obj._deserialize(item)
                 self.MosaicSet.append(obj)
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
         if params.get("OutputStorage") is not None:
             self.OutputStorage = TaskOutputStorage()
             self.OutputStorage._deserialize(params.get("OutputStorage"))
