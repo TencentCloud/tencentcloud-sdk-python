@@ -4960,6 +4960,10 @@ class DescribeProvinceIspPlayInfoListRequest(AbstractModel):
         :type IspNames: list of str
         :param MainlandOrOversea: 地域，可选值：Mainland，Oversea，China，Foreign，Global（默认值）；如果为空，查询总的数据；如果为“Mainland”，查询中国大陆的数据；如果为“Oversea”，则查询中国大陆以外的数据；如果为China，查询中国的数据（包括港澳台）；如果为Foreign，查询国外的数据（不包括港澳台）。
         :type MainlandOrOversea: str
+        :param IpType: ip类型：
+“Ipv6”：Ipv6数据
+如果为空，查询总的数据；
+        :type IpType: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -4969,6 +4973,7 @@ class DescribeProvinceIspPlayInfoListRequest(AbstractModel):
         self.ProvinceNames = None
         self.IspNames = None
         self.MainlandOrOversea = None
+        self.IpType = None
 
 
     def _deserialize(self, params):
@@ -4980,6 +4985,7 @@ class DescribeProvinceIspPlayInfoListRequest(AbstractModel):
         self.ProvinceNames = params.get("ProvinceNames")
         self.IspNames = params.get("IspNames")
         self.MainlandOrOversea = params.get("MainlandOrOversea")
+        self.IpType = params.get("IpType")
 
 
 class DescribeProvinceIspPlayInfoListResponse(AbstractModel):

@@ -181,7 +181,7 @@ class RiskDetail(AbstractModel):
 
     def __init__(self):
         """
-        :param RiskCode: 风险码
+        :param RiskCode: 风险码 参数详细定义请加微信：TYXGJ-01
         :type RiskCode: int
         """
         self.RiskCode = None

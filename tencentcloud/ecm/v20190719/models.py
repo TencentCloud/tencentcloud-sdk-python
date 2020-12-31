@@ -3249,7 +3249,7 @@ class DescribePeakNetworkOverviewRequest(AbstractModel):
         """
         :param StartTime: 开始时间（xxxx-xx-xx）如2019-08-14，默认为一周之前的日期，不应与当前日期间隔超过30天。
         :type StartTime: str
-        :param EndTime: 结束时间（xxxx-xx-xx）如2019-08-14，默认为昨天，不应与当前日期间隔超过30天。当开始与结束间隔不超过2天时返回5分钟粒度的数据，否则返回1小时粒度的数据。
+        :param EndTime: 结束时间（xxxx-xx-xx）如2019-08-14，默认为昨天，不应与当前日期间隔超过30天。当开始与结束间隔不超过1天时会返回1分钟粒度的数据，不超过7天时返回5分钟粒度的数据，否则返回1小时粒度的数据。
         :type EndTime: str
         :param Filters: 过滤条件。
 
@@ -9067,22 +9067,16 @@ class VpcInfo(AbstractModel):
         :type TagSet: list of Tag
         :param AssistantCidrSet: 辅助CIDR
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AssistantCidrSet: list of AssistantCidr
         :param Region: 地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         :param Description: 描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param RegionName: 地域中文名
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionName: str
         :param SubnetCount: 包含子网数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetCount: int
         :param InstanceCount: 包含实例数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceCount: int
         """
         self.VpcName = None
