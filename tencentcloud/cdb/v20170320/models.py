@@ -1276,7 +1276,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type DeployMode: int
         :param SlaveZone: 备库 1 的可用区信息，默认为 Zone 的值，购买主实例时可指定该参数，购买只读实例或者灾备实例时指定该参数无意义。
         :type SlaveZone: str
-        :param BackupZone: 备库 2 的可用区信息，默认为空，购买强同步主实例时可指定该参数，购买其他类型实例时指定该参数无意义。
+        :param BackupZone: 备库 2 的可用区信息，默认为空，购买三节点主实例时可指定该参数，购买其他类型实例时指定该参数无意义。
         :type BackupZone: str
         :param SecurityGroup: 安全组参数，可使用 [查询项目安全组信息](https://cloud.tencent.com/document/api/236/15850) 接口查询某个项目的安全组详情。
         :type SecurityGroup: list of str
@@ -1438,7 +1438,7 @@ class CreateDBInstanceRequest(AbstractModel):
         :type SlaveZone: str
         :param ParamList: 参数列表，参数格式如 ParamList.0.Name=auto_increment&ParamList.0.Value=1。可通过 [查询默认的可设置参数列表](https://cloud.tencent.com/document/api/236/32662) 查询支持设置的参数。
         :type ParamList: list of ParamInfo
-        :param BackupZone: 备库 2 的可用区信息，默认为空，购买强同步主实例时可指定该参数，购买其他类型实例时指定该参数无意义。
+        :param BackupZone: 备库 2 的可用区信息，默认为空，购买三节点主实例时可指定该参数，购买其他类型实例时指定该参数无意义。
         :type BackupZone: str
         :param AutoRenewFlag: 自动续费标记，可选值为：0 - 不自动续费；1 - 自动续费。
         :type AutoRenewFlag: int

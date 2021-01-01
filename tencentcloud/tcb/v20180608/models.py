@@ -2067,6 +2067,50 @@ class DescribeExtraPkgBillingInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribePostpayFreeQuotasRequest(AbstractModel):
+    """DescribePostpayFreeQuotas请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境ID
+        :type EnvId: str
+        """
+        self.EnvId = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+
+
+class DescribePostpayFreeQuotasResponse(AbstractModel):
+    """DescribePostpayFreeQuotas返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FreequotaInfoList: 免费量资源信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FreequotaInfoList: list of FreequotaInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FreequotaInfoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("FreequotaInfoList") is not None:
+            self.FreequotaInfoList = []
+            for item in params.get("FreequotaInfoList"):
+                obj = FreequotaInfo()
+                obj._deserialize(item)
+                self.FreequotaInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribePostpayPackageFreeQuotasRequest(AbstractModel):
     """DescribePostpayPackageFreeQuotas请求参数结构体
 
@@ -2619,6 +2663,53 @@ class EstablishCloudBaseRunServerResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class FreequotaInfo(AbstractModel):
+    """后付费资源免费量信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceType: 资源类型
+<li>COS</li>
+<li>CDN</li>
+<li>FLEXDB</li>
+<li>SCF</li>
+        :type ResourceType: str
+        :param ResourceMetric: 资源指标名称
+        :type ResourceMetric: str
+        :param FreeQuota: 资源指标免费量
+        :type FreeQuota: int
+        :param MetricUnit: 指标单位
+        :type MetricUnit: str
+        :param DeductType: 免费量抵扣周期
+<li>sum-month:以月为单位抵扣</li>
+<li>sum-day:以天为单位抵扣</li>
+<li>totalize:总容量抵扣</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeductType: str
+        :param FreeQuotaType: 免费量类型
+<li>basic:通用量抵扣</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FreeQuotaType: str
+        """
+        self.ResourceType = None
+        self.ResourceMetric = None
+        self.FreeQuota = None
+        self.MetricUnit = None
+        self.DeductType = None
+        self.FreeQuotaType = None
+
+
+    def _deserialize(self, params):
+        self.ResourceType = params.get("ResourceType")
+        self.ResourceMetric = params.get("ResourceMetric")
+        self.FreeQuota = params.get("FreeQuota")
+        self.MetricUnit = params.get("MetricUnit")
+        self.DeductType = params.get("DeductType")
+        self.FreeQuotaType = params.get("FreeQuotaType")
 
 
 class FunctionInfo(AbstractModel):

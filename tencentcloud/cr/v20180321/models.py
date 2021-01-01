@@ -129,6 +129,27 @@ class ApplyCreditAuditResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class BotFileData(AbstractModel):
+    """机器人文件结构
+
+    """
+
+    def __init__(self):
+        """
+        :param FileType: 文件类型 A 拨打结果 T 记录详情
+        :type FileType: str
+        :param CosUrl: 文件地址
+        :type CosUrl: str
+        """
+        self.FileType = None
+        self.CosUrl = None
+
+
+    def _deserialize(self, params):
+        self.FileType = params.get("FileType")
+        self.CosUrl = params.get("CosUrl")
+
+
 class BotFlow(AbstractModel):
     """机器人对话流信息
 
@@ -846,6 +867,65 @@ class DownloadReportResponse(AbstractModel):
         self.CallbackDailyReportUrl = params.get("CallbackDailyReportUrl")
         self.CallbackResultReportUrl = params.get("CallbackResultReportUrl")
         self.CallbackDetailReportUrl = params.get("CallbackDetailReportUrl")
+        self.RequestId = params.get("RequestId")
+
+
+class ExportBotDataRequest(AbstractModel):
+    """ExportBotData请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名。默认值（固定）：AiApi
+        :type Module: str
+        :param Operation: 操作名。默认值（固定）：ExportBotData
+        :type Operation: str
+        :param BizDate: 业务日期。YYYY-MM-DD
+        :type BizDate: str
+        :param BotId: 任务ID，二者必填一个
+        :type BotId: str
+        :param BotName: 任务名称，二者必填一个
+        :type BotName: str
+        """
+        self.Module = None
+        self.Operation = None
+        self.BizDate = None
+        self.BotId = None
+        self.BotName = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+        self.BizDate = params.get("BizDate")
+        self.BotId = params.get("BotId")
+        self.BotName = params.get("BotName")
+
+
+class ExportBotDataResponse(AbstractModel):
+    """ExportBotData返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 导出文件列表
+        :type Data: list of BotFileData
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = BotFileData()
+                obj._deserialize(item)
+                self.Data.append(obj)
         self.RequestId = params.get("RequestId")
 
 
