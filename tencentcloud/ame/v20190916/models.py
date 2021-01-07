@@ -60,6 +60,53 @@ class Artist(AbstractModel):
         self.ArtistName = params.get("ArtistName")
 
 
+class AuthInfo(AbstractModel):
+    """AuthInfo集合
+
+    """
+
+    def __init__(self):
+        """
+        :param SubjectName: 主体名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubjectName: str
+        :param ProjectName: 项目名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectName: str
+        :param AppScene: 应用场景
+        :type AppScene: int
+        :param AppRegion: 应用地域
+        :type AppRegion: int
+        :param AuthPeriod: 授权时间
+        :type AuthPeriod: int
+        :param Commercialization: 是否可商业化
+        :type Commercialization: int
+        :param Platform: 是否可跨平台
+        :type Platform: int
+        :param Id: 加密后Id
+        :type Id: str
+        """
+        self.SubjectName = None
+        self.ProjectName = None
+        self.AppScene = None
+        self.AppRegion = None
+        self.AuthPeriod = None
+        self.Commercialization = None
+        self.Platform = None
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.SubjectName = params.get("SubjectName")
+        self.ProjectName = params.get("ProjectName")
+        self.AppScene = params.get("AppScene")
+        self.AppRegion = params.get("AppRegion")
+        self.AuthPeriod = params.get("AuthPeriod")
+        self.Commercialization = params.get("Commercialization")
+        self.Platform = params.get("Platform")
+        self.Id = params.get("Id")
+
+
 class DataInfo(AbstractModel):
     """数据信息
 
@@ -91,6 +138,170 @@ class DataInfo(AbstractModel):
         self.Duration = params.get("Duration")
         self.AuditionBegin = params.get("AuditionBegin")
         self.AuditionEnd = params.get("AuditionEnd")
+
+
+class DescribeAuthInfoRequest(AbstractModel):
+    """DescribeAuthInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: 偏移量：Offset=Offset+Limit
+        :type Offset: int
+        :param Limit: 数据条数
+        :type Limit: int
+        :param Key: 搜索关键字
+        :type Key: str
+        """
+        self.Offset = None
+        self.Limit = None
+        self.Key = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Key = params.get("Key")
+
+
+class DescribeAuthInfoResponse(AbstractModel):
+    """DescribeAuthInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AuthInfo: 授权项目列表
+        :type AuthInfo: list of AuthInfo
+        :param TotalCount: 总数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AuthInfo = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AuthInfo") is not None:
+            self.AuthInfo = []
+            for item in params.get("AuthInfo"):
+                obj = AuthInfo()
+                obj._deserialize(item)
+                self.AuthInfo.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCloudMusicPurchasedRequest(AbstractModel):
+    """DescribeCloudMusicPurchased请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AuthInfoId: 授权项目Id
+        :type AuthInfoId: str
+        """
+        self.AuthInfoId = None
+
+
+    def _deserialize(self, params):
+        self.AuthInfoId = params.get("AuthInfoId")
+
+
+class DescribeCloudMusicPurchasedResponse(AbstractModel):
+    """DescribeCloudMusicPurchased返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MusicOpenDetail: 云音乐列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MusicOpenDetail: list of MusicOpenDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MusicOpenDetail = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("MusicOpenDetail") is not None:
+            self.MusicOpenDetail = []
+            for item in params.get("MusicOpenDetail"):
+                obj = MusicOpenDetail()
+                obj._deserialize(item)
+                self.MusicOpenDetail.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCloudMusicRequest(AbstractModel):
+    """DescribeCloudMusic请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MusicId: 歌曲Id
+        :type MusicId: str
+        :param MusicType: 歌曲类型，请填写：MP3-320K-FTD
+        :type MusicType: str
+        """
+        self.MusicId = None
+        self.MusicType = None
+
+
+    def _deserialize(self, params):
+        self.MusicId = params.get("MusicId")
+        self.MusicType = params.get("MusicType")
+
+
+class DescribeCloudMusicResponse(AbstractModel):
+    """DescribeCloudMusic返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MusicId: 歌曲Id
+        :type MusicId: str
+        :param MusicName: 歌曲名称
+        :type MusicName: str
+        :param Duration: 歌曲时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Duration: int
+        :param MusicUrl: 歌曲链接
+        :type MusicUrl: str
+        :param MusicImageUrl: 歌曲图片
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MusicImageUrl: str
+        :param Singers: 歌手列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Singers: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MusicId = None
+        self.MusicName = None
+        self.Duration = None
+        self.MusicUrl = None
+        self.MusicImageUrl = None
+        self.Singers = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MusicId = params.get("MusicId")
+        self.MusicName = params.get("MusicName")
+        self.Duration = params.get("Duration")
+        self.MusicUrl = params.get("MusicUrl")
+        self.MusicImageUrl = params.get("MusicImageUrl")
+        self.Singers = params.get("Singers")
+        self.RequestId = params.get("RequestId")
 
 
 class DescribeItemByIdRequest(AbstractModel):
@@ -266,8 +477,8 @@ class DescribeMusicRequest(AbstractModel):
         :type ItemId: str
         :param IdentityId: 在应用前端播放音乐C端用户的唯一标识。无需是账户信息，用户唯一标识即可。
         :type IdentityId: str
-        :param SubItemType: 基础版：入参 MP3-64K-FTD-P  获取64kbps歌曲热门片段。
-高级/商用版：入参 MP3-320K-FTD 获取320kbps已核验歌曲完整资源。
+        :param SubItemType: MP3-64K-FTD-P  为获取64kbps歌曲热门片段。
+MP3-320K-FTD 为获取320kbps已核验歌曲完整资源。
         :type SubItemType: str
         :param Ssl: CDN URL Protocol:HTTP or HTTPS/SSL
 Values:Y , N(default)
@@ -317,9 +528,9 @@ class DescribePackageItemsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param OrderId: 订单id
+        :param OrderId: 订单id，从获取已购曲库包列表中获取
         :type OrderId: str
-        :param Offset: 默认0
+        :param Offset: 默认0，Offset=Offset+Length
         :type Offset: int
         :param Length: 默认20
         :type Length: int
@@ -342,7 +553,7 @@ class DescribePackageItemsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param PackageItems: 歌曲信息数组
+        :param PackageItems: 已核销歌曲信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type PackageItems: list of PackageItem
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -369,7 +580,7 @@ class DescribePackagesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: 默认0
+        :param Offset: 默认0，Offset=Offset+Length
         :type Offset: int
         :param Length: 默认20
         :type Length: int
@@ -390,7 +601,7 @@ class DescribePackagesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Packages: 已购曲库包数组
+        :param Packages: 已购曲库包列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Packages: list of Package
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -419,7 +630,7 @@ class DescribeStationsRequest(AbstractModel):
         """
         :param Limit: 条数，必须大于0
         :type Limit: int
-        :param Offset: offset (Default = 0)，(当前页-1) * Limit
+        :param Offset: offset (Default = 0)，Offset=Offset+Limit
         :type Offset: int
         """
         self.Limit = None
@@ -606,6 +817,64 @@ Unit :ms
         self.AuditionBegin = params.get("AuditionBegin")
         self.AuditionEnd = params.get("AuditionEnd")
         self.FullUrl = params.get("FullUrl")
+
+
+class MusicOpenDetail(AbstractModel):
+    """对外开放信息
+
+    """
+
+    def __init__(self):
+        """
+        :param MusicId: 音乐Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MusicId: str
+        :param AlbumName: 专辑名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlbumName: str
+        :param AlbumImageUrl: 专辑图片路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlbumImageUrl: str
+        :param MusicName: 音乐名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MusicName: str
+        :param MusicImageUrl: 音乐图片路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MusicImageUrl: str
+        :param Singers: 歌手
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Singers: list of str
+        :param Duration: 播放时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Duration: int
+        :param Tags: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of str
+        :param LyricUrl: 歌词url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LyricUrl: str
+        """
+        self.MusicId = None
+        self.AlbumName = None
+        self.AlbumImageUrl = None
+        self.MusicName = None
+        self.MusicImageUrl = None
+        self.Singers = None
+        self.Duration = None
+        self.Tags = None
+        self.LyricUrl = None
+
+
+    def _deserialize(self, params):
+        self.MusicId = params.get("MusicId")
+        self.AlbumName = params.get("AlbumName")
+        self.AlbumImageUrl = params.get("AlbumImageUrl")
+        self.MusicName = params.get("MusicName")
+        self.MusicImageUrl = params.get("MusicImageUrl")
+        self.Singers = params.get("Singers")
+        self.Duration = params.get("Duration")
+        self.Tags = params.get("Tags")
+        self.LyricUrl = params.get("LyricUrl")
 
 
 class Package(AbstractModel):

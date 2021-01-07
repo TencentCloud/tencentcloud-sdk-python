@@ -51,6 +51,8 @@ class AmsDetailInfo(AbstractModel):
         :type DetailCount: int
         :param RequestId: 音频审核的请求 id
         :type RequestId: str
+        :param Status: 音频机审状态
+        :type Status: str
         """
         self.Label = None
         self.Duration = None
@@ -66,6 +68,7 @@ class AmsDetailInfo(AbstractModel):
         self.Content = None
         self.DetailCount = None
         self.RequestId = None
+        self.Status = None
 
 
     def _deserialize(self, params):
@@ -83,6 +86,7 @@ class AmsDetailInfo(AbstractModel):
         self.Content = params.get("Content")
         self.DetailCount = params.get("DetailCount")
         self.RequestId = params.get("RequestId")
+        self.Status = params.get("Status")
 
 
 class AudioResult(AbstractModel):

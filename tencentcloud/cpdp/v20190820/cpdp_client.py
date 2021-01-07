@@ -1210,6 +1210,34 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def QueryBillDownloadURL(self, request):
+        """获取单笔代发转账对账单下载URL
+
+        :param request: Request instance for QueryBillDownloadURL.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryBillDownloadURLRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryBillDownloadURLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryBillDownloadURL", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryBillDownloadURLResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def QueryCommonTransferRecharge(self, request):
         """查询普通转账充值明细。接口用于查询会员主动转账进资金汇总账户的明细情况。若会员使用绑定账号转入，则直接入账到会员子账户。若未使用绑定账号转入，则系统无法自动清分到对应子账户，则转入挂账子账户由平台自行清分。若是 “见证+收单充值”T0充值记录时备注Note为“见证+收单充值,订单号” 此接口可以查到T0到账的“见证+收单充值”充值记录。
 

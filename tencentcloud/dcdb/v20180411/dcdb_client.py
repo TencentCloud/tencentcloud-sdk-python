@@ -26,6 +26,34 @@ class DcdbClient(AbstractClient):
     _service = 'dcdb'
 
 
+    def AssociateSecurityGroups(self, request):
+        """本接口 (AssociateSecurityGroups) 用于安全组批量绑定云资源。
+
+        :param request: Request instance for AssociateSecurityGroups.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.AssociateSecurityGroupsRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.AssociateSecurityGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AssociateSecurityGroups", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AssociateSecurityGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CloneAccount(self, request):
         """本接口（CloneAccount）用于克隆实例账户。
 
@@ -294,6 +322,34 @@ class DcdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBParametersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDBSecurityGroups(self, request):
+        """本接口（DescribeDBSecurityGroups）用于查询实例安全组信息
+
+        :param request: Request instance for DescribeDBSecurityGroups.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDBSecurityGroupsRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.DescribeDBSecurityGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDBSecurityGroups", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDBSecurityGroupsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -617,6 +673,34 @@ class DcdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeProjectSecurityGroups(self, request):
+        """本接口（DescribeProjectSecurityGroups）用于查询项目安全组信息
+
+        :param request: Request instance for DescribeProjectSecurityGroups.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeProjectSecurityGroupsRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.DescribeProjectSecurityGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeProjectSecurityGroups", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeProjectSecurityGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeProjects(self, request):
         """本接口（DescribeProjects）用于查询项目列表
 
@@ -715,6 +799,34 @@ class DcdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUserTasksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DisassociateSecurityGroups(self, request):
+        """本接口(DisassociateSecurityGroups)用于安全组批量解绑实例。
+
+        :param request: Request instance for DisassociateSecurityGroups.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.DisassociateSecurityGroupsRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.DisassociateSecurityGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DisassociateSecurityGroups", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DisassociateSecurityGroupsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -829,6 +941,34 @@ class DcdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAccountDescriptionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyDBInstanceSecurityGroups(self, request):
+        """本接口（ModifyDBInstanceSecurityGroups）用于修改云数据库安全组
+
+        :param request: Request instance for ModifyDBInstanceSecurityGroups.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.ModifyDBInstanceSecurityGroupsRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.ModifyDBInstanceSecurityGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDBInstanceSecurityGroups", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDBInstanceSecurityGroupsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -2848,12 +2848,15 @@ class PublishMessageRequest(AbstractModel):
         :type DeviceName: str
         :param Qos: 服务质量等级，取值为0或1
         :type Qos: int
+        :param PayloadEncoding: Payload内容的编码格式，取值为base64或空。base64表示云端将收到的请求数据进行base64解码后下发到设备，空则直接将原始内容下发到设备
+        :type PayloadEncoding: str
         """
         self.Topic = None
         self.Payload = None
         self.ProductId = None
         self.DeviceName = None
         self.Qos = None
+        self.PayloadEncoding = None
 
 
     def _deserialize(self, params):
@@ -2862,6 +2865,7 @@ class PublishMessageRequest(AbstractModel):
         self.ProductId = params.get("ProductId")
         self.DeviceName = params.get("DeviceName")
         self.Qos = params.get("Qos")
+        self.PayloadEncoding = params.get("PayloadEncoding")
 
 
 class PublishMessageResponse(AbstractModel):

@@ -338,14 +338,18 @@ class CreateProjectRequest(AbstractModel):
         :type ProjectName: str
         :param ProjectDesc: 项目描述
         :type ProjectDesc: str
+        :param InstanceId: 实例ID，不带实例ID，默认为公共实例
+        :type InstanceId: str
         """
         self.ProjectName = None
         self.ProjectDesc = None
+        self.InstanceId = None
 
 
     def _deserialize(self, params):
         self.ProjectName = params.get("ProjectName")
         self.ProjectDesc = params.get("ProjectDesc")
+        self.InstanceId = params.get("InstanceId")
 
 
 class CreateProjectResponse(AbstractModel):
@@ -1379,14 +1383,18 @@ class GetProjectListRequest(AbstractModel):
         :type Offset: int
         :param Limit: 个数限制
         :type Limit: int
+        :param InstanceId: 实例ID
+        :type InstanceId: str
         """
         self.Offset = None
         self.Limit = None
+        self.InstanceId = None
 
 
     def _deserialize(self, params):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.InstanceId = params.get("InstanceId")
 
 
 class GetProjectListResponse(AbstractModel):

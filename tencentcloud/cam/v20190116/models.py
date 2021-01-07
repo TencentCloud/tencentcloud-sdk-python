@@ -2579,6 +2579,57 @@ class ListUsersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ListWeChatWorkSubAccountsRequest(AbstractModel):
+    """ListWeChatWorkSubAccounts请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 限制数目
+        :type Limit: int
+        """
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class ListWeChatWorkSubAccountsResponse(AbstractModel):
+    """ListWeChatWorkSubAccounts返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 企业微信子用户列表。
+        :type Data: list of WeChatWorkSubAccount
+        :param TotalCount: 总数目。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = WeChatWorkSubAccount()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class LoginActionFlag(AbstractModel):
     """登录和敏感操作flag
 
@@ -3110,6 +3161,9 @@ class SubAccountInfo(AbstractModel):
         :type CountryCode: str
         :param Email: 邮箱
         :type Email: str
+        :param CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
         """
         self.Uin = None
         self.Name = None
@@ -3119,6 +3173,7 @@ class SubAccountInfo(AbstractModel):
         self.PhoneNum = None
         self.CountryCode = None
         self.Email = None
+        self.CreateTime = None
 
 
     def _deserialize(self, params):
@@ -3130,6 +3185,7 @@ class SubAccountInfo(AbstractModel):
         self.PhoneNum = params.get("PhoneNum")
         self.CountryCode = params.get("CountryCode")
         self.Email = params.get("Email")
+        self.CreateTime = params.get("CreateTime")
 
 
 class UpdateAssumeRolePolicyRequest(AbstractModel):
@@ -3457,3 +3513,58 @@ class UpdateUserResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class WeChatWorkSubAccount(AbstractModel):
+    """企业微信子用户
+
+    """
+
+    def __init__(self):
+        """
+        :param Uin: 子用户用户 ID
+        :type Uin: int
+        :param Name: 子用户用户名
+        :type Name: str
+        :param Uid: 子用户 UID
+        :type Uid: int
+        :param Remark: 备注
+        :type Remark: str
+        :param ConsoleLogin: 子用户能否登录控制台
+        :type ConsoleLogin: int
+        :param PhoneNum: 手机号
+        :type PhoneNum: str
+        :param CountryCode: 区号
+        :type CountryCode: str
+        :param Email: 邮箱
+        :type Email: str
+        :param WeChatWorkUserId: 企业微信UserId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WeChatWorkUserId: str
+        :param CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        """
+        self.Uin = None
+        self.Name = None
+        self.Uid = None
+        self.Remark = None
+        self.ConsoleLogin = None
+        self.PhoneNum = None
+        self.CountryCode = None
+        self.Email = None
+        self.WeChatWorkUserId = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.Uin = params.get("Uin")
+        self.Name = params.get("Name")
+        self.Uid = params.get("Uid")
+        self.Remark = params.get("Remark")
+        self.ConsoleLogin = params.get("ConsoleLogin")
+        self.PhoneNum = params.get("PhoneNum")
+        self.CountryCode = params.get("CountryCode")
+        self.Email = params.get("Email")
+        self.WeChatWorkUserId = params.get("WeChatWorkUserId")
+        self.CreateTime = params.get("CreateTime")

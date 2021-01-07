@@ -41,6 +41,48 @@ class AddShardConfig(AbstractModel):
         self.ShardStorage = params.get("ShardStorage")
 
 
+class AssociateSecurityGroupsRequest(AbstractModel):
+    """AssociateSecurityGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Product: 数据库引擎名称，本接口取值：dcdb。
+        :type Product: str
+        :param SecurityGroupId: 要绑定的安全组ID，类似sg-efil73jd。
+        :type SecurityGroupId: str
+        :param InstanceIds: 被绑定的实例ID，类似tdsqlshard-lesecurk，支持指定多个实例。
+        :type InstanceIds: list of str
+        """
+        self.Product = None
+        self.SecurityGroupId = None
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.Product = params.get("Product")
+        self.SecurityGroupId = params.get("SecurityGroupId")
+        self.InstanceIds = params.get("InstanceIds")
+
+
+class AssociateSecurityGroupsResponse(AbstractModel):
+    """AssociateSecurityGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CloneAccountRequest(AbstractModel):
     """CloneAccount请求参数结构体
 
@@ -1220,6 +1262,53 @@ class DescribeDBParametersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDBSecurityGroupsRequest(AbstractModel):
+    """DescribeDBSecurityGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Product: 数据库引擎名称，本接口取值：dcdb。
+        :type Product: str
+        :param InstanceId: 实例ID。
+        :type InstanceId: str
+        """
+        self.Product = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.Product = params.get("Product")
+        self.InstanceId = params.get("InstanceId")
+
+
+class DescribeDBSecurityGroupsResponse(AbstractModel):
+    """DescribeDBSecurityGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Groups: 安全组详情。
+        :type Groups: list of SecurityGroup
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Groups = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Groups") is not None:
+            self.Groups = []
+            for item in params.get("Groups"):
+                obj = SecurityGroup()
+                obj._deserialize(item)
+                self.Groups.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDBSyncModeRequest(AbstractModel):
     """DescribeDBSyncMode请求参数结构体
 
@@ -1898,6 +1987,53 @@ class DescribeOrdersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeProjectSecurityGroupsRequest(AbstractModel):
+    """DescribeProjectSecurityGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Product: 数据库引擎名称，本接口取值：dcdb。
+        :type Product: str
+        :param ProjectId: 项目ID。
+        :type ProjectId: int
+        """
+        self.Product = None
+        self.ProjectId = None
+
+
+    def _deserialize(self, params):
+        self.Product = params.get("Product")
+        self.ProjectId = params.get("ProjectId")
+
+
+class DescribeProjectSecurityGroupsResponse(AbstractModel):
+    """DescribeProjectSecurityGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Groups: 安全组详情。
+        :type Groups: list of SecurityGroup
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Groups = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Groups") is not None:
+            self.Groups = []
+            for item in params.get("Groups"):
+                obj = SecurityGroup()
+                obj._deserialize(item)
+                self.Groups.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeProjectsRequest(AbstractModel):
     """DescribeProjects请求参数结构体
 
@@ -2105,6 +2241,48 @@ class DescribeUserTasksResponse(AbstractModel):
                 obj = UserTaskInfo()
                 obj._deserialize(item)
                 self.FlowSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DisassociateSecurityGroupsRequest(AbstractModel):
+    """DisassociateSecurityGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Product: 数据库引擎名称，本接口取值：dcdb。
+        :type Product: str
+        :param SecurityGroupId: 安全组Id。
+        :type SecurityGroupId: str
+        :param InstanceIds: 实例ID列表，一个或者多个实例Id组成的数组。
+        :type InstanceIds: list of str
+        """
+        self.Product = None
+        self.SecurityGroupId = None
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.Product = params.get("Product")
+        self.SecurityGroupId = params.get("SecurityGroupId")
+        self.InstanceIds = params.get("InstanceIds")
+
+
+class DisassociateSecurityGroupsResponse(AbstractModel):
+    """DisassociateSecurityGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -2344,6 +2522,48 @@ class ModifyAccountDescriptionRequest(AbstractModel):
 
 class ModifyAccountDescriptionResponse(AbstractModel):
     """ModifyAccountDescription返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
+    """ModifyDBInstanceSecurityGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Product: 数据库引擎名称，本接口取值：dcdb。
+        :type Product: str
+        :param InstanceId: 实例ID。
+        :type InstanceId: str
+        :param SecurityGroupIds: 要修改的安全组 ID 列表，一个或者多个安全组 ID 组成的数组。
+        :type SecurityGroupIds: list of str
+        """
+        self.Product = None
+        self.InstanceId = None
+        self.SecurityGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.Product = params.get("Product")
+        self.InstanceId = params.get("InstanceId")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+
+
+class ModifyDBInstanceSecurityGroupsResponse(AbstractModel):
+    """ModifyDBInstanceSecurityGroups返回参数结构体
 
     """
 
@@ -2846,6 +3066,86 @@ class ResourceTag(AbstractModel):
     def _deserialize(self, params):
         self.TagKey = params.get("TagKey")
         self.TagValue = params.get("TagValue")
+
+
+class SecurityGroup(AbstractModel):
+    """安全组详情
+
+    """
+
+    def __init__(self):
+        """
+        :param ProjectId: 项目ID
+        :type ProjectId: int
+        :param CreateTime: 创建时间，时间格式：yyyy-mm-dd hh:mm:ss
+        :type CreateTime: str
+        :param SecurityGroupId: 安全组ID
+        :type SecurityGroupId: str
+        :param SecurityGroupName: 安全组名称
+        :type SecurityGroupName: str
+        :param SecurityGroupRemark: 安全组备注
+        :type SecurityGroupRemark: str
+        :param Inbound: 入站规则
+        :type Inbound: list of SecurityGroupBound
+        :param Outbound: 出站规则
+        :type Outbound: list of SecurityGroupBound
+        """
+        self.ProjectId = None
+        self.CreateTime = None
+        self.SecurityGroupId = None
+        self.SecurityGroupName = None
+        self.SecurityGroupRemark = None
+        self.Inbound = None
+        self.Outbound = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.CreateTime = params.get("CreateTime")
+        self.SecurityGroupId = params.get("SecurityGroupId")
+        self.SecurityGroupName = params.get("SecurityGroupName")
+        self.SecurityGroupRemark = params.get("SecurityGroupRemark")
+        if params.get("Inbound") is not None:
+            self.Inbound = []
+            for item in params.get("Inbound"):
+                obj = SecurityGroupBound()
+                obj._deserialize(item)
+                self.Inbound.append(obj)
+        if params.get("Outbound") is not None:
+            self.Outbound = []
+            for item in params.get("Outbound"):
+                obj = SecurityGroupBound()
+                obj._deserialize(item)
+                self.Outbound.append(obj)
+
+
+class SecurityGroupBound(AbstractModel):
+    """安全出入口规则
+
+    """
+
+    def __init__(self):
+        """
+        :param Action: 策略，ACCEPT 或者 DROP
+        :type Action: str
+        :param CidrIp: 来源 IP 或 IP 段，例如192.168.0.0/16
+        :type CidrIp: str
+        :param PortRange: 端口
+        :type PortRange: str
+        :param IpProtocol: 网络协议，支持 UDP、TCP 等
+        :type IpProtocol: str
+        """
+        self.Action = None
+        self.CidrIp = None
+        self.PortRange = None
+        self.IpProtocol = None
+
+
+    def _deserialize(self, params):
+        self.Action = params.get("Action")
+        self.CidrIp = params.get("CidrIp")
+        self.PortRange = params.get("PortRange")
+        self.IpProtocol = params.get("IpProtocol")
 
 
 class ShardInfo(AbstractModel):

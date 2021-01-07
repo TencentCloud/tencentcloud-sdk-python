@@ -1202,7 +1202,7 @@ class OutputParams(AbstractModel):
         :type StreamId: str
         :param PureAudioStream: 取值范围[0,1]， 填0：直播流为音视频(默认); 填1：直播流为纯音频
         :type PureAudioStream: int
-        :param RecordId: 自定义录制文件名
+        :param RecordId: 自定义录制文件名。请先在实时音视频控制台开通录制功能，https://cloud.tencent.com/document/product/647/50768
         :type RecordId: str
         :param RecordAudioOnly: 取值范围[0,1]，填0无实际含义; 填1：指定录制文件格式为mp3
         :type RecordAudioOnly: int
@@ -1245,7 +1245,7 @@ class PresetLayoutConfig(AbstractModel):
         :type RenderMode: int
         :param MixInputType: 该当前位置用户混入的流类型：0为混入音视频，1为只混入视频，2为只混入音频。默认为0，建议配合指定用户ID使用。
         :type MixInputType: int
-        :param PlaceImageId: 占位图ID。实时音视频控制台上传并生成，https://cloud.tencent.com/document/product/647/50769
+        :param PlaceImageId: 占位图ID。启用占位图功能时，在当前位置的用户没有上行视频时显示占位图。占位图在实时音视频控制台上传并生成，https://cloud.tencent.com/document/product/647/50769
         :type PlaceImageId: int
         """
         self.UserId = None

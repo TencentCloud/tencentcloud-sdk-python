@@ -1109,6 +1109,91 @@ class FileInfo(AbstractModel):
                 self.AudioInfoResult.append(obj)
 
 
+class FrameTagItem(AbstractModel):
+    """帧标签
+
+    """
+
+    def __init__(self):
+        """
+        :param StartPts: 标签起始时间戳PTS(ms)
+        :type StartPts: int
+        :param EndPts: 语句结束时间戳PTS(ms)
+        :type EndPts: int
+        :param Period: 字符串形式的起始结束时间
+        :type Period: str
+        :param TagItems: 标签数组
+        :type TagItems: list of TagItem
+        """
+        self.StartPts = None
+        self.EndPts = None
+        self.Period = None
+        self.TagItems = None
+
+
+    def _deserialize(self, params):
+        self.StartPts = params.get("StartPts")
+        self.EndPts = params.get("EndPts")
+        self.Period = params.get("Period")
+        if params.get("TagItems") is not None:
+            self.TagItems = []
+            for item in params.get("TagItems"):
+                obj = TagItem()
+                obj._deserialize(item)
+                self.TagItems.append(obj)
+
+
+class FrameTagRec(AbstractModel):
+    """帧标签任务参数
+
+    """
+
+    def __init__(self):
+        """
+        :param TagType: 标签类型：
+"Common": 通用类型
+"Game":游戏类型
+        :type TagType: str
+        :param GameExtendType: 游戏具体类型:
+"HonorOfKings_AnchorViews":王者荣耀主播视角
+"HonorOfKings_GameViews":王者荣耀比赛视角
+"LOL_AnchorViews":英雄联盟主播视角
+"LOL_GameViews":英雄联盟比赛视角
+"PUBG_AnchorViews":和平精英主播视角
+"PUBG_GameViews":和平精英比赛视角
+        :type GameExtendType: str
+        """
+        self.TagType = None
+        self.GameExtendType = None
+
+
+    def _deserialize(self, params):
+        self.TagType = params.get("TagType")
+        self.GameExtendType = params.get("GameExtendType")
+
+
+class FrameTagResult(AbstractModel):
+    """帧标签结果
+
+    """
+
+    def __init__(self):
+        """
+        :param FrameTagItems: 帧标签结果数组
+        :type FrameTagItems: list of FrameTagItem
+        """
+        self.FrameTagItems = None
+
+
+    def _deserialize(self, params):
+        if params.get("FrameTagItems") is not None:
+            self.FrameTagItems = []
+            for item in params.get("FrameTagItems"):
+                obj = FrameTagItem()
+                obj._deserialize(item)
+                self.FrameTagItems.append(obj)
+
+
 class HighlightsEditingInfo(AbstractModel):
     """智能集锦任务参数信息
 
@@ -1480,15 +1565,19 @@ class MediaProcessInfo(AbstractModel):
 MediaEditing：媒体编辑（待上线）；
 MediaCutting：媒体剪切；
 MediaJoining：媒体拼接。
+MediaRecognition: 媒体识别。
         :type Type: str
         :param MediaCuttingInfo: 视频剪切任务参数，Type=MediaCutting时必选。
         :type MediaCuttingInfo: :class:`tencentcloud.ie.v20200304.models.MediaCuttingInfo`
         :param MediaJoiningInfo: 视频拼接任务参数，Type=MediaJoining时必选。
         :type MediaJoiningInfo: :class:`tencentcloud.ie.v20200304.models.MediaJoiningInfo`
+        :param MediaRecognitionInfo: 媒体识别任务参数，Type=MediaRecognition时必选
+        :type MediaRecognitionInfo: :class:`tencentcloud.ie.v20200304.models.MediaRecognitionInfo`
         """
         self.Type = None
         self.MediaCuttingInfo = None
         self.MediaJoiningInfo = None
+        self.MediaRecognitionInfo = None
 
 
     def _deserialize(self, params):
@@ -1499,6 +1588,9 @@ MediaJoining：媒体拼接。
         if params.get("MediaJoiningInfo") is not None:
             self.MediaJoiningInfo = MediaJoiningInfo()
             self.MediaJoiningInfo._deserialize(params.get("MediaJoiningInfo"))
+        if params.get("MediaRecognitionInfo") is not None:
+            self.MediaRecognitionInfo = MediaRecognitionInfo()
+            self.MediaRecognitionInfo._deserialize(params.get("MediaRecognitionInfo"))
 
 
 class MediaProcessTaskResult(AbstractModel):
@@ -1515,6 +1607,7 @@ class MediaProcessTaskResult(AbstractModel):
 MediaEditing：视频编辑（待上线）；
 MediaCutting：视频剪切；
 MediaJoining：视频拼接。
+MediaRecognition：媒体识别；
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param Progress: 处理进度，范围：[0,100]
@@ -1539,6 +1632,9 @@ MediaJoining：视频拼接。
         :param MediaJoiningTaskResult: 拼接任务处理结果，当Type=MediaJoining时才有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MediaJoiningTaskResult: :class:`tencentcloud.ie.v20200304.models.MediaJoiningTaskResult`
+        :param MediaRecognitionTaskResult: 媒体识别任务处理结果，当Type=MediaRecognition时才有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MediaRecognitionTaskResult: :class:`tencentcloud.ie.v20200304.models.MediaRecognitionTaskResult`
         """
         self.TaskId = None
         self.Type = None
@@ -1548,6 +1644,7 @@ MediaJoining：视频拼接。
         self.ErrMsg = None
         self.MediaCuttingTaskResult = None
         self.MediaJoiningTaskResult = None
+        self.MediaRecognitionTaskResult = None
 
 
     def _deserialize(self, params):
@@ -1563,6 +1660,9 @@ MediaJoining：视频拼接。
         if params.get("MediaJoiningTaskResult") is not None:
             self.MediaJoiningTaskResult = MediaJoiningTaskResult()
             self.MediaJoiningTaskResult._deserialize(params.get("MediaJoiningTaskResult"))
+        if params.get("MediaRecognitionTaskResult") is not None:
+            self.MediaRecognitionTaskResult = MediaRecognitionTaskResult()
+            self.MediaRecognitionTaskResult._deserialize(params.get("MediaRecognitionTaskResult"))
 
 
 class MediaQualityRestorationTaskResult(AbstractModel):
@@ -1589,6 +1689,58 @@ class MediaQualityRestorationTaskResult(AbstractModel):
                 obj = SubTaskResultItem()
                 obj._deserialize(item)
                 self.SubTaskResult.append(obj)
+
+
+class MediaRecognitionInfo(AbstractModel):
+    """媒体识别任务参数
+
+    """
+
+    def __init__(self):
+        """
+        :param FrameTagRec: 帧标签识别
+        :type FrameTagRec: :class:`tencentcloud.ie.v20200304.models.FrameTagRec`
+        :param SubtitleRec: 语音字幕识别
+        :type SubtitleRec: :class:`tencentcloud.ie.v20200304.models.SubtitleRec`
+        """
+        self.FrameTagRec = None
+        self.SubtitleRec = None
+
+
+    def _deserialize(self, params):
+        if params.get("FrameTagRec") is not None:
+            self.FrameTagRec = FrameTagRec()
+            self.FrameTagRec._deserialize(params.get("FrameTagRec"))
+        if params.get("SubtitleRec") is not None:
+            self.SubtitleRec = SubtitleRec()
+            self.SubtitleRec._deserialize(params.get("SubtitleRec"))
+
+
+class MediaRecognitionTaskResult(AbstractModel):
+    """媒体识别任务处理结果
+
+    """
+
+    def __init__(self):
+        """
+        :param FrameTagResults: 帧标签识别结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FrameTagResults: :class:`tencentcloud.ie.v20200304.models.FrameTagResult`
+        :param SubtitleResults: 语音字幕识别结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubtitleResults: :class:`tencentcloud.ie.v20200304.models.SubtitleResult`
+        """
+        self.FrameTagResults = None
+        self.SubtitleResults = None
+
+
+    def _deserialize(self, params):
+        if params.get("FrameTagResults") is not None:
+            self.FrameTagResults = FrameTagResult()
+            self.FrameTagResults._deserialize(params.get("FrameTagResults"))
+        if params.get("SubtitleResults") is not None:
+            self.SubtitleResults = SubtitleResult()
+            self.SubtitleResults._deserialize(params.get("SubtitleResults"))
 
 
 class MediaSourceInfo(AbstractModel):
@@ -1630,8 +1782,8 @@ class MediaTargetInfo(AbstractModel):
         """
         :param FileName: 目标文件名，不能带特殊字符（如/等），无需后缀名，最长200字符。
 
-注1：部分子服务支持站位符，形式为： {parameter}
-预设parameter：
+注1：部分子服务支持占位符，形式为： {parameter}
+预设parameter有：
 index：序号；
         :type FileName: str
         :param Format: 媒体封装格式，最长5字符，具体格式支持根据子任务确定。
@@ -2464,6 +2616,105 @@ class SubTaskTranscodeInfo(AbstractModel):
             self.MuxInfo._deserialize(params.get("MuxInfo"))
 
 
+class SubtitleItem(AbstractModel):
+    """语音字幕识别项
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 语音识别结果
+        :type Id: str
+        :param Zh: 中文翻译结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zh: str
+        :param En: 英文翻译结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type En: str
+        :param StartPts: 语句起始时间戳PTS(ms)
+        :type StartPts: int
+        :param EndPts: 语句结束时间戳PTS(ms)
+        :type EndPts: int
+        :param Period: 字符串形式的起始结束时间
+        :type Period: str
+        :param Confidence: 结果的置信度（百分制）
+        :type Confidence: int
+        :param EndFlag: 当前语句是否结束
+        :type EndFlag: bool
+        :param PuncEndTs: 语句分割时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PuncEndTs: str
+        """
+        self.Id = None
+        self.Zh = None
+        self.En = None
+        self.StartPts = None
+        self.EndPts = None
+        self.Period = None
+        self.Confidence = None
+        self.EndFlag = None
+        self.PuncEndTs = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Zh = params.get("Zh")
+        self.En = params.get("En")
+        self.StartPts = params.get("StartPts")
+        self.EndPts = params.get("EndPts")
+        self.Period = params.get("Period")
+        self.Confidence = params.get("Confidence")
+        self.EndFlag = params.get("EndFlag")
+        self.PuncEndTs = params.get("PuncEndTs")
+
+
+class SubtitleRec(AbstractModel):
+    """语音字幕任务参数
+
+    """
+
+    def __init__(self):
+        """
+        :param AsrDst: 语音识别：
+zh：中文
+en：英文
+        :type AsrDst: str
+        :param TransDst: 翻译识别：
+zh：中文
+en：英文
+        :type TransDst: str
+        """
+        self.AsrDst = None
+        self.TransDst = None
+
+
+    def _deserialize(self, params):
+        self.AsrDst = params.get("AsrDst")
+        self.TransDst = params.get("TransDst")
+
+
+class SubtitleResult(AbstractModel):
+    """语音字幕识别结果
+
+    """
+
+    def __init__(self):
+        """
+        :param SubtitleItems: 语音字幕数组
+        :type SubtitleItems: list of SubtitleItem
+        """
+        self.SubtitleItems = None
+
+
+    def _deserialize(self, params):
+        if params.get("SubtitleItems") is not None:
+            self.SubtitleItems = []
+            for item in params.get("SubtitleItems"):
+                obj = SubtitleItem()
+                obj._deserialize(item)
+                self.SubtitleItems.append(obj)
+
+
 class TagEditingInfo(AbstractModel):
     """视频标签识别任务参数信息
 
@@ -2483,6 +2734,37 @@ class TagEditingInfo(AbstractModel):
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
         self.CustomInfo = params.get("CustomInfo")
+
+
+class TagItem(AbstractModel):
+    """标签项
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 标签内容
+        :type Id: str
+        :param Confidence: 结果的置信度（百分制）
+        :type Confidence: int
+        :param Categorys: 分级数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Categorys: list of str
+        :param Ext: 标签备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ext: str
+        """
+        self.Id = None
+        self.Confidence = None
+        self.Categorys = None
+        self.Ext = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Confidence = params.get("Confidence")
+        self.Categorys = params.get("Categorys")
+        self.Ext = params.get("Ext")
 
 
 class TagTaskResult(AbstractModel):

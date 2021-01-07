@@ -1370,6 +1370,34 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ListWeChatWorkSubAccounts(self, request):
+        """获取企业微信子用户列表
+
+        :param request: Request instance for ListWeChatWorkSubAccounts.
+        :type request: :class:`tencentcloud.cam.v20190116.models.ListWeChatWorkSubAccountsRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.ListWeChatWorkSubAccountsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListWeChatWorkSubAccounts", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListWeChatWorkSubAccountsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def PutRolePermissionsBoundary(self, request):
         """设置角色权限边界
 

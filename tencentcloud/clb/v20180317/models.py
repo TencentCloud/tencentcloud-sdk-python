@@ -1107,6 +1107,8 @@ OPEN：公网属性， INTERNAL：内网属性。
         :type SnatIps: list of SnatIp
         :param ClusterTag: Stgw独占集群的标签。
         :type ClusterTag: str
+        :param EipAddressId: EIP 的唯一 ID，形如：eip-11112222，仅适用于内网负载均衡绑定EIP
+        :type EipAddressId: str
         """
         self.LoadBalancerType = None
         self.Forward = None
@@ -1128,6 +1130,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.SnatPro = None
         self.SnatIps = None
         self.ClusterTag = None
+        self.EipAddressId = None
 
 
     def _deserialize(self, params):
@@ -1165,6 +1168,7 @@ OPEN：公网属性， INTERNAL：内网属性。
                 obj._deserialize(item)
                 self.SnatIps.append(obj)
         self.ClusterTag = params.get("ClusterTag")
+        self.EipAddressId = params.get("EipAddressId")
 
 
 class CreateLoadBalancerResponse(AbstractModel):

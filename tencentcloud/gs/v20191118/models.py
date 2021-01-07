@@ -122,6 +122,44 @@ class CreateSessionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SaveGameArchiveRequest(AbstractModel):
+    """SaveGameArchive请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param UserId: 游戏用户ID
+        :type UserId: str
+        :param GameId: 游戏ID
+        :type GameId: str
+        """
+        self.UserId = None
+        self.GameId = None
+
+
+    def _deserialize(self, params):
+        self.UserId = params.get("UserId")
+        self.GameId = params.get("GameId")
+
+
+class SaveGameArchiveResponse(AbstractModel):
+    """SaveGameArchive返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class StopGameRequest(AbstractModel):
     """StopGame请求参数结构体
 
@@ -145,6 +183,52 @@ class StopGameRequest(AbstractModel):
 
 class StopGameResponse(AbstractModel):
     """StopGame返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class SwitchGameArchiveRequest(AbstractModel):
+    """SwitchGameArchive请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param UserId: 游戏用户ID
+        :type UserId: str
+        :param GameId: 游戏ID
+        :type GameId: str
+        :param GameArchiveUrl: 游戏存档Url
+        :type GameArchiveUrl: str
+        :param GameContext: 游戏相关参数
+        :type GameContext: str
+        """
+        self.UserId = None
+        self.GameId = None
+        self.GameArchiveUrl = None
+        self.GameContext = None
+
+
+    def _deserialize(self, params):
+        self.UserId = params.get("UserId")
+        self.GameId = params.get("GameId")
+        self.GameArchiveUrl = params.get("GameArchiveUrl")
+        self.GameContext = params.get("GameContext")
+
+
+class SwitchGameArchiveResponse(AbstractModel):
+    """SwitchGameArchive返回参数结构体
 
     """
 

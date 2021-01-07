@@ -357,7 +357,7 @@ class CreateDomainBatchRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateId: 模板ID
+        :param TemplateId: 模板ID。详情请查看：[获取模板列表](https://cloud.tencent.com/document/product/242/48940)
         :type TemplateId: str
         :param Period: 购买域名的年限，可选值：[1-10]
         :type Period: int

@@ -306,10 +306,13 @@ class CreateInstanceRequest(AbstractModel):
         :type RegistryType: str
         :param TagSpecification: 云标签描述
         :type TagSpecification: :class:`tencentcloud.tcr.v20190924.models.TagSpecification`
+        :param RegistryChargeType: 实例计费类型，0表示按量计费，1表示预付费，当前版本只支持后付费，默认为按量计费
+        :type RegistryChargeType: int
         """
         self.RegistryName = None
         self.RegistryType = None
         self.TagSpecification = None
+        self.RegistryChargeType = None
 
 
     def _deserialize(self, params):
@@ -318,6 +321,7 @@ class CreateInstanceRequest(AbstractModel):
         if params.get("TagSpecification") is not None:
             self.TagSpecification = TagSpecification()
             self.TagSpecification._deserialize(params.get("TagSpecification"))
+        self.RegistryChargeType = params.get("RegistryChargeType")
 
 
 class CreateInstanceResponse(AbstractModel):
@@ -3154,6 +3158,15 @@ class Registry(AbstractModel):
         :param TagSpecification: 实例云标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagSpecification: :class:`tencentcloud.tcr.v20190924.models.TagSpecification`
+        :param ExpiredAt: 实例过期时间（预付费）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpiredAt: str
+        :param PayMod: 实例付费类型，0表示后付费，1表示预付费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayMod: int
+        :param RenewFlag: 预付费续费标识，0表示手动续费，1表示自动续费，2不续费并且不通知
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RenewFlag: int
         """
         self.RegistryId = None
         self.RegistryName = None
@@ -3167,6 +3180,9 @@ class Registry(AbstractModel):
         self.TokenValidTime = None
         self.InternalEndpoint = None
         self.TagSpecification = None
+        self.ExpiredAt = None
+        self.PayMod = None
+        self.RenewFlag = None
 
 
     def _deserialize(self, params):
@@ -3184,6 +3200,30 @@ class Registry(AbstractModel):
         if params.get("TagSpecification") is not None:
             self.TagSpecification = TagSpecification()
             self.TagSpecification._deserialize(params.get("TagSpecification"))
+        self.ExpiredAt = params.get("ExpiredAt")
+        self.PayMod = params.get("PayMod")
+        self.RenewFlag = params.get("RenewFlag")
+
+
+class RegistryChargePrepaid(AbstractModel):
+    """实例预付费模式
+
+    """
+
+    def __init__(self):
+        """
+        :param Period: 购买实例的时长，单位：月
+        :type Period: int
+        :param RenewFlag: 自动续费标识，0：手动续费，1：自动续费，2：不续费并且不通知
+        :type RenewFlag: int
+        """
+        self.Period = None
+        self.RenewFlag = None
+
+
+    def _deserialize(self, params):
+        self.Period = params.get("Period")
+        self.RenewFlag = params.get("RenewFlag")
 
 
 class RegistryCondition(AbstractModel):
@@ -3241,6 +3281,54 @@ class RegistryStatus(AbstractModel):
                 obj = RegistryCondition()
                 obj._deserialize(item)
                 self.Conditions.append(obj)
+
+
+class RenewInstanceRequest(AbstractModel):
+    """RenewInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param RegistryChargePrepaid: 预付费自动续费标识和购买时长
+        :type RegistryChargePrepaid: :class:`tencentcloud.tcr.v20190924.models.RegistryChargePrepaid`
+        :param Flag: 0 续费， 1按量转包年包月
+        :type Flag: int
+        """
+        self.RegistryId = None
+        self.RegistryChargePrepaid = None
+        self.Flag = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        if params.get("RegistryChargePrepaid") is not None:
+            self.RegistryChargePrepaid = RegistryChargePrepaid()
+            self.RegistryChargePrepaid._deserialize(params.get("RegistryChargePrepaid"))
+        self.Flag = params.get("Flag")
+
+
+class RenewInstanceResponse(AbstractModel):
+    """RenewInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 企业版实例Id
+        :type RegistryId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RegistryId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.RequestId = params.get("RequestId")
 
 
 class ReplicationRegistry(AbstractModel):

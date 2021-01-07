@@ -26,6 +26,90 @@ class AmeClient(AbstractClient):
     _service = 'ame'
 
 
+    def DescribeAuthInfo(self, request):
+        """获取授权项目信息列表
+
+        :param request: Request instance for DescribeAuthInfo.
+        :type request: :class:`tencentcloud.ame.v20190916.models.DescribeAuthInfoRequest`
+        :rtype: :class:`tencentcloud.ame.v20190916.models.DescribeAuthInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAuthInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAuthInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCloudMusic(self, request):
+        """获取云音乐播放信息接口
+
+        :param request: Request instance for DescribeCloudMusic.
+        :type request: :class:`tencentcloud.ame.v20190916.models.DescribeCloudMusicRequest`
+        :rtype: :class:`tencentcloud.ame.v20190916.models.DescribeCloudMusicResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCloudMusic", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCloudMusicResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCloudMusicPurchased(self, request):
+        """获取授权项目下已购云音乐列表
+
+        :param request: Request instance for DescribeCloudMusicPurchased.
+        :type request: :class:`tencentcloud.ame.v20190916.models.DescribeCloudMusicPurchasedRequest`
+        :rtype: :class:`tencentcloud.ame.v20190916.models.DescribeCloudMusicPurchasedResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCloudMusicPurchased", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCloudMusicPurchasedResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeItemById(self, request):
         """根据歌曲ID查询歌曲信息
 
@@ -55,7 +139,7 @@ class AmeClient(AbstractClient):
 
 
     def DescribeItems(self, request):
-        """分类内容下歌曲列表获取，根据CategoryID或CategoryCode
+        """该服务后续会停用，不再建议使用
 
         :param request: Request instance for DescribeItems.
         :type request: :class:`tencentcloud.ame.v20190916.models.DescribeItemsRequest`
@@ -111,7 +195,7 @@ class AmeClient(AbstractClient):
 
 
     def DescribeMusic(self, request):
-        """根据接口的模式及歌曲ID来取得对应权限的歌曲播放地址等信息。
+        """获取曲库包歌曲播放信息接口
 
         :param request: Request instance for DescribeMusic.
         :type request: :class:`tencentcloud.ame.v20190916.models.DescribeMusicRequest`
@@ -139,7 +223,7 @@ class AmeClient(AbstractClient):
 
 
     def DescribePackageItems(self, request):
-        """查询曲库包已核验歌曲列表接口
+        """获取曲库包下已核销歌曲列表接口
 
         :param request: Request instance for DescribePackageItems.
         :type request: :class:`tencentcloud.ame.v20190916.models.DescribePackageItemsRequest`
@@ -167,7 +251,7 @@ class AmeClient(AbstractClient):
 
 
     def DescribePackages(self, request):
-        """查询已购曲库包列表接口
+        """获取已购曲库包列表接口
 
         :param request: Request instance for DescribePackages.
         :type request: :class:`tencentcloud.ame.v20190916.models.DescribePackagesRequest`
@@ -195,7 +279,7 @@ class AmeClient(AbstractClient):
 
 
     def DescribeStations(self, request):
-        """获取素材库列表时使用
+        """该服务后续会停用，不再建议使用
 
         :param request: Request instance for DescribeStations.
         :type request: :class:`tencentcloud.ame.v20190916.models.DescribeStationsRequest`

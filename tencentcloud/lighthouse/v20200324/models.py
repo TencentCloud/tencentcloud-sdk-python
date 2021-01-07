@@ -41,9 +41,9 @@ class Blueprint(AbstractModel):
         :type BlueprintType: str
         :param ImageUrl: 镜像图片 URL。
         :type ImageUrl: str
-        :param RequiredSystemDiskSize: 镜像所需系统盘大小
+        :param RequiredSystemDiskSize: 镜像所需系统盘大小。
         :type RequiredSystemDiskSize: int
-        :param BlueprintState: 镜像状态，取值：ONLINE、OFFLINE
+        :param BlueprintState: 镜像状态。
         :type BlueprintState: str
         """
         self.BlueprintId = None
@@ -110,6 +110,11 @@ class Bundle(AbstractModel):
 取值范围：
 <li> GENERAL_BUNDLE：通用型</li><li> STORAGE_BUNDLE：存储型 </li>
         :type BundleType: str
+        :param BundleDisplayLabel: 套餐展示标签.
+取值范围:
+"ACTIVITY": 活动套餐,
+"NORMAL": 普通套餐
+        :type BundleDisplayLabel: str
         """
         self.BundleId = None
         self.Memory = None
@@ -124,6 +129,7 @@ class Bundle(AbstractModel):
         self.InternetChargeType = None
         self.BundleSalesState = None
         self.BundleType = None
+        self.BundleDisplayLabel = None
 
 
     def _deserialize(self, params):
@@ -142,6 +148,7 @@ class Bundle(AbstractModel):
         self.InternetChargeType = params.get("InternetChargeType")
         self.BundleSalesState = params.get("BundleSalesState")
         self.BundleType = params.get("BundleType")
+        self.BundleDisplayLabel = params.get("BundleDisplayLabel")
 
 
 class CreateFirewallRulesRequest(AbstractModel):
@@ -1064,7 +1071,7 @@ class TrafficPackage(AbstractModel):
         """
         :param TrafficPackageId: 流量包ID。
         :type TrafficPackageId: str
-        :param TrafficUsed: 流量包生效周期内的总流量，单位字节。
+        :param TrafficUsed: 流量包生效周期内已使用流量，单位字节。
         :type TrafficUsed: int
         :param TrafficPackageTotal: 流量包生效周期内的总流量，单位字节。
         :type TrafficPackageTotal: int

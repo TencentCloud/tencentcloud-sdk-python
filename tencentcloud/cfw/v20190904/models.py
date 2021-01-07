@@ -138,7 +138,7 @@ class CreateAcRulesRequest(AbstractModel):
         """
         :param Data: 创建规则数据
         :type Data: list of RuleInfoData
-        :param Type: 0：添加，1：插入
+        :param Type: 0：添加（默认），1：插入
         :type Type: int
         :param EdgeId: 边id
         :type EdgeId: str
@@ -267,11 +267,11 @@ class DeleteAcRuleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: id值
+        :param Id: 删除规则对应的id值 669872
         :type Id: int
-        :param Direction: 出站还是入站
+        :param Direction: 方向，0：出站，1：入站
         :type Direction: int
-        :param EdgeId: EdgeId值
+        :param EdgeId: EdgeId值两个vpc间的边id
         :type EdgeId: str
         :param Area: NAT地域
         :type Area: str
@@ -296,7 +296,7 @@ class DeleteAcRuleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 状态值
+        :param Status: 状态值 0: 删除成功, !0: 删除失败
         :type Status: int
         :param Info: 返回多余的信息
 注意：此字段可能返回 null，表示取不到有效值。
@@ -322,11 +322,11 @@ class DeleteAllAccessControlRuleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Direction: 方向，0：出站，1：入站
+        :param Direction: 方向，0：出站，1：入站  默认值是 0
         :type Direction: int
-        :param EdgeId: VPC间防火墙开关ID
+        :param EdgeId: VPC间防火墙开关ID  全部删除 EdgeId和Area只填写一个，不填写则不删除vpc间防火墙开关 ，默认值为‘’
         :type EdgeId: str
-        :param Area: nat地域
+        :param Area: nat地域 全部删除 EdgeId和Area只填写一个，不填写则不删除nat防火墙开关 默认值为‘’
         :type Area: str
         """
         self.Direction = None
@@ -347,9 +347,9 @@ class DeleteAllAccessControlRuleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 状态值
+        :param Status: 状态值 0: 修改成功, !0: 修改失败
         :type Status: int
-        :param Info: 返回多余信息
+        :param Info: 删除了几条访问控制规则
 注意：此字段可能返回 null，表示取不到有效值。
         :type Info: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -644,9 +644,24 @@ class DescribeNatRuleOverviewRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Direction: 方向，0：出站，1：入站
+        :param Direction: 方向，0：出站，1：入站 默认值：0
         :type Direction: int
-        :param Area: NAT地域
+        :param Area: NAT地域  这个是必填项，填入相关的英文，'ap-beijing-fsi': '北京金融',
+        'ap-beijing': '北京',
+        'ap-changsha-ec': '长沙EC',
+        'ap-chengdu': '成都',
+        'ap-chongqing': '重庆',
+        'ap-fuzhou-ec': '福州EC',
+        'ap-guangzhou-open': '广州Open',
+        'ap-guangzhou': '广州',
+        'ap-hangzhou-ec': '杭州EC',
+        'ap-jinan-ec': '济南EC',
+        'ap-nanjing': '南京',
+        'ap-shanghai-fsi': '上海金融',
+        'ap-shanghai': '上海',
+        'ap-shenzhen-fsi': '深圳金融',
+        'ap-shenzhen': '深圳',
+        'ap-wuhan-ec': '武汉EC'
         :type Area: str
         """
         self.Direction = None
@@ -675,7 +690,7 @@ class DescribeNatRuleOverviewResponse(AbstractModel):
         :type DnatNum: int
         :param TotalNum: 访问控制规则总数
         :type TotalNum: int
-        :param RemainNum: 访问规则剩余条数
+        :param RemainNum: 访问控制规则剩余配额
         :type RemainNum: int
         :param BlockNum: 阻断规则条数
         :type BlockNum: int
@@ -775,7 +790,7 @@ class DescribeSecurityGroupListRequest(AbstractModel):
         """
         :param Direction: 0: 出站规则，1：入站规则
         :type Direction: int
-        :param Area: 腾讯云地域的英文简写
+        :param Area: 地域代码（例: ap-guangzhou),支持腾讯云全部地域
         :type Area: str
         :param SearchValue: 搜索值
         :type SearchValue: str
@@ -814,7 +829,7 @@ class DescribeSecurityGroupListResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Total: 总条数
+        :param Total: 列表当前规则总条数
         :type Total: int
         :param Data: 安全组规则列表数据
         :type Data: list of SecurityGroupListData
@@ -853,21 +868,21 @@ class DescribeSwitchListsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 防火墙状态
+        :param Status: 防火墙状态  0: 关闭，1：开启
         :type Status: int
-        :param Type: 资产类型
+        :param Type: 资产类型 CVM/NAT/VPN/CLB/其它
         :type Type: str
-        :param Area: 地域
+        :param Area: 地域 上海/重庆/广州，等等
         :type Area: str
-        :param SearchValue: 搜索值
+        :param SearchValue: 搜索值  例子："{"common":"106.54.189.45"}"
         :type SearchValue: str
-        :param Limit: 条数
+        :param Limit: 条数  默认值:10
         :type Limit: int
-        :param Offset: 偏移值
+        :param Offset: 偏移值 默认值: 0
         :type Offset: int
         :param Order: 排序，desc：降序，asc：升序
         :type Order: str
-        :param By: 排序字段
+        :param By: 排序字段 PortTimes(风险端口数)
         :type By: str
         """
         self.Status = None
@@ -959,7 +974,7 @@ class DescribeSyncAssetStatusResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 0：同步成功，1：资产更新中，2：后台同步调用失败
+        :param Status: 1-更新中 2-更新完成 3、4-更新失败
         :type Status: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -980,13 +995,13 @@ class DescribeTableStatusRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EdgeId: EdgeId值
+        :param EdgeId: EdgeId值两个vpc间的边id vpc填Edgeid，不要填Area；
         :type EdgeId: str
-        :param Status: 状态值，0：检查表的状态
+        :param Status: 状态值，0：检查表的状态 确实只有一个默认值
         :type Status: int
-        :param Area: Nat所在地域
+        :param Area: Nat所在地域 NAT填Area，不要填Edgeid；
         :type Area: str
-        :param Direction: 方向，0：出站，1：入站
+        :param Direction: 方向，0：出站，1：入站 默认值为 0
         :type Direction: int
         """
         self.EdgeId = None
@@ -1031,7 +1046,7 @@ class DescribeVpcRuleOverviewRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EdgeId: 边id
+        :param EdgeId: EdgeId值两个vpc间的边id  不是必填项可以为空，就是所有vpc间的访问控制规则
         :type EdgeId: str
         """
         self.EdgeId = None
@@ -1109,7 +1124,7 @@ class ModifyAcRuleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 状态值，0:操作成功
+        :param Status: 状态值，0:操作成功，非0：操作失败
         :type Status: int
         :param Info: 返回多余的信息
 注意：此字段可能返回 null，表示取不到有效值。
@@ -1188,7 +1203,7 @@ class ModifyAllSwitchStatusRequest(AbstractModel):
         """
         :param Status: 状态，0：关闭，1：开启
         :type Status: int
-        :param Type: 0: 边界防火墙开关，1：vpc防火墙开关
+        :param Type: 0: 互联网边界防火墙开关，1：vpc防火墙开关
         :type Type: int
         :param Ids: 选中的防火墙开关Id
         :type Ids: list of str
@@ -1219,7 +1234,7 @@ class ModifyAllSwitchStatusResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 开启或者关闭成功与否状态值
+        :param Status: 修改成功与否的状态值 0：修改成功，非 0：修改失败
         :type Status: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1244,7 +1259,7 @@ class ModifyItemSwitchStatusRequest(AbstractModel):
         :type Id: int
         :param Status: 状态值，0: 关闭 ,1:开启
         :type Status: int
-        :param Type: 0: 边界防火墙开关，1：vpc防火墙开关
+        :param Type: 0: 互联网边界边界防火墙开关，1：vpc防火墙开关
         :type Type: int
         """
         self.Id = None
@@ -1265,7 +1280,7 @@ class ModifyItemSwitchStatusResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 修改成功与否状态值
+        :param Status: 修改成功与否状态值 0：修改成功，非 0：修改失败
         :type Status: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1286,7 +1301,7 @@ class ModifySecurityGroupAllRuleStatusRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 状态，0：全部停用，1：全部启用
+        :param Status: 列表规则状态，0：全部停用，1：全部启用
         :type Status: int
         :param Direction: 方向，0：出站，1：入站
         :type Direction: int
@@ -1343,7 +1358,7 @@ class ModifySequenceRulesRequest(AbstractModel):
         :type Data: list of SequenceData
         :param Area: NAT地域
         :type Area: str
-        :param Direction: 0：出向，1：入向
+        :param Direction: 方向，0：出向，1：入向
         :type Direction: int
         """
         self.EdgeId = None
@@ -1371,7 +1386,7 @@ class ModifySequenceRulesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 0: 修改成功, 其他: 修改失败
+        :param Status: 0: 修改成功, 非0: 修改失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1393,7 +1408,7 @@ class ModifyTableStatusRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EdgeId: EdgeId值
+        :param EdgeId: EdgeId值两个vpc间的边id
         :type EdgeId: str
         :param Status: 状态值，1：锁表，2：解锁表
         :type Status: int

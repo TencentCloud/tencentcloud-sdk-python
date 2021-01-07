@@ -1678,6 +1678,34 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def RenewInstance(self, request):
+        """预付费实例续费，同时支持按量计费转包年包月
+
+        :param request: Request instance for RenewInstance.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.RenewInstanceRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.RenewInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RenewInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RenewInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ValidateNamespaceExistPersonal(self, request):
         """查询个人版用户命名空间是否存在
 

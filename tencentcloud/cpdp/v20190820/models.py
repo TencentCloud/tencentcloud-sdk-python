@@ -4879,6 +4879,89 @@ class QueryBankWithdrawCashDetailsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class QueryBillDownloadURLData(AbstractModel):
+    """智能代发-单笔代发转账对账单返回数据
+
+    """
+
+    def __init__(self):
+        """
+        :param BillDownloadURL: 统一对账单下载链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillDownloadURL: str
+        :param OriginalBillDownloadURL: 渠道原始对账单下载链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginalBillDownloadURL: str
+        """
+        self.BillDownloadURL = None
+        self.OriginalBillDownloadURL = None
+
+
+    def _deserialize(self, params):
+        self.BillDownloadURL = params.get("BillDownloadURL")
+        self.OriginalBillDownloadURL = params.get("OriginalBillDownloadURL")
+
+
+class QueryBillDownloadURLRequest(AbstractModel):
+    """QueryBillDownloadURL请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MerchantId: 商户号
+        :type MerchantId: str
+        :param TransferType: 代发类型：
+1、 微信企业付款 
+2、 支付宝转账 
+3、 平安银企直联代发转账
+        :type TransferType: int
+        :param BillDate: 账单日期，格式yyyy-MM-dd
+        :type BillDate: str
+        """
+        self.MerchantId = None
+        self.TransferType = None
+        self.BillDate = None
+
+
+    def _deserialize(self, params):
+        self.MerchantId = params.get("MerchantId")
+        self.TransferType = params.get("TransferType")
+        self.BillDate = params.get("BillDate")
+
+
+class QueryBillDownloadURLResponse(AbstractModel):
+    """QueryBillDownloadURL返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ErrCode: 错误码。响应成功："SUCCESS"，其他为不成功
+        :type ErrCode: str
+        :param ErrMessage: 响应消息
+        :type ErrMessage: str
+        :param Result: 返回结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.QueryBillDownloadURLData`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = QueryBillDownloadURLData()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class QueryCommonTransferRechargeRequest(AbstractModel):
     """QueryCommonTransferRecharge请求参数结构体
 

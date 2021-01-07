@@ -4283,7 +4283,6 @@ class HaVip(AbstractModel):
         :param HaVipId: HAVIP的ID，是HAVIP的唯一标识。
         :type HaVipId: str
         :param HaVipName: HAVIP名称。
-注意：此字段可能返回 null，表示取不到有效值。
         :type HaVipName: str
         :param Vip: 虚拟IP地址。
         :type Vip: str
@@ -4294,10 +4293,8 @@ class HaVip(AbstractModel):
         :param NetworkInterfaceId: HAVIP关联弹性网卡ID。
         :type NetworkInterfaceId: str
         :param InstanceId: 被绑定的实例ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param AddressIp: 绑定EIP。
-注意：此字段可能返回 null，表示取不到有效值。
         :type AddressIp: str
         :param State: 状态：
 AVAILABLE：运行中。
@@ -4306,7 +4303,6 @@ UNBIND：未绑定。
         :param CreatedTime: 创建时间。
         :type CreatedTime: str
         :param Business: 使用havip的业务标识。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Business: str
         """
         self.HaVipId = None

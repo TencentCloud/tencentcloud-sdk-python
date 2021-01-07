@@ -54,6 +54,34 @@ class GsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def SaveGameArchive(self, request):
+        """保存游戏存档
+
+        :param request: Request instance for SaveGameArchive.
+        :type request: :class:`tencentcloud.gs.v20191118.models.SaveGameArchiveRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.SaveGameArchiveResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SaveGameArchive", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SaveGameArchiveResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def StopGame(self, request):
         """强制退出游戏
 
@@ -68,6 +96,34 @@ class GsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopGameResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SwitchGameArchive(self, request):
+        """切换游戏存档
+
+        :param request: Request instance for SwitchGameArchive.
+        :type request: :class:`tencentcloud.gs.v20191118.models.SwitchGameArchiveRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.SwitchGameArchiveResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SwitchGameArchive", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SwitchGameArchiveResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

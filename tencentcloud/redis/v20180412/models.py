@@ -437,7 +437,7 @@ class CreateInstancesResponse(AbstractModel):
         """
         :param DealId: 交易的ID
         :type DealId: str
-        :param InstanceIds: 实例ID(该字段灰度中，部分地域不可见)
+        :param InstanceIds: 实例ID
         :type InstanceIds: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

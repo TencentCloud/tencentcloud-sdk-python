@@ -162,6 +162,8 @@ global：全球加速
         :type Tag: list of Tag
         :param Ipv6Access: Ipv6 访问配置
         :type Ipv6Access: :class:`tencentcloud.cdn.v20180606.models.Ipv6Access`
+        :param OfflineCache: 离线缓存
+        :type OfflineCache: :class:`tencentcloud.cdn.v20180606.models.OfflineCache`
         """
         self.Domain = None
         self.ServiceType = None
@@ -195,6 +197,7 @@ global：全球加速
         self.OriginPullTimeout = None
         self.Tag = None
         self.Ipv6Access = None
+        self.OfflineCache = None
 
 
     def _deserialize(self, params):
@@ -289,6 +292,9 @@ global：全球加速
         if params.get("Ipv6Access") is not None:
             self.Ipv6Access = Ipv6Access()
             self.Ipv6Access._deserialize(params.get("Ipv6Access"))
+        if params.get("OfflineCache") is not None:
+            self.OfflineCache = OfflineCache()
+            self.OfflineCache._deserialize(params.get("OfflineCache"))
 
 
 class AddCdnDomainResponse(AbstractModel):
@@ -4194,6 +4200,12 @@ off：不支持
         :param AdvanceSet: 高级配置集合。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AdvanceSet: list of AdvanceConfig
+        :param OfflineCache: 离线缓存
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OfflineCache: :class:`tencentcloud.cdn.v20180606.models.OfflineCache`
+        :param OriginCombine: 合并回源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginCombine: :class:`tencentcloud.cdn.v20180606.models.OriginCombine`
         """
         self.ResourceId = None
         self.AppId = None
@@ -4247,6 +4259,8 @@ off：不支持
         self.OriginAuthentication = None
         self.Ipv6Access = None
         self.AdvanceSet = None
+        self.OfflineCache = None
+        self.OriginCombine = None
 
 
     def _deserialize(self, params):
@@ -4384,6 +4398,12 @@ off：不支持
                 obj = AdvanceConfig()
                 obj._deserialize(item)
                 self.AdvanceSet.append(obj)
+        if params.get("OfflineCache") is not None:
+            self.OfflineCache = OfflineCache()
+            self.OfflineCache._deserialize(params.get("OfflineCache"))
+        if params.get("OriginCombine") is not None:
+            self.OriginCombine = OriginCombine()
+            self.OriginCombine._deserialize(params.get("OriginCombine"))
 
 
 class DiagnoseData(AbstractModel):
@@ -6380,6 +6400,23 @@ index 时填充 /
         self.FollowOrigin = params.get("FollowOrigin")
 
 
+class OfflineCache(AbstractModel):
+    """离线缓存是否开启
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: on | off, 离线缓存是否开启
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
 class Origin(AbstractModel):
     """源站配置复杂类型，支持以下配置：
     + 源站指定为单个域名
@@ -6527,6 +6564,23 @@ class OriginAuthenticationTypeA(AbstractModel):
 
     def _deserialize(self, params):
         self.SecretKey = params.get("SecretKey")
+
+
+class OriginCombine(AbstractModel):
+    """合并回源配置项
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: on|off 是否开启合并回源
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
 
 
 class OriginIp(AbstractModel):
@@ -9054,6 +9108,10 @@ global：全球加速
         :type OriginAuthentication: :class:`tencentcloud.cdn.v20180606.models.OriginAuthentication`
         :param Ipv6Access: Ipv6 访问配置
         :type Ipv6Access: :class:`tencentcloud.cdn.v20180606.models.Ipv6Access`
+        :param OfflineCache: 离线缓存
+        :type OfflineCache: :class:`tencentcloud.cdn.v20180606.models.OfflineCache`
+        :param OriginCombine: 合并回源
+        :type OriginCombine: :class:`tencentcloud.cdn.v20180606.models.OriginCombine`
         """
         self.Domain = None
         self.ProjectId = None
@@ -9092,6 +9150,8 @@ global：全球加速
         self.AdvancedAuthentication = None
         self.OriginAuthentication = None
         self.Ipv6Access = None
+        self.OfflineCache = None
+        self.OriginCombine = None
 
 
     def _deserialize(self, params):
@@ -9196,6 +9256,12 @@ global：全球加速
         if params.get("Ipv6Access") is not None:
             self.Ipv6Access = Ipv6Access()
             self.Ipv6Access._deserialize(params.get("Ipv6Access"))
+        if params.get("OfflineCache") is not None:
+            self.OfflineCache = OfflineCache()
+            self.OfflineCache._deserialize(params.get("OfflineCache"))
+        if params.get("OriginCombine") is not None:
+            self.OriginCombine = OriginCombine()
+            self.OriginCombine._deserialize(params.get("OriginCombine"))
 
 
 class UpdateDomainConfigResponse(AbstractModel):
