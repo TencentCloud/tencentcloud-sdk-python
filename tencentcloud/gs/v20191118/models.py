@@ -55,6 +55,8 @@ class CreateSessionRequest(AbstractModel):
         :type HostUserId: str
         :param Role: 【多人云游】角色；Player表示玩家；Viewer表示观察者
         :type Role: str
+        :param GameContext: 游戏相关参数
+        :type GameContext: str
         """
         self.ClientSession = None
         self.UserId = None
@@ -72,6 +74,7 @@ class CreateSessionRequest(AbstractModel):
         self.Optimization = None
         self.HostUserId = None
         self.Role = None
+        self.GameContext = None
 
 
     def _deserialize(self, params):
@@ -91,6 +94,7 @@ class CreateSessionRequest(AbstractModel):
         self.Optimization = params.get("Optimization")
         self.HostUserId = params.get("HostUserId")
         self.Role = params.get("Role")
+        self.GameContext = params.get("GameContext")
 
 
 class CreateSessionResponse(AbstractModel):

@@ -478,6 +478,65 @@ class GetEmailTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GetSendEmailStatusRequest(AbstractModel):
+    """GetSendEmailStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestDate: 发送的日期，必填。仅支持查询某个日期，不支持范围查询。
+        :type RequestDate: str
+        :param Offset: 偏移量。默认为0
+        :type Offset: int
+        :param Limit: 拉取最大条数，最多 100。
+        :type Limit: int
+        :param MessageId: SendMail接口返回的MessageId字段。
+        :type MessageId: str
+        :param ToEmailAddress: 收件人邮箱。
+        :type ToEmailAddress: str
+        """
+        self.RequestDate = None
+        self.Offset = None
+        self.Limit = None
+        self.MessageId = None
+        self.ToEmailAddress = None
+
+
+    def _deserialize(self, params):
+        self.RequestDate = params.get("RequestDate")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.MessageId = params.get("MessageId")
+        self.ToEmailAddress = params.get("ToEmailAddress")
+
+
+class GetSendEmailStatusResponse(AbstractModel):
+    """GetSendEmailStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EmailStatusList: 邮件发送状态列表
+        :type EmailStatusList: list of SendEmailStatus
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.EmailStatusList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("EmailStatusList") is not None:
+            self.EmailStatusList = []
+            for item in params.get("EmailStatusList"):
+                obj = SendEmailStatus()
+                obj._deserialize(item)
+                self.EmailStatusList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class GetStatisticsReportRequest(AbstractModel):
     """GetStatisticsReport请求参数结构体
 
@@ -784,6 +843,94 @@ class SendEmailResponse(AbstractModel):
     def _deserialize(self, params):
         self.MessageId = params.get("MessageId")
         self.RequestId = params.get("RequestId")
+
+
+class SendEmailStatus(AbstractModel):
+    """描述邮件发送状态
+
+    """
+
+    def __init__(self):
+        """
+        :param MessageId: SendEmail返回的MessageId
+        :type MessageId: str
+        :param ToEmailAddress: 收件人邮箱
+        :type ToEmailAddress: str
+        :param FromEmailAddress: 发件人邮箱
+        :type FromEmailAddress: str
+        :param SendStatus: 腾讯云处理状态
+0: 处理成功
+1001: 内部系统异常
+1002: 内部系统异常
+1003: 内部系统异常
+1003: 内部系统异常
+1004: 发信超时
+1005: 内部系统异常
+1006: 触发频率控制，短时间内对同一地址发送过多邮件
+1007: 邮件地址在黑名单中
+1009: 内部系统异常
+1010: 超出了每日发送限制
+1011: 无发送自定义内容权限，必须使用模板
+2001: 找不到相关记录
+3007: 模板ID无效或者不可用
+3008: 模板状态异常
+3009: 无权限使用该模板
+3010: TemplateData字段格式不正确 
+3014: 发件域名没有经过认证，无法发送
+3020: 收件方邮箱类型在黑名单
+3024: 邮箱地址格式预检查失败
+3030: 退信率过高，临时限制发送
+3033: 余额不足，账号欠费等
+        :type SendStatus: int
+        :param DeliverStatus: 收件方处理状态
+0: 请求成功被腾讯云接受，进入发送队列
+1: 邮件递送成功，DeliverTime表示递送成功的时间
+2: 邮件因某种原因被丢弃，DeliverMessage表示丢弃原因
+3: 收件方ESP拒信，一般原因为邮箱地址不存在，或其它原因
+8: 邮件被ESP因某些原因延迟递送，DeliverMessage表示延迟原因
+        :type DeliverStatus: int
+        :param DeliverMessage: 收件方处理状态描述
+        :type DeliverMessage: str
+        :param RequestTime: 请求到达腾讯云时间戳
+        :type RequestTime: int
+        :param DeliverTime: 腾讯云执行递送时间戳
+        :type DeliverTime: int
+        :param UserOpened: 用户是否打开该邮件
+        :type UserOpened: bool
+        :param UserClicked: 用户是否点击该邮件中的链接
+        :type UserClicked: bool
+        :param UserUnsubscribed: 用户是否取消该发送者的订阅
+        :type UserUnsubscribed: bool
+        :param UserComplainted: 用户是否举报该发送者
+        :type UserComplainted: bool
+        """
+        self.MessageId = None
+        self.ToEmailAddress = None
+        self.FromEmailAddress = None
+        self.SendStatus = None
+        self.DeliverStatus = None
+        self.DeliverMessage = None
+        self.RequestTime = None
+        self.DeliverTime = None
+        self.UserOpened = None
+        self.UserClicked = None
+        self.UserUnsubscribed = None
+        self.UserComplainted = None
+
+
+    def _deserialize(self, params):
+        self.MessageId = params.get("MessageId")
+        self.ToEmailAddress = params.get("ToEmailAddress")
+        self.FromEmailAddress = params.get("FromEmailAddress")
+        self.SendStatus = params.get("SendStatus")
+        self.DeliverStatus = params.get("DeliverStatus")
+        self.DeliverMessage = params.get("DeliverMessage")
+        self.RequestTime = params.get("RequestTime")
+        self.DeliverTime = params.get("DeliverTime")
+        self.UserOpened = params.get("UserOpened")
+        self.UserClicked = params.get("UserClicked")
+        self.UserUnsubscribed = params.get("UserUnsubscribed")
+        self.UserComplainted = params.get("UserComplainted")
 
 
 class Simple(AbstractModel):

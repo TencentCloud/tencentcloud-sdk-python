@@ -279,6 +279,34 @@ class SesClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetSendEmailStatus(self, request):
+        """获取邮件发送状态。仅支持查询90天之内的数据
+
+        :param request: Request instance for GetSendEmailStatus.
+        :type request: :class:`tencentcloud.ses.v20201002.models.GetSendEmailStatusRequest`
+        :rtype: :class:`tencentcloud.ses.v20201002.models.GetSendEmailStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetSendEmailStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetSendEmailStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetStatisticsReport(self, request):
         """获取近期发送的统计情况，包含发送量、送达率、打开率、退信率等一系列数据。最大跨度为14天。
 
