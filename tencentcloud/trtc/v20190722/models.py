@@ -1273,6 +1273,27 @@ class PresetLayoutConfig(AbstractModel):
         self.PlaceImageId = params.get("PlaceImageId")
 
 
+class PublishCdnParams(AbstractModel):
+    """第三方CDN转推参数
+
+    """
+
+    def __init__(self):
+        """
+        :param BizId: 腾讯云直播BizId。
+        :type BizId: int
+        :param PublishCdnUrls: 第三方CDN转推的目的地址，同时只支持转推一个第三方CDN地址。
+        :type PublishCdnUrls: list of str
+        """
+        self.BizId = None
+        self.PublishCdnUrls = None
+
+
+    def _deserialize(self, params):
+        self.BizId = params.get("BizId")
+        self.PublishCdnUrls = params.get("PublishCdnUrls")
+
+
 class QualityData(AbstractModel):
     """Es返回的质量数据
 
@@ -1674,12 +1695,15 @@ class StartMCUMixTranscodeByStrRoomIdRequest(AbstractModel):
         :type EncodeParams: :class:`tencentcloud.trtc.v20190722.models.EncodeParams`
         :param LayoutParams: 混流输出布局参数。
         :type LayoutParams: :class:`tencentcloud.trtc.v20190722.models.LayoutParams`
+        :param PublishCdnParams: 第三方CDN转推参数。
+        :type PublishCdnParams: :class:`tencentcloud.trtc.v20190722.models.PublishCdnParams`
         """
         self.SdkAppId = None
         self.StrRoomId = None
         self.OutputParams = None
         self.EncodeParams = None
         self.LayoutParams = None
+        self.PublishCdnParams = None
 
 
     def _deserialize(self, params):
@@ -1694,6 +1718,9 @@ class StartMCUMixTranscodeByStrRoomIdRequest(AbstractModel):
         if params.get("LayoutParams") is not None:
             self.LayoutParams = LayoutParams()
             self.LayoutParams._deserialize(params.get("LayoutParams"))
+        if params.get("PublishCdnParams") is not None:
+            self.PublishCdnParams = PublishCdnParams()
+            self.PublishCdnParams._deserialize(params.get("PublishCdnParams"))
 
 
 class StartMCUMixTranscodeByStrRoomIdResponse(AbstractModel):
@@ -1730,12 +1757,15 @@ class StartMCUMixTranscodeRequest(AbstractModel):
         :type EncodeParams: :class:`tencentcloud.trtc.v20190722.models.EncodeParams`
         :param LayoutParams: 混流输出布局参数。
         :type LayoutParams: :class:`tencentcloud.trtc.v20190722.models.LayoutParams`
+        :param PublishCdnParams: 第三方CDN转推参数。
+        :type PublishCdnParams: :class:`tencentcloud.trtc.v20190722.models.PublishCdnParams`
         """
         self.SdkAppId = None
         self.RoomId = None
         self.OutputParams = None
         self.EncodeParams = None
         self.LayoutParams = None
+        self.PublishCdnParams = None
 
 
     def _deserialize(self, params):
@@ -1750,6 +1780,9 @@ class StartMCUMixTranscodeRequest(AbstractModel):
         if params.get("LayoutParams") is not None:
             self.LayoutParams = LayoutParams()
             self.LayoutParams._deserialize(params.get("LayoutParams"))
+        if params.get("PublishCdnParams") is not None:
+            self.PublishCdnParams = PublishCdnParams()
+            self.PublishCdnParams._deserialize(params.get("PublishCdnParams"))
 
 
 class StartMCUMixTranscodeResponse(AbstractModel):

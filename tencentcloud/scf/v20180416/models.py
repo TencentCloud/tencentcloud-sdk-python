@@ -2289,7 +2289,7 @@ class ListTriggersRequest(AbstractModel):
         :type Offset: int
         :param Limit: 返回数据长度，默认值为 20
         :type Limit: int
-        :param OrderBy: 根据哪个字段进行返回结果排序,支持以下字段：AddTime, ModTime，默认ModTime
+        :param OrderBy: 根据哪个字段进行返回结果排序,支持以下字段：add_time，mod_time，默认mod_time
         :type OrderBy: str
         :param Order: 以升序还是降序的方式返回结果，可选值 ASC 和 DESC，默认DESC
         :type Order: str

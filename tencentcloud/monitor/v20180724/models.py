@@ -4066,6 +4066,94 @@ class DescribeServiceDiscoveryResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeStatisticDataRequest(AbstractModel):
+    """DescribeStatisticData请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 所属模块，固定值，为monitor
+        :type Module: str
+        :param Namespace: 命名空间，目前只支持QCE/TKE
+        :type Namespace: str
+        :param MetricNames: 指标名列表
+        :type MetricNames: list of str
+        :param Conditions: 维度条件，操作符支持=、in
+        :type Conditions: list of MidQueryCondition
+        :param Period: 统计粒度。默认取值为300，单位为s
+        :type Period: int
+        :param StartTime: 起始时间，默认为当前时间，如2020-12-08T19:51:23+08:00
+        :type StartTime: str
+        :param EndTime: 结束时间，默认为当前时间，如2020-12-08T19:51:23+08:00
+        :type EndTime: str
+        :param GroupBys: 按指定维度groupBy
+        :type GroupBys: list of str
+        """
+        self.Module = None
+        self.Namespace = None
+        self.MetricNames = None
+        self.Conditions = None
+        self.Period = None
+        self.StartTime = None
+        self.EndTime = None
+        self.GroupBys = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Namespace = params.get("Namespace")
+        self.MetricNames = params.get("MetricNames")
+        if params.get("Conditions") is not None:
+            self.Conditions = []
+            for item in params.get("Conditions"):
+                obj = MidQueryCondition()
+                obj._deserialize(item)
+                self.Conditions.append(obj)
+        self.Period = params.get("Period")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.GroupBys = params.get("GroupBys")
+
+
+class DescribeStatisticDataResponse(AbstractModel):
+    """DescribeStatisticData返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Period: 统计周期
+        :type Period: int
+        :param StartTime: 开始时间
+        :type StartTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
+        :param Data: 监控数据
+        :type Data: list of MetricData
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Period = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Period = params.get("Period")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = MetricData()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class Dimension(AbstractModel):
     """实例对象的维度组合
 
@@ -4327,6 +4415,63 @@ class MetricConfig(AbstractModel):
         self.ContinuePeriod = params.get("ContinuePeriod")
 
 
+class MetricData(AbstractModel):
+    """DescribeMetricData接口出参
+
+    """
+
+    def __init__(self):
+        """
+        :param MetricName: 指标名
+        :type MetricName: str
+        :param Points: 监控数据点
+        :type Points: list of MetricDataPoint
+        """
+        self.MetricName = None
+        self.Points = None
+
+
+    def _deserialize(self, params):
+        self.MetricName = params.get("MetricName")
+        if params.get("Points") is not None:
+            self.Points = []
+            for item in params.get("Points"):
+                obj = MetricDataPoint()
+                obj._deserialize(item)
+                self.Points.append(obj)
+
+
+class MetricDataPoint(AbstractModel):
+    """DescribeMetricData出参
+
+    """
+
+    def __init__(self):
+        """
+        :param Dimensions: 实例对象维度组合
+        :type Dimensions: list of Dimension
+        :param Values: 数据点列表
+        :type Values: list of Point
+        """
+        self.Dimensions = None
+        self.Values = None
+
+
+    def _deserialize(self, params):
+        if params.get("Dimensions") is not None:
+            self.Dimensions = []
+            for item in params.get("Dimensions"):
+                obj = Dimension()
+                obj._deserialize(item)
+                self.Dimensions.append(obj)
+        if params.get("Values") is not None:
+            self.Values = []
+            for item in params.get("Values"):
+                obj = Point()
+                obj._deserialize(item)
+                self.Values.append(obj)
+
+
 class MetricDatum(AbstractModel):
     """指标名称和值的封装
 
@@ -4424,6 +4569,31 @@ class MetricSet(AbstractModel):
                 obj = DimensionsDesc()
                 obj._deserialize(item)
                 self.Dimensions.append(obj)
+
+
+class MidQueryCondition(AbstractModel):
+    """DescribeMidDimensionValueList的查询条件
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: 维度
+        :type Key: str
+        :param Operator: 操作符，支持等于(eq)、不等于(ne)，以及in
+        :type Operator: str
+        :param Value: 维度值，当Op是eq、ne时，只使用第一个元素
+        :type Value: list of str
+        """
+        self.Key = None
+        self.Operator = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Operator = params.get("Operator")
+        self.Value = params.get("Value")
 
 
 class ModifyAlarmNoticeRequest(AbstractModel):
@@ -4958,6 +5128,28 @@ class PeriodsSt(AbstractModel):
     def _deserialize(self, params):
         self.Period = params.get("Period")
         self.StatType = params.get("StatType")
+
+
+class Point(AbstractModel):
+    """监控数据点
+
+    """
+
+    def __init__(self):
+        """
+        :param Timestamp: 该监控数据点生成的时间点
+        :type Timestamp: int
+        :param Value: 监控数据点的值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: float
+        """
+        self.Timestamp = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Timestamp = params.get("Timestamp")
+        self.Value = params.get("Value")
 
 
 class ProductSimple(AbstractModel):
