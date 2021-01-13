@@ -9331,6 +9331,8 @@ development: 开发环境
         :type WxAppId: str
         :param WxSubAppId: 微信商户子应用ID
         :type WxSubAppId: str
+        :param PaymentNotifyUrl: 支付通知地址
+        :type PaymentNotifyUrl: str
         """
         self.CurrencyType = None
         self.MidasAppId = None
@@ -9357,6 +9359,7 @@ development: 开发环境
         self.MidasEnvironment = None
         self.WxAppId = None
         self.WxSubAppId = None
+        self.PaymentNotifyUrl = None
 
 
     def _deserialize(self, params):
@@ -9390,6 +9393,7 @@ development: 开发环境
         self.MidasEnvironment = params.get("MidasEnvironment")
         self.WxAppId = params.get("WxAppId")
         self.WxSubAppId = params.get("WxSubAppId")
+        self.PaymentNotifyUrl = params.get("PaymentNotifyUrl")
 
 
 class UnifiedOrderResponse(AbstractModel):

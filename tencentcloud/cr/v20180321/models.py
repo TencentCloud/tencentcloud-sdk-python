@@ -180,6 +180,31 @@ class BotFlow(AbstractModel):
                 self.PhonePoolList.append(obj)
 
 
+class BotInfo(AbstractModel):
+    """机器人列表
+
+    """
+
+    def __init__(self):
+        """
+        :param BotId: 机器人ID
+        :type BotId: str
+        :param BotName: 机器人名称
+        :type BotName: str
+        :param BotStatus: 机器人状态。0-停用 1-启用 2-待审核
+        :type BotStatus: str
+        """
+        self.BotId = None
+        self.BotName = None
+        self.BotStatus = None
+
+
+    def _deserialize(self, params):
+        self.BotId = params.get("BotId")
+        self.BotName = params.get("BotName")
+        self.BotStatus = params.get("BotStatus")
+
+
 class CallTimeDict(AbstractModel):
     """产品拨打时间集合
 
@@ -986,6 +1011,53 @@ class ProductQueryInfo(AbstractModel):
         self.SceneType = params.get("SceneType")
 
 
+class QueryBotListRequest(AbstractModel):
+    """QueryBotList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名：AiApi
+        :type Module: str
+        :param Operation: 操作名：QueryBotList
+        :type Operation: str
+        """
+        self.Module = None
+        self.Operation = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+
+
+class QueryBotListResponse(AbstractModel):
+    """QueryBotList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BotList: 任务列表。
+        :type BotList: list of BotInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BotList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("BotList") is not None:
+            self.BotList = []
+            for item in params.get("BotList"):
+                obj = BotInfo()
+                obj._deserialize(item)
+                self.BotList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class QueryInstantDataRequest(AbstractModel):
     """QueryInstantData请求参数结构体
 
@@ -1099,6 +1171,130 @@ class QueryProductsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ProductList.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class QueryRecordListRequest(AbstractModel):
+    """QueryRecordList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名。AiApi
+        :type Module: str
+        :param Operation: 操作名。QueryRecordList
+        :type Operation: str
+        :param Offset: 偏移值
+        :type Offset: int
+        :param Limit: 偏移位移，最大20
+        :type Limit: int
+        :param BotId: 任务ID，二者必填一个
+        :type BotId: str
+        :param BotName: 任务名称，二者必填一个
+        :type BotName: str
+        :param CalledPhone: 被叫号码
+        :type CalledPhone: str
+        :param StartBizDate: 开始日期
+        :type StartBizDate: str
+        :param EndBizDate: 结束日期
+        :type EndBizDate: str
+        """
+        self.Module = None
+        self.Operation = None
+        self.Offset = None
+        self.Limit = None
+        self.BotId = None
+        self.BotName = None
+        self.CalledPhone = None
+        self.StartBizDate = None
+        self.EndBizDate = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.BotId = params.get("BotId")
+        self.BotName = params.get("BotName")
+        self.CalledPhone = params.get("CalledPhone")
+        self.StartBizDate = params.get("StartBizDate")
+        self.EndBizDate = params.get("EndBizDate")
+
+
+class QueryRecordListResponse(AbstractModel):
+    """QueryRecordList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RecordList: 录音列表。
+        :type RecordList: list of RecordInfo
+        :param TotalCount: 总数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RecordList = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("RecordList") is not None:
+            self.RecordList = []
+            for item in params.get("RecordList"):
+                obj = RecordInfo()
+                obj._deserialize(item)
+                self.RecordList.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class RecordInfo(AbstractModel):
+    """录音文件详情
+
+    """
+
+    def __init__(self):
+        """
+        :param BotId: 任务Id
+        :type BotId: str
+        :param BotName: 任务名称
+        :type BotName: str
+        :param BizDate: 任务日期
+        :type BizDate: str
+        :param CalledPhone: 被叫号码
+        :type CalledPhone: str
+        :param CallStartTime: 开始通话时间
+        :type CallStartTime: str
+        :param Duration: 通话时长
+        :type Duration: int
+        :param CosUrl: 录音文件地址
+        :type CosUrl: str
+        :param DialogueLog: 对话日志。JSON格式
+        :type DialogueLog: str
+        """
+        self.BotId = None
+        self.BotName = None
+        self.BizDate = None
+        self.CalledPhone = None
+        self.CallStartTime = None
+        self.Duration = None
+        self.CosUrl = None
+        self.DialogueLog = None
+
+
+    def _deserialize(self, params):
+        self.BotId = params.get("BotId")
+        self.BotName = params.get("BotName")
+        self.BizDate = params.get("BizDate")
+        self.CalledPhone = params.get("CalledPhone")
+        self.CallStartTime = params.get("CallStartTime")
+        self.Duration = params.get("Duration")
+        self.CosUrl = params.get("CosUrl")
+        self.DialogueLog = params.get("DialogueLog")
 
 
 class SingleBlackApply(AbstractModel):
@@ -1221,6 +1417,56 @@ class SmsTemplate(AbstractModel):
     def _deserialize(self, params):
         self.TemplateId = params.get("TemplateId")
         self.TemplateName = params.get("TemplateName")
+
+
+class UploadBotDataRequest(AbstractModel):
+    """UploadBotData请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名。默认值（固定）：AiApi
+        :type Module: str
+        :param Operation: 操作名。默认值（固定）：UploadData
+        :type Operation: str
+        :param Data: 任务数据。JSON格式
+        :type Data: str
+        :param BotId: 任务ID，二者必填一个
+        :type BotId: str
+        :param BotName: 任务名称，二者必填一个
+        :type BotName: str
+        """
+        self.Module = None
+        self.Operation = None
+        self.Data = None
+        self.BotId = None
+        self.BotName = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+        self.Data = params.get("Data")
+        self.BotId = params.get("BotId")
+        self.BotName = params.get("BotName")
+
+
+class UploadBotDataResponse(AbstractModel):
+    """UploadBotData返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class UploadBotFileRequest(AbstractModel):

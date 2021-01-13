@@ -792,7 +792,7 @@ class SendEmailRequest(AbstractModel):
 发信人 &lt;邮件地址&gt; 的方式填写，例如：
 腾讯云团队 &lt;noreply@mail.qcloud.com&gt;
         :type FromEmailAddress: str
-        :param Destination: 收信人邮箱地址
+        :param Destination: 收信人邮箱地址，最多支持群发50人。
         :type Destination: list of str
         :param Subject: 邮件主题
         :type Subject: str

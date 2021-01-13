@@ -363,6 +363,34 @@ class CrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def QueryBotList(self, request):
+        """查询机器人任务状态列表
+
+        :param request: Request instance for QueryBotList.
+        :type request: :class:`tencentcloud.cr.v20180321.models.QueryBotListRequest`
+        :rtype: :class:`tencentcloud.cr.v20180321.models.QueryBotListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryBotList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryBotListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def QueryInstantData(self, request):
         """实时数据查询
 
@@ -405,6 +433,62 @@ class CrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryProductsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryRecordList(self, request):
+        """查询录音列表
+
+        :param request: Request instance for QueryRecordList.
+        :type request: :class:`tencentcloud.cr.v20180321.models.QueryRecordListRequest`
+        :rtype: :class:`tencentcloud.cr.v20180321.models.QueryRecordListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryRecordList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryRecordListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UploadBotData(self, request):
+        """上传机器人任务数据
+
+        :param request: Request instance for UploadBotData.
+        :type request: :class:`tencentcloud.cr.v20180321.models.UploadBotDataRequest`
+        :rtype: :class:`tencentcloud.cr.v20180321.models.UploadBotDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UploadBotData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UploadBotDataResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

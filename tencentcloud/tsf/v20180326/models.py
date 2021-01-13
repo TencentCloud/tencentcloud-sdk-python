@@ -8806,7 +8806,7 @@ class MsInstance(AbstractModel):
         :type LastHeartbeatTime: int
         :param RegistrationId: 实例注册id
 注意：此字段可能返回 null，表示取不到有效值。
-        :type RegistrationId: int
+        :type RegistrationId: str
         :param HiddenStatus: 屏蔽状态，hidden 为屏蔽，unhidden 为未屏蔽
 注意：此字段可能返回 null，表示取不到有效值。
         :type HiddenStatus: str
