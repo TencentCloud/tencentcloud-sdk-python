@@ -166,6 +166,34 @@ class SsaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeComplianceAssetList(self, request):
+        """合规管理-资产列表
+
+        :param request: Request instance for DescribeComplianceAssetList.
+        :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeComplianceAssetListRequest`
+        :rtype: :class:`tencentcloud.ssa.v20180608.models.DescribeComplianceAssetListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeComplianceAssetList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeComplianceAssetListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeComplianceDetail(self, request):
         """合规管理检查项详情
 
@@ -320,6 +348,34 @@ class SsaClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSafetyEventListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVulDetail(self, request):
+        """漏洞列表页，获取漏洞详情信息
+
+        :param request: Request instance for DescribeVulDetail.
+        :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeVulDetailRequest`
+        :rtype: :class:`tencentcloud.ssa.v20180608.models.DescribeVulDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeVulDetail", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVulDetailResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

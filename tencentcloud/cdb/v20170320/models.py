@@ -4015,6 +4015,8 @@ class DescribeErrorLogDataRequest(AbstractModel):
         :type Limit: int
         :param Offset: 偏移量，默认为0。
         :type Offset: int
+        :param InstType: 仅在实例为主实例或者灾备实例时生效，可选值：slave，代表拉取从机的日志。
+        :type InstType: str
         """
         self.InstanceId = None
         self.StartTime = None
@@ -4022,6 +4024,7 @@ class DescribeErrorLogDataRequest(AbstractModel):
         self.KeyWords = None
         self.Limit = None
         self.Offset = None
+        self.InstType = None
 
 
     def _deserialize(self, params):
@@ -4031,6 +4034,7 @@ class DescribeErrorLogDataRequest(AbstractModel):
         self.KeyWords = params.get("KeyWords")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        self.InstType = params.get("InstType")
 
 
 class DescribeErrorLogDataResponse(AbstractModel):
@@ -4527,6 +4531,8 @@ class DescribeSlowLogDataRequest(AbstractModel):
         :type Offset: int
         :param Limit: 一次性返回的记录数量，默认为100，最大为400。
         :type Limit: int
+        :param InstType: 仅在实例为主实例或者灾备实例时生效，可选值：slave，代表拉取从机的日志。
+        :type InstType: str
         """
         self.InstanceId = None
         self.StartTime = None
@@ -4538,6 +4544,7 @@ class DescribeSlowLogDataRequest(AbstractModel):
         self.OrderBy = None
         self.Offset = None
         self.Limit = None
+        self.InstType = None
 
 
     def _deserialize(self, params):
@@ -4551,6 +4558,7 @@ class DescribeSlowLogDataRequest(AbstractModel):
         self.OrderBy = params.get("OrderBy")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.InstType = params.get("InstType")
 
 
 class DescribeSlowLogDataResponse(AbstractModel):

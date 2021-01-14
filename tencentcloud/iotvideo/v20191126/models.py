@@ -660,12 +660,14 @@ ye1m30d ：事件30天存储月套餐 。
 ye1y3d ：事件3天存储年套餐。
 ye1y7d ：事件7天存储年套餐。
 ye1y30d ：事件30天存储年套餐。
+yc1w7d : 全时7天存储周套餐。
+ye1w7d : 事件7天存储周套餐。
         :type PkgId: str
         :param Tid: 设备TID
         :type Tid: str
         :param OrderCount: 订单数量,可一次性创建多个订单
         :type OrderCount: int
-        :param StorageRegion: 云存服务所在的区域,如ap-guangzhou,ap-singapore
+        :param StorageRegion: 云存服务所在的区域,如ap-guangzhou,ap-singapore, na-siliconvalley, eu-frankfurt
         :type StorageRegion: str
         :param ChnNum: 视频流通道号。(对于存在多路视频流的设备，如NVR设备，与设备实际视频流通道号对应)
         :type ChnNum: int

@@ -26,6 +26,62 @@ class MgobeClient(AbstractClient):
     _service = 'mgobe'
 
 
+    def ChangeRoomPlayerProfile(self, request):
+        """修改房间玩家自定义属性
+
+        :param request: Request instance for ChangeRoomPlayerProfile.
+        :type request: :class:`tencentcloud.mgobe.v20201014.models.ChangeRoomPlayerProfileRequest`
+        :rtype: :class:`tencentcloud.mgobe.v20201014.models.ChangeRoomPlayerProfileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ChangeRoomPlayerProfile", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ChangeRoomPlayerProfileResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ChangeRoomPlayerStatus(self, request):
+        """修改玩家自定义状态
+
+        :param request: Request instance for ChangeRoomPlayerStatus.
+        :type request: :class:`tencentcloud.mgobe.v20201014.models.ChangeRoomPlayerStatusRequest`
+        :rtype: :class:`tencentcloud.mgobe.v20201014.models.ChangeRoomPlayerStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ChangeRoomPlayerStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ChangeRoomPlayerStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DismissRoom(self, request):
         """通过game_id、room_id解散房间
 
@@ -40,6 +96,62 @@ class MgobeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DismissRoomResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyRoom(self, request):
+        """修改房间
+
+        :param request: Request instance for ModifyRoom.
+        :type request: :class:`tencentcloud.mgobe.v20201014.models.ModifyRoomRequest`
+        :rtype: :class:`tencentcloud.mgobe.v20201014.models.ModifyRoomResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyRoom", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyRoomResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RemoveRoomPlayer(self, request):
+        """踢出房间玩家
+
+        :param request: Request instance for RemoveRoomPlayer.
+        :type request: :class:`tencentcloud.mgobe.v20201014.models.RemoveRoomPlayerRequest`
+        :rtype: :class:`tencentcloud.mgobe.v20201014.models.RemoveRoomPlayerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RemoveRoomPlayer", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RemoveRoomPlayerResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -1336,12 +1336,15 @@ class IpStatus(AbstractModel):
 online：上线状态，正常调度服务中
 offline：下线状态
         :type Status: str
+        :param CreateTime: 节点 IP 添加时间
+        :type CreateTime: str
         """
         self.Ip = None
         self.District = None
         self.Isp = None
         self.City = None
         self.Status = None
+        self.CreateTime = None
 
 
     def _deserialize(self, params):
@@ -1350,6 +1353,7 @@ offline：下线状态
         self.Isp = params.get("Isp")
         self.City = params.get("City")
         self.Status = params.get("Status")
+        self.CreateTime = params.get("CreateTime")
 
 
 class Origin(AbstractModel):

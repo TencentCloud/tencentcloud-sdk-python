@@ -508,6 +508,8 @@ class CheckAssetItem(AbstractModel):
         :type AssetId: str
         :param Detail: 详情
         :type Detail: str
+        :param Remarks: 备注内容
+        :type Remarks: str
         """
         self.Id = None
         self.Instid = None
@@ -521,6 +523,7 @@ class CheckAssetItem(AbstractModel):
         self.AssetInfo = None
         self.AssetId = None
         self.Detail = None
+        self.Remarks = None
 
 
     def _deserialize(self, params):
@@ -536,6 +539,7 @@ class CheckAssetItem(AbstractModel):
         self.AssetInfo = params.get("AssetInfo")
         self.AssetId = params.get("AssetId")
         self.Detail = params.get("Detail")
+        self.Remarks = params.get("Remarks")
 
 
 class CheckConfigDetail(AbstractModel):
@@ -858,6 +862,9 @@ class DataCheck(AbstractModel):
         :param AssetTotal: 总资产数
 注意：此字段可能返回 null，表示取不到有效值。
         :type AssetTotal: int
+        :param Remarks: 备注内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remarks: str
         """
         self.Id = None
         self.Name = None
@@ -868,6 +875,7 @@ class DataCheck(AbstractModel):
         self.RiskCount = None
         self.IsChecked = None
         self.AssetTotal = None
+        self.Remarks = None
 
 
     def _deserialize(self, params):
@@ -880,6 +888,7 @@ class DataCheck(AbstractModel):
         self.RiskCount = params.get("RiskCount")
         self.IsChecked = params.get("IsChecked")
         self.AssetTotal = params.get("AssetTotal")
+        self.Remarks = params.get("Remarks")
 
 
 class DataCompliance(AbstractModel):
@@ -929,6 +938,9 @@ class DataCompliance(AbstractModel):
         :param AssetTotal: 资产总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type AssetTotal: int
+        :param Remarks: 忽略内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remarks: str
         """
         self.Id = None
         self.CheckItemId = None
@@ -946,6 +958,7 @@ class DataCompliance(AbstractModel):
         self.IsIgnored = None
         self.Title = None
         self.AssetTotal = None
+        self.Remarks = None
 
 
     def _deserialize(self, params):
@@ -965,6 +978,7 @@ class DataCompliance(AbstractModel):
         self.IsIgnored = params.get("IsIgnored")
         self.Title = params.get("Title")
         self.AssetTotal = params.get("AssetTotal")
+        self.Remarks = params.get("Remarks")
 
 
 class DataEvent(AbstractModel):
@@ -1403,6 +1417,79 @@ class DescribeCheckConfigDetailResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeComplianceAssetListRequest(AbstractModel):
+    """DescribeComplianceAssetList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: 页码
+        :type Offset: int
+        :param Limit: 每页数量
+        :type Limit: int
+        :param Id: 检查项uuid
+        :type Id: str
+        :param Filter: 过滤条件
+        :type Filter: list of Filter
+        :param Search: 查询条件
+        :type Search: list of Filter
+        """
+        self.Offset = None
+        self.Limit = None
+        self.Id = None
+        self.Filter = None
+        self.Search = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Id = params.get("Id")
+        if params.get("Filter") is not None:
+            self.Filter = []
+            for item in params.get("Filter"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filter.append(obj)
+        if params.get("Search") is not None:
+            self.Search = []
+            for item in params.get("Search"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Search.append(obj)
+
+
+class DescribeComplianceAssetListResponse(AbstractModel):
+    """DescribeComplianceAssetList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CheckAssetsList: 资产组列表
+        :type CheckAssetsList: list of CheckAssetItem
+        :param Total: 资产组列表总数
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CheckAssetsList = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CheckAssetsList") is not None:
+            self.CheckAssetsList = []
+            for item in params.get("CheckAssetsList"):
+                obj = CheckAssetItem()
+                obj._deserialize(item)
+                self.CheckAssetsList.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeComplianceDetailRequest(AbstractModel):
     """DescribeComplianceDetail请求参数结构体
 
@@ -1728,6 +1815,149 @@ class DescribeSafetyEventListResponse(AbstractModel):
                 obj._deserialize(item)
                 self.List.append(obj)
         self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVulDetailRequest(AbstractModel):
+    """DescribeVulDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param UniqId: 漏洞唯一标识符
+        :type UniqId: str
+        :param Source: 查看详情来源
+        :type Source: str
+        """
+        self.UniqId = None
+        self.Source = None
+
+
+    def _deserialize(self, params):
+        self.UniqId = params.get("UniqId")
+        self.Source = params.get("Source")
+
+
+class DescribeVulDetailResponse(AbstractModel):
+    """DescribeVulDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VulType: 漏洞类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VulType: int
+        :param SubVulType: 漏洞子类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubVulType: str
+        :param CvssScore: cvss分数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CvssScore: str
+        :param Cvss: cvss值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cvss: str
+        :param Cve: cve编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cve: str
+        :param Cnvd: cnvd编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cnvd: str
+        :param Cnnvd: cnnvd编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cnnvd: str
+        :param Desc: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Desc: str
+        :param Reference: 参考
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Reference: str
+        :param Repair: 修复意见
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Repair: str
+        :param ReleaseTime: 披露时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReleaseTime: str
+        :param UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param Name: 漏洞名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Level: 等级
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Level: int
+        :param Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param ImpactAsset: 受影响资产唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImpactAsset: str
+        :param ImpactAssetName: 受影响资产名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImpactAssetName: str
+        :param IsAssetDeleted: 受影响资产是否已删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsAssetDeleted: bool
+        :param Source: 漏洞来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Source: str
+        :param VulUrl: 漏洞URL
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VulUrl: str
+        :param SsaAssetCategory: 资产归属
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SsaAssetCategory: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.VulType = None
+        self.SubVulType = None
+        self.CvssScore = None
+        self.Cvss = None
+        self.Cve = None
+        self.Cnvd = None
+        self.Cnnvd = None
+        self.Desc = None
+        self.Reference = None
+        self.Repair = None
+        self.ReleaseTime = None
+        self.UpdateTime = None
+        self.Name = None
+        self.Level = None
+        self.Status = None
+        self.ImpactAsset = None
+        self.ImpactAssetName = None
+        self.IsAssetDeleted = None
+        self.Source = None
+        self.VulUrl = None
+        self.SsaAssetCategory = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.VulType = params.get("VulType")
+        self.SubVulType = params.get("SubVulType")
+        self.CvssScore = params.get("CvssScore")
+        self.Cvss = params.get("Cvss")
+        self.Cve = params.get("Cve")
+        self.Cnvd = params.get("Cnvd")
+        self.Cnnvd = params.get("Cnnvd")
+        self.Desc = params.get("Desc")
+        self.Reference = params.get("Reference")
+        self.Repair = params.get("Repair")
+        self.ReleaseTime = params.get("ReleaseTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.Name = params.get("Name")
+        self.Level = params.get("Level")
+        self.Status = params.get("Status")
+        self.ImpactAsset = params.get("ImpactAsset")
+        self.ImpactAssetName = params.get("ImpactAssetName")
+        self.IsAssetDeleted = params.get("IsAssetDeleted")
+        self.Source = params.get("Source")
+        self.VulUrl = params.get("VulUrl")
+        self.SsaAssetCategory = params.get("SsaAssetCategory")
         self.RequestId = params.get("RequestId")
 
 

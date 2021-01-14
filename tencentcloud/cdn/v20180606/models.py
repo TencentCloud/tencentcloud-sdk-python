@@ -8992,6 +8992,14 @@ disabled：未启用
         :type AutoExtension: bool
         :param Channel: 流量包来源
         :type Channel: str
+        :param Area: 流量包生效区域，目前仅支持mainland
+        :type Area: str
+        :param LifeTimeMonth: 流量包生命周期月数
+        :type LifeTimeMonth: int
+        :param ExtensionAvailable: 流量包是否支持续订
+        :type ExtensionAvailable: bool
+        :param RefundAvailable: 流量包是否支持退费
+        :type RefundAvailable: bool
         """
         self.Id = None
         self.Type = None
@@ -9004,6 +9012,10 @@ disabled：未启用
         self.ContractExtension = None
         self.AutoExtension = None
         self.Channel = None
+        self.Area = None
+        self.LifeTimeMonth = None
+        self.ExtensionAvailable = None
+        self.RefundAvailable = None
 
 
     def _deserialize(self, params):
@@ -9018,6 +9030,10 @@ disabled：未启用
         self.ContractExtension = params.get("ContractExtension")
         self.AutoExtension = params.get("AutoExtension")
         self.Channel = params.get("Channel")
+        self.Area = params.get("Area")
+        self.LifeTimeMonth = params.get("LifeTimeMonth")
+        self.ExtensionAvailable = params.get("ExtensionAvailable")
+        self.RefundAvailable = params.get("RefundAvailable")
 
 
 class UpdateDomainConfigRequest(AbstractModel):

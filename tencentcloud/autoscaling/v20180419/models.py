@@ -626,6 +626,7 @@ class CreateLaunchConfigurationRequest(AbstractModel):
         :param InstanceChargeType: 实例计费类型，CVM默认值按照POSTPAID_BY_HOUR处理。
 <br><li>POSTPAID_BY_HOUR：按小时后付费
 <br><li>SPOTPAID：竞价付费
+<br><li>PREPAID：预付费，即包年包月
         :type InstanceChargeType: str
         :param InstanceMarketOptions: 实例的市场相关选项，如竞价实例相关参数，若指定实例的付费模式为竞价付费则该参数必传。
         :type InstanceMarketOptions: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
@@ -3001,6 +3002,22 @@ class ModifyLaunchConfigurationAttributesRequest(AbstractModel):
         :type LaunchConfigurationName: str
         :param UserData: 经过 Base64 编码后的自定义数据，最大长度不超过16KB。如果要清空UserData，则指定其为空字符串
         :type UserData: str
+        :param SecurityGroupIds: 实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的`SecurityGroupId`字段来获取。
+若指定该参数，请至少提供一个安全组，列表顺序有先后。
+        :type SecurityGroupIds: list of str
+        :param InternetAccessible: 公网带宽相关信息设置。
+        :type InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.InternetAccessible`
+        :param InstanceChargeType: 实例计费类型。具体取值范围如下：
+<br><li>POSTPAID_BY_HOUR：按小时后付费
+<br><li>SPOTPAID：竞价付费
+<br><li>PREPAID：预付费，即包年包月
+        :type InstanceChargeType: str
+        :param InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
+若修改实例的付费模式为预付费，则该参数必传；从预付费修改为其他付费模式时，本字段原信息会自动丢弃。
+        :type InstanceChargePrepaid: :class:`tencentcloud.autoscaling.v20180419.models.InstanceChargePrepaid`
+        :param InstanceMarketOptions: 实例的市场相关选项，如竞价实例相关参数。
+若修改实例的付费模式为竞价付费，则该参数必传；从竞价付费修改为其他付费模式时，本字段原信息会自动丢弃。
+        :type InstanceMarketOptions: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
         """
         self.LaunchConfigurationId = None
         self.ImageId = None
@@ -3008,6 +3025,11 @@ class ModifyLaunchConfigurationAttributesRequest(AbstractModel):
         self.InstanceTypesCheckPolicy = None
         self.LaunchConfigurationName = None
         self.UserData = None
+        self.SecurityGroupIds = None
+        self.InternetAccessible = None
+        self.InstanceChargeType = None
+        self.InstanceChargePrepaid = None
+        self.InstanceMarketOptions = None
 
 
     def _deserialize(self, params):
@@ -3017,6 +3039,17 @@ class ModifyLaunchConfigurationAttributesRequest(AbstractModel):
         self.InstanceTypesCheckPolicy = params.get("InstanceTypesCheckPolicy")
         self.LaunchConfigurationName = params.get("LaunchConfigurationName")
         self.UserData = params.get("UserData")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        if params.get("InternetAccessible") is not None:
+            self.InternetAccessible = InternetAccessible()
+            self.InternetAccessible._deserialize(params.get("InternetAccessible"))
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        if params.get("InstanceChargePrepaid") is not None:
+            self.InstanceChargePrepaid = InstanceChargePrepaid()
+            self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        if params.get("InstanceMarketOptions") is not None:
+            self.InstanceMarketOptions = InstanceMarketOptionsRequest()
+            self.InstanceMarketOptions._deserialize(params.get("InstanceMarketOptions"))
 
 
 class ModifyLaunchConfigurationAttributesResponse(AbstractModel):
@@ -3803,6 +3836,7 @@ class UpgradeLaunchConfigurationRequest(AbstractModel):
         :param InstanceChargeType: 实例计费类型，CVM默认值按照POSTPAID_BY_HOUR处理。
 <br><li>POSTPAID_BY_HOUR：按小时后付费
 <br><li>SPOTPAID：竞价付费
+<br><li>PREPAID：预付费，即包年包月
         :type InstanceChargeType: str
         :param InstanceMarketOptions: 实例的市场相关选项，如竞价实例相关参数，若指定实例的付费模式为竞价付费则该参数必传。
         :type InstanceMarketOptions: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`

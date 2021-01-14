@@ -876,15 +876,15 @@ class DriverLicenseOCRResponse(AbstractModel):
         :type Nationality: str
         :param Address: 住址
         :type Address: str
-        :param DateOfBirth: 出生日期
+        :param DateOfBirth: 出生日期（YYYY-MM-DD）
         :type DateOfBirth: str
-        :param DateOfFirstIssue: 初次领证日期
+        :param DateOfFirstIssue: 初次领证日期（YYYY-MM-DD）
         :type DateOfFirstIssue: str
         :param Class: 准驾车型
         :type Class: str
-        :param StartDate: 有效期开始时间
+        :param StartDate: 有效期开始时间（YYYY-MM-DD）
         :type StartDate: str
-        :param EndDate: 有效期截止时间
+        :param EndDate: 有效期截止时间（YYYY-MM-DD）
         :type EndDate: str
         :param CardCode: 证号
         :type CardCode: str
@@ -904,6 +904,8 @@ WARN_DRIVER_LICENSE_SCREENED_CARD 翻拍件告警
 WARN_DRIVER_LICENSE_PS_CARD ps告警
 注：告警信息可以同时存在多个
         :type RecognizeWarnMsg: list of str
+        :param IssuingAuthority: 发证单位
+        :type IssuingAuthority: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -921,6 +923,7 @@ WARN_DRIVER_LICENSE_PS_CARD ps告警
         self.Record = None
         self.RecognizeWarnCode = None
         self.RecognizeWarnMsg = None
+        self.IssuingAuthority = None
         self.RequestId = None
 
 
@@ -939,6 +942,7 @@ WARN_DRIVER_LICENSE_PS_CARD ps告警
         self.Record = params.get("Record")
         self.RecognizeWarnCode = params.get("RecognizeWarnCode")
         self.RecognizeWarnMsg = params.get("RecognizeWarnMsg")
+        self.IssuingAuthority = params.get("IssuingAuthority")
         self.RequestId = params.get("RequestId")
 
 

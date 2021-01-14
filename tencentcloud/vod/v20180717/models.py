@@ -6766,7 +6766,7 @@ class DescribeCDNStatDetailsRequest(AbstractModel):
         :type Area: str
         :param Districts: 用户所在地区，Area 为 Chinese Mainland 时，取值为以下地区信息，当 Area 为其它值时， 忽略 Districts 参数。
 <li>Beijing：北京。</li>
-<li>Inner Mongoria：内蒙古。</li>
+<li>Inner Mongolia：内蒙古。</li>
 <li>Shanxi：山西。</li>
 <li>Hebei：河北。</li>
 <li>Tianjin：天津。</li>
@@ -6797,7 +6797,7 @@ class DescribeCDNStatDetailsRequest(AbstractModel):
 <li>Guangxi：广西。</li>
 <li>Hainan：海南。</li>
 <li>Hong Kong, Macao and Taiwan：港澳台。</li>
-<li>outside Chinese Mainland：海外。</li>
+<li>Outside Chinese Mainland：海外。</li>
 <li>Other：其他 。</li>
         :type Districts: list of str
         :param Isps: 用户所属运营商信息，Area 为 Chinese Mainland 时，取值为以下运营商信息。当 Area 为其它值时忽略 Isps 参数。
@@ -6806,7 +6806,7 @@ class DescribeCDNStatDetailsRequest(AbstractModel):
 <li>CERNET：教育网。</li>
 <li>Great Wall Broadband Network：长城宽带。</li>
 <li>China Mobile：中国移动。</li>
-<li>China Mobile Tieton：中国铁通。</li>
+<li>China Mobile Tietong：中国铁通。</li>
 <li>ISPs outside Chinese Mainland：海外运营商。</li>
 <li>Other ISPs：其他运营商。</li>
         :type Isps: list of str
@@ -7831,7 +7831,7 @@ class DescribeStorageDetailsRequest(AbstractModel):
         :type SubAppId: int
         :param Area: 查询的存储区域，有效值：
 <li>Chinese Mainland：中国境内（不包含港澳台）。</li>
-<li>outside Chinese Mainland：中国境外。</li>
+<li>Outside Chinese Mainland：中国境外。</li>
 默认值为 Chinese Mainland。
         :type Area: str
         """
@@ -9410,12 +9410,15 @@ class ImageProcessingTemplate(AbstractModel):
         :param Operations: 图片处理操作数组，操作将以数组顺序执行。
 <li>长度限制：3。</li>
         :type Operations: list of ImageOperation
+        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type CreateTime: str
         """
         self.Definition = None
         self.Type = None
         self.Name = None
         self.Comment = None
         self.Operations = None
+        self.CreateTime = None
 
 
     def _deserialize(self, params):
@@ -9429,6 +9432,7 @@ class ImageProcessingTemplate(AbstractModel):
                 obj = ImageOperation()
                 obj._deserialize(item)
                 self.Operations.append(obj)
+        self.CreateTime = params.get("CreateTime")
 
 
 class ImageScale(AbstractModel):
@@ -15801,7 +15805,7 @@ class StorageStatData(AbstractModel):
         """
         :param Area: 点播存储的计费区域，可能值：
 <li>Chinese Mainland：中国境内（不包含港澳台）。</li>
-<li>outside Chinese Mainland：中国境外。</li>
+<li>Outside Chinese Mainland：中国境外。</li>
         :type Area: str
         :param TotalStorage: 当前总存储量，单位是字节。
         :type TotalStorage: int
