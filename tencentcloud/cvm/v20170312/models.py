@@ -431,6 +431,9 @@ class DataDisk(AbstractModel):
 该参数目前仅用于 `RunInstances` 接口。
 注意：此字段可能返回 null，表示取不到有效值。
         :type KmsKeyId: str
+        :param ThroughputPerformance: 云硬盘性能，单位：MB/s
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ThroughputPerformance: int
         """
         self.DiskSize = None
         self.DiskType = None
@@ -439,6 +442,7 @@ class DataDisk(AbstractModel):
         self.SnapshotId = None
         self.Encrypt = None
         self.KmsKeyId = None
+        self.ThroughputPerformance = None
 
 
     def _deserialize(self, params):
@@ -449,6 +453,7 @@ class DataDisk(AbstractModel):
         self.SnapshotId = params.get("SnapshotId")
         self.Encrypt = params.get("Encrypt")
         self.KmsKeyId = params.get("KmsKeyId")
+        self.ThroughputPerformance = params.get("ThroughputPerformance")
 
 
 class DeleteDisasterRecoverGroupsRequest(AbstractModel):

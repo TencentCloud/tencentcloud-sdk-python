@@ -5008,16 +5008,36 @@ class ModifySecurityRuleRequest(AbstractModel):
         :type AliasName: str
         :param PolicyId: 安全策略ID
         :type PolicyId: str
+        :param RuleAction: 安全规则动作
+        :type RuleAction: str
+        :param SourceCidr: 规则关联地址，格式需要满足CIDR网络地址规范
+        :type SourceCidr: str
+        :param Protocol: 协议类型
+        :type Protocol: str
+        :param DestPortRange: 端口范围，支持以下格式
+单个端口: 80
+多个端口: 80,443
+连续端口: 3306-20000
+所有端口: ALL
+        :type DestPortRange: str
         """
         self.RuleId = None
         self.AliasName = None
         self.PolicyId = None
+        self.RuleAction = None
+        self.SourceCidr = None
+        self.Protocol = None
+        self.DestPortRange = None
 
 
     def _deserialize(self, params):
         self.RuleId = params.get("RuleId")
         self.AliasName = params.get("AliasName")
         self.PolicyId = params.get("PolicyId")
+        self.RuleAction = params.get("RuleAction")
+        self.SourceCidr = params.get("SourceCidr")
+        self.Protocol = params.get("Protocol")
+        self.DestPortRange = params.get("DestPortRange")
 
 
 class ModifySecurityRuleResponse(AbstractModel):

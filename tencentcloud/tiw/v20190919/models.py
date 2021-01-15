@@ -1190,6 +1190,98 @@ class StartOnlineRecordResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class StartWhiteboardPushRequest(AbstractModel):
+    """StartWhiteboardPush请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SdkAppId: 客户的SdkAppId
+        :type SdkAppId: int
+        :param RoomId: 需要推流白板的房间号，取值范围: (1, 4294967295)
+        :type RoomId: int
+        :param PushUserId: 用于白板推流服务进房进行推流的用户ID，
+该ID必须是一个单独的未在SDK中使用的ID，白板推流服务使用这个用户ID进入房间进行白板音视频推流，若该ID和SDK中使用的ID重复，会导致SDK和白板推流服务互踢，影响正常推流。
+        :type PushUserId: str
+        :param PushUserSig: 与PushUserId对应的签名
+        :type PushUserSig: str
+        :param Whiteboard: 白板参数，例如白板宽高、背景颜色等
+        :type Whiteboard: :class:`tencentcloud.tiw.v20190919.models.Whiteboard`
+        :param AutoStopTimeout: 自动停止推流超时时间，单位秒，取值范围[300, 259200], 默认值为1800秒。
+
+当白板超过设定时间没有操作的时候，白板推流服务会自动停止白板推流。
+        :type AutoStopTimeout: int
+        :param AutoManageBackup: 对主白板推流任务进行操作时，是否同时同步操作备份任务
+        :type AutoManageBackup: bool
+        :param Backup: 备份白板推流相关参数。
+
+指定了备份参数的情况下，白板推流服务会在房间内新增一路白板画面视频流，即同一个房间内会有两路白板画面推流。
+        :type Backup: :class:`tencentcloud.tiw.v20190919.models.WhiteboardPushBackupParam`
+        :param AutoRecord: 在实时音视频云端录制模式选择为 `指定用户录制` 模式的时候是否自动录制白板推流。
+
+默认在实时音视频的云端录制模式选择为 `指定用户录制` 模式的情况下，不会自动进行白板推流录制，如果希望进行白板推流录制，请将此参数设置为true。
+
+如果实时音视频的云端录制模式选择为 `全局自动录制` 模式，可忽略此参数。
+        :type AutoRecord: bool
+        :param ExtraData: 内部参数，不需要关注此参数
+        :type ExtraData: str
+        """
+        self.SdkAppId = None
+        self.RoomId = None
+        self.PushUserId = None
+        self.PushUserSig = None
+        self.Whiteboard = None
+        self.AutoStopTimeout = None
+        self.AutoManageBackup = None
+        self.Backup = None
+        self.AutoRecord = None
+        self.ExtraData = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.RoomId = params.get("RoomId")
+        self.PushUserId = params.get("PushUserId")
+        self.PushUserSig = params.get("PushUserSig")
+        if params.get("Whiteboard") is not None:
+            self.Whiteboard = Whiteboard()
+            self.Whiteboard._deserialize(params.get("Whiteboard"))
+        self.AutoStopTimeout = params.get("AutoStopTimeout")
+        self.AutoManageBackup = params.get("AutoManageBackup")
+        if params.get("Backup") is not None:
+            self.Backup = WhiteboardPushBackupParam()
+            self.Backup._deserialize(params.get("Backup"))
+        self.AutoRecord = params.get("AutoRecord")
+        self.ExtraData = params.get("ExtraData")
+
+
+class StartWhiteboardPushResponse(AbstractModel):
+    """StartWhiteboardPush返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 推流任务Id
+        :type TaskId: str
+        :param Backup: 备份任务结果参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Backup: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.Backup = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Backup = params.get("Backup")
+        self.RequestId = params.get("RequestId")
+
+
 class StopOnlineRecordRequest(AbstractModel):
     """StopOnlineRecord请求参数结构体
 
@@ -1225,6 +1317,49 @@ class StopOnlineRecordResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class StopWhiteboardPushRequest(AbstractModel):
+    """StopWhiteboardPush请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SdkAppId: 客户的SdkAppId
+        :type SdkAppId: int
+        :param TaskId: 需要停止的白板推流任务 Id
+        :type TaskId: str
+        """
+        self.SdkAppId = None
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.TaskId = params.get("TaskId")
+
+
+class StopWhiteboardPushResponse(AbstractModel):
+    """StopWhiteboardPush返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Backup: 备份任务相关参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Backup: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Backup = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Backup = params.get("Backup")
         self.RequestId = params.get("RequestId")
 
 
@@ -1398,3 +1533,25 @@ class Whiteboard(AbstractModel):
         self.Width = params.get("Width")
         self.Height = params.get("Height")
         self.InitParam = params.get("InitParam")
+
+
+class WhiteboardPushBackupParam(AbstractModel):
+    """白板推流备份相关请求参数
+
+    """
+
+    def __init__(self):
+        """
+        :param PushUserId: 用于白板推流服务进房的用户ID，
+该ID必须是一个单独的未在SDK中使用的ID，白板推流服务将使用这个用户ID进入房间进行白板推流，若该ID和SDK中使用的ID重复，会导致SDK和录制服务互踢，影响正常推流。
+        :type PushUserId: str
+        :param PushUserSig: 与PushUserId对应的签名
+        :type PushUserSig: str
+        """
+        self.PushUserId = None
+        self.PushUserSig = None
+
+
+    def _deserialize(self, params):
+        self.PushUserId = params.get("PushUserId")
+        self.PushUserSig = params.get("PushUserSig")

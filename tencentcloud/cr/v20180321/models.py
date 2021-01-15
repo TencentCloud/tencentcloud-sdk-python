@@ -719,6 +719,56 @@ class DescribeTaskStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DownloadBotRecordRequest(AbstractModel):
+    """DownloadBotRecord请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块：AiApi
+        :type Module: str
+        :param Operation: 操作：DownloadRecord
+        :type Operation: str
+        :param BizDate: 业务日期
+        :type BizDate: str
+        """
+        self.Module = None
+        self.Operation = None
+        self.BizDate = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+        self.BizDate = params.get("BizDate")
+
+
+class DownloadBotRecordResponse(AbstractModel):
+    """DownloadBotRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RecordCosUrl: 录音地址。请求后30分钟内有效
+        :type RecordCosUrl: str
+        :param TextCosUrl: 文本地址。请求后30分钟内有效
+        :type TextCosUrl: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RecordCosUrl = None
+        self.TextCosUrl = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RecordCosUrl = params.get("RecordCosUrl")
+        self.TextCosUrl = params.get("TextCosUrl")
+        self.RequestId = params.get("RequestId")
+
+
 class DownloadDialogueTextRequest(AbstractModel):
     """DownloadDialogueText请求参数结构体
 

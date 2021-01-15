@@ -250,6 +250,34 @@ class CrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DownloadBotRecord(self, request):
+        """下载任务录音与文本，第二天12点后可使用此接口获取对应的录音与文本
+
+        :param request: Request instance for DownloadBotRecord.
+        :type request: :class:`tencentcloud.cr.v20180321.models.DownloadBotRecordRequest`
+        :rtype: :class:`tencentcloud.cr.v20180321.models.DownloadBotRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DownloadBotRecord", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DownloadBotRecordResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DownloadDialogueText(self, request):
         """用于获取指定案件的对话文本内容，次日早上8:00后可查询前日对话文本内容。
 

@@ -612,7 +612,7 @@ class BindingPolicyObjectRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param GroupId: 策略分组Id
+        :param GroupId: 策略组id，如传入PolicyId则该字段可传入任意值
         :type GroupId: int
         :param Module: 必填。固定值"monitor"
         :type Module: str
@@ -620,11 +620,14 @@ class BindingPolicyObjectRequest(AbstractModel):
         :type InstanceGroupId: int
         :param Dimensions: 需要绑定的对象维度信息
         :type Dimensions: list of BindingPolicyObjectDimension
+        :param PolicyId: 告警策略ID，使用此字段时GroupId可传入任意值
+        :type PolicyId: str
         """
         self.GroupId = None
         self.Module = None
         self.InstanceGroupId = None
         self.Dimensions = None
+        self.PolicyId = None
 
 
     def _deserialize(self, params):
@@ -637,6 +640,7 @@ class BindingPolicyObjectRequest(AbstractModel):
                 obj = BindingPolicyObjectDimension()
                 obj._deserialize(item)
                 self.Dimensions.append(obj)
+        self.PolicyId = params.get("PolicyId")
 
 
 class BindingPolicyObjectResponse(AbstractModel):
@@ -1075,6 +1079,7 @@ class CreateServiceDiscoveryRequest(AbstractModel):
         :param Type: 服务发现类型，取值如下：
 <li> 1 = ServiceMonitor</li>
 <li> 2 = PodMonitor</li>
+<li> 3 = JobMonitor</li>
         :type Type: int
         :param Yaml: 服务发现配置信息
         :type Yaml: str
@@ -1278,6 +1283,7 @@ class DeleteServiceDiscoveryRequest(AbstractModel):
         :param Type: 服务发现类型，取值如下：
 <li> 1 = ServiceMonitor</li>
 <li> 2 = PodMonitor</li>
+<li> 3 = PodMonitor</li>
         :type Type: int
         :param Yaml: 服务发现配置信息
         :type Yaml: str
@@ -5463,16 +5469,20 @@ class UnBindingAllPolicyObjectRequest(AbstractModel):
         """
         :param Module: 固定值，为"monitor"
         :type Module: str
-        :param GroupId: 策略组id
+        :param GroupId: 策略组id，如传入PolicyId则该字段可传入任意值
         :type GroupId: int
+        :param PolicyId: 告警策略ID，使用此字段时GroupId可传入任意值
+        :type PolicyId: str
         """
         self.Module = None
         self.GroupId = None
+        self.PolicyId = None
 
 
     def _deserialize(self, params):
         self.Module = params.get("Module")
         self.GroupId = params.get("GroupId")
+        self.PolicyId = params.get("PolicyId")
 
 
 class UnBindingAllPolicyObjectResponse(AbstractModel):
@@ -5501,17 +5511,20 @@ class UnBindingPolicyObjectRequest(AbstractModel):
         """
         :param Module: 固定值，为"monitor"
         :type Module: str
-        :param GroupId: 策略组id
+        :param GroupId: 策略组id，如传入PolicyId则该字段可传入任意值
         :type GroupId: int
         :param UniqueId: 待删除对象实例的唯一id列表，UniqueId从调用[获取已绑定对象列表接口](https://cloud.tencent.com/document/api/248/40570)的出参的List中得到
         :type UniqueId: list of str
         :param InstanceGroupId: 实例分组id, 如果按实例分组删除的话UniqueId参数是无效的
         :type InstanceGroupId: int
+        :param PolicyId: 告警策略ID，使用此字段时GroupId可传入任意值
+        :type PolicyId: str
         """
         self.Module = None
         self.GroupId = None
         self.UniqueId = None
         self.InstanceGroupId = None
+        self.PolicyId = None
 
 
     def _deserialize(self, params):
@@ -5519,6 +5532,7 @@ class UnBindingPolicyObjectRequest(AbstractModel):
         self.GroupId = params.get("GroupId")
         self.UniqueId = params.get("UniqueId")
         self.InstanceGroupId = params.get("InstanceGroupId")
+        self.PolicyId = params.get("PolicyId")
 
 
 class UnBindingPolicyObjectResponse(AbstractModel):
@@ -5555,6 +5569,7 @@ class UpdateServiceDiscoveryRequest(AbstractModel):
         :param Type: 服务发现类型，取值如下：
 <li> 1 = ServiceMonitor</li>
 <li> 2 = PodMonitor</li>
+<li> 3 = JobMonitor</li>
         :type Type: int
         :param Yaml: 服务发现配置信息
         :type Yaml: str

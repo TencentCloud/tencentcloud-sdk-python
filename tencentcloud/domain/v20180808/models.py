@@ -27,14 +27,20 @@ class BatchModifyDomainInfoRequest(AbstractModel):
         :type Domains: list of str
         :param TemplateId: 模板ID。
         :type TemplateId: str
+        :param LockTransfer: true： 开启60天内禁止转移注册商锁定
+false：关闭60天内禁止转移注册商锁定
+默认 true
+        :type LockTransfer: bool
         """
         self.Domains = None
         self.TemplateId = None
+        self.LockTransfer = None
 
 
     def _deserialize(self, params):
         self.Domains = params.get("Domains")
         self.TemplateId = params.get("TemplateId")
+        self.LockTransfer = params.get("LockTransfer")
 
 
 class BatchModifyDomainInfoResponse(AbstractModel):
@@ -623,10 +629,14 @@ class DescribeDomainBaseInfoResponse(AbstractModel):
         """
         :param DomainInfo: 域名信息
         :type DomainInfo: :class:`tencentcloud.domain.v20180808.models.DomainBaseInfo`
+        :param Uin: 用户Uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.DomainInfo = None
+        self.Uin = None
         self.RequestId = None
 
 
@@ -634,6 +644,7 @@ class DescribeDomainBaseInfoResponse(AbstractModel):
         if params.get("DomainInfo") is not None:
             self.DomainInfo = DomainBaseInfo()
             self.DomainInfo._deserialize(params.get("DomainInfo"))
+        self.Uin = params.get("Uin")
         self.RequestId = params.get("RequestId")
 
 
@@ -910,6 +921,11 @@ xinnet: Xin Net Technology Corporation（北京新网数码信息技术有限公
         :type RegistrarType: str
         :param NameServer: 域名绑定的ns
         :type NameServer: list of str
+        :param LockTransfer: true：开启锁定
+false：关闭锁定
+        :type LockTransfer: bool
+        :param LockEndTime: 锁定结束时间
+        :type LockEndTime: str
         """
         self.DomainId = None
         self.DomainName = None
@@ -923,6 +939,8 @@ xinnet: Xin Net Technology Corporation（北京新网数码信息技术有限公
         self.BuyStatus = None
         self.RegistrarType = None
         self.NameServer = None
+        self.LockTransfer = None
+        self.LockEndTime = None
 
 
     def _deserialize(self, params):
@@ -938,6 +956,8 @@ xinnet: Xin Net Technology Corporation（北京新网数码信息技术有限公
         self.BuyStatus = params.get("BuyStatus")
         self.RegistrarType = params.get("RegistrarType")
         self.NameServer = params.get("NameServer")
+        self.LockTransfer = params.get("LockTransfer")
+        self.LockEndTime = params.get("LockEndTime")
 
 
 class DomainBatchDetailSet(AbstractModel):
@@ -1368,12 +1388,17 @@ class TransferInDomainBatchRequest(AbstractModel):
 0 表示关闭，不自动续费（默认值）
 1 表示开启，将自动续费
         :type AutoRenewFlag: int
+        :param LockTransfer: true： 开启60天内禁止转移注册商锁定
+false：关闭60天内禁止转移注册商锁定
+默认 true
+        :type LockTransfer: bool
         """
         self.Domains = None
         self.PassWords = None
         self.TemplateId = None
         self.PayMode = None
         self.AutoRenewFlag = None
+        self.LockTransfer = None
 
 
     def _deserialize(self, params):
@@ -1382,6 +1407,7 @@ class TransferInDomainBatchRequest(AbstractModel):
         self.TemplateId = params.get("TemplateId")
         self.PayMode = params.get("PayMode")
         self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.LockTransfer = params.get("LockTransfer")
 
 
 class TransferInDomainBatchResponse(AbstractModel):

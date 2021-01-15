@@ -16,6 +16,27 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class Attachment(AbstractModel):
+    """附件结构，包含附件名和base之后的附件内容。
+
+    """
+
+    def __init__(self):
+        """
+        :param FileName: 附件名称，最大支持255个字符长度，不支持部分附件类型，详情请参考[附件类型](https://cloud.tencent.com/document/product/1288/51951)。
+        :type FileName: str
+        :param Content: base64之后的附件内容，您可以发送的附件大小上限为5 MB。 注意：腾讯云api目前要求请求包大小不得超过10 MB。如果您要发送多个附件，那么这些附件的总大小不能超过10 MB。
+        :type Content: str
+        """
+        self.FileName = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.FileName = params.get("FileName")
+        self.Content = params.get("Content")
+
+
 class BlackEmailAddress(AbstractModel):
     """邮箱黑名单结构，包含被拉黑的邮箱地址和被拉黑时间
 
@@ -44,7 +65,7 @@ class CreateEmailAddressRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EmailAddress: 您的发信地址，上限为10个
+        :param EmailAddress: 您的发信地址（发信地址总数上限为10个）
         :type EmailAddress: str
         :param EmailSenderName: 发件人别名
         :type EmailSenderName: str
@@ -308,7 +329,7 @@ class DeleteEmailTemplateRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TemplateID: 删除发信模版
+        :param TemplateID: 模版ID
         :type TemplateID: int
         """
         self.TemplateID = None
@@ -605,13 +626,13 @@ class ListBlackEmailAddressRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StartDate: 开始日期
+        :param StartDate: 开始日期，格式为YYYY-MM-DD
         :type StartDate: str
-        :param EndDate: 结束日期
+        :param EndDate: 结束日期，格式为YYYY-MM-DD
         :type EndDate: str
         :param Limit: 规范，配合Offset使用
         :type Limit: int
-        :param Offset: 规范，配合Limit使用
+        :param Offset: 规范，配合Limit使用，Limit最大取值为100
         :type Offset: int
         :param EmailAddress: 可以指定邮箱进行查询
         :type EmailAddress: str
@@ -792,16 +813,18 @@ class SendEmailRequest(AbstractModel):
 发信人 &lt;邮件地址&gt; 的方式填写，例如：
 腾讯云团队 &lt;noreply@mail.qcloud.com&gt;
         :type FromEmailAddress: str
-        :param Destination: 收信人邮箱地址，最多支持群发50人。
+        :param Destination: 收信人邮箱地址，最多支持群发50人。注意：邮件内容会显示所有收件人地址，非群发邮件请多次调用API发送。
         :type Destination: list of str
         :param Subject: 邮件主题
         :type Subject: str
-        :param ReplyToAddresses: 邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人将会回复到腾讯云。注意：邮件内容会显示所有收件人地址，非群发邮件请多次调用API发送。
+        :param ReplyToAddresses: 邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人将会回复到腾讯云。
         :type ReplyToAddresses: str
         :param Template: 使用模板发送时，填写的模板相关参数
         :type Template: :class:`tencentcloud.ses.v20201002.models.Template`
         :param Simple: 使用API直接发送内容时，填写的邮件内容
         :type Simple: :class:`tencentcloud.ses.v20201002.models.Simple`
+        :param Attachments: 需要发送附件时，填写附件相关参数。
+        :type Attachments: list of Attachment
         """
         self.FromEmailAddress = None
         self.Destination = None
@@ -809,6 +832,7 @@ class SendEmailRequest(AbstractModel):
         self.ReplyToAddresses = None
         self.Template = None
         self.Simple = None
+        self.Attachments = None
 
 
     def _deserialize(self, params):
@@ -822,6 +846,12 @@ class SendEmailRequest(AbstractModel):
         if params.get("Simple") is not None:
             self.Simple = Simple()
             self.Simple._deserialize(params.get("Simple"))
+        if params.get("Attachments") is not None:
+            self.Attachments = []
+            for item in params.get("Attachments"):
+                obj = Attachment()
+                obj._deserialize(item)
+                self.Attachments.append(obj)
 
 
 class SendEmailResponse(AbstractModel):
@@ -831,7 +861,7 @@ class SendEmailResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param MessageId: 接受消息时生成的消息的唯一标识符。
+        :param MessageId: 接受消息生成的唯一消息标识符。
         :type MessageId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

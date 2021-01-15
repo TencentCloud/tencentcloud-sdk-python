@@ -502,6 +502,34 @@ class TiwClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def StartWhiteboardPush(self, request):
+        """发起一个白板推流任务
+
+        :param request: Request instance for StartWhiteboardPush.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.StartWhiteboardPushRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.StartWhiteboardPushResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StartWhiteboardPush", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StartWhiteboardPushResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def StopOnlineRecord(self, request):
         """停止实时录制
 
@@ -516,6 +544,34 @@ class TiwClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopOnlineRecordResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StopWhiteboardPush(self, request):
+        """停止白板推流任务
+
+        :param request: Request instance for StopWhiteboardPush.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.StopWhiteboardPushRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.StopWhiteboardPushResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StopWhiteboardPush", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StopWhiteboardPushResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
