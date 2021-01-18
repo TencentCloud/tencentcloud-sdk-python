@@ -26,6 +26,34 @@ class AsrClient(AbstractClient):
     _service = 'asr'
 
 
+    def CloseAsyncRecognitionTask(self, request):
+        """本接口用于关闭语音流异步识别任务。
+
+        :param request: Request instance for CloseAsyncRecognitionTask.
+        :type request: :class:`tencentcloud.asr.v20190614.models.CloseAsyncRecognitionTaskRequest`
+        :rtype: :class:`tencentcloud.asr.v20190614.models.CloseAsyncRecognitionTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CloseAsyncRecognitionTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CloseAsyncRecognitionTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateAsrVocab(self, request):
         """用户通过本接口进行热词表的创建。
         <br>•   默认最多可创建30个热词表。

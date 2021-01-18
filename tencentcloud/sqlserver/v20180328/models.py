@@ -1762,6 +1762,8 @@ class DescribeBackupsRequest(AbstractModel):
         :type BackupWay: int
         :param BackupId: 按照备份ID筛选，不填则不筛选此项
         :type BackupId: int
+        :param DatabaseName: 按照备份的库名称筛选，不填则不筛选此项
+        :type DatabaseName: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -1772,6 +1774,7 @@ class DescribeBackupsRequest(AbstractModel):
         self.Strategy = None
         self.BackupWay = None
         self.BackupId = None
+        self.DatabaseName = None
 
 
     def _deserialize(self, params):
@@ -1784,6 +1787,7 @@ class DescribeBackupsRequest(AbstractModel):
         self.Strategy = params.get("Strategy")
         self.BackupWay = params.get("BackupWay")
         self.BackupId = params.get("BackupId")
+        self.DatabaseName = params.get("DatabaseName")
 
 
 class DescribeBackupsResponse(AbstractModel):

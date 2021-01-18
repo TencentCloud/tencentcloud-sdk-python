@@ -218,6 +218,27 @@ class BackupFileInfo(AbstractModel):
         self.SnapshotTime = params.get("SnapshotTime")
 
 
+class BillingResourceInfo(AbstractModel):
+    """计费资源信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param InstanceIds: 实例ID列表
+        :type InstanceIds: list of str
+        """
+        self.ClusterId = None
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.InstanceIds = params.get("InstanceIds")
+
+
 class ClusterInstanceDetail(AbstractModel):
     """集群实例信息
 
@@ -1739,6 +1760,49 @@ class DescribeProjectSecurityGroupsResponse(AbstractModel):
                 obj = SecurityGroup()
                 obj._deserialize(item)
                 self.Groups.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeResourcesByDealNameRequest(AbstractModel):
+    """DescribeResourcesByDealName请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DealName: 计费订单id
+        :type DealName: str
+        """
+        self.DealName = None
+
+
+    def _deserialize(self, params):
+        self.DealName = params.get("DealName")
+
+
+class DescribeResourcesByDealNameResponse(AbstractModel):
+    """DescribeResourcesByDealName返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BillingResourceInfos: 计费资源id信息数组
+        :type BillingResourceInfos: list of BillingResourceInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BillingResourceInfos = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("BillingResourceInfos") is not None:
+            self.BillingResourceInfos = []
+            for item in params.get("BillingResourceInfos"):
+                obj = BillingResourceInfo()
+                obj._deserialize(item)
+                self.BillingResourceInfos.append(obj)
         self.RequestId = params.get("RequestId")
 
 

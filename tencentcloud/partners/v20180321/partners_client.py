@@ -418,6 +418,34 @@ class PartnersClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeUnbindClientList(self, request):
+        """代理商名下客户解绑记录查询接口
+
+        :param request: Request instance for DescribeUnbindClientList.
+        :type request: :class:`tencentcloud.partners.v20180321.models.DescribeUnbindClientListRequest`
+        :rtype: :class:`tencentcloud.partners.v20180321.models.DescribeUnbindClientListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeUnbindClientList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeUnbindClientListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyClientRemark(self, request):
         """代理商可以对名下客户添加备注、修改备注
 

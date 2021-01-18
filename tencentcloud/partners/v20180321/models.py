@@ -1259,6 +1259,77 @@ class DescribeSalesmansResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeUnbindClientListRequest(AbstractModel):
+    """DescribeUnbindClientList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 解绑状态：0:所有,1:审核中,2已解绑
+        :type Status: int
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 限制数目
+        :type Limit: int
+        :param UnbindUin: 解绑账号ID
+        :type UnbindUin: str
+        :param ApplyTimeStart: 解绑申请时间范围起始点
+        :type ApplyTimeStart: str
+        :param ApplyTimeEnd: 解绑申请时间范围终止点
+        :type ApplyTimeEnd: str
+        :param OrderDirection: 对申请时间的升序降序，值：asc，desc
+        :type OrderDirection: str
+        """
+        self.Status = None
+        self.Offset = None
+        self.Limit = None
+        self.UnbindUin = None
+        self.ApplyTimeStart = None
+        self.ApplyTimeEnd = None
+        self.OrderDirection = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.UnbindUin = params.get("UnbindUin")
+        self.ApplyTimeStart = params.get("ApplyTimeStart")
+        self.ApplyTimeEnd = params.get("ApplyTimeEnd")
+        self.OrderDirection = params.get("OrderDirection")
+
+
+class DescribeUnbindClientListResponse(AbstractModel):
+    """DescribeUnbindClientList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的解绑客户数量
+        :type TotalCount: int
+        :param UnbindClientList: 符合条件的解绑客户列表
+        :type UnbindClientList: list of UnbindClientElem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.UnbindClientList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("UnbindClientList") is not None:
+            self.UnbindClientList = []
+            for item in params.get("UnbindClientList"):
+                obj = UnbindClientElem()
+                obj._deserialize(item)
+                self.UnbindClientList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyClientRemarkRequest(AbstractModel):
     """ModifyClientRemark请求参数结构体
 
@@ -1387,3 +1458,38 @@ class RemovePayRelationForClientResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class UnbindClientElem(AbstractModel):
+    """解绑客户信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Uin: 解绑账号ID
+        :type Uin: str
+        :param Name: 名称
+        :type Name: str
+        :param Status: 状态：0:审核中；1：已解绑；2：已撤销 3：关联撤销 4: 已驳回
+        :type Status: int
+        :param ApplyTime: 申请时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplyTime: str
+        :param ActionTime: 解绑/撤销时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActionTime: str
+        """
+        self.Uin = None
+        self.Name = None
+        self.Status = None
+        self.ApplyTime = None
+        self.ActionTime = None
+
+
+    def _deserialize(self, params):
+        self.Uin = params.get("Uin")
+        self.Name = params.get("Name")
+        self.Status = params.get("Status")
+        self.ApplyTime = params.get("ApplyTime")
+        self.ActionTime = params.get("ActionTime")

@@ -799,6 +799,27 @@ class ClusterNetworkSettings(AbstractModel):
         self.Cni = params.get("Cni")
 
 
+class ClusterVersion(AbstractModel):
+    """集群版本信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param Versions: 集群主版本号列表，例如1.18.4
+        :type Versions: list of str
+        """
+        self.ClusterId = None
+        self.Versions = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Versions = params.get("Versions")
+
+
 class CreateClusterAsGroupRequest(AbstractModel):
     """CreateClusterAsGroup请求参数结构体
 
@@ -1837,6 +1858,59 @@ class DeletePrometheusTemplateSyncResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAvailableClusterVersionRequest(AbstractModel):
+    """DescribeAvailableClusterVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群 Id
+        :type ClusterId: str
+        :param ClusterIds: 集群 Id 列表
+        :type ClusterIds: list of str
+        """
+        self.ClusterId = None
+        self.ClusterIds = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterIds = params.get("ClusterIds")
+
+
+class DescribeAvailableClusterVersionResponse(AbstractModel):
+    """DescribeAvailableClusterVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Versions: 可升级的集群版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Versions: list of str
+        :param Clusters: 集群信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Clusters: list of ClusterVersion
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Versions = None
+        self.Clusters = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Versions = params.get("Versions")
+        if params.get("Clusters") is not None:
+            self.Clusters = []
+            for item in params.get("Clusters"):
+                obj = ClusterVersion()
+                obj._deserialize(item)
+                self.Clusters.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3279,6 +3353,81 @@ class Filter(AbstractModel):
         self.Values = params.get("Values")
 
 
+class GetUpgradeInstanceProgressRequest(AbstractModel):
+    """GetUpgradeInstanceProgress请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param Limit: 最多获取多少个节点的进度
+        :type Limit: int
+        :param Offset: 从第几个节点开始获取进度
+        :type Offset: int
+        """
+        self.ClusterId = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class GetUpgradeInstanceProgressResponse(AbstractModel):
+    """GetUpgradeInstanceProgress返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Total: 升级节点总数
+        :type Total: int
+        :param Done: 已升级节点总数
+        :type Done: int
+        :param LifeState: 升级任务生命周期
+process 运行中
+paused 已停止
+pauing 正在停止
+done  已完成
+timeout 已超时
+aborted 已取消
+        :type LifeState: str
+        :param Instances: 各节点升级进度详情
+        :type Instances: list of InstanceUpgradeProgressItem
+        :param ClusterStatus: 集群当前状态
+        :type ClusterStatus: :class:`tencentcloud.tke.v20180525.models.InstanceUpgradeClusterStatus`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.Done = None
+        self.LifeState = None
+        self.Instances = None
+        self.ClusterStatus = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        self.Done = params.get("Done")
+        self.LifeState = params.get("LifeState")
+        if params.get("Instances") is not None:
+            self.Instances = []
+            for item in params.get("Instances"):
+                obj = InstanceUpgradeProgressItem()
+                obj._deserialize(item)
+                self.Instances.append(obj)
+        if params.get("ClusterStatus") is not None:
+            self.ClusterStatus = InstanceUpgradeClusterStatus()
+            self.ClusterStatus._deserialize(params.get("ClusterStatus"))
+        self.RequestId = params.get("RequestId")
+
+
 class ImageInstance(AbstractModel):
     """镜像信息
 
@@ -3478,6 +3627,147 @@ class InstanceExtraArgs(AbstractModel):
 
     def _deserialize(self, params):
         self.Kubelet = params.get("Kubelet")
+
+
+class InstanceUpgradeClusterStatus(AbstractModel):
+    """节点升级过程中集群当前状态
+
+    """
+
+    def __init__(self):
+        """
+        :param PodTotal: pod总数
+        :type PodTotal: int
+        :param NotReadyPod: NotReady pod总数
+        :type NotReadyPod: int
+        """
+        self.PodTotal = None
+        self.NotReadyPod = None
+
+
+    def _deserialize(self, params):
+        self.PodTotal = params.get("PodTotal")
+        self.NotReadyPod = params.get("NotReadyPod")
+
+
+class InstanceUpgradePreCheckResult(AbstractModel):
+    """某个节点升级前检查结果
+
+    """
+
+    def __init__(self):
+        """
+        :param CheckPass: 检查是否通过
+        :type CheckPass: bool
+        :param Items: 检查项数组
+        :type Items: list of InstanceUpgradePreCheckResultItem
+        :param SinglePods: 本节点独立pod列表
+        :type SinglePods: list of str
+        """
+        self.CheckPass = None
+        self.Items = None
+        self.SinglePods = None
+
+
+    def _deserialize(self, params):
+        self.CheckPass = params.get("CheckPass")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = InstanceUpgradePreCheckResultItem()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.SinglePods = params.get("SinglePods")
+
+
+class InstanceUpgradePreCheckResultItem(AbstractModel):
+    """节点升级检查项结果
+
+    """
+
+    def __init__(self):
+        """
+        :param Namespace: 工作负载的命名空间
+        :type Namespace: str
+        :param WorkLoadKind: 工作负载类型
+        :type WorkLoadKind: str
+        :param WorkLoadName: 工作负载名称
+        :type WorkLoadName: str
+        :param Before: 驱逐节点前工作负载running的pod数目
+        :type Before: int
+        :param After: 驱逐节点后工作负载running的pod数目
+        :type After: int
+        :param Pods: 工作负载在本节点上的pod列表
+        :type Pods: list of str
+        """
+        self.Namespace = None
+        self.WorkLoadKind = None
+        self.WorkLoadName = None
+        self.Before = None
+        self.After = None
+        self.Pods = None
+
+
+    def _deserialize(self, params):
+        self.Namespace = params.get("Namespace")
+        self.WorkLoadKind = params.get("WorkLoadKind")
+        self.WorkLoadName = params.get("WorkLoadName")
+        self.Before = params.get("Before")
+        self.After = params.get("After")
+        self.Pods = params.get("Pods")
+
+
+class InstanceUpgradeProgressItem(AbstractModel):
+    """某个节点的升级进度
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceID: 节点instanceID
+        :type InstanceID: str
+        :param LifeState: 任务生命周期
+process 运行中
+paused 已停止
+pauing 正在停止
+done  已完成
+timeout 已超时
+aborted 已取消
+pending 还未开始
+        :type LifeState: str
+        :param StartAt: 升级开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartAt: str
+        :param EndAt: 升级结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndAt: str
+        :param CheckResult: 升级前检查结果
+        :type CheckResult: :class:`tencentcloud.tke.v20180525.models.InstanceUpgradePreCheckResult`
+        :param Detail: 升级步骤详情
+        :type Detail: list of TaskStepInfo
+        """
+        self.InstanceID = None
+        self.LifeState = None
+        self.StartAt = None
+        self.EndAt = None
+        self.CheckResult = None
+        self.Detail = None
+
+
+    def _deserialize(self, params):
+        self.InstanceID = params.get("InstanceID")
+        self.LifeState = params.get("LifeState")
+        self.StartAt = params.get("StartAt")
+        self.EndAt = params.get("EndAt")
+        if params.get("CheckResult") is not None:
+            self.CheckResult = InstanceUpgradePreCheckResult()
+            self.CheckResult._deserialize(params.get("CheckResult"))
+        if params.get("Detail") is not None:
+            self.Detail = []
+            for item in params.get("Detail"):
+                obj = TaskStepInfo()
+                obj._deserialize(item)
+                self.Detail.append(obj)
 
 
 class Label(AbstractModel):
@@ -5011,6 +5301,92 @@ class Taint(AbstractModel):
         self.Key = params.get("Key")
         self.Value = params.get("Value")
         self.Effect = params.get("Effect")
+
+
+class TaskStepInfo(AbstractModel):
+    """任务步骤信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Step: 步骤名称
+        :type Step: str
+        :param LifeState: 生命周期
+pending : 步骤未开始
+running: 步骤执行中
+success: 步骤成功完成
+failed: 步骤失败
+        :type LifeState: str
+        :param StartAt: 步骤开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartAt: str
+        :param EndAt: 步骤结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndAt: str
+        :param FailedMsg: 若步骤生命周期为failed,则此字段显示错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailedMsg: str
+        """
+        self.Step = None
+        self.LifeState = None
+        self.StartAt = None
+        self.EndAt = None
+        self.FailedMsg = None
+
+
+    def _deserialize(self, params):
+        self.Step = params.get("Step")
+        self.LifeState = params.get("LifeState")
+        self.StartAt = params.get("StartAt")
+        self.EndAt = params.get("EndAt")
+        self.FailedMsg = params.get("FailedMsg")
+
+
+class UpdateClusterVersionRequest(AbstractModel):
+    """UpdateClusterVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群 Id
+        :type ClusterId: str
+        :param DstVersion: 需要升级到的版本
+        :type DstVersion: str
+        :param MaxNotReadyPercent: 可容忍的最大不可用pod数目
+        :type MaxNotReadyPercent: float
+        :param SkipPreCheck: 是否跳过预检查阶段
+        :type SkipPreCheck: bool
+        """
+        self.ClusterId = None
+        self.DstVersion = None
+        self.MaxNotReadyPercent = None
+        self.SkipPreCheck = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.DstVersion = params.get("DstVersion")
+        self.MaxNotReadyPercent = params.get("MaxNotReadyPercent")
+        self.SkipPreCheck = params.get("SkipPreCheck")
+
+
+class UpdateClusterVersionResponse(AbstractModel):
+    """UpdateClusterVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class UpgradeAbleInstancesItem(AbstractModel):

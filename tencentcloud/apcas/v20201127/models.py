@@ -356,11 +356,11 @@ class QueryCallDetailsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Type: 请求类型:1,人群特征洞察统计 2购车意向预测统计
+        :param Type: 请求类型 1:人群特征洞察统计 2:购车意向预测统计
         :type Type: int
         :param StartTime: 开始时间戳（毫秒）
         :type StartTime: int
-        :param EndTime: 结束时间戳(毫秒）
+        :param EndTime: 结束时间戳（毫秒）
         :type EndTime: int
         :param PageNumber: 页数
         :type PageNumber: int
@@ -412,11 +412,11 @@ class QueryCallStatRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Type: 请求类型:1,人群特征洞察统计 2购车意向预测统计
+        :param Type: 请求类型 1:人群特征洞察统计 2:购车意向预测统计
         :type Type: int
         :param StartTime: 开始时间戳（毫秒）
         :type StartTime: int
-        :param EndTime: 结束时间戳(毫秒）
+        :param EndTime: 结束时间戳（毫秒）
         :type EndTime: int
         """
         self.Type = None

@@ -265,6 +265,54 @@ class CloudBaseRunNfsVolumeSource(AbstractModel):
         self.ReadOnly = params.get("ReadOnly")
 
 
+class CloudBaseRunSideSpec(AbstractModel):
+    """CloudBaseRun 的 Side 描述定义
+
+    """
+
+    def __init__(self):
+        """
+        :param ContainerImage: 容器镜像
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContainerImage: str
+        :param ContainerPort: 容器端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContainerPort: int
+        :param ContainerName: 容器的名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContainerName: str
+        :param EnvVar: kv的json字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnvVar: str
+        :param InitialDelaySeconds: InitialDelaySeconds 延迟多长时间启动健康检查
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InitialDelaySeconds: int
+        :param Cpu: CPU大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cpu: int
+        :param Mem: 内存大小（单位：M）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Mem: int
+        """
+        self.ContainerImage = None
+        self.ContainerPort = None
+        self.ContainerName = None
+        self.EnvVar = None
+        self.InitialDelaySeconds = None
+        self.Cpu = None
+        self.Mem = None
+
+
+    def _deserialize(self, params):
+        self.ContainerImage = params.get("ContainerImage")
+        self.ContainerPort = params.get("ContainerPort")
+        self.ContainerName = params.get("ContainerName")
+        self.EnvVar = params.get("EnvVar")
+        self.InitialDelaySeconds = params.get("InitialDelaySeconds")
+        self.Cpu = params.get("Cpu")
+        self.Mem = params.get("Mem")
+
+
 class CloudBaseRunVolumeMount(AbstractModel):
     """cfs挂载点
 
@@ -735,6 +783,10 @@ class CreateCloudBaseRunServerVersionRequest(AbstractModel):
         :type OperatorRemark: str
         :param ServerPath: 服务路劲
         :type ServerPath: str
+        :param ImageReuseKey: 镜像复用的key
+        :type ImageReuseKey: str
+        :param SidecarSpecs: 容器的描述文件
+        :type SidecarSpecs: list of CloudBaseRunSideSpec
         """
         self.EnvId = None
         self.UploadType = None
@@ -768,6 +820,8 @@ class CreateCloudBaseRunServerVersionRequest(AbstractModel):
         self.EnableUnion = None
         self.OperatorRemark = None
         self.ServerPath = None
+        self.ImageReuseKey = None
+        self.SidecarSpecs = None
 
 
     def _deserialize(self, params):
@@ -816,6 +870,13 @@ class CreateCloudBaseRunServerVersionRequest(AbstractModel):
         self.EnableUnion = params.get("EnableUnion")
         self.OperatorRemark = params.get("OperatorRemark")
         self.ServerPath = params.get("ServerPath")
+        self.ImageReuseKey = params.get("ImageReuseKey")
+        if params.get("SidecarSpecs") is not None:
+            self.SidecarSpecs = []
+            for item in params.get("SidecarSpecs"):
+                obj = CloudBaseRunSideSpec()
+                obj._deserialize(item)
+                self.SidecarSpecs.append(obj)
 
 
 class CreateCloudBaseRunServerVersionResponse(AbstractModel):

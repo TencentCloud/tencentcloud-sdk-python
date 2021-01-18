@@ -60,6 +60,40 @@ class AsyncRecognitionTasks(AbstractModel):
                 self.Tasks.append(obj)
 
 
+class CloseAsyncRecognitionTaskRequest(AbstractModel):
+    """CloseAsyncRecognitionTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 语音流异步识别任务的唯一标识，在创建任务时会返回
+        :type TaskId: int
+        """
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+
+
+class CloseAsyncRecognitionTaskResponse(AbstractModel):
+    """CloseAsyncRecognitionTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateAsrVocabRequest(AbstractModel):
     """CreateAsrVocab请求参数结构体
 
