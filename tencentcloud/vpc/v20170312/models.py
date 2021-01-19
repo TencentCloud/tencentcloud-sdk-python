@@ -14690,6 +14690,14 @@ class VpnConnection(AbstractModel):
         :type IKEOptionsSpecification: :class:`tencentcloud.vpc.v20170312.models.IKEOptionsSpecification`
         :param IPSECOptionsSpecification: IPSEC选择。
         :type IPSECOptionsSpecification: :class:`tencentcloud.vpc.v20170312.models.IPSECOptionsSpecification`
+        :param EnableHealthCheck: 是否支持健康状态探测
+        :type EnableHealthCheck: bool
+        :param HealthCheckLocalIp: 本端探测ip
+        :type HealthCheckLocalIp: str
+        :param HealthCheckRemoteIp: 对端探测ip
+        :type HealthCheckRemoteIp: str
+        :param HealthCheckStatus: 通道健康检查状态，AVAILABLE：正常，UNAVAILABLE：不正常。 未配置健康检查不返回该对象
+        :type HealthCheckStatus: str
         """
         self.VpnConnectionId = None
         self.VpnConnectionName = None
@@ -14706,6 +14714,10 @@ class VpnConnection(AbstractModel):
         self.SecurityPolicyDatabaseSet = None
         self.IKEOptionsSpecification = None
         self.IPSECOptionsSpecification = None
+        self.EnableHealthCheck = None
+        self.HealthCheckLocalIp = None
+        self.HealthCheckRemoteIp = None
+        self.HealthCheckStatus = None
 
 
     def _deserialize(self, params):
@@ -14733,6 +14745,10 @@ class VpnConnection(AbstractModel):
         if params.get("IPSECOptionsSpecification") is not None:
             self.IPSECOptionsSpecification = IPSECOptionsSpecification()
             self.IPSECOptionsSpecification._deserialize(params.get("IPSECOptionsSpecification"))
+        self.EnableHealthCheck = params.get("EnableHealthCheck")
+        self.HealthCheckLocalIp = params.get("HealthCheckLocalIp")
+        self.HealthCheckRemoteIp = params.get("HealthCheckRemoteIp")
+        self.HealthCheckStatus = params.get("HealthCheckStatus")
 
 
 class VpnGateway(AbstractModel):

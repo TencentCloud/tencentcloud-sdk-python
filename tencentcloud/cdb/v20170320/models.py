@@ -8314,6 +8314,56 @@ class StopRollbackResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SwitchDBInstanceMasterSlaveRequest(AbstractModel):
+    """SwitchDBInstanceMasterSlave请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例 ID。
+        :type InstanceId: str
+        :param DstSlave: 模板从实例。可选值："first" - 第一备机；"second" - 第二备机。默认值为 "first"，仅多可用区实例支持设置为 "second"。
+        :type DstSlave: str
+        :param ForceSwitch: 是否强制切换。默认为 False。注意，若设置强制切换为 True，实例存在丢失数据的风险，请谨慎使用。
+        :type ForceSwitch: bool
+        :param WaitSwitch: 是否时间窗内切换。默认为 False，即不在时间窗内切换。注意，如果设置了 ForceSwitch 参数为 True，则该参数不生效。
+        :type WaitSwitch: bool
+        """
+        self.InstanceId = None
+        self.DstSlave = None
+        self.ForceSwitch = None
+        self.WaitSwitch = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.DstSlave = params.get("DstSlave")
+        self.ForceSwitch = params.get("ForceSwitch")
+        self.WaitSwitch = params.get("WaitSwitch")
+
+
+class SwitchDBInstanceMasterSlaveResponse(AbstractModel):
+    """SwitchDBInstanceMasterSlave返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncRequestId: 异步任务 ID。
+        :type AsyncRequestId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+
+
 class SwitchForUpgradeRequest(AbstractModel):
     """SwitchForUpgrade请求参数结构体
 

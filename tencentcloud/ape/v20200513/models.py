@@ -311,12 +311,15 @@ class DescribeImagesRequest(AbstractModel):
         :type Orientation: str
         :param ImageSenseType: 图片类型，可选以下值：照片、插画
         :type ImageSenseType: str
+        :param LayeredGalleryIds: 分层图库id数组，可选以下数值：1(基础)，2(精选)，3(高级)
+        :type LayeredGalleryIds: list of int
         """
         self.Offset = None
         self.Limit = None
         self.Keyword = None
         self.Orientation = None
         self.ImageSenseType = None
+        self.LayeredGalleryIds = None
 
 
     def _deserialize(self, params):
@@ -325,6 +328,7 @@ class DescribeImagesRequest(AbstractModel):
         self.Keyword = params.get("Keyword")
         self.Orientation = params.get("Orientation")
         self.ImageSenseType = params.get("ImageSenseType")
+        self.LayeredGalleryIds = params.get("LayeredGalleryIds")
 
 
 class DescribeImagesResponse(AbstractModel):

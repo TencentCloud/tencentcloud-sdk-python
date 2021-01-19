@@ -1827,6 +1827,34 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def RecognizeMediaForZhiXue(self, request):
+        """智能媒体识别，包含表情和动作识别。仅用于智学，其他调用无效。
+
+        :param request: Request instance for RecognizeMediaForZhiXue.
+        :type request: :class:`tencentcloud.mps.v20190612.models.RecognizeMediaForZhiXueRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.RecognizeMediaForZhiXueResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RecognizeMediaForZhiXue", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RecognizeMediaForZhiXueResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ResetWorkflow(self, request):
         """重新设置一个已经存在且处于禁用状态的工作流。
 

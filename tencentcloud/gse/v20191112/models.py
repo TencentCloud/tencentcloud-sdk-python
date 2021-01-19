@@ -38,6 +38,9 @@ class Alias(AbstractModel):
         :type CreationTime: str
         :param LastUpdatedTime: 上次修改此数据对象的时间
         :type LastUpdatedTime: str
+        :param Tags: 标签列表，最大长度50组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         """
         self.AliasId = None
         self.AliasArn = None
@@ -46,6 +49,7 @@ class Alias(AbstractModel):
         self.RoutingStrategy = None
         self.CreationTime = None
         self.LastUpdatedTime = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -58,6 +62,12 @@ class Alias(AbstractModel):
             self.RoutingStrategy._deserialize(params.get("RoutingStrategy"))
         self.CreationTime = params.get("CreationTime")
         self.LastUpdatedTime = params.get("LastUpdatedTime")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class Asset(AbstractModel):
@@ -93,6 +103,9 @@ class Asset(AbstractModel):
         :type ResourceType: str
         :param SharingStatus: 镜像资源共享类型，当 ResourceType 为 IMAGE 时该字段有意义，SHARED 表示共享、SHARED_IMAGE 表示未共享；ResourceType 为 ASSET 时这里返回 UNKNOWN_SHARED 用于占位
         :type SharingStatus: str
+        :param Tags: 标签列表，最大长度50组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         """
         self.AssetId = None
         self.AssetName = None
@@ -107,6 +120,7 @@ class Asset(AbstractModel):
         self.OsType = None
         self.ResourceType = None
         self.SharingStatus = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -123,6 +137,12 @@ class Asset(AbstractModel):
         self.OsType = params.get("OsType")
         self.ResourceType = params.get("ResourceType")
         self.SharingStatus = params.get("SharingStatus")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class AssetCredentials(AbstractModel):
@@ -294,6 +314,8 @@ class CopyFleetRequest(AbstractModel):
         :type SelectedScalingType: str
         :param SelectedCcnType: 是否选择云联网：CCN_SELECTED 或者 CCN_UNSELECTED；默认是 CCN_UNSELECTED
         :type SelectedCcnType: str
+        :param Tags: 标签列表，最大长度50组
+        :type Tags: list of Tag
         """
         self.FleetId = None
         self.CopyNumber = None
@@ -309,6 +331,7 @@ class CopyFleetRequest(AbstractModel):
         self.GameServerSessionProtectionTimeLimit = None
         self.SelectedScalingType = None
         self.SelectedCcnType = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -335,6 +358,12 @@ class CopyFleetRequest(AbstractModel):
         self.GameServerSessionProtectionTimeLimit = params.get("GameServerSessionProtectionTimeLimit")
         self.SelectedScalingType = params.get("SelectedScalingType")
         self.SelectedCcnType = params.get("SelectedCcnType")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class CopyFleetResponse(AbstractModel):
@@ -381,10 +410,13 @@ class CreateAliasRequest(AbstractModel):
         :type RoutingStrategy: :class:`tencentcloud.gse.v20191112.models.RoutingStrategy`
         :param Description: 别名的可读说明，长度不小于1字符不超过1024字符
         :type Description: str
+        :param Tags: 标签列表，最大长度50组
+        :type Tags: list of Tag
         """
         self.Name = None
         self.RoutingStrategy = None
         self.Description = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -393,6 +425,12 @@ class CreateAliasRequest(AbstractModel):
             self.RoutingStrategy = RoutingStrategy()
             self.RoutingStrategy._deserialize(params.get("RoutingStrategy"))
         self.Description = params.get("Description")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class CreateAliasResponse(AbstractModel):
@@ -437,6 +475,8 @@ class CreateAssetRequest(AbstractModel):
         :type OperateSystem: str
         :param ImageId: 生成包支持的操作系统镜像id，若传入OperateSystem字段的值是CentOS7.16，则不需要传入该值；如果不是，则需要通过[DescribeAssetSystems](https://cloud.tencent.com/document/product/1165/49191)接口获取asset支持的操作系统ImageId进行传入
         :type ImageId: str
+        :param Tags: 标签列表，最大长度50组
+        :type Tags: list of Tag
         """
         self.BucketKey = None
         self.AssetName = None
@@ -444,6 +484,7 @@ class CreateAssetRequest(AbstractModel):
         self.AssetRegion = None
         self.OperateSystem = None
         self.ImageId = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -453,6 +494,12 @@ class CreateAssetRequest(AbstractModel):
         self.AssetRegion = params.get("AssetRegion")
         self.OperateSystem = params.get("OperateSystem")
         self.ImageId = params.get("ImageId")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class CreateAssetResponse(AbstractModel):
@@ -585,6 +632,8 @@ class CreateFleetRequest(AbstractModel):
         :type SubNetId: str
         :param GameServerSessionProtectionTimeLimit: 时限保护超时时间，默认60分钟，最小值5，最大值1440；当NewGameSessionProtectionPolicy为TimeLimitProtection时参数有效
         :type GameServerSessionProtectionTimeLimit: int
+        :param Tags: 标签列表，最大长度50组
+        :type Tags: list of Tag
         """
         self.AssetId = None
         self.Description = None
@@ -598,6 +647,7 @@ class CreateFleetRequest(AbstractModel):
         self.RuntimeConfiguration = None
         self.SubNetId = None
         self.GameServerSessionProtectionTimeLimit = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -622,6 +672,12 @@ class CreateFleetRequest(AbstractModel):
             self.RuntimeConfiguration._deserialize(params.get("RuntimeConfiguration"))
         self.SubNetId = params.get("SubNetId")
         self.GameServerSessionProtectionTimeLimit = params.get("GameServerSessionProtectionTimeLimit")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class CreateFleetResponse(AbstractModel):
@@ -663,11 +719,14 @@ class CreateGameServerSessionQueueRequest(AbstractModel):
         :type PlayerLatencyPolicies: list of PlayerLatencyPolicy
         :param TimeoutInSeconds: 超时时间（单位秒，默认值为600秒）
         :type TimeoutInSeconds: int
+        :param Tags: 标签列表，最大长度50组
+        :type Tags: list of Tag
         """
         self.Name = None
         self.Destinations = None
         self.PlayerLatencyPolicies = None
         self.TimeoutInSeconds = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -685,6 +744,12 @@ class CreateGameServerSessionQueueRequest(AbstractModel):
                 obj._deserialize(item)
                 self.PlayerLatencyPolicies.append(obj)
         self.TimeoutInSeconds = params.get("TimeoutInSeconds")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class CreateGameServerSessionQueueResponse(AbstractModel):
@@ -2579,6 +2644,9 @@ class FleetAttributes(AbstractModel):
         :param BillingStatus: 计费状态：未开通、已开通、异常、欠费隔离、销毁、解冻
 注意：此字段可能返回 null，表示取不到有效值。
         :type BillingStatus: str
+        :param Tags: 标签列表，最大长度50组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         """
         self.AssetId = None
         self.CreationTime = None
@@ -2596,6 +2664,7 @@ class FleetAttributes(AbstractModel):
         self.TerminationTime = None
         self.GameServerSessionProtectionTimeLimit = None
         self.BillingStatus = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -2617,6 +2686,12 @@ class FleetAttributes(AbstractModel):
         self.TerminationTime = params.get("TerminationTime")
         self.GameServerSessionProtectionTimeLimit = params.get("GameServerSessionProtectionTimeLimit")
         self.BillingStatus = params.get("BillingStatus")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class FleetCapacity(AbstractModel):
@@ -3078,12 +3153,16 @@ class GameServerSessionQueue(AbstractModel):
         :type PlayerLatencyPolicies: list of PlayerLatencyPolicy
         :param TimeoutInSeconds: 超时时间
         :type TimeoutInSeconds: int
+        :param Tags: 标签列表，最大长度50组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         """
         self.Name = None
         self.GameServerSessionQueueArn = None
         self.Destinations = None
         self.PlayerLatencyPolicies = None
         self.TimeoutInSeconds = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -3102,6 +3181,12 @@ class GameServerSessionQueue(AbstractModel):
                 obj._deserialize(item)
                 self.PlayerLatencyPolicies.append(obj)
         self.TimeoutInSeconds = params.get("TimeoutInSeconds")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class GameServerSessionQueueDestination(AbstractModel):
@@ -4682,6 +4767,27 @@ class StopGameServerSessionPlacementResponse(AbstractModel):
             self.GameServerSessionPlacement = GameServerSessionPlacement()
             self.GameServerSessionPlacement._deserialize(params.get("GameServerSessionPlacement"))
         self.RequestId = params.get("RequestId")
+
+
+class Tag(AbstractModel):
+    """标签结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: 标签键，最大长度127字节
+        :type Key: str
+        :param Value: 标签值，最大长度255字节
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
 
 
 class TargetConfiguration(AbstractModel):

@@ -3087,6 +3087,34 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def SwitchDBInstanceMasterSlave(self, request):
+        """该接口 (SwitchDBInstanceMasterSlave) 支持用户主动切换实例主从角色。
+
+        :param request: Request instance for SwitchDBInstanceMasterSlave.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.SwitchDBInstanceMasterSlaveRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.SwitchDBInstanceMasterSlaveResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SwitchDBInstanceMasterSlave", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SwitchDBInstanceMasterSlaveResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def SwitchForUpgrade(self, request):
         """本接口(SwitchForUpgrade)用于切换访问新实例，针对主升级中的实例处于待切换状态时，用户可主动发起该流程。
 

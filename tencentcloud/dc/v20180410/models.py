@@ -1848,7 +1848,7 @@ class ModifyDirectConnectTunnelExtraRequest(AbstractModel):
         :type Vlan: int
         :param BgpPeer: 用户侧BGP，Asn，AuthKey
         :type BgpPeer: :class:`tencentcloud.dc.v20180410.models.BgpPeer`
-        :param RouteFilterPrefixes: 用户侧网段地址
+        :param RouteFilterPrefixes: 用户侧过滤网段地址
         :type RouteFilterPrefixes: :class:`tencentcloud.dc.v20180410.models.RouteFilterPrefix`
         :param TencentAddress: 腾讯侧互联IP
         :type TencentAddress: str
@@ -1871,6 +1871,8 @@ class ModifyDirectConnectTunnelExtraRequest(AbstractModel):
         :param IPv6Enable: 0：停用IPv6
 1: 启用IPv6
         :type IPv6Enable: int
+        :param CustomerIDCRoutes: 去往用户侧的路由信息
+        :type CustomerIDCRoutes: list of RouteFilterPrefix
         """
         self.DirectConnectTunnelId = None
         self.Vlan = None
@@ -1886,6 +1888,7 @@ class ModifyDirectConnectTunnelExtraRequest(AbstractModel):
         self.BfdInfo = None
         self.NqaInfo = None
         self.IPv6Enable = None
+        self.CustomerIDCRoutes = None
 
 
     def _deserialize(self, params):
@@ -1911,6 +1914,12 @@ class ModifyDirectConnectTunnelExtraRequest(AbstractModel):
             self.NqaInfo = NQAInfo()
             self.NqaInfo._deserialize(params.get("NqaInfo"))
         self.IPv6Enable = params.get("IPv6Enable")
+        if params.get("CustomerIDCRoutes") is not None:
+            self.CustomerIDCRoutes = []
+            for item in params.get("CustomerIDCRoutes"):
+                obj = RouteFilterPrefix()
+                obj._deserialize(item)
+                self.CustomerIDCRoutes.append(obj)
 
 
 class ModifyDirectConnectTunnelExtraResponse(AbstractModel):

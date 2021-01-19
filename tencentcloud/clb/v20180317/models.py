@@ -120,16 +120,24 @@ class AutoRewriteRequest(AbstractModel):
         :type ListenerId: str
         :param Domains: HTTPS:443监听器下需要重定向的域名，若不填，对HTTPS:443监听器下的所有域名都设置重定向。
         :type Domains: list of str
+        :param RewriteCodes: 重定向状态码，可取值301,302,307
+        :type RewriteCodes: list of int
+        :param TakeUrls: 重定向是否携带匹配的url
+        :type TakeUrls: list of bool
         """
         self.LoadBalancerId = None
         self.ListenerId = None
         self.Domains = None
+        self.RewriteCodes = None
+        self.TakeUrls = None
 
 
     def _deserialize(self, params):
         self.LoadBalancerId = params.get("LoadBalancerId")
         self.ListenerId = params.get("ListenerId")
         self.Domains = params.get("Domains")
+        self.RewriteCodes = params.get("RewriteCodes")
+        self.TakeUrls = params.get("TakeUrls")
 
 
 class AutoRewriteResponse(AbstractModel):
@@ -4916,14 +4924,26 @@ class RewriteLocationMap(AbstractModel):
         :type SourceLocationId: str
         :param TargetLocationId: 重定向至的目标转发规则ID
         :type TargetLocationId: str
+        :param RewriteCode: 重定向状态码，可取值301,302,307
+        :type RewriteCode: int
+        :param TakeUrl: 重定向是否携带匹配的url，配置RewriteCode时必填
+        :type TakeUrl: bool
+        :param SourceDomain: 源转发的域名，必须是SourceLocationId对应的域名，配置RewriteCode时必填
+        :type SourceDomain: str
         """
         self.SourceLocationId = None
         self.TargetLocationId = None
+        self.RewriteCode = None
+        self.TakeUrl = None
+        self.SourceDomain = None
 
 
     def _deserialize(self, params):
         self.SourceLocationId = params.get("SourceLocationId")
         self.TargetLocationId = params.get("TargetLocationId")
+        self.RewriteCode = params.get("RewriteCode")
+        self.TakeUrl = params.get("TakeUrl")
+        self.SourceDomain = params.get("SourceDomain")
 
 
 class RewriteTarget(AbstractModel):
@@ -4941,14 +4961,29 @@ class RewriteTarget(AbstractModel):
 注意：此字段可能返回 null，表示无重定向。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetLocationId: str
+        :param RewriteCode: 重定向状态码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RewriteCode: int
+        :param TakeUrl: 重定向是否携带匹配的url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TakeUrl: bool
+        :param RewriteType: 重定向类型，Manual: 手动重定向，Auto:  自动重定向
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RewriteType: str
         """
         self.TargetListenerId = None
         self.TargetLocationId = None
+        self.RewriteCode = None
+        self.TakeUrl = None
+        self.RewriteType = None
 
 
     def _deserialize(self, params):
         self.TargetListenerId = params.get("TargetListenerId")
         self.TargetLocationId = params.get("TargetLocationId")
+        self.RewriteCode = params.get("RewriteCode")
+        self.TakeUrl = params.get("TakeUrl")
+        self.RewriteType = params.get("RewriteType")
 
 
 class RsWeightRule(AbstractModel):

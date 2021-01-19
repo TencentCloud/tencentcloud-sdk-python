@@ -140,6 +140,25 @@ class AIRecognitionTemplateItem(AbstractModel):
         self.UpdateTime = params.get("UpdateTime")
 
 
+class ActionConfigInfo(AbstractModel):
+    """动作识别参数配置
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 动作识别任务开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
 class AdaptiveDynamicStreamingInfoItem(AbstractModel):
     """转自适应码流信息
 
@@ -6039,6 +6058,25 @@ class ExecuteFunctionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ExpressionConfigInfo(AbstractModel):
+    """表情识别参数配置
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 表情识别任务开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+
+
 class FaceConfigureInfo(AbstractModel):
     """人脸识别任务控制参数
 
@@ -10417,6 +10455,58 @@ class RawWatermarkParameter(AbstractModel):
         if params.get("ImageTemplate") is not None:
             self.ImageTemplate = RawImageWatermarkInput()
             self.ImageTemplate._deserialize(params.get("ImageTemplate"))
+
+
+class RecognizeMediaForZhiXueRequest(AbstractModel):
+    """RecognizeMediaForZhiXue请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InputInfo: 输入媒体文件存储信息。
+        :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        :param ExpressionConfig: 表情识别参数配置。默认开启。
+        :type ExpressionConfig: :class:`tencentcloud.mps.v20190612.models.ExpressionConfigInfo`
+        :param ActionConfig: 动作识别参数配置。默认开启。
+        :type ActionConfig: :class:`tencentcloud.mps.v20190612.models.ActionConfigInfo`
+        """
+        self.InputInfo = None
+        self.ExpressionConfig = None
+        self.ActionConfig = None
+
+
+    def _deserialize(self, params):
+        if params.get("InputInfo") is not None:
+            self.InputInfo = MediaInputInfo()
+            self.InputInfo._deserialize(params.get("InputInfo"))
+        if params.get("ExpressionConfig") is not None:
+            self.ExpressionConfig = ExpressionConfigInfo()
+            self.ExpressionConfig._deserialize(params.get("ExpressionConfig"))
+        if params.get("ActionConfig") is not None:
+            self.ActionConfig = ActionConfigInfo()
+            self.ActionConfig._deserialize(params.get("ActionConfig"))
+
+
+class RecognizeMediaForZhiXueResponse(AbstractModel):
+    """RecognizeMediaForZhiXue返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务 ID，可以通过该 ID 查询任务状态和结果。
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
 
 
 class ResetWorkflowRequest(AbstractModel):
