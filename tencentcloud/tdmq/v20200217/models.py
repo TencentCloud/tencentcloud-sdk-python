@@ -16,6 +16,89 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class BindCluster(AbstractModel):
+    """用户专享集群信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterName: 物理集群的名称
+        :type ClusterName: str
+        """
+        self.ClusterName = None
+
+
+    def _deserialize(self, params):
+        self.ClusterName = params.get("ClusterName")
+
+
+class Cluster(AbstractModel):
+    """集群信息集合
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群Id。
+        :type ClusterId: str
+        :param ClusterName: 集群名称。
+        :type ClusterName: str
+        :param Remark: 说明信息。
+        :type Remark: str
+        :param EndPointNum: 接入点数量
+        :type EndPointNum: int
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param Healthy: 集群是否健康，1表示健康，0表示异常
+        :type Healthy: int
+        :param HealthyInfo: 集群健康信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HealthyInfo: str
+        :param Status: 集群状态，0:创建中，1:正常，2:删除中，3:已删除，5:创建失败，6: 删除失败
+        :type Status: int
+        :param MaxNamespaceNum: 最大命名空间数量
+        :type MaxNamespaceNum: int
+        :param MaxTopicNum: 最大Topic数量
+        :type MaxTopicNum: int
+        :param MaxQps: 最大QPS
+        :type MaxQps: int
+        :param MessageRetentionTime: 消息保留时间
+        :type MessageRetentionTime: int
+        :param MaxStorageCapacity: 最大存储容量
+        :type MaxStorageCapacity: int
+        """
+        self.ClusterId = None
+        self.ClusterName = None
+        self.Remark = None
+        self.EndPointNum = None
+        self.CreateTime = None
+        self.Healthy = None
+        self.HealthyInfo = None
+        self.Status = None
+        self.MaxNamespaceNum = None
+        self.MaxTopicNum = None
+        self.MaxQps = None
+        self.MessageRetentionTime = None
+        self.MaxStorageCapacity = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterName = params.get("ClusterName")
+        self.Remark = params.get("Remark")
+        self.EndPointNum = params.get("EndPointNum")
+        self.CreateTime = params.get("CreateTime")
+        self.Healthy = params.get("Healthy")
+        self.HealthyInfo = params.get("HealthyInfo")
+        self.Status = params.get("Status")
+        self.MaxNamespaceNum = params.get("MaxNamespaceNum")
+        self.MaxTopicNum = params.get("MaxTopicNum")
+        self.MaxQps = params.get("MaxQps")
+        self.MessageRetentionTime = params.get("MessageRetentionTime")
+        self.MaxStorageCapacity = params.get("MaxStorageCapacity")
+
+
 class Connection(AbstractModel):
     """生产者连接实例
 
@@ -138,6 +221,61 @@ class ConsumersSchedule(AbstractModel):
         self.MsgRateExpired = params.get("MsgRateExpired")
 
 
+class CreateClusterRequest(AbstractModel):
+    """CreateCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterName: 集群名称，不支持中字以及除了短线和下划线外的特殊字符且不超过16个字符。
+        :type ClusterName: str
+        :param BindClusterId: 用户专享物理集群ID，如果不传，则默认在公共集群上创建用户集群资源。
+        :type BindClusterId: int
+        :param Remark: 说明，128个字符以内。
+        :type Remark: str
+        :param Tags: 集群的标签列表
+        :type Tags: list of Tag
+        """
+        self.ClusterName = None
+        self.BindClusterId = None
+        self.Remark = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.ClusterName = params.get("ClusterName")
+        self.BindClusterId = params.get("BindClusterId")
+        self.Remark = params.get("Remark")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+
+
+class CreateClusterResponse(AbstractModel):
+    """CreateCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ClusterId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateEnvironmentRequest(AbstractModel):
     """CreateEnvironment请求参数结构体
 
@@ -151,16 +289,20 @@ class CreateEnvironmentRequest(AbstractModel):
         :type MsgTTL: int
         :param Remark: 说明，128个字符以内。
         :type Remark: str
+        :param ClusterId: Pulsar 集群的ID
+        :type ClusterId: str
         """
         self.EnvironmentId = None
         self.MsgTTL = None
         self.Remark = None
+        self.ClusterId = None
 
 
     def _deserialize(self, params):
         self.EnvironmentId = params.get("EnvironmentId")
         self.MsgTTL = params.get("MsgTTL")
         self.Remark = params.get("Remark")
+        self.ClusterId = params.get("ClusterId")
 
 
 class CreateEnvironmentResponse(AbstractModel):
@@ -170,19 +312,22 @@ class CreateEnvironmentResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param EnvironmentId: 环境（命名空间）名称。
+        :param EnvironmentId: 命名空间名称。
         :type EnvironmentId: str
         :param MsgTTL: 未消费消息过期时间，单位：秒。
         :type MsgTTL: int
         :param Remark: 说明，128个字符以内。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
+        :param NamespaceId: 命名空间ID
+        :type NamespaceId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.EnvironmentId = None
         self.MsgTTL = None
         self.Remark = None
+        self.NamespaceId = None
         self.RequestId = None
 
 
@@ -190,6 +335,7 @@ class CreateEnvironmentResponse(AbstractModel):
         self.EnvironmentId = params.get("EnvironmentId")
         self.MsgTTL = params.get("MsgTTL")
         self.Remark = params.get("Remark")
+        self.NamespaceId = params.get("NamespaceId")
         self.RequestId = params.get("RequestId")
 
 
@@ -210,12 +356,18 @@ class CreateSubscriptionRequest(AbstractModel):
         :type IsIdempotent: bool
         :param Remark: 备注，128个字符以内。
         :type Remark: str
+        :param ClusterId: Pulsar 集群的ID
+        :type ClusterId: str
+        :param AutoCreatePolicyTopic: 是否自动创建死信和重试主题，True 表示创建，False表示不创建，默认自动创建死信和重试主题。
+        :type AutoCreatePolicyTopic: bool
         """
         self.EnvironmentId = None
         self.TopicName = None
         self.SubscriptionName = None
         self.IsIdempotent = None
         self.Remark = None
+        self.ClusterId = None
+        self.AutoCreatePolicyTopic = None
 
 
     def _deserialize(self, params):
@@ -224,6 +376,8 @@ class CreateSubscriptionRequest(AbstractModel):
         self.SubscriptionName = params.get("SubscriptionName")
         self.IsIdempotent = params.get("IsIdempotent")
         self.Remark = params.get("Remark")
+        self.ClusterId = params.get("ClusterId")
+        self.AutoCreatePolicyTopic = params.get("AutoCreatePolicyTopic")
 
 
 class CreateSubscriptionResponse(AbstractModel):
@@ -269,12 +423,15 @@ class CreateTopicRequest(AbstractModel):
         :type TopicType: int
         :param Remark: 备注，128字符以内。
         :type Remark: str
+        :param ClusterId: Pulsar 集群的ID
+        :type ClusterId: str
         """
         self.EnvironmentId = None
         self.TopicName = None
         self.Partitions = None
         self.TopicType = None
         self.Remark = None
+        self.ClusterId = None
 
 
     def _deserialize(self, params):
@@ -283,6 +440,7 @@ class CreateTopicRequest(AbstractModel):
         self.Partitions = params.get("Partitions")
         self.TopicType = params.get("TopicType")
         self.Remark = params.get("Remark")
+        self.ClusterId = params.get("ClusterId")
 
 
 class CreateTopicResponse(AbstractModel):
@@ -329,6 +487,44 @@ class CreateTopicResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteClusterRequest(AbstractModel):
+    """DeleteCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群Id，传入需要删除的集群Id。
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+
+
+class DeleteClusterResponse(AbstractModel):
+    """DeleteCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群的ID
+        :type ClusterId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ClusterId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteEnvironmentsRequest(AbstractModel):
     """DeleteEnvironments请求参数结构体
 
@@ -338,12 +534,16 @@ class DeleteEnvironmentsRequest(AbstractModel):
         """
         :param EnvironmentIds: 环境（命名空间）数组，每次最多删除20个。
         :type EnvironmentIds: list of str
+        :param ClusterId: Pulsar 集群的ID
+        :type ClusterId: str
         """
         self.EnvironmentIds = None
+        self.ClusterId = None
 
 
     def _deserialize(self, params):
         self.EnvironmentIds = params.get("EnvironmentIds")
+        self.ClusterId = params.get("ClusterId")
 
 
 class DeleteEnvironmentsResponse(AbstractModel):
@@ -376,8 +576,14 @@ class DeleteSubscriptionsRequest(AbstractModel):
         """
         :param SubscriptionTopicSets: 订阅关系集合，每次最多删除20个。
         :type SubscriptionTopicSets: list of SubscriptionTopic
+        :param ClusterId: pulsar集群Id。
+        :type ClusterId: str
+        :param EnvironmentId: 环境（命名空间）名称。
+        :type EnvironmentId: str
         """
         self.SubscriptionTopicSets = None
+        self.ClusterId = None
+        self.EnvironmentId = None
 
 
     def _deserialize(self, params):
@@ -387,6 +593,8 @@ class DeleteSubscriptionsRequest(AbstractModel):
                 obj = SubscriptionTopic()
                 obj._deserialize(item)
                 self.SubscriptionTopicSets.append(obj)
+        self.ClusterId = params.get("ClusterId")
+        self.EnvironmentId = params.get("EnvironmentId")
 
 
 class DeleteSubscriptionsResponse(AbstractModel):
@@ -424,8 +632,14 @@ class DeleteTopicsRequest(AbstractModel):
         """
         :param TopicSets: 主题集合，每次最多删除20个。
         :type TopicSets: list of TopicRecord
+        :param ClusterId: pulsar集群Id。
+        :type ClusterId: str
+        :param EnvironmentId: 环境（命名空间）名称。
+        :type EnvironmentId: str
         """
         self.TopicSets = None
+        self.ClusterId = None
+        self.EnvironmentId = None
 
 
     def _deserialize(self, params):
@@ -435,6 +649,8 @@ class DeleteTopicsRequest(AbstractModel):
                 obj = TopicRecord()
                 obj._deserialize(item)
                 self.TopicSets.append(obj)
+        self.ClusterId = params.get("ClusterId")
+        self.EnvironmentId = params.get("EnvironmentId")
 
 
 class DeleteTopicsResponse(AbstractModel):
@@ -463,6 +679,188 @@ class DeleteTopicsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBindClustersRequest(AbstractModel):
+    """DescribeBindClusters请求参数结构体
+
+    """
+
+
+class DescribeBindClustersResponse(AbstractModel):
+    """DescribeBindClusters返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 专享集群的数量
+        :type TotalCount: int
+        :param ClusterSet: 专享集群的列表
+        :type ClusterSet: list of BindCluster
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ClusterSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ClusterSet") is not None:
+            self.ClusterSet = []
+            for item in params.get("ClusterSet"):
+                obj = BindCluster()
+                obj._deserialize(item)
+                self.ClusterSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBindVpcsRequest(AbstractModel):
+    """DescribeBindVpcs请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: 起始下标，不填默认为0。
+        :type Offset: int
+        :param Limit: 返回数量，不填则默认为10，最大值为20。
+        :type Limit: int
+        :param ClusterId: Pulsar 集群的ID
+        :type ClusterId: str
+        """
+        self.Offset = None
+        self.Limit = None
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.ClusterId = params.get("ClusterId")
+
+
+class DescribeBindVpcsResponse(AbstractModel):
+    """DescribeBindVpcs返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 记录数。
+        :type TotalCount: int
+        :param VpcSets: Vpc集合。
+        :type VpcSets: list of VpcBindRecord
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.VpcSets = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("VpcSets") is not None:
+            self.VpcSets = []
+            for item in params.get("VpcSets"):
+                obj = VpcBindRecord()
+                obj._deserialize(item)
+                self.VpcSets.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClusterDetailRequest(AbstractModel):
+    """DescribeClusterDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群的ID
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+
+
+class DescribeClusterDetailResponse(AbstractModel):
+    """DescribeClusterDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterSet: 集群的详细信息
+        :type ClusterSet: :class:`tencentcloud.tdmq.v20200217.models.Cluster`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ClusterSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ClusterSet") is not None:
+            self.ClusterSet = Cluster()
+            self.ClusterSet._deserialize(params.get("ClusterSet"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClustersRequest(AbstractModel):
+    """DescribeClusters请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: 起始下标，不填默认为0。
+        :type Offset: int
+        :param Limit: 返回数量，不填则默认为10，最大值为20。
+        :type Limit: int
+        """
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeClustersResponse(AbstractModel):
+    """DescribeClusters返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 集群列表数量
+        :type TotalCount: int
+        :param ClusterSet: 集群信息列表
+        :type ClusterSet: list of Cluster
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ClusterSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ClusterSet") is not None:
+            self.ClusterSet = []
+            for item in params.get("ClusterSet"):
+                obj = Cluster()
+                obj._deserialize(item)
+                self.ClusterSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeEnvironmentAttributesRequest(AbstractModel):
     """DescribeEnvironmentAttributes请求参数结构体
 
@@ -472,12 +870,16 @@ class DescribeEnvironmentAttributesRequest(AbstractModel):
         """
         :param EnvironmentId: 环境（命名空间）名称。
         :type EnvironmentId: str
+        :param ClusterId: Pulsar 集群的ID
+        :type ClusterId: str
         """
         self.EnvironmentId = None
+        self.ClusterId = None
 
 
     def _deserialize(self, params):
         self.EnvironmentId = params.get("EnvironmentId")
+        self.ClusterId = params.get("ClusterId")
 
 
 class DescribeEnvironmentAttributesResponse(AbstractModel):
@@ -542,16 +944,24 @@ class DescribeEnvironmentRolesRequest(AbstractModel):
         :type Offset: int
         :param Limit: 返回数量，不填则默认为10，最大值为20。
         :type Limit: int
+        :param ClusterId: Pulsar 集群的ID
+        :type ClusterId: str
+        :param RoleName: 角色名称
+        :type RoleName: str
         """
         self.EnvironmentId = None
         self.Offset = None
         self.Limit = None
+        self.ClusterId = None
+        self.RoleName = None
 
 
     def _deserialize(self, params):
         self.EnvironmentId = params.get("EnvironmentId")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.ClusterId = params.get("ClusterId")
+        self.RoleName = params.get("RoleName")
 
 
 class DescribeEnvironmentRolesResponse(AbstractModel):
@@ -656,12 +1066,15 @@ class DescribeProducersRequest(AbstractModel):
         :type Limit: int
         :param ProducerName: 生产者名称，模糊匹配。
         :type ProducerName: str
+        :param ClusterId: Pulsar 集群的ID
+        :type ClusterId: str
         """
         self.EnvironmentId = None
         self.TopicName = None
         self.Offset = None
         self.Limit = None
         self.ProducerName = None
+        self.ClusterId = None
 
 
     def _deserialize(self, params):
@@ -670,6 +1083,7 @@ class DescribeProducersRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.ProducerName = params.get("ProducerName")
+        self.ClusterId = params.get("ClusterId")
 
 
 class DescribeProducersResponse(AbstractModel):
@@ -721,6 +1135,8 @@ class DescribeSubscriptionsRequest(AbstractModel):
         :type SubscriptionName: str
         :param Filters: 数据过滤条件。
         :type Filters: list of FilterSubscription
+        :param ClusterId: Pulsar 集群的ID
+        :type ClusterId: str
         """
         self.EnvironmentId = None
         self.TopicName = None
@@ -728,6 +1144,7 @@ class DescribeSubscriptionsRequest(AbstractModel):
         self.Limit = None
         self.SubscriptionName = None
         self.Filters = None
+        self.ClusterId = None
 
 
     def _deserialize(self, params):
@@ -742,6 +1159,7 @@ class DescribeSubscriptionsRequest(AbstractModel):
                 obj = FilterSubscription()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.ClusterId = params.get("ClusterId")
 
 
 class DescribeSubscriptionsResponse(AbstractModel):
@@ -797,12 +1215,15 @@ class DescribeTopicsRequest(AbstractModel):
 4：死信队列；
 5：事务消息。
         :type TopicType: int
+        :param ClusterId: Pulsar 集群的ID
+        :type ClusterId: str
         """
         self.EnvironmentId = None
         self.TopicName = None
         self.Offset = None
         self.Limit = None
         self.TopicType = None
+        self.ClusterId = None
 
 
     def _deserialize(self, params):
@@ -811,6 +1232,7 @@ class DescribeTopicsRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.TopicType = params.get("TopicType")
+        self.ClusterId = params.get("ClusterId")
 
 
 class DescribeTopicsResponse(AbstractModel):
@@ -844,13 +1266,13 @@ class DescribeTopicsResponse(AbstractModel):
 
 
 class Environment(AbstractModel):
-    """环境信息
+    """命名空间信息
 
     """
 
     def __init__(self):
         """
-        :param EnvironmentId: 环境（命名空间）名称
+        :param EnvironmentId: 命名空间名称
         :type EnvironmentId: str
         :param Remark: 说明
         :type Remark: str
@@ -860,12 +1282,18 @@ class Environment(AbstractModel):
         :type CreateTime: str
         :param UpdateTime: 最近修改时间
         :type UpdateTime: str
+        :param NamespaceId: 命名空间ID
+        :type NamespaceId: str
+        :param NamespaceName: 命名空间名称
+        :type NamespaceName: str
         """
         self.EnvironmentId = None
         self.Remark = None
         self.MsgTTL = None
         self.CreateTime = None
         self.UpdateTime = None
+        self.NamespaceId = None
+        self.NamespaceName = None
 
 
     def _deserialize(self, params):
@@ -874,6 +1302,8 @@ class Environment(AbstractModel):
         self.MsgTTL = params.get("MsgTTL")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+        self.NamespaceId = params.get("NamespaceId")
+        self.NamespaceName = params.get("NamespaceName")
 
 
 class EnvironmentRole(AbstractModel):
@@ -938,6 +1368,52 @@ class FilterSubscription(AbstractModel):
         self.ConsumerHasExpired = params.get("ConsumerHasExpired")
 
 
+class ModifyClusterRequest(AbstractModel):
+    """ModifyCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群Id，需要更新的集群Id。
+        :type ClusterId: str
+        :param ClusterName: 更新后的集群名称。
+        :type ClusterName: str
+        :param Remark: 说明信息。
+        :type Remark: str
+        """
+        self.ClusterId = None
+        self.ClusterName = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterName = params.get("ClusterName")
+        self.Remark = params.get("Remark")
+
+
+class ModifyClusterResponse(AbstractModel):
+    """ModifyCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群的ID
+        :type ClusterId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ClusterId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyEnvironmentAttributesRequest(AbstractModel):
     """ModifyEnvironmentAttributes请求参数结构体
 
@@ -951,16 +1427,20 @@ class ModifyEnvironmentAttributesRequest(AbstractModel):
         :type MsgTTL: int
         :param Remark: 备注，字符串最长不超过128。
         :type Remark: str
+        :param ClusterId: Pulsar 集群的ID
+        :type ClusterId: str
         """
         self.EnvironmentId = None
         self.MsgTTL = None
         self.Remark = None
+        self.ClusterId = None
 
 
     def _deserialize(self, params):
         self.EnvironmentId = params.get("EnvironmentId")
         self.MsgTTL = params.get("MsgTTL")
         self.Remark = params.get("Remark")
+        self.ClusterId = params.get("ClusterId")
 
 
 class ModifyEnvironmentAttributesResponse(AbstractModel):
@@ -970,19 +1450,23 @@ class ModifyEnvironmentAttributesResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param EnvironmentId: 环境（命名空间）名称。
+        :param EnvironmentId: 命名空间名称。
         :type EnvironmentId: str
         :param MsgTTL: 未消费消息过期时间，单位：秒。
         :type MsgTTL: int
         :param Remark: 备注，字符串最长不超过128。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
+        :param NamespaceId: 命名空间ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.EnvironmentId = None
         self.MsgTTL = None
         self.Remark = None
+        self.NamespaceId = None
         self.RequestId = None
 
 
@@ -990,6 +1474,7 @@ class ModifyEnvironmentAttributesResponse(AbstractModel):
         self.EnvironmentId = params.get("EnvironmentId")
         self.MsgTTL = params.get("MsgTTL")
         self.Remark = params.get("Remark")
+        self.NamespaceId = params.get("NamespaceId")
         self.RequestId = params.get("RequestId")
 
 
@@ -1008,11 +1493,14 @@ class ModifyTopicRequest(AbstractModel):
         :type Partitions: int
         :param Remark: 备注，128字符以内。
         :type Remark: str
+        :param ClusterId: Pulsar 集群的ID
+        :type ClusterId: str
         """
         self.EnvironmentId = None
         self.TopicName = None
         self.Partitions = None
         self.Remark = None
+        self.ClusterId = None
 
 
     def _deserialize(self, params):
@@ -1020,6 +1508,7 @@ class ModifyTopicRequest(AbstractModel):
         self.TopicName = params.get("TopicName")
         self.Partitions = params.get("Partitions")
         self.Remark = params.get("Remark")
+        self.ClusterId = params.get("ClusterId")
 
 
 class ModifyTopicResponse(AbstractModel):
@@ -1176,11 +1665,14 @@ class ResetMsgSubOffsetByTimestampRequest(AbstractModel):
         :type Subscription: str
         :param ToTimestamp: 时间戳，精确到毫秒。
         :type ToTimestamp: int
+        :param ClusterId: Pulsar 集群的ID
+        :type ClusterId: str
         """
         self.EnvironmentId = None
         self.TopicName = None
         self.Subscription = None
         self.ToTimestamp = None
+        self.ClusterId = None
 
 
     def _deserialize(self, params):
@@ -1188,6 +1680,7 @@ class ResetMsgSubOffsetByTimestampRequest(AbstractModel):
         self.TopicName = params.get("TopicName")
         self.Subscription = params.get("Subscription")
         self.ToTimestamp = params.get("ToTimestamp")
+        self.ClusterId = params.get("ClusterId")
 
 
 class ResetMsgSubOffsetByTimestampResponse(AbstractModel):
@@ -1343,6 +1836,27 @@ class SubscriptionTopic(AbstractModel):
         self.SubscriptionName = params.get("SubscriptionName")
 
 
+class Tag(AbstractModel):
+    """标签的key/value的类型
+
+    """
+
+    def __init__(self):
+        """
+        :param TagKey: 标签的key的值
+        :type TagKey: str
+        :param TagValue: 标签的Value的值
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
+
+
 class Topic(AbstractModel):
     """主题实例
 
@@ -1481,3 +1995,41 @@ class TopicRecord(AbstractModel):
     def _deserialize(self, params):
         self.EnvironmentId = params.get("EnvironmentId")
         self.TopicName = params.get("TopicName")
+
+
+class VpcBindRecord(AbstractModel):
+    """vcp绑定记录
+
+    """
+
+    def __init__(self):
+        """
+        :param UniqueVpcId: 租户Vpc Id
+        :type UniqueVpcId: str
+        :param UniqueSubnetId: 租户Vpc子网Id
+        :type UniqueSubnetId: str
+        :param RouterId: 路由Id
+        :type RouterId: str
+        :param Ip: Vpc的Id
+        :type Ip: str
+        :param Port: Vpc的Port
+        :type Port: int
+        :param Remark: 说明，128个字符以内
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        """
+        self.UniqueVpcId = None
+        self.UniqueSubnetId = None
+        self.RouterId = None
+        self.Ip = None
+        self.Port = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.UniqueVpcId = params.get("UniqueVpcId")
+        self.UniqueSubnetId = params.get("UniqueSubnetId")
+        self.RouterId = params.get("RouterId")
+        self.Ip = params.get("Ip")
+        self.Port = params.get("Port")
+        self.Remark = params.get("Remark")

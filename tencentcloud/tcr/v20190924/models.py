@@ -181,6 +181,44 @@ class BatchDeleteRepositoryPersonalResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CheckInstanceNameRequest(AbstractModel):
+    """CheckInstanceName请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryName: 待创建的实例名称
+        :type RegistryName: str
+        """
+        self.RegistryName = None
+
+
+    def _deserialize(self, params):
+        self.RegistryName = params.get("RegistryName")
+
+
+class CheckInstanceNameResponse(AbstractModel):
+    """CheckInstanceName返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param IsValidated: 检查结果，true为合法，false为非法
+        :type IsValidated: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.IsValidated = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.IsValidated = params.get("IsValidated")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateApplicationTriggerPersonalRequest(AbstractModel):
     """CreateApplicationTriggerPersonal请求参数结构体
 

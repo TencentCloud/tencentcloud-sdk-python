@@ -43,6 +43,10 @@ class AddClusterInstancesRequest(AbstractModel):
         :type OsCustomizeType: str
         :param FeatureIdList: 镜像特征ID列表
         :type FeatureIdList: list of str
+        :param InstanceAdvancedSettings: 实例额外需要设置参数信息
+        :type InstanceAdvancedSettings: :class:`tencentcloud.tsf.v20180326.models.InstanceAdvancedSettings`
+        :param SecurityGroupIds: 部署组ID
+        :type SecurityGroupIds: list of str
         """
         self.ClusterId = None
         self.InstanceIdList = None
@@ -54,6 +58,8 @@ class AddClusterInstancesRequest(AbstractModel):
         self.InstanceImportMode = None
         self.OsCustomizeType = None
         self.FeatureIdList = None
+        self.InstanceAdvancedSettings = None
+        self.SecurityGroupIds = None
 
 
     def _deserialize(self, params):
@@ -67,6 +73,10 @@ class AddClusterInstancesRequest(AbstractModel):
         self.InstanceImportMode = params.get("InstanceImportMode")
         self.OsCustomizeType = params.get("OsCustomizeType")
         self.FeatureIdList = params.get("FeatureIdList")
+        if params.get("InstanceAdvancedSettings") is not None:
+            self.InstanceAdvancedSettings = InstanceAdvancedSettings()
+            self.InstanceAdvancedSettings._deserialize(params.get("InstanceAdvancedSettings"))
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
 
 
 class AddClusterInstancesResponse(AbstractModel):
@@ -109,16 +119,21 @@ class AddInstanceResult(AbstractModel):
         :param TimeoutInstanceIds: 添加集群超时的节点列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimeoutInstanceIds: list of str
+        :param FailedReasons: 失败的节点的失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailedReasons: list of str
         """
         self.FailedInstanceIds = None
         self.SuccInstanceIds = None
         self.TimeoutInstanceIds = None
+        self.FailedReasons = None
 
 
     def _deserialize(self, params):
         self.FailedInstanceIds = params.get("FailedInstanceIds")
         self.SuccInstanceIds = params.get("SuccInstanceIds")
         self.TimeoutInstanceIds = params.get("TimeoutInstanceIds")
+        self.FailedReasons = params.get("FailedReasons")
 
 
 class AddInstancesRequest(AbstractModel):
@@ -350,7 +365,7 @@ class ApiDetailInfo(AbstractModel):
 
 
 class ApiDetailResponse(AbstractModel):
-    """ApiDetailResponse
+    """ApiDetailResponse描述
 
     """
 
@@ -372,6 +387,9 @@ class ApiDetailResponse(AbstractModel):
         :param Status: API 状态 0:离线 1:在线，默认0
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
+        :param Description: API 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
         """
         self.Request = None
         self.Response = None
@@ -379,6 +397,7 @@ class ApiDetailResponse(AbstractModel):
         self.RequestContentType = None
         self.CanRun = None
         self.Status = None
+        self.Description = None
 
 
     def _deserialize(self, params):
@@ -403,6 +422,7 @@ class ApiDetailResponse(AbstractModel):
         self.RequestContentType = params.get("RequestContentType")
         self.CanRun = params.get("CanRun")
         self.Status = params.get("Status")
+        self.Description = params.get("Description")
 
 
 class ApiGroupInfo(AbstractModel):
@@ -771,6 +791,9 @@ class ApplicationForPage(AbstractModel):
         :param ApigatewayServiceId: Apigateway的serviceId
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApigatewayServiceId: str
+        :param ApplicationRemarkName: 应用备注名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationRemarkName: str
         """
         self.ApplicationId = None
         self.ApplicationName = None
@@ -783,6 +806,7 @@ class ApplicationForPage(AbstractModel):
         self.ApplicationResourceType = None
         self.ApplicationRuntimeType = None
         self.ApigatewayServiceId = None
+        self.ApplicationRemarkName = None
 
 
     def _deserialize(self, params):
@@ -797,6 +821,7 @@ class ApplicationForPage(AbstractModel):
         self.ApplicationResourceType = params.get("ApplicationResourceType")
         self.ApplicationRuntimeType = params.get("ApplicationRuntimeType")
         self.ApigatewayServiceId = params.get("ApigatewayServiceId")
+        self.ApplicationRemarkName = params.get("ApplicationRemarkName")
 
 
 class BindApiGroupRequest(AbstractModel):
@@ -1917,6 +1942,8 @@ class CreateApplicationRequest(AbstractModel):
         :type ApplicationResourceType: str
         :param ApplicationRuntimeType: 应用runtime类型
         :type ApplicationRuntimeType: str
+        :param ProgramId: 需要绑定的数据集ID
+        :type ProgramId: str
         """
         self.ApplicationName = None
         self.ApplicationType = None
@@ -1925,6 +1952,7 @@ class CreateApplicationRequest(AbstractModel):
         self.ApplicationLogConfig = None
         self.ApplicationResourceType = None
         self.ApplicationRuntimeType = None
+        self.ProgramId = None
 
 
     def _deserialize(self, params):
@@ -1935,6 +1963,7 @@ class CreateApplicationRequest(AbstractModel):
         self.ApplicationLogConfig = params.get("ApplicationLogConfig")
         self.ApplicationResourceType = params.get("ApplicationResourceType")
         self.ApplicationRuntimeType = params.get("ApplicationRuntimeType")
+        self.ProgramId = params.get("ProgramId")
 
 
 class CreateApplicationResponse(AbstractModel):
@@ -1984,6 +2013,12 @@ class CreateClusterRequest(AbstractModel):
         :type SubnetId: str
         :param ClusterVersion: 集群版本
         :type ClusterVersion: str
+        :param MaxNodePodNum: 集群中每个Node上最大的Pod数量。取值范围4～256。不为2的幂值时会向上取最接近的2的幂值。
+        :type MaxNodePodNum: int
+        :param MaxClusterServiceNum: 集群最大的service数量。取值范围32～32768，不为2的幂值时会向上取最接近的2的幂值。
+        :type MaxClusterServiceNum: int
+        :param ProgramId: 需要绑定的数据集ID
+        :type ProgramId: str
         """
         self.ClusterName = None
         self.ClusterType = None
@@ -1994,6 +2029,9 @@ class CreateClusterRequest(AbstractModel):
         self.TsfZoneId = None
         self.SubnetId = None
         self.ClusterVersion = None
+        self.MaxNodePodNum = None
+        self.MaxClusterServiceNum = None
+        self.ProgramId = None
 
 
     def _deserialize(self, params):
@@ -2006,6 +2044,9 @@ class CreateClusterRequest(AbstractModel):
         self.TsfZoneId = params.get("TsfZoneId")
         self.SubnetId = params.get("SubnetId")
         self.ClusterVersion = params.get("ClusterVersion")
+        self.MaxNodePodNum = params.get("MaxNodePodNum")
+        self.MaxClusterServiceNum = params.get("MaxClusterServiceNum")
+        self.ProgramId = params.get("ProgramId")
 
 
 class CreateClusterResponse(AbstractModel):
@@ -2514,6 +2555,8 @@ class CreateNamespaceRequest(AbstractModel):
         :type NamespaceId: str
         :param IsHaEnable: 是否开启高可用
         :type IsHaEnable: str
+        :param ProgramId: 需要绑定的数据集ID
+        :type ProgramId: str
         """
         self.NamespaceName = None
         self.ClusterId = None
@@ -2522,6 +2565,7 @@ class CreateNamespaceRequest(AbstractModel):
         self.NamespaceType = None
         self.NamespaceId = None
         self.IsHaEnable = None
+        self.ProgramId = None
 
 
     def _deserialize(self, params):
@@ -2532,6 +2576,7 @@ class CreateNamespaceRequest(AbstractModel):
         self.NamespaceType = params.get("NamespaceType")
         self.NamespaceId = params.get("NamespaceId")
         self.IsHaEnable = params.get("IsHaEnable")
+        self.ProgramId = params.get("ProgramId")
 
 
 class CreateNamespaceResponse(AbstractModel):
@@ -2544,6 +2589,46 @@ class CreateNamespaceResponse(AbstractModel):
         :param Result: 成功时为命名空间ID，失败为null
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class CreatePathRewritesRequest(AbstractModel):
+    """CreatePathRewrites请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PathRewrites: 路径重写列表
+        :type PathRewrites: :class:`tencentcloud.tsf.v20180326.models.PathRewriteCreateObject`
+        """
+        self.PathRewrites = None
+
+
+    def _deserialize(self, params):
+        if params.get("PathRewrites") is not None:
+            self.PathRewrites = PathRewriteCreateObject()
+            self.PathRewrites._deserialize(params.get("PathRewrites"))
+
+
+class CreatePathRewritesResponse(AbstractModel):
+    """CreatePathRewrites返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: true/false
+        :type Result: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3258,6 +3343,44 @@ class DeleteNamespaceResponse(AbstractModel):
         :param Result: 删除命名空间是否成功。
 true：删除成功。
 false：删除失败。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class DeletePathRewritesRequest(AbstractModel):
+    """DeletePathRewrites请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PathRewriteIds: 路径重写规则IDs
+        :type PathRewriteIds: list of str
+        """
+        self.PathRewriteIds = None
+
+
+    def _deserialize(self, params):
+        self.PathRewriteIds = params.get("PathRewriteIds")
+
+
+class DeletePathRewritesResponse(AbstractModel):
+    """DeletePathRewrites返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: true/false
         :type Result: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5651,6 +5774,98 @@ class DescribeMsApiListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribePathRewriteRequest(AbstractModel):
+    """DescribePathRewrite请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PathRewriteId: 路径重写规则ID
+        :type PathRewriteId: str
+        """
+        self.PathRewriteId = None
+
+
+    def _deserialize(self, params):
+        self.PathRewriteId = params.get("PathRewriteId")
+
+
+class DescribePathRewriteResponse(AbstractModel):
+    """DescribePathRewrite返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 路径重写规则对象
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.PathRewrite`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = PathRewrite()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePathRewritesRequest(AbstractModel):
+    """DescribePathRewrites请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GatewayGroupId: 网关部署组ID
+        :type GatewayGroupId: str
+        :param SearchWord: 根据正则表达式或替换的内容模糊查询
+        :type SearchWord: str
+        :param Limit: 每页数量
+        :type Limit: int
+        :param Offset: 起始偏移量
+        :type Offset: int
+        """
+        self.GatewayGroupId = None
+        self.SearchWord = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.GatewayGroupId = params.get("GatewayGroupId")
+        self.SearchWord = params.get("SearchWord")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class DescribePathRewritesResponse(AbstractModel):
+    """DescribePathRewrites返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 路径重写翻页对象
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.PathRewritePage`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = PathRewritePage()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribePkgsRequest(AbstractModel):
     """DescribePkgs请求参数结构体
 
@@ -7872,6 +8087,30 @@ class Instance(AbstractModel):
         self.Reason = params.get("Reason")
 
 
+class InstanceAdvancedSettings(AbstractModel):
+    """容器导入实例高级设置
+
+    """
+
+    def __init__(self):
+        """
+        :param MountTarget: 数据盘挂载点, 默认不挂载数据盘. 已格式化的 ext3，ext4，xfs 文件系统的数据盘将直接挂载，其他文件系统或未格式化的数据盘将自动格式化为ext4 并挂载，请注意备份数据! 无数据盘或有多块数据盘的云主机此设置不生效。
+注意，注意，多盘场景请使用下方的DataDisks数据结构，设置对应的云盘类型、云盘大小、挂载路径、是否格式化等信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MountTarget: str
+        :param DockerGraphPath: dockerd --graph 指定值, 默认为 /var/lib/docker
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DockerGraphPath: str
+        """
+        self.MountTarget = None
+        self.DockerGraphPath = None
+
+
+    def _deserialize(self, params):
+        self.MountTarget = params.get("MountTarget")
+        self.DockerGraphPath = params.get("DockerGraphPath")
+
+
 class LaneGroup(AbstractModel):
     """泳道部署组
 
@@ -8492,6 +8731,60 @@ false：操作失败。
         self.RequestId = params.get("RequestId")
 
 
+class ModifyPathRewriteRequest(AbstractModel):
+    """ModifyPathRewrite请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PathRewriteId: 路径重写规则ID
+        :type PathRewriteId: str
+        :param Regex: 正则表达式
+        :type Regex: str
+        :param Replacement: 替换的内容
+        :type Replacement: str
+        :param Blocked: 是否屏蔽映射后路径，Y: 是 N: 否
+        :type Blocked: str
+        :param Order: 规则顺序，越小优先级越高
+        :type Order: int
+        """
+        self.PathRewriteId = None
+        self.Regex = None
+        self.Replacement = None
+        self.Blocked = None
+        self.Order = None
+
+
+    def _deserialize(self, params):
+        self.PathRewriteId = params.get("PathRewriteId")
+        self.Regex = params.get("Regex")
+        self.Replacement = params.get("Replacement")
+        self.Blocked = params.get("Blocked")
+        self.Order = params.get("Order")
+
+
+class ModifyPathRewriteResponse(AbstractModel):
+    """ModifyPathRewrite返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: true/false
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyTaskRequest(AbstractModel):
     """ModifyTask请求参数结构体
 
@@ -9052,6 +9345,102 @@ class OverviewBasicResourceUsage(AbstractModel):
         self.GroupCount = params.get("GroupCount")
         self.PackageSpaceUsed = params.get("PackageSpaceUsed")
         self.ConsulInstanceCount = params.get("ConsulInstanceCount")
+
+
+class PathRewrite(AbstractModel):
+    """路径重写
+
+    """
+
+    def __init__(self):
+        """
+        :param PathRewriteId: 路径重写规则ID
+        :type PathRewriteId: str
+        :param GatewayGroupId: 网关部署组ID
+        :type GatewayGroupId: str
+        :param Regex: 正则表达式
+        :type Regex: str
+        :param Replacement: 替换的内容
+        :type Replacement: str
+        :param Blocked: 是否屏蔽映射后路径，Y: 是 N: 否
+        :type Blocked: str
+        :param Order: 规则顺序，越小优先级越高
+        :type Order: int
+        """
+        self.PathRewriteId = None
+        self.GatewayGroupId = None
+        self.Regex = None
+        self.Replacement = None
+        self.Blocked = None
+        self.Order = None
+
+
+    def _deserialize(self, params):
+        self.PathRewriteId = params.get("PathRewriteId")
+        self.GatewayGroupId = params.get("GatewayGroupId")
+        self.Regex = params.get("Regex")
+        self.Replacement = params.get("Replacement")
+        self.Blocked = params.get("Blocked")
+        self.Order = params.get("Order")
+
+
+class PathRewriteCreateObject(AbstractModel):
+    """路径重写创建对象
+
+    """
+
+    def __init__(self):
+        """
+        :param GatewayGroupId: 网关部署组ID
+        :type GatewayGroupId: str
+        :param Regex: 正则表达式
+        :type Regex: str
+        :param Replacement: 替换的内容
+        :type Replacement: str
+        :param Blocked: 是否屏蔽映射后路径，Y: 是 N: 否
+        :type Blocked: str
+        :param Order: 规则顺序，越小优先级越高
+        :type Order: int
+        """
+        self.GatewayGroupId = None
+        self.Regex = None
+        self.Replacement = None
+        self.Blocked = None
+        self.Order = None
+
+
+    def _deserialize(self, params):
+        self.GatewayGroupId = params.get("GatewayGroupId")
+        self.Regex = params.get("Regex")
+        self.Replacement = params.get("Replacement")
+        self.Blocked = params.get("Blocked")
+        self.Order = params.get("Order")
+
+
+class PathRewritePage(AbstractModel):
+    """路径重写翻页对象
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 总记录数
+        :type TotalCount: int
+        :param Content: 路径重写规则列表
+        :type Content: list of PathRewrite
+        """
+        self.TotalCount = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Content") is not None:
+            self.Content = []
+            for item in params.get("Content"):
+                obj = PathRewrite()
+                obj._deserialize(item)
+                self.Content.append(obj)
 
 
 class PkgBind(AbstractModel):

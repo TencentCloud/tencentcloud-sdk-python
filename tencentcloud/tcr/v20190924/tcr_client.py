@@ -82,6 +82,34 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CheckInstanceName(self, request):
+        """检查待创建的实例名称是否符合规范
+
+        :param request: Request instance for CheckInstanceName.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.CheckInstanceNameRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.CheckInstanceNameResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CheckInstanceName", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CheckInstanceNameResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateApplicationTriggerPersonal(self, request):
         """用于创建应用更新触发器
 

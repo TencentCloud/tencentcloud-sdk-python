@@ -530,6 +530,34 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreatePathRewrites(self, request):
+        """创建路径重写
+
+        :param request: Request instance for CreatePathRewrites.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.CreatePathRewritesRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.CreatePathRewritesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreatePathRewrites", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreatePathRewritesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreatePublicConfig(self, request):
         """创建公共配置项
 
@@ -908,6 +936,34 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteNamespaceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeletePathRewrites(self, request):
+        """删除路径重写
+
+        :param request: Request instance for DeletePathRewrites.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DeletePathRewritesRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DeletePathRewritesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeletePathRewrites", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeletePathRewritesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2156,6 +2212,62 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePathRewrite(self, request):
+        """查询路径重写
+
+        :param request: Request instance for DescribePathRewrite.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribePathRewriteRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribePathRewriteResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePathRewrite", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePathRewriteResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePathRewrites(self, request):
+        """查询路径重写列表
+
+        :param request: Request instance for DescribePathRewrites.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribePathRewritesRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribePathRewritesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePathRewrites", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePathRewritesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribePkgs(self, request):
         """无
 
@@ -3011,6 +3123,34 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyMicroserviceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyPathRewrite(self, request):
+        """修改路径重写
+
+        :param request: Request instance for ModifyPathRewrite.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.ModifyPathRewriteRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.ModifyPathRewriteResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyPathRewrite", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyPathRewriteResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

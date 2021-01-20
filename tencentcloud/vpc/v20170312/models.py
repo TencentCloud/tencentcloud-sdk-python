@@ -2125,7 +2125,7 @@ class CreateBandwidthPackageRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param NetworkType: 带宽包类型，包括'BGP'，'SINGLEISP'，'ANYCAST'
+        :param NetworkType: 带宽包类型，包括'HIGH_QUALITY_BGP', 'BGP'，'SINGLEISP'，'ANYCAST'
         :type NetworkType: str
         :param ChargeType: 带宽包计费类型，包括‘TOP5_POSTPAID_BY_MONTH’，‘PERCENT95_POSTPAID_BY_MONTH’
         :type ChargeType: str
@@ -2133,7 +2133,7 @@ class CreateBandwidthPackageRequest(AbstractModel):
         :type BandwidthPackageName: str
         :param BandwidthPackageCount: 带宽包数量(传统账户类型只能填1)
         :type BandwidthPackageCount: int
-        :param InternetMaxBandwidth: 带宽包限速大小。单位：Mbps，-1表示不限速。
+        :param InternetMaxBandwidth: 带宽包限速大小。单位：Mbps，-1表示不限速。该功能当前内测中，暂不对外开放。
         :type InternetMaxBandwidth: int
         :param Tags: 需要关联的标签列表。
         :type Tags: list of Tag
@@ -3589,7 +3589,7 @@ class CreateVpnConnectionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param VpcId: VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+        :param VpcId: VPC实例ID。可通过[DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)接口返回值中的VpcId获取。
         :type VpcId: str
         :param VpnGatewayId: VPN网关实例ID。
         :type VpnGatewayId: str
@@ -3607,6 +3607,12 @@ class CreateVpnConnectionRequest(AbstractModel):
         :type IPSECOptionsSpecification: :class:`tencentcloud.vpc.v20170312.models.IPSECOptionsSpecification`
         :param Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
         :type Tags: list of Tag
+        :param EnableHealthCheck: 是否支持隧道内健康检查
+        :type EnableHealthCheck: bool
+        :param HealthCheckLocalIp: 健康检查本端地址
+        :type HealthCheckLocalIp: str
+        :param HealthCheckRemoteIp: 健康检查对端地址
+        :type HealthCheckRemoteIp: str
         """
         self.VpcId = None
         self.VpnGatewayId = None
@@ -3617,6 +3623,9 @@ class CreateVpnConnectionRequest(AbstractModel):
         self.IKEOptionsSpecification = None
         self.IPSECOptionsSpecification = None
         self.Tags = None
+        self.EnableHealthCheck = None
+        self.HealthCheckLocalIp = None
+        self.HealthCheckRemoteIp = None
 
 
     def _deserialize(self, params):
@@ -3643,6 +3652,9 @@ class CreateVpnConnectionRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.EnableHealthCheck = params.get("EnableHealthCheck")
+        self.HealthCheckLocalIp = params.get("HealthCheckLocalIp")
+        self.HealthCheckRemoteIp = params.get("HealthCheckRemoteIp")
 
 
 class CreateVpnConnectionResponse(AbstractModel):
@@ -6757,7 +6769,7 @@ class DescribeIpGeolocationDatabaseUrlRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Type: IP地理位置库协议类型，目前支持"ipv4"和"ipv6"。
+        :param Type: IP地理位置库协议类型，目前仅支持"ipv4"。
         :type Type: str
         """
         self.Type = None
@@ -11873,6 +11885,12 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
         :type IKEOptionsSpecification: :class:`tencentcloud.vpc.v20170312.models.IKEOptionsSpecification`
         :param IPSECOptionsSpecification: IPSec配置，腾讯云提供IPSec安全会话设置。
         :type IPSECOptionsSpecification: :class:`tencentcloud.vpc.v20170312.models.IPSECOptionsSpecification`
+        :param EnableHealthCheck: 是否启用通道健康检查
+        :type EnableHealthCheck: bool
+        :param HealthCheckLocalIp: 本端通道探测ip
+        :type HealthCheckLocalIp: str
+        :param HealthCheckRemoteIp: 对端通道探测ip
+        :type HealthCheckRemoteIp: str
         """
         self.VpnConnectionId = None
         self.VpnConnectionName = None
@@ -11880,6 +11898,9 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
         self.SecurityPolicyDatabases = None
         self.IKEOptionsSpecification = None
         self.IPSECOptionsSpecification = None
+        self.EnableHealthCheck = None
+        self.HealthCheckLocalIp = None
+        self.HealthCheckRemoteIp = None
 
 
     def _deserialize(self, params):
@@ -11898,6 +11919,9 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
         if params.get("IPSECOptionsSpecification") is not None:
             self.IPSECOptionsSpecification = IPSECOptionsSpecification()
             self.IPSECOptionsSpecification._deserialize(params.get("IPSECOptionsSpecification"))
+        self.EnableHealthCheck = params.get("EnableHealthCheck")
+        self.HealthCheckLocalIp = params.get("HealthCheckLocalIp")
+        self.HealthCheckRemoteIp = params.get("HealthCheckRemoteIp")
 
 
 class ModifyVpnConnectionAttributeResponse(AbstractModel):

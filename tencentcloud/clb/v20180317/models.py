@@ -3643,6 +3643,9 @@ OPEN：公网属性， INTERNAL：内网属性。
         :param Zones: 私有网络内网负载均衡，就近接入模式下规则所落在的可用区
 注意：此字段可能返回 null，表示取不到有效值。
         :type Zones: list of str
+        :param NfvInfo: CLB是否为NFV，空：不是，l7nfv：七层是NFV。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NfvInfo: str
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
@@ -3692,6 +3695,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.ClusterTag = None
         self.MixIpTarget = None
         self.Zones = None
+        self.NfvInfo = None
 
 
     def _deserialize(self, params):
@@ -3770,6 +3774,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.ClusterTag = params.get("ClusterTag")
         self.MixIpTarget = params.get("MixIpTarget")
         self.Zones = params.get("Zones")
+        self.NfvInfo = params.get("NfvInfo")
 
 
 class LoadBalancerDetail(AbstractModel):
@@ -3869,6 +3874,12 @@ Public：公网属性， Private：内网属性。
         :param Isolation: 0：表示未被隔离，1：表示被隔离。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Isolation: int
+        :param SecurityGroup: 负载均衡绑定的安全组列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecurityGroup: list of str
+        :param LoadBalancerPassToTarget: 负载均衡安全组上移特性是否开启标识。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancerPassToTarget: int
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
@@ -3900,6 +3911,8 @@ Public：公网属性， Private：内网属性。
         self.TargetPort = None
         self.TargetWeight = None
         self.Isolation = None
+        self.SecurityGroup = None
+        self.LoadBalancerPassToTarget = None
 
 
     def _deserialize(self, params):
@@ -3944,6 +3957,8 @@ Public：公网属性， Private：内网属性。
         self.TargetPort = params.get("TargetPort")
         self.TargetWeight = params.get("TargetWeight")
         self.Isolation = params.get("Isolation")
+        self.SecurityGroup = params.get("SecurityGroup")
+        self.LoadBalancerPassToTarget = params.get("LoadBalancerPassToTarget")
 
 
 class LoadBalancerHealth(AbstractModel):

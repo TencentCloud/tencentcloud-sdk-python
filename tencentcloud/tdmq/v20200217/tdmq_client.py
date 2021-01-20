@@ -26,6 +26,34 @@ class TdmqClient(AbstractClient):
     _service = 'tdmq'
 
 
+    def CreateCluster(self, request):
+        """创建用户的集群
+
+        :param request: Request instance for CreateCluster.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateClusterRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.CreateClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateCluster", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateClusterResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateEnvironment(self, request):
         """用于在用户账户下创建消息队列 Tdmq环境（命名空间）
 
@@ -110,6 +138,34 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteCluster(self, request):
+        """删除集群
+
+        :param request: Request instance for DeleteCluster.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteClusterRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DeleteClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteCluster", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteClusterResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteEnvironments(self, request):
         """批量删除租户下的环境
 
@@ -180,6 +236,118 @@ class TdmqClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteTopicsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBindClusters(self, request):
+        """获取用户绑定的专享集群列表
+
+        :param request: Request instance for DescribeBindClusters.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeBindClustersRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeBindClustersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBindClusters", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBindClustersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBindVpcs(self, request):
+        """获取租户VPC绑定关系
+
+        :param request: Request instance for DescribeBindVpcs.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeBindVpcsRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeBindVpcsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBindVpcs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBindVpcsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeClusterDetail(self, request):
+        """获取集群的详细信息
+
+        :param request: Request instance for DescribeClusterDetail.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeClusterDetailRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeClusterDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeClusterDetail", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClusterDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeClusters(self, request):
+        """获取集群列表
+
+        :param request: Request instance for DescribeClusters.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeClustersRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeClustersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeClusters", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClustersResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -348,6 +516,34 @@ class TdmqClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTopicsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyCluster(self, request):
+        """更新集群信息
+
+        :param request: Request instance for ModifyCluster.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyClusterRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.ModifyClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyCluster", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyClusterResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
