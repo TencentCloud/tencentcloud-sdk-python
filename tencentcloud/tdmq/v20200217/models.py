@@ -230,7 +230,7 @@ class CreateClusterRequest(AbstractModel):
         """
         :param ClusterName: 集群名称，不支持中字以及除了短线和下划线外的特殊字符且不超过16个字符。
         :type ClusterName: str
-        :param BindClusterId: 用户专享物理集群ID，如果不传，则默认在公共集群上创建用户集群资源。
+        :param BindClusterId: 用户专享物理集群ID，如果不传，则默认在公共集群上创建用户集群资源。
         :type BindClusterId: int
         :param Remark: 说明，128个字符以内。
         :type Remark: str
@@ -312,7 +312,7 @@ class CreateEnvironmentResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param EnvironmentId: 命名空间名称。
+        :param EnvironmentId: 环境（命名空间）名称。
         :type EnvironmentId: str
         :param MsgTTL: 未消费消息过期时间，单位：秒。
         :type MsgTTL: int
@@ -938,7 +938,7 @@ class DescribeEnvironmentRolesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EnvironmentId: 环境（命名空间）
+        :param EnvironmentId: 环境（命名空间）名称。
         :type EnvironmentId: str
         :param Offset: 起始下标，不填默认为0。
         :type Offset: int
@@ -973,7 +973,7 @@ class DescribeEnvironmentRolesResponse(AbstractModel):
         """
         :param TotalCount: 记录数。
         :type TotalCount: int
-        :param EnvironmentRoleSets: 环境角色集合。
+        :param EnvironmentRoleSets: 命名空间角色集合。
         :type EnvironmentRoleSets: list of EnvironmentRole
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1001,22 +1001,26 @@ class DescribeEnvironmentsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EnvironmentId: 环境（命名空间）名称，模糊搜索。
+        :param EnvironmentId: 命名空间名称，模糊搜索。
         :type EnvironmentId: str
         :param Offset: 起始下标，不填默认为0。
         :type Offset: int
         :param Limit: 返回数量，不填则默认为10，最大值为20。
         :type Limit: int
+        :param ClusterId: Pulsar 集群的ID
+        :type ClusterId: str
         """
         self.EnvironmentId = None
         self.Offset = None
         self.Limit = None
+        self.ClusterId = None
 
 
     def _deserialize(self, params):
         self.EnvironmentId = params.get("EnvironmentId")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.ClusterId = params.get("ClusterId")
 
 
 class DescribeEnvironmentsResponse(AbstractModel):
@@ -1026,9 +1030,9 @@ class DescribeEnvironmentsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 环境（命名空间）记录数。
+        :param TotalCount: 命名空间记录数。
         :type TotalCount: int
-        :param EnvironmentSet: 环境（命名空间）集合数组。
+        :param EnvironmentSet: 命名空间集合数组。
         :type EnvironmentSet: list of Environment
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1375,7 +1379,7 @@ class ModifyClusterRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群Id，需要更新的集群Id。
+        :param ClusterId: Pulsar 集群的ID，需要更新的集群Id。
         :type ClusterId: str
         :param ClusterName: 更新后的集群名称。
         :type ClusterName: str
@@ -1400,7 +1404,7 @@ class ModifyClusterResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ClusterId: 集群的ID
+        :param ClusterId: Pulsar 集群的ID
         :type ClusterId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1421,13 +1425,13 @@ class ModifyEnvironmentAttributesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EnvironmentId: 环境（命名空间）名称。
+        :param EnvironmentId: 命名空间名称。
         :type EnvironmentId: str
         :param MsgTTL: 未消费消息过期时间，单位：秒，最大1296000。
         :type MsgTTL: int
         :param Remark: 备注，字符串最长不超过128。
         :type Remark: str
-        :param ClusterId: Pulsar 集群的ID
+        :param ClusterId: 集群ID
         :type ClusterId: str
         """
         self.EnvironmentId = None
@@ -1657,7 +1661,7 @@ class ResetMsgSubOffsetByTimestampRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EnvironmentId: 环境（命名空间）名称。
+        :param EnvironmentId: 命名空间名称。
         :type EnvironmentId: str
         :param TopicName: 主题名称。
         :type TopicName: str

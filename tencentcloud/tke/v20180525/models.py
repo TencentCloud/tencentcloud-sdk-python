@@ -67,21 +67,24 @@ class AddExistedInstancesRequest(AbstractModel):
         :type EnhancedService: :class:`tencentcloud.tke.v20180525.models.EnhancedService`
         :param LoginSettings: 节点登录信息（目前仅支持使用Password或者单个KeyIds）
         :type LoginSettings: :class:`tencentcloud.tke.v20180525.models.LoginSettings`
-        :param SecurityGroupIds: 实例所属安全组。该参数可以通过调用 DescribeSecurityGroups 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。（目前仅支持设置单个sgId）
-        :type SecurityGroupIds: list of str
         :param HostName: 重装系统时，可以指定修改实例的HostName(集群为HostName模式时，此参数必传，规则名称除不支持大写字符外与[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口HostName一致)
         :type HostName: str
+        :param SecurityGroupIds: 实例所属安全组。该参数可以通过调用 DescribeSecurityGroups 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。（目前仅支持设置单个sgId）
+        :type SecurityGroupIds: list of str
         :param NodePool: 节点池选项
         :type NodePool: :class:`tencentcloud.tke.v20180525.models.NodePoolOption`
+        :param SkipValidateOptions: 校验规则相关选项，可配置跳过某些校验规则。目前支持GlobalRouteCIDRCheck（跳过GlobalRouter的相关校验），VpcCniCIDRCheck（跳过VpcCni相关校验）
+        :type SkipValidateOptions: list of str
         """
         self.ClusterId = None
         self.InstanceIds = None
         self.InstanceAdvancedSettings = None
         self.EnhancedService = None
         self.LoginSettings = None
-        self.SecurityGroupIds = None
         self.HostName = None
+        self.SecurityGroupIds = None
         self.NodePool = None
+        self.SkipValidateOptions = None
 
 
     def _deserialize(self, params):
@@ -96,11 +99,12 @@ class AddExistedInstancesRequest(AbstractModel):
         if params.get("LoginSettings") is not None:
             self.LoginSettings = LoginSettings()
             self.LoginSettings._deserialize(params.get("LoginSettings"))
-        self.SecurityGroupIds = params.get("SecurityGroupIds")
         self.HostName = params.get("HostName")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
         if params.get("NodePool") is not None:
             self.NodePool = NodePoolOption()
             self.NodePool._deserialize(params.get("NodePool"))
+        self.SkipValidateOptions = params.get("SkipValidateOptions")
 
 
 class AddExistedInstancesResponse(AbstractModel):
@@ -982,10 +986,13 @@ class CreateClusterInstancesRequest(AbstractModel):
         :type RunInstancePara: str
         :param InstanceAdvancedSettings: 实例额外需要设置参数信息
         :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
+        :param SkipValidateOptions: 校验规则相关选项，可配置跳过某些校验规则。目前支持GlobalRouteCIDRCheck（跳过GlobalRouter的相关校验），VpcCniCIDRCheck（跳过VpcCni相关校验）
+        :type SkipValidateOptions: list of str
         """
         self.ClusterId = None
         self.RunInstancePara = None
         self.InstanceAdvancedSettings = None
+        self.SkipValidateOptions = None
 
 
     def _deserialize(self, params):
@@ -994,6 +1001,7 @@ class CreateClusterInstancesRequest(AbstractModel):
         if params.get("InstanceAdvancedSettings") is not None:
             self.InstanceAdvancedSettings = InstanceAdvancedSettings()
             self.InstanceAdvancedSettings._deserialize(params.get("InstanceAdvancedSettings"))
+        self.SkipValidateOptions = params.get("SkipValidateOptions")
 
 
 class CreateClusterInstancesResponse(AbstractModel):
@@ -4431,6 +4439,9 @@ class PrometheusAlertRuleDetail(AbstractModel):
         :param TemplateId: 如果该告警来至模板下发，则TemplateId为模板id
 注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateId: str
+        :param Interval: 计算周期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Interval: str
         """
         self.Name = None
         self.Rules = None
@@ -4438,6 +4449,7 @@ class PrometheusAlertRuleDetail(AbstractModel):
         self.Notification = None
         self.Id = None
         self.TemplateId = None
+        self.Interval = None
 
 
     def _deserialize(self, params):
@@ -4454,6 +4466,7 @@ class PrometheusAlertRuleDetail(AbstractModel):
             self.Notification._deserialize(params.get("Notification"))
         self.Id = params.get("Id")
         self.TemplateId = params.get("TemplateId")
+        self.Interval = params.get("Interval")
 
 
 class PrometheusConfigItem(AbstractModel):

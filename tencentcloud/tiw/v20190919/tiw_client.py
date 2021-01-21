@@ -250,6 +250,62 @@ class TiwClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeWhiteboardPush(self, request):
+        """查询推流任务状态与结果
+
+        :param request: Request instance for DescribeWhiteboardPush.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeWhiteboardPushRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.DescribeWhiteboardPushResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeWhiteboardPush", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeWhiteboardPushResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeWhiteboardPushCallback(self, request):
+        """查询白板推流回调地址
+
+        :param request: Request instance for DescribeWhiteboardPushCallback.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeWhiteboardPushCallbackRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.DescribeWhiteboardPushCallbackResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeWhiteboardPushCallback", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeWhiteboardPushCallbackResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def PauseOnlineRecord(self, request):
         """暂停实时录制
 
@@ -460,6 +516,62 @@ class TiwClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetVideoGenerationTaskCallbackKeyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SetWhiteboardPushCallback(self, request):
+        """设置白板推流回调地址，回调数据格式请参考文档：https://cloud.tencent.com/document/product/1137/40257
+
+        :param request: Request instance for SetWhiteboardPushCallback.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.SetWhiteboardPushCallbackRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.SetWhiteboardPushCallbackResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SetWhiteboardPushCallback", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetWhiteboardPushCallbackResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SetWhiteboardPushCallbackKey(self, request):
+        """设置白板推流回调鉴权密钥，回调鉴权方式请参考文档：https://cloud.tencent.com/document/product/1137/40257
+
+        :param request: Request instance for SetWhiteboardPushCallbackKey.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.SetWhiteboardPushCallbackKeyRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.SetWhiteboardPushCallbackKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SetWhiteboardPushCallbackKey", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetWhiteboardPushCallbackKeyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

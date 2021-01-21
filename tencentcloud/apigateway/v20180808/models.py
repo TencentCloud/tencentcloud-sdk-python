@@ -331,6 +331,15 @@ class ApiInfo(AbstractModel):
         :param Environments: API已发布的环境信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Environments: list of str
+        :param IsBase64Encoded: 是否开启Base64编码，只有后端为scf时才会生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsBase64Encoded: bool
+        :param IsBase64Trigger: 是否开启Base64编码的header触发，只有后端为scf时才会生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsBase64Trigger: bool
+        :param Base64EncodedTriggerRules: Header触发规则，总规则数量不超过10。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Base64EncodedTriggerRules: list of Base64EncodedTriggerRule
         """
         self.ServiceId = None
         self.ServiceName = None
@@ -380,6 +389,9 @@ class ApiInfo(AbstractModel):
         self.EnableCORS = None
         self.Tags = None
         self.Environments = None
+        self.IsBase64Encoded = None
+        self.IsBase64Trigger = None
+        self.Base64EncodedTriggerRules = None
 
 
     def _deserialize(self, params):
@@ -471,6 +483,14 @@ class ApiInfo(AbstractModel):
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.Environments = params.get("Environments")
+        self.IsBase64Encoded = params.get("IsBase64Encoded")
+        self.IsBase64Trigger = params.get("IsBase64Trigger")
+        if params.get("Base64EncodedTriggerRules") is not None:
+            self.Base64EncodedTriggerRules = []
+            for item in params.get("Base64EncodedTriggerRules"):
+                obj = Base64EncodedTriggerRule()
+                obj._deserialize(item)
+                self.Base64EncodedTriggerRules.append(obj)
 
 
 class ApiKey(AbstractModel):
@@ -703,6 +723,34 @@ class ApisStatus(AbstractModel):
                 obj = DesApisStatus()
                 obj._deserialize(item)
                 self.ApiIdStatusSet.append(obj)
+
+
+class Base64EncodedTriggerRule(AbstractModel):
+    """Base64编码的header触发规则
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 进行编码触发的header，可选值 "Accept"和"Content_Type" 对应实际数据流请求header中的Accept和 Content-Type。
+        :type Name: str
+        :param Value: 进行编码触发的header的可选值数组, 数组元素的字符串最大长度为40，元素可以包括数字，英文字母以及特殊字符，特殊字符的可选值为： `.`    `+`    `*`   `-`   `/`  `_` 
+
+例如 [
+    "application/x-vpeg005",
+    "application/xhtml+xml",
+    "application/vnd.ms-project",
+    "application/vnd.rn-rn_music_package"
+] 等都是合法的。
+        :type Value: list of str
+        """
+        self.Name = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
 
 
 class BindEnvironmentRequest(AbstractModel):
@@ -1109,6 +1157,8 @@ class CreateApiRequest(AbstractModel):
         :type TargetNamespaceId: str
         :param UserType: 用户类型。
         :type UserType: str
+        :param IsBase64Encoded: 是否打开Base64编码，只有后端是scf时才会生效。
+        :type IsBase64Encoded: bool
         """
         self.ServiceId = None
         self.ServiceType = None
@@ -1155,6 +1205,7 @@ class CreateApiRequest(AbstractModel):
         self.ResponseErrorCodes = None
         self.TargetNamespaceId = None
         self.UserType = None
+        self.IsBase64Encoded = None
 
 
     def _deserialize(self, params):
@@ -1245,6 +1296,7 @@ class CreateApiRequest(AbstractModel):
                 self.ResponseErrorCodes.append(obj)
         self.TargetNamespaceId = params.get("TargetNamespaceId")
         self.UserType = params.get("UserType")
+        self.IsBase64Encoded = params.get("IsBase64Encoded")
 
 
 class CreateApiResponse(AbstractModel):
@@ -4043,6 +4095,12 @@ class ModifyApiRequest(AbstractModel):
         :type OauthConfig: :class:`tencentcloud.apigateway.v20180808.models.OauthConfig`
         :param ResponseErrorCodes: 用户自定义错误码配置。
         :type ResponseErrorCodes: list of ResponseErrorCodeReq
+        :param IsBase64Encoded: 是否开启Base64编码，只有后端为scf时才会生效。
+        :type IsBase64Encoded: bool
+        :param IsBase64Trigger: 是否开启Base64编码的header触发，只有后端为scf时才会生效。
+        :type IsBase64Trigger: bool
+        :param Base64EncodedTriggerRules: Header触发规则，总规则数不能超过10。
+        :type Base64EncodedTriggerRules: list of Base64EncodedTriggerRule
         """
         self.ServiceId = None
         self.ServiceType = None
@@ -4089,6 +4147,9 @@ class ModifyApiRequest(AbstractModel):
         self.ServiceParameters = None
         self.OauthConfig = None
         self.ResponseErrorCodes = None
+        self.IsBase64Encoded = None
+        self.IsBase64Trigger = None
+        self.Base64EncodedTriggerRules = None
 
 
     def _deserialize(self, params):
@@ -4176,6 +4237,14 @@ class ModifyApiRequest(AbstractModel):
                 obj = ResponseErrorCodeReq()
                 obj._deserialize(item)
                 self.ResponseErrorCodes.append(obj)
+        self.IsBase64Encoded = params.get("IsBase64Encoded")
+        self.IsBase64Trigger = params.get("IsBase64Trigger")
+        if params.get("Base64EncodedTriggerRules") is not None:
+            self.Base64EncodedTriggerRules = []
+            for item in params.get("Base64EncodedTriggerRules"):
+                obj = Base64EncodedTriggerRule()
+                obj._deserialize(item)
+                self.Base64EncodedTriggerRules.append(obj)
 
 
 class ModifyApiResponse(AbstractModel):

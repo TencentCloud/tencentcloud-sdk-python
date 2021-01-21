@@ -799,6 +799,8 @@ class DCDBShardInfo(AbstractModel):
         :type ShardSlaveZones: list of str
         :param Cpu: CPU核数
         :type Cpu: int
+        :param Range: 分片ShardKey的范围（总共64个哈希值），例如： 0-31，32-63
+        :type Range: str
         """
         self.InstanceId = None
         self.ShardSerialId = None
@@ -824,6 +826,7 @@ class DCDBShardInfo(AbstractModel):
         self.ShardMasterZone = None
         self.ShardSlaveZones = None
         self.Cpu = None
+        self.Range = None
 
 
     def _deserialize(self, params):
@@ -851,6 +854,7 @@ class DCDBShardInfo(AbstractModel):
         self.ShardMasterZone = params.get("ShardMasterZone")
         self.ShardSlaveZones = params.get("ShardSlaveZones")
         self.Cpu = params.get("Cpu")
+        self.Range = params.get("Range")
 
 
 class Database(AbstractModel):

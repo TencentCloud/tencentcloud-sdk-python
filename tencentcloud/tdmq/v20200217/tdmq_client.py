@@ -55,7 +55,7 @@ class TdmqClient(AbstractClient):
 
 
     def CreateEnvironment(self, request):
-        """用于在用户账户下创建消息队列 Tdmq环境（命名空间）
+        """用于在用户账户下创建消息队列 Tdmq 命名空间
 
         :param request: Request instance for CreateEnvironment.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateEnvironmentRequest`
@@ -167,7 +167,7 @@ class TdmqClient(AbstractClient):
 
 
     def DeleteEnvironments(self, request):
-        """批量删除租户下的环境
+        """批量删除租户下的命名空间
 
         :param request: Request instance for DeleteEnvironments.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteEnvironmentsRequest`
@@ -363,7 +363,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeEnvironmentAttributes(self, request):
-        """获取指定环境的属性
+        """获取指定命名空间的属性
 
         :param request: Request instance for DescribeEnvironmentAttributes.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeEnvironmentAttributesRequest`
@@ -391,7 +391,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeEnvironmentRoles(self, request):
-        """获取环境角色列表
+        """获取命名空间角色列表
 
         :param request: Request instance for DescribeEnvironmentRoles.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeEnvironmentRolesRequest`
@@ -419,7 +419,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeEnvironments(self, request):
-        """获取租户下环境列表
+        """获取租户下命名空间列表
 
         :param request: Request instance for DescribeEnvironments.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeEnvironmentsRequest`
@@ -559,7 +559,7 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyEnvironmentAttributes(self, request):
-        """修改指定环境的属性值
+        """修改指定命名空间的属性值
 
         :param request: Request instance for ModifyEnvironmentAttributes.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyEnvironmentAttributesRequest`

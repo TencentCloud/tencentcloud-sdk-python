@@ -3353,9 +3353,12 @@ class Listener(AbstractModel):
         :param SessionType: 会话保持类型。NORMAL表示默认会话保持类型。QUIC_CID 表示根据Quic Connection ID做会话保持。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SessionType: str
-        :param KeepaliveEnable: 是否开启长连接（本参数仅对于HTTP/HTTPS监听器有意义）
+        :param KeepaliveEnable: 是否开启长连接，1开启，0关闭，（本参数仅对于HTTP/HTTPS监听器有意义）
 注意：此字段可能返回 null，表示取不到有效值。
         :type KeepaliveEnable: int
+        :param Toa: 仅支持Nat64 CLB TCP监听器
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Toa: bool
         """
         self.ListenerId = None
         self.Protocol = None
@@ -3373,6 +3376,7 @@ class Listener(AbstractModel):
         self.TargetGroup = None
         self.SessionType = None
         self.KeepaliveEnable = None
+        self.Toa = None
 
 
     def _deserialize(self, params):
@@ -3403,6 +3407,7 @@ class Listener(AbstractModel):
             self.TargetGroup._deserialize(params.get("TargetGroup"))
         self.SessionType = params.get("SessionType")
         self.KeepaliveEnable = params.get("KeepaliveEnable")
+        self.Toa = params.get("Toa")
 
 
 class ListenerBackend(AbstractModel):

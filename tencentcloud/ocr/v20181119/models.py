@@ -5609,6 +5609,51 @@ Y: 有清单 N：无清单
                 self.Items.append(obj)
 
 
+class VatInvoiceGoodsInfo(AbstractModel):
+    """发票商品
+
+    """
+
+    def __init__(self):
+        """
+        :param Item: 项目名称
+        :type Item: str
+        :param Specification: 规格型号
+        :type Specification: str
+        :param MeasurementDimension: 单位
+        :type MeasurementDimension: str
+        :param Price: 价格
+        :type Price: str
+        :param Quantity: 数量
+        :type Quantity: str
+        :param Amount: 金额
+        :type Amount: str
+        :param TaxScheme: 税率(如6%、免税)
+        :type TaxScheme: str
+        :param TaxAmount: 税额
+        :type TaxAmount: str
+        """
+        self.Item = None
+        self.Specification = None
+        self.MeasurementDimension = None
+        self.Price = None
+        self.Quantity = None
+        self.Amount = None
+        self.TaxScheme = None
+        self.TaxAmount = None
+
+
+    def _deserialize(self, params):
+        self.Item = params.get("Item")
+        self.Specification = params.get("Specification")
+        self.MeasurementDimension = params.get("MeasurementDimension")
+        self.Price = params.get("Price")
+        self.Quantity = params.get("Quantity")
+        self.Amount = params.get("Amount")
+        self.TaxScheme = params.get("TaxScheme")
+        self.TaxAmount = params.get("TaxAmount")
+
+
 class VatInvoiceItem(AbstractModel):
     """增值税发票项目明细
 
@@ -5735,6 +5780,35 @@ class VatInvoiceOCRResponse(AbstractModel):
         self.PdfPageSize = params.get("PdfPageSize")
         self.Angle = params.get("Angle")
         self.RequestId = params.get("RequestId")
+
+
+class VatInvoiceUserInfo(AbstractModel):
+    """发票人员信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 名称
+        :type Name: str
+        :param TaxId: 纳税人识别号
+        :type TaxId: str
+        :param AddrTel: 地 址、电 话
+        :type AddrTel: str
+        :param FinancialAccount: 开户行及账号
+        :type FinancialAccount: str
+        """
+        self.Name = None
+        self.TaxId = None
+        self.AddrTel = None
+        self.FinancialAccount = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.TaxId = params.get("TaxId")
+        self.AddrTel = params.get("AddrTel")
+        self.FinancialAccount = params.get("FinancialAccount")
 
 
 class VatInvoiceVerifyRequest(AbstractModel):
@@ -6379,6 +6453,124 @@ class VerifyBizLicenseResponse(AbstractModel):
         if params.get("RegNumResult") is not None:
             self.RegNumResult = BizLicenseVerifyResult()
             self.RegNumResult._deserialize(params.get("RegNumResult"))
+        self.RequestId = params.get("RequestId")
+
+
+class VerifyOfdVatInvoiceOCRRequest(AbstractModel):
+    """VerifyOfdVatInvoiceOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param OfdFileUrl: OFD文件的 Url 地址。
+        :type OfdFileUrl: str
+        :param OfdFileBase64: OFD文件的 Base64 值。
+OfdFileUrl 和 OfdFileBase64 必传其一，若两者都传，只解析OfdFileBase64。
+        :type OfdFileBase64: str
+        """
+        self.OfdFileUrl = None
+        self.OfdFileBase64 = None
+
+
+    def _deserialize(self, params):
+        self.OfdFileUrl = params.get("OfdFileUrl")
+        self.OfdFileBase64 = params.get("OfdFileBase64")
+
+
+class VerifyOfdVatInvoiceOCRResponse(AbstractModel):
+    """VerifyOfdVatInvoiceOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 发票类型
+026:增值税电子普通发票
+028:增值税电子专用发票
+        :type Type: str
+        :param InvoiceCode: 发票代码
+        :type InvoiceCode: str
+        :param InvoiceNumber: 发票号码
+        :type InvoiceNumber: str
+        :param IssueDate: 开票日期
+        :type IssueDate: str
+        :param InvoiceCheckCode: 验证码
+        :type InvoiceCheckCode: str
+        :param MachineNumber: 机器编号
+        :type MachineNumber: str
+        :param TaxControlCode: 密码区
+        :type TaxControlCode: str
+        :param Buyer: 购买方
+        :type Buyer: :class:`tencentcloud.ocr.v20181119.models.VatInvoiceUserInfo`
+        :param Seller: 销售方
+        :type Seller: :class:`tencentcloud.ocr.v20181119.models.VatInvoiceUserInfo`
+        :param TaxInclusiveTotalAmount: 价税合计
+        :type TaxInclusiveTotalAmount: str
+        :param InvoiceClerk: 开票人
+        :type InvoiceClerk: str
+        :param Payee: 收款人
+        :type Payee: str
+        :param Checker: 复核人
+        :type Checker: str
+        :param TaxTotalAmount: 税额
+        :type TaxTotalAmount: str
+        :param TaxExclusiveTotalAmount: 不含税金额
+        :type TaxExclusiveTotalAmount: str
+        :param Note: 备注
+        :type Note: str
+        :param GoodsInfos: 货物或服务清单
+        :type GoodsInfos: list of VatInvoiceGoodsInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Type = None
+        self.InvoiceCode = None
+        self.InvoiceNumber = None
+        self.IssueDate = None
+        self.InvoiceCheckCode = None
+        self.MachineNumber = None
+        self.TaxControlCode = None
+        self.Buyer = None
+        self.Seller = None
+        self.TaxInclusiveTotalAmount = None
+        self.InvoiceClerk = None
+        self.Payee = None
+        self.Checker = None
+        self.TaxTotalAmount = None
+        self.TaxExclusiveTotalAmount = None
+        self.Note = None
+        self.GoodsInfos = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.InvoiceCode = params.get("InvoiceCode")
+        self.InvoiceNumber = params.get("InvoiceNumber")
+        self.IssueDate = params.get("IssueDate")
+        self.InvoiceCheckCode = params.get("InvoiceCheckCode")
+        self.MachineNumber = params.get("MachineNumber")
+        self.TaxControlCode = params.get("TaxControlCode")
+        if params.get("Buyer") is not None:
+            self.Buyer = VatInvoiceUserInfo()
+            self.Buyer._deserialize(params.get("Buyer"))
+        if params.get("Seller") is not None:
+            self.Seller = VatInvoiceUserInfo()
+            self.Seller._deserialize(params.get("Seller"))
+        self.TaxInclusiveTotalAmount = params.get("TaxInclusiveTotalAmount")
+        self.InvoiceClerk = params.get("InvoiceClerk")
+        self.Payee = params.get("Payee")
+        self.Checker = params.get("Checker")
+        self.TaxTotalAmount = params.get("TaxTotalAmount")
+        self.TaxExclusiveTotalAmount = params.get("TaxExclusiveTotalAmount")
+        self.Note = params.get("Note")
+        if params.get("GoodsInfos") is not None:
+            self.GoodsInfos = []
+            for item in params.get("GoodsInfos"):
+                obj = VatInvoiceGoodsInfo()
+                obj._deserialize(item)
+                self.GoodsInfos.append(obj)
         self.RequestId = params.get("RequestId")
 
 

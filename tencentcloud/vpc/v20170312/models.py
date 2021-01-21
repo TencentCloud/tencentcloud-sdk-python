@@ -9407,6 +9407,8 @@ class FlowLog(AbstractModel):
         :type FlowLogDescription: str
         :param CreatedTime: 流日志创建时间
         :type CreatedTime: str
+        :param TagSet: 标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+        :type TagSet: list of Tag
         """
         self.VpcId = None
         self.FlowLogId = None
@@ -9418,6 +9420,7 @@ class FlowLog(AbstractModel):
         self.CloudLogState = None
         self.FlowLogDescription = None
         self.CreatedTime = None
+        self.TagSet = None
 
 
     def _deserialize(self, params):
@@ -9431,6 +9434,12 @@ class FlowLog(AbstractModel):
         self.CloudLogState = params.get("CloudLogState")
         self.FlowLogDescription = params.get("FlowLogDescription")
         self.CreatedTime = params.get("CreatedTime")
+        if params.get("TagSet") is not None:
+            self.TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagSet.append(obj)
 
 
 class GatewayFlowMonitorDetail(AbstractModel):
