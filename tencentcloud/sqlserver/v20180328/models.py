@@ -514,6 +514,8 @@ class CreateBasicDBInstancesRequest(AbstractModel):
         :type StartTime: str
         :param Span: 可维护时间窗配置，持续时间，单位：小时
         :type Span: int
+        :param ResourceTags: 新建实例绑定的标签集合
+        :type ResourceTags: list of ResourceTag
         """
         self.Zone = None
         self.Cpu = None
@@ -534,6 +536,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
         self.Weekly = None
         self.StartTime = None
         self.Span = None
+        self.ResourceTags = None
 
 
     def _deserialize(self, params):
@@ -556,6 +559,12 @@ class CreateBasicDBInstancesRequest(AbstractModel):
         self.Weekly = params.get("Weekly")
         self.StartTime = params.get("StartTime")
         self.Span = params.get("Span")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
 
 
 class CreateBasicDBInstancesResponse(AbstractModel):
@@ -624,6 +633,8 @@ class CreateDBInstancesRequest(AbstractModel):
         :type HAType: str
         :param MultiZones: 是否跨可用区部署，默认值为false
         :type MultiZones: bool
+        :param ResourceTags: 新建实例绑定的标签集合
+        :type ResourceTags: list of ResourceTag
         """
         self.Zone = None
         self.Memory = None
@@ -644,6 +655,7 @@ class CreateDBInstancesRequest(AbstractModel):
         self.Span = None
         self.HAType = None
         self.MultiZones = None
+        self.ResourceTags = None
 
 
     def _deserialize(self, params):
@@ -666,6 +678,12 @@ class CreateDBInstancesRequest(AbstractModel):
         self.Span = params.get("Span")
         self.HAType = params.get("HAType")
         self.MultiZones = params.get("MultiZones")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
 
 
 class CreateDBInstancesResponse(AbstractModel):
@@ -916,6 +934,8 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
         :type AutoVoucher: int
         :param VoucherIds: 代金券ID数组，目前单个订单只能使用一张
         :type VoucherIds: list of str
+        :param ResourceTags: 新建实例绑定的标签集合
+        :type ResourceTags: list of ResourceTag
         """
         self.InstanceId = None
         self.Zone = None
@@ -936,6 +956,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
         self.SecurityGroupList = None
         self.AutoVoucher = None
         self.VoucherIds = None
+        self.ResourceTags = None
 
 
     def _deserialize(self, params):
@@ -958,6 +979,12 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
         self.SecurityGroupList = params.get("SecurityGroupList")
         self.AutoVoucher = params.get("AutoVoucher")
         self.VoucherIds = params.get("VoucherIds")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
 
 
 class CreateReadOnlyDBInstancesResponse(AbstractModel):
@@ -1144,6 +1171,9 @@ class DBInstance(AbstractModel):
         :param HAFlag: 容灾类型，MIRROR-镜像，ALWAYSON-AlwaysOn, SINGLE-单例
 注意：此字段可能返回 null，表示取不到有效值。
         :type HAFlag: str
+        :param ResourceTags: 实例绑定的标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceTags: list of ResourceTag
         """
         self.InstanceId = None
         self.Name = None
@@ -1181,6 +1211,7 @@ class DBInstance(AbstractModel):
         self.SubFlag = None
         self.ROFlag = None
         self.HAFlag = None
+        self.ResourceTags = None
 
 
     def _deserialize(self, params):
@@ -1220,6 +1251,12 @@ class DBInstance(AbstractModel):
         self.SubFlag = params.get("SubFlag")
         self.ROFlag = params.get("ROFlag")
         self.HAFlag = params.get("HAFlag")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
 
 
 class DBPrivilege(AbstractModel):
@@ -1897,6 +1934,18 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type VpcId: str
         :param SubnetId: 实例所属子网的唯一字符串ID，格式如： subnet-xxx，传空字符串(“”)则按照基础网络筛选。
         :type SubnetId: str
+        :param VipSet: 实例内网地址列表，格式如：172.1.0.12
+        :type VipSet: list of str
+        :param InstanceNameSet: 实例名称列表，模糊查询
+        :type InstanceNameSet: list of str
+        :param VersionSet: 实例版本代号列表，格式如：2008R2，2012SP3等
+        :type VersionSet: list of str
+        :param Zone: 实例可用区，格式如：ap-guangzhou-2
+        :type Zone: str
+        :param TagKeys: 实例标签列表
+        :type TagKeys: list of str
+        :param SearchKey: 模糊查询关键字，支持实例id、实例名、内网ip
+        :type SearchKey: str
         """
         self.ProjectId = None
         self.Status = None
@@ -1906,6 +1955,12 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.PayMode = None
         self.VpcId = None
         self.SubnetId = None
+        self.VipSet = None
+        self.InstanceNameSet = None
+        self.VersionSet = None
+        self.Zone = None
+        self.TagKeys = None
+        self.SearchKey = None
 
 
     def _deserialize(self, params):
@@ -1917,6 +1972,12 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.PayMode = params.get("PayMode")
         self.VpcId = params.get("VpcId")
         self.SubnetId = params.get("SubnetId")
+        self.VipSet = params.get("VipSet")
+        self.InstanceNameSet = params.get("InstanceNameSet")
+        self.VersionSet = params.get("VersionSet")
+        self.Zone = params.get("Zone")
+        self.TagKeys = params.get("TagKeys")
+        self.SearchKey = params.get("SearchKey")
 
 
 class DescribeDBInstancesResponse(AbstractModel):
@@ -3647,6 +3708,56 @@ class ModifyDBInstanceNameResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyDBInstanceNetworkRequest(AbstractModel):
+    """ModifyDBInstanceNetwork请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例id
+        :type InstanceId: str
+        :param NewVpcId: 新VPC网络Id
+        :type NewVpcId: str
+        :param NewSubnetId: 新子网Id
+        :type NewSubnetId: str
+        :param OldIpRetainTime: 原vip保留时长，单位小时，默认为0，代表立即回收，最大为168小时
+        :type OldIpRetainTime: int
+        """
+        self.InstanceId = None
+        self.NewVpcId = None
+        self.NewSubnetId = None
+        self.OldIpRetainTime = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.NewVpcId = params.get("NewVpcId")
+        self.NewSubnetId = params.get("NewSubnetId")
+        self.OldIpRetainTime = params.get("OldIpRetainTime")
+
+
+class ModifyDBInstanceNetworkResponse(AbstractModel):
+    """ModifyDBInstanceNetwork返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: 实例转网流程id，可通过[DescribeFlowStatus](https://cloud.tencent.com/document/product/238/19967)接口查询流程状态
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyDBInstanceProjectRequest(AbstractModel):
     """ModifyDBInstanceProject请求参数结构体
 
@@ -4700,6 +4811,27 @@ class ResetAccountPasswordResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ResourceTag(AbstractModel):
+    """实例绑定的标签信息
+
+    """
+
+    def __init__(self):
+        """
+        :param TagKey: 标签key
+        :type TagKey: str
+        :param TagValue: 标签value
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
+
+
 class RestartDBInstanceRequest(AbstractModel):
     """RestartDBInstance请求参数结构体
 
@@ -5256,6 +5388,12 @@ class UpgradeDBInstanceRequest(AbstractModel):
         :type VoucherIds: list of str
         :param Cpu: 实例升级后的CPU核心数
         :type Cpu: int
+        :param DBVersion: 升级sqlserver的版本，目前支持：2008R2（SQL Server 2008 Enterprise），2012SP3（SQL Server 2012 Enterprise）版本等。每个地域支持售卖的版本不同，可通过DescribeProductConfig接口来拉取每个地域可售卖的版本信息，版本不支持降级，不填则不修改版本
+        :type DBVersion: str
+        :param HAType: 升级sqlserver的高可用架构,从镜像容灾升级到always on集群容灾，仅支持2017及以上版本且支持always on高可用的实例，不支持降级到镜像方式容灾，CLUSTER-升级为always on容灾，不填则不修改高可用架构
+        :type HAType: str
+        :param MultiZones: 修改实例是否为跨可用区容灾，SameZones-修改为同可用区 MultiZones-修改为夸可用区
+        :type MultiZones: str
         """
         self.InstanceId = None
         self.Memory = None
@@ -5263,6 +5401,9 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self.AutoVoucher = None
         self.VoucherIds = None
         self.Cpu = None
+        self.DBVersion = None
+        self.HAType = None
+        self.MultiZones = None
 
 
     def _deserialize(self, params):
@@ -5272,6 +5413,9 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self.AutoVoucher = params.get("AutoVoucher")
         self.VoucherIds = params.get("VoucherIds")
         self.Cpu = params.get("Cpu")
+        self.DBVersion = params.get("DBVersion")
+        self.HAType = params.get("HAType")
+        self.MultiZones = params.get("MultiZones")
 
 
 class UpgradeDBInstanceResponse(AbstractModel):

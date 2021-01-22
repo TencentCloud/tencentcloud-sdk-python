@@ -734,6 +734,27 @@ class ClusterCIDRSettings(AbstractModel):
         self.ClaimExpiredSeconds = params.get("ClaimExpiredSeconds")
 
 
+class ClusterCredential(AbstractModel):
+    """接入k8s 的认证信息
+
+    """
+
+    def __init__(self):
+        """
+        :param CACert: CA 根证书
+        :type CACert: str
+        :param Token: 认证用的Token
+        :type Token: str
+        """
+        self.CACert = None
+        self.Token = None
+
+
+    def _deserialize(self, params):
+        self.CACert = params.get("CACert")
+        self.Token = params.get("Token")
+
+
 class ClusterExtraArgs(AbstractModel):
     """集群master自定义参数
 
@@ -760,6 +781,27 @@ class ClusterExtraArgs(AbstractModel):
         self.KubeAPIServer = params.get("KubeAPIServer")
         self.KubeControllerManager = params.get("KubeControllerManager")
         self.KubeScheduler = params.get("KubeScheduler")
+
+
+class ClusterInternalLB(AbstractModel):
+    """弹性容器集群内网访问LB信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Enabled: 是否开启内网访问LB
+        :type Enabled: bool
+        :param SubnetId: 内网访问LB关联的子网Id
+        :type SubnetId: str
+        """
+        self.Enabled = None
+        self.SubnetId = None
+
+
+    def _deserialize(self, params):
+        self.Enabled = params.get("Enabled")
+        self.SubnetId = params.get("SubnetId")
 
 
 class ClusterNetworkSettings(AbstractModel):
@@ -801,6 +843,31 @@ class ClusterNetworkSettings(AbstractModel):
         self.Ipvs = params.get("Ipvs")
         self.VpcId = params.get("VpcId")
         self.Cni = params.get("Cni")
+
+
+class ClusterPublicLB(AbstractModel):
+    """弹性容器集群公网访问负载均衡信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Enabled: 是否开启公网访问LB
+        :type Enabled: bool
+        :param AllowFromCidrs: 允许访问的来源CIDR列表
+        :type AllowFromCidrs: list of str
+        :param SecurityPolicies: 安全策略放通单个IP或CIDR(例如: "192.168.1.0/24",默认为拒绝所有)
+        :type SecurityPolicies: list of str
+        """
+        self.Enabled = None
+        self.AllowFromCidrs = None
+        self.SecurityPolicies = None
+
+
+    def _deserialize(self, params):
+        self.Enabled = params.get("Enabled")
+        self.AllowFromCidrs = params.get("AllowFromCidrs")
+        self.SecurityPolicies = params.get("SecurityPolicies")
 
 
 class ClusterVersion(AbstractModel):
@@ -1331,6 +1398,81 @@ class CreateClusterRouteTableResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateEKSClusterRequest(AbstractModel):
+    """CreateEKSCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param K8SVersion: k8s版本号。可为1.14.4, 1.12.8。
+        :type K8SVersion: str
+        :param VpcId: vpc 的Id
+        :type VpcId: str
+        :param ClusterName: 集群名称
+        :type ClusterName: str
+        :param SubnetIds: 子网Id 列表
+        :type SubnetIds: list of str
+        :param ClusterDesc: 集群描述信息
+        :type ClusterDesc: str
+        :param ServiceSubnetId: Serivce 所在子网Id
+        :type ServiceSubnetId: str
+        :param DnsServers: 集群自定义的Dns服务器信息
+        :type DnsServers: list of DnsServerConf
+        :param ExtraParam: 扩展参数。须是map[string]string 的json 格式。
+        :type ExtraParam: str
+        :param EnableVpcCoreDNS: 是否在用户集群内开启Dns。默认为true
+        :type EnableVpcCoreDNS: bool
+        """
+        self.K8SVersion = None
+        self.VpcId = None
+        self.ClusterName = None
+        self.SubnetIds = None
+        self.ClusterDesc = None
+        self.ServiceSubnetId = None
+        self.DnsServers = None
+        self.ExtraParam = None
+        self.EnableVpcCoreDNS = None
+
+
+    def _deserialize(self, params):
+        self.K8SVersion = params.get("K8SVersion")
+        self.VpcId = params.get("VpcId")
+        self.ClusterName = params.get("ClusterName")
+        self.SubnetIds = params.get("SubnetIds")
+        self.ClusterDesc = params.get("ClusterDesc")
+        self.ServiceSubnetId = params.get("ServiceSubnetId")
+        if params.get("DnsServers") is not None:
+            self.DnsServers = []
+            for item in params.get("DnsServers"):
+                obj = DnsServerConf()
+                obj._deserialize(item)
+                self.DnsServers.append(obj)
+        self.ExtraParam = params.get("ExtraParam")
+        self.EnableVpcCoreDNS = params.get("EnableVpcCoreDNS")
+
+
+class CreateEKSClusterResponse(AbstractModel):
+    """CreateEKSCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 弹性集群Id
+        :type ClusterId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ClusterId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreatePrometheusDashboardRequest(AbstractModel):
     """CreatePrometheusDashboard请求参数结构体
 
@@ -1777,6 +1919,40 @@ class DeleteClusterRouteTableRequest(AbstractModel):
 
 class DeleteClusterRouteTableResponse(AbstractModel):
     """DeleteClusterRouteTable返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteEKSClusterRequest(AbstractModel):
+    """DeleteEKSCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 弹性集群Id
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+
+
+class DeleteEKSClusterResponse(AbstractModel):
+    """DeleteEKSCluster返回参数结构体
 
     """
 
@@ -2531,6 +2707,132 @@ class DescribeClustersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeEKSClusterCredentialRequest(AbstractModel):
+    """DescribeEKSClusterCredential请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群Id
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+
+
+class DescribeEKSClusterCredentialResponse(AbstractModel):
+    """DescribeEKSClusterCredential返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Addresses: 集群的接入地址信息
+        :type Addresses: list of IPAddress
+        :param Credential: 集群的认证信息
+        :type Credential: :class:`tencentcloud.tke.v20180525.models.ClusterCredential`
+        :param PublicLB: 集群的公网访问信息
+        :type PublicLB: :class:`tencentcloud.tke.v20180525.models.ClusterPublicLB`
+        :param InternalLB: 集群的内网访问信息
+        :type InternalLB: :class:`tencentcloud.tke.v20180525.models.ClusterInternalLB`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Addresses = None
+        self.Credential = None
+        self.PublicLB = None
+        self.InternalLB = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Addresses") is not None:
+            self.Addresses = []
+            for item in params.get("Addresses"):
+                obj = IPAddress()
+                obj._deserialize(item)
+                self.Addresses.append(obj)
+        if params.get("Credential") is not None:
+            self.Credential = ClusterCredential()
+            self.Credential._deserialize(params.get("Credential"))
+        if params.get("PublicLB") is not None:
+            self.PublicLB = ClusterPublicLB()
+            self.PublicLB._deserialize(params.get("PublicLB"))
+        if params.get("InternalLB") is not None:
+            self.InternalLB = ClusterInternalLB()
+            self.InternalLB._deserialize(params.get("InternalLB"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeEKSClustersRequest(AbstractModel):
+    """DescribeEKSClusters请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterIds: 集群ID列表(为空时，
+表示获取账号下所有集群)
+        :type ClusterIds: list of str
+        :param Offset: 偏移量,默认0
+        :type Offset: int
+        :param Limit: 最大输出条数，默认20
+        :type Limit: int
+        :param Filters: 过滤条件,当前只支持按照单个条件ClusterName进行过滤
+        :type Filters: list of Filter
+        """
+        self.ClusterIds = None
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.ClusterIds = params.get("ClusterIds")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class DescribeEKSClustersResponse(AbstractModel):
+    """DescribeEKSClusters返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 集群总个数
+        :type TotalCount: int
+        :param Clusters: 集群信息列表
+        :type Clusters: list of EksCluster
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Clusters = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Clusters") is not None:
+            self.Clusters = []
+            for item in params.get("Clusters"):
+                obj = EksCluster()
+                obj._deserialize(item)
+                self.Clusters.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeExistedInstancesRequest(AbstractModel):
     """DescribeExistedInstances请求参数结构体
 
@@ -3128,6 +3430,93 @@ class DescribeRouteTableConflictsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DnsServerConf(AbstractModel):
+    """Eks 自定义域名服务器 配置
+
+    """
+
+    def __init__(self):
+        """
+        :param Domain: 域名。空字符串表示所有域名。
+        :type Domain: str
+        :param DnsServers: dns 服务器地址列表。地址格式 ip:port
+        :type DnsServers: list of str
+        """
+        self.Domain = None
+        self.DnsServers = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.DnsServers = params.get("DnsServers")
+
+
+class EksCluster(AbstractModel):
+    """弹性集群信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群Id
+        :type ClusterId: str
+        :param ClusterName: 集群名称
+        :type ClusterName: str
+        :param VpcId: Vpc Id
+        :type VpcId: str
+        :param SubnetIds: 子网列表
+        :type SubnetIds: list of str
+        :param K8SVersion: k8s 版本号
+        :type K8SVersion: str
+        :param Status: 集群状态
+        :type Status: str
+        :param ClusterDesc: 集群描述信息
+        :type ClusterDesc: str
+        :param CreatedTime: 集群创建时间
+        :type CreatedTime: str
+        :param ServiceSubnetId: Service 子网Id
+        :type ServiceSubnetId: str
+        :param DnsServers: 集群的自定义dns 服务器信息
+        :type DnsServers: list of DnsServerConf
+        :param NeedDeleteCbs: 将来删除集群时是否要删除cbs。默认为 FALSE
+        :type NeedDeleteCbs: bool
+        :param EnableVpcCoreDNS: 是否在用户集群内开启Dns。默认为TRUE
+        :type EnableVpcCoreDNS: bool
+        """
+        self.ClusterId = None
+        self.ClusterName = None
+        self.VpcId = None
+        self.SubnetIds = None
+        self.K8SVersion = None
+        self.Status = None
+        self.ClusterDesc = None
+        self.CreatedTime = None
+        self.ServiceSubnetId = None
+        self.DnsServers = None
+        self.NeedDeleteCbs = None
+        self.EnableVpcCoreDNS = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterName = params.get("ClusterName")
+        self.VpcId = params.get("VpcId")
+        self.SubnetIds = params.get("SubnetIds")
+        self.K8SVersion = params.get("K8SVersion")
+        self.Status = params.get("Status")
+        self.ClusterDesc = params.get("ClusterDesc")
+        self.CreatedTime = params.get("CreatedTime")
+        self.ServiceSubnetId = params.get("ServiceSubnetId")
+        if params.get("DnsServers") is not None:
+            self.DnsServers = []
+            for item in params.get("DnsServers"):
+                obj = DnsServerConf()
+                obj._deserialize(item)
+                self.DnsServers.append(obj)
+        self.NeedDeleteCbs = params.get("NeedDeleteCbs")
+        self.EnableVpcCoreDNS = params.get("EnableVpcCoreDNS")
+
+
 class EnhancedService(AbstractModel):
     """描述了实例的增强服务启用情况与其设置，如云安全，云监控等实例 Agent
 
@@ -3434,6 +3823,31 @@ aborted 已取消
             self.ClusterStatus = InstanceUpgradeClusterStatus()
             self.ClusterStatus._deserialize(params.get("ClusterStatus"))
         self.RequestId = params.get("RequestId")
+
+
+class IPAddress(AbstractModel):
+    """IP 地址
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: Ip 地址的类型。可为 advertise, public 等
+        :type Type: str
+        :param Ip: Ip 地址
+        :type Ip: str
+        :param Port: 网络端口
+        :type Port: int
+        """
+        self.Type = None
+        self.Ip = None
+        self.Port = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Ip = params.get("Ip")
+        self.Port = params.get("Port")
 
 
 class ImageInstance(AbstractModel):
@@ -5387,6 +5801,85 @@ class UpdateClusterVersionRequest(AbstractModel):
 
 class UpdateClusterVersionResponse(AbstractModel):
     """UpdateClusterVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateEKSClusterRequest(AbstractModel):
+    """UpdateEKSCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 弹性集群Id
+        :type ClusterId: str
+        :param ClusterName: 弹性集群名称
+        :type ClusterName: str
+        :param ClusterDesc: 弹性集群描述信息
+        :type ClusterDesc: str
+        :param SubnetIds: 子网Id 列表
+        :type SubnetIds: list of str
+        :param PublicLB: 弹性容器集群公网访问LB信息
+        :type PublicLB: :class:`tencentcloud.tke.v20180525.models.ClusterPublicLB`
+        :param InternalLB: 弹性容器集群内网访问LB信息
+        :type InternalLB: :class:`tencentcloud.tke.v20180525.models.ClusterInternalLB`
+        :param ServiceSubnetId: Service 子网Id
+        :type ServiceSubnetId: str
+        :param DnsServers: 集群自定义的dns 服务器信息
+        :type DnsServers: list of DnsServerConf
+        :param ClearDnsServer: 是否清空自定义dns 服务器设置。为1 表示 是。其他表示 否。
+        :type ClearDnsServer: str
+        :param NeedDeleteCbs: 将来删除集群时是否要删除cbs。默认为 FALSE
+        :type NeedDeleteCbs: bool
+        """
+        self.ClusterId = None
+        self.ClusterName = None
+        self.ClusterDesc = None
+        self.SubnetIds = None
+        self.PublicLB = None
+        self.InternalLB = None
+        self.ServiceSubnetId = None
+        self.DnsServers = None
+        self.ClearDnsServer = None
+        self.NeedDeleteCbs = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterName = params.get("ClusterName")
+        self.ClusterDesc = params.get("ClusterDesc")
+        self.SubnetIds = params.get("SubnetIds")
+        if params.get("PublicLB") is not None:
+            self.PublicLB = ClusterPublicLB()
+            self.PublicLB._deserialize(params.get("PublicLB"))
+        if params.get("InternalLB") is not None:
+            self.InternalLB = ClusterInternalLB()
+            self.InternalLB._deserialize(params.get("InternalLB"))
+        self.ServiceSubnetId = params.get("ServiceSubnetId")
+        if params.get("DnsServers") is not None:
+            self.DnsServers = []
+            for item in params.get("DnsServers"):
+                obj = DnsServerConf()
+                obj._deserialize(item)
+                self.DnsServers.append(obj)
+        self.ClearDnsServer = params.get("ClearDnsServer")
+        self.NeedDeleteCbs = params.get("NeedDeleteCbs")
+
+
+class UpdateEKSClusterResponse(AbstractModel):
+    """UpdateEKSCluster返回参数结构体
 
     """
 

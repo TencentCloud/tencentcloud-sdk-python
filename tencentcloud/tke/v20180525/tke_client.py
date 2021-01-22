@@ -390,6 +390,34 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateEKSCluster(self, request):
+        """创建弹性集群
+
+        :param request: Request instance for CreateEKSCluster.
+        :type request: :class:`tencentcloud.tke.v20180525.models.CreateEKSClusterRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.CreateEKSClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateEKSCluster", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateEKSClusterResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreatePrometheusDashboard(self, request):
         """创建grafana监控面板
 
@@ -656,6 +684,34 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteClusterRouteTableResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteEKSCluster(self, request):
+        """删除弹性集群(yunapiv3)
+
+        :param request: Request instance for DeleteEKSCluster.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DeleteEKSClusterRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DeleteEKSClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteEKSCluster", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteEKSClusterResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1076,6 +1132,62 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClustersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeEKSClusterCredential(self, request):
+        """获取弹性容器集群的接入认证信息
+
+        :param request: Request instance for DescribeEKSClusterCredential.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeEKSClusterCredentialRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeEKSClusterCredentialResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeEKSClusterCredential", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeEKSClusterCredentialResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeEKSClusters(self, request):
+        """查询弹性集群列表
+
+        :param request: Request instance for DescribeEKSClusters.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeEKSClustersRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeEKSClustersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeEKSClusters", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeEKSClustersResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1692,6 +1804,34 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateClusterVersionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateEKSCluster(self, request):
+        """修改弹性集群名称等属性
+
+        :param request: Request instance for UpdateEKSCluster.
+        :type request: :class:`tencentcloud.tke.v20180525.models.UpdateEKSClusterRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.UpdateEKSClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateEKSCluster", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateEKSClusterResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

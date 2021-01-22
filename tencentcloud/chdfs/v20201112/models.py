@@ -176,6 +176,49 @@ class CreateAccessGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateAccessRulesRequest(AbstractModel):
+    """CreateAccessRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AccessRules: 多个权限规则，上限为10
+        :type AccessRules: list of AccessRule
+        :param AccessGroupId: 权限组ID
+        :type AccessGroupId: str
+        """
+        self.AccessRules = None
+        self.AccessGroupId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AccessRules") is not None:
+            self.AccessRules = []
+            for item in params.get("AccessRules"):
+                obj = AccessRule()
+                obj._deserialize(item)
+                self.AccessRules.append(obj)
+        self.AccessGroupId = params.get("AccessGroupId")
+
+
+class CreateAccessRulesResponse(AbstractModel):
+    """CreateAccessRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateFileSystemRequest(AbstractModel):
     """CreateFileSystem请求参数结构体
 
@@ -240,6 +283,49 @@ class CreateFileSystemResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateLifeCycleRulesRequest(AbstractModel):
+    """CreateLifeCycleRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FileSystemId: 文件系统ID
+        :type FileSystemId: str
+        :param LifeCycleRules: 多个生命周期规则，上限为10
+        :type LifeCycleRules: list of LifeCycleRule
+        """
+        self.FileSystemId = None
+        self.LifeCycleRules = None
+
+
+    def _deserialize(self, params):
+        self.FileSystemId = params.get("FileSystemId")
+        if params.get("LifeCycleRules") is not None:
+            self.LifeCycleRules = []
+            for item in params.get("LifeCycleRules"):
+                obj = LifeCycleRule()
+                obj._deserialize(item)
+                self.LifeCycleRules.append(obj)
+
+
+class CreateLifeCycleRulesResponse(AbstractModel):
+    """CreateLifeCycleRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateMountPointRequest(AbstractModel):
     """CreateMountPoint请求参数结构体
 
@@ -285,6 +371,219 @@ class CreateMountPointResponse(AbstractModel):
         if params.get("MountPoint") is not None:
             self.MountPoint = MountPoint()
             self.MountPoint._deserialize(params.get("MountPoint"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateRestoreTasksRequest(AbstractModel):
+    """CreateRestoreTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FileSystemId: 文件系统ID
+        :type FileSystemId: str
+        :param RestoreTasks: 多个回热任务，上限为10
+        :type RestoreTasks: list of RestoreTask
+        """
+        self.FileSystemId = None
+        self.RestoreTasks = None
+
+
+    def _deserialize(self, params):
+        self.FileSystemId = params.get("FileSystemId")
+        if params.get("RestoreTasks") is not None:
+            self.RestoreTasks = []
+            for item in params.get("RestoreTasks"):
+                obj = RestoreTask()
+                obj._deserialize(item)
+                self.RestoreTasks.append(obj)
+
+
+class CreateRestoreTasksResponse(AbstractModel):
+    """CreateRestoreTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteAccessGroupRequest(AbstractModel):
+    """DeleteAccessGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AccessGroupId: 权限组ID
+        :type AccessGroupId: str
+        """
+        self.AccessGroupId = None
+
+
+    def _deserialize(self, params):
+        self.AccessGroupId = params.get("AccessGroupId")
+
+
+class DeleteAccessGroupResponse(AbstractModel):
+    """DeleteAccessGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteAccessRulesRequest(AbstractModel):
+    """DeleteAccessRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AccessRuleIds: 多个权限规则ID，上限为10
+        :type AccessRuleIds: list of int non-negative
+        """
+        self.AccessRuleIds = None
+
+
+    def _deserialize(self, params):
+        self.AccessRuleIds = params.get("AccessRuleIds")
+
+
+class DeleteAccessRulesResponse(AbstractModel):
+    """DeleteAccessRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteFileSystemRequest(AbstractModel):
+    """DeleteFileSystem请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FileSystemId: 文件系统ID
+        :type FileSystemId: str
+        """
+        self.FileSystemId = None
+
+
+    def _deserialize(self, params):
+        self.FileSystemId = params.get("FileSystemId")
+
+
+class DeleteFileSystemResponse(AbstractModel):
+    """DeleteFileSystem返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLifeCycleRulesRequest(AbstractModel):
+    """DeleteLifeCycleRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LifeCycleRuleIds: 多个生命周期规则ID，上限为10
+        :type LifeCycleRuleIds: list of int non-negative
+        """
+        self.LifeCycleRuleIds = None
+
+
+    def _deserialize(self, params):
+        self.LifeCycleRuleIds = params.get("LifeCycleRuleIds")
+
+
+class DeleteLifeCycleRulesResponse(AbstractModel):
+    """DeleteLifeCycleRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteMountPointRequest(AbstractModel):
+    """DeleteMountPoint请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MountPointId: 挂载点ID
+        :type MountPointId: str
+        """
+        self.MountPointId = None
+
+
+    def _deserialize(self, params):
+        self.MountPointId = params.get("MountPointId")
+
+
+class DeleteMountPointResponse(AbstractModel):
+    """DeleteMountPoint返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -501,6 +800,49 @@ class DescribeFileSystemsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeLifeCycleRulesRequest(AbstractModel):
+    """DescribeLifeCycleRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FileSystemId: 文件系统ID
+        :type FileSystemId: str
+        """
+        self.FileSystemId = None
+
+
+    def _deserialize(self, params):
+        self.FileSystemId = params.get("FileSystemId")
+
+
+class DescribeLifeCycleRulesResponse(AbstractModel):
+    """DescribeLifeCycleRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LifeCycleRules: 生命周期规则列表
+        :type LifeCycleRules: list of LifeCycleRule
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LifeCycleRules = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("LifeCycleRules") is not None:
+            self.LifeCycleRules = []
+            for item in params.get("LifeCycleRules"):
+                obj = LifeCycleRule()
+                obj._deserialize(item)
+                self.LifeCycleRules.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeMountPointRequest(AbstractModel):
     """DescribeMountPoint请求参数结构体
 
@@ -590,6 +932,92 @@ class DescribeMountPointsResponse(AbstractModel):
                 obj = MountPoint()
                 obj._deserialize(item)
                 self.MountPoints.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeResourceTagsRequest(AbstractModel):
+    """DescribeResourceTags请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FileSystemId: 文件系统ID
+        :type FileSystemId: str
+        """
+        self.FileSystemId = None
+
+
+    def _deserialize(self, params):
+        self.FileSystemId = params.get("FileSystemId")
+
+
+class DescribeResourceTagsResponse(AbstractModel):
+    """DescribeResourceTags返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Tags: 资源标签列表
+        :type Tags: list of Tag
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Tags = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRestoreTasksRequest(AbstractModel):
+    """DescribeRestoreTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FileSystemId: 文件系统ID
+        :type FileSystemId: str
+        """
+        self.FileSystemId = None
+
+
+    def _deserialize(self, params):
+        self.FileSystemId = params.get("FileSystemId")
+
+
+class DescribeRestoreTasksResponse(AbstractModel):
+    """DescribeRestoreTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RestoreTasks: 回热任务列表
+        :type RestoreTasks: list of RestoreTask
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RestoreTasks = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("RestoreTasks") is not None:
+            self.RestoreTasks = []
+            for item in params.get("RestoreTasks"):
+                obj = RestoreTask()
+                obj._deserialize(item)
+                self.RestoreTasks.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -688,6 +1116,48 @@ class FileSystem(AbstractModel):
         self.PosixAcl = params.get("PosixAcl")
 
 
+class LifeCycleRule(AbstractModel):
+    """生命周期规则
+
+    """
+
+    def __init__(self):
+        """
+        :param LifeCycleRuleId: 生命周期规则ID
+        :type LifeCycleRuleId: int
+        :param LifeCycleRuleName: 生命周期规则名称
+        :type LifeCycleRuleName: str
+        :param Path: 生命周期规则路径（目录或文件）
+        :type Path: str
+        :param Transitions: 生命周期规则转换列表
+        :type Transitions: list of Transition
+        :param Status: 生命周期规则状态（1：打开；2：关闭）
+        :type Status: int
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        """
+        self.LifeCycleRuleId = None
+        self.LifeCycleRuleName = None
+        self.Path = None
+        self.Transitions = None
+        self.Status = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.LifeCycleRuleId = params.get("LifeCycleRuleId")
+        self.LifeCycleRuleName = params.get("LifeCycleRuleName")
+        self.Path = params.get("Path")
+        if params.get("Transitions") is not None:
+            self.Transitions = []
+            for item in params.get("Transitions"):
+                obj = Transition()
+                obj._deserialize(item)
+                self.Transitions.append(obj)
+        self.Status = params.get("Status")
+        self.CreateTime = params.get("CreateTime")
+
+
 class ModifyAccessGroupRequest(AbstractModel):
     """ModifyAccessGroup请求参数结构体
 
@@ -715,6 +1185,45 @@ class ModifyAccessGroupRequest(AbstractModel):
 
 class ModifyAccessGroupResponse(AbstractModel):
     """ModifyAccessGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyAccessRulesRequest(AbstractModel):
+    """ModifyAccessRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AccessRules: 多个权限规则，上限为10
+        :type AccessRules: list of AccessRule
+        """
+        self.AccessRules = None
+
+
+    def _deserialize(self, params):
+        if params.get("AccessRules") is not None:
+            self.AccessRules = []
+            for item in params.get("AccessRules"):
+                obj = AccessRule()
+                obj._deserialize(item)
+                self.AccessRules.append(obj)
+
+
+class ModifyAccessRulesResponse(AbstractModel):
+    """ModifyAccessRules返回参数结构体
 
     """
 
@@ -770,6 +1279,45 @@ class ModifyFileSystemRequest(AbstractModel):
 
 class ModifyFileSystemResponse(AbstractModel):
     """ModifyFileSystem返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyLifeCycleRulesRequest(AbstractModel):
+    """ModifyLifeCycleRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LifeCycleRules: 多个生命周期规则，上限为10
+        :type LifeCycleRules: list of LifeCycleRule
+        """
+        self.LifeCycleRules = None
+
+
+    def _deserialize(self, params):
+        if params.get("LifeCycleRules") is not None:
+            self.LifeCycleRules = []
+            for item in params.get("LifeCycleRules"):
+                obj = LifeCycleRule()
+                obj._deserialize(item)
+                self.LifeCycleRules.append(obj)
+
+
+class ModifyLifeCycleRulesResponse(AbstractModel):
+    """ModifyLifeCycleRules返回参数结构体
 
     """
 
@@ -907,6 +1455,43 @@ class MountPoint(AbstractModel):
         self.AccessGroupIds = params.get("AccessGroupIds")
 
 
+class RestoreTask(AbstractModel):
+    """回热任务
+
+    """
+
+    def __init__(self):
+        """
+        :param RestoreTaskId: 回热任务ID
+        :type RestoreTaskId: int
+        :param FilePath: 回热任务文件路径
+        :type FilePath: str
+        :param Type: 回热任务类型（1：标准；2：极速；3：批量）
+        :type Type: int
+        :param Days: 指定恢复出的临时副本的有效时长（单位天）
+        :type Days: int
+        :param Status: 回热任务状态（1：绑定文件中；2：绑定文件完成；3：文件回热中；4：文件回热完成）
+        :type Status: int
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        """
+        self.RestoreTaskId = None
+        self.FilePath = None
+        self.Type = None
+        self.Days = None
+        self.Status = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.RestoreTaskId = params.get("RestoreTaskId")
+        self.FilePath = params.get("FilePath")
+        self.Type = params.get("Type")
+        self.Days = params.get("Days")
+        self.Status = params.get("Status")
+        self.CreateTime = params.get("CreateTime")
+
+
 class Tag(AbstractModel):
     """资源标签。
 
@@ -926,3 +1511,24 @@ class Tag(AbstractModel):
     def _deserialize(self, params):
         self.Key = params.get("Key")
         self.Value = params.get("Value")
+
+
+class Transition(AbstractModel):
+    """生命周期规则转换属性
+
+    """
+
+    def __init__(self):
+        """
+        :param Days: 触发时间（单位天）
+        :type Days: int
+        :param Type: 转换类型（1：归档；2：删除）
+        :type Type: int
+        """
+        self.Days = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Days = params.get("Days")
+        self.Type = params.get("Type")
