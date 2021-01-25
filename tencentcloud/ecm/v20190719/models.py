@@ -986,7 +986,7 @@ class CreateLoadBalancerRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EcmRegion: 区域。
+        :param EcmRegion: ECM区域，形如ap-xian-ecm。
         :type EcmRegion: str
         :param LoadBalancerType: 负载均衡实例的网络类型。目前只支持传入OPEN，表示公网属性。
         :type LoadBalancerType: str
@@ -1003,6 +1003,8 @@ class CreateLoadBalancerRequest(AbstractModel):
         :type InternetAccessible: :class:`tencentcloud.ecm.v20190719.models.LoadBalancerInternetAccessible`
         :param Tags: 标签。
         :type Tags: list of TagInfo
+        :param SecurityGroups: 安全组。
+        :type SecurityGroups: list of str
         """
         self.EcmRegion = None
         self.LoadBalancerType = None
@@ -1012,6 +1014,7 @@ class CreateLoadBalancerRequest(AbstractModel):
         self.Number = None
         self.InternetAccessible = None
         self.Tags = None
+        self.SecurityGroups = None
 
 
     def _deserialize(self, params):
@@ -1030,6 +1033,7 @@ class CreateLoadBalancerRequest(AbstractModel):
                 obj = TagInfo()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.SecurityGroups = params.get("SecurityGroups")
 
 
 class CreateLoadBalancerResponse(AbstractModel):
@@ -2868,6 +2872,8 @@ class DescribeLoadBalancersRequest(AbstractModel):
         :param Filters: 每次请求的`Filters`的上限为10，`Filter.Values`的上限为100。详细的过滤条件如下：
 tag-key - String - 是否必填：否 - （过滤条件）按照标签的键过滤。
         :type Filters: list of Filter
+        :param SecurityGroup: 安全组。
+        :type SecurityGroup: str
         """
         self.EcmRegion = None
         self.LoadBalancerIds = None
@@ -2879,6 +2885,7 @@ tag-key - String - 是否必填：否 - （过滤条件）按照标签的键过�
         self.WithBackend = None
         self.VpcId = None
         self.Filters = None
+        self.SecurityGroup = None
 
 
     def _deserialize(self, params):
@@ -2897,6 +2904,7 @@ tag-key - String - 是否必填：否 - （过滤条件）按照标签的键过�
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.SecurityGroup = params.get("SecurityGroup")
 
 
 class DescribeLoadBalancersResponse(AbstractModel):
@@ -5349,6 +5357,12 @@ class LoadBalancer(AbstractModel):
         :param NetworkAttributes: 负载均衡实例的网络属性。
 注意：此字段可能返回 null，表示取不到有效值。
         :type NetworkAttributes: :class:`tencentcloud.ecm.v20190719.models.LoadBalancerInternetAccessible`
+        :param SecureGroups: 安全组。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecureGroups: list of str
+        :param LoadBalancerPassToTarget: 后端机器是否放通来自ELB的流量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancerPassToTarget: bool
         """
         self.Region = None
         self.Position = None
@@ -5363,6 +5377,8 @@ class LoadBalancer(AbstractModel):
         self.Tags = None
         self.VipIsp = None
         self.NetworkAttributes = None
+        self.SecureGroups = None
+        self.LoadBalancerPassToTarget = None
 
 
     def _deserialize(self, params):
@@ -5388,6 +5404,8 @@ class LoadBalancer(AbstractModel):
         if params.get("NetworkAttributes") is not None:
             self.NetworkAttributes = LoadBalancerInternetAccessible()
             self.NetworkAttributes._deserialize(params.get("NetworkAttributes"))
+        self.SecureGroups = params.get("SecureGroups")
+        self.LoadBalancerPassToTarget = params.get("LoadBalancerPassToTarget")
 
 
 class LoadBalancerHealth(AbstractModel):
@@ -5912,10 +5930,13 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
         :type LoadBalancerName: str
         :param InternetChargeInfo: 网络计费及带宽相关参数
         :type InternetChargeInfo: :class:`tencentcloud.ecm.v20190719.models.LoadBalancerInternetAccessible`
+        :param LoadBalancerPassToTarget: Target是否放通来自ELB的流量。开启放通（true）：只验证ELB上的安全组；不开启放通（false）：需同时验证ELB和后端实例上的安全组。
+        :type LoadBalancerPassToTarget: bool
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
         self.InternetChargeInfo = None
+        self.LoadBalancerPassToTarget = None
 
 
     def _deserialize(self, params):
@@ -5924,6 +5945,7 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
         if params.get("InternetChargeInfo") is not None:
             self.InternetChargeInfo = LoadBalancerInternetAccessible()
             self.InternetChargeInfo._deserialize(params.get("InternetChargeInfo"))
+        self.LoadBalancerPassToTarget = params.get("LoadBalancerPassToTarget")
 
 
 class ModifyLoadBalancerAttributesResponse(AbstractModel):
@@ -8461,6 +8483,87 @@ class ServiceTemplateSpecification(AbstractModel):
     def _deserialize(self, params):
         self.ServiceId = params.get("ServiceId")
         self.ServiceGroupId = params.get("ServiceGroupId")
+
+
+class SetLoadBalancerSecurityGroupsRequest(AbstractModel):
+    """SetLoadBalancerSecurityGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerId: 负载均衡实例 ID
+        :type LoadBalancerId: str
+        :param SecurityGroups: 安全组ID构成的数组，一个负载均衡实例最多可绑定5个安全组，如果要解绑所有安全组，可不传此参数，或传入空数组
+        :type SecurityGroups: list of str
+        """
+        self.LoadBalancerId = None
+        self.SecurityGroups = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.SecurityGroups = params.get("SecurityGroups")
+
+
+class SetLoadBalancerSecurityGroupsResponse(AbstractModel):
+    """SetLoadBalancerSecurityGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class SetSecurityGroupForLoadbalancersRequest(AbstractModel):
+    """SetSecurityGroupForLoadbalancers请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoadBalancerIds: 负载均衡实例ID数组
+        :type LoadBalancerIds: list of str
+        :param SecurityGroup: 安全组ID，如 esg-12345678
+        :type SecurityGroup: str
+        :param OperationType: ADD 绑定安全组；
+DEL 解绑安全组
+        :type OperationType: str
+        """
+        self.LoadBalancerIds = None
+        self.SecurityGroup = None
+        self.OperationType = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerIds = params.get("LoadBalancerIds")
+        self.SecurityGroup = params.get("SecurityGroup")
+        self.OperationType = params.get("OperationType")
+
+
+class SetSecurityGroupForLoadbalancersResponse(AbstractModel):
+    """SetSecurityGroupForLoadbalancers返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class SimpleModule(AbstractModel):

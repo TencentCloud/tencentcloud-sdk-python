@@ -54,6 +54,116 @@ class AppStatisticsItem(AbstractModel):
         self.Date = params.get("Date")
 
 
+class ApplicationDataStatistics(AbstractModel):
+    """应用统计数据
+
+    """
+
+    def __init__(self):
+        """
+        :param BizId: 应用ID
+        :type BizId: int
+        :param DauDataNum: Dau统计项数目
+        :type DauDataNum: int
+        :param DauDataMainland: 大陆地区Dau统计数据，单位人
+        :type DauDataMainland: list of StatisticsItem
+        :param DauDataOversea: 海外地区Dau统计数据，单位人
+        :type DauDataOversea: list of StatisticsItem
+        :param DauDataSum: 大陆和海外地区Dau统计数据汇总，单位人
+        :type DauDataSum: list of StatisticsItem
+        :param DurationDataNum: 实时语音时长统计项数目
+        :type DurationDataNum: int
+        :param DurationDataMainland: 大陆地区实时语音时长统计数据，单位分钟
+        :type DurationDataMainland: list of StatisticsItem
+        :param DurationDataOversea: 海外地区实时语音时长统计数据，单位分钟
+        :type DurationDataOversea: list of StatisticsItem
+        :param DurationDataSum: 大陆和海外地区实时语音时长统计数据汇总，单位分钟
+        :type DurationDataSum: list of StatisticsItem
+        :param PcuDataNum: Pcu统计项数目
+        :type PcuDataNum: int
+        :param PcuDataMainland: 大陆地区Pcu统计数据，单位人
+        :type PcuDataMainland: list of StatisticsItem
+        :param PcuDataOversea: 海外地区Pcu统计数据，单位人
+        :type PcuDataOversea: list of StatisticsItem
+        :param PcuDataSum: 大陆和海外地区Pcu统计数据汇总，单位人
+        :type PcuDataSum: list of StatisticsItem
+        """
+        self.BizId = None
+        self.DauDataNum = None
+        self.DauDataMainland = None
+        self.DauDataOversea = None
+        self.DauDataSum = None
+        self.DurationDataNum = None
+        self.DurationDataMainland = None
+        self.DurationDataOversea = None
+        self.DurationDataSum = None
+        self.PcuDataNum = None
+        self.PcuDataMainland = None
+        self.PcuDataOversea = None
+        self.PcuDataSum = None
+
+
+    def _deserialize(self, params):
+        self.BizId = params.get("BizId")
+        self.DauDataNum = params.get("DauDataNum")
+        if params.get("DauDataMainland") is not None:
+            self.DauDataMainland = []
+            for item in params.get("DauDataMainland"):
+                obj = StatisticsItem()
+                obj._deserialize(item)
+                self.DauDataMainland.append(obj)
+        if params.get("DauDataOversea") is not None:
+            self.DauDataOversea = []
+            for item in params.get("DauDataOversea"):
+                obj = StatisticsItem()
+                obj._deserialize(item)
+                self.DauDataOversea.append(obj)
+        if params.get("DauDataSum") is not None:
+            self.DauDataSum = []
+            for item in params.get("DauDataSum"):
+                obj = StatisticsItem()
+                obj._deserialize(item)
+                self.DauDataSum.append(obj)
+        self.DurationDataNum = params.get("DurationDataNum")
+        if params.get("DurationDataMainland") is not None:
+            self.DurationDataMainland = []
+            for item in params.get("DurationDataMainland"):
+                obj = StatisticsItem()
+                obj._deserialize(item)
+                self.DurationDataMainland.append(obj)
+        if params.get("DurationDataOversea") is not None:
+            self.DurationDataOversea = []
+            for item in params.get("DurationDataOversea"):
+                obj = StatisticsItem()
+                obj._deserialize(item)
+                self.DurationDataOversea.append(obj)
+        if params.get("DurationDataSum") is not None:
+            self.DurationDataSum = []
+            for item in params.get("DurationDataSum"):
+                obj = StatisticsItem()
+                obj._deserialize(item)
+                self.DurationDataSum.append(obj)
+        self.PcuDataNum = params.get("PcuDataNum")
+        if params.get("PcuDataMainland") is not None:
+            self.PcuDataMainland = []
+            for item in params.get("PcuDataMainland"):
+                obj = StatisticsItem()
+                obj._deserialize(item)
+                self.PcuDataMainland.append(obj)
+        if params.get("PcuDataOversea") is not None:
+            self.PcuDataOversea = []
+            for item in params.get("PcuDataOversea"):
+                obj = StatisticsItem()
+                obj._deserialize(item)
+                self.PcuDataOversea.append(obj)
+        if params.get("PcuDataSum") is not None:
+            self.PcuDataSum = []
+            for item in params.get("PcuDataSum"):
+                obj = StatisticsItem()
+                obj._deserialize(item)
+                self.PcuDataSum.append(obj)
+
+
 class CreateAppRequest(AbstractModel):
     """CreateApp请求参数结构体
 
@@ -210,6 +320,54 @@ class DescribeAppStatisticsResponse(AbstractModel):
                 obj = AppStatisticsItem()
                 obj._deserialize(item)
                 self.AppStatistics.append(obj)
+
+
+class DescribeApplicationDataRequest(AbstractModel):
+    """DescribeApplicationData请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BizId: 应用ID
+        :type BizId: int
+        :param StartDate: 数据开始时间，格式为 年-月-日，如: 2018-07-13
+        :type StartDate: str
+        :param EndDate: 数据结束时间，格式为 年-月-日，如: 2018-07-13
+        :type EndDate: str
+        """
+        self.BizId = None
+        self.StartDate = None
+        self.EndDate = None
+
+
+    def _deserialize(self, params):
+        self.BizId = params.get("BizId")
+        self.StartDate = params.get("StartDate")
+        self.EndDate = params.get("EndDate")
+
+
+class DescribeApplicationDataResponse(AbstractModel):
+    """DescribeApplicationData返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 应用统计数据
+        :type Data: :class:`tencentcloud.gme.v20180711.models.ApplicationDataStatistics`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = ApplicationDataStatistics()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
 
 
 class DescribeFilterResultListRequest(AbstractModel):
@@ -806,6 +964,27 @@ class ScanVoiceResult(AbstractModel):
     def _deserialize(self, params):
         self.DataId = params.get("DataId")
         self.TaskId = params.get("TaskId")
+
+
+class StatisticsItem(AbstractModel):
+    """用量数据单元
+
+    """
+
+    def __init__(self):
+        """
+        :param StatDate: 日期，格式为年-月-日，如2018-07-13
+        :type StatDate: str
+        :param Data: 统计值
+        :type Data: int
+        """
+        self.StatDate = None
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        self.StatDate = params.get("StatDate")
+        self.Data = params.get("Data")
 
 
 class Tag(AbstractModel):

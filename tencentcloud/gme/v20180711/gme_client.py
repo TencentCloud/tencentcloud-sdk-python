@@ -82,6 +82,34 @@ class GmeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeApplicationData(self, request):
+        """本接口(DescribeApplicationData)用于获取数据详情信息，最多可拉取最近90天的数据。
+
+        :param request: Request instance for DescribeApplicationData.
+        :type request: :class:`tencentcloud.gme.v20180711.models.DescribeApplicationDataRequest`
+        :rtype: :class:`tencentcloud.gme.v20180711.models.DescribeApplicationDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeApplicationData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeApplicationDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeFilterResult(self, request):
         """根据应用ID和文件ID查询识别结果
 

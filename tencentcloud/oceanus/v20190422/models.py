@@ -546,6 +546,9 @@ class JobV1(AbstractModel):
         :param SchedulerType: 作业所在集群类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type SchedulerType: int
+        :param ClusterStatus: 作业所在集群状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterStatus: int
         """
         self.JobId = None
         self.Region = None
@@ -573,6 +576,7 @@ class JobV1(AbstractModel):
         self.ClusterId = None
         self.WebUIUrl = None
         self.SchedulerType = None
+        self.ClusterStatus = None
 
 
     def _deserialize(self, params):
@@ -602,6 +606,7 @@ class JobV1(AbstractModel):
         self.ClusterId = params.get("ClusterId")
         self.WebUIUrl = params.get("WebUIUrl")
         self.SchedulerType = params.get("SchedulerType")
+        self.ClusterStatus = params.get("ClusterStatus")
 
 
 class Property(AbstractModel):

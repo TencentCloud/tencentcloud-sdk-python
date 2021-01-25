@@ -3189,6 +3189,62 @@ class EcmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def SetLoadBalancerSecurityGroups(self, request):
+        """设置负载均衡实例的安全组。
+
+        :param request: Request instance for SetLoadBalancerSecurityGroups.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.SetLoadBalancerSecurityGroupsRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.SetLoadBalancerSecurityGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SetLoadBalancerSecurityGroups", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetLoadBalancerSecurityGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SetSecurityGroupForLoadbalancers(self, request):
+        """绑定或解绑一个安全组到多个负载均衡实例。
+
+        :param request: Request instance for SetSecurityGroupForLoadbalancers.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.SetSecurityGroupForLoadbalancersRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.SetSecurityGroupForLoadbalancersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SetSecurityGroupForLoadbalancers", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetSecurityGroupForLoadbalancersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def StartInstances(self, request):
         """只有状态为STOPPED的实例才可以进行此操作；接口调用成功时，实例会进入STARTING状态；启动实例成功时，实例会进入RUNNING状态。
 

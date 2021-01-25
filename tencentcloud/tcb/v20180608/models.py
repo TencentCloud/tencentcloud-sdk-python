@@ -781,7 +781,7 @@ class CreateCloudBaseRunServerVersionRequest(AbstractModel):
         :type EnableUnion: bool
         :param OperatorRemark: 操作备注
         :type OperatorRemark: str
-        :param ServerPath: 服务路劲
+        :param ServerPath: 服务路径
         :type ServerPath: str
         :param ImageReuseKey: 镜像复用的key
         :type ImageReuseKey: str
@@ -2302,6 +2302,50 @@ class DescribeQuotaDataResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSmsQuotasRequest(AbstractModel):
+    """DescribeSmsQuotas请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境ID
+        :type EnvId: str
+        """
+        self.EnvId = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+
+
+class DescribeSmsQuotasResponse(AbstractModel):
+    """DescribeSmsQuotas返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SmsFreeQuotaList: 短信免费量信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SmsFreeQuotaList: list of SmsFreeQuota
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SmsFreeQuotaList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SmsFreeQuotaList") is not None:
+            self.SmsFreeQuotaList = []
+            for item in params.get("SmsFreeQuotaList"):
+                obj = SmsFreeQuota()
+                obj._deserialize(item)
+                self.SmsFreeQuotaList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DestroyEnvRequest(AbstractModel):
     """DestroyEnv请求参数结构体
 
@@ -3227,6 +3271,44 @@ class ReinstateEnvResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class SmsFreeQuota(AbstractModel):
+    """短信免费量
+
+    """
+
+    def __init__(self):
+        """
+        :param FreeQuota: 免费量总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FreeQuota: int
+        :param TotalUsedQuota: 共计已使用总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalUsedQuota: int
+        :param CycleStart: 免费周期起点，0000-00-00 00:00:00 形式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CycleStart: str
+        :param CycleEnd: 免费周期终点，0000-00-00 00:00:00 形式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CycleEnd: str
+        :param TodayUsedQuota: 今天已使用总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TodayUsedQuota: int
+        """
+        self.FreeQuota = None
+        self.TotalUsedQuota = None
+        self.CycleStart = None
+        self.CycleEnd = None
+        self.TodayUsedQuota = None
+
+
+    def _deserialize(self, params):
+        self.FreeQuota = params.get("FreeQuota")
+        self.TotalUsedQuota = params.get("TotalUsedQuota")
+        self.CycleStart = params.get("CycleStart")
+        self.CycleEnd = params.get("CycleEnd")
+        self.TodayUsedQuota = params.get("TodayUsedQuota")
 
 
 class StaticStorageInfo(AbstractModel):

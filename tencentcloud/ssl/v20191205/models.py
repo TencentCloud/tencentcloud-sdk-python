@@ -268,6 +268,9 @@ class Certificates(AbstractModel):
         :param Deployable: 是否可部署。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Deployable: bool
+        :param Tags: 标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tags
         """
         self.OwnerUin = None
         self.ProjectId = None
@@ -298,6 +301,7 @@ class Certificates(AbstractModel):
         self.ProjectInfo = None
         self.BoundResource = None
         self.Deployable = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -334,6 +338,12 @@ class Certificates(AbstractModel):
             self.ProjectInfo._deserialize(params.get("ProjectInfo"))
         self.BoundResource = params.get("BoundResource")
         self.Deployable = params.get("Deployable")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tags()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class CheckCertificateChainRequest(AbstractModel):
@@ -673,6 +683,9 @@ class DescribeCertificateDetailResponse(AbstractModel):
         :param Deployable: 是否可部署。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Deployable: bool
+        :param Tags: 关联标签列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tags
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -709,6 +722,7 @@ class DescribeCertificateDetailResponse(AbstractModel):
         self.SubmittedData = None
         self.RenewAble = None
         self.Deployable = None
+        self.Tags = None
         self.RequestId = None
 
 
@@ -752,6 +766,12 @@ class DescribeCertificateDetailResponse(AbstractModel):
             self.SubmittedData._deserialize(params.get("SubmittedData"))
         self.RenewAble = params.get("RenewAble")
         self.Deployable = params.get("Deployable")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tags()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -936,6 +956,9 @@ class DescribeCertificateResponse(AbstractModel):
         :param Deployable: 是否可部署。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Deployable: bool
+        :param Tags: 标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tags
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -970,6 +993,7 @@ class DescribeCertificateResponse(AbstractModel):
         self.RenewAble = None
         self.SubmittedData = None
         self.Deployable = None
+        self.Tags = None
         self.RequestId = None
 
 
@@ -1011,6 +1035,12 @@ class DescribeCertificateResponse(AbstractModel):
             self.SubmittedData = SubmittedData()
             self.SubmittedData._deserialize(params.get("SubmittedData"))
         self.Deployable = params.get("Deployable")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tags()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1793,6 +1823,27 @@ class SubmittedData(AbstractModel):
         self.ContactEmail = params.get("ContactEmail")
         self.ContactPosition = params.get("ContactPosition")
         self.VerifyType = params.get("VerifyType")
+
+
+class Tags(AbstractModel):
+    """标签
+
+    """
+
+    def __init__(self):
+        """
+        :param TagKey: 标签键
+        :type TagKey: str
+        :param TagValue: 标签值
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
 
 
 class UploadCertificateRequest(AbstractModel):

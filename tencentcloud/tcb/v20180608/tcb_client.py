@@ -810,6 +810,37 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeSmsQuotas(self, request):
+        """查询后付费短信资源量
+        1 有免费包的返回SmsFreeQuota结构所有字段
+        2 没有免费包，有付费包，付费返回复用SmsFreeQuota结构，其中只有 TodayUsedQuota 字段有效
+        3 都没有返回为空数组
+
+        :param request: Request instance for DescribeSmsQuotas.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeSmsQuotasRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeSmsQuotasResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSmsQuotas", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSmsQuotasResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DestroyEnv(self, request):
         """销毁环境
 

@@ -1507,7 +1507,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeDatabases(self, request):
-        """本接口(DescribeDatabases)用于查询云数据库实例的数据库信息。
+        """本接口(DescribeDatabases)用于查询云数据库实例的数据库信息，仅支持主实例和灾备实例，不支持只读实例。
 
         :param request: Request instance for DescribeDatabases.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDatabasesRequest`
@@ -1983,7 +1983,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeTables(self, request):
-        """本接口(DescribeTables)用于查询云数据库实例的数据库表信息。
+        """本接口(DescribeTables)用于查询云数据库实例的数据库表信息，仅支持主实例和灾备实例，不支持只读实例。
 
         :param request: Request instance for DescribeTables.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeTablesRequest`

@@ -7141,32 +7141,32 @@ class DescribeNetworkAclsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param NetworkAclIds: 网络ACL实例ID数组。形如：[acl-12345678]。每次请求的实例的上限为100。参数不支持同时指定NetworkAclIds和Filters。
-        :type NetworkAclIds: list of str
         :param Filters: 过滤条件，参数不支持同时指定NetworkAclIds和Filters。
 <li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-12345678。</li>
 <li>network-acl-id - String - （过滤条件）网络ACL实例ID，形如：acl-12345678。</li>
 <li>network-acl-name - String - （过滤条件）网络ACL实例名称。</li>
         :type Filters: list of Filter
+        :param NetworkAclIds: 网络ACL实例ID数组。形如：[acl-12345678]。每次请求的实例的上限为100。参数不支持同时指定NetworkAclIds和Filters。
+        :type NetworkAclIds: list of str
         :param Offset: 偏移量，默认为0。
         :type Offset: int
         :param Limit: 返回数量，默认为20，最小值为1，最大值为100。
         :type Limit: int
         """
-        self.NetworkAclIds = None
         self.Filters = None
+        self.NetworkAclIds = None
         self.Offset = None
         self.Limit = None
 
 
     def _deserialize(self, params):
-        self.NetworkAclIds = params.get("NetworkAclIds")
         if params.get("Filters") is not None:
             self.Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.NetworkAclIds = params.get("NetworkAclIds")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
 
