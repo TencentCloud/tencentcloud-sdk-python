@@ -2579,6 +2579,71 @@ req_id：请求id。
         self.RequestId = params.get("RequestId")
 
 
+class DescribePluginsRequest(AbstractModel):
+    """DescribePlugins请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PluginIds: 要查询的插件列表。
+        :type PluginIds: list of str
+        :param PluginName: 要查询的插件名称。
+        :type PluginName: str
+        :param PluginType: 要查询的插件类型。
+        :type PluginType: str
+        :param Limit: 返回数量，默认为 20，最大值为 100。
+        :type Limit: int
+        :param Offset: 偏移量，默认为 0。
+        :type Offset: int
+        :param Filters: 过滤条件。预留字段，目前不支持过滤。
+        :type Filters: list of Filter
+        """
+        self.PluginIds = None
+        self.PluginName = None
+        self.PluginType = None
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.PluginIds = params.get("PluginIds")
+        self.PluginName = params.get("PluginName")
+        self.PluginType = params.get("PluginType")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class DescribePluginsResponse(AbstractModel):
+    """DescribePlugins返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 插件详情。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.PluginSummary`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = PluginSummary()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeServiceEnvironmentListRequest(AbstractModel):
     """DescribeServiceEnvironmentList请求参数结构体
 
@@ -4580,6 +4645,74 @@ class PathMapping(AbstractModel):
     def _deserialize(self, params):
         self.Path = params.get("Path")
         self.Environment = params.get("Environment")
+
+
+class Plugin(AbstractModel):
+    """API网关插件详情。
+
+    """
+
+    def __init__(self):
+        """
+        :param PluginId: 插件ID。
+        :type PluginId: str
+        :param PluginName: 插件名称。
+        :type PluginName: str
+        :param PluginType: 插件类型。
+        :type PluginType: str
+        :param PluginData: 插件定义语句。
+        :type PluginData: str
+        :param Description: 插件描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param CreatedTime: 插件创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
+        :type CreatedTime: str
+        :param ModifiedTime: 插件修改时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
+        :type ModifiedTime: str
+        """
+        self.PluginId = None
+        self.PluginName = None
+        self.PluginType = None
+        self.PluginData = None
+        self.Description = None
+        self.CreatedTime = None
+        self.ModifiedTime = None
+
+
+    def _deserialize(self, params):
+        self.PluginId = params.get("PluginId")
+        self.PluginName = params.get("PluginName")
+        self.PluginType = params.get("PluginType")
+        self.PluginData = params.get("PluginData")
+        self.Description = params.get("Description")
+        self.CreatedTime = params.get("CreatedTime")
+        self.ModifiedTime = params.get("ModifiedTime")
+
+
+class PluginSummary(AbstractModel):
+    """插件列表详情。
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 插件个数。
+        :type TotalCount: int
+        :param PluginSet: 插件详情。
+        :type PluginSet: list of Plugin
+        """
+        self.TotalCount = None
+        self.PluginSet = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("PluginSet") is not None:
+            self.PluginSet = []
+            for item in params.get("PluginSet"):
+                obj = Plugin()
+                obj._deserialize(item)
+                self.PluginSet.append(obj)
 
 
 class ReleaseService(AbstractModel):

@@ -392,6 +392,8 @@ class ImageItem(AbstractModel):
         :type ThumbUrl: str
         :param Vendor: 图片供应商
         :type Vendor: str
+        :param Keywords: 图片关键词
+        :type Keywords: str
         """
         self.ImageId = None
         self.Title = None
@@ -399,6 +401,7 @@ class ImageItem(AbstractModel):
         self.PreviewUrl = None
         self.ThumbUrl = None
         self.Vendor = None
+        self.Keywords = None
 
 
     def _deserialize(self, params):
@@ -408,6 +411,7 @@ class ImageItem(AbstractModel):
         self.PreviewUrl = params.get("PreviewUrl")
         self.ThumbUrl = params.get("ThumbUrl")
         self.Vendor = params.get("Vendor")
+        self.Keywords = params.get("Keywords")
 
 
 class ImageMarshal(AbstractModel):

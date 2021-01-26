@@ -80,6 +80,43 @@ class Alias(AbstractModel):
         self.ModTime = params.get("ModTime")
 
 
+class AsyncEvent(AbstractModel):
+    """异步事件
+
+    """
+
+    def __init__(self):
+        """
+        :param InvokeRequestId: 调用请求id
+        :type InvokeRequestId: str
+        :param InvokeType: 调用类型
+        :type InvokeType: str
+        :param Qualifier: 函数版本
+        :type Qualifier: str
+        :param Status: 事件状态
+        :type Status: str
+        :param StartTime: 调用开始时间，格式: "%Y-%m-%d %H:%M:%S.%f"
+        :type StartTime: str
+        :param EndTime: 调用结束时间，格式: "%Y-%m-%d %H:%M:%S.%f"
+        :type EndTime: str
+        """
+        self.InvokeRequestId = None
+        self.InvokeType = None
+        self.Qualifier = None
+        self.Status = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.InvokeRequestId = params.get("InvokeRequestId")
+        self.InvokeType = params.get("InvokeType")
+        self.Qualifier = params.get("Qualifier")
+        self.Status = params.get("Status")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+
+
 class CfsConfig(AbstractModel):
     """文件系统(cfs)配置描述
 
@@ -2026,6 +2063,101 @@ class ListAliasesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ListAsyncEventsRequest(AbstractModel):
+    """ListAsyncEvents请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FunctionName: 函数名称
+        :type FunctionName: str
+        :param Namespace: 命名空间
+        :type Namespace: str
+        :param Qualifier: 过滤条件，函数版本
+        :type Qualifier: str
+        :param InvokeType: 过滤条件，调用类型列表
+        :type InvokeType: list of str
+        :param Status: 过滤条件，事件状态列表
+        :type Status: list of str
+        :param StartTimeInterval: 过滤条件，开始执行时间左闭右开区间
+        :type StartTimeInterval: :class:`tencentcloud.scf.v20180416.models.TimeInterval`
+        :param EndTimeInterval: 过滤条件，结束执行时间左闭右开区间
+        :type EndTimeInterval: :class:`tencentcloud.scf.v20180416.models.TimeInterval`
+        :param Order: 可选值 ASC 和 DESC，默认 DESC
+        :type Order: str
+        :param Orderby: 可选值 StartTime 和 EndTime，默认值 StartTime
+        :type Orderby: str
+        :param Offset: 数据偏移量，默认值为 0
+        :type Offset: int
+        :param Limit: 返回数据长度，默认值为 20，最大值 100
+        :type Limit: int
+        :param InvokeRequestId: 过滤条件，事件调用请求id
+        :type InvokeRequestId: str
+        """
+        self.FunctionName = None
+        self.Namespace = None
+        self.Qualifier = None
+        self.InvokeType = None
+        self.Status = None
+        self.StartTimeInterval = None
+        self.EndTimeInterval = None
+        self.Order = None
+        self.Orderby = None
+        self.Offset = None
+        self.Limit = None
+        self.InvokeRequestId = None
+
+
+    def _deserialize(self, params):
+        self.FunctionName = params.get("FunctionName")
+        self.Namespace = params.get("Namespace")
+        self.Qualifier = params.get("Qualifier")
+        self.InvokeType = params.get("InvokeType")
+        self.Status = params.get("Status")
+        if params.get("StartTimeInterval") is not None:
+            self.StartTimeInterval = TimeInterval()
+            self.StartTimeInterval._deserialize(params.get("StartTimeInterval"))
+        if params.get("EndTimeInterval") is not None:
+            self.EndTimeInterval = TimeInterval()
+            self.EndTimeInterval._deserialize(params.get("EndTimeInterval"))
+        self.Order = params.get("Order")
+        self.Orderby = params.get("Orderby")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.InvokeRequestId = params.get("InvokeRequestId")
+
+
+class ListAsyncEventsResponse(AbstractModel):
+    """ListAsyncEvents返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 满足过滤条件的事件总数
+        :type TotalCount: int
+        :param EventList: 异步事件列表
+        :type EventList: list of AsyncEvent
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.EventList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("EventList") is not None:
+            self.EventList = []
+            for item in params.get("EventList"):
+                obj = AsyncEvent()
+                obj._deserialize(item)
+                self.EventList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class ListFunctionsRequest(AbstractModel):
     """ListFunctions请求参数结构体
 
@@ -2927,6 +3059,69 @@ class Tag(AbstractModel):
     def _deserialize(self, params):
         self.Key = params.get("Key")
         self.Value = params.get("Value")
+
+
+class TerminateAsyncEventRequest(AbstractModel):
+    """TerminateAsyncEvent请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FunctionName: 函数名称
+        :type FunctionName: str
+        :param InvokeRequestId: 终止的调用请求id
+        :type InvokeRequestId: str
+        :param Namespace: 命名空间
+        :type Namespace: str
+        """
+        self.FunctionName = None
+        self.InvokeRequestId = None
+        self.Namespace = None
+
+
+    def _deserialize(self, params):
+        self.FunctionName = params.get("FunctionName")
+        self.InvokeRequestId = params.get("InvokeRequestId")
+        self.Namespace = params.get("Namespace")
+
+
+class TerminateAsyncEventResponse(AbstractModel):
+    """TerminateAsyncEvent返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class TimeInterval(AbstractModel):
+    """左闭右开时间区间，包括起始时间和结束时间，格式为"%Y-%m-%d %H:%M:%S"
+
+    """
+
+    def __init__(self):
+        """
+        :param Start: 起始时间（包括在内），格式"%Y-%m-%d %H:%M:%S"
+        :type Start: str
+        :param End: 结束时间（不包括在内），格式"%Y-%m-%d %H:%M:%S"
+        :type End: str
+        """
+        self.Start = None
+        self.End = None
+
+
+    def _deserialize(self, params):
+        self.Start = params.get("Start")
+        self.End = params.get("End")
 
 
 class Trigger(AbstractModel):

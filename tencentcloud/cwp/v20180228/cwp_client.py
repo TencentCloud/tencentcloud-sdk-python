@@ -1006,6 +1006,34 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeExportMachines(self, request):
+        """本接口 (DescribeExportMachines) 用于导出区域主机列表。
+
+        :param request: Request instance for DescribeExportMachines.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeExportMachinesRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeExportMachinesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeExportMachines", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeExportMachinesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeHistoryAccounts(self, request):
         """本接口 (DescribeHistoryAccounts) 用于获取帐号变更历史列表数据。
 
@@ -1118,6 +1146,34 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeMachineList(self, request):
+        """本接口 (DescribeMachineList) 用于网页防篡改获取区域主机列表。
+
+        :param request: Request instance for DescribeMachineList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMachineListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeMachineListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMachineList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMachineListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeMachines(self, request):
         """本接口 (DescribeMachines) 用于获取区域主机列表。
 
@@ -1160,6 +1216,34 @@ class CwpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMaliciousRequestsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeMalwareInfo(self, request):
+        """查看恶意文件详情
+
+        :param request: Request instance for DescribeMalwareInfo.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMalwareInfoRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeMalwareInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMalwareInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMalwareInfoResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1552,6 +1636,34 @@ class CwpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeReverseShellRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeScanMalwareSchedule(self, request):
+        """查询木马扫描进度
+
+        :param request: Request instance for DescribeScanMalwareSchedule.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeScanMalwareScheduleRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeScanMalwareScheduleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeScanMalwareSchedule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeScanMalwareScheduleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2322,6 +2434,34 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ExportTasks(self, request):
+        """用于异步导出数据量大的日志文件
+
+        :param request: Request instance for ExportTasks.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.ExportTasksRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.ExportTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ExportTasks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ExportTasksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def IgnoreImpactedHosts(self, request):
         """本接口 (IgnoreImpactedHosts) 用于忽略漏洞。
 
@@ -2476,6 +2616,34 @@ class CwpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLoginWhiteListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyMalwareTimingScanSettings(self, request):
+        """定时扫描设置
+
+        :param request: Request instance for ModifyMalwareTimingScanSettings.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyMalwareTimingScanSettingsRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.ModifyMalwareTimingScanSettingsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyMalwareTimingScanSettings", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyMalwareTimingScanSettingsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

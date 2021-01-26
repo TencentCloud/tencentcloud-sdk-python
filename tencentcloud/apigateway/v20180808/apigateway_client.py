@@ -766,6 +766,34 @@ class ApigatewayClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePlugins(self, request):
+        """展示插件列表和详情，支持分页，支持按照插件类型查询，支持按照插件ID批量查询，支持按照插件名称查询。
+
+        :param request: Request instance for DescribePlugins.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribePluginsRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.DescribePluginsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePlugins", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePluginsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeService(self, request):
         """本接口（DescribeService）用于查询一个服务的详细信息、包括服务的描述、域名、协议、创建时间、发布情况等信息。
 

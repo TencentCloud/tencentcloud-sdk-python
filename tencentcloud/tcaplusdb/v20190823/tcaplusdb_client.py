@@ -670,6 +670,62 @@ class TcaplusdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DisableRestProxy(self, request):
+        """当restful api为关闭状态时，可以通过此接口关闭restful api
+
+        :param request: Request instance for DisableRestProxy.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DisableRestProxyRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.DisableRestProxyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DisableRestProxy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DisableRestProxyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def EnableRestProxy(self, request):
+        """当restful api为关闭状态时，可以通过此接口开启restful apu
+
+        :param request: Request instance for EnableRestProxy.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.EnableRestProxyRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.EnableRestProxyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("EnableRestProxy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EnableRestProxyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyClusterMachine(self, request):
         """修改独占集群机器
 

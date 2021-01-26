@@ -82,6 +82,62 @@ class MgobeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePlayer(self, request):
+        """该接口用于查询玩家信息。支持两种用法，当OpenId不传的时候，PlayerId必传，传入PlayerId可以查询当前PlayerId的玩家信息，当OpenId传入的时候，PlayerId可不传，按照OpenId查询玩家信息。
+
+        :param request: Request instance for DescribePlayer.
+        :type request: :class:`tencentcloud.mgobe.v20201014.models.DescribePlayerRequest`
+        :rtype: :class:`tencentcloud.mgobe.v20201014.models.DescribePlayerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePlayer", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePlayerResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRoom(self, request):
+        """该接口用于查询房间信息。支持两种用法，当房间Id不传的时候，玩家Id必传，传入玩家Id可以查询当前玩家所在的房间信息，当房间Id传入的时候，玩家Id可不传，按照房间Id查询房间信息。
+
+        :param request: Request instance for DescribeRoom.
+        :type request: :class:`tencentcloud.mgobe.v20201014.models.DescribeRoomRequest`
+        :rtype: :class:`tencentcloud.mgobe.v20201014.models.DescribeRoomResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRoom", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRoomResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DismissRoom(self, request):
         """通过game_id、room_id解散房间
 

@@ -1468,6 +1468,90 @@ class DescribeUinInWhitelistResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DisableRestProxyRequest(AbstractModel):
+    """DisableRestProxy请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 对应appid
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+
+
+class DisableRestProxyResponse(AbstractModel):
+    """DisableRestProxy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RestProxyStatus: RestProxy的状态，0为关闭，1为开启中，2为开启，3为关闭中
+        :type RestProxyStatus: int
+        :param TaskId: TaskId由 AppInstanceId-taskId 组成，以区分不同集群的任务
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RestProxyStatus = None
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RestProxyStatus = params.get("RestProxyStatus")
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class EnableRestProxyRequest(AbstractModel):
+    """EnableRestProxy请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 对应于appid
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+
+
+class EnableRestProxyResponse(AbstractModel):
+    """EnableRestProxy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RestProxyStatus: RestProxy的状态，0为关闭，1为开启中，2为开启，3为关闭中
+        :type RestProxyStatus: int
+        :param TaskId: TaskId由 AppInstanceId-taskId 组成，以区分不同集群的任务
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RestProxyStatus = None
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RestProxyStatus = params.get("RestProxyStatus")
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class ErrorInfo(AbstractModel):
     """描述每个实例（应用，大区或表）处理过程中可能出现的错误详情。
 

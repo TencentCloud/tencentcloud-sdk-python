@@ -2145,7 +2145,7 @@ class CreateInvoiceRequest(AbstractModel):
         :type Discount: int
         :param StoreNo: 门店编码
         :type StoreNo: str
-        :param InvoiceChannel: 开票渠道。0：线上渠道，1：线下渠道。不填默认为线上渠道
+        :param InvoiceChannel: 开票渠道。0：APP渠道，1：线下渠道，2：小程序渠道。不填默认为APP渠道
         :type InvoiceChannel: int
         """
         self.InvoicePlatformId = None

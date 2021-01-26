@@ -1157,6 +1157,10 @@ class CreateClusterNodePoolRequest(AbstractModel):
         :type Labels: list of Label
         :param Taints: Taints互斥
         :type Taints: list of Taint
+        :param NodePoolOs: 节点池os
+        :type NodePoolOs: str
+        :param OsCustomizeType: 容器的镜像版本，"DOCKER_CUSTOMIZE"(容器定制版),"GENERAL"(普通版本，默认值)
+        :type OsCustomizeType: str
         """
         self.ClusterId = None
         self.AutoScalingGroupPara = None
@@ -1166,6 +1170,8 @@ class CreateClusterNodePoolRequest(AbstractModel):
         self.Name = None
         self.Labels = None
         self.Taints = None
+        self.NodePoolOs = None
+        self.OsCustomizeType = None
 
 
     def _deserialize(self, params):
@@ -1189,6 +1195,8 @@ class CreateClusterNodePoolRequest(AbstractModel):
                 obj = Taint()
                 obj._deserialize(item)
                 self.Taints.append(obj)
+        self.NodePoolOs = params.get("NodePoolOs")
+        self.OsCustomizeType = params.get("OsCustomizeType")
 
 
 class CreateClusterNodePoolResponse(AbstractModel):

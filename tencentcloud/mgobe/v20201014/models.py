@@ -112,6 +112,102 @@ class ChangeRoomPlayerStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribePlayerRequest(AbstractModel):
+    """DescribePlayer请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GameId: 游戏资源Id。
+        :type GameId: str
+        :param OpenId: 玩家OpenId。
+        :type OpenId: str
+        :param PlayerId: 玩家PlayerId，由后台分配，当OpenId不传的时候，PlayerId必传，传入PlayerId可以查询当前PlayerId的玩家信息，当OpenId传入的时候，PlayerId可不传，按照OpenId查询玩家信息。
+        :type PlayerId: str
+        """
+        self.GameId = None
+        self.OpenId = None
+        self.PlayerId = None
+
+
+    def _deserialize(self, params):
+        self.GameId = params.get("GameId")
+        self.OpenId = params.get("OpenId")
+        self.PlayerId = params.get("PlayerId")
+
+
+class DescribePlayerResponse(AbstractModel):
+    """DescribePlayer返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Player: 玩家信息。
+        :type Player: :class:`tencentcloud.mgobe.v20201014.models.Player`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Player = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Player") is not None:
+            self.Player = Player()
+            self.Player._deserialize(params.get("Player"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRoomRequest(AbstractModel):
+    """DescribeRoom请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GameId: 游戏资源Id。
+        :type GameId: str
+        :param PlayerId: 玩家Id。当房间Id不传的时候，玩家Id必传，传入玩家Id可以查询当前玩家所在的房间信息，当房间Id传入的时候，优先按照房间Id查询房间信息。
+        :type PlayerId: str
+        :param RoomId: 房间Id。
+        :type RoomId: str
+        """
+        self.GameId = None
+        self.PlayerId = None
+        self.RoomId = None
+
+
+    def _deserialize(self, params):
+        self.GameId = params.get("GameId")
+        self.PlayerId = params.get("PlayerId")
+        self.RoomId = params.get("RoomId")
+
+
+class DescribeRoomResponse(AbstractModel):
+    """DescribeRoom返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Room: 房间信息。
+        :type Room: :class:`tencentcloud.mgobe.v20201014.models.Room`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Room = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Room") is not None:
+            self.Room = Room()
+            self.Room._deserialize(params.get("Room"))
+        self.RequestId = params.get("RequestId")
+
+
 class DismissRoomRequest(AbstractModel):
     """DismissRoom请求参数结构体
 
