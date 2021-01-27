@@ -373,14 +373,18 @@ class DescribeMatchCodesRequest(AbstractModel):
         :type Offset: int
         :param Limit: 每页数量
         :type Limit: int
+        :param MatchCode: 搜索的字符串
+        :type MatchCode: str
         """
         self.Offset = None
         self.Limit = None
+        self.MatchCode = None
 
 
     def _deserialize(self, params):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.MatchCode = params.get("MatchCode")
 
 
 class DescribeMatchCodesResponse(AbstractModel):
@@ -766,7 +770,7 @@ class DescribeTokenResponse(AbstractModel):
 
 
 class MTicket(AbstractModel):
-    """matchCode和TicketId组合结构
+    """matchCode和匹配票据 ID组合结构
 
     """
 
@@ -774,7 +778,7 @@ class MTicket(AbstractModel):
         """
         :param MatchCode: 匹配Code
         :type MatchCode: str
-        :param MatchTicketId: 请求TicketId
+        :param MatchTicketId: 匹配票据 ID
         :type MatchTicketId: str
         """
         self.MatchCode = None
@@ -799,7 +803,7 @@ class MatchAttribute(AbstractModel):
         :type Type: int
         :param NumberValue: 数字属性值 默认 0.0
         :type NumberValue: float
-        :param StringValue: 字符串属性值 长度 1024 默认 ""
+        :param StringValue: 字符串属性值 长度 128 默认 ""
         :type StringValue: str
         :param ListValue: list 属性值
         :type ListValue: list of str
@@ -987,13 +991,13 @@ class MatchInfo(AbstractModel):
 
 
 class MatchTicket(AbstractModel):
-    """匹配请求信息
+    """匹配票据信息
 
     """
 
     def __init__(self):
         """
-        :param Id: MatchTicketId 长度 128 [a-zA-Z0-9-\.]*
+        :param Id: 匹配票据 ID长度 128 [a-zA-Z0-9-\.]*
         :type Id: str
         :param MatchCode: 匹配 Code
         :type MatchCode: str

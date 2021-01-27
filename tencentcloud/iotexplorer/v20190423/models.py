@@ -2130,6 +2130,9 @@ class ProjectEntryEx(AbstractModel):
         :type NativeAppCount: int
         :param WebAppCount: WebApp数量
         :type WebAppCount: int
+        :param InstanceId: 实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
         """
         self.ProjectId = None
         self.ProjectName = None
@@ -2139,6 +2142,7 @@ class ProjectEntryEx(AbstractModel):
         self.ProductCount = None
         self.NativeAppCount = None
         self.WebAppCount = None
+        self.InstanceId = None
 
 
     def _deserialize(self, params):
@@ -2150,6 +2154,7 @@ class ProjectEntryEx(AbstractModel):
         self.ProductCount = params.get("ProductCount")
         self.NativeAppCount = params.get("NativeAppCount")
         self.WebAppCount = params.get("WebAppCount")
+        self.InstanceId = params.get("InstanceId")
 
 
 class PublishMessageRequest(AbstractModel):
