@@ -1535,6 +1535,9 @@ class ContainerGroupDetail(AbstractModel):
         :param MaxUnavailable: kubernetes滚动更新策略的MaxUnavailable参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxUnavailable: str
+        :param HealthCheckSettings: 部署组健康检查设置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HealthCheckSettings: :class:`tencentcloud.tsf.v20180326.models.HealthCheckSettings`
         """
         self.GroupId = None
         self.GroupName = None
@@ -1572,6 +1575,7 @@ class ContainerGroupDetail(AbstractModel):
         self.UpdatedTime = None
         self.MaxSurge = None
         self.MaxUnavailable = None
+        self.HealthCheckSettings = None
 
 
     def _deserialize(self, params):
@@ -1621,6 +1625,9 @@ class ContainerGroupDetail(AbstractModel):
         self.UpdatedTime = params.get("UpdatedTime")
         self.MaxSurge = params.get("MaxSurge")
         self.MaxUnavailable = params.get("MaxUnavailable")
+        if params.get("HealthCheckSettings") is not None:
+            self.HealthCheckSettings = HealthCheckSettings()
+            self.HealthCheckSettings._deserialize(params.get("HealthCheckSettings"))
 
 
 class ContinueRunFailedTaskBatchRequest(AbstractModel):

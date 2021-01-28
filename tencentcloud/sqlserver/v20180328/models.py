@@ -296,6 +296,53 @@ class Backup(AbstractModel):
         self.BackupName = params.get("BackupName")
 
 
+class CloneDBRequest(AbstractModel):
+    """CloneDB请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，形如mssql-j8kv137v
+        :type InstanceId: str
+        :param RenameRestore: 按照ReNameRestoreDatabase中的库进行克隆，并重命名，新库名称必须指定
+        :type RenameRestore: list of RenameRestoreDatabase
+        """
+        self.InstanceId = None
+        self.RenameRestore = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("RenameRestore") is not None:
+            self.RenameRestore = []
+            for item in params.get("RenameRestore"):
+                obj = RenameRestoreDatabase()
+                obj._deserialize(item)
+                self.RenameRestore.append(obj)
+
+
+class CloneDBResponse(AbstractModel):
+    """CloneDB返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: 异步流程任务ID，使用FlowId调用DescribeFlowStatus接口获取任务执行状态
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class CompleteExpansionRequest(AbstractModel):
     """CompleteExpansion请求参数结构体
 
@@ -4659,7 +4706,7 @@ class RemoveBackupsResponse(AbstractModel):
 
 
 class RenameRestoreDatabase(AbstractModel):
-    """用于RestoreInstance，RollbackInstance，CreateMigration 等接口；对恢复的库进行重命名，且支持选择要恢复的库。
+    """用于RestoreInstance，RollbackInstance，CreateMigration、CloneDB 等接口；对恢复的库进行重命名，且支持选择要恢复的库。
 
     """
 
@@ -4668,7 +4715,7 @@ class RenameRestoreDatabase(AbstractModel):
         :param OldName: 库的名字，如果oldName不存在则返回失败。
 在用于离线迁移任务时可不填。
         :type OldName: str
-        :param NewName: 库的新名字，如果不填则按照系统默认方式命名恢复的库。在用于离线迁移任务时，不填则按照OldName命名，OldName和NewName不能同时不填。
+        :param NewName: 库的新名字，在用于离线迁移时，不填则按照OldName命名，OldName和NewName不能同时不填。在用于克隆数据库时，OldName和NewName都必须填写，且不能重复
         :type NewName: str
         """
         self.OldName = None

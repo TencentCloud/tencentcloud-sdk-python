@@ -8364,6 +8364,44 @@ class SwitchDBInstanceMasterSlaveResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SwitchDrInstanceToMasterRequest(AbstractModel):
+    """SwitchDrInstanceToMaster请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 灾备实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class SwitchDrInstanceToMasterResponse(AbstractModel):
+    """SwitchDrInstanceToMaster返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncRequestId: 异步任务的请求ID，可使用此ID查询异步任务的执行结果。
+        :type AsyncRequestId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+
+
 class SwitchForUpgradeRequest(AbstractModel):
     """SwitchForUpgrade请求参数结构体
 

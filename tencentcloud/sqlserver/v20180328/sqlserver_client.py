@@ -54,6 +54,34 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CloneDB(self, request):
+        """本接口（CloneDB）用于克隆数据库，只支持克隆到本实例，克隆时必须指定新库名称。
+
+        :param request: Request instance for CloneDB.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.CloneDBRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.CloneDBResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CloneDB", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CloneDBResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CompleteExpansion(self, request):
         """本接口（CompleteExpansion）在实例发起扩容后，实例状态处于“升级待切换”时，可立即完成实例升级切换操作，无需等待可维护时间窗。本接口需要在实例低峰时调用，在完全切换成功前，存在部分库不可访问的风险。
 

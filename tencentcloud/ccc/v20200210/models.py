@@ -302,6 +302,61 @@ class DescribePSTNActiveSessionListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSeatUserListRequest(AbstractModel):
+    """DescribeSeatUserList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID
+        :type InstanceId: int
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 返回数量
+        :type Limit: int
+        """
+        self.InstanceId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeSeatUserListResponse(AbstractModel):
+    """DescribeSeatUserList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 此实例的坐席用户总数
+        :type TotalCount: int
+        :param SeatUsers: 坐席用户信息列表
+        :type SeatUsers: list of SeatUserInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.SeatUsers = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("SeatUsers") is not None:
+            self.SeatUsers = []
+            for item in params.get("SeatUsers"):
+                obj = SeatUserInfo()
+                obj._deserialize(item)
+                self.SeatUsers.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTelCallInfoRequest(AbstractModel):
     """DescribeTelCallInfo请求参数结构体
 
@@ -367,14 +422,18 @@ class DescribeTelCdrRequest(AbstractModel):
         :type StartTimeStamp: int
         :param EndTimeStamp: 结束时间戳，Unix 时间戳
         :type EndTimeStamp: int
-        :param Limit: 返回记录条数，上限 100
+        :param Limit: 返回数据条数，上限（deprecated）
         :type Limit: int
-        :param Offset: 偏移量
+        :param Offset: 偏移（deprecated）
         :type Offset: int
-        :param InstanceId: 实例 ID
+        :param InstanceId: 实例 ID（deprecated）
         :type InstanceId: int
-        :param SdkAppId: 应用ID。
+        :param SdkAppId: 应用 ID
         :type SdkAppId: int
+        :param PageSize: 分页尺寸，上限 100
+        :type PageSize: int
+        :param PageNumber: 分页页码，从 0 开始
+        :type PageNumber: int
         """
         self.StartTimeStamp = None
         self.EndTimeStamp = None
@@ -382,6 +441,8 @@ class DescribeTelCdrRequest(AbstractModel):
         self.Offset = None
         self.InstanceId = None
         self.SdkAppId = None
+        self.PageSize = None
+        self.PageNumber = None
 
 
     def _deserialize(self, params):
@@ -391,6 +452,8 @@ class DescribeTelCdrRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.InstanceId = params.get("InstanceId")
         self.SdkAppId = params.get("SdkAppId")
+        self.PageSize = params.get("PageSize")
+        self.PageNumber = params.get("PageNumber")
 
 
 class DescribeTelCdrResponse(AbstractModel):
@@ -462,6 +525,29 @@ class IMCdrInfo(AbstractModel):
         self.Type = params.get("Type")
         self.StaffId = params.get("StaffId")
         self.Timestamp = params.get("Timestamp")
+
+
+class IVRKeyPressedElement(AbstractModel):
+    """ivr 按键信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: 按键
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param Label: 按键关联的标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Label: str
+        """
+        self.Key = None
+        self.Label = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Label = params.get("Label")
 
 
 class Message(AbstractModel):
@@ -583,7 +669,7 @@ class SeatUserInfo(AbstractModel):
         :type Name: str
         :param Mail: 坐席邮箱
         :type Mail: str
-        :param Phone: 坐席电话号码
+        :param Phone: 坐席电话号码（带0086前缀）
         :type Phone: str
         :param Nick: 坐席昵称
         :type Nick: str
@@ -615,6 +701,99 @@ class SeatUserInfo(AbstractModel):
         self.StaffNumber = params.get("StaffNumber")
 
 
+class ServeParticipant(AbstractModel):
+    """参与者信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Mail: 坐席邮箱
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Mail: str
+        :param Phone: 坐席电话
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Phone: str
+        :param RingTimestamp: 振铃时间戳，Unix 秒级时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RingTimestamp: int
+        :param AcceptTimestamp: 接听时间戳，Unix 秒级时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AcceptTimestamp: int
+        :param EndedTimestamp: 结束时间戳，Unix 秒级时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndedTimestamp: int
+        :param RecordId: 录音 ID，能够索引到坐席侧的录音
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordId: str
+        :param Type: 参与者类型，"staffSeat", "outboundSeat", "staffPhoneSeat"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param TransferFrom: 转接来源坐席信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransferFrom: str
+        :param TransferTo: 转接去向坐席信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransferTo: str
+        :param TransferToType: 转接去向参与者类型，取值与 Type 一致
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransferToType: str
+        :param SkillGroupId: 技能组 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SkillGroupId: int
+        :param EndStatusString: 结束状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndStatusString: str
+        :param RecordURL: 录音 URL
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordURL: str
+        :param Sequence: 参与者序号，从 0 开始
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Sequence: int
+        :param StartTimestamp: 开始时间戳，Unix 秒级时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTimestamp: int
+        :param SkillGroupName: 技能组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SkillGroupName: str
+        """
+        self.Mail = None
+        self.Phone = None
+        self.RingTimestamp = None
+        self.AcceptTimestamp = None
+        self.EndedTimestamp = None
+        self.RecordId = None
+        self.Type = None
+        self.TransferFrom = None
+        self.TransferTo = None
+        self.TransferToType = None
+        self.SkillGroupId = None
+        self.EndStatusString = None
+        self.RecordURL = None
+        self.Sequence = None
+        self.StartTimestamp = None
+        self.SkillGroupName = None
+
+
+    def _deserialize(self, params):
+        self.Mail = params.get("Mail")
+        self.Phone = params.get("Phone")
+        self.RingTimestamp = params.get("RingTimestamp")
+        self.AcceptTimestamp = params.get("AcceptTimestamp")
+        self.EndedTimestamp = params.get("EndedTimestamp")
+        self.RecordId = params.get("RecordId")
+        self.Type = params.get("Type")
+        self.TransferFrom = params.get("TransferFrom")
+        self.TransferTo = params.get("TransferTo")
+        self.TransferToType = params.get("TransferToType")
+        self.SkillGroupId = params.get("SkillGroupId")
+        self.EndStatusString = params.get("EndStatusString")
+        self.RecordURL = params.get("RecordURL")
+        self.Sequence = params.get("Sequence")
+        self.StartTimestamp = params.get("StartTimestamp")
+        self.SkillGroupName = params.get("SkillGroupName")
+
+
 class TelCdrInfo(AbstractModel):
     """电话话单信息
 
@@ -638,10 +817,56 @@ class TelCdrInfo(AbstractModel):
         :type SeatUser: :class:`tencentcloud.ccc.v20200210.models.SeatUserInfo`
         :param EndStatus: 结束状态 0 未知 1 正常通话 2 未接通
         :type EndStatus: int
-        :param SkillGroup: 技能组
+        :param SkillGroup: 技能组名称
         :type SkillGroup: str
         :param CallerLocation: 主叫归属地
         :type CallerLocation: str
+        :param IVRDuration: IVR 阶段耗时
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IVRDuration: int
+        :param RingTimestamp: 振铃时间戳，UNIX 秒级时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RingTimestamp: int
+        :param AcceptTimestamp: 接听时间戳，UNIX 秒级时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AcceptTimestamp: int
+        :param EndedTimestamp: 结束时间戳，UNIX 秒级时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndedTimestamp: int
+        :param IVRKeyPressed: IVR 按键信息 ，e.g. ["1","2","3"]
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IVRKeyPressed: list of str
+        :param HungUpSide: 挂机方 seat 坐席 user 用户
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HungUpSide: str
+        :param ServeParticipants: 服务参与者列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServeParticipants: list of ServeParticipant
+        :param SkillGroupId: 技能组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SkillGroupId: int
+        :param EndStatusString: ok 正常结束 
+unconnected	未接通
+seatGiveUp	坐席未接
+seatForward	坐席转接
+ivrGiveUp	IVR期间用户放弃
+waitingGiveUp	会话排队期间用户放弃
+ringingGiveUp	会话振铃期间用户放弃
+error	系统错误
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndStatusString: str
+        :param StartTimestamp: 会话开始时间戳，UNIX 秒级时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTimestamp: int
+        :param QueuedTimestamp: 进入排队时间，Unix 秒级时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueuedTimestamp: int
+        :param PostIVRKeyPressed: 后置IVR按键信息（e.g. [{"Key":"1","Label":"非常满意"}]）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PostIVRKeyPressed: list of IVRKeyPressedElement
+        :param QueuedSkillGroupId: 排队技能组Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueuedSkillGroupId: int
         """
         self.Caller = None
         self.Callee = None
@@ -653,6 +878,19 @@ class TelCdrInfo(AbstractModel):
         self.EndStatus = None
         self.SkillGroup = None
         self.CallerLocation = None
+        self.IVRDuration = None
+        self.RingTimestamp = None
+        self.AcceptTimestamp = None
+        self.EndedTimestamp = None
+        self.IVRKeyPressed = None
+        self.HungUpSide = None
+        self.ServeParticipants = None
+        self.SkillGroupId = None
+        self.EndStatusString = None
+        self.StartTimestamp = None
+        self.QueuedTimestamp = None
+        self.PostIVRKeyPressed = None
+        self.QueuedSkillGroupId = None
 
 
     def _deserialize(self, params):
@@ -668,3 +906,26 @@ class TelCdrInfo(AbstractModel):
         self.EndStatus = params.get("EndStatus")
         self.SkillGroup = params.get("SkillGroup")
         self.CallerLocation = params.get("CallerLocation")
+        self.IVRDuration = params.get("IVRDuration")
+        self.RingTimestamp = params.get("RingTimestamp")
+        self.AcceptTimestamp = params.get("AcceptTimestamp")
+        self.EndedTimestamp = params.get("EndedTimestamp")
+        self.IVRKeyPressed = params.get("IVRKeyPressed")
+        self.HungUpSide = params.get("HungUpSide")
+        if params.get("ServeParticipants") is not None:
+            self.ServeParticipants = []
+            for item in params.get("ServeParticipants"):
+                obj = ServeParticipant()
+                obj._deserialize(item)
+                self.ServeParticipants.append(obj)
+        self.SkillGroupId = params.get("SkillGroupId")
+        self.EndStatusString = params.get("EndStatusString")
+        self.StartTimestamp = params.get("StartTimestamp")
+        self.QueuedTimestamp = params.get("QueuedTimestamp")
+        if params.get("PostIVRKeyPressed") is not None:
+            self.PostIVRKeyPressed = []
+            for item in params.get("PostIVRKeyPressed"):
+                obj = IVRKeyPressedElement()
+                obj._deserialize(item)
+                self.PostIVRKeyPressed.append(obj)
+        self.QueuedSkillGroupId = params.get("QueuedSkillGroupId")

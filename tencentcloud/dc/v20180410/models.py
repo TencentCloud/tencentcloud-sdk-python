@@ -72,6 +72,12 @@ class AccessPoint(AbstractModel):
         :param AvailablePortType: 接入点可用的端口类型列表。1000BASE-T代表千兆电口，1000BASE-LX代表千兆单模光口10km，1000BASE-ZX代表千兆单模光口80km,10GBASE-LR代表万兆单模光口10km,10GBASE-ZR代表万兆单模光口80km,10GBASE-LH代表万兆单模光口40km,100GBASE-LR4代表100G单模光口10km
 注意：此字段可能返回 null，表示取不到有效值。
         :type AvailablePortType: list of str
+        :param Coordinate: 接入点经纬度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Coordinate: :class:`tencentcloud.dc.v20180410.models.Coordinate`
+        :param City: 接入点所在城市
+注意：此字段可能返回 null，表示取不到有效值。
+        :type City: str
         """
         self.AccessPointName = None
         self.AccessPointId = None
@@ -80,6 +86,8 @@ class AccessPoint(AbstractModel):
         self.LineOperator = None
         self.RegionId = None
         self.AvailablePortType = None
+        self.Coordinate = None
+        self.City = None
 
 
     def _deserialize(self, params):
@@ -90,6 +98,10 @@ class AccessPoint(AbstractModel):
         self.LineOperator = params.get("LineOperator")
         self.RegionId = params.get("RegionId")
         self.AvailablePortType = params.get("AvailablePortType")
+        if params.get("Coordinate") is not None:
+            self.Coordinate = Coordinate()
+            self.Coordinate._deserialize(params.get("Coordinate"))
+        self.City = params.get("City")
 
 
 class ApplyInternetAddressRequest(AbstractModel):
@@ -204,6 +216,27 @@ class BgpPeer(AbstractModel):
     def _deserialize(self, params):
         self.Asn = params.get("Asn")
         self.AuthKey = params.get("AuthKey")
+
+
+class Coordinate(AbstractModel):
+    """坐标，经维度描述
+
+    """
+
+    def __init__(self):
+        """
+        :param Lat: 纬度
+        :type Lat: float
+        :param Lng: 经度
+        :type Lng: float
+        """
+        self.Lat = None
+        self.Lng = None
+
+
+    def _deserialize(self, params):
+        self.Lat = params.get("Lat")
+        self.Lng = params.get("Lng")
 
 
 class CreateDirectConnectRequest(AbstractModel):
