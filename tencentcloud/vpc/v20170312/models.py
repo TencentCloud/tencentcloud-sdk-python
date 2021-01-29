@@ -1771,6 +1771,29 @@ class CheckNetDetectStateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CidrForCcn(AbstractModel):
+    """用于发布云联网的cidr信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Cidr: local cidr值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cidr: str
+        :param PublishedToVbc: 是否发布到了云联网。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublishedToVbc: bool
+        """
+        self.Cidr = None
+        self.PublishedToVbc = None
+
+
+    def _deserialize(self, params):
+        self.Cidr = params.get("Cidr")
+        self.PublishedToVbc = params.get("PublishedToVbc")
+
+
 class ClassicLinkInstance(AbstractModel):
     """私有网络和基础网络互通设备
 
@@ -2848,6 +2871,49 @@ class CreateNatGatewayResponse(AbstractModel):
                 obj._deserialize(item)
                 self.NatGatewaySet.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateNatGatewaySourceIpTranslationNatRuleRequest(AbstractModel):
+    """CreateNatGatewaySourceIpTranslationNatRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NatGatewayId: NAT网关的ID，形如："nat-df45454"
+        :type NatGatewayId: str
+        :param SourceIpTranslationNatRules: NAT网关的SNAT转换规则
+        :type SourceIpTranslationNatRules: list of SourceIpTranslationNatRule
+        """
+        self.NatGatewayId = None
+        self.SourceIpTranslationNatRules = None
+
+
+    def _deserialize(self, params):
+        self.NatGatewayId = params.get("NatGatewayId")
+        if params.get("SourceIpTranslationNatRules") is not None:
+            self.SourceIpTranslationNatRules = []
+            for item in params.get("SourceIpTranslationNatRules"):
+                obj = SourceIpTranslationNatRule()
+                obj._deserialize(item)
+                self.SourceIpTranslationNatRules.append(obj)
+
+
+class CreateNatGatewaySourceIpTranslationNatRuleResponse(AbstractModel):
+    """CreateNatGatewaySourceIpTranslationNatRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -4489,6 +4555,44 @@ class DeleteNatGatewayResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteNatGatewaySourceIpTranslationNatRuleRequest(AbstractModel):
+    """DeleteNatGatewaySourceIpTranslationNatRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NatGatewayId: NAT网关的ID，形如：`nat-df45454`。
+        :type NatGatewayId: str
+        :param NatGatewaySnatIds: NAT网关的SNAT ID列表，形如：`snat-df43254`。
+        :type NatGatewaySnatIds: list of str
+        """
+        self.NatGatewayId = None
+        self.NatGatewaySnatIds = None
+
+
+    def _deserialize(self, params):
+        self.NatGatewayId = params.get("NatGatewayId")
+        self.NatGatewaySnatIds = params.get("NatGatewaySnatIds")
+
+
+class DeleteNatGatewaySourceIpTranslationNatRuleResponse(AbstractModel):
+    """DeleteNatGatewaySourceIpTranslationNatRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteNetDetectRequest(AbstractModel):
     """DeleteNetDetect请求参数结构体
 
@@ -4634,7 +4738,7 @@ class DeleteRoutesRequest(AbstractModel):
         """
         :param RouteTableId: 路由表实例ID。
         :type RouteTableId: str
-        :param Routes: 路由策略对象。
+        :param Routes: 路由策略对象，删除路由策略时，仅需使用Route的RouteId字段。
         :type Routes: list of Route
         """
         self.RouteTableId = None
@@ -4658,13 +4762,22 @@ class DeleteRoutesResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param RouteSet: 已删除的路由策略详情。
+        :type RouteSet: list of Route
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.RouteSet = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("RouteSet") is not None:
+            self.RouteSet = []
+            for item in params.get("RouteSet"):
+                obj = Route()
+                obj._deserialize(item)
+                self.RouteSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -6925,6 +7038,74 @@ class DescribeNatGatewayDestinationIpPortTranslationNatRulesResponse(AbstractMod
                 obj = NatGatewayDestinationIpPortTranslationNatRule()
                 obj._deserialize(item)
                 self.NatGatewayDestinationIpPortTranslationNatRuleSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeNatGatewaySourceIpTranslationNatRulesRequest(AbstractModel):
+    """DescribeNatGatewaySourceIpTranslationNatRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NatGatewayId: NAT网关统一 ID，形如：`nat-123xx454`。
+        :type NatGatewayId: str
+        :param Filters: 过滤条件:
+<li> resource-id，Subnet的ID或者Cvm ID，如`subnet-0yi4hekt`</li>
+<li> public-ip-address，弹性IP，如`139.199.232.238`</li>
+<li>description，规则描述。</li>
+        :type Filters: list of Filter
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        """
+        self.NatGatewayId = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.NatGatewayId = params.get("NatGatewayId")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeNatGatewaySourceIpTranslationNatRulesResponse(AbstractModel):
+    """DescribeNatGatewaySourceIpTranslationNatRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SourceIpTranslationNatRuleSet: NAT网关SNAT规则对象数组。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceIpTranslationNatRuleSet: list of SourceIpTranslationNatRule
+        :param TotalCount: 符合条件的NAT网关端口转发规则对象数目。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SourceIpTranslationNatRuleSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SourceIpTranslationNatRuleSet") is not None:
+            self.SourceIpTranslationNatRuleSet = []
+            for item in params.get("SourceIpTranslationNatRuleSet"):
+                obj = SourceIpTranslationNatRule()
+                obj._deserialize(item)
+                self.SourceIpTranslationNatRuleSet.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
@@ -11344,6 +11525,46 @@ class ModifyNatGatewayDestinationIpPortTranslationNatRuleResponse(AbstractModel)
         self.RequestId = params.get("RequestId")
 
 
+class ModifyNatGatewaySourceIpTranslationNatRuleRequest(AbstractModel):
+    """ModifyNatGatewaySourceIpTranslationNatRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NatGatewayId: NAT网关的ID，形如：`nat-df453454`。
+        :type NatGatewayId: str
+        :param SourceIpTranslationNatRule: NAT网关的SNAT转换规则。
+        :type SourceIpTranslationNatRule: :class:`tencentcloud.vpc.v20170312.models.SourceIpTranslationNatRule`
+        """
+        self.NatGatewayId = None
+        self.SourceIpTranslationNatRule = None
+
+
+    def _deserialize(self, params):
+        self.NatGatewayId = params.get("NatGatewayId")
+        if params.get("SourceIpTranslationNatRule") is not None:
+            self.SourceIpTranslationNatRule = SourceIpTranslationNatRule()
+            self.SourceIpTranslationNatRule._deserialize(params.get("SourceIpTranslationNatRule"))
+
+
+class ModifyNatGatewaySourceIpTranslationNatRuleResponse(AbstractModel):
+    """ModifyNatGatewaySourceIpTranslationNatRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyNetDetectRequest(AbstractModel):
     """ModifyNetDetect请求参数结构体
 
@@ -12600,6 +12821,44 @@ class NetworkInterfaceAttachment(AbstractModel):
         self.AttachTime = params.get("AttachTime")
 
 
+class NotifyRoutesRequest(AbstractModel):
+    """NotifyRoutes请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RouteTableId: 路由表唯一ID。
+        :type RouteTableId: str
+        :param RouteItemIds: 路由策略唯一ID。
+        :type RouteItemIds: list of str
+        """
+        self.RouteTableId = None
+        self.RouteItemIds = None
+
+
+    def _deserialize(self, params):
+        self.RouteTableId = params.get("RouteTableId")
+        self.RouteItemIds = params.get("RouteItemIds")
+
+
+class NotifyRoutesResponse(AbstractModel):
+    """NotifyRoutes返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class Price(AbstractModel):
     """价格
 
@@ -13657,6 +13916,9 @@ CCN：云联网路由，系统默认下发，不可编辑与删除。
         :type DestinationIpv6CidrBlock: str
         :param RouteItemId: 路由唯一策略ID。
         :type RouteItemId: str
+        :param PublishedToVbc: 路由策略是否发布到云联网。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublishedToVbc: bool
         """
         self.DestinationCidrBlock = None
         self.GatewayType = None
@@ -13668,6 +13930,7 @@ CCN：云联网路由，系统默认下发，不可编辑与删除。
         self.RouteTableId = None
         self.DestinationIpv6CidrBlock = None
         self.RouteItemId = None
+        self.PublishedToVbc = None
 
 
     def _deserialize(self, params):
@@ -13681,6 +13944,7 @@ CCN：云联网路由，系统默认下发，不可编辑与删除。
         self.RouteTableId = params.get("RouteTableId")
         self.DestinationIpv6CidrBlock = params.get("DestinationIpv6CidrBlock")
         self.RouteItemId = params.get("RouteItemId")
+        self.PublishedToVbc = params.get("PublishedToVbc")
 
 
 class RouteConflict(AbstractModel):
@@ -13736,6 +14000,9 @@ class RouteTable(AbstractModel):
         :type CreatedTime: str
         :param TagSet: 标签键值对。
         :type TagSet: list of Tag
+        :param LocalCidrForCcn: local路由是否发布云联网。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LocalCidrForCcn: list of CidrForCcn
         """
         self.VpcId = None
         self.RouteTableId = None
@@ -13745,6 +14012,7 @@ class RouteTable(AbstractModel):
         self.Main = None
         self.CreatedTime = None
         self.TagSet = None
+        self.LocalCidrForCcn = None
 
 
     def _deserialize(self, params):
@@ -13771,6 +14039,12 @@ class RouteTable(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.TagSet.append(obj)
+        if params.get("LocalCidrForCcn") is not None:
+            self.LocalCidrForCcn = []
+            for item in params.get("LocalCidrForCcn"):
+                obj = CidrForCcn()
+                obj._deserialize(item)
+                self.LocalCidrForCcn.append(obj)
 
 
 class RouteTableAssociation(AbstractModel):
@@ -14169,6 +14443,59 @@ class SetCcnRegionBandwidthLimitsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class SourceIpTranslationNatRule(AbstractModel):
+    """NAT的SNAT规则
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceId: 资源ID
+        :type ResourceId: str
+        :param ResourceType: 资源类型，目前包含SUBNET、NETWORKINTERFACE
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceType: str
+        :param PrivateIpAddress: 源IP/网段
+        :type PrivateIpAddress: str
+        :param PublicIpAddresses: 弹性IP地址池
+        :type PublicIpAddresses: list of str
+        :param Description: 描述
+        :type Description: str
+        :param NatGatewaySnatId: Snat规则ID
+        :type NatGatewaySnatId: str
+        :param NatGatewayId: NAT网关的ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NatGatewayId: str
+        :param VpcId: 私有网络VPC的ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param CreatedTime: NAT网关SNAT规则创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedTime: str
+        """
+        self.ResourceId = None
+        self.ResourceType = None
+        self.PrivateIpAddress = None
+        self.PublicIpAddresses = None
+        self.Description = None
+        self.NatGatewaySnatId = None
+        self.NatGatewayId = None
+        self.VpcId = None
+        self.CreatedTime = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
+        self.ResourceType = params.get("ResourceType")
+        self.PrivateIpAddress = params.get("PrivateIpAddress")
+        self.PublicIpAddresses = params.get("PublicIpAddresses")
+        self.Description = params.get("Description")
+        self.NatGatewaySnatId = params.get("NatGatewaySnatId")
+        self.NatGatewayId = params.get("NatGatewayId")
+        self.VpcId = params.get("VpcId")
+        self.CreatedTime = params.get("CreatedTime")
 
 
 class Subnet(AbstractModel):
@@ -14920,3 +15247,41 @@ DISABLE：不启用该路由
     def _deserialize(self, params):
         self.RouteId = params.get("RouteId")
         self.Status = params.get("Status")
+
+
+class WithdrawNotifyRoutesRequest(AbstractModel):
+    """WithdrawNotifyRoutes请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RouteTableId: 路由表唯一ID。
+        :type RouteTableId: str
+        :param RouteItemIds: 路由策略唯一ID。
+        :type RouteItemIds: list of str
+        """
+        self.RouteTableId = None
+        self.RouteItemIds = None
+
+
+    def _deserialize(self, params):
+        self.RouteTableId = params.get("RouteTableId")
+        self.RouteItemIds = params.get("RouteItemIds")
+
+
+class WithdrawNotifyRoutesResponse(AbstractModel):
+    """WithdrawNotifyRoutes返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")

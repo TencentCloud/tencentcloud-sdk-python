@@ -178,6 +178,130 @@ class CloudBaseEsInfo(AbstractModel):
         self.Password = params.get("Password")
 
 
+class CloudBaseProjectVersion(AbstractModel):
+    """云开发项目版本
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 项目名
+        :type Name: str
+        :param Sam: SAM json
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Sam: str
+        :param Source: 来源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Source: :class:`tencentcloud.tcb.v20180608.models.CodeSource`
+        :param CreateTime: 创建时间, unix时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param UpdateTime: 更新时间 ,unix时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: int
+        :param Status: 项目状态, 枚举值: 
+        "creatingEnv"-创建环境中
+	"createEnvFail"-创建环境失败
+	"building"-构建中
+	"buildFail"-构建失败
+	"deploying"-部署中
+	 "deployFail"-部署失败
+	 "success"-部署成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param Parameters: 环境变量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Parameters: list of KVPair
+        :param Type: 项目类型, 枚举值:
+"framework-oneclick" 控制台一键部署
+"framework-local-oneclick" cli本地一键部署
+"qci-extension-cicd" 内网coding ci cd
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param CIId: ci的id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CIId: str
+        :param CDId: cd的id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CDId: str
+        :param EnvId: 环境id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnvId: str
+        :param VersionNum: 版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionNum: int
+        :param FailReason: 错误原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailReason: str
+        :param RcJson: rc.json内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RcJson: str
+        :param AddonConfig: 插件配置内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AddonConfig: str
+        :param Tags: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of str
+        :param NetworkConfig: 网络配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetworkConfig: str
+        :param ExtensionId: 扩展id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtensionId: str
+        :param FailType: 错误类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailType: str
+        """
+        self.Name = None
+        self.Sam = None
+        self.Source = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.Status = None
+        self.Parameters = None
+        self.Type = None
+        self.CIId = None
+        self.CDId = None
+        self.EnvId = None
+        self.VersionNum = None
+        self.FailReason = None
+        self.RcJson = None
+        self.AddonConfig = None
+        self.Tags = None
+        self.NetworkConfig = None
+        self.ExtensionId = None
+        self.FailType = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Sam = params.get("Sam")
+        if params.get("Source") is not None:
+            self.Source = CodeSource()
+            self.Source._deserialize(params.get("Source"))
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.Status = params.get("Status")
+        if params.get("Parameters") is not None:
+            self.Parameters = []
+            for item in params.get("Parameters"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self.Parameters.append(obj)
+        self.Type = params.get("Type")
+        self.CIId = params.get("CIId")
+        self.CDId = params.get("CDId")
+        self.EnvId = params.get("EnvId")
+        self.VersionNum = params.get("VersionNum")
+        self.FailReason = params.get("FailReason")
+        self.RcJson = params.get("RcJson")
+        self.AddonConfig = params.get("AddonConfig")
+        self.Tags = params.get("Tags")
+        self.NetworkConfig = params.get("NetworkConfig")
+        self.ExtensionId = params.get("ExtensionId")
+        self.FailType = params.get("FailType")
+
+
 class CloudBaseRunImageInfo(AbstractModel):
     """CloudBaseRun 镜像信息
 
@@ -585,6 +709,54 @@ class CloudRunServiceSimpleVersionSnapshot(AbstractModel):
         self.Status = params.get("Status")
 
 
+class CodeSource(AbstractModel):
+    """云开发项目来源
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 类型, 可能的枚举: "coding","package","package_url","github","gitlab","gitee","rawcode"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param Url: 下载链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
+        :param Name: 名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param WorkDir: 工作目录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkDir: str
+        :param CodingPackageName: code包名, type为coding的时候需要填写
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CodingPackageName: str
+        :param CodingPackageVersion: coding版本名, type为coding的时候需要填写
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CodingPackageVersion: str
+        :param RawCode: 源码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RawCode: str
+        """
+        self.Type = None
+        self.Url = None
+        self.Name = None
+        self.WorkDir = None
+        self.CodingPackageName = None
+        self.CodingPackageVersion = None
+        self.RawCode = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Url = params.get("Url")
+        self.Name = params.get("Name")
+        self.WorkDir = params.get("WorkDir")
+        self.CodingPackageName = params.get("CodingPackageName")
+        self.CodingPackageVersion = params.get("CodingPackageVersion")
+        self.RawCode = params.get("RawCode")
+
+
 class CommonServiceAPIRequest(AbstractModel):
     """CommonServiceAPI请求参数结构体
 
@@ -624,6 +796,92 @@ class CommonServiceAPIResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.JSONResp = params.get("JSONResp")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateAndDeployCloudBaseProjectRequest(AbstractModel):
+    """CreateAndDeployCloudBaseProject请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 项目名
+        :type Name: str
+        :param Source: 来源
+        :type Source: :class:`tencentcloud.tcb.v20180608.models.CodeSource`
+        :param EnvId: 环境id
+        :type EnvId: str
+        :param Type: 项目类型, 枚举值为: framework-oneclick,qci-extension-cicd
+        :type Type: str
+        :param Parameters: 环境变量
+        :type Parameters: list of KVPair
+        :param EnvAlias: 环境别名
+        :type EnvAlias: str
+        :param RcJson: rc.json的内容
+        :type RcJson: str
+        :param AddonConfig: 插件配置内容
+        :type AddonConfig: str
+        :param Tags: 标签
+        :type Tags: list of str
+        :param NetworkConfig: 网络配置
+        :type NetworkConfig: str
+        :param FreeQuota: 免费额度的"basic", 不使用的用""
+        :type FreeQuota: str
+        """
+        self.Name = None
+        self.Source = None
+        self.EnvId = None
+        self.Type = None
+        self.Parameters = None
+        self.EnvAlias = None
+        self.RcJson = None
+        self.AddonConfig = None
+        self.Tags = None
+        self.NetworkConfig = None
+        self.FreeQuota = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        if params.get("Source") is not None:
+            self.Source = CodeSource()
+            self.Source._deserialize(params.get("Source"))
+        self.EnvId = params.get("EnvId")
+        self.Type = params.get("Type")
+        if params.get("Parameters") is not None:
+            self.Parameters = []
+            for item in params.get("Parameters"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self.Parameters.append(obj)
+        self.EnvAlias = params.get("EnvAlias")
+        self.RcJson = params.get("RcJson")
+        self.AddonConfig = params.get("AddonConfig")
+        self.Tags = params.get("Tags")
+        self.NetworkConfig = params.get("NetworkConfig")
+        self.FreeQuota = params.get("FreeQuota")
+
+
+class CreateAndDeployCloudBaseProjectResponse(AbstractModel):
+    """CreateAndDeployCloudBaseProject返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnvId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.EnvId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
         self.RequestId = params.get("RequestId")
 
 
@@ -1285,6 +1543,75 @@ class DescribeCloudBaseBuildServiceResponse(AbstractModel):
                 self.UploadHeaders.append(obj)
         self.PackageName = params.get("PackageName")
         self.PackageVersion = params.get("PackageVersion")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCloudBaseProjectLatestVersionListRequest(AbstractModel):
+    """DescribeCloudBaseProjectLatestVersionList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: 偏移量
+        :type Offset: int
+        :param PageSize: 个数
+        :type PageSize: int
+        :param EnvId: 环境id, 非必填
+        :type EnvId: str
+        :param ProjectName: 项目名称, 非必填
+        :type ProjectName: str
+        :param ProjectType: 项目类型: framework-oneclick,qci-extension-cicd
+        :type ProjectType: str
+        :param Tags: 标签
+        :type Tags: list of str
+        """
+        self.Offset = None
+        self.PageSize = None
+        self.EnvId = None
+        self.ProjectName = None
+        self.ProjectType = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.PageSize = params.get("PageSize")
+        self.EnvId = params.get("EnvId")
+        self.ProjectName = params.get("ProjectName")
+        self.ProjectType = params.get("ProjectType")
+        self.Tags = params.get("Tags")
+
+
+class DescribeCloudBaseProjectLatestVersionListResponse(AbstractModel):
+    """DescribeCloudBaseProjectLatestVersionList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProjectList: 项目列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectList: list of CloudBaseProjectVersion
+        :param TotalCount: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ProjectList = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ProjectList") is not None:
+            self.ProjectList = []
+            for item in params.get("ProjectList"):
+                obj = CloudBaseProjectVersion()
+                obj._deserialize(item)
+                self.ProjectList.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 

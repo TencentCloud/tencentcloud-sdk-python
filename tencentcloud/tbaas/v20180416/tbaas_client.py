@@ -82,6 +82,34 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateChaincodeAndInstallForUser(self, request):
+        """创建并安装合约
+
+        :param request: Request instance for CreateChaincodeAndInstallForUser.
+        :type request: :class:`tencentcloud.tbaas.v20180416.models.CreateChaincodeAndInstallForUserRequest`
+        :rtype: :class:`tencentcloud.tbaas.v20180416.models.CreateChaincodeAndInstallForUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateChaincodeAndInstallForUser", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateChaincodeAndInstallForUserResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeployDynamicContractHandler(self, request):
         """动态部署合约
 
@@ -222,6 +250,146 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetChaincodeCompileLogForUser(self, request):
+        """获取合约编译日志
+
+        :param request: Request instance for GetChaincodeCompileLogForUser.
+        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetChaincodeCompileLogForUserRequest`
+        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetChaincodeCompileLogForUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetChaincodeCompileLogForUser", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetChaincodeCompileLogForUserResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetChaincodeInitializeResultForUser(self, request):
+        """实例化结果查询
+
+        :param request: Request instance for GetChaincodeInitializeResultForUser.
+        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetChaincodeInitializeResultForUserRequest`
+        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetChaincodeInitializeResultForUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetChaincodeInitializeResultForUser", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetChaincodeInitializeResultForUserResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetChaincodeLogForUser(self, request):
+        """获取合约容器日志
+
+        :param request: Request instance for GetChaincodeLogForUser.
+        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetChaincodeLogForUserRequest`
+        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetChaincodeLogForUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetChaincodeLogForUser", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetChaincodeLogForUserResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetChannelListForUser(self, request):
+        """获取通道列表
+
+        :param request: Request instance for GetChannelListForUser.
+        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetChannelListForUserRequest`
+        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetChannelListForUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetChannelListForUser", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetChannelListForUserResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetClusterListForUser(self, request):
+        """获取该用户的网络列表。网络信息中包含组织信息，但仅包含该用户所在组织的信息。
+
+        :param request: Request instance for GetClusterListForUser.
+        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetClusterListForUserRequest`
+        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetClusterListForUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetClusterListForUser", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetClusterListForUserResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetClusterSummary(self, request):
         """获取区块链网络概要
 
@@ -306,6 +474,34 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetPeerLogForUser(self, request):
+        """获取节点日志
+
+        :param request: Request instance for GetPeerLogForUser.
+        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetPeerLogForUserRequest`
+        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetPeerLogForUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetPeerLogForUser", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetPeerLogForUserResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetTransByHashHandler(self, request):
         """Bcos根据交易哈希查看交易详细信息
 
@@ -376,6 +572,34 @@ class TbaasClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetTransactionDetailForUserResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def InitializeChaincodeForUser(self, request):
+        """实例化合约
+
+        :param request: Request instance for InitializeChaincodeForUser.
+        :type request: :class:`tencentcloud.tbaas.v20180416.models.InitializeChaincodeForUserRequest`
+        :rtype: :class:`tencentcloud.tbaas.v20180416.models.InitializeChaincodeForUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("InitializeChaincodeForUser", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.InitializeChaincodeForUserResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

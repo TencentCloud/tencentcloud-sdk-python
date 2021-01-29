@@ -500,11 +500,11 @@ class DescribeCaptchaMiniDataRequest(AbstractModel):
         """
         :param CaptchaAppId: 验证码应用ID
         :type CaptchaAppId: int
-        :param Start: 查询开始时间
+        :param Start: 查询开始时间 例如：2019112900
         :type Start: int
-        :param End: 查询结束时间
+        :param End: 查询结束时间 例如：2019112902
         :type End: int
-        :param Type: 查询类型
+        :param Type: 查询类型 安全验证码小程序插件分类查询数据接口，请求量type=0、通过量type=1、验证量type=2、拦截量type=3 小时级查询（五小时左右延迟）
         :type Type: int
         """
         self.CaptchaAppId = None
@@ -1066,7 +1066,7 @@ class DescribeCaptchaTicketDataRequest(AbstractModel):
         """
         :param CaptchaAppId: 验证码应用ID
         :type CaptchaAppId: int
-        :param Start: 查询开始时间
+        :param Start: 查询开始时间 例如：20200909
         :type Start: int
         """
         self.CaptchaAppId = None

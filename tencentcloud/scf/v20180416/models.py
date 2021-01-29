@@ -201,7 +201,7 @@ class Code(AbstractModel):
 
     def __init__(self):
         """
-        :param CosBucketName: 对象存储桶名称
+        :param CosBucketName: 对象存储桶名称（填写存储桶名称自定义部分，不包含-appid）
         :type CosBucketName: str
         :param CosObjectName: 对象存储对象路径
         :type CosObjectName: str

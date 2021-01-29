@@ -1200,6 +1200,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateNatGatewaySourceIpTranslationNatRule(self, request):
+        """本接口(CreateNatGatewaySourceIpTranslationNatRule)用于创建NAT网关SNAT规则
+
+        :param request: Request instance for CreateNatGatewaySourceIpTranslationNatRule.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateNatGatewaySourceIpTranslationNatRuleRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateNatGatewaySourceIpTranslationNatRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateNatGatewaySourceIpTranslationNatRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateNatGatewaySourceIpTranslationNatRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateNetDetect(self, request):
         """本接口(CreateNetDetect)用于创建网络探测。
 
@@ -2060,6 +2088,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteNatGatewayDestinationIpPortTranslationNatRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteNatGatewaySourceIpTranslationNatRule(self, request):
+        """本接口（DeleteNatGatewaySourceIpTranslationNatRule）用于删除NAT网关端口SNAT转发规则。
+
+        :param request: Request instance for DeleteNatGatewaySourceIpTranslationNatRule.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteNatGatewaySourceIpTranslationNatRuleRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteNatGatewaySourceIpTranslationNatRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteNatGatewaySourceIpTranslationNatRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteNatGatewaySourceIpTranslationNatRuleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -3334,6 +3390,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNatGatewayDestinationIpPortTranslationNatRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeNatGatewaySourceIpTranslationNatRules(self, request):
+        """本接口（DescribeNatGatewaySourceIpTranslationNatRules）用于查询NAT网关SNAT转发规则对象数组。
+
+        :param request: Request instance for DescribeNatGatewaySourceIpTranslationNatRules.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeNatGatewaySourceIpTranslationNatRulesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeNatGatewaySourceIpTranslationNatRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeNatGatewaySourceIpTranslationNatRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeNatGatewaySourceIpTranslationNatRulesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -5465,6 +5549,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyNatGatewaySourceIpTranslationNatRule(self, request):
+        """本接口（ModifyNatGatewaySourceIpTranslationNatRule）用于修改NAT网关SNAT转发规则。
+
+        :param request: Request instance for ModifyNatGatewaySourceIpTranslationNatRule.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyNatGatewaySourceIpTranslationNatRuleRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyNatGatewaySourceIpTranslationNatRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyNatGatewaySourceIpTranslationNatRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyNatGatewaySourceIpTranslationNatRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyNetDetect(self, request):
         """本接口(ModifyNetDetect)用于修改网络探测参数。
 
@@ -5888,6 +6000,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyVpnGatewayCcnRoutesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def NotifyRoutes(self, request):
+        """路由表列表页操作增加“发布到云联网”，用于发布路由到云联网。
+
+        :param request: Request instance for NotifyRoutes.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.NotifyRoutesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.NotifyRoutesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("NotifyRoutes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.NotifyRoutesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -6515,6 +6655,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnassignPrivateIpAddressesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def WithdrawNotifyRoutes(self, request):
+        """路由表列表页操作增加“从云联网撤销”，用于撤销已发布到云联网的路由。
+
+        :param request: Request instance for WithdrawNotifyRoutes.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.WithdrawNotifyRoutesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.WithdrawNotifyRoutesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("WithdrawNotifyRoutes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.WithdrawNotifyRoutesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

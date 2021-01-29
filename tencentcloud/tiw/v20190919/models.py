@@ -1344,7 +1344,11 @@ VIDEO_GENERATION_MODE - 视频生成模式（内测中，需邮件申请开通�
 
 在`视频生成模式`下，默认会记录白板群组内的非白板信令消息，如果指定了`ChatGroupId`，则会记录指定群ID的聊天消息。
         :type ChatGroupId: str
-        :param ExtraData: 内部参数
+        :param AutoStopTimeout: 自动停止录制超时时间，单位秒，取值范围[300, 86400], 默认值为300秒。
+
+当超过设定时间房间内没有音视频上行且没有白板操作的时候，录制服务会自动停止当前录制任务。
+        :type AutoStopTimeout: int
+        :param ExtraData: 内部参数，可忽略
         :type ExtraData: str
         """
         self.SdkAppId = None
@@ -1360,6 +1364,7 @@ VIDEO_GENERATION_MODE - 视频生成模式（内测中，需邮件申请开通�
         self.RecordControl = None
         self.RecordMode = None
         self.ChatGroupId = None
+        self.AutoStopTimeout = None
         self.ExtraData = None
 
 
@@ -1385,6 +1390,7 @@ VIDEO_GENERATION_MODE - 视频生成模式（内测中，需邮件申请开通�
             self.RecordControl._deserialize(params.get("RecordControl"))
         self.RecordMode = params.get("RecordMode")
         self.ChatGroupId = params.get("ChatGroupId")
+        self.AutoStopTimeout = params.get("AutoStopTimeout")
         self.ExtraData = params.get("ExtraData")
 
 

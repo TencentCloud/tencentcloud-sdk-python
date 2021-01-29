@@ -314,6 +314,9 @@ class AlarmPolicy(AbstractModel):
         :param OriginId: 用于实例、实例组绑定和解绑接口（BindingPolicyObject、UnBindingAllPolicyObject、UnBindingPolicyObject）的策略 ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type OriginId: str
+        :param TagInstances: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagInstances: list of TagInstance
         """
         self.PolicyId = None
         self.PolicyName = None
@@ -343,6 +346,7 @@ class AlarmPolicy(AbstractModel):
         self.InstanceGroupName = None
         self.RuleType = None
         self.OriginId = None
+        self.TagInstances = None
 
 
     def _deserialize(self, params):
@@ -390,6 +394,12 @@ class AlarmPolicy(AbstractModel):
         self.InstanceGroupName = params.get("InstanceGroupName")
         self.RuleType = params.get("RuleType")
         self.OriginId = params.get("OriginId")
+        if params.get("TagInstances") is not None:
+            self.TagInstances = []
+            for item in params.get("TagInstances"):
+                obj = TagInstance()
+                obj._deserialize(item)
+                self.TagInstances.append(obj)
 
 
 class AlarmPolicyCondition(AbstractModel):
@@ -1890,6 +1900,8 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
         :type RuleTypes: list of str
         :param Enable: 启停，1：启用   0：停止
         :type Enable: list of int
+        :param NotBindingNoticeRule: 是否未配置通知规则，1：未配置，0：配置
+        :type NotBindingNoticeRule: int
         """
         self.Module = None
         self.PageNumber = None
@@ -1907,6 +1919,7 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
         self.NoticeIds = None
         self.RuleTypes = None
         self.Enable = None
+        self.NotBindingNoticeRule = None
 
 
     def _deserialize(self, params):
@@ -1926,6 +1939,7 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
         self.NoticeIds = params.get("NoticeIds")
         self.RuleTypes = params.get("RuleTypes")
         self.Enable = params.get("Enable")
+        self.NotBindingNoticeRule = params.get("NotBindingNoticeRule")
 
 
 class DescribeAlarmPoliciesResponse(AbstractModel):
@@ -3697,6 +3711,9 @@ class DescribeProductEventListEvents(AbstractModel):
         :param GroupInfo: 策略信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupInfo: list of DescribeProductEventListEventsGroupInfo
+        :param ViewName: 显示名称ViewName
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ViewName: str
         """
         self.EventId = None
         self.EventCName = None
@@ -3718,6 +3735,7 @@ class DescribeProductEventListEvents(AbstractModel):
         self.AdditionMsg = None
         self.IsAlarmConfig = None
         self.GroupInfo = None
+        self.ViewName = None
 
 
     def _deserialize(self, params):
@@ -3756,6 +3774,7 @@ class DescribeProductEventListEvents(AbstractModel):
                 obj = DescribeProductEventListEventsGroupInfo()
                 obj._deserialize(item)
                 self.GroupInfo.append(obj)
+        self.ViewName = params.get("ViewName")
 
 
 class DescribeProductEventListEventsDimensions(AbstractModel):
@@ -5430,6 +5449,54 @@ class SetDefaultAlarmPolicyResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class TagInstance(AbstractModel):
+    """策略列表详情标签返回体
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: 标签Key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param Value: 标签Value
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        :param InstanceSum: 实例个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceSum: int
+        :param ServiceType: 产品类型，如：cvm
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceType: str
+        :param RegionId: 地域ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionId: str
+        :param BindingStatus: 绑定状态，2：绑定成功，1：绑定中
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BindingStatus: int
+        :param TagStatus: 标签状态，2：标签存在，1：标签不存在
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagStatus: int
+        """
+        self.Key = None
+        self.Value = None
+        self.InstanceSum = None
+        self.ServiceType = None
+        self.RegionId = None
+        self.BindingStatus = None
+        self.TagStatus = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        self.InstanceSum = params.get("InstanceSum")
+        self.ServiceType = params.get("ServiceType")
+        self.RegionId = params.get("RegionId")
+        self.BindingStatus = params.get("BindingStatus")
+        self.TagStatus = params.get("TagStatus")
 
 
 class URLNotice(AbstractModel):

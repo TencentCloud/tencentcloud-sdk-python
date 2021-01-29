@@ -82,6 +82,34 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateAndDeployCloudBaseProject(self, request):
+        """创建云开发项目
+
+        :param request: Request instance for CreateAndDeployCloudBaseProject.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.CreateAndDeployCloudBaseProjectRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.CreateAndDeployCloudBaseProjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAndDeployCloudBaseProject", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAndDeployCloudBaseProjectResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateAuthDomain(self, request):
         """增加安全域名
 
@@ -348,6 +376,34 @@ class TcbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCloudBaseBuildServiceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCloudBaseProjectLatestVersionList(self, request):
+        """获取云开发项目列表
+
+        :param request: Request instance for DescribeCloudBaseProjectLatestVersionList.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseProjectLatestVersionListRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseProjectLatestVersionListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCloudBaseProjectLatestVersionList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCloudBaseProjectLatestVersionListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

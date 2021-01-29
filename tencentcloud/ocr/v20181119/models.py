@@ -120,14 +120,38 @@ class ArithmeticOCRRequest(AbstractModel):
 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :type ImageUrl: str
+        :param SupportHorizontalImage: 用于选择是否支持横屏拍摄。打开则支持横屏拍摄图片角度判断，角度信息在返回参数的angle中，默认值为true
+        :type SupportHorizontalImage: bool
+        :param RejectNonArithmeticPic: 是否拒绝非速算图，打开则拒绝非速算图(注：非速算图是指风景人物等明显不是速算图片的图片)，默认值为false
+        :type RejectNonArithmeticPic: bool
+        :param EnableDispRelatedVertical: 是否展开耦合算式中的竖式计算，默认值为false
+        :type EnableDispRelatedVertical: bool
+        :param EnableDispMidResult: 是否展示竖式算式的中间结果和格式控制字符，默认值为false
+        :type EnableDispMidResult: bool
+        :param EnablePdfRecognize: 是否开启pdf识别，默认值为true
+        :type EnablePdfRecognize: bool
+        :param PdfPageIndex: pdf页码，从0开始，默认为0
+        :type PdfPageIndex: int
         """
         self.ImageBase64 = None
         self.ImageUrl = None
+        self.SupportHorizontalImage = None
+        self.RejectNonArithmeticPic = None
+        self.EnableDispRelatedVertical = None
+        self.EnableDispMidResult = None
+        self.EnablePdfRecognize = None
+        self.PdfPageIndex = None
 
 
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        self.SupportHorizontalImage = params.get("SupportHorizontalImage")
+        self.RejectNonArithmeticPic = params.get("RejectNonArithmeticPic")
+        self.EnableDispRelatedVertical = params.get("EnableDispRelatedVertical")
+        self.EnableDispMidResult = params.get("EnableDispMidResult")
+        self.EnablePdfRecognize = params.get("EnablePdfRecognize")
+        self.PdfPageIndex = params.get("PdfPageIndex")
 
 
 class ArithmeticOCRResponse(AbstractModel):
@@ -139,10 +163,13 @@ class ArithmeticOCRResponse(AbstractModel):
         """
         :param TextDetections: 检测到的文本信息，具体内容请点击左侧链接。
         :type TextDetections: list of TextArithmetic
+        :param Angle: 图片横屏的角度(90度或270度)
+        :type Angle: float
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TextDetections = None
+        self.Angle = None
         self.RequestId = None
 
 
@@ -153,6 +180,7 @@ class ArithmeticOCRResponse(AbstractModel):
                 obj = TextArithmetic()
                 obj._deserialize(item)
                 self.TextDetections.append(obj)
+        self.Angle = params.get("Angle")
         self.RequestId = params.get("RequestId")
 
 
@@ -4758,7 +4786,7 @@ class TextArithmetic(AbstractModel):
         """
         :param DetectedText: 识别出的文本行内容
         :type DetectedText: str
-        :param Result: 算式运算结果
+        :param Result: 算式运算结果，true-正确   false-错误或非法参数
         :type Result: bool
         :param Confidence: 保留字段，暂不支持
         :type Confidence: int
@@ -4782,6 +4810,8 @@ class TextArithmetic(AbstractModel):
 ‘10’: 脱式计算
 ‘11’: 解方程
         :type ExpressionType: str
+        :param Answer: 错题推荐答案，算式运算结果正确返回为""，算式运算结果错误返回推荐答案 (注：暂不支持多个关系运算符（如1<10<7）、无关系运算符（如frac(1,2)+frac(2,3)）、单位换算（如1元=100角）错题的推荐答案返回)
+        :type Answer: str
         """
         self.DetectedText = None
         self.Result = None
@@ -4790,6 +4820,7 @@ class TextArithmetic(AbstractModel):
         self.AdvancedInfo = None
         self.ItemCoord = None
         self.ExpressionType = None
+        self.Answer = None
 
 
     def _deserialize(self, params):
@@ -4807,6 +4838,7 @@ class TextArithmetic(AbstractModel):
             self.ItemCoord = ItemCoord()
             self.ItemCoord._deserialize(params.get("ItemCoord"))
         self.ExpressionType = params.get("ExpressionType")
+        self.Answer = params.get("Answer")
 
 
 class TextDetectRequest(AbstractModel):

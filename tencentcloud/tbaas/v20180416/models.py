@@ -259,6 +259,132 @@ class BlockByNumberHandlerResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ChannelDetailForUser(AbstractModel):
+    """通道详情信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ChannelName: 通道名称
+        :type ChannelName: str
+        :param PeerList: 当前组织加入通道的节点列表
+        :type PeerList: list of PeerDetailForUser
+        """
+        self.ChannelName = None
+        self.PeerList = None
+
+
+    def _deserialize(self, params):
+        self.ChannelName = params.get("ChannelName")
+        if params.get("PeerList") is not None:
+            self.PeerList = []
+            for item in params.get("PeerList"):
+                obj = PeerDetailForUser()
+                obj._deserialize(item)
+                self.PeerList.append(obj)
+
+
+class ClusterDetailForUser(AbstractModel):
+    """网络详情信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 网络ID
+        :type ClusterId: str
+        :param GroupList: 组织列表
+        :type GroupList: list of GroupDetailForUser
+        :param ClusterName: 网络名称
+        :type ClusterName: str
+        """
+        self.ClusterId = None
+        self.GroupList = None
+        self.ClusterName = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("GroupList") is not None:
+            self.GroupList = []
+            for item in params.get("GroupList"):
+                obj = GroupDetailForUser()
+                obj._deserialize(item)
+                self.GroupList.append(obj)
+        self.ClusterName = params.get("ClusterName")
+
+
+class CreateChaincodeAndInstallForUserRequest(AbstractModel):
+    """CreateChaincodeAndInstallForUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名，本接口取值：chaincode_mng
+        :type Module: str
+        :param Operation: 操作名，本接口取值：chaincode_create_and_install_for_user
+        :type Operation: str
+        :param ClusterId: 区块链网络ID，可在区块链网络详情或列表中获取
+        :type ClusterId: str
+        :param GroupName: 调用合约的组织名称，可以在组织管理列表中获取当前组织的名称
+        :type GroupName: str
+        :param PeerName: 合约安装节点名称，可以在通道详情中获取该通道上的节点名称
+        :type PeerName: str
+        :param ChaincodeName: 智能合约名称，格式说明：以小写字母开头，由2-12位数字或小写字母组成
+        :type ChaincodeName: str
+        :param ChaincodeVersion: 智能合约版本，格式说明：由1-12位数字、小写字母、特殊符号(“.”)组成，如v1.0
+        :type ChaincodeVersion: str
+        :param ChaincodeFileType: 智能合约代码文件类型，支持类型：
+1. "go"：.go合约文件
+2. "gozip"：go合约工程zip包，要求压缩目录为代码根目录
+3. "javazip"：java合约工程zip包，要求压缩目录为代码根目录
+4. "nodezip"：nodejs合约工程zip包，要求压缩目录为代码根目录
+        :type ChaincodeFileType: str
+        :param Chaincode: 合约内容，合约文件或压缩包内容的base64编码，大小要求小于等于5M
+        :type Chaincode: str
+        """
+        self.Module = None
+        self.Operation = None
+        self.ClusterId = None
+        self.GroupName = None
+        self.PeerName = None
+        self.ChaincodeName = None
+        self.ChaincodeVersion = None
+        self.ChaincodeFileType = None
+        self.Chaincode = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+        self.ClusterId = params.get("ClusterId")
+        self.GroupName = params.get("GroupName")
+        self.PeerName = params.get("PeerName")
+        self.ChaincodeName = params.get("ChaincodeName")
+        self.ChaincodeVersion = params.get("ChaincodeVersion")
+        self.ChaincodeFileType = params.get("ChaincodeFileType")
+        self.Chaincode = params.get("Chaincode")
+
+
+class CreateChaincodeAndInstallForUserResponse(AbstractModel):
+    """CreateChaincodeAndInstallForUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeployDynamicContractHandlerRequest(AbstractModel):
     """DeployDynamicContractHandler请求参数结构体
 
@@ -629,6 +755,360 @@ class GetBlockTransactionListForUserResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GetChaincodeCompileLogForUserRequest(AbstractModel):
+    """GetChaincodeCompileLogForUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名，本接口取值：chaincode_mng
+        :type Module: str
+        :param Operation: 操作名，本接口取值：chaincode_compile_log_for_user
+        :type Operation: str
+        :param ClusterId: 区块链网络ID，可在区块链网络详情或列表中获取
+        :type ClusterId: str
+        :param GroupName: 调用合约的组织名称
+        :type GroupName: str
+        :param ChaincodeName: 业务所属智能合约名称
+        :type ChaincodeName: str
+        :param ChaincodeVersion: 业务所属智能合约版本
+        :type ChaincodeVersion: str
+        :param PeerName: 合约安装节点名称，可以在通道详情中获取该通道上的节点名称
+        :type PeerName: str
+        :param Limit: 返回数据项数，本接口默认取值：10
+        :type Limit: int
+        :param Offset: 返回数据起始偏移，本接口默认取值：0
+        :type Offset: int
+        """
+        self.Module = None
+        self.Operation = None
+        self.ClusterId = None
+        self.GroupName = None
+        self.ChaincodeName = None
+        self.ChaincodeVersion = None
+        self.PeerName = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+        self.ClusterId = params.get("ClusterId")
+        self.GroupName = params.get("GroupName")
+        self.ChaincodeName = params.get("ChaincodeName")
+        self.ChaincodeVersion = params.get("ChaincodeVersion")
+        self.PeerName = params.get("PeerName")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class GetChaincodeCompileLogForUserResponse(AbstractModel):
+    """GetChaincodeCompileLogForUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 日志总行数，上限2000条日志
+        :type TotalCount: int
+        :param CompileLogList: 日志列表
+        :type CompileLogList: list of LogDetailForUser
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.CompileLogList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("CompileLogList") is not None:
+            self.CompileLogList = []
+            for item in params.get("CompileLogList"):
+                obj = LogDetailForUser()
+                obj._deserialize(item)
+                self.CompileLogList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class GetChaincodeInitializeResultForUserRequest(AbstractModel):
+    """GetChaincodeInitializeResultForUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名，本接口取值：chaincode_mng
+        :type Module: str
+        :param Operation: 操作名，本接口取值：chaincode_init_result_for_user
+        :type Operation: str
+        :param ClusterId: 区块链网络ID，可在区块链网络详情或列表中获取
+        :type ClusterId: str
+        :param GroupName: 调用合约的组织名称
+        :type GroupName: str
+        :param ChannelName: 业务所属通道名称
+        :type ChannelName: str
+        :param ChaincodeName: 业务所属合约名称
+        :type ChaincodeName: str
+        :param ChaincodeVersion: 业务所属智能合约版本
+        :type ChaincodeVersion: str
+        :param TaskId: 实例化任务ID
+        :type TaskId: int
+        """
+        self.Module = None
+        self.Operation = None
+        self.ClusterId = None
+        self.GroupName = None
+        self.ChannelName = None
+        self.ChaincodeName = None
+        self.ChaincodeVersion = None
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+        self.ClusterId = params.get("ClusterId")
+        self.GroupName = params.get("GroupName")
+        self.ChannelName = params.get("ChannelName")
+        self.ChaincodeName = params.get("ChaincodeName")
+        self.ChaincodeVersion = params.get("ChaincodeVersion")
+        self.TaskId = params.get("TaskId")
+
+
+class GetChaincodeInitializeResultForUserResponse(AbstractModel):
+    """GetChaincodeInitializeResultForUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InitResult: 实例化结果：0，实例化中；1，实例化成功；2，实例化失败
+        :type InitResult: int
+        :param InitMessage: 实例化信息
+        :type InitMessage: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InitResult = None
+        self.InitMessage = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InitResult = params.get("InitResult")
+        self.InitMessage = params.get("InitMessage")
+        self.RequestId = params.get("RequestId")
+
+
+class GetChaincodeLogForUserRequest(AbstractModel):
+    """GetChaincodeLogForUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名，本接口取值：chaincode_mng
+        :type Module: str
+        :param Operation: 操作名，本接口取值：chaincode_log_for_user
+        :type Operation: str
+        :param ClusterId: 区块链网络ID，可在区块链网络详情或列表中获取
+        :type ClusterId: str
+        :param GroupName: 调用合约的组织名称
+        :type GroupName: str
+        :param ChaincodeName: 业务所属智能合约名称
+        :type ChaincodeName: str
+        :param ChaincodeVersion: 业务所属智能合约版本
+        :type ChaincodeVersion: str
+        :param PeerName: 合约安装节点名称，可以在通道详情中获取该通道上的节点名称
+        :type PeerName: str
+        :param BeginTime: 日志开始时间，如"2020-11-24 19:49:25"
+        :type BeginTime: str
+        :param RowNum: 返回日志行数的最大值，系统设定该参数最大为1000，且一行日志的最大字节数是500，即最大返回50万个字节数的日志数据
+        :type RowNum: int
+        """
+        self.Module = None
+        self.Operation = None
+        self.ClusterId = None
+        self.GroupName = None
+        self.ChaincodeName = None
+        self.ChaincodeVersion = None
+        self.PeerName = None
+        self.BeginTime = None
+        self.RowNum = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+        self.ClusterId = params.get("ClusterId")
+        self.GroupName = params.get("GroupName")
+        self.ChaincodeName = params.get("ChaincodeName")
+        self.ChaincodeVersion = params.get("ChaincodeVersion")
+        self.PeerName = params.get("PeerName")
+        self.BeginTime = params.get("BeginTime")
+        self.RowNum = params.get("RowNum")
+
+
+class GetChaincodeLogForUserResponse(AbstractModel):
+    """GetChaincodeLogForUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 返回日志总行数，不会超过入参的RowNum
+        :type TotalCount: int
+        :param ChaincodeLogList: 日志列表
+        :type ChaincodeLogList: list of LogDetailForUser
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ChaincodeLogList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ChaincodeLogList") is not None:
+            self.ChaincodeLogList = []
+            for item in params.get("ChaincodeLogList"):
+                obj = LogDetailForUser()
+                obj._deserialize(item)
+                self.ChaincodeLogList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class GetChannelListForUserRequest(AbstractModel):
+    """GetChannelListForUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名，本接口取值：channel_mng
+        :type Module: str
+        :param Operation: 操作名，本接口取值：channel_list_for_user
+        :type Operation: str
+        :param ClusterId: 区块链网络ID，可在区块链网络详情或列表中获取
+        :type ClusterId: str
+        :param GroupName: 组织名称
+        :type GroupName: str
+        :param Limit: 返回数据项数，本接口默认取值：10，上限取值：20
+        :type Limit: int
+        :param Offset: 返回数据起始偏移，本接口默认取值：0
+        :type Offset: int
+        """
+        self.Module = None
+        self.Operation = None
+        self.ClusterId = None
+        self.GroupName = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+        self.ClusterId = params.get("ClusterId")
+        self.GroupName = params.get("GroupName")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class GetChannelListForUserResponse(AbstractModel):
+    """GetChannelListForUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 通道总数量
+        :type TotalCount: int
+        :param ChannelList: 通道列表
+        :type ChannelList: list of ChannelDetailForUser
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ChannelList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ChannelList") is not None:
+            self.ChannelList = []
+            for item in params.get("ChannelList"):
+                obj = ChannelDetailForUser()
+                obj._deserialize(item)
+                self.ChannelList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class GetClusterListForUserRequest(AbstractModel):
+    """GetClusterListForUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名，本接口取值：cluster_mng
+        :type Module: str
+        :param Operation: 操作名，本接口取值：cluster_list_for_user
+        :type Operation: str
+        :param Limit: 返回数据项数，本接口默认取值：10，上限取值：20
+        :type Limit: int
+        :param Offset: 返回数据起始偏移，本接口默认取值：0
+        :type Offset: int
+        """
+        self.Module = None
+        self.Operation = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class GetClusterListForUserResponse(AbstractModel):
+    """GetClusterListForUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 网络总数量
+        :type TotalCount: int
+        :param ClusterList: 网络列表
+        :type ClusterList: list of ClusterDetailForUser
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ClusterList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ClusterList") is not None:
+            self.ClusterList = []
+            for item in params.get("ClusterList"):
+                obj = ClusterDetailForUser()
+                obj._deserialize(item)
+                self.ClusterList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class GetClusterSummaryRequest(AbstractModel):
     """GetClusterSummary请求参数结构体
 
@@ -896,6 +1376,77 @@ class GetLatesdTransactionListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GetPeerLogForUserRequest(AbstractModel):
+    """GetPeerLogForUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名，本接口取值：peer_mng
+        :type Module: str
+        :param Operation: 操作名，本接口取值：peer_log_for_user
+        :type Operation: str
+        :param ClusterId: 区块链网络ID，可在区块链网络详情或列表中获取
+        :type ClusterId: str
+        :param GroupName: 调用合约的组织名称
+        :type GroupName: str
+        :param PeerName: 节点名称
+        :type PeerName: str
+        :param BeginTime: 日志开始时间，如"2020-11-24 19:49:25"
+        :type BeginTime: str
+        :param RowNum: 返回日志行数的最大值，系统设定该参数最大为1000，且一行日志的最大字节数是500，即最大返回50万个字节数的日志数据
+        :type RowNum: int
+        """
+        self.Module = None
+        self.Operation = None
+        self.ClusterId = None
+        self.GroupName = None
+        self.PeerName = None
+        self.BeginTime = None
+        self.RowNum = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+        self.ClusterId = params.get("ClusterId")
+        self.GroupName = params.get("GroupName")
+        self.PeerName = params.get("PeerName")
+        self.BeginTime = params.get("BeginTime")
+        self.RowNum = params.get("RowNum")
+
+
+class GetPeerLogForUserResponse(AbstractModel):
+    """GetPeerLogForUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 返回日志总行数，不会超过入参的RowNum
+        :type TotalCount: int
+        :param PeerLogList: 日志列表
+        :type PeerLogList: list of LogDetailForUser
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.PeerLogList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("PeerLogList") is not None:
+            self.PeerLogList = []
+            for item in params.get("PeerLogList"):
+                obj = LogDetailForUser()
+                obj._deserialize(item)
+                self.PeerLogList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class GetTransByHashHandlerRequest(AbstractModel):
     """GetTransByHashHandler请求参数结构体
 
@@ -1132,6 +1683,97 @@ class GetTransactionDetailForUserResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GroupDetailForUser(AbstractModel):
+    """组织详情信息
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupName: 组织名称
+        :type GroupName: str
+        :param GroupMSPId: 组织MSP Identity
+        :type GroupMSPId: str
+        """
+        self.GroupName = None
+        self.GroupMSPId = None
+
+
+    def _deserialize(self, params):
+        self.GroupName = params.get("GroupName")
+        self.GroupMSPId = params.get("GroupMSPId")
+
+
+class InitializeChaincodeForUserRequest(AbstractModel):
+    """InitializeChaincodeForUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名，本接口取值：chaincode_mng
+        :type Module: str
+        :param Operation: 操作名，本接口取值：chaincode_init_for_user
+        :type Operation: str
+        :param ClusterId: 区块链网络ID，可在区块链网络详情或列表中获取
+        :type ClusterId: str
+        :param GroupName: 调用合约的组织名称
+        :type GroupName: str
+        :param ChaincodeName: 业务所属智能合约名称
+        :type ChaincodeName: str
+        :param ChaincodeVersion: 业务所属智能合约版本
+        :type ChaincodeVersion: str
+        :param ChannelName: 业务所属通道名称
+        :type ChannelName: str
+        :param PeerName: 合约实例化节点名称，可以在通道详情中获取该通道上的节点名称
+        :type PeerName: str
+        :param Args: 实例化的函数参数列表
+        :type Args: list of str
+        """
+        self.Module = None
+        self.Operation = None
+        self.ClusterId = None
+        self.GroupName = None
+        self.ChaincodeName = None
+        self.ChaincodeVersion = None
+        self.ChannelName = None
+        self.PeerName = None
+        self.Args = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+        self.ClusterId = params.get("ClusterId")
+        self.GroupName = params.get("GroupName")
+        self.ChaincodeName = params.get("ChaincodeName")
+        self.ChaincodeVersion = params.get("ChaincodeVersion")
+        self.ChannelName = params.get("ChannelName")
+        self.PeerName = params.get("PeerName")
+        self.Args = params.get("Args")
+
+
+class InitializeChaincodeForUserResponse(AbstractModel):
+    """InitializeChaincodeForUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 实例化任务ID，用于查询实例化结果
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class InvokeRequest(AbstractModel):
     """Invoke请求参数结构体
 
@@ -1213,6 +1855,44 @@ class InvokeResponse(AbstractModel):
         self.Txid = params.get("Txid")
         self.Events = params.get("Events")
         self.RequestId = params.get("RequestId")
+
+
+class LogDetailForUser(AbstractModel):
+    """日志详情信息
+
+    """
+
+    def __init__(self):
+        """
+        :param LineNumber: 日志行号
+        :type LineNumber: int
+        :param LogMessage: 日志详情
+        :type LogMessage: str
+        """
+        self.LineNumber = None
+        self.LogMessage = None
+
+
+    def _deserialize(self, params):
+        self.LineNumber = params.get("LineNumber")
+        self.LogMessage = params.get("LogMessage")
+
+
+class PeerDetailForUser(AbstractModel):
+    """节点详情信息
+
+    """
+
+    def __init__(self):
+        """
+        :param PeerName: 节点名称
+        :type PeerName: str
+        """
+        self.PeerName = None
+
+
+    def _deserialize(self, params):
+        self.PeerName = params.get("PeerName")
 
 
 class PeerSet(AbstractModel):

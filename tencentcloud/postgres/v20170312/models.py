@@ -53,6 +53,48 @@ class AccountInfo(AbstractModel):
         self.UpdateTime = params.get("UpdateTime")
 
 
+class AddDBInstanceToReadOnlyGroupRequest(AbstractModel):
+    """AddDBInstanceToReadOnlyGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DBInstanceId: 实例ID
+        :type DBInstanceId: str
+        :param ReadOnlyGroupId: 只读组ID
+        :type ReadOnlyGroupId: str
+        """
+        self.DBInstanceId = None
+        self.ReadOnlyGroupId = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.ReadOnlyGroupId = params.get("ReadOnlyGroupId")
+
+
+class AddDBInstanceToReadOnlyGroupResponse(AbstractModel):
+    """AddDBInstanceToReadOnlyGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: 流程ID
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class CloseDBExtranetAccessRequest(AbstractModel):
     """CloseDBExtranetAccess请求参数结构体
 
@@ -245,6 +287,205 @@ class CreateDBInstancesResponse(AbstractModel):
         self.DealNames = params.get("DealNames")
         self.BillId = params.get("BillId")
         self.DBInstanceIdSet = params.get("DBInstanceIdSet")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateReadOnlyDBInstanceRequest(AbstractModel):
+    """CreateReadOnlyDBInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SpecCode: 售卖规格ID。该参数可以通过调用DescribeProductConfig的返回值中的SpecCode字段来获取。
+        :type SpecCode: str
+        :param DBVersion: PostgreSQL内核版本，目前强制和主实例保持一致
+        :type DBVersion: str
+        :param Storage: 实例容量大小，单位：GB。
+        :type Storage: int
+        :param InstanceCount: 一次性购买的实例数量。取值1-100
+        :type InstanceCount: int
+        :param Period: 购买时长，单位：月。目前只支持1,2,3,4,5,6,7,8,9,10,11,12,24,36这些值，按量计费模式下该参数传1。
+        :type Period: int
+        :param MasterDBInstanceId: 只读实例的主实例ID
+        :type MasterDBInstanceId: str
+        :param Zone: 可用区ID。该参数可以通过调用 DescribeZones 接口的返回值中的Zone字段来获取。
+        :type Zone: str
+        :param ProjectId: 项目ID。
+        :type ProjectId: int
+        :param InstanceChargeType: 实例计费类型。目前支持：PREPAID（预付费，即包年包月），POSTPAID_BY_HOUR（后付费，即按量计费）。
+        :type InstanceChargeType: str
+        :param AutoVoucher: 是否自动使用代金券。1（是），0（否），默认不使用。
+        :type AutoVoucher: int
+        :param VoucherIds: 代金券ID列表，目前仅支持指定一张代金券。
+        :type VoucherIds: list of str
+        :param AutoRenewFlag: 续费标记：0-正常续费（默认）；1-自动续费；
+        :type AutoRenewFlag: int
+        :param VpcId: 私有网络ID。
+        :type VpcId: str
+        :param SubnetId: 私有网络子网ID。
+        :type SubnetId: str
+        :param ActivityId: 优惠活动ID
+        :type ActivityId: int
+        :param Name: 实例名(后续支持)
+        :type Name: str
+        :param NeedSupportIpv6: 是否需要支持Ipv6，1：是，0：否
+        :type NeedSupportIpv6: int
+        :param ReadOnlyGroupId: 只读组ID。
+        :type ReadOnlyGroupId: str
+        :param TagList: 实例需要绑定的Tag信息，默认为空
+        :type TagList: :class:`tencentcloud.postgres.v20170312.models.Tag`
+        """
+        self.SpecCode = None
+        self.DBVersion = None
+        self.Storage = None
+        self.InstanceCount = None
+        self.Period = None
+        self.MasterDBInstanceId = None
+        self.Zone = None
+        self.ProjectId = None
+        self.InstanceChargeType = None
+        self.AutoVoucher = None
+        self.VoucherIds = None
+        self.AutoRenewFlag = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.ActivityId = None
+        self.Name = None
+        self.NeedSupportIpv6 = None
+        self.ReadOnlyGroupId = None
+        self.TagList = None
+
+
+    def _deserialize(self, params):
+        self.SpecCode = params.get("SpecCode")
+        self.DBVersion = params.get("DBVersion")
+        self.Storage = params.get("Storage")
+        self.InstanceCount = params.get("InstanceCount")
+        self.Period = params.get("Period")
+        self.MasterDBInstanceId = params.get("MasterDBInstanceId")
+        self.Zone = params.get("Zone")
+        self.ProjectId = params.get("ProjectId")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        self.AutoVoucher = params.get("AutoVoucher")
+        self.VoucherIds = params.get("VoucherIds")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.ActivityId = params.get("ActivityId")
+        self.Name = params.get("Name")
+        self.NeedSupportIpv6 = params.get("NeedSupportIpv6")
+        self.ReadOnlyGroupId = params.get("ReadOnlyGroupId")
+        if params.get("TagList") is not None:
+            self.TagList = Tag()
+            self.TagList._deserialize(params.get("TagList"))
+
+
+class CreateReadOnlyDBInstanceResponse(AbstractModel):
+    """CreateReadOnlyDBInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DealNames: 订单号列表。每个实例对应一个订单号
+        :type DealNames: list of str
+        :param BillId: 冻结流水号
+        :type BillId: str
+        :param DBInstanceIdSet: 创建成功的实例ID集合，只在后付费情景下有返回值
+        :type DBInstanceIdSet: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DealNames = None
+        self.BillId = None
+        self.DBInstanceIdSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DealNames = params.get("DealNames")
+        self.BillId = params.get("BillId")
+        self.DBInstanceIdSet = params.get("DBInstanceIdSet")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateReadOnlyGroupRequest(AbstractModel):
+    """CreateReadOnlyGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MasterDBInstanceId: 主实例ID
+        :type MasterDBInstanceId: str
+        :param Name: 只读组名称
+        :type Name: str
+        :param ProjectId: 项目ID
+        :type ProjectId: int
+        :param VpcId: 私有网络ID
+        :type VpcId: str
+        :param SubnetId: 子网ID
+        :type SubnetId: str
+        :param ReplayLagEliminate: 延迟时间大小开关：0关、1开
+        :type ReplayLagEliminate: int
+        :param ReplayLatencyEliminate: 延迟空间大小开关： 0关、1开
+        :type ReplayLatencyEliminate: int
+        :param MaxReplayLag: 延迟时间大小阈值，单位ms
+        :type MaxReplayLag: int
+        :param MaxReplayLatency: 延迟空间大小阈值，单位MB
+        :type MaxReplayLatency: int
+        :param MinDelayEliminateReserve: 延迟剔除最小保留实例数
+        :type MinDelayEliminateReserve: int
+        """
+        self.MasterDBInstanceId = None
+        self.Name = None
+        self.ProjectId = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.ReplayLagEliminate = None
+        self.ReplayLatencyEliminate = None
+        self.MaxReplayLag = None
+        self.MaxReplayLatency = None
+        self.MinDelayEliminateReserve = None
+
+
+    def _deserialize(self, params):
+        self.MasterDBInstanceId = params.get("MasterDBInstanceId")
+        self.Name = params.get("Name")
+        self.ProjectId = params.get("ProjectId")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.ReplayLagEliminate = params.get("ReplayLagEliminate")
+        self.ReplayLatencyEliminate = params.get("ReplayLatencyEliminate")
+        self.MaxReplayLag = params.get("MaxReplayLag")
+        self.MaxReplayLatency = params.get("MaxReplayLatency")
+        self.MinDelayEliminateReserve = params.get("MinDelayEliminateReserve")
+
+
+class CreateReadOnlyGroupResponse(AbstractModel):
+    """CreateReadOnlyGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ReadOnlyGroupId: 只读组ID
+        :type ReadOnlyGroupId: str
+        :param FlowId: 流程ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ReadOnlyGroupId = None
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ReadOnlyGroupId = params.get("ReadOnlyGroupId")
+        self.FlowId = params.get("FlowId")
         self.RequestId = params.get("RequestId")
 
 
@@ -560,6 +801,45 @@ class DBInstanceNetInfo(AbstractModel):
         self.Status = params.get("Status")
 
 
+class DeleteReadOnlyGroupRequest(AbstractModel):
+    """DeleteReadOnlyGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ReadOnlyGroupId: 待删除只读组ID
+        :type ReadOnlyGroupId: str
+        """
+        self.ReadOnlyGroupId = None
+
+
+    def _deserialize(self, params):
+        self.ReadOnlyGroupId = params.get("ReadOnlyGroupId")
+
+
+class DeleteReadOnlyGroupResponse(AbstractModel):
+    """DeleteReadOnlyGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: 流程ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteServerlessDBInstanceRequest(AbstractModel):
     """DeleteServerlessDBInstance请求参数结构体
 
@@ -850,7 +1130,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type Filters: list of Filter
         :param Limit: 每页显示数量，默认返回10条。
         :type Limit: int
-        :param Offset: 分页序号，从0开始。
+        :param Offset: 数据偏移量，从0开始。
         :type Offset: int
         :param OrderBy: 排序指标，如实例名、创建时间等，支持DBInstanceId,CreateTime,Name,EndTime
         :type OrderBy: str
@@ -1167,6 +1447,70 @@ class DescribeProductConfigResponse(AbstractModel):
                 obj = SpecInfo()
                 obj._deserialize(item)
                 self.SpecInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeReadOnlyGroupsRequest(AbstractModel):
+    """DescribeReadOnlyGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Filters: 过滤条件，必须传入主实例ID进行过滤，否则返回值将为空，过滤参数为：db-master-instance-id
+        :type Filters: list of Filter
+        :param PageSize: 查询每一页的条数，默认为10
+        :type PageSize: int
+        :param PageNumber: 查询的页码，默认为1
+        :type PageNumber: int
+        :param OrderBy: 查询排序依据，目前支持:ROGroupId,CreateTime,Name
+        :type OrderBy: str
+        :param OrderByType: 查询排序依据类型，目前支持:desc,asc
+        :type OrderByType: str
+        """
+        self.Filters = None
+        self.PageSize = None
+        self.PageNumber = None
+        self.OrderBy = None
+        self.OrderByType = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.PageSize = params.get("PageSize")
+        self.PageNumber = params.get("PageNumber")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderByType = params.get("OrderByType")
+
+
+class DescribeReadOnlyGroupsResponse(AbstractModel):
+    """DescribeReadOnlyGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ReadOnlyGroupList: 只读组列表
+        :type ReadOnlyGroupList: list of ReadOnlyGroup
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ReadOnlyGroupList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ReadOnlyGroupList") is not None:
+            self.ReadOnlyGroupList = []
+            for item in params.get("ReadOnlyGroupList"):
+                obj = ReadOnlyGroup()
+                obj._deserialize(item)
+                self.ReadOnlyGroupList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1693,6 +2037,52 @@ class ModifyDBInstanceNameResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyDBInstanceReadOnlyGroupRequest(AbstractModel):
+    """ModifyDBInstanceReadOnlyGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DBInstanceId: 实例ID
+        :type DBInstanceId: str
+        :param ReadOnlyGroupId: 当前实例所在只读组ID
+        :type ReadOnlyGroupId: str
+        :param NewReadOnlyGroupId: 实例修改的目标只读组ID
+        :type NewReadOnlyGroupId: str
+        """
+        self.DBInstanceId = None
+        self.ReadOnlyGroupId = None
+        self.NewReadOnlyGroupId = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.ReadOnlyGroupId = params.get("ReadOnlyGroupId")
+        self.NewReadOnlyGroupId = params.get("NewReadOnlyGroupId")
+
+
+class ModifyDBInstanceReadOnlyGroupResponse(AbstractModel):
+    """ModifyDBInstanceReadOnlyGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: 流程ID
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyDBInstancesProjectRequest(AbstractModel):
     """ModifyDBInstancesProject请求参数结构体
 
@@ -1732,6 +2122,68 @@ class ModifyDBInstancesProjectResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Count = params.get("Count")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyReadOnlyGroupConfigRequest(AbstractModel):
+    """ModifyReadOnlyGroupConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ReadOnlyGroupId: 只读组ID
+        :type ReadOnlyGroupId: str
+        :param ReadOnlyGroupName: 只读组名称
+        :type ReadOnlyGroupName: str
+        :param ReplayLagEliminate: 延迟时间配置开关：0关、1开
+        :type ReplayLagEliminate: int
+        :param ReplayLatencyEliminate: 延迟日志大小配置开关：0关、1开
+        :type ReplayLatencyEliminate: int
+        :param MaxReplayLatency: 延迟日志大小阈值，单位MB
+        :type MaxReplayLatency: int
+        :param MaxReplayLag: 延迟时间大小阈值，单位ms
+        :type MaxReplayLag: int
+        :param Rebalance: 自动负载均衡开关：0关、1开
+        :type Rebalance: int
+        :param MinDelayEliminateReserve: 延迟剔除最小保留实例数
+        :type MinDelayEliminateReserve: int
+        """
+        self.ReadOnlyGroupId = None
+        self.ReadOnlyGroupName = None
+        self.ReplayLagEliminate = None
+        self.ReplayLatencyEliminate = None
+        self.MaxReplayLatency = None
+        self.MaxReplayLag = None
+        self.Rebalance = None
+        self.MinDelayEliminateReserve = None
+
+
+    def _deserialize(self, params):
+        self.ReadOnlyGroupId = params.get("ReadOnlyGroupId")
+        self.ReadOnlyGroupName = params.get("ReadOnlyGroupName")
+        self.ReplayLagEliminate = params.get("ReplayLagEliminate")
+        self.ReplayLatencyEliminate = params.get("ReplayLatencyEliminate")
+        self.MaxReplayLatency = params.get("MaxReplayLatency")
+        self.MaxReplayLag = params.get("MaxReplayLag")
+        self.Rebalance = params.get("Rebalance")
+        self.MinDelayEliminateReserve = params.get("MinDelayEliminateReserve")
+
+
+class ModifyReadOnlyGroupConfigResponse(AbstractModel):
+    """ModifyReadOnlyGroupConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -1925,6 +2377,137 @@ class PgDeal(AbstractModel):
         self.DBInstanceIdSet = params.get("DBInstanceIdSet")
 
 
+class ReadOnlyGroup(AbstractModel):
+    """只读组信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ReadOnlyGroupId: 只读组标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReadOnlyGroupId: str
+        :param ReadOnlyGroupName: 只读组名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReadOnlyGroupName: str
+        :param ProjectId: 项目id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: int
+        :param MasterDBInstanceId: 主实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MasterDBInstanceId: str
+        :param MinDelayEliminateReserve: 最小保留实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MinDelayEliminateReserve: int
+        :param MaxReplayLatency: 延迟空间大小阈值
+        :type MaxReplayLatency: int
+        :param ReplayLatencyEliminate: 延迟大小开关
+        :type ReplayLatencyEliminate: int
+        :param MaxReplayLag: 延迟时间大小阈值
+        :type MaxReplayLag: float
+        :param ReplayLagEliminate: 延迟时间开关
+        :type ReplayLagEliminate: int
+        :param VpcId: 虚拟网络id
+        :type VpcId: str
+        :param SubnetId: 子网id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
+        :param Region: 地域id
+        :type Region: str
+        :param Zone: 地区id
+        :type Zone: str
+        :param Status: 状态
+        :type Status: str
+        :param ReadOnlyDBInstanceList: 实例详细信息
+        :type ReadOnlyDBInstanceList: list of DBInstance
+        :param Rebalance: 自动负载均衡开关
+        :type Rebalance: int
+        :param DBInstanceNetInfo: 网络信息
+        :type DBInstanceNetInfo: list of DBInstanceNetInfo
+        """
+        self.ReadOnlyGroupId = None
+        self.ReadOnlyGroupName = None
+        self.ProjectId = None
+        self.MasterDBInstanceId = None
+        self.MinDelayEliminateReserve = None
+        self.MaxReplayLatency = None
+        self.ReplayLatencyEliminate = None
+        self.MaxReplayLag = None
+        self.ReplayLagEliminate = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.Region = None
+        self.Zone = None
+        self.Status = None
+        self.ReadOnlyDBInstanceList = None
+        self.Rebalance = None
+        self.DBInstanceNetInfo = None
+
+
+    def _deserialize(self, params):
+        self.ReadOnlyGroupId = params.get("ReadOnlyGroupId")
+        self.ReadOnlyGroupName = params.get("ReadOnlyGroupName")
+        self.ProjectId = params.get("ProjectId")
+        self.MasterDBInstanceId = params.get("MasterDBInstanceId")
+        self.MinDelayEliminateReserve = params.get("MinDelayEliminateReserve")
+        self.MaxReplayLatency = params.get("MaxReplayLatency")
+        self.ReplayLatencyEliminate = params.get("ReplayLatencyEliminate")
+        self.MaxReplayLag = params.get("MaxReplayLag")
+        self.ReplayLagEliminate = params.get("ReplayLagEliminate")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.Region = params.get("Region")
+        self.Zone = params.get("Zone")
+        self.Status = params.get("Status")
+        if params.get("ReadOnlyDBInstanceList") is not None:
+            self.ReadOnlyDBInstanceList = []
+            for item in params.get("ReadOnlyDBInstanceList"):
+                obj = DBInstance()
+                obj._deserialize(item)
+                self.ReadOnlyDBInstanceList.append(obj)
+        self.Rebalance = params.get("Rebalance")
+        if params.get("DBInstanceNetInfo") is not None:
+            self.DBInstanceNetInfo = []
+            for item in params.get("DBInstanceNetInfo"):
+                obj = DBInstanceNetInfo()
+                obj._deserialize(item)
+                self.DBInstanceNetInfo.append(obj)
+
+
+class RebalanceReadOnlyGroupRequest(AbstractModel):
+    """RebalanceReadOnlyGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ReadOnlyGroupId: 只读组ID
+        :type ReadOnlyGroupId: str
+        """
+        self.ReadOnlyGroupId = None
+
+
+    def _deserialize(self, params):
+        self.ReadOnlyGroupId = params.get("ReadOnlyGroupId")
+
+
+class RebalanceReadOnlyGroupResponse(AbstractModel):
+    """RebalanceReadOnlyGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class RegionInfo(AbstractModel):
     """描述地域的编码和状态等信息
 
@@ -1940,11 +2523,15 @@ class RegionInfo(AbstractModel):
         :type RegionId: int
         :param RegionState: 可用状态，UNAVAILABLE表示不可用，AVAILABLE表示可用
         :type RegionState: str
+        :param SupportInternational: 该地域是否支持国际站售卖，0：不支持，1：支持
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportInternational: int
         """
         self.Region = None
         self.RegionName = None
         self.RegionId = None
         self.RegionState = None
+        self.SupportInternational = None
 
 
     def _deserialize(self, params):
@@ -1952,6 +2539,49 @@ class RegionInfo(AbstractModel):
         self.RegionName = params.get("RegionName")
         self.RegionId = params.get("RegionId")
         self.RegionState = params.get("RegionState")
+        self.SupportInternational = params.get("SupportInternational")
+
+
+class RemoveDBInstanceFromReadOnlyGroupRequest(AbstractModel):
+    """RemoveDBInstanceFromReadOnlyGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DBInstanceId: 实例ID
+        :type DBInstanceId: str
+        :param ReadOnlyGroupId: 只读组ID
+        :type ReadOnlyGroupId: str
+        """
+        self.DBInstanceId = None
+        self.ReadOnlyGroupId = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.ReadOnlyGroupId = params.get("ReadOnlyGroupId")
+
+
+class RemoveDBInstanceFromReadOnlyGroupResponse(AbstractModel):
+    """RemoveDBInstanceFromReadOnlyGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: 流程ID
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
 
 
 class RenewInstanceRequest(AbstractModel):
