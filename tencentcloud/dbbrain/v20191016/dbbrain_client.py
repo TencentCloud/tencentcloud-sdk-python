@@ -82,6 +82,62 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateSecurityAuditLogExportTask(self, request):
+        """创建安全审计日志导出任务。
+
+        :param request: Request instance for CreateSecurityAuditLogExportTask.
+        :type request: :class:`tencentcloud.dbbrain.v20191016.models.CreateSecurityAuditLogExportTaskRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.CreateSecurityAuditLogExportTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateSecurityAuditLogExportTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateSecurityAuditLogExportTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteSecurityAuditLogExportTasks(self, request):
+        """删除安全审计日志导出任务。
+
+        :param request: Request instance for DeleteSecurityAuditLogExportTasks.
+        :type request: :class:`tencentcloud.dbbrain.v20191016.models.DeleteSecurityAuditLogExportTasksRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.DeleteSecurityAuditLogExportTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteSecurityAuditLogExportTasks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteSecurityAuditLogExportTasksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeAllUserContact(self, request):
         """获取邮件发送中联系人的相关信息。
 
@@ -208,6 +264,62 @@ class DbbrainClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBSpaceStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSecurityAuditLogDownloadUrls(self, request):
+        """查询安全审计日志导出文件下载链接。目前日志文件下载仅提供腾讯云内网地址，请通过广州地域的腾讯云服务器进行下载。
+
+        :param request: Request instance for DescribeSecurityAuditLogDownloadUrls.
+        :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeSecurityAuditLogDownloadUrlsRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.DescribeSecurityAuditLogDownloadUrlsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSecurityAuditLogDownloadUrls", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSecurityAuditLogDownloadUrlsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSecurityAuditLogExportTasks(self, request):
+        """查询安全审计日志导出任务列表。
+
+        :param request: Request instance for DescribeSecurityAuditLogExportTasks.
+        :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeSecurityAuditLogExportTasksRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.DescribeSecurityAuditLogExportTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSecurityAuditLogExportTasks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSecurityAuditLogExportTasksResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

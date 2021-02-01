@@ -3485,7 +3485,7 @@ class EksCluster(AbstractModel):
         :type SubnetIds: list of str
         :param K8SVersion: k8s 版本号
         :type K8SVersion: str
-        :param Status: 集群状态
+        :param Status: 集群状态(running运行中，initializing 初始化中，failed异常)
         :type Status: str
         :param ClusterDesc: 集群描述信息
         :type ClusterDesc: str

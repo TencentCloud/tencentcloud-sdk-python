@@ -160,6 +160,102 @@ class CreateMailProfileResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateSecurityAuditLogExportTaskRequest(AbstractModel):
+    """CreateSecurityAuditLogExportTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SecAuditGroupId: 安全审计组Id。
+        :type SecAuditGroupId: str
+        :param StartTime: 导出日志开始时间，例如2020-12-28 00:00:00。
+        :type StartTime: str
+        :param EndTime: 导出日志结束时间，例如2020-12-28 01:00:00。
+        :type EndTime: str
+        :param Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL。
+        :type Product: str
+        :param DangerLevels: 日志风险等级列表，支持值包括：0 无风险；1 低风险；2 中风险；3 高风险。
+        :type DangerLevels: list of int
+        """
+        self.SecAuditGroupId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Product = None
+        self.DangerLevels = None
+
+
+    def _deserialize(self, params):
+        self.SecAuditGroupId = params.get("SecAuditGroupId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Product = params.get("Product")
+        self.DangerLevels = params.get("DangerLevels")
+
+
+class CreateSecurityAuditLogExportTaskResponse(AbstractModel):
+    """CreateSecurityAuditLogExportTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncRequestId: 日志导出任务Id。
+        :type AsyncRequestId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteSecurityAuditLogExportTasksRequest(AbstractModel):
+    """DeleteSecurityAuditLogExportTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SecAuditGroupId: 安全审计组Id。
+        :type SecAuditGroupId: str
+        :param AsyncRequestIds: 日志导出任务Id列表，接口会忽略不存在或已删除的任务Id。
+        :type AsyncRequestIds: list of int non-negative
+        :param Product: 服务产品类型，支持值： "mysql" - 云数据库 MySQL。
+        :type Product: str
+        """
+        self.SecAuditGroupId = None
+        self.AsyncRequestIds = None
+        self.Product = None
+
+
+    def _deserialize(self, params):
+        self.SecAuditGroupId = params.get("SecAuditGroupId")
+        self.AsyncRequestIds = params.get("AsyncRequestIds")
+        self.Product = params.get("Product")
+
+
+class DeleteSecurityAuditLogExportTasksResponse(AbstractModel):
+    """DeleteSecurityAuditLogExportTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAllUserContactRequest(AbstractModel):
     """DescribeAllUserContact请求参数结构体
 
@@ -461,6 +557,115 @@ class DescribeDBSpaceStatusResponse(AbstractModel):
         self.Remain = params.get("Remain")
         self.Total = params.get("Total")
         self.AvailableDays = params.get("AvailableDays")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSecurityAuditLogDownloadUrlsRequest(AbstractModel):
+    """DescribeSecurityAuditLogDownloadUrls请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SecAuditGroupId: 安全审计组Id。
+        :type SecAuditGroupId: str
+        :param AsyncRequestId: 异步任务Id。
+        :type AsyncRequestId: int
+        :param Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL。
+        :type Product: str
+        """
+        self.SecAuditGroupId = None
+        self.AsyncRequestId = None
+        self.Product = None
+
+
+    def _deserialize(self, params):
+        self.SecAuditGroupId = params.get("SecAuditGroupId")
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.Product = params.get("Product")
+
+
+class DescribeSecurityAuditLogDownloadUrlsResponse(AbstractModel):
+    """DescribeSecurityAuditLogDownloadUrls返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Urls: 导出结果的COS链接列表。当结果集很大时，可能会切分为多个url下载。
+        :type Urls: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Urls = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Urls = params.get("Urls")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSecurityAuditLogExportTasksRequest(AbstractModel):
+    """DescribeSecurityAuditLogExportTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SecAuditGroupId: 安全审计组Id。
+        :type SecAuditGroupId: str
+        :param Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL。
+        :type Product: str
+        :param AsyncRequestIds: 日志导出任务Id列表。
+        :type AsyncRequestIds: list of int non-negative
+        :param Offset: 偏移量，默认0。
+        :type Offset: int
+        :param Limit: 返回数量，默认20。
+        :type Limit: int
+        """
+        self.SecAuditGroupId = None
+        self.Product = None
+        self.AsyncRequestIds = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.SecAuditGroupId = params.get("SecAuditGroupId")
+        self.Product = params.get("Product")
+        self.AsyncRequestIds = params.get("AsyncRequestIds")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeSecurityAuditLogExportTasksResponse(AbstractModel):
+    """DescribeSecurityAuditLogExportTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Tasks: 安全审计日志导出任务列表。
+        :type Tasks: list of SecLogExportTaskInfo
+        :param TotalCount: 安全审计日志导出任务总数。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Tasks = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Tasks") is not None:
+            self.Tasks = []
+            for item in params.get("Tasks"):
+                obj = SecLogExportTaskInfo()
+                obj._deserialize(item)
+                self.Tasks.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -1056,6 +1261,65 @@ class SchemaItem(AbstractModel):
 
     def _deserialize(self, params):
         self.Schema = params.get("Schema")
+
+
+class SecLogExportTaskInfo(AbstractModel):
+    """安全审计日志导出任务信息
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncRequestId: 异步任务Id。
+        :type AsyncRequestId: int
+        :param StartTime: 任务开始时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param EndTime: 任务结束时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param CreateTime: 任务创建时间。
+        :type CreateTime: str
+        :param Status: 任务状态。
+        :type Status: str
+        :param Progress: 任务执行进度。
+        :type Progress: int
+        :param LogStartTime: 导出日志开始时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogStartTime: str
+        :param LogEndTime: 导出日志结束时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogEndTime: str
+        :param TotalSize: 日志文件总大小，单位KB。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalSize: int
+        :param DangerLevels: 风险等级列表。0 无风险；1 低风险；2 中风险；3 高风险。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DangerLevels: list of int non-negative
+        """
+        self.AsyncRequestId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.CreateTime = None
+        self.Status = None
+        self.Progress = None
+        self.LogStartTime = None
+        self.LogEndTime = None
+        self.TotalSize = None
+        self.DangerLevels = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.CreateTime = params.get("CreateTime")
+        self.Status = params.get("Status")
+        self.Progress = params.get("Progress")
+        self.LogStartTime = params.get("LogStartTime")
+        self.LogEndTime = params.get("LogEndTime")
+        self.TotalSize = params.get("TotalSize")
+        self.DangerLevels = params.get("DangerLevels")
 
 
 class SlowLogTopSqlItem(AbstractModel):

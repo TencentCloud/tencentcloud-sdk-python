@@ -84,6 +84,30 @@ class CheckTcbServiceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CloudBaseCapabilities(AbstractModel):
+    """cloudrun安全特性能力
+
+
+    """
+
+    def __init__(self):
+        """
+        :param Add: 启用安全能力项列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Add: list of str
+        :param Drop: 禁用安全能力向列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Drop: list of str
+        """
+        self.Add = None
+        self.Drop = None
+
+
+    def _deserialize(self, params):
+        self.Add = params.get("Add")
+        self.Drop = params.get("Drop")
+
+
 class CloudBaseCodeRepoDetail(AbstractModel):
     """代码仓库里 Repo的信息描述
 
@@ -377,16 +401,24 @@ class CloudBaseRunNfsVolumeSource(AbstractModel):
         :type Path: str
         :param ReadOnly: 是否只读
         :type ReadOnly: bool
+        :param SecretName: secret名称
+        :type SecretName: str
+        :param EnableEmptyDirVolume: 临时目录
+        :type EnableEmptyDirVolume: bool
         """
         self.Server = None
         self.Path = None
         self.ReadOnly = None
+        self.SecretName = None
+        self.EnableEmptyDirVolume = None
 
 
     def _deserialize(self, params):
         self.Server = params.get("Server")
         self.Path = params.get("Path")
         self.ReadOnly = params.get("ReadOnly")
+        self.SecretName = params.get("SecretName")
+        self.EnableEmptyDirVolume = params.get("EnableEmptyDirVolume")
 
 
 class CloudBaseRunSideSpec(AbstractModel):
@@ -417,6 +449,9 @@ class CloudBaseRunSideSpec(AbstractModel):
         :param Mem: 内存大小（单位：M）
 注意：此字段可能返回 null，表示取不到有效值。
         :type Mem: int
+        :param Security: 安全特性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Security: :class:`tencentcloud.tcb.v20180608.models.CloudBaseSecurityContext`
         """
         self.ContainerImage = None
         self.ContainerPort = None
@@ -425,6 +460,7 @@ class CloudBaseRunSideSpec(AbstractModel):
         self.InitialDelaySeconds = None
         self.Cpu = None
         self.Mem = None
+        self.Security = None
 
 
     def _deserialize(self, params):
@@ -435,6 +471,9 @@ class CloudBaseRunSideSpec(AbstractModel):
         self.InitialDelaySeconds = params.get("InitialDelaySeconds")
         self.Cpu = params.get("Cpu")
         self.Mem = params.get("Mem")
+        if params.get("Security") is not None:
+            self.Security = CloudBaseSecurityContext()
+            self.Security._deserialize(params.get("Security"))
 
 
 class CloudBaseRunVolumeMount(AbstractModel):
@@ -545,6 +584,27 @@ class CloudBaseRunVpcSubnet(AbstractModel):
         self.Target = params.get("Target")
         self.Region = params.get("Region")
         self.Name = params.get("Name")
+
+
+class CloudBaseSecurityContext(AbstractModel):
+    """cloudrun安全特性
+
+
+    """
+
+    def __init__(self):
+        """
+        :param Capabilities: 安全特性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Capabilities: :class:`tencentcloud.tcb.v20180608.models.CloudBaseCapabilities`
+        """
+        self.Capabilities = None
+
+
+    def _deserialize(self, params):
+        if params.get("Capabilities") is not None:
+            self.Capabilities = CloudBaseCapabilities()
+            self.Capabilities._deserialize(params.get("Capabilities"))
 
 
 class CloudRunServiceSimpleVersionSnapshot(AbstractModel):
@@ -1045,6 +1105,8 @@ class CreateCloudBaseRunServerVersionRequest(AbstractModel):
         :type ImageReuseKey: str
         :param SidecarSpecs: 容器的描述文件
         :type SidecarSpecs: list of CloudBaseRunSideSpec
+        :param Security: 安全特性
+        :type Security: :class:`tencentcloud.tcb.v20180608.models.CloudBaseSecurityContext`
         """
         self.EnvId = None
         self.UploadType = None
@@ -1080,6 +1142,7 @@ class CreateCloudBaseRunServerVersionRequest(AbstractModel):
         self.ServerPath = None
         self.ImageReuseKey = None
         self.SidecarSpecs = None
+        self.Security = None
 
 
     def _deserialize(self, params):
@@ -1135,6 +1198,9 @@ class CreateCloudBaseRunServerVersionRequest(AbstractModel):
                 obj = CloudBaseRunSideSpec()
                 obj._deserialize(item)
                 self.SidecarSpecs.append(obj)
+        if params.get("Security") is not None:
+            self.Security = CloudBaseSecurityContext()
+            self.Security._deserialize(params.get("Security"))
 
 
 class CreateCloudBaseRunServerVersionResponse(AbstractModel):
@@ -1496,16 +1562,20 @@ class DescribeCloudBaseBuildServiceRequest(AbstractModel):
         :type ServiceName: str
         :param CIBusiness: build类型,枚举值有: cloudbaserun, framework-ci
         :type CIBusiness: str
+        :param ServiceVersion: 服务版本
+        :type ServiceVersion: str
         """
         self.EnvId = None
         self.ServiceName = None
         self.CIBusiness = None
+        self.ServiceVersion = None
 
 
     def _deserialize(self, params):
         self.EnvId = params.get("EnvId")
         self.ServiceName = params.get("ServiceName")
         self.CIBusiness = params.get("CIBusiness")
+        self.ServiceVersion = params.get("ServiceVersion")
 
 
 class DescribeCloudBaseBuildServiceResponse(AbstractModel):
@@ -1517,12 +1587,18 @@ class DescribeCloudBaseBuildServiceResponse(AbstractModel):
         """
         :param UploadUrl: 上传url
         :type UploadUrl: str
-        :param UploadHeaders: heder
+        :param UploadHeaders: 上传heder
         :type UploadHeaders: list of KVPair
         :param PackageName: 包名
         :type PackageName: str
         :param PackageVersion: 包版本
         :type PackageVersion: str
+        :param DownloadUrl: 下载链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DownloadUrl: str
+        :param DownloadHeaders: 下载Httpheader
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DownloadHeaders: list of KVPair
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1530,6 +1606,8 @@ class DescribeCloudBaseBuildServiceResponse(AbstractModel):
         self.UploadHeaders = None
         self.PackageName = None
         self.PackageVersion = None
+        self.DownloadUrl = None
+        self.DownloadHeaders = None
         self.RequestId = None
 
 
@@ -1543,6 +1621,13 @@ class DescribeCloudBaseBuildServiceResponse(AbstractModel):
                 self.UploadHeaders.append(obj)
         self.PackageName = params.get("PackageName")
         self.PackageVersion = params.get("PackageVersion")
+        self.DownloadUrl = params.get("DownloadUrl")
+        if params.get("DownloadHeaders") is not None:
+            self.DownloadHeaders = []
+            for item in params.get("DownloadHeaders"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self.DownloadHeaders.append(obj)
         self.RequestId = params.get("RequestId")
 
 

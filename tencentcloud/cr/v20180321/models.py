@@ -16,6 +16,53 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ApplyBlackListDataRequest(AbstractModel):
+    """ApplyBlackListData请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名，AiApi
+        :type Module: str
+        :param Operation: 操作名，ApplyBlackListData
+        :type Operation: str
+        :param BlackList: 黑名单列表
+        :type BlackList: list of BlackListData
+        """
+        self.Module = None
+        self.Operation = None
+        self.BlackList = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+        if params.get("BlackList") is not None:
+            self.BlackList = []
+            for item in params.get("BlackList"):
+                obj = BlackListData()
+                obj._deserialize(item)
+                self.BlackList.append(obj)
+
+
+class ApplyBlackListDataResponse(AbstractModel):
+    """ApplyBlackListData返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ApplyBlackListRequest(AbstractModel):
     """ApplyBlackList请求参数结构体
 
@@ -129,6 +176,51 @@ class ApplyCreditAuditResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class BlackListData(AbstractModel):
+    """黑名单申请信息
+
+    """
+
+    def __init__(self):
+        """
+        :param BlackType: 黑名单类型，01代表手机号码。
+        :type BlackType: str
+        :param OperType: 操作类型，A为新增，D为删除。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperType: str
+        :param BlackValue: 黑名单值，BlackType为01时，填写11位手机号码。
+        :type BlackValue: str
+        :param BlackDescription: 备注。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlackDescription: str
+        :param BlackValidDate: 黑名单生效截止日期，格式为YYYY-MM-DD，不填默认为永久。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlackValidDate: str
+        :param BlackAddDate: 黑名单加入日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlackAddDate: str
+        :param BlackStatus: 0-生效 1-失效
+        :type BlackStatus: str
+        """
+        self.BlackType = None
+        self.OperType = None
+        self.BlackValue = None
+        self.BlackDescription = None
+        self.BlackValidDate = None
+        self.BlackAddDate = None
+        self.BlackStatus = None
+
+
+    def _deserialize(self, params):
+        self.BlackType = params.get("BlackType")
+        self.OperType = params.get("OperType")
+        self.BlackValue = params.get("BlackValue")
+        self.BlackDescription = params.get("BlackDescription")
+        self.BlackValidDate = params.get("BlackValidDate")
+        self.BlackAddDate = params.get("BlackAddDate")
+        self.BlackStatus = params.get("BlackStatus")
+
+
 class BotFileData(AbstractModel):
     """机器人文件结构
 
@@ -205,6 +297,44 @@ class BotInfo(AbstractModel):
         self.BotStatus = params.get("BotStatus")
 
 
+class CallInfo(AbstractModel):
+    """作业信息
+
+    """
+
+    def __init__(self):
+        """
+        :param BizDate: 业务日期
+        :type BizDate: str
+        :param Status: 状态 WAIT：待执行；DOING：执行中；ERROR：执行错误；DONE：已完成；
+        :type Status: str
+        :param TotalCount: 成功总数
+        :type TotalCount: int
+        :param FileName: 文件名称
+        :type FileName: str
+        :param FileType: 文件类型 I：呼叫文件 R：停拨文件
+        :type FileType: str
+        :param CallId: 作业唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CallId: str
+        """
+        self.BizDate = None
+        self.Status = None
+        self.TotalCount = None
+        self.FileName = None
+        self.FileType = None
+        self.CallId = None
+
+
+    def _deserialize(self, params):
+        self.BizDate = params.get("BizDate")
+        self.Status = params.get("Status")
+        self.TotalCount = params.get("TotalCount")
+        self.FileName = params.get("FileName")
+        self.FileType = params.get("FileType")
+        self.CallId = params.get("CallId")
+
+
 class CallTimeDict(AbstractModel):
     """产品拨打时间集合
 
@@ -267,9 +397,9 @@ class CallTimeInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param StartTime: 产品开始拨打时间，HHmmss格式
+        :param StartTime: 产品开始拨打时间，HHmmss格式,默认090000
         :type StartTime: str
-        :param EndTime: 产品结束拨打时间，HHmmss格式
+        :param EndTime: 产品结束拨打时间，HHmmss格式.默认200000
         :type EndTime: str
         """
         self.StartTime = None
@@ -279,6 +409,116 @@ class CallTimeInfo(AbstractModel):
     def _deserialize(self, params):
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+
+
+class ChangeBotCallStatusRequest(AbstractModel):
+    """ChangeBotCallStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名。默认值（固定）：AiApi
+        :type Module: str
+        :param Operation: 操作名。默认值（固定）：ChangeBotCallStatus
+        :type Operation: str
+        :param Status: 作业变更状态
+SUSPEND：暂停；EXECUTE：恢复；
+        :type Status: str
+        :param CallId: 作业唯一标识
+        :type CallId: str
+        :param BizDate: 业务日期
+        :type BizDate: str
+        :param BotId: 任务ID，二者必填一个
+        :type BotId: str
+        :param BotName: 任务名称，二者必填一个
+        :type BotName: str
+        """
+        self.Module = None
+        self.Operation = None
+        self.Status = None
+        self.CallId = None
+        self.BizDate = None
+        self.BotId = None
+        self.BotName = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+        self.Status = params.get("Status")
+        self.CallId = params.get("CallId")
+        self.BizDate = params.get("BizDate")
+        self.BotId = params.get("BotId")
+        self.BotName = params.get("BotName")
+
+
+class ChangeBotCallStatusResponse(AbstractModel):
+    """ChangeBotCallStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ChangeBotTaskStatusRequest(AbstractModel):
+    """ChangeBotTaskStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名。默认值（固定）：AiApi
+        :type Module: str
+        :param Operation: 操作名。默认值（固定）：ChangeBotTaskStatus
+        :type Operation: str
+        :param Status: 作业变更状态
+SUSPEND：暂停；EXECUTE：恢复；
+        :type Status: str
+        :param BotId: 任务ID，二者必填一个
+        :type BotId: str
+        :param BotName: 任务名称，二者必填一个
+        :type BotName: str
+        """
+        self.Module = None
+        self.Operation = None
+        self.Status = None
+        self.BotId = None
+        self.BotName = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+        self.Status = params.get("Status")
+        self.BotId = params.get("BotId")
+        self.BotName = params.get("BotName")
+
+
+class ChangeBotTaskStatusResponse(AbstractModel):
+    """ChangeBotTaskStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class CreateBotTaskRequest(AbstractModel):
@@ -296,16 +536,16 @@ class CreateBotTaskRequest(AbstractModel):
         :type BotName: str
         :param FlowId: 对话流ID
         :type FlowId: str
-        :param CallTimeCollection: 产品拨打时间集合
-        :type CallTimeCollection: :class:`tencentcloud.cr.v20180321.models.CallTimeDict`
-        :param BanCall: 是否禁止拨打
+        :param BanCall: 是否禁止拨打，默认Y
         :type BanCall: str
-        :param StartTimeBan: 禁止拨打起始时间
-        :type StartTimeBan: str
-        :param EndTimeBan: 禁止拨打结束时间
-        :type EndTimeBan: str
         :param PhoneCollection: 拨打线路集合
         :type PhoneCollection: str
+        :param CallTimeCollection: 产品拨打时间集合
+        :type CallTimeCollection: :class:`tencentcloud.cr.v20180321.models.CallTimeDict`
+        :param StartTimeBan: 禁止拨打起始时间。默认130000
+        :type StartTimeBan: str
+        :param EndTimeBan: 禁止拨打结束时间。默认140000
+        :type EndTimeBan: str
         :param CodeType: 重播方式，NON：未接通、LABEL：意向分级，可多选，用竖线分隔：NON|LABEL
         :type CodeType: str
         :param CodeCollection: 重播值集合，A：强意向、B：中意向、C：低意向、D：无意向、E：在忙、F：未接通、G：无效号码，可多选，用竖线分隔：A|B|C|D|E|F|G
@@ -318,22 +558,31 @@ class CreateBotTaskRequest(AbstractModel):
         :type SmsSignId: str
         :param SmsTemplateId: 未接通引用短信模板ID
         :type SmsTemplateId: str
+        :param CallType: 拨打方式。NORMAL - 正常拨打；TIMER - 定时拨打
+        :type CallType: str
+        :param CallStartDate: 拨打开始日期。CallType=TIMER时有值，yyyy-MM-dd
+        :type CallStartDate: str
+        :param CallEndDate: 拨打结束日期。CallType=PERIOD 时有值，yyyy-MM-dd
+        :type CallEndDate: str
         """
         self.Module = None
         self.Operation = None
         self.BotName = None
         self.FlowId = None
-        self.CallTimeCollection = None
         self.BanCall = None
+        self.PhoneCollection = None
+        self.CallTimeCollection = None
         self.StartTimeBan = None
         self.EndTimeBan = None
-        self.PhoneCollection = None
         self.CodeType = None
         self.CodeCollection = None
         self.CallCount = None
         self.CallInterval = None
         self.SmsSignId = None
         self.SmsTemplateId = None
+        self.CallType = None
+        self.CallStartDate = None
+        self.CallEndDate = None
 
 
     def _deserialize(self, params):
@@ -341,19 +590,22 @@ class CreateBotTaskRequest(AbstractModel):
         self.Operation = params.get("Operation")
         self.BotName = params.get("BotName")
         self.FlowId = params.get("FlowId")
+        self.BanCall = params.get("BanCall")
+        self.PhoneCollection = params.get("PhoneCollection")
         if params.get("CallTimeCollection") is not None:
             self.CallTimeCollection = CallTimeDict()
             self.CallTimeCollection._deserialize(params.get("CallTimeCollection"))
-        self.BanCall = params.get("BanCall")
         self.StartTimeBan = params.get("StartTimeBan")
         self.EndTimeBan = params.get("EndTimeBan")
-        self.PhoneCollection = params.get("PhoneCollection")
         self.CodeType = params.get("CodeType")
         self.CodeCollection = params.get("CodeCollection")
         self.CallCount = params.get("CallCount")
         self.CallInterval = params.get("CallInterval")
         self.SmsSignId = params.get("SmsSignId")
         self.SmsTemplateId = params.get("SmsTemplateId")
+        self.CallType = params.get("CallType")
+        self.CallStartDate = params.get("CallStartDate")
+        self.CallEndDate = params.get("CallEndDate")
 
 
 class CreateBotTaskResponse(AbstractModel):
@@ -363,13 +615,17 @@ class CreateBotTaskResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param BotId: 机器人任务Id
+        :type BotId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.BotId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.BotId = params.get("BotId")
         self.RequestId = params.get("RequestId")
 
 
@@ -1108,6 +1364,70 @@ class QueryBotListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class QueryCallListRequest(AbstractModel):
+    """QueryCallList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名。默认值（固定）：AiApi
+        :type Module: str
+        :param Operation: 操作名。默认值（固定）：QueryCallList
+        :type Operation: str
+        :param BizDate: 业务日期
+        :type BizDate: str
+        :param BotId: 任务ID，二者必填一个
+        :type BotId: str
+        :param BotName: 任务名称，二者必填一个
+        :type BotName: str
+        :param FileName: 通过API或平台上传的文件完整名称
+        :type FileName: str
+        """
+        self.Module = None
+        self.Operation = None
+        self.BizDate = None
+        self.BotId = None
+        self.BotName = None
+        self.FileName = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+        self.BizDate = params.get("BizDate")
+        self.BotId = params.get("BotId")
+        self.BotName = params.get("BotName")
+        self.FileName = params.get("FileName")
+
+
+class QueryCallListResponse(AbstractModel):
+    """QueryCallList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CallList: 任务作业状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CallList: list of CallInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CallList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CallList") is not None:
+            self.CallList = []
+            for item in params.get("CallList"):
+                obj = CallInfo()
+                obj._deserialize(item)
+                self.CallList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class QueryInstantDataRequest(AbstractModel):
     """QueryInstantData请求参数结构体
 
@@ -1325,6 +1645,8 @@ class RecordInfo(AbstractModel):
         :type CosUrl: str
         :param DialogueLog: 对话日志。JSON格式
         :type DialogueLog: str
+        :param CosFileName: 录音文件名
+        :type CosFileName: str
         """
         self.BotId = None
         self.BotName = None
@@ -1334,6 +1656,7 @@ class RecordInfo(AbstractModel):
         self.Duration = None
         self.CosUrl = None
         self.DialogueLog = None
+        self.CosFileName = None
 
 
     def _deserialize(self, params):
@@ -1345,6 +1668,7 @@ class RecordInfo(AbstractModel):
         self.Duration = params.get("Duration")
         self.CosUrl = params.get("CosUrl")
         self.DialogueLog = params.get("DialogueLog")
+        self.CosFileName = params.get("CosFileName")
 
 
 class SingleBlackApply(AbstractModel):
@@ -1467,6 +1791,98 @@ class SmsTemplate(AbstractModel):
     def _deserialize(self, params):
         self.TemplateId = params.get("TemplateId")
         self.TemplateName = params.get("TemplateName")
+
+
+class UpdateBotTaskRequest(AbstractModel):
+    """UpdateBotTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块名。默认值（固定）：AiApi
+        :type Module: str
+        :param Operation: 操作名。默认值（固定）：UpdateTask
+        :type Operation: str
+        :param BotName: 任务名称
+        :type BotName: str
+        :param BotId: 任务ID
+        :type BotId: str
+        :param CallTimeCollection: 产品拨打时间集合
+        :type CallTimeCollection: :class:`tencentcloud.cr.v20180321.models.CallTimeDict`
+        :param BanCall: 是否禁止拨打，默认Y
+        :type BanCall: str
+        :param StartTimeBan: 禁止拨打起始时间。默认130000
+        :type StartTimeBan: str
+        :param EndTimeBan: 禁止拨打结束时间。默认140000
+        :type EndTimeBan: str
+        :param PhoneCollection: 拨打线路集合
+        :type PhoneCollection: str
+        :param CodeType: 重播方式，NON：未接通、LABEL：意向分级，可多选，用竖线分隔：NON|LABEL
+        :type CodeType: str
+        :param CodeCollection: 重播值集合，A：强意向、B：中意向、C：低意向、D：无意向、E：在忙、F：未接通、G：无效号码，可多选，用竖线分隔：A|B|C|D|E|F|G
+        :type CodeCollection: str
+        :param CallCount: 继续拨打次数
+        :type CallCount: int
+        :param CallInterval: 拨打间隔
+        :type CallInterval: int
+        :param SmsSignId: 未接通引用短信签名ID
+        :type SmsSignId: str
+        :param SmsTemplateId: 未接通引用短信模板ID
+        :type SmsTemplateId: str
+        """
+        self.Module = None
+        self.Operation = None
+        self.BotName = None
+        self.BotId = None
+        self.CallTimeCollection = None
+        self.BanCall = None
+        self.StartTimeBan = None
+        self.EndTimeBan = None
+        self.PhoneCollection = None
+        self.CodeType = None
+        self.CodeCollection = None
+        self.CallCount = None
+        self.CallInterval = None
+        self.SmsSignId = None
+        self.SmsTemplateId = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+        self.BotName = params.get("BotName")
+        self.BotId = params.get("BotId")
+        if params.get("CallTimeCollection") is not None:
+            self.CallTimeCollection = CallTimeDict()
+            self.CallTimeCollection._deserialize(params.get("CallTimeCollection"))
+        self.BanCall = params.get("BanCall")
+        self.StartTimeBan = params.get("StartTimeBan")
+        self.EndTimeBan = params.get("EndTimeBan")
+        self.PhoneCollection = params.get("PhoneCollection")
+        self.CodeType = params.get("CodeType")
+        self.CodeCollection = params.get("CodeCollection")
+        self.CallCount = params.get("CallCount")
+        self.CallInterval = params.get("CallInterval")
+        self.SmsSignId = params.get("SmsSignId")
+        self.SmsTemplateId = params.get("SmsTemplateId")
+
+
+class UpdateBotTaskResponse(AbstractModel):
+    """UpdateBotTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class UploadBotDataRequest(AbstractModel):

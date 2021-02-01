@@ -54,6 +54,34 @@ class CrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ApplyBlackListData(self, request):
+        """提交机器人黑名单申请
+
+        :param request: Request instance for ApplyBlackListData.
+        :type request: :class:`tencentcloud.cr.v20180321.models.ApplyBlackListDataRequest`
+        :rtype: :class:`tencentcloud.cr.v20180321.models.ApplyBlackListDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ApplyBlackListData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ApplyBlackListDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ApplyCreditAudit(self, request):
         """提交信审外呼申请，返回当次请求日期。
 
@@ -68,6 +96,62 @@ class CrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ApplyCreditAuditResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ChangeBotCallStatus(self, request):
+        """更新机器人任务作业状态
+
+        :param request: Request instance for ChangeBotCallStatus.
+        :type request: :class:`tencentcloud.cr.v20180321.models.ChangeBotCallStatusRequest`
+        :rtype: :class:`tencentcloud.cr.v20180321.models.ChangeBotCallStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ChangeBotCallStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ChangeBotCallStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ChangeBotTaskStatus(self, request):
+        """更新机器人任务状态
+
+        :param request: Request instance for ChangeBotTaskStatus.
+        :type request: :class:`tencentcloud.cr.v20180321.models.ChangeBotTaskStatusRequest`
+        :rtype: :class:`tencentcloud.cr.v20180321.models.ChangeBotTaskStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ChangeBotTaskStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ChangeBotTaskStatusResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -419,6 +503,34 @@ class CrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def QueryCallList(self, request):
+        """机器人任务查询
+
+        :param request: Request instance for QueryCallList.
+        :type request: :class:`tencentcloud.cr.v20180321.models.QueryCallListRequest`
+        :rtype: :class:`tencentcloud.cr.v20180321.models.QueryCallListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryCallList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryCallListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def QueryInstantData(self, request):
         """实时数据查询
 
@@ -489,6 +601,34 @@ class CrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryRecordListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateBotTask(self, request):
+        """更新机器人任务
+
+        :param request: Request instance for UpdateBotTask.
+        :type request: :class:`tencentcloud.cr.v20180321.models.UpdateBotTaskRequest`
+        :rtype: :class:`tencentcloud.cr.v20180321.models.UpdateBotTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateBotTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateBotTaskResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
