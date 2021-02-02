@@ -1214,12 +1214,15 @@ class DescribeDevicesRequest(AbstractModel):
         :type FirmwareVersion: str
         :param DeviceName: 需要过滤的设备名称
         :type DeviceName: str
+        :param EnableState: 设备是否启用，0禁用状态1启用状态，默认不区分
+        :type EnableState: int
         """
         self.ProductId = None
         self.Offset = None
         self.Limit = None
         self.FirmwareVersion = None
         self.DeviceName = None
+        self.EnableState = None
 
 
     def _deserialize(self, params):
@@ -1228,6 +1231,7 @@ class DescribeDevicesRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.FirmwareVersion = params.get("FirmwareVersion")
         self.DeviceName = params.get("DeviceName")
+        self.EnableState = params.get("EnableState")
 
 
 class DescribeDevicesResponse(AbstractModel):

@@ -434,6 +434,47 @@ class CommitCertificateInformationResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CompanyInfo(AbstractModel):
+    """公司信息
+
+    """
+
+    def __init__(self):
+        """
+        :param CompanyName: 公司名称
+        :type CompanyName: str
+        :param CompanyId: 公司ID
+        :type CompanyId: int
+        :param CompanyCountry: 公司所在国家
+        :type CompanyCountry: str
+        :param CompanyProvince: 公司所在省份
+        :type CompanyProvince: str
+        :param CompanyCity: 公司所在城市
+        :type CompanyCity: str
+        :param CompanyAddress: 公司所在详细地址
+        :type CompanyAddress: str
+        :param CompanyPhone: 公司电话
+        :type CompanyPhone: str
+        """
+        self.CompanyName = None
+        self.CompanyId = None
+        self.CompanyCountry = None
+        self.CompanyProvince = None
+        self.CompanyCity = None
+        self.CompanyAddress = None
+        self.CompanyPhone = None
+
+
+    def _deserialize(self, params):
+        self.CompanyName = params.get("CompanyName")
+        self.CompanyId = params.get("CompanyId")
+        self.CompanyCountry = params.get("CompanyCountry")
+        self.CompanyProvince = params.get("CompanyProvince")
+        self.CompanyCity = params.get("CompanyCity")
+        self.CompanyAddress = params.get("CompanyAddress")
+        self.CompanyPhone = params.get("CompanyPhone")
+
+
 class CompleteCertificateRequest(AbstractModel):
     """CompleteCertificate请求参数结构体
 
@@ -557,6 +598,44 @@ class DeleteCertificateResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.DeleteResult = params.get("DeleteResult")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteManagerRequest(AbstractModel):
+    """DeleteManager请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ManagerId: 管理人ID
+        :type ManagerId: int
+        """
+        self.ManagerId = None
+
+
+    def _deserialize(self, params):
+        self.ManagerId = params.get("ManagerId")
+
+
+class DeleteManagerResponse(AbstractModel):
+    """DeleteManager返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ManagerId: 管理人ID
+        :type ManagerId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ManagerId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ManagerId = params.get("ManagerId")
         self.RequestId = params.get("RequestId")
 
 
@@ -1121,6 +1200,198 @@ class DescribeCertificatesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeManagerDetailRequest(AbstractModel):
+    """DescribeManagerDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ManagerId: 管理人ID
+        :type ManagerId: int
+        :param Limit: 分页每页数量
+        :type Limit: int
+        :param Offset: 分页偏移量
+        :type Offset: int
+        """
+        self.ManagerId = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.ManagerId = params.get("ManagerId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class DescribeManagerDetailResponse(AbstractModel):
+    """DescribeManagerDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 状态: audit: 审核中 ok: 审核通过 invalid: 失效 expiring: 即将过期 expired: 已过期
+        :type Status: str
+        :param ManagerFirstName: 管理人姓名
+        :type ManagerFirstName: str
+        :param ManagerMail: 管理人邮箱
+        :type ManagerMail: str
+        :param ContactFirstName: 联系人姓名
+        :type ContactFirstName: str
+        :param ManagerLastName: 管理人姓名
+        :type ManagerLastName: str
+        :param ContactPosition: 联系人职位
+        :type ContactPosition: str
+        :param ManagerPosition: 管理人职位
+        :type ManagerPosition: str
+        :param VerifyTime: 核验通过时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VerifyTime: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param ExpireTime: 核验过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireTime: str
+        :param ContactLastName: 联系人姓名
+        :type ContactLastName: str
+        :param ManagerPhone: 管理人电话
+        :type ManagerPhone: str
+        :param ContactPhone: 联系人电话
+        :type ContactPhone: str
+        :param ContactMail: 联系人邮箱
+        :type ContactMail: str
+        :param ManagerDepartment: 管理人所属部门
+        :type ManagerDepartment: str
+        :param CompanyInfo: 管理人所属公司信息
+        :type CompanyInfo: :class:`tencentcloud.ssl.v20191205.models.CompanyInfo`
+        :param CompanyId: 管理人公司ID
+        :type CompanyId: int
+        :param ManagerId: 管理人ID
+        :type ManagerId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.ManagerFirstName = None
+        self.ManagerMail = None
+        self.ContactFirstName = None
+        self.ManagerLastName = None
+        self.ContactPosition = None
+        self.ManagerPosition = None
+        self.VerifyTime = None
+        self.CreateTime = None
+        self.ExpireTime = None
+        self.ContactLastName = None
+        self.ManagerPhone = None
+        self.ContactPhone = None
+        self.ContactMail = None
+        self.ManagerDepartment = None
+        self.CompanyInfo = None
+        self.CompanyId = None
+        self.ManagerId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ManagerFirstName = params.get("ManagerFirstName")
+        self.ManagerMail = params.get("ManagerMail")
+        self.ContactFirstName = params.get("ContactFirstName")
+        self.ManagerLastName = params.get("ManagerLastName")
+        self.ContactPosition = params.get("ContactPosition")
+        self.ManagerPosition = params.get("ManagerPosition")
+        self.VerifyTime = params.get("VerifyTime")
+        self.CreateTime = params.get("CreateTime")
+        self.ExpireTime = params.get("ExpireTime")
+        self.ContactLastName = params.get("ContactLastName")
+        self.ManagerPhone = params.get("ManagerPhone")
+        self.ContactPhone = params.get("ContactPhone")
+        self.ContactMail = params.get("ContactMail")
+        self.ManagerDepartment = params.get("ManagerDepartment")
+        if params.get("CompanyInfo") is not None:
+            self.CompanyInfo = CompanyInfo()
+            self.CompanyInfo._deserialize(params.get("CompanyInfo"))
+        self.CompanyId = params.get("CompanyId")
+        self.ManagerId = params.get("ManagerId")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeManagersRequest(AbstractModel):
+    """DescribeManagers请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CompanyId: 公司ID
+        :type CompanyId: int
+        :param Offset: 分页偏移量
+        :type Offset: int
+        :param Limit: 分页每页数量
+        :type Limit: int
+        :param ManagerName: 管理人姓名
+        :type ManagerName: str
+        :param ManagerMail: 模糊查询管理人邮箱
+        :type ManagerMail: str
+        :param Status: 根据管理人状态进行筛选，取值有
+'none' 未提交审核
+'audit', 亚信审核中
+'CAaudit' CA审核中
+'ok' 已审核
+'invalid'  审核失败
+'expiring'  即将过期
+'expired' 已过期
+        :type Status: str
+        """
+        self.CompanyId = None
+        self.Offset = None
+        self.Limit = None
+        self.ManagerName = None
+        self.ManagerMail = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.CompanyId = params.get("CompanyId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.ManagerName = params.get("ManagerName")
+        self.ManagerMail = params.get("ManagerMail")
+        self.Status = params.get("Status")
+
+
+class DescribeManagersResponse(AbstractModel):
+    """DescribeManagers返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Managers: 公司管理人列表
+        :type Managers: list of ManagerInfo
+        :param TotalCount: 公司管理人总数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Managers = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Managers") is not None:
+            self.Managers = []
+            for item in params.get("Managers"):
+                obj = ManagerInfo()
+                obj._deserialize(item)
+                self.Managers.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DownloadCertificateRequest(AbstractModel):
     """DownloadCertificate请求参数结构体
 
@@ -1254,6 +1525,79 @@ class DvAuths(AbstractModel):
         self.DvAuthPath = params.get("DvAuthPath")
         self.DvAuthSubDomain = params.get("DvAuthSubDomain")
         self.DvAuthVerifyType = params.get("DvAuthVerifyType")
+
+
+class ManagerInfo(AbstractModel):
+    """管理人信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 状态: audit: 审核中 ok: 审核通过 invalid: 失效 expiring: 即将过期 expired: 已过期
+        :type Status: str
+        :param ManagerFirstName: 管理人姓名
+        :type ManagerFirstName: str
+        :param ManagerLastName: 管理人姓名
+        :type ManagerLastName: str
+        :param ManagerPosition: 管理人职位
+        :type ManagerPosition: str
+        :param ManagerPhone: 管理人电话
+        :type ManagerPhone: str
+        :param ManagerMail: 管理人邮箱
+        :type ManagerMail: str
+        :param ManagerDepartment: 管理人所属部门
+        :type ManagerDepartment: str
+        :param CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param DomainCount: 管理人域名数量
+        :type DomainCount: int
+        :param CertCount: 管理人证书数量
+        :type CertCount: int
+        :param ManagerId: 管理人ID
+        :type ManagerId: int
+        :param ExpireTime: 审核有效到期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireTime: str
+        :param SubmitAuditTime: 最近一次提交审核时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubmitAuditTime: str
+        :param VerifyTime: 审核通过时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VerifyTime: str
+        """
+        self.Status = None
+        self.ManagerFirstName = None
+        self.ManagerLastName = None
+        self.ManagerPosition = None
+        self.ManagerPhone = None
+        self.ManagerMail = None
+        self.ManagerDepartment = None
+        self.CreateTime = None
+        self.DomainCount = None
+        self.CertCount = None
+        self.ManagerId = None
+        self.ExpireTime = None
+        self.SubmitAuditTime = None
+        self.VerifyTime = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ManagerFirstName = params.get("ManagerFirstName")
+        self.ManagerLastName = params.get("ManagerLastName")
+        self.ManagerPosition = params.get("ManagerPosition")
+        self.ManagerPhone = params.get("ManagerPhone")
+        self.ManagerMail = params.get("ManagerMail")
+        self.ManagerDepartment = params.get("ManagerDepartment")
+        self.CreateTime = params.get("CreateTime")
+        self.DomainCount = params.get("DomainCount")
+        self.CertCount = params.get("CertCount")
+        self.ManagerId = params.get("ManagerId")
+        self.ExpireTime = params.get("ExpireTime")
+        self.SubmitAuditTime = params.get("SubmitAuditTime")
+        self.VerifyTime = params.get("VerifyTime")
 
 
 class ModifyCertificateAliasRequest(AbstractModel):
@@ -1547,6 +1891,44 @@ class RevokeDomainValidateAuths(AbstractModel):
         self.DomainValidateAuthKey = params.get("DomainValidateAuthKey")
         self.DomainValidateAuthValue = params.get("DomainValidateAuthValue")
         self.DomainValidateAuthDomain = params.get("DomainValidateAuthDomain")
+
+
+class SubmitAuditManagerRequest(AbstractModel):
+    """SubmitAuditManager请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ManagerId: 管理人ID
+        :type ManagerId: int
+        """
+        self.ManagerId = None
+
+
+    def _deserialize(self, params):
+        self.ManagerId = params.get("ManagerId")
+
+
+class SubmitAuditManagerResponse(AbstractModel):
+    """SubmitAuditManager返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ManagerId: 管理人ID
+        :type ManagerId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ManagerId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ManagerId = params.get("ManagerId")
+        self.RequestId = params.get("RequestId")
 
 
 class SubmitCertificateInformationRequest(AbstractModel):
@@ -1863,12 +2245,15 @@ class UploadCertificateRequest(AbstractModel):
         :type Alias: str
         :param ProjectId: 项目 ID。
         :type ProjectId: int
+        :param CertificateUse: 证书用途/证书来源。“CLB，CDN，WAF，LIVE，DDOS”
+        :type CertificateUse: str
         """
         self.CertificatePublicKey = None
         self.CertificatePrivateKey = None
         self.CertificateType = None
         self.Alias = None
         self.ProjectId = None
+        self.CertificateUse = None
 
 
     def _deserialize(self, params):
@@ -1877,6 +2262,7 @@ class UploadCertificateRequest(AbstractModel):
         self.CertificateType = params.get("CertificateType")
         self.Alias = params.get("Alias")
         self.ProjectId = params.get("ProjectId")
+        self.CertificateUse = params.get("CertificateUse")
 
 
 class UploadCertificateResponse(AbstractModel):
@@ -1989,4 +2375,42 @@ class UploadRevokeLetterResponse(AbstractModel):
     def _deserialize(self, params):
         self.CertificateId = params.get("CertificateId")
         self.IsSuccess = params.get("IsSuccess")
+        self.RequestId = params.get("RequestId")
+
+
+class VerifyManagerRequest(AbstractModel):
+    """VerifyManager请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ManagerId: 管理人ID
+        :type ManagerId: int
+        """
+        self.ManagerId = None
+
+
+    def _deserialize(self, params):
+        self.ManagerId = params.get("ManagerId")
+
+
+class VerifyManagerResponse(AbstractModel):
+    """VerifyManager返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ManagerId: 管理人ID
+        :type ManagerId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ManagerId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ManagerId = params.get("ManagerId")
         self.RequestId = params.get("RequestId")

@@ -1102,6 +1102,8 @@ class LayoutParams(AbstractModel):
         :type PresetLayoutConfig: list of PresetLayoutConfig
         :param PlaceHolderMode: 自定义模板中有效，设置为1时代表启用占位图功能，0时代表不启用占位图功能，默认为0。启用占位图功能时，在预设位置的用户没有上行视频时可显示对应的占位图。
         :type PlaceHolderMode: int
+        :param PureAudioHoldPlaceMode: 悬浮模板、九宫格、屏幕分享模板生效，用于控制纯音频上行是否占用画面布局位置。设置为0是代表后台默认处理方式，悬浮小画面占布局位置，九宫格画面占布局位置、屏幕分享小画面不占布局位置；设置为1时代表纯音频上行占布局位置；设置为2时代表纯音频上行不占布局位置。默认为0。
+        :type PureAudioHoldPlaceMode: int
         """
         self.Template = None
         self.MainVideoUserId = None
@@ -1111,6 +1113,7 @@ class LayoutParams(AbstractModel):
         self.MixVideoUids = None
         self.PresetLayoutConfig = None
         self.PlaceHolderMode = None
+        self.PureAudioHoldPlaceMode = None
 
 
     def _deserialize(self, params):
@@ -1129,6 +1132,7 @@ class LayoutParams(AbstractModel):
                 obj._deserialize(item)
                 self.PresetLayoutConfig.append(obj)
         self.PlaceHolderMode = params.get("PlaceHolderMode")
+        self.PureAudioHoldPlaceMode = params.get("PureAudioHoldPlaceMode")
 
 
 class OneSdkAppIdTranscodeTimeUsagesInfo(AbstractModel):

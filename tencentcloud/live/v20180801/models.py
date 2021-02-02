@@ -3498,12 +3498,32 @@ class DescribeLivePackageInfoRequest(AbstractModel):
 1：转码包。
 2: 连麦包。
         :type PackageType: int
+        :param OrderBy: 排序规则:
+1. BuyTimeDesc： 最新购买的排在最前面
+2. BuyTimeAsc： 最老购买的排在最前面
+3. ExpireTimeDesc： 最后过期的排在最前面
+4. ExpireTimeAsc：最先过期的排在最前面
+
+注意：
+1. PackageType 为 2（连麦包） 的时候，不支持 3、4 排序
+        :type OrderBy: str
+        :param PageNum: 取得第几页的数据，和 PageSize 同时传递才会生效。
+        :type PageNum: int
+        :param PageSize: 分页大小，和 PageNum 同时传递才会生效。
+取值：10 ～ 100 之间的任意整数
+        :type PageSize: int
         """
         self.PackageType = None
+        self.OrderBy = None
+        self.PageNum = None
+        self.PageSize = None
 
 
     def _deserialize(self, params):
         self.PackageType = params.get("PackageType")
+        self.OrderBy = params.get("OrderBy")
+        self.PageNum = params.get("PageNum")
+        self.PageSize = params.get("PageSize")
 
 
 class DescribeLivePackageInfoResponse(AbstractModel):
@@ -3528,11 +3548,27 @@ class DescribeLivePackageInfoResponse(AbstractModel):
 304: 日结流量
 注意：此字段可能返回 null，表示取不到有效值。
         :type PackageBillMode: int
+        :param TotalPage: 总页数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalPage: int
+        :param TotalNum: 数据总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalNum: int
+        :param PageNum: 当前页数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageNum: int
+        :param PageSize: 当前每页数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageSize: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.LivePackageInfoList = None
         self.PackageBillMode = None
+        self.TotalPage = None
+        self.TotalNum = None
+        self.PageNum = None
+        self.PageSize = None
         self.RequestId = None
 
 
@@ -3544,6 +3580,10 @@ class DescribeLivePackageInfoResponse(AbstractModel):
                 obj._deserialize(item)
                 self.LivePackageInfoList.append(obj)
         self.PackageBillMode = params.get("PackageBillMode")
+        self.TotalPage = params.get("TotalPage")
+        self.TotalNum = params.get("TotalNum")
+        self.PageNum = params.get("PageNum")
+        self.PageSize = params.get("PageSize")
         self.RequestId = params.get("RequestId")
 
 
@@ -5137,11 +5177,20 @@ class DescribeStreamDayPlayInfoListRequest(AbstractModel):
         :type PageNum: int
         :param PageSize: 每页个数，范围[100,1000]，默认值是1000。
         :type PageSize: int
+        :param MainlandOrOversea: 可选值：
+Mainland：查询国内数据，
+Oversea：则查询国外数据，
+默认：查询国内+国外的数据。
+        :type MainlandOrOversea: str
+        :param ServiceName: 服务名称，可选值包括LVB(标准直播)，LEB(快直播)，不填则查LVB+LEB总值。
+        :type ServiceName: str
         """
         self.DayTime = None
         self.PlayDomain = None
         self.PageNum = None
         self.PageSize = None
+        self.MainlandOrOversea = None
+        self.ServiceName = None
 
 
     def _deserialize(self, params):
@@ -5149,6 +5198,8 @@ class DescribeStreamDayPlayInfoListRequest(AbstractModel):
         self.PlayDomain = params.get("PlayDomain")
         self.PageNum = params.get("PageNum")
         self.PageSize = params.get("PageSize")
+        self.MainlandOrOversea = params.get("MainlandOrOversea")
+        self.ServiceName = params.get("ServiceName")
 
 
 class DescribeStreamDayPlayInfoListResponse(AbstractModel):
@@ -5215,12 +5266,15 @@ class DescribeStreamPlayInfoListRequest(AbstractModel):
 若不填，则为查询总体播放数据。
 注意：按AppName查询请先联系工单申请，开通后配置生效预计需要5个工作日左右，具体时间以最终回复为准。
         :type AppName: str
+        :param ServiceName: 服务名称，可选值包括LVB(标准直播)，LEB(快直播)，不填则查LVB+LEB总值。
+        :type ServiceName: str
         """
         self.StartTime = None
         self.EndTime = None
         self.PlayDomain = None
         self.StreamName = None
         self.AppName = None
+        self.ServiceName = None
 
 
     def _deserialize(self, params):
@@ -5229,6 +5283,7 @@ class DescribeStreamPlayInfoListRequest(AbstractModel):
         self.PlayDomain = params.get("PlayDomain")
         self.StreamName = params.get("StreamName")
         self.AppName = params.get("AppName")
+        self.ServiceName = params.get("ServiceName")
 
 
 class DescribeStreamPlayInfoListResponse(AbstractModel):

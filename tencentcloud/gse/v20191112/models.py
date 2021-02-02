@@ -316,6 +316,12 @@ class CopyFleetRequest(AbstractModel):
         :type SelectedCcnType: str
         :param Tags: 标签列表，最大长度50组
         :type Tags: list of Tag
+        :param SystemDiskInfo: 系统盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-500GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，50-500GB；容量以1为单位
+        :type SystemDiskInfo: :class:`tencentcloud.gse.v20191112.models.DiskInfo`
+        :param DataDiskInfo: 数据盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-32000GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，10-32000GB；容量以10为单位
+        :type DataDiskInfo: list of DiskInfo
+        :param SelectedTimerType: 是否选择复制定时器策略：TIMER_SELECTED 或者 TIMER_UNSELECTED；默认是 TIMER_UNSELECTED
+        :type SelectedTimerType: str
         """
         self.FleetId = None
         self.CopyNumber = None
@@ -332,6 +338,9 @@ class CopyFleetRequest(AbstractModel):
         self.SelectedScalingType = None
         self.SelectedCcnType = None
         self.Tags = None
+        self.SystemDiskInfo = None
+        self.DataDiskInfo = None
+        self.SelectedTimerType = None
 
 
     def _deserialize(self, params):
@@ -364,6 +373,16 @@ class CopyFleetRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        if params.get("SystemDiskInfo") is not None:
+            self.SystemDiskInfo = DiskInfo()
+            self.SystemDiskInfo._deserialize(params.get("SystemDiskInfo"))
+        if params.get("DataDiskInfo") is not None:
+            self.DataDiskInfo = []
+            for item in params.get("DataDiskInfo"):
+                obj = DiskInfo()
+                obj._deserialize(item)
+                self.DataDiskInfo.append(obj)
+        self.SelectedTimerType = params.get("SelectedTimerType")
 
 
 class CopyFleetResponse(AbstractModel):
@@ -634,6 +653,10 @@ class CreateFleetRequest(AbstractModel):
         :type GameServerSessionProtectionTimeLimit: int
         :param Tags: 标签列表，最大长度50组
         :type Tags: list of Tag
+        :param SystemDiskInfo: 系统盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-500GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，50-500GB；容量以1为单位
+        :type SystemDiskInfo: :class:`tencentcloud.gse.v20191112.models.DiskInfo`
+        :param DataDiskInfo: 数据盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-32000GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，10-32000GB；容量以10为单位
+        :type DataDiskInfo: list of DiskInfo
         """
         self.AssetId = None
         self.Description = None
@@ -648,6 +671,8 @@ class CreateFleetRequest(AbstractModel):
         self.SubNetId = None
         self.GameServerSessionProtectionTimeLimit = None
         self.Tags = None
+        self.SystemDiskInfo = None
+        self.DataDiskInfo = None
 
 
     def _deserialize(self, params):
@@ -678,6 +703,15 @@ class CreateFleetRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        if params.get("SystemDiskInfo") is not None:
+            self.SystemDiskInfo = DiskInfo()
+            self.SystemDiskInfo._deserialize(params.get("SystemDiskInfo"))
+        if params.get("DataDiskInfo") is not None:
+            self.DataDiskInfo = []
+            for item in params.get("DataDiskInfo"):
+                obj = DiskInfo()
+                obj._deserialize(item)
+                self.DataDiskInfo.append(obj)
 
 
 class CreateFleetResponse(AbstractModel):
@@ -1033,6 +1067,48 @@ class DeleteScalingPolicyRequest(AbstractModel):
 
 class DeleteScalingPolicyResponse(AbstractModel):
     """DeleteScalingPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteTimerScalingPolicyRequest(AbstractModel):
+    """DeleteTimerScalingPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TimerId: 定时器ID, 进行encode
+        :type TimerId: str
+        :param FleetId: 扩缩容配置服务器舰队ID
+        :type FleetId: str
+        :param TimerName: 定时器名称
+        :type TimerName: str
+        """
+        self.TimerId = None
+        self.FleetId = None
+        self.TimerName = None
+
+
+    def _deserialize(self, params):
+        self.TimerId = params.get("TimerId")
+        self.FleetId = params.get("FleetId")
+        self.TimerName = params.get("TimerName")
+
+
+class DeleteTimerScalingPolicyResponse(AbstractModel):
+    """DeleteTimerScalingPolicy返回参数结构体
 
     """
 
@@ -2354,6 +2430,75 @@ class DescribeScalingPoliciesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTimerScalingPoliciesRequest(AbstractModel):
+    """DescribeTimerScalingPolicies请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FleetId: 扩缩容配置服务器舰队ID
+        :type FleetId: str
+        :param TimerName: 定时器名称
+        :type TimerName: str
+        :param BeginTime: 定时器开始时间
+        :type BeginTime: str
+        :param EndTime: 定时器结束时间
+        :type EndTime: str
+        :param Offset: 分页偏移量
+        :type Offset: int
+        :param Limit: 页大小
+        :type Limit: int
+        """
+        self.FleetId = None
+        self.TimerName = None
+        self.BeginTime = None
+        self.EndTime = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.FleetId = params.get("FleetId")
+        self.TimerName = params.get("TimerName")
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeTimerScalingPoliciesResponse(AbstractModel):
+    """DescribeTimerScalingPolicies返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TimerScalingPolicies: 定时器扩缩容策略配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimerScalingPolicies: list of TimerScalingPolicy
+        :param TotalCount: 定时器总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TimerScalingPolicies = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TimerScalingPolicies") is not None:
+            self.TimerScalingPolicies = []
+            for item in params.get("TimerScalingPolicies"):
+                obj = TimerScalingPolicy()
+                obj._deserialize(item)
+                self.TimerScalingPolicies.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeUserQuotaRequest(AbstractModel):
     """DescribeUserQuota请求参数结构体
 
@@ -2485,6 +2630,27 @@ class DetachCcnInstancesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class DiskInfo(AbstractModel):
+    """磁盘存储信息
+
+    """
+
+    def __init__(self):
+        """
+        :param DiskType: 磁盘类型，支持：高性能云硬盘（CLOUD_PREMIUM）、SSD云硬盘（CLOUD_SSD）
+        :type DiskType: str
+        :param DiskSize: 系统盘：可选硬盘容量，50-500GB，数字以1为单位，数据盘：可选硬盘容量：10-32000GB，数字以10为单位；当磁盘类型为SSD云硬盘（CLOUD_SSD）最小大小为 100GB
+        :type DiskSize: int
+        """
+        self.DiskType = None
+        self.DiskSize = None
+
+
+    def _deserialize(self, params):
+        self.DiskType = params.get("DiskType")
+        self.DiskSize = params.get("DiskSize")
 
 
 class Event(AbstractModel):
@@ -2647,6 +2813,12 @@ class FleetAttributes(AbstractModel):
         :param Tags: 标签列表，最大长度50组
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
+        :param DataDiskInfo: 数据盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-32000GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，10-32000GB；容量以10为单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataDiskInfo: list of DiskInfo
+        :param SystemDiskInfo: 系统盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-500GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，50-500GB；容量以1为单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SystemDiskInfo: :class:`tencentcloud.gse.v20191112.models.DiskInfo`
         """
         self.AssetId = None
         self.CreationTime = None
@@ -2665,6 +2837,8 @@ class FleetAttributes(AbstractModel):
         self.GameServerSessionProtectionTimeLimit = None
         self.BillingStatus = None
         self.Tags = None
+        self.DataDiskInfo = None
+        self.SystemDiskInfo = None
 
 
     def _deserialize(self, params):
@@ -2692,6 +2866,15 @@ class FleetAttributes(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        if params.get("DataDiskInfo") is not None:
+            self.DataDiskInfo = []
+            for item in params.get("DataDiskInfo"):
+                obj = DiskInfo()
+                obj._deserialize(item)
+                self.DataDiskInfo.append(obj)
+        if params.get("SystemDiskInfo") is not None:
+            self.SystemDiskInfo = DiskInfo()
+            self.SystemDiskInfo._deserialize(params.get("SystemDiskInfo"))
 
 
 class FleetCapacity(AbstractModel):
@@ -3496,6 +3679,12 @@ class Instance(AbstractModel):
         :param CreateTime: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
+        :param Weight: 实例权重
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Weight: int
+        :param ReserveValue: 实例是否保留, 1-保留，0-不保留,默认
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReserveValue: int
         """
         self.FleetId = None
         self.InstanceId = None
@@ -3505,6 +3694,8 @@ class Instance(AbstractModel):
         self.Status = None
         self.Type = None
         self.CreateTime = None
+        self.Weight = None
+        self.ReserveValue = None
 
 
     def _deserialize(self, params):
@@ -3516,6 +3707,8 @@ class Instance(AbstractModel):
         self.Status = params.get("Status")
         self.Type = params.get("Type")
         self.CreateTime = params.get("CreateTime")
+        self.Weight = params.get("Weight")
+        self.ReserveValue = params.get("ReserveValue")
 
 
 class InstanceAccess(AbstractModel):
@@ -4162,6 +4355,42 @@ class PutScalingPolicyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class PutTimerScalingPolicyRequest(AbstractModel):
+    """PutTimerScalingPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TimerScalingPolicy: 定时器策略消息
+        :type TimerScalingPolicy: :class:`tencentcloud.gse.v20191112.models.TimerScalingPolicy`
+        """
+        self.TimerScalingPolicy = None
+
+
+    def _deserialize(self, params):
+        if params.get("TimerScalingPolicy") is not None:
+            self.TimerScalingPolicy = TimerScalingPolicy()
+            self.TimerScalingPolicy._deserialize(params.get("TimerScalingPolicy"))
+
+
+class PutTimerScalingPolicyResponse(AbstractModel):
+    """PutTimerScalingPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class QuotaResource(AbstractModel):
     """配额资源
 
@@ -4518,6 +4747,48 @@ class ServerProcesse(AbstractModel):
         self.Parameters = params.get("Parameters")
 
 
+class SetServerReservedRequest(AbstractModel):
+    """SetServerReserved请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FleetId: 扩缩容配置服务器舰队ID
+        :type FleetId: str
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param ReserveValue: 实例是否保留, 1-保留，0-不保留,默认
+        :type ReserveValue: int
+        """
+        self.FleetId = None
+        self.InstanceId = None
+        self.ReserveValue = None
+
+
+    def _deserialize(self, params):
+        self.FleetId = params.get("FleetId")
+        self.InstanceId = params.get("InstanceId")
+        self.ReserveValue = params.get("ReserveValue")
+
+
+class SetServerReservedResponse(AbstractModel):
+    """SetServerReserved返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class SetServerWeightRequest(AbstractModel):
     """SetServerWeight请求参数结构体
 
@@ -4806,6 +5077,166 @@ class TargetConfiguration(AbstractModel):
 
     def _deserialize(self, params):
         self.TargetValue = params.get("TargetValue")
+
+
+class TimerConfiguration(AbstractModel):
+    """重复周期配置
+
+    """
+
+    def __init__(self):
+        """
+        :param TimerType: 定时器重复周期类型（未定义0，单次1、按天2、按月3、按周4）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimerType: int
+        :param TimerValue: 定时器取值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimerValue: :class:`tencentcloud.gse.v20191112.models.TimerValue`
+        :param BeginTime: 定时器开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BeginTime: str
+        :param EndTime: 定时器结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        """
+        self.TimerType = None
+        self.TimerValue = None
+        self.BeginTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.TimerType = params.get("TimerType")
+        if params.get("TimerValue") is not None:
+            self.TimerValue = TimerValue()
+            self.TimerValue._deserialize(params.get("TimerValue"))
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
+
+
+class TimerFleetCapacity(AbstractModel):
+    """定时器弹性伸缩策略
+
+    """
+
+    def __init__(self):
+        """
+        :param FleetId: 扩缩容配置服务器舰队ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FleetId: str
+        :param DesiredInstances: 期望实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DesiredInstances: int
+        :param MinSize: 最小实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MinSize: int
+        :param MaxSize: 最大实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxSize: int
+        :param ScalingInterval: 伸缩容间隔，单位：分钟
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScalingInterval: int
+        :param ScalingType: 扩缩容类型（手动1，自动2、未定义0）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScalingType: int
+        :param TargetConfiguration: 基于目标的扩展策略的设置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetConfiguration: :class:`tencentcloud.gse.v20191112.models.TargetConfiguration`
+        """
+        self.FleetId = None
+        self.DesiredInstances = None
+        self.MinSize = None
+        self.MaxSize = None
+        self.ScalingInterval = None
+        self.ScalingType = None
+        self.TargetConfiguration = None
+
+
+    def _deserialize(self, params):
+        self.FleetId = params.get("FleetId")
+        self.DesiredInstances = params.get("DesiredInstances")
+        self.MinSize = params.get("MinSize")
+        self.MaxSize = params.get("MaxSize")
+        self.ScalingInterval = params.get("ScalingInterval")
+        self.ScalingType = params.get("ScalingType")
+        if params.get("TargetConfiguration") is not None:
+            self.TargetConfiguration = TargetConfiguration()
+            self.TargetConfiguration._deserialize(params.get("TargetConfiguration"))
+
+
+class TimerScalingPolicy(AbstractModel):
+    """定时器策略消息
+
+    """
+
+    def __init__(self):
+        """
+        :param TimerId: 定时器ID，进行encode，填写时更新
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimerId: str
+        :param TimerName: 定时器名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimerName: str
+        :param TimerStatus: 定时器状态(未定义0、未生效1、生效中2、已停止3、已过期4)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimerStatus: int
+        :param TimerFleetCapacity: 定时器弹性伸缩策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimerFleetCapacity: :class:`tencentcloud.gse.v20191112.models.TimerFleetCapacity`
+        :param TimerConfiguration: 重复周期配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimerConfiguration: :class:`tencentcloud.gse.v20191112.models.TimerConfiguration`
+        """
+        self.TimerId = None
+        self.TimerName = None
+        self.TimerStatus = None
+        self.TimerFleetCapacity = None
+        self.TimerConfiguration = None
+
+
+    def _deserialize(self, params):
+        self.TimerId = params.get("TimerId")
+        self.TimerName = params.get("TimerName")
+        self.TimerStatus = params.get("TimerStatus")
+        if params.get("TimerFleetCapacity") is not None:
+            self.TimerFleetCapacity = TimerFleetCapacity()
+            self.TimerFleetCapacity._deserialize(params.get("TimerFleetCapacity"))
+        if params.get("TimerConfiguration") is not None:
+            self.TimerConfiguration = TimerConfiguration()
+            self.TimerConfiguration._deserialize(params.get("TimerConfiguration"))
+
+
+class TimerValue(AbstractModel):
+    """定时器取值配置
+
+    """
+
+    def __init__(self):
+        """
+        :param Day: 每X天，执行一次(重复周期-按天/单次)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Day: int
+        :param FromDay: 每月从第x天，执行一次(重复周期-按月)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FromDay: int
+        :param ToDay: 每月到第x天，执行一次(重复周期-按月)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ToDay: int
+        :param WeekDays: 重复周期-按周，周几（多个值,取值周一(1,2,3,4,5,6,7)周日）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WeekDays: list of int
+        """
+        self.Day = None
+        self.FromDay = None
+        self.ToDay = None
+        self.WeekDays = None
+
+
+    def _deserialize(self, params):
+        self.Day = params.get("Day")
+        self.FromDay = params.get("FromDay")
+        self.ToDay = params.get("ToDay")
+        self.WeekDays = params.get("WeekDays")
 
 
 class UpdateAliasRequest(AbstractModel):

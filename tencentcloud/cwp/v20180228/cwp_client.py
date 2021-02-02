@@ -27,7 +27,7 @@ class CwpClient(AbstractClient):
 
 
     def AddLoginWhiteList(self, request):
-        """本接口（AddLoginWhiteList）用于添加白名单规则
+        """本接口用于新增异地登录白名单规则。
 
         :param request: Request instance for AddLoginWhiteList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.AddLoginWhiteListRequest`
@@ -335,7 +335,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteLoginWhiteList(self, request):
-        """删除白名单规则
+        """本接口用于删除异地登录白名单规则。
 
         :param request: Request instance for DeleteLoginWhiteList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteLoginWhiteListRequest`
@@ -2603,7 +2603,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyLoginWhiteList(self, request):
-        """编辑白名单规则
+        """本接口用于编辑异地登录白名单规则。
 
         :param request: Request instance for ModifyLoginWhiteList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyLoginWhiteListRequest`

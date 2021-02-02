@@ -3376,6 +3376,18 @@ class InstanceSet(AbstractModel):
         :param MonitorVersion: 监控版本: 1m-分钟粒度监控，5s-5秒粒度监控
 注意：此字段可能返回 null，表示取不到有效值。
         :type MonitorVersion: str
+        :param ClientLimitMin: 客户端最大连接数可设置的最小值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientLimitMin: int
+        :param ClientLimitMax: 客户端最大连接数可设置的最大值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientLimitMax: int
+        :param NodeSet: 实例的节点详细信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeSet: list of RedisNodeInfo
+        :param Region: 实例所在的地域信息，比如ap-guangzhou
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
         """
         self.InstanceName = None
         self.InstanceId = None
@@ -3422,6 +3434,10 @@ class InstanceSet(AbstractModel):
         self.RemainBandwidthDuration = None
         self.DiskSize = None
         self.MonitorVersion = None
+        self.ClientLimitMin = None
+        self.ClientLimitMax = None
+        self.NodeSet = None
+        self.Region = None
 
 
     def _deserialize(self, params):
@@ -3480,6 +3496,15 @@ class InstanceSet(AbstractModel):
         self.RemainBandwidthDuration = params.get("RemainBandwidthDuration")
         self.DiskSize = params.get("DiskSize")
         self.MonitorVersion = params.get("MonitorVersion")
+        self.ClientLimitMin = params.get("ClientLimitMin")
+        self.ClientLimitMax = params.get("ClientLimitMax")
+        if params.get("NodeSet") is not None:
+            self.NodeSet = []
+            for item in params.get("NodeSet"):
+                obj = RedisNodeInfo()
+                obj._deserialize(item)
+                self.NodeSet.append(obj)
+        self.Region = params.get("Region")
 
 
 class InstanceSlowlogDetail(AbstractModel):

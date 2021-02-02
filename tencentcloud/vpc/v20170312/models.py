@@ -12737,6 +12737,9 @@ class NetworkInterface(AbstractModel):
         :type TagSet: list of Tag
         :param EniType: 网卡类型。0 - 弹性网卡；1 - evm弹性网卡。
         :type EniType: int
+        :param Business: 网卡绑定的子机类型：cvm，eks。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Business: str
         """
         self.NetworkInterfaceId = None
         self.NetworkInterfaceName = None
@@ -12754,6 +12757,7 @@ class NetworkInterface(AbstractModel):
         self.Ipv6AddressSet = None
         self.TagSet = None
         self.EniType = None
+        self.Business = None
 
 
     def _deserialize(self, params):
@@ -12790,6 +12794,7 @@ class NetworkInterface(AbstractModel):
                 obj._deserialize(item)
                 self.TagSet.append(obj)
         self.EniType = params.get("EniType")
+        self.Business = params.get("Business")
 
 
 class NetworkInterfaceAttachment(AbstractModel):
