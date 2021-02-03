@@ -877,6 +877,8 @@ class DescribeSubscribesRequest(AbstractModel):
         :type OrderDirection: str
         :param TagFilters: 标签过滤条件
         :type TagFilters: list of TagFilter
+        :param SubscribeVersion: 订阅实例版本;txdts-旧版数据订阅，kafka-kafka版本数据订阅
+        :type SubscribeVersion: str
         """
         self.SubscribeId = None
         self.SubscribeName = None
@@ -890,6 +892,7 @@ class DescribeSubscribesRequest(AbstractModel):
         self.Limit = None
         self.OrderDirection = None
         self.TagFilters = None
+        self.SubscribeVersion = None
 
 
     def _deserialize(self, params):
@@ -910,6 +913,7 @@ class DescribeSubscribesRequest(AbstractModel):
                 obj = TagFilter()
                 obj._deserialize(item)
                 self.TagFilters.append(obj)
+        self.SubscribeVersion = params.get("SubscribeVersion")
 
 
 class DescribeSubscribesResponse(AbstractModel):
@@ -2035,6 +2039,9 @@ class SubscribeInfo(AbstractModel):
         :param AutoRenewFlag: 自动续费标识。0-不自动续费，1-自动续费
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRenewFlag: int
+        :param SubscribeVersion: 订阅实例版本；txdts-旧版数据订阅,kafka-kafka版本数据订阅
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubscribeVersion: str
         """
         self.SubscribeId = None
         self.SubscribeName = None
@@ -2059,6 +2066,7 @@ class SubscribeInfo(AbstractModel):
         self.SdkConsumedTime = None
         self.Tags = None
         self.AutoRenewFlag = None
+        self.SubscribeVersion = None
 
 
     def _deserialize(self, params):
@@ -2090,6 +2098,7 @@ class SubscribeInfo(AbstractModel):
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.SubscribeVersion = params.get("SubscribeVersion")
 
 
 class SubscribeObject(AbstractModel):

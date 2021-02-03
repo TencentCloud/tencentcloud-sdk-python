@@ -126,6 +126,52 @@ class CreateSessionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeInstancesCountRequest(AbstractModel):
+    """DescribeInstancesCount请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GameId: 游戏ID
+        :type GameId: str
+        :param GroupId: 实例分组ID
+        :type GroupId: str
+        """
+        self.GameId = None
+        self.GroupId = None
+
+
+    def _deserialize(self, params):
+        self.GameId = params.get("GameId")
+        self.GroupId = params.get("GroupId")
+
+
+class DescribeInstancesCountResponse(AbstractModel):
+    """DescribeInstancesCount返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Total: 客户的实例总数
+        :type Total: int
+        :param Running: 客户的实例运行数
+        :type Running: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.Running = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        self.Running = params.get("Running")
+        self.RequestId = params.get("RequestId")
+
+
 class SaveGameArchiveRequest(AbstractModel):
     """SaveGameArchive请求参数结构体
 

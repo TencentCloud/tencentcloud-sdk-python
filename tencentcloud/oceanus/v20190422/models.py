@@ -41,6 +41,8 @@ class CreateJobConfigRequest(AbstractModel):
         :type AutoDelete: int
         :param COSBucket: 作业使用的 COS 存储桶名
         :type COSBucket: str
+        :param LogCollect: 是否采集作业日志
+        :type LogCollect: bool
         """
         self.JobId = None
         self.EntrypointClass = None
@@ -51,6 +53,7 @@ class CreateJobConfigRequest(AbstractModel):
         self.Properties = None
         self.AutoDelete = None
         self.COSBucket = None
+        self.LogCollect = None
 
 
     def _deserialize(self, params):
@@ -73,6 +76,7 @@ class CreateJobConfigRequest(AbstractModel):
                 self.Properties.append(obj)
         self.AutoDelete = params.get("AutoDelete")
         self.COSBucket = params.get("COSBucket")
+        self.LogCollect = params.get("LogCollect")
 
 
 class CreateJobConfigResponse(AbstractModel):

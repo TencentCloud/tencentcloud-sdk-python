@@ -16,6 +16,52 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AddUserContactRequest(AbstractModel):
+    """AddUserContact请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 联系人姓名，大小写字母+数字+下划线，最小 2 位最大 60 位的长度， 不能以"_"开头，且联系人名保持唯一。
+        :type Name: str
+        :param ContactInfo: 邮箱地址，大小写字母、数字及下划线组成， 不能以"_"开头。
+        :type ContactInfo: str
+        :param Product: 服务产品类型，固定值："mysql"。
+        :type Product: str
+        """
+        self.Name = None
+        self.ContactInfo = None
+        self.Product = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.ContactInfo = params.get("ContactInfo")
+        self.Product = params.get("Product")
+
+
+class AddUserContactResponse(AbstractModel):
+    """AddUserContact返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 添加成功的联系人id。
+        :type Id: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Id = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.RequestId = params.get("RequestId")
+
+
 class ContactItem(AbstractModel):
     """联系人contact描述。
 
@@ -121,7 +167,7 @@ class CreateMailProfileRequest(AbstractModel):
         :type ProfileType: str
         :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL。
         :type Product: str
-        :param BindInstanceIds: 配置绑定的实例ID，当配置级别为"Instance"时需要传入。
+        :param BindInstanceIds: 配置绑定的实例ID，当配置级别为"Instance"时需要传入，只能为一个实例。
         :type BindInstanceIds: list of str
         """
         self.ProfileInfo = None
@@ -145,6 +191,58 @@ class CreateMailProfileRequest(AbstractModel):
 
 class CreateMailProfileResponse(AbstractModel):
     """CreateMailProfile返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateSchedulerMailProfileRequest(AbstractModel):
+    """CreateSchedulerMailProfile请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param WeekConfiguration: 取值范围1-7，分别代表周一至周日。
+        :type WeekConfiguration: list of int
+        :param ProfileInfo: 邮件配置内容。
+        :type ProfileInfo: :class:`tencentcloud.dbbrain.v20191016.models.ProfileInfo`
+        :param ProfileName: 配置名称，需要保持唯一性，定期生成邮件配置命名格式："scheduler_" + {instanceId}，如"schduler_cdb-test"。
+        :type ProfileName: str
+        :param BindInstanceId: 配置订阅的实例ID。
+        :type BindInstanceId: str
+        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :type Product: str
+        """
+        self.WeekConfiguration = None
+        self.ProfileInfo = None
+        self.ProfileName = None
+        self.BindInstanceId = None
+        self.Product = None
+
+
+    def _deserialize(self, params):
+        self.WeekConfiguration = params.get("WeekConfiguration")
+        if params.get("ProfileInfo") is not None:
+            self.ProfileInfo = ProfileInfo()
+            self.ProfileInfo._deserialize(params.get("ProfileInfo"))
+        self.ProfileName = params.get("ProfileName")
+        self.BindInstanceId = params.get("BindInstanceId")
+        self.Product = params.get("Product")
+
+
+class CreateSchedulerMailProfileResponse(AbstractModel):
+    """CreateSchedulerMailProfile返回参数结构体
 
     """
 
@@ -557,6 +655,194 @@ class DescribeDBSpaceStatusResponse(AbstractModel):
         self.Remain = params.get("Remain")
         self.Total = params.get("Total")
         self.AvailableDays = params.get("AvailableDays")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDiagDBInstancesRequest(AbstractModel):
+    """DescribeDiagDBInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param IsSupported: 是否是DBbrain支持的实例，固定传 true。
+        :type IsSupported: bool
+        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :type Product: str
+        :param Offset: 分页参数，偏移量。
+        :type Offset: int
+        :param Limit: 分页参数，分页值。
+        :type Limit: int
+        :param InstanceNames: 根据实例名称条件查询。
+        :type InstanceNames: list of str
+        :param InstanceIds: 根据实例ID条件查询。
+        :type InstanceIds: list of str
+        :param Regions: 根据地域条件查询。
+        :type Regions: list of str
+        """
+        self.IsSupported = None
+        self.Product = None
+        self.Offset = None
+        self.Limit = None
+        self.InstanceNames = None
+        self.InstanceIds = None
+        self.Regions = None
+
+
+    def _deserialize(self, params):
+        self.IsSupported = params.get("IsSupported")
+        self.Product = params.get("Product")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.InstanceNames = params.get("InstanceNames")
+        self.InstanceIds = params.get("InstanceIds")
+        self.Regions = params.get("Regions")
+
+
+class DescribeDiagDBInstancesResponse(AbstractModel):
+    """DescribeDiagDBInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 实例总数。
+        :type TotalCount: int
+        :param DbScanStatus: 全实例巡检状态：0：开启全实例巡检；1：未开启全实例巡检。
+        :type DbScanStatus: int
+        :param Items: 实例相关信息。
+        :type Items: list of InstanceInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.DbScanStatus = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        self.DbScanStatus = params.get("DbScanStatus")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = InstanceInfo()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeHealthScoreRequest(AbstractModel):
+    """DescribeHealthScore请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 需要获取健康得分的实例ID。
+        :type InstanceId: str
+        :param Time: 获取健康得分的时间。
+        :type Time: str
+        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :type Product: str
+        """
+        self.InstanceId = None
+        self.Time = None
+        self.Product = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Time = params.get("Time")
+        self.Product = params.get("Product")
+
+
+class DescribeHealthScoreResponse(AbstractModel):
+    """DescribeHealthScore返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 健康得分以及异常扣分项。
+        :type Data: :class:`tencentcloud.dbbrain.v20191016.models.HealthScoreInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = HealthScoreInfo()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeMailProfileRequest(AbstractModel):
+    """DescribeMailProfile请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProfileType: 配置类型，支持值包括："dbScan_mail_configuration" - 数据库巡检邮件配置，"scheduler_mail_configuration" - 定期生成邮件配置。
+        :type ProfileType: str
+        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :type Product: str
+        :param Offset: 分页偏移量。
+        :type Offset: int
+        :param Limit: 分页单位，最大支持50。
+        :type Limit: int
+        :param ProfileName: 根据邮件配置名称查询，定期发送的邮件配置名称遵循："scheduler_"+{instanceId}的规则。
+        :type ProfileName: str
+        """
+        self.ProfileType = None
+        self.Product = None
+        self.Offset = None
+        self.Limit = None
+        self.ProfileName = None
+
+
+    def _deserialize(self, params):
+        self.ProfileType = params.get("ProfileType")
+        self.Product = params.get("Product")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.ProfileName = params.get("ProfileName")
+
+
+class DescribeMailProfileResponse(AbstractModel):
+    """DescribeMailProfile返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProfileList: 邮件配置详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProfileList: list of UserProfile
+        :param TotalCount: 邮件模版总数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ProfileList = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ProfileList") is not None:
+            self.ProfileList = []
+            for item in params.get("ProfileList"):
+                obj = UserProfile()
+                obj._deserialize(item)
+                self.ProfileList.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -996,6 +1282,55 @@ class DiagHistoryEventItem(AbstractModel):
         self.Region = params.get("Region")
 
 
+class EventInfo(AbstractModel):
+    """异常事件信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param EventId: 事件 ID 。
+        :type EventId: int
+        :param DiagType: 诊断类型。
+        :type DiagType: str
+        :param StartTime: 开始时间。
+        :type StartTime: str
+        :param EndTime: 结束时间。
+        :type EndTime: str
+        :param Outline: 概要。
+        :type Outline: str
+        :param Severity: 严重程度。严重程度分为5级，按影响程度从高至低分别为：1：致命，2：严重，3：告警，4：提示，5：健康。
+        :type Severity: int
+        :param ScoreLost: 扣分。
+        :type ScoreLost: int
+        :param Metric: 保留字段。
+        :type Metric: str
+        :param Count: 告警数目。
+        :type Count: int
+        """
+        self.EventId = None
+        self.DiagType = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Outline = None
+        self.Severity = None
+        self.ScoreLost = None
+        self.Metric = None
+        self.Count = None
+
+
+    def _deserialize(self, params):
+        self.EventId = params.get("EventId")
+        self.DiagType = params.get("DiagType")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Outline = params.get("Outline")
+        self.Severity = params.get("Severity")
+        self.ScoreLost = params.get("ScoreLost")
+        self.Metric = params.get("Metric")
+        self.Count = params.get("Count")
+
+
 class GroupItem(AbstractModel):
     """描述组信息。
 
@@ -1021,6 +1356,40 @@ class GroupItem(AbstractModel):
         self.MemberCount = params.get("MemberCount")
 
 
+class HealthScoreInfo(AbstractModel):
+    """获取健康得分返回的详情。
+
+    """
+
+    def __init__(self):
+        """
+        :param IssueTypes: 异常详情。
+        :type IssueTypes: list of IssueTypeInfo
+        :param EventsTotalCount: 异常事件总数。
+        :type EventsTotalCount: int
+        :param HealthScore: 健康得分。
+        :type HealthScore: int
+        :param HealthLevel: 健康等级, 如："HEALTH", "SUB_HEALTH", "RISK", "HIGH_RISK"。
+        :type HealthLevel: str
+        """
+        self.IssueTypes = None
+        self.EventsTotalCount = None
+        self.HealthScore = None
+        self.HealthLevel = None
+
+
+    def _deserialize(self, params):
+        if params.get("IssueTypes") is not None:
+            self.IssueTypes = []
+            for item in params.get("IssueTypes"):
+                obj = IssueTypeInfo()
+                obj._deserialize(item)
+                self.IssueTypes.append(obj)
+        self.EventsTotalCount = params.get("EventsTotalCount")
+        self.HealthScore = params.get("HealthScore")
+        self.HealthLevel = params.get("HealthLevel")
+
+
 class InstanceConfs(AbstractModel):
     """实例配置。
 
@@ -1030,12 +1399,173 @@ class InstanceConfs(AbstractModel):
         """
         :param DailyInspection: 数据库巡检开关, Yes/No。
         :type DailyInspection: str
+        :param OverviewDisplay: 实例概览开关，Yes/No。
+        :type OverviewDisplay: str
         """
         self.DailyInspection = None
+        self.OverviewDisplay = None
 
 
     def _deserialize(self, params):
         self.DailyInspection = params.get("DailyInspection")
+        self.OverviewDisplay = params.get("OverviewDisplay")
+
+
+class InstanceInfo(AbstractModel):
+    """查询实例列表，返回实例的相关信息的对象。
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID。
+        :type InstanceId: str
+        :param InstanceName: 实例名称。
+        :type InstanceName: str
+        :param Region: 实例所属地域。
+        :type Region: str
+        :param HealthScore: 健康得分。
+        :type HealthScore: int
+        :param Product: 所属产品。
+        :type Product: str
+        :param EventCount: 异常事件数量。
+        :type EventCount: int
+        :param InstanceType: 实例类型：1:MASTER；2:DR，3：RO，4:SDR。
+        :type InstanceType: int
+        :param Cpu: 核心数。
+        :type Cpu: int
+        :param Memory: 内存，单位MB。
+        :type Memory: int
+        :param Volume: 硬盘存储，单位GB。
+        :type Volume: int
+        :param EngineVersion: 数据库版本。
+        :type EngineVersion: str
+        :param Vip: 内网地址。
+        :type Vip: str
+        :param Vport: 内网端口。
+        :type Vport: int
+        :param Source: 接入来源。
+        :type Source: str
+        :param GroupId: 分组ID。
+        :type GroupId: str
+        :param GroupName: 分组组名。
+        :type GroupName: str
+        :param Status: 实例状态：0：发货中；1：运行正常；4：销毁中；5：隔离中。
+        :type Status: int
+        :param UniqSubnetId: 子网统一ID。
+        :type UniqSubnetId: str
+        :param DeployMode: cdb类型。
+        :type DeployMode: str
+        :param InitFlag: cdb实例初始化标志：0：未初始化；1：已初始化。
+        :type InitFlag: int
+        :param TaskStatus: 任务状态。
+        :type TaskStatus: int
+        :param UniqVpcId: 私有网络统一ID。
+        :type UniqVpcId: str
+        :param InstanceConf: 实例巡检/概览的状态。
+        :type InstanceConf: :class:`tencentcloud.dbbrain.v20191016.models.InstanceConfs`
+        :param DeadlineTime: 资源到期时间。
+        :type DeadlineTime: str
+        :param IsSupported: 是否是DBbrain支持的实例。
+        :type IsSupported: bool
+        :param SecAuditStatus: 实例安全审计日志开启状态：ON： 安全审计开启；OFF： 未开启安全审计。
+        :type SecAuditStatus: str
+        :param AuditPolicyStatus: 实例审计日志开启状态，ALL_AUDIT： 开启全审计；RULE_AUDIT： 开启规则审计；UNBOUND： 未开启审计。
+        :type AuditPolicyStatus: str
+        :param AuditRunningStatus: 实例审计日志运行状态：normal： 运行中； paused： 欠费暂停。
+        :type AuditRunningStatus: str
+        """
+        self.InstanceId = None
+        self.InstanceName = None
+        self.Region = None
+        self.HealthScore = None
+        self.Product = None
+        self.EventCount = None
+        self.InstanceType = None
+        self.Cpu = None
+        self.Memory = None
+        self.Volume = None
+        self.EngineVersion = None
+        self.Vip = None
+        self.Vport = None
+        self.Source = None
+        self.GroupId = None
+        self.GroupName = None
+        self.Status = None
+        self.UniqSubnetId = None
+        self.DeployMode = None
+        self.InitFlag = None
+        self.TaskStatus = None
+        self.UniqVpcId = None
+        self.InstanceConf = None
+        self.DeadlineTime = None
+        self.IsSupported = None
+        self.SecAuditStatus = None
+        self.AuditPolicyStatus = None
+        self.AuditRunningStatus = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.Region = params.get("Region")
+        self.HealthScore = params.get("HealthScore")
+        self.Product = params.get("Product")
+        self.EventCount = params.get("EventCount")
+        self.InstanceType = params.get("InstanceType")
+        self.Cpu = params.get("Cpu")
+        self.Memory = params.get("Memory")
+        self.Volume = params.get("Volume")
+        self.EngineVersion = params.get("EngineVersion")
+        self.Vip = params.get("Vip")
+        self.Vport = params.get("Vport")
+        self.Source = params.get("Source")
+        self.GroupId = params.get("GroupId")
+        self.GroupName = params.get("GroupName")
+        self.Status = params.get("Status")
+        self.UniqSubnetId = params.get("UniqSubnetId")
+        self.DeployMode = params.get("DeployMode")
+        self.InitFlag = params.get("InitFlag")
+        self.TaskStatus = params.get("TaskStatus")
+        self.UniqVpcId = params.get("UniqVpcId")
+        if params.get("InstanceConf") is not None:
+            self.InstanceConf = InstanceConfs()
+            self.InstanceConf._deserialize(params.get("InstanceConf"))
+        self.DeadlineTime = params.get("DeadlineTime")
+        self.IsSupported = params.get("IsSupported")
+        self.SecAuditStatus = params.get("SecAuditStatus")
+        self.AuditPolicyStatus = params.get("AuditPolicyStatus")
+        self.AuditRunningStatus = params.get("AuditRunningStatus")
+
+
+class IssueTypeInfo(AbstractModel):
+    """指标信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param IssueType: 指标分类：AVAILABILITY：可用性，MAINTAINABILITY：可维护性，PERFORMANCE，性能，RELIABILITY可靠性。
+        :type IssueType: str
+        :param Events: 异常事件。
+        :type Events: list of EventInfo
+        :param TotalCount: 异常事件总数。
+        :type TotalCount: int
+        """
+        self.IssueType = None
+        self.Events = None
+        self.TotalCount = None
+
+
+    def _deserialize(self, params):
+        self.IssueType = params.get("IssueType")
+        if params.get("Events") is not None:
+            self.Events = []
+            for item in params.get("Events"):
+                obj = EventInfo()
+                obj._deserialize(item)
+                self.Events.append(obj)
+        self.TotalCount = params.get("TotalCount")
 
 
 class MailConfiguration(AbstractModel):
@@ -1047,7 +1577,7 @@ class MailConfiguration(AbstractModel):
         """
         :param SendMail: 是否开启邮件发送: 0, 否; 1, 是。
         :type SendMail: int
-        :param Region: 地域配置, 如["ap-guangzhou", "ap-shanghai"]。
+        :param Region: 地域配置, 如["ap-guangzhou", "ap-shanghai"]。巡检的邮件发送模版，配置需要发送巡检邮件的地域；订阅的邮件发送模版，配置当前订阅实例的所属地域。
         :type Region: list of str
         :param HealthStatus: 发送指定的健康等级的报告, 如["HEALTH", "SUB_HEALTH", "RISK", "HIGH_RISK"]。
         :type HealthStatus: list of str
@@ -1518,3 +2048,42 @@ class TimeSlice(AbstractModel):
     def _deserialize(self, params):
         self.Count = params.get("Count")
         self.Timestamp = params.get("Timestamp")
+
+
+class UserProfile(AbstractModel):
+    """用户配置的相关信息，包括邮件配置。
+
+    """
+
+    def __init__(self):
+        """
+        :param ProfileId: 配置的id。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProfileId: str
+        :param ProfileType: 配置类型。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProfileType: str
+        :param ProfileLevel: 配置级别，"User"或"Instance"。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProfileLevel: str
+        :param ProfileName: 配置名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProfileName: str
+        :param ProfileInfo: 配置详情。
+        :type ProfileInfo: :class:`tencentcloud.dbbrain.v20191016.models.ProfileInfo`
+        """
+        self.ProfileId = None
+        self.ProfileType = None
+        self.ProfileLevel = None
+        self.ProfileName = None
+        self.ProfileInfo = None
+
+
+    def _deserialize(self, params):
+        self.ProfileId = params.get("ProfileId")
+        self.ProfileType = params.get("ProfileType")
+        self.ProfileLevel = params.get("ProfileLevel")
+        self.ProfileName = params.get("ProfileName")
+        if params.get("ProfileInfo") is not None:
+            self.ProfileInfo = ProfileInfo()
+            self.ProfileInfo._deserialize(params.get("ProfileInfo"))

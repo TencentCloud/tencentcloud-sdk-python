@@ -54,6 +54,34 @@ class GsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeInstancesCount(self, request):
+        """获取实例总数和运行数
+
+        :param request: Request instance for DescribeInstancesCount.
+        :type request: :class:`tencentcloud.gs.v20191118.models.DescribeInstancesCountRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.DescribeInstancesCountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInstancesCount", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstancesCountResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def SaveGameArchive(self, request):
         """保存游戏存档
 

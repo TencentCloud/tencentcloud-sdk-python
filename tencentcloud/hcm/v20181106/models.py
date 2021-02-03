@@ -47,6 +47,8 @@ class EvaluationRequest(AbstractModel):
         :type PdfPageIndex: int
         :param LaTex: 是否返回LaTex，默认为0返回普通格式，设置成1返回LaTex格式
         :type LaTex: int
+        :param RejectVagueArithmetic: 用于选择是否拒绝模糊题 目。打开则丢弃模糊题目， 不进行后续的判题返回结 果。
+        :type RejectVagueArithmetic: bool
         """
         self.SessionId = None
         self.Image = None
@@ -60,6 +62,7 @@ class EvaluationRequest(AbstractModel):
         self.EnablePdfRecognize = None
         self.PdfPageIndex = None
         self.LaTex = None
+        self.RejectVagueArithmetic = None
 
 
     def _deserialize(self, params):
@@ -75,6 +78,7 @@ class EvaluationRequest(AbstractModel):
         self.EnablePdfRecognize = params.get("EnablePdfRecognize")
         self.PdfPageIndex = params.get("PdfPageIndex")
         self.LaTex = params.get("LaTex")
+        self.RejectVagueArithmetic = params.get("RejectVagueArithmetic")
 
 
 class EvaluationResponse(AbstractModel):
@@ -119,13 +123,13 @@ class Item(AbstractModel):
 
     def __init__(self):
         """
-        :param Item: 识别的算式是否正确
+        :param Item: 识别的算式是否正确，算式运算结果: ‘YES’:正确 ‘NO’: 错误 ‘NA’: 非法参数
         :type Item: str
-        :param ItemString: 识别的算式
+        :param ItemString: 识别出的算式，识别出的文本行字符串
         :type ItemString: str
-        :param ItemCoord: 识别的算式在图片上的位置信息
+        :param ItemCoord: 识别的算式在图片上的位置信息，文本行在旋转纠正之后的图像中的像素坐 标，表示为(左上角 x, 左上角 y，宽 width， 高 height)
         :type ItemCoord: :class:`tencentcloud.hcm.v20181106.models.ItemCoord`
-        :param Answer: 推荐的答案，暂不支持多个关系运算符、无关系运算符、单位换算错题的推荐答案返回。
+        :param Answer: 错题推荐答案，算式运算结果正确返回为 ""，算式运算结果错误返回推荐答案 (注:暂不支持多个关系运算符(如 1<10<7)、 无关系运算符(如 frac(1,2)+frac(2,3))、单 位换算(如 1 元=100 角)错题的推荐答案 返回)
         :type Answer: str
         :param ExpressionType: 算式题型编号，如加减乘除四则题型，具体题型及编号如下：1 加减乘除四则 2 加减乘除已知结果求运算因子3 判断大小 4 约等于估算 5 带余数除法 6 分数四则运算 7 单位换算 8 竖式加减法 9 竖式乘除法 10 脱式计算 11 解方程
 注意：此字段可能返回 null，表示取不到有效值。
@@ -133,6 +137,9 @@ class Item(AbstractModel):
         :param ItemConf: 文本行置信度
 注意：此字段可能返回 null，表示取不到有效值。
         :type ItemConf: float
+        :param QuestionId: 用于标识题目 id，如果有若干算式属于同一 题，则其对应的 id 相同。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QuestionId: str
         """
         self.Item = None
         self.ItemString = None
@@ -140,6 +147,7 @@ class Item(AbstractModel):
         self.Answer = None
         self.ExpressionType = None
         self.ItemConf = None
+        self.QuestionId = None
 
 
     def _deserialize(self, params):
@@ -151,6 +159,7 @@ class Item(AbstractModel):
         self.Answer = params.get("Answer")
         self.ExpressionType = params.get("ExpressionType")
         self.ItemConf = params.get("ItemConf")
+        self.QuestionId = params.get("QuestionId")
 
 
 class ItemCoord(AbstractModel):

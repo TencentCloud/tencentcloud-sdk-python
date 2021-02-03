@@ -725,6 +725,53 @@ class ApisStatus(AbstractModel):
                 self.ApiIdStatusSet.append(obj)
 
 
+class AttachedApiInfo(AbstractModel):
+    """插件绑定的API信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ServiceId: API所在服务ID。
+        :type ServiceId: str
+        :param ServiceName: API所在服务名称。
+        :type ServiceName: str
+        :param ServiceDesc: API所在服务描述信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceDesc: str
+        :param ApiId: API ID。
+        :type ApiId: str
+        :param ApiName: API名称。
+        :type ApiName: str
+        :param ApiDesc: API描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiDesc: str
+        :param Environment: 插件绑定API的环境。
+        :type Environment: str
+        :param AttachedTime: 插件和API绑定时间。
+        :type AttachedTime: str
+        """
+        self.ServiceId = None
+        self.ServiceName = None
+        self.ServiceDesc = None
+        self.ApiId = None
+        self.ApiName = None
+        self.ApiDesc = None
+        self.Environment = None
+        self.AttachedTime = None
+
+
+    def _deserialize(self, params):
+        self.ServiceId = params.get("ServiceId")
+        self.ServiceName = params.get("ServiceName")
+        self.ServiceDesc = params.get("ServiceDesc")
+        self.ApiId = params.get("ApiId")
+        self.ApiName = params.get("ApiName")
+        self.ApiDesc = params.get("ApiDesc")
+        self.Environment = params.get("Environment")
+        self.AttachedTime = params.get("AttachedTime")
+
+
 class Base64EncodedTriggerRule(AbstractModel):
     """Base64编码的header触发规则
 
@@ -4669,6 +4716,12 @@ class Plugin(AbstractModel):
         :type CreatedTime: str
         :param ModifiedTime: 插件修改时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
         :type ModifiedTime: str
+        :param AttachedApiTotalCount: 插件绑定的API总数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttachedApiTotalCount: int
+        :param AttachedApis: 插件绑定的API信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttachedApis: list of AttachedApiInfo
         """
         self.PluginId = None
         self.PluginName = None
@@ -4677,6 +4730,8 @@ class Plugin(AbstractModel):
         self.Description = None
         self.CreatedTime = None
         self.ModifiedTime = None
+        self.AttachedApiTotalCount = None
+        self.AttachedApis = None
 
 
     def _deserialize(self, params):
@@ -4687,6 +4742,13 @@ class Plugin(AbstractModel):
         self.Description = params.get("Description")
         self.CreatedTime = params.get("CreatedTime")
         self.ModifiedTime = params.get("ModifiedTime")
+        self.AttachedApiTotalCount = params.get("AttachedApiTotalCount")
+        if params.get("AttachedApis") is not None:
+            self.AttachedApis = []
+            for item in params.get("AttachedApis"):
+                obj = AttachedApiInfo()
+                obj._deserialize(item)
+                self.AttachedApis.append(obj)
 
 
 class PluginSummary(AbstractModel):

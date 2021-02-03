@@ -82,6 +82,34 @@ class ApeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateOrderAndDownloads(self, request):
+        """核销图片，获取原图URL地址
+
+        :param request: Request instance for CreateOrderAndDownloads.
+        :type request: :class:`tencentcloud.ape.v20200513.models.CreateOrderAndDownloadsRequest`
+        :rtype: :class:`tencentcloud.ape.v20200513.models.CreateOrderAndDownloadsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateOrderAndDownloads", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateOrderAndDownloadsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateOrderAndPay(self, request):
         """购买一张图片并且支付
 
@@ -124,6 +152,34 @@ class ApeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAuthUsersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDownloadInfos(self, request):
+        """获取用户图片下载记录
+
+        :param request: Request instance for DescribeDownloadInfos.
+        :type request: :class:`tencentcloud.ape.v20200513.models.DescribeDownloadInfosRequest`
+        :rtype: :class:`tencentcloud.ape.v20200513.models.DescribeDownloadInfosResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDownloadInfos", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDownloadInfosResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

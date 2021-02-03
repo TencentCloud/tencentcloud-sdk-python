@@ -125,6 +125,59 @@ class BatchDescribeOrderImageResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateOrderAndDownloadsRequest(AbstractModel):
+    """CreateOrderAndDownloads请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageInfos: ImageId必填，单张购买，所有必填，会员身份可以省略部分参数
+        :type ImageInfos: list of ImageInfo
+        """
+        self.ImageInfos = None
+
+
+    def _deserialize(self, params):
+        if params.get("ImageInfos") is not None:
+            self.ImageInfos = []
+            for item in params.get("ImageInfos"):
+                obj = ImageInfo()
+                obj._deserialize(item)
+                self.ImageInfos.append(obj)
+
+
+class CreateOrderAndDownloadsResponse(AbstractModel):
+    """CreateOrderAndDownloads返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DownloadInfos: 成功核销后可以获取图片基本信息和原图地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DownloadInfos: list of DownloadInfo
+        :param TotalCount: 可下载图片数量
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DownloadInfos = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DownloadInfos") is not None:
+            self.DownloadInfos = []
+            for item in params.get("DownloadInfos"):
+                obj = DownloadInfo()
+                obj._deserialize(item)
+                self.DownloadInfos.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateOrderAndPayRequest(AbstractModel):
     """CreateOrderAndPay请求参数结构体
 
@@ -227,6 +280,70 @@ class DescribeAuthUsersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDownloadInfosRequest(AbstractModel):
+    """DescribeDownloadInfos请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Limit: 默认10
+        :type Limit: int
+        :param Offset: 默认0
+        :type Offset: int
+        :param BeginTime: 开始时间晚于指定时间
+        :type BeginTime: str
+        :param EndTime: 结束时间早于指定时间
+        :type EndTime: str
+        :param ImageIds: 无效值，过滤结果为空
+        :type ImageIds: list of int
+        """
+        self.Limit = None
+        self.Offset = None
+        self.BeginTime = None
+        self.EndTime = None
+        self.ImageIds = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
+        self.ImageIds = params.get("ImageIds")
+
+
+class DescribeDownloadInfosResponse(AbstractModel):
+    """DescribeDownloadInfos返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DownloadInfos: 核销下载记录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DownloadInfos: list of DownloadInfo
+        :param TotalCount: 总记录数量
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DownloadInfos = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DownloadInfos") is not None:
+            self.DownloadInfos = []
+            for item in params.get("DownloadInfos"):
+                obj = DownloadInfo()
+                obj._deserialize(item)
+                self.DownloadInfos.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeImageRequest(AbstractModel):
     """DescribeImage请求参数结构体
 
@@ -265,6 +382,20 @@ class DescribeImageResponse(AbstractModel):
         :type Vendor: str
         :param Marshals: 图片售卖组合信息
         :type Marshals: list of ImageMarshal
+        :param Width: 宽
+        :type Width: int
+        :param Height: 高
+        :type Height: int
+        :param ImageFormat: 图片格式 jpg/eps/psd/...
+        :type ImageFormat: str
+        :param ImageSenseType: 图片类型 摄影图片、插画、漫画、图表、矢量、psd、全景、gif、模板
+        :type ImageSenseType: str
+        :param Keywords: 关键词，多关键词用空格分隔
+        :type Keywords: str
+        :param LayeredGalleryId: 分层图库id
+        :type LayeredGalleryId: int
+        :param Orientation: 构图方式：horizontal:横图、vertical:竖图、square:方图
+        :type Orientation: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -275,6 +406,13 @@ class DescribeImageResponse(AbstractModel):
         self.ThumbUrl = None
         self.Vendor = None
         self.Marshals = None
+        self.Width = None
+        self.Height = None
+        self.ImageFormat = None
+        self.ImageSenseType = None
+        self.Keywords = None
+        self.LayeredGalleryId = None
+        self.Orientation = None
         self.RequestId = None
 
 
@@ -291,6 +429,13 @@ class DescribeImageResponse(AbstractModel):
                 obj = ImageMarshal()
                 obj._deserialize(item)
                 self.Marshals.append(obj)
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.ImageFormat = params.get("ImageFormat")
+        self.ImageSenseType = params.get("ImageSenseType")
+        self.Keywords = params.get("Keywords")
+        self.LayeredGalleryId = params.get("LayeredGalleryId")
+        self.Orientation = params.get("Orientation")
         self.RequestId = params.get("RequestId")
 
 
@@ -373,6 +518,82 @@ class DescribeImagesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DownloadInfo(AbstractModel):
+    """图片下载信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageInfo: 图片基础信息
+        :type ImageInfo: :class:`tencentcloud.ape.v20200513.models.ImageInfo`
+        :param ImageUrl: 图片原图URL
+        :type ImageUrl: str
+        :param ImageThumbUrl: 图片缩略图URL
+        :type ImageThumbUrl: str
+        :param OrderId: 订单Id
+        :type OrderId: str
+        :param OrderCreateTime: 订单创建时间
+        :type OrderCreateTime: str
+        :param DownloadId: 下载Id
+        :type DownloadId: str
+        :param DownloadTime: 下载时间
+        :type DownloadTime: str
+        :param ConsumeType: 图片购买类型，单张/会员
+        :type ConsumeType: int
+        :param FirstDownload: 是否首次下载
+        :type FirstDownload: bool
+        """
+        self.ImageInfo = None
+        self.ImageUrl = None
+        self.ImageThumbUrl = None
+        self.OrderId = None
+        self.OrderCreateTime = None
+        self.DownloadId = None
+        self.DownloadTime = None
+        self.ConsumeType = None
+        self.FirstDownload = None
+
+
+    def _deserialize(self, params):
+        if params.get("ImageInfo") is not None:
+            self.ImageInfo = ImageInfo()
+            self.ImageInfo._deserialize(params.get("ImageInfo"))
+        self.ImageUrl = params.get("ImageUrl")
+        self.ImageThumbUrl = params.get("ImageThumbUrl")
+        self.OrderId = params.get("OrderId")
+        self.OrderCreateTime = params.get("OrderCreateTime")
+        self.DownloadId = params.get("DownloadId")
+        self.DownloadTime = params.get("DownloadTime")
+        self.ConsumeType = params.get("ConsumeType")
+        self.FirstDownload = params.get("FirstDownload")
+
+
+class ImageInfo(AbstractModel):
+    """图片基础信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageId: 图片Id
+        :type ImageId: int
+        :param LicenseScopeId: 授权场景Id
+        :type LicenseScopeId: int
+        :param DimensionsNameId: 尺寸名称Id
+        :type DimensionsNameId: int
+        """
+        self.ImageId = None
+        self.LicenseScopeId = None
+        self.DimensionsNameId = None
+
+
+    def _deserialize(self, params):
+        self.ImageId = params.get("ImageId")
+        self.LicenseScopeId = params.get("LicenseScopeId")
+        self.DimensionsNameId = params.get("DimensionsNameId")
+
+
 class ImageItem(AbstractModel):
     """图片信息条目
 
@@ -394,6 +615,10 @@ class ImageItem(AbstractModel):
         :type Vendor: str
         :param Keywords: 图片关键词
         :type Keywords: str
+        :param Width: 宽
+        :type Width: int
+        :param Height: 高
+        :type Height: int
         """
         self.ImageId = None
         self.Title = None
@@ -402,6 +627,8 @@ class ImageItem(AbstractModel):
         self.ThumbUrl = None
         self.Vendor = None
         self.Keywords = None
+        self.Width = None
+        self.Height = None
 
 
     def _deserialize(self, params):
@@ -412,6 +639,8 @@ class ImageItem(AbstractModel):
         self.ThumbUrl = params.get("ThumbUrl")
         self.Vendor = params.get("Vendor")
         self.Keywords = params.get("Keywords")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
 
 
 class ImageMarshal(AbstractModel):
@@ -437,6 +666,12 @@ class ImageMarshal(AbstractModel):
         :type LicenseScope: str
         :param IsVip: 是否支持VIP购买
         :type IsVip: bool
+        :param LicenseScopeId: 授权范围id
+        :type LicenseScopeId: int
+        :param DimensionsName: 尺寸
+        :type DimensionsName: str
+        :param DimensionsNameId: 尺寸id
+        :type DimensionsNameId: int
         """
         self.MarshalId = None
         self.Height = None
@@ -446,6 +681,9 @@ class ImageMarshal(AbstractModel):
         self.Price = None
         self.LicenseScope = None
         self.IsVip = None
+        self.LicenseScopeId = None
+        self.DimensionsName = None
+        self.DimensionsNameId = None
 
 
     def _deserialize(self, params):
@@ -457,3 +695,6 @@ class ImageMarshal(AbstractModel):
         self.Price = params.get("Price")
         self.LicenseScope = params.get("LicenseScope")
         self.IsVip = params.get("IsVip")
+        self.LicenseScopeId = params.get("LicenseScopeId")
+        self.DimensionsName = params.get("DimensionsName")
+        self.DimensionsNameId = params.get("DimensionsNameId")

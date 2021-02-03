@@ -26,6 +26,34 @@ class DbbrainClient(AbstractClient):
     _service = 'dbbrain'
 
 
+    def AddUserContact(self, request):
+        """添加邮件接收联系人的姓名， 邮件地址，返回值为添加成功的联系人id。Region统一选择广州。
+
+        :param request: Request instance for AddUserContact.
+        :type request: :class:`tencentcloud.dbbrain.v20191016.models.AddUserContactRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.AddUserContactResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AddUserContact", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddUserContactResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateDBDiagReportTask(self, request):
         """创建健康报告，并可以选择是否发送邮件。
 
@@ -55,7 +83,7 @@ class DbbrainClient(AbstractClient):
 
 
     def CreateMailProfile(self, request):
-        """创建邮件配置。其中入参ProfileType表示所创建配置的类型，ProfileType 取值包括：dbScan_mail_configuration（数据库巡检邮件配置）、scheduler_mail_configuration（定期生成邮件配置）。
+        """创建邮件配置。其中入参ProfileType表示所创建配置的类型，ProfileType 取值包括：dbScan_mail_configuration（数据库巡检邮件配置）、scheduler_mail_configuration（定期生成健康报告的邮件发送配置）。Region统一选择广州，和实例所属地域无关。
 
         :param request: Request instance for CreateMailProfile.
         :type request: :class:`tencentcloud.dbbrain.v20191016.models.CreateMailProfileRequest`
@@ -68,6 +96,34 @@ class DbbrainClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateMailProfileResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateSchedulerMailProfile(self, request):
+        """该接口用于创建定期生成健康报告并邮件发送的配置，将健康报告的定期生成时间作为参数传入（周一至周日），用于设置健康报告的定期生成时间，同时保存相应的定期邮件发送的配置。
+
+        :param request: Request instance for CreateSchedulerMailProfile.
+        :type request: :class:`tencentcloud.dbbrain.v20191016.models.CreateSchedulerMailProfileRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.CreateSchedulerMailProfileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateSchedulerMailProfile", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateSchedulerMailProfileResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -264,6 +320,90 @@ class DbbrainClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBSpaceStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDiagDBInstances(self, request):
+        """获取实例信息列表。Region统一选择广州。
+
+        :param request: Request instance for DescribeDiagDBInstances.
+        :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeDiagDBInstancesRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.DescribeDiagDBInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDiagDBInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDiagDBInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeHealthScore(self, request):
+        """根据实例ID获取指定时间段（30分钟）的健康得分，以及异常扣分项。
+
+        :param request: Request instance for DescribeHealthScore.
+        :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeHealthScoreRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.DescribeHealthScoreResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeHealthScore", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeHealthScoreResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeMailProfile(self, request):
+        """获取发送邮件的配置， 包括数据库巡检的邮件配置以及定期生成健康报告的邮件发送配置。Region统一选择广州。
+
+        :param request: Request instance for DescribeMailProfile.
+        :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeMailProfileRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.DescribeMailProfileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMailProfile", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMailProfileResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
