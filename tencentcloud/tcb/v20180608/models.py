@@ -452,6 +452,9 @@ class CloudBaseRunSideSpec(AbstractModel):
         :param Security: 安全特性
 注意：此字段可能返回 null，表示取不到有效值。
         :type Security: :class:`tencentcloud.tcb.v20180608.models.CloudBaseSecurityContext`
+        :param VolumeMountInfos: 挂载信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VolumeMountInfos: list of CloudBaseRunVolumeMount
         """
         self.ContainerImage = None
         self.ContainerPort = None
@@ -461,6 +464,7 @@ class CloudBaseRunSideSpec(AbstractModel):
         self.Cpu = None
         self.Mem = None
         self.Security = None
+        self.VolumeMountInfos = None
 
 
     def _deserialize(self, params):
@@ -474,6 +478,12 @@ class CloudBaseRunSideSpec(AbstractModel):
         if params.get("Security") is not None:
             self.Security = CloudBaseSecurityContext()
             self.Security._deserialize(params.get("Security"))
+        if params.get("VolumeMountInfos") is not None:
+            self.VolumeMountInfos = []
+            for item in params.get("VolumeMountInfos"):
+                obj = CloudBaseRunVolumeMount()
+                obj._deserialize(item)
+                self.VolumeMountInfos.append(obj)
 
 
 class CloudBaseRunVolumeMount(AbstractModel):
@@ -767,6 +777,41 @@ class CloudRunServiceSimpleVersionSnapshot(AbstractModel):
             self.CodeDetail = CloudBaseCodeRepoDetail()
             self.CodeDetail._deserialize(params.get("CodeDetail"))
         self.Status = params.get("Status")
+
+
+class CloudRunServiceVolume(AbstractModel):
+    """服务的volume
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param NFS: NFS的挂载方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NFS: :class:`tencentcloud.tcb.v20180608.models.CloudBaseRunNfsVolumeSource`
+        :param SecretName: secret名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretName: str
+        :param EnableEmptyDirVolume: 是否开启临时目录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableEmptyDirVolume: bool
+        """
+        self.Name = None
+        self.NFS = None
+        self.SecretName = None
+        self.EnableEmptyDirVolume = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        if params.get("NFS") is not None:
+            self.NFS = CloudBaseRunNfsVolumeSource()
+            self.NFS._deserialize(params.get("NFS"))
+        self.SecretName = params.get("SecretName")
+        self.EnableEmptyDirVolume = params.get("EnableEmptyDirVolume")
 
 
 class CodeSource(AbstractModel):
@@ -1107,6 +1152,8 @@ class CreateCloudBaseRunServerVersionRequest(AbstractModel):
         :type SidecarSpecs: list of CloudBaseRunSideSpec
         :param Security: 安全特性
         :type Security: :class:`tencentcloud.tcb.v20180608.models.CloudBaseSecurityContext`
+        :param ServiceVolumes: 服务磁盘挂载
+        :type ServiceVolumes: list of CloudRunServiceVolume
         """
         self.EnvId = None
         self.UploadType = None
@@ -1143,6 +1190,7 @@ class CreateCloudBaseRunServerVersionRequest(AbstractModel):
         self.ImageReuseKey = None
         self.SidecarSpecs = None
         self.Security = None
+        self.ServiceVolumes = None
 
 
     def _deserialize(self, params):
@@ -1201,6 +1249,12 @@ class CreateCloudBaseRunServerVersionRequest(AbstractModel):
         if params.get("Security") is not None:
             self.Security = CloudBaseSecurityContext()
             self.Security._deserialize(params.get("Security"))
+        if params.get("ServiceVolumes") is not None:
+            self.ServiceVolumes = []
+            for item in params.get("ServiceVolumes"):
+                obj = CloudRunServiceVolume()
+                obj._deserialize(item)
+                self.ServiceVolumes.append(obj)
 
 
 class CreateCloudBaseRunServerVersionResponse(AbstractModel):

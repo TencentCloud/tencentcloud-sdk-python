@@ -349,7 +349,7 @@ class DescribeVsmAttributesResponse(AbstractModel):
         :type ResourceId: str
         :param ResourceName: 资源名称
         :type ResourceName: str
-        :param Status: 资源状态
+        :param Status: 资源状态，1表示资源为正常，2表示资源处于隔离状态
         :type Status: int
         :param Vip: 资源IP
         :type Vip: str
@@ -359,11 +359,11 @@ class DescribeVsmAttributesResponse(AbstractModel):
         :type SubnetId: str
         :param Model: 资源所属HSM的规格
         :type Model: str
-        :param VsmType: 资源类型
+        :param VsmType: 资源类型，17表示EVSM，33表示GVSM，49表示SVSM
         :type VsmType: int
-        :param RegionId: 地域Id
+        :param RegionId: 地域Id，返回腾讯云地域代码，如广州为1，北京为8
         :type RegionId: int
-        :param ZoneId: 区域Id
+        :param ZoneId: 区域Id，返回腾讯云每个地域的可用区代码
         :type ZoneId: int
         :param ExpireTime: 过期时间
         :type ExpireTime: int
@@ -542,7 +542,7 @@ class InquiryPriceBuyVsmRequest(AbstractModel):
         :type PayMode: int
         :param TimeSpan: 商品的时间大小
         :type TimeSpan: str
-        :param TimeUnit: 商品的时间单位
+        :param TimeUnit: 商品的时间单位，m表示月，y表示年
         :type TimeUnit: str
         :param Currency: 货币类型，默认为CNY
         :type Currency: str
@@ -573,7 +573,7 @@ class InquiryPriceBuyVsmResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCost: 总金额
+        :param TotalCost: 原始总金额
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCost: float
         :param GoodsNum: 购买的实例数量
@@ -585,7 +585,7 @@ class InquiryPriceBuyVsmResponse(AbstractModel):
         :param TimeUnit: 商品的时间单位
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimeUnit: str
-        :param OriginalCost: 原始总金额
+        :param OriginalCost: 应付总金额
 注意：此字段可能返回 null，表示取不到有效值。
         :type OriginalCost: float
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

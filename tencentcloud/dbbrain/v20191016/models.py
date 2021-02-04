@@ -361,7 +361,7 @@ class DescribeAllUserContactRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL。
+        :param Product: 服务产品类型，固定值：mysql。
         :type Product: str
         :param Names: 联系人名数组，支持模糊搜索。
         :type Names: list of str
@@ -413,7 +413,7 @@ class DescribeAllUserGroupRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL。
+        :param Product: 服务产品类型，固定值：mysql。
         :type Product: str
         :param Names: 联系组名称数组，支持模糊搜索。
         :type Names: list of str

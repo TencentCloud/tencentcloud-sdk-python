@@ -46,7 +46,7 @@ class CancelMatchingRequest(AbstractModel):
         """
         :param MatchCode: 匹配 Code
         :type MatchCode: str
-        :param MatchTicketId: 要取消的匹配请求 Id
+        :param MatchTicketId: 要取消的匹配匹配票据 ID
         :type MatchTicketId: str
         """
         self.MatchCode = None
@@ -552,7 +552,7 @@ class DescribeMatchingProgressRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param MatchTicketIds: 请求 id 列表, 列表长度 128。
+        :param MatchTicketIds: 匹配票据 ID列表, 列表长度 12。
         :type MatchTicketIds: list of MTicket
         """
         self.MatchTicketIds = None
@@ -574,7 +574,7 @@ class DescribeMatchingProgressResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param MatchTickets: 请求结果列表
+        :param MatchTickets: 匹配票据列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type MatchTickets: list of MatchTicket
         :param ErrCode: 错误码
@@ -1539,7 +1539,7 @@ class StartMatchingRequest(AbstractModel):
         :type MatchCode: str
         :param Players: 玩家信息 最多 200 条。
         :type Players: list of Player
-        :param MatchTicketId: 请求 Id 默认空字符串，为空则由 GPM 自动生成 长度 128，只能包含数字、字母、. 和 -
+        :param MatchTicketId: 匹配票据 ID 默认空字符串，为空则由 GPM 自动生成 长度 128，只能包含数字、字母、. 和 -
         :type MatchTicketId: str
         """
         self.MatchCode = None
@@ -1567,7 +1567,7 @@ class StartMatchingResponse(AbstractModel):
         """
         :param ErrCode: 错误码。
         :type ErrCode: int
-        :param MatchTicketId: 请求 id 长度 128。
+        :param MatchTicketId: 匹配票据 ID长度 128。
         :type MatchTicketId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

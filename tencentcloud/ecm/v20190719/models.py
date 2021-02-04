@@ -5059,6 +5059,12 @@ class InstanceTypeConfig(AbstractModel):
         :param ExtInfo: 机型额外信息 是一个json字符串，如果存在则表示特殊机型，格式如下：{"dataDiskSize":3200,"systemDiskSize":60, "systemDiskSizeShow":"系统盘默认60G","dataDiskSizeShow":"本地NVMe SSD 硬盘3200 GB"}
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtInfo: str
+        :param Vgpu: GPU卡数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vgpu: float
+        :param GpuModelName: GPU型号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GpuModelName: str
         """
         self.InstanceFamilyConfig = None
         self.InstanceType = None
@@ -5068,6 +5074,8 @@ class InstanceTypeConfig(AbstractModel):
         self.CpuModelName = None
         self.InstanceFamilyTypeConfig = None
         self.ExtInfo = None
+        self.Vgpu = None
+        self.GpuModelName = None
 
 
     def _deserialize(self, params):
@@ -5083,6 +5091,8 @@ class InstanceTypeConfig(AbstractModel):
             self.InstanceFamilyTypeConfig = InstanceFamilyTypeConfig()
             self.InstanceFamilyTypeConfig._deserialize(params.get("InstanceFamilyTypeConfig"))
         self.ExtInfo = params.get("ExtInfo")
+        self.Vgpu = params.get("Vgpu")
+        self.GpuModelName = params.get("GpuModelName")
 
 
 class Internet(AbstractModel):
