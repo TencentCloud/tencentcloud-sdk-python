@@ -257,6 +257,74 @@ class CreateDeviceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateLoRaFrequencyRequest(AbstractModel):
+    """CreateLoRaFrequency请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FreqName: 频点配置名称
+        :type FreqName: str
+        :param ChannelsDataUp: 数据上行信道
+        :type ChannelsDataUp: list of int non-negative
+        :param ChannelsDataRX1: 数据下行RX1信道
+        :type ChannelsDataRX1: list of int non-negative
+        :param ChannelsDataRX2: 数据下行RX2信道
+        :type ChannelsDataRX2: list of int non-negative
+        :param ChannelsJoinUp: 入网上行信道
+        :type ChannelsJoinUp: list of int non-negative
+        :param ChannelsJoinRX1: 入网下行RX1信道
+        :type ChannelsJoinRX1: list of int non-negative
+        :param ChannelsJoinRX2: 入网下行RX2信道
+        :type ChannelsJoinRX2: list of int non-negative
+        :param Description: 频点配置描述
+        :type Description: str
+        """
+        self.FreqName = None
+        self.ChannelsDataUp = None
+        self.ChannelsDataRX1 = None
+        self.ChannelsDataRX2 = None
+        self.ChannelsJoinUp = None
+        self.ChannelsJoinRX1 = None
+        self.ChannelsJoinRX2 = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.FreqName = params.get("FreqName")
+        self.ChannelsDataUp = params.get("ChannelsDataUp")
+        self.ChannelsDataRX1 = params.get("ChannelsDataRX1")
+        self.ChannelsDataRX2 = params.get("ChannelsDataRX2")
+        self.ChannelsJoinUp = params.get("ChannelsJoinUp")
+        self.ChannelsJoinRX1 = params.get("ChannelsJoinRX1")
+        self.ChannelsJoinRX2 = params.get("ChannelsJoinRX2")
+        self.Description = params.get("Description")
+
+
+class CreateLoRaFrequencyResponse(AbstractModel):
+    """CreateLoRaFrequency返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: LoRa频点信息
+        :type Data: :class:`tencentcloud.iotexplorer.v20190423.models.LoRaFrequencyEntry`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = LoRaFrequencyEntry()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
 class CreateLoRaGatewayRequest(AbstractModel):
     """CreateLoRaGateway请求参数结构体
 
@@ -528,6 +596,40 @@ class DeleteDeviceResponse(AbstractModel):
     def _deserialize(self, params):
         self.ResultCode = params.get("ResultCode")
         self.ResultMessage = params.get("ResultMessage")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLoRaFrequencyRequest(AbstractModel):
+    """DeleteLoRaFrequency请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FreqId: 频点唯一ID
+        :type FreqId: str
+        """
+        self.FreqId = None
+
+
+    def _deserialize(self, params):
+        self.FreqId = params.get("FreqId")
+
+
+class DeleteLoRaFrequencyResponse(AbstractModel):
+    """DeleteLoRaFrequency返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -841,6 +943,47 @@ class DescribeDeviceResponse(AbstractModel):
         if params.get("Device") is not None:
             self.Device = DeviceInfo()
             self.Device._deserialize(params.get("Device"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLoRaFrequencyRequest(AbstractModel):
+    """DescribeLoRaFrequency请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FreqId: 频点唯一ID
+        :type FreqId: str
+        """
+        self.FreqId = None
+
+
+    def _deserialize(self, params):
+        self.FreqId = params.get("FreqId")
+
+
+class DescribeLoRaFrequencyResponse(AbstractModel):
+    """DescribeLoRaFrequency返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 返回详情项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.iotexplorer.v20190423.models.LoRaFrequencyEntry`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = LoRaFrequencyEntry()
+            self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
 
 
@@ -1626,6 +1769,59 @@ class ListEventHistoryResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class LoRaFrequencyEntry(AbstractModel):
+    """LoRa自定义频点信息
+
+    """
+
+    def __init__(self):
+        """
+        :param FreqId: 频点唯一ID
+        :type FreqId: str
+        :param FreqName: 频点名称
+        :type FreqName: str
+        :param Description: 频点描述
+        :type Description: str
+        :param ChannelsDataUp: 数据上行信道
+        :type ChannelsDataUp: list of int non-negative
+        :param ChannelsDataRX1: 数据下行信道RX1
+        :type ChannelsDataRX1: list of int non-negative
+        :param ChannelsDataRX2: 数据下行信道RX2
+        :type ChannelsDataRX2: list of int non-negative
+        :param ChannelsJoinUp: 入网上行信道
+        :type ChannelsJoinUp: list of int non-negative
+        :param ChannelsJoinRX1: 入网下行RX1信道
+        :type ChannelsJoinRX1: list of int non-negative
+        :param ChannelsJoinRX2: 入网下行RX2信道
+        :type ChannelsJoinRX2: list of int non-negative
+        :param CreateTime: 创建时间
+        :type CreateTime: int
+        """
+        self.FreqId = None
+        self.FreqName = None
+        self.Description = None
+        self.ChannelsDataUp = None
+        self.ChannelsDataRX1 = None
+        self.ChannelsDataRX2 = None
+        self.ChannelsJoinUp = None
+        self.ChannelsJoinRX1 = None
+        self.ChannelsJoinRX2 = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.FreqId = params.get("FreqId")
+        self.FreqName = params.get("FreqName")
+        self.Description = params.get("Description")
+        self.ChannelsDataUp = params.get("ChannelsDataUp")
+        self.ChannelsDataRX1 = params.get("ChannelsDataRX1")
+        self.ChannelsDataRX2 = params.get("ChannelsDataRX2")
+        self.ChannelsJoinUp = params.get("ChannelsJoinUp")
+        self.ChannelsJoinRX1 = params.get("ChannelsJoinRX1")
+        self.ChannelsJoinRX2 = params.get("ChannelsJoinRX2")
+        self.CreateTime = params.get("CreateTime")
+
+
 class LoRaGatewayItem(AbstractModel):
     """LoRa 网关信息
 
@@ -1712,6 +1908,78 @@ class LoRaGatewayLocation(AbstractModel):
         self.Altitude = params.get("Altitude")
         self.Latitude = params.get("Latitude")
         self.Longitude = params.get("Longitude")
+
+
+class ModifyLoRaFrequencyRequest(AbstractModel):
+    """ModifyLoRaFrequency请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FreqId: 频点唯一ID
+        :type FreqId: str
+        :param FreqName: 频点名称
+        :type FreqName: str
+        :param Description: 频点描述
+        :type Description: str
+        :param ChannelsDataUp: 数据上行信道
+        :type ChannelsDataUp: list of int non-negative
+        :param ChannelsDataRX1: 数据下行信道RX1
+        :type ChannelsDataRX1: list of int non-negative
+        :param ChannelsDataRX2: 数据下行信道RX2
+        :type ChannelsDataRX2: list of int non-negative
+        :param ChannelsJoinUp: 入网上行信道
+        :type ChannelsJoinUp: list of int non-negative
+        :param ChannelsJoinRX1: 入网下行信道RX1
+        :type ChannelsJoinRX1: list of int non-negative
+        :param ChannelsJoinRX2: 入网下行信道RX2
+        :type ChannelsJoinRX2: list of int non-negative
+        """
+        self.FreqId = None
+        self.FreqName = None
+        self.Description = None
+        self.ChannelsDataUp = None
+        self.ChannelsDataRX1 = None
+        self.ChannelsDataRX2 = None
+        self.ChannelsJoinUp = None
+        self.ChannelsJoinRX1 = None
+        self.ChannelsJoinRX2 = None
+
+
+    def _deserialize(self, params):
+        self.FreqId = params.get("FreqId")
+        self.FreqName = params.get("FreqName")
+        self.Description = params.get("Description")
+        self.ChannelsDataUp = params.get("ChannelsDataUp")
+        self.ChannelsDataRX1 = params.get("ChannelsDataRX1")
+        self.ChannelsDataRX2 = params.get("ChannelsDataRX2")
+        self.ChannelsJoinUp = params.get("ChannelsJoinUp")
+        self.ChannelsJoinRX1 = params.get("ChannelsJoinRX1")
+        self.ChannelsJoinRX2 = params.get("ChannelsJoinRX2")
+
+
+class ModifyLoRaFrequencyResponse(AbstractModel):
+    """ModifyLoRaFrequency返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 频点信息
+        :type Data: :class:`tencentcloud.iotexplorer.v20190423.models.LoRaFrequencyEntry`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = LoRaFrequencyEntry()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
 
 
 class ModifyLoRaGatewayRequest(AbstractModel):

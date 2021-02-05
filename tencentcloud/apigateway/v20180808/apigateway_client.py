@@ -484,7 +484,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeApi(self, request):
-        """本接口（DescribeApi）用于查询用户部署于 API 网关的 API 接口的详细信息。​
+        """本接口（DescribeApi）用于查询用户 API 网关的 API 接口的详细信息。​
 
         :param request: Request instance for DescribeApi.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeApiRequest`

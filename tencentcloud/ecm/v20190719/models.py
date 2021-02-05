@@ -173,12 +173,21 @@ CUCC：中国联通
         :type InternetMaxBandwidthOut: int
         :param Tags: 需要关联的标签列表。
         :type Tags: list of Tag
+        :param InstanceId: 要绑定的实例 ID。
+        :type InstanceId: str
+        :param NetworkInterfaceId: 要绑定的弹性网卡 ID。 弹性网卡 ID 形如：eni-11112222。NetworkInterfaceId 与 InstanceId 不可同时指定。弹性网卡 ID 可通过DescribeNetworkInterfaces接口返回值中的networkInterfaceId获取。
+        :type NetworkInterfaceId: str
+        :param PrivateIpAddress: 要绑定的内网 IP。如果指定了 NetworkInterfaceId 则也必须指定 PrivateIpAddress ，表示将 EIP 绑定到指定弹性网卡的指定内网 IP 上。同时要确保指定的 PrivateIpAddress 是指定的 NetworkInterfaceId 上的一个内网 IP。指定弹性网卡的内网 IP 可通过DescribeNetworkInterfaces接口返回值中的privateIpAddress获取。
+        :type PrivateIpAddress: str
         """
         self.EcmRegion = None
         self.AddressCount = None
         self.InternetServiceProvider = None
         self.InternetMaxBandwidthOut = None
         self.Tags = None
+        self.InstanceId = None
+        self.NetworkInterfaceId = None
+        self.PrivateIpAddress = None
 
 
     def _deserialize(self, params):
@@ -192,6 +201,9 @@ CUCC：中国联通
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.InstanceId = params.get("InstanceId")
+        self.NetworkInterfaceId = params.get("NetworkInterfaceId")
+        self.PrivateIpAddress = params.get("PrivateIpAddress")
 
 
 class AllocateAddressesResponse(AbstractModel):
@@ -501,7 +513,7 @@ class AttachNetworkInterfaceRequest(AbstractModel):
         :type NetworkInterfaceId: str
         :param InstanceId: 实例ID。形如：ein-r8hr2upy。
         :type InstanceId: str
-        :param EcmRegion: ECM 地域
+        :param EcmRegion: ECM 地域，形如ap-xian-ecm。
         :type EcmRegion: str
         """
         self.NetworkInterfaceId = None
@@ -1156,7 +1168,7 @@ class CreateNetworkInterfaceRequest(AbstractModel):
         :type NetworkInterfaceName: str
         :param SubnetId: 弹性网卡所在的子网实例ID，例如：subnet-0ap8nwca。
         :type SubnetId: str
-        :param EcmRegion: ECM 地域
+        :param EcmRegion: ECM 地域，形如ap-xian-ecm。
         :type EcmRegion: str
         :param NetworkInterfaceDescription: 弹性网卡描述，可任意命名，但不得超过60个字符。
         :type NetworkInterfaceDescription: str
@@ -3093,7 +3105,7 @@ is-primary - Boolean - 是否必填：否 - （过滤条件）按照是否主网
         :type Offset: int
         :param Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
-        :param EcmRegion: ECM 地域
+        :param EcmRegion: ECM 地域，形如ap-xian-ecm。
         :type EcmRegion: str
         """
         self.NetworkInterfaceIds = None
@@ -3978,7 +3990,7 @@ class DetachNetworkInterfaceRequest(AbstractModel):
         :type NetworkInterfaceId: str
         :param InstanceId: 实例ID。形如：ein-hcs7jkg4
         :type InstanceId: str
-        :param EcmRegion: ECM 地域
+        :param EcmRegion: ECM 地域，形如ap-xian-ecm。
         :type EcmRegion: str
         """
         self.NetworkInterfaceId = None
@@ -6026,7 +6038,7 @@ class ModifyModuleDisableWanIpRequest(AbstractModel):
         """
         :param ModuleId: 模块ID
         :type ModuleId: str
-        :param DisableWanIp: 是否禁止分配外网ip
+        :param DisableWanIp: 是否禁止分配外网ip,true：统一分配外网ip，false：禁止分配外网ip.
         :type DisableWanIp: bool
         """
         self.ModuleId = None
@@ -6236,6 +6248,53 @@ class ModifyModuleSecurityGroupsRequest(AbstractModel):
 
 class ModifyModuleSecurityGroupsResponse(AbstractModel):
     """ModifyModuleSecurityGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyPrivateIpAddressesAttributeRequest(AbstractModel):
+    """ModifyPrivateIpAddressesAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NetworkInterfaceId: 弹性网卡实例ID，例如：eni-m6dyj72l。
+        :type NetworkInterfaceId: str
+        :param PrivateIpAddresses: 指定的内网IP信息。
+        :type PrivateIpAddresses: list of PrivateIpAddressSpecification
+        :param EcmRegion: ECM 节点Region信息，形如ap-xian-ecm。
+        :type EcmRegion: str
+        """
+        self.NetworkInterfaceId = None
+        self.PrivateIpAddresses = None
+        self.EcmRegion = None
+
+
+    def _deserialize(self, params):
+        self.NetworkInterfaceId = params.get("NetworkInterfaceId")
+        if params.get("PrivateIpAddresses") is not None:
+            self.PrivateIpAddresses = []
+            for item in params.get("PrivateIpAddresses"):
+                obj = PrivateIpAddressSpecification()
+                obj._deserialize(item)
+                self.PrivateIpAddresses.append(obj)
+        self.EcmRegion = params.get("EcmRegion")
+
+
+class ModifyPrivateIpAddressesAttributeResponse(AbstractModel):
+    """ModifyPrivateIpAddressesAttribute返回参数结构体
 
     """
 
@@ -9075,16 +9134,22 @@ class TerminateInstancesRequest(AbstractModel):
         :type TerminateDelay: bool
         :param TerminateTime: 定时销毁的时间，格式形如："2019-08-05 12:01:30"，若非定时销毁，则此参数被忽略。
         :type TerminateTime: str
+        :param AssociatedResourceDestroy: 是否关联删除已绑定的弹性网卡和弹性IP，默认为true。
+当为true时，一并删除弹性网卡和弹性IP；
+当为false时，只销毁主机，保留弹性网卡和弹性IP。
+        :type AssociatedResourceDestroy: bool
         """
         self.InstanceIdSet = None
         self.TerminateDelay = None
         self.TerminateTime = None
+        self.AssociatedResourceDestroy = None
 
 
     def _deserialize(self, params):
         self.InstanceIdSet = params.get("InstanceIdSet")
         self.TerminateDelay = params.get("TerminateDelay")
         self.TerminateTime = params.get("TerminateTime")
+        self.AssociatedResourceDestroy = params.get("AssociatedResourceDestroy")
 
 
 class TerminateInstancesResponse(AbstractModel):
