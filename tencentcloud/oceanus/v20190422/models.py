@@ -312,6 +312,78 @@ class DeleteTableConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeJobConfigsRequest(AbstractModel):
+    """DescribeJobConfigs请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param JobId: 作业Id
+        :type JobId: str
+        :param JobConfigVersions: 作业配置版本
+        :type JobConfigVersions: list of int non-negative
+        :param Offset: 偏移量，默认0
+        :type Offset: int
+        :param Limit: 分页大小，默认20，最大100
+        :type Limit: int
+        :param Filters: 过滤条件
+        :type Filters: list of Filter
+        :param OnlyDraft: true 表示只展示草稿
+        :type OnlyDraft: bool
+        """
+        self.JobId = None
+        self.JobConfigVersions = None
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+        self.OnlyDraft = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.JobConfigVersions = params.get("JobConfigVersions")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.OnlyDraft = params.get("OnlyDraft")
+
+
+class DescribeJobConfigsResponse(AbstractModel):
+    """DescribeJobConfigs返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 总的配置版本数量
+        :type TotalCount: int
+        :param JobConfigSet: 作业配置列表
+        :type JobConfigSet: list of JobConfig
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.JobConfigSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("JobConfigSet") is not None:
+            self.JobConfigSet = []
+            for item in params.get("JobConfigSet"):
+                obj = JobConfig()
+                obj._deserialize(item)
+                self.JobConfigSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeJobsRequest(AbstractModel):
     """DescribeJobs请求参数结构体
 
@@ -463,6 +535,91 @@ class Filter(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Values = params.get("Values")
+
+
+class JobConfig(AbstractModel):
+    """作业配置详情
+
+    """
+
+    def __init__(self):
+        """
+        :param JobId: 作业Id
+        :type JobId: str
+        :param EntrypointClass: 主类
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EntrypointClass: str
+        :param ProgramArgs: 主类入参
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProgramArgs: str
+        :param Remark: 备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param CreateTime: 作业配置创建时间
+        :type CreateTime: str
+        :param Version: 作业配置的版本号
+        :type Version: int
+        :param DefaultParallelism: 作业默认并行度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultParallelism: int
+        :param Properties: 系统参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Properties: list of Property
+        :param ResourceRefDetails: 引用资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceRefDetails: list of ResourceRefDetail
+        :param CreatorUin: 创建者uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatorUin: str
+        :param UpdateTime: 作业配置上次启动时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param COSBucket: 作业绑定的存储桶
+注意：此字段可能返回 null，表示取不到有效值。
+        :type COSBucket: str
+        :param LogCollect: 是否启用日志收集，0-未启用，1-已启用，2-历史集群未设置日志集，3-历史集群已开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogCollect: int
+        """
+        self.JobId = None
+        self.EntrypointClass = None
+        self.ProgramArgs = None
+        self.Remark = None
+        self.CreateTime = None
+        self.Version = None
+        self.DefaultParallelism = None
+        self.Properties = None
+        self.ResourceRefDetails = None
+        self.CreatorUin = None
+        self.UpdateTime = None
+        self.COSBucket = None
+        self.LogCollect = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.EntrypointClass = params.get("EntrypointClass")
+        self.ProgramArgs = params.get("ProgramArgs")
+        self.Remark = params.get("Remark")
+        self.CreateTime = params.get("CreateTime")
+        self.Version = params.get("Version")
+        self.DefaultParallelism = params.get("DefaultParallelism")
+        if params.get("Properties") is not None:
+            self.Properties = []
+            for item in params.get("Properties"):
+                obj = Property()
+                obj._deserialize(item)
+                self.Properties.append(obj)
+        if params.get("ResourceRefDetails") is not None:
+            self.ResourceRefDetails = []
+            for item in params.get("ResourceRefDetails"):
+                obj = ResourceRefDetail()
+                obj._deserialize(item)
+                self.ResourceRefDetails.append(obj)
+        self.CreatorUin = params.get("CreatorUin")
+        self.UpdateTime = params.get("UpdateTime")
+        self.COSBucket = params.get("COSBucket")
+        self.LogCollect = params.get("LogCollect")
 
 
 class JobV1(AbstractModel):
@@ -706,6 +863,39 @@ class ResourceRef(AbstractModel):
         self.ResourceId = params.get("ResourceId")
         self.Version = params.get("Version")
         self.Type = params.get("Type")
+
+
+class ResourceRefDetail(AbstractModel):
+    """JobConfig引用资源信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceId: 资源id
+        :type ResourceId: str
+        :param Version: 资源版本，-1表示使用最新版本
+        :type Version: int
+        :param Name: 资源名称
+        :type Name: str
+        :param Type: 1: 主资源
+        :type Type: int
+        :param SystemProvide: 1: 系统内置资源
+        :type SystemProvide: int
+        """
+        self.ResourceId = None
+        self.Version = None
+        self.Name = None
+        self.Type = None
+        self.SystemProvide = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
+        self.Version = params.get("Version")
+        self.Name = params.get("Name")
+        self.Type = params.get("Type")
+        self.SystemProvide = params.get("SystemProvide")
 
 
 class RunJobDescription(AbstractModel):
