@@ -78,6 +78,9 @@ class AccessPoint(AbstractModel):
         :param City: 接入点所在城市
 注意：此字段可能返回 null，表示取不到有效值。
         :type City: str
+        :param Area: 接入点地域名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Area: str
         """
         self.AccessPointName = None
         self.AccessPointId = None
@@ -88,6 +91,7 @@ class AccessPoint(AbstractModel):
         self.AvailablePortType = None
         self.Coordinate = None
         self.City = None
+        self.Area = None
 
 
     def _deserialize(self, params):
@@ -102,6 +106,7 @@ class AccessPoint(AbstractModel):
             self.Coordinate = Coordinate()
             self.Coordinate._deserialize(params.get("Coordinate"))
         self.City = params.get("City")
+        self.Area = params.get("Area")
 
 
 class ApplyInternetAddressRequest(AbstractModel):

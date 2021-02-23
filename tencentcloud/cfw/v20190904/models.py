@@ -267,13 +267,13 @@ class DeleteAcRuleRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: 删除规则对应的id值 669872
+        :param Id: 删除规则对应的id值, 对应获取规则列表接口的Id 值
         :type Id: int
         :param Direction: 方向，0：出站，1：入站
         :type Direction: int
         :param EdgeId: EdgeId值两个vpc间的边id
         :type EdgeId: str
-        :param Area: NAT地域
+        :param Area: NAT地域， 如ap-shanghai/ap-guangzhou/ap-chongqing等
         :type Area: str
         """
         self.Id = None

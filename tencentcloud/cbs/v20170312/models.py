@@ -1153,7 +1153,7 @@ class Disk(AbstractModel):
         :type SnapshotCount: int
         :param SnapshotSize: 云盘拥有的快照总容量，单位为MB。
         :type SnapshotSize: int
-        :param BackupDisk: 云盘因欠费销毁或者期销毁时， 是否使用快照备份数据的标识。True， 销毁时创建快照进行数据备份。False 表示直接销毁，不进行数据备份。
+        :param BackupDisk: 云硬盘因欠费销毁或者到期销毁时， 是否使用快照备份数据的标识。true表示销毁时创建快照进行数据备份。false表示直接销毁，不进行数据备份。
         :type BackupDisk: bool
         :param ThroughputPerformance: 云硬盘额外性能值，单位MB/s。
 注意：此字段可能返回 null，表示取不到有效值。

@@ -1664,6 +1664,39 @@ class DescribeUserResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DynamicRetentionTime(AbstractModel):
+    """动态消息保留时间配置
+
+    """
+
+    def __init__(self):
+        """
+        :param Enable: 动态消息保留时间配置开关（0: 关闭，1: 开启）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enable: int
+        :param DiskQuotaPercentage: 磁盘配额百分比触发条件，即消息达到此值触发消息保留时间变更事件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskQuotaPercentage: int
+        :param StepForwardPercentage: 每次向前调整消息保留时间百分比
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StepForwardPercentage: int
+        :param BottomRetention: 保底时长，单位分钟
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BottomRetention: int
+        """
+        self.Enable = None
+        self.DiskQuotaPercentage = None
+        self.StepForwardPercentage = None
+        self.BottomRetention = None
+
+
+    def _deserialize(self, params):
+        self.Enable = params.get("Enable")
+        self.DiskQuotaPercentage = params.get("DiskQuotaPercentage")
+        self.StepForwardPercentage = params.get("StepForwardPercentage")
+        self.BottomRetention = params.get("BottomRetention")
+
+
 class Filter(AbstractModel):
     """查询过滤器
     >描述键值对过滤器，用于条件过滤查询。例如过滤ID、名称、状态等
@@ -2018,7 +2051,7 @@ class InstanceAttributesResponse(AbstractModel):
         :param MaxGroupNum: 最大分组数
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxGroupNum: int
-        :param Cvm: 售卖类型
+        :param Cvm: 售卖类型,0:标准版,1:专业版
 注意：此字段可能返回 null，表示取不到有效值。
         :type Cvm: int
         :param InstanceType: 类型
@@ -2027,6 +2060,9 @@ class InstanceAttributesResponse(AbstractModel):
         :param Features: 表示该实例支持的特性。FEATURE_SUBNET_ACL:表示acl策略支持设置子网。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Features: list of str
+        :param RetentionTimeConfig: 动态消息保留策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RetentionTimeConfig: :class:`tencentcloud.ckafka.v20190819.models.DynamicRetentionTime`
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -2056,6 +2092,7 @@ class InstanceAttributesResponse(AbstractModel):
         self.Cvm = None
         self.InstanceType = None
         self.Features = None
+        self.RetentionTimeConfig = None
 
 
     def _deserialize(self, params):
@@ -2099,6 +2136,9 @@ class InstanceAttributesResponse(AbstractModel):
         self.Cvm = params.get("Cvm")
         self.InstanceType = params.get("InstanceType")
         self.Features = params.get("Features")
+        if params.get("RetentionTimeConfig") is not None:
+            self.RetentionTimeConfig = DynamicRetentionTime()
+            self.RetentionTimeConfig._deserialize(params.get("RetentionTimeConfig"))
 
 
 class InstanceConfigDO(AbstractModel):
@@ -2180,6 +2220,21 @@ class InstanceDetail(AbstractModel):
         :param Cvm: ckafka售卖类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type Cvm: int
+        :param InstanceType: ckafka实例类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceType: str
+        :param DiskType: 磁盘类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskType: str
+        :param MaxTopicNumber: 当前规格最大Topic数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxTopicNumber: int
+        :param MaxPartitionNumber: 当前规格最大Partition数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxPartitionNumber: int
+        :param RebalanceTime: 计划升级配置时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RebalanceTime: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -2203,6 +2258,11 @@ class InstanceDetail(AbstractModel):
         self.Version = None
         self.ZoneIds = None
         self.Cvm = None
+        self.InstanceType = None
+        self.DiskType = None
+        self.MaxTopicNumber = None
+        self.MaxPartitionNumber = None
+        self.RebalanceTime = None
 
 
     def _deserialize(self, params):
@@ -2238,6 +2298,11 @@ class InstanceDetail(AbstractModel):
         self.Version = params.get("Version")
         self.ZoneIds = params.get("ZoneIds")
         self.Cvm = params.get("Cvm")
+        self.InstanceType = params.get("InstanceType")
+        self.DiskType = params.get("DiskType")
+        self.MaxTopicNumber = params.get("MaxTopicNumber")
+        self.MaxPartitionNumber = params.get("MaxPartitionNumber")
+        self.RebalanceTime = params.get("RebalanceTime")
 
 
 class InstanceDetailResponse(AbstractModel):
@@ -2430,11 +2495,17 @@ class ModifyInstanceAttributesRequest(AbstractModel):
         :type InstanceName: str
         :param Config: 实例配置
         :type Config: :class:`tencentcloud.ckafka.v20190819.models.ModifyInstanceAttributesConfig`
+        :param DynamicRetentionConfig: 动态消息保留策略配置
+        :type DynamicRetentionConfig: :class:`tencentcloud.ckafka.v20190819.models.DynamicRetentionTime`
+        :param RebalanceTime: 修改升配置rebalance时间
+        :type RebalanceTime: int
         """
         self.InstanceId = None
         self.MsgRetentionTime = None
         self.InstanceName = None
         self.Config = None
+        self.DynamicRetentionConfig = None
+        self.RebalanceTime = None
 
 
     def _deserialize(self, params):
@@ -2444,6 +2515,10 @@ class ModifyInstanceAttributesRequest(AbstractModel):
         if params.get("Config") is not None:
             self.Config = ModifyInstanceAttributesConfig()
             self.Config._deserialize(params.get("Config"))
+        if params.get("DynamicRetentionConfig") is not None:
+            self.DynamicRetentionConfig = DynamicRetentionTime()
+            self.DynamicRetentionConfig._deserialize(params.get("DynamicRetentionConfig"))
+        self.RebalanceTime = params.get("RebalanceTime")
 
 
 class ModifyInstanceAttributesResponse(AbstractModel):
@@ -2897,6 +2972,9 @@ class TopicDetail(AbstractModel):
         :param Config: 高级配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type Config: :class:`tencentcloud.ckafka.v20190819.models.Config`
+        :param RetentionTimeConfig: 消息保留时间配置(用于动态配置变更记录)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RetentionTimeConfig: :class:`tencentcloud.ckafka.v20190819.models.TopicRetentionTimeConfigRsp`
         """
         self.TopicName = None
         self.TopicId = None
@@ -2910,6 +2988,7 @@ class TopicDetail(AbstractModel):
         self.ForwardStatus = None
         self.ForwardInterval = None
         self.Config = None
+        self.RetentionTimeConfig = None
 
 
     def _deserialize(self, params):
@@ -2927,6 +3006,9 @@ class TopicDetail(AbstractModel):
         if params.get("Config") is not None:
             self.Config = Config()
             self.Config._deserialize(params.get("Config"))
+        if params.get("RetentionTimeConfig") is not None:
+            self.RetentionTimeConfig = TopicRetentionTimeConfigRsp()
+            self.RetentionTimeConfig._deserialize(params.get("RetentionTimeConfig"))
 
 
 class TopicDetailResponse(AbstractModel):
@@ -3011,6 +3093,34 @@ class TopicResult(AbstractModel):
                 obj._deserialize(item)
                 self.TopicList.append(obj)
         self.TotalCount = params.get("TotalCount")
+
+
+class TopicRetentionTimeConfigRsp(AbstractModel):
+    """Topic消息保留时间配置返回信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Expect: 期望值，即用户配置的Topic消息保留时间(单位分钟)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Expect: int
+        :param Current: 当前值，即当前生效值(可能存在动态调整，单位分钟)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Current: int
+        :param ModTimeStamp: 最近变更时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModTimeStamp: int
+        """
+        self.Expect = None
+        self.Current = None
+        self.ModTimeStamp = None
+
+
+    def _deserialize(self, params):
+        self.Expect = params.get("Expect")
+        self.Current = params.get("Current")
+        self.ModTimeStamp = params.get("ModTimeStamp")
 
 
 class User(AbstractModel):

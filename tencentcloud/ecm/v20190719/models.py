@@ -2251,14 +2251,18 @@ class DescribeConfigResponse(AbstractModel):
         """
         :param NetworkStorageRange: 网络带宽硬盘大小的范围信息。
         :type NetworkStorageRange: :class:`tencentcloud.ecm.v20190719.models.NetworkStorageRange`
-        :param ImageWhiteSet: 镜像操作系统白名单
+        :param ImageWhiteSet: 镜像操作系统白名单。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageWhiteSet: list of str
+        :param InstanceNetworkLimitConfigs: 网络限额信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceNetworkLimitConfigs: list of InstanceNetworkLimitConfig
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.NetworkStorageRange = None
         self.ImageWhiteSet = None
+        self.InstanceNetworkLimitConfigs = None
         self.RequestId = None
 
 
@@ -2267,6 +2271,12 @@ class DescribeConfigResponse(AbstractModel):
             self.NetworkStorageRange = NetworkStorageRange()
             self.NetworkStorageRange._deserialize(params.get("NetworkStorageRange"))
         self.ImageWhiteSet = params.get("ImageWhiteSet")
+        if params.get("InstanceNetworkLimitConfigs") is not None:
+            self.InstanceNetworkLimitConfigs = []
+            for item in params.get("InstanceNetworkLimitConfigs"):
+                obj = InstanceNetworkLimitConfig()
+                obj._deserialize(item)
+                self.InstanceNetworkLimitConfigs.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -4997,6 +5007,35 @@ class InstanceNetworkInfo(AbstractModel):
         self.NetworkInterfaceId = params.get("NetworkInterfaceId")
         self.NetworkInterfaceName = params.get("NetworkInterfaceName")
         self.Primary = params.get("Primary")
+
+
+class InstanceNetworkLimitConfig(AbstractModel):
+    """机器网络资源限制
+
+    """
+
+    def __init__(self):
+        """
+        :param CpuNum: cpu核数
+        :type CpuNum: int
+        :param NetworkInterfaceLimit: 网卡数量限制
+        :type NetworkInterfaceLimit: int
+        :param InnerIpPerNetworkInterface: 每张网卡内网ip数量限制
+        :type InnerIpPerNetworkInterface: int
+        :param PublicIpPerInstance: 每个实例的外网ip限制
+        :type PublicIpPerInstance: int
+        """
+        self.CpuNum = None
+        self.NetworkInterfaceLimit = None
+        self.InnerIpPerNetworkInterface = None
+        self.PublicIpPerInstance = None
+
+
+    def _deserialize(self, params):
+        self.CpuNum = params.get("CpuNum")
+        self.NetworkInterfaceLimit = params.get("NetworkInterfaceLimit")
+        self.InnerIpPerNetworkInterface = params.get("InnerIpPerNetworkInterface")
+        self.PublicIpPerInstance = params.get("PublicIpPerInstance")
 
 
 class InstanceOperator(AbstractModel):

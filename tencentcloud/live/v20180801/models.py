@@ -1538,17 +1538,17 @@ origin: 保持原始编码格式
         :type Vcodec: str
         :param Description: 模板描述。
         :type Description: str
+        :param NeedVideo: 是否保留视频，0：否，1：是。默认1。
+        :type NeedVideo: int
         :param Width: 宽，默认0。
 范围[0-3000]
 数值必须是2的倍数，0是原始宽度
         :type Width: int
-        :param NeedVideo: 是否保留视频，0：否，1：是。默认1。
-        :type NeedVideo: int
         :param NeedAudio: 是否保留音频，0：否，1：是。默认1。
         :type NeedAudio: int
         :param Height: 高，默认0。
 范围[0-3000]
-数值必须是2的倍数，0是原始宽度
+数值必须是2的倍数，0是原始高度。
         :type Height: int
         :param Fps: 帧率，默认0。
 范围0-60fps
@@ -1591,8 +1591,8 @@ baseline/main/high。默认baseline
         self.AudioBitrate = None
         self.Vcodec = None
         self.Description = None
-        self.Width = None
         self.NeedVideo = None
+        self.Width = None
         self.NeedAudio = None
         self.Height = None
         self.Fps = None
@@ -1614,8 +1614,8 @@ baseline/main/high。默认baseline
         self.AudioBitrate = params.get("AudioBitrate")
         self.Vcodec = params.get("Vcodec")
         self.Description = params.get("Description")
-        self.Width = params.get("Width")
         self.NeedVideo = params.get("NeedVideo")
+        self.Width = params.get("Width")
         self.NeedAudio = params.get("NeedAudio")
         self.Height = params.get("Height")
         self.Fps = params.get("Fps")
