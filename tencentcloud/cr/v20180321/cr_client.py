@@ -475,6 +475,34 @@ class CrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def QueryBlackListData(self, request):
+        """查看黑名单数据列表
+
+        :param request: Request instance for QueryBlackListData.
+        :type request: :class:`tencentcloud.cr.v20180321.models.QueryBlackListDataRequest`
+        :rtype: :class:`tencentcloud.cr.v20180321.models.QueryBlackListDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryBlackListData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryBlackListDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def QueryBotList(self, request):
         """查询机器人任务状态列表
 

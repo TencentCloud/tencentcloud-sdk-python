@@ -434,6 +434,9 @@ class DataDisk(AbstractModel):
         :param ThroughputPerformance: 云硬盘性能，单位：MB/s
 注意：此字段可能返回 null，表示取不到有效值。
         :type ThroughputPerformance: int
+        :param CdcId: 所属的独享集群ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CdcId: str
         """
         self.DiskSize = None
         self.DiskType = None
@@ -443,6 +446,7 @@ class DataDisk(AbstractModel):
         self.Encrypt = None
         self.KmsKeyId = None
         self.ThroughputPerformance = None
+        self.CdcId = None
 
 
     def _deserialize(self, params):
@@ -454,6 +458,7 @@ class DataDisk(AbstractModel):
         self.Encrypt = params.get("Encrypt")
         self.KmsKeyId = params.get("KmsKeyId")
         self.ThroughputPerformance = params.get("ThroughputPerformance")
+        self.CdcId = params.get("CdcId")
 
 
 class DeleteDisasterRecoverGroupsRequest(AbstractModel):
@@ -5245,16 +5250,20 @@ class SystemDisk(AbstractModel):
         :type DiskId: str
         :param DiskSize: 系统盘大小，单位：GB。默认值为 50
         :type DiskSize: int
+        :param CdcId: 所属的独享集群ID。
+        :type CdcId: str
         """
         self.DiskType = None
         self.DiskId = None
         self.DiskSize = None
+        self.CdcId = None
 
 
     def _deserialize(self, params):
         self.DiskType = params.get("DiskType")
         self.DiskId = params.get("DiskId")
         self.DiskSize = params.get("DiskSize")
+        self.CdcId = params.get("CdcId")
 
 
 class Tag(AbstractModel):

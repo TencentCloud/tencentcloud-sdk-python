@@ -7868,6 +7868,7 @@ class DescribeSecurityGroupsResponse(AbstractModel):
     def __init__(self):
         """
         :param SecurityGroupSet: 安全组对象。
+注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityGroupSet: list of SecurityGroup
         :param TotalCount: 符合条件的实例数量。
         :type TotalCount: int

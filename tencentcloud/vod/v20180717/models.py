@@ -4062,6 +4062,9 @@ class ComposeMediaTask(AbstractModel):
         :param Output: 制作媒体文件任务的输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.ComposeMediaTaskOutput`
+        :param MetaData: 原始视频的元信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         """
         self.TaskId = None
         self.Status = None
@@ -4069,6 +4072,7 @@ class ComposeMediaTask(AbstractModel):
         self.Message = None
         self.Input = None
         self.Output = None
+        self.MetaData = None
 
 
     def _deserialize(self, params):
@@ -4082,6 +4086,9 @@ class ComposeMediaTask(AbstractModel):
         if params.get("Output") is not None:
             self.Output = ComposeMediaTaskOutput()
             self.Output._deserialize(params.get("Output"))
+        if params.get("MetaData") is not None:
+            self.MetaData = MediaMetaData()
+            self.MetaData._deserialize(params.get("MetaData"))
 
 
 class ComposeMediaTaskInput(AbstractModel):
@@ -8695,6 +8702,8 @@ class EditMediaTask(AbstractModel):
         :type SessionContext: str
         :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
         :type SessionId: str
+        :param MetaData: 原始视频的元信息。
+        :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         """
         self.TaskId = None
         self.Status = None
@@ -8705,6 +8714,7 @@ class EditMediaTask(AbstractModel):
         self.ProcedureTaskId = None
         self.SessionContext = None
         self.SessionId = None
+        self.MetaData = None
 
 
     def _deserialize(self, params):
@@ -8721,6 +8731,9 @@ class EditMediaTask(AbstractModel):
         self.ProcedureTaskId = params.get("ProcedureTaskId")
         self.SessionContext = params.get("SessionContext")
         self.SessionId = params.get("SessionId")
+        if params.get("MetaData") is not None:
+            self.MetaData = MediaMetaData()
+            self.MetaData._deserialize(params.get("MetaData"))
 
 
 class EditMediaTaskInput(AbstractModel):
@@ -14672,6 +14685,8 @@ class PullUploadTask(AbstractModel):
         :param MediaBasicInfo: 转拉完成后生成的媒体文件基础信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MediaBasicInfo: :class:`tencentcloud.vod.v20180717.models.MediaBasicInfo`
+        :param MetaData: 原始视频的元信息。
+        :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         :param FileUrl: 转拉上传完成后生成的播放地址。
         :type FileUrl: str
         :param ProcedureTaskId: 若转拉上传时指定了视频处理流程，则该参数为流程任务 ID。
@@ -14687,6 +14702,7 @@ class PullUploadTask(AbstractModel):
         self.Message = None
         self.FileId = None
         self.MediaBasicInfo = None
+        self.MetaData = None
         self.FileUrl = None
         self.ProcedureTaskId = None
         self.SessionContext = None
@@ -14702,6 +14718,9 @@ class PullUploadTask(AbstractModel):
         if params.get("MediaBasicInfo") is not None:
             self.MediaBasicInfo = MediaBasicInfo()
             self.MediaBasicInfo._deserialize(params.get("MediaBasicInfo"))
+        if params.get("MetaData") is not None:
+            self.MetaData = MediaMetaData()
+            self.MetaData._deserialize(params.get("MetaData"))
         self.FileUrl = params.get("FileUrl")
         self.ProcedureTaskId = params.get("ProcedureTaskId")
         self.SessionContext = params.get("SessionContext")

@@ -1653,6 +1653,9 @@ class DescribeCloudBaseBuildServiceResponse(AbstractModel):
         :param DownloadHeaders: 下载Httpheader
 注意：此字段可能返回 null，表示取不到有效值。
         :type DownloadHeaders: list of KVPair
+        :param OutDate: 下载链接是否过期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutDate: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1662,6 +1665,7 @@ class DescribeCloudBaseBuildServiceResponse(AbstractModel):
         self.PackageVersion = None
         self.DownloadUrl = None
         self.DownloadHeaders = None
+        self.OutDate = None
         self.RequestId = None
 
 
@@ -1682,6 +1686,7 @@ class DescribeCloudBaseBuildServiceResponse(AbstractModel):
                 obj = KVPair()
                 obj._deserialize(item)
                 self.DownloadHeaders.append(obj)
+        self.OutDate = params.get("OutDate")
         self.RequestId = params.get("RequestId")
 
 

@@ -1317,6 +1317,78 @@ class ProductQueryInfo(AbstractModel):
         self.SceneType = params.get("SceneType")
 
 
+class QueryBlackListDataRequest(AbstractModel):
+    """QueryBlackListData请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Module: 模块:AiApi
+        :type Module: str
+        :param Operation: 操作:QueryBlackListData
+        :type Operation: str
+        :param Offset: 页码
+        :type Offset: int
+        :param Limit: 每页数量
+        :type Limit: int
+        :param StartBizDate: 开始日期
+        :type StartBizDate: str
+        :param EndBizDate: 结束日期
+        :type EndBizDate: str
+        :param BlackValue: 电话号码、手机
+        :type BlackValue: str
+        """
+        self.Module = None
+        self.Operation = None
+        self.Offset = None
+        self.Limit = None
+        self.StartBizDate = None
+        self.EndBizDate = None
+        self.BlackValue = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.StartBizDate = params.get("StartBizDate")
+        self.EndBizDate = params.get("EndBizDate")
+        self.BlackValue = params.get("BlackValue")
+
+
+class QueryBlackListDataResponse(AbstractModel):
+    """QueryBlackListData返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 总数。
+        :type TotalCount: int
+        :param Data: 黑名单列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of BlackListData
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = BlackListData()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class QueryBotListRequest(AbstractModel):
     """QueryBotList请求参数结构体
 

@@ -3059,6 +3059,9 @@ class InstanceIntegerParam(AbstractModel):
         :type Max: str
         :param Status: 参数状态, 1: 修改中， 2：修改完成
         :type Status: int
+        :param Unit: 参数单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Unit: str
         """
         self.ParamName = None
         self.ValueType = None
@@ -3069,6 +3072,7 @@ class InstanceIntegerParam(AbstractModel):
         self.Min = None
         self.Max = None
         self.Status = None
+        self.Unit = None
 
 
     def _deserialize(self, params):
@@ -3081,6 +3085,7 @@ class InstanceIntegerParam(AbstractModel):
         self.Min = params.get("Min")
         self.Max = params.get("Max")
         self.Status = params.get("Status")
+        self.Unit = params.get("Unit")
 
 
 class InstanceMultiParam(AbstractModel):
@@ -3524,12 +3529,15 @@ class InstanceSlowlogDetail(AbstractModel):
         :type CommandLine: str
         :param ExecuteTime: 执行时间
         :type ExecuteTime: str
+        :param Node: 节点ID
+        :type Node: str
         """
         self.Duration = None
         self.Client = None
         self.Command = None
         self.CommandLine = None
         self.ExecuteTime = None
+        self.Node = None
 
 
     def _deserialize(self, params):
@@ -3538,6 +3546,7 @@ class InstanceSlowlogDetail(AbstractModel):
         self.Command = params.get("Command")
         self.CommandLine = params.get("CommandLine")
         self.ExecuteTime = params.get("ExecuteTime")
+        self.Node = params.get("Node")
 
 
 class InstanceTagInfo(AbstractModel):
