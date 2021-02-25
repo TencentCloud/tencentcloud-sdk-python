@@ -55,6 +55,34 @@ class UmpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateCameraState(self, request):
+        """上报当前场内所有相机的当前状态
+
+        :param request: Request instance for CreateCameraState.
+        :type request: :class:`tencentcloud.ump.v20200918.models.CreateCameraStateRequest`
+        :rtype: :class:`tencentcloud.ump.v20200918.models.CreateCameraStateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateCameraState", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateCameraStateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateCapture(self, request):
         """场内抓拍上报接口
 
@@ -379,6 +407,62 @@ class UmpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeZonesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyMultiBizConfig(self, request):
+        """集团广场的多经点位配置更新
+
+        :param request: Request instance for ModifyMultiBizConfig.
+        :type request: :class:`tencentcloud.ump.v20200918.models.ModifyMultiBizConfigRequest`
+        :rtype: :class:`tencentcloud.ump.v20200918.models.ModifyMultiBizConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyMultiBizConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyMultiBizConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ReportServiceRegister(self, request):
+        """上报服务注册自身的服务地址作为回调地址, 用于信息回传。
+
+        :param request: Request instance for ReportServiceRegister.
+        :type request: :class:`tencentcloud.ump.v20200918.models.ReportServiceRegisterRequest`
+        :rtype: :class:`tencentcloud.ump.v20200918.models.ReportServiceRegisterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ReportServiceRegister", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ReportServiceRegisterResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -126,6 +126,34 @@ class CameraConfig(AbstractModel):
         self.Height = params.get("Height")
 
 
+class CameraState(AbstractModel):
+    """用于场内上报当前相机的状态
+
+    """
+
+    def __init__(self):
+        """
+        :param CameraId: 相机ID
+        :type CameraId: int
+        :param State: 相机状态:
+10: 初始化
+11: 未知状态
+12: 网络异常
+13: 未授权
+14: 相机App异常
+15: 相机取流异常
+16: 状态正常
+        :type State: int
+        """
+        self.CameraId = None
+        self.State = None
+
+
+    def _deserialize(self, params):
+        self.CameraId = params.get("CameraId")
+        self.State = params.get("State")
+
+
 class CameraZones(AbstractModel):
     """摄像头包含简单的点位信息
 
@@ -144,8 +172,15 @@ class CameraZones(AbstractModel):
         :param CameraIp: 摄像头IP
         :type CameraIp: str
         :param CameraState: 摄像头状态:
-0: 异常
-1: 正常
+0: 异常 (不再使用)
+1: 正常 (不再使用)
+10: 初始化
+11: 未知状态 (因服务内部错误产生)
+12: 网络异常
+13: 未授权
+14: 相机App异常
+15: 相机取流异常
+16: 正常
         :type CameraState: int
         :param Zones: 点位列表
         :type Zones: list of BunkZone
@@ -154,6 +189,9 @@ class CameraZones(AbstractModel):
 200W(1920*1080)
 400W(2560*1440)
         :type Pixel: str
+        :param RTSP: 相机Rtsp地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RTSP: str
         """
         self.CameraId = None
         self.CameraName = None
@@ -162,6 +200,7 @@ class CameraZones(AbstractModel):
         self.CameraState = None
         self.Zones = None
         self.Pixel = None
+        self.RTSP = None
 
 
     def _deserialize(self, params):
@@ -177,6 +216,7 @@ class CameraZones(AbstractModel):
                 obj._deserialize(item)
                 self.Zones.append(obj)
         self.Pixel = params.get("Pixel")
+        self.RTSP = params.get("RTSP")
 
 
 class Config(AbstractModel):
@@ -386,6 +426,53 @@ class CreateCameraAlertsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateCameraStateRequest(AbstractModel):
+    """CreateCameraState请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupCode: 集团编码
+        :type GroupCode: str
+        :param MallId: 广场ID
+        :type MallId: int
+        :param CameraStates: 场内所有相机的状态值
+        :type CameraStates: list of CameraState
+        """
+        self.GroupCode = None
+        self.MallId = None
+        self.CameraStates = None
+
+
+    def _deserialize(self, params):
+        self.GroupCode = params.get("GroupCode")
+        self.MallId = params.get("MallId")
+        if params.get("CameraStates") is not None:
+            self.CameraStates = []
+            for item in params.get("CameraStates"):
+                obj = CameraState()
+                obj._deserialize(item)
+                self.CameraStates.append(obj)
+
+
+class CreateCameraStateResponse(AbstractModel):
+    """CreateCameraState返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateCaptureRequest(AbstractModel):
     """CreateCapture请求参数结构体
 
@@ -449,6 +536,8 @@ class CreateMultiBizAlertRequest(AbstractModel):
         :type State: int
         :param Image: 图片base64字符串
         :type Image: str
+        :param Warnings: 告警列表
+        :type Warnings: list of MultiBizWarning
         """
         self.GroupCode = None
         self.MallId = None
@@ -457,6 +546,7 @@ class CreateMultiBizAlertRequest(AbstractModel):
         self.CaptureTime = None
         self.State = None
         self.Image = None
+        self.Warnings = None
 
 
     def _deserialize(self, params):
@@ -467,6 +557,12 @@ class CreateMultiBizAlertRequest(AbstractModel):
         self.CaptureTime = params.get("CaptureTime")
         self.State = params.get("State")
         self.Image = params.get("Image")
+        if params.get("Warnings") is not None:
+            self.Warnings = []
+            for item in params.get("Warnings"):
+                obj = MultiBizWarning()
+                obj._deserialize(item)
+                self.Warnings.append(obj)
 
 
 class CreateMultiBizAlertResponse(AbstractModel):
@@ -1021,6 +1117,135 @@ class DiskInfo(AbstractModel):
         self.Usage = params.get("Usage")
 
 
+class ModifyMultiBizConfigRequest(AbstractModel):
+    """ModifyMultiBizConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupCode: 集团编码
+        :type GroupCode: str
+        :param MallId: 广场ID
+        :type MallId: int
+        :param ZoneId: 点位ID
+        :type ZoneId: int
+        :param CameraId: 摄像头ID
+        :type CameraId: int
+        :param MonitoringAreas: 监控区域
+        :type MonitoringAreas: list of Polygon
+        """
+        self.GroupCode = None
+        self.MallId = None
+        self.ZoneId = None
+        self.CameraId = None
+        self.MonitoringAreas = None
+
+
+    def _deserialize(self, params):
+        self.GroupCode = params.get("GroupCode")
+        self.MallId = params.get("MallId")
+        self.ZoneId = params.get("ZoneId")
+        self.CameraId = params.get("CameraId")
+        if params.get("MonitoringAreas") is not None:
+            self.MonitoringAreas = []
+            for item in params.get("MonitoringAreas"):
+                obj = Polygon()
+                obj._deserialize(item)
+                self.MonitoringAreas.append(obj)
+
+
+class ModifyMultiBizConfigResponse(AbstractModel):
+    """ModifyMultiBizConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class MultiBizWarning(AbstractModel):
+    """多经点位告警
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 编号
+        :type Id: int
+        :param MonitoringArea: 监控区域
+        :type MonitoringArea: list of Point
+        :param WarningInfos: 告警列表
+        :type WarningInfos: list of MultiBizWarningInfo
+        """
+        self.Id = None
+        self.MonitoringArea = None
+        self.WarningInfos = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        if params.get("MonitoringArea") is not None:
+            self.MonitoringArea = []
+            for item in params.get("MonitoringArea"):
+                obj = Point()
+                obj._deserialize(item)
+                self.MonitoringArea.append(obj)
+        if params.get("WarningInfos") is not None:
+            self.WarningInfos = []
+            for item in params.get("WarningInfos"):
+                obj = MultiBizWarningInfo()
+                obj._deserialize(item)
+                self.WarningInfos.append(obj)
+
+
+class MultiBizWarningInfo(AbstractModel):
+    """多经点位告警信息
+
+    """
+
+    def __init__(self):
+        """
+        :param WarningType: 告警类型：
+0: 无变化
+1: 侵占
+2: 消失
+        :type WarningType: int
+        :param WarningAreaSize: 告警侵占或消失面积
+        :type WarningAreaSize: float
+        :param WarningLocation: 告警侵占或消失坐标
+        :type WarningLocation: :class:`tencentcloud.ump.v20200918.models.Point`
+        :param WarningAreaContour: 告警侵占或消失轮廓
+        :type WarningAreaContour: list of Point
+        """
+        self.WarningType = None
+        self.WarningAreaSize = None
+        self.WarningLocation = None
+        self.WarningAreaContour = None
+
+
+    def _deserialize(self, params):
+        self.WarningType = params.get("WarningType")
+        self.WarningAreaSize = params.get("WarningAreaSize")
+        if params.get("WarningLocation") is not None:
+            self.WarningLocation = Point()
+            self.WarningLocation._deserialize(params.get("WarningLocation"))
+        if params.get("WarningAreaContour") is not None:
+            self.WarningAreaContour = []
+            for item in params.get("WarningAreaContour"):
+                obj = Point()
+                obj._deserialize(item)
+                self.WarningAreaContour.append(obj)
+
+
 class Point(AbstractModel):
     """点
 
@@ -1098,6 +1323,65 @@ class ProgramStateItem(AbstractModel):
         self.OnlineCount = params.get("OnlineCount")
         self.OfflineCount = params.get("OfflineCount")
         self.State = params.get("State")
+
+
+class ReportServiceRegisterRequest(AbstractModel):
+    """ReportServiceRegister请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupCode: 集团编码
+        :type GroupCode: str
+        :param MallId: 广场ID
+        :type MallId: int
+        :param ServiceRegisterInfos: 服务上报当前的服务能力信息
+        :type ServiceRegisterInfos: list of ServiceRegisterInfo
+        :param ServerIp: 服务内网Ip
+        :type ServerIp: str
+        :param ServerNodeId: 上报服务所在服务器的唯一ID
+        :type ServerNodeId: str
+        :param ReportTime: 上报时间戳, 单位毫秒
+        :type ReportTime: int
+        """
+        self.GroupCode = None
+        self.MallId = None
+        self.ServiceRegisterInfos = None
+        self.ServerIp = None
+        self.ServerNodeId = None
+        self.ReportTime = None
+
+
+    def _deserialize(self, params):
+        self.GroupCode = params.get("GroupCode")
+        self.MallId = params.get("MallId")
+        if params.get("ServiceRegisterInfos") is not None:
+            self.ServiceRegisterInfos = []
+            for item in params.get("ServiceRegisterInfos"):
+                obj = ServiceRegisterInfo()
+                obj._deserialize(item)
+                self.ServiceRegisterInfos.append(obj)
+        self.ServerIp = params.get("ServerIp")
+        self.ServerNodeId = params.get("ServerNodeId")
+        self.ReportTime = params.get("ReportTime")
+
+
+class ReportServiceRegisterResponse(AbstractModel):
+    """ReportServiceRegister返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class SearchImageRequest(AbstractModel):
@@ -1215,6 +1499,30 @@ class ServerStateItem(AbstractModel):
                 obj = DiskInfo()
                 obj._deserialize(item)
                 self.DiskInfos.append(obj)
+
+
+class ServiceRegisterInfo(AbstractModel):
+    """用于服务注册时表示当前服务的具体信息
+
+    """
+
+    def __init__(self):
+        """
+        :param CgiUrl: 当前服务的回调地址
+        :type CgiUrl: str
+        :param ServiceType: 当前服务类型:
+1: 多经服务
+2: 相机误报警确认
+3: 底图更新
+        :type ServiceType: int
+        """
+        self.CgiUrl = None
+        self.ServiceType = None
+
+
+    def _deserialize(self, params):
+        self.CgiUrl = params.get("CgiUrl")
+        self.ServiceType = params.get("ServiceType")
 
 
 class Task(AbstractModel):

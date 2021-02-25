@@ -1034,6 +1034,34 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeGeneralStat(self, request):
+        """获取主机安全相关统计
+
+        :param request: Request instance for DescribeGeneralStat.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeGeneralStatRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeGeneralStatResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeGeneralStat", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeGeneralStatResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeHistoryAccounts(self, request):
         """本接口 (DescribeHistoryAccounts) 用于获取帐号变更历史列表数据。
 

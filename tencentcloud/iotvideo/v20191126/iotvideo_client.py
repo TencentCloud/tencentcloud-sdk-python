@@ -1293,6 +1293,34 @@ class IotvideoClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeStream(self, request):
+        """请求设备直播流地址
+
+        :param request: Request instance for DescribeStream.
+        :type request: :class:`tencentcloud.iotvideo.v20191126.models.DescribeStreamRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20191126.models.DescribeStreamResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeStream", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeStreamResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTraceIds(self, request):
         """本接口（DescribeTraceIds）用于查询设备日志跟踪白名单。
 

@@ -2261,6 +2261,82 @@ class DescribeExportMachinesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeGeneralStatRequest(AbstractModel):
+    """DescribeGeneralStat请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MachineType: 云主机类型。
+<li>CVM：表示虚拟主机</li>
+<li>BM:  表示黑石物理机</li>
+        :type MachineType: str
+        :param MachineRegion: 机器所属地域。如：ap-guangzhou，ap-shanghai
+        :type MachineRegion: str
+        """
+        self.MachineType = None
+        self.MachineRegion = None
+
+
+    def _deserialize(self, params):
+        self.MachineType = params.get("MachineType")
+        self.MachineRegion = params.get("MachineRegion")
+
+
+class DescribeGeneralStatResponse(AbstractModel):
+    """DescribeGeneralStat返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MachinesAll: 云主机总数
+        :type MachinesAll: int
+        :param MachinesUninstalled: 云主机没有安装主机安全客户端的总数
+        :type MachinesUninstalled: int
+        :param AgentsAll: 主机安全客户端总数的总数
+        :type AgentsAll: int
+        :param AgentsOnline: 主机安全客户端在线的总数
+        :type AgentsOnline: int
+        :param AgentsOffline: 主机安全客户端离线的总数
+        :type AgentsOffline: int
+        :param AgentsPro: 主机安全客户端专业版的总数
+        :type AgentsPro: int
+        :param AgentsBasic: 主机安全客户端基础版的总数
+        :type AgentsBasic: int
+        :param AgentsProExpireWithInSevenDays: 7天内到期的预付费专业版总数
+        :type AgentsProExpireWithInSevenDays: int
+        :param RiskMachine: 风险主机总数
+        :type RiskMachine: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MachinesAll = None
+        self.MachinesUninstalled = None
+        self.AgentsAll = None
+        self.AgentsOnline = None
+        self.AgentsOffline = None
+        self.AgentsPro = None
+        self.AgentsBasic = None
+        self.AgentsProExpireWithInSevenDays = None
+        self.RiskMachine = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MachinesAll = params.get("MachinesAll")
+        self.MachinesUninstalled = params.get("MachinesUninstalled")
+        self.AgentsAll = params.get("AgentsAll")
+        self.AgentsOnline = params.get("AgentsOnline")
+        self.AgentsOffline = params.get("AgentsOffline")
+        self.AgentsPro = params.get("AgentsPro")
+        self.AgentsBasic = params.get("AgentsBasic")
+        self.AgentsProExpireWithInSevenDays = params.get("AgentsProExpireWithInSevenDays")
+        self.RiskMachine = params.get("RiskMachine")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeHistoryAccountsRequest(AbstractModel):
     """DescribeHistoryAccounts请求参数结构体
 

@@ -892,6 +892,44 @@ class CreateUsrTokenResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class Data(AbstractModel):
+    """接口DescribeStream输出参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Protocol: 直播协议
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Protocol: str
+        :param URI: 流媒体播放地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type URI: str
+        :param ExpireTime: 流媒体地址过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireTime: int
+        :param VideoCodec: 视频编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VideoCodec: str
+        :param AudioCodec: 音频编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AudioCodec: str
+        """
+        self.Protocol = None
+        self.URI = None
+        self.ExpireTime = None
+        self.VideoCodec = None
+        self.AudioCodec = None
+
+
+    def _deserialize(self, params):
+        self.Protocol = params.get("Protocol")
+        self.URI = params.get("URI")
+        self.ExpireTime = params.get("ExpireTime")
+        self.VideoCodec = params.get("VideoCodec")
+        self.AudioCodec = params.get("AudioCodec")
+
+
 class DeleteAppUsrRequest(AbstractModel):
     """DeleteAppUsr请求参数结构体
 
@@ -2308,6 +2346,63 @@ class DescribeStorageServiceResponse(AbstractModel):
                 obj = StorageOrder()
                 obj._deserialize(item)
                 self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeStreamRequest(AbstractModel):
+    """DescribeStream请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Tid: 设备TID
+        :type Tid: str
+        :param AccessId: 终端用户ID
+        :type AccessId: str
+        :param Protocol: 直播协议, 可选值：RTSP、RTMP、HLS、HLS-fmp4
+        :type Protocol: str
+        :param Address: 音视频流地址
+        :type Address: str
+        :param AccessToken: 设备访问token，访问用户未绑定的设备时，需提供该参数
+        :type AccessToken: str
+        """
+        self.Tid = None
+        self.AccessId = None
+        self.Protocol = None
+        self.Address = None
+        self.AccessToken = None
+
+
+    def _deserialize(self, params):
+        self.Tid = params.get("Tid")
+        self.AccessId = params.get("AccessId")
+        self.Protocol = params.get("Protocol")
+        self.Address = params.get("Address")
+        self.AccessToken = params.get("AccessToken")
+
+
+class DescribeStreamResponse(AbstractModel):
+    """DescribeStream返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 返回参数结构
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.iotvideo.v20191126.models.Data`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = Data()
+            self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
 
 

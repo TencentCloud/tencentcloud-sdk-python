@@ -443,6 +443,53 @@ class CreateInstanceTokenResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateInternalEndpointDnsRequest(AbstractModel):
+    """CreateInternalEndpointDns请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: tcr实例id
+        :type InstanceId: str
+        :param VpcId: 私有网络id
+        :type VpcId: str
+        :param EniLBIp: tcr内网访问链路ip
+        :type EniLBIp: str
+        :param UsePublicDomain: true：use instance name as subdomain
+false: use instancename+"-vpc" as subdomain
+        :type UsePublicDomain: bool
+        """
+        self.InstanceId = None
+        self.VpcId = None
+        self.EniLBIp = None
+        self.UsePublicDomain = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.VpcId = params.get("VpcId")
+        self.EniLBIp = params.get("EniLBIp")
+        self.UsePublicDomain = params.get("UsePublicDomain")
+
+
+class CreateInternalEndpointDnsResponse(AbstractModel):
+    """CreateInternalEndpointDns返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateNamespacePersonalRequest(AbstractModel):
     """CreateNamespacePersonal请求参数结构体
 
@@ -931,6 +978,53 @@ class DeleteInstanceTokenRequest(AbstractModel):
 
 class DeleteInstanceTokenResponse(AbstractModel):
     """DeleteInstanceToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteInternalEndpointDnsRequest(AbstractModel):
+    """DeleteInternalEndpointDns请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: tcr实例id
+        :type InstanceId: str
+        :param VpcId: 私有网络id
+        :type VpcId: str
+        :param EniLBIp: tcr内网访问链路ip
+        :type EniLBIp: str
+        :param UsePublicDomain: true：use instance name as subdomain
+false: use instancename+"-vpc" as subdomain
+        :type UsePublicDomain: bool
+        """
+        self.InstanceId = None
+        self.VpcId = None
+        self.EniLBIp = None
+        self.UsePublicDomain = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.VpcId = params.get("VpcId")
+        self.EniLBIp = params.get("EniLBIp")
+        self.UsePublicDomain = params.get("UsePublicDomain")
+
+
+class DeleteInternalEndpointDnsResponse(AbstractModel):
+    """DeleteInternalEndpointDns返回参数结构体
 
     """
 
@@ -1797,6 +1891,55 @@ class DescribeInstancesResponse(AbstractModel):
                 obj = Registry()
                 obj._deserialize(item)
                 self.Registries.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInternalEndpointDnsStatusRequest(AbstractModel):
+    """DescribeInternalEndpointDnsStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcSet: vpc列表
+        :type VpcSet: list of VpcAndDomainInfo
+        """
+        self.VpcSet = None
+
+
+    def _deserialize(self, params):
+        if params.get("VpcSet") is not None:
+            self.VpcSet = []
+            for item in params.get("VpcSet"):
+                obj = VpcAndDomainInfo()
+                obj._deserialize(item)
+                self.VpcSet.append(obj)
+
+
+class DescribeInternalEndpointDnsStatusResponse(AbstractModel):
+    """DescribeInternalEndpointDnsStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcSet: vpc私有域名解析状态列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcSet: list of VpcPrivateDomainStatus
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.VpcSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("VpcSet") is not None:
+            self.VpcSet = []
+            for item in params.get("VpcSet"):
+                obj = VpcPrivateDomainStatus()
+                obj._deserialize(item)
+                self.VpcSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -4250,6 +4393,64 @@ class ValidateRepositoryExistPersonalResponse(AbstractModel):
             self.Data = RepoIsExistResp()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+
+
+class VpcAndDomainInfo(AbstractModel):
+    """vpc和domain信息
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: tcr实例id
+        :type InstanceId: str
+        :param VpcId: 私有网络id
+        :type VpcId: str
+        :param EniLBIp: tcr内网访问链路ip
+        :type EniLBIp: str
+        :param UsePublicDomain: true：use instance name as subdomain
+false: use instancename+"-vpc" as subdomain
+        :type UsePublicDomain: bool
+        """
+        self.InstanceId = None
+        self.VpcId = None
+        self.EniLBIp = None
+        self.UsePublicDomain = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.VpcId = params.get("VpcId")
+        self.EniLBIp = params.get("EniLBIp")
+        self.UsePublicDomain = params.get("UsePublicDomain")
+
+
+class VpcPrivateDomainStatus(AbstractModel):
+    """vpc私有域名解析状态
+
+    """
+
+    def __init__(self):
+        """
+        :param Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param VpcId: unique vpc id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param Status: ENABLE代表已经开启，DISABLE代表未开启，ERROR代表查询出错
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        """
+        self.Region = None
+        self.VpcId = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Region = params.get("Region")
+        self.VpcId = params.get("VpcId")
+        self.Status = params.get("Status")
 
 
 class WebhookTarget(AbstractModel):

@@ -1450,6 +1450,8 @@ class StartWhiteboardPushRequest(AbstractModel):
         :type AutoRecord: bool
         :param ExtraData: 内部参数，不需要关注此参数
         :type ExtraData: str
+        :param PrivateMapKey: TRTC高级权限控制参数，如果在实时音视频开启了高级权限控制功能，必须提供PrivateMapKey才能保证正常推流。
+        :type PrivateMapKey: str
         """
         self.SdkAppId = None
         self.RoomId = None
@@ -1461,6 +1463,7 @@ class StartWhiteboardPushRequest(AbstractModel):
         self.Backup = None
         self.AutoRecord = None
         self.ExtraData = None
+        self.PrivateMapKey = None
 
 
     def _deserialize(self, params):
@@ -1478,6 +1481,7 @@ class StartWhiteboardPushRequest(AbstractModel):
             self.Backup._deserialize(params.get("Backup"))
         self.AutoRecord = params.get("AutoRecord")
         self.ExtraData = params.get("ExtraData")
+        self.PrivateMapKey = params.get("PrivateMapKey")
 
 
 class StartWhiteboardPushResponse(AbstractModel):

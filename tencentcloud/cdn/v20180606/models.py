@@ -704,9 +704,9 @@ off：关闭
 默认为关闭状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type IgnoreCacheControl: str
-        :param IgnoreSetCookie: 忽略源站的 Set-Cookie 头部
-on：开启
-off：关闭
+        :param IgnoreSetCookie: 当源站返回Set-Cookie头部时，节点是否缓存该头部及body
+on：开启，不缓存该头部及body
+off：关闭，遵循用户自定义的节点缓存规则
 默认为关闭状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type IgnoreSetCookie: str

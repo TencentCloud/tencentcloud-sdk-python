@@ -458,6 +458,10 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
         :type VpcCniType: str
         :param RuntimeVersion: 运行时版本
         :type RuntimeVersion: str
+        :param EnableCustomizedPodCIDR: 是否开节点podCIDR大小的自定义模式
+        :type EnableCustomizedPodCIDR: bool
+        :param BasePodNumber: 自定义模式下的基础pod数量
+        :type BasePodNumber: int
         """
         self.IPVS = None
         self.AsEnabled = None
@@ -473,6 +477,8 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
         self.AuditLogTopicId = None
         self.VpcCniType = None
         self.RuntimeVersion = None
+        self.EnableCustomizedPodCIDR = None
+        self.BasePodNumber = None
 
 
     def _deserialize(self, params):
@@ -492,6 +498,8 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
         self.AuditLogTopicId = params.get("AuditLogTopicId")
         self.VpcCniType = params.get("VpcCniType")
         self.RuntimeVersion = params.get("RuntimeVersion")
+        self.EnableCustomizedPodCIDR = params.get("EnableCustomizedPodCIDR")
+        self.BasePodNumber = params.get("BasePodNumber")
 
 
 class ClusterAsGroup(AbstractModel):
