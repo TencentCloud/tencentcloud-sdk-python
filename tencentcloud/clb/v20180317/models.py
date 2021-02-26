@@ -1010,6 +1010,8 @@ class CreateListenerRequest(AbstractModel):
         :type SessionType: str
         :param KeepaliveEnable: 是否开启长连接，此参数仅适用于HTTP/HTTPS监听器，0:关闭；1:开启， 默认关闭
         :type KeepaliveEnable: int
+        :param EndPort: 创建端口段监听器时必须传入此参数，用以标识结束端口。同时，入参Ports只允许传入一个成员，用以标识开始端口。【如果您需要体验端口段功能，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)】。
+        :type EndPort: int
         """
         self.LoadBalancerId = None
         self.Ports = None
@@ -1023,6 +1025,7 @@ class CreateListenerRequest(AbstractModel):
         self.TargetType = None
         self.SessionType = None
         self.KeepaliveEnable = None
+        self.EndPort = None
 
 
     def _deserialize(self, params):
@@ -1042,6 +1045,7 @@ class CreateListenerRequest(AbstractModel):
         self.TargetType = params.get("TargetType")
         self.SessionType = params.get("SessionType")
         self.KeepaliveEnable = params.get("KeepaliveEnable")
+        self.EndPort = params.get("EndPort")
 
 
 class CreateListenerResponse(AbstractModel):

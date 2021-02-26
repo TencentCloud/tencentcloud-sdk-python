@@ -419,6 +419,27 @@ class CompleteMigrationResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CosUploadBackupFile(AbstractModel):
+    """查询已经上传的备份文件大小。
+
+    """
+
+    def __init__(self):
+        """
+        :param FileName: 备份名称
+        :type FileName: str
+        :param Size: 备份大小
+        :type Size: int
+        """
+        self.FileName = None
+        self.Size = None
+
+
+    def _deserialize(self, params):
+        self.FileName = params.get("FileName")
+        self.Size = params.get("Size")
+
+
 class CreateAccountRequest(AbstractModel):
     """CreateAccount请求参数结构体
 
@@ -463,6 +484,60 @@ class CreateAccountResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateBackupMigrationRequest(AbstractModel):
+    """CreateBackupMigration请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 导入目标实例ID
+        :type InstanceId: str
+        :param RecoveryType: 迁移任务恢复类型，FULL-全量备份恢复，FULL_LOG-全量备份+事务日志恢复，FULL_DIFF-全量备份+差异备份恢复
+        :type RecoveryType: str
+        :param UploadType: 备份上传类型，COS_URL-备份放在用户的对象存储上，提供URL。COS_UPLOAD-备份放在业务的对象存储上，需要用户上传。
+        :type UploadType: str
+        :param MigrationName: 任务名称
+        :type MigrationName: str
+        :param BackupFiles: UploadType是COS_URL时这里填URL，COS_UPLOAD这里填备份文件的名字。只支持1个备份文件，但1个备份文件内可包含多个库
+        :type BackupFiles: list of str
+        """
+        self.InstanceId = None
+        self.RecoveryType = None
+        self.UploadType = None
+        self.MigrationName = None
+        self.BackupFiles = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.RecoveryType = params.get("RecoveryType")
+        self.UploadType = params.get("UploadType")
+        self.MigrationName = params.get("MigrationName")
+        self.BackupFiles = params.get("BackupFiles")
+
+
+class CreateBackupMigrationResponse(AbstractModel):
+    """CreateBackupMigration返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BackupMigrationId: 备份导入任务ID
+        :type BackupMigrationId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BackupMigrationId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BackupMigrationId = params.get("BackupMigrationId")
         self.RequestId = params.get("RequestId")
 
 
@@ -802,6 +877,56 @@ class CreateDBResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateIncrementalMigrationRequest(AbstractModel):
+    """CreateIncrementalMigration请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 导入目标实例ID
+        :type InstanceId: str
+        :param BackupMigrationId: 备份导入任务ID，由CreateBackupMigration接口返回
+        :type BackupMigrationId: str
+        :param BackupFiles: 增量备份文件，全量备份任务UploadType是COS_URL时这里填URL，是COS_UPLOAD这里填备份文件的名字；只支持1个备份文件，但1个备份文件内可包含多个库
+        :type BackupFiles: list of str
+        :param IsRecovery: 是否需要恢复，NO-不需要，YES-需要，默认不需要
+        :type IsRecovery: str
+        """
+        self.InstanceId = None
+        self.BackupMigrationId = None
+        self.BackupFiles = None
+        self.IsRecovery = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.BackupMigrationId = params.get("BackupMigrationId")
+        self.BackupFiles = params.get("BackupFiles")
+        self.IsRecovery = params.get("IsRecovery")
+
+
+class CreateIncrementalMigrationResponse(AbstractModel):
+    """CreateIncrementalMigration返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param IncrementalMigrationId: 增量备份导入任务ID
+        :type IncrementalMigrationId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.IncrementalMigrationId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.IncrementalMigrationId = params.get("IncrementalMigrationId")
         self.RequestId = params.get("RequestId")
 
 
@@ -1523,6 +1648,44 @@ class DeleteAccountResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteBackupMigrationRequest(AbstractModel):
+    """DeleteBackupMigration请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 目标实例ID，由DescribeBackupMigration接口返回
+        :type InstanceId: str
+        :param BackupMigrationId: 备份导入任务ID，由DescribeBackupMigration接口返回
+        :type BackupMigrationId: str
+        """
+        self.InstanceId = None
+        self.BackupMigrationId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.BackupMigrationId = params.get("BackupMigrationId")
+
+
+class DeleteBackupMigrationResponse(AbstractModel):
+    """DeleteBackupMigration返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteDBInstanceRequest(AbstractModel):
     """DeleteDBInstance请求参数结构体
 
@@ -1596,6 +1759,48 @@ class DeleteDBResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteIncrementalMigrationRequest(AbstractModel):
+    """DeleteIncrementalMigration请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 目标实例ID
+        :type InstanceId: str
+        :param BackupMigrationId: 备份导入任务ID
+        :type BackupMigrationId: str
+        :param IncrementalMigrationId: 增量备份导入任务ID
+        :type IncrementalMigrationId: str
+        """
+        self.InstanceId = None
+        self.BackupMigrationId = None
+        self.IncrementalMigrationId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.BackupMigrationId = params.get("BackupMigrationId")
+        self.IncrementalMigrationId = params.get("IncrementalMigrationId")
+
+
+class DeleteIncrementalMigrationResponse(AbstractModel):
+    """DeleteIncrementalMigration返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -1818,6 +2023,194 @@ class DescribeBackupByFlowIdResponse(AbstractModel):
         self.DBs = params.get("DBs")
         self.InternalAddr = params.get("InternalAddr")
         self.ExternalAddr = params.get("ExternalAddr")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBackupCommandRequest(AbstractModel):
+    """DescribeBackupCommand请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BackupFileType: 备份文件类型，FULL-全量备份，FULL_LOG-全量备份需要日志增量，FULL_DIFF-全量备份需要差异增量，LOG-日志备份，DIFF-差异备份
+        :type BackupFileType: str
+        :param DataBaseName: 数据库名称
+        :type DataBaseName: str
+        :param IsRecovery: 是否需要恢复，NO-不需要，YES-需要
+        :type IsRecovery: str
+        :param LocalPath: 备份文件保存的路径；如果不填则默认在D:\\
+        :type LocalPath: str
+        """
+        self.BackupFileType = None
+        self.DataBaseName = None
+        self.IsRecovery = None
+        self.LocalPath = None
+
+
+    def _deserialize(self, params):
+        self.BackupFileType = params.get("BackupFileType")
+        self.DataBaseName = params.get("DataBaseName")
+        self.IsRecovery = params.get("IsRecovery")
+        self.LocalPath = params.get("LocalPath")
+
+
+class DescribeBackupCommandResponse(AbstractModel):
+    """DescribeBackupCommand返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Command: 创建备份命令
+        :type Command: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Command = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Command = params.get("Command")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBackupMigrationRequest(AbstractModel):
+    """DescribeBackupMigration请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 导入目标实例ID
+        :type InstanceId: str
+        :param BackupMigrationId: 备份导入任务ID，由CreateBackupMigration接口返回
+        :type BackupMigrationId: str
+        :param MigrationName: 导入任务名称
+        :type MigrationName: str
+        :param BackupFileName: 备份文件名称
+        :type BackupFileName: str
+        :param StatusSet: 导入任务状态集合
+        :type StatusSet: list of int
+        :param RecoveryType: 导入任务恢复类型，FULL,FULL_LOG,FULL_DIFF
+        :type RecoveryType: str
+        :param UploadType: COS_URL-备份放在用户的对象存储上，提供URL。COS_UPLOAD-备份放在业务的对象存储上，用户上传
+        :type UploadType: str
+        :param Limit: 分页，页大小
+        :type Limit: int
+        :param Offset: 分页，页数
+        :type Offset: int
+        :param OrderBy: 排序字段，name,createTime,startTime,endTime
+        :type OrderBy: str
+        :param OrderByType: 排序方式，desc,asc
+        :type OrderByType: str
+        """
+        self.InstanceId = None
+        self.BackupMigrationId = None
+        self.MigrationName = None
+        self.BackupFileName = None
+        self.StatusSet = None
+        self.RecoveryType = None
+        self.UploadType = None
+        self.Limit = None
+        self.Offset = None
+        self.OrderBy = None
+        self.OrderByType = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.BackupMigrationId = params.get("BackupMigrationId")
+        self.MigrationName = params.get("MigrationName")
+        self.BackupFileName = params.get("BackupFileName")
+        self.StatusSet = params.get("StatusSet")
+        self.RecoveryType = params.get("RecoveryType")
+        self.UploadType = params.get("UploadType")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderByType = params.get("OrderByType")
+
+
+class DescribeBackupMigrationResponse(AbstractModel):
+    """DescribeBackupMigration返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 迁移任务总数
+        :type TotalCount: int
+        :param BackupMigrationSet: 迁移任务集合
+        :type BackupMigrationSet: list of Migration
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.BackupMigrationSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("BackupMigrationSet") is not None:
+            self.BackupMigrationSet = []
+            for item in params.get("BackupMigrationSet"):
+                obj = Migration()
+                obj._deserialize(item)
+                self.BackupMigrationSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBackupUploadSizeRequest(AbstractModel):
+    """DescribeBackupUploadSize请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 导入目标实例ID
+        :type InstanceId: str
+        :param BackupMigrationId: 备份导入任务ID，由CreateBackupMigration接口返回
+        :type BackupMigrationId: str
+        :param IncrementalMigrationId: 增量导入任务ID
+        :type IncrementalMigrationId: str
+        """
+        self.InstanceId = None
+        self.BackupMigrationId = None
+        self.IncrementalMigrationId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.BackupMigrationId = params.get("BackupMigrationId")
+        self.IncrementalMigrationId = params.get("IncrementalMigrationId")
+
+
+class DescribeBackupUploadSizeResponse(AbstractModel):
+    """DescribeBackupUploadSize返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CosUploadBackupFileSet: 已上传的备份的信息
+        :type CosUploadBackupFileSet: list of CosUploadBackupFile
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CosUploadBackupFileSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CosUploadBackupFileSet") is not None:
+            self.CosUploadBackupFileSet = []
+            for item in params.get("CosUploadBackupFileSet"):
+                obj = CosUploadBackupFile()
+                obj._deserialize(item)
+                self.CosUploadBackupFileSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2190,6 +2583,85 @@ class DescribeFlowStatusResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeIncrementalMigrationRequest(AbstractModel):
+    """DescribeIncrementalMigration请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BackupMigrationId: 备份导入任务ID，由CreateBackupMigration接口返回
+        :type BackupMigrationId: str
+        :param InstanceId: 导入目标实例ID
+        :type InstanceId: str
+        :param BackupFileName: 备份文件名称
+        :type BackupFileName: str
+        :param StatusSet: 导入任务状态集合
+        :type StatusSet: list of int
+        :param Limit: 分页，页大小
+        :type Limit: int
+        :param Offset: 分页，页数
+        :type Offset: int
+        :param OrderBy: 排序字段，name,createTime,startTime,endTime
+        :type OrderBy: str
+        :param OrderByType: 排序方式，desc,asc
+        :type OrderByType: str
+        :param IncrementalMigrationId: 增量备份导入任务ID
+        :type IncrementalMigrationId: str
+        """
+        self.BackupMigrationId = None
+        self.InstanceId = None
+        self.BackupFileName = None
+        self.StatusSet = None
+        self.Limit = None
+        self.Offset = None
+        self.OrderBy = None
+        self.OrderByType = None
+        self.IncrementalMigrationId = None
+
+
+    def _deserialize(self, params):
+        self.BackupMigrationId = params.get("BackupMigrationId")
+        self.InstanceId = params.get("InstanceId")
+        self.BackupFileName = params.get("BackupFileName")
+        self.StatusSet = params.get("StatusSet")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderByType = params.get("OrderByType")
+        self.IncrementalMigrationId = params.get("IncrementalMigrationId")
+
+
+class DescribeIncrementalMigrationResponse(AbstractModel):
+    """DescribeIncrementalMigration返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 增量导入任务总数
+        :type TotalCount: int
+        :param IncrementalMigrationSet: 增量导入任务集合
+        :type IncrementalMigrationSet: list of Migration
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.IncrementalMigrationSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("IncrementalMigrationSet") is not None:
+            self.IncrementalMigrationSet = []
+            for item in params.get("IncrementalMigrationSet"):
+                obj = Migration()
+                obj._deserialize(item)
+                self.IncrementalMigrationSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3045,6 +3517,150 @@ class DescribeSlowlogsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeUploadBackupInfoRequest(AbstractModel):
+    """DescribeUploadBackupInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 导入目标实例ID
+        :type InstanceId: str
+        :param BackupMigrationId: 备份导入任务ID，由CreateBackupMigration接口返回
+        :type BackupMigrationId: str
+        """
+        self.InstanceId = None
+        self.BackupMigrationId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.BackupMigrationId = params.get("BackupMigrationId")
+
+
+class DescribeUploadBackupInfoResponse(AbstractModel):
+    """DescribeUploadBackupInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BucketName: 存储桶名称
+        :type BucketName: str
+        :param Region: 存储桶地域信息
+        :type Region: str
+        :param Path: 存储路径
+        :type Path: str
+        :param TmpSecretId: 临时密钥ID
+        :type TmpSecretId: str
+        :param TmpSecretKey: 临时密钥Key
+        :type TmpSecretKey: str
+        :param XCosSecurityToken: 临时密钥Token
+        :type XCosSecurityToken: str
+        :param StartTime: 临时密钥开始时间
+        :type StartTime: str
+        :param ExpiredTime: 临时密钥到期时间
+        :type ExpiredTime: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BucketName = None
+        self.Region = None
+        self.Path = None
+        self.TmpSecretId = None
+        self.TmpSecretKey = None
+        self.XCosSecurityToken = None
+        self.StartTime = None
+        self.ExpiredTime = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BucketName = params.get("BucketName")
+        self.Region = params.get("Region")
+        self.Path = params.get("Path")
+        self.TmpSecretId = params.get("TmpSecretId")
+        self.TmpSecretKey = params.get("TmpSecretKey")
+        self.XCosSecurityToken = params.get("XCosSecurityToken")
+        self.StartTime = params.get("StartTime")
+        self.ExpiredTime = params.get("ExpiredTime")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeUploadIncrementalInfoRequest(AbstractModel):
+    """DescribeUploadIncrementalInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 导入目标实例ID
+        :type InstanceId: str
+        :param BackupMigrationId: 备份导入任务ID，由CreateBackupMigration接口返回
+        :type BackupMigrationId: str
+        :param IncrementalMigrationId: 增量导入任务ID
+        :type IncrementalMigrationId: str
+        """
+        self.InstanceId = None
+        self.BackupMigrationId = None
+        self.IncrementalMigrationId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.BackupMigrationId = params.get("BackupMigrationId")
+        self.IncrementalMigrationId = params.get("IncrementalMigrationId")
+
+
+class DescribeUploadIncrementalInfoResponse(AbstractModel):
+    """DescribeUploadIncrementalInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BucketName: 存储桶名称
+        :type BucketName: str
+        :param Region: 存储桶地域信息
+        :type Region: str
+        :param Path: 存储路径
+        :type Path: str
+        :param TmpSecretId: 临时密钥ID
+        :type TmpSecretId: str
+        :param TmpSecretKey: 临时密钥Key
+        :type TmpSecretKey: str
+        :param XCosSecurityToken: 临时密钥Token
+        :type XCosSecurityToken: str
+        :param StartTime: 临时密钥开始时间
+        :type StartTime: str
+        :param ExpiredTime: 临时密钥到期时间
+        :type ExpiredTime: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BucketName = None
+        self.Region = None
+        self.Path = None
+        self.TmpSecretId = None
+        self.TmpSecretKey = None
+        self.XCosSecurityToken = None
+        self.StartTime = None
+        self.ExpiredTime = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BucketName = params.get("BucketName")
+        self.Region = params.get("Region")
+        self.Path = params.get("Path")
+        self.TmpSecretId = params.get("TmpSecretId")
+        self.TmpSecretKey = params.get("TmpSecretKey")
+        self.XCosSecurityToken = params.get("XCosSecurityToken")
+        self.StartTime = params.get("StartTime")
+        self.ExpiredTime = params.get("ExpiredTime")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeZonesRequest(AbstractModel):
     """DescribeZones请求参数结构体
 
@@ -3531,6 +4147,174 @@ class MigrateTask(AbstractModel):
             self.MigrateDetail._deserialize(params.get("MigrateDetail"))
 
 
+class Migration(AbstractModel):
+    """冷备迁移导入
+
+    """
+
+    def __init__(self):
+        """
+        :param MigrationId: 备份导入任务ID 或 增量导入任务ID
+        :type MigrationId: str
+        :param MigrationName: 备份导入名称，增量导入任务该字段为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MigrationName: str
+        :param AppId: 应用ID
+        :type AppId: int
+        :param Region: 地域
+        :type Region: str
+        :param InstanceId: 迁移目标实例ID
+        :type InstanceId: str
+        :param RecoveryType: 迁移任务恢复类型
+        :type RecoveryType: str
+        :param UploadType: 备份用户上传类型，COS_URL-备份放在用户的对象存储上，提供URL。COS_UPLOAD-备份放在业务的对象存储上，用户上传
+        :type UploadType: str
+        :param BackupFiles: 备份文件列表，UploadType确定，COS_URL则保存URL，COS_UPLOAD则保存备份名称
+        :type BackupFiles: list of str
+        :param Status: 迁移任务状态，
+        :type Status: int
+        :param CreateTime: 迁移任务创建时间
+        :type CreateTime: str
+        :param StartTime: 迁移任务开始时间
+        :type StartTime: str
+        :param EndTime: 迁移任务结束时间
+        :type EndTime: str
+        :param Message: 说明信息
+        :type Message: str
+        :param Detail: 迁移细节
+        :type Detail: :class:`tencentcloud.sqlserver.v20180328.models.MigrationDetail`
+        :param Action: 当前状态允许的操作
+        :type Action: :class:`tencentcloud.sqlserver.v20180328.models.MigrationAction`
+        :param IsRecovery: 是否是最终恢复，全量导入任务该字段为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsRecovery: str
+        """
+        self.MigrationId = None
+        self.MigrationName = None
+        self.AppId = None
+        self.Region = None
+        self.InstanceId = None
+        self.RecoveryType = None
+        self.UploadType = None
+        self.BackupFiles = None
+        self.Status = None
+        self.CreateTime = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Message = None
+        self.Detail = None
+        self.Action = None
+        self.IsRecovery = None
+
+
+    def _deserialize(self, params):
+        self.MigrationId = params.get("MigrationId")
+        self.MigrationName = params.get("MigrationName")
+        self.AppId = params.get("AppId")
+        self.Region = params.get("Region")
+        self.InstanceId = params.get("InstanceId")
+        self.RecoveryType = params.get("RecoveryType")
+        self.UploadType = params.get("UploadType")
+        self.BackupFiles = params.get("BackupFiles")
+        self.Status = params.get("Status")
+        self.CreateTime = params.get("CreateTime")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Message = params.get("Message")
+        if params.get("Detail") is not None:
+            self.Detail = MigrationDetail()
+            self.Detail._deserialize(params.get("Detail"))
+        if params.get("Action") is not None:
+            self.Action = MigrationAction()
+            self.Action._deserialize(params.get("Action"))
+        self.IsRecovery = params.get("IsRecovery")
+
+
+class MigrationAction(AbstractModel):
+    """冷备导入任务允许的操作
+
+    """
+
+    def __init__(self):
+        """
+        :param AllAction: 支持的所有操作，值包括：view(查看任务) ，modify(修改任务)， start(启动任务)，incremental(创建增量任务)，delete(删除任务)，upload(获取上传权限)。
+        :type AllAction: list of str
+        :param AllowedAction: 当前状态允许的操作，AllAction的子集,为空表示禁止所有操作
+        :type AllowedAction: list of str
+        """
+        self.AllAction = None
+        self.AllowedAction = None
+
+
+    def _deserialize(self, params):
+        self.AllAction = params.get("AllAction")
+        self.AllowedAction = params.get("AllowedAction")
+
+
+class MigrationDetail(AbstractModel):
+    """冷备导入任务迁移细节
+
+    """
+
+    def __init__(self):
+        """
+        :param StepAll: 总步骤数
+        :type StepAll: int
+        :param StepNow: 当前步骤
+        :type StepNow: int
+        :param Progress: 总进度,如："30"表示30%
+        :type Progress: int
+        :param StepInfo: 步骤信息，null表示还未开始迁移
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StepInfo: list of MigrationStep
+        """
+        self.StepAll = None
+        self.StepNow = None
+        self.Progress = None
+        self.StepInfo = None
+
+
+    def _deserialize(self, params):
+        self.StepAll = params.get("StepAll")
+        self.StepNow = params.get("StepNow")
+        self.Progress = params.get("Progress")
+        if params.get("StepInfo") is not None:
+            self.StepInfo = []
+            for item in params.get("StepInfo"):
+                obj = MigrationStep()
+                obj._deserialize(item)
+                self.StepInfo.append(obj)
+
+
+class MigrationStep(AbstractModel):
+    """冷备导入任务迁移步骤细节
+
+    """
+
+    def __init__(self):
+        """
+        :param StepNo: 步骤序列
+        :type StepNo: int
+        :param StepName: 步骤展现名称
+        :type StepName: str
+        :param StepId: 英文ID标识
+        :type StepId: str
+        :param Status: 步骤状态:0-默认值,1-成功,2-失败,3-执行中,4-未执行
+        :type Status: int
+        """
+        self.StepNo = None
+        self.StepName = None
+        self.StepId = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.StepNo = params.get("StepNo")
+        self.StepName = params.get("StepName")
+        self.StepId = params.get("StepId")
+        self.Status = params.get("Status")
+
+
 class ModifyAccountPrivilegeRequest(AbstractModel):
     """ModifyAccountPrivilege请求参数结构体
 
@@ -3618,6 +4402,64 @@ class ModifyAccountRemarkResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyBackupMigrationRequest(AbstractModel):
+    """ModifyBackupMigration请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 导入目标实例ID
+        :type InstanceId: str
+        :param BackupMigrationId: 备份导入任务ID，由CreateBackupMigration接口返回
+        :type BackupMigrationId: str
+        :param MigrationName: 任务名称
+        :type MigrationName: str
+        :param RecoveryType: 迁移任务恢复类型，FULL,FULL_LOG,FULL_DIFF
+        :type RecoveryType: str
+        :param UploadType: COS_URL-备份放在用户的对象存储上，提供URL。COS_UPLOAD-备份放在业务的对象存储上，用户上传
+        :type UploadType: str
+        :param BackupFiles: UploadType是COS_URL时这里时URL，COS_UPLOAD这里填备份文件的名字；只支持1个备份文件，但1个备份文件内可包含多个库
+        :type BackupFiles: list of str
+        """
+        self.InstanceId = None
+        self.BackupMigrationId = None
+        self.MigrationName = None
+        self.RecoveryType = None
+        self.UploadType = None
+        self.BackupFiles = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.BackupMigrationId = params.get("BackupMigrationId")
+        self.MigrationName = params.get("MigrationName")
+        self.RecoveryType = params.get("RecoveryType")
+        self.UploadType = params.get("UploadType")
+        self.BackupFiles = params.get("BackupFiles")
+
+
+class ModifyBackupMigrationResponse(AbstractModel):
+    """ModifyBackupMigration返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BackupMigrationId: 备份导入任务ID
+        :type BackupMigrationId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BackupMigrationId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BackupMigrationId = params.get("BackupMigrationId")
         self.RequestId = params.get("RequestId")
 
 
@@ -4014,6 +4856,60 @@ class ModifyDBRemarkResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyIncrementalMigrationRequest(AbstractModel):
+    """ModifyIncrementalMigration请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 导入目标实例ID
+        :type InstanceId: str
+        :param BackupMigrationId: 备份导入任务ID，由CreateBackupMigration接口返回
+        :type BackupMigrationId: str
+        :param IncrementalMigrationId: 增量导入任务ID
+        :type IncrementalMigrationId: str
+        :param IsRecovery: 是否需要恢复，NO-不需要，YES-需要
+        :type IsRecovery: str
+        :param BackupFiles: UploadType是COS_URL时这里时URL，COS_UPLOAD这里填备份文件的名字；只支持1个备份文件，但1个备份文件内可包含多个库
+        :type BackupFiles: list of str
+        """
+        self.InstanceId = None
+        self.BackupMigrationId = None
+        self.IncrementalMigrationId = None
+        self.IsRecovery = None
+        self.BackupFiles = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.BackupMigrationId = params.get("BackupMigrationId")
+        self.IncrementalMigrationId = params.get("IncrementalMigrationId")
+        self.IsRecovery = params.get("IsRecovery")
+        self.BackupFiles = params.get("BackupFiles")
+
+
+class ModifyIncrementalMigrationResponse(AbstractModel):
+    """ModifyIncrementalMigration返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param IncrementalMigrationId: 增量备份导入任务ID
+        :type IncrementalMigrationId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.IncrementalMigrationId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.IncrementalMigrationId = params.get("IncrementalMigrationId")
         self.RequestId = params.get("RequestId")
 
 
@@ -5279,6 +6175,94 @@ class SpecInfo(AbstractModel):
         self.PayModeStatus = params.get("PayModeStatus")
         self.InstanceType = params.get("InstanceType")
         self.MultiZonesStatus = params.get("MultiZonesStatus")
+
+
+class StartBackupMigrationRequest(AbstractModel):
+    """StartBackupMigration请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 导入目标实例ID
+        :type InstanceId: str
+        :param BackupMigrationId: 备份导入任务ID，由CreateBackupMigration接口返回
+        :type BackupMigrationId: str
+        """
+        self.InstanceId = None
+        self.BackupMigrationId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.BackupMigrationId = params.get("BackupMigrationId")
+
+
+class StartBackupMigrationResponse(AbstractModel):
+    """StartBackupMigration返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: 流程ID
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class StartIncrementalMigrationRequest(AbstractModel):
+    """StartIncrementalMigration请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 导入目标实例ID
+        :type InstanceId: str
+        :param BackupMigrationId: 备份导入任务ID，由CreateBackupMigration接口返回
+        :type BackupMigrationId: str
+        :param IncrementalMigrationId: 增量备份导入任务ID
+        :type IncrementalMigrationId: str
+        """
+        self.InstanceId = None
+        self.BackupMigrationId = None
+        self.IncrementalMigrationId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.BackupMigrationId = params.get("BackupMigrationId")
+        self.IncrementalMigrationId = params.get("IncrementalMigrationId")
+
+
+class StartIncrementalMigrationResponse(AbstractModel):
+    """StartIncrementalMigration返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: 流程ID
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
 
 
 class StartMigrationCheckRequest(AbstractModel):

@@ -3068,6 +3068,77 @@ class DescribePrometheusAgentsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribePrometheusAlertHistoryRequest(AbstractModel):
+    """DescribePrometheusAlertHistory请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例id
+        :type InstanceId: str
+        :param RuleName: 告警名称
+        :type RuleName: str
+        :param StartTime: 开始时间
+        :type StartTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
+        :param Labels: label集合
+        :type Labels: str
+        :param Offset: 分片
+        :type Offset: int
+        :param Limit: 分片
+        :type Limit: int
+        """
+        self.InstanceId = None
+        self.RuleName = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Labels = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.RuleName = params.get("RuleName")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Labels = params.get("Labels")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribePrometheusAlertHistoryResponse(AbstractModel):
+    """DescribePrometheusAlertHistory返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Items: 告警历史
+        :type Items: list of PrometheusAlertHistoryItem
+        :param Total: 总数
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Items = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = PrometheusAlertHistoryItem()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribePrometheusAlertRuleRequest(AbstractModel):
     """DescribePrometheusAlertRule请求参数结构体
 
@@ -4823,6 +4894,31 @@ abnormal = 异常
         self.ClusterId = params.get("ClusterId")
         self.Status = params.get("Status")
         self.ClusterName = params.get("ClusterName")
+
+
+class PrometheusAlertHistoryItem(AbstractModel):
+    """prometheus告警历史
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleName: 告警名称
+        :type RuleName: str
+        :param StartTime: 告警开始时间
+        :type StartTime: str
+        :param Content: 告警内容
+        :type Content: str
+        """
+        self.RuleName = None
+        self.StartTime = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.RuleName = params.get("RuleName")
+        self.StartTime = params.get("StartTime")
+        self.Content = params.get("Content")
 
 
 class PrometheusAlertRule(AbstractModel):

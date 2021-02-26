@@ -194,6 +194,34 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateBackupMigration(self, request):
+        """本接口（CreateBackupMigration）用于创建备份导入任务。
+
+        :param request: Request instance for CreateBackupMigration.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.CreateBackupMigrationRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.CreateBackupMigrationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateBackupMigration", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateBackupMigrationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateBasicDBInstances(self, request):
         """本接口（CreateBasicDBInstances）用于创建SQL server基础版实例。
 
@@ -264,6 +292,34 @@ class SqlserverClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDBInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateIncrementalMigration(self, request):
+        """本接口（CreateIncrementalMigration）用于创建增量备份导入任务。
+
+        :param request: Request instance for CreateIncrementalMigration.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.CreateIncrementalMigrationRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.CreateIncrementalMigrationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateIncrementalMigration", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateIncrementalMigrationResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -390,6 +446,34 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteBackupMigration(self, request):
+        """本接口（DeleteBackupMigration）用于删除备份导入任务。
+
+        :param request: Request instance for DeleteBackupMigration.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DeleteBackupMigrationRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DeleteBackupMigrationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteBackupMigration", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteBackupMigrationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteDB(self, request):
         """本接口(DeleteDB)用于删除数据库。
 
@@ -432,6 +516,34 @@ class SqlserverClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteDBInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteIncrementalMigration(self, request):
+        """本接口（DeleteIncrementalMigration）用于删除增量备份导入任务。
+
+        :param request: Request instance for DeleteIncrementalMigration.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DeleteIncrementalMigrationRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DeleteIncrementalMigrationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteIncrementalMigration", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteIncrementalMigrationResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -544,6 +656,90 @@ class SqlserverClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBackupByFlowIdResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBackupCommand(self, request):
+        """本接口（DescribeBackupCommand）用于查询以规范的格式创建备份的命令。
+
+        :param request: Request instance for DescribeBackupCommand.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeBackupCommandRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeBackupCommandResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBackupCommand", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBackupCommandResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBackupMigration(self, request):
+        """本接口（DescribeBackupMigration）用于创建增量备份导入任务。
+
+        :param request: Request instance for DescribeBackupMigration.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeBackupMigrationRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeBackupMigrationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBackupMigration", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBackupMigrationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBackupUploadSize(self, request):
+        """本接口（DescribeBackupUploadSize）用于查询上传的备份文件大小。在备份上传类型是COS_UPLOAD(备份放在业务的对象存储上)时有效。
+
+        :param request: Request instance for DescribeBackupUploadSize.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeBackupUploadSizeRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeBackupUploadSizeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBackupUploadSize", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBackupUploadSizeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -712,6 +908,34 @@ class SqlserverClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeFlowStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeIncrementalMigration(self, request):
+        """本接口（DescribeIncrementalMigration）用于查询增量备份导入任务。
+
+        :param request: Request instance for DescribeIncrementalMigration.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeIncrementalMigrationRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeIncrementalMigrationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeIncrementalMigration", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeIncrementalMigrationResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1118,6 +1342,62 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeUploadBackupInfo(self, request):
+        """本接口（DescribeUploadBackupInfo）用于查询备份上传权限。
+
+        :param request: Request instance for DescribeUploadBackupInfo.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeUploadBackupInfoRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeUploadBackupInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeUploadBackupInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeUploadBackupInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeUploadIncrementalInfo(self, request):
+        """本接口（DescribeUploadIncrementalInfo）用于查询增量备份上传权限。
+
+        :param request: Request instance for DescribeUploadIncrementalInfo.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeUploadIncrementalInfoRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeUploadIncrementalInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeUploadIncrementalInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeUploadIncrementalInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeZones(self, request):
         """本接口 (DescribeZones) 用于查询当前可售卖的可用区信息。
 
@@ -1300,6 +1580,34 @@ class SqlserverClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAccountRemarkResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyBackupMigration(self, request):
+        """本接口（ModifyBackupMigration）用于修改备份导入任务。
+
+        :param request: Request instance for ModifyBackupMigration.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyBackupMigrationRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.ModifyBackupMigrationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyBackupMigration", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyBackupMigrationResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1552,6 +1860,34 @@ class SqlserverClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDBRemarkResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyIncrementalMigration(self, request):
+        """本接口（ModifyIncrementalMigration）用于修改增量备份导入任务。
+
+        :param request: Request instance for ModifyIncrementalMigration.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyIncrementalMigrationRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.ModifyIncrementalMigrationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyIncrementalMigration", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyIncrementalMigrationResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1972,6 +2308,62 @@ class SqlserverClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RunMigrationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StartBackupMigration(self, request):
+        """本接口（StartBackupMigration）用于启动备份导入任务。
+
+        :param request: Request instance for StartBackupMigration.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.StartBackupMigrationRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.StartBackupMigrationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StartBackupMigration", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StartBackupMigrationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StartIncrementalMigration(self, request):
+        """本接口（StartIncrementalMigration）用于启动增量备份导入任务。
+
+        :param request: Request instance for StartIncrementalMigration.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.StartIncrementalMigrationRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.StartIncrementalMigrationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StartIncrementalMigration", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StartIncrementalMigrationResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -1314,6 +1314,34 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePrometheusAlertHistory(self, request):
+        """获取告警历史
+
+        :param request: Request instance for DescribePrometheusAlertHistory.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribePrometheusAlertHistoryRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribePrometheusAlertHistoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePrometheusAlertHistory", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePrometheusAlertHistoryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribePrometheusAlertRule(self, request):
         """获取告警规则列表
 
