@@ -457,10 +457,8 @@ class CreateProjectRequest(AbstractModel):
         :type Name: str
         :param Owner: 项目归属者。
         :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
-        :param AspectRatio: 画布宽高比，取值有：
-<li>16:9；</li>
-<li>9:16。</li>
-该字段即将废弃，当项目类型为 VIDEO_EDIT 时，请在 VideoEditProjectInput 信息中填写该值；当项目类型为 VIDEO_SEGMENTATION 时，请在VideoSegmentationProjectInput 中填写该值。其他项目类型可不填。
+        :param AspectRatio: 画布宽高比。
+该字段已经废弃，请使用具体项目输入中的 AspectRatio 字段。
         :type AspectRatio: str
         :param Description: 项目描述信息。
         :type Description: str
@@ -3713,17 +3711,25 @@ class VideoEditProjectInput(AbstractModel):
 
     def __init__(self):
         """
+        :param AspectRatio: 画布宽高比，取值有：
+<li>16:9；</li>
+<li>9:16；</li>
+<li>2:1。</li>
+默认值 16:9 。
+        :type AspectRatio: str
         :param VideoEditTemplateId: 视频编辑模板媒体 ID ，通过模板媒体导入项目轨道数据时填写。
         :type VideoEditTemplateId: str
         :param InitTracks: 输入的媒体轨道列表，包括视频、音频，等媒体组成的多个轨道信息。其中：<li>输入的多个轨道在时间轴上和输出媒体文件的时间轴对齐；</li><li>时间轴上相同时间点的各个轨道的素材进行重叠，视频或者图片按轨道顺序进行图像的叠加，轨道顺序高的素材叠加在上面，音频素材进行混音；</li><li>视频、音频，每一种类型的轨道最多支持10个。</li>
 注：当从模板导入项目时（即 VideoEditTemplateId 不为空时），该参数无效。
         :type InitTracks: list of MediaTrack
         """
+        self.AspectRatio = None
         self.VideoEditTemplateId = None
         self.InitTracks = None
 
 
     def _deserialize(self, params):
+        self.AspectRatio = params.get("AspectRatio")
         self.VideoEditTemplateId = params.get("VideoEditTemplateId")
         if params.get("InitTracks") is not None:
             self.InitTracks = []
@@ -3824,6 +3830,12 @@ class VideoSegmentationProjectInput(AbstractModel):
 
     def __init__(self):
         """
+        :param AspectRatio: 画布宽高比，取值有：
+<li>16:9；</li>
+<li>9:16；</li>
+<li>2:1。</li>
+默认值 16:9 。
+        :type AspectRatio: str
         :param ProcessModel: 视频拆条处理模型，不填则默认为手工分割视频。取值 ：
 <li>AI.GameHighlights.PUBG：和平精英集锦 ;</li>
 <li>AI.GameHighlights.Honor OfKings：王者荣耀集锦 ;</li>
@@ -3833,10 +3845,12 @@ class VideoSegmentationProjectInput(AbstractModel):
 <li>AI.NewsSegmentation：新闻拆条。</li>
         :type ProcessModel: str
         """
+        self.AspectRatio = None
         self.ProcessModel = None
 
 
     def _deserialize(self, params):
+        self.AspectRatio = params.get("AspectRatio")
         self.ProcessModel = params.get("ProcessModel")
 
 

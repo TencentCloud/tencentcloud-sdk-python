@@ -1194,6 +1194,37 @@ class FrameTagResult(AbstractModel):
                 self.FrameTagItems.append(obj)
 
 
+class HiddenMarkInfo(AbstractModel):
+    """数字水印
+
+    """
+
+    def __init__(self):
+        """
+        :param Path: 数字水印路径,，如果不从Cos拉取水印，则必填
+        :type Path: str
+        :param Frequency: 数字水印频率，可选值：[1,256]，默认值为30
+        :type Frequency: int
+        :param Strength: 数字水印强度，可选值：[32,128]，默认值为64
+        :type Strength: int
+        :param CosInfo: 数字水印的Cos 信息，从Cos上拉取图片水印时必填。
+        :type CosInfo: :class:`tencentcloud.ie.v20200304.models.CosInfo`
+        """
+        self.Path = None
+        self.Frequency = None
+        self.Strength = None
+        self.CosInfo = None
+
+
+    def _deserialize(self, params):
+        self.Path = params.get("Path")
+        self.Frequency = params.get("Frequency")
+        self.Strength = params.get("Strength")
+        if params.get("CosInfo") is not None:
+            self.CosInfo = CosInfo()
+            self.CosInfo._deserialize(params.get("CosInfo"))
+
+
 class HighlightsEditingInfo(AbstractModel):
     """智能集锦任务参数信息
 
@@ -3046,6 +3077,8 @@ hlg。
         :type Hdr: str
         :param VideoEnhance: 画质增强参数信息。
         :type VideoEnhance: :class:`tencentcloud.ie.v20200304.models.VideoEnhance`
+        :param HiddenMarkInfo: 数字水印参数信息。
+        :type HiddenMarkInfo: :class:`tencentcloud.ie.v20200304.models.HiddenMarkInfo`
         """
         self.Fps = None
         self.Width = None
@@ -3059,6 +3092,7 @@ hlg。
         self.DarInfo = None
         self.Hdr = None
         self.VideoEnhance = None
+        self.HiddenMarkInfo = None
 
 
     def _deserialize(self, params):
@@ -3083,6 +3117,9 @@ hlg。
         if params.get("VideoEnhance") is not None:
             self.VideoEnhance = VideoEnhance()
             self.VideoEnhance._deserialize(params.get("VideoEnhance"))
+        if params.get("HiddenMarkInfo") is not None:
+            self.HiddenMarkInfo = HiddenMarkInfo()
+            self.HiddenMarkInfo._deserialize(params.get("HiddenMarkInfo"))
 
 
 class VideoInfoResultItem(AbstractModel):

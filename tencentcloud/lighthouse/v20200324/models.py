@@ -23,7 +23,7 @@ class Blueprint(AbstractModel):
 
     def __init__(self):
         """
-        :param BlueprintId: 镜像 ID  ，是 blueprint 的唯一标识。
+        :param BlueprintId: 镜像 ID  ，是 Blueprint 的唯一标识。
         :type BlueprintId: str
         :param DisplayTitle: 镜像对外展示标题。
         :type DisplayTitle: str
@@ -37,7 +37,7 @@ class Blueprint(AbstractModel):
         :type Platform: str
         :param PlatformType: 操作系统平台类型，如 LINUX_UNIX、WINDOWS。
         :type PlatformType: str
-        :param BlueprintType: 镜像类型，如 APP_OS、PURE_OS。
+        :param BlueprintType: 镜像类型，如 APP_OS、PURE_OS、PRIVATE。
         :type BlueprintType: str
         :param ImageUrl: 镜像图片 URL。
         :type ImageUrl: str
@@ -45,6 +45,14 @@ class Blueprint(AbstractModel):
         :type RequiredSystemDiskSize: int
         :param BlueprintState: 镜像状态。
         :type BlueprintState: str
+        :param CreatedTime: 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
+格式为： YYYY-MM-DDThh:mm:ssZ。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedTime: str
+        :param BlueprintName: 镜像名称。
+        :type BlueprintName: str
+        :param SupportAutomationTools: 镜像是否支持自动化助手。
+        :type SupportAutomationTools: bool
         """
         self.BlueprintId = None
         self.DisplayTitle = None
@@ -57,6 +65,9 @@ class Blueprint(AbstractModel):
         self.ImageUrl = None
         self.RequiredSystemDiskSize = None
         self.BlueprintState = None
+        self.CreatedTime = None
+        self.BlueprintName = None
+        self.SupportAutomationTools = None
 
 
     def _deserialize(self, params):
@@ -71,6 +82,9 @@ class Blueprint(AbstractModel):
         self.ImageUrl = params.get("ImageUrl")
         self.RequiredSystemDiskSize = params.get("RequiredSystemDiskSize")
         self.BlueprintState = params.get("BlueprintState")
+        self.CreatedTime = params.get("CreatedTime")
+        self.BlueprintName = params.get("BlueprintName")
+        self.SupportAutomationTools = params.get("SupportAutomationTools")
 
 
 class Bundle(AbstractModel):
@@ -255,7 +269,7 @@ class DescribeBlueprintsRequest(AbstractModel):
 类型：String
 必选：否
 <li>blueprint-type</li>按照【镜像类型】进行过滤。
-取值： APP_OS（预置应用的系统 ）；PURE_OS（纯净的 OS 系统）。
+取值：APP_OS（预置应用的系统 ）；PURE_OS（纯净的 OS 系统）；PRIVATE（自定义镜像）。
 类型：String
 必选：否
 <li>platform-type</li>按照【镜像平台类型】进行过滤。

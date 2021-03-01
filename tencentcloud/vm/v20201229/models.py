@@ -459,10 +459,12 @@ Block 确认违规
         :param UpdatedAt: 更新时间，格式为 ISO 8601
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedAt: str
-        :param ImageSegments: 图片结果
+        :param ImageSegments: 视频中截帧审核的结果。
+数据有效期为24小时，如需要储存更长时间请在已配置的COS储存桶中设置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageSegments: list of ImageSegments
-        :param AudioSegments: 音频结果
+        :param AudioSegments: 视频中音频审核的结果。
+数据有效期为24小时，如需要储存更长时间请在已配置的COS储存桶中设置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AudioSegments: list of AudioSegments
         :param ErrorType: 如果返回的状态为ERROR，该字段会标记错误类型。

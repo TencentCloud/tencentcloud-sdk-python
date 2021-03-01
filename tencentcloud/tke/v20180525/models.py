@@ -779,16 +779,21 @@ class ClusterExtraArgs(AbstractModel):
         :param KubeScheduler: kube-scheduler自定义参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type KubeScheduler: list of str
+        :param Etcd: etcd自定义参数，只支持独立集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Etcd: list of str
         """
         self.KubeAPIServer = None
         self.KubeControllerManager = None
         self.KubeScheduler = None
+        self.Etcd = None
 
 
     def _deserialize(self, params):
         self.KubeAPIServer = params.get("KubeAPIServer")
         self.KubeControllerManager = params.get("KubeControllerManager")
         self.KubeScheduler = params.get("KubeScheduler")
+        self.Etcd = params.get("Etcd")
 
 
 class ClusterInternalLB(AbstractModel):

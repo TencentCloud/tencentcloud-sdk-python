@@ -5611,6 +5611,9 @@ class InstanceInfo(AbstractModel):
         :param ZoneId: 可用区 ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneId: int
+        :param InstanceNodes: 节点数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceNodes: int
         """
         self.WanStatus = None
         self.Zone = None
@@ -5653,6 +5656,7 @@ class InstanceInfo(AbstractModel):
         self.DeviceClass = None
         self.DeployGroupId = None
         self.ZoneId = None
+        self.InstanceNodes = None
 
 
     def _deserialize(self, params):
@@ -5713,6 +5717,7 @@ class InstanceInfo(AbstractModel):
         self.DeviceClass = params.get("DeviceClass")
         self.DeployGroupId = params.get("DeployGroupId")
         self.ZoneId = params.get("ZoneId")
+        self.InstanceNodes = params.get("InstanceNodes")
 
 
 class InstanceRebootTime(AbstractModel):
