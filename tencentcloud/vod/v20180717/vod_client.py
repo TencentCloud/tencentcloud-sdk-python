@@ -1370,6 +1370,68 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDailyMediaPlayStat(self, request):
+        """该接口用于查询指定日期范围内每天的播放统计数据。
+        * 可以查询最近30天的播放统计数据。
+
+        :param request: Request instance for DescribeDailyMediaPlayStat.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeDailyMediaPlayStatRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeDailyMediaPlayStatResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDailyMediaPlayStat", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDailyMediaPlayStatResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDailyMostPlayedStat(self, request):
+        """该接口用于查询每日播放Top100 的媒体文件的播放统计数据。
+        * 可以查询最近30天的播放统计数据。
+        * 可以按播放次数或者播放流量查询。
+        * 播放次数统计说明：
+            1. HLS 文件：访问 M3U8 文件时统计播放次数；访问 TS 文件不统计播放次数。
+            2. 其它文件（如 MP4 文件）：播放请求带有 range 参数且 range 的 start 参数不等于0时不统计播放次数，其它情况统计播放次数。
+
+        :param request: Request instance for DescribeDailyMostPlayedStat.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeDailyMostPlayedStatRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeDailyMostPlayedStatResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDailyMostPlayedStat", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDailyMostPlayedStatResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDailyPlayStatFileList(self, request):
         """该接口用于查询播放统计文件的下载地址。
         * 可以查询最近30天的播放统计文件下载地址。

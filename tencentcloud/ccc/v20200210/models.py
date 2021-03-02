@@ -357,6 +357,132 @@ class DescribeSeatUserListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSkillGroupInfoListRequest(AbstractModel):
+    """DescribeSkillGroupInfoList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SdkAppId: 应用ID
+        :type SdkAppId: int
+        :param PageSize: 分页尺寸，上限 100
+        :type PageSize: int
+        :param PageNumber: 分页页码，从 0 开始
+        :type PageNumber: int
+        :param SkillGroupId: 技能组ID，查询单个技能组时使用
+        :type SkillGroupId: int
+        :param ModifiedTime: 查询修改时间大于等于ModifiedTime的技能组时使用
+        :type ModifiedTime: int
+        """
+        self.SdkAppId = None
+        self.PageSize = None
+        self.PageNumber = None
+        self.SkillGroupId = None
+        self.ModifiedTime = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.PageSize = params.get("PageSize")
+        self.PageNumber = params.get("PageNumber")
+        self.SkillGroupId = params.get("SkillGroupId")
+        self.ModifiedTime = params.get("ModifiedTime")
+
+
+class DescribeSkillGroupInfoListResponse(AbstractModel):
+    """DescribeSkillGroupInfoList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 技能组总数
+        :type TotalCount: int
+        :param SkillGroupList: 技能组信息列表
+        :type SkillGroupList: list of SkillGroupInfoItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.SkillGroupList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("SkillGroupList") is not None:
+            self.SkillGroupList = []
+            for item in params.get("SkillGroupList"):
+                obj = SkillGroupInfoItem()
+                obj._deserialize(item)
+                self.SkillGroupList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeStaffInfoListRequest(AbstractModel):
+    """DescribeStaffInfoList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SdkAppId: 应用ID
+        :type SdkAppId: int
+        :param PageSize: 分页尺寸，上限 100
+        :type PageSize: int
+        :param PageNumber: 分页页码，从 0 开始
+        :type PageNumber: int
+        :param StaffMail: 坐席账号，查询单个坐席时使用
+        :type StaffMail: str
+        :param ModifiedTime: 查询修改时间大于等于ModifiedTime的坐席时使用
+        :type ModifiedTime: int
+        """
+        self.SdkAppId = None
+        self.PageSize = None
+        self.PageNumber = None
+        self.StaffMail = None
+        self.ModifiedTime = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.PageSize = params.get("PageSize")
+        self.PageNumber = params.get("PageNumber")
+        self.StaffMail = params.get("StaffMail")
+        self.ModifiedTime = params.get("ModifiedTime")
+
+
+class DescribeStaffInfoListResponse(AbstractModel):
+    """DescribeStaffInfoList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 坐席用户总数
+        :type TotalCount: int
+        :param StaffList: 坐席用户信息列表
+        :type StaffList: list of StaffInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.StaffList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("StaffList") is not None:
+            self.StaffList = []
+            for item in params.get("StaffList"):
+                obj = StaffInfo()
+                obj._deserialize(item)
+                self.StaffList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTelCallInfoRequest(AbstractModel):
     """DescribeTelCallInfo请求参数结构体
 
@@ -792,6 +918,132 @@ class ServeParticipant(AbstractModel):
         self.Sequence = params.get("Sequence")
         self.StartTimestamp = params.get("StartTimestamp")
         self.SkillGroupName = params.get("SkillGroupName")
+
+
+class SkillGroupInfoItem(AbstractModel):
+    """技能组信息
+
+    """
+
+    def __init__(self):
+        """
+        :param SkillGroupId: 技能组ID
+        :type SkillGroupId: int
+        :param SkillGroupName: 技能组名称
+        :type SkillGroupName: str
+        :param Type: 类型：IM、TEL、ALL（全媒体）
+        :type Type: str
+        :param RoutePolicy: 会话分配策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoutePolicy: str
+        :param UsingLastSeat: 会话分配是否优先上次服务坐席
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsingLastSeat: int
+        :param MaxConcurrency: 单客服最大并发数（电话类型默认1）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxConcurrency: int
+        :param LastModifyTimestamp: 最后修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastModifyTimestamp: int
+        """
+        self.SkillGroupId = None
+        self.SkillGroupName = None
+        self.Type = None
+        self.RoutePolicy = None
+        self.UsingLastSeat = None
+        self.MaxConcurrency = None
+        self.LastModifyTimestamp = None
+
+
+    def _deserialize(self, params):
+        self.SkillGroupId = params.get("SkillGroupId")
+        self.SkillGroupName = params.get("SkillGroupName")
+        self.Type = params.get("Type")
+        self.RoutePolicy = params.get("RoutePolicy")
+        self.UsingLastSeat = params.get("UsingLastSeat")
+        self.MaxConcurrency = params.get("MaxConcurrency")
+        self.LastModifyTimestamp = params.get("LastModifyTimestamp")
+
+
+class SkillGroupItem(AbstractModel):
+    """技能组信息
+
+    """
+
+    def __init__(self):
+        """
+        :param SkillGroupId: 技能组ID
+        :type SkillGroupId: int
+        :param SkillGroupName: 技能组名称
+        :type SkillGroupName: str
+        :param Priority: 优先级
+        :type Priority: int
+        :param Type: 类型：IM、TEL、ALL（全媒体）
+        :type Type: str
+        """
+        self.SkillGroupId = None
+        self.SkillGroupName = None
+        self.Priority = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.SkillGroupId = params.get("SkillGroupId")
+        self.SkillGroupName = params.get("SkillGroupName")
+        self.Priority = params.get("Priority")
+        self.Type = params.get("Type")
+
+
+class StaffInfo(AbstractModel):
+    """带有技能组优先级的坐席信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 坐席名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Mail: 坐席邮箱
+        :type Mail: str
+        :param Phone: 坐席电话号码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Phone: str
+        :param Nick: 坐席昵称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Nick: str
+        :param StaffNumber: 坐席工号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StaffNumber: str
+        :param SkillGroupList: 所属技能组列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SkillGroupList: list of SkillGroupItem
+        :param LastModifyTimestamp: 最后修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastModifyTimestamp: int
+        """
+        self.Name = None
+        self.Mail = None
+        self.Phone = None
+        self.Nick = None
+        self.StaffNumber = None
+        self.SkillGroupList = None
+        self.LastModifyTimestamp = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Mail = params.get("Mail")
+        self.Phone = params.get("Phone")
+        self.Nick = params.get("Nick")
+        self.StaffNumber = params.get("StaffNumber")
+        if params.get("SkillGroupList") is not None:
+            self.SkillGroupList = []
+            for item in params.get("SkillGroupList"):
+                obj = SkillGroupItem()
+                obj._deserialize(item)
+                self.SkillGroupList.append(obj)
+        self.LastModifyTimestamp = params.get("LastModifyTimestamp")
 
 
 class TelCdrInfo(AbstractModel):

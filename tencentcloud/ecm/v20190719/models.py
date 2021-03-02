@@ -3289,10 +3289,13 @@ isp         String      是否必填：否     （过滤条件）按照运营商
 
 region和area只应填写一个。
         :type Filters: list of Filter
+        :param Period: 统计周期，单位秒。取值60/300。
+        :type Period: int
         """
         self.StartTime = None
         self.EndTime = None
         self.Filters = None
+        self.Period = None
 
 
     def _deserialize(self, params):
@@ -3304,6 +3307,7 @@ region和area只应填写一个。
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.Period = params.get("Period")
 
 
 class DescribePeakNetworkOverviewResponse(AbstractModel):
@@ -7244,16 +7248,20 @@ class PeakNetwork(AbstractModel):
         :type PeakInNetwork: str
         :param PeakOutNetwork: 出带宽数据。
         :type PeakOutNetwork: str
+        :param ChargeNetwork: 计费带宽。单位bps
+        :type ChargeNetwork: str
         """
         self.RecordTime = None
         self.PeakInNetwork = None
         self.PeakOutNetwork = None
+        self.ChargeNetwork = None
 
 
     def _deserialize(self, params):
         self.RecordTime = params.get("RecordTime")
         self.PeakInNetwork = params.get("PeakInNetwork")
         self.PeakOutNetwork = params.get("PeakOutNetwork")
+        self.ChargeNetwork = params.get("ChargeNetwork")
 
 
 class PeakNetworkRegionInfo(AbstractModel):

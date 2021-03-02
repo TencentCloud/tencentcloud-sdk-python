@@ -2905,7 +2905,7 @@ class CreateTaskRequest(AbstractModel):
         :type ShardArguments: list of ShardArgument
         :param SuccessOperator: 判断任务成功的操作符
         :type SuccessOperator: str
-        :param SuccessRatio: 判断任务成功率的阈值，如99.99
+        :param SuccessRatio: 判断任务成功率的阈值，如100
         :type SuccessRatio: str
         :param AdvanceSettings: 高级设置
         :type AdvanceSettings: :class:`tencentcloud.tsf.v20180326.models.AdvanceSettings`

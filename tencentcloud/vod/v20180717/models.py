@@ -5801,6 +5801,35 @@ class CreateWordSamplesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DailyPlayStatInfo(AbstractModel):
+    """播放统计信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param Date: 播放媒体文件的日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type Date: str
+        :param FileId: 媒体文件ID。
+        :type FileId: str
+        :param PlayTimes: 播放次数。
+        :type PlayTimes: int
+        :param Traffic: 播放流量，单位：字节。
+        :type Traffic: int
+        """
+        self.Date = None
+        self.FileId = None
+        self.PlayTimes = None
+        self.Traffic = None
+
+
+    def _deserialize(self, params):
+        self.Date = params.get("Date")
+        self.FileId = params.get("FileId")
+        self.PlayTimes = params.get("PlayTimes")
+        self.Traffic = params.get("Traffic")
+
+
 class DeleteAIAnalysisTemplateRequest(AbstractModel):
     """DeleteAIAnalysisTemplate请求参数结构体
 
@@ -7080,6 +7109,118 @@ class DescribeContentReviewTemplatesResponse(AbstractModel):
                 obj = ContentReviewTemplateItem()
                 obj._deserialize(item)
                 self.ContentReviewTemplateSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDailyMediaPlayStatRequest(AbstractModel):
+    """DescribeDailyMediaPlayStat请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FileId: 媒体文件 ID 。
+        :type FileId: str
+        :param StartDate: 起始日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。该参数仅日期部分有效。
+        :type StartDate: str
+        :param EndDate: 结束日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。该参数仅日期部分有效。
+        :type EndDate: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.FileId = None
+        self.StartDate = None
+        self.EndDate = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
+        self.StartDate = params.get("StartDate")
+        self.EndDate = params.get("EndDate")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DescribeDailyMediaPlayStatResponse(AbstractModel):
+    """DescribeDailyMediaPlayStat返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DailyPlayStatInfoSet: 播放统计数据。
+        :type DailyPlayStatInfoSet: list of DailyPlayStatInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DailyPlayStatInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DailyPlayStatInfoSet") is not None:
+            self.DailyPlayStatInfoSet = []
+            for item in params.get("DailyPlayStatInfoSet"):
+                obj = DailyPlayStatInfo()
+                obj._deserialize(item)
+                self.DailyPlayStatInfoSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDailyMostPlayedStatRequest(AbstractModel):
+    """DescribeDailyMostPlayedStat请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Date: 查询日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。该参数仅日期部分有效。
+        :type Date: str
+        :param DomainName: 域名。查询该域名播放 Top100 的媒体文件的统计数据。默认查询所有域名的播放统计数据。
+        :type DomainName: str
+        :param Metric: Top 数据的统计指标，取值有：
+<li>Traffic：播放流量，按播放流量统计 Top100 的数据。</li>
+<li>PlayTimes：播放次数，按播放次数统计播放 Top100 的数据。</li>
+        :type Metric: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Date = None
+        self.DomainName = None
+        self.Metric = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Date = params.get("Date")
+        self.DomainName = params.get("DomainName")
+        self.Metric = params.get("Metric")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DescribeDailyMostPlayedStatResponse(AbstractModel):
+    """DescribeDailyMostPlayedStat返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DailyPlayStatInfoSet: 媒体文件播放统计信息。
+        :type DailyPlayStatInfoSet: list of DailyPlayStatInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DailyPlayStatInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DailyPlayStatInfoSet") is not None:
+            self.DailyPlayStatInfoSet = []
+            for item in params.get("DailyPlayStatInfoSet"):
+                obj = DailyPlayStatInfo()
+                obj._deserialize(item)
+                self.DailyPlayStatInfoSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 

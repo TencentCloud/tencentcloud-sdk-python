@@ -147,14 +147,18 @@ class AssociateSecurityGroupsRequest(AbstractModel):
         :type SecurityGroupId: str
         :param InstanceIds: 实例 ID 列表，一个或者多个实例 ID 组成的数组。
         :type InstanceIds: list of str
+        :param ForReadonlyInstance: 当传入只读实例ID时，默认操作的是对应只读组的安全组。如果需要操作只读实例ID的安全组， 需要将该入参置为True
+        :type ForReadonlyInstance: bool
         """
         self.SecurityGroupId = None
         self.InstanceIds = None
+        self.ForReadonlyInstance = None
 
 
     def _deserialize(self, params):
         self.SecurityGroupId = params.get("SecurityGroupId")
         self.InstanceIds = params.get("InstanceIds")
+        self.ForReadonlyInstance = params.get("ForReadonlyInstance")
 
 
 class AssociateSecurityGroupsResponse(AbstractModel):
@@ -1306,6 +1310,8 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type InstanceNodes: int
         :param Cpu: 实例cpu核数， 如果不传将根据memory指定的内存值自动填充对应的cpu值。
         :type Cpu: int
+        :param AutoSyncFlag: 是否自动发起灾备同步功能。该参数仅对购买灾备实例生效。 可选值为：0 - 不自动发起灾备同步；1 - 自动发起灾备同步。
+        :type AutoSyncFlag: int
         """
         self.GoodsNum = None
         self.Memory = None
@@ -1337,6 +1343,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self.AlarmPolicyList = None
         self.InstanceNodes = None
         self.Cpu = None
+        self.AutoSyncFlag = None
 
 
     def _deserialize(self, params):
@@ -1382,6 +1389,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self.AlarmPolicyList = params.get("AlarmPolicyList")
         self.InstanceNodes = params.get("InstanceNodes")
         self.Cpu = params.get("Cpu")
+        self.AutoSyncFlag = params.get("AutoSyncFlag")
 
 
 class CreateDBInstanceHourResponse(AbstractModel):
@@ -1478,6 +1486,8 @@ class CreateDBInstanceRequest(AbstractModel):
         :type InstanceNodes: int
         :param Cpu: 实例cpu核数， 如果不传将根据memory指定的内存值自动填充对应的cpu值。
         :type Cpu: int
+        :param AutoSyncFlag: 是否自动发起灾备同步功能。该参数仅对购买灾备实例生效。 可选值为：0 - 不自动发起灾备同步；1 - 自动发起灾备同步。
+        :type AutoSyncFlag: int
         """
         self.Memory = None
         self.Volume = None
@@ -1510,6 +1520,7 @@ class CreateDBInstanceRequest(AbstractModel):
         self.AlarmPolicyList = None
         self.InstanceNodes = None
         self.Cpu = None
+        self.AutoSyncFlag = None
 
 
     def _deserialize(self, params):
@@ -1556,6 +1567,7 @@ class CreateDBInstanceRequest(AbstractModel):
         self.AlarmPolicyList = params.get("AlarmPolicyList")
         self.InstanceNodes = params.get("InstanceNodes")
         self.Cpu = params.get("Cpu")
+        self.AutoSyncFlag = params.get("AutoSyncFlag")
 
 
 class CreateDBInstanceResponse(AbstractModel):
@@ -3618,12 +3630,16 @@ class DescribeDBSecurityGroupsRequest(AbstractModel):
         """
         :param InstanceId: 实例ID，格式如：cdb-c1nl9rpv或者cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
         :type InstanceId: str
+        :param ForReadonlyInstance: 当传入只读实例ID时，默认操作的是对应只读组的安全组。如果需要操作只读实例ID的安全组， 需要将该入参置为True
+        :type ForReadonlyInstance: bool
         """
         self.InstanceId = None
+        self.ForReadonlyInstance = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
+        self.ForReadonlyInstance = params.get("ForReadonlyInstance")
 
 
 class DescribeDBSecurityGroupsResponse(AbstractModel):
@@ -5199,14 +5215,18 @@ class DisassociateSecurityGroupsRequest(AbstractModel):
         :type SecurityGroupId: str
         :param InstanceIds: 实例 ID 列表，一个或者多个实例 ID 组成的数组。
         :type InstanceIds: list of str
+        :param ForReadonlyInstance: 当传入只读实例ID时，默认操作的是对应只读组的安全组。如果需要操作只读实例ID的安全组， 需要将该入参置为True
+        :type ForReadonlyInstance: bool
         """
         self.SecurityGroupId = None
         self.InstanceIds = None
+        self.ForReadonlyInstance = None
 
 
     def _deserialize(self, params):
         self.SecurityGroupId = params.get("SecurityGroupId")
         self.InstanceIds = params.get("InstanceIds")
+        self.ForReadonlyInstance = params.get("ForReadonlyInstance")
 
 
 class DisassociateSecurityGroupsResponse(AbstractModel):
@@ -5377,12 +5397,15 @@ class Inbound(AbstractModel):
         :type IpProtocol: str
         :param Dir: 规则限定的方向，进站规则为 INPUT
         :type Dir: str
+        :param Desc: 规则描述
+        :type Desc: str
         """
         self.Action = None
         self.CidrIp = None
         self.PortRange = None
         self.IpProtocol = None
         self.Dir = None
+        self.Desc = None
 
 
     def _deserialize(self, params):
@@ -5391,6 +5414,7 @@ class Inbound(AbstractModel):
         self.PortRange = params.get("PortRange")
         self.IpProtocol = params.get("IpProtocol")
         self.Dir = params.get("Dir")
+        self.Desc = params.get("Desc")
 
 
 class InitDBInstancesRequest(AbstractModel):
@@ -6368,14 +6392,18 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
         :type InstanceId: str
         :param SecurityGroupIds: 要修改的安全组 ID 列表，一个或者多个安全组 ID 组成的数组。
         :type SecurityGroupIds: list of str
+        :param ForReadonlyInstance: 当传入只读实例ID时，默认操作的是对应只读组的安全组。如果需要操作只读实例ID的安全组， 需要将该入参置为True
+        :type ForReadonlyInstance: bool
         """
         self.InstanceId = None
         self.SecurityGroupIds = None
+        self.ForReadonlyInstance = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.SecurityGroupIds = params.get("SecurityGroupIds")
+        self.ForReadonlyInstance = params.get("ForReadonlyInstance")
 
 
 class ModifyDBInstanceSecurityGroupsResponse(AbstractModel):
@@ -6960,12 +6988,15 @@ class Outbound(AbstractModel):
         :type IpProtocol: str
         :param Dir: 规则限定的方向，进站规则为 OUTPUT
         :type Dir: str
+        :param Desc: 规则描述
+        :type Desc: str
         """
         self.Action = None
         self.CidrIp = None
         self.PortRange = None
         self.IpProtocol = None
         self.Dir = None
+        self.Desc = None
 
 
     def _deserialize(self, params):
@@ -6974,6 +7005,7 @@ class Outbound(AbstractModel):
         self.PortRange = params.get("PortRange")
         self.IpProtocol = params.get("IpProtocol")
         self.Dir = params.get("Dir")
+        self.Desc = params.get("Desc")
 
 
 class ParamInfo(AbstractModel):

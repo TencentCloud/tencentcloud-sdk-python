@@ -194,6 +194,62 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeSkillGroupInfoList(self, request):
+        """获取技能组信息列表
+
+        :param request: Request instance for DescribeSkillGroupInfoList.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeSkillGroupInfoListRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.DescribeSkillGroupInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSkillGroupInfoList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSkillGroupInfoListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeStaffInfoList(self, request):
+        """获取坐席信息列表
+
+        :param request: Request instance for DescribeStaffInfoList.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeStaffInfoListRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.DescribeStaffInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeStaffInfoList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeStaffInfoListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTelCallInfo(self, request):
         """按实例获取电话消耗统计
 
