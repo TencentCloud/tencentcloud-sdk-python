@@ -82,6 +82,34 @@ class AswClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeExecutionHistory(self, request):
+        """一次执行会有很多步骤，经过很多节点，这个接口描述某一次执行的事件的历史
+
+        :param request: Request instance for DescribeExecutionHistory.
+        :type request: :class:`tencentcloud.asw.v20200722.models.DescribeExecutionHistoryRequest`
+        :rtype: :class:`tencentcloud.asw.v20200722.models.DescribeExecutionHistoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeExecutionHistory", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeExecutionHistoryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeExecutions(self, request):
         """对状态机的执行历史进行描述.
 

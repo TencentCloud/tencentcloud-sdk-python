@@ -2339,6 +2339,44 @@ class DescribeCrossRegionZoneResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDBCharsetsRequest(AbstractModel):
+    """DescribeDBCharsets请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，形如mssql-j8kv137v
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class DescribeDBCharsetsResponse(AbstractModel):
+    """DescribeDBCharsets返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DatabaseCharsets: 数据库字符集列表
+        :type DatabaseCharsets: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DatabaseCharsets = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DatabaseCharsets = params.get("DatabaseCharsets")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDBInstancesRequest(AbstractModel):
     """DescribeDBInstances请求参数结构体
 

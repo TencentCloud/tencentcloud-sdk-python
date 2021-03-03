@@ -825,6 +825,31 @@ class DetectInfoVideoData(AbstractModel):
         self.LivenessVideo = params.get("LivenessVideo")
 
 
+class Encryption(AbstractModel):
+    """敏感数据加密
+
+    """
+
+    def __init__(self):
+        """
+        :param CiphertextBlob: 有加密需求的用户，接入传入kms的CiphertextBlob，关于数据加密可查阅<a href="https://cloud.tencent.com/document/product/1007/47180">数据加密</a> 文档。
+        :type CiphertextBlob: str
+        :param EncryptList: 在使用加密服务时，填入要被加密的字段。本接口中可填入加密后的一个或多个字段
+        :type EncryptList: list of str
+        :param Iv: 有加密需求的用户，传入CBC加密的初始向量
+        :type Iv: str
+        """
+        self.CiphertextBlob = None
+        self.EncryptList = None
+        self.Iv = None
+
+
+    def _deserialize(self, params):
+        self.CiphertextBlob = params.get("CiphertextBlob")
+        self.EncryptList = params.get("EncryptList")
+        self.Iv = params.get("Iv")
+
+
 class GetActionSequenceRequest(AbstractModel):
     """GetActionSequence请求参数结构体
 
@@ -1768,11 +1793,14 @@ class MinorsVerificationRequest(AbstractModel):
         :type IdCard: str
         :param Name: 姓名。
         :type Name: str
+        :param Encryption: 敏感数据加密信息。对传入信息（姓名、身份证号、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         self.Type = None
         self.Mobile = None
         self.IdCard = None
         self.Name = None
+        self.Encryption = None
 
 
     def _deserialize(self, params):
@@ -1780,6 +1808,9 @@ class MinorsVerificationRequest(AbstractModel):
         self.Mobile = params.get("Mobile")
         self.IdCard = params.get("IdCard")
         self.Name = params.get("Name")
+        if params.get("Encryption") is not None:
+            self.Encryption = Encryption()
+            self.Encryption._deserialize(params.get("Encryption"))
 
 
 class MinorsVerificationResponse(AbstractModel):

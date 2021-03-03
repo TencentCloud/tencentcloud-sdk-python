@@ -164,6 +164,8 @@ global：全球加速
         :type Ipv6Access: :class:`tencentcloud.cdn.v20180606.models.Ipv6Access`
         :param OfflineCache: 离线缓存
         :type OfflineCache: :class:`tencentcloud.cdn.v20180606.models.OfflineCache`
+        :param Quic: QUIC正在内测中，请先提交内测申请，详情请前往QUIC产品文档。
+        :type Quic: :class:`tencentcloud.cdn.v20180606.models.Quic`
         """
         self.Domain = None
         self.ServiceType = None
@@ -198,6 +200,7 @@ global：全球加速
         self.Tag = None
         self.Ipv6Access = None
         self.OfflineCache = None
+        self.Quic = None
 
 
     def _deserialize(self, params):
@@ -295,6 +298,9 @@ global：全球加速
         if params.get("OfflineCache") is not None:
             self.OfflineCache = OfflineCache()
             self.OfflineCache._deserialize(params.get("OfflineCache"))
+        if params.get("Quic") is not None:
+            self.Quic = Quic()
+            self.Quic._deserialize(params.get("Quic"))
 
 
 class AddCdnDomainResponse(AbstractModel):
@@ -4212,6 +4218,12 @@ off：不支持
         :param OriginCombine: 合并回源
 注意：此字段可能返回 null，表示取不到有效值。
         :type OriginCombine: :class:`tencentcloud.cdn.v20180606.models.OriginCombine`
+        :param PostMaxSize: POST上传配置项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PostMaxSize: :class:`tencentcloud.cdn.v20180606.models.PostSize`
+        :param Quic: Quic配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Quic: :class:`tencentcloud.cdn.v20180606.models.Quic`
         """
         self.ResourceId = None
         self.AppId = None
@@ -4267,6 +4279,8 @@ off：不支持
         self.AdvanceSet = None
         self.OfflineCache = None
         self.OriginCombine = None
+        self.PostMaxSize = None
+        self.Quic = None
 
 
     def _deserialize(self, params):
@@ -4410,6 +4424,12 @@ off：不支持
         if params.get("OriginCombine") is not None:
             self.OriginCombine = OriginCombine()
             self.OriginCombine._deserialize(params.get("OriginCombine"))
+        if params.get("PostMaxSize") is not None:
+            self.PostMaxSize = PostSize()
+            self.PostMaxSize._deserialize(params.get("PostMaxSize"))
+        if params.get("Quic") is not None:
+            self.Quic = Quic()
+            self.Quic._deserialize(params.get("Quic"))
 
 
 class DiagnoseData(AbstractModel):
@@ -6930,6 +6950,29 @@ OV：中国境外
                 self.RequestHeaders.append(obj)
 
 
+class PostSize(AbstractModel):
+    """POST请求上传文件流式传输最大限制
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 是调整POST请求限制，平台默认为32MB。
+关闭：off，
+开启：on。
+        :type Switch: str
+        :param MaxSize: 最大限制，取值在1MB和200MB之间。
+        :type MaxSize: int
+        """
+        self.Switch = None
+        self.MaxSize = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.MaxSize = params.get("MaxSize")
+
+
 class PurgePathCacheRequest(AbstractModel):
     """PurgePathCache请求参数结构体
 
@@ -7214,6 +7257,23 @@ class QueryStringKey(AbstractModel):
         self.Reorder = params.get("Reorder")
         self.Action = params.get("Action")
         self.Value = params.get("Value")
+
+
+class Quic(AbstractModel):
+    """Quic配置项
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 是否启动Quic配置
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
 
 
 class Quota(AbstractModel):
@@ -9133,6 +9193,8 @@ global：全球加速
         :type OfflineCache: :class:`tencentcloud.cdn.v20180606.models.OfflineCache`
         :param OriginCombine: 合并回源
         :type OriginCombine: :class:`tencentcloud.cdn.v20180606.models.OriginCombine`
+        :param Quic: QUIC正在内测中，请先提交内测申请，详情请前往QUIC产品文档。
+        :type Quic: :class:`tencentcloud.cdn.v20180606.models.Quic`
         """
         self.Domain = None
         self.ProjectId = None
@@ -9173,6 +9235,7 @@ global：全球加速
         self.Ipv6Access = None
         self.OfflineCache = None
         self.OriginCombine = None
+        self.Quic = None
 
 
     def _deserialize(self, params):
@@ -9283,6 +9346,9 @@ global：全球加速
         if params.get("OriginCombine") is not None:
             self.OriginCombine = OriginCombine()
             self.OriginCombine._deserialize(params.get("OriginCombine"))
+        if params.get("Quic") is not None:
+            self.Quic = Quic()
+            self.Quic._deserialize(params.get("Quic"))
 
 
 class UpdateDomainConfigResponse(AbstractModel):

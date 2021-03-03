@@ -810,6 +810,34 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDBCharsets(self, request):
+        """本接口（DescribeDBCharsets）用于查询实例支持的数据库字符集。
+
+        :param request: Request instance for DescribeDBCharsets.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDBCharsetsRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDBCharsetsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDBCharsets", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDBCharsetsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDBInstances(self, request):
         """本接口(DescribeDBInstances)用于查询实例列表。
 

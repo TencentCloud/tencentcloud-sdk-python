@@ -2257,12 +2257,16 @@ class DescribeConfigResponse(AbstractModel):
         :param InstanceNetworkLimitConfigs: 网络限额信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceNetworkLimitConfigs: list of InstanceNetworkLimitConfig
+        :param ImageLimits: 镜像限额信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageLimits: :class:`tencentcloud.ecm.v20190719.models.ImageLimitConfig`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.NetworkStorageRange = None
         self.ImageWhiteSet = None
         self.InstanceNetworkLimitConfigs = None
+        self.ImageLimits = None
         self.RequestId = None
 
 
@@ -2277,6 +2281,9 @@ class DescribeConfigResponse(AbstractModel):
                 obj = InstanceNetworkLimitConfig()
                 obj._deserialize(item)
                 self.InstanceNetworkLimitConfigs.append(obj)
+        if params.get("ImageLimits") is not None:
+            self.ImageLimits = ImageLimitConfig()
+            self.ImageLimits._deserialize(params.get("ImageLimits"))
         self.RequestId = params.get("RequestId")
 
 
@@ -4561,6 +4568,23 @@ class Image(AbstractModel):
             self.SrcImage._deserialize(params.get("SrcImage"))
         self.ImageSource = params.get("ImageSource")
         self.TaskId = params.get("TaskId")
+
+
+class ImageLimitConfig(AbstractModel):
+    """镜像限制配置
+
+    """
+
+    def __init__(self):
+        """
+        :param MaxImageSize: 支持的最大镜像大小，包括可导入的自定义镜像大小，中心云镜像大小，单位为GB。
+        :type MaxImageSize: int
+        """
+        self.MaxImageSize = None
+
+
+    def _deserialize(self, params):
+        self.MaxImageSize = params.get("MaxImageSize")
 
 
 class ImageOsList(AbstractModel):

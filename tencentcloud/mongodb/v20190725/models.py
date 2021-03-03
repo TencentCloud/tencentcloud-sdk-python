@@ -997,6 +997,8 @@ class DescribeSlowLogPatternsRequest(AbstractModel):
         :type Offset: int
         :param Limit: 分页大小，最小值为1，最大值为100，默认值为20。
         :type Limit: int
+        :param Format: 慢日志返回格式，可设置为json，不传默认返回原生慢日志格式。
+        :type Format: str
         """
         self.InstanceId = None
         self.StartTime = None
@@ -1004,6 +1006,7 @@ class DescribeSlowLogPatternsRequest(AbstractModel):
         self.SlowMS = None
         self.Offset = None
         self.Limit = None
+        self.Format = None
 
 
     def _deserialize(self, params):
@@ -1013,6 +1016,7 @@ class DescribeSlowLogPatternsRequest(AbstractModel):
         self.SlowMS = params.get("SlowMS")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.Format = params.get("Format")
 
 
 class DescribeSlowLogPatternsResponse(AbstractModel):
@@ -1064,6 +1068,8 @@ class DescribeSlowLogsRequest(AbstractModel):
         :type Offset: int
         :param Limit: 分页大小，最小值为1，最大值为100，默认值为20。
         :type Limit: int
+        :param Format: 慢日志返回格式，可设置为json，不传默认返回原生慢日志格式。
+        :type Format: str
         """
         self.InstanceId = None
         self.StartTime = None
@@ -1071,6 +1077,7 @@ class DescribeSlowLogsRequest(AbstractModel):
         self.SlowMS = None
         self.Offset = None
         self.Limit = None
+        self.Format = None
 
 
     def _deserialize(self, params):
@@ -1080,6 +1087,7 @@ class DescribeSlowLogsRequest(AbstractModel):
         self.SlowMS = params.get("SlowMS")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.Format = params.get("Format")
 
 
 class DescribeSlowLogsResponse(AbstractModel):

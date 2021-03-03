@@ -1754,8 +1754,12 @@ class DescribeAttackLogsRequest(AbstractModel):
         :type Offset: int
         :param Filters: 过滤条件。
 <li>HttpMethod - String - 是否必填：否 - 攻击方法(POST|GET)</li>
-<li>MachineIp - String - 是否必填：否 - 主机内网IP</li>
 <li>DateRange - String - 是否必填：否 - 时间范围(存储最近3个月的数据)，如最近一个月["2019-11-17", "2019-12-17"]</li>
+<li>VulType - String 威胁类型 - 是否必填: 否</li>
+<li>SrcIp - String 攻击源IP - 是否必填: 否</li>
+<li>DstIp - String 攻击目标IP - 是否必填: 否</li>
+<li>SrcPort - String 攻击源端口 - 是否必填: 否</li>
+<li>DstPort - String 攻击目标端口 - 是否必填: 否</li>
         :type Filters: list of Filter
         :param Uuid: 主机安全客户端ID
         :type Uuid: str
@@ -1810,6 +1814,33 @@ class DescribeAttackLogsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.AttackLogs.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAttackVulTypeListRequest(AbstractModel):
+    """DescribeAttackVulTypeList请求参数结构体
+
+    """
+
+
+class DescribeAttackVulTypeListResponse(AbstractModel):
+    """DescribeAttackVulTypeList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param List: 威胁类型列表
+        :type List: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.List = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.List = params.get("List")
         self.RequestId = params.get("RequestId")
 
 
@@ -4917,10 +4948,23 @@ class ExportAttackLogsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Filters: 过滤参数
+        :param Filters: 过滤条件。
+<li>HttpMethod - String - 是否必填：否 - 攻击方法(POST|GET)</li>
+<li>DateRange - String - 是否必填：否 - 时间范围(存储最近3个月的数据)，如最近一个月["2019-11-17", "2019-12-17"]</li>
+<li>VulType - String 威胁类型 - 是否必填: 否</li>
+<li>SrcIp - String 攻击源IP - 是否必填: 否</li>
+<li>DstIp - String 攻击目标IP - 是否必填: 否</li>
+<li>SrcPort - String 攻击源端口 - 是否必填: 否</li>
+<li>DstPort - String 攻击目标端口 - 是否必填: 否</li>
         :type Filters: list of Filters
+        :param Uuid: 主机安全客户端ID
+        :type Uuid: str
+        :param Quuid: 云主机机器ID
+        :type Quuid: str
         """
         self.Filters = None
+        self.Uuid = None
+        self.Quuid = None
 
 
     def _deserialize(self, params):
@@ -4930,6 +4974,8 @@ class ExportAttackLogsRequest(AbstractModel):
                 obj = Filters()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.Uuid = params.get("Uuid")
+        self.Quuid = params.get("Quuid")
 
 
 class ExportAttackLogsResponse(AbstractModel):

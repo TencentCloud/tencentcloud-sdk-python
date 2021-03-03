@@ -82,6 +82,49 @@ class CreateFlowServiceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeExecutionHistoryRequest(AbstractModel):
+    """DescribeExecutionHistory请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ExecutionResourceName: 执行资源名
+        :type ExecutionResourceName: str
+        """
+        self.ExecutionResourceName = None
+
+
+    def _deserialize(self, params):
+        self.ExecutionResourceName = params.get("ExecutionResourceName")
+
+
+class DescribeExecutionHistoryResponse(AbstractModel):
+    """DescribeExecutionHistory返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Events: 执行的事件列表
+        :type Events: list of ExecutionEvent
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Events = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Events") is not None:
+            self.Events = []
+            for item in params.get("Events"):
+                obj = ExecutionEvent()
+                obj._deserialize(item)
+                self.Events.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeExecutionRequest(AbstractModel):
     """DescribeExecution请求参数结构体
 
@@ -332,6 +375,52 @@ class DescribeFlowServicesResponse(AbstractModel):
                 self.FlowServiceSet.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+
+
+class ExecutionEvent(AbstractModel):
+    """执行的事件历史
+
+    """
+
+    def __init__(self):
+        """
+        :param ExecutionResourceName: 执行资源名
+        :type ExecutionResourceName: str
+        :param EventId: 自增序号
+        :type EventId: int
+        :param EventCategory: 事件类型
+        :type EventCategory: str
+        :param StepName: 步骤节点名称
+        :type StepName: str
+        :param ResourceName: 该步骤引用的资源名
+        :type ResourceName: str
+        :param Timestamp: 该事件发生时间，毫秒
+        :type Timestamp: str
+        :param Content: 事件内容
+        :type Content: str
+        :param Exception: 异常信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Exception: str
+        """
+        self.ExecutionResourceName = None
+        self.EventId = None
+        self.EventCategory = None
+        self.StepName = None
+        self.ResourceName = None
+        self.Timestamp = None
+        self.Content = None
+        self.Exception = None
+
+
+    def _deserialize(self, params):
+        self.ExecutionResourceName = params.get("ExecutionResourceName")
+        self.EventId = params.get("EventId")
+        self.EventCategory = params.get("EventCategory")
+        self.StepName = params.get("StepName")
+        self.ResourceName = params.get("ResourceName")
+        self.Timestamp = params.get("Timestamp")
+        self.Content = params.get("Content")
+        self.Exception = params.get("Exception")
 
 
 class Filter(AbstractModel):

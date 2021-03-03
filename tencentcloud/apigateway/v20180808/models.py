@@ -1416,7 +1416,7 @@ class CreateIPStrategyRequest(AbstractModel):
         :type StrategyName: str
         :param StrategyType: 策略类型。支持WHITE（白名单）和BLACK（黑名单）。
         :type StrategyType: str
-        :param StrategyData: 策略详情。
+        :param StrategyData: 策略详情，多个ip 使用\n 分隔符分开。
         :type StrategyData: str
         """
         self.ServiceId = None
