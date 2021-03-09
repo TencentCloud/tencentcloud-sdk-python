@@ -800,6 +800,8 @@ class OcrTextDetail(AbstractModel):
         :type Score: int
         :param Location: OCR位置
         :type Location: :class:`tencentcloud.ims.v20200713.models.Location`
+        :param Rate: OCR文本识别置信度
+        :type Rate: int
         """
         self.Text = None
         self.Label = None
@@ -808,6 +810,7 @@ class OcrTextDetail(AbstractModel):
         self.Keywords = None
         self.Score = None
         self.Location = None
+        self.Rate = None
 
 
     def _deserialize(self, params):
@@ -820,6 +823,7 @@ class OcrTextDetail(AbstractModel):
         if params.get("Location") is not None:
             self.Location = Location()
             self.Location._deserialize(params.get("Location"))
+        self.Rate = params.get("Rate")
 
 
 class Overview(AbstractModel):

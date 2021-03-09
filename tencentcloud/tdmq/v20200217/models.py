@@ -1709,6 +1709,146 @@ class ResetMsgSubOffsetByTimestampResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SendBatchMessagesRequest(AbstractModel):
+    """SendBatchMessages请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Topic: Topic name
+        :type Topic: str
+        :param Payload: 需要发送消息的内容
+        :type Payload: str
+        :param StringToken: String 类型的 token，用来校验客户端和服务端之间的连接
+        :type StringToken: str
+        :param ProducerName: producer 的名字，要求全局是唯一的，如果不设置，系统会自动生成
+        :type ProducerName: str
+        :param SendTimeout: 单位：s。消息发送的超时时间。默认值为：30s
+        :type SendTimeout: int
+        :param MaxPendingMessages: 内存中允许缓存的生产消息的最大数量，默认值：1000条
+        :type MaxPendingMessages: int
+        :param BatchingMaxMessages: 每一个batch中消息的最大数量，默认值：1000条/batch
+        :type BatchingMaxMessages: int
+        :param BatchingMaxPublishDelay: 每一个batch最大等待的时间，超过这个时间，不管是否达到指定的batch中消息的数量和大小，都会将该batch发送出去，默认：10ms
+        :type BatchingMaxPublishDelay: int
+        :param BatchingMaxBytes: 每一个batch中最大允许的消息的大小，默认：128KB
+        :type BatchingMaxBytes: int
+        """
+        self.Topic = None
+        self.Payload = None
+        self.StringToken = None
+        self.ProducerName = None
+        self.SendTimeout = None
+        self.MaxPendingMessages = None
+        self.BatchingMaxMessages = None
+        self.BatchingMaxPublishDelay = None
+        self.BatchingMaxBytes = None
+
+
+    def _deserialize(self, params):
+        self.Topic = params.get("Topic")
+        self.Payload = params.get("Payload")
+        self.StringToken = params.get("StringToken")
+        self.ProducerName = params.get("ProducerName")
+        self.SendTimeout = params.get("SendTimeout")
+        self.MaxPendingMessages = params.get("MaxPendingMessages")
+        self.BatchingMaxMessages = params.get("BatchingMaxMessages")
+        self.BatchingMaxPublishDelay = params.get("BatchingMaxPublishDelay")
+        self.BatchingMaxBytes = params.get("BatchingMaxBytes")
+
+
+class SendBatchMessagesResponse(AbstractModel):
+    """SendBatchMessages返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MessageId: 消息的唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MessageId: str
+        :param ErrorMsg: 错误消息，返回为 ""，代表没有错误
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MessageId = None
+        self.ErrorMsg = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MessageId = params.get("MessageId")
+        self.ErrorMsg = params.get("ErrorMsg")
+        self.RequestId = params.get("RequestId")
+
+
+class SendMessagesRequest(AbstractModel):
+    """SendMessages请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StringToken: Token 是用来做鉴权使用的
+        :type StringToken: str
+        :param Topic: 消息要发送的topic的名字
+        :type Topic: str
+        :param Payload: 要发送的消息的内容
+        :type Payload: str
+        :param ProducerName: 设置 producer 的名字，要求全局唯一，用户不配置，系统会随机生成
+        :type ProducerName: str
+        :param SendTimeout: 设置消息发送的超时时间，默认为30s
+        :type SendTimeout: int
+        :param MaxPendingMessages: 内存中缓存的最大的生产消息的数量，默认为1000条
+        :type MaxPendingMessages: int
+        """
+        self.StringToken = None
+        self.Topic = None
+        self.Payload = None
+        self.ProducerName = None
+        self.SendTimeout = None
+        self.MaxPendingMessages = None
+
+
+    def _deserialize(self, params):
+        self.StringToken = params.get("StringToken")
+        self.Topic = params.get("Topic")
+        self.Payload = params.get("Payload")
+        self.ProducerName = params.get("ProducerName")
+        self.SendTimeout = params.get("SendTimeout")
+        self.MaxPendingMessages = params.get("MaxPendingMessages")
+
+
+class SendMessagesResponse(AbstractModel):
+    """SendMessages返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MessageId: 消息的messageID, 是全局唯一的，用来标识消息的元数据信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MessageId: str
+        :param ErrorMsg: 返回的错误消息，如果返回为 “”，说明没有错误
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MessageId = None
+        self.ErrorMsg = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MessageId = params.get("MessageId")
+        self.ErrorMsg = params.get("ErrorMsg")
+        self.RequestId = params.get("RequestId")
+
+
 class Subscription(AbstractModel):
     """订阅者
 

@@ -1226,6 +1226,41 @@ class FunctionVersion(AbstractModel):
         self.ModTime = params.get("ModTime")
 
 
+class GetAccountRequest(AbstractModel):
+    """GetAccount请求参数结构体
+
+    """
+
+
+class GetAccountResponse(AbstractModel):
+    """GetAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AccountUsage: 命名空间已使用的信息
+        :type AccountUsage: :class:`tencentcloud.scf.v20180416.models.UsageInfo`
+        :param AccountLimit: 命名空间限制的信息
+        :type AccountLimit: :class:`tencentcloud.scf.v20180416.models.LimitsInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AccountUsage = None
+        self.AccountLimit = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AccountUsage") is not None:
+            self.AccountUsage = UsageInfo()
+            self.AccountUsage._deserialize(params.get("AccountUsage"))
+        if params.get("AccountLimit") is not None:
+            self.AccountLimit = LimitsInfo()
+            self.AccountLimit._deserialize(params.get("AccountLimit"))
+        self.RequestId = params.get("RequestId")
+
+
 class GetAliasRequest(AbstractModel):
     """GetAlias请求参数结构体
 
@@ -2001,6 +2036,32 @@ class LayerVersionSimple(AbstractModel):
         self.LayerVersion = params.get("LayerVersion")
 
 
+class LimitsInfo(AbstractModel):
+    """限制信息
+
+    """
+
+    def __init__(self):
+        """
+        :param NamespacesCount: 命名空间个数限制
+        :type NamespacesCount: int
+        :param Namespace: 命名空间限制信息
+        :type Namespace: list of NamespaceLimit
+        """
+        self.NamespacesCount = None
+        self.Namespace = None
+
+
+    def _deserialize(self, params):
+        self.NamespacesCount = params.get("NamespacesCount")
+        if params.get("Namespace") is not None:
+            self.Namespace = []
+            for item in params.get("Namespace"):
+                obj = NamespaceLimit()
+                obj._deserialize(item)
+                self.Namespace.append(obj)
+
+
 class ListAliasesRequest(AbstractModel):
     """ListAliases请求参数结构体
 
@@ -2643,6 +2704,87 @@ class Namespace(AbstractModel):
         self.Type = params.get("Type")
 
 
+class NamespaceLimit(AbstractModel):
+    """命名空间限制
+
+    """
+
+    def __init__(self):
+        """
+        :param FunctionsCount: 函数总数
+        :type FunctionsCount: int
+        :param Trigger: Trigger信息
+        :type Trigger: :class:`tencentcloud.scf.v20180416.models.TriggerCount`
+        :param Namespace: Namespace名称
+        :type Namespace: str
+        :param ConcurrentExecutions: 并发量
+        :type ConcurrentExecutions: int
+        :param TimeoutLimit: Timeout限制
+        :type TimeoutLimit: int
+        :param TestModelLimit: 测试事件限制
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TestModelLimit: int
+        :param InitTimeoutLimit: 初始化超时限制
+        :type InitTimeoutLimit: int
+        :param RetryNumLimit: 异步重试次数限制
+        :type RetryNumLimit: int
+        :param MinMsgTTL: 异步重试消息保留时间下限
+        :type MinMsgTTL: int
+        :param MaxMsgTTL: 异步重试消息保留时间上限
+        :type MaxMsgTTL: int
+        """
+        self.FunctionsCount = None
+        self.Trigger = None
+        self.Namespace = None
+        self.ConcurrentExecutions = None
+        self.TimeoutLimit = None
+        self.TestModelLimit = None
+        self.InitTimeoutLimit = None
+        self.RetryNumLimit = None
+        self.MinMsgTTL = None
+        self.MaxMsgTTL = None
+
+
+    def _deserialize(self, params):
+        self.FunctionsCount = params.get("FunctionsCount")
+        if params.get("Trigger") is not None:
+            self.Trigger = TriggerCount()
+            self.Trigger._deserialize(params.get("Trigger"))
+        self.Namespace = params.get("Namespace")
+        self.ConcurrentExecutions = params.get("ConcurrentExecutions")
+        self.TimeoutLimit = params.get("TimeoutLimit")
+        self.TestModelLimit = params.get("TestModelLimit")
+        self.InitTimeoutLimit = params.get("InitTimeoutLimit")
+        self.RetryNumLimit = params.get("RetryNumLimit")
+        self.MinMsgTTL = params.get("MinMsgTTL")
+        self.MaxMsgTTL = params.get("MaxMsgTTL")
+
+
+class NamespaceUsage(AbstractModel):
+    """名称空间已使用信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Functions: 函数数组
+        :type Functions: list of str
+        :param Namespace: 命名空间名称
+        :type Namespace: str
+        :param FunctionsCount: 命名空间函数个数
+        :type FunctionsCount: int
+        """
+        self.Functions = None
+        self.Namespace = None
+        self.FunctionsCount = None
+
+
+    def _deserialize(self, params):
+        self.Functions = params.get("Functions")
+        self.Namespace = params.get("Namespace")
+        self.FunctionsCount = params.get("FunctionsCount")
+
+
 class PublicNetConfigIn(AbstractModel):
     """公网访问配置
 
@@ -3187,6 +3329,63 @@ class Trigger(AbstractModel):
         self.Qualifier = params.get("Qualifier")
 
 
+class TriggerCount(AbstractModel):
+    """TriggerCount描述不同类型触发器的数量
+
+    """
+
+    def __init__(self):
+        """
+        :param Cos: Cos触发器数量
+        :type Cos: int
+        :param Timer: Timer触发器数量
+        :type Timer: int
+        :param Cmq: Cmq触发器数量
+        :type Cmq: int
+        :param Total: 触发器总数
+        :type Total: int
+        :param Ckafka: Ckafka触发器数量
+        :type Ckafka: int
+        :param Apigw: Apigw触发器数量
+        :type Apigw: int
+        :param Cls: Cls触发器数量
+        :type Cls: int
+        :param Clb: Clb触发器数量
+        :type Clb: int
+        :param Mps: Mps触发器数量
+        :type Mps: int
+        :param Cm: Cm触发器数量
+        :type Cm: int
+        :param Vod: Vod触发器数量
+        :type Vod: int
+        """
+        self.Cos = None
+        self.Timer = None
+        self.Cmq = None
+        self.Total = None
+        self.Ckafka = None
+        self.Apigw = None
+        self.Cls = None
+        self.Clb = None
+        self.Mps = None
+        self.Cm = None
+        self.Vod = None
+
+
+    def _deserialize(self, params):
+        self.Cos = params.get("Cos")
+        self.Timer = params.get("Timer")
+        self.Cmq = params.get("Cmq")
+        self.Total = params.get("Total")
+        self.Ckafka = params.get("Ckafka")
+        self.Apigw = params.get("Apigw")
+        self.Cls = params.get("Cls")
+        self.Clb = params.get("Clb")
+        self.Mps = params.get("Mps")
+        self.Cm = params.get("Cm")
+        self.Vod = params.get("Vod")
+
+
 class TriggerInfo(AbstractModel):
     """触发器信息
 
@@ -3534,6 +3733,44 @@ class UpdateNamespaceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class UsageInfo(AbstractModel):
+    """已使用的信息
+
+    """
+
+    def __init__(self):
+        """
+        :param NamespacesCount: 命名空间个数
+        :type NamespacesCount: int
+        :param Namespace: 命名空间详情
+        :type Namespace: list of NamespaceUsage
+        :param TotalConcurrencyMem: 当前地域用户并发内存配额上限
+        :type TotalConcurrencyMem: int
+        :param TotalAllocatedConcurrencyMem: 当前地域用户已配置并发内存额度
+        :type TotalAllocatedConcurrencyMem: int
+        :param UserConcurrencyMemLimit: 用户实际配置的账号并发配额
+        :type UserConcurrencyMemLimit: int
+        """
+        self.NamespacesCount = None
+        self.Namespace = None
+        self.TotalConcurrencyMem = None
+        self.TotalAllocatedConcurrencyMem = None
+        self.UserConcurrencyMemLimit = None
+
+
+    def _deserialize(self, params):
+        self.NamespacesCount = params.get("NamespacesCount")
+        if params.get("Namespace") is not None:
+            self.Namespace = []
+            for item in params.get("Namespace"):
+                obj = NamespaceUsage()
+                obj._deserialize(item)
+                self.Namespace.append(obj)
+        self.TotalConcurrencyMem = params.get("TotalConcurrencyMem")
+        self.TotalAllocatedConcurrencyMem = params.get("TotalAllocatedConcurrencyMem")
+        self.UserConcurrencyMemLimit = params.get("UserConcurrencyMemLimit")
 
 
 class Variable(AbstractModel):

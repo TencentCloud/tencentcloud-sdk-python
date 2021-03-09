@@ -2716,6 +2716,34 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeTaskDetail(self, request):
+        """查询任务详情
+
+        :param request: Request instance for DescribeTaskDetail.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeTaskDetailRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeTaskDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTaskDetail", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTaskDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTaskLastStatus(self, request):
         """查询任务最近一次执行状态
 

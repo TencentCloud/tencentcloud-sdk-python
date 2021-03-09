@@ -640,3 +640,59 @@ class TdmqClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SendBatchMessages(self, request):
+        """批量发送消息
+
+        :param request: Request instance for SendBatchMessages.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.SendBatchMessagesRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.SendBatchMessagesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SendBatchMessages", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SendBatchMessagesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SendMessages(self, request):
+        """发送单条消息
+
+        :param request: Request instance for SendMessages.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.SendMessagesRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.SendMessagesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SendMessages", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SendMessagesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

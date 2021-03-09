@@ -61,7 +61,7 @@ class AddExistedInstancesRequest(AbstractModel):
         :type ClusterId: str
         :param InstanceIds: 实例列表，不支持竞价实例
         :type InstanceIds: list of str
-        :param InstanceAdvancedSettings: 实例额外需要设置参数信息
+        :param InstanceAdvancedSettings: 实例额外需要设置参数信息(默认值)
         :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
         :param EnhancedService: 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务。
         :type EnhancedService: :class:`tencentcloud.tke.v20180525.models.EnhancedService`

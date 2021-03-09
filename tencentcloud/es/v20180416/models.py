@@ -1521,11 +1521,14 @@ class UpdatePluginsRequest(AbstractModel):
         :type RemovePluginList: list of str
         :param ForceRestart: 是否强制重启
         :type ForceRestart: bool
+        :param ForceUpdate: 是否重新安装
+        :type ForceUpdate: bool
         """
         self.InstanceId = None
         self.InstallPluginList = None
         self.RemovePluginList = None
         self.ForceRestart = None
+        self.ForceUpdate = None
 
 
     def _deserialize(self, params):
@@ -1533,6 +1536,7 @@ class UpdatePluginsRequest(AbstractModel):
         self.InstallPluginList = params.get("InstallPluginList")
         self.RemovePluginList = params.get("RemovePluginList")
         self.ForceRestart = params.get("ForceRestart")
+        self.ForceUpdate = params.get("ForceUpdate")
 
 
 class UpdatePluginsResponse(AbstractModel):

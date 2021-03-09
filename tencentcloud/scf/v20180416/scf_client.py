@@ -369,6 +369,34 @@ class ScfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetAccount(self, request):
+        """获取账户信息
+
+        :param request: Request instance for GetAccount.
+        :type request: :class:`tencentcloud.scf.v20180416.models.GetAccountRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.GetAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetAccount", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetAccountResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetAlias(self, request):
         """获取别名的详细信息，包括名称、描述、版本、路由信息等。
 

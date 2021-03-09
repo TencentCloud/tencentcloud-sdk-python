@@ -6760,6 +6760,50 @@ class DescribeSimpleNamespacesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTaskDetailRequest(AbstractModel):
+    """DescribeTaskDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务ID
+        :type TaskId: str
+        :param TaskLogId: 任务历史ID
+        :type TaskLogId: str
+        """
+        self.TaskId = None
+        self.TaskLogId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.TaskLogId = params.get("TaskLogId")
+
+
+class DescribeTaskDetailResponse(AbstractModel):
+    """DescribeTaskDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 任务详情
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.TaskRecord`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = TaskRecord()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTaskLastStatusRequest(AbstractModel):
     """DescribeTaskLastStatus请求参数结构体
 
@@ -8818,7 +8862,7 @@ class ModifyTaskRequest(AbstractModel):
         :param ShardCount: 分片数量
         :type ShardCount: int
         :param ShardArguments: 分片参数
-        :type ShardArguments: :class:`tencentcloud.tsf.v20180326.models.ShardArgument`
+        :type ShardArguments: list of ShardArgument
         :param AdvanceSettings: 高级设置
         :type AdvanceSettings: :class:`tencentcloud.tsf.v20180326.models.AdvanceSettings`
         :param SuccessOperator: 判断任务成功的操作符 GT/GTE
@@ -8863,8 +8907,11 @@ class ModifyTaskRequest(AbstractModel):
         self.GroupId = params.get("GroupId")
         self.ShardCount = params.get("ShardCount")
         if params.get("ShardArguments") is not None:
-            self.ShardArguments = ShardArgument()
-            self.ShardArguments._deserialize(params.get("ShardArguments"))
+            self.ShardArguments = []
+            for item in params.get("ShardArguments"):
+                obj = ShardArgument()
+                obj._deserialize(item)
+                self.ShardArguments.append(obj)
         if params.get("AdvanceSettings") is not None:
             self.AdvanceSettings = AdvanceSettings()
             self.AdvanceSettings._deserialize(params.get("AdvanceSettings"))
@@ -10402,7 +10449,7 @@ class ShardArgument(AbstractModel):
 
     def __init__(self):
         """
-        :param ShardKey: 分片参数 KEY，整形
+        :param ShardKey: 分片参数 KEY，整形, 范围 [1,1000]
         :type ShardKey: int
         :param ShardValue: 分片参数 VALUE
 注意：此字段可能返回 null，表示取不到有效值。
@@ -11041,6 +11088,119 @@ class TaskLastExecuteStatus(AbstractModel):
         self.BatchId = params.get("BatchId")
         self.State = params.get("State")
         self.BatchLogId = params.get("BatchLogId")
+
+
+class TaskRecord(AbstractModel):
+    """任务定义
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskName: 任务名称
+        :type TaskName: str
+        :param TaskType: 任务类型
+        :type TaskType: str
+        :param ExecuteType: 执行类型
+        :type ExecuteType: str
+        :param TaskContent: 任务内容，长度限制65535字节
+        :type TaskContent: str
+        :param GroupId: 分组ID
+        :type GroupId: str
+        :param TimeOut: 超时时间
+        :type TimeOut: int
+        :param RetryCount: 重试次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RetryCount: int
+        :param RetryInterval: 重试间隔
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RetryInterval: int
+        :param TaskRule: 触发规则
+        :type TaskRule: :class:`tencentcloud.tsf.v20180326.models.TaskRule`
+        :param TaskState: 是否启用任务,ENABLED/DISABLED
+        :type TaskState: str
+        :param TaskId: 任务ID
+        :type TaskId: str
+        :param SuccessOperator: 判断任务成功的操作符
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuccessOperator: str
+        :param SuccessRatio: 判断任务成功的阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuccessRatio: int
+        :param ShardCount: 分片数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShardCount: int
+        :param AdvanceSettings: 高级设置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdvanceSettings: :class:`tencentcloud.tsf.v20180326.models.AdvanceSettings`
+        :param ShardArguments: 分片参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShardArguments: list of ShardArgument
+        :param BelongFlowIds: 所属工作流ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BelongFlowIds: list of str
+        :param TaskLogId: 任务历史ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskLogId: str
+        :param TriggerType: 触发类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerType: str
+        :param TaskArgument: 任务参数，长度限制10000个字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskArgument: str
+        """
+        self.TaskName = None
+        self.TaskType = None
+        self.ExecuteType = None
+        self.TaskContent = None
+        self.GroupId = None
+        self.TimeOut = None
+        self.RetryCount = None
+        self.RetryInterval = None
+        self.TaskRule = None
+        self.TaskState = None
+        self.TaskId = None
+        self.SuccessOperator = None
+        self.SuccessRatio = None
+        self.ShardCount = None
+        self.AdvanceSettings = None
+        self.ShardArguments = None
+        self.BelongFlowIds = None
+        self.TaskLogId = None
+        self.TriggerType = None
+        self.TaskArgument = None
+
+
+    def _deserialize(self, params):
+        self.TaskName = params.get("TaskName")
+        self.TaskType = params.get("TaskType")
+        self.ExecuteType = params.get("ExecuteType")
+        self.TaskContent = params.get("TaskContent")
+        self.GroupId = params.get("GroupId")
+        self.TimeOut = params.get("TimeOut")
+        self.RetryCount = params.get("RetryCount")
+        self.RetryInterval = params.get("RetryInterval")
+        if params.get("TaskRule") is not None:
+            self.TaskRule = TaskRule()
+            self.TaskRule._deserialize(params.get("TaskRule"))
+        self.TaskState = params.get("TaskState")
+        self.TaskId = params.get("TaskId")
+        self.SuccessOperator = params.get("SuccessOperator")
+        self.SuccessRatio = params.get("SuccessRatio")
+        self.ShardCount = params.get("ShardCount")
+        if params.get("AdvanceSettings") is not None:
+            self.AdvanceSettings = AdvanceSettings()
+            self.AdvanceSettings._deserialize(params.get("AdvanceSettings"))
+        if params.get("ShardArguments") is not None:
+            self.ShardArguments = []
+            for item in params.get("ShardArguments"):
+                obj = ShardArgument()
+                obj._deserialize(item)
+                self.ShardArguments.append(obj)
+        self.BelongFlowIds = params.get("BelongFlowIds")
+        self.TaskLogId = params.get("TaskLogId")
+        self.TriggerType = params.get("TriggerType")
+        self.TaskArgument = params.get("TaskArgument")
 
 
 class TaskRule(AbstractModel):

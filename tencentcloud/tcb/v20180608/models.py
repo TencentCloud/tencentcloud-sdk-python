@@ -2080,6 +2080,191 @@ class DescribeCloudBaseRunServerVersionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCloudBaseRunVersionRequest(AbstractModel):
+    """DescribeCloudBaseRunVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境ID
+        :type EnvId: str
+        :param ServerName: 服务名称
+        :type ServerName: str
+        :param VersionName: 版本名称
+        :type VersionName: str
+        """
+        self.EnvId = None
+        self.ServerName = None
+        self.VersionName = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.ServerName = params.get("ServerName")
+        self.VersionName = params.get("VersionName")
+
+
+class DescribeCloudBaseRunVersionResponse(AbstractModel):
+    """DescribeCloudBaseRunVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VersionName: 版本名称
+        :type VersionName: str
+        :param Remark: 备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param DockerfilePath: Dockefile的路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DockerfilePath: str
+        :param BuildDir: DockerBuild的目录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BuildDir: str
+        :param MinNum: 副本最小值
+        :type MinNum: int
+        :param MaxNum: 副本最大值
+        :type MaxNum: int
+        :param PolicyType: 策略类型
+        :type PolicyType: str
+        :param PolicyThreshold: 策略阈值
+        :type PolicyThreshold: float
+        :param EnvParams: 环境变量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnvParams: str
+        :param CreatedTime: 创建时间
+        :type CreatedTime: str
+        :param UpdatedTime: 更新时间
+        :type UpdatedTime: str
+        :param VersionIP: 版本的IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionIP: str
+        :param VersionPort: 版本的端口号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionPort: int
+        :param Status: 版本状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param PackageName: 代码包的名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PackageName: str
+        :param PackageVersion: 代码版本的名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PackageVersion: str
+        :param UploadType: 枚举（package/repository/image)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UploadType: str
+        :param RepoType: Repo的类型(coding/gitlab/github/coding)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RepoType: str
+        :param Repo: 地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Repo: str
+        :param Branch: 分支
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Branch: str
+        :param ServerName: 服务名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServerName: str
+        :param IsPublic: 是否对于外网开放
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsPublic: bool
+        :param VpcId: vpc id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param SubnetIds: 子网实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetIds: list of str
+        :param CustomLogs: 日志采集路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomLogs: str
+        :param ContainerPort: 监听端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContainerPort: int
+        :param InitialDelaySeconds: 延迟多长时间开始健康检查（单位s）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InitialDelaySeconds: int
+        :param ImageUrl: 镜像地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageUrl: str
+        :param CpuSize: CPU 大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CpuSize: float
+        :param MemSize: MEM 大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemSize: float
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.VersionName = None
+        self.Remark = None
+        self.DockerfilePath = None
+        self.BuildDir = None
+        self.MinNum = None
+        self.MaxNum = None
+        self.PolicyType = None
+        self.PolicyThreshold = None
+        self.EnvParams = None
+        self.CreatedTime = None
+        self.UpdatedTime = None
+        self.VersionIP = None
+        self.VersionPort = None
+        self.Status = None
+        self.PackageName = None
+        self.PackageVersion = None
+        self.UploadType = None
+        self.RepoType = None
+        self.Repo = None
+        self.Branch = None
+        self.ServerName = None
+        self.IsPublic = None
+        self.VpcId = None
+        self.SubnetIds = None
+        self.CustomLogs = None
+        self.ContainerPort = None
+        self.InitialDelaySeconds = None
+        self.ImageUrl = None
+        self.CpuSize = None
+        self.MemSize = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.VersionName = params.get("VersionName")
+        self.Remark = params.get("Remark")
+        self.DockerfilePath = params.get("DockerfilePath")
+        self.BuildDir = params.get("BuildDir")
+        self.MinNum = params.get("MinNum")
+        self.MaxNum = params.get("MaxNum")
+        self.PolicyType = params.get("PolicyType")
+        self.PolicyThreshold = params.get("PolicyThreshold")
+        self.EnvParams = params.get("EnvParams")
+        self.CreatedTime = params.get("CreatedTime")
+        self.UpdatedTime = params.get("UpdatedTime")
+        self.VersionIP = params.get("VersionIP")
+        self.VersionPort = params.get("VersionPort")
+        self.Status = params.get("Status")
+        self.PackageName = params.get("PackageName")
+        self.PackageVersion = params.get("PackageVersion")
+        self.UploadType = params.get("UploadType")
+        self.RepoType = params.get("RepoType")
+        self.Repo = params.get("Repo")
+        self.Branch = params.get("Branch")
+        self.ServerName = params.get("ServerName")
+        self.IsPublic = params.get("IsPublic")
+        self.VpcId = params.get("VpcId")
+        self.SubnetIds = params.get("SubnetIds")
+        self.CustomLogs = params.get("CustomLogs")
+        self.ContainerPort = params.get("ContainerPort")
+        self.InitialDelaySeconds = params.get("InitialDelaySeconds")
+        self.ImageUrl = params.get("ImageUrl")
+        self.CpuSize = params.get("CpuSize")
+        self.MemSize = params.get("MemSize")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCloudBaseRunVersionSnapshotRequest(AbstractModel):
     """DescribeCloudBaseRunVersionSnapshot请求参数结构体
 

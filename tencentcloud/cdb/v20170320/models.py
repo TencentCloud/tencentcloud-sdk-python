@@ -1109,7 +1109,7 @@ class CreateCloneInstanceRequest(AbstractModel):
         :type SecurityGroup: list of str
         :param ResourceTags: 实例标签信息。
         :type ResourceTags: list of TagInfo
-        :param Cpu: 实例Cpu核数，需要不低于克隆源实例。
+        :param Cpu: 实例Cpu核数，需要不低于克隆源实例，默认和源实例相同。
         :type Cpu: int
         :param ProtectMode: 数据复制方式，默认为 0，支持值包括：0 - 表示异步复制，1 - 表示半同步复制，2 - 表示强同步复制。
         :type ProtectMode: int
@@ -3041,9 +3041,9 @@ class DescribeCloneListRequest(AbstractModel):
         """
         :param InstanceId: 查询指定源实例的克隆任务列表。
         :type InstanceId: str
-        :param Offset: 分页查询时的偏移量。
+        :param Offset: 分页查询时的偏移量，默认值为0。
         :type Offset: int
-        :param Limit: 分页查询时的每页条目数。
+        :param Limit: 分页查询时的每页条目数，默认值为20。
         :type Limit: int
         """
         self.InstanceId = None

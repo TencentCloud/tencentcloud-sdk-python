@@ -502,6 +502,34 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCloudBaseRunVersion(self, request):
+        """查询服务版本详情(新)
+
+        :param request: Request instance for DescribeCloudBaseRunVersion.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunVersionRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCloudBaseRunVersion", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCloudBaseRunVersionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCloudBaseRunVersionSnapshot(self, request):
         """查询版本历史
 
