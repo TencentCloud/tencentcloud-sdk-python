@@ -453,6 +453,7 @@ class AllocateAddressesRequest(AbstractModel):
         :type AddressChargePrepaid: :class:`tencentcloud.vpc.v20170312.models.AddressChargePrepaid`
         :param AddressType: EIP类型。默认值：EIP。
 <ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>AnycastEIP：加速IP，可参见 [Anycast 公网加速](https://cloud.tencent.com/document/product/644)</li></ul>注意：仅部分地域支持加速IP。</li></ul>
+<ul style="margin:0"><li>已开通精品IP白名单的用户，可选值：<ul><li>HighQualityEIP：精品IP</li></ul>注意：仅部分地域支持精品IP。</li></ul>
         :type AddressType: str
         :param AnycastZone: Anycast发布域。
 <ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>ANYCAST_ZONE_GLOBAL：全球发布域（需要额外开通Anycast全球加速白名单）</li><li>ANYCAST_ZONE_OVERSEAS：境外发布域</li><li><b>[已废弃]</b> ANYCAST_ZONE_A：发布域A（已更新为全球发布域）</li><li><b>[已废弃]</b> ANYCAST_ZONE_B：发布域B（已更新为全球发布域）</li></ul>默认值：ANYCAST_ZONE_OVERSEAS。</li></ul>
@@ -466,6 +467,8 @@ AnycastEIP是否用于绑定负载均衡。
         :type Tags: list of Tag
         :param BandwidthPackageId: BGP带宽包唯一ID参数。设定该参数且InternetChargeType为BANDWIDTH_PACKAGE，则表示创建的EIP加入该BGP带宽包并采用带宽包计费
         :type BandwidthPackageId: str
+        :param AddressName: EIP名称，用于申请EIP时用户自定义该EIP的个性化名称，默认值：未命名
+        :type AddressName: str
         """
         self.AddressCount = None
         self.InternetServiceProvider = None
@@ -477,6 +480,7 @@ AnycastEIP是否用于绑定负载均衡。
         self.ApplicableForCLB = None
         self.Tags = None
         self.BandwidthPackageId = None
+        self.AddressName = None
 
 
     def _deserialize(self, params):
@@ -497,6 +501,7 @@ AnycastEIP是否用于绑定负载均衡。
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.BandwidthPackageId = params.get("BandwidthPackageId")
+        self.AddressName = params.get("AddressName")
 
 
 class AllocateAddressesResponse(AbstractModel):

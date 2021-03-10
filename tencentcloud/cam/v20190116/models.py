@@ -1231,6 +1231,49 @@ class DescribeSafeAuthFlagResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSubAccountsRequest(AbstractModel):
+    """DescribeSubAccounts请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FilterSubAccountUin: 子用户UIN列表，最多支持50个UIN
+        :type FilterSubAccountUin: list of int non-negative
+        """
+        self.FilterSubAccountUin = None
+
+
+    def _deserialize(self, params):
+        self.FilterSubAccountUin = params.get("FilterSubAccountUin")
+
+
+class DescribeSubAccountsResponse(AbstractModel):
+    """DescribeSubAccounts返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SubAccounts: 子用户列表
+        :type SubAccounts: list of SubAccountUser
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SubAccounts = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SubAccounts") is not None:
+            self.SubAccounts = []
+            for item in params.get("SubAccounts"):
+                obj = SubAccountUser()
+                obj._deserialize(item)
+                self.SubAccounts.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DetachGroupPolicyRequest(AbstractModel):
     """DetachGroupPolicy请求参数结构体
 
@@ -3186,6 +3229,44 @@ class SubAccountInfo(AbstractModel):
         self.CountryCode = params.get("CountryCode")
         self.Email = params.get("Email")
         self.CreateTime = params.get("CreateTime")
+
+
+class SubAccountUser(AbstractModel):
+    """子用户信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Uin: 子用户用户 ID
+        :type Uin: int
+        :param Name: 子用户用户名
+        :type Name: str
+        :param Uid: 子用户 UID
+        :type Uid: int
+        :param Remark: 子用户备注
+        :type Remark: str
+        :param CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param UserType: 用户类型(1:主账号;2:子用户;3:企业微信子用户;4:协作者;5:消息接收人)
+        :type UserType: int
+        """
+        self.Uin = None
+        self.Name = None
+        self.Uid = None
+        self.Remark = None
+        self.CreateTime = None
+        self.UserType = None
+
+
+    def _deserialize(self, params):
+        self.Uin = params.get("Uin")
+        self.Name = params.get("Name")
+        self.Uid = params.get("Uid")
+        self.Remark = params.get("Remark")
+        self.CreateTime = params.get("CreateTime")
+        self.UserType = params.get("UserType")
 
 
 class UpdateAssumeRolePolicyRequest(AbstractModel):

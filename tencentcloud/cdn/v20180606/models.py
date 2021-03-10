@@ -1974,6 +1974,49 @@ class CreateEdgePackTaskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateScdnFailedLogTaskRequest(AbstractModel):
+    """CreateScdnFailedLogTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 重试失败任务的taskID
+        :type TaskId: str
+        :param Area: 地域：mainland或overseas
+        :type Area: str
+        """
+        self.TaskId = None
+        self.Area = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Area = params.get("Area")
+
+
+class CreateScdnFailedLogTaskResponse(AbstractModel):
+    """CreateScdnFailedLogTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 创建结果, 
+"0" -> 创建成功
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateScdnLogTaskRequest(AbstractModel):
     """CreateScdnLogTask请求参数结构体
 
@@ -2028,6 +2071,10 @@ DefenceMode 映射如下：
         :type AttackTypes: list of str
         :param Conditions: 查询条件
         :type Conditions: list of ScdnEventLogConditions
+        :param Source: 来源产品 cdn ecdn
+        :type Source: str
+        :param Area: 地域：mainland 或 overseas
+        :type Area: str
         """
         self.Mode = None
         self.StartTime = None
@@ -2039,6 +2086,8 @@ DefenceMode 映射如下：
         self.Domains = None
         self.AttackTypes = None
         self.Conditions = None
+        self.Source = None
+        self.Area = None
 
 
     def _deserialize(self, params):
@@ -2057,6 +2106,8 @@ DefenceMode 映射如下：
                 obj = ScdnEventLogConditions()
                 obj._deserialize(item)
                 self.Conditions.append(obj)
+        self.Source = params.get("Source")
+        self.Area = params.get("Area")
 
 
 class CreateScdnLogTaskResponse(AbstractModel):
@@ -5909,6 +5960,21 @@ class ListScdnLogTasksRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        """
+        :param Source: 产品来源 cdn/ecdn
+        :type Source: str
+        :param Area: 地域：mainland 或 overseas 为空表示查询所有地域
+        :type Area: str
+        """
+        self.Source = None
+        self.Area = None
+
+
+    def _deserialize(self, params):
+        self.Source = params.get("Source")
+        self.Area = params.get("Area")
+
 
 class ListScdnLogTasksResponse(AbstractModel):
     """ListScdnLogTasks返回参数结构体
@@ -8011,6 +8077,9 @@ class ScdnDomain(AbstractModel):
         :type AclRuleNumbers: int
         :param Bot: Bot 状态默认为‘/’，取值 close | open
         :type Bot: str
+        :param Area: 域名加速区域，取值global | mainland |  overseas
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Area: str
         """
         self.Domain = None
         self.Status = None
@@ -8021,6 +8090,7 @@ class ScdnDomain(AbstractModel):
         self.ProjectId = None
         self.AclRuleNumbers = None
         self.Bot = None
+        self.Area = None
 
 
     def _deserialize(self, params):
@@ -8033,6 +8103,7 @@ class ScdnDomain(AbstractModel):
         self.ProjectId = params.get("ProjectId")
         self.AclRuleNumbers = params.get("AclRuleNumbers")
         self.Bot = params.get("Bot")
+        self.Area = params.get("Area")
 
 
 class ScdnErrorPage(AbstractModel):
@@ -8140,6 +8211,9 @@ DefenceMode映射如下：
         :param Conditions: 查询条件
 注意：此字段可能返回 null，表示取不到有效值。
         :type Conditions: list of ScdnEventLogConditions
+        :param Area: mainland或overseas
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Area: str
         """
         self.Domain = None
         self.Mode = None
@@ -8152,6 +8226,7 @@ DefenceMode映射如下：
         self.AttackType = None
         self.DefenceMode = None
         self.Conditions = None
+        self.Area = None
 
 
     def _deserialize(self, params):
@@ -8171,6 +8246,7 @@ DefenceMode映射如下：
                 obj = ScdnEventLogConditions()
                 obj._deserialize(item)
                 self.Conditions.append(obj)
+        self.Area = params.get("Area")
 
 
 class ScdnTopData(AbstractModel):
@@ -8278,12 +8354,20 @@ class ScdnWafConfig(AbstractModel):
         :param Rules: 类型拦截规则
 注意：此字段可能返回 null，表示取不到有效值。
         :type Rules: list of ScdnWafRule
+        :param Level: waf规则等级，可取100|200|300
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Level: int
+        :param SubRuleSwitch: waf子规则开关
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubRuleSwitch: list of WafSubRuleStatus
         """
         self.Switch = None
         self.Mode = None
         self.ErrorPage = None
         self.WebShellSwitch = None
         self.Rules = None
+        self.Level = None
+        self.SubRuleSwitch = None
 
 
     def _deserialize(self, params):
@@ -8299,6 +8383,13 @@ class ScdnWafConfig(AbstractModel):
                 obj = ScdnWafRule()
                 obj._deserialize(item)
                 self.Rules.append(obj)
+        self.Level = params.get("Level")
+        if params.get("SubRuleSwitch") is not None:
+            self.SubRuleSwitch = []
+            for item in params.get("SubRuleSwitch"):
+                obj = WafSubRuleStatus()
+                obj._deserialize(item)
+                self.SubRuleSwitch.append(obj)
 
 
 class ScdnWafRule(AbstractModel):
@@ -9780,6 +9871,27 @@ complain：申诉进行中
         self.UrlStatus = params.get("UrlStatus")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+
+
+class WafSubRuleStatus(AbstractModel):
+    """门神子规则开关状态
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 子规则状态，on|off
+        :type Switch: str
+        :param SubIds: 规则id列表
+        :type SubIds: list of int
+        """
+        self.Switch = None
+        self.SubIds = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.SubIds = params.get("SubIds")
 
 
 class WebpAdapter(AbstractModel):

@@ -138,6 +138,34 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateScdnFailedLogTask(self, request):
+        """CreateScdnFailedLogTask 用于重试创建失败的事件日志任务
+
+        :param request: Request instance for CreateScdnFailedLogTask.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.CreateScdnFailedLogTaskRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.CreateScdnFailedLogTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateScdnFailedLogTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateScdnFailedLogTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateScdnLogTask(self, request):
         """CreateScdnLogTask 用于创建事件日志任务
 

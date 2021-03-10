@@ -251,7 +251,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeCommonDBInstances(self, request):
-        """查询Redis实例列表信息
+        """查询Redis实例列表信息。该接口已废弃。
 
         :param request: Request instance for DescribeCommonDBInstances.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeCommonDBInstancesRequest`

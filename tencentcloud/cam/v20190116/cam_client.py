@@ -698,6 +698,34 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeSubAccounts(self, request):
+        """通过子用户UIN列表查询子用户
+
+        :param request: Request instance for DescribeSubAccounts.
+        :type request: :class:`tencentcloud.cam.v20190116.models.DescribeSubAccountsRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.DescribeSubAccountsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSubAccounts", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSubAccountsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DetachGroupPolicy(self, request):
         """本接口（DetachGroupPolicy）可用于解除绑定到用户组的策略。
 
