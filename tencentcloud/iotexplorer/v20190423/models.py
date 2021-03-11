@@ -2326,12 +2326,16 @@ class ProductModelDefinition(AbstractModel):
         :param CategoryModel: 产品所属分类的模型快照（产品创建时刻的）
 注意：此字段可能返回 null，表示取不到有效值。
         :type CategoryModel: str
+        :param NetTypeModel: 产品的连接类型的模型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetTypeModel: str
         """
         self.ProductId = None
         self.ModelDefine = None
         self.UpdateTime = None
         self.CreateTime = None
         self.CategoryModel = None
+        self.NetTypeModel = None
 
 
     def _deserialize(self, params):
@@ -2340,6 +2344,7 @@ class ProductModelDefinition(AbstractModel):
         self.UpdateTime = params.get("UpdateTime")
         self.CreateTime = params.get("CreateTime")
         self.CategoryModel = params.get("CategoryModel")
+        self.NetTypeModel = params.get("NetTypeModel")
 
 
 class ProjectEntry(AbstractModel):
