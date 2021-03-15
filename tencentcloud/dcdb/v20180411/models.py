@@ -2466,6 +2466,52 @@ class InitDCDBInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class KillSessionRequest(AbstractModel):
+    """KillSession请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param SessionId: 会话ID列表
+        :type SessionId: list of int
+        :param ShardId: 分片ID
+        :type ShardId: str
+        """
+        self.InstanceId = None
+        self.SessionId = None
+        self.ShardId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.SessionId = params.get("SessionId")
+        self.ShardId = params.get("ShardId")
+
+
+class KillSessionResponse(AbstractModel):
+    """KillSession返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class LogFileInfo(AbstractModel):
     """拉取的日志信息
 

@@ -92,6 +92,9 @@ class AlarmHistory(AbstractModel):
         :type Region: str
         :param PolicyExists: 策略是否存在 0=不存在 1=存在
         :type PolicyExists: int
+        :param MetricsInfo: 指标信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricsInfo: list of AlarmHistoryMetric
         """
         self.AlarmId = None
         self.MonitorType = None
@@ -115,6 +118,7 @@ class AlarmHistory(AbstractModel):
         self.EventId = None
         self.Region = None
         self.PolicyExists = None
+        self.MetricsInfo = None
 
 
     def _deserialize(self, params):
@@ -145,6 +149,45 @@ class AlarmHistory(AbstractModel):
         self.EventId = params.get("EventId")
         self.Region = params.get("Region")
         self.PolicyExists = params.get("PolicyExists")
+        if params.get("MetricsInfo") is not None:
+            self.MetricsInfo = []
+            for item in params.get("MetricsInfo"):
+                obj = AlarmHistoryMetric()
+                obj._deserialize(item)
+                self.MetricsInfo.append(obj)
+
+
+class AlarmHistoryMetric(AbstractModel):
+    """告警历史的指标信息
+
+    """
+
+    def __init__(self):
+        """
+        :param QceNamespace: 云产品监控类型查询数据使用的命名空间
+        :type QceNamespace: str
+        :param MetricName: 指标名
+        :type MetricName: str
+        :param Period: 统计周期
+        :type Period: int
+        :param Value: 触发告警的数值
+        :type Value: str
+        :param Description: 指标的展示名
+        :type Description: str
+        """
+        self.QceNamespace = None
+        self.MetricName = None
+        self.Period = None
+        self.Value = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.QceNamespace = params.get("QceNamespace")
+        self.MetricName = params.get("MetricName")
+        self.Period = params.get("Period")
+        self.Value = params.get("Value")
+        self.Description = params.get("Description")
 
 
 class AlarmNotice(AbstractModel):

@@ -2463,6 +2463,48 @@ class InstanceSpec(AbstractModel):
                 self.SpecInfos.append(obj)
 
 
+class KillSessionRequest(AbstractModel):
+    """KillSession请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param SessionId: 会话ID列表
+        :type SessionId: list of int
+        """
+        self.InstanceId = None
+        self.SessionId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.SessionId = params.get("SessionId")
+
+
+class KillSessionResponse(AbstractModel):
+    """KillSession返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class LogFileInfo(AbstractModel):
     """拉取的日志信息
 

@@ -2781,6 +2781,48 @@ class Limit(AbstractModel):
         self.Value = params.get("Value")
 
 
+class ManageExternalEndpointRequest(AbstractModel):
+    """ManageExternalEndpoint请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param Operation: 操作（Create/Delete）
+        :type Operation: str
+        """
+        self.RegistryId = None
+        self.Operation = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.Operation = params.get("Operation")
+
+
+class ManageExternalEndpointResponse(AbstractModel):
+    """ManageExternalEndpoint返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RegistryId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.RequestId = params.get("RequestId")
+
+
 class ManageImageLifecycleGlobalPersonalRequest(AbstractModel):
     """ManageImageLifecycleGlobalPersonal请求参数结构体
 

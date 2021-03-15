@@ -1510,6 +1510,34 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ManageExternalEndpoint(self, request):
+        """管理实例公网访问
+
+        :param request: Request instance for ManageExternalEndpoint.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.ManageExternalEndpointRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.ManageExternalEndpointResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ManageExternalEndpoint", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ManageExternalEndpointResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ManageImageLifecycleGlobalPersonal(self, request):
         """用于设置个人版全局镜像版本自动清理策略
 

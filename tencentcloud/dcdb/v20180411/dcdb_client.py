@@ -926,6 +926,34 @@ class DcdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def KillSession(self, request):
+        """本接口（KillSession）用于杀死指定会话。
+
+        :param request: Request instance for KillSession.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.KillSessionRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.KillSessionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("KillSession", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.KillSessionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyAccountDescription(self, request):
         """本接口（ModifyAccountDescription）用于修改云数据库账号备注。
         注意：相同用户名，不同Host是不同的账号。
