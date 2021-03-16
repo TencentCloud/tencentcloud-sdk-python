@@ -560,7 +560,13 @@ class Invocation(AbstractModel):
         :type InvocationId: str
         :param CommandId: 命令ID。
         :type CommandId: str
-        :param InvocationStatus: 执行活动状态。
+        :param InvocationStatus: 执行任务状态。取值范围：
+<li> PENDING：等待下发 
+<li> RUNNING：命令运行中
+<li> SUCCESS：命令成功
+<li> FAILED：命令失败
+<li> TIMEOUT：命令超时
+<li> PARTIAL_FAILED：命令部分失败
         :type InvocationStatus: str
         :param InvocationTaskBasicInfoSet: 执行任务信息列表。
         :type InvocationTaskBasicInfoSet: list of InvocationTaskBasicInfo

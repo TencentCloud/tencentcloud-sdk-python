@@ -117,6 +117,32 @@ class AsyncEvent(AbstractModel):
         self.EndTime = params.get("EndTime")
 
 
+class AsyncTriggerConfig(AbstractModel):
+    """函数的异步重试配置详情
+
+    """
+
+    def __init__(self):
+        """
+        :param RetryConfig: 用户错误的异步重试重试配置
+        :type RetryConfig: list of RetryConfig
+        :param MsgTTL: 消息保留时间
+        :type MsgTTL: int
+        """
+        self.RetryConfig = None
+        self.MsgTTL = None
+
+
+    def _deserialize(self, params):
+        if params.get("RetryConfig") is not None:
+            self.RetryConfig = []
+            for item in params.get("RetryConfig"):
+                obj = RetryConfig()
+                obj._deserialize(item)
+                self.RetryConfig.append(obj)
+        self.MsgTTL = params.get("MsgTTL")
+
+
 class CfsConfig(AbstractModel):
     """文件系统(cfs)配置描述
 
@@ -1379,6 +1405,54 @@ class GetFunctionAddressResponse(AbstractModel):
     def _deserialize(self, params):
         self.Url = params.get("Url")
         self.CodeSha256 = params.get("CodeSha256")
+        self.RequestId = params.get("RequestId")
+
+
+class GetFunctionEventInvokeConfigRequest(AbstractModel):
+    """GetFunctionEventInvokeConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FunctionName: 函数名称
+        :type FunctionName: str
+        :param Namespace: 函数所属命名空间，默认为default
+        :type Namespace: str
+        :param Qualifier: 函数版本，默认为$LATEST
+        :type Qualifier: str
+        """
+        self.FunctionName = None
+        self.Namespace = None
+        self.Qualifier = None
+
+
+    def _deserialize(self, params):
+        self.FunctionName = params.get("FunctionName")
+        self.Namespace = params.get("Namespace")
+        self.Qualifier = params.get("Qualifier")
+
+
+class GetFunctionEventInvokeConfigResponse(AbstractModel):
+    """GetFunctionEventInvokeConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncTriggerConfig: 异步重试配置信息
+        :type AsyncTriggerConfig: :class:`tencentcloud.scf.v20180416.models.AsyncTriggerConfig`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AsyncTriggerConfig = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AsyncTriggerConfig") is not None:
+            self.AsyncTriggerConfig = AsyncTriggerConfig()
+            self.AsyncTriggerConfig._deserialize(params.get("AsyncTriggerConfig"))
         self.RequestId = params.get("RequestId")
 
 
@@ -3132,6 +3206,23 @@ class Result(AbstractModel):
         self.InvokeResult = params.get("InvokeResult")
 
 
+class RetryConfig(AbstractModel):
+    """异步重试配置
+
+    """
+
+    def __init__(self):
+        """
+        :param RetryNum: 重试次数
+        :type RetryNum: int
+        """
+        self.RetryNum = None
+
+
+    def _deserialize(self, params):
+        self.RetryNum = params.get("RetryNum")
+
+
 class RoutingConfig(AbstractModel):
     """别名的版本路由配置
 
@@ -3682,6 +3773,50 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
 class UpdateFunctionConfigurationResponse(AbstractModel):
     """UpdateFunctionConfiguration返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateFunctionEventInvokeConfigRequest(AbstractModel):
+    """UpdateFunctionEventInvokeConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncTriggerConfig: 异步重试配置信息
+        :type AsyncTriggerConfig: :class:`tencentcloud.scf.v20180416.models.AsyncTriggerConfig`
+        :param FunctionName: 函数名称
+        :type FunctionName: str
+        :param Namespace: 函数所属命名空间，默认为default
+        :type Namespace: str
+        """
+        self.AsyncTriggerConfig = None
+        self.FunctionName = None
+        self.Namespace = None
+
+
+    def _deserialize(self, params):
+        if params.get("AsyncTriggerConfig") is not None:
+            self.AsyncTriggerConfig = AsyncTriggerConfig()
+            self.AsyncTriggerConfig._deserialize(params.get("AsyncTriggerConfig"))
+        self.FunctionName = params.get("FunctionName")
+        self.Namespace = params.get("Namespace")
+
+
+class UpdateFunctionEventInvokeConfigResponse(AbstractModel):
+    """UpdateFunctionEventInvokeConfig返回参数结构体
 
     """
 

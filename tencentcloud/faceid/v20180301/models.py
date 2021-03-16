@@ -99,12 +99,15 @@ class BankCard4EVerificationRequest(AbstractModel):
         :param CertType: 证件类型，请确认该证件为开户时使用的证件类型，未用于开户的证件信息不支持验证。
 目前默认为0：身份证，其他证件类型暂不支持。
         :type CertType: int
+        :param Encryption: 敏感数据加密信息。对传入信息（姓名、身份证号、手机号、银行卡号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         self.Name = None
         self.BankCard = None
         self.Phone = None
         self.IdCard = None
         self.CertType = None
+        self.Encryption = None
 
 
     def _deserialize(self, params):
@@ -113,6 +116,9 @@ class BankCard4EVerificationRequest(AbstractModel):
         self.Phone = params.get("Phone")
         self.IdCard = params.get("IdCard")
         self.CertType = params.get("CertType")
+        if params.get("Encryption") is not None:
+            self.Encryption = Encryption()
+            self.Encryption._deserialize(params.get("Encryption"))
 
 
 class BankCard4EVerificationResponse(AbstractModel):
@@ -177,11 +183,14 @@ class BankCardVerificationRequest(AbstractModel):
         :param CertType: 证件类型，请确认该证件为开户时使用的证件类型，未用于开户的证件信息不支持验证。
 目前默认：0 身份证，其他证件类型需求可以联系小助手faceid001确认。
         :type CertType: int
+        :param Encryption: 敏感数据加密信息。对传入信息（姓名、身份证号、银行卡号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         self.IdCard = None
         self.Name = None
         self.BankCard = None
         self.CertType = None
+        self.Encryption = None
 
 
     def _deserialize(self, params):
@@ -189,6 +198,9 @@ class BankCardVerificationRequest(AbstractModel):
         self.Name = params.get("Name")
         self.BankCard = params.get("BankCard")
         self.CertType = params.get("CertType")
+        if params.get("Encryption") is not None:
+            self.Encryption = Encryption()
+            self.Encryption._deserialize(params.get("Encryption"))
 
 
 class BankCardVerificationResponse(AbstractModel):
@@ -486,6 +498,8 @@ class DetectAuthRequest(AbstractModel):
         :param ImageBase64: 用于人脸比对的照片，图片的Base64值；
 Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
         :type ImageBase64: str
+        :param Encryption: 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         self.RuleId = None
         self.TerminalType = None
@@ -494,6 +508,7 @@ Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。请
         self.RedirectUrl = None
         self.Extra = None
         self.ImageBase64 = None
+        self.Encryption = None
 
 
     def _deserialize(self, params):
@@ -504,6 +519,9 @@ Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。请
         self.RedirectUrl = params.get("RedirectUrl")
         self.Extra = params.get("Extra")
         self.ImageBase64 = params.get("ImageBase64")
+        if params.get("Encryption") is not None:
+            self.Encryption = Encryption()
+            self.Encryption._deserialize(params.get("Encryption"))
 
 
 class DetectAuthResponse(AbstractModel):

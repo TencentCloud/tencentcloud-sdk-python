@@ -481,6 +481,34 @@ class ScfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetFunctionEventInvokeConfig(self, request):
+        """获取函数异步重试配置，包括重试次数和消息保留时间
+
+        :param request: Request instance for GetFunctionEventInvokeConfig.
+        :type request: :class:`tencentcloud.scf.v20180416.models.GetFunctionEventInvokeConfigRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.GetFunctionEventInvokeConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetFunctionEventInvokeConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetFunctionEventInvokeConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetFunctionLogs(self, request):
         """该接口根据指定的日志查询条件返回函数运行日志。
 
@@ -1083,6 +1111,34 @@ class ScfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateFunctionConfigurationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateFunctionEventInvokeConfig(self, request):
+        """更新函数的异步重试配置，包括重试次数和消息保留时间
+
+        :param request: Request instance for UpdateFunctionEventInvokeConfig.
+        :type request: :class:`tencentcloud.scf.v20180416.models.UpdateFunctionEventInvokeConfigRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.UpdateFunctionEventInvokeConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateFunctionEventInvokeConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateFunctionEventInvokeConfigResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -82,6 +82,34 @@ class IotvideoClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateCloudStorage(self, request):
+        """开通云存服务
+
+        :param request: Request instance for CreateCloudStorage.
+        :type request: :class:`tencentcloud.iotvideo.v20201215.models.CreateCloudStorageRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20201215.models.CreateCloudStorageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateCloudStorage", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateCloudStorageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateForwardRule(self, request):
         """创建转发规则
 
@@ -292,6 +320,146 @@ class IotvideoClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCategoryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCloudStorage(self, request):
+        """获取设备云存服务详情
+
+        :param request: Request instance for DescribeCloudStorage.
+        :type request: :class:`tencentcloud.iotvideo.v20201215.models.DescribeCloudStorageRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20201215.models.DescribeCloudStorageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCloudStorage", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCloudStorageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCloudStorageDate(self, request):
+        """获取具有云存的日期
+
+        :param request: Request instance for DescribeCloudStorageDate.
+        :type request: :class:`tencentcloud.iotvideo.v20201215.models.DescribeCloudStorageDateRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20201215.models.DescribeCloudStorageDateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCloudStorageDate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCloudStorageDateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCloudStorageEvents(self, request):
+        """拉取云存事件列表
+
+        :param request: Request instance for DescribeCloudStorageEvents.
+        :type request: :class:`tencentcloud.iotvideo.v20201215.models.DescribeCloudStorageEventsRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20201215.models.DescribeCloudStorageEventsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCloudStorageEvents", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCloudStorageEventsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCloudStorageThumbnail(self, request):
+        """拉取云存事件缩略图
+
+        :param request: Request instance for DescribeCloudStorageThumbnail.
+        :type request: :class:`tencentcloud.iotvideo.v20201215.models.DescribeCloudStorageThumbnailRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20201215.models.DescribeCloudStorageThumbnailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCloudStorageThumbnail", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCloudStorageThumbnailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCloudStorageTime(self, request):
+        """获取某一天云存时间轴
+
+        :param request: Request instance for DescribeCloudStorageTime.
+        :type request: :class:`tencentcloud.iotvideo.v20201215.models.DescribeCloudStorageTimeRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20201215.models.DescribeCloudStorageTimeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCloudStorageTime", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCloudStorageTimeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

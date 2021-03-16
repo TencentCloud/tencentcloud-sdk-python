@@ -129,6 +129,82 @@ class CheckForwardAuthResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CloudStorageEvent(AbstractModel):
+    """云存事件
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 事件起始时间（Unix 时间戳，秒级
+        :type StartTime: int
+        :param EndTime: 事件结束时间（Unix 时间戳，秒级
+        :type EndTime: int
+        :param Thumbnail: 事件缩略图
+        :type Thumbnail: str
+        :param EventId: 事件ID
+        :type EventId: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.Thumbnail = None
+        self.EventId = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Thumbnail = params.get("Thumbnail")
+        self.EventId = params.get("EventId")
+
+
+class CloudStorageTimeData(AbstractModel):
+    """云存时间轴接口返回数据
+
+    """
+
+    def __init__(self):
+        """
+        :param TimeList: 云存时间轴信息列表
+        :type TimeList: list of CloudStorageTimeInfo
+        :param VideoURL: 播放地址
+        :type VideoURL: str
+        """
+        self.TimeList = None
+        self.VideoURL = None
+
+
+    def _deserialize(self, params):
+        if params.get("TimeList") is not None:
+            self.TimeList = []
+            for item in params.get("TimeList"):
+                obj = CloudStorageTimeInfo()
+                obj._deserialize(item)
+                self.TimeList.append(obj)
+        self.VideoURL = params.get("VideoURL")
+
+
+class CloudStorageTimeInfo(AbstractModel):
+    """云存时间轴信息
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 开始时间
+        :type StartTime: int
+        :param EndTime: 结束时间
+        :type EndTime: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+
+
 class CreateBatchRequest(AbstractModel):
     """CreateBatch请求参数结构体
 
@@ -172,6 +248,48 @@ class CreateBatchResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.BatchId = params.get("BatchId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateCloudStorageRequest(AbstractModel):
+    """CreateCloudStorage请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        :param PackageId: 云存套餐ID
+        :type PackageId: str
+        """
+        self.ProductId = None
+        self.DeviceName = None
+        self.PackageId = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+        self.PackageId = params.get("PackageId")
+
+
+class CreateCloudStorageResponse(AbstractModel):
+    """CreateCloudStorage返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -634,6 +752,275 @@ class DescribeCategoryResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Data") is not None:
             self.Data = ProductTemplate()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCloudStorageDateRequest(AbstractModel):
+    """DescribeCloudStorageDate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        """
+        self.ProductId = None
+        self.DeviceName = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+
+
+class DescribeCloudStorageDateResponse(AbstractModel):
+    """DescribeCloudStorageDate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 云存日期数组，["2021-01-05","2021-01-06"]
+        :type Data: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Data = params.get("Data")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCloudStorageEventsRequest(AbstractModel):
+    """DescribeCloudStorageEvents请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        :param StartTime: 起始时间（Unix 时间戳，秒级）, 为0 表示 当前时间 - 24h
+        :type StartTime: int
+        :param EndTime: 结束时间（Unix 时间戳，秒级）, 为0 表示当前时间
+        :type EndTime: int
+        :param Context: 请求上下文, 用作查询游标
+        :type Context: str
+        :param Size: 单次获取的历史数据项目的最大数量, 缺省10
+        :type Size: int
+        :param EventId: 事件标识符，可以用来指定查询特定的事件，如果不指定，则查询所有事件。
+        :type EventId: str
+        """
+        self.ProductId = None
+        self.DeviceName = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Context = None
+        self.Size = None
+        self.EventId = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Context = params.get("Context")
+        self.Size = params.get("Size")
+        self.EventId = params.get("EventId")
+
+
+class DescribeCloudStorageEventsResponse(AbstractModel):
+    """DescribeCloudStorageEvents返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Events: 云存事件列表
+        :type Events: list of CloudStorageEvent
+        :param Context: 请求上下文, 用作查询游标
+        :type Context: str
+        :param Listover: 拉取结果是否已经结束
+        :type Listover: bool
+        :param Total: 拉取结果数量
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Events = None
+        self.Context = None
+        self.Listover = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Events") is not None:
+            self.Events = []
+            for item in params.get("Events"):
+                obj = CloudStorageEvent()
+                obj._deserialize(item)
+                self.Events.append(obj)
+        self.Context = params.get("Context")
+        self.Listover = params.get("Listover")
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCloudStorageRequest(AbstractModel):
+    """DescribeCloudStorage请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        """
+        self.ProductId = None
+        self.DeviceName = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+
+
+class DescribeCloudStorageResponse(AbstractModel):
+    """DescribeCloudStorage返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 云存开启状态，1为开启，0为未开启或已过期
+        :type Status: int
+        :param Type: 云存类型，1为全时云存，2为事件云存
+        :type Type: int
+        :param ExpireTime: 云存套餐过期时间
+        :type ExpireTime: int
+        :param ShiftDuration: 云存回看时长
+        :type ShiftDuration: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.Type = None
+        self.ExpireTime = None
+        self.ShiftDuration = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.Type = params.get("Type")
+        self.ExpireTime = params.get("ExpireTime")
+        self.ShiftDuration = params.get("ShiftDuration")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCloudStorageThumbnailRequest(AbstractModel):
+    """DescribeCloudStorageThumbnail请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        :param Thumbnail: 缩略图文件名
+        :type Thumbnail: str
+        """
+        self.ProductId = None
+        self.DeviceName = None
+        self.Thumbnail = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+        self.Thumbnail = params.get("Thumbnail")
+
+
+class DescribeCloudStorageThumbnailResponse(AbstractModel):
+    """DescribeCloudStorageThumbnail返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ThumbnailURL: 缩略图访问地址
+        :type ThumbnailURL: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ThumbnailURL = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ThumbnailURL = params.get("ThumbnailURL")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCloudStorageTimeRequest(AbstractModel):
+    """DescribeCloudStorageTime请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        :param Date: 云存日期，例如"2020-01-05"
+        :type Date: str
+        """
+        self.ProductId = None
+        self.DeviceName = None
+        self.Date = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+        self.Date = params.get("Date")
+
+
+class DescribeCloudStorageTimeResponse(AbstractModel):
+    """DescribeCloudStorageTime返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 接口返回数据
+        :type Data: :class:`tencentcloud.iotvideo.v20201215.models.CloudStorageTimeData`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = CloudStorageTimeData()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
 

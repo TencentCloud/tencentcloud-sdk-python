@@ -3742,6 +3742,66 @@ class DescribeReverseShellRulesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeRiskDnsListRequest(AbstractModel):
+    """DescribeRiskDnsList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Filters: 过滤条件。
+<li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
+<li>Url - String - 是否必填：否 - Url筛选</li>
+<li>Status - String - 是否必填：否 - 状态筛选0:待处理；2:信任；3:不信任</li>
+<li>MergeBeginTime - String - 是否必填：否 - 最近访问开始时间</li>
+<li>MergeEndTime - String - 是否必填：否 - 最近访问结束时间</li>
+        :type Filters: list of Filter
+        :param Order: 排序方式
+        :type Order: str
+        :param By: 排序字段
+        :type By: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+        self.Order = None
+        self.By = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+
+
+class DescribeRiskDnsListResponse(AbstractModel):
+    """DescribeRiskDnsList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeScanMalwareScheduleRequest(AbstractModel):
     """DescribeScanMalwareSchedule请求参数结构体
 
@@ -4111,14 +4171,29 @@ class DescribeTagsRequest(AbstractModel):
         :type MachineType: str
         :param MachineRegion: 机器所属地域。如：ap-guangzhou，ap-shanghai
         :type MachineRegion: str
+        :param Filters: 过滤条件。
+<li>Keywords - String - 是否必填：否 - 查询关键字(机器名称/机器IP </li>
+<li>Status - String - 是否必填：否 - 客户端在线状态（OFFLINE: 离线 | ONLINE: 在线 | UNINSTALLED：未安装 | SHUTDOWN 已关机）</li>
+<li>Version - String  是否必填：否 - 当前防护版本（ PRO_VERSION：专业版 | BASIC_VERSION：基础版）</li>
+<li>Risk - String 是否必填: 否 - 风险主机( yes ) </li>
+<li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )
+每个过滤条件只支持一个值，暂不支持多个值“或”关系查询
+        :type Filters: list of Filters
         """
         self.MachineType = None
         self.MachineRegion = None
+        self.Filters = None
 
 
     def _deserialize(self, params):
         self.MachineType = params.get("MachineType")
         self.MachineRegion = params.get("MachineRegion")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
 
 
 class DescribeTagsResponse(AbstractModel):
@@ -4744,9 +4819,9 @@ class EditBashRuleRequest(AbstractModel):
         :type Rule: str
         :param Id: 规则ID(新增时不填)
         :type Id: int
-        :param Uuid: 客户端ID(IsGlobal为1时，Uuid或Hostip必填一个)
+        :param Uuid: 客户端ID(IsGlobal为0时，Uuid或Hostip必填一个)
         :type Uuid: str
-        :param Hostip: 主机IP(IsGlobal为1时，Uuid或Hostip必填一个)
+        :param Hostip: 主机IP(IsGlobal为0时，Uuid或Hostip必填一个)
         :type Hostip: str
         :param IsGlobal: 是否全局规则(默认否)
         :type IsGlobal: int
@@ -7535,6 +7610,72 @@ class UntrustMalwaresRequest(AbstractModel):
 
 class UntrustMalwaresResponse(AbstractModel):
     """UntrustMalwares返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateBaselineStrategyRequest(AbstractModel):
+    """UpdateBaselineStrategy请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StrategyId: 策略id
+        :type StrategyId: int
+        :param StrategyName: 策略名称
+        :type StrategyName: str
+        :param ScanCycle: 检测周期
+        :type ScanCycle: int
+        :param ScanAt: 定期检测时间，该时间下发扫描
+        :type ScanAt: str
+        :param CategoryIds: 该策略下选择的基线id数组
+        :type CategoryIds: list of str
+        :param IsGlobal: 扫描范围是否全部服务器, 1:是  0:否, 为1则为全部专业版主机
+        :type IsGlobal: int
+        :param MachineType: 云主机类型：cvm：虚拟主机，bms：裸金属，ecm：边缘计算主机
+        :type MachineType: str
+        :param RegionCode: 主机地域
+        :type RegionCode: str
+        :param Quuids: 主机id数组
+        :type Quuids: list of str
+        """
+        self.StrategyId = None
+        self.StrategyName = None
+        self.ScanCycle = None
+        self.ScanAt = None
+        self.CategoryIds = None
+        self.IsGlobal = None
+        self.MachineType = None
+        self.RegionCode = None
+        self.Quuids = None
+
+
+    def _deserialize(self, params):
+        self.StrategyId = params.get("StrategyId")
+        self.StrategyName = params.get("StrategyName")
+        self.ScanCycle = params.get("ScanCycle")
+        self.ScanAt = params.get("ScanAt")
+        self.CategoryIds = params.get("CategoryIds")
+        self.IsGlobal = params.get("IsGlobal")
+        self.MachineType = params.get("MachineType")
+        self.RegionCode = params.get("RegionCode")
+        self.Quuids = params.get("Quuids")
+
+
+class UpdateBaselineStrategyResponse(AbstractModel):
+    """UpdateBaselineStrategy返回参数结构体
 
     """
 

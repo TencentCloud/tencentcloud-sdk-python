@@ -1270,17 +1270,22 @@ class CreateCloudBaseRunServerVersionResponse(AbstractModel):
         :param VersionName: 版本名称（只有Result为succ的时候，才会返回VersionName)
 注意：此字段可能返回 null，表示取不到有效值。
         :type VersionName: str
+        :param RunId: 操作记录id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Result = None
         self.VersionName = None
+        self.RunId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.VersionName = params.get("VersionName")
+        self.RunId = params.get("RunId")
         self.RequestId = params.get("RequestId")
 
 

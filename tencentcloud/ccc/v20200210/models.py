@@ -1155,6 +1155,9 @@ notInService       不在服务区
         :param QueuedSkillGroupId: 排队技能组Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type QueuedSkillGroupId: int
+        :param SessionId: 会话 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionId: str
         """
         self.Caller = None
         self.Callee = None
@@ -1179,6 +1182,7 @@ notInService       不在服务区
         self.QueuedTimestamp = None
         self.PostIVRKeyPressed = None
         self.QueuedSkillGroupId = None
+        self.SessionId = None
 
 
     def _deserialize(self, params):
@@ -1217,3 +1221,4 @@ notInService       不在服务区
                 obj._deserialize(item)
                 self.PostIVRKeyPressed.append(obj)
         self.QueuedSkillGroupId = params.get("QueuedSkillGroupId")
+        self.SessionId = params.get("SessionId")

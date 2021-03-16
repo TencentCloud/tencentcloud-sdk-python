@@ -1391,6 +1391,49 @@ class DescribeApplicationTriggerPersonalResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeExternalEndpointStatusRequest(AbstractModel):
+    """DescribeExternalEndpointStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        """
+        self.RegistryId = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+
+
+class DescribeExternalEndpointStatusResponse(AbstractModel):
+    """DescribeExternalEndpointStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 开启公网访问状态，包括开启中，开启成功以及关闭和更新失败等
+        :type Status: str
+        :param Reason: 原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Reason: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.Reason = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.Reason = params.get("Reason")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeFavorRepositoryPersonalRequest(AbstractModel):
     """DescribeFavorRepositoryPersonal请求参数结构体
 

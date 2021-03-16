@@ -2884,6 +2884,8 @@ class DescribeExistedInstancesRequest(AbstractModel):
         :type Offset: int
         :param Limit: 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
         :type Limit: int
+        :param IpAddresses: 根据多个实例IP进行过滤
+        :type IpAddresses: list of str
         """
         self.ClusterId = None
         self.InstanceIds = None
@@ -2892,6 +2894,7 @@ class DescribeExistedInstancesRequest(AbstractModel):
         self.VagueInstanceName = None
         self.Offset = None
         self.Limit = None
+        self.IpAddresses = None
 
 
     def _deserialize(self, params):
@@ -2907,6 +2910,7 @@ class DescribeExistedInstancesRequest(AbstractModel):
         self.VagueInstanceName = params.get("VagueInstanceName")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.IpAddresses = params.get("IpAddresses")
 
 
 class DescribeExistedInstancesResponse(AbstractModel):
@@ -4914,16 +4918,36 @@ class PrometheusAlertHistoryItem(AbstractModel):
         :type StartTime: str
         :param Content: 告警内容
         :type Content: str
+        :param State: 告警状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type State: str
+        :param RuleItem: 触发的规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleItem: str
+        :param TopicId: 告警渠道的id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicId: str
+        :param TopicName: 告警渠道的名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicName: str
         """
         self.RuleName = None
         self.StartTime = None
         self.Content = None
+        self.State = None
+        self.RuleItem = None
+        self.TopicId = None
+        self.TopicName = None
 
 
     def _deserialize(self, params):
         self.RuleName = params.get("RuleName")
         self.StartTime = params.get("StartTime")
         self.Content = params.get("Content")
+        self.State = params.get("State")
+        self.RuleItem = params.get("RuleItem")
+        self.TopicId = params.get("TopicId")
+        self.TopicName = params.get("TopicName")
 
 
 class PrometheusAlertRule(AbstractModel):

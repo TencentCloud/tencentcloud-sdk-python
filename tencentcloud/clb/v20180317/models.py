@@ -1079,7 +1079,7 @@ class CreateLoadBalancerRequest(AbstractModel):
         :param LoadBalancerType: 负载均衡实例的网络类型：
 OPEN：公网属性， INTERNAL：内网属性。
         :type LoadBalancerType: str
-        :param Forward: 负载均衡实例的类型。1：通用的负载均衡实例，目前只支持传入1
+        :param Forward: 负载均衡实例的类型。1：通用的负载均衡实例，目前只支持传入1。
         :type Forward: int
         :param LoadBalancerName: 负载均衡实例的名称，只在创建一个实例的时候才会生效。规则：1-60 个英文、汉字、数字、连接线“-”或下划线“_”。
 注意：如果名称与系统中已有负载均衡实例的名称相同，则系统将会自动生成此次创建的负载均衡实例的名称。
@@ -1097,19 +1097,19 @@ OPEN：公网属性， INTERNAL：内网属性。
         :param MasterZoneId: 仅适用于公网负载均衡。设置跨可用区容灾时的主可用区ID，例如 100001 或 ap-guangzhou-1
 注：主可用区是需要承载流量的可用区，备可用区默认不承载流量，主可用区不可用时才使用备可用区，平台将为您自动选择最佳备可用区。可通过 DescribeMasterZones 接口查询一个地域的主可用区的列表。
         :type MasterZoneId: str
-        :param ZoneId: 仅适用于公网负载均衡。可用区ID，指定可用区以创建负载均衡实例。如：ap-guangzhou-1
+        :param ZoneId: 仅适用于公网负载均衡。可用区ID，指定可用区以创建负载均衡实例。如：ap-guangzhou-1。
         :type ZoneId: str
         :param InternetAccessible: 仅适用于公网负载均衡。负载均衡的网络计费模式。
         :type InternetAccessible: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
         :param VipIsp: 仅适用于公网负载均衡。CMCC | CTCC | CUCC，分别对应 移动 | 电信 | 联通，如果不指定本参数，则默认使用BGP。可通过 DescribeSingleIsp 接口查询一个地域所支持的Isp。如果指定运营商，则网络计费式只能使用按带宽包计费(BANDWIDTH_PACKAGE)。
         :type VipIsp: str
-        :param Tags: 购买负载均衡同时，给负载均衡打上标签
+        :param Tags: 购买负载均衡同时，给负载均衡打上标签。
         :type Tags: list of TagInfo
-        :param Vip: 指定Vip申请负载均衡
+        :param Vip: 指定Vip申请负载均衡。
         :type Vip: str
-        :param BandwidthPackageId: 带宽包ID，指定此参数时，网络计费方式（InternetAccessible.InternetChargeType）只支持按带宽包计费（BANDWIDTH_PACKAGE）
+        :param BandwidthPackageId: 带宽包ID，指定此参数时，网络计费方式（InternetAccessible.InternetChargeType）只支持按带宽包计费（BANDWIDTH_PACKAGE）。
         :type BandwidthPackageId: str
-        :param ExclusiveCluster: 独占集群信息
+        :param ExclusiveCluster: 独占集群信息。
         :type ExclusiveCluster: :class:`tencentcloud.clb.v20180317.models.ExclusiveCluster`
         :param ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
         :type ClientToken: str
@@ -1119,7 +1119,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         :type SnatIps: list of SnatIp
         :param ClusterTag: Stgw独占集群的标签。
         :type ClusterTag: str
-        :param EipAddressId: EIP 的唯一 ID，形如：eip-11112222，仅适用于内网负载均衡绑定EIP
+        :param EipAddressId: EIP 的唯一 ID，形如：eip-11112222，仅适用于内网负载均衡绑定EIP。
         :type EipAddressId: str
         """
         self.LoadBalancerType = None
