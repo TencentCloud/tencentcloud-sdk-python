@@ -5773,6 +5773,29 @@ class RunSecurityServiceEnabled(AbstractModel):
         self.Enabled = params.get("Enabled")
 
 
+class SetNodePoolNodeProtectionRequest(AbstractModel):
+    """SetNodePoolNodeProtection请求参数结构体
+
+    """
+
+
+class SetNodePoolNodeProtectionResponse(AbstractModel):
+    """SetNodePoolNodeProtection返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class SyncPrometheusTemplateRequest(AbstractModel):
     """SyncPrometheusTemplate请求参数结构体
 

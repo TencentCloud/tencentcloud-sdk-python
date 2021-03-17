@@ -794,6 +794,9 @@ class ApplicationForPage(AbstractModel):
         :param ApplicationRemarkName: 应用备注名
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationRemarkName: str
+        :param ServiceConfigList: 服务配置信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceConfigList: list of ServiceConfig
         """
         self.ApplicationId = None
         self.ApplicationName = None
@@ -807,6 +810,7 @@ class ApplicationForPage(AbstractModel):
         self.ApplicationRuntimeType = None
         self.ApigatewayServiceId = None
         self.ApplicationRemarkName = None
+        self.ServiceConfigList = None
 
 
     def _deserialize(self, params):
@@ -822,6 +826,12 @@ class ApplicationForPage(AbstractModel):
         self.ApplicationRuntimeType = params.get("ApplicationRuntimeType")
         self.ApigatewayServiceId = params.get("ApigatewayServiceId")
         self.ApplicationRemarkName = params.get("ApplicationRemarkName")
+        if params.get("ServiceConfigList") is not None:
+            self.ServiceConfigList = []
+            for item in params.get("ServiceConfigList"):
+                obj = ServiceConfig()
+                obj._deserialize(item)
+                self.ServiceConfigList.append(obj)
 
 
 class BindApiGroupRequest(AbstractModel):
@@ -1951,6 +1961,8 @@ class CreateApplicationRequest(AbstractModel):
         :type ApplicationRuntimeType: str
         :param ProgramId: 需要绑定的数据集ID
         :type ProgramId: str
+        :param ServiceConfigList: 服务配置信息列表
+        :type ServiceConfigList: list of ServiceConfig
         """
         self.ApplicationName = None
         self.ApplicationType = None
@@ -1960,6 +1972,7 @@ class CreateApplicationRequest(AbstractModel):
         self.ApplicationResourceType = None
         self.ApplicationRuntimeType = None
         self.ProgramId = None
+        self.ServiceConfigList = None
 
 
     def _deserialize(self, params):
@@ -1971,6 +1984,12 @@ class CreateApplicationRequest(AbstractModel):
         self.ApplicationResourceType = params.get("ApplicationResourceType")
         self.ApplicationRuntimeType = params.get("ApplicationRuntimeType")
         self.ProgramId = params.get("ProgramId")
+        if params.get("ServiceConfigList") is not None:
+            self.ServiceConfigList = []
+            for item in params.get("ServiceConfigList"):
+                obj = ServiceConfig()
+                obj._deserialize(item)
+                self.ServiceConfigList.append(obj)
 
 
 class CreateApplicationResponse(AbstractModel):
@@ -3795,6 +3814,10 @@ class DeployGroupRequest(AbstractModel):
         :type DeployExeMode: str
         :param DeployWaitTime: 滚动发布每个批次的时间间隔
         :type DeployWaitTime: int
+        :param StartScript: 启动脚本 base64编码
+        :type StartScript: str
+        :param StopScript: 停止脚本 base64编码
+        :type StopScript: str
         """
         self.GroupId = None
         self.PkgId = None
@@ -3808,6 +3831,8 @@ class DeployGroupRequest(AbstractModel):
         self.DeployBatch = None
         self.DeployExeMode = None
         self.DeployWaitTime = None
+        self.StartScript = None
+        self.StopScript = None
 
 
     def _deserialize(self, params):
@@ -3825,6 +3850,8 @@ class DeployGroupRequest(AbstractModel):
         self.DeployBatch = params.get("DeployBatch")
         self.DeployExeMode = params.get("DeployExeMode")
         self.DeployWaitTime = params.get("DeployWaitTime")
+        self.StartScript = params.get("StartScript")
+        self.StopScript = params.get("StopScript")
 
 
 class DeployGroupResponse(AbstractModel):
@@ -5896,6 +5923,8 @@ class DescribePkgsRequest(AbstractModel):
         :type RepositoryType: str
         :param RepositoryId: 程序包仓库id
         :type RepositoryId: str
+        :param PackageTypeList: 程序包类型数组支持（fatjar jar war tar.gz zip）
+        :type PackageTypeList: list of str
         """
         self.ApplicationId = None
         self.SearchWord = None
@@ -5905,6 +5934,7 @@ class DescribePkgsRequest(AbstractModel):
         self.Limit = None
         self.RepositoryType = None
         self.RepositoryId = None
+        self.PackageTypeList = None
 
 
     def _deserialize(self, params):
@@ -5916,6 +5946,7 @@ class DescribePkgsRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.RepositoryType = params.get("RepositoryType")
         self.RepositoryId = params.get("RepositoryId")
+        self.PackageTypeList = params.get("PackageTypeList")
 
 
 class DescribePkgsResponse(AbstractModel):
@@ -7107,7 +7138,7 @@ class Env(AbstractModel):
         """
         :param Name: 环境变量名称
         :type Name: str
-        :param Value: 服务端口
+        :param Value: 环境变量值
         :type Value: str
         """
         self.Name = None
@@ -7644,6 +7675,24 @@ class GroupUseStatisticsEntity(AbstractModel):
         self.ApiId = params.get("ApiId")
 
 
+class HealthCheckConfig(AbstractModel):
+    """健康检查配置
+
+    """
+
+    def __init__(self):
+        """
+        :param Path: 健康检查路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Path: str
+        """
+        self.Path = None
+
+
+    def _deserialize(self, params):
+        self.Path = params.get("Path")
+
+
 class HealthCheckSetting(AbstractModel):
     """健康检查配置信息，若不指定该参数，则默认不设置健康检查。
 
@@ -8058,6 +8107,9 @@ class Instance(AbstractModel):
         :param Reason: 健康检查原因
 注意：此字段可能返回 null，表示取不到有效值。
         :type Reason: str
+        :param AgentVersion: agent版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AgentVersion: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -8096,6 +8148,7 @@ class Instance(AbstractModel):
         self.GroupName = None
         self.NamespaceName = None
         self.Reason = None
+        self.AgentVersion = None
 
 
     def _deserialize(self, params):
@@ -8136,6 +8189,7 @@ class Instance(AbstractModel):
         self.GroupName = params.get("GroupName")
         self.NamespaceName = params.get("NamespaceName")
         self.Reason = params.get("Reason")
+        self.AgentVersion = params.get("AgentVersion")
 
 
 class InstanceAdvancedSettings(AbstractModel):
@@ -9625,6 +9679,27 @@ class PkgList(AbstractModel):
         self.RepositoryName = params.get("RepositoryName")
 
 
+class Ports(AbstractModel):
+    """服务端口
+
+    """
+
+    def __init__(self):
+        """
+        :param TargetPort: 服务端口
+        :type TargetPort: int
+        :param Protocol: 端口协议
+        :type Protocol: str
+        """
+        self.TargetPort = None
+        self.Protocol = None
+
+
+    def _deserialize(self, params):
+        self.TargetPort = params.get("TargetPort")
+        self.Protocol = params.get("Protocol")
+
+
 class PropertyField(AbstractModel):
     """属性字段
 
@@ -10407,6 +10482,39 @@ class ServerlessGroupPage(AbstractModel):
                 obj = ServerlessGroup()
                 obj._deserialize(item)
                 self.Content.append(obj)
+
+
+class ServiceConfig(AbstractModel):
+    """服务配置
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 服务名
+        :type Name: str
+        :param Ports: 端口信息列表
+        :type Ports: list of Ports
+        :param HealthCheck: 健康检查配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HealthCheck: :class:`tencentcloud.tsf.v20180326.models.HealthCheckConfig`
+        """
+        self.Name = None
+        self.Ports = None
+        self.HealthCheck = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        if params.get("Ports") is not None:
+            self.Ports = []
+            for item in params.get("Ports"):
+                obj = Ports()
+                obj._deserialize(item)
+                self.Ports.append(obj)
+        if params.get("HealthCheck") is not None:
+            self.HealthCheck = HealthCheckConfig()
+            self.HealthCheck._deserialize(params.get("HealthCheck"))
 
 
 class ServiceSetting(AbstractModel):
@@ -12123,6 +12231,15 @@ class VmGroup(AbstractModel):
         :param HealthCheckSettings: 健康检查配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type HealthCheckSettings: :class:`tencentcloud.tsf.v20180326.models.HealthCheckSettings`
+        :param PackageType: 程序包类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PackageType: str
+        :param StartScript: 启动脚本 base64编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartScript: str
+        :param StopScript: 停止脚本 base64编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StopScript: str
         """
         self.GroupId = None
         self.GroupName = None
@@ -12155,6 +12272,9 @@ class VmGroup(AbstractModel):
         self.DeployWaitTime = None
         self.EnableHealthCheck = None
         self.HealthCheckSettings = None
+        self.PackageType = None
+        self.StartScript = None
+        self.StopScript = None
 
 
     def _deserialize(self, params):
@@ -12191,6 +12311,9 @@ class VmGroup(AbstractModel):
         if params.get("HealthCheckSettings") is not None:
             self.HealthCheckSettings = HealthCheckSettings()
             self.HealthCheckSettings._deserialize(params.get("HealthCheckSettings"))
+        self.PackageType = params.get("PackageType")
+        self.StartScript = params.get("StartScript")
+        self.StopScript = params.get("StopScript")
 
 
 class VmGroupSimple(AbstractModel):

@@ -385,6 +385,64 @@ class CreateChaincodeAndInstallForUserResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeployDynamicBcosContractRequest(AbstractModel):
+    """DeployDynamicBcosContract请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 网络ID，可在区块链网络详情或列表中获取
+        :type ClusterId: str
+        :param GroupId: 群组编号，可在群组列表中获取
+        :type GroupId: int
+        :param AbiInfo: 合约编译后的ABI，可在合约详情获取
+        :type AbiInfo: str
+        :param ByteCodeBin: 合约编译得到的字节码，hex编码，可在合约详情获取
+        :type ByteCodeBin: str
+        :param SignUserId: 签名用户编号，可在私钥管理页面获取
+        :type SignUserId: str
+        :param ConstructorParams: 构造函数入参，Json数组，多个参数以逗号分隔（参数为数组时同理），如：["str1",["arr1","arr2"]]
+        :type ConstructorParams: str
+        """
+        self.ClusterId = None
+        self.GroupId = None
+        self.AbiInfo = None
+        self.ByteCodeBin = None
+        self.SignUserId = None
+        self.ConstructorParams = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.GroupId = params.get("GroupId")
+        self.AbiInfo = params.get("AbiInfo")
+        self.ByteCodeBin = params.get("ByteCodeBin")
+        self.SignUserId = params.get("SignUserId")
+        self.ConstructorParams = params.get("ConstructorParams")
+
+
+class DeployDynamicBcosContractResponse(AbstractModel):
+    """DeployDynamicBcosContract返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ContractAddress: 部署成功返回的合约地址
+        :type ContractAddress: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ContractAddress = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ContractAddress = params.get("ContractAddress")
+        self.RequestId = params.get("RequestId")
+
+
 class DeployDynamicContractHandlerRequest(AbstractModel):
     """DeployDynamicContractHandler请求参数结构体
 
@@ -528,6 +586,232 @@ class EndorserGroup(AbstractModel):
     def _deserialize(self, params):
         self.EndorserGroupName = params.get("EndorserGroupName")
         self.EndorserPeerList = params.get("EndorserPeerList")
+
+
+class GetBcosBlockByNumberRequest(AbstractModel):
+    """GetBcosBlockByNumber请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 网络ID，可在区块链网络详情或列表中获取
+        :type ClusterId: str
+        :param GroupId: 群组编号，可在群组列表中获取
+        :type GroupId: int
+        :param BlockNumber: 区块高度，可以从InvokeBcosTrans接口的返回值中解析获取
+        :type BlockNumber: int
+        """
+        self.ClusterId = None
+        self.GroupId = None
+        self.BlockNumber = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.GroupId = params.get("GroupId")
+        self.BlockNumber = params.get("BlockNumber")
+
+
+class GetBcosBlockByNumberResponse(AbstractModel):
+    """GetBcosBlockByNumber返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BlockJson: 返回区块json字符串
+        :type BlockJson: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BlockJson = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BlockJson = params.get("BlockJson")
+        self.RequestId = params.get("RequestId")
+
+
+class GetBcosBlockListRequest(AbstractModel):
+    """GetBcosBlockList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 网络ID，可在区块链网络详情或列表中获取
+        :type ClusterId: str
+        :param GroupId: 群组编号，可在群组列表中获取
+        :type GroupId: int
+        :param PageNumber: 当前页数，默认为1
+        :type PageNumber: int
+        :param PageSize: 每页记录数，默认为10
+        :type PageSize: int
+        :param BlockNumber: 区块高度，可以从InvokeBcosTrans接口的返回值中解析获取
+        :type BlockNumber: int
+        :param BlockHash: 区块哈希，可以从InvokeBcosTrans接口的返回值中解析获取
+        :type BlockHash: str
+        """
+        self.ClusterId = None
+        self.GroupId = None
+        self.PageNumber = None
+        self.PageSize = None
+        self.BlockNumber = None
+        self.BlockHash = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.GroupId = params.get("GroupId")
+        self.PageNumber = params.get("PageNumber")
+        self.PageSize = params.get("PageSize")
+        self.BlockNumber = params.get("BlockNumber")
+        self.BlockHash = params.get("BlockHash")
+
+
+class GetBcosBlockListResponse(AbstractModel):
+    """GetBcosBlockList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 总记录数
+        :type TotalCount: int
+        :param List: 返回数据列表
+        :type List: list of BcosBlockObj
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.List = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = BcosBlockObj()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class GetBcosTransByHashRequest(AbstractModel):
+    """GetBcosTransByHash请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 网络ID，可在区块链网络详情或列表中获取
+        :type ClusterId: str
+        :param GroupId: 群组编号，可在群组列表中获取
+        :type GroupId: int
+        :param TransHash: 交易哈希值，可以从InvokeBcosTrans接口的返回值中解析获取
+        :type TransHash: str
+        """
+        self.ClusterId = None
+        self.GroupId = None
+        self.TransHash = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.GroupId = params.get("GroupId")
+        self.TransHash = params.get("TransHash")
+
+
+class GetBcosTransByHashResponse(AbstractModel):
+    """GetBcosTransByHash返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TransactionJson: 交易信息json字符串
+        :type TransactionJson: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TransactionJson = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TransactionJson = params.get("TransactionJson")
+        self.RequestId = params.get("RequestId")
+
+
+class GetBcosTransListRequest(AbstractModel):
+    """GetBcosTransList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 网络ID，可在区块链网络详情或列表中获取
+        :type ClusterId: str
+        :param GroupId: 群组编号，可在群组列表中获取
+        :type GroupId: int
+        :param PageNumber: 当前页数，默认是1
+        :type PageNumber: int
+        :param PageSize: 每页记录数，默认为10
+        :type PageSize: int
+        :param BlockNumber: 区块高度，可以从InvokeBcosTrans接口的返回值中解析获取
+        :type BlockNumber: int
+        :param TransHash: 交易哈希，可以从InvokeBcosTrans接口的返回值中解析获取
+        :type TransHash: str
+        """
+        self.ClusterId = None
+        self.GroupId = None
+        self.PageNumber = None
+        self.PageSize = None
+        self.BlockNumber = None
+        self.TransHash = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.GroupId = params.get("GroupId")
+        self.PageNumber = params.get("PageNumber")
+        self.PageSize = params.get("PageSize")
+        self.BlockNumber = params.get("BlockNumber")
+        self.TransHash = params.get("TransHash")
+
+
+class GetBcosTransListResponse(AbstractModel):
+    """GetBcosTransList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 总记录数
+        :type TotalCount: int
+        :param List: 返回数据列表
+        :type List: list of BcosTransInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.List = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = BcosTransInfo()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.RequestId = params.get("RequestId")
 
 
 class GetBlockListHandlerRequest(AbstractModel):
@@ -1771,6 +2055,68 @@ class InitializeChaincodeForUserResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class InvokeBcosTransRequest(AbstractModel):
+    """InvokeBcosTrans请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 网络ID，可在区块链网络详情或列表中获取
+        :type ClusterId: str
+        :param GroupId: 群组编号，可在群组列表中获取
+        :type GroupId: int
+        :param ContractAddress: 合约地址，可在合约详情获取
+        :type ContractAddress: str
+        :param AbiInfo: 合约Abi的json数组格式的字符串，可在合约详情获取
+        :type AbiInfo: str
+        :param FuncName: 合约方法名
+        :type FuncName: str
+        :param SignUserId: 签名用户编号，可在私钥管理页面获取
+        :type SignUserId: str
+        :param FuncParam: 合约方法入参，json格式字符串
+        :type FuncParam: str
+        """
+        self.ClusterId = None
+        self.GroupId = None
+        self.ContractAddress = None
+        self.AbiInfo = None
+        self.FuncName = None
+        self.SignUserId = None
+        self.FuncParam = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.GroupId = params.get("GroupId")
+        self.ContractAddress = params.get("ContractAddress")
+        self.AbiInfo = params.get("AbiInfo")
+        self.FuncName = params.get("FuncName")
+        self.SignUserId = params.get("SignUserId")
+        self.FuncParam = params.get("FuncParam")
+
+
+class InvokeBcosTransResponse(AbstractModel):
+    """InvokeBcosTrans返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TransactionRsp: 交易结果json字符串
+        :type TransactionRsp: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TransactionRsp = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TransactionRsp = params.get("TransactionRsp")
         self.RequestId = params.get("RequestId")
 
 

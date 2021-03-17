@@ -82,6 +82,34 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeInstanceRenewNodes(self, request):
+        """预付费集群隔离后续费资源查询
+
+        :param request: Request instance for DescribeInstanceRenewNodes.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeInstanceRenewNodesRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeInstanceRenewNodesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInstanceRenewNodes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstanceRenewNodesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeInstances(self, request):
         """查询EMR实例
 
@@ -124,6 +152,34 @@ class EmrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeJobFlowResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def InquirePriceRenewEmr(self, request):
+        """集群续费询价。
+
+        :param request: Request instance for InquirePriceRenewEmr.
+        :type request: :class:`tencentcloud.emr.v20190103.models.InquirePriceRenewEmrRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.InquirePriceRenewEmrResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("InquirePriceRenewEmr", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.InquirePriceRenewEmrResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -782,6 +782,34 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeExtensionUploadInfo(self, request):
+        """描述扩展上传文件信息
+
+        :param request: Request instance for DescribeExtensionUploadInfo.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeExtensionUploadInfoRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeExtensionUploadInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeExtensionUploadInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeExtensionUploadInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeExtraPkgBillingInfo(self, request):
         """获取增值包计费相关信息
 

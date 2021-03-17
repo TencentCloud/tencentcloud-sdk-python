@@ -2742,6 +2742,54 @@ class DescribeEnvsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeExtensionUploadInfoRequest(AbstractModel):
+    """DescribeExtensionUploadInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ExtensionFiles: 待上传的文件
+        :type ExtensionFiles: list of ExtensionFile
+        """
+        self.ExtensionFiles = None
+
+
+    def _deserialize(self, params):
+        if params.get("ExtensionFiles") is not None:
+            self.ExtensionFiles = []
+            for item in params.get("ExtensionFiles"):
+                obj = ExtensionFile()
+                obj._deserialize(item)
+                self.ExtensionFiles.append(obj)
+
+
+class DescribeExtensionUploadInfoResponse(AbstractModel):
+    """DescribeExtensionUploadInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FilesData: 待上传文件的信息数组
+        :type FilesData: list of ExtensionFileInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FilesData = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("FilesData") is not None:
+            self.FilesData = []
+            for item in params.get("FilesData"):
+                obj = ExtensionFileInfo()
+                obj._deserialize(item)
+                self.FilesData.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeExtraPkgBillingInfoRequest(AbstractModel):
     """DescribeExtraPkgBillingInfo请求参数结构体
 
@@ -3438,6 +3486,59 @@ class EstablishCloudBaseRunServerResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class ExtensionFile(AbstractModel):
+    """扩展文件
+
+    """
+
+    def __init__(self):
+        """
+        :param FileType: 文件类型。枚举值
+<li>FUNCTION：函数代码</li>
+<li>STATIC：静态托管代码</li>
+<li>SMS：短信文件</li>
+        :type FileType: str
+        :param FileName: 文件名，长度不超过24
+        :type FileName: str
+        """
+        self.FileType = None
+        self.FileName = None
+
+
+    def _deserialize(self, params):
+        self.FileType = params.get("FileType")
+        self.FileName = params.get("FileName")
+
+
+class ExtensionFileInfo(AbstractModel):
+    """扩展文件信息
+
+    """
+
+    def __init__(self):
+        """
+        :param CodeUri: 模板里使用的地址
+        :type CodeUri: str
+        :param UploadUrl: 上传文件的临时地址，含签名
+        :type UploadUrl: str
+        :param CustomKey: 自定义密钥。如果为空，则表示不需要加密
+        :type CustomKey: str
+        :param MaxSize: 文件大小限制，单位M，客户端上传前需要主动检查文件大小，超过限制的文件会被删除。
+        :type MaxSize: int
+        """
+        self.CodeUri = None
+        self.UploadUrl = None
+        self.CustomKey = None
+        self.MaxSize = None
+
+
+    def _deserialize(self, params):
+        self.CodeUri = params.get("CodeUri")
+        self.UploadUrl = params.get("UploadUrl")
+        self.CustomKey = params.get("CustomKey")
+        self.MaxSize = params.get("MaxSize")
 
 
 class FreequotaInfo(AbstractModel):

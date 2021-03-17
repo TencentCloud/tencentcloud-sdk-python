@@ -2260,6 +2260,8 @@ class DescribeConfigResponse(AbstractModel):
         :param ImageLimits: 镜像限额信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageLimits: :class:`tencentcloud.ecm.v20190719.models.ImageLimitConfig`
+        :param DefaultIPDirect: 默认是否IP直通，用于模块创建，虚机购买等具有直通参数场景时的默认参数。
+        :type DefaultIPDirect: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2267,6 +2269,7 @@ class DescribeConfigResponse(AbstractModel):
         self.ImageWhiteSet = None
         self.InstanceNetworkLimitConfigs = None
         self.ImageLimits = None
+        self.DefaultIPDirect = None
         self.RequestId = None
 
 
@@ -2284,6 +2287,7 @@ class DescribeConfigResponse(AbstractModel):
         if params.get("ImageLimits") is not None:
             self.ImageLimits = ImageLimitConfig()
             self.ImageLimits._deserialize(params.get("ImageLimits"))
+        self.DefaultIPDirect = params.get("DefaultIPDirect")
         self.RequestId = params.get("RequestId")
 
 

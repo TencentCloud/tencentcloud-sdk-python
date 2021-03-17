@@ -3251,6 +3251,11 @@ class SubAccountUser(AbstractModel):
         :type CreateTime: str
         :param UserType: 用户类型(1:主账号;2:子用户;3:企业微信子用户;4:协作者;5:消息接收人)
         :type UserType: int
+        :param LastLoginIp: 最近登录IP
+        :type LastLoginIp: str
+        :param LastLoginTime: 最近登录时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastLoginTime: str
         """
         self.Uin = None
         self.Name = None
@@ -3258,6 +3263,8 @@ class SubAccountUser(AbstractModel):
         self.Remark = None
         self.CreateTime = None
         self.UserType = None
+        self.LastLoginIp = None
+        self.LastLoginTime = None
 
 
     def _deserialize(self, params):
@@ -3267,6 +3274,8 @@ class SubAccountUser(AbstractModel):
         self.Remark = params.get("Remark")
         self.CreateTime = params.get("CreateTime")
         self.UserType = params.get("UserType")
+        self.LastLoginIp = params.get("LastLoginIp")
+        self.LastLoginTime = params.get("LastLoginTime")
 
 
 class UpdateAssumeRolePolicyRequest(AbstractModel):

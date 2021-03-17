@@ -26,6 +26,62 @@ class IotvideoClient(AbstractClient):
     _service = 'iotvideo'
 
 
+    def BatchUpdateFirmware(self, request):
+        """本接口（BatchUpdateFirmware）用于批量更新设备固件
+
+        :param request: Request instance for BatchUpdateFirmware.
+        :type request: :class:`tencentcloud.iotvideo.v20201215.models.BatchUpdateFirmwareRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20201215.models.BatchUpdateFirmwareResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("BatchUpdateFirmware", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.BatchUpdateFirmwareResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CancelDeviceFirmwareTask(self, request):
+        """本接口用于取消设备升级任务
+
+        :param request: Request instance for CancelDeviceFirmwareTask.
+        :type request: :class:`tencentcloud.iotvideo.v20201215.models.CancelDeviceFirmwareTaskRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20201215.models.CancelDeviceFirmwareTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CancelDeviceFirmwareTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CancelDeviceFirmwareTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CheckForwardAuth(self, request):
         """判断是否开启的转发的权限
 
@@ -166,6 +222,34 @@ class IotvideoClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateTaskFileUrl(self, request):
+        """本接口（CreateTaskFileUrl）用于获取产品级任务文件上传链接
+
+        :param request: Request instance for CreateTaskFileUrl.
+        :type request: :class:`tencentcloud.iotvideo.v20201215.models.CreateTaskFileUrlRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20201215.models.CreateTaskFileUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateTaskFileUrl", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateTaskFileUrlResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteDevice(self, request):
         """删除设备
 
@@ -180,6 +264,34 @@ class IotvideoClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteDeviceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteFirmware(self, request):
+        """本接口（DeleteFirmware）用于删除固件
+
+        :param request: Request instance for DeleteFirmware.
+        :type request: :class:`tencentcloud.iotvideo.v20201215.models.DeleteFirmwareRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20201215.models.DeleteFirmwareResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteFirmware", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteFirmwareResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -670,6 +782,174 @@ class IotvideoClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeFirmware(self, request):
+        """本接口（DescribeFirmware）用于查询固件信息
+
+        :param request: Request instance for DescribeFirmware.
+        :type request: :class:`tencentcloud.iotvideo.v20201215.models.DescribeFirmwareRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20201215.models.DescribeFirmwareResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeFirmware", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeFirmwareResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeFirmwareTask(self, request):
+        """此接口查询固件升级任务详情
+
+        :param request: Request instance for DescribeFirmwareTask.
+        :type request: :class:`tencentcloud.iotvideo.v20201215.models.DescribeFirmwareTaskRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20201215.models.DescribeFirmwareTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeFirmwareTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeFirmwareTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeFirmwareTaskDevices(self, request):
+        """本接口用于查询固件升级任务的设备列表
+
+        :param request: Request instance for DescribeFirmwareTaskDevices.
+        :type request: :class:`tencentcloud.iotvideo.v20201215.models.DescribeFirmwareTaskDevicesRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20201215.models.DescribeFirmwareTaskDevicesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeFirmwareTaskDevices", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeFirmwareTaskDevicesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeFirmwareTaskDistribution(self, request):
+        """本接口用于查询固件升级任务状态分布
+
+        :param request: Request instance for DescribeFirmwareTaskDistribution.
+        :type request: :class:`tencentcloud.iotvideo.v20201215.models.DescribeFirmwareTaskDistributionRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20201215.models.DescribeFirmwareTaskDistributionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeFirmwareTaskDistribution", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeFirmwareTaskDistributionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeFirmwareTaskStatistics(self, request):
+        """本接口用于查询固件升级任务统计信息
+
+        :param request: Request instance for DescribeFirmwareTaskStatistics.
+        :type request: :class:`tencentcloud.iotvideo.v20201215.models.DescribeFirmwareTaskStatisticsRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20201215.models.DescribeFirmwareTaskStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeFirmwareTaskStatistics", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeFirmwareTaskStatisticsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeFirmwareTasks(self, request):
+        """本接口用于查询固件升级任务列表
+
+        :param request: Request instance for DescribeFirmwareTasks.
+        :type request: :class:`tencentcloud.iotvideo.v20201215.models.DescribeFirmwareTasksRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20201215.models.DescribeFirmwareTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeFirmwareTasks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeFirmwareTasksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeForwardRule(self, request):
         """获取产品转发规则
 
@@ -782,6 +1062,90 @@ class IotvideoClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def EditFirmware(self, request):
+        """本接口用于编辑固件信息
+
+        :param request: Request instance for EditFirmware.
+        :type request: :class:`tencentcloud.iotvideo.v20201215.models.EditFirmwareRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20201215.models.EditFirmwareResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("EditFirmware", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EditFirmwareResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetAllFirmwareVersion(self, request):
+        """本接口（GetAllFirmwareVersion）用于获取所有的版本列表
+
+        :param request: Request instance for GetAllFirmwareVersion.
+        :type request: :class:`tencentcloud.iotvideo.v20201215.models.GetAllFirmwareVersionRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20201215.models.GetAllFirmwareVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetAllFirmwareVersion", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetAllFirmwareVersionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetFirmwareURL(self, request):
+        """本接口（GetFirmwareURL）用于获取固件存储的URL
+
+        :param request: Request instance for GetFirmwareURL.
+        :type request: :class:`tencentcloud.iotvideo.v20201215.models.GetFirmwareURLRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20201215.models.GetFirmwareURLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetFirmwareURL", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetFirmwareURLResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ImportModelDefinition(self, request):
         """导入其它产品的数据模板，覆盖现有数据模板的物模型和产品分类信息
 
@@ -796,6 +1160,34 @@ class IotvideoClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ImportModelDefinitionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ListFirmwares(self, request):
+        """本接口（ListFirmwares）用于获取固件列表
+
+        :param request: Request instance for ListFirmwares.
+        :type request: :class:`tencentcloud.iotvideo.v20201215.models.ListFirmwaresRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20201215.models.ListFirmwaresResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListFirmwares", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListFirmwaresResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -922,6 +1314,34 @@ class IotvideoClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def RetryDeviceFirmwareTask(self, request):
+        """本接口用于重试设备升级任务
+
+        :param request: Request instance for RetryDeviceFirmwareTask.
+        :type request: :class:`tencentcloud.iotvideo.v20201215.models.RetryDeviceFirmwareTaskRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20201215.models.RetryDeviceFirmwareTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RetryDeviceFirmwareTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RetryDeviceFirmwareTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def SetForwardAuth(self, request):
         """设置转发权限
 
@@ -936,6 +1356,34 @@ class IotvideoClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetForwardAuthResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UploadFirmware(self, request):
+        """本接口（UploadFirmware）用于上传设备固件信息
+
+        :param request: Request instance for UploadFirmware.
+        :type request: :class:`tencentcloud.iotvideo.v20201215.models.UploadFirmwareRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20201215.models.UploadFirmwareResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UploadFirmware", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UploadFirmwareResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

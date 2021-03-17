@@ -2975,6 +2975,7 @@ class AiReviewTerrorismTaskOutput(AbstractModel):
 <li>militant：武装分子。</li>
 <li>explosion：爆炸火灾。</li>
 <li>terrorists：暴恐人物。</li>
+<li>scenario：暴恐画面。</li>
         :type Label: str
         :param SegmentSet: 有暴恐嫌疑的视频片段列表。
         :type SegmentSet: list of MediaContentReviewSegmentItem
@@ -16523,7 +16524,8 @@ class TerrorismImgReviewTemplateInfo(AbstractModel):
 <li>banners：暴恐旗帜；</li>
 <li>militant：武装分子；</li>
 <li>explosion：爆炸火灾；</li>
-<li>terrorists：暴恐人物。</li>
+<li>terrorists：暴恐人物；</li>
+<li>scenario：暴恐画面。</li>
         :type LabelSet: list of str
         :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 90 分。取值范围：0~100。
         :type BlockConfidence: int
@@ -16562,7 +16564,8 @@ class TerrorismImgReviewTemplateInfoForUpdate(AbstractModel):
 <li>banners：暴恐旗帜；</li>
 <li>militant：武装分子；</li>
 <li>explosion：爆炸火灾；</li>
-<li>terrorists：暴恐人物。</li>
+<li>terrorists：暴恐人物；</li>
+<li>scenario：暴恐画面。</li>
         :type LabelSet: list of str
         :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
         :type BlockConfidence: int

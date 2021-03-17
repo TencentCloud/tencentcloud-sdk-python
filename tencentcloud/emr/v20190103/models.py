@@ -758,6 +758,59 @@ class DescribeClusterNodesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeInstanceRenewNodesRequest(AbstractModel):
+    """DescribeInstanceRenewNodes请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 集群实例ID,实例ID形如: emr-xxxxxxxx
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class DescribeInstanceRenewNodesResponse(AbstractModel):
+    """DescribeInstanceRenewNodes返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCnt: 查询到的节点总数
+        :type TotalCnt: int
+        :param NodeList: 节点详细信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeList: list of RenewInstancesInfo
+        :param MetaInfo: 用户所有的标签键列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetaInfo: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCnt = None
+        self.NodeList = None
+        self.MetaInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCnt = params.get("TotalCnt")
+        if params.get("NodeList") is not None:
+            self.NodeList = []
+            for item in params.get("NodeList"):
+                obj = RenewInstancesInfo()
+                obj._deserialize(item)
+                self.NodeList.append(obj)
+        self.MetaInfo = params.get("MetaInfo")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeInstancesRequest(AbstractModel):
     """DescribeInstances请求参数结构体
 
@@ -1090,6 +1143,85 @@ class HostVolumeContext(AbstractModel):
 
     def _deserialize(self, params):
         self.VolumePath = params.get("VolumePath")
+
+
+class InquirePriceRenewEmrRequest(AbstractModel):
+    """InquirePriceRenewEmr请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TimeSpan: 实例续费的时长。需要结合TimeUnit一起使用。1表示续费1一个月
+        :type TimeSpan: int
+        :param InstanceId: 待续费集群ID列表。
+        :type InstanceId: str
+        :param Placement: 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
+        :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
+        :param PayMode: 实例计费模式。此处只支持取值为1，表示包年包月。
+        :type PayMode: int
+        :param TimeUnit: 实例续费的时间单位。取值范围：
+<li>m：表示月份。</li>
+        :type TimeUnit: str
+        :param Currency: 货币种类。取值范围：
+<li>CNY：表示人民币。</li>
+        :type Currency: str
+        """
+        self.TimeSpan = None
+        self.InstanceId = None
+        self.Placement = None
+        self.PayMode = None
+        self.TimeUnit = None
+        self.Currency = None
+
+
+    def _deserialize(self, params):
+        self.TimeSpan = params.get("TimeSpan")
+        self.InstanceId = params.get("InstanceId")
+        if params.get("Placement") is not None:
+            self.Placement = Placement()
+            self.Placement._deserialize(params.get("Placement"))
+        self.PayMode = params.get("PayMode")
+        self.TimeUnit = params.get("TimeUnit")
+        self.Currency = params.get("Currency")
+
+
+class InquirePriceRenewEmrResponse(AbstractModel):
+    """InquirePriceRenewEmr返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param OriginalCost: 原价，单位为元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginalCost: float
+        :param DiscountCost: 折扣价，单位为元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiscountCost: float
+        :param TimeUnit: 实例续费的时间单位。取值范围：
+<li>m：表示月份。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeUnit: str
+        :param TimeSpan: 实例续费的时长。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeSpan: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.OriginalCost = None
+        self.DiscountCost = None
+        self.TimeUnit = None
+        self.TimeSpan = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.OriginalCost = params.get("OriginalCost")
+        self.DiscountCost = params.get("DiscountCost")
+        self.TimeUnit = params.get("TimeUnit")
+        self.TimeSpan = params.get("TimeSpan")
+        self.RequestId = params.get("RequestId")
 
 
 class InquiryPriceCreateInstanceRequest(AbstractModel):
@@ -2337,6 +2469,56 @@ class PriceResource(AbstractModel):
                 self.Tags.append(obj)
         self.DiskNum = params.get("DiskNum")
         self.LocalDiskNum = params.get("LocalDiskNum")
+
+
+class RenewInstancesInfo(AbstractModel):
+    """集群续费实例信息
+
+    """
+
+    def __init__(self):
+        """
+        :param EmrResourceId: 节点资源ID
+        :type EmrResourceId: str
+        :param Flag: 节点类型。0:common节点；1:master节点
+；2:core节点；3:task节点
+        :type Flag: int
+        :param Ip: 内网IP
+        :type Ip: str
+        :param MemDesc: 节点内存描述
+        :type MemDesc: str
+        :param CpuNum: 节点核数
+        :type CpuNum: int
+        :param DiskSize: 硬盘大小
+        :type DiskSize: str
+        :param ExpireTime: 过期时间
+        :type ExpireTime: str
+        :param Spec: 节点规格
+        :type Spec: str
+        :param StorageType: 磁盘类型
+        :type StorageType: int
+        """
+        self.EmrResourceId = None
+        self.Flag = None
+        self.Ip = None
+        self.MemDesc = None
+        self.CpuNum = None
+        self.DiskSize = None
+        self.ExpireTime = None
+        self.Spec = None
+        self.StorageType = None
+
+
+    def _deserialize(self, params):
+        self.EmrResourceId = params.get("EmrResourceId")
+        self.Flag = params.get("Flag")
+        self.Ip = params.get("Ip")
+        self.MemDesc = params.get("MemDesc")
+        self.CpuNum = params.get("CpuNum")
+        self.DiskSize = params.get("DiskSize")
+        self.ExpireTime = params.get("ExpireTime")
+        self.Spec = params.get("Spec")
+        self.StorageType = params.get("StorageType")
 
 
 class Resource(AbstractModel):

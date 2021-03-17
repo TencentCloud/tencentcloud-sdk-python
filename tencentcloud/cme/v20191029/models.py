@@ -330,7 +330,7 @@ class CreateClassRequest(AbstractModel):
         :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
         :param ClassPath: 分类路径。
         :type ClassPath: str
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验分类创建权限。
         :type Operator: str
         """
         self.Platform = None
@@ -676,9 +676,9 @@ class DeleteMaterialRequest(AbstractModel):
         """
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
-        :param MaterialId: 素材 Id。
+        :param MaterialId: 媒体 Id。
         :type MaterialId: str
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验媒体删除权限。
         :type Operator: str
         """
         self.Platform = None
@@ -720,14 +720,18 @@ class DeleteProjectRequest(AbstractModel):
         :type Platform: str
         :param ProjectId: 项目 Id。
         :type ProjectId: str
+        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验对项目删除操作权限。
+        :type Operator: str
         """
         self.Platform = None
         self.ProjectId = None
+        self.Operator = None
 
 
     def _deserialize(self, params):
         self.Platform = params.get("Platform")
         self.ProjectId = params.get("ProjectId")
+        self.Operator = params.get("Operator")
 
 
 class DeleteProjectResponse(AbstractModel):
@@ -1003,13 +1007,13 @@ class DescribeMaterialsRequest(AbstractModel):
         """
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
-        :param MaterialIds: 素材 ID 列表，N 从 0 开始取值，最大 19。
+        :param MaterialIds: 媒体 ID 列表，N 从 0 开始取值，最大 19。
         :type MaterialIds: list of str
         :param Sort: 列表排序，支持下列排序字段：
 <li>CreateTime：创建时间；</li>
 <li>UpdateTime：更新时间。</li>
         :type Sort: :class:`tencentcloud.cme.v20191029.models.SortBy`
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验媒体的访问权限。
         :type Operator: str
         """
         self.Platform = None
@@ -1034,7 +1038,7 @@ class DescribeMaterialsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param MaterialInfoSet: 素材列表信息。
+        :param MaterialInfoSet: 媒体列表信息。
         :type MaterialInfoSet: list of MaterialInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1125,7 +1129,10 @@ class DescribeProjectsRequest(AbstractModel):
         :type ProjectIds: list of str
         :param AspectRatioSet: 画布宽高比集合。
         :type AspectRatioSet: list of str
-        :param CategorySet: 项目类别集合。
+        :param CategorySet: 项目类别，取值有：
+<li>VIDEO_EDIT：视频编辑。</li>
+<li>SWITCHER：导播台。</li>
+<li>VIDEO_SEGMENTATION：视频拆条。</li>
         :type CategorySet: list of str
         :param Sort: 列表排序，支持下列排序字段：
 <li>CreateTime：创建时间；</li>
@@ -1137,6 +1144,8 @@ class DescribeProjectsRequest(AbstractModel):
         :type Offset: int
         :param Limit: 分页返回的记录条数，默认值：10。
         :type Limit: int
+        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验项目访问权限。
+        :type Operator: str
         """
         self.Platform = None
         self.ProjectIds = None
@@ -1146,6 +1155,7 @@ class DescribeProjectsRequest(AbstractModel):
         self.Owner = None
         self.Offset = None
         self.Limit = None
+        self.Operator = None
 
 
     def _deserialize(self, params):
@@ -1161,6 +1171,7 @@ class DescribeProjectsRequest(AbstractModel):
             self.Owner._deserialize(params.get("Owner"))
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.Operator = params.get("Operator")
 
 
 class DescribeProjectsResponse(AbstractModel):
@@ -1266,7 +1277,7 @@ class DescribeSharedSpaceRequest(AbstractModel):
         """
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
-        :param Authorizee: 被授权目标实体。
+        :param Authorizee: 被授权目标,，个人或团队。
         :type Authorizee: :class:`tencentcloud.cme.v20191029.models.Entity`
         :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
         :type Operator: str
@@ -1326,14 +1337,18 @@ class DescribeTaskDetailRequest(AbstractModel):
         :type Platform: str
         :param TaskId: 任务 Id。
         :type TaskId: str
+        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验对任务的访问权限。
+        :type Operator: str
         """
         self.Platform = None
         self.TaskId = None
+        self.Operator = None
 
 
     def _deserialize(self, params):
         self.Platform = params.get("Platform")
         self.TaskId = params.get("TaskId")
+        self.Operator = params.get("Operator")
 
 
 class DescribeTaskDetailResponse(AbstractModel):
@@ -1413,6 +1428,8 @@ class DescribeTasksRequest(AbstractModel):
         :type Offset: int
         :param Limit: 分页返回的记录条数，默认值：10。
         :type Limit: int
+        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验对任务的访问权限。
+        :type Operator: str
         """
         self.Platform = None
         self.ProjectId = None
@@ -1420,6 +1437,7 @@ class DescribeTasksRequest(AbstractModel):
         self.StatusSet = None
         self.Offset = None
         self.Limit = None
+        self.Operator = None
 
 
     def _deserialize(self, params):
@@ -1429,6 +1447,7 @@ class DescribeTasksRequest(AbstractModel):
         self.StatusSet = params.get("StatusSet")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.Operator = params.get("Operator")
 
 
 class DescribeTasksResponse(AbstractModel):
@@ -1472,7 +1491,7 @@ class DescribeTeamMembersRequest(AbstractModel):
         :type Platform: str
         :param TeamId: 团队 ID。
         :type TeamId: str
-        :param MemberIds: 成员 ID 列表，限指定30个指定成员。
+        :param MemberIds: 成员 ID 列表，限指定30个指定成员。如不填，则返回指定团队下的所有成员。
         :type MemberIds: list of str
         :param Offset: 分页偏移量，默认值：0
         :type Offset: int
@@ -1537,7 +1556,7 @@ class DescribeTeamsRequest(AbstractModel):
         """
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
-        :param TeamIds: 团队 ID 列表，限30个。
+        :param TeamIds: 团队 ID 列表，限30个。若不填，则默认获取平台下所有团队。
         :type TeamIds: list of str
         :param Offset: 分页偏移量，默认值：0。
         :type Offset: int
@@ -1878,15 +1897,15 @@ class FlattenListMediaRequest(AbstractModel):
         """
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
-        :param ClassPath: 素材分类路径，例如填写"/a/b"，则代表平铺该分类路径下及其子分类路径下的素材信息。
+        :param ClassPath: 媒体分类路径，例如填写"/a/b"，则代表平铺该分类路径下及其子分类路径下的媒体信息。
         :type ClassPath: str
-        :param Owner: 素材路径的归属者。
+        :param Owner: 媒体分类的归属者。
         :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
         :param Offset: 分页偏移量，默认值：0。
         :type Offset: int
         :param Limit: 返回记录条数，默认值：10，最大值：50。
         :type Limit: int
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验媒体访问权限。
         :type Operator: str
         """
         self.Platform = None
@@ -1917,7 +1936,7 @@ class FlattenListMediaResponse(AbstractModel):
         """
         :param TotalCount: 符合条件的记录总数。
         :type TotalCount: int
-        :param MaterialInfoSet: 该分类路径下及其子分类下的所有素材。
+        :param MaterialInfoSet: 该分类路径下及其子分类下的所有媒体基础信息列表。
         :type MaterialInfoSet: list of MaterialInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1993,14 +2012,14 @@ class GrantResourceAuthorizationRequest(AbstractModel):
         """
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
-        :param Owner: 资源所属实体。
+        :param Owner: 资源归属者，个人或者团队。
         :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
         :param Resources: 被授权资源。
         :type Resources: list of Resource
-        :param Authorizees: 被授权目标实体。
+        :param Authorizees: 被授权目标，个人或者团队。
         :type Authorizees: list of Entity
         :param Permissions: 详细授权值。 取值有：
-<li>R：可读，可以浏览素材，但不能使用该素材（将其添加到 Project），或复制到自己的媒资库中</li>
+<li>R：可读，可以浏览媒体，但不能使用该媒体文件（将其添加到 Project），或复制到自己的媒资库中</li>
 <li>X：可用，可以使用该素材（将其添加到 Project），但不能将其复制到自己的媒资库中，意味着被授权者无法将该资源进一步扩散给其他个人或团队。</li>
 <li>C：可复制，既可以使用该素材（将其添加到 Project），也可以将其复制到自己的媒资库中。</li>
 <li>W：可修改、删除媒资。</li>
@@ -2408,15 +2427,15 @@ class ListMediaRequest(AbstractModel):
         """
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
-        :param ClassPath: 素材分类路径，例如填写"/a/b"，则代表浏览该分类路径下的素材和子分类信息。
+        :param ClassPath: 媒体分类路径，例如填写"/a/b"，则代表浏览该分类路径下的媒体和子分类信息。
         :type ClassPath: str
-        :param Owner: 素材和分类的归属者。
+        :param Owner: 媒体和分类的归属者。
         :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
         :param Offset: 分页偏移量，默认值：0。
         :type Offset: int
         :param Limit: 返回记录条数，默认值：10，最大值：50。
         :type Limit: int
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验对媒体的访问权限。
         :type Operator: str
         """
         self.Platform = None
@@ -2445,9 +2464,9 @@ class ListMediaResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param MaterialTotalCount: 符合条件的素材记录总数。
+        :param MaterialTotalCount: 符合条件的媒体记录总数。
         :type MaterialTotalCount: int
-        :param MaterialInfoSet: 浏览分类路径下的素材列表信息。
+        :param MaterialInfoSet: 浏览分类路径下的媒体列表信息。
         :type MaterialInfoSet: list of MaterialInfo
         :param ClassInfoSet: 浏览分类路径下的一级子类。
         :type ClassInfoSet: list of ClassInfo
@@ -2522,31 +2541,41 @@ class LoginStatusInfo(AbstractModel):
 
 
 class MaterialBasicInfo(AbstractModel):
-    """素材基本信息。
+    """媒体基本信息。
 
     """
 
     def __init__(self):
         """
-        :param MaterialId: 素材 Id。
+        :param MaterialId: 媒体 Id。
         :type MaterialId: str
-        :param MaterialType: 素材类型，取值为：音频（AUDIO）、视频（VIDEO）、图片（IMAGE）、链接（LINK）、字幕 （SUBTITLE）、转场（TRANSITION）、滤镜（FILTER）、文本文字（TEXT）、图文动效（TEXT_IMAGE）。
+        :param MaterialType: 媒体类型，取值为：
+<li> AUDIO :音频;</li>
+<li> VIDEO :视频;</li>
+<li> IMAGE :图片;</li>
+<li> LINK  :链接.</li>
+<li> OTHER : 其他.</li>
         :type MaterialType: str
-        :param Owner: 素材归属实体。
+        :param Owner: 媒体归属实体。
         :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
-        :param Name: 素材名称。
+        :param Name: 媒体名称。
         :type Name: str
-        :param CreateTime: 素材文件的创建时间，使用 ISO 日期格式。
+        :param CreateTime: 媒体文件的创建时间，使用 ISO 日期格式。
         :type CreateTime: str
-        :param UpdateTime: 素材文件的最近更新时间（如修改视频属性、发起视频处理等会触发更新媒体文件信息的操作），使用 ISO 日期格式。
+        :param UpdateTime: 媒体文件的最近更新时间（如修改视频属性、发起视频处理等会触发更新媒体文件信息的操作），使用 ISO 日期格式。
         :type UpdateTime: str
-        :param ClassPath: 素材的分类目录路径。
+        :param ClassPath: 媒体的分类路径。
         :type ClassPath: str
-        :param TagInfoSet: 素材绑定的标签信息列表 。
+        :param PresetTagSet: 预置标签列表。
+        :type PresetTagSet: list of PresetTagInfo
+        :param TagSet: 人工标签列表。
+        :type TagSet: list of str
+        :param PreviewUrl: 媒体文件的预览图。
+        :type PreviewUrl: str
+        :param TagInfoSet: 媒体绑定的标签信息列表 。
+该字段已废弃。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagInfoSet: list of MaterialTagInfo
-        :param PreviewUrl: 素材媒体文件的预览图。
-        :type PreviewUrl: str
         """
         self.MaterialId = None
         self.MaterialType = None
@@ -2555,8 +2584,10 @@ class MaterialBasicInfo(AbstractModel):
         self.CreateTime = None
         self.UpdateTime = None
         self.ClassPath = None
-        self.TagInfoSet = None
+        self.PresetTagSet = None
+        self.TagSet = None
         self.PreviewUrl = None
+        self.TagInfoSet = None
 
 
     def _deserialize(self, params):
@@ -2569,42 +2600,53 @@ class MaterialBasicInfo(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
         self.ClassPath = params.get("ClassPath")
+        if params.get("PresetTagSet") is not None:
+            self.PresetTagSet = []
+            for item in params.get("PresetTagSet"):
+                obj = PresetTagInfo()
+                obj._deserialize(item)
+                self.PresetTagSet.append(obj)
+        self.TagSet = params.get("TagSet")
+        self.PreviewUrl = params.get("PreviewUrl")
         if params.get("TagInfoSet") is not None:
             self.TagInfoSet = []
             for item in params.get("TagInfoSet"):
                 obj = MaterialTagInfo()
                 obj._deserialize(item)
                 self.TagInfoSet.append(obj)
-        self.PreviewUrl = params.get("PreviewUrl")
 
 
 class MaterialInfo(AbstractModel):
-    """素材详情信息
+    """媒体详情信息
 
     """
 
     def __init__(self):
         """
-        :param BasicInfo: 素材基本信息。
+        :param BasicInfo: 媒体基本信息。
         :type BasicInfo: :class:`tencentcloud.cme.v20191029.models.MaterialBasicInfo`
-        :param VideoMaterial: 视频素材信息。
+        :param VideoMaterial: 视频媒体信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type VideoMaterial: :class:`tencentcloud.cme.v20191029.models.VideoMaterial`
-        :param AudioMaterial: 音频素材信息。
+        :param AudioMaterial: 音频媒体信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AudioMaterial: :class:`tencentcloud.cme.v20191029.models.AudioMaterial`
-        :param ImageMaterial: 图片素材信息。
+        :param ImageMaterial: 图片媒体信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageMaterial: :class:`tencentcloud.cme.v20191029.models.ImageMaterial`
-        :param LinkMaterial: 链接素材信息。
+        :param LinkMaterial: 链接媒体信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LinkMaterial: :class:`tencentcloud.cme.v20191029.models.LinkMaterial`
+        :param OtherMaterial: 其他类型媒体信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OtherMaterial: :class:`tencentcloud.cme.v20191029.models.OtherMaterial`
         """
         self.BasicInfo = None
         self.VideoMaterial = None
         self.AudioMaterial = None
         self.ImageMaterial = None
         self.LinkMaterial = None
+        self.OtherMaterial = None
 
 
     def _deserialize(self, params):
@@ -2623,6 +2665,9 @@ class MaterialInfo(AbstractModel):
         if params.get("LinkMaterial") is not None:
             self.LinkMaterial = LinkMaterial()
             self.LinkMaterial._deserialize(params.get("LinkMaterial"))
+        if params.get("OtherMaterial") is not None:
+            self.OtherMaterial = OtherMaterial()
+            self.OtherMaterial._deserialize(params.get("OtherMaterial"))
 
 
 class MaterialStatus(AbstractModel):
@@ -2841,13 +2886,13 @@ class ModifyMaterialRequest(AbstractModel):
         """
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
-        :param MaterialId: 素材 Id。
+        :param MaterialId: 媒体 Id。
         :type MaterialId: str
-        :param Owner: 素材归属。
+        :param Owner: 媒体或分类路径归属。
         :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
-        :param Name: 素材名称，不能超过30个字符。
+        :param Name: 媒体名称，不能超过30个字符。
         :type Name: str
-        :param ClassPath: 素材分类路径，例如填写"/a/b"，则代表该素材存储的路径为"/a/b"。
+        :param ClassPath: 媒体分类路径，例如填写"/a/b"，则代表该媒体存储的路径为"/a/b"。若修改分类路径，则 Owner 字段必填。
         :type ClassPath: str
         :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
         :type Operator: str
@@ -2905,7 +2950,7 @@ class ModifyProjectRequest(AbstractModel):
 <li>16:9；</li>
 <li>9:16。</li>
         :type AspectRatio: str
-        :param Owner: 归属者。
+        :param Owner: 项目归属者。
         :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
         """
         self.Platform = None
@@ -3096,6 +3141,77 @@ class MoveClassResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class MoveResourceRequest(AbstractModel):
+    """MoveResource请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Platform: 平台名称，指定访问的平台。
+        :type Platform: str
+        :param SourceResource: 待移动的原始资源信息，包含原始媒体或分类资源，以及资源归属。
+        :type SourceResource: :class:`tencentcloud.cme.v20191029.models.ResourceInfo`
+        :param DestinationResource: 目标信息，包含分类及归属，仅支持移动资源到分类。
+        :type DestinationResource: :class:`tencentcloud.cme.v20191029.models.ResourceInfo`
+        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验资源访问以及写权限。
+        :type Operator: str
+        """
+        self.Platform = None
+        self.SourceResource = None
+        self.DestinationResource = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.Platform = params.get("Platform")
+        if params.get("SourceResource") is not None:
+            self.SourceResource = ResourceInfo()
+            self.SourceResource._deserialize(params.get("SourceResource"))
+        if params.get("DestinationResource") is not None:
+            self.DestinationResource = ResourceInfo()
+            self.DestinationResource._deserialize(params.get("DestinationResource"))
+        self.Operator = params.get("Operator")
+
+
+class MoveResourceResponse(AbstractModel):
+    """MoveResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class OtherMaterial(AbstractModel):
+    """其他类型素材
+
+    """
+
+    def __init__(self):
+        """
+        :param MaterialUrl: 素材媒体文件的播放 URL 地址。
+        :type MaterialUrl: str
+        :param VodFileId: 云点播媒资 FileId。
+        :type VodFileId: str
+        """
+        self.MaterialUrl = None
+        self.VodFileId = None
+
+
+    def _deserialize(self, params):
+        self.MaterialUrl = params.get("MaterialUrl")
+        self.VodFileId = params.get("VodFileId")
+
+
 class PenguinMediaPlatformPublishInfo(AbstractModel):
     """企鹅号发布信息。
 
@@ -3160,6 +3276,31 @@ class PlatformInfo(AbstractModel):
         self.LicenseId = params.get("LicenseId")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+
+
+class PresetTagInfo(AbstractModel):
+    """预置标签信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 标签 Id 。
+        :type Id: str
+        :param Name: 标签名称。
+        :type Name: str
+        :param ParentTagId: 父级预设 Id。
+        :type ParentTagId: str
+        """
+        self.Id = None
+        self.Name = None
+        self.ParentTagId = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        self.ParentTagId = params.get("ParentTagId")
 
 
 class ProjectInfo(AbstractModel):
@@ -3230,6 +3371,32 @@ class Resource(AbstractModel):
     def _deserialize(self, params):
         self.Type = params.get("Type")
         self.Id = params.get("Id")
+
+
+class ResourceInfo(AbstractModel):
+    """资源信息，包含资源以及归属信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Resource: 媒资和分类资源。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resource: :class:`tencentcloud.cme.v20191029.models.Resource`
+        :param Owner: 资源归属，个人或团队。
+        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
+        """
+        self.Resource = None
+        self.Owner = None
+
+
+    def _deserialize(self, params):
+        if params.get("Resource") is not None:
+            self.Resource = Resource()
+            self.Resource._deserialize(params.get("Resource"))
+        if params.get("Owner") is not None:
+            self.Owner = Entity()
+            self.Owner._deserialize(params.get("Owner"))
 
 
 class RevokeResourceAuthorizationRequest(AbstractModel):
@@ -3313,18 +3480,18 @@ class SearchMaterialRequest(AbstractModel):
         :type Platform: str
         :param SearchScopes: 指定搜索空间，数组长度不得超过5。
         :type SearchScopes: list of SearchScope
-        :param MaterialTypes: 素材类型，取值：
+        :param MaterialTypes: 媒体类型，取值：
 <li>AUDIO：音频；</li>
 <li>VIDEO：视频 ；</li>
 <li>IMAGE：图片。</li>
         :type MaterialTypes: list of str
-        :param Text: 搜索文本，模糊匹配素材名称或描述信息，匹配项越多，匹配度越高，排序越优先。长度限制：15个字符。
+        :param Text: 搜索文本，模糊匹配媒体名称或描述信息，匹配项越多，匹配度越高，排序越优先。长度限制：15个字符。
         :type Text: str
         :param Resolution: 按画质检索，取值为：LD/SD/HD/FHD/2K/4K。
         :type Resolution: str
-        :param DurationRange: 按素材时长检索，单位s。
+        :param DurationRange: 按媒体时长检索，单位s。
         :type DurationRange: :class:`tencentcloud.cme.v20191029.models.IntegerRange`
-        :param CreateTimeRange: 按照素材创建时间检索。
+        :param CreateTimeRange: 按照媒体创建时间检索。
         :type CreateTimeRange: :class:`tencentcloud.cme.v20191029.models.TimeRange`
         :param Tags: 按标签检索，填入检索的标签名。
         :type Tags: list of str
@@ -3334,7 +3501,7 @@ class SearchMaterialRequest(AbstractModel):
         :type Offset: int
         :param Limit: 返回记录条数，默认值：50。
         :type Limit: int
-        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验媒体访问权限。
         :type Operator: str
         """
         self.Platform = None
@@ -3386,7 +3553,7 @@ class SearchMaterialResponse(AbstractModel):
         """
         :param TotalCount: 符合记录总条数。
         :type TotalCount: int
-        :param MaterialInfoSet: 素材信息，仅返回基础信息。
+        :param MaterialInfoSet: 媒体信息，仅返回基础信息。
         :type MaterialInfoSet: list of MaterialInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

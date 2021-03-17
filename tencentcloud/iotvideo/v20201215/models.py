@@ -71,6 +71,118 @@ class ActionHistory(AbstractModel):
         self.Status = params.get("Status")
 
 
+class BatchUpdateFirmwareRequest(AbstractModel):
+    """BatchUpdateFirmware请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductID: 产品ID
+        :type ProductID: str
+        :param FirmwareVersion: 固件新版本号
+        :type FirmwareVersion: str
+        :param FirmwareOriVersion: 固件原版本号，根据文件列表升级固件不需要填写此参数
+        :type FirmwareOriVersion: str
+        :param UpgradeMethod: 升级方式，0 静默升级  1 用户确认升级。 不填默认为静默升级方式
+        :type UpgradeMethod: int
+        :param FileName: 设备列表文件名称，根据文件列表升级固件需要填写此参数
+        :type FileName: str
+        :param FileMd5: 设备列表的文件md5值
+        :type FileMd5: str
+        :param FileSize: 设备列表的文件大小值
+        :type FileSize: int
+        :param DeviceNames: 需要升级的设备名称列表
+        :type DeviceNames: list of str
+        """
+        self.ProductID = None
+        self.FirmwareVersion = None
+        self.FirmwareOriVersion = None
+        self.UpgradeMethod = None
+        self.FileName = None
+        self.FileMd5 = None
+        self.FileSize = None
+        self.DeviceNames = None
+
+
+    def _deserialize(self, params):
+        self.ProductID = params.get("ProductID")
+        self.FirmwareVersion = params.get("FirmwareVersion")
+        self.FirmwareOriVersion = params.get("FirmwareOriVersion")
+        self.UpgradeMethod = params.get("UpgradeMethod")
+        self.FileName = params.get("FileName")
+        self.FileMd5 = params.get("FileMd5")
+        self.FileSize = params.get("FileSize")
+        self.DeviceNames = params.get("DeviceNames")
+
+
+class BatchUpdateFirmwareResponse(AbstractModel):
+    """BatchUpdateFirmware返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class CancelDeviceFirmwareTaskRequest(AbstractModel):
+    """CancelDeviceFirmwareTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductID: 产品ID
+        :type ProductID: str
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        :param FirmwareVersion: 固件版本号
+        :type FirmwareVersion: str
+        :param TaskId: 固件升级任务ID
+        :type TaskId: int
+        """
+        self.ProductID = None
+        self.DeviceName = None
+        self.FirmwareVersion = None
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.ProductID = params.get("ProductID")
+        self.DeviceName = params.get("DeviceName")
+        self.FirmwareVersion = params.get("FirmwareVersion")
+        self.TaskId = params.get("TaskId")
+
+
+class CancelDeviceFirmwareTaskResponse(AbstractModel):
+    """CancelDeviceFirmwareTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CheckForwardAuthRequest(AbstractModel):
     """CheckForwardAuth请求参数结构体
 
@@ -483,6 +595,48 @@ class CreateProductResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateTaskFileUrlRequest(AbstractModel):
+    """CreateTaskFileUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductId: 产品ID
+        :type ProductId: str
+        """
+        self.ProductId = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+
+
+class CreateTaskFileUrlResponse(AbstractModel):
+    """CreateTaskFileUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Url: 任务文件上传链接
+        :type Url: str
+        :param FileName: 任务文件名
+        :type FileName: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Url = None
+        self.FileName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
+        self.FileName = params.get("FileName")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteDeviceRequest(AbstractModel):
     """DeleteDevice请求参数结构体
 
@@ -506,6 +660,44 @@ class DeleteDeviceRequest(AbstractModel):
 
 class DeleteDeviceResponse(AbstractModel):
     """DeleteDevice返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteFirmwareRequest(AbstractModel):
+    """DeleteFirmware请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductID: 产品ID
+        :type ProductID: str
+        :param FirmwareVersion: 固件版本
+        :type FirmwareVersion: str
+        """
+        self.ProductID = None
+        self.FirmwareVersion = None
+
+
+    def _deserialize(self, params):
+        self.ProductID = params.get("ProductID")
+        self.FirmwareVersion = params.get("FirmwareVersion")
+
+
+class DeleteFirmwareResponse(AbstractModel):
+    """DeleteFirmware返回参数结构体
 
     """
 
@@ -1515,6 +1707,401 @@ class DescribeDevicesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeFirmwareRequest(AbstractModel):
+    """DescribeFirmware请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductID: 产品ID
+        :type ProductID: str
+        :param FirmwareVersion: 固件版本号
+        :type FirmwareVersion: str
+        """
+        self.ProductID = None
+        self.FirmwareVersion = None
+
+
+    def _deserialize(self, params):
+        self.ProductID = params.get("ProductID")
+        self.FirmwareVersion = params.get("FirmwareVersion")
+
+
+class DescribeFirmwareResponse(AbstractModel):
+    """DescribeFirmware返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Version: 固件版本号
+        :type Version: str
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param Name: 固件名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Description: 固件描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param Md5sum: 固件Md5值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Md5sum: str
+        :param Createtime: 固件上传的秒级时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Createtime: int
+        :param ProductName: 产品名称
+        :type ProductName: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Version = None
+        self.ProductId = None
+        self.Name = None
+        self.Description = None
+        self.Md5sum = None
+        self.Createtime = None
+        self.ProductName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Version = params.get("Version")
+        self.ProductId = params.get("ProductId")
+        self.Name = params.get("Name")
+        self.Description = params.get("Description")
+        self.Md5sum = params.get("Md5sum")
+        self.Createtime = params.get("Createtime")
+        self.ProductName = params.get("ProductName")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeFirmwareTaskDevicesRequest(AbstractModel):
+    """DescribeFirmwareTaskDevices请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductID: 产品ID
+        :type ProductID: str
+        :param FirmwareVersion: 固件版本
+        :type FirmwareVersion: str
+        :param Filters: 筛选条件
+        :type Filters: list of SearchKeyword
+        :param Offset: 查询偏移量
+        :type Offset: int
+        :param Limit: 查询的数量
+        :type Limit: int
+        """
+        self.ProductID = None
+        self.FirmwareVersion = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.ProductID = params.get("ProductID")
+        self.FirmwareVersion = params.get("FirmwareVersion")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = SearchKeyword()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeFirmwareTaskDevicesResponse(AbstractModel):
+    """DescribeFirmwareTaskDevices返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Total: 固件升级任务的设备总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param Devices: 固件升级任务的设备列表
+        :type Devices: list of DeviceUpdateStatus
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.Devices = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("Devices") is not None:
+            self.Devices = []
+            for item in params.get("Devices"):
+                obj = DeviceUpdateStatus()
+                obj._deserialize(item)
+                self.Devices.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeFirmwareTaskDistributionRequest(AbstractModel):
+    """DescribeFirmwareTaskDistribution请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductID: 产品ID
+        :type ProductID: str
+        :param FirmwareVersion: 固件版本号
+        :type FirmwareVersion: str
+        :param TaskId: 固件升级任务ID
+        :type TaskId: int
+        """
+        self.ProductID = None
+        self.FirmwareVersion = None
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.ProductID = params.get("ProductID")
+        self.FirmwareVersion = params.get("FirmwareVersion")
+        self.TaskId = params.get("TaskId")
+
+
+class DescribeFirmwareTaskDistributionResponse(AbstractModel):
+    """DescribeFirmwareTaskDistribution返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StatusInfos: 固件升级任务状态分布信息
+        :type StatusInfos: list of StatusStatistic
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.StatusInfos = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("StatusInfos") is not None:
+            self.StatusInfos = []
+            for item in params.get("StatusInfos"):
+                obj = StatusStatistic()
+                obj._deserialize(item)
+                self.StatusInfos.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeFirmwareTaskRequest(AbstractModel):
+    """DescribeFirmwareTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductID: 产品ID
+        :type ProductID: str
+        :param FirmwareVersion: 固件版本号
+        :type FirmwareVersion: str
+        :param TaskId: 固件任务ID
+        :type TaskId: int
+        """
+        self.ProductID = None
+        self.FirmwareVersion = None
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.ProductID = params.get("ProductID")
+        self.FirmwareVersion = params.get("FirmwareVersion")
+        self.TaskId = params.get("TaskId")
+
+
+class DescribeFirmwareTaskResponse(AbstractModel):
+    """DescribeFirmwareTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 固件任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: int
+        :param Status: 固件任务状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param CreateTime: 固件任务创建时间，单位:秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param Type: 固件任务升级类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: int
+        :param ProductName: 产品名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductName: str
+        :param UpgradeMode: 固件任务升级模式。originalVersion（按版本号升级）、filename（提交文件升级）、devicenames（按设备名称升级）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpgradeMode: str
+        :param ProductId: 产品ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductId: str
+        :param OriginalVersion: 原始固件版本号，在UpgradeMode是originalVersion升级模式下会返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginalVersion: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.Status = None
+        self.CreateTime = None
+        self.Type = None
+        self.ProductName = None
+        self.UpgradeMode = None
+        self.ProductId = None
+        self.OriginalVersion = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Status = params.get("Status")
+        self.CreateTime = params.get("CreateTime")
+        self.Type = params.get("Type")
+        self.ProductName = params.get("ProductName")
+        self.UpgradeMode = params.get("UpgradeMode")
+        self.ProductId = params.get("ProductId")
+        self.OriginalVersion = params.get("OriginalVersion")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeFirmwareTaskStatisticsRequest(AbstractModel):
+    """DescribeFirmwareTaskStatistics请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductID: 产品ID
+        :type ProductID: str
+        :param FirmwareVersion: 固件版本号
+        :type FirmwareVersion: str
+        """
+        self.ProductID = None
+        self.FirmwareVersion = None
+
+
+    def _deserialize(self, params):
+        self.ProductID = params.get("ProductID")
+        self.FirmwareVersion = params.get("FirmwareVersion")
+
+
+class DescribeFirmwareTaskStatisticsResponse(AbstractModel):
+    """DescribeFirmwareTaskStatistics返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SuccessTotal: 升级成功的设备总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuccessTotal: int
+        :param FailureTotal: 升级失败的设备总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailureTotal: int
+        :param UpgradingTotal: 正在升级的设备总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpgradingTotal: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SuccessTotal = None
+        self.FailureTotal = None
+        self.UpgradingTotal = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SuccessTotal = params.get("SuccessTotal")
+        self.FailureTotal = params.get("FailureTotal")
+        self.UpgradingTotal = params.get("UpgradingTotal")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeFirmwareTasksRequest(AbstractModel):
+    """DescribeFirmwareTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductID: 产品ID
+        :type ProductID: str
+        :param FirmwareVersion: 固件版本号
+        :type FirmwareVersion: str
+        :param Offset: 查询偏移量
+        :type Offset: int
+        :param Limit: 返回查询结果条数
+        :type Limit: int
+        :param Filters: 搜索过滤条件
+        :type Filters: list of SearchKeyword
+        """
+        self.ProductID = None
+        self.FirmwareVersion = None
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.ProductID = params.get("ProductID")
+        self.FirmwareVersion = params.get("FirmwareVersion")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = SearchKeyword()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class DescribeFirmwareTasksResponse(AbstractModel):
+    """DescribeFirmwareTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskInfos: 固件升级任务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskInfos: list of FirmwareTaskInfo
+        :param Total: 固件升级任务总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskInfos = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TaskInfos") is not None:
+            self.TaskInfos = []
+            for item in params.get("TaskInfos"):
+                obj = FirmwareTaskInfo()
+                obj._deserialize(item)
+                self.TaskInfos.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeForwardRuleRequest(AbstractModel):
     """DescribeForwardRule请求参数结构体
 
@@ -1823,6 +2410,104 @@ class DeviceInfo(AbstractModel):
         self.ExpireTime = params.get("ExpireTime")
 
 
+class DeviceUpdateStatus(AbstractModel):
+    """设备固件更新状态
+
+    """
+
+    def __init__(self):
+        """
+        :param DeviceName: 设备名
+        :type DeviceName: str
+        :param LastProcessTime: 最后处理时间
+        :type LastProcessTime: int
+        :param Status: 状态
+        :type Status: int
+        :param ErrMsg: 错误消息
+        :type ErrMsg: str
+        :param Retcode: 返回码
+        :type Retcode: int
+        :param DstVersion: 目标更新版本
+        :type DstVersion: str
+        :param Percent: 下载中状态时的下载进度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Percent: int
+        :param OriVersion: 原版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriVersion: str
+        :param TaskId: 任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: int
+        """
+        self.DeviceName = None
+        self.LastProcessTime = None
+        self.Status = None
+        self.ErrMsg = None
+        self.Retcode = None
+        self.DstVersion = None
+        self.Percent = None
+        self.OriVersion = None
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.DeviceName = params.get("DeviceName")
+        self.LastProcessTime = params.get("LastProcessTime")
+        self.Status = params.get("Status")
+        self.ErrMsg = params.get("ErrMsg")
+        self.Retcode = params.get("Retcode")
+        self.DstVersion = params.get("DstVersion")
+        self.Percent = params.get("Percent")
+        self.OriVersion = params.get("OriVersion")
+        self.TaskId = params.get("TaskId")
+
+
+class EditFirmwareRequest(AbstractModel):
+    """EditFirmware请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductID: 产品ID。
+        :type ProductID: str
+        :param FirmwareVersion: 固件版本号。
+        :type FirmwareVersion: str
+        :param FirmwareName: 固件名称。
+        :type FirmwareName: str
+        :param FirmwareDescription: 固件描述。
+        :type FirmwareDescription: str
+        """
+        self.ProductID = None
+        self.FirmwareVersion = None
+        self.FirmwareName = None
+        self.FirmwareDescription = None
+
+
+    def _deserialize(self, params):
+        self.ProductID = params.get("ProductID")
+        self.FirmwareVersion = params.get("FirmwareVersion")
+        self.FirmwareName = params.get("FirmwareName")
+        self.FirmwareDescription = params.get("FirmwareDescription")
+
+
+class EditFirmwareResponse(AbstractModel):
+    """EditFirmware返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class EventHistoryItem(AbstractModel):
     """设备事件的搜索结果项
 
@@ -1866,6 +2551,160 @@ class EventHistoryItem(AbstractModel):
         self.Data = params.get("Data")
 
 
+class FirmwareInfo(AbstractModel):
+    """设备固件详细信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Version: 固件版本
+        :type Version: str
+        :param Md5sum: 固件MD5值
+        :type Md5sum: str
+        :param CreateTime: 固件创建时间
+        :type CreateTime: int
+        :param ProductName: 产品名称
+        :type ProductName: str
+        :param Name: 固件名称
+        :type Name: str
+        :param Description: 固件描述
+        :type Description: str
+        :param ProductId: 产品ID
+        :type ProductId: str
+        """
+        self.Version = None
+        self.Md5sum = None
+        self.CreateTime = None
+        self.ProductName = None
+        self.Name = None
+        self.Description = None
+        self.ProductId = None
+
+
+    def _deserialize(self, params):
+        self.Version = params.get("Version")
+        self.Md5sum = params.get("Md5sum")
+        self.CreateTime = params.get("CreateTime")
+        self.ProductName = params.get("ProductName")
+        self.Name = params.get("Name")
+        self.Description = params.get("Description")
+        self.ProductId = params.get("ProductId")
+
+
+class FirmwareTaskInfo(AbstractModel):
+    """固件升级任务信息
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: int
+        :param Status: 任务状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param Type: 任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: int
+        :param CreateTime: 任务创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        """
+        self.TaskId = None
+        self.Status = None
+        self.Type = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Status = params.get("Status")
+        self.Type = params.get("Type")
+        self.CreateTime = params.get("CreateTime")
+
+
+class GetAllFirmwareVersionRequest(AbstractModel):
+    """GetAllFirmwareVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductID: 产品ID
+        :type ProductID: str
+        """
+        self.ProductID = None
+
+
+    def _deserialize(self, params):
+        self.ProductID = params.get("ProductID")
+
+
+class GetAllFirmwareVersionResponse(AbstractModel):
+    """GetAllFirmwareVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Version: 无
+        :type Version: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Version = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Version = params.get("Version")
+        self.RequestId = params.get("RequestId")
+
+
+class GetFirmwareURLRequest(AbstractModel):
+    """GetFirmwareURL请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductID: 产品ID
+        :type ProductID: str
+        :param FirmwareVersion: 固件版本
+        :type FirmwareVersion: str
+        """
+        self.ProductID = None
+        self.FirmwareVersion = None
+
+
+    def _deserialize(self, params):
+        self.ProductID = params.get("ProductID")
+        self.FirmwareVersion = params.get("FirmwareVersion")
+
+
+class GetFirmwareURLResponse(AbstractModel):
+    """GetFirmwareURL返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Url: 固件URL
+        :type Url: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Url = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
+        self.RequestId = params.get("RequestId")
+
+
 class ImportModelDefinitionRequest(AbstractModel):
     """ImportModelDefinition请求参数结构体
 
@@ -1901,6 +2740,70 @@ class ImportModelDefinitionResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ListFirmwaresRequest(AbstractModel):
+    """ListFirmwares请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PageNum: 获取的页数
+        :type PageNum: int
+        :param PageSize: 分页的大小
+        :type PageSize: int
+        :param ProductID: 产品ID
+        :type ProductID: str
+        :param Filters: 搜索过滤条件
+        :type Filters: list of SearchKeyword
+        """
+        self.PageNum = None
+        self.PageSize = None
+        self.ProductID = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.PageNum = params.get("PageNum")
+        self.PageSize = params.get("PageSize")
+        self.ProductID = params.get("ProductID")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = SearchKeyword()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class ListFirmwaresResponse(AbstractModel):
+    """ListFirmwares返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 固件总数
+        :type TotalCount: int
+        :param Firmwares: 固件列表
+        :type Firmwares: list of FirmwareInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Firmwares = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Firmwares") is not None:
+            self.Firmwares = []
+            for item in params.get("Firmwares"):
+                obj = FirmwareInfo()
+                obj._deserialize(item)
+                self.Firmwares.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2203,6 +3106,73 @@ class ProductTemplate(AbstractModel):
         self.IconUrlGrid = params.get("IconUrlGrid")
 
 
+class RetryDeviceFirmwareTaskRequest(AbstractModel):
+    """RetryDeviceFirmwareTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductID: 产品ID
+        :type ProductID: str
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        :param FirmwareVersion: 固件版本号
+        :type FirmwareVersion: str
+        :param TaskId: 固件升级任务ID
+        :type TaskId: int
+        """
+        self.ProductID = None
+        self.DeviceName = None
+        self.FirmwareVersion = None
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.ProductID = params.get("ProductID")
+        self.DeviceName = params.get("DeviceName")
+        self.FirmwareVersion = params.get("FirmwareVersion")
+        self.TaskId = params.get("TaskId")
+
+
+class RetryDeviceFirmwareTaskResponse(AbstractModel):
+    """RetryDeviceFirmwareTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class SearchKeyword(AbstractModel):
+    """搜索关键词
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: 搜索条件的Key
+        :type Key: str
+        :param Value: 搜索条件的值
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+
+
 class SetForwardAuthRequest(AbstractModel):
     """SetForwardAuth请求参数结构体
 
@@ -2262,6 +3232,83 @@ class SetForwardAuthResponse(AbstractModel):
         self.RoleID = params.get("RoleID")
         self.QueueType = params.get("QueueType")
         self.ErrMsg = params.get("ErrMsg")
+        self.RequestId = params.get("RequestId")
+
+
+class StatusStatistic(AbstractModel):
+    """状态统计信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 任务状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param Total: 统计总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        """
+        self.Status = None
+        self.Total = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.Total = params.get("Total")
+
+
+class UploadFirmwareRequest(AbstractModel):
+    """UploadFirmware请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductID: 产品ID
+        :type ProductID: str
+        :param FirmwareVersion: 固件版本号
+        :type FirmwareVersion: str
+        :param Md5sum: 固件的MD5值
+        :type Md5sum: str
+        :param FileSize: 固件的大小
+        :type FileSize: int
+        :param FirmwareName: 固件名称
+        :type FirmwareName: str
+        :param FirmwareDescription: 固件描述
+        :type FirmwareDescription: str
+        """
+        self.ProductID = None
+        self.FirmwareVersion = None
+        self.Md5sum = None
+        self.FileSize = None
+        self.FirmwareName = None
+        self.FirmwareDescription = None
+
+
+    def _deserialize(self, params):
+        self.ProductID = params.get("ProductID")
+        self.FirmwareVersion = params.get("FirmwareVersion")
+        self.Md5sum = params.get("Md5sum")
+        self.FileSize = params.get("FileSize")
+        self.FirmwareName = params.get("FirmwareName")
+        self.FirmwareDescription = params.get("FirmwareDescription")
+
+
+class UploadFirmwareResponse(AbstractModel):
+    """UploadFirmware返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
