@@ -170,7 +170,7 @@ class ClbClient(AbstractClient):
 
 
     def CreateClsLogSet(self, request):
-        """创建clb专有日志集，此日志集用于存储clb的日志。
+        """创建CLB专有日志集，此日志集用于存储CLB的日志。
 
         :param request: Request instance for CreateClsLogSet.
         :type request: :class:`tencentcloud.clb.v20180317.models.CreateClsLogSetRequest`
@@ -257,7 +257,7 @@ class ClbClient(AbstractClient):
 
 
     def CreateLoadBalancerSnatIps(self, request):
-        """针对SnatPro负载均衡，这个接口用于添加SnatIp，如果负载均衡没有开启SnatPro，添加SnatIp后会自动开启
+        """针对SnatPro负载均衡，这个接口用于添加SnatIp，如果负载均衡没有开启SnatPro，添加SnatIp后会自动开启。
 
         :param request: Request instance for CreateLoadBalancerSnatIps.
         :type request: :class:`tencentcloud.clb.v20180317.models.CreateLoadBalancerSnatIpsRequest`
@@ -342,7 +342,7 @@ class ClbClient(AbstractClient):
 
 
     def CreateTopic(self, request):
-        """创建主题，默认开启全文索引和键值索引。如果不存在clb专有日志集，则创建失败。
+        """创建主题，默认开启全文索引和键值索引。如果不存在CLB专有日志集，则创建失败。
 
         :param request: Request instance for CreateTopic.
         :type request: :class:`tencentcloud.clb.v20180317.models.CreateTopicRequest`
@@ -457,7 +457,7 @@ class ClbClient(AbstractClient):
 
 
     def DeleteLoadBalancerSnatIps(self, request):
-        """对于SnatPro的负载均衡，这个接口用于删除SnatIp
+        """这个接口用于删除SnatPro的负载均衡的SnatIp。
 
         :param request: Request instance for DeleteLoadBalancerSnatIps.
         :type request: :class:`tencentcloud.clb.v20180317.models.DeleteLoadBalancerSnatIpsRequest`
@@ -571,7 +571,7 @@ class ClbClient(AbstractClient):
 
 
     def DeregisterTargetGroupInstances(self, request):
-        """将服务器从目标组中解绑。
+        """从目标组中解绑服务器。
         本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
 
         :param request: Request instance for DeregisterTargetGroupInstances.
@@ -629,8 +629,7 @@ class ClbClient(AbstractClient):
 
 
     def DeregisterTargetsFromClassicalLB(self, request):
-        """DeregisterTargetsFromClassicalLB 接口用于解绑负载均衡后端服务。
-        本接口为异步接口，接口返回成功后，需以返回的 RequestId 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+        """DeregisterTargetsFromClassicalLB 接口用于解绑负载均衡后端服务。本接口为异步接口，接口返回成功后，需以返回的 RequestId 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
 
         :param request: Request instance for DeregisterTargetsFromClassicalLB.
         :type request: :class:`tencentcloud.clb.v20180317.models.DeregisterTargetsFromClassicalLBRequest`
@@ -714,7 +713,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeClassicalLBByInstanceId(self, request):
-        """DescribeClassicalLBByInstanceId用于通过后端实例ID获取传统型负载均衡ID列表
+        """DescribeClassicalLBByInstanceId用于通过后端实例ID获取传统型负载均衡ID列表。
 
         :param request: Request instance for DescribeClassicalLBByInstanceId.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeClassicalLBByInstanceIdRequest`
@@ -798,7 +797,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeClassicalLBTargets(self, request):
-        """DescribeClassicalLBTargets用于获取传统型负载均衡绑定的后端服务
+        """DescribeClassicalLBTargets用于获取传统型负载均衡绑定的后端服务。
 
         :param request: Request instance for DescribeClassicalLBTargets.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeClassicalLBTargetsRequest`
@@ -826,7 +825,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeClsLogSet(self, request):
-        """获取用户的clb专有日志集
+        """获取用户的CLB专有日志集。
 
         :param request: Request instance for DescribeClsLogSet.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeClsLogSetRequest`
@@ -854,7 +853,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeClusterResources(self, request):
-        """查询独占集群中资源列表，支持按集群ID、vip、负载均衡ID、是否闲置为过滤条件检索
+        """查询独占集群中的资源列表，支持按集群ID、VIP、负载均衡ID、是否闲置为过滤条件检索。
 
         :param request: Request instance for DescribeClusterResources.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeClusterResourcesRequest`
@@ -966,7 +965,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeLoadBalancerTraffic(self, request):
-        """查询账号下高流量负载均衡，返回前10个负载均衡。如果是子账号登录，只返回子账号有权限的负载均衡。
+        """查询账号下的高流量负载均衡，返回前10个负载均衡。如果是子账号登录，只返回子账号有权限的负载均衡。
 
         :param request: Request instance for DescribeLoadBalancerTraffic.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeLoadBalancerTrafficRequest`
@@ -1707,8 +1706,7 @@ class ClbClient(AbstractClient):
 
 
     def RegisterTargetsWithClassicalLB(self, request):
-        """RegisterTargetsWithClassicalLB 接口用于绑定后端服务到传统型负载均衡。
-        本接口为异步接口，接口返回成功后，需以返回的 RequestId 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+        """RegisterTargetsWithClassicalLB 接口用于绑定后端服务到传统型负载均衡。本接口为异步接口，接口返回成功后，需以返回的 RequestId 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
 
         :param request: Request instance for RegisterTargetsWithClassicalLB.
         :type request: :class:`tencentcloud.clb.v20180317.models.RegisterTargetsWithClassicalLBRequest`

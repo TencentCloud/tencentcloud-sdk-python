@@ -17,29 +17,29 @@ import json
 
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.common.abstract_client import AbstractClient
-from tencentcloud.tbaas.v20180416 import models
+from tencentcloud.iotvideoindustry.v20201201 import models
 
 
-class TbaasClient(AbstractClient):
-    _apiVersion = '2018-04-16'
-    _endpoint = 'tbaas.tencentcloudapi.com'
-    _service = 'tbaas'
+class IotvideoindustryClient(AbstractClient):
+    _apiVersion = '2020-12-01'
+    _endpoint = 'iotvideoindustry.tencentcloudapi.com'
+    _service = 'iotvideoindustry'
 
 
-    def ApplyUserCert(self, request):
-        """申请用户证书
+    def BindGroupDevices(self, request):
+        """本接口(BindGroupDevices) 用于绑定设备到分组。
 
-        :param request: Request instance for ApplyUserCert.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.ApplyUserCertRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.ApplyUserCertResponse`
+        :param request: Request instance for BindGroupDevices.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.BindGroupDevicesRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.BindGroupDevicesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ApplyUserCert", params)
+            body = self.call("BindGroupDevices", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ApplyUserCertResponse()
+                model = models.BindGroupDevicesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -54,22 +54,20 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def BlockByNumberHandler(self, request):
-        """版本升级
+    def ControlDevicePTZ(self, request):
+        """本接口(ControlDevicePTZ) 用于对支持GB28181 PTZ信令的设备进行远程控制。
 
-        Bcos根据块高查询区块信息
-
-        :param request: Request instance for BlockByNumberHandler.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.BlockByNumberHandlerRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.BlockByNumberHandlerResponse`
+        :param request: Request instance for ControlDevicePTZ.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.ControlDevicePTZRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.ControlDevicePTZResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("BlockByNumberHandler", params)
+            body = self.call("ControlDevicePTZ", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.BlockByNumberHandlerResponse()
+                model = models.ControlDevicePTZResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -84,20 +82,20 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateChaincodeAndInstallForUser(self, request):
-        """创建并安装合约
+    def CreateDevice(self, request):
+        """本接口(CreateDevice) 用于创建设备。
 
-        :param request: Request instance for CreateChaincodeAndInstallForUser.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.CreateChaincodeAndInstallForUserRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.CreateChaincodeAndInstallForUserResponse`
+        :param request: Request instance for CreateDevice.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.CreateDeviceRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.CreateDeviceResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("CreateChaincodeAndInstallForUser", params)
+            body = self.call("CreateDevice", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateChaincodeAndInstallForUserResponse()
+                model = models.CreateDeviceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -112,20 +110,20 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeployDynamicBcosContract(self, request):
-        """动态部署并发布Bcos合约
+    def CreateDeviceGroup(self, request):
+        """本接口(CreateDeviceGroup) 用于创建设备管理分组。
 
-        :param request: Request instance for DeployDynamicBcosContract.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.DeployDynamicBcosContractRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.DeployDynamicBcosContractResponse`
+        :param request: Request instance for CreateDeviceGroup.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.CreateDeviceGroupRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.CreateDeviceGroupResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeployDynamicBcosContract", params)
+            body = self.call("CreateDeviceGroup", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeployDynamicBcosContractResponse()
+                model = models.CreateDeviceGroupResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -140,22 +138,20 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeployDynamicContractHandler(self, request):
-        """版本升级
+    def CreateRecordPlan(self, request):
+        """本接口(CreateRecordPlan) 用于创建录制计划，使设备与时间模板绑定，以便及时启动录制
 
-        动态部署合约
-
-        :param request: Request instance for DeployDynamicContractHandler.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.DeployDynamicContractHandlerRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.DeployDynamicContractHandlerResponse`
+        :param request: Request instance for CreateRecordPlan.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.CreateRecordPlanRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.CreateRecordPlanResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DeployDynamicContractHandler", params)
+            body = self.call("CreateRecordPlan", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeployDynamicContractHandlerResponse()
+                model = models.CreateRecordPlanResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -170,20 +166,20 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DownloadUserCert(self, request):
-        """下载用户证书
+    def CreateTimeTemplate(self, request):
+        """本接口(CreateTimeTemplate) 用于根据模板描述的具体录制时间片段，创建定制化的时间模板。
 
-        :param request: Request instance for DownloadUserCert.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.DownloadUserCertRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.DownloadUserCertResponse`
+        :param request: Request instance for CreateTimeTemplate.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.CreateTimeTemplateRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.CreateTimeTemplateResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DownloadUserCert", params)
+            body = self.call("CreateTimeTemplate", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DownloadUserCertResponse()
+                model = models.CreateTimeTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -198,20 +194,20 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def GetBcosBlockByNumber(self, request):
-        """使用块高查询Bcos区块信息
+    def DeleteDevice(self, request):
+        """本接口(DeleteDevice)用于删除设备。
 
-        :param request: Request instance for GetBcosBlockByNumber.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetBcosBlockByNumberRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetBcosBlockByNumberResponse`
+        :param request: Request instance for DeleteDevice.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DeleteDeviceRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DeleteDeviceResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("GetBcosBlockByNumber", params)
+            body = self.call("DeleteDevice", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.GetBcosBlockByNumberResponse()
+                model = models.DeleteDeviceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -226,20 +222,20 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def GetBcosBlockList(self, request):
-        """Bcos分页查询当前群组下的区块列表
+    def DeleteDeviceGroup(self, request):
+        """本接口(DeleteDeviceGroup)用于删除分组。
 
-        :param request: Request instance for GetBcosBlockList.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetBcosBlockListRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetBcosBlockListResponse`
+        :param request: Request instance for DeleteDeviceGroup.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DeleteDeviceGroupRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DeleteDeviceGroupResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("GetBcosBlockList", params)
+            body = self.call("DeleteDeviceGroup", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.GetBcosBlockListResponse()
+                model = models.DeleteDeviceGroupResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -254,20 +250,21 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def GetBcosTransByHash(self, request):
-        """Bcos根据交易哈希查看交易详细信息
+    def DeleteRecordPlan(self, request):
+        """本接口(DeleteRecordPlan)用于删除录制计划
+        录制计划删除的同时，会停止该录制计划下的全部录制任务。
 
-        :param request: Request instance for GetBcosTransByHash.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetBcosTransByHashRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetBcosTransByHashResponse`
+        :param request: Request instance for DeleteRecordPlan.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DeleteRecordPlanRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DeleteRecordPlanResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("GetBcosTransByHash", params)
+            body = self.call("DeleteRecordPlan", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.GetBcosTransByHashResponse()
+                model = models.DeleteRecordPlanResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -282,20 +279,20 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def GetBcosTransList(self, request):
-        """Bcos分页查询当前群组的交易信息列表
+    def DeleteTimeTemplate(self, request):
+        """本接口(DeleteTimeTemplate) 用于删除时间模板。
 
-        :param request: Request instance for GetBcosTransList.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetBcosTransListRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetBcosTransListResponse`
+        :param request: Request instance for DeleteTimeTemplate.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DeleteTimeTemplateRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DeleteTimeTemplateResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("GetBcosTransList", params)
+            body = self.call("DeleteTimeTemplate", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.GetBcosTransListResponse()
+                model = models.DeleteTimeTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -310,20 +307,20 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def GetBlockList(self, request):
-        """查看当前网络下的所有区块列表，分页展示
+    def DescribeAllDeviceList(self, request):
+        """本接口(DescribeAllDeviceList) 用于获取设备列表。
 
-        :param request: Request instance for GetBlockList.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetBlockListRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetBlockListResponse`
+        :param request: Request instance for DescribeAllDeviceList.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeAllDeviceListRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeAllDeviceListResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("GetBlockList", params)
+            body = self.call("DescribeAllDeviceList", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.GetBlockListResponse()
+                model = models.DescribeAllDeviceListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -338,22 +335,20 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def GetBlockListHandler(self, request):
-        """版本升级
+    def DescribeDeviceGroup(self, request):
+        """本接口(DescribeDeviceGroup)用于根据设备ID查询设备所在分组信息，可批量查询。
 
-        Bcos分页查询当前群组下的区块列表
-
-        :param request: Request instance for GetBlockListHandler.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetBlockListHandlerRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetBlockListHandlerResponse`
+        :param request: Request instance for DescribeDeviceGroup.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeDeviceGroupRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeDeviceGroupResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("GetBlockListHandler", params)
+            body = self.call("DescribeDeviceGroup", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.GetBlockListHandlerResponse()
+                model = models.DescribeDeviceGroupResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -368,20 +363,20 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def GetBlockTransactionListForUser(self, request):
-        """获取区块内的交易列表
+    def DescribeDevicePassWord(self, request):
+        """本接口(DescribeDevicePassWord)用于查询设备密码。
 
-        :param request: Request instance for GetBlockTransactionListForUser.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetBlockTransactionListForUserRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetBlockTransactionListForUserResponse`
+        :param request: Request instance for DescribeDevicePassWord.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeDevicePassWordRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeDevicePassWordResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("GetBlockTransactionListForUser", params)
+            body = self.call("DescribeDevicePassWord", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.GetBlockTransactionListForUserResponse()
+                model = models.DescribeDevicePassWordResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -396,20 +391,20 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def GetChaincodeCompileLogForUser(self, request):
-        """获取合约编译日志
+    def DescribeDeviceStreams(self, request):
+        """本接口(DescribeDeviceStreams)用于获取设备实时流地址。
 
-        :param request: Request instance for GetChaincodeCompileLogForUser.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetChaincodeCompileLogForUserRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetChaincodeCompileLogForUserResponse`
+        :param request: Request instance for DescribeDeviceStreams.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeDeviceStreamsRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeDeviceStreamsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("GetChaincodeCompileLogForUser", params)
+            body = self.call("DescribeDeviceStreams", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.GetChaincodeCompileLogForUserResponse()
+                model = models.DescribeDeviceStreamsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -424,20 +419,20 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def GetChaincodeInitializeResultForUser(self, request):
-        """实例化结果查询
+    def DescribeGroupById(self, request):
+        """本接口(DescribeGroupById)用于根据分组ID查询分组。
 
-        :param request: Request instance for GetChaincodeInitializeResultForUser.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetChaincodeInitializeResultForUserRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetChaincodeInitializeResultForUserResponse`
+        :param request: Request instance for DescribeGroupById.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeGroupByIdRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeGroupByIdResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("GetChaincodeInitializeResultForUser", params)
+            body = self.call("DescribeGroupById", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.GetChaincodeInitializeResultForUserResponse()
+                model = models.DescribeGroupByIdResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -452,20 +447,20 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def GetChaincodeLogForUser(self, request):
-        """获取合约容器日志
+    def DescribeGroupByPath(self, request):
+        """根据分组路径查询分组
 
-        :param request: Request instance for GetChaincodeLogForUser.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetChaincodeLogForUserRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetChaincodeLogForUserResponse`
+        :param request: Request instance for DescribeGroupByPath.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeGroupByPathRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeGroupByPathResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("GetChaincodeLogForUser", params)
+            body = self.call("DescribeGroupByPath", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.GetChaincodeLogForUserResponse()
+                model = models.DescribeGroupByPathResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -480,20 +475,20 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def GetChannelListForUser(self, request):
-        """获取通道列表
+    def DescribeGroupDevices(self, request):
+        """本接口(DescribeGroupDevices)用于查询分组下的设备列表。
 
-        :param request: Request instance for GetChannelListForUser.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetChannelListForUserRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetChannelListForUserResponse`
+        :param request: Request instance for DescribeGroupDevices.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeGroupDevicesRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeGroupDevicesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("GetChannelListForUser", params)
+            body = self.call("DescribeGroupDevices", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.GetChannelListForUserResponse()
+                model = models.DescribeGroupDevicesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -508,20 +503,20 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def GetClusterListForUser(self, request):
-        """获取该用户的网络列表。网络信息中包含组织信息，但仅包含该用户所在组织的信息。
+    def DescribeGroups(self, request):
+        """本接口(DescribeGroups)用于批量查询分组信息。
 
-        :param request: Request instance for GetClusterListForUser.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetClusterListForUserRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetClusterListForUserResponse`
+        :param request: Request instance for DescribeGroups.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeGroupsRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeGroupsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("GetClusterListForUser", params)
+            body = self.call("DescribeGroups", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.GetClusterListForUserResponse()
+                model = models.DescribeGroupsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -536,20 +531,20 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def GetClusterSummary(self, request):
-        """获取区块链网络概要
+    def DescribeSIPServer(self, request):
+        """本接口用于获取SIP服务器相关配置，用户可以通过这些配置项，将设备通过GB28181协议注册到本服务。
 
-        :param request: Request instance for GetClusterSummary.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetClusterSummaryRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetClusterSummaryResponse`
+        :param request: Request instance for DescribeSIPServer.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeSIPServerRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeSIPServerResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("GetClusterSummary", params)
+            body = self.call("DescribeSIPServer", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.GetClusterSummaryResponse()
+                model = models.DescribeSIPServerResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -564,20 +559,20 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def GetInvokeTx(self, request):
-        """Invoke异步调用结果查询
+    def DescribeStatisticDetails(self, request):
+        """本接口(DescribeStatisticDetails)用于查询指定统计项详情，返回结果按天为单位聚合，支持的最大时间查询范围为31天。
 
-        :param request: Request instance for GetInvokeTx.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetInvokeTxRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetInvokeTxResponse`
+        :param request: Request instance for DescribeStatisticDetails.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeStatisticDetailsRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeStatisticDetailsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("GetInvokeTx", params)
+            body = self.call("DescribeStatisticDetails", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.GetInvokeTxResponse()
+                model = models.DescribeStatisticDetailsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -592,20 +587,20 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def GetLatesdTransactionList(self, request):
-        """获取最新交易列表
+    def DescribeStatisticSummary(self, request):
+        """本接口(DescribeStatisticSummary)用于查询用户昨日的概览数据。
 
-        :param request: Request instance for GetLatesdTransactionList.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetLatesdTransactionListRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetLatesdTransactionListResponse`
+        :param request: Request instance for DescribeStatisticSummary.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeStatisticSummaryRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeStatisticSummaryResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("GetLatesdTransactionList", params)
+            body = self.call("DescribeStatisticSummary", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.GetLatesdTransactionListResponse()
+                model = models.DescribeStatisticSummaryResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -620,20 +615,20 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def GetPeerLogForUser(self, request):
-        """获取节点日志
+    def DescribeSubGroups(self, request):
+        """本接口(DescribeSubGroups)用于查询分组下的子分组列表。
 
-        :param request: Request instance for GetPeerLogForUser.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetPeerLogForUserRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetPeerLogForUserResponse`
+        :param request: Request instance for DescribeSubGroups.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeSubGroupsRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeSubGroupsResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("GetPeerLogForUser", params)
+            body = self.call("DescribeSubGroups", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.GetPeerLogForUserResponse()
+                model = models.DescribeSubGroupsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -648,22 +643,20 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def GetTransByHashHandler(self, request):
-        """版本升级
+    def GetRecordDatesByDev(self, request):
+        """本接口()用于查询设备含有录像文件的日期列表。
 
-        Bcos根据交易哈希查看交易详细信息
-
-        :param request: Request instance for GetTransByHashHandler.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetTransByHashHandlerRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetTransByHashHandlerResponse`
+        :param request: Request instance for GetRecordDatesByDev.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.GetRecordDatesByDevRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.GetRecordDatesByDevResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("GetTransByHashHandler", params)
+            body = self.call("GetRecordDatesByDev", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.GetTransByHashHandlerResponse()
+                model = models.GetRecordDatesByDevResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -678,22 +671,20 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def GetTransListHandler(self, request):
-        """版本升级
+    def GetRecordPlanByDev(self, request):
+        """本接口(GetRecordPlanByDev)用于根据设备ID查询其绑定的录制计划.
 
-        Bcos分页查询当前群组的交易信息列表
-
-        :param request: Request instance for GetTransListHandler.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetTransListHandlerRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetTransListHandlerResponse`
+        :param request: Request instance for GetRecordPlanByDev.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.GetRecordPlanByDevRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.GetRecordPlanByDevResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("GetTransListHandler", params)
+            body = self.call("GetRecordPlanByDev", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.GetTransListHandlerResponse()
+                model = models.GetRecordPlanByDevResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -708,20 +699,20 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def GetTransactionDetailForUser(self, request):
-        """获取交易详情
+    def GetRecordPlanById(self, request):
+        """本接口(GetRecordPlanById)用于根据录制计划ID获取录制计划。
 
-        :param request: Request instance for GetTransactionDetailForUser.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetTransactionDetailForUserRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetTransactionDetailForUserResponse`
+        :param request: Request instance for GetRecordPlanById.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.GetRecordPlanByIdRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.GetRecordPlanByIdResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("GetTransactionDetailForUser", params)
+            body = self.call("GetRecordPlanById", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.GetTransactionDetailForUserResponse()
+                model = models.GetRecordPlanByIdResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -736,20 +727,20 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def InitializeChaincodeForUser(self, request):
-        """实例化合约
+    def GetRecordPlans(self, request):
+        """本接口(GetRecordPlans)用于获取用户的全部录制计划。
 
-        :param request: Request instance for InitializeChaincodeForUser.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.InitializeChaincodeForUserRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.InitializeChaincodeForUserResponse`
+        :param request: Request instance for GetRecordPlans.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.GetRecordPlansRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.GetRecordPlansResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("InitializeChaincodeForUser", params)
+            body = self.call("GetRecordPlans", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.InitializeChaincodeForUserResponse()
+                model = models.GetRecordPlansResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -764,20 +755,20 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def Invoke(self, request):
-        """新增交易
+    def GetTimeTemplateById(self, request):
+        """本接口(GetTimeTemplateById)用于根据模板ID获取时间模板详情。
 
-        :param request: Request instance for Invoke.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.InvokeRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.InvokeResponse`
+        :param request: Request instance for GetTimeTemplateById.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.GetTimeTemplateByIdRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.GetTimeTemplateByIdResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("Invoke", params)
+            body = self.call("GetTimeTemplateById", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.InvokeResponse()
+                model = models.GetTimeTemplateByIdResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -792,20 +783,20 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def InvokeBcosTrans(self, request):
-        """执行Bcos交易，支持动态部署的合约
+    def GetTimeTemplates(self, request):
+        """本接口(GetTimeTemplates)用于获取时间模板列表。
 
-        :param request: Request instance for InvokeBcosTrans.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.InvokeBcosTransRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.InvokeBcosTransResponse`
+        :param request: Request instance for GetTimeTemplates.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.GetTimeTemplatesRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.GetTimeTemplatesResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("InvokeBcosTrans", params)
+            body = self.call("GetTimeTemplates", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.InvokeBcosTransResponse()
+                model = models.GetTimeTemplatesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -820,20 +811,20 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def Query(self, request):
-        """查询交易
+    def GetVideoListByCon(self, request):
+        """本接口(GetVideoListByCon)用于查询设备的录制文件列表
 
-        :param request: Request instance for Query.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.QueryRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.QueryResponse`
+        :param request: Request instance for GetVideoListByCon.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.GetVideoListByConRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.GetVideoListByConResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("Query", params)
+            body = self.call("GetVideoListByCon", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.QueryResponse()
+                model = models.GetVideoListByConResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -848,22 +839,20 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def SendTransactionHandler(self, request):
-        """版本升级
+    def ModifyDeviceData(self, request):
+        """本接口(ModifyDeviceData)用于编辑设备信息。
 
-        Bcos发送交易
-
-        :param request: Request instance for SendTransactionHandler.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.SendTransactionHandlerRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.SendTransactionHandlerResponse`
+        :param request: Request instance for ModifyDeviceData.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.ModifyDeviceDataRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.ModifyDeviceDataResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("SendTransactionHandler", params)
+            body = self.call("ModifyDeviceData", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.SendTransactionHandlerResponse()
+                model = models.ModifyDeviceDataResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -878,20 +867,20 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def SrvInvoke(self, request):
-        """trustsql服务统一接口
+    def UpdateDeviceGroup(self, request):
+        """本接口(UpdateDeviceGroup)用于修改分组信息。
 
-        :param request: Request instance for SrvInvoke.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.SrvInvokeRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.SrvInvokeResponse`
+        :param request: Request instance for UpdateDeviceGroup.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.UpdateDeviceGroupRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.UpdateDeviceGroupResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("SrvInvoke", params)
+            body = self.call("UpdateDeviceGroup", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.SrvInvokeResponse()
+                model = models.UpdateDeviceGroupResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -906,22 +895,76 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def TransByDynamicContractHandler(self, request):
-        """版本升级
+    def UpdateDevicePassWord(self, request):
+        """本接口(UpdateDevicePassWord)用于修改设备密码。
 
-        根据动态部署的合约发送交易
-
-        :param request: Request instance for TransByDynamicContractHandler.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.TransByDynamicContractHandlerRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.TransByDynamicContractHandlerResponse`
+        :param request: Request instance for UpdateDevicePassWord.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.UpdateDevicePassWordRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.UpdateDevicePassWordResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("TransByDynamicContractHandler", params)
+            body = self.call("UpdateDevicePassWord", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.TransByDynamicContractHandlerResponse()
+                model = models.UpdateDevicePassWordResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateRecordPlan(self, request):
+        """本接口(UpdateRecordPlan)用于更新录制计划。
+
+        :param request: Request instance for UpdateRecordPlan.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.UpdateRecordPlanRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.UpdateRecordPlanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateRecordPlan", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateRecordPlanResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateTimeTemplate(self, request):
+        """本接口(UpdateTimeTemplate)用于更新时间模板。
+
+        :param request: Request instance for UpdateTimeTemplate.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.UpdateTimeTemplateRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.UpdateTimeTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateTimeTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateTimeTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

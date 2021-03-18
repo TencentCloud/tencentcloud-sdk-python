@@ -463,16 +463,10 @@ class DescribeEcdnDomainStatisticsRequest(AbstractModel):
         :param EndTime: 查询结束时间，如：2019-12-13 23:59:59。
 起止时间不超过90天。
         :type EndTime: str
-        :param Metrics: 统计指标名称。flux：流量，单位为 byte
+        :param Metrics: 统计指标名称:
+flux：流量，单位为 byte
 bandwidth：带宽，单位为 bps
 request：请求数，单位为 次
-delay：响应时间，单位为ms
-static_request ： 静态请求数，单位为 次
-static_flux：静态流量，单位为 byte
-static_bandwidth ： 静态带宽，单位为 bps
-dynamic_request：动态请求数，单位为 次
-dynamic_flux：动态流量，单位为 byte
-dynamic_bandwidth：动态带宽，单位为 bps
         :type Metrics: list of str
         :param Domains: 指定查询域名列表
         :type Domains: list of str
@@ -483,6 +477,12 @@ dynamic_bandwidth：动态带宽，单位为 bps
         :type Offset: int
         :param Limit: 列表分页记录条数，默认1000，最大3000。
         :type Limit: int
+        :param Area: 统计区域:
+mainland: 境内
+oversea: 境外
+global: 全部
+默认 global
+        :type Area: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -491,6 +491,7 @@ dynamic_bandwidth：动态带宽，单位为 bps
         self.Projects = None
         self.Offset = None
         self.Limit = None
+        self.Area = None
 
 
     def _deserialize(self, params):
@@ -501,6 +502,7 @@ dynamic_bandwidth：动态带宽，单位为 bps
         self.Projects = params.get("Projects")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.Area = params.get("Area")
 
 
 class DescribeEcdnDomainStatisticsResponse(AbstractModel):
@@ -548,17 +550,10 @@ class DescribeEcdnStatisticsRequest(AbstractModel):
 flux：流量，单位为 byte
 bandwidth：带宽，单位为 bps
 request：请求数，单位为 次
-delay：响应时间，单位为ms
 2xx：返回 2xx 状态码汇总或者 2 开头状态码数据，单位为 个
 3xx：返回 3xx 状态码汇总或者 3 开头状态码数据，单位为 个
 4xx：返回 4xx 状态码汇总或者 4 开头状态码数据，单位为 个
 5xx：返回 5xx 状态码汇总或者 5 开头状态码数据，单位为 个
-static_request ： 静态请求数，单位为 次
-static_flux：静态流量，单位为 byte
-static_bandwidth ： 静态带宽，单位为 bps
-dynamic_request：动态请求数，单位为 次
-dynamic_flux：动态流量，单位为 byte
-dynamic_bandwidth：动态带宽，单位为 bps
         :type Metrics: list of str
         :param Interval: 时间粒度，支持以下几种模式：
 1 天	 1，5，15，30，60，120，240，1440 
@@ -573,6 +568,12 @@ dynamic_bandwidth：动态带宽，单位为 bps
         :param Projects: 指定要查询的项目 ID，[前往查看项目 ID](https://console.cloud.tencent.com/project)
 未填充域名情况下，指定项目查询，若填充了具体域名信息，以域名为主
         :type Projects: list of int
+        :param Area: 统计区域:
+mainland: 境内
+oversea: 境外
+global: 全部
+默认 global
+        :type Area: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -580,6 +581,7 @@ dynamic_bandwidth：动态带宽，单位为 bps
         self.Interval = None
         self.Domains = None
         self.Projects = None
+        self.Area = None
 
 
     def _deserialize(self, params):
@@ -589,6 +591,7 @@ dynamic_bandwidth：动态带宽，单位为 bps
         self.Interval = params.get("Interval")
         self.Domains = params.get("Domains")
         self.Projects = params.get("Projects")
+        self.Area = params.get("Area")
 
 
 class DescribeEcdnStatisticsResponse(AbstractModel):

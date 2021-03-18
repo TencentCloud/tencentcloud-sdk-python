@@ -4346,6 +4346,8 @@ class DescribeApplicationsRequest(AbstractModel):
         :type MicroserviceType: str
         :param ApplicationResourceTypeList: 应用资源类型数组
         :type ApplicationResourceTypeList: list of str
+        :param ApplicationIdList: IdList
+        :type ApplicationIdList: list of str
         """
         self.SearchWord = None
         self.OrderBy = None
@@ -4355,6 +4357,7 @@ class DescribeApplicationsRequest(AbstractModel):
         self.ApplicationType = None
         self.MicroserviceType = None
         self.ApplicationResourceTypeList = None
+        self.ApplicationIdList = None
 
 
     def _deserialize(self, params):
@@ -4366,6 +4369,7 @@ class DescribeApplicationsRequest(AbstractModel):
         self.ApplicationType = params.get("ApplicationType")
         self.MicroserviceType = params.get("MicroserviceType")
         self.ApplicationResourceTypeList = params.get("ApplicationResourceTypeList")
+        self.ApplicationIdList = params.get("ApplicationIdList")
 
 
 class DescribeApplicationsResponse(AbstractModel):
@@ -5712,6 +5716,8 @@ class DescribeMicroservicesRequest(AbstractModel):
         :type Limit: int
         :param Status: 状态过滤，online、offline、single_online
         :type Status: list of str
+        :param MicroserviceIdList: IdList
+        :type MicroserviceIdList: list of str
         """
         self.NamespaceId = None
         self.SearchWord = None
@@ -5720,6 +5726,7 @@ class DescribeMicroservicesRequest(AbstractModel):
         self.Offset = None
         self.Limit = None
         self.Status = None
+        self.MicroserviceIdList = None
 
 
     def _deserialize(self, params):
@@ -5730,6 +5737,7 @@ class DescribeMicroservicesRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.Status = params.get("Status")
+        self.MicroserviceIdList = params.get("MicroserviceIdList")
 
 
 class DescribeMicroservicesResponse(AbstractModel):
@@ -5985,16 +5993,20 @@ class DescribePodInstancesRequest(AbstractModel):
         :type Offset: int
         :param Limit: 分页个数，默认为20， 取值应为1~50
         :type Limit: int
+        :param PodNameList: 过滤字段
+        :type PodNameList: list of str
         """
         self.GroupId = None
         self.Offset = None
         self.Limit = None
+        self.PodNameList = None
 
 
     def _deserialize(self, params):
         self.GroupId = params.get("GroupId")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.PodNameList = params.get("PodNameList")
 
 
 class DescribePodInstancesResponse(AbstractModel):
