@@ -3745,16 +3745,24 @@ class CdnLogInfo(AbstractModel):
         :type Name: str
         :param Url: 日志下载链接，24小时内下载有效。
         :type Url: str
+        :param StartTime: 日志起始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type StartTime: str
+        :param EndTime: 日志结束时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type EndTime: str
         """
         self.Date = None
         self.Name = None
         self.Url = None
+        self.StartTime = None
+        self.EndTime = None
 
 
     def _deserialize(self, params):
         self.Date = params.get("Date")
         self.Name = params.get("Name")
         self.Url = params.get("Url")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
 
 
 class ClassificationConfigureInfo(AbstractModel):
@@ -7001,12 +7009,18 @@ class DescribeCdnLogsRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: 结束时间需大于起始时间；使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
         :type EndTime: str
+        :param Limit: 分页拉取的最大返回结果数。默认值：100；最大值：1000。
+        :type Limit: int
+        :param Offset: 分页拉取的起始偏移量。默认值：0。
+        :type Offset: int
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
         """
         self.DomainName = None
         self.StartTime = None
         self.EndTime = None
+        self.Limit = None
+        self.Offset = None
         self.SubAppId = None
 
 
@@ -7014,6 +7028,8 @@ class DescribeCdnLogsRequest(AbstractModel):
         self.DomainName = params.get("DomainName")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
         self.SubAppId = params.get("SubAppId")
 
 
@@ -7024,33 +7040,38 @@ class DescribeCdnLogsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param DomesticCdnLogs: 国内CDN节点的日志下载列表。
+        :param TotalCount: 日志下载链接总数量。
 注意：此字段可能返回 null，表示取不到有效值。
-        :type DomesticCdnLogs: list of CdnLogInfo
+        :type TotalCount: int
         :param OverseaCdnLogs: 海外CDN节点的日志下载列表。如果域名没有开启海外加速，忽略该参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OverseaCdnLogs: list of CdnLogInfo
+        :param DomesticCdnLogs: 国内CDN节点的日志下载列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DomesticCdnLogs: list of CdnLogInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.DomesticCdnLogs = None
+        self.TotalCount = None
         self.OverseaCdnLogs = None
+        self.DomesticCdnLogs = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
-        if params.get("DomesticCdnLogs") is not None:
-            self.DomesticCdnLogs = []
-            for item in params.get("DomesticCdnLogs"):
-                obj = CdnLogInfo()
-                obj._deserialize(item)
-                self.DomesticCdnLogs.append(obj)
+        self.TotalCount = params.get("TotalCount")
         if params.get("OverseaCdnLogs") is not None:
             self.OverseaCdnLogs = []
             for item in params.get("OverseaCdnLogs"):
                 obj = CdnLogInfo()
                 obj._deserialize(item)
                 self.OverseaCdnLogs.append(obj)
+        if params.get("DomesticCdnLogs") is not None:
+            self.DomesticCdnLogs = []
+            for item in params.get("DomesticCdnLogs"):
+                obj = CdnLogInfo()
+                obj._deserialize(item)
+                self.DomesticCdnLogs.append(obj)
         self.RequestId = params.get("RequestId")
 
 

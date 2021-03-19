@@ -53,6 +53,8 @@ class Blueprint(AbstractModel):
         :type BlueprintName: str
         :param SupportAutomationTools: 镜像是否支持自动化助手。
         :type SupportAutomationTools: bool
+        :param RequiredMemorySize: 镜像所需内存大小, 单位: GB
+        :type RequiredMemorySize: int
         """
         self.BlueprintId = None
         self.DisplayTitle = None
@@ -68,6 +70,7 @@ class Blueprint(AbstractModel):
         self.CreatedTime = None
         self.BlueprintName = None
         self.SupportAutomationTools = None
+        self.RequiredMemorySize = None
 
 
     def _deserialize(self, params):
@@ -85,6 +88,7 @@ class Blueprint(AbstractModel):
         self.CreatedTime = params.get("CreatedTime")
         self.BlueprintName = params.get("BlueprintName")
         self.SupportAutomationTools = params.get("SupportAutomationTools")
+        self.RequiredMemorySize = params.get("RequiredMemorySize")
 
 
 class Bundle(AbstractModel):
@@ -176,9 +180,12 @@ class CreateFirewallRulesRequest(AbstractModel):
         :type InstanceId: str
         :param FirewallRules: 防火墙规则列表。
         :type FirewallRules: list of FirewallRule
+        :param FirewallVersion: 防火墙当前版本。用户每次更新防火墙规则时版本会自动加1，防止规则已过期，不填不考虑冲突。
+        :type FirewallVersion: int
         """
         self.InstanceId = None
         self.FirewallRules = None
+        self.FirewallVersion = None
 
 
     def _deserialize(self, params):
@@ -189,6 +196,7 @@ class CreateFirewallRulesRequest(AbstractModel):
                 obj = FirewallRule()
                 obj._deserialize(item)
                 self.FirewallRules.append(obj)
+        self.FirewallVersion = params.get("FirewallVersion")
 
 
 class CreateFirewallRulesResponse(AbstractModel):
@@ -219,9 +227,12 @@ class DeleteFirewallRulesRequest(AbstractModel):
         :type InstanceId: str
         :param FirewallRules: 防火墙规则列表。
         :type FirewallRules: list of FirewallRule
+        :param FirewallVersion: 防火墙当前版本。用户每次更新防火墙规则时版本会自动加1，防止规则已过期，不填不考虑冲突。
+        :type FirewallVersion: int
         """
         self.InstanceId = None
         self.FirewallRules = None
+        self.FirewallVersion = None
 
 
     def _deserialize(self, params):
@@ -232,6 +243,7 @@ class DeleteFirewallRulesRequest(AbstractModel):
                 obj = FirewallRule()
                 obj._deserialize(item)
                 self.FirewallRules.append(obj)
+        self.FirewallVersion = params.get("FirewallVersion")
 
 
 class DeleteFirewallRulesResponse(AbstractModel):
@@ -435,11 +447,14 @@ class DescribeFirewallRulesResponse(AbstractModel):
         :type TotalCount: int
         :param FirewallRuleSet: 防火墙规则详细信息列表。
         :type FirewallRuleSet: list of FirewallRuleInfo
+        :param FirewallVersion: 防火墙版本号。
+        :type FirewallVersion: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
         self.FirewallRuleSet = None
+        self.FirewallVersion = None
         self.RequestId = None
 
 
@@ -451,6 +466,7 @@ class DescribeFirewallRulesResponse(AbstractModel):
                 obj = FirewallRuleInfo()
                 obj._deserialize(item)
                 self.FirewallRuleSet.append(obj)
+        self.FirewallVersion = params.get("FirewallVersion")
         self.RequestId = params.get("RequestId")
 
 
@@ -621,18 +637,30 @@ class FirewallRule(AbstractModel):
 
     def __init__(self):
         """
-        :param Protocol: 协议，取值：TCP，UDP，ALL。
+        :param Protocol: 协议，取值：TCP，UDP，ICMP，ALL。
         :type Protocol: str
         :param Port: 端口，取值：ALL，单独的端口，逗号分隔的离散端口，减号分隔的端口范围。
         :type Port: str
+        :param CidrBlock: 网段或 IP (互斥)。默认为 0.0.0.0/0，表示所有来源。
+        :type CidrBlock: str
+        :param Action: 取值：ACCEPT，DROP。默认为 ACCEPT。
+        :type Action: str
+        :param FirewallRuleDescription: 防火墙规则描述。
+        :type FirewallRuleDescription: str
         """
         self.Protocol = None
         self.Port = None
+        self.CidrBlock = None
+        self.Action = None
+        self.FirewallRuleDescription = None
 
 
     def _deserialize(self, params):
         self.Protocol = params.get("Protocol")
         self.Port = params.get("Port")
+        self.CidrBlock = params.get("CidrBlock")
+        self.Action = params.get("Action")
+        self.FirewallRuleDescription = params.get("FirewallRuleDescription")
 
 
 class FirewallRuleInfo(AbstractModel):
@@ -642,22 +670,34 @@ class FirewallRuleInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param AppType: 应用类型，取值：自定义，HTTP(80)，HTTPS(443)，Linux登录(22)，Windows登录(3389)，MySQL(3306)，SQL Server(1433)，全部TCP，全部UDP，ALL。
+        :param AppType: 应用类型，取值：自定义，HTTP(80)，HTTPS(443)，Linux登录(22)，Windows登录(3389)，MySQL(3306)，SQL Server(1433)，全部TCP，全部UDP，Ping-ICMP，ALL。
         :type AppType: str
-        :param Protocol: 协议，取值：TCP，UDP，ALL。
+        :param Protocol: 协议，取值：TCP，UDP，ICMP，ALL。
         :type Protocol: str
         :param Port: 端口，取值：ALL，单独的端口，逗号分隔的离散端口，减号分隔的端口范围。
         :type Port: str
+        :param CidrBlock: 网段或 IP (互斥)。默认为 0.0.0.0/0，表示所有来源。
+        :type CidrBlock: str
+        :param Action: 取值：ACCEPT，DROP。默认为 ACCEPT。
+        :type Action: str
+        :param FirewallRuleDescription: 防火墙规则描述。
+        :type FirewallRuleDescription: str
         """
         self.AppType = None
         self.Protocol = None
         self.Port = None
+        self.CidrBlock = None
+        self.Action = None
+        self.FirewallRuleDescription = None
 
 
     def _deserialize(self, params):
         self.AppType = params.get("AppType")
         self.Protocol = params.get("Protocol")
         self.Port = params.get("Port")
+        self.CidrBlock = params.get("CidrBlock")
+        self.Action = params.get("Action")
+        self.FirewallRuleDescription = params.get("FirewallRuleDescription")
 
 
 class Instance(AbstractModel):

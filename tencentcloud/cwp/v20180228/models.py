@@ -2747,6 +2747,38 @@ class DescribeMachineListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeMachineOsListRequest(AbstractModel):
+    """DescribeMachineOsList请求参数结构体
+
+    """
+
+
+class DescribeMachineOsListResponse(AbstractModel):
+    """DescribeMachineOsList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param List: 操作系统列表
+        :type List: list of OsName
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.List = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = OsName()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeMachinesRequest(AbstractModel):
     """DescribeMachines请求参数结构体
 
@@ -2766,8 +2798,10 @@ class DescribeMachinesRequest(AbstractModel):
         :type Offset: int
         :param Filters: 过滤条件。
 <li>Keywords - String - 是否必填：否 - 查询关键字 </li>
-<li>Status - String - 是否必填：否 - 客户端在线状态（OFFLINE: 离线 | ONLINE: 在线 | UNINSTALLED：未安装）</li>
+<li>Status - String - 是否必填：否 - 客户端在线状态（OFFLINE: 离线/关机 | ONLINE: 在线 | UNINSTALLED：未安装 | AGENT_OFFLINE 离线| AGENT_SHUTDOWN 已关机）</li>
 <li>Version - String  是否必填：否 - 当前防护版本（ PRO_VERSION：专业版 | BASIC_VERSION：基础版）</li>
+<li>Risk - String 是否必填: 否 - 风险主机( yes ) </li>
+<li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )
 每个过滤条件只支持一个值，暂不支持多个值“或”关系查询
         :type Filters: list of Filter
         :param ProjectIds: 机器所属业务ID列表
@@ -5831,7 +5865,7 @@ class Machine(AbstractModel):
         :param MachineStatus: 主机状态。
 <li>OFFLINE: 离线  </li>
 <li>ONLINE: 在线</li>
-<li>MACHINE_STOPPED: 已关机</li>
+<li>SHUTDOWN: 已关机</li>
         :type MachineStatus: str
         :param Uuid: 云镜客户端唯一Uuid，若客户端长时间不在线将返回空字符。
         :type Uuid: str
@@ -5874,6 +5908,8 @@ class Machine(AbstractModel):
         :type LicenseStatus: int
         :param ProjectId: 项目ID
         :type ProjectId: int
+        :param HasAssetScan: 是否有资产扫描接口，0无，1有
+        :type HasAssetScan: int
         """
         self.MachineName = None
         self.MachineOs = None
@@ -5895,6 +5931,7 @@ class Machine(AbstractModel):
         self.InstanceState = None
         self.LicenseStatus = None
         self.ProjectId = None
+        self.HasAssetScan = None
 
 
     def _deserialize(self, params):
@@ -5925,6 +5962,7 @@ class Machine(AbstractModel):
         self.InstanceState = params.get("InstanceState")
         self.LicenseStatus = params.get("LicenseStatus")
         self.ProjectId = params.get("ProjectId")
+        self.HasAssetScan = params.get("HasAssetScan")
 
 
 class MachineTag(AbstractModel):
@@ -6654,6 +6692,27 @@ class OpenProVersionResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class OsName(AbstractModel):
+    """操作系统名称
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 系统名称
+        :type Name: str
+        :param MachineOSType: 操作系统类型枚举值
+        :type MachineOSType: int
+        """
+        self.Name = None
+        self.MachineOSType = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.MachineOSType = params.get("MachineOSType")
 
 
 class Place(AbstractModel):

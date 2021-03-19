@@ -972,7 +972,7 @@ class EncodeParams(AbstractModel):
         """
         :param AudioSampleRate: 混流-输出流音频采样率。取值为[48000, 44100, 32000, 24000, 16000, 8000]，单位是Hz。
         :type AudioSampleRate: int
-        :param AudioBitrate: 混流-输出流音频码率。取值范围[8,500]，单位为Kbps。
+        :param AudioBitrate: 混流-输出流音频码率。取值范围[8,500]，单位为kbps。
         :type AudioBitrate: int
         :param AudioChannels: 混流-输出流音频声道数，取值范围[1,2]，1表示混流输出音频为单声道，2表示混流输出音频为双声道。
         :type AudioChannels: int
@@ -980,16 +980,25 @@ class EncodeParams(AbstractModel):
         :type VideoWidth: int
         :param VideoHeight: 混流-输出流高，音视频输出时必填。取值范围[0,1080]，单位为像素值。
         :type VideoHeight: int
-        :param VideoBitrate: 混流-输出流码率，音视频输出时必填。取值范围[1,10000]，单位为Kbps。
+        :param VideoBitrate: 混流-输出流码率，音视频输出时必填。取值范围[1,10000]，单位为kbps。
         :type VideoBitrate: int
         :param VideoFramerate: 混流-输出流帧率，音视频输出时必填。取值范围[1,60]，表示混流的输出帧率可选范围为1到60fps。
         :type VideoFramerate: int
         :param VideoGop: 混流-输出流gop，音视频输出时必填。取值范围[1,5]，单位为秒。
         :type VideoGop: int
-        :param BackgroundColor: 混流-输出流背景色。
+        :param BackgroundColor: 混流-输出流背景色，取值是十进制整数。常用的颜色有：
+红色：0xff0000，对应的十进制整数是16724736。
+黄色：0xffff00。对应的十进制整数是16776960。
+绿色：0x33cc00。对应的十进制整数是3394560。
+蓝色：0x0066ff。对应的十进制整数是26367。
+黑色：0x000000。对应的十进制整数是0。
+白色：0xFFFFFF。对应的十进制整数是16777215。
+灰色：0x999999。对应的十进制整数是10066329。
         :type BackgroundColor: int
         :param BackgroundImageId: 混流-输出流背景图片，取值为实时音视频控制台上传的图片ID。
         :type BackgroundImageId: int
+        :param AudioCodec: 混流-输出流音频编码类型，取值范围[0,1, 2]，0为LC-AAC，1为HE-AAC，2为HE-AACv2。默认值为0。当音频编码设置为HE-AACv2时，只支持输出流音频声道数为双声道。HE-AAC和HE-AACv2支持的输出流音频采样率范围为[48000, 44100, 32000, 24000, 16000]
+        :type AudioCodec: int
         """
         self.AudioSampleRate = None
         self.AudioBitrate = None
@@ -1001,6 +1010,7 @@ class EncodeParams(AbstractModel):
         self.VideoGop = None
         self.BackgroundColor = None
         self.BackgroundImageId = None
+        self.AudioCodec = None
 
 
     def _deserialize(self, params):
@@ -1014,6 +1024,7 @@ class EncodeParams(AbstractModel):
         self.VideoGop = params.get("VideoGop")
         self.BackgroundColor = params.get("BackgroundColor")
         self.BackgroundImageId = params.get("BackgroundImageId")
+        self.AudioCodec = params.get("AudioCodec")
 
 
 class EventList(AbstractModel):
@@ -1206,7 +1217,7 @@ class OutputParams(AbstractModel):
         :type StreamId: str
         :param PureAudioStream: 取值范围[0,1]， 填0：直播流为音视频(默认); 填1：直播流为纯音频
         :type PureAudioStream: int
-        :param RecordId: 自定义录制文件名。请先在实时音视频控制台开通录制功能，https://cloud.tencent.com/document/product/647/50768
+        :param RecordId: 自定义录制文件名称前缀。请先在实时音视频控制台开通录制功能，https://cloud.tencent.com/document/product/647/50768
         :type RecordId: str
         :param RecordAudioOnly: 取值范围[0,1]，填0无实际含义; 填1：指定录制文件格式为mp3
         :type RecordAudioOnly: int

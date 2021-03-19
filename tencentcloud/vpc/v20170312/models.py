@@ -13932,6 +13932,8 @@ CCN：云联网路由，系统默认下发，不可编辑与删除。
         :param PublishedToVbc: 路由策略是否发布到云联网。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PublishedToVbc: bool
+        :param CreatedTime: 路由策略创建时间
+        :type CreatedTime: str
         """
         self.DestinationCidrBlock = None
         self.GatewayType = None
@@ -13944,6 +13946,7 @@ CCN：云联网路由，系统默认下发，不可编辑与删除。
         self.DestinationIpv6CidrBlock = None
         self.RouteItemId = None
         self.PublishedToVbc = None
+        self.CreatedTime = None
 
 
     def _deserialize(self, params):
@@ -13958,6 +13961,7 @@ CCN：云联网路由，系统默认下发，不可编辑与删除。
         self.DestinationIpv6CidrBlock = params.get("DestinationIpv6CidrBlock")
         self.RouteItemId = params.get("RouteItemId")
         self.PublishedToVbc = params.get("PublishedToVbc")
+        self.CreatedTime = params.get("CreatedTime")
 
 
 class RouteConflict(AbstractModel):

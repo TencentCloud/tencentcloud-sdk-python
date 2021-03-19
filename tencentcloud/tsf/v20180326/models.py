@@ -5659,16 +5659,20 @@ class DescribeMicroserviceRequest(AbstractModel):
         :type Offset: int
         :param Limit: 分页个数
         :type Limit: int
+        :param GroupIds: 可选，根据部署组ID进行过滤
+        :type GroupIds: list of str
         """
         self.MicroserviceId = None
         self.Offset = None
         self.Limit = None
+        self.GroupIds = None
 
 
     def _deserialize(self, params):
         self.MicroserviceId = params.get("MicroserviceId")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.GroupIds = params.get("GroupIds")
 
 
 class DescribeMicroserviceResponse(AbstractModel):

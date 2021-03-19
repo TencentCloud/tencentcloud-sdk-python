@@ -9874,7 +9874,7 @@ complain：申诉进行中
 
 
 class WafSubRuleStatus(AbstractModel):
-    """门神子规则开关状态
+    """Waf子规则开关状态
 
     """
 

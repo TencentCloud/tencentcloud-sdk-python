@@ -5748,13 +5748,23 @@ class ZoneInfo(AbstractModel):
         :param ZoneName: 可用区名称，如：广州一区
 注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneName: str
+        :param ZoneRegion: 可用区所属地域，如：ap-guangzhou
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneRegion: str
+        :param LocalZone: 可用区是否是LocalZone可用区，如：false
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LocalZone: bool
         """
         self.ZoneId = None
         self.Zone = None
         self.ZoneName = None
+        self.ZoneRegion = None
+        self.LocalZone = None
 
 
     def _deserialize(self, params):
         self.ZoneId = params.get("ZoneId")
         self.Zone = params.get("Zone")
         self.ZoneName = params.get("ZoneName")
+        self.ZoneRegion = params.get("ZoneRegion")
+        self.LocalZone = params.get("LocalZone")

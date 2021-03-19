@@ -530,6 +530,34 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeFirmwareTask(self, request):
+        """查询固件升级任务列表
+
+        :param request: Request instance for DescribeFirmwareTask.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeFirmwareTaskRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeFirmwareTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeFirmwareTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeFirmwareTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeLoRaFrequency(self, request):
         """提供查询LoRa自定义频点详情的能力
 
@@ -894,6 +922,34 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ListFirmwares(self, request):
+        """本接口（ListFirmwares）用于获取固件列表
+
+        :param request: Request instance for ListFirmwares.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ListFirmwaresRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.ListFirmwaresResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListFirmwares", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListFirmwaresResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyLoRaFrequency(self, request):
         """修改LoRa自定义频点
 
@@ -1160,6 +1216,62 @@ class IotexplorerClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SearchTopicRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateFirmware(self, request):
+        """本接口（UpdateFirmware）用于对指定设备发起固件升级请求
+
+        :param request: Request instance for UpdateFirmware.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.UpdateFirmwareRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.UpdateFirmwareResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateFirmware", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateFirmwareResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UploadFirmware(self, request):
+        """本接口（UploadFirmware）用于上传设备固件至平台
+
+        :param request: Request instance for UploadFirmware.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.UploadFirmwareRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.UploadFirmwareResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UploadFirmware", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UploadFirmwareResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
