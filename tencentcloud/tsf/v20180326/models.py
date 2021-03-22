@@ -1854,12 +1854,15 @@ class CreateApiGroupRequest(AbstractModel):
         :type Description: str
         :param GroupType: 分组类型,默认ms。 ms： 微服务分组； external:外部Api分组
         :type GroupType: str
+        :param GatewayInstanceId: 网关实体ID
+        :type GatewayInstanceId: str
         """
         self.GroupName = None
         self.GroupContext = None
         self.AuthType = None
         self.Description = None
         self.GroupType = None
+        self.GatewayInstanceId = None
 
 
     def _deserialize(self, params):
@@ -1868,6 +1871,7 @@ class CreateApiGroupRequest(AbstractModel):
         self.AuthType = params.get("AuthType")
         self.Description = params.get("Description")
         self.GroupType = params.get("GroupType")
+        self.GatewayInstanceId = params.get("GatewayInstanceId")
 
 
 class CreateApiGroupResponse(AbstractModel):
@@ -2996,6 +3000,62 @@ class CreateTaskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateUnitRuleRequest(AbstractModel):
+    """CreateUnitRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GatewayInstanceId: 网关实体ID
+        :type GatewayInstanceId: str
+        :param Name: 规则名称
+        :type Name: str
+        :param Description: 规则描述
+        :type Description: str
+        :param UnitRuleItemList: 规则项列表
+        :type UnitRuleItemList: list of UnitRuleItem
+        """
+        self.GatewayInstanceId = None
+        self.Name = None
+        self.Description = None
+        self.UnitRuleItemList = None
+
+
+    def _deserialize(self, params):
+        self.GatewayInstanceId = params.get("GatewayInstanceId")
+        self.Name = params.get("Name")
+        self.Description = params.get("Description")
+        if params.get("UnitRuleItemList") is not None:
+            self.UnitRuleItemList = []
+            for item in params.get("UnitRuleItemList"):
+                obj = UnitRuleItem()
+                obj._deserialize(item)
+                self.UnitRuleItemList.append(obj)
+
+
+class CreateUnitRuleResponse(AbstractModel):
+    """CreateUnitRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 是否成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteApiGroupRequest(AbstractModel):
     """DeleteApiGroup请求参数结构体
 
@@ -3620,6 +3680,88 @@ class DeleteTaskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteUnitNamespacesRequest(AbstractModel):
+    """DeleteUnitNamespaces请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GatewayInstanceId: 网关实体ID
+        :type GatewayInstanceId: str
+        :param UnitNamespaceList: 单元化命名空间ID数组
+        :type UnitNamespaceList: list of str
+        """
+        self.GatewayInstanceId = None
+        self.UnitNamespaceList = None
+
+
+    def _deserialize(self, params):
+        self.GatewayInstanceId = params.get("GatewayInstanceId")
+        self.UnitNamespaceList = params.get("UnitNamespaceList")
+
+
+class DeleteUnitNamespacesResponse(AbstractModel):
+    """DeleteUnitNamespaces返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 是否成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteUnitRuleRequest(AbstractModel):
+    """DeleteUnitRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 规则ID
+        :type Id: str
+        """
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+
+
+class DeleteUnitRuleResponse(AbstractModel):
+    """DeleteUnitRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 是否成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class DeployContainerGroupRequest(AbstractModel):
     """DeployContainerGroup请求参数结构体
 
@@ -4051,6 +4193,8 @@ class DescribeApiGroupsRequest(AbstractModel):
         :type OrderBy: str
         :param OrderType: 排序类型：0(ASC)或1(DESC)
         :type OrderType: int
+        :param GatewayInstanceId: 网关实体ID
+        :type GatewayInstanceId: str
         """
         self.SearchWord = None
         self.Offset = None
@@ -4060,6 +4204,7 @@ class DescribeApiGroupsRequest(AbstractModel):
         self.Status = None
         self.OrderBy = None
         self.OrderType = None
+        self.GatewayInstanceId = None
 
 
     def _deserialize(self, params):
@@ -4071,6 +4216,7 @@ class DescribeApiGroupsRequest(AbstractModel):
         self.Status = params.get("Status")
         self.OrderBy = params.get("OrderBy")
         self.OrderType = params.get("OrderType")
+        self.GatewayInstanceId = params.get("GatewayInstanceId")
 
 
 class DescribeApiGroupsResponse(AbstractModel):
@@ -4973,6 +5119,47 @@ class DescribeDownloadInfoResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Result") is not None:
             self.Result = CosDownloadInfo()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeEnabledUnitRuleRequest(AbstractModel):
+    """DescribeEnabledUnitRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GatewayInstanceId: 网关实体ID
+        :type GatewayInstanceId: str
+        """
+        self.GatewayInstanceId = None
+
+
+    def _deserialize(self, params):
+        self.GatewayInstanceId = params.get("GatewayInstanceId")
+
+
+class DescribeEnabledUnitRuleResponse(AbstractModel):
+    """DescribeEnabledUnitRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 单元化规则对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.UnitRule`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = UnitRule()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 
@@ -6891,6 +7078,160 @@ class DescribeTaskLastStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeUnitNamespacesRequest(AbstractModel):
+    """DescribeUnitNamespaces请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GatewayInstanceId: 网关实体ID
+        :type GatewayInstanceId: str
+        :param SearchWord: 根据命名空间名或ID模糊查询
+        :type SearchWord: str
+        :param Offset: 翻页查询偏移量
+        :type Offset: int
+        :param Limit: 翻页查询每页记录数
+        :type Limit: int
+        """
+        self.GatewayInstanceId = None
+        self.SearchWord = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.GatewayInstanceId = params.get("GatewayInstanceId")
+        self.SearchWord = params.get("SearchWord")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeUnitNamespacesResponse(AbstractModel):
+    """DescribeUnitNamespaces返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 单元化命名空间对象列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageUnitNamespace`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = TsfPageUnitNamespace()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeUnitRuleRequest(AbstractModel):
+    """DescribeUnitRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 单元化规则ID
+        :type Id: str
+        """
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+
+
+class DescribeUnitRuleResponse(AbstractModel):
+    """DescribeUnitRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 单元化规则对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.UnitRule`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = UnitRule()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeUnitRulesRequest(AbstractModel):
+    """DescribeUnitRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GatewayInstanceId: 网关实体ID
+        :type GatewayInstanceId: str
+        :param SearchWord: 根据规则名或备注内容模糊查询
+        :type SearchWord: str
+        :param Status: 启用状态, disabled: 未发布， enabled: 发布
+        :type Status: str
+        :param Offset: 翻页查询偏移量
+        :type Offset: int
+        :param Limit: 翻页查询每页记录数
+        :type Limit: int
+        """
+        self.GatewayInstanceId = None
+        self.SearchWord = None
+        self.Status = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.GatewayInstanceId = params.get("GatewayInstanceId")
+        self.SearchWord = params.get("SearchWord")
+        self.Status = params.get("Status")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeUnitRulesResponse(AbstractModel):
+    """DescribeUnitRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 分页列表信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: list of TsfPageUnitRule
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = []
+            for item in params.get("Result"):
+                obj = TsfPageUnitRule()
+                obj._deserialize(item)
+                self.Result.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeUploadInfoRequest(AbstractModel):
     """DescribeUploadInfo请求参数结构体
 
@@ -6951,6 +7292,55 @@ class DescribeUploadInfoResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Result") is not None:
             self.Result = CosUploadInfo()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeUsableUnitNamespacesRequest(AbstractModel):
+    """DescribeUsableUnitNamespaces请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SearchWord: 根据命名空间名或ID模糊查询
+        :type SearchWord: str
+        :param Offset: 翻页查询偏移量
+        :type Offset: int
+        :param Limit: 翻页查询每页记录数
+        :type Limit: int
+        """
+        self.SearchWord = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.SearchWord = params.get("SearchWord")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeUsableUnitNamespacesResponse(AbstractModel):
+    """DescribeUsableUnitNamespaces返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 单元化命名空间对象列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageUnitNamespace`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = TsfPageUnitNamespace()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 
@@ -7018,6 +7408,84 @@ class DisableTaskResponse(AbstractModel):
     def __init__(self):
         """
         :param Result: 操作成功 or 失败
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class DisableUnitRouteRequest(AbstractModel):
+    """DisableUnitRoute请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 网关实体ID
+        :type Id: str
+        """
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+
+
+class DisableUnitRouteResponse(AbstractModel):
+    """DisableUnitRoute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 返回结果，成功失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class DisableUnitRuleRequest(AbstractModel):
+    """DisableUnitRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 规则ID
+        :type Id: str
+        """
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+
+
+class DisableUnitRuleResponse(AbstractModel):
+    """DisableUnitRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 是否成功
+注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7132,6 +7600,84 @@ class EnableTaskResponse(AbstractModel):
     def __init__(self):
         """
         :param Result: 操作成功or失败
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class EnableUnitRouteRequest(AbstractModel):
+    """EnableUnitRoute请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 网关实体ID
+        :type Id: str
+        """
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+
+
+class EnableUnitRouteResponse(AbstractModel):
+    """EnableUnitRoute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 返回结果，成功失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class EnableUnitRuleRequest(AbstractModel):
+    """EnableUnitRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 规则ID
+        :type Id: str
+        """
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+
+
+class EnableUnitRuleResponse(AbstractModel):
+    """EnableUnitRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 是否成功
+注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11778,6 +12324,58 @@ class TsfPageSimpleGroup(AbstractModel):
                 self.Content.append(obj)
 
 
+class TsfPageUnitNamespace(AbstractModel):
+    """单元化命名空间翻页对象
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 记录总数
+        :type TotalCount: int
+        :param Content: 记录实体列表
+        :type Content: list of UnitNamespace
+        """
+        self.TotalCount = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Content") is not None:
+            self.Content = []
+            for item in params.get("Content"):
+                obj = UnitNamespace()
+                obj._deserialize(item)
+                self.Content.append(obj)
+
+
+class TsfPageUnitRule(AbstractModel):
+    """单元化规则翻页对象
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 记录总数
+        :type TotalCount: int
+        :param Content: 记录实体列表
+        :type Content: list of UnitRule
+        """
+        self.TotalCount = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Content") is not None:
+            self.Content = []
+            for item in params.get("Content"):
+                obj = UnitRule()
+                obj._deserialize(item)
+                self.Content.append(obj)
+
+
 class TsfPageVmGroup(AbstractModel):
     """列表中部署组分页信息
 
@@ -11847,6 +12445,177 @@ class UnbindApiGroupResponse(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
+
+
+class UnitNamespace(AbstractModel):
+    """微服务网关单元化命名空间
+
+    """
+
+    def __init__(self):
+        """
+        :param NamespaceId: 命名空间ID
+        :type NamespaceId: str
+        :param NamespaceName: 命名空间Name
+        :type NamespaceName: str
+        :param Id: 单元化命名空间ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        """
+        self.NamespaceId = None
+        self.NamespaceName = None
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.NamespaceId = params.get("NamespaceId")
+        self.NamespaceName = params.get("NamespaceName")
+        self.Id = params.get("Id")
+
+
+class UnitRule(AbstractModel):
+    """微服务网关单元化规则
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 规则名称
+        :type Name: str
+        :param Id: 规则ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param GatewayInstanceId: 网关实体ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GatewayInstanceId: str
+        :param Description: 规则描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param Status: 使用状态：enabled/disabled
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param UnitRuleItemList: 规则项列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnitRuleItemList: list of UnitRuleItem
+        """
+        self.Name = None
+        self.Id = None
+        self.GatewayInstanceId = None
+        self.Description = None
+        self.Status = None
+        self.UnitRuleItemList = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Id = params.get("Id")
+        self.GatewayInstanceId = params.get("GatewayInstanceId")
+        self.Description = params.get("Description")
+        self.Status = params.get("Status")
+        if params.get("UnitRuleItemList") is not None:
+            self.UnitRuleItemList = []
+            for item in params.get("UnitRuleItemList"):
+                obj = UnitRuleItem()
+                obj._deserialize(item)
+                self.UnitRuleItemList.append(obj)
+
+
+class UnitRuleItem(AbstractModel):
+    """微服务网关单元化规则项
+
+    """
+
+    def __init__(self):
+        """
+        :param Relationship: 逻辑关系：AND/OR
+        :type Relationship: str
+        :param DestNamespaceId: 目的地命名空间ID
+        :type DestNamespaceId: str
+        :param DestNamespaceName: 目的地命名空间名称
+        :type DestNamespaceName: str
+        :param Name: 规则项名称
+        :type Name: str
+        :param Id: 规则项ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param UnitRuleId: 单元化规则ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnitRuleId: str
+        :param Priority: 规则顺序，越小优先级越高：默认为0
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Priority: int
+        :param Description: 规则描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param UnitRuleTagList: 规则标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnitRuleTagList: list of UnitRuleTag
+        """
+        self.Relationship = None
+        self.DestNamespaceId = None
+        self.DestNamespaceName = None
+        self.Name = None
+        self.Id = None
+        self.UnitRuleId = None
+        self.Priority = None
+        self.Description = None
+        self.UnitRuleTagList = None
+
+
+    def _deserialize(self, params):
+        self.Relationship = params.get("Relationship")
+        self.DestNamespaceId = params.get("DestNamespaceId")
+        self.DestNamespaceName = params.get("DestNamespaceName")
+        self.Name = params.get("Name")
+        self.Id = params.get("Id")
+        self.UnitRuleId = params.get("UnitRuleId")
+        self.Priority = params.get("Priority")
+        self.Description = params.get("Description")
+        if params.get("UnitRuleTagList") is not None:
+            self.UnitRuleTagList = []
+            for item in params.get("UnitRuleTagList"):
+                obj = UnitRuleTag()
+                obj._deserialize(item)
+                self.UnitRuleTagList.append(obj)
+
+
+class UnitRuleTag(AbstractModel):
+    """微服务网关单元化规则标签
+
+    """
+
+    def __init__(self):
+        """
+        :param TagType: 标签类型 : U(用户标签)
+        :type TagType: str
+        :param TagField: 标签名
+        :type TagField: str
+        :param TagOperator: 操作符:IN/NOT_IN/EQUAL/NOT_EQUAL/REGEX
+        :type TagOperator: str
+        :param TagValue: 标签值
+        :type TagValue: str
+        :param UnitRuleItemId: 单元化规则项ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnitRuleItemId: str
+        :param Id: 规则ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        """
+        self.TagType = None
+        self.TagField = None
+        self.TagOperator = None
+        self.TagValue = None
+        self.UnitRuleItemId = None
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.TagType = params.get("TagType")
+        self.TagField = params.get("TagField")
+        self.TagOperator = params.get("TagOperator")
+        self.TagValue = params.get("TagValue")
+        self.UnitRuleItemId = params.get("UnitRuleItemId")
+        self.Id = params.get("Id")
 
 
 class UpdateApiGroupRequest(AbstractModel):
@@ -11976,6 +12745,52 @@ class UpdateApiRateLimitRulesRequest(AbstractModel):
 
 class UpdateApiRateLimitRulesResponse(AbstractModel):
     """UpdateApiRateLimitRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 是否成功
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateApiTimeoutsRequest(AbstractModel):
+    """UpdateApiTimeouts请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ApiIds: API ID 列表
+        :type ApiIds: list of str
+        :param UsableStatus: 开启/禁用，enabled/disabled
+        :type UsableStatus: str
+        :param Timeout: 超时时间，单位毫秒，开启API超时时，必填
+        :type Timeout: int
+        """
+        self.ApiIds = None
+        self.UsableStatus = None
+        self.Timeout = None
+
+
+    def _deserialize(self, params):
+        self.ApiIds = params.get("ApiIds")
+        self.UsableStatus = params.get("UsableStatus")
+        self.Timeout = params.get("Timeout")
+
+
+class UpdateApiTimeoutsResponse(AbstractModel):
+    """UpdateApiTimeouts返回参数结构体
 
     """
 
@@ -12133,6 +12948,62 @@ class UpdateRepositoryResponse(AbstractModel):
     def __init__(self):
         """
         :param Result: 更新仓库是否成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateUnitRuleRequest(AbstractModel):
+    """UpdateUnitRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 规则ID
+        :type Id: str
+        :param Name: 规则名称
+        :type Name: str
+        :param Description: 规则描述
+        :type Description: str
+        :param UnitRuleItemList: 规则项列表
+        :type UnitRuleItemList: list of UnitRuleItem
+        """
+        self.Id = None
+        self.Name = None
+        self.Description = None
+        self.UnitRuleItemList = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        self.Description = params.get("Description")
+        if params.get("UnitRuleItemList") is not None:
+            self.UnitRuleItemList = []
+            for item in params.get("UnitRuleItemList"):
+                obj = UnitRuleItem()
+                obj._deserialize(item)
+                self.UnitRuleItemList.append(obj)
+
+
+class UpdateUnitRuleResponse(AbstractModel):
+    """UpdateUnitRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 是否成功
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

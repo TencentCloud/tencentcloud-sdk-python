@@ -362,6 +362,34 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateSecurityPolicy(self, request):
+        """创建实例公网访问白名单策略
+
+        :param request: Request instance for CreateSecurityPolicy.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.CreateSecurityPolicyRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.CreateSecurityPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateSecurityPolicy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateSecurityPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateUserPersonal(self, request):
         """创建个人用户
 
@@ -740,6 +768,34 @@ class TcrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteRepositoryPersonalResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteSecurityPolicy(self, request):
+        """删除实例公网访问白名单策略
+
+        :param request: Request instance for DeleteSecurityPolicy.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteSecurityPolicyRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DeleteSecurityPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteSecurityPolicy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteSecurityPolicyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1426,6 +1482,34 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeSecurityPolicies(self, request):
+        """查询实例公网访问白名单策略
+
+        :param request: Request instance for DescribeSecurityPolicies.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeSecurityPoliciesRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DescribeSecurityPoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSecurityPolicies", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSecurityPoliciesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeUserQuotaPersonal(self, request):
         """查询个人用户配额
 
@@ -1776,6 +1860,34 @@ class TcrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyRepositoryInfoPersonalResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifySecurityPolicy(self, request):
+        """更新实例公网访问白名单
+
+        :param request: Request instance for ModifySecurityPolicy.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.ModifySecurityPolicyRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.ModifySecurityPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifySecurityPolicy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifySecurityPolicyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

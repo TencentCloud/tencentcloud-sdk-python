@@ -2154,16 +2154,20 @@ class DescribeInstancesExtendRequest(AbstractModel):
         :type Offset: int
         :param Limit: 结果返回最大数量，最小值0，最大值100
         :type Limit: int
+        :param IpAddress: CVM实例公网IP
+        :type IpAddress: str
         """
         self.FleetId = None
         self.Offset = None
         self.Limit = None
+        self.IpAddress = None
 
 
     def _deserialize(self, params):
         self.FleetId = params.get("FleetId")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.IpAddress = params.get("IpAddress")
 
 
 class DescribeInstancesExtendResponse(AbstractModel):
@@ -2213,11 +2217,14 @@ class DescribeInstancesRequest(AbstractModel):
         :type Offset: int
         :param Limit: 返回结果偏移，最小值0
         :type Limit: int
+        :param IpAddress: CVM实例公网IP
+        :type IpAddress: str
         """
         self.FleetId = None
         self.InstanceId = None
         self.Offset = None
         self.Limit = None
+        self.IpAddress = None
 
 
     def _deserialize(self, params):
@@ -2225,6 +2232,7 @@ class DescribeInstancesRequest(AbstractModel):
         self.InstanceId = params.get("InstanceId")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.IpAddress = params.get("IpAddress")
 
 
 class DescribeInstancesResponse(AbstractModel):

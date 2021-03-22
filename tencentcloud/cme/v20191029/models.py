@@ -1717,6 +1717,86 @@ class ExportVideoByEditorTrackDataResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ExportVideoByTemplateRequest(AbstractModel):
+    """ExportVideoByTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Platform: 平台名称，指定访问的平台。
+        :type Platform: str
+        :param TemplateId: 视频编辑模板  Id。
+        :type TemplateId: str
+        :param Definition: 导出模板 Id，目前不支持自定义创建，只支持下面的预置模板 Id。
+<li>10：分辨率为 480P，输出视频格式为 MP4；</li>
+<li>11：分辨率为 720P，输出视频格式为 MP4；</li>
+<li>12：分辨率为 1080P，输出视频格式为 MP4。</li>
+        :type Definition: int
+        :param ExportDestination: 导出目标，可取值为：
+<li>CME：云剪，即导出为云剪媒体；</li>
+<li>VOD：云点播，即导出为云点播媒资。</li>
+        :type ExportDestination: str
+        :param SlotReplacements: 需要替换的素材信息。
+        :type SlotReplacements: list of SlotReplacementInfo
+        :param CMEExportInfo: 导出的云剪媒体信息。指定 ExportDestination = CME 时有效。
+        :type CMEExportInfo: :class:`tencentcloud.cme.v20191029.models.CMEExportInfo`
+        :param VODExportInfo: 导出的云点播媒资信息。指定 ExportDestination = VOD 时有效。
+        :type VODExportInfo: :class:`tencentcloud.cme.v20191029.models.VODExportInfo`
+        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验项目导出权限。
+        :type Operator: str
+        """
+        self.Platform = None
+        self.TemplateId = None
+        self.Definition = None
+        self.ExportDestination = None
+        self.SlotReplacements = None
+        self.CMEExportInfo = None
+        self.VODExportInfo = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.Platform = params.get("Platform")
+        self.TemplateId = params.get("TemplateId")
+        self.Definition = params.get("Definition")
+        self.ExportDestination = params.get("ExportDestination")
+        if params.get("SlotReplacements") is not None:
+            self.SlotReplacements = []
+            for item in params.get("SlotReplacements"):
+                obj = SlotReplacementInfo()
+                obj._deserialize(item)
+                self.SlotReplacements.append(obj)
+        if params.get("CMEExportInfo") is not None:
+            self.CMEExportInfo = CMEExportInfo()
+            self.CMEExportInfo._deserialize(params.get("CMEExportInfo"))
+        if params.get("VODExportInfo") is not None:
+            self.VODExportInfo = VODExportInfo()
+            self.VODExportInfo._deserialize(params.get("VODExportInfo"))
+        self.Operator = params.get("Operator")
+
+
+class ExportVideoByTemplateResponse(AbstractModel):
+    """ExportVideoByTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 导出任务 Id。
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class ExportVideoByVideoSegmentationDataRequest(AbstractModel):
     """ExportVideoByVideoSegmentationData请求参数结构体
 
@@ -2808,6 +2888,27 @@ class MediaMetaData(AbstractModel):
                 self.AudioStreamInfoSet.append(obj)
 
 
+class MediaReplacementInfo(AbstractModel):
+    """媒体替换信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param MaterialId: 素材 ID。
+        :type MaterialId: str
+        :param StartTimeOffset: 替换媒体选取的开始时间，单位为秒，默认为 0。
+        :type StartTimeOffset: float
+        """
+        self.MaterialId = None
+        self.StartTimeOffset = None
+
+
+    def _deserialize(self, params):
+        self.MaterialId = params.get("MaterialId")
+        self.StartTimeOffset = params.get("StartTimeOffset")
+
+
 class MediaTrack(AbstractModel):
     """轨道信息
 
@@ -3595,6 +3696,37 @@ class SearchScope(AbstractModel):
             self.Owner = Entity()
             self.Owner._deserialize(params.get("Owner"))
         self.ClassPath = params.get("ClassPath")
+
+
+class SlotReplacementInfo(AbstractModel):
+    """卡槽替换信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 卡槽 Id。
+        :type Id: int
+        :param ReplacementType: 替换类型，可取值有：
+<li> AUDIO :音频;</li>
+<li> VIDEO :视频;</li>
+<li> IMAGE :图片。</li>
+注意：这里必须保证替换的素材类型与模板轨道数据的素材类型一致。
+        :type ReplacementType: str
+        :param MediaReplacementInfo: 媒体替换信息，仅当要替换的媒体类型为音频、视频、图片时有效。
+        :type MediaReplacementInfo: :class:`tencentcloud.cme.v20191029.models.MediaReplacementInfo`
+        """
+        self.Id = None
+        self.ReplacementType = None
+        self.MediaReplacementInfo = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.ReplacementType = params.get("ReplacementType")
+        if params.get("MediaReplacementInfo") is not None:
+            self.MediaReplacementInfo = MediaReplacementInfo()
+            self.MediaReplacementInfo._deserialize(params.get("MediaReplacementInfo"))
 
 
 class SortBy(AbstractModel):

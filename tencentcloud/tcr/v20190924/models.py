@@ -658,6 +658,52 @@ class CreateRepositoryResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateSecurityPolicyRequest(AbstractModel):
+    """CreateSecurityPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param CidrBlock: 192.168.0.0/24
+        :type CidrBlock: str
+        :param Description: 备注
+        :type Description: str
+        """
+        self.RegistryId = None
+        self.CidrBlock = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.CidrBlock = params.get("CidrBlock")
+        self.Description = params.get("Description")
+
+
+class CreateSecurityPolicyResponse(AbstractModel):
+    """CreateSecurityPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RegistryId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateUserPersonalRequest(AbstractModel):
     """CreateUserPersonal请求参数结构体
 
@@ -1185,6 +1231,52 @@ class DeleteRepositoryResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteSecurityPolicyRequest(AbstractModel):
+    """DeleteSecurityPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param PolicyIndex: 白名单Id
+        :type PolicyIndex: int
+        :param PolicyVersion: 白名单版本
+        :type PolicyVersion: str
+        """
+        self.RegistryId = None
+        self.PolicyIndex = None
+        self.PolicyVersion = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.PolicyIndex = params.get("PolicyIndex")
+        self.PolicyVersion = params.get("PolicyVersion")
+
+
+class DeleteSecurityPolicyResponse(AbstractModel):
+    """DeleteSecurityPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RegistryId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
         self.RequestId = params.get("RequestId")
 
 
@@ -2459,6 +2551,50 @@ class DescribeRepositoryPersonalResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSecurityPoliciesRequest(AbstractModel):
+    """DescribeSecurityPolicies请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 实例的Id
+        :type RegistryId: str
+        """
+        self.RegistryId = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+
+
+class DescribeSecurityPoliciesResponse(AbstractModel):
+    """DescribeSecurityPolicies返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityPolicySet: 实例安全策略组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecurityPolicySet: list of SecurityPolicy
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SecurityPolicySet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SecurityPolicySet") is not None:
+            self.SecurityPolicySet = []
+            for item in params.get("SecurityPolicySet"):
+                obj = SecurityPolicy()
+                obj._deserialize(item)
+                self.SecurityPolicySet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeUserQuotaPersonalRequest(AbstractModel):
     """DescribeUserQuotaPersonal请求参数结构体
 
@@ -3242,6 +3378,56 @@ class ModifyRepositoryResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifySecurityPolicyRequest(AbstractModel):
+    """ModifySecurityPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 实例的Id
+        :type RegistryId: str
+        :param PolicyIndex: PolicyId
+        :type PolicyIndex: int
+        :param CidrBlock: 192.168.0.0/24 白名单Ip
+        :type CidrBlock: str
+        :param Description: 备注
+        :type Description: str
+        """
+        self.RegistryId = None
+        self.PolicyIndex = None
+        self.CidrBlock = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.PolicyIndex = params.get("PolicyIndex")
+        self.CidrBlock = params.get("CidrBlock")
+        self.Description = params.get("Description")
+
+
+class ModifySecurityPolicyResponse(AbstractModel):
+    """ModifySecurityPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RegistryId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyUserPasswordPersonalRequest(AbstractModel):
     """ModifyUserPasswordPersonal请求参数结构体
 
@@ -3864,6 +4050,35 @@ class SearchUserRepositoryResp(AbstractModel):
                 self.RepoInfo.append(obj)
         self.Server = params.get("Server")
         self.PrivilegeFiltered = params.get("PrivilegeFiltered")
+
+
+class SecurityPolicy(AbstractModel):
+    """安全策略
+
+    """
+
+    def __init__(self):
+        """
+        :param PolicyIndex: 策略索引
+        :type PolicyIndex: int
+        :param Description: 备注
+        :type Description: str
+        :param CidrBlock: 192.168.1.0/24
+        :type CidrBlock: str
+        :param PolicyVersion: 安全策略的版本
+        :type PolicyVersion: str
+        """
+        self.PolicyIndex = None
+        self.Description = None
+        self.CidrBlock = None
+        self.PolicyVersion = None
+
+
+    def _deserialize(self, params):
+        self.PolicyIndex = params.get("PolicyIndex")
+        self.Description = params.get("Description")
+        self.CidrBlock = params.get("CidrBlock")
+        self.PolicyVersion = params.get("PolicyVersion")
 
 
 class Tag(AbstractModel):

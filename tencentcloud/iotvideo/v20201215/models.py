@@ -374,7 +374,9 @@ class CreateCloudStorageRequest(AbstractModel):
         :type ProductId: str
         :param DeviceName: 设备名称
         :type DeviceName: str
-        :param PackageId: 云存套餐ID
+        :param PackageId: 云存套餐ID：
+yc1m3d：全时3天存储月套餐。
+ye1m3d：事件3天存储套餐。
         :type PackageId: str
         """
         self.ProductId = None

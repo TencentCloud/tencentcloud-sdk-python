@@ -708,6 +708,34 @@ class CmeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ExportVideoByTemplate(self, request):
+        """使用视频编辑模板直接导出视频。
+
+        :param request: Request instance for ExportVideoByTemplate.
+        :type request: :class:`tencentcloud.cme.v20191029.models.ExportVideoByTemplateRequest`
+        :rtype: :class:`tencentcloud.cme.v20191029.models.ExportVideoByTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ExportVideoByTemplate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ExportVideoByTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ExportVideoByVideoSegmentationData(self, request):
         """使用视频智能拆条数据导出视频，将指定的视频拆条片段导出为一个视频。
 

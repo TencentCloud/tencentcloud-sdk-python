@@ -1442,16 +1442,54 @@ class StartWhiteboardPushRequest(AbstractModel):
 
 指定了备份参数的情况下，白板推流服务会在房间内新增一路白板画面视频流，即同一个房间内会有两路白板画面推流。
         :type Backup: :class:`tencentcloud.tiw.v20190919.models.WhiteboardPushBackupParam`
+        :param PrivateMapKey: TRTC高级权限控制参数，如果在实时音视频开启了高级权限控制功能，必须提供PrivateMapKey才能保证正常推流。
+        :type PrivateMapKey: str
+        :param VideoFPS: 白板推流视频帧率，取值范围[0, 30]，默认20fps
+        :type VideoFPS: int
+        :param VideoBitrate: 白板推流码率， 取值范围[0, 2000]，默认1200kbps。
+
+这里的码率设置是一个参考值，实际推流的时候使用的是动态码率，所以真实码率不会固定为指定值，会在指定值附近波动。
+        :type VideoBitrate: int
         :param AutoRecord: 在实时音视频云端录制模式选择为 `指定用户录制` 模式的时候是否自动录制白板推流。
 
 默认在实时音视频的云端录制模式选择为 `指定用户录制` 模式的情况下，不会自动进行白板推流录制，如果希望进行白板推流录制，请将此参数设置为true。
 
 如果实时音视频的云端录制模式选择为 `全局自动录制` 模式，可忽略此参数。
         :type AutoRecord: bool
+        :param UserDefinedRecordId: 指定白板推流录制的RecordID，指定的RecordID会用于填充实时音视频云端录制完成后的回调消息中的 "userdefinerecordid" 字段内容，便于您更方便的识别录制回调，以及在点播媒体资源管理中查找相应的录制视频文件。
+
+限制长度为64字节，只允许包含大小写英文字母（a-zA-Z）、数字（0-9）及下划线和连词符。
+
+此字段设置后，不管`AutoRecord`字段取值如何，都将自动进行白板推流录制。
+
+默认RecordId生成规则如下：
+urlencode(SdkAppID_RoomID_PushUserID)
+
+例如：
+SdkAppID = 12345678，RoomID = 12345，PushUserID = push_user_1
+那么：RecordId = 12345678_12345_push_user_1
+        :type UserDefinedRecordId: str
+        :param AutoPublish: 在实时音视频旁路推流模式选择为`指定用户旁路`模式的时候，是否自动旁路白板推流。
+
+默认在实时音视频的旁路推流模式选择为 `指定用户旁路` 模式的情况下，不会自动旁路白板推流，如果希望旁路白板推流，请将此参数设置为true。
+
+如果实时音视频的旁路推流模式选择为 `全局自动旁路` 模式，可忽略此参数。
+        :type AutoPublish: bool
+        :param UserDefinedStreamId: 指定实时音视频在旁路白板推流时的StreamID，设置之后，您就可以在腾讯云直播 CDN 上通过标准直播方案（FLV或HLS）播放该用户的音视频流。
+
+限制长度为64字节，只允许包含大小写英文字母（a-zA-Z）、数字（0-9）及下划线和连词符。
+
+此字段设置后，不管`AutoPublish`字段取值如何，都将自动旁路白板推流。
+
+默认StreamID生成规则如下：
+urlencode(SdkAppID_RoomID_PushUserID_main)
+
+例如：
+SdkAppID = 12345678，RoomID = 12345，PushUserID = push_user_1
+那么：StreamID = 12345678_12345_push_user_1_main
+        :type UserDefinedStreamId: str
         :param ExtraData: 内部参数，不需要关注此参数
         :type ExtraData: str
-        :param PrivateMapKey: TRTC高级权限控制参数，如果在实时音视频开启了高级权限控制功能，必须提供PrivateMapKey才能保证正常推流。
-        :type PrivateMapKey: str
         """
         self.SdkAppId = None
         self.RoomId = None
@@ -1461,9 +1499,14 @@ class StartWhiteboardPushRequest(AbstractModel):
         self.AutoStopTimeout = None
         self.AutoManageBackup = None
         self.Backup = None
-        self.AutoRecord = None
-        self.ExtraData = None
         self.PrivateMapKey = None
+        self.VideoFPS = None
+        self.VideoBitrate = None
+        self.AutoRecord = None
+        self.UserDefinedRecordId = None
+        self.AutoPublish = None
+        self.UserDefinedStreamId = None
+        self.ExtraData = None
 
 
     def _deserialize(self, params):
@@ -1479,9 +1522,14 @@ class StartWhiteboardPushRequest(AbstractModel):
         if params.get("Backup") is not None:
             self.Backup = WhiteboardPushBackupParam()
             self.Backup._deserialize(params.get("Backup"))
-        self.AutoRecord = params.get("AutoRecord")
-        self.ExtraData = params.get("ExtraData")
         self.PrivateMapKey = params.get("PrivateMapKey")
+        self.VideoFPS = params.get("VideoFPS")
+        self.VideoBitrate = params.get("VideoBitrate")
+        self.AutoRecord = params.get("AutoRecord")
+        self.UserDefinedRecordId = params.get("UserDefinedRecordId")
+        self.AutoPublish = params.get("AutoPublish")
+        self.UserDefinedStreamId = params.get("UserDefinedStreamId")
+        self.ExtraData = params.get("ExtraData")
 
 
 class StartWhiteboardPushResponse(AbstractModel):
