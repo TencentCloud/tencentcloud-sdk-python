@@ -877,6 +877,49 @@ class BindApiGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class BindPluginRequest(AbstractModel):
+    """BindPlugin请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PluginInstanceList: 分组/API绑定插件列表
+        :type PluginInstanceList: list of GatewayPluginBoundParam
+        """
+        self.PluginInstanceList = None
+
+
+    def _deserialize(self, params):
+        if params.get("PluginInstanceList") is not None:
+            self.PluginInstanceList = []
+            for item in params.get("PluginInstanceList"):
+                obj = GatewayPluginBoundParam()
+                obj._deserialize(item)
+                self.PluginInstanceList.append(obj)
+
+
+class BindPluginResponse(AbstractModel):
+    """BindPlugin返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 返回结果，成功失败
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class ChangeApiUsableStatusRequest(AbstractModel):
     """ChangeApiUsableStatus请求参数结构体
 
@@ -5627,6 +5670,66 @@ class DescribeGroupsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeGroupsWithPluginRequest(AbstractModel):
+    """DescribeGroupsWithPlugin请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PluginId: 插件ID
+        :type PluginId: str
+        :param Bound: 绑定/未绑定: true / false
+        :type Bound: bool
+        :param Offset: 翻页偏移量
+        :type Offset: int
+        :param Limit: 每页记录数量
+        :type Limit: int
+        :param SearchWord: 搜索关键字
+        :type SearchWord: str
+        :param GatewayInstanceId: 网关实体ID
+        :type GatewayInstanceId: str
+        """
+        self.PluginId = None
+        self.Bound = None
+        self.Offset = None
+        self.Limit = None
+        self.SearchWord = None
+        self.GatewayInstanceId = None
+
+
+    def _deserialize(self, params):
+        self.PluginId = params.get("PluginId")
+        self.Bound = params.get("Bound")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.SearchWord = params.get("SearchWord")
+        self.GatewayInstanceId = params.get("GatewayInstanceId")
+
+
+class DescribeGroupsWithPluginResponse(AbstractModel):
+    """DescribeGroupsWithPlugin返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: API分组信息列表
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageApiGroupInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = TsfPageApiGroupInfo()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeImageRepositoryRequest(AbstractModel):
     """DescribeImageRepository请求参数结构体
 
@@ -6167,6 +6270,66 @@ class DescribePkgsResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Result") is not None:
             self.Result = PkgList()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePluginInstancesRequest(AbstractModel):
+    """DescribePluginInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ScopeValue: 分组或者API的ID
+        :type ScopeValue: str
+        :param Bound: 绑定: true; 未绑定: false
+        :type Bound: bool
+        :param Offset: 翻页偏移量
+        :type Offset: int
+        :param Limit: 每页展示的条数
+        :type Limit: int
+        :param Type: 插件类型
+        :type Type: str
+        :param SearchWord: 搜索关键字
+        :type SearchWord: str
+        """
+        self.ScopeValue = None
+        self.Bound = None
+        self.Offset = None
+        self.Limit = None
+        self.Type = None
+        self.SearchWord = None
+
+
+    def _deserialize(self, params):
+        self.ScopeValue = params.get("ScopeValue")
+        self.Bound = params.get("Bound")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Type = params.get("Type")
+        self.SearchWord = params.get("SearchWord")
+
+
+class DescribePluginInstancesResponse(AbstractModel):
+    """DescribePluginInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 插件信息列表
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageGatewayPlugin`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = TsfPageGatewayPlugin()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 
@@ -7973,6 +8136,79 @@ class GatewayGroupIds(AbstractModel):
     def _deserialize(self, params):
         self.GatewayDeployGroupId = params.get("GatewayDeployGroupId")
         self.GroupId = params.get("GroupId")
+
+
+class GatewayPlugin(AbstractModel):
+    """微服务网关插件实例对象
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 网关插件id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param Name: 插件名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Type: 插件类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param Description: 插件描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param CreatedTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedTime: str
+        :param UpdatedTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatedTime: str
+        :param Status: 发布状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        """
+        self.Id = None
+        self.Name = None
+        self.Type = None
+        self.Description = None
+        self.CreatedTime = None
+        self.UpdatedTime = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        self.Type = params.get("Type")
+        self.Description = params.get("Description")
+        self.CreatedTime = params.get("CreatedTime")
+        self.UpdatedTime = params.get("UpdatedTime")
+        self.Status = params.get("Status")
+
+
+class GatewayPluginBoundParam(AbstractModel):
+    """微服务网关插件绑定对象
+
+    """
+
+    def __init__(self):
+        """
+        :param PluginId: 插件id
+        :type PluginId: str
+        :param ScopeType: 插件绑定到的对象类型:group/api
+        :type ScopeType: str
+        :param ScopeValue: 插件绑定到的对象主键值，例如分组的ID/API的ID
+        :type ScopeValue: str
+        """
+        self.PluginId = None
+        self.ScopeType = None
+        self.ScopeValue = None
+
+
+    def _deserialize(self, params):
+        self.PluginId = params.get("PluginId")
+        self.ScopeType = params.get("ScopeType")
+        self.ScopeValue = params.get("ScopeValue")
 
 
 class GatewayVo(AbstractModel):
@@ -12152,6 +12388,34 @@ class TsfPageGatewayDeployGroup(AbstractModel):
             self.Content = []
             for item in params.get("Content"):
                 obj = GatewayDeployGroup()
+                obj._deserialize(item)
+                self.Content.append(obj)
+
+
+class TsfPageGatewayPlugin(AbstractModel):
+    """GatewayPlugin 翻页对象
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 记录总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param Content: 记录实体列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: list of GatewayPlugin
+        """
+        self.TotalCount = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Content") is not None:
+            self.Content = []
+            for item in params.get("Content"):
+                obj = GatewayPlugin()
                 obj._deserialize(item)
                 self.Content.append(obj)
 

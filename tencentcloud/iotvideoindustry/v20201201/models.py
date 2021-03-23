@@ -280,17 +280,21 @@ class CreateRecordPlanRequest(AbstractModel):
         :type Name: str
         :param TimeTemplateId: 时间模板ID
         :type TimeTemplateId: str
+        :param EventId: 触发录制的事件类别 1:全部
+        :type EventId: int
         :param Devices: 该录制计划绑定的设备列表
         :type Devices: list of DeviceItem
         """
         self.Name = None
         self.TimeTemplateId = None
+        self.EventId = None
         self.Devices = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.TimeTemplateId = params.get("TimeTemplateId")
+        self.EventId = params.get("EventId")
         if params.get("Devices") is not None:
             self.Devices = []
             for item in params.get("Devices"):
@@ -2020,25 +2024,35 @@ class UpdateRecordPlanRequest(AbstractModel):
         :type Name: str
         :param TimeTemplateId: 时间模板ID
         :type TimeTemplateId: str
+        :param EventId: 触发录制的事件 1：全部
+        :type EventId: int
         :param Devices: 录制设备列表
         :type Devices: list of DeviceItem
+        :param IsModifyDevices: 是否更新绑定此录制计划的设备列表
+0 - 不更新
+1 - 更新，如果Devices参数为空则清空设备列表，Devices不为空则全量更新设备列表
+        :type IsModifyDevices: int
         """
         self.PlanId = None
         self.Name = None
         self.TimeTemplateId = None
+        self.EventId = None
         self.Devices = None
+        self.IsModifyDevices = None
 
 
     def _deserialize(self, params):
         self.PlanId = params.get("PlanId")
         self.Name = params.get("Name")
         self.TimeTemplateId = params.get("TimeTemplateId")
+        self.EventId = params.get("EventId")
         if params.get("Devices") is not None:
             self.Devices = []
             for item in params.get("Devices"):
                 obj = DeviceItem()
                 obj._deserialize(item)
                 self.Devices.append(obj)
+        self.IsModifyDevices = params.get("IsModifyDevices")
 
 
 class UpdateRecordPlanResponse(AbstractModel):

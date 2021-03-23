@@ -110,6 +110,34 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def BindPlugin(self, request):
+        """插件与网关分组/API批量绑定
+
+        :param request: Request instance for BindPlugin.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.BindPluginRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.BindPluginResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("BindPlugin", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.BindPluginResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ChangeApiUsableStatus(self, request):
         """启用或禁用API
 
@@ -2128,6 +2156,34 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeGroupsWithPlugin(self, request):
+        """查询某个插件下绑定或未绑定的API分组
+
+        :param request: Request instance for DescribeGroupsWithPlugin.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeGroupsWithPluginRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeGroupsWithPluginResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeGroupsWithPlugin", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeGroupsWithPluginResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeImageRepository(self, request):
         """镜像仓库列表
 
@@ -2394,6 +2450,34 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePkgsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePluginInstances(self, request):
+        """分页查询网关分组/API绑定（或未绑定）的插件列表
+
+        :param request: Request instance for DescribePluginInstances.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribePluginInstancesRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribePluginInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePluginInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePluginInstancesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

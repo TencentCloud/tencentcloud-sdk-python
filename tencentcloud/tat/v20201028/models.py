@@ -76,6 +76,10 @@ class Command(AbstractModel):
         :type CreatedTime: str
         :param UpdatedTime: 命令更新时间。
         :type UpdatedTime: str
+        :param EnableParameter: 是否启用自定义参数功能。
+        :type EnableParameter: bool
+        :param DefaultParameters: 自定义参数的默认取值。
+        :type DefaultParameters: str
         """
         self.CommandId = None
         self.CommandName = None
@@ -86,6 +90,8 @@ class Command(AbstractModel):
         self.Timeout = None
         self.CreatedTime = None
         self.UpdatedTime = None
+        self.EnableParameter = None
+        self.DefaultParameters = None
 
 
     def _deserialize(self, params):
@@ -98,6 +104,8 @@ class Command(AbstractModel):
         self.Timeout = params.get("Timeout")
         self.CreatedTime = params.get("CreatedTime")
         self.UpdatedTime = params.get("UpdatedTime")
+        self.EnableParameter = params.get("EnableParameter")
+        self.DefaultParameters = params.get("DefaultParameters")
 
 
 class CommandDocument(AbstractModel):
@@ -148,6 +156,16 @@ class CreateCommandRequest(AbstractModel):
         :type WorkingDirectory: str
         :param Timeout: 命令超时时间，默认60秒。取值范围[1, 86400]。
         :type Timeout: int
+        :param EnableParameter: 是否启用自定义参数功能。
+一旦创建，此值不提供修改。
+默认值：false。
+        :type EnableParameter: bool
+        :param DefaultParameters: 启用自定义参数功能时，自定义参数的默认取值。字段类型为json encoded string。如：{\"varA\": \"222\"}。
+key为自定义参数名称，value为该参数的默认取值。kv均为字符串型。
+如果InvokeCommand时未提供参数取值，将使用这里的默认值进行替换。
+自定义参数最多20个。
+自定义参数名称需符合以下规范：字符数目上限64，可选范围【a-zA-Z0-9-_】。
+        :type DefaultParameters: str
         """
         self.CommandName = None
         self.Content = None
@@ -155,6 +173,8 @@ class CreateCommandRequest(AbstractModel):
         self.CommandType = None
         self.WorkingDirectory = None
         self.Timeout = None
+        self.EnableParameter = None
+        self.DefaultParameters = None
 
 
     def _deserialize(self, params):
@@ -164,6 +184,8 @@ class CreateCommandRequest(AbstractModel):
         self.CommandType = params.get("CommandType")
         self.WorkingDirectory = params.get("WorkingDirectory")
         self.Timeout = params.get("Timeout")
+        self.EnableParameter = params.get("EnableParameter")
+        self.DefaultParameters = params.get("DefaultParameters")
 
 
 class CreateCommandResponse(AbstractModel):
@@ -580,6 +602,10 @@ class Invocation(AbstractModel):
         :type CreatedTime: str
         :param UpdatedTime: 执行活动更新时间。
         :type UpdatedTime: str
+        :param Parameters: 自定义参数取值。
+        :type Parameters: str
+        :param DefaultParameters: 自定义参数的默认取值。
+        :type DefaultParameters: str
         """
         self.InvocationId = None
         self.CommandId = None
@@ -590,6 +616,8 @@ class Invocation(AbstractModel):
         self.EndTime = None
         self.CreatedTime = None
         self.UpdatedTime = None
+        self.Parameters = None
+        self.DefaultParameters = None
 
 
     def _deserialize(self, params):
@@ -607,6 +635,8 @@ class Invocation(AbstractModel):
         self.EndTime = params.get("EndTime")
         self.CreatedTime = params.get("CreatedTime")
         self.UpdatedTime = params.get("UpdatedTime")
+        self.Parameters = params.get("Parameters")
+        self.DefaultParameters = params.get("DefaultParameters")
 
 
 class InvocationTask(AbstractModel):
@@ -724,14 +754,22 @@ class InvokeCommandRequest(AbstractModel):
         :type CommandId: str
         :param InstanceIds: 待执行命令的实例ID列表。
         :type InstanceIds: list of str
+        :param Parameters: Command 的自定义参数。字段类型为json encoded string。如：{\"varA\": \"222\"}。
+key为自定义参数名称，value为该参数的默认取值。kv均为字符串型。
+如果未提供该参数取值，将使用 Command 的 DefaultParameters 进行替换。
+自定义参数最多20个。
+自定义参数名称需符合以下规范：字符数目上限64，可选范围【a-zA-Z0-9-_】。
+        :type Parameters: str
         """
         self.CommandId = None
         self.InstanceIds = None
+        self.Parameters = None
 
 
     def _deserialize(self, params):
         self.CommandId = params.get("CommandId")
         self.InstanceIds = params.get("InstanceIds")
+        self.Parameters = params.get("Parameters")
 
 
 class InvokeCommandResponse(AbstractModel):
@@ -776,6 +814,13 @@ class ModifyCommandRequest(AbstractModel):
         :type WorkingDirectory: str
         :param Timeout: 命令超时时间，默认60秒。取值范围[1, 86400]。
         :type Timeout: int
+        :param DefaultParameters: 启用自定义参数功能时，自定义参数的默认取值。字段类型为json encoded string。如：{\"varA\": \"222\"}。
+采取整体全覆盖式修改，即修改时必须提供所有新默认值。
+必须 Command 的 EnableParameter 为 true 时，才允许修改这个值。
+key为自定义参数名称，value为该参数的默认取值。kv均为字符串型。
+自定义参数最多20个。
+自定义参数名称需符合以下规范：字符数目上限64，可选范围【a-zA-Z0-9-_】。
+        :type DefaultParameters: str
         """
         self.CommandId = None
         self.CommandName = None
@@ -784,6 +829,7 @@ class ModifyCommandRequest(AbstractModel):
         self.CommandType = None
         self.WorkingDirectory = None
         self.Timeout = None
+        self.DefaultParameters = None
 
 
     def _deserialize(self, params):
@@ -794,6 +840,7 @@ class ModifyCommandRequest(AbstractModel):
         self.CommandType = params.get("CommandType")
         self.WorkingDirectory = params.get("WorkingDirectory")
         self.Timeout = params.get("Timeout")
+        self.DefaultParameters = params.get("DefaultParameters")
 
 
 class ModifyCommandResponse(AbstractModel):
@@ -810,6 +857,58 @@ class ModifyCommandResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class PreviewReplacedCommandContentRequest(AbstractModel):
+    """PreviewReplacedCommandContent请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Parameters: 本次预览采用的自定义参数。字段类型为 json encoded string，如：{\"varA\": \"222\"}。
+key 为自定义参数名称，value 为该参数的取值。kv 均为字符串型。
+自定义参数最多 20 个。
+自定义参数名称需符合以下规范：字符数目上限 64，可选范围【a-zA-Z0-9-_】。
+如果将预览的 CommandId 设置过 DefaultParameters，本参数可以为空。
+        :type Parameters: str
+        :param CommandId: 要进行替换预览的命令，如果有设置过 DefaultParameters，会与 Parameters 进行叠加，后者覆盖前者。
+CommandId 与 Content，必须且只能提供一个。
+        :type CommandId: str
+        :param Content: 要预览的命令内容，经 Base64 编码，长度不可超过 64KB。
+CommandId 与 Content，必须且只能提供一个。
+        :type Content: str
+        """
+        self.Parameters = None
+        self.CommandId = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.Parameters = params.get("Parameters")
+        self.CommandId = params.get("CommandId")
+        self.Content = params.get("Content")
+
+
+class PreviewReplacedCommandContentResponse(AbstractModel):
+    """PreviewReplacedCommandContent返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ReplacedContent: 自定义参数替换后的，经Base64编码的命令内容。
+        :type ReplacedContent: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ReplacedContent = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ReplacedContent = params.get("ReplacedContent")
         self.RequestId = params.get("RequestId")
 
 
@@ -866,6 +965,22 @@ class RunCommandRequest(AbstractModel):
 <li> False：不保存
 默认为 False。
         :type SaveCommand: bool
+        :param EnableParameter: 是否启用自定义参数功能。
+一旦创建，此值不提供修改。
+默认值：false。
+        :type EnableParameter: bool
+        :param DefaultParameters: 启用自定义参数功能时，自定义参数的默认取值。字段类型为json encoded string。如：{\"varA\": \"222\"}。
+key为自定义参数名称，value为该参数的默认取值。kv均为字符串型。
+如果 Parameters 未提供，将使用这里的默认值进行替换。
+自定义参数最多20个。
+自定义参数名称需符合以下规范：字符数目上限64，可选范围【a-zA-Z0-9-_】。
+        :type DefaultParameters: str
+        :param Parameters: Command 的自定义参数。字段类型为json encoded string。如：{\"varA\": \"222\"}。
+key为自定义参数名称，value为该参数的默认取值。kv均为字符串型。
+如果未提供该参数取值，将使用 DefaultParameters 进行替换。
+自定义参数最多20个。
+自定义参数名称需符合以下规范：字符数目上限64，可选范围【a-zA-Z0-9-_】。
+        :type Parameters: str
         """
         self.Content = None
         self.InstanceIds = None
@@ -875,6 +990,9 @@ class RunCommandRequest(AbstractModel):
         self.WorkingDirectory = None
         self.Timeout = None
         self.SaveCommand = None
+        self.EnableParameter = None
+        self.DefaultParameters = None
+        self.Parameters = None
 
 
     def _deserialize(self, params):
@@ -886,6 +1004,9 @@ class RunCommandRequest(AbstractModel):
         self.WorkingDirectory = params.get("WorkingDirectory")
         self.Timeout = params.get("Timeout")
         self.SaveCommand = params.get("SaveCommand")
+        self.EnableParameter = params.get("EnableParameter")
+        self.DefaultParameters = params.get("DefaultParameters")
+        self.Parameters = params.get("Parameters")
 
 
 class RunCommandResponse(AbstractModel):

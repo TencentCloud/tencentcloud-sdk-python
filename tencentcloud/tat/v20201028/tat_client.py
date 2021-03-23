@@ -284,6 +284,34 @@ class TatClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def PreviewReplacedCommandContent(self, request):
+        """此接口用于预览自定义参数替换后的命令内容。不会触发真实执行。
+
+        :param request: Request instance for PreviewReplacedCommandContent.
+        :type request: :class:`tencentcloud.tat.v20201028.models.PreviewReplacedCommandContentRequest`
+        :rtype: :class:`tencentcloud.tat.v20201028.models.PreviewReplacedCommandContentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("PreviewReplacedCommandContent", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.PreviewReplacedCommandContentResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RunCommand(self, request):
         """执行命令，调用成功返回执行活动ID（inv-xxxxxxxx），每个执行活动内部有一个或多个执行任务（invt-xxxxxxxx），每个执行任务代表命令在一台 CVM 或一台 Lighthouse 上的执行记录。
 
