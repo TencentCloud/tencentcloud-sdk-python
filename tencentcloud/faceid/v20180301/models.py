@@ -1885,12 +1885,18 @@ class MobileNetworkTimeVerificationRequest(AbstractModel):
         """
         :param Mobile: 手机号码
         :type Mobile: str
+        :param Encryption: 敏感数据加密信息。对传入信息（手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         self.Mobile = None
+        self.Encryption = None
 
 
     def _deserialize(self, params):
         self.Mobile = params.get("Mobile")
+        if params.get("Encryption") is not None:
+            self.Encryption = Encryption()
+            self.Encryption._deserialize(params.get("Encryption"))
 
 
 class MobileNetworkTimeVerificationResponse(AbstractModel):
@@ -1939,12 +1945,18 @@ class MobileStatusRequest(AbstractModel):
         """
         :param Mobile: 手机号码
         :type Mobile: str
+        :param Encryption: 敏感数据加密信息。对传入信息（手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         self.Mobile = None
+        self.Encryption = None
 
 
     def _deserialize(self, params):
         self.Mobile = params.get("Mobile")
+        if params.get("Encryption") is not None:
+            self.Encryption = Encryption()
+            self.Encryption._deserialize(params.get("Encryption"))
 
 
 class MobileStatusResponse(AbstractModel):

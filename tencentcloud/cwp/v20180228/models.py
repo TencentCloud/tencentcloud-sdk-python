@@ -6368,9 +6368,9 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
         """
         :param CheckPattern: 检测模式 0 全盘检测  1快速检测
         :type CheckPattern: int
-        :param StartTime: 检测周期 开始时间
+        :param StartTime: 检测周期 开始时间，如：02:00:00
         :type StartTime: str
-        :param EndTime: 检测周期 超时结束时间
+        :param EndTime: 检测周期 超时结束时间，如：04:00:00
         :type EndTime: str
         :param IsGlobal: 是否全部服务器 1 全部 2 自选
         :type IsGlobal: int

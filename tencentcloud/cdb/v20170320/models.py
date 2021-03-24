@@ -7871,11 +7871,11 @@ class SellConfig(AbstractModel):
 
     def __init__(self):
         """
-        :param Device: 设备类型
+        :param Device: 设备类型（废弃）
         :type Device: str
-        :param Type: 售卖规格描述
+        :param Type: 售卖规格描述（废弃）
         :type Type: str
-        :param CdbType: 实例类型
+        :param CdbType: 实例类型（废弃）
         :type CdbType: str
         :param Memory: 内存大小，单位为MB
         :type Memory: int
@@ -7895,10 +7895,16 @@ class SellConfig(AbstractModel):
         :type Iops: int
         :param Info: 应用场景描述
         :type Info: str
-        :param Status: 状态值
+        :param Status: 状态值，0 表示该规格对外售卖
         :type Status: int
-        :param Tag: 标签值
+        :param Tag: 标签值（废弃）
         :type Tag: int
+        :param DeviceType: 实例类型，可能的取值范围有：UNIVERSAL (通用型), EXCLUSIVE (独享型), BASIC (基础型)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceType: str
+        :param DeviceTypeName: 实例类型描述，可能的取值范围有：通用型， 独享型， 基础型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceTypeName: str
         """
         self.Device = None
         self.Type = None
@@ -7914,6 +7920,8 @@ class SellConfig(AbstractModel):
         self.Info = None
         self.Status = None
         self.Tag = None
+        self.DeviceType = None
+        self.DeviceTypeName = None
 
 
     def _deserialize(self, params):
@@ -7931,6 +7939,8 @@ class SellConfig(AbstractModel):
         self.Info = params.get("Info")
         self.Status = params.get("Status")
         self.Tag = params.get("Tag")
+        self.DeviceType = params.get("DeviceType")
+        self.DeviceTypeName = params.get("DeviceTypeName")
 
 
 class SellType(AbstractModel):

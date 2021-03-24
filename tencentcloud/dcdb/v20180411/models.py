@@ -1296,10 +1296,18 @@ class DescribeDBSecurityGroupsResponse(AbstractModel):
         """
         :param Groups: 安全组详情。
         :type Groups: list of SecurityGroup
+        :param VIP: 实例VIP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VIP: str
+        :param VPort: 实例端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VPort: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Groups = None
+        self.VIP = None
+        self.VPort = None
         self.RequestId = None
 
 
@@ -1310,6 +1318,8 @@ class DescribeDBSecurityGroupsResponse(AbstractModel):
                 obj = SecurityGroup()
                 obj._deserialize(item)
                 self.Groups.append(obj)
+        self.VIP = params.get("VIP")
+        self.VPort = params.get("VPort")
         self.RequestId = params.get("RequestId")
 
 
@@ -1341,17 +1351,21 @@ class DescribeDBSyncModeResponse(AbstractModel):
         :type SyncMode: int
         :param IsModifying: 是否有修改流程在执行中：1 是， 0 否。
         :type IsModifying: int
+        :param CurrentSyncMode: 当前复制方式，0 异步，1 同步
+        :type CurrentSyncMode: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.SyncMode = None
         self.IsModifying = None
+        self.CurrentSyncMode = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.SyncMode = params.get("SyncMode")
         self.IsModifying = params.get("IsModifying")
+        self.CurrentSyncMode = params.get("CurrentSyncMode")
         self.RequestId = params.get("RequestId")
 
 

@@ -456,8 +456,9 @@ class CreateInternalEndpointDnsRequest(AbstractModel):
         :type VpcId: str
         :param EniLBIp: tcr内网访问链路ip
         :type EniLBIp: str
-        :param UsePublicDomain: true：use instance name as subdomain
-false: use instancename+"-vpc" as subdomain
+        :param UsePublicDomain: true：为默认域名，公网域名一致
+false: 使用vpc域名
+默认为vpc域名
         :type UsePublicDomain: bool
         """
         self.InstanceId = None

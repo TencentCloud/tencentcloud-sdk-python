@@ -2507,12 +2507,16 @@ class DescribeAllStreamPlayInfoListRequest(AbstractModel):
         """
         :param QueryTime: 查询时间点，精确到分钟粒度，支持最近1个月的数据查询，数据延迟为5分钟左右，如果要查询实时的数据，建议传递5分钟前的时间点，格式为yyyy-mm-dd HH:MM:00。（只精确至分钟，秒数填00）。
         :type QueryTime: str
+        :param PlayDomains: 播放域名列表，若不填，表示总体数据。
+        :type PlayDomains: list of str
         """
         self.QueryTime = None
+        self.PlayDomains = None
 
 
     def _deserialize(self, params):
         self.QueryTime = params.get("QueryTime")
+        self.PlayDomains = params.get("PlayDomains")
 
 
 class DescribeAllStreamPlayInfoListResponse(AbstractModel):

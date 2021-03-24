@@ -3108,6 +3108,44 @@ class ProductTemplate(AbstractModel):
         self.IconUrlGrid = params.get("IconUrlGrid")
 
 
+class ResetCloudStorageRequest(AbstractModel):
+    """ResetCloudStorage请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        """
+        self.ProductId = None
+        self.DeviceName = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+
+
+class ResetCloudStorageResponse(AbstractModel):
+    """ResetCloudStorage返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class RetryDeviceFirmwareTaskRequest(AbstractModel):
     """RetryDeviceFirmwareTask请求参数结构体
 
@@ -3258,6 +3296,48 @@ class StatusStatistic(AbstractModel):
     def _deserialize(self, params):
         self.Status = params.get("Status")
         self.Total = params.get("Total")
+
+
+class TransferCloudStorageRequest(AbstractModel):
+    """TransferCloudStorage请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param DeviceName: 已开通云存的设备名称
+        :type DeviceName: str
+        :param ToDeviceName: 未开通云存的设备名称
+        :type ToDeviceName: str
+        """
+        self.ProductId = None
+        self.DeviceName = None
+        self.ToDeviceName = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+        self.ToDeviceName = params.get("ToDeviceName")
+
+
+class TransferCloudStorageResponse(AbstractModel):
+    """TransferCloudStorage返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class UploadFirmwareRequest(AbstractModel):

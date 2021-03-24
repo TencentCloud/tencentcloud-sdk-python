@@ -1388,6 +1388,8 @@ class CreateTCPListenersRequest(AbstractModel):
         :type RealServerPorts: list of int non-negative
         :param ClientIPMethod: 监听器获取客户端 IP 的方式，0表示 TOA, 1表示Proxy Protocol
         :type ClientIPMethod: int
+        :param FailoverSwitch: 源站是否开启主备模式：1开启，0关闭，DOMAIN类型源站不支持开启
+        :type FailoverSwitch: int
         """
         self.ListenerName = None
         self.Ports = None
@@ -1400,6 +1402,7 @@ class CreateTCPListenersRequest(AbstractModel):
         self.ConnectTimeout = None
         self.RealServerPorts = None
         self.ClientIPMethod = None
+        self.FailoverSwitch = None
 
 
     def _deserialize(self, params):
@@ -1414,6 +1417,7 @@ class CreateTCPListenersRequest(AbstractModel):
         self.ConnectTimeout = params.get("ConnectTimeout")
         self.RealServerPorts = params.get("RealServerPorts")
         self.ClientIPMethod = params.get("ClientIPMethod")
+        self.FailoverSwitch = params.get("FailoverSwitch")
 
 
 class CreateTCPListenersResponse(AbstractModel):
@@ -5080,6 +5084,8 @@ class ModifyTCPListenerAttributeRequest(AbstractModel):
         :type ConnectTimeout: int
         :param HealthCheck: 是否开启健康检查，1开启，0关闭。
         :type HealthCheck: int
+        :param FailoverSwitch: 源站是否开启主备模式：1开启，0关闭，DOMAIN类型源站不支持开启
+        :type FailoverSwitch: int
         """
         self.ListenerId = None
         self.GroupId = None
@@ -5089,6 +5095,7 @@ class ModifyTCPListenerAttributeRequest(AbstractModel):
         self.DelayLoop = None
         self.ConnectTimeout = None
         self.HealthCheck = None
+        self.FailoverSwitch = None
 
 
     def _deserialize(self, params):
@@ -5100,6 +5107,7 @@ class ModifyTCPListenerAttributeRequest(AbstractModel):
         self.DelayLoop = params.get("DelayLoop")
         self.ConnectTimeout = params.get("ConnectTimeout")
         self.HealthCheck = params.get("HealthCheck")
+        self.FailoverSwitch = params.get("FailoverSwitch")
 
 
 class ModifyTCPListenerAttributeResponse(AbstractModel):
@@ -5772,7 +5780,7 @@ class RealServer(AbstractModel):
 
 
 class RealServerBindSetReq(AbstractModel):
-    """RealServerBindSetReq
+    """绑定的源站信息
 
     """
 
@@ -5786,11 +5794,14 @@ class RealServerBindSetReq(AbstractModel):
         :type RealServerIP: str
         :param RealServerWeight: 源站权重
         :type RealServerWeight: int
+        :param RealServerFailoverRole: 源站主备角色：master主，slave备，该参数必须在监听器打开了源站主备模式，且监听器类型为TCP监听器
+        :type RealServerFailoverRole: str
         """
         self.RealServerId = None
         self.RealServerPort = None
         self.RealServerIP = None
         self.RealServerWeight = None
+        self.RealServerFailoverRole = None
 
 
     def _deserialize(self, params):
@@ -5798,6 +5809,7 @@ class RealServerBindSetReq(AbstractModel):
         self.RealServerPort = params.get("RealServerPort")
         self.RealServerIP = params.get("RealServerIP")
         self.RealServerWeight = params.get("RealServerWeight")
+        self.RealServerFailoverRole = params.get("RealServerFailoverRole")
 
 
 class RealServerStatus(AbstractModel):

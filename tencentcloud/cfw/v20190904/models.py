@@ -216,7 +216,7 @@ class CreateSecurityGroupApiRulesRequest(AbstractModel):
         :type Data: list of SecurityGroupApiRuleData
         :param Direction: 方向，0：出站，1：入站
         :type Direction: int
-        :param Type: 0：后插，1：前插，2：中插
+        :param Type: 插入类型，0：后插，1：前插，2：中插
         :type Type: int
         :param Area: 腾讯云地域的英文简写
         :type Area: str
@@ -449,7 +449,7 @@ class DeleteSecurityGroupRuleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 状态值
+        :param Status: 状态值，0：成功，非0：失败
         :type Status: int
         :param Info: 返回多余的信息
 注意：此字段可能返回 null，表示取不到有效值。
@@ -794,11 +794,11 @@ class DescribeSecurityGroupListRequest(AbstractModel):
         :type Area: str
         :param SearchValue: 搜索值
         :type SearchValue: str
-        :param Limit: 每页条数
+        :param Limit: 每页条数，默认为10
         :type Limit: int
-        :param Offset: 偏移值
+        :param Offset: 偏移值，默认为0
         :type Offset: int
-        :param Status: '': 全部，'0'：筛选停用规则，'1'：筛选启用规则
+        :param Status: 状态，'': 全部，'0'：筛选停用规则，'1'：筛选启用规则
         :type Status: str
         :param Filter: 0: 不过滤，1：过滤掉正常规则，保留下发异常规则
         :type Filter: int
@@ -1307,7 +1307,7 @@ class ModifySecurityGroupAllRuleStatusRequest(AbstractModel):
         :type Direction: int
         :param EdgeId: Edge ID值
         :type EdgeId: str
-        :param Area: NAT地域
+        :param Area: NAT地域, 腾讯云地域的英文简写
         :type Area: str
         """
         self.Status = None

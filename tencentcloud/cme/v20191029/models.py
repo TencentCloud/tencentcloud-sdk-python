@@ -1664,7 +1664,7 @@ class ExportVideoByEditorTrackDataRequest(AbstractModel):
 <li>CME：云剪，即导出为云剪素材；</li>
 <li>VOD：云点播，即导出为云点播媒资。</li>
         :type ExportDestination: str
-        :param TrackData: 在线编辑轨道数据。
+        :param TrackData: 在线编辑轨道数据。轨道数据相关介绍，请查看 [视频合成协议](https://cloud.tencent.com/document/product/1156/51225)。
         :type TrackData: str
         :param CMEExportInfo: 导出的云剪素材信息。指定 ExportDestination = CME 时有效。
         :type CMEExportInfo: :class:`tencentcloud.cme.v20191029.models.CMEExportInfo`

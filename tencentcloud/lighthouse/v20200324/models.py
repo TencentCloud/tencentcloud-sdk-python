@@ -132,6 +132,7 @@ class Bundle(AbstractModel):
 取值范围:
 "ACTIVITY": 活动套餐,
 "NORMAL": 普通套餐
+"CAREFREE": 无忧套餐
         :type BundleDisplayLabel: str
         """
         self.BundleId = None

@@ -1624,7 +1624,7 @@ class DescribeDBSecurityGroupsRequest(AbstractModel):
         """
         :param Product: 数据库引擎名称，本接口取值：mariadb。
         :type Product: str
-        :param InstanceId: 实例ID
+        :param InstanceId: 实例ID。
         :type InstanceId: str
         """
         self.Product = None
@@ -1645,10 +1645,18 @@ class DescribeDBSecurityGroupsResponse(AbstractModel):
         """
         :param Groups: 安全组详情。
         :type Groups: list of SecurityGroup
+        :param VIP: 实例VIP。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VIP: str
+        :param VPort: 实例端口。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VPort: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Groups = None
+        self.VIP = None
+        self.VPort = None
         self.RequestId = None
 
 
@@ -1659,6 +1667,8 @@ class DescribeDBSecurityGroupsResponse(AbstractModel):
                 obj = SecurityGroup()
                 obj._deserialize(item)
                 self.Groups.append(obj)
+        self.VIP = params.get("VIP")
+        self.VPort = params.get("VPort")
         self.RequestId = params.get("RequestId")
 
 
