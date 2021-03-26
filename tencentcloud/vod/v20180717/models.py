@@ -7675,6 +7675,38 @@ class DescribePersonSamplesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribePrepaidProductsRequest(AbstractModel):
+    """DescribePrepaidProducts请求参数结构体
+
+    """
+
+
+class DescribePrepaidProductsResponse(AbstractModel):
+    """DescribePrepaidProducts返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductInstanceSet: 购买的预付费商品实例列表。
+        :type ProductInstanceSet: list of ProductInstance
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ProductInstanceSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ProductInstanceSet") is not None:
+            self.ProductInstanceSet = []
+            for item in params.get("ProductInstanceSet"):
+                obj = ProductInstance()
+                obj._deserialize(item)
+                self.ProductInstanceSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeProcedureTemplatesRequest(AbstractModel):
     """DescribeProcedureTemplates请求参数结构体
 
@@ -14566,6 +14598,109 @@ class ProcessMediaResponse(AbstractModel):
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
+
+
+class ProductInstance(AbstractModel):
+    """预付费商品实例
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductType: 预付费商品实例类型，取值有：
+<li>StarterPackage：点播新手包。</li>
+<li>MiniProgramPlugin：点播小程序插件。</li>
+<li>ResourcePackage：点播资源包。</li>
+        :type ProductType: str
+        :param StartTime: 资源包实例起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type StartTime: str
+        :param ExpireTime: 资源包实例过期日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type ExpireTime: str
+        :param ProductInstanceId: 资源包实例ID。对应每个资源包，系统会分配相应的资源。续费或者升级资源包时，需要带上这个资源ID。
+        :type ProductInstanceId: str
+        :param LastConsumeDate: 系统最近一次扣除资源包的日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+        :type LastConsumeDate: str
+        :param BindStatus: 资源包绑定 License 状态，取值有：
+<li>0：未绑定。</li>
+<li>1：已绑定。</li>
+        :type BindStatus: int
+        :param ProductInstanceResourceSet: 预付费资源包实例中包含的资源包列表。
+        :type ProductInstanceResourceSet: list of ProductInstanceRecource
+        :param ProductInstanceStatus: 资源包实例的状态，取值有：
+<li>Effective：生效，可用于计费抵扣。</li>
+<li>Isolated：隔离，不可用于计费抵扣。</li>
+        :type ProductInstanceStatus: str
+        :param RefundStatus: 资源包实例的可退还状态，取值有：
+<li>FullRefund：可全额退款。</li>
+<li>Denied：不可退款。</li>
+        :type RefundStatus: str
+        """
+        self.ProductType = None
+        self.StartTime = None
+        self.ExpireTime = None
+        self.ProductInstanceId = None
+        self.LastConsumeDate = None
+        self.BindStatus = None
+        self.ProductInstanceResourceSet = None
+        self.ProductInstanceStatus = None
+        self.RefundStatus = None
+
+
+    def _deserialize(self, params):
+        self.ProductType = params.get("ProductType")
+        self.StartTime = params.get("StartTime")
+        self.ExpireTime = params.get("ExpireTime")
+        self.ProductInstanceId = params.get("ProductInstanceId")
+        self.LastConsumeDate = params.get("LastConsumeDate")
+        self.BindStatus = params.get("BindStatus")
+        if params.get("ProductInstanceResourceSet") is not None:
+            self.ProductInstanceResourceSet = []
+            for item in params.get("ProductInstanceResourceSet"):
+                obj = ProductInstanceRecource()
+                obj._deserialize(item)
+                self.ProductInstanceResourceSet.append(obj)
+        self.ProductInstanceStatus = params.get("ProductInstanceStatus")
+        self.RefundStatus = params.get("RefundStatus")
+
+
+class ProductInstanceRecource(AbstractModel):
+    """资源包中包含的资源。
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceType: 资源类型。
+<li>Storage：存储资源包。</li>
+<li>Traffic：流量资源包。</li>
+<li>Transcode：普通转码资源包。</li>
+<li>TESHD：极速高清转码资源包。</li>
+<li>Review：视频审核转码资源包。</li>
+        :type ResourceType: str
+        :param Amount: 资源包额度。
+<li>视频存储资源包，单位为字节。</li>
+<li>视频转码资源包，单位为秒。</li>
+<li>视频审核资源包，单位为秒。</li>
+<li>视频极速高清资源包，单位为秒。</li>
+<li>视频加速资源包，单位为字节。</li>
+        :type Amount: int
+        :param Left: 资源包余量。
+<li>视频存储资源包，单位为字节。</li>
+<li>视频转码资源包，单位为秒。</li>
+<li>视频审核资源包，单位为秒。</li>
+<li>视频极速高清资源包，单位为秒。</li>
+<li>视频加速资源包，单位为字节。</li>
+        :type Left: int
+        """
+        self.ResourceType = None
+        self.Amount = None
+        self.Left = None
+
+
+    def _deserialize(self, params):
+        self.ResourceType = params.get("ResourceType")
+        self.Amount = params.get("Amount")
+        self.Left = params.get("Left")
 
 
 class ProhibitedAsrReviewTemplateInfo(AbstractModel):

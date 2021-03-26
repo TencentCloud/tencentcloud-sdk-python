@@ -1807,7 +1807,7 @@ class DescribeImagesRequest(AbstractModel):
         :type NamespaceName: str
         :param RepositoryName: 镜像仓库名称
         :type RepositoryName: str
-        :param ImageVersion: 指定镜像版本(Tag)，不填默认返回仓库内全部容器镜像
+        :param ImageVersion: 指定镜像版本进行查找，当前为模糊搜索
         :type ImageVersion: str
         :param Limit: 每页个数，用于分页，默认20
         :type Limit: int
@@ -3095,6 +3095,54 @@ class ManageInternalEndpointResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ManageReplicationRequest(AbstractModel):
+    """ManageReplication请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SourceRegistryId: 复制源实例ID
+        :type SourceRegistryId: str
+        :param DestinationRegistryId: 复制目标实例ID
+        :type DestinationRegistryId: str
+        :param Rule: 同步规则
+        :type Rule: :class:`tencentcloud.tcr.v20190924.models.ReplicationRule`
+        :param Description: 规则描述
+        :type Description: str
+        """
+        self.SourceRegistryId = None
+        self.DestinationRegistryId = None
+        self.Rule = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.SourceRegistryId = params.get("SourceRegistryId")
+        self.DestinationRegistryId = params.get("DestinationRegistryId")
+        if params.get("Rule") is not None:
+            self.Rule = ReplicationRule()
+            self.Rule._deserialize(params.get("Rule"))
+        self.Description = params.get("Description")
+
+
+class ManageReplicationResponse(AbstractModel):
+    """ManageReplication返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyApplicationTriggerPersonalRequest(AbstractModel):
     """ModifyApplicationTriggerPersonal请求参数结构体
 
@@ -3784,6 +3832,27 @@ class RenewInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ReplicationFilter(AbstractModel):
+    """同步规则过滤器
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 类型（name、tag和resource）
+        :type Type: str
+        :param Value: 默认为空
+        :type Value: str
+        """
+        self.Type = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Value = params.get("Value")
+
+
 class ReplicationRegistry(AbstractModel):
     """企业版复制实例
 
@@ -3819,6 +3888,40 @@ class ReplicationRegistry(AbstractModel):
         self.ReplicationRegionName = params.get("ReplicationRegionName")
         self.Status = params.get("Status")
         self.CreatedAt = params.get("CreatedAt")
+
+
+class ReplicationRule(AbstractModel):
+    """同步规则
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 同步规则名称
+        :type Name: str
+        :param DestNamespace: 目标命名空间
+        :type DestNamespace: str
+        :param Override: 是否覆盖
+        :type Override: bool
+        :param Filters: 同步过滤条件
+        :type Filters: list of ReplicationFilter
+        """
+        self.Name = None
+        self.DestNamespace = None
+        self.Override = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.DestNamespace = params.get("DestNamespace")
+        self.Override = params.get("Override")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = ReplicationFilter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
 
 
 class RepoInfo(AbstractModel):

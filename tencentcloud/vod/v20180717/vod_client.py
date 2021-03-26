@@ -1647,6 +1647,36 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePrepaidProducts(self, request):
+        """该接口可以查询用户已经购买的预付费商品的信息，包括：
+            1. 商品的类型、生效和失效日期。
+            2. 商品中每种资源的额度和剩余额度。
+
+        :param request: Request instance for DescribePrepaidProducts.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribePrepaidProductsRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribePrepaidProductsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePrepaidProducts", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePrepaidProductsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeProcedureTemplates(self, request):
         """根据任务流模板名字，获取任务流模板详情列表。
 

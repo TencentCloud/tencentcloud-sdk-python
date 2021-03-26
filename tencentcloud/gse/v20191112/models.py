@@ -241,6 +241,27 @@ class AttachCcnInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CcnInfo(AbstractModel):
+    """云联网相关信息
+
+    """
+
+    def __init__(self):
+        """
+        :param AccountId: 云联网所属账号
+        :type AccountId: str
+        :param CcnId: 云联网id
+        :type CcnId: str
+        """
+        self.AccountId = None
+        self.CcnId = None
+
+
+    def _deserialize(self, params):
+        self.AccountId = params.get("AccountId")
+        self.CcnId = params.get("CcnId")
+
+
 class CcnInstanceSets(AbstractModel):
     """云联网实例信息
 
@@ -312,7 +333,7 @@ class CopyFleetRequest(AbstractModel):
         :type GameServerSessionProtectionTimeLimit: int
         :param SelectedScalingType: 是否选择扩缩容：SCALING_SELECTED 或者 SCALING_UNSELECTED；默认是 SCALING_UNSELECTED
         :type SelectedScalingType: str
-        :param SelectedCcnType: 是否选择云联网：CCN_SELECTED 或者 CCN_UNSELECTED；默认是 CCN_UNSELECTED
+        :param SelectedCcnType: 是否选择云联网：CCN_SELECTED_BEFORE_CREATE（创建前关联）， CCN_SELECTED_AFTER_CREATE（创建后关联）或者 CCN_UNSELECTED（不关联）；默认是 CCN_UNSELECTED
         :type SelectedCcnType: str
         :param Tags: 标签列表，最大长度50组
         :type Tags: list of Tag
@@ -322,6 +343,8 @@ class CopyFleetRequest(AbstractModel):
         :type DataDiskInfo: list of DiskInfo
         :param SelectedTimerType: 是否选择复制定时器策略：TIMER_SELECTED 或者 TIMER_UNSELECTED；默认是 TIMER_UNSELECTED
         :type SelectedTimerType: str
+        :param CcnInfos: 云联网信息，包含对应的账号信息及所属id
+        :type CcnInfos: list of CcnInfo
         """
         self.FleetId = None
         self.CopyNumber = None
@@ -341,6 +364,7 @@ class CopyFleetRequest(AbstractModel):
         self.SystemDiskInfo = None
         self.DataDiskInfo = None
         self.SelectedTimerType = None
+        self.CcnInfos = None
 
 
     def _deserialize(self, params):
@@ -383,6 +407,12 @@ class CopyFleetRequest(AbstractModel):
                 obj._deserialize(item)
                 self.DataDiskInfo.append(obj)
         self.SelectedTimerType = params.get("SelectedTimerType")
+        if params.get("CcnInfos") is not None:
+            self.CcnInfos = []
+            for item in params.get("CcnInfos"):
+                obj = CcnInfo()
+                obj._deserialize(item)
+                self.CcnInfos.append(obj)
 
 
 class CopyFleetResponse(AbstractModel):
@@ -657,6 +687,8 @@ class CreateFleetRequest(AbstractModel):
         :type SystemDiskInfo: :class:`tencentcloud.gse.v20191112.models.DiskInfo`
         :param DataDiskInfo: 数据盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-32000GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，10-32000GB；容量以10为单位
         :type DataDiskInfo: list of DiskInfo
+        :param CcnInfos: 云联网信息，包含对应的账号信息及所属id
+        :type CcnInfos: list of CcnInfo
         """
         self.AssetId = None
         self.Description = None
@@ -673,6 +705,7 @@ class CreateFleetRequest(AbstractModel):
         self.Tags = None
         self.SystemDiskInfo = None
         self.DataDiskInfo = None
+        self.CcnInfos = None
 
 
     def _deserialize(self, params):
@@ -712,6 +745,12 @@ class CreateFleetRequest(AbstractModel):
                 obj = DiskInfo()
                 obj._deserialize(item)
                 self.DataDiskInfo.append(obj)
+        if params.get("CcnInfos") is not None:
+            self.CcnInfos = []
+            for item in params.get("CcnInfos"):
+                obj = CcnInfo()
+                obj._deserialize(item)
+                self.CcnInfos.append(obj)
 
 
 class CreateFleetResponse(AbstractModel):
@@ -1577,6 +1616,50 @@ class DescribeFleetPortSettingsResponse(AbstractModel):
                 obj = InboundPermission()
                 obj._deserialize(item)
                 self.InboundPermissions.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeFleetRelatedResourcesRequest(AbstractModel):
+    """DescribeFleetRelatedResources请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FleetId: 服务器舰队 Id
+        :type FleetId: str
+        """
+        self.FleetId = None
+
+
+    def _deserialize(self, params):
+        self.FleetId = params.get("FleetId")
+
+
+class DescribeFleetRelatedResourcesResponse(AbstractModel):
+    """DescribeFleetRelatedResources返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Resources: 与服务器舰队关联的资源信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resources: list of FleetRelatedResource
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Resources = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Resources") is not None:
+            self.Resources = []
+            for item in params.get("Resources"):
+                obj = FleetRelatedResource()
+                obj._deserialize(item)
+                self.Resources.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2827,6 +2910,9 @@ class FleetAttributes(AbstractModel):
         :param SystemDiskInfo: 系统盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-500GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，50-500GB；容量以1为单位
 注意：此字段可能返回 null，表示取不到有效值。
         :type SystemDiskInfo: :class:`tencentcloud.gse.v20191112.models.DiskInfo`
+        :param RelatedCcnInfos: 云联网相关信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RelatedCcnInfos: list of RelatedCcnInfo
         """
         self.AssetId = None
         self.CreationTime = None
@@ -2847,6 +2933,7 @@ class FleetAttributes(AbstractModel):
         self.Tags = None
         self.DataDiskInfo = None
         self.SystemDiskInfo = None
+        self.RelatedCcnInfos = None
 
 
     def _deserialize(self, params):
@@ -2883,6 +2970,12 @@ class FleetAttributes(AbstractModel):
         if params.get("SystemDiskInfo") is not None:
             self.SystemDiskInfo = DiskInfo()
             self.SystemDiskInfo._deserialize(params.get("SystemDiskInfo"))
+        if params.get("RelatedCcnInfos") is not None:
+            self.RelatedCcnInfos = []
+            for item in params.get("RelatedCcnInfos"):
+                obj = RelatedCcnInfo()
+                obj._deserialize(item)
+                self.RelatedCcnInfos.append(obj)
 
 
 class FleetCapacity(AbstractModel):
@@ -2918,6 +3011,36 @@ class FleetCapacity(AbstractModel):
             self.InstanceCounts = InstanceCounts()
             self.InstanceCounts._deserialize(params.get("InstanceCounts"))
         self.ScalingInterval = params.get("ScalingInterval")
+
+
+class FleetRelatedResource(AbstractModel):
+    """与服务器舰队关联的资源，如别名和队列
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 资源类型。
+- ALIAS：别名
+- QUEUE：队列
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param ResourceId: 资源ID，目前仅支持别名ID和队列名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceId: str
+        :param ResourceRegion: 资源所在区域，如ap-shanghai、na-siliconvalley等
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceRegion: str
+        """
+        self.Type = None
+        self.ResourceId = None
+        self.ResourceRegion = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.ResourceId = params.get("ResourceId")
+        self.ResourceRegion = params.get("ResourceRegion")
 
 
 class FleetStatisticDetail(AbstractModel):
@@ -3401,6 +3524,69 @@ class GameServerSessionQueueDestination(AbstractModel):
     def _deserialize(self, params):
         self.DestinationArn = params.get("DestinationArn")
         self.FleetStatus = params.get("FleetStatus")
+
+
+class GetGameServerInstanceLogUrlRequest(AbstractModel):
+    """GetGameServerInstanceLogUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FleetId: 游戏舰队ID
+        :type FleetId: str
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param ServerIp: 实例IP
+        :type ServerIp: str
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Size: 每次条数
+        :type Size: int
+        """
+        self.FleetId = None
+        self.InstanceId = None
+        self.ServerIp = None
+        self.Offset = None
+        self.Size = None
+
+
+    def _deserialize(self, params):
+        self.FleetId = params.get("FleetId")
+        self.InstanceId = params.get("InstanceId")
+        self.ServerIp = params.get("ServerIp")
+        self.Offset = params.get("Offset")
+        self.Size = params.get("Size")
+
+
+class GetGameServerInstanceLogUrlResponse(AbstractModel):
+    """GetGameServerInstanceLogUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PresignedUrls: 日志下载URL的数组，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PresignedUrls: list of str
+        :param Total: 总条数
+        :type Total: int
+        :param HasNext: 是否还有没拉取完的
+        :type HasNext: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PresignedUrls = None
+        self.Total = None
+        self.HasNext = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PresignedUrls = params.get("PresignedUrls")
+        self.Total = params.get("Total")
+        self.HasNext = params.get("HasNext")
+        self.RequestId = params.get("RequestId")
 
 
 class GetGameServerSessionLogUrlRequest(AbstractModel):
@@ -4430,6 +4616,31 @@ class QuotaResource(AbstractModel):
         self.HardLimit = params.get("HardLimit")
         self.Remaining = params.get("Remaining")
         self.ExtraInfo = params.get("ExtraInfo")
+
+
+class RelatedCcnInfo(AbstractModel):
+    """云联网相关信息描述
+
+    """
+
+    def __init__(self):
+        """
+        :param AccountId: 云联网所属账号
+        :type AccountId: str
+        :param CcnId: 云联网 ID
+        :type CcnId: str
+        :param AttachType: 关联云联网状态
+        :type AttachType: str
+        """
+        self.AccountId = None
+        self.CcnId = None
+        self.AttachType = None
+
+
+    def _deserialize(self, params):
+        self.AccountId = params.get("AccountId")
+        self.CcnId = params.get("CcnId")
+        self.AttachType = params.get("AttachType")
 
 
 class ResolveAliasRequest(AbstractModel):

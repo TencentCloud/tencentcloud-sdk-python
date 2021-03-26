@@ -685,6 +685,34 @@ class GseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeFleetRelatedResources(self, request):
+        """本接口（DescribeFleetRelatedResources）用于获取与游戏服务器舰队关联的资源信息，如别名、队列
+
+        :param request: Request instance for DescribeFleetRelatedResources.
+        :type request: :class:`tencentcloud.gse.v20191112.models.DescribeFleetRelatedResourcesRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.DescribeFleetRelatedResourcesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeFleetRelatedResources", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeFleetRelatedResourcesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeFleetStatisticDetails(self, request):
         """本接口（DescribeFleetStatisticDetails）用于查询服务部署统计详情。
 
@@ -1203,6 +1231,34 @@ class GseClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DetachCcnInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetGameServerInstanceLogUrl(self, request):
+        """本接口用于获取游戏服务器实例的日志URL。
+
+        :param request: Request instance for GetGameServerInstanceLogUrl.
+        :type request: :class:`tencentcloud.gse.v20191112.models.GetGameServerInstanceLogUrlRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.GetGameServerInstanceLogUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetGameServerInstanceLogUrl", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetGameServerInstanceLogUrlResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

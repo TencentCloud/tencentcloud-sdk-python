@@ -1706,6 +1706,34 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ManageReplication(self, request):
+        """管理实例同步
+
+        :param request: Request instance for ManageReplication.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.ManageReplicationRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.ManageReplicationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ManageReplication", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ManageReplicationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyApplicationTriggerPersonal(self, request):
         """用于修改应用更新触发器
 

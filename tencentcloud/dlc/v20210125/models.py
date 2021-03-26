@@ -154,7 +154,7 @@ class CreateScriptRequest(AbstractModel):
         :type ScriptName: str
         :param SQLStatement: base64编码后的sql语句
         :type SQLStatement: str
-        :param ScriptDesc: 脚本描述,
+        :param ScriptDesc: 脚本描述， 不能超过50个字符
         :type ScriptDesc: str
         :param DatabaseName: 数据库名称
         :type DatabaseName: str
@@ -697,11 +697,11 @@ task-sql-keyword - String - （SQL语句关键字）取值形如：DROP TABLE。
         :type Filters: list of Filter
         :param SortBy: 排序字段，支持如下字段类型，create-time
         :type SortBy: str
-        :param Sorting: 排序方式，desc表示正序，asc表示反序
+        :param Sorting: 排序方式，desc表示正序，asc表示反序， 默认为asc。
         :type Sorting: str
-        :param StartTime: 起始时间点，格式为yyyy-mm-dd HH:MM:SS。
+        :param StartTime: 起始时间点，格式为yyyy-mm-dd HH:MM:SS。默认为45天前的当前时刻
         :type StartTime: str
-        :param EndTime: 结束时间点，格式为yyyy-mm-dd HH:MM:SS时间跨度在(0,30天]，支持最近45天数据查询。
+        :param EndTime: 结束时间点，格式为yyyy-mm-dd HH:MM:SS时间跨度在(0,30天]，支持最近45天数据查询。默认为当前时刻
         :type EndTime: str
         """
         self.Limit = None

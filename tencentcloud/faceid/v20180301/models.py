@@ -843,6 +843,27 @@ class DetectInfoVideoData(AbstractModel):
         self.LivenessVideo = params.get("LivenessVideo")
 
 
+class EidInfo(AbstractModel):
+    """Eid出参
+
+    """
+
+    def __init__(self):
+        """
+        :param EidCode: 商户方 appeIDcode 的数字证书
+        :type EidCode: str
+        :param EidSign: eID 中心针对商户方EidCode的电子签名
+        :type EidSign: str
+        """
+        self.EidCode = None
+        self.EidSign = None
+
+
+    def _deserialize(self, params):
+        self.EidCode = params.get("EidCode")
+        self.EidSign = params.get("EidSign")
+
+
 class Encryption(AbstractModel):
     """敏感数据加密
 
@@ -1083,6 +1104,159 @@ class GetDetectInfoResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.DetectInfo = params.get("DetectInfo")
+        self.RequestId = params.get("RequestId")
+
+
+class GetEidResultRequest(AbstractModel):
+    """GetEidResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EidToken: 人脸核身流程的标识，调用DetectAuth接口时生成。
+        :type EidToken: str
+        :param InfoType: 指定拉取的结果信息，取值（0：全部；1：文本类；2：身份证信息；3：最佳截图信息）。
+如 13表示拉取文本类、最佳截图信息。
+默认值：0
+        :type InfoType: str
+        :param BestFramesCount: 从活体视频中截取一定张数的最佳帧。默认为0，最大为3，超出3的最多只给3张。（InfoType需要包含3）
+        :type BestFramesCount: int
+        """
+        self.EidToken = None
+        self.InfoType = None
+        self.BestFramesCount = None
+
+
+    def _deserialize(self, params):
+        self.EidToken = params.get("EidToken")
+        self.InfoType = params.get("InfoType")
+        self.BestFramesCount = params.get("BestFramesCount")
+
+
+class GetEidResultResponse(AbstractModel):
+    """GetEidResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Text: 文本类信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: :class:`tencentcloud.faceid.v20180301.models.DetectInfoText`
+        :param IdCardData: 身份证照片信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdCardData: :class:`tencentcloud.faceid.v20180301.models.DetectInfoIdCardData`
+        :param BestFrame: 最佳帧信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BestFrame: :class:`tencentcloud.faceid.v20180301.models.DetectInfoBestFrame`
+        :param EidInfo: Eid信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EidInfo: :class:`tencentcloud.faceid.v20180301.models.EidInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Text = None
+        self.IdCardData = None
+        self.BestFrame = None
+        self.EidInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Text") is not None:
+            self.Text = DetectInfoText()
+            self.Text._deserialize(params.get("Text"))
+        if params.get("IdCardData") is not None:
+            self.IdCardData = DetectInfoIdCardData()
+            self.IdCardData._deserialize(params.get("IdCardData"))
+        if params.get("BestFrame") is not None:
+            self.BestFrame = DetectInfoBestFrame()
+            self.BestFrame._deserialize(params.get("BestFrame"))
+        if params.get("EidInfo") is not None:
+            self.EidInfo = EidInfo()
+            self.EidInfo._deserialize(params.get("EidInfo"))
+        self.RequestId = params.get("RequestId")
+
+
+class GetEidTokenConfig(AbstractModel):
+    """获取token时的的配置
+
+    """
+
+    def __init__(self):
+        """
+        :param InputType: 姓名身份证输入方式。
+1：传身份证正反面OCR   
+2：传身份证正面OCR  
+3：用户手动输入  
+4：客户后台传入  
+默认1
+注：使用OCR时仅支持用户修改结果中的姓名
+        :type InputType: str
+        """
+        self.InputType = None
+
+
+    def _deserialize(self, params):
+        self.InputType = params.get("InputType")
+
+
+class GetEidTokenRequest(AbstractModel):
+    """GetEidToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MerchantId: EID商户id
+        :type MerchantId: str
+        :param IdCard: 身份标识（未使用OCR服务时，必须传入）。
+规则：a-zA-Z0-9组合。最长长度32位。
+        :type IdCard: str
+        :param Name: 姓名。（未使用OCR服务时，必须传入）最长长度32位。中文请使用UTF-8编码。
+        :type Name: str
+        :param Extra: 透传字段，在获取验证结果时返回。
+        :type Extra: str
+        :param Config: 小程序模式配置，包括如何传入姓名身份证的配置。
+        :type Config: :class:`tencentcloud.faceid.v20180301.models.GetEidTokenConfig`
+        """
+        self.MerchantId = None
+        self.IdCard = None
+        self.Name = None
+        self.Extra = None
+        self.Config = None
+
+
+    def _deserialize(self, params):
+        self.MerchantId = params.get("MerchantId")
+        self.IdCard = params.get("IdCard")
+        self.Name = params.get("Name")
+        self.Extra = params.get("Extra")
+        if params.get("Config") is not None:
+            self.Config = GetEidTokenConfig()
+            self.Config._deserialize(params.get("Config"))
+
+
+class GetEidTokenResponse(AbstractModel):
+    """GetEidToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EidToken: 一次核身流程的标识，有效时间为7,200秒；
+完成核身后，可用该标识获取验证结果信息。
+        :type EidToken: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.EidToken = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.EidToken = params.get("EidToken")
         self.RequestId = params.get("RequestId")
 
 
