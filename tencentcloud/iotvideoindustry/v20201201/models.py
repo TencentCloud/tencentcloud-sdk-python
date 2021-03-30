@@ -26,10 +26,10 @@ class AllDeviceInfo(AbstractModel):
         :param DeviceId: 设备唯一标识
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceId: str
-        :param DeviceType: 设备类型
+        :param DeviceType: 设备类型；2：IPC
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceType: int
-        :param Status: 设备状态
+        :param Status: 设备状态；0：设备不在线；1：设备在线；2：设备隔离中；3：设备未注册
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param CreateTime: 创建时间
@@ -47,7 +47,7 @@ class AllDeviceInfo(AbstractModel):
         :param DeviceCode: 设备编码
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceCode: str
-        :param IsRecord: 是否存在录像
+        :param IsRecord: 是否存在录像,，0:不存在；1：存在
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsRecord: int
         """
@@ -197,7 +197,7 @@ class CreateDeviceGroupResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 响应结果
+        :param Status: 响应结果，“OK”为成功，其他为失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param GroupId: 分组ID
@@ -333,7 +333,7 @@ class CreateTimeTemplateRequest(AbstractModel):
         """
         :param Name: 时间模板名称
         :type Name: str
-        :param IsAllWeek: 是否为每周全时录制，即7*24h录制
+        :param IsAllWeek: 是否为每周全时录制（即7*24h录制），0：非全时录制，1；全时录制，默认0
         :type IsAllWeek: int
         :param TimeTemplateSpecs: 当IsAllWeek为0时必选，用于描述模板的各个时间片段
         :type TimeTemplateSpecs: list of TimeTemplateSpec
@@ -477,7 +477,7 @@ class DeleteRecordPlanResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 操作结果
+        :param Status: 操作结果，OK：成功，其他：失败
         :type Status: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -515,7 +515,7 @@ class DeleteTimeTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 操作结果
+        :param Status: 操作结果，OK：成功，其他：失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -537,7 +537,7 @@ class DescribeAllDeviceListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Offset: 偏移量
+        :param Offset: 偏移量，默认0
         :type Offset: int
         :param Limit: 限制，默认200
         :type Limit: int
@@ -794,7 +794,7 @@ class DescribeGroupByPathRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param GroupPath: 分组路径
+        :param GroupPath: 分组路径，格式为/aaa(/bbb/ccc)
         :type GroupPath: str
         """
         self.GroupPath = None
@@ -837,7 +837,7 @@ class DescribeGroupDevicesRequest(AbstractModel):
         """
         :param GroupId: 分组ID
         :type GroupId: str
-        :param Offset: 偏移量
+        :param Offset: 偏移量，默认0
         :type Offset: int
         :param Limit: 限制值，默认200
         :type Limit: int
@@ -1083,7 +1083,7 @@ class DescribeSubGroupsRequest(AbstractModel):
         :type GroupId: str
         :param GroupName: 分组名称，根据名称模糊匹配子分组时为必填
         :type GroupName: str
-        :param Offset: 偏移量
+        :param Offset: 偏移量，默认0
         :type Offset: int
         :param Limit: 限制数，默认200
         :type Limit: int
@@ -1197,9 +1197,9 @@ class GetRecordDatesByDevRequest(AbstractModel):
         """
         :param DeviceId: 设备唯一标识
         :type DeviceId: str
-        :param Offset: 偏移量
+        :param Offset: 偏移量，默认0
         :type Offset: int
-        :param Limit: 限制量
+        :param Limit: 限制量，默认200
         :type Limit: int
         """
         self.DeviceId = None
@@ -1442,11 +1442,11 @@ class GetVideoListByConRequest(AbstractModel):
         """
         :param DeviceId: 设备唯一标识
         :type DeviceId: str
-        :param Offset: 偏移量
+        :param Offset: 偏移量，默认0
         :type Offset: int
-        :param Limit: 限制量
+        :param Limit: 限制量，默认200
         :type Limit: int
-        :param LatestDay: 0：查询指定日期的录像；1：查询最近一天的录像
+        :param LatestDay: 0：查询指定日期的录像；1：查询最近一天的录像；默认0
         :type LatestDay: int
         :param Date: 指定某天。取值【YYYY-MM-DD】
 当LatestDay为空或为0时，本参数不允许为空。
@@ -1688,7 +1688,7 @@ class ModifyDeviceDataResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 操作结果
+        :param Status: 操作结果,“OK”表示成功，其他表示失败。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1996,7 +1996,7 @@ class UpdateDevicePassWordResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 操作结果
+        :param Status: 操作结果，“OK”表示成功，其他表示失败。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2087,7 +2087,8 @@ class UpdateTimeTemplateRequest(AbstractModel):
         :type TemplateId: str
         :param Name: 时间模板名称
         :type Name: str
-        :param IsAllWeek: 是否全时录制，即7*24小时录制
+        :param IsAllWeek: 是否全时录制，即7*24小时录制。
+0：非全时录制；1：全时录制。默认1
         :type IsAllWeek: int
         :param TimeTemplateSpecs: 录制时间片段
         :type TimeTemplateSpecs: list of TimeTemplateSpec
@@ -2117,7 +2118,7 @@ class UpdateTimeTemplateResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Status: 操作结果
+        :param Status: 操作结果，“OK”表示成功，其他表示失败。
         :type Status: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

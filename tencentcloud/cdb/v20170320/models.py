@@ -1825,6 +1825,27 @@ class DatabasePrivilege(AbstractModel):
         self.Database = params.get("Database")
 
 
+class DatabasesWithCharacterLists(AbstractModel):
+    """数据库名以及字符集
+
+    """
+
+    def __init__(self):
+        """
+        :param DatabaseName: 数据库名
+        :type DatabaseName: str
+        :param CharacterSet: 字符集类型
+        :type CharacterSet: str
+        """
+        self.DatabaseName = None
+        self.CharacterSet = None
+
+
+    def _deserialize(self, params):
+        self.DatabaseName = params.get("DatabaseName")
+        self.CharacterSet = params.get("CharacterSet")
+
+
 class DeleteAccountsRequest(AbstractModel):
     """DeleteAccounts请求参数结构体
 
@@ -2375,17 +2396,21 @@ class DescribeAuditConfigResponse(AbstractModel):
         :type LogExpireDay: int
         :param LogType: 审计日志存储类型。目前支持的值包括："storage" - 存储型。
         :type LogType: str
+        :param IsClosing: 是否正在关闭审计。目前支持的值包括："false"-否，"true"-是
+        :type IsClosing: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.LogExpireDay = None
         self.LogType = None
+        self.IsClosing = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.LogExpireDay = params.get("LogExpireDay")
         self.LogType = params.get("LogType")
+        self.IsClosing = params.get("IsClosing")
         self.RequestId = params.get("RequestId")
 
 
@@ -3219,9 +3244,13 @@ class DescribeDBInstanceConfigResponse(AbstractModel):
         :param Zone: 实例可用区信息，格式如 "ap-shanghai-1"。
         :type Zone: str
         :param SlaveConfig: 备库的配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type SlaveConfig: :class:`tencentcloud.cdb.v20170320.models.SlaveConfig`
         :param BackupConfig: 强同步实例第二备库的配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type BackupConfig: :class:`tencentcloud.cdb.v20170320.models.BackupConfig`
+        :param Switched: 是否切换备库。
+        :type Switched: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3230,6 +3259,7 @@ class DescribeDBInstanceConfigResponse(AbstractModel):
         self.Zone = None
         self.SlaveConfig = None
         self.BackupConfig = None
+        self.Switched = None
         self.RequestId = None
 
 
@@ -3243,6 +3273,7 @@ class DescribeDBInstanceConfigResponse(AbstractModel):
         if params.get("BackupConfig") is not None:
             self.BackupConfig = BackupConfig()
             self.BackupConfig._deserialize(params.get("BackupConfig"))
+        self.Switched = params.get("Switched")
         self.RequestId = params.get("RequestId")
 
 
@@ -3857,17 +3888,26 @@ class DescribeDatabasesResponse(AbstractModel):
         :type TotalCount: int
         :param Items: 返回的实例信息。
         :type Items: list of str
+        :param DatabaseList: 数据库名以及字符集
+        :type DatabaseList: list of DatabasesWithCharacterLists
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
         self.Items = None
+        self.DatabaseList = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.TotalCount = params.get("TotalCount")
         self.Items = params.get("Items")
+        if params.get("DatabaseList") is not None:
+            self.DatabaseList = []
+            for item in params.get("DatabaseList"):
+                obj = DatabasesWithCharacterLists()
+                obj._deserialize(item)
+                self.DatabaseList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -4242,12 +4282,14 @@ class DescribeParamTemplateInfoResponse(AbstractModel):
         :type TemplateId: int
         :param Name: 参数模板名称。
         :type Name: str
-        :param EngineVersion: 参数模板描述
+        :param EngineVersion: 参数模板对应实例版本
         :type EngineVersion: str
         :param TotalCount: 参数模板中的参数数量
         :type TotalCount: int
         :param Items: 参数详情
         :type Items: list of ParameterDetail
+        :param Description: 参数模板描述
+        :type Description: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4256,6 +4298,7 @@ class DescribeParamTemplateInfoResponse(AbstractModel):
         self.EngineVersion = None
         self.TotalCount = None
         self.Items = None
+        self.Description = None
         self.RequestId = None
 
 
@@ -4270,6 +4313,7 @@ class DescribeParamTemplateInfoResponse(AbstractModel):
                 obj = ParameterDetail()
                 obj._deserialize(item)
                 self.Items.append(obj)
+        self.Description = params.get("Description")
         self.RequestId = params.get("RequestId")
 
 
@@ -4335,10 +4379,13 @@ class DescribeProjectSecurityGroupsResponse(AbstractModel):
         """
         :param Groups: 安全组详情。
         :type Groups: list of SecurityGroup
+        :param TotalCount: 安全组规则数量。
+        :type TotalCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Groups = None
+        self.TotalCount = None
         self.RequestId = None
 
 
@@ -4349,6 +4396,7 @@ class DescribeProjectSecurityGroupsResponse(AbstractModel):
                 obj = SecurityGroup()
                 obj._deserialize(item)
                 self.Groups.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 

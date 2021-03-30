@@ -58,6 +58,72 @@ class AssignProjectResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class BackupDownloadTask(AbstractModel):
+    """备份下载任务
+
+    """
+
+    def __init__(self):
+        """
+        :param CreateTime: 任务创建时间
+        :type CreateTime: str
+        :param BackupName: 备份文件名
+        :type BackupName: str
+        :param ReplicaSetId: 分片名称
+        :type ReplicaSetId: str
+        :param BackupSize: 备份数据大小，单位为字节
+        :type BackupSize: int
+        :param Status: 任务状态。0-等待执行，1-正在下载，2-下载完成，3-下载失败，4-等待重试
+        :type Status: int
+        :param Percent: 任务进度百分比
+        :type Percent: int
+        :param TimeSpend: 耗时，单位为秒
+        :type TimeSpend: int
+        :param Url: 备份数据下载链接
+        :type Url: str
+        """
+        self.CreateTime = None
+        self.BackupName = None
+        self.ReplicaSetId = None
+        self.BackupSize = None
+        self.Status = None
+        self.Percent = None
+        self.TimeSpend = None
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        self.CreateTime = params.get("CreateTime")
+        self.BackupName = params.get("BackupName")
+        self.ReplicaSetId = params.get("ReplicaSetId")
+        self.BackupSize = params.get("BackupSize")
+        self.Status = params.get("Status")
+        self.Percent = params.get("Percent")
+        self.TimeSpend = params.get("TimeSpend")
+        self.Url = params.get("Url")
+
+
+class BackupDownloadTaskStatus(AbstractModel):
+    """创建备份下载任务结果
+
+    """
+
+    def __init__(self):
+        """
+        :param ReplicaSetId: 分片名
+        :type ReplicaSetId: str
+        :param Status: 任务当前状态。0-等待执行，1-正在下载，2-下载完成，3-下载失败，4-等待重试
+        :type Status: int
+        """
+        self.ReplicaSetId = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.ReplicaSetId = params.get("ReplicaSetId")
+        self.Status = params.get("Status")
+
+
 class BackupFile(AbstractModel):
     """备份文件存储信息
 
@@ -196,6 +262,62 @@ class CreateBackupDBInstanceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateBackupDownloadTaskRequest(AbstractModel):
+    """CreateBackupDownloadTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        :type InstanceId: str
+        :param BackupName: 要下载的备份文件名，可通过DescribeDBBackups接口获取
+        :type BackupName: str
+        :param BackupSets: 下载备份的分片列表
+        :type BackupSets: list of ReplicaSetInfo
+        """
+        self.InstanceId = None
+        self.BackupName = None
+        self.BackupSets = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.BackupName = params.get("BackupName")
+        if params.get("BackupSets") is not None:
+            self.BackupSets = []
+            for item in params.get("BackupSets"):
+                obj = ReplicaSetInfo()
+                obj._deserialize(item)
+                self.BackupSets.append(obj)
+
+
+class CreateBackupDownloadTaskResponse(AbstractModel):
+    """CreateBackupDownloadTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Tasks: 下载任务状态
+        :type Tasks: list of BackupDownloadTaskStatus
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Tasks = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Tasks") is not None:
+            self.Tasks = []
+            for item in params.get("Tasks"):
+                obj = BackupDownloadTaskStatus()
+                obj._deserialize(item)
+                self.Tasks.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -626,6 +748,85 @@ class DescribeBackupAccessResponse(AbstractModel):
                 obj = BackupFile()
                 obj._deserialize(item)
                 self.Files.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBackupDownloadTaskRequest(AbstractModel):
+    """DescribeBackupDownloadTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        :type InstanceId: str
+        :param BackupName: 备份文件名，用来过滤指定文件的下载任务
+        :type BackupName: str
+        :param StartTime: 指定要查询任务的时间范围，StartTime指定开始时间
+        :type StartTime: str
+        :param EndTime: 指定要查询任务的时间范围，StartTime指定结束时间
+        :type EndTime: str
+        :param Limit: 此次查询返回的条数，取值范围为1-100，默认为20
+        :type Limit: int
+        :param Offset: 指定此次查询返回的页数，默认为0
+        :type Offset: int
+        :param OrderBy: 排序字段，取值为createTime，finishTime两种，默认为createTime
+        :type OrderBy: str
+        :param OrderByType: 排序方式，取值为asc，desc两种，默认desc
+        :type OrderByType: str
+        :param Status: 根据任务状态过滤。0-等待执行，1-正在下载，2-下载完成，3-下载失败，4-等待重试
+        :type Status: list of int
+        """
+        self.InstanceId = None
+        self.BackupName = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Limit = None
+        self.Offset = None
+        self.OrderBy = None
+        self.OrderByType = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.BackupName = params.get("BackupName")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderByType = params.get("OrderByType")
+        self.Status = params.get("Status")
+
+
+class DescribeBackupDownloadTaskResponse(AbstractModel):
+    """DescribeBackupDownloadTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 满足查询条件的所有条数
+        :type TotalCount: int
+        :param Tasks: 下载任务列表
+        :type Tasks: list of BackupDownloadTask
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Tasks = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Tasks") is not None:
+            self.Tasks = []
+            for item in params.get("Tasks"):
+                obj = BackupDownloadTask()
+                obj._deserialize(item)
+                self.Tasks.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1853,6 +2054,23 @@ class RenewDBInstancesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class ReplicaSetInfo(AbstractModel):
+    """分片信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ReplicaSetId: 分片名称
+        :type ReplicaSetId: str
+        """
+        self.ReplicaSetId = None
+
+
+    def _deserialize(self, params):
+        self.ReplicaSetId = params.get("ReplicaSetId")
 
 
 class ResetDBInstancePasswordRequest(AbstractModel):

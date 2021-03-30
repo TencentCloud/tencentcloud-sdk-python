@@ -567,6 +567,48 @@ class CreateNamespaceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateReplicationInstanceRequest(AbstractModel):
+    """CreateReplicationInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 主实例iD
+        :type RegistryId: str
+        :param ReplicationRegionId: 复制实例地域ID
+        :type ReplicationRegionId: int
+        """
+        self.RegistryId = None
+        self.ReplicationRegionId = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.ReplicationRegionId = params.get("ReplicationRegionId")
+
+
+class CreateReplicationInstanceResponse(AbstractModel):
+    """CreateReplicationInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ReplicationRegistryId: 企业版复制实例Id
+        :type ReplicationRegistryId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ReplicationRegistryId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ReplicationRegistryId = params.get("ReplicationRegistryId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateRepositoryPersonalRequest(AbstractModel):
     """CreateRepositoryPersonal请求参数结构体
 
@@ -3110,11 +3152,14 @@ class ManageReplicationRequest(AbstractModel):
         :type Rule: :class:`tencentcloud.tcr.v20190924.models.ReplicationRule`
         :param Description: 规则描述
         :type Description: str
+        :param DestinationRegionId: 目标实例的地域ID，如广州是1
+        :type DestinationRegionId: int
         """
         self.SourceRegistryId = None
         self.DestinationRegistryId = None
         self.Rule = None
         self.Description = None
+        self.DestinationRegionId = None
 
 
     def _deserialize(self, params):
@@ -3124,6 +3169,7 @@ class ManageReplicationRequest(AbstractModel):
             self.Rule = ReplicationRule()
             self.Rule._deserialize(params.get("Rule"))
         self.Description = params.get("Description")
+        self.DestinationRegionId = params.get("DestinationRegionId")
 
 
 class ManageReplicationResponse(AbstractModel):

@@ -582,16 +582,20 @@ class ImageInfo(AbstractModel):
         :type LicenseScopeId: int
         :param DimensionsNameId: 尺寸名称Id
         :type DimensionsNameId: int
+        :param UserId: 平台用户标识
+        :type UserId: str
         """
         self.ImageId = None
         self.LicenseScopeId = None
         self.DimensionsNameId = None
+        self.UserId = None
 
 
     def _deserialize(self, params):
         self.ImageId = params.get("ImageId")
         self.LicenseScopeId = params.get("LicenseScopeId")
         self.DimensionsNameId = params.get("DimensionsNameId")
+        self.UserId = params.get("UserId")
 
 
 class ImageItem(AbstractModel):

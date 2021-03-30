@@ -1467,6 +1467,35 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDrmDataKey(self, request):
+        """本 API 是 [旧版本加密](https://cloud.tencent.com/document/product/266/9638) 中[DescribeDrmDataKey 的 API 2017 接口](https://cloud.tencent.com/document/product/266/9643)的升级版本。
+        如果您是新接入点播加密的用户，不要使用该 API。请参考[视频加密综述](https://cloud.tencent.com/document/product/266/45552)使用。
+
+        :param request: Request instance for DescribeDrmDataKey.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeDrmDataKeyRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeDrmDataKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDrmDataKey", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDrmDataKeyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeEventsState(self, request):
         """* 该接口用于业务服务器获取 [可靠回调](https://cloud.tencent.com/document/product/266/33779#.E5.8F.AF.E9.9D.A0.E5.9B.9E.E8.B0.83) 事件通知的状态。
 
@@ -1982,6 +2011,34 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTranscodeTemplatesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVodDomains(self, request):
+        """该接口用于查询点播域名信息列表。
+
+        :param request: Request instance for DescribeVodDomains.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeVodDomainsRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeVodDomainsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeVodDomains", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVodDomainsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

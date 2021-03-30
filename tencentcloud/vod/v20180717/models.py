@@ -176,6 +176,35 @@ class AIRecognitionTemplateItem(AbstractModel):
         self.UpdateTime = params.get("UpdateTime")
 
 
+class AccelerateAreaInfo(AbstractModel):
+    """域名的地区加速信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Area: 加速地区，可选值：
+<li>Chinese Mainland：中国境内（不包含港澳台）。</li>
+<li>Outside Chinese Mainland：中国境外。</li>
+        :type Area: str
+        :param TencentDisableReason: 腾讯禁用原因，可选值：
+<li>ForLegalReasons：因法律原因导致关闭加速；</li>
+<li>ForOverdueBills：因欠费停服导致关闭加速。</li>
+        :type TencentDisableReason: str
+        :param TencentEdgeDomain: 加速域名对应的 CNAME 域名。
+        :type TencentEdgeDomain: str
+        """
+        self.Area = None
+        self.TencentDisableReason = None
+        self.TencentEdgeDomain = None
+
+
+    def _deserialize(self, params):
+        self.Area = params.get("Area")
+        self.TencentDisableReason = params.get("TencentDisableReason")
+        self.TencentEdgeDomain = params.get("TencentEdgeDomain")
+
+
 class AdaptiveDynamicStreamingInfoItem(AbstractModel):
     """转自适应码流信息
 
@@ -216,9 +245,12 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
         :type Definition: int
         :param WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。
         :type WatermarkSet: list of WatermarkInput
+        :param SubtitleSet: 字幕列表，元素为字幕 ID，支持多个字幕，最大可支持10个。
+        :type SubtitleSet: list of str
         """
         self.Definition = None
         self.WatermarkSet = None
+        self.SubtitleSet = None
 
 
     def _deserialize(self, params):
@@ -229,6 +261,7 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
                 obj = WatermarkInput()
                 obj._deserialize(item)
                 self.WatermarkSet.append(obj)
+        self.SubtitleSet = params.get("SubtitleSet")
 
 
 class AdaptiveDynamicStreamingTemplate(AbstractModel):
@@ -7305,6 +7338,49 @@ class DescribeDailyPlayStatFileListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDrmDataKeyRequest(AbstractModel):
+    """DescribeDrmDataKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EdkList: 加密后的数据密钥列表，最大支持10个。
+        :type EdkList: list of str
+        """
+        self.EdkList = None
+
+
+    def _deserialize(self, params):
+        self.EdkList = params.get("EdkList")
+
+
+class DescribeDrmDataKeyResponse(AbstractModel):
+    """DescribeDrmDataKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyList: 密钥列表，包含加密的数据密钥。
+        :type KeyList: list of SimpleAesEdkPair
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.KeyList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("KeyList") is not None:
+            self.KeyList = []
+            for item in params.get("KeyList"):
+                obj = SimpleAesEdkPair()
+                obj._deserialize(item)
+                self.KeyList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeEventsStateRequest(AbstractModel):
     """DescribeEventsState请求参数结构体
 
@@ -8523,6 +8599,66 @@ class DescribeTranscodeTemplatesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeVodDomainsRequest(AbstractModel):
+    """DescribeVodDomains请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Domains: 域名列表。当该字段不填时，则默认列出所有域名信息。本字段字段限制如下：
+<li>域名个数度最大为 20。</li>
+        :type Domains: list of str
+        :param Limit: 分页拉取的最大返回结果数。默认值：20。
+        :type Limit: int
+        :param Offset: 分页拉取的起始偏移量。默认值：0。
+        :type Offset: int
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Domains = None
+        self.Limit = None
+        self.Offset = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Domains = params.get("Domains")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DescribeVodDomainsResponse(AbstractModel):
+    """DescribeVodDomains返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 域名总数量。
+        :type TotalCount: int
+        :param DomainSet: 域名信息列表。
+        :type DomainSet: list of DomainDetailInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.DomainSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("DomainSet") is not None:
+            self.DomainSet = []
+            for item in params.get("DomainSet"):
+                obj = DomainDetailInfo()
+                obj._deserialize(item)
+                self.DomainSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeWatermarkTemplatesRequest(AbstractModel):
     """DescribeWatermarkTemplates请求参数结构体
 
@@ -8665,6 +8801,84 @@ class DescribeWordSamplesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.WordSet.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class DomainDetailInfo(AbstractModel):
+    """域名信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Domain: 域名名称。
+        :type Domain: str
+        :param AccelerateAreaInfos: 加速地区信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccelerateAreaInfos: list of AccelerateAreaInfo
+        :param DeployStatus: 部署状态，取值有：
+<li>Online：上线；</li>
+<li>Deploying：部署中；</li>
+<li>Locked: 锁定中，出现该状态时，无法对该域名进行部署变更。</li>
+        :type DeployStatus: str
+        :param HTTPSConfig: HTTPS 配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HTTPSConfig: :class:`tencentcloud.vod.v20180717.models.DomainHTTPSConfig`
+        :param UrlSignatureAuthPolicy: [Key 防盗链](https://cloud.tencent.com/document/product/266/14047)配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UrlSignatureAuthPolicy: :class:`tencentcloud.vod.v20180717.models.UrlSignatureAuthPolicy`
+        :param RefererAuthPolicy: [Referer 防盗链](https://cloud.tencent.com/document/product/266/14046)配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RefererAuthPolicy: :class:`tencentcloud.vod.v20180717.models.RefererAuthPolicy`
+        :param CreateTime: 域名添加到腾讯云点播系统中的时间。
+<li>格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。</li>
+        :type CreateTime: str
+        """
+        self.Domain = None
+        self.AccelerateAreaInfos = None
+        self.DeployStatus = None
+        self.HTTPSConfig = None
+        self.UrlSignatureAuthPolicy = None
+        self.RefererAuthPolicy = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        if params.get("AccelerateAreaInfos") is not None:
+            self.AccelerateAreaInfos = []
+            for item in params.get("AccelerateAreaInfos"):
+                obj = AccelerateAreaInfo()
+                obj._deserialize(item)
+                self.AccelerateAreaInfos.append(obj)
+        self.DeployStatus = params.get("DeployStatus")
+        if params.get("HTTPSConfig") is not None:
+            self.HTTPSConfig = DomainHTTPSConfig()
+            self.HTTPSConfig._deserialize(params.get("HTTPSConfig"))
+        if params.get("UrlSignatureAuthPolicy") is not None:
+            self.UrlSignatureAuthPolicy = UrlSignatureAuthPolicy()
+            self.UrlSignatureAuthPolicy._deserialize(params.get("UrlSignatureAuthPolicy"))
+        if params.get("RefererAuthPolicy") is not None:
+            self.RefererAuthPolicy = RefererAuthPolicy()
+            self.RefererAuthPolicy._deserialize(params.get("RefererAuthPolicy"))
+        self.CreateTime = params.get("CreateTime")
+
+
+class DomainHTTPSConfig(AbstractModel):
+    """域名 HTTPS 配置信息
+
+    """
+
+    def __init__(self):
+        """
+        :param CertExpireTime: 证书过期时间。
+<li>格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。</li>
+        :type CertExpireTime: str
+        """
+        self.CertExpireTime = None
+
+
+    def _deserialize(self, params):
+        self.CertExpireTime = params.get("CertExpireTime")
 
 
 class DrmStreamingsInfo(AbstractModel):
@@ -10413,7 +10627,7 @@ class MediaBasicInfo(AbstractModel):
         :param SourceInfo: 该媒体文件的来源信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SourceInfo: :class:`tencentcloud.vod.v20180717.models.MediaSourceData`
-        :param StorageRegion: 媒体文件存储地区，如 ap-guangzhou，参见[地域列表](https://cloud.tencent.com/document/api/213/15692#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8)。
+        :param StorageRegion: 媒体文件存储地区，如 ap-chongqing，参见[地域列表](https://cloud.tencent.com/document/product/266/9760#.E5.B7.B2.E6.94.AF.E6.8C.81.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8)。
         :type StorageRegion: str
         :param TagSet: 媒体文件的标签信息。
         :type TagSet: list of str
@@ -10837,6 +11051,9 @@ class MediaInfo(AbstractModel):
         :param MiniProgramReviewInfo: 小程序审核信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MiniProgramReviewInfo: :class:`tencentcloud.vod.v20180717.models.MediaMiniProgramReviewInfo`
+        :param SubtitleInfo: 字幕信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubtitleInfo: :class:`tencentcloud.vod.v20180717.models.MediaSubtitleInfo`
         :param FileId: 媒体文件唯一标识 ID。
         :type FileId: str
         """
@@ -10850,6 +11067,7 @@ class MediaInfo(AbstractModel):
         self.KeyFrameDescInfo = None
         self.AdaptiveDynamicStreamingInfo = None
         self.MiniProgramReviewInfo = None
+        self.SubtitleInfo = None
         self.FileId = None
 
 
@@ -10884,6 +11102,9 @@ class MediaInfo(AbstractModel):
         if params.get("MiniProgramReviewInfo") is not None:
             self.MiniProgramReviewInfo = MediaMiniProgramReviewInfo()
             self.MiniProgramReviewInfo._deserialize(params.get("MiniProgramReviewInfo"))
+        if params.get("SubtitleInfo") is not None:
+            self.SubtitleInfo = MediaSubtitleInfo()
+            self.SubtitleInfo._deserialize(params.get("SubtitleInfo"))
         self.FileId = params.get("FileId")
 
 
@@ -11746,6 +11967,66 @@ class MediaSourceData(AbstractModel):
     def _deserialize(self, params):
         self.SourceType = params.get("SourceType")
         self.SourceContext = params.get("SourceContext")
+
+
+class MediaSubtitleInfo(AbstractModel):
+    """字幕信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param SubtitleSet: 字幕信息列表。
+        :type SubtitleSet: list of MediaSubtitleItem
+        """
+        self.SubtitleSet = None
+
+
+    def _deserialize(self, params):
+        if params.get("SubtitleSet") is not None:
+            self.SubtitleSet = []
+            for item in params.get("SubtitleSet"):
+                obj = MediaSubtitleItem()
+                obj._deserialize(item)
+                self.SubtitleSet.append(obj)
+
+
+class MediaSubtitleItem(AbstractModel):
+    """字幕信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 字幕的唯一标识。
+        :type Id: str
+        :param Name: 字幕名字。
+        :type Name: str
+        :param Language: 字幕语言。常见的取值如下：
+<li>cn：中文</li>
+<li>ja：日文</li>
+<li>en-US：英文</li>
+其他取值参考 [RFC5646](https://tools.ietf.org/html/rfc5646)
+        :type Language: str
+        :param Format: 字幕格式。取值范围如下：
+<li>vtt</li>
+        :type Format: str
+        :param Url: 字幕 URL。
+        :type Url: str
+        """
+        self.Id = None
+        self.Name = None
+        self.Language = None
+        self.Format = None
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        self.Language = params.get("Language")
+        self.Format = params.get("Format")
+        self.Url = params.get("Url")
 
 
 class MediaTrack(AbstractModel):
@@ -15101,6 +15382,41 @@ class PushUrlCacheResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RefererAuthPolicy(AbstractModel):
+    """Referer 防盗链配置
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: [Referer 防盗链](https://cloud.tencent.com/document/product/266/14046)设置状态，可选值：
+<li>Enabled: 启用；</li>
+<li>Disabled: 禁用。</li>
+        :type Status: str
+        :param AuthType: Referer 校验类型，可选值：
+<li>Black: 黑名单方式校验；</li>
+<li>White:白名单方式校验。</li>
+        :type AuthType: str
+        :param Referers: 用于校验的 Referer 名单。
+        :type Referers: list of str
+        :param BlankRefererAllowed: 是否允许空 Referer 访问本域名，可选值：
+<li>Yes: 是；</li>
+<li>No: 否。</li>
+        :type BlankRefererAllowed: str
+        """
+        self.Status = None
+        self.AuthType = None
+        self.Referers = None
+        self.BlankRefererAllowed = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.AuthType = params.get("AuthType")
+        self.Referers = params.get("Referers")
+        self.BlankRefererAllowed = params.get("BlankRefererAllowed")
+
+
 class ResetProcedureTemplateRequest(AbstractModel):
     """ResetProcedureTemplate请求参数结构体
 
@@ -15536,6 +15852,27 @@ class SegmentConfigureInfoForUpdate(AbstractModel):
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
+
+
+class SimpleAesEdkPair(AbstractModel):
+    """简单加密加解密秘钥对。
+
+    """
+
+    def __init__(self):
+        """
+        :param Edk: 加密后的数据密钥。
+        :type Edk: str
+        :param Dk: 数据密钥。返回的数据密钥 DK 为 Base64 编码字符串。
+        :type Dk: str
+        """
+        self.Edk = None
+        self.Dk = None
+
+
+    def _deserialize(self, params):
+        self.Edk = params.get("Edk")
+        self.Dk = params.get("Dk")
 
 
 class SimpleHlsClipRequest(AbstractModel):
@@ -17170,6 +17507,29 @@ class TransitionOpertion(AbstractModel):
 
     def _deserialize(self, params):
         self.Type = params.get("Type")
+
+
+class UrlSignatureAuthPolicy(AbstractModel):
+    """基于签名的 Key 防盗链信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: [Key 防盗链](https://cloud.tencent.com/document/product/266/14047)设置状态，可选值：
+<li>Enabled: 启用；</li>
+<li>Disabled: 禁用。</li>
+        :type Status: str
+        :param EncryptedKey: [Key 防盗链](https://cloud.tencent.com/document/product/266/14047)中用于生成签名的密钥。
+        :type EncryptedKey: str
+        """
+        self.Status = None
+        self.EncryptedKey = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.EncryptedKey = params.get("EncryptedKey")
 
 
 class UserDefineAsrTextReviewTemplateInfo(AbstractModel):

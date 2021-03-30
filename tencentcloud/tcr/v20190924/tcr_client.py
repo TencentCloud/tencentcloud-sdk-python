@@ -306,6 +306,34 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateReplicationInstance(self, request):
+        """创建从实例
+
+        :param request: Request instance for CreateReplicationInstance.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.CreateReplicationInstanceRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.CreateReplicationInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateReplicationInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateReplicationInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateRepository(self, request):
         """用于企业版创建镜像仓库
 
