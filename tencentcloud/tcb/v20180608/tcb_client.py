@@ -418,6 +418,34 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCloudBaseProjectVersionList(self, request):
+        """云项目部署列表
+
+        :param request: Request instance for DescribeCloudBaseProjectVersionList.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseProjectVersionListRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseProjectVersionListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCloudBaseProjectVersionList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCloudBaseProjectVersionListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCloudBaseRunResource(self, request):
         """查看容器托管的集群状态
 

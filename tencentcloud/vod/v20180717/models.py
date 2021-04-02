@@ -3538,6 +3538,54 @@ class AsrWordsConfigureInfoForUpdate(AbstractModel):
         self.LabelSet = params.get("LabelSet")
 
 
+class AttachMediaSubtitlesRequest(AbstractModel):
+    """AttachMediaSubtitles请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FileId: 媒体文件唯一标识。
+        :type FileId: str
+        :param Operation: 操作。取值如下：
+<li>Attach：关联字幕。</li>
+<li>Detach：解除关联字幕。</li>
+        :type Operation: str
+        :param AdaptiveDynamicStreamingDefinition: [转自适应码流模板号](https://cloud.tencent.com/document/product/266/34071#zsy)。
+        :type AdaptiveDynamicStreamingDefinition: int
+        :param SubtitleIds: 字幕的唯一标识。
+        :type SubtitleIds: list of str
+        """
+        self.FileId = None
+        self.Operation = None
+        self.AdaptiveDynamicStreamingDefinition = None
+        self.SubtitleIds = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
+        self.Operation = params.get("Operation")
+        self.AdaptiveDynamicStreamingDefinition = params.get("AdaptiveDynamicStreamingDefinition")
+        self.SubtitleIds = params.get("SubtitleIds")
+
+
+class AttachMediaSubtitlesResponse(AbstractModel):
+    """AttachMediaSubtitles返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class AudioTemplateInfo(AbstractModel):
     """音频流配置参数
 
@@ -11991,6 +12039,44 @@ class MediaSubtitleInfo(AbstractModel):
                 self.SubtitleSet.append(obj)
 
 
+class MediaSubtitleInput(AbstractModel):
+    """字幕信息输入参数。
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 字幕名字，长度限制：64 个字符。
+        :type Name: str
+        :param Language: 字幕语言。常见的取值如下：
+<li>cn：中文</li>
+<li>ja：日文</li>
+<li>en-US：英文</li>
+其他取值参考 [RFC5646](https://tools.ietf.org/html/rfc5646)
+        :type Language: str
+        :param Format: 字幕格式。取值范围如下：
+<li>vtt</li>
+        :type Format: str
+        :param Content: 字幕内容，进行 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串。
+        :type Content: str
+        :param Id: 字幕的唯一标识。长度不能超过16个字符，可以使用大小写字母、数字、下划线（_）或横杠（-）。不能与媒资文件中现有字幕的唯一标识重复。
+        :type Id: str
+        """
+        self.Name = None
+        self.Language = None
+        self.Format = None
+        self.Content = None
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Language = params.get("Language")
+        self.Format = params.get("Format")
+        self.Content = params.get("Content")
+        self.Id = params.get("Id")
+
+
 class MediaSubtitleItem(AbstractModel):
     """字幕信息。
 
@@ -12847,6 +12933,13 @@ class ModifyMediaInfoRequest(AbstractModel):
         :param ClearTags: 取值 1 表示清空媒体文件所有标签，其他值无意义。
 同一个请求里，ClearTags 与 AddTags 不能同时出现。
         :type ClearTags: int
+        :param AddSubtitles: 新增一组字幕。单个媒体文件最多 16 个字幕。同一个请求中，AddSubtitles 中指定的字幕 Id 必须与 DeleteSubtitleIds 都不相同。
+        :type AddSubtitles: list of MediaSubtitleInput
+        :param DeleteSubtitleIds: 待删除字幕的唯一标识。同一个请求中，AddSubtitles 中指定的字幕 Id 必须与 DeleteSubtitleIds 都不相同。
+        :type DeleteSubtitleIds: list of str
+        :param ClearSubtitles: 取值 1 表示清空媒体文件所有的字幕信息，其他值无意义。
+同一个请求里，ClearSubtitles 与 AddSubtitles不能同时出现。
+        :type ClearSubtitles: int
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID 。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
         """
@@ -12862,6 +12955,9 @@ class ModifyMediaInfoRequest(AbstractModel):
         self.AddTags = None
         self.DeleteTags = None
         self.ClearTags = None
+        self.AddSubtitles = None
+        self.DeleteSubtitleIds = None
+        self.ClearSubtitles = None
         self.SubAppId = None
 
 
@@ -12883,6 +12979,14 @@ class ModifyMediaInfoRequest(AbstractModel):
         self.AddTags = params.get("AddTags")
         self.DeleteTags = params.get("DeleteTags")
         self.ClearTags = params.get("ClearTags")
+        if params.get("AddSubtitles") is not None:
+            self.AddSubtitles = []
+            for item in params.get("AddSubtitles"):
+                obj = MediaSubtitleInput()
+                obj._deserialize(item)
+                self.AddSubtitles.append(obj)
+        self.DeleteSubtitleIds = params.get("DeleteSubtitleIds")
+        self.ClearSubtitles = params.get("ClearSubtitles")
         self.SubAppId = params.get("SubAppId")
 
 
@@ -12896,15 +13000,24 @@ class ModifyMediaInfoResponse(AbstractModel):
         :param CoverUrl: 新的视频封面 URL。
 * 注意：仅当请求携带 CoverData 时此返回值有效。 *
         :type CoverUrl: str
+        :param AddedSubtitleSet: 新增的字幕信息。
+        :type AddedSubtitleSet: list of MediaSubtitleItem
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.CoverUrl = None
+        self.AddedSubtitleSet = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.CoverUrl = params.get("CoverUrl")
+        if params.get("AddedSubtitleSet") is not None:
+            self.AddedSubtitleSet = []
+            for item in params.get("AddedSubtitleSet"):
+                obj = MediaSubtitleItem()
+                obj._deserialize(item)
+                self.AddedSubtitleSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -15705,6 +15818,10 @@ class SearchMediaRequest(AbstractModel):
 <li>adaptiveDynamicStreamingInfo（转自适应码流信息）。</li>
 <li>miniProgramReviewInfo（小程序审核信息）。</li>
         :type Filters: list of str
+        :param StorageRegions: 媒体文件存储地区，如 ap-chongqing，参见[地域列表](https://cloud.tencent.com/document/product/266/9760#.E5.B7.B2.E6.94.AF.E6.8C.81.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8)。
+<li>单个存储地区长度限制：20个字符。</li>
+<li>数组长度限制：20。</li>
+        :type StorageRegions: list of str
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
         :param Text: （不推荐：应使用 Names、NamePrefixes 或 Descriptions 替代）
@@ -15747,6 +15864,7 @@ class SearchMediaRequest(AbstractModel):
         self.Offset = None
         self.Limit = None
         self.Filters = None
+        self.StorageRegions = None
         self.SubAppId = None
         self.Text = None
         self.SourceType = None
@@ -15776,6 +15894,7 @@ class SearchMediaRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.Filters = params.get("Filters")
+        self.StorageRegions = params.get("StorageRegions")
         self.SubAppId = params.get("SubAppId")
         self.Text = params.get("Text")
         self.SourceType = params.get("SourceType")

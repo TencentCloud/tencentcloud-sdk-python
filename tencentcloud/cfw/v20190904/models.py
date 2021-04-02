@@ -129,6 +129,43 @@ class AssociatedInstanceInfo(AbstractModel):
         self.SecurityGroupCount = params.get("SecurityGroupCount")
 
 
+class CfwNatDnatRule(AbstractModel):
+    """NAT防火墙Dnat规则
+
+    """
+
+    def __init__(self):
+        """
+        :param IpProtocol: 网络协议，可选值：TCP、UDP。
+        :type IpProtocol: str
+        :param PublicIpAddress: 弹性IP。
+        :type PublicIpAddress: str
+        :param PublicPort: 公网端口。
+        :type PublicPort: int
+        :param PrivateIpAddress: 内网地址。
+        :type PrivateIpAddress: str
+        :param PrivatePort: 内网端口。
+        :type PrivatePort: int
+        :param Description: NAT防火墙转发规则描述。
+        :type Description: str
+        """
+        self.IpProtocol = None
+        self.PublicIpAddress = None
+        self.PublicPort = None
+        self.PrivateIpAddress = None
+        self.PrivatePort = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.IpProtocol = params.get("IpProtocol")
+        self.PublicIpAddress = params.get("PublicIpAddress")
+        self.PublicPort = params.get("PublicPort")
+        self.PrivateIpAddress = params.get("PrivateIpAddress")
+        self.PrivatePort = params.get("PrivatePort")
+        self.Description = params.get("Description")
+
+
 class CreateAcRulesRequest(AbstractModel):
     """CreateAcRules请求参数结构体
 
@@ -637,6 +674,57 @@ class DescribeAssociatedInstanceListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCfwEipsRequest(AbstractModel):
+    """DescribeCfwEips请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Mode: 0：cfw新增模式，1：cfw接入模式
+        :type Mode: int
+        :param NatGatewayId: ALL：查询所有弹性公网ip; nat-xxxxx：接入模式场景指定网关的弹性公网ip
+        :type NatGatewayId: str
+        :param CfwInstance: 防火墙实例id
+        :type CfwInstance: str
+        """
+        self.Mode = None
+        self.NatGatewayId = None
+        self.CfwInstance = None
+
+
+    def _deserialize(self, params):
+        self.Mode = params.get("Mode")
+        self.NatGatewayId = params.get("NatGatewayId")
+        self.CfwInstance = params.get("CfwInstance")
+
+
+class DescribeCfwEipsResponse(AbstractModel):
+    """DescribeCfwEips返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NatFwEipList: 返回值信息
+        :type NatFwEipList: list of NatFwEipsInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NatFwEipList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("NatFwEipList") is not None:
+            self.NatFwEipList = []
+            for item in params.get("NatFwEipList"):
+                obj = NatFwEipsInfo()
+                obj._deserialize(item)
+                self.NatFwEipList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeNatRuleOverviewRequest(AbstractModel):
     """DescribeNatRuleOverview请求参数结构体
 
@@ -1083,6 +1171,48 @@ class DescribeVpcRuleOverviewResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ExpandCfwVerticalRequest(AbstractModel):
+    """ExpandCfwVertical请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FwType: nat：nat防火墙，ew：东西向防火墙
+        :type FwType: str
+        :param Width: 带宽值
+        :type Width: int
+        :param CfwInstance: 防火墙实例id
+        :type CfwInstance: str
+        """
+        self.FwType = None
+        self.Width = None
+        self.CfwInstance = None
+
+
+    def _deserialize(self, params):
+        self.FwType = params.get("FwType")
+        self.Width = params.get("Width")
+        self.CfwInstance = params.get("CfwInstance")
+
+
+class ExpandCfwVerticalResponse(AbstractModel):
+    """ExpandCfwVertical返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyAcRuleRequest(AbstractModel):
     """ModifyAcRule请求参数结构体
 
@@ -1452,6 +1582,33 @@ class ModifyTableStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class NatFwEipsInfo(AbstractModel):
+    """Nat防火墙弹性公网ip列表
+
+    """
+
+    def __init__(self):
+        """
+        :param Eip: 弹性公网ip
+        :type Eip: str
+        :param NatGatewayId: 所属的Nat网关Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NatGatewayId: str
+        :param NatGatewayName: Nat网关名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NatGatewayName: str
+        """
+        self.Eip = None
+        self.NatGatewayId = None
+        self.NatGatewayName = None
+
+
+    def _deserialize(self, params):
+        self.Eip = params.get("Eip")
+        self.NatGatewayId = params.get("NatGatewayId")
+        self.NatGatewayName = params.get("NatGatewayName")
+
+
 class RuleInfoData(AbstractModel):
     """规则输入对象
 
@@ -1742,6 +1899,69 @@ class SequenceData(AbstractModel):
         self.Id = params.get("Id")
         self.OrderIndex = params.get("OrderIndex")
         self.NewOrderIndex = params.get("NewOrderIndex")
+
+
+class SetNatFwDnatRuleRequest(AbstractModel):
+    """SetNatFwDnatRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Mode: 0：cfw新增模式，1：cfw接入模式。
+        :type Mode: int
+        :param OperationType: 操作类型，可选值：add，del，modify。
+        :type OperationType: str
+        :param CfwInstance: 防火墙实例id。
+        :type CfwInstance: str
+        :param AddOrDelDnatRules: 添加或删除操作的Dnat规则列表。
+        :type AddOrDelDnatRules: list of CfwNatDnatRule
+        :param OriginDnat: 修改操作的原始Dnat规则
+        :type OriginDnat: :class:`tencentcloud.cfw.v20190904.models.CfwNatDnatRule`
+        :param NewDnat: 修改操作的新的Dnat规则
+        :type NewDnat: :class:`tencentcloud.cfw.v20190904.models.CfwNatDnatRule`
+        """
+        self.Mode = None
+        self.OperationType = None
+        self.CfwInstance = None
+        self.AddOrDelDnatRules = None
+        self.OriginDnat = None
+        self.NewDnat = None
+
+
+    def _deserialize(self, params):
+        self.Mode = params.get("Mode")
+        self.OperationType = params.get("OperationType")
+        self.CfwInstance = params.get("CfwInstance")
+        if params.get("AddOrDelDnatRules") is not None:
+            self.AddOrDelDnatRules = []
+            for item in params.get("AddOrDelDnatRules"):
+                obj = CfwNatDnatRule()
+                obj._deserialize(item)
+                self.AddOrDelDnatRules.append(obj)
+        if params.get("OriginDnat") is not None:
+            self.OriginDnat = CfwNatDnatRule()
+            self.OriginDnat._deserialize(params.get("OriginDnat"))
+        if params.get("NewDnat") is not None:
+            self.NewDnat = CfwNatDnatRule()
+            self.NewDnat._deserialize(params.get("NewDnat"))
+
+
+class SetNatFwDnatRuleResponse(AbstractModel):
+    """SetNatFwDnatRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class SwitchListsData(AbstractModel):

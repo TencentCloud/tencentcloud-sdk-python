@@ -948,6 +948,8 @@ class GetDetectInfoEnhancedRequest(AbstractModel):
         :type IsCutIdCardImage: bool
         :param IsNeedIdCardAvatar: 是否需要从身份证中抠出头像。默认为false。（InfoType需要包含2）
         :type IsNeedIdCardAvatar: bool
+        :param IsEncrypt: 是否需要对返回中的敏感信息进行加密。其中敏感信息包括：Response.Text.IdCard、Response.Text.Name、Response.Text.OcrIdCard、Response.Text.OcrName
+        :type IsEncrypt: bool
         """
         self.BizToken = None
         self.RuleId = None
@@ -955,6 +957,7 @@ class GetDetectInfoEnhancedRequest(AbstractModel):
         self.BestFramesCount = None
         self.IsCutIdCardImage = None
         self.IsNeedIdCardAvatar = None
+        self.IsEncrypt = None
 
 
     def _deserialize(self, params):
@@ -964,6 +967,7 @@ class GetDetectInfoEnhancedRequest(AbstractModel):
         self.BestFramesCount = params.get("BestFramesCount")
         self.IsCutIdCardImage = params.get("IsCutIdCardImage")
         self.IsNeedIdCardAvatar = params.get("IsNeedIdCardAvatar")
+        self.IsEncrypt = params.get("IsEncrypt")
 
 
 class GetDetectInfoEnhancedResponse(AbstractModel):
@@ -985,6 +989,9 @@ class GetDetectInfoEnhancedResponse(AbstractModel):
         :param VideoData: 视频信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type VideoData: :class:`tencentcloud.faceid.v20180301.models.DetectInfoVideoData`
+        :param Encryption: 敏感数据加密信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -992,6 +999,7 @@ class GetDetectInfoEnhancedResponse(AbstractModel):
         self.IdCardData = None
         self.BestFrame = None
         self.VideoData = None
+        self.Encryption = None
         self.RequestId = None
 
 
@@ -1008,6 +1016,9 @@ class GetDetectInfoEnhancedResponse(AbstractModel):
         if params.get("VideoData") is not None:
             self.VideoData = DetectInfoVideoData()
             self.VideoData._deserialize(params.get("VideoData"))
+        if params.get("Encryption") is not None:
+            self.Encryption = Encryption()
+            self.Encryption._deserialize(params.get("Encryption"))
         self.RequestId = params.get("RequestId")
 
 
@@ -1541,11 +1552,14 @@ class IdCardOCRVerificationRequest(AbstractModel):
 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :type ImageUrl: str
+        :param Encryption: 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         self.IdCard = None
         self.Name = None
         self.ImageBase64 = None
         self.ImageUrl = None
+        self.Encryption = None
 
 
     def _deserialize(self, params):
@@ -1553,6 +1567,9 @@ class IdCardOCRVerificationRequest(AbstractModel):
         self.Name = params.get("Name")
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        if params.get("Encryption") is not None:
+            self.Encryption = Encryption()
+            self.Encryption._deserialize(params.get("Encryption"))
 
 
 class IdCardOCRVerificationResponse(AbstractModel):

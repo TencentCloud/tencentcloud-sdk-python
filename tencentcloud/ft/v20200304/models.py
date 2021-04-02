@@ -227,30 +227,30 @@ class FaceMorphOutput(AbstractModel):
 
 
 class FaceRect(AbstractModel):
-    """人脸框位置
+    """人脸框信息
 
     """
 
     def __init__(self):
         """
-        :param X: 人脸框左上角横坐标。
-        :type X: int
         :param Y: 人脸框左上角纵坐标。
         :type Y: int
+        :param X: 人脸框左上角横坐标。
+        :type X: int
         :param Width: 人脸框宽度。
         :type Width: int
         :param Height: 人脸框高度。
         :type Height: int
         """
-        self.X = None
         self.Y = None
+        self.X = None
         self.Width = None
         self.Height = None
 
 
     def _deserialize(self, params):
-        self.X = params.get("X")
         self.Y = params.get("Y")
+        self.X = params.get("X")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
 

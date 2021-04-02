@@ -1002,6 +1002,35 @@ CLOUD_HSSD 增强型云SSD。
         self.DiskSize = params.get("DiskSize")
 
 
+class DynamicPodSpec(AbstractModel):
+    """POD浮动规格
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestCpu: 需求最小cpu核数
+        :type RequestCpu: float
+        :param LimitCpu: 需求最大cpu核数
+        :type LimitCpu: float
+        :param RequestMemory: 需求最小memory，单位MB
+        :type RequestMemory: float
+        :param LimitMemory: 需求最大memory，单位MB
+        :type LimitMemory: float
+        """
+        self.RequestCpu = None
+        self.LimitCpu = None
+        self.RequestMemory = None
+        self.LimitMemory = None
+
+
+    def _deserialize(self, params):
+        self.RequestCpu = params.get("RequestCpu")
+        self.LimitCpu = params.get("LimitCpu")
+        self.RequestMemory = params.get("RequestMemory")
+        self.LimitMemory = params.get("LimitMemory")
+
+
 class EmrProductConfigOutter(AbstractModel):
     """EMR产品配置
 
@@ -2041,6 +2070,12 @@ class NodeHardwareInfo(AbstractModel):
         :param HardwareResourceType: 资源类型, host/pod
 注意：此字段可能返回 null，表示取不到有效值。
         :type HardwareResourceType: str
+        :param IsDynamicSpec: 是否浮动规格，1是，0否
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsDynamicSpec: int
+        :param DynamicPodSpec: 浮动规格值json字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DynamicPodSpec: str
         """
         self.AppId = None
         self.SerialNo = None
@@ -2079,6 +2114,8 @@ class NodeHardwareInfo(AbstractModel):
         self.Tags = None
         self.AutoFlag = None
         self.HardwareResourceType = None
+        self.IsDynamicSpec = None
+        self.DynamicPodSpec = None
 
 
     def _deserialize(self, params):
@@ -2131,6 +2168,8 @@ class NodeHardwareInfo(AbstractModel):
                 self.Tags.append(obj)
         self.AutoFlag = params.get("AutoFlag")
         self.HardwareResourceType = params.get("HardwareResourceType")
+        self.IsDynamicSpec = params.get("IsDynamicSpec")
+        self.DynamicPodSpec = params.get("DynamicPodSpec")
 
 
 class OutterResource(AbstractModel):
@@ -2240,6 +2279,31 @@ class Placement(AbstractModel):
         self.Zone = params.get("Zone")
 
 
+class PodParameter(AbstractModel):
+    """POD自定义权限和自定义参数
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: TKE或EKS集群ID
+        :type ClusterId: str
+        :param Config: 自定义权限
+        :type Config: str
+        :param Parameter: 自定义参数
+        :type Parameter: str
+        """
+        self.ClusterId = None
+        self.Config = None
+        self.Parameter = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Config = params.get("Config")
+        self.Parameter = params.get("Parameter")
+
+
 class PodSpec(AbstractModel):
     """扩容容器资源时的资源描述
 
@@ -2263,6 +2327,11 @@ class PodSpec(AbstractModel):
         :type CpuType: str
         :param PodVolumes: Pod节点数据目录挂载信息。
         :type PodVolumes: list of PodVolume
+        :param IsDynamicSpec: 是否浮动规格，1是，0否
+        :type IsDynamicSpec: int
+        :param DynamicPodSpec: 浮动规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DynamicPodSpec: :class:`tencentcloud.emr.v20190103.models.DynamicPodSpec`
         """
         self.ResourceProviderIdentifier = None
         self.ResourceProviderType = None
@@ -2272,6 +2341,8 @@ class PodSpec(AbstractModel):
         self.DataVolumes = None
         self.CpuType = None
         self.PodVolumes = None
+        self.IsDynamicSpec = None
+        self.DynamicPodSpec = None
 
 
     def _deserialize(self, params):
@@ -2288,6 +2359,10 @@ class PodSpec(AbstractModel):
                 obj = PodVolume()
                 obj._deserialize(item)
                 self.PodVolumes.append(obj)
+        self.IsDynamicSpec = params.get("IsDynamicSpec")
+        if params.get("DynamicPodSpec") is not None:
+            self.DynamicPodSpec = DynamicPodSpec()
+            self.DynamicPodSpec._deserialize(params.get("DynamicPodSpec"))
 
 
 class PodVolume(AbstractModel):
@@ -2770,6 +2845,10 @@ class ScaleOutInstanceRequest(AbstractModel):
         :type ClickHouseClusterType: str
         :param YarnNodeLabel: 规则扩容指定 yarn node label
         :type YarnNodeLabel: str
+        :param PodParameter: POD自定义权限和自定义参数
+        :type PodParameter: :class:`tencentcloud.emr.v20190103.models.PodParameter`
+        :param MasterCount: 扩容的Master节点的数量。
+        :type MasterCount: int
         """
         self.TimeUnit = None
         self.TimeSpan = None
@@ -2790,6 +2869,8 @@ class ScaleOutInstanceRequest(AbstractModel):
         self.ClickHouseClusterName = None
         self.ClickHouseClusterType = None
         self.YarnNodeLabel = None
+        self.PodParameter = None
+        self.MasterCount = None
 
 
     def _deserialize(self, params):
@@ -2824,6 +2905,10 @@ class ScaleOutInstanceRequest(AbstractModel):
         self.ClickHouseClusterName = params.get("ClickHouseClusterName")
         self.ClickHouseClusterType = params.get("ClickHouseClusterType")
         self.YarnNodeLabel = params.get("YarnNodeLabel")
+        if params.get("PodParameter") is not None:
+            self.PodParameter = PodParameter()
+            self.PodParameter._deserialize(params.get("PodParameter"))
+        self.MasterCount = params.get("MasterCount")
 
 
 class ScaleOutInstanceResponse(AbstractModel):

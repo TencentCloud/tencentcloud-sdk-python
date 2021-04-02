@@ -216,6 +216,8 @@ class CreateDBInstancesRequest(AbstractModel):
         :type NeedSupportIpv6: int
         :param TagList: 实例需要绑定的Tag信息，默认为空
         :type TagList: list of Tag
+        :param SecurityGroupIds: 安全组id
+        :type SecurityGroupIds: list of str
         """
         self.SpecCode = None
         self.DBVersion = None
@@ -234,6 +236,7 @@ class CreateDBInstancesRequest(AbstractModel):
         self.Name = None
         self.NeedSupportIpv6 = None
         self.TagList = None
+        self.SecurityGroupIds = None
 
 
     def _deserialize(self, params):
@@ -259,6 +262,7 @@ class CreateDBInstancesRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.TagList.append(obj)
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
 
 
 class CreateDBInstancesResponse(AbstractModel):
@@ -335,6 +339,8 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
         :type ReadOnlyGroupId: str
         :param TagList: 实例需要绑定的Tag信息，默认为空
         :type TagList: :class:`tencentcloud.postgres.v20170312.models.Tag`
+        :param SecurityGroupIds: 安全组id
+        :type SecurityGroupIds: list of str
         """
         self.SpecCode = None
         self.DBVersion = None
@@ -355,6 +361,7 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
         self.NeedSupportIpv6 = None
         self.ReadOnlyGroupId = None
         self.TagList = None
+        self.SecurityGroupIds = None
 
 
     def _deserialize(self, params):
@@ -379,6 +386,7 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
         if params.get("TagList") is not None:
             self.TagList = Tag()
             self.TagList._deserialize(params.get("TagList"))
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
 
 
 class CreateReadOnlyDBInstanceResponse(AbstractModel):
@@ -437,6 +445,8 @@ class CreateReadOnlyGroupRequest(AbstractModel):
         :type MaxReplayLatency: int
         :param MinDelayEliminateReserve: 延迟剔除最小保留实例数
         :type MinDelayEliminateReserve: int
+        :param SecurityGroupIds: 安全组id
+        :type SecurityGroupIds: list of str
         """
         self.MasterDBInstanceId = None
         self.Name = None
@@ -448,6 +458,7 @@ class CreateReadOnlyGroupRequest(AbstractModel):
         self.MaxReplayLag = None
         self.MaxReplayLatency = None
         self.MinDelayEliminateReserve = None
+        self.SecurityGroupIds = None
 
 
     def _deserialize(self, params):
@@ -461,6 +472,7 @@ class CreateReadOnlyGroupRequest(AbstractModel):
         self.MaxReplayLag = params.get("MaxReplayLag")
         self.MaxReplayLatency = params.get("MaxReplayLatency")
         self.MinDelayEliminateReserve = params.get("MinDelayEliminateReserve")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
 
 
 class CreateReadOnlyGroupResponse(AbstractModel):
@@ -690,6 +702,9 @@ class DBInstance(AbstractModel):
         :param StatusInReadonlyGroup: 只读实例在只读组中的状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type StatusInReadonlyGroup: str
+        :param OfflineTime: 下线时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OfflineTime: str
         """
         self.Region = None
         self.Zone = None
@@ -722,6 +737,7 @@ class DBInstance(AbstractModel):
         self.MasterDBInstanceId = None
         self.ReadOnlyInstanceNum = None
         self.StatusInReadonlyGroup = None
+        self.OfflineTime = None
 
 
     def _deserialize(self, params):
@@ -766,6 +782,7 @@ class DBInstance(AbstractModel):
         self.MasterDBInstanceId = params.get("MasterDBInstanceId")
         self.ReadOnlyInstanceNum = params.get("ReadOnlyInstanceNum")
         self.StatusInReadonlyGroup = params.get("StatusInReadonlyGroup")
+        self.OfflineTime = params.get("OfflineTime")
 
 
 class DBInstanceNetInfo(AbstractModel):

@@ -2192,6 +2192,10 @@ class HmtResidentPermitOCRResponse(AbstractModel):
         :type ValidDate: str
         :param Authority: 签发机关
         :type Authority: str
+        :param VisaNum: 签发次数
+        :type VisaNum: str
+        :param PassNo: 通行证号码
+        :type PassNo: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2203,6 +2207,8 @@ class HmtResidentPermitOCRResponse(AbstractModel):
         self.CardType = None
         self.ValidDate = None
         self.Authority = None
+        self.VisaNum = None
+        self.PassNo = None
         self.RequestId = None
 
 
@@ -2215,6 +2221,8 @@ class HmtResidentPermitOCRResponse(AbstractModel):
         self.CardType = params.get("CardType")
         self.ValidDate = params.get("ValidDate")
         self.Authority = params.get("Authority")
+        self.VisaNum = params.get("VisaNum")
+        self.PassNo = params.get("PassNo")
         self.RequestId = params.get("RequestId")
 
 

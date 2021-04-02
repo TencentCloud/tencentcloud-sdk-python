@@ -54,6 +54,34 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ClearLaunchConfigurationAttributes(self, request):
+        """本接口（ClearLaunchConfigurationAttributes）用于将启动配置内的特定属性完全清空。
+
+        :param request: Request instance for ClearLaunchConfigurationAttributes.
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.ClearLaunchConfigurationAttributesRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.ClearLaunchConfigurationAttributesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ClearLaunchConfigurationAttributes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ClearLaunchConfigurationAttributesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CompleteLifecycleAction(self, request):
         """本接口（CompleteLifecycleAction）用于完成生命周期动作。
 

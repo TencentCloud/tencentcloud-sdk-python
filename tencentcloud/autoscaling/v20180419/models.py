@@ -348,6 +348,45 @@ class AutoScalingNotification(AbstractModel):
         self.AutoScalingNotificationId = params.get("AutoScalingNotificationId")
 
 
+class ClearLaunchConfigurationAttributesRequest(AbstractModel):
+    """ClearLaunchConfigurationAttributes请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LaunchConfigurationId: 启动配置ID。
+        :type LaunchConfigurationId: str
+        :param ClearDataDisks: 是否清空数据盘信息，非必填，默认为 false。
+填 true 代表清空“数据盘”信息，清空后基于此新创建的云主机将不含有任何数据盘。
+        :type ClearDataDisks: bool
+        """
+        self.LaunchConfigurationId = None
+        self.ClearDataDisks = None
+
+
+    def _deserialize(self, params):
+        self.LaunchConfigurationId = params.get("LaunchConfigurationId")
+        self.ClearDataDisks = params.get("ClearDataDisks")
+
+
+class ClearLaunchConfigurationAttributesResponse(AbstractModel):
+    """ClearLaunchConfigurationAttributes返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CompleteLifecycleActionRequest(AbstractModel):
     """CompleteLifecycleAction请求参数结构体
 
@@ -3031,6 +3070,10 @@ class ModifyLaunchConfigurationAttributesRequest(AbstractModel):
 <br><li>ORIGINAL：使用设置的云盘类型。
 <br><li>AUTOMATIC：自动选择当前可用的云盘类型。
         :type DiskTypePolicy: str
+        :param SystemDisk: 实例系统盘配置信息。
+        :type SystemDisk: :class:`tencentcloud.autoscaling.v20180419.models.SystemDisk`
+        :param DataDisks: 实例数据盘配置信息。最多支持指定11块数据盘。采取整体修改，因此请提供修改后的全部值。
+        :type DataDisks: list of DataDisk
         """
         self.LaunchConfigurationId = None
         self.ImageId = None
@@ -3044,6 +3087,8 @@ class ModifyLaunchConfigurationAttributesRequest(AbstractModel):
         self.InstanceChargePrepaid = None
         self.InstanceMarketOptions = None
         self.DiskTypePolicy = None
+        self.SystemDisk = None
+        self.DataDisks = None
 
 
     def _deserialize(self, params):
@@ -3065,6 +3110,15 @@ class ModifyLaunchConfigurationAttributesRequest(AbstractModel):
             self.InstanceMarketOptions = InstanceMarketOptionsRequest()
             self.InstanceMarketOptions._deserialize(params.get("InstanceMarketOptions"))
         self.DiskTypePolicy = params.get("DiskTypePolicy")
+        if params.get("SystemDisk") is not None:
+            self.SystemDisk = SystemDisk()
+            self.SystemDisk._deserialize(params.get("SystemDisk"))
+        if params.get("DataDisks") is not None:
+            self.DataDisks = []
+            for item in params.get("DataDisks"):
+                obj = DataDisk()
+                obj._deserialize(item)
+                self.DataDisks.append(obj)
 
 
 class ModifyLaunchConfigurationAttributesResponse(AbstractModel):

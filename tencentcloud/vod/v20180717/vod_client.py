@@ -56,6 +56,34 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AttachMediaSubtitles(self, request):
+        """关联媒资字幕，将指定的字幕关联到转自适应码流模板号对应的媒体输出文件中（或解除关联）。
+
+        :param request: Request instance for AttachMediaSubtitles.
+        :type request: :class:`tencentcloud.vod.v20180717.models.AttachMediaSubtitlesRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.AttachMediaSubtitlesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AttachMediaSubtitles", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AttachMediaSubtitlesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CommitUpload(self, request):
         """该接口用于确认媒体文件（和封面文件）上传到腾讯云点播的结果，并存储媒体信息，返回文件的播放地址和文件 ID。
 
@@ -2486,7 +2514,7 @@ class VodClient(AbstractClient):
 
 
     def ModifyMediaInfo(self, request):
-        """修改媒体文件的属性，包括分类、名称、描述、标签、过期时间、打点信息、视频封面等。
+        """修改媒体文件的属性，包括分类、名称、描述、标签、过期时间、打点信息、视频封面、字幕信息等。
 
         :param request: Request instance for ModifyMediaInfo.
         :type request: :class:`tencentcloud.vod.v20180717.models.ModifyMediaInfoRequest`

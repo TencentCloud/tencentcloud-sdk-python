@@ -248,3 +248,31 @@ class AswClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StopExecution(self, request):
+        """终止某个状态机
+
+        :param request: Request instance for StopExecution.
+        :type request: :class:`tencentcloud.asw.v20200722.models.StopExecutionRequest`
+        :rtype: :class:`tencentcloud.asw.v20200722.models.StopExecutionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StopExecution", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StopExecutionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

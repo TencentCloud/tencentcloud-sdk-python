@@ -2615,6 +2615,79 @@ class DescribeBasicDeviceThresholdResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBizHttpStatusRequest(AbstractModel):
+    """DescribeBizHttpStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Business: 大禹子产品代号（bgpip表示高防IP）
+        :type Business: str
+        :param Id: 资源Id
+        :type Id: str
+        :param Period: 统计周期，可取值300，1800，3600， 21600，86400，单位秒
+        :type Period: int
+        :param StartTime: 统计开始时间
+        :type StartTime: str
+        :param EndTime: 统计结束时间
+        :type EndTime: str
+        :param Statistics: 统计方式，仅支持sum
+        :type Statistics: str
+        :param ProtoInfo: 协议及端口列表，协议可取值TCP, UDP, HTTP, HTTPS，仅统计纬度为连接数时有效
+        :type ProtoInfo: list of ProtocolPort
+        :param Domain: 特定域名查询
+        :type Domain: str
+        """
+        self.Business = None
+        self.Id = None
+        self.Period = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Statistics = None
+        self.ProtoInfo = None
+        self.Domain = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.Id = params.get("Id")
+        self.Period = params.get("Period")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Statistics = params.get("Statistics")
+        if params.get("ProtoInfo") is not None:
+            self.ProtoInfo = []
+            for item in params.get("ProtoInfo"):
+                obj = ProtocolPort()
+                obj._deserialize(item)
+                self.ProtoInfo.append(obj)
+        self.Domain = params.get("Domain")
+
+
+class DescribeBizHttpStatusResponse(AbstractModel):
+    """DescribeBizHttpStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param HttpStatusMap: 业务流量http状态码统计数据
+        :type HttpStatusMap: :class:`tencentcloud.dayu.v20180709.models.HttpStatusMap`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.HttpStatusMap = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("HttpStatusMap") is not None:
+            self.HttpStatusMap = HttpStatusMap()
+            self.HttpStatusMap._deserialize(params.get("HttpStatusMap"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeBizTrendRequest(AbstractModel):
     """DescribeBizTrend请求参数结构体
 
@@ -5989,6 +6062,59 @@ class DescribleRegionCountResponse(AbstractModel):
                 obj._deserialize(item)
                 self.RegionList.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class HttpStatusMap(AbstractModel):
+    """业务流量的http状态码聚合数据
+
+    """
+
+    def __init__(self):
+        """
+        :param Http2xx: http2xx状态码
+        :type Http2xx: list of float
+        :param Http3xx: http3xx状态码
+        :type Http3xx: list of float
+        :param Http404: http404状态码
+        :type Http404: list of float
+        :param Http4xx: http4xx状态码
+        :type Http4xx: list of float
+        :param Http5xx: http5xx状态码
+        :type Http5xx: list of float
+        :param SourceHttp2xx: http2xx回源状态码
+        :type SourceHttp2xx: list of float
+        :param SourceHttp3xx: http3xx回源状态码
+        :type SourceHttp3xx: list of float
+        :param SourceHttp404: http404回源状态码
+        :type SourceHttp404: list of float
+        :param SourceHttp4xx: http4xx回源状态码
+        :type SourceHttp4xx: list of float
+        :param SourceHttp5xx: http5xx回源状态码
+        :type SourceHttp5xx: list of float
+        """
+        self.Http2xx = None
+        self.Http3xx = None
+        self.Http404 = None
+        self.Http4xx = None
+        self.Http5xx = None
+        self.SourceHttp2xx = None
+        self.SourceHttp3xx = None
+        self.SourceHttp404 = None
+        self.SourceHttp4xx = None
+        self.SourceHttp5xx = None
+
+
+    def _deserialize(self, params):
+        self.Http2xx = params.get("Http2xx")
+        self.Http3xx = params.get("Http3xx")
+        self.Http404 = params.get("Http404")
+        self.Http4xx = params.get("Http4xx")
+        self.Http5xx = params.get("Http5xx")
+        self.SourceHttp2xx = params.get("SourceHttp2xx")
+        self.SourceHttp3xx = params.get("SourceHttp3xx")
+        self.SourceHttp404 = params.get("SourceHttp404")
+        self.SourceHttp4xx = params.get("SourceHttp4xx")
+        self.SourceHttp5xx = params.get("SourceHttp5xx")
 
 
 class IpBlackWhite(AbstractModel):

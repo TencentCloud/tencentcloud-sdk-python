@@ -275,6 +275,12 @@ class CloudBaseProjectVersion(AbstractModel):
         :param FailType: 错误类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailType: str
+        :param RepoUrl: 私有仓库地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RepoUrl: str
+        :param AutoDeployOnCodeChange: 是否私有仓库代码变更触发自动部署
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoDeployOnCodeChange: bool
         """
         self.Name = None
         self.Sam = None
@@ -295,6 +301,8 @@ class CloudBaseProjectVersion(AbstractModel):
         self.NetworkConfig = None
         self.ExtensionId = None
         self.FailType = None
+        self.RepoUrl = None
+        self.AutoDeployOnCodeChange = None
 
 
     def _deserialize(self, params):
@@ -324,6 +332,8 @@ class CloudBaseProjectVersion(AbstractModel):
         self.NetworkConfig = params.get("NetworkConfig")
         self.ExtensionId = params.get("ExtensionId")
         self.FailType = params.get("FailType")
+        self.RepoUrl = params.get("RepoUrl")
+        self.AutoDeployOnCodeChange = params.get("AutoDeployOnCodeChange")
 
 
 class CloudBaseRunImageInfo(AbstractModel):
@@ -842,6 +852,9 @@ class CodeSource(AbstractModel):
         :param RawCode: 源码
 注意：此字段可能返回 null，表示取不到有效值。
         :type RawCode: str
+        :param Branch: 代码分支
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Branch: str
         """
         self.Type = None
         self.Url = None
@@ -850,6 +863,7 @@ class CodeSource(AbstractModel):
         self.CodingPackageName = None
         self.CodingPackageVersion = None
         self.RawCode = None
+        self.Branch = None
 
 
     def _deserialize(self, params):
@@ -860,6 +874,7 @@ class CodeSource(AbstractModel):
         self.CodingPackageName = params.get("CodingPackageName")
         self.CodingPackageVersion = params.get("CodingPackageVersion")
         self.RawCode = params.get("RawCode")
+        self.Branch = params.get("Branch")
 
 
 class CommonServiceAPIRequest(AbstractModel):
@@ -933,6 +948,10 @@ class CreateAndDeployCloudBaseProjectRequest(AbstractModel):
         :type NetworkConfig: str
         :param FreeQuota: 免费额度的"basic", 不使用的用""
         :type FreeQuota: str
+        :param AutoDeployOnCodeChange: 是否代码变更触发自动部署
+        :type AutoDeployOnCodeChange: bool
+        :param RepoUrl: 私有仓库地址
+        :type RepoUrl: str
         """
         self.Name = None
         self.Source = None
@@ -945,6 +964,8 @@ class CreateAndDeployCloudBaseProjectRequest(AbstractModel):
         self.Tags = None
         self.NetworkConfig = None
         self.FreeQuota = None
+        self.AutoDeployOnCodeChange = None
+        self.RepoUrl = None
 
 
     def _deserialize(self, params):
@@ -966,6 +987,8 @@ class CreateAndDeployCloudBaseProjectRequest(AbstractModel):
         self.Tags = params.get("Tags")
         self.NetworkConfig = params.get("NetworkConfig")
         self.FreeQuota = params.get("FreeQuota")
+        self.AutoDeployOnCodeChange = params.get("AutoDeployOnCodeChange")
+        self.RepoUrl = params.get("RepoUrl")
 
 
 class CreateAndDeployCloudBaseProjectResponse(AbstractModel):
@@ -1760,6 +1783,75 @@ class DescribeCloudBaseProjectLatestVersionListResponse(AbstractModel):
                 obj = CloudBaseProjectVersion()
                 obj._deserialize(item)
                 self.ProjectList.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCloudBaseProjectVersionListRequest(AbstractModel):
+    """DescribeCloudBaseProjectVersionList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境id
+        :type EnvId: str
+        :param ProjectName: 项目名称
+        :type ProjectName: str
+        :param PageSize: 页大小
+        :type PageSize: int
+        :param PageNum: 第几页,从0开始
+        :type PageNum: int
+        :param StartTime: 起始时间
+        :type StartTime: str
+        :param EndTime: 终止时间
+        :type EndTime: str
+        """
+        self.EnvId = None
+        self.ProjectName = None
+        self.PageSize = None
+        self.PageNum = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.ProjectName = params.get("ProjectName")
+        self.PageSize = params.get("PageSize")
+        self.PageNum = params.get("PageNum")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+
+
+class DescribeCloudBaseProjectVersionListResponse(AbstractModel):
+    """DescribeCloudBaseProjectVersionList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProjectVersions: 版本列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectVersions: list of CloudBaseProjectVersion
+        :param TotalCount: 总个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ProjectVersions = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ProjectVersions") is not None:
+            self.ProjectVersions = []
+            for item in params.get("ProjectVersions"):
+                obj = CloudBaseProjectVersion()
+                obj._deserialize(item)
+                self.ProjectVersions.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 

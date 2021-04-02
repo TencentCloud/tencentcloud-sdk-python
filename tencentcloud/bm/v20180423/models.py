@@ -359,15 +359,19 @@ class CreateCustomImageResponse(AbstractModel):
         """
         :param TaskId: 黑石异步任务ID
         :type TaskId: int
+        :param ImageId: 镜像ID
+        :type ImageId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TaskId = None
+        self.ImageId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
+        self.ImageId = params.get("ImageId")
         self.RequestId = params.get("RequestId")
 
 

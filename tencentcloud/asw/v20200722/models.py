@@ -37,6 +37,10 @@ class CreateFlowServiceRequest(AbstractModel):
         :type RoleResource: str
         :param Description: 备注
         :type Description: str
+        :param EnableCLS: 是否开启CLS日志投递功能
+        :type EnableCLS: bool
+        :param Input: 该状态机的默认输入
+        :type Input: str
         """
         self.Definition = None
         self.FlowServiceName = None
@@ -45,6 +49,8 @@ class CreateFlowServiceRequest(AbstractModel):
         self.FlowServiceChineseName = None
         self.RoleResource = None
         self.Description = None
+        self.EnableCLS = None
+        self.Input = None
 
 
     def _deserialize(self, params):
@@ -55,6 +61,8 @@ class CreateFlowServiceRequest(AbstractModel):
         self.FlowServiceChineseName = params.get("FlowServiceChineseName")
         self.RoleResource = params.get("RoleResource")
         self.Description = params.get("Description")
+        self.EnableCLS = params.get("EnableCLS")
+        self.Input = params.get("Input")
 
 
 class CreateFlowServiceResponse(AbstractModel):
@@ -291,6 +299,15 @@ class DescribeFlowServiceDetailResponse(AbstractModel):
         :param FlowServiceChineseName: 状态机所属服务中文名
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlowServiceChineseName: str
+        :param EnableCLS: 是否开启日志CLS服务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableCLS: bool
+        :param CLSUrl: CLS日志查看地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CLSUrl: str
+        :param FlowInput: 工作流提示输入
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowInput: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -302,6 +319,9 @@ class DescribeFlowServiceDetailResponse(AbstractModel):
         self.CreateDate = None
         self.Description = None
         self.FlowServiceChineseName = None
+        self.EnableCLS = None
+        self.CLSUrl = None
+        self.FlowInput = None
         self.RequestId = None
 
 
@@ -314,6 +334,9 @@ class DescribeFlowServiceDetailResponse(AbstractModel):
         self.CreateDate = params.get("CreateDate")
         self.Description = params.get("Description")
         self.FlowServiceChineseName = params.get("FlowServiceChineseName")
+        self.EnableCLS = params.get("EnableCLS")
+        self.CLSUrl = params.get("CLSUrl")
+        self.FlowInput = params.get("FlowInput")
         self.RequestId = params.get("RequestId")
 
 
@@ -467,6 +490,8 @@ class ModifyFlowServiceRequest(AbstractModel):
         :type RoleResource: str
         :param Description: 状态机备注
         :type Description: str
+        :param EnableCLS: 是否允许日志投递
+        :type EnableCLS: bool
         """
         self.FlowServiceResource = None
         self.Definition = None
@@ -476,6 +501,7 @@ class ModifyFlowServiceRequest(AbstractModel):
         self.Type = None
         self.RoleResource = None
         self.Description = None
+        self.EnableCLS = None
 
 
     def _deserialize(self, params):
@@ -487,6 +513,7 @@ class ModifyFlowServiceRequest(AbstractModel):
         self.Type = params.get("Type")
         self.RoleResource = params.get("RoleResource")
         self.Description = params.get("Description")
+        self.EnableCLS = params.get("EnableCLS")
 
 
 class ModifyFlowServiceResponse(AbstractModel):
@@ -625,3 +652,37 @@ class StateMachine(AbstractModel):
         self.FlowServiceId = params.get("FlowServiceId")
         self.TemplateId = params.get("TemplateId")
         self.Description = params.get("Description")
+
+
+class StopExecutionRequest(AbstractModel):
+    """StopExecution请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ExecutionQrn: 执行名称
+        :type ExecutionQrn: str
+        """
+        self.ExecutionQrn = None
+
+
+    def _deserialize(self, params):
+        self.ExecutionQrn = params.get("ExecutionQrn")
+
+
+class StopExecutionResponse(AbstractModel):
+    """StopExecution返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")

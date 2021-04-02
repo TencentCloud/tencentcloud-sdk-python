@@ -250,8 +250,36 @@ class PartnersClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeAgentDealsCache(self, request):
+    def DescribeAgentDealsByCache(self, request):
         """供超大型代理商（代客数量>=3000 ）拉取缓存的全量客户订单。
+
+        :param request: Request instance for DescribeAgentDealsByCache.
+        :type request: :class:`tencentcloud.partners.v20180321.models.DescribeAgentDealsByCacheRequest`
+        :rtype: :class:`tencentcloud.partners.v20180321.models.DescribeAgentDealsByCacheResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAgentDealsByCache", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAgentDealsByCacheResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAgentDealsCache(self, request):
+        """【该接口将逐步下线，请切换使用升级版本DescribeAgentDealsByCache】供超大型代理商（代客数量>=3000 ）拉取缓存的全量客户订单。
 
         :param request: Request instance for DescribeAgentDealsCache.
         :type request: :class:`tencentcloud.partners.v20180321.models.DescribeAgentDealsCacheRequest`

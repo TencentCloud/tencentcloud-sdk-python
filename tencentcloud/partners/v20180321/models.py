@@ -365,6 +365,152 @@ class AgentDealElem(AbstractModel):
                 self.ProductInfo.append(obj)
 
 
+class AgentDealNewElem(AbstractModel):
+    """描述代理商代付的订单信息
+
+    """
+
+    def __init__(self):
+        """
+        :param DealId: 订单自增 ID
+        :type DealId: str
+        :param DealName: 订单号
+        :type DealName: str
+        :param GoodsCategoryId: 商品类型 ID
+        :type GoodsCategoryId: str
+        :param OwnerUin: 订单所有者
+        :type OwnerUin: str
+        :param AppId: 订单所有者对应 appId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: str
+        :param GoodsNum: 商品数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GoodsNum: str
+        :param GoodsPrice: 价格详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GoodsPrice: :class:`tencentcloud.partners.v20180321.models.DealGoodsPriceNewElem`
+        :param Creater: 下单人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Creater: str
+        :param CreatTime: 下单时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatTime: str
+        :param PayEndTime: 支付结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayEndTime: str
+        :param BillId: 扣费流水号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillId: str
+        :param Payer: 支付人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Payer: str
+        :param DealStatus: 订单状态，中文描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DealStatus: str
+        :param Status: 订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param GoodsName: 产品名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GoodsName: str
+        :param ClientRemark: 客户备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientRemark: str
+        :param ActionType: 订单操作类型，purchase（新购），renew（续费），modify（配置变更）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActionType: str
+        :param VoucherDecline: 代金券抵扣金额，单位分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VoucherDecline: str
+        :param BigDealId: 大订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BigDealId: str
+        :param ClientType: 客户类型（new：新拓；old：存量；assign：指派）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientType: str
+        :param ProjectType: 项目类型（self：自拓；repeat：直销；platform：官网合作）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectType: str
+        :param SalesUin: 业务员账号ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SalesUin: str
+        :param PayerMode: 支付方式，0：自付；1：代付
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayerMode: str
+        :param ActivityId: 活动ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActivityId: str
+        :param OverdueTime: 订单过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OverdueTime: str
+        :param ProductInfo: 产品详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductInfo: list of ProductInfoElem
+        """
+        self.DealId = None
+        self.DealName = None
+        self.GoodsCategoryId = None
+        self.OwnerUin = None
+        self.AppId = None
+        self.GoodsNum = None
+        self.GoodsPrice = None
+        self.Creater = None
+        self.CreatTime = None
+        self.PayEndTime = None
+        self.BillId = None
+        self.Payer = None
+        self.DealStatus = None
+        self.Status = None
+        self.GoodsName = None
+        self.ClientRemark = None
+        self.ActionType = None
+        self.VoucherDecline = None
+        self.BigDealId = None
+        self.ClientType = None
+        self.ProjectType = None
+        self.SalesUin = None
+        self.PayerMode = None
+        self.ActivityId = None
+        self.OverdueTime = None
+        self.ProductInfo = None
+
+
+    def _deserialize(self, params):
+        self.DealId = params.get("DealId")
+        self.DealName = params.get("DealName")
+        self.GoodsCategoryId = params.get("GoodsCategoryId")
+        self.OwnerUin = params.get("OwnerUin")
+        self.AppId = params.get("AppId")
+        self.GoodsNum = params.get("GoodsNum")
+        if params.get("GoodsPrice") is not None:
+            self.GoodsPrice = DealGoodsPriceNewElem()
+            self.GoodsPrice._deserialize(params.get("GoodsPrice"))
+        self.Creater = params.get("Creater")
+        self.CreatTime = params.get("CreatTime")
+        self.PayEndTime = params.get("PayEndTime")
+        self.BillId = params.get("BillId")
+        self.Payer = params.get("Payer")
+        self.DealStatus = params.get("DealStatus")
+        self.Status = params.get("Status")
+        self.GoodsName = params.get("GoodsName")
+        self.ClientRemark = params.get("ClientRemark")
+        self.ActionType = params.get("ActionType")
+        self.VoucherDecline = params.get("VoucherDecline")
+        self.BigDealId = params.get("BigDealId")
+        self.ClientType = params.get("ClientType")
+        self.ProjectType = params.get("ProjectType")
+        self.SalesUin = params.get("SalesUin")
+        self.PayerMode = params.get("PayerMode")
+        self.ActivityId = params.get("ActivityId")
+        self.OverdueTime = params.get("OverdueTime")
+        if params.get("ProductInfo") is not None:
+            self.ProductInfo = []
+            for item in params.get("ProductInfo"):
+                obj = ProductInfoElem()
+                obj._deserialize(item)
+                self.ProductInfo.append(obj)
+
+
 class AgentPayDealsRequest(AbstractModel):
     """AgentPayDeals请求参数结构体
 
@@ -567,6 +713,23 @@ class CreatePayRelationForClientResponse(AbstractModel):
 
 
 class DealGoodsPriceElem(AbstractModel):
+    """订单价格详情
+
+    """
+
+    def __init__(self):
+        """
+        :param RealTotalCost: 实付金额
+        :type RealTotalCost: int
+        """
+        self.RealTotalCost = None
+
+
+    def _deserialize(self, params):
+        self.RealTotalCost = params.get("RealTotalCost")
+
+
+class DealGoodsPriceNewElem(AbstractModel):
     """订单价格详情
 
     """
@@ -870,6 +1033,85 @@ class DescribeAgentClientsResponse(AbstractModel):
                 obj = AgentClientElem()
                 obj._deserialize(item)
                 self.AgentClientSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAgentDealsByCacheRequest(AbstractModel):
+    """DescribeAgentDealsByCache请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 限制数目
+        :type Limit: int
+        :param CreatTimeRangeStart: 下单时间范围起始点
+        :type CreatTimeRangeStart: str
+        :param CreatTimeRangeEnd: 下单时间范围终止点
+        :type CreatTimeRangeEnd: str
+        :param Order: 0:下单时间降序；其他：下单时间升序
+        :type Order: int
+        :param Status: 订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
+        :type Status: int
+        :param OwnerUins: 下单人账号ID列表
+        :type OwnerUins: list of str
+        :param DealNames: 订单号列表
+        :type DealNames: list of str
+        :param PayerMode: 支付方式，0：自付；1：代付
+        :type PayerMode: int
+        """
+        self.Offset = None
+        self.Limit = None
+        self.CreatTimeRangeStart = None
+        self.CreatTimeRangeEnd = None
+        self.Order = None
+        self.Status = None
+        self.OwnerUins = None
+        self.DealNames = None
+        self.PayerMode = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.CreatTimeRangeStart = params.get("CreatTimeRangeStart")
+        self.CreatTimeRangeEnd = params.get("CreatTimeRangeEnd")
+        self.Order = params.get("Order")
+        self.Status = params.get("Status")
+        self.OwnerUins = params.get("OwnerUins")
+        self.DealNames = params.get("DealNames")
+        self.PayerMode = params.get("PayerMode")
+
+
+class DescribeAgentDealsByCacheResponse(AbstractModel):
+    """DescribeAgentDealsByCache返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AgentDealSet: 订单数组
+        :type AgentDealSet: list of AgentDealNewElem
+        :param TotalCount: 符合条件的订单总数量
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AgentDealSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AgentDealSet") is not None:
+            self.AgentDealSet = []
+            for item in params.get("AgentDealSet"):
+                obj = AgentDealNewElem()
+                obj._deserialize(item)
+                self.AgentDealSet.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 

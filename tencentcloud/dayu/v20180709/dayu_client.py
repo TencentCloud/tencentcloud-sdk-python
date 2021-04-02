@@ -922,6 +922,34 @@ class DayuClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBizHttpStatus(self, request):
+        """获取业务流量状态码统计
+
+        :param request: Request instance for DescribeBizHttpStatus.
+        :type request: :class:`tencentcloud.dayu.v20180709.models.DescribeBizHttpStatusRequest`
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.DescribeBizHttpStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBizHttpStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBizHttpStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBizTrend(self, request):
         """获取业务流量曲线
 

@@ -979,7 +979,7 @@ class DescribeMachineRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Ipv6Enable: 是否按ipv6过滤
+        :param Ipv6Enable: 不为0，表示查询支持ipv6的机器
         :type Ipv6Enable: int
         """
         self.Ipv6Enable = None

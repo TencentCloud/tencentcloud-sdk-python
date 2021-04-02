@@ -63,12 +63,18 @@ class AudioInfo(AbstractModel):
         :type SampleRate: int
         :param Denoise: 音频降噪信息
         :type Denoise: :class:`tencentcloud.ie.v20200304.models.Denoise`
+        :param EnableMuteAudio: 开启添加静音，可选项：
+0：不开启，
+1：开启，
+默认不开启
+        :type EnableMuteAudio: int
         """
         self.Bitrate = None
         self.Codec = None
         self.Channel = None
         self.SampleRate = None
         self.Denoise = None
+        self.EnableMuteAudio = None
 
 
     def _deserialize(self, params):
@@ -79,6 +85,7 @@ class AudioInfo(AbstractModel):
         if params.get("Denoise") is not None:
             self.Denoise = Denoise()
             self.Denoise._deserialize(params.get("Denoise"))
+        self.EnableMuteAudio = params.get("EnableMuteAudio")
 
 
 class AudioInfoResultItem(AbstractModel):
@@ -1850,12 +1857,16 @@ class MuxInfo(AbstractModel):
         """
         :param DeleteStream: 删除流，可选项：video,audio。
         :type DeleteStream: str
+        :param FlvFlags: Flv 参数，目前支持add_keyframe_index
+        :type FlvFlags: str
         """
         self.DeleteStream = None
+        self.FlvFlags = None
 
 
     def _deserialize(self, params):
         self.DeleteStream = params.get("DeleteStream")
+        self.FlvFlags = params.get("FlvFlags")
 
 
 class OpeningEndingEditingInfo(AbstractModel):

@@ -250,6 +250,34 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCfwEips(self, request):
+        """查询防火墙弹性公网ip
+
+        :param request: Request instance for DescribeCfwEips.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeCfwEipsRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeCfwEipsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCfwEips", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCfwEipsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeNatRuleOverview(self, request):
         """nat规则列表概况
 
@@ -432,6 +460,34 @@ class CfwClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVpcRuleOverviewResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ExpandCfwVertical(self, request):
+        """防火墙垂直扩容
+
+        :param request: Request instance for ExpandCfwVertical.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.ExpandCfwVerticalRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.ExpandCfwVerticalResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ExpandCfwVertical", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ExpandCfwVerticalResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -656,6 +712,34 @@ class CfwClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RunSyncAssetResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SetNatFwDnatRule(self, request):
+        """配置防火墙Dnat规则
+
+        :param request: Request instance for SetNatFwDnatRule.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.SetNatFwDnatRuleRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.SetNatFwDnatRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SetNatFwDnatRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetNatFwDnatRuleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
