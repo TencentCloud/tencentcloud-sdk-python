@@ -452,6 +452,7 @@ class CreateProjectRequest(AbstractModel):
 <li>VIDEO_EDIT：视频编辑。</li>
 <li>SWITCHER：导播台。</li>
 <li>VIDEO_SEGMENTATION：视频拆条。</li>
+<li>STREAM_CONNECT：云转推。</li>
         :type Category: str
         :param Name: 项目名称，不可超过30个字符。
         :type Name: str
@@ -470,6 +471,8 @@ class CreateProjectRequest(AbstractModel):
         :type VideoEditProjectInput: :class:`tencentcloud.cme.v20191029.models.VideoEditProjectInput`
         :param VideoSegmentationProjectInput: 视频拆条信息，仅当项目类型为 VIDEO_SEGMENTATION  时必填。
         :type VideoSegmentationProjectInput: :class:`tencentcloud.cme.v20191029.models.VideoSegmentationProjectInput`
+        :param StreamConnectProjectInput: 云转推项目信息，仅当项目类型为 STREAM_CONNECT 时必填。
+        :type StreamConnectProjectInput: :class:`tencentcloud.cme.v20191029.models.StreamConnectProjectInput`
         """
         self.Platform = None
         self.Category = None
@@ -481,6 +484,7 @@ class CreateProjectRequest(AbstractModel):
         self.LiveStreamClipProjectInput = None
         self.VideoEditProjectInput = None
         self.VideoSegmentationProjectInput = None
+        self.StreamConnectProjectInput = None
 
 
     def _deserialize(self, params):
@@ -504,6 +508,9 @@ class CreateProjectRequest(AbstractModel):
         if params.get("VideoSegmentationProjectInput") is not None:
             self.VideoSegmentationProjectInput = VideoSegmentationProjectInput()
             self.VideoSegmentationProjectInput._deserialize(params.get("VideoSegmentationProjectInput"))
+        if params.get("StreamConnectProjectInput") is not None:
+            self.StreamConnectProjectInput = StreamConnectProjectInput()
+            self.StreamConnectProjectInput._deserialize(params.get("StreamConnectProjectInput"))
 
 
 class CreateProjectResponse(AbstractModel):
@@ -1133,6 +1140,7 @@ class DescribeProjectsRequest(AbstractModel):
 <li>VIDEO_EDIT：视频编辑。</li>
 <li>SWITCHER：导播台。</li>
 <li>VIDEO_SEGMENTATION：视频拆条。</li>
+<li>STREAM_CONNECT：云转推。</li>
         :type CategorySet: list of str
         :param Sort: 列表排序，支持下列排序字段：
 <li>CreateTime：创建时间；</li>
@@ -2576,6 +2584,23 @@ class ListMediaResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class LivePullInputInfo(AbstractModel):
+    """直播拉流信息
+
+    """
+
+    def __init__(self):
+        """
+        :param InputUrl: 直播拉流地址。
+        :type InputUrl: str
+        """
+        self.InputUrl = None
+
+
+    def _deserialize(self, params):
+        self.InputUrl = params.get("InputUrl")
+
+
 class LiveStreamClipProjectInput(AbstractModel):
     """直播剪辑项目输入参数。
 
@@ -2918,7 +2943,7 @@ class MediaTrack(AbstractModel):
         """
         :param Type: 轨道类型，取值有：
 <ul>
-<li>Video ：视频轨道。视频轨道由以下 Item 组成：<ul><li>VideoTrackItem</li><li>EmptyTrackItem</li></ul> </li>
+<li>Video ：视频轨道。视频轨道由以下 Item 组成：<ul><li>VideoTrackItem</li><li>EmptyTrackItem</li><li>MediaTransitionItem</li></ul> </li>
 <li>Audio ：音频轨道。音频轨道由以下 Item 组成：<ul><li>AudioTrackItem</li><li>EmptyTrackItem</li></ul> </li>
 </ul>
         :type Type: str
@@ -2947,9 +2972,10 @@ class MediaTrackItem(AbstractModel):
     def __init__(self):
         """
         :param Type: 片段类型。取值有：
-<li>Video：视频片段。</li>
-<li>Audio：音频片段。</li>
-<li>Empty：空白片段。</li>
+<li>Video：视频片段；</li>
+<li>Audio：音频片段；</li>
+<li>Empty：空白片段；</li>
+<li>Transition：转场。</li>
         :type Type: str
         :param VideoItem: 视频片段，当 Type = Video 时有效。
         :type VideoItem: :class:`tencentcloud.cme.v20191029.models.VideoTrackItem`
@@ -2958,11 +2984,14 @@ class MediaTrackItem(AbstractModel):
         :param EmptyItem: 空白片段，当 Type = Empty 时有效。空片段用于时间轴的占位。<li>如需要两个音频片段之间有一段时间的静音，可以用 EmptyTrackItem 来进行占位。</li>
 <li>使用 EmptyTrackItem 进行占位，来定位某个Item。</li>
         :type EmptyItem: :class:`tencentcloud.cme.v20191029.models.EmptyTrackItem`
+        :param TransitionItem: 转场，当 Type = Transition 时有效。
+        :type TransitionItem: :class:`tencentcloud.cme.v20191029.models.MediaTransitionItem`
         """
         self.Type = None
         self.VideoItem = None
         self.AudioItem = None
         self.EmptyItem = None
+        self.TransitionItem = None
 
 
     def _deserialize(self, params):
@@ -2976,6 +3005,30 @@ class MediaTrackItem(AbstractModel):
         if params.get("EmptyItem") is not None:
             self.EmptyItem = EmptyTrackItem()
             self.EmptyItem._deserialize(params.get("EmptyItem"))
+        if params.get("TransitionItem") is not None:
+            self.TransitionItem = MediaTransitionItem()
+            self.TransitionItem._deserialize(params.get("TransitionItem"))
+
+
+class MediaTransitionItem(AbstractModel):
+    """转场信息
+
+    """
+
+    def __init__(self):
+        """
+        :param TransitionId: 转场 Id 。暂只支持一个转场。
+        :type TransitionId: str
+        :param Duration: 转场持续时间，单位为秒，默认为2秒。进行转场处理的两个媒体片段，第二个片段在轨道上的起始时间会自动进行调整，设置为前面一个片段的结束时间减去转场的持续时间。
+        :type Duration: float
+        """
+        self.TransitionId = None
+        self.Duration = None
+
+
+    def _deserialize(self, params):
+        self.TransitionId = params.get("TransitionId")
+        self.Duration = params.get("Duration")
 
 
 class ModifyMaterialRequest(AbstractModel):
@@ -3417,7 +3470,12 @@ class ProjectInfo(AbstractModel):
         :type Name: str
         :param AspectRatio: 画布宽高比。
         :type AspectRatio: str
-        :param Category: 项目类别。
+        :param Category: 项目类别，取值：
+项目类别，取值有：
+<li>VIDEO_EDIT：视频编辑。</li>
+<li>SWITCHER：导播台。</li>
+<li>VIDEO_SEGMENTATION：视频拆条。</li>
+<li>STREAM_CONNECT：云转推。</li>
         :type Category: str
         :param Owner: 归属者。
         :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
@@ -3568,6 +3626,27 @@ class RevokeResourceAuthorizationResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class RtmpPushInputInfo(AbstractModel):
+    """直播推流信息，包括推流地址有效时长，云剪后端生成直播推流地址。
+
+    """
+
+    def __init__(self):
+        """
+        :param ExpiredSecond: 直播推流地址有效期，单位：秒 。
+        :type ExpiredSecond: int
+        :param PushUrl: 直播推流地址，入参不填默认由云剪生成。
+        :type PushUrl: str
+        """
+        self.ExpiredSecond = None
+        self.PushUrl = None
+
+
+    def _deserialize(self, params):
+        self.ExpiredSecond = params.get("ExpiredSecond")
+        self.PushUrl = params.get("PushUrl")
 
 
 class SearchMaterialRequest(AbstractModel):
@@ -3748,6 +3827,112 @@ class SortBy(AbstractModel):
     def _deserialize(self, params):
         self.Field = params.get("Field")
         self.Order = params.get("Order")
+
+
+class StreamConnectOutput(AbstractModel):
+    """云转推输出源。
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 云转推输出源标识，转推项目级别唯一。若不填则由后端生成。
+        :type Id: str
+        :param Name: 云转推输出源名称。
+        :type Name: str
+        :param Type: 云转推输出源类型，取值：
+<li>URL ：URL类型</li>
+不填默认为URL类型。
+        :type Type: str
+        :param PushUrl: 云转推推流地址。
+        :type PushUrl: str
+        """
+        self.Id = None
+        self.Name = None
+        self.Type = None
+        self.PushUrl = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        self.Type = params.get("Type")
+        self.PushUrl = params.get("PushUrl")
+
+
+class StreamConnectProjectInput(AbstractModel):
+    """云转推项目输入信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param MainInput: 云转推主输入源信息。
+        :type MainInput: :class:`tencentcloud.cme.v20191029.models.StreamInputInfo`
+        :param BackupInput: 云转推备输入源信息。
+        :type BackupInput: :class:`tencentcloud.cme.v20191029.models.StreamInputInfo`
+        :param Outputs: 云转推输出源信息。
+        :type Outputs: list of StreamConnectOutput
+        """
+        self.MainInput = None
+        self.BackupInput = None
+        self.Outputs = None
+
+
+    def _deserialize(self, params):
+        if params.get("MainInput") is not None:
+            self.MainInput = StreamInputInfo()
+            self.MainInput._deserialize(params.get("MainInput"))
+        if params.get("BackupInput") is not None:
+            self.BackupInput = StreamInputInfo()
+            self.BackupInput._deserialize(params.get("BackupInput"))
+        if params.get("Outputs") is not None:
+            self.Outputs = []
+            for item in params.get("Outputs"):
+                obj = StreamConnectOutput()
+                obj._deserialize(item)
+                self.Outputs.append(obj)
+
+
+class StreamInputInfo(AbstractModel):
+    """输入流信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param InputType: 流输入类型，取值：
+<li>VodPull ： 点播拉流；</li>
+<li>LivePull ：直播拉流；</li>
+<li>RtmpPush ： 直播推流。</li>
+        :type InputType: str
+        :param VodPullInputInfo: 点播拉流信息，当 InputType = VodPull 时必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VodPullInputInfo: :class:`tencentcloud.cme.v20191029.models.VodPullInputInfo`
+        :param LivePullInputInfo: 直播拉流信息，当 InputType = LivePull  时必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LivePullInputInfo: :class:`tencentcloud.cme.v20191029.models.LivePullInputInfo`
+        :param RtmpPushInputInfo: 直播推流信息，当 InputType = RtmpPush 时必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RtmpPushInputInfo: :class:`tencentcloud.cme.v20191029.models.RtmpPushInputInfo`
+        """
+        self.InputType = None
+        self.VodPullInputInfo = None
+        self.LivePullInputInfo = None
+        self.RtmpPushInputInfo = None
+
+
+    def _deserialize(self, params):
+        self.InputType = params.get("InputType")
+        if params.get("VodPullInputInfo") is not None:
+            self.VodPullInputInfo = VodPullInputInfo()
+            self.VodPullInputInfo._deserialize(params.get("VodPullInputInfo"))
+        if params.get("LivePullInputInfo") is not None:
+            self.LivePullInputInfo = LivePullInputInfo()
+            self.LivePullInputInfo._deserialize(params.get("LivePullInputInfo"))
+        if params.get("RtmpPushInputInfo") is not None:
+            self.RtmpPushInputInfo = RtmpPushInputInfo()
+            self.RtmpPushInputInfo._deserialize(params.get("RtmpPushInputInfo"))
 
 
 class SwitcherPgmOutputConfig(AbstractModel):
@@ -4261,6 +4446,31 @@ class VideoTrackItem(AbstractModel):
         self.CoordinateOrigin = params.get("CoordinateOrigin")
         self.Height = params.get("Height")
         self.Width = params.get("Width")
+
+
+class VodPullInputInfo(AbstractModel):
+    """点播拉流信息，包括输入拉流地址和播放次数。
+
+    """
+
+    def __init__(self):
+        """
+        :param InputUrls: 点播输入拉流 URL 。
+        :type InputUrls: list of str
+        :param LoopTimes: 播放次数，取值有：
+<li>-1 : 循环播放，直到转推结束；</li>
+<li>0 : 不循环；</li>
+<li>大于0 : 具体循环次数，次数和时间以先结束的为准。</li>
+默认不循环。
+        :type LoopTimes: int
+        """
+        self.InputUrls = None
+        self.LoopTimes = None
+
+
+    def _deserialize(self, params):
+        self.InputUrls = params.get("InputUrls")
+        self.LoopTimes = params.get("LoopTimes")
 
 
 class WeiboPublishInfo(AbstractModel):

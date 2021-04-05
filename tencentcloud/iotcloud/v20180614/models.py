@@ -1023,6 +1023,122 @@ class DescribeDeviceRequest(AbstractModel):
         self.DeviceName = params.get("DeviceName")
 
 
+class DescribeDeviceResourceRequest(AbstractModel):
+    """DescribeDeviceResource请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        :param ProductID: 产品ID
+        :type ProductID: str
+        :param Name: 具体的设备资源名称
+        :type Name: str
+        """
+        self.DeviceName = None
+        self.ProductID = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.DeviceName = params.get("DeviceName")
+        self.ProductID = params.get("ProductID")
+        self.Name = params.get("Name")
+
+
+class DescribeDeviceResourceResponse(AbstractModel):
+    """DescribeDeviceResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 设备资源详情
+        :type Result: :class:`tencentcloud.iotcloud.v20180614.models.DeviceResourceInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = DeviceResourceInfo()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDeviceResourcesRequest(AbstractModel):
+    """DescribeDeviceResources请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: 偏移量，Offset从0开始
+        :type Offset: int
+        :param Limit: 分页的大小，数值范围 10-250
+        :type Limit: int
+        :param ProductID: 产品ID
+        :type ProductID: str
+        :param DeviceName: 需要过滤的设备名称
+        :type DeviceName: str
+        :param StartTime: 资源搜索开始时间
+        :type StartTime: str
+        :param EndTime: 资源搜索结束时间
+        :type EndTime: str
+        """
+        self.Offset = None
+        self.Limit = None
+        self.ProductID = None
+        self.DeviceName = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.ProductID = params.get("ProductID")
+        self.DeviceName = params.get("DeviceName")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+
+
+class DescribeDeviceResourcesResponse(AbstractModel):
+    """DescribeDeviceResources返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 资源总数
+        :type TotalCount: int
+        :param Result: 资源列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: list of DeviceResourceInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Result") is not None:
+            self.Result = []
+            for item in params.get("Result"):
+                obj = DeviceResourceInfo()
+                obj._deserialize(item)
+                self.Result.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDeviceResponse(AbstractModel):
     """DescribeDevice返回参数结构体
 
@@ -1826,6 +1942,111 @@ class DescribeMultiDevicesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeProductResourceRequest(AbstractModel):
+    """DescribeProductResource请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductID: 需要查看资源列表的产品 ID
+        :type ProductID: str
+        :param Name: 需要过滤的资源名称
+        :type Name: str
+        """
+        self.ProductID = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.ProductID = params.get("ProductID")
+        self.Name = params.get("Name")
+
+
+class DescribeProductResourceResponse(AbstractModel):
+    """DescribeProductResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 资源详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.iotcloud.v20180614.models.ProductResourceInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = ProductResourceInfo()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeProductResourcesRequest(AbstractModel):
+    """DescribeProductResources请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: 偏移量，Offset从0开始
+        :type Offset: int
+        :param Limit: 分页的大小，数值范围 10-250
+        :type Limit: int
+        :param ProductID: 需要查看资源列表的产品 ID
+        :type ProductID: str
+        :param Name: 需要过滤的资源名称
+        :type Name: str
+        """
+        self.Offset = None
+        self.Limit = None
+        self.ProductID = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.ProductID = params.get("ProductID")
+        self.Name = params.get("Name")
+
+
+class DescribeProductResourcesResponse(AbstractModel):
+    """DescribeProductResources返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 资源总数
+        :type TotalCount: int
+        :param Result: 资源详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: list of ProductResourceInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Result") is not None:
+            self.Result = []
+            for item in params.get("Result"):
+                obj = ProductResourceInfo()
+                obj._deserialize(item)
+                self.Result.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeProductTaskRequest(AbstractModel):
     """DescribeProductTask请求参数结构体
 
@@ -1973,6 +2194,129 @@ class DescribeProductsResponse(AbstractModel):
                 obj = ProductInfo()
                 obj._deserialize(item)
                 self.Products.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePushResourceTaskStatisticsRequest(AbstractModel):
+    """DescribePushResourceTaskStatistics请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductID: 产品ID
+        :type ProductID: str
+        :param Name: 资源名称
+        :type Name: str
+        """
+        self.ProductID = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.ProductID = params.get("ProductID")
+        self.Name = params.get("Name")
+
+
+class DescribePushResourceTaskStatisticsResponse(AbstractModel):
+    """DescribePushResourceTaskStatistics返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SuccessTotal: 推送成功的设备总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuccessTotal: int
+        :param FailureTotal: 推送失败的设备总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailureTotal: int
+        :param UpgradingTotal: 正在推送的设备总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpgradingTotal: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SuccessTotal = None
+        self.FailureTotal = None
+        self.UpgradingTotal = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SuccessTotal = params.get("SuccessTotal")
+        self.FailureTotal = params.get("FailureTotal")
+        self.UpgradingTotal = params.get("UpgradingTotal")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeResourceTasksRequest(AbstractModel):
+    """DescribeResourceTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductID: 产品ID
+        :type ProductID: str
+        :param Name: 资源名称
+        :type Name: str
+        :param Offset: 查询偏移量
+        :type Offset: int
+        :param Limit: 返回查询结果条数
+        :type Limit: int
+        :param Filters: 搜索过滤条件
+        :type Filters: list of SearchKeyword
+        """
+        self.ProductID = None
+        self.Name = None
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.ProductID = params.get("ProductID")
+        self.Name = params.get("Name")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = SearchKeyword()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class DescribeResourceTasksResponse(AbstractModel):
+    """DescribeResourceTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskInfos: 资源任务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskInfos: list of FirmwareTaskInfo
+        :param Total: 资源任务总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskInfos = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TaskInfos") is not None:
+            self.TaskInfos = []
+            for item in params.get("TaskInfos"):
+                obj = FirmwareTaskInfo()
+                obj._deserialize(item)
+                self.TaskInfos.append(obj)
+        self.Total = params.get("Total")
         self.RequestId = params.get("RequestId")
 
 
@@ -2295,6 +2639,55 @@ class DeviceProperty(AbstractModel):
         self.ResourceId = params.get("ResourceId")
 
 
+class DeviceResourceInfo(AbstractModel):
+    """设备资源详细信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductID: 产品ID
+        :type ProductID: str
+        :param ProductName: 产品名
+        :type ProductName: str
+        :param Name: 资源名称
+        :type Name: str
+        :param Md5: 资源文件md5
+        :type Md5: str
+        :param Size: 资源文件大小
+        :type Size: int
+        :param UpdateTime: 资源更新时间
+        :type UpdateTime: str
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        :param Status: 设备资源上传状态
+        :type Status: int
+        :param Percent: 设备资源上传百分比
+        :type Percent: int
+        """
+        self.ProductID = None
+        self.ProductName = None
+        self.Name = None
+        self.Md5 = None
+        self.Size = None
+        self.UpdateTime = None
+        self.DeviceName = None
+        self.Status = None
+        self.Percent = None
+
+
+    def _deserialize(self, params):
+        self.ProductID = params.get("ProductID")
+        self.ProductName = params.get("ProductName")
+        self.Name = params.get("Name")
+        self.Md5 = params.get("Md5")
+        self.Size = params.get("Size")
+        self.UpdateTime = params.get("UpdateTime")
+        self.DeviceName = params.get("DeviceName")
+        self.Status = params.get("Status")
+        self.Percent = params.get("Percent")
+
+
 class DeviceTag(AbstractModel):
     """设备属性
 
@@ -2524,6 +2917,37 @@ class FirmwareTaskInfo(AbstractModel):
         self.CreateTime = params.get("CreateTime")
 
 
+class GetUserResourceInfoRequest(AbstractModel):
+    """GetUserResourceInfo请求参数结构体
+
+    """
+
+
+class GetUserResourceInfoResponse(AbstractModel):
+    """GetUserResourceInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param UsedSize: 已使用的资源字节数
+        :type UsedSize: int
+        :param Limit: 可以使用资源的总大小
+        :type Limit: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.UsedSize = None
+        self.Limit = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.UsedSize = params.get("UsedSize")
+        self.Limit = params.get("Limit")
+        self.RequestId = params.get("RequestId")
+
+
 class MultiDevicesInfo(AbstractModel):
     """创建设备时返回的设备信息
 
@@ -2675,6 +3099,48 @@ class ProductProperties(AbstractModel):
         self.RegisterType = params.get("RegisterType")
         self.ProductSecret = params.get("ProductSecret")
         self.RegisterLimit = params.get("RegisterLimit")
+
+
+class ProductResourceInfo(AbstractModel):
+    """产品资源详细信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductID: 产品ID
+        :type ProductID: str
+        :param ProductName: 产品名
+        :type ProductName: str
+        :param Name: 资源名称
+        :type Name: str
+        :param Md5: 资源文件md5
+        :type Md5: str
+        :param Size: 资源文件大小
+        :type Size: int
+        :param Description: 资源文件描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param CreateTime: 资源创建时间
+        :type CreateTime: str
+        """
+        self.ProductID = None
+        self.ProductName = None
+        self.Name = None
+        self.Md5 = None
+        self.Size = None
+        self.Description = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.ProductID = params.get("ProductID")
+        self.ProductName = params.get("ProductName")
+        self.Name = params.get("Name")
+        self.Md5 = params.get("Md5")
+        self.Size = params.get("Size")
+        self.Description = params.get("Description")
+        self.CreateTime = params.get("CreateTime")
 
 
 class ProductTaskInfo(AbstractModel):
