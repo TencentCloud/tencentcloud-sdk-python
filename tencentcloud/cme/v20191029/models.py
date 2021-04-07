@@ -2742,6 +2742,9 @@ class MaterialInfo(AbstractModel):
         :param LinkMaterial: 链接媒体信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LinkMaterial: :class:`tencentcloud.cme.v20191029.models.LinkMaterial`
+        :param VideoEditTemplateMaterial: 模板媒体信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VideoEditTemplateMaterial: :class:`tencentcloud.cme.v20191029.models.VideoEditTemplateMaterial`
         :param OtherMaterial: 其他类型媒体信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OtherMaterial: :class:`tencentcloud.cme.v20191029.models.OtherMaterial`
@@ -2751,6 +2754,7 @@ class MaterialInfo(AbstractModel):
         self.AudioMaterial = None
         self.ImageMaterial = None
         self.LinkMaterial = None
+        self.VideoEditTemplateMaterial = None
         self.OtherMaterial = None
 
 
@@ -2770,6 +2774,9 @@ class MaterialInfo(AbstractModel):
         if params.get("LinkMaterial") is not None:
             self.LinkMaterial = LinkMaterial()
             self.LinkMaterial._deserialize(params.get("LinkMaterial"))
+        if params.get("VideoEditTemplateMaterial") is not None:
+            self.VideoEditTemplateMaterial = VideoEditTemplateMaterial()
+            self.VideoEditTemplateMaterial._deserialize(params.get("VideoEditTemplateMaterial"))
         if params.get("OtherMaterial") is not None:
             self.OtherMaterial = OtherMaterial()
             self.OtherMaterial._deserialize(params.get("OtherMaterial"))
@@ -3777,6 +3784,38 @@ class SearchScope(AbstractModel):
         self.ClassPath = params.get("ClassPath")
 
 
+class SlotInfo(AbstractModel):
+    """卡槽信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 卡槽 Id。
+        :type Id: int
+        :param Type: 素材类型，同素材素材，可取值有：
+<li> AUDIO :音频;</li>
+<li> VIDEO :视频;</li>
+<li> IMAGE :图片。</li>
+        :type Type: str
+        :param DefaultMaterialId: 默认素材 Id。
+        :type DefaultMaterialId: str
+        :param Duration: 素材时长，单位秒。
+        :type Duration: float
+        """
+        self.Id = None
+        self.Type = None
+        self.DefaultMaterialId = None
+        self.Duration = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Type = params.get("Type")
+        self.DefaultMaterialId = params.get("DefaultMaterialId")
+        self.Duration = params.get("Duration")
+
+
 class SlotReplacementInfo(AbstractModel):
     """卡槽替换信息。
 
@@ -4253,6 +4292,32 @@ class VideoEditProjectOutput(AbstractModel):
         if params.get("MetaData") is not None:
             self.MetaData = MediaMetaData()
             self.MetaData._deserialize(params.get("MetaData"))
+
+
+class VideoEditTemplateMaterial(AbstractModel):
+    """视频编辑模板素材信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param AspectRatio: 视频编辑模板宽高比。
+        :type AspectRatio: str
+        :param SlotSet: 卡槽信息。
+        :type SlotSet: list of SlotInfo
+        """
+        self.AspectRatio = None
+        self.SlotSet = None
+
+
+    def _deserialize(self, params):
+        self.AspectRatio = params.get("AspectRatio")
+        if params.get("SlotSet") is not None:
+            self.SlotSet = []
+            for item in params.get("SlotSet"):
+                obj = SlotInfo()
+                obj._deserialize(item)
+                self.SlotSet.append(obj)
 
 
 class VideoMaterial(AbstractModel):

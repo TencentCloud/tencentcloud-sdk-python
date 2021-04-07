@@ -304,3 +304,31 @@ class CccClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTelSession(self, request):
+        """获取 PSTN 会话信息
+
+        :param request: Request instance for DescribeTelSession.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeTelSessionRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.DescribeTelSessionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTelSession", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTelSessionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

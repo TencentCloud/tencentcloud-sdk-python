@@ -1242,7 +1242,7 @@ class UpdateCfsFileSystemSizeLimitRequest(AbstractModel):
         """
         :param FsLimit: 文件系统容量限制大小，输入范围0-1073741824, 单位为GB；其中输入值为0时，表示不限制文件系统容量。
         :type FsLimit: int
-        :param FileSystemId: 文件系统ID
+        :param FileSystemId: 文件系统ID，目前仅支持标准型文件系统。
         :type FileSystemId: str
         """
         self.FsLimit = None

@@ -5541,7 +5541,7 @@ class LoadBalancerInternetAccessible(AbstractModel):
 
     def __init__(self):
         """
-        :param InternetMaxBandwidthOut: 最大出带宽，单位Mbps。
+        :param InternetMaxBandwidthOut: 最大出带宽，单位Mbps。默认值10
         :type InternetMaxBandwidthOut: int
         """
         self.InternetMaxBandwidthOut = None

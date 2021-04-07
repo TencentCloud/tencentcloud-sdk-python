@@ -4799,6 +4799,12 @@ class NodePool(AbstractModel):
         :param ImageId: 镜像id
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageId: str
+        :param DesiredPodNum: 集群属于节点podCIDR大小自定义模式时，节点池需要带上pod数量属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DesiredPodNum: int
+        :param UserScript: 用户自定义脚本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserScript: str
         """
         self.NodePoolId = None
         self.Name = None
@@ -4816,6 +4822,8 @@ class NodePool(AbstractModel):
         self.NodePoolOs = None
         self.OsCustomizeType = None
         self.ImageId = None
+        self.DesiredPodNum = None
+        self.UserScript = None
 
 
     def _deserialize(self, params):
@@ -4847,6 +4855,8 @@ class NodePool(AbstractModel):
         self.NodePoolOs = params.get("NodePoolOs")
         self.OsCustomizeType = params.get("OsCustomizeType")
         self.ImageId = params.get("ImageId")
+        self.DesiredPodNum = params.get("DesiredPodNum")
+        self.UserScript = params.get("UserScript")
 
 
 class NodePoolOption(AbstractModel):

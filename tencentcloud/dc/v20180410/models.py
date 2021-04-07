@@ -1757,6 +1757,8 @@ class ModifyDirectConnectAttributeRequest(AbstractModel):
         :type FaultReportContactNumber: str
         :param SignLaw: 物理专线申请者补签用户使用协议
         :type SignLaw: bool
+        :param Bandwidth: 物理专线带宽
+        :type Bandwidth: int
         """
         self.DirectConnectId = None
         self.DirectConnectName = None
@@ -1770,6 +1772,7 @@ class ModifyDirectConnectAttributeRequest(AbstractModel):
         self.FaultReportContactPerson = None
         self.FaultReportContactNumber = None
         self.SignLaw = None
+        self.Bandwidth = None
 
 
     def _deserialize(self, params):
@@ -1785,6 +1788,7 @@ class ModifyDirectConnectAttributeRequest(AbstractModel):
         self.FaultReportContactPerson = params.get("FaultReportContactPerson")
         self.FaultReportContactNumber = params.get("FaultReportContactNumber")
         self.SignLaw = params.get("SignLaw")
+        self.Bandwidth = params.get("Bandwidth")
 
 
 class ModifyDirectConnectAttributeResponse(AbstractModel):

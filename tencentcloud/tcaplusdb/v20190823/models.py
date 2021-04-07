@@ -415,6 +415,62 @@ class CreateClusterResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateSnapshotsRequest(AbstractModel):
+    """CreateSnapshots请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 表格所属集群id
+        :type ClusterId: str
+        :param SelectedTables: 快照列表
+        :type SelectedTables: list of SnapshotInfo
+        """
+        self.ClusterId = None
+        self.SelectedTables = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("SelectedTables") is not None:
+            self.SelectedTables = []
+            for item in params.get("SelectedTables"):
+                obj = SnapshotInfo()
+                obj._deserialize(item)
+                self.SelectedTables.append(obj)
+
+
+class CreateSnapshotsResponse(AbstractModel):
+    """CreateSnapshots返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 批量创建的快照数量
+        :type TotalCount: int
+        :param TableResults: 批量创建的快照结果列表
+        :type TableResults: list of SnapshotResult
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.TableResults = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("TableResults") is not None:
+            self.TableResults = []
+            for item in params.get("TableResults"):
+                obj = SnapshotResult()
+                obj._deserialize(item)
+                self.TableResults.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class CreateTableGroupRequest(AbstractModel):
     """CreateTableGroup请求参数结构体
 
@@ -635,6 +691,62 @@ class DeleteIdlFilesResponse(AbstractModel):
                 obj = IdlFileInfoWithoutContent()
                 obj._deserialize(item)
                 self.IdlFileInfos.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteSnapshotsRequest(AbstractModel):
+    """DeleteSnapshots请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 表格所属集群id
+        :type ClusterId: str
+        :param SelectedTables: 删除的快照列表
+        :type SelectedTables: list of SnapshotInfoNew
+        """
+        self.ClusterId = None
+        self.SelectedTables = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("SelectedTables") is not None:
+            self.SelectedTables = []
+            for item in params.get("SelectedTables"):
+                obj = SnapshotInfoNew()
+                obj._deserialize(item)
+                self.SelectedTables.append(obj)
+
+
+class DeleteSnapshotsResponse(AbstractModel):
+    """DeleteSnapshots返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 批量删除的快照数量
+        :type TotalCount: int
+        :param TableResults: 批量删除的快照结果
+        :type TableResults: list of SnapshotResult
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.TableResults = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("TableResults") is not None:
+            self.TableResults = []
+            for item in params.get("TableResults"):
+                obj = SnapshotResult()
+                obj._deserialize(item)
+                self.TableResults.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1048,6 +1160,65 @@ class DescribeRegionsResponse(AbstractModel):
                 obj = RegionInfo()
                 obj._deserialize(item)
                 self.RegionInfos.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSnapshotsRequest(AbstractModel):
+    """DescribeSnapshots请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 表格所属集群id
+        :type ClusterId: str
+        :param TableGroupId: 所属表格组ID
+        :type TableGroupId: str
+        :param TableName: 表名称
+        :type TableName: str
+        :param SnapshotName: 快照名称
+        :type SnapshotName: str
+        """
+        self.ClusterId = None
+        self.TableGroupId = None
+        self.TableName = None
+        self.SnapshotName = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.TableGroupId = params.get("TableGroupId")
+        self.TableName = params.get("TableName")
+        self.SnapshotName = params.get("SnapshotName")
+
+
+class DescribeSnapshotsResponse(AbstractModel):
+    """DescribeSnapshots返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 快照数量
+        :type TotalCount: int
+        :param TableResults: 快照结果列表
+        :type TableResults: list of SnapshotResult
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.TableResults = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("TableResults") is not None:
+            self.TableResults = []
+            for item in params.get("TableResults"):
+                obj = SnapshotResult()
+                obj._deserialize(item)
+                self.TableResults.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1707,6 +1878,102 @@ class IdlFileInfoWithoutContent(AbstractModel):
             self.Error._deserialize(params.get("Error"))
 
 
+class ImportSnapshotsRequest(AbstractModel):
+    """ImportSnapshots请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 表格所属的集群id
+        :type ClusterId: str
+        :param Snapshots: 用于导入的快照信息
+        :type Snapshots: :class:`tencentcloud.tcaplusdb.v20190823.models.SnapshotInfo`
+        :param ImportSpecialKey: 是否导入部分记录，TRUE表示导入部分记录，FALSE表示全表导入
+        :type ImportSpecialKey: str
+        :param ImportOriginTable: 是否导入到当前表，TRUE表示导入到当前表，FALSE表示导入到新表
+        :type ImportOriginTable: str
+        :param KeyFile: 部分记录的key文件
+        :type KeyFile: :class:`tencentcloud.tcaplusdb.v20190823.models.KeyFile`
+        :param NewTableGroupId: 如果导入到新表，此为新表所属的表格组id
+        :type NewTableGroupId: str
+        :param NewTableName: 如果导入到新表，此为新表的表名，系统会以该名称自动创建一张结构相同的空表
+        :type NewTableName: str
+        """
+        self.ClusterId = None
+        self.Snapshots = None
+        self.ImportSpecialKey = None
+        self.ImportOriginTable = None
+        self.KeyFile = None
+        self.NewTableGroupId = None
+        self.NewTableName = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("Snapshots") is not None:
+            self.Snapshots = SnapshotInfo()
+            self.Snapshots._deserialize(params.get("Snapshots"))
+        self.ImportSpecialKey = params.get("ImportSpecialKey")
+        self.ImportOriginTable = params.get("ImportOriginTable")
+        if params.get("KeyFile") is not None:
+            self.KeyFile = KeyFile()
+            self.KeyFile._deserialize(params.get("KeyFile"))
+        self.NewTableGroupId = params.get("NewTableGroupId")
+        self.NewTableName = params.get("NewTableName")
+
+
+class ImportSnapshotsResponse(AbstractModel):
+    """ImportSnapshots返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: TaskId由 AppInstanceId-taskId 组成，以区分不同集群的任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class KeyFile(AbstractModel):
+    """部分key导入快照数据时所需要的key文件
+
+    """
+
+    def __init__(self):
+        """
+        :param FileName: key文件名称
+        :type FileName: str
+        :param FileExtType: key文件扩展名
+        :type FileExtType: str
+        :param FileContent: key文件内容
+        :type FileContent: str
+        :param FileSize: key文件大小
+        :type FileSize: int
+        """
+        self.FileName = None
+        self.FileExtType = None
+        self.FileContent = None
+        self.FileSize = None
+
+
+    def _deserialize(self, params):
+        self.FileName = params.get("FileName")
+        self.FileExtType = params.get("FileExtType")
+        self.FileContent = params.get("FileContent")
+        self.FileSize = params.get("FileSize")
+
+
 class MachineInfo(AbstractModel):
     """机器类型和数量
 
@@ -1930,6 +2197,62 @@ class ModifyClusterTagsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifySnapshotsRequest(AbstractModel):
+    """ModifySnapshots请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 表格所属集群id
+        :type ClusterId: str
+        :param SelectedTables: 快照列表
+        :type SelectedTables: list of SnapshotInfoNew
+        """
+        self.ClusterId = None
+        self.SelectedTables = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("SelectedTables") is not None:
+            self.SelectedTables = []
+            for item in params.get("SelectedTables"):
+                obj = SnapshotInfoNew()
+                obj._deserialize(item)
+                self.SelectedTables.append(obj)
+
+
+class ModifySnapshotsResponse(AbstractModel):
+    """ModifySnapshots返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 批量创建的快照数量
+        :type TotalCount: int
+        :param TableResults: 批量创建的快照结果列表
+        :type TableResults: list of SnapshotResult
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.TableResults = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("TableResults") is not None:
+            self.TableResults = []
+            for item in params.get("TableResults"):
+                obj = SnapshotResult()
+                obj._deserialize(item)
+                self.TableResults.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2865,6 +3188,133 @@ class SetTableIndexResponse(AbstractModel):
                 obj._deserialize(item)
                 self.TableResults.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class SnapshotInfo(AbstractModel):
+    """快照列表
+
+    """
+
+    def __init__(self):
+        """
+        :param TableGroupId: 所属表格组ID
+        :type TableGroupId: str
+        :param TableName: 表名称
+        :type TableName: str
+        :param SnapshotName: 快照名称
+        :type SnapshotName: str
+        :param SnapshotTime: 快照时间点
+        :type SnapshotTime: str
+        :param SnapshotDeadTime: 快照过期时间点
+        :type SnapshotDeadTime: str
+        """
+        self.TableGroupId = None
+        self.TableName = None
+        self.SnapshotName = None
+        self.SnapshotTime = None
+        self.SnapshotDeadTime = None
+
+
+    def _deserialize(self, params):
+        self.TableGroupId = params.get("TableGroupId")
+        self.TableName = params.get("TableName")
+        self.SnapshotName = params.get("SnapshotName")
+        self.SnapshotTime = params.get("SnapshotTime")
+        self.SnapshotDeadTime = params.get("SnapshotDeadTime")
+
+
+class SnapshotInfoNew(AbstractModel):
+    """新的快照过期时间
+
+    """
+
+    def __init__(self):
+        """
+        :param TableGroupId: 所属表格组ID
+        :type TableGroupId: str
+        :param TableName: 表名称
+        :type TableName: str
+        :param SnapshotName: 快照名称
+        :type SnapshotName: str
+        :param SnapshotDeadTime: 快照过期时间点
+        :type SnapshotDeadTime: str
+        """
+        self.TableGroupId = None
+        self.TableName = None
+        self.SnapshotName = None
+        self.SnapshotDeadTime = None
+
+
+    def _deserialize(self, params):
+        self.TableGroupId = params.get("TableGroupId")
+        self.TableName = params.get("TableName")
+        self.SnapshotName = params.get("SnapshotName")
+        self.SnapshotDeadTime = params.get("SnapshotDeadTime")
+
+
+class SnapshotResult(AbstractModel):
+    """创建快照结果
+
+    """
+
+    def __init__(self):
+        """
+        :param TableGroupId: 表格所属表格组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableGroupId: str
+        :param TableName: 表格名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableName: str
+        :param TaskId: 任务ID，对于创建单任务的接口有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param Error: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
+        :param SnapshotName: 快照名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SnapshotName: str
+        :param SnapshotTime: 快照的时间点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SnapshotTime: str
+        :param SnapshotDeadTime: 快照的过期时间点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SnapshotDeadTime: str
+        :param SnapshotCreateTime: 快照创建时间点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SnapshotCreateTime: str
+        :param SnapshotSize: 快照大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SnapshotSize: int
+        :param SnapshotStatus: 快照状态，0 生成中 1 正常 2 删除中 3 已失效 4 回档使用中
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SnapshotStatus: int
+        """
+        self.TableGroupId = None
+        self.TableName = None
+        self.TaskId = None
+        self.Error = None
+        self.SnapshotName = None
+        self.SnapshotTime = None
+        self.SnapshotDeadTime = None
+        self.SnapshotCreateTime = None
+        self.SnapshotSize = None
+        self.SnapshotStatus = None
+
+
+    def _deserialize(self, params):
+        self.TableGroupId = params.get("TableGroupId")
+        self.TableName = params.get("TableName")
+        self.TaskId = params.get("TaskId")
+        if params.get("Error") is not None:
+            self.Error = ErrorInfo()
+            self.Error._deserialize(params.get("Error"))
+        self.SnapshotName = params.get("SnapshotName")
+        self.SnapshotTime = params.get("SnapshotTime")
+        self.SnapshotDeadTime = params.get("SnapshotDeadTime")
+        self.SnapshotCreateTime = params.get("SnapshotCreateTime")
+        self.SnapshotSize = params.get("SnapshotSize")
+        self.SnapshotStatus = params.get("SnapshotStatus")
 
 
 class TableGroupInfo(AbstractModel):

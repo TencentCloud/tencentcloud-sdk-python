@@ -138,6 +138,34 @@ class TcaplusdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateSnapshots(self, request):
+        """构造表格过去时间点的快照
+
+        :param request: Request instance for CreateSnapshots.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.CreateSnapshotsRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.CreateSnapshotsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateSnapshots", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateSnapshotsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateTableGroup(self, request):
         """在TcaplusDB集群下创建表格组
 
@@ -236,6 +264,34 @@ class TcaplusdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteIdlFilesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteSnapshots(self, request):
+        """删除表格的快照
+
+        :param request: Request instance for DeleteSnapshots.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DeleteSnapshotsRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.DeleteSnapshotsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteSnapshots", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteSnapshotsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -460,6 +516,34 @@ class TcaplusdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRegionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSnapshots(self, request):
+        """查询快照列表
+
+        :param request: Request instance for DescribeSnapshots.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DescribeSnapshotsRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.DescribeSnapshotsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSnapshots", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSnapshotsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -726,6 +810,34 @@ class TcaplusdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ImportSnapshots(self, request):
+        """将快照数据导入到新表或当前表
+
+        :param request: Request instance for ImportSnapshots.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.ImportSnapshotsRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ImportSnapshotsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ImportSnapshots", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ImportSnapshotsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyClusterMachine(self, request):
         """修改独占集群机器
 
@@ -824,6 +936,34 @@ class TcaplusdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyClusterTagsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifySnapshots(self, request):
+        """修改表格快照的过期时间
+
+        :param request: Request instance for ModifySnapshots.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.ModifySnapshotsRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ModifySnapshotsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifySnapshots", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifySnapshotsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
