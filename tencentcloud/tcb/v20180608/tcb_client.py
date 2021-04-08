@@ -334,6 +334,34 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteWxGatewayRoute(self, request):
+        """删除安全网关路由
+
+        :param request: Request instance for DeleteWxGatewayRoute.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DeleteWxGatewayRouteRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DeleteWxGatewayRouteResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteWxGatewayRoute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteWxGatewayRouteResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeAuthDomains(self, request):
         """获取安全域名列表
 
@@ -1051,6 +1079,34 @@ class TcbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EstablishCloudBaseRunServerResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def EstablishWxGatewayRoute(self, request):
+        """创建或修改安全网关路由
+
+        :param request: Request instance for EstablishWxGatewayRoute.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.EstablishWxGatewayRouteRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.EstablishWxGatewayRouteResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("EstablishWxGatewayRoute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EstablishWxGatewayRouteResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

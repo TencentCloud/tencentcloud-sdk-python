@@ -315,22 +315,22 @@ class CreateAclRequest(AbstractModel):
         :type InstanceId: str
         :param ResourceType: Acl资源类型，(0:UNKNOWN，1:ANY，2:TOPIC，3:GROUP，4:CLUSTER，5:TRANSACTIONAL_ID)，当前只有TOPIC，其它字段用于后续兼容开源kafka的acl时使用
         :type ResourceType: int
-        :param ResourceName: 资源名称，和resourceType相关，如当resourceType为TOPIC时，则该字段表示topic名称，当resourceType为GROUP时，该字段表示group名称
-        :type ResourceName: str
         :param Operation: Acl操作方式，(0:UNKNOWN，1:ANY，2:ALL，3:READ，4:WRITE，5:CREATE，6:DELETE，7:ALTER，8:DESCRIBE，9:CLUSTER_ACTION，10:DESCRIBE_CONFIGS，11:ALTER_CONFIGS)
         :type Operation: int
         :param PermissionType: 权限类型，(0:UNKNOWN，1:ANY，2:DENY，3:ALLOW)，当前ckakfa支持ALLOW(相当于白名单)，其它用于后续兼容开源kafka的acl时使用
         :type PermissionType: int
+        :param ResourceName: 资源名称，和resourceType相关，如当resourceType为TOPIC时，则该字段表示topic名称，当resourceType为GROUP时，该字段表示group名称
+        :type ResourceName: str
         :param Host: 默认为\*，表示任何host都可以访问，当前ckafka不支持host为\*，但是后面开源kafka的产品化会直接支持
         :type Host: str
-        :param Principal: 用户列表，默认为*，表示任何user都可以访问，当前用户只能是用户列表中包含的用户
+        :param Principal: 用户列表，默认为User:*，表示任何user都可以访问，当前用户只能是用户列表中包含的用户。传入时需要加 User: 前缀,如用户A则传入User:A。
         :type Principal: str
         """
         self.InstanceId = None
         self.ResourceType = None
-        self.ResourceName = None
         self.Operation = None
         self.PermissionType = None
+        self.ResourceName = None
         self.Host = None
         self.Principal = None
 
@@ -338,9 +338,9 @@ class CreateAclRequest(AbstractModel):
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.ResourceType = params.get("ResourceType")
-        self.ResourceName = params.get("ResourceName")
         self.Operation = params.get("Operation")
         self.PermissionType = params.get("PermissionType")
+        self.ResourceName = params.get("ResourceName")
         self.Host = params.get("Host")
         self.Principal = params.get("Principal")
 
@@ -774,6 +774,48 @@ class DeleteAclResponse(AbstractModel):
         if params.get("Result") is not None:
             self.Result = JgwOperateResponse()
             self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteAclRuleRequest(AbstractModel):
+    """DeleteAclRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例id信息
+        :type InstanceId: str
+        :param RuleName: acl规则名称
+        :type RuleName: str
+        """
+        self.InstanceId = None
+        self.RuleName = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.RuleName = params.get("RuleName")
+
+
+class DeleteAclRuleResponse(AbstractModel):
+    """DeleteAclRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 返回被删除的规则的ID
+        :type Result: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
 
 

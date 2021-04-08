@@ -16,6 +16,44 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ApplyInstanceSnapshotRequest(AbstractModel):
+    """ApplyInstanceSnapshot请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例 ID。
+        :type InstanceId: str
+        :param SnapshotId: 快照 ID。
+        :type SnapshotId: str
+        """
+        self.InstanceId = None
+        self.SnapshotId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.SnapshotId = params.get("SnapshotId")
+
+
+class ApplyInstanceSnapshotResponse(AbstractModel):
+    """ApplyInstanceSnapshot返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class Blueprint(AbstractModel):
     """描述了镜像信息。
 
@@ -170,6 +208,52 @@ class Bundle(AbstractModel):
         self.BundleDisplayLabel = params.get("BundleDisplayLabel")
 
 
+class CreateBlueprintRequest(AbstractModel):
+    """CreateBlueprint请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BlueprintName: 镜像名称。最大长度60。
+        :type BlueprintName: str
+        :param Description: 镜像描述。最大长度60。
+        :type Description: str
+        :param InstanceId: 需要制作镜像的实例ID。
+        :type InstanceId: str
+        """
+        self.BlueprintName = None
+        self.Description = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.BlueprintName = params.get("BlueprintName")
+        self.Description = params.get("Description")
+        self.InstanceId = params.get("InstanceId")
+
+
+class CreateBlueprintResponse(AbstractModel):
+    """CreateBlueprint返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BlueprintId: 自定义镜像ID。
+        :type BlueprintId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BlueprintId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BlueprintId = params.get("BlueprintId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateFirewallRulesRequest(AbstractModel):
     """CreateFirewallRules请求参数结构体
 
@@ -217,6 +301,82 @@ class CreateFirewallRulesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateInstanceSnapshotRequest(AbstractModel):
+    """CreateInstanceSnapshot请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 需要创建快照的实例 ID。
+        :type InstanceId: str
+        :param SnapshotName: 快照名称，最长为 60 个字符。
+        :type SnapshotName: str
+        """
+        self.InstanceId = None
+        self.SnapshotName = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.SnapshotName = params.get("SnapshotName")
+
+
+class CreateInstanceSnapshotResponse(AbstractModel):
+    """CreateInstanceSnapshot返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SnapshotId: 快照 ID。
+        :type SnapshotId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SnapshotId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SnapshotId = params.get("SnapshotId")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteBlueprintsRequest(AbstractModel):
+    """DeleteBlueprints请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BlueprintIds: 镜像ID列表。镜像ID，可通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回值中的BlueprintId获取。
+        :type BlueprintIds: list of str
+        """
+        self.BlueprintIds = None
+
+
+    def _deserialize(self, params):
+        self.BlueprintIds = params.get("BlueprintIds")
+
+
+class DeleteBlueprintsResponse(AbstractModel):
+    """DeleteBlueprints返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteFirewallRulesRequest(AbstractModel):
     """DeleteFirewallRules请求参数结构体
 
@@ -249,6 +409,40 @@ class DeleteFirewallRulesRequest(AbstractModel):
 
 class DeleteFirewallRulesResponse(AbstractModel):
     """DeleteFirewallRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteSnapshotsRequest(AbstractModel):
+    """DeleteSnapshots请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SnapshotIds: 要删除的快照 ID 列表，可通过 DescribeSnapshots 查询。
+        :type SnapshotIds: list of str
+        """
+        self.SnapshotIds = None
+
+
+    def _deserialize(self, params):
+        self.SnapshotIds = params.get("SnapshotIds")
+
+
+class DeleteSnapshotsResponse(AbstractModel):
+    """DeleteSnapshots返回参数结构体
 
     """
 
@@ -600,6 +794,84 @@ class DescribeInstancesTrafficPackagesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSnapshotsRequest(AbstractModel):
+    """DescribeSnapshots请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SnapshotIds: 要查询快照的 ID 列表。
+参数不支持同时指定 SnapshotIds 和 Filters。
+        :type SnapshotIds: list of str
+        :param Filters: 过滤器列表。
+<li>snapshot-id</li>按照【快照 ID】进行过滤。
+类型：String
+必选：否
+<li>disk-id</li>按照【磁盘 ID】进行过滤。
+类型：String
+必选：否
+<li>snapshot-name</li>按照【快照名称】进行过滤。
+类型：String
+必选：否
+<li>instance-id</li>按照【实例 ID 】进行过滤。
+类型：String
+必选：否
+每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 SnapshotIds 和 Filters。
+        :type Filters: list of Filter
+        :param Offset: 偏移量，默认为 0。
+        :type Offset: int
+        :param Limit: 返回数量，默认为 20，最大值为 100。
+        :type Limit: int
+        """
+        self.SnapshotIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.SnapshotIds = params.get("SnapshotIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeSnapshotsResponse(AbstractModel):
+    """DescribeSnapshots返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 快照的数量。
+        :type TotalCount: int
+        :param SnapshotSet: 快照的详情列表。
+        :type SnapshotSet: list of Snapshot
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.SnapshotSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("SnapshotSet") is not None:
+            self.SnapshotSet = []
+            for item in params.get("SnapshotSet"):
+                obj = Snapshot()
+                obj._deserialize(item)
+                self.SnapshotSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class Filter(AbstractModel):
     """>描述键值对过滤器，用于条件过滤查询。例如过滤名称等
     > * 若存在多个`Filter`时，`Filter`间的关系为逻辑与（`AND`）关系。
@@ -930,6 +1202,86 @@ class LoginSettings(AbstractModel):
         self.KeyIds = params.get("KeyIds")
 
 
+class ModifyBlueprintAttributeRequest(AbstractModel):
+    """ModifyBlueprintAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BlueprintId: 镜像 ID。可通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回值中的BlueprintId获取。
+        :type BlueprintId: str
+        :param BlueprintName: 设置新的镜像名称。最大长度60。
+        :type BlueprintName: str
+        :param Description: 设置新的镜像描述。最大长度60。
+        :type Description: str
+        """
+        self.BlueprintId = None
+        self.BlueprintName = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.BlueprintId = params.get("BlueprintId")
+        self.BlueprintName = params.get("BlueprintName")
+        self.Description = params.get("Description")
+
+
+class ModifyBlueprintAttributeResponse(AbstractModel):
+    """ModifyBlueprintAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifySnapshotAttributeRequest(AbstractModel):
+    """ModifySnapshotAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SnapshotId: 快照 ID, 可通过 DescribeSnapshots 查询。
+        :type SnapshotId: str
+        :param SnapshotName: 新的快照名称，最长为 60 个字符。
+        :type SnapshotName: str
+        """
+        self.SnapshotId = None
+        self.SnapshotName = None
+
+
+    def _deserialize(self, params):
+        self.SnapshotId = params.get("SnapshotId")
+        self.SnapshotName = params.get("SnapshotName")
+
+
+class ModifySnapshotAttributeResponse(AbstractModel):
+    """ModifySnapshotAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class Price(AbstractModel):
     """价格信息
 
@@ -1019,6 +1371,74 @@ class ResetInstanceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class Snapshot(AbstractModel):
+    """描述了快照相关信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param SnapshotId: 快照 ID。
+        :type SnapshotId: str
+        :param DiskUsage: 创建此快照的磁盘类型。取值：<li>SYSTEM_DISK：系统盘</li>
+        :type DiskUsage: str
+        :param DiskId: 创建此快照的磁盘 ID。
+        :type DiskId: str
+        :param DiskSize: 创建此快照的磁盘大小，单位 GB。
+        :type DiskSize: int
+        :param SnapshotName: 快照名称，用户自定义的快照别名。
+        :type SnapshotName: str
+        :param SnapshotState: 快照的状态。取值范围：
+<li>NORMAL：正常 </li>
+<li>CREATING：创建中</li>
+<li>ROLLBACKING：回滚中。</li>
+        :type SnapshotState: str
+        :param Percent: 创建或回滚快照进度百分比，成功后此字段取值为 100。
+        :type Percent: int
+        :param LatestOperation: 快照的最新操作，只有创建、回滚快照时记录。
+取值如 CreateInstanceSnapshot，RollbackInstanceSnapshot。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LatestOperation: str
+        :param LatestOperationState: 快照的最新操作状态，只有创建、回滚快照时记录。
+取值范围：
+<li>SUCCESS：表示操作成功</li>
+<li>OPERATING：表示操作执行中</li>
+<li>FAILED：表示操作失败</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LatestOperationState: str
+        :param LatestOperationRequestId: 快照最新操作的唯一请求 ID，只有创建、回滚快照时记录。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LatestOperationRequestId: str
+        :param CreatedTime: 快照的创建时间。
+        :type CreatedTime: str
+        """
+        self.SnapshotId = None
+        self.DiskUsage = None
+        self.DiskId = None
+        self.DiskSize = None
+        self.SnapshotName = None
+        self.SnapshotState = None
+        self.Percent = None
+        self.LatestOperation = None
+        self.LatestOperationState = None
+        self.LatestOperationRequestId = None
+        self.CreatedTime = None
+
+
+    def _deserialize(self, params):
+        self.SnapshotId = params.get("SnapshotId")
+        self.DiskUsage = params.get("DiskUsage")
+        self.DiskId = params.get("DiskId")
+        self.DiskSize = params.get("DiskSize")
+        self.SnapshotName = params.get("SnapshotName")
+        self.SnapshotState = params.get("SnapshotState")
+        self.Percent = params.get("Percent")
+        self.LatestOperation = params.get("LatestOperation")
+        self.LatestOperationState = params.get("LatestOperationState")
+        self.LatestOperationRequestId = params.get("LatestOperationRequestId")
+        self.CreatedTime = params.get("CreatedTime")
 
 
 class StartInstancesRequest(AbstractModel):

@@ -1588,6 +1588,44 @@ class DeleteEndUserResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteWxGatewayRouteRequest(AbstractModel):
+    """DeleteWxGatewayRoute请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境id
+        :type EnvId: str
+        :param GatewayRouteName: 服务名称
+        :type GatewayRouteName: str
+        """
+        self.EnvId = None
+        self.GatewayRouteName = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.GatewayRouteName = params.get("GatewayRouteName")
+
+
+class DeleteWxGatewayRouteResponse(AbstractModel):
+    """DeleteWxGatewayRoute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAuthDomainsRequest(AbstractModel):
     """DescribeAuthDomains请求参数结构体
 
@@ -3565,6 +3603,56 @@ class EstablishCloudBaseRunServerRequest(AbstractModel):
 
 class EstablishCloudBaseRunServerResponse(AbstractModel):
     """EstablishCloudBaseRunServer返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class EstablishWxGatewayRouteRequest(AbstractModel):
+    """EstablishWxGatewayRoute请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GatewayId: 网关id
+        :type GatewayId: str
+        :param GatewayRouteName: 服务名称
+        :type GatewayRouteName: str
+        :param GatewayRouteAddr: 服务地址
+        :type GatewayRouteAddr: str
+        :param GatewayRouteProtocol: 协议类型 http/https
+        :type GatewayRouteProtocol: str
+        :param GatewayRouteDesc: 服务描述
+        :type GatewayRouteDesc: str
+        """
+        self.GatewayId = None
+        self.GatewayRouteName = None
+        self.GatewayRouteAddr = None
+        self.GatewayRouteProtocol = None
+        self.GatewayRouteDesc = None
+
+
+    def _deserialize(self, params):
+        self.GatewayId = params.get("GatewayId")
+        self.GatewayRouteName = params.get("GatewayRouteName")
+        self.GatewayRouteAddr = params.get("GatewayRouteAddr")
+        self.GatewayRouteProtocol = params.get("GatewayRouteProtocol")
+        self.GatewayRouteDesc = params.get("GatewayRouteDesc")
+
+
+class EstablishWxGatewayRouteResponse(AbstractModel):
+    """EstablishWxGatewayRoute返回参数结构体
 
     """
 

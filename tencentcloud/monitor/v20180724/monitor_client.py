@@ -563,7 +563,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeBaseMetrics(self, request):
-        """获取基础指标详情
+        """获取基础指标属性
 
         :param request: Request instance for DescribeBaseMetrics.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeBaseMetricsRequest`

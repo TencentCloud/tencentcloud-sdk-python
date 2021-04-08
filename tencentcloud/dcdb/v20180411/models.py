@@ -2491,18 +2491,22 @@ class KillSessionRequest(AbstractModel):
         :type InstanceId: str
         :param SessionId: 会话ID列表
         :type SessionId: list of int
-        :param ShardId: 分片ID
+        :param ShardId: 分片ID，与ShardSerialId设置一个
         :type ShardId: str
+        :param ShardSerialId: 分片序列ID，与ShardId设置一个
+        :type ShardSerialId: str
         """
         self.InstanceId = None
         self.SessionId = None
         self.ShardId = None
+        self.ShardSerialId = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.SessionId = params.get("SessionId")
         self.ShardId = params.get("ShardId")
+        self.ShardSerialId = params.get("ShardSerialId")
 
 
 class KillSessionResponse(AbstractModel):
