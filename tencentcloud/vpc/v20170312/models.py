@@ -1409,6 +1409,8 @@ class CcnAttachedInstance(AbstractModel):
         :type CcnUin: str
         :param InstanceArea: 关联实例所属的大地域，如: CHINA_MAINLAND
         :type InstanceArea: str
+        :param Description: 备注
+        :type Description: str
         """
         self.CcnId = None
         self.InstanceType = None
@@ -1421,6 +1423,7 @@ class CcnAttachedInstance(AbstractModel):
         self.AttachedTime = None
         self.CcnUin = None
         self.InstanceArea = None
+        self.Description = None
 
 
     def _deserialize(self, params):
@@ -1435,6 +1438,7 @@ class CcnAttachedInstance(AbstractModel):
         self.AttachedTime = params.get("AttachedTime")
         self.CcnUin = params.get("CcnUin")
         self.InstanceArea = params.get("InstanceArea")
+        self.Description = params.get("Description")
 
 
 class CcnBandwidthInfo(AbstractModel):
@@ -1499,16 +1503,20 @@ class CcnInstance(AbstractModel):
 <li>`BMVPC`：黑石私有网络</li>
 <li>`VPNGW`：VPNGW类型</li>
         :type InstanceType: str
+        :param Description: 备注
+        :type Description: str
         """
         self.InstanceId = None
         self.InstanceRegion = None
         self.InstanceType = None
+        self.Description = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.InstanceRegion = params.get("InstanceRegion")
         self.InstanceType = params.get("InstanceType")
+        self.Description = params.get("Description")
 
 
 class CcnRegionBandwidthLimit(AbstractModel):
@@ -2752,6 +2760,54 @@ class CreateIp6TranslatorsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateLocalGatewayRequest(AbstractModel):
+    """CreateLocalGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LocalGatewayName: 本地网关名称
+        :type LocalGatewayName: str
+        :param VpcId: VPC实例ID
+        :type VpcId: str
+        :param CdcId: CDC实例ID
+        :type CdcId: str
+        """
+        self.LocalGatewayName = None
+        self.VpcId = None
+        self.CdcId = None
+
+
+    def _deserialize(self, params):
+        self.LocalGatewayName = params.get("LocalGatewayName")
+        self.VpcId = params.get("VpcId")
+        self.CdcId = params.get("CdcId")
+
+
+class CreateLocalGatewayResponse(AbstractModel):
+    """CreateLocalGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LocalGateway: 本地网关信息
+        :type LocalGateway: :class:`tencentcloud.vpc.v20170312.models.LocalGateway`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LocalGateway = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("LocalGateway") is not None:
+            self.LocalGateway = LocalGateway()
+            self.LocalGateway._deserialize(params.get("LocalGateway"))
+        self.RequestId = params.get("RequestId")
+
+
 class CreateNatGatewayDestinationIpPortTranslationNatRuleRequest(AbstractModel):
     """CreateNatGatewayDestinationIpPortTranslationNatRule请求参数结构体
 
@@ -3483,12 +3539,15 @@ class CreateSubnetRequest(AbstractModel):
         :type Zone: str
         :param Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
         :type Tags: list of Tag
+        :param CdcId: CDC实例ID。
+        :type CdcId: str
         """
         self.VpcId = None
         self.SubnetName = None
         self.CidrBlock = None
         self.Zone = None
         self.Tags = None
+        self.CdcId = None
 
 
     def _deserialize(self, params):
@@ -3502,6 +3561,7 @@ class CreateSubnetRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.CdcId = params.get("CdcId")
 
 
 class CreateSubnetResponse(AbstractModel):
@@ -3540,10 +3600,13 @@ class CreateSubnetsRequest(AbstractModel):
         :type Subnets: list of SubnetInput
         :param Tags: 指定绑定的标签列表，注意这里的标签集合为列表中所有子网对象所共享，不能为每个子网对象单独指定标签，例如：[{"Key": "city", "Value": "shanghai"}]
         :type Tags: list of Tag
+        :param CdcId: 需要增加到的CDC实例ID。
+        :type CdcId: str
         """
         self.VpcId = None
         self.Subnets = None
         self.Tags = None
+        self.CdcId = None
 
 
     def _deserialize(self, params):
@@ -3560,6 +3623,7 @@ class CreateSubnetsRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.CdcId = params.get("CdcId")
 
 
 class CreateSubnetsResponse(AbstractModel):
@@ -4468,6 +4532,48 @@ class DeleteIp6TranslatorsRequest(AbstractModel):
 
 class DeleteIp6TranslatorsResponse(AbstractModel):
     """DeleteIp6Translators返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLocalGatewayRequest(AbstractModel):
+    """DeleteLocalGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LocalGatewayId: 本地网关实例ID
+        :type LocalGatewayId: str
+        :param CdcId: CDC实例ID
+        :type CdcId: str
+        :param VpcId: VPC实例ID
+        :type VpcId: str
+        """
+        self.LocalGatewayId = None
+        self.CdcId = None
+        self.VpcId = None
+
+
+    def _deserialize(self, params):
+        self.LocalGatewayId = params.get("LocalGatewayId")
+        self.CdcId = params.get("CdcId")
+        self.VpcId = params.get("VpcId")
+
+
+class DeleteLocalGatewayResponse(AbstractModel):
+    """DeleteLocalGateway返回参数结构体
 
     """
 
@@ -6974,6 +7080,67 @@ class DescribeIpGeolocationInfosResponse(AbstractModel):
                 obj._deserialize(item)
                 self.AddressInfo.append(obj)
         self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLocalGatewayRequest(AbstractModel):
+    """DescribeLocalGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Filters: 查询条件：
+vpc-id：按照VPCID过滤，local-gateway-name：按照本地网关名称过滤，名称支持模糊搜索，local-gateway-id：按照本地网关实例ID过滤，cdc-id：按照cdc实例ID过滤查询。
+        :type Filters: list of Filter
+        :param Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/11646)中的相关小节。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/11646)中的相关小节。
+        :type Limit: int
+        """
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeLocalGatewayResponse(AbstractModel):
+    """DescribeLocalGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LocalGatewaySet: 本地网关信息集合
+        :type LocalGatewaySet: list of LocalGateway
+        :param TotalCount: 本地网关总数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LocalGatewaySet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("LocalGatewaySet") is not None:
+            self.LocalGatewaySet = []
+            for item in params.get("LocalGatewaySet"):
+                obj = LocalGateway()
+                obj._deserialize(item)
+                self.LocalGatewaySet.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -10532,6 +10699,43 @@ class ItemPrice(AbstractModel):
         self.DiscountPrice = params.get("DiscountPrice")
 
 
+class LocalGateway(AbstractModel):
+    """本地网关信息
+
+    """
+
+    def __init__(self):
+        """
+        :param CdcId: CDC实例ID
+        :type CdcId: str
+        :param VpcId: VPC实例ID
+        :type VpcId: str
+        :param UniqLocalGwId: 本地网关实例ID
+        :type UniqLocalGwId: str
+        :param LocalGatewayName: 本地网关名称
+        :type LocalGatewayName: str
+        :param LocalGwIp: 本地网关IP地址
+        :type LocalGwIp: str
+        :param CreateTime: 本地网关创建时间
+        :type CreateTime: str
+        """
+        self.CdcId = None
+        self.VpcId = None
+        self.UniqLocalGwId = None
+        self.LocalGatewayName = None
+        self.LocalGwIp = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.CdcId = params.get("CdcId")
+        self.VpcId = params.get("VpcId")
+        self.UniqLocalGwId = params.get("UniqLocalGwId")
+        self.LocalGatewayName = params.get("LocalGatewayName")
+        self.LocalGwIp = params.get("LocalGwIp")
+        self.CreateTime = params.get("CreateTime")
+
+
 class MigrateNetworkInterfaceRequest(AbstractModel):
     """MigrateNetworkInterface请求参数结构体
 
@@ -10919,6 +11123,49 @@ class ModifyBandwidthPackageAttributeRequest(AbstractModel):
 
 class ModifyBandwidthPackageAttributeResponse(AbstractModel):
     """ModifyBandwidthPackageAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyCcnAttachedInstancesAttributeRequest(AbstractModel):
+    """ModifyCcnAttachedInstancesAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CcnId: CCN实例ID。形如：ccn-f49l6u0z。
+        :type CcnId: str
+        :param Instances: 关联网络实例列表
+        :type Instances: list of CcnInstance
+        """
+        self.CcnId = None
+        self.Instances = None
+
+
+    def _deserialize(self, params):
+        self.CcnId = params.get("CcnId")
+        if params.get("Instances") is not None:
+            self.Instances = []
+            for item in params.get("Instances"):
+                obj = CcnInstance()
+                obj._deserialize(item)
+                self.Instances.append(obj)
+
+
+class ModifyCcnAttachedInstancesAttributeResponse(AbstractModel):
+    """ModifyCcnAttachedInstancesAttribute返回参数结构体
 
     """
 
@@ -11423,6 +11670,52 @@ class ModifyIpv6AddressesAttributeRequest(AbstractModel):
 
 class ModifyIpv6AddressesAttributeResponse(AbstractModel):
     """ModifyIpv6AddressesAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyLocalGatewayRequest(AbstractModel):
+    """ModifyLocalGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LocalGatewayName: 本地网关名称
+        :type LocalGatewayName: str
+        :param CdcId: CDC实例ID
+        :type CdcId: str
+        :param LocalGatewayId: 本地网关实例ID
+        :type LocalGatewayId: str
+        :param VpcId: VPC实例ID
+        :type VpcId: str
+        """
+        self.LocalGatewayName = None
+        self.CdcId = None
+        self.LocalGatewayId = None
+        self.VpcId = None
+
+
+    def _deserialize(self, params):
+        self.LocalGatewayName = params.get("LocalGatewayName")
+        self.CdcId = params.get("CdcId")
+        self.LocalGatewayId = params.get("LocalGatewayId")
+        self.VpcId = params.get("VpcId")
+
+
+class ModifyLocalGatewayResponse(AbstractModel):
+    """ModifyLocalGateway返回参数结构体
 
     """
 
@@ -12749,6 +13042,9 @@ class NetworkInterface(AbstractModel):
         :param Business: 网卡绑定的子机类型：cvm，eks。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Business: str
+        :param CdcId: 网卡所关联的CDC实例ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CdcId: str
         """
         self.NetworkInterfaceId = None
         self.NetworkInterfaceName = None
@@ -12767,6 +13063,7 @@ class NetworkInterface(AbstractModel):
         self.TagSet = None
         self.EniType = None
         self.Business = None
+        self.CdcId = None
 
 
     def _deserialize(self, params):
@@ -12804,6 +13101,7 @@ class NetworkInterface(AbstractModel):
                 self.TagSet.append(obj)
         self.EniType = params.get("EniType")
         self.Business = params.get("Business")
+        self.CdcId = params.get("CdcId")
 
 
 class NetworkInterfaceAttachment(AbstractModel):
@@ -13419,13 +13717,31 @@ class ReplaceRoutesResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param OldRouteSet: 原路由策略信息。
+        :type OldRouteSet: list of Route
+        :param NewRouteSet: 修改后的路由策略信息。
+        :type NewRouteSet: list of Route
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.OldRouteSet = None
+        self.NewRouteSet = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("OldRouteSet") is not None:
+            self.OldRouteSet = []
+            for item in params.get("OldRouteSet"):
+                obj = Route()
+                obj._deserialize(item)
+                self.OldRouteSet.append(obj)
+        if params.get("NewRouteSet") is not None:
+            self.NewRouteSet = []
+            for item in params.get("NewRouteSet"):
+                obj = Route()
+                obj._deserialize(item)
+                self.NewRouteSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -13907,7 +14223,8 @@ SSLVPN：sslvpn网关；
 NAT：NAT网关; 
 NORMAL_CVM：普通云服务器；
 EIP：云服务器的公网IP；
-CCN：云联网。
+CCN：云联网；
+LOCAL_GATEWAY：本地网关。
         :type GatewayType: str
         :param GatewayId: 下一跳地址，这里只需要指定不同下一跳类型的网关ID，系统会自动匹配到下一跳地址。
 特别注意：当 GatewayType 为 EIP 时，GatewayId 固定值 '0'
@@ -14553,6 +14870,12 @@ class Subnet(AbstractModel):
         :type TotalIpAddressCount: int
         :param TagSet: 标签键值对。
         :type TagSet: list of Tag
+        :param CdcId: CDC实例ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CdcId: str
+        :param IsCdcSubnet: 是否是CDC所属子网。0:否 1:是
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsCdcSubnet: int
         """
         self.VpcId = None
         self.SubnetId = None
@@ -14569,6 +14892,8 @@ class Subnet(AbstractModel):
         self.IsRemoteVpcSnat = None
         self.TotalIpAddressCount = None
         self.TagSet = None
+        self.CdcId = None
+        self.IsCdcSubnet = None
 
 
     def _deserialize(self, params):
@@ -14592,6 +14917,8 @@ class Subnet(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.TagSet.append(obj)
+        self.CdcId = params.get("CdcId")
+        self.IsCdcSubnet = params.get("IsCdcSubnet")
 
 
 class SubnetInput(AbstractModel):

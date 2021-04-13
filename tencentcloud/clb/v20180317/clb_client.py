@@ -1765,7 +1765,7 @@ class ClbClient(AbstractClient):
 
 
     def SetLoadBalancerClsLog(self, request):
-        """增加、删除、更新负载均衡的日志服务(CLS)主题
+        """增加、删除、更新负载均衡的日志服务(CLS)主题。
 
         :param request: Request instance for SetLoadBalancerClsLog.
         :type request: :class:`tencentcloud.clb.v20180317.models.SetLoadBalancerClsLogRequest`

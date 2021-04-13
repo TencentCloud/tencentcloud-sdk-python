@@ -1327,15 +1327,63 @@ class DescribeAccountBalanceResponse(AbstractModel):
         """
         :param Balance: 云账户信息中的”展示可用余额”字段，单位为"分"
         :type Balance: int
+        :param Uin: 查询的用户Uin
+        :type Uin: int
+        :param RealBalance: 当前真实可用余额
+        :type RealBalance: float
+        :param CashAccountBalance: 现金账户余额
+        :type CashAccountBalance: float
+        :param IncomeIntoAccountBalance: 收益转入账户余额
+        :type IncomeIntoAccountBalance: float
+        :param PresentAccountBalance: 赠送账户余额
+        :type PresentAccountBalance: float
+        :param FreezeAmount: 冻结金额
+        :type FreezeAmount: float
+        :param OweAmount: 欠费金额
+        :type OweAmount: float
+        :param IsAllowArrears: 是否允许欠费消费
+        :type IsAllowArrears: bool
+        :param IsCreditLimited: 是否限制信用额度
+        :type IsCreditLimited: bool
+        :param CreditAmount: 信用额度
+        :type CreditAmount: float
+        :param CreditBalance: 可用信用额度
+        :type CreditBalance: float
+        :param RealCreditBalance: 真实可用信用额度
+        :type RealCreditBalance: float
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Balance = None
+        self.Uin = None
+        self.RealBalance = None
+        self.CashAccountBalance = None
+        self.IncomeIntoAccountBalance = None
+        self.PresentAccountBalance = None
+        self.FreezeAmount = None
+        self.OweAmount = None
+        self.IsAllowArrears = None
+        self.IsCreditLimited = None
+        self.CreditAmount = None
+        self.CreditBalance = None
+        self.RealCreditBalance = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.Balance = params.get("Balance")
+        self.Uin = params.get("Uin")
+        self.RealBalance = params.get("RealBalance")
+        self.CashAccountBalance = params.get("CashAccountBalance")
+        self.IncomeIntoAccountBalance = params.get("IncomeIntoAccountBalance")
+        self.PresentAccountBalance = params.get("PresentAccountBalance")
+        self.FreezeAmount = params.get("FreezeAmount")
+        self.OweAmount = params.get("OweAmount")
+        self.IsAllowArrears = params.get("IsAllowArrears")
+        self.IsCreditLimited = params.get("IsCreditLimited")
+        self.CreditAmount = params.get("CreditAmount")
+        self.CreditBalance = params.get("CreditBalance")
+        self.RealCreditBalance = params.get("RealCreditBalance")
         self.RequestId = params.get("RequestId")
 
 

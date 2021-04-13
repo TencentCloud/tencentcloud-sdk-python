@@ -1781,6 +1781,44 @@ class MediaRecognitionTaskResult(AbstractModel):
             self.SubtitleResults._deserialize(params.get("SubtitleResults"))
 
 
+class MediaResultInfo(AbstractModel):
+    """结果文件媒体信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Duration: 媒体时长，单位：毫秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Duration: int
+        :param ResultVideoInfoSet: 视频流信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultVideoInfoSet: list of ResultVideoInfo
+        :param ResultAudioInfoSet: 音频流信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultAudioInfoSet: list of ResultAudioInfo
+        """
+        self.Duration = None
+        self.ResultVideoInfoSet = None
+        self.ResultAudioInfoSet = None
+
+
+    def _deserialize(self, params):
+        self.Duration = params.get("Duration")
+        if params.get("ResultVideoInfoSet") is not None:
+            self.ResultVideoInfoSet = []
+            for item in params.get("ResultVideoInfoSet"):
+                obj = ResultVideoInfo()
+                obj._deserialize(item)
+                self.ResultVideoInfoSet.append(obj)
+        if params.get("ResultAudioInfoSet") is not None:
+            self.ResultAudioInfoSet = []
+            for item in params.get("ResultAudioInfoSet"):
+                obj = ResultAudioInfo()
+                obj._deserialize(item)
+                self.ResultAudioInfoSet.append(obj)
+
+
 class MediaSourceInfo(AbstractModel):
     """编辑处理的媒体源
 
@@ -1791,6 +1829,7 @@ class MediaSourceInfo(AbstractModel):
         :param DownInfo: 媒体源资源下载信息。
         :type DownInfo: :class:`tencentcloud.ie.v20200304.models.DownInfo`
         :param Id: 媒体源ID标记，用于多个输入源时，请内媒体源的定位，对于多输入的任务，一般要求必选。
+ID只能包含字母、数字、下划线、中划线，长读不能超过128。
         :type Id: str
         :param Type: 媒体源类型，具体类型如下：
 Video：视频
@@ -2280,6 +2319,67 @@ class QualityControlResultItems(AbstractModel):
                 obj = QualityControlItem()
                 obj._deserialize(item)
                 self.QualityControlItems.append(obj)
+
+
+class ResultAudioInfo(AbstractModel):
+    """结果媒体文件的视频流信息
+
+    """
+
+    def __init__(self):
+        """
+        :param StreamId: 流在媒体文件中的流ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StreamId: int
+        :param Duration: 流的时长，单位：毫秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Duration: int
+        """
+        self.StreamId = None
+        self.Duration = None
+
+
+    def _deserialize(self, params):
+        self.StreamId = params.get("StreamId")
+        self.Duration = params.get("Duration")
+
+
+class ResultVideoInfo(AbstractModel):
+    """结果媒体文件的视频流信息
+
+    """
+
+    def __init__(self):
+        """
+        :param StreamId: 流在媒体文件中的流ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StreamId: int
+        :param Duration: 流的时长，单位：毫秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Duration: int
+        :param Width: 画面宽度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Width: int
+        :param Height: 画面高度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Height: int
+        :param Fps: 视频帧率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Fps: int
+        """
+        self.StreamId = None
+        self.Duration = None
+        self.Width = None
+        self.Height = None
+        self.Fps = None
+
+
+    def _deserialize(self, params):
+        self.StreamId = params.get("StreamId")
+        self.Duration = params.get("Duration")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.Fps = params.get("Fps")
 
 
 class SaveInfo(AbstractModel):
@@ -2925,12 +3025,24 @@ class TaskResultFile(AbstractModel):
         :param Url: 文件链接。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
+        :param FileSize: 文件大小，部分任务支持，单位：字节
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileSize: int
+        :param MediaInfo: 媒体信息，对于媒体文件，部分任务支持返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MediaInfo: :class:`tencentcloud.ie.v20200304.models.MediaResultInfo`
         """
         self.Url = None
+        self.FileSize = None
+        self.MediaInfo = None
 
 
     def _deserialize(self, params):
         self.Url = params.get("Url")
+        self.FileSize = params.get("FileSize")
+        if params.get("MediaInfo") is not None:
+            self.MediaInfo = MediaResultInfo()
+            self.MediaInfo._deserialize(params.get("MediaInfo"))
 
 
 class UrlInfo(AbstractModel):

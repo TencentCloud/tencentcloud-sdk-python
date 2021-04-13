@@ -2951,9 +2951,9 @@ class CreateTaskRequest(AbstractModel):
         :type TaskName: str
         :param TaskContent: 任务内容，长度限制65536个字节
         :type TaskContent: str
-        :param ExecuteType: 执行类型，UNICAST/BROADCAST
+        :param ExecuteType: 执行类型，unicast/broadcast
         :type ExecuteType: str
-        :param TaskType: 任务类型
+        :param TaskType: 任务类型,java
         :type TaskType: str
         :param TimeOut: 任务超时时间， 时间单位 ms
         :type TimeOut: int

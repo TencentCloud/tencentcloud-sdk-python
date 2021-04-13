@@ -510,6 +510,34 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateInvoiceV2(self, request):
+        """智慧零售-发票开具V2
+
+        :param request: Request instance for CreateInvoiceV2.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.CreateInvoiceV2Request`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.CreateInvoiceV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateInvoiceV2", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateInvoiceV2Response()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateMerchant(self, request):
         """智慧零售-商户注册
 
@@ -552,6 +580,34 @@ class CpdpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateRedInvoiceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateRedInvoiceV2(self, request):
+        """智慧零售-发票红冲V2
+
+        :param request: Request instance for CreateRedInvoiceV2.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.CreateRedInvoiceV2Request`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.CreateRedInvoiceV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateRedInvoiceV2", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateRedInvoiceV2Response()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1336,6 +1392,34 @@ class CpdpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryInvoiceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryInvoiceV2(self, request):
+        """智慧零售-发票查询V2
+
+        :param request: Request instance for QueryInvoiceV2.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryInvoiceV2Request`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryInvoiceV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryInvoiceV2", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryInvoiceV2Response()
                 model._deserialize(response["Response"])
                 return model
             else:

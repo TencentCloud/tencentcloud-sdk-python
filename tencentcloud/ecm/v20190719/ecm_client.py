@@ -1500,6 +1500,34 @@ class EcmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeMonthPeakNetwork(self, request):
+        """获取客户节点上的出入带宽月峰和计费带宽信息
+
+        :param request: Request instance for DescribeMonthPeakNetwork.
+        :type request: :class:`tencentcloud.ecm.v20190719.models.DescribeMonthPeakNetworkRequest`
+        :rtype: :class:`tencentcloud.ecm.v20190719.models.DescribeMonthPeakNetworkResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMonthPeakNetwork", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMonthPeakNetworkResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeNetworkInterfaces(self, request):
         """查询弹性网卡列表
 

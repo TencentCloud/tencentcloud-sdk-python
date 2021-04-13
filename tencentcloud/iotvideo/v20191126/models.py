@@ -2963,6 +2963,48 @@ class ModifyDevicePropertyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyDeviceRequest(AbstractModel):
+    """ModifyDevice请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Tid: 设备ID
+        :type Tid: str
+        :param AccessId: 用户ID
+        :type AccessId: str
+        :param Nick: 设备昵称
+        :type Nick: str
+        """
+        self.Tid = None
+        self.AccessId = None
+        self.Nick = None
+
+
+    def _deserialize(self, params):
+        self.Tid = params.get("Tid")
+        self.AccessId = params.get("AccessId")
+        self.Nick = params.get("Nick")
+
+
+class ModifyDeviceResponse(AbstractModel):
+    """ModifyDevice返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyProductRequest(AbstractModel):
     """ModifyProduct请求参数结构体
 

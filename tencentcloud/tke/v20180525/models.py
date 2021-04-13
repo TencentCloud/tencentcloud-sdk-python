@@ -5974,6 +5974,8 @@ class UpdateClusterVersionRequest(AbstractModel):
         :type ClusterId: str
         :param DstVersion: 需要升级到的版本
         :type DstVersion: str
+        :param ExtraArgs: 集群自定义参数
+        :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.ClusterExtraArgs`
         :param MaxNotReadyPercent: 可容忍的最大不可用pod数目
         :type MaxNotReadyPercent: float
         :param SkipPreCheck: 是否跳过预检查阶段
@@ -5981,6 +5983,7 @@ class UpdateClusterVersionRequest(AbstractModel):
         """
         self.ClusterId = None
         self.DstVersion = None
+        self.ExtraArgs = None
         self.MaxNotReadyPercent = None
         self.SkipPreCheck = None
 
@@ -5988,6 +5991,9 @@ class UpdateClusterVersionRequest(AbstractModel):
     def _deserialize(self, params):
         self.ClusterId = params.get("ClusterId")
         self.DstVersion = params.get("DstVersion")
+        if params.get("ExtraArgs") is not None:
+            self.ExtraArgs = ClusterExtraArgs()
+            self.ExtraArgs._deserialize(params.get("ExtraArgs"))
         self.MaxNotReadyPercent = params.get("MaxNotReadyPercent")
         self.SkipPreCheck = params.get("SkipPreCheck")
 

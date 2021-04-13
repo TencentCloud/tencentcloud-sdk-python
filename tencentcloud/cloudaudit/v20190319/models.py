@@ -23,30 +23,30 @@ class AttributeKeyDetail(AbstractModel):
 
     def __init__(self):
         """
-        :param Label: 中文标签
-        :type Label: str
         :param LabelType: 输入框类型
         :type LabelType: str
-        :param Order: 展示排序
-        :type Order: int
         :param Starter: 初始化展示
         :type Starter: str
+        :param Order: 展示排序
+        :type Order: int
         :param Value: AttributeKey值
         :type Value: str
+        :param Label: 中文标签
+        :type Label: str
         """
-        self.Label = None
         self.LabelType = None
-        self.Order = None
         self.Starter = None
+        self.Order = None
         self.Value = None
+        self.Label = None
 
 
     def _deserialize(self, params):
-        self.Label = params.get("Label")
         self.LabelType = params.get("LabelType")
-        self.Order = params.get("Order")
         self.Starter = params.get("Starter")
+        self.Order = params.get("Order")
         self.Value = params.get("Value")
+        self.Label = params.get("Label")
 
 
 class AuditSummary(AbstractModel):
@@ -56,25 +56,25 @@ class AuditSummary(AbstractModel):
 
     def __init__(self):
         """
-        :param AuditName: 跟踪集名称
-        :type AuditName: str
         :param AuditStatus: 跟踪集状态，1：开启，0：关闭
         :type AuditStatus: int
         :param CosBucketName: COS存储桶名称
         :type CosBucketName: str
+        :param AuditName: 跟踪集名称
+        :type AuditName: str
         :param LogFilePrefix: 日志前缀
         :type LogFilePrefix: str
         """
-        self.AuditName = None
         self.AuditStatus = None
         self.CosBucketName = None
+        self.AuditName = None
         self.LogFilePrefix = None
 
 
     def _deserialize(self, params):
-        self.AuditName = params.get("AuditName")
         self.AuditStatus = params.get("AuditStatus")
         self.CosBucketName = params.get("CosBucketName")
+        self.AuditName = params.get("AuditName")
         self.LogFilePrefix = params.get("LogFilePrefix")
 
 
@@ -85,18 +85,18 @@ class CmqRegionInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param CmqRegion: cmq地域
-        :type CmqRegion: str
         :param CmqRegionName: 地域描述
         :type CmqRegionName: str
+        :param CmqRegion: cmq地域
+        :type CmqRegion: str
         """
-        self.CmqRegion = None
         self.CmqRegionName = None
+        self.CmqRegion = None
 
 
     def _deserialize(self, params):
-        self.CmqRegion = params.get("CmqRegion")
         self.CmqRegionName = params.get("CmqRegionName")
+        self.CmqRegion = params.get("CmqRegion")
 
 
 class CosRegionInfo(AbstractModel):
@@ -127,62 +127,62 @@ class CreateAuditRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param AuditName: 跟踪集名称。3-128字符，只能包含 ASCII 编码字母 a-z，A-Z，数字 0-9，下划线 _。
-        :type AuditName: str
-        :param CosBucketName: cos的存储桶名称。仅支持小写英文字母和数字即[a-z，0-9]、中划线“-”及其组合。用户自定义的字符串支持1 - 40个字符。存储桶命名不能以“-”开头或结尾。如果不是新创建的存储桶，云审计不会去校验该存储桶是否真的存在，请谨慎填写，避免日志投递不成功，导致您的数据丢失。
-        :type CosBucketName: str
-        :param CosRegion: cos地域。目前支持的地域可以使用ListCosEnableRegion来获取。
-        :type CosRegion: str
-        :param IsCreateNewBucket: 是否创建新的cos存储桶。1：是，0：否。
-        :type IsCreateNewBucket: int
         :param IsEnableCmqNotify: 是否开启cmq消息通知。1：是，0：否。目前仅支持cmq的队列服务。如果开启cmq消息通知服务，云审计会将您的日志内容实时投递到您指定地域的指定队列中。
         :type IsEnableCmqNotify: int
         :param ReadWriteAttribute: 管理事件的读写属性。1：只读，2：只写，3：全部。
         :type ReadWriteAttribute: int
-        :param CmqQueueName: 队列名称。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。如果IsEnableCmqNotify值是1的话，此值属于必填字段。如果不是新创建的队列，云审计不会去校验该队列是否真的存在，请谨慎填写，避免日志通知不成功，导致您的数据丢失。
-        :type CmqQueueName: str
-        :param CmqRegion: 队列所在的地域。可以通过ListCmqEnableRegion获取支持的cmq地域。如果IsEnableCmqNotify值是1的话，此值属于必填字段。
-        :type CmqRegion: str
-        :param IsCreateNewQueue: 是否创建新的队列。1：是，0：否。如果IsEnableCmqNotify值是1的话，此值属于必填字段。
-        :type IsCreateNewQueue: int
-        :param IsEnableKmsEncry: 是否开启kms加密。1：是，0：否。如果开启KMS加密，数据在投递到cos时，会将数据加密。
-        :type IsEnableKmsEncry: int
+        :param AuditName: 跟踪集名称。3-128字符，只能包含 ASCII 编码字母 a-z，A-Z，数字 0-9，下划线 _。
+        :type AuditName: str
+        :param CosRegion: cos地域。目前支持的地域可以使用ListCosEnableRegion来获取。
+        :type CosRegion: str
+        :param IsCreateNewBucket: 是否创建新的cos存储桶。1：是，0：否。
+        :type IsCreateNewBucket: int
+        :param CosBucketName: cos的存储桶名称。仅支持小写英文字母和数字即[a-z，0-9]、中划线“-”及其组合。用户自定义的字符串支持1 - 40个字符。存储桶命名不能以“-”开头或结尾。如果不是新创建的存储桶，云审计不会去校验该存储桶是否真的存在，请谨慎填写，避免日志投递不成功，导致您的数据丢失。
+        :type CosBucketName: str
         :param KeyId: CMK的全局唯一标识符，如果不是新创建的kms，该值是必填值。可以通过ListKeyAliasByRegion来获取。云审计不会校验KeyId的合法性，请您谨慎填写，避免给您的数据造成损失。
         :type KeyId: str
+        :param CmqQueueName: 队列名称。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。如果IsEnableCmqNotify值是1的话，此值属于必填字段。如果不是新创建的队列，云审计不会去校验该队列是否真的存在，请谨慎填写，避免日志通知不成功，导致您的数据丢失。
+        :type CmqQueueName: str
         :param KmsRegion: kms地域。目前支持的地域可以使用ListKmsEnableRegion来获取。必须要和cos的地域保持一致。
         :type KmsRegion: str
+        :param IsEnableKmsEncry: 是否开启kms加密。1：是，0：否。如果开启KMS加密，数据在投递到cos时，会将数据加密。
+        :type IsEnableKmsEncry: int
+        :param CmqRegion: 队列所在的地域。可以通过ListCmqEnableRegion获取支持的cmq地域。如果IsEnableCmqNotify值是1的话，此值属于必填字段。
+        :type CmqRegion: str
         :param LogFilePrefix: 日志文件前缀。3-40个字符，只能包含 ASCII 编码字母 a-z，A-Z，数字 0-9。可以不填，默认以账号ID作为日志前缀。
         :type LogFilePrefix: str
+        :param IsCreateNewQueue: 是否创建新的队列。1：是，0：否。如果IsEnableCmqNotify值是1的话，此值属于必填字段。
+        :type IsCreateNewQueue: int
         """
-        self.AuditName = None
-        self.CosBucketName = None
-        self.CosRegion = None
-        self.IsCreateNewBucket = None
         self.IsEnableCmqNotify = None
         self.ReadWriteAttribute = None
-        self.CmqQueueName = None
-        self.CmqRegion = None
-        self.IsCreateNewQueue = None
-        self.IsEnableKmsEncry = None
+        self.AuditName = None
+        self.CosRegion = None
+        self.IsCreateNewBucket = None
+        self.CosBucketName = None
         self.KeyId = None
+        self.CmqQueueName = None
         self.KmsRegion = None
+        self.IsEnableKmsEncry = None
+        self.CmqRegion = None
         self.LogFilePrefix = None
+        self.IsCreateNewQueue = None
 
 
     def _deserialize(self, params):
-        self.AuditName = params.get("AuditName")
-        self.CosBucketName = params.get("CosBucketName")
-        self.CosRegion = params.get("CosRegion")
-        self.IsCreateNewBucket = params.get("IsCreateNewBucket")
         self.IsEnableCmqNotify = params.get("IsEnableCmqNotify")
         self.ReadWriteAttribute = params.get("ReadWriteAttribute")
-        self.CmqQueueName = params.get("CmqQueueName")
-        self.CmqRegion = params.get("CmqRegion")
-        self.IsCreateNewQueue = params.get("IsCreateNewQueue")
-        self.IsEnableKmsEncry = params.get("IsEnableKmsEncry")
+        self.AuditName = params.get("AuditName")
+        self.CosRegion = params.get("CosRegion")
+        self.IsCreateNewBucket = params.get("IsCreateNewBucket")
+        self.CosBucketName = params.get("CosBucketName")
         self.KeyId = params.get("KeyId")
+        self.CmqQueueName = params.get("CmqQueueName")
         self.KmsRegion = params.get("KmsRegion")
+        self.IsEnableKmsEncry = params.get("IsEnableKmsEncry")
+        self.CmqRegion = params.get("CmqRegion")
         self.LogFilePrefix = params.get("LogFilePrefix")
+        self.IsCreateNewQueue = params.get("IsCreateNewQueue")
 
 
 class CreateAuditResponse(AbstractModel):
@@ -268,65 +268,138 @@ class DescribeAuditResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param AuditName: 跟踪集名称。
-        :type AuditName: str
-        :param AuditStatus: 跟踪集状态，1：开启，0：停止。
-        :type AuditStatus: int
-        :param CmqQueueName: 队列名称。
-        :type CmqQueueName: str
-        :param CmqRegion: 队列所在地域。
-        :type CmqRegion: str
-        :param CosBucketName: cos存储桶名称。
-        :type CosBucketName: str
-        :param CosRegion: cos存储桶所在地域。
-        :type CosRegion: str
         :param IsEnableCmqNotify: 是否开启cmq消息通知。1：是，0：否。
         :type IsEnableCmqNotify: int
-        :param IsEnableKmsEncry: 是否开启kms加密。1：是，0：否。如果开启KMS加密，数据在投递到cos时，会将数据加密。
-        :type IsEnableKmsEncry: int
+        :param ReadWriteAttribute: 管理事件读写属性，1：只读，2：只写，3：全部
+        :type ReadWriteAttribute: int
         :param KeyId: CMK的全局唯一标识符。
         :type KeyId: str
+        :param AuditStatus: 跟踪集状态，1：开启，0：停止。
+        :type AuditStatus: int
+        :param AuditName: 跟踪集名称。
+        :type AuditName: str
+        :param CosRegion: cos存储桶所在地域。
+        :type CosRegion: str
+        :param CmqQueueName: 队列名称。
+        :type CmqQueueName: str
         :param KmsAlias: CMK别名。
         :type KmsAlias: str
         :param KmsRegion: kms地域。
         :type KmsRegion: str
+        :param IsEnableKmsEncry: 是否开启kms加密。1：是，0：否。如果开启KMS加密，数据在投递到cos时，会将数据加密。
+        :type IsEnableKmsEncry: int
+        :param CosBucketName: cos存储桶名称。
+        :type CosBucketName: str
+        :param CmqRegion: 队列所在地域。
+        :type CmqRegion: str
         :param LogFilePrefix: 日志前缀。
         :type LogFilePrefix: str
-        :param ReadWriteAttribute: 管理事件读写属性，1：只读，2：只写，3：全部
-        :type ReadWriteAttribute: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.AuditName = None
-        self.AuditStatus = None
-        self.CmqQueueName = None
-        self.CmqRegion = None
-        self.CosBucketName = None
-        self.CosRegion = None
         self.IsEnableCmqNotify = None
-        self.IsEnableKmsEncry = None
+        self.ReadWriteAttribute = None
         self.KeyId = None
+        self.AuditStatus = None
+        self.AuditName = None
+        self.CosRegion = None
+        self.CmqQueueName = None
         self.KmsAlias = None
         self.KmsRegion = None
+        self.IsEnableKmsEncry = None
+        self.CosBucketName = None
+        self.CmqRegion = None
         self.LogFilePrefix = None
-        self.ReadWriteAttribute = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
-        self.AuditName = params.get("AuditName")
-        self.AuditStatus = params.get("AuditStatus")
-        self.CmqQueueName = params.get("CmqQueueName")
-        self.CmqRegion = params.get("CmqRegion")
-        self.CosBucketName = params.get("CosBucketName")
-        self.CosRegion = params.get("CosRegion")
         self.IsEnableCmqNotify = params.get("IsEnableCmqNotify")
-        self.IsEnableKmsEncry = params.get("IsEnableKmsEncry")
+        self.ReadWriteAttribute = params.get("ReadWriteAttribute")
         self.KeyId = params.get("KeyId")
+        self.AuditStatus = params.get("AuditStatus")
+        self.AuditName = params.get("AuditName")
+        self.CosRegion = params.get("CosRegion")
+        self.CmqQueueName = params.get("CmqQueueName")
         self.KmsAlias = params.get("KmsAlias")
         self.KmsRegion = params.get("KmsRegion")
+        self.IsEnableKmsEncry = params.get("IsEnableKmsEncry")
+        self.CosBucketName = params.get("CosBucketName")
+        self.CmqRegion = params.get("CmqRegion")
         self.LogFilePrefix = params.get("LogFilePrefix")
-        self.ReadWriteAttribute = params.get("ReadWriteAttribute")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeEventsRequest(AbstractModel):
+    """DescribeEvents请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 起始时间戳（单位秒，不超过当前时间 90 天）
+        :type StartTime: int
+        :param EndTime: 结束时间戳（单位秒，查询时间跨度小于 30 天）
+        :type EndTime: int
+        :param NextToken: 查看更多日志的凭证
+        :type NextToken: int
+        :param MaxResults: 返回日志的最大条数（最大 50 条）
+        :type MaxResults: int
+        :param LookupAttributes: 检索条件（目前支持 RequestId：请求 ID、EventName：事件名称、ActionType：操作类型（Write：写；Read：读）、PrincipalId：子账号、ResourceType：资源类型、ResourceName：资源名称、AccessKeyId：密钥 ID、SensitiveAction：是否敏感操作、ApiErrorCode：API 错误码、CamErrorCode：CAM 错误码）
+        :type LookupAttributes: list of LookupAttribute
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.NextToken = None
+        self.MaxResults = None
+        self.LookupAttributes = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.NextToken = params.get("NextToken")
+        self.MaxResults = params.get("MaxResults")
+        if params.get("LookupAttributes") is not None:
+            self.LookupAttributes = []
+            for item in params.get("LookupAttributes"):
+                obj = LookupAttribute()
+                obj._deserialize(item)
+                self.LookupAttributes.append(obj)
+
+
+class DescribeEventsResponse(AbstractModel):
+    """DescribeEvents返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ListOver: 日志集合是否结束
+        :type ListOver: bool
+        :param NextToken: 查看更多日志的凭证
+        :type NextToken: int
+        :param Events: 日志集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Events: list of Event
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ListOver = None
+        self.NextToken = None
+        self.Events = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ListOver = params.get("ListOver")
+        self.NextToken = params.get("NextToken")
+        if params.get("Events") is not None:
+            self.Events = []
+            for item in params.get("Events"):
+                obj = Event()
+                obj._deserialize(item)
+                self.Events.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -337,76 +410,78 @@ class Event(AbstractModel):
 
     def __init__(self):
         """
-        :param Resources: 资源对
-        :type Resources: :class:`tencentcloud.cloudaudit.v20190319.models.Resource`
-        :param AccountID: 主账号ID
-        :type AccountID: int
-        :param CloudAuditEvent: 日志详情
-        :type CloudAuditEvent: str
-        :param ErrorCode: 鉴权错误码
-        :type ErrorCode: int
         :param EventId: 日志ID
         :type EventId: str
-        :param EventName: 事件名称
-        :type EventName: str
-        :param EventNameCn: 事件名称中文描述（此字段请按需使用，如果您是其他语言使用者，可以忽略该字段描述）
-        :type EventNameCn: str
-        :param EventRegion: 事件地域
-        :type EventRegion: str
-        :param EventSource: 请求来源
-        :type EventSource: str
+        :param Username: 用户名
+        :type Username: str
         :param EventTime: 事件时间
         :type EventTime: str
+        :param CloudAuditEvent: 日志详情
+        :type CloudAuditEvent: str
+        :param ResourceTypeCn: 资源类型中文描述（此字段请按需使用，如果您是其他语言使用者，可以忽略该字段描述）
+        :type ResourceTypeCn: str
+        :param ErrorCode: 鉴权错误码
+        :type ErrorCode: int
+        :param EventName: 事件名称
+        :type EventName: str
+        :param SecretId: 证书ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretId: str
+        :param EventSource: 请求来源
+        :type EventSource: str
         :param RequestID: 请求ID
         :type RequestID: str
         :param ResourceRegion: 资源地域
         :type ResourceRegion: str
-        :param ResourceTypeCn: 资源类型中文描述（此字段请按需使用，如果您是其他语言使用者，可以忽略该字段描述）
-        :type ResourceTypeCn: str
-        :param SecretId: 证书ID
-        :type SecretId: str
+        :param AccountID: 主账号ID
+        :type AccountID: int
         :param SourceIPAddress: 源IP
+注意：此字段可能返回 null，表示取不到有效值。
         :type SourceIPAddress: str
-        :param Username: 用户名
-        :type Username: str
+        :param EventNameCn: 事件名称中文描述（此字段请按需使用，如果您是其他语言使用者，可以忽略该字段描述）
+        :type EventNameCn: str
+        :param Resources: 资源对
+        :type Resources: :class:`tencentcloud.cloudaudit.v20190319.models.Resource`
+        :param EventRegion: 事件地域
+        :type EventRegion: str
         """
-        self.Resources = None
-        self.AccountID = None
-        self.CloudAuditEvent = None
-        self.ErrorCode = None
         self.EventId = None
-        self.EventName = None
-        self.EventNameCn = None
-        self.EventRegion = None
-        self.EventSource = None
+        self.Username = None
         self.EventTime = None
+        self.CloudAuditEvent = None
+        self.ResourceTypeCn = None
+        self.ErrorCode = None
+        self.EventName = None
+        self.SecretId = None
+        self.EventSource = None
         self.RequestID = None
         self.ResourceRegion = None
-        self.ResourceTypeCn = None
-        self.SecretId = None
+        self.AccountID = None
         self.SourceIPAddress = None
-        self.Username = None
+        self.EventNameCn = None
+        self.Resources = None
+        self.EventRegion = None
 
 
     def _deserialize(self, params):
+        self.EventId = params.get("EventId")
+        self.Username = params.get("Username")
+        self.EventTime = params.get("EventTime")
+        self.CloudAuditEvent = params.get("CloudAuditEvent")
+        self.ResourceTypeCn = params.get("ResourceTypeCn")
+        self.ErrorCode = params.get("ErrorCode")
+        self.EventName = params.get("EventName")
+        self.SecretId = params.get("SecretId")
+        self.EventSource = params.get("EventSource")
+        self.RequestID = params.get("RequestID")
+        self.ResourceRegion = params.get("ResourceRegion")
+        self.AccountID = params.get("AccountID")
+        self.SourceIPAddress = params.get("SourceIPAddress")
+        self.EventNameCn = params.get("EventNameCn")
         if params.get("Resources") is not None:
             self.Resources = Resource()
             self.Resources._deserialize(params.get("Resources"))
-        self.AccountID = params.get("AccountID")
-        self.CloudAuditEvent = params.get("CloudAuditEvent")
-        self.ErrorCode = params.get("ErrorCode")
-        self.EventId = params.get("EventId")
-        self.EventName = params.get("EventName")
-        self.EventNameCn = params.get("EventNameCn")
         self.EventRegion = params.get("EventRegion")
-        self.EventSource = params.get("EventSource")
-        self.EventTime = params.get("EventTime")
-        self.RequestID = params.get("RequestID")
-        self.ResourceRegion = params.get("ResourceRegion")
-        self.ResourceTypeCn = params.get("ResourceTypeCn")
-        self.SecretId = params.get("SecretId")
-        self.SourceIPAddress = params.get("SourceIPAddress")
-        self.Username = params.get("Username")
 
 
 class GetAttributeKeyRequest(AbstractModel):
@@ -514,6 +589,7 @@ class ListAuditsResponse(AbstractModel):
     def __init__(self):
         """
         :param AuditSummarys: 查询跟踪集概要集合
+注意：此字段可能返回 null，表示取不到有效值。
         :type AuditSummarys: list of AuditSummary
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -650,26 +726,26 @@ class ListKeyAliasByRegionResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param KeyMetadatas: 密钥别名
-        :type KeyMetadatas: list of KeyMetadata
         :param TotalCount: CMK的总数量
         :type TotalCount: int
+        :param KeyMetadatas: 密钥别名
+        :type KeyMetadatas: list of KeyMetadata
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.KeyMetadatas = None
         self.TotalCount = None
+        self.KeyMetadatas = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
         if params.get("KeyMetadatas") is not None:
             self.KeyMetadatas = []
             for item in params.get("KeyMetadatas"):
                 obj = KeyMetadata()
                 obj._deserialize(item)
                 self.KeyMetadatas.append(obj)
-        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -680,39 +756,39 @@ class LookUpEventsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EndTime: 结束时间
-        :type EndTime: int
         :param StartTime: 开始时间
         :type StartTime: int
+        :param EndTime: 结束时间
+        :type EndTime: int
         :param LookupAttributes: 检索条件
         :type LookupAttributes: list of LookupAttribute
+        :param NextToken: 查看更多日志的凭证
+        :type NextToken: str
         :param MaxResults: 返回日志的最大条数
         :type MaxResults: int
         :param Mode: 云审计模式，有效值：standard | quick，其中standard是标准模式，quick是极速模式。默认为标准模式
         :type Mode: str
-        :param NextToken: 查看更多日志的凭证
-        :type NextToken: str
         """
-        self.EndTime = None
         self.StartTime = None
+        self.EndTime = None
         self.LookupAttributes = None
+        self.NextToken = None
         self.MaxResults = None
         self.Mode = None
-        self.NextToken = None
 
 
     def _deserialize(self, params):
-        self.EndTime = params.get("EndTime")
         self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
         if params.get("LookupAttributes") is not None:
             self.LookupAttributes = []
             for item in params.get("LookupAttributes"):
                 obj = LookupAttribute()
                 obj._deserialize(item)
                 self.LookupAttributes.append(obj)
+        self.NextToken = params.get("NextToken")
         self.MaxResults = params.get("MaxResults")
         self.Mode = params.get("Mode")
-        self.NextToken = params.get("NextToken")
 
 
 class LookUpEventsResponse(AbstractModel):
@@ -722,22 +798,26 @@ class LookUpEventsResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param NextToken: 查看更多日志的凭证
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextToken: str
         :param Events: 日志集合
+注意：此字段可能返回 null，表示取不到有效值。
         :type Events: list of Event
         :param ListOver: 日志集合是否结束
+注意：此字段可能返回 null，表示取不到有效值。
         :type ListOver: bool
-        :param NextToken: 查看更多日志的凭证
-        :type NextToken: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.NextToken = None
         self.Events = None
         self.ListOver = None
-        self.NextToken = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.NextToken = params.get("NextToken")
         if params.get("Events") is not None:
             self.Events = []
             for item in params.get("Events"):
@@ -745,7 +825,6 @@ class LookUpEventsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Events.append(obj)
         self.ListOver = params.get("ListOver")
-        self.NextToken = params.get("NextToken")
         self.RequestId = params.get("RequestId")
 
 
@@ -757,8 +836,10 @@ class LookupAttribute(AbstractModel):
     def __init__(self):
         """
         :param AttributeKey: AttributeKey的有效取值范围是:RequestId、EventName、ReadOnly、Username、ResourceType、ResourceName和AccessKeyId，EventId
+注意：此字段可能返回 null，表示取不到有效值。
         :type AttributeKey: str
-        :param AttributeValue: AttributeValue
+        :param AttributeValue: AttributeValue的值
+注意：此字段可能返回 null，表示取不到有效值。
         :type AttributeValue: str
         """
         self.AttributeKey = None
@@ -777,18 +858,19 @@ class Resource(AbstractModel):
 
     def __init__(self):
         """
-        :param ResourceName: 资源名称
-        :type ResourceName: str
         :param ResourceType: 资源类型
         :type ResourceType: str
+        :param ResourceName: 资源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceName: str
         """
-        self.ResourceName = None
         self.ResourceType = None
+        self.ResourceName = None
 
 
     def _deserialize(self, params):
-        self.ResourceName = params.get("ResourceName")
         self.ResourceType = params.get("ResourceType")
+        self.ResourceName = params.get("ResourceName")
 
 
 class StartLoggingRequest(AbstractModel):
@@ -876,60 +958,60 @@ class UpdateAuditRequest(AbstractModel):
         """
         :param AuditName: 跟踪集名称
         :type AuditName: str
-        :param CmqQueueName: 队列名称。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。如果IsEnableCmqNotify值是1的话，此值属于必填字段。如果不是新创建的队列，云审计不会去校验该队列是否真的存在，请谨慎填写，避免日志通知不成功，导致您的数据丢失。
-        :type CmqQueueName: str
-        :param CmqRegion: 队列所在的地域。可以通过ListCmqEnableRegion获取支持的cmq地域。如果IsEnableCmqNotify值是1的话，此值属于必填字段。
-        :type CmqRegion: str
-        :param CosBucketName: cos的存储桶名称。仅支持小写英文字母和数字即[a-z，0-9]、中划线“-”及其组合。用户自定义的字符串支持1 - 40个字符。存储桶命名不能以“-”开头或结尾。如果不是新创建的存储桶，云审计不会去校验该存储桶是否真的存在，请谨慎填写，避免日志投递不成功，导致您的数据丢失。
-        :type CosBucketName: str
-        :param CosRegion: cos地域。目前支持的地域可以使用ListCosEnableRegion来获取。
-        :type CosRegion: str
-        :param IsCreateNewBucket: 是否创建新的cos存储桶。1：是，0：否。
-        :type IsCreateNewBucket: int
-        :param IsCreateNewQueue: 是否创建新的队列。1：是，0：否。如果IsEnableCmqNotify值是1的话，此值属于必填字段。
-        :type IsCreateNewQueue: int
         :param IsEnableCmqNotify: 是否开启cmq消息通知。1：是，0：否。目前仅支持cmq的队列服务。如果开启cmq消息通知服务，云审计会将您的日志内容实时投递到您指定地域的指定队列中。
         :type IsEnableCmqNotify: int
-        :param IsEnableKmsEncry: 是否开启kms加密。1：是，0：否。如果开启KMS加密，数据在投递到cos时，会将数据加密。
-        :type IsEnableKmsEncry: int
-        :param KeyId: CMK的全局唯一标识符，如果不是新创建的kms，该值是必填值。可以通过ListKeyAliasByRegion来获取。云审计不会校验KeyId的合法性，请您谨慎填写，避免给您的数据造成损失。
-        :type KeyId: str
-        :param KmsRegion: kms地域。目前支持的地域可以使用ListKmsEnableRegion来获取。必须要和cos的地域保持一致。
-        :type KmsRegion: str
-        :param LogFilePrefix: 日志文件前缀。3-40个字符，只能包含 ASCII 编码字母 a-z，A-Z，数字 0-9。
-        :type LogFilePrefix: str
         :param ReadWriteAttribute: 管理事件的读写属性。1：只读，2：只写，3：全部。
         :type ReadWriteAttribute: int
+        :param KeyId: CMK的全局唯一标识符，如果不是新创建的kms，该值是必填值。可以通过ListKeyAliasByRegion来获取。云审计不会校验KeyId的合法性，请您谨慎填写，避免给您的数据造成损失。
+        :type KeyId: str
+        :param CosRegion: cos地域。目前支持的地域可以使用ListCosEnableRegion来获取。
+        :type CosRegion: str
+        :param CmqQueueName: 队列名称。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。如果IsEnableCmqNotify值是1的话，此值属于必填字段。如果不是新创建的队列，云审计不会去校验该队列是否真的存在，请谨慎填写，避免日志通知不成功，导致您的数据丢失。
+        :type CmqQueueName: str
+        :param IsCreateNewBucket: 是否创建新的cos存储桶。1：是，0：否。
+        :type IsCreateNewBucket: int
+        :param KmsRegion: kms地域。目前支持的地域可以使用ListKmsEnableRegion来获取。必须要和cos的地域保持一致。
+        :type KmsRegion: str
+        :param IsEnableKmsEncry: 是否开启kms加密。1：是，0：否。如果开启KMS加密，数据在投递到cos时，会将数据加密。
+        :type IsEnableKmsEncry: int
+        :param CosBucketName: cos的存储桶名称。仅支持小写英文字母和数字即[a-z，0-9]、中划线“-”及其组合。用户自定义的字符串支持1 - 40个字符。存储桶命名不能以“-”开头或结尾。如果不是新创建的存储桶，云审计不会去校验该存储桶是否真的存在，请谨慎填写，避免日志投递不成功，导致您的数据丢失。
+        :type CosBucketName: str
+        :param CmqRegion: 队列所在的地域。可以通过ListCmqEnableRegion获取支持的cmq地域。如果IsEnableCmqNotify值是1的话，此值属于必填字段。
+        :type CmqRegion: str
+        :param LogFilePrefix: 日志文件前缀。3-40个字符，只能包含 ASCII 编码字母 a-z，A-Z，数字 0-9。
+        :type LogFilePrefix: str
+        :param IsCreateNewQueue: 是否创建新的队列。1：是，0：否。如果IsEnableCmqNotify值是1的话，此值属于必填字段。
+        :type IsCreateNewQueue: int
         """
         self.AuditName = None
-        self.CmqQueueName = None
-        self.CmqRegion = None
-        self.CosBucketName = None
-        self.CosRegion = None
-        self.IsCreateNewBucket = None
-        self.IsCreateNewQueue = None
         self.IsEnableCmqNotify = None
-        self.IsEnableKmsEncry = None
-        self.KeyId = None
-        self.KmsRegion = None
-        self.LogFilePrefix = None
         self.ReadWriteAttribute = None
+        self.KeyId = None
+        self.CosRegion = None
+        self.CmqQueueName = None
+        self.IsCreateNewBucket = None
+        self.KmsRegion = None
+        self.IsEnableKmsEncry = None
+        self.CosBucketName = None
+        self.CmqRegion = None
+        self.LogFilePrefix = None
+        self.IsCreateNewQueue = None
 
 
     def _deserialize(self, params):
         self.AuditName = params.get("AuditName")
-        self.CmqQueueName = params.get("CmqQueueName")
-        self.CmqRegion = params.get("CmqRegion")
-        self.CosBucketName = params.get("CosBucketName")
-        self.CosRegion = params.get("CosRegion")
-        self.IsCreateNewBucket = params.get("IsCreateNewBucket")
-        self.IsCreateNewQueue = params.get("IsCreateNewQueue")
         self.IsEnableCmqNotify = params.get("IsEnableCmqNotify")
-        self.IsEnableKmsEncry = params.get("IsEnableKmsEncry")
-        self.KeyId = params.get("KeyId")
-        self.KmsRegion = params.get("KmsRegion")
-        self.LogFilePrefix = params.get("LogFilePrefix")
         self.ReadWriteAttribute = params.get("ReadWriteAttribute")
+        self.KeyId = params.get("KeyId")
+        self.CosRegion = params.get("CosRegion")
+        self.CmqQueueName = params.get("CmqQueueName")
+        self.IsCreateNewBucket = params.get("IsCreateNewBucket")
+        self.KmsRegion = params.get("KmsRegion")
+        self.IsEnableKmsEncry = params.get("IsEnableKmsEncry")
+        self.CosBucketName = params.get("CosBucketName")
+        self.CmqRegion = params.get("CmqRegion")
+        self.LogFilePrefix = params.get("LogFilePrefix")
+        self.IsCreateNewQueue = params.get("IsCreateNewQueue")
 
 
 class UpdateAuditResponse(AbstractModel):

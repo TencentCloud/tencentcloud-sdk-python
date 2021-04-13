@@ -1144,6 +1144,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateLocalGateway(self, request):
+        """该接口用于创建用于CDC的本地网关。
+
+        :param request: Request instance for CreateLocalGateway.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateLocalGatewayRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateLocalGatewayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateLocalGateway", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateLocalGatewayResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateNatGateway(self, request):
         """本接口(CreateNatGateway)用于创建NAT网关。
 
@@ -2031,6 +2059,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteIp6TranslatorsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteLocalGateway(self, request):
+        """该接口用于删除CDC的本地网关。
+
+        :param request: Request instance for DeleteLocalGateway.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteLocalGatewayRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteLocalGatewayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteLocalGateway", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteLocalGatewayResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -3362,6 +3418,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeIpGeolocationInfosResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLocalGateway(self, request):
+        """该接口用于查询CDC的本地网关。
+
+        :param request: Request instance for DescribeLocalGateway.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeLocalGatewayRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeLocalGatewayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLocalGateway", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLocalGatewayResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -5157,6 +5241,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyCcnAttachedInstancesAttribute(self, request):
+        """修改CCN关联实例属性，目前仅修改备注description
+
+        :param request: Request instance for ModifyCcnAttachedInstancesAttribute.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyCcnAttachedInstancesAttributeRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyCcnAttachedInstancesAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyCcnAttachedInstancesAttribute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyCcnAttachedInstancesAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyCcnAttribute(self, request):
         """本接口（ModifyCcnAttribute）用于修改云联网（CCN）的相关属性。
 
@@ -5479,6 +5591,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyIpv6AddressesAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyLocalGateway(self, request):
+        """该接口用于修改CDC的本地网关。
+
+        :param request: Request instance for ModifyLocalGateway.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyLocalGatewayRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyLocalGatewayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyLocalGateway", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyLocalGatewayResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

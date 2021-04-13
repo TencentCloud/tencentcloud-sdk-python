@@ -50,6 +50,9 @@ class AllDeviceInfo(AbstractModel):
         :param IsRecord: 是否存在录像,，0:不存在；1：存在
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsRecord: int
+        :param Recordable: 该设备是否可录制
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Recordable: int
         """
         self.DeviceId = None
         self.DeviceType = None
@@ -60,6 +63,7 @@ class AllDeviceInfo(AbstractModel):
         self.GroupPath = None
         self.DeviceCode = None
         self.IsRecord = None
+        self.Recordable = None
 
 
     def _deserialize(self, params):
@@ -72,6 +76,7 @@ class AllDeviceInfo(AbstractModel):
         self.GroupPath = params.get("GroupPath")
         self.DeviceCode = params.get("DeviceCode")
         self.IsRecord = params.get("IsRecord")
+        self.Recordable = params.get("Recordable")
 
 
 class BindGroupDevicesRequest(AbstractModel):
@@ -255,17 +260,22 @@ class CreateDeviceResponse(AbstractModel):
         :param DeviceId: 设备唯一标识
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceId: str
+        :param VirtualGroupId: 设备虚拟组信息，仅在创建NVR/VMS时返回该值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VirtualGroupId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.DeviceCode = None
         self.DeviceId = None
+        self.VirtualGroupId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.DeviceCode = params.get("DeviceCode")
         self.DeviceId = params.get("DeviceId")
+        self.VirtualGroupId = params.get("VirtualGroupId")
         self.RequestId = params.get("RequestId")
 
 
@@ -843,11 +853,14 @@ class DescribeGroupDevicesRequest(AbstractModel):
         :type Limit: int
         :param NickName: 设备名称，根据设备名称模糊匹配时必填
         :type NickName: str
+        :param Recordable: 过滤不可录制设备
+        :type Recordable: int
         """
         self.GroupId = None
         self.Offset = None
         self.Limit = None
         self.NickName = None
+        self.Recordable = None
 
 
     def _deserialize(self, params):
@@ -855,6 +868,7 @@ class DescribeGroupDevicesRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.NickName = params.get("NickName")
+        self.Recordable = params.get("Recordable")
 
 
 class DescribeGroupDevicesResponse(AbstractModel):
@@ -1530,6 +1544,9 @@ class GroupDeviceItem(AbstractModel):
         :param IsRecord: 是否存在录像
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsRecord: int
+        :param Recordable: 该设备是否可录制
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Recordable: int
         """
         self.DeviceId = None
         self.NickName = None
@@ -1539,6 +1556,7 @@ class GroupDeviceItem(AbstractModel):
         self.RTSPUrl = None
         self.DeviceCode = None
         self.IsRecord = None
+        self.Recordable = None
 
 
     def _deserialize(self, params):
@@ -1550,6 +1568,7 @@ class GroupDeviceItem(AbstractModel):
         self.RTSPUrl = params.get("RTSPUrl")
         self.DeviceCode = params.get("DeviceCode")
         self.IsRecord = params.get("IsRecord")
+        self.Recordable = params.get("Recordable")
 
 
 class GroupInfo(AbstractModel):
@@ -1575,6 +1594,12 @@ class GroupInfo(AbstractModel):
         :type ExtraInformation: str
         :param CreateTime: 创建时间
         :type CreateTime: int
+        :param GroupStatus: 分组状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupStatus: int
+        :param Error: 设备不存在时产生的错误
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Error: str
         """
         self.GroupId = None
         self.GroupName = None
@@ -1584,6 +1609,8 @@ class GroupInfo(AbstractModel):
         self.GroupDescribe = None
         self.ExtraInformation = None
         self.CreateTime = None
+        self.GroupStatus = None
+        self.Error = None
 
 
     def _deserialize(self, params):
@@ -1595,6 +1622,8 @@ class GroupInfo(AbstractModel):
         self.GroupDescribe = params.get("GroupDescribe")
         self.ExtraInformation = params.get("ExtraInformation")
         self.CreateTime = params.get("CreateTime")
+        self.GroupStatus = params.get("GroupStatus")
+        self.Error = params.get("Error")
 
 
 class GroupItem(AbstractModel):
@@ -1634,6 +1663,9 @@ class GroupItem(AbstractModel):
         :param CreateTime: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: int
+        :param GroupStatus: 分组状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupStatus: int
         """
         self.GroupName = None
         self.ParentId = None
@@ -1645,6 +1677,7 @@ class GroupItem(AbstractModel):
         self.ExtraInformation = None
         self.GroupType = None
         self.CreateTime = None
+        self.GroupStatus = None
 
 
     def _deserialize(self, params):
@@ -1658,6 +1691,7 @@ class GroupItem(AbstractModel):
         self.ExtraInformation = params.get("ExtraInformation")
         self.GroupType = params.get("GroupType")
         self.CreateTime = params.get("CreateTime")
+        self.GroupStatus = params.get("GroupStatus")
 
 
 class ModifyDeviceDataRequest(AbstractModel):

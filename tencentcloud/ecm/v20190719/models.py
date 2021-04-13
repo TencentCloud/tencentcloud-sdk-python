@@ -3100,6 +3100,59 @@ class DescribeModuleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeMonthPeakNetworkRequest(AbstractModel):
+    """DescribeMonthPeakNetwork请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Month: 月份时间(xxxx-xx) 如2021-03,默认取当前时间的上一个月份
+        :type Month: str
+        :param Filters: 过滤条件
+        :type Filters: list of Filter
+        """
+        self.Month = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Month = params.get("Month")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class DescribeMonthPeakNetworkResponse(AbstractModel):
+    """DescribeMonthPeakNetwork返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MonthNetWorkData: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MonthNetWorkData: list of MonthNetwork
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MonthNetWorkData = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("MonthNetWorkData") is not None:
+            self.MonthNetWorkData = []
+            for item in params.get("MonthNetWorkData"):
+                obj = MonthNetwork()
+                obj._deserialize(item)
+                self.MonthNetWorkData.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeNetworkInterfacesRequest(AbstractModel):
     """DescribeNetworkInterfaces请求参数结构体
 
@@ -6856,6 +6909,73 @@ class ModuleItem(AbstractModel):
         if params.get("Module") is not None:
             self.Module = Module()
             self.Module._deserialize(params.get("Module"))
+
+
+class MonthNetwork(AbstractModel):
+    """客户对应月份的带宽信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ZoneInfo: 节点zone信息
+        :type ZoneInfo: :class:`tencentcloud.ecm.v20190719.models.ZoneInfo`
+        :param Month: 带宽月份 示例"202103"
+        :type Month: str
+        :param BandwidthPkgId: 带宽包id 格式如"bwp-xxxxxxxx"
+        :type BandwidthPkgId: str
+        :param Isp: 运营商简称 取值范围"CUCC;CTCC;CMCC"
+        :type Isp: str
+        :param TrafficMaxIn: 入网带宽包峰值,取值范围0.0-xxx.xxx
+        :type TrafficMaxIn: float
+        :param TrafficMaxOut: 出网带宽包峰值,取值范围0.0-xxx.xxx
+        :type TrafficMaxOut: float
+        :param FeeTraffic: 计费带宽,取值范围0.0-xxx.xxx
+        :type FeeTraffic: float
+        :param StartTime: 月计费带宽起始时间 格式"yyyy-mm-dd HH:mm:ss"
+        :type StartTime: str
+        :param EndTime: 月计费带宽结束时间 格式"yyyy-mm-dd HH:mm:ss"
+        :type EndTime: str
+        :param EffectiveDays: 月计费带宽实际有效天数 整形必须大于等于0
+        :type EffectiveDays: int
+        :param MonthDays: 指定月份的实际天数 实例 30
+        :type MonthDays: int
+        :param EffectiveDaysRate: 有效天占比 保留小数点后四位0.2134
+        :type EffectiveDaysRate: float
+        :param BandwidthPkgType: 计费带宽包类型 实例"Address","LoadBalance","AddressIpv6"
+        :type BandwidthPkgType: str
+        """
+        self.ZoneInfo = None
+        self.Month = None
+        self.BandwidthPkgId = None
+        self.Isp = None
+        self.TrafficMaxIn = None
+        self.TrafficMaxOut = None
+        self.FeeTraffic = None
+        self.StartTime = None
+        self.EndTime = None
+        self.EffectiveDays = None
+        self.MonthDays = None
+        self.EffectiveDaysRate = None
+        self.BandwidthPkgType = None
+
+
+    def _deserialize(self, params):
+        if params.get("ZoneInfo") is not None:
+            self.ZoneInfo = ZoneInfo()
+            self.ZoneInfo._deserialize(params.get("ZoneInfo"))
+        self.Month = params.get("Month")
+        self.BandwidthPkgId = params.get("BandwidthPkgId")
+        self.Isp = params.get("Isp")
+        self.TrafficMaxIn = params.get("TrafficMaxIn")
+        self.TrafficMaxOut = params.get("TrafficMaxOut")
+        self.FeeTraffic = params.get("FeeTraffic")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.EffectiveDays = params.get("EffectiveDays")
+        self.MonthDays = params.get("MonthDays")
+        self.EffectiveDaysRate = params.get("EffectiveDaysRate")
+        self.BandwidthPkgType = params.get("BandwidthPkgType")
 
 
 class NetworkInterface(AbstractModel):

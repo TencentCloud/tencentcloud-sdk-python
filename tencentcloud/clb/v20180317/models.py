@@ -947,14 +947,18 @@ class CreateClsLogSetRequest(AbstractModel):
         :type Period: int
         :param LogsetName: 日志集的名字，不能和cls其他日志集重名。不填默认为clb_logset。
         :type LogsetName: str
+        :param LogsetType: 日志集类型，ACCESS：访问日志，HEALTH：健康检查日志，默认ACCESS。
+        :type LogsetType: str
         """
         self.Period = None
         self.LogsetName = None
+        self.LogsetType = None
 
 
     def _deserialize(self, params):
         self.Period = params.get("Period")
         self.LogsetName = params.get("LogsetName")
+        self.LogsetType = params.get("LogsetType")
 
 
 class CreateClsLogSetResponse(AbstractModel):
@@ -1369,14 +1373,18 @@ class CreateTopicRequest(AbstractModel):
         :type TopicName: str
         :param PartitionCount: 主题分区Partition的数量，不传参默认创建1个，最大创建允许10个，分裂/合并操作会改变分区数量，整体上限50个。
         :type PartitionCount: int
+        :param TopicType: 日志类型，ACCESS：访问日志，HEALTH：健康检查日志，默认ACCESS。
+        :type TopicType: str
         """
         self.TopicName = None
         self.PartitionCount = None
+        self.TopicType = None
 
 
     def _deserialize(self, params):
         self.TopicName = params.get("TopicName")
         self.PartitionCount = params.get("PartitionCount")
+        self.TopicType = params.get("TopicType")
 
 
 class CreateTopicResponse(AbstractModel):
@@ -2134,15 +2142,19 @@ class DescribeClsLogSetResponse(AbstractModel):
         """
         :param LogsetId: 日志集的 ID。
         :type LogsetId: str
+        :param HealthLogsetId: 健康检查日志集的 ID。
+        :type HealthLogsetId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.LogsetId = None
+        self.HealthLogsetId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.LogsetId = params.get("LogsetId")
+        self.HealthLogsetId = params.get("HealthLogsetId")
         self.RequestId = params.get("RequestId")
 
 
@@ -3660,6 +3672,12 @@ OPEN：公网属性， INTERNAL：内网属性。
         :param NfvInfo: CLB是否为NFV，空：不是，l7nfv：七层是NFV。
 注意：此字段可能返回 null，表示取不到有效值。
         :type NfvInfo: str
+        :param HealthLogSetId: 负载均衡日志服务(CLS)的健康检查日志集ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HealthLogSetId: str
+        :param HealthLogTopicId: 负载均衡日志服务(CLS)的健康检查日志主题ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HealthLogTopicId: str
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
@@ -3710,6 +3728,8 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.MixIpTarget = None
         self.Zones = None
         self.NfvInfo = None
+        self.HealthLogSetId = None
+        self.HealthLogTopicId = None
 
 
     def _deserialize(self, params):
@@ -3789,6 +3809,8 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.MixIpTarget = params.get("MixIpTarget")
         self.Zones = params.get("Zones")
         self.NfvInfo = params.get("NfvInfo")
+        self.HealthLogSetId = params.get("HealthLogSetId")
+        self.HealthLogTopicId = params.get("HealthLogTopicId")
 
 
 class LoadBalancerDetail(AbstractModel):
@@ -5321,22 +5343,26 @@ class SetLoadBalancerClsLogRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param LoadBalancerId: 负载均衡实例 ID
+        :param LoadBalancerId: 负载均衡实例 ID。
         :type LoadBalancerId: str
-        :param LogSetId: 日志服务(CLS)的日志集ID
+        :param LogSetId: 日志服务(CLS)的日志集ID。
         :type LogSetId: str
-        :param LogTopicId: 日志服务(CLS)的日志主题ID
+        :param LogTopicId: 日志服务(CLS)的日志主题ID。
         :type LogTopicId: str
+        :param LogType: 日志类型，ACCESS：访问日志，HEALTH：健康检查日志，默认ACCESS。
+        :type LogType: str
         """
         self.LoadBalancerId = None
         self.LogSetId = None
         self.LogTopicId = None
+        self.LogType = None
 
 
     def _deserialize(self, params):
         self.LoadBalancerId = params.get("LoadBalancerId")
         self.LogSetId = params.get("LogSetId")
         self.LogTopicId = params.get("LogTopicId")
+        self.LogType = params.get("LogType")
 
 
 class SetLoadBalancerClsLogResponse(AbstractModel):

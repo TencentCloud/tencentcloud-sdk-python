@@ -114,6 +114,34 @@ class CloudauditClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeEvents(self, request):
+        """查询云审计日志
+
+        :param request: Request instance for DescribeEvents.
+        :type request: :class:`tencentcloud.cloudaudit.v20190319.models.DescribeEventsRequest`
+        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.DescribeEventsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeEvents", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeEventsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetAttributeKey(self, request):
         """查询AttributeKey的有效取值范围
 

@@ -931,7 +931,7 @@ class MonitorClient(AbstractClient):
 
 
     def ModifyAlarmPolicyCondition(self, request):
-        """编辑告警策略触发条件
+        """修改告警策略触发条件
 
         :param request: Request instance for ModifyAlarmPolicyCondition.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyAlarmPolicyConditionRequest`

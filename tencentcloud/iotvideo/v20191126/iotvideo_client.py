@@ -1461,6 +1461,34 @@ class IotvideoClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyDevice(self, request):
+        """修改设备信息
+
+        :param request: Request instance for ModifyDevice.
+        :type request: :class:`tencentcloud.iotvideo.v20191126.models.ModifyDeviceRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20191126.models.ModifyDeviceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDevice", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDeviceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyDeviceAction(self, request):
         """本接口（ModifyDeviceAction）用于修改设备物模型的行为（Action）。
 
