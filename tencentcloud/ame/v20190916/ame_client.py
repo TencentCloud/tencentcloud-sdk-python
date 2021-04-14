@@ -306,6 +306,62 @@ class AmeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyMusicOnShelves(self, request):
+        """根据资源方，需要变更的参数，请求该接口进行变更，为空的参数默认为无变更
+
+        :param request: Request instance for ModifyMusicOnShelves.
+        :type request: :class:`tencentcloud.ame.v20190916.models.ModifyMusicOnShelvesRequest`
+        :rtype: :class:`tencentcloud.ame.v20190916.models.ModifyMusicOnShelvesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyMusicOnShelves", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyMusicOnShelvesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def PutMusicOnTheShelves(self, request):
+        """根据资源方所传歌曲信息，进行歌曲上架，多个歌曲同时请求时，需构造复合结构进行请求
+
+        :param request: Request instance for PutMusicOnTheShelves.
+        :type request: :class:`tencentcloud.ame.v20190916.models.PutMusicOnTheShelvesRequest`
+        :rtype: :class:`tencentcloud.ame.v20190916.models.PutMusicOnTheShelvesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("PutMusicOnTheShelves", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.PutMusicOnTheShelvesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ReportData(self, request):
         """客户上报用户数据功能，为了更好地为用户提供优质服务
 
@@ -320,6 +376,34 @@ class AmeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReportDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def TakeMusicOffShelves(self, request):
+        """根据资源方所传MusicId进行将歌曲进行下架，多个MusicId使用逗号隔开
+
+        :param request: Request instance for TakeMusicOffShelves.
+        :type request: :class:`tencentcloud.ame.v20190916.models.TakeMusicOffShelvesRequest`
+        :rtype: :class:`tencentcloud.ame.v20190916.models.TakeMusicOffShelvesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("TakeMusicOffShelves", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.TakeMusicOffShelvesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

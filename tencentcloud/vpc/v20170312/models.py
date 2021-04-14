@@ -3652,6 +3652,164 @@ class CreateSubnetsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateVpcEndPointRequest(AbstractModel):
+    """CreateVpcEndPoint请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: VPC实例ID。
+        :type VpcId: str
+        :param SubnetId: 子网实例ID。
+        :type SubnetId: str
+        :param EndPointName: 终端节点名称。
+        :type EndPointName: str
+        :param EndPointServiceId: 终端节点服务ID。
+        :type EndPointServiceId: str
+        :param EndPointVip: 终端节点VIP，可以指定IP申请。
+        :type EndPointVip: str
+        :param SecurityGroupId: 安全组ID。
+        :type SecurityGroupId: str
+        """
+        self.VpcId = None
+        self.SubnetId = None
+        self.EndPointName = None
+        self.EndPointServiceId = None
+        self.EndPointVip = None
+        self.SecurityGroupId = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.EndPointName = params.get("EndPointName")
+        self.EndPointServiceId = params.get("EndPointServiceId")
+        self.EndPointVip = params.get("EndPointVip")
+        self.SecurityGroupId = params.get("SecurityGroupId")
+
+
+class CreateVpcEndPointResponse(AbstractModel):
+    """CreateVpcEndPoint返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EndPoint: 终端节点对象详细信息。
+        :type EndPoint: :class:`tencentcloud.vpc.v20170312.models.EndPoint`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.EndPoint = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("EndPoint") is not None:
+            self.EndPoint = EndPoint()
+            self.EndPoint._deserialize(params.get("EndPoint"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateVpcEndPointServiceRequest(AbstractModel):
+    """CreateVpcEndPointService请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: VPC实例ID。
+        :type VpcId: str
+        :param EndPointServiceName: 终端节点服务名称。
+        :type EndPointServiceName: str
+        :param AutoAcceptFlag: 是否自动接受。
+        :type AutoAcceptFlag: bool
+        :param ServiceInstanceId: 后端服务ID，比如lb-xxx。
+        :type ServiceInstanceId: str
+        :param IsPassService: 是否是PassService类型。
+        :type IsPassService: bool
+        """
+        self.VpcId = None
+        self.EndPointServiceName = None
+        self.AutoAcceptFlag = None
+        self.ServiceInstanceId = None
+        self.IsPassService = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.EndPointServiceName = params.get("EndPointServiceName")
+        self.AutoAcceptFlag = params.get("AutoAcceptFlag")
+        self.ServiceInstanceId = params.get("ServiceInstanceId")
+        self.IsPassService = params.get("IsPassService")
+
+
+class CreateVpcEndPointServiceResponse(AbstractModel):
+    """CreateVpcEndPointService返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EndPointService: 终端节点服务对象详细信息。
+        :type EndPointService: :class:`tencentcloud.vpc.v20170312.models.EndPointService`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.EndPointService = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("EndPointService") is not None:
+            self.EndPointService = EndPointService()
+            self.EndPointService._deserialize(params.get("EndPointService"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateVpcEndPointServiceWhiteListRequest(AbstractModel):
+    """CreateVpcEndPointServiceWhiteList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param UserUin: UIN。
+        :type UserUin: str
+        :param EndPointServiceId: 终端节点服务ID。
+        :type EndPointServiceId: str
+        :param Description: 白名单描述。
+        :type Description: str
+        """
+        self.UserUin = None
+        self.EndPointServiceId = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.UserUin = params.get("UserUin")
+        self.EndPointServiceId = params.get("EndPointServiceId")
+        self.Description = params.get("Description")
+
+
+class CreateVpcEndPointServiceWhiteListResponse(AbstractModel):
+    """CreateVpcEndPointServiceWhiteList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateVpcRequest(AbstractModel):
     """CreateVpc请求参数结构体
 
@@ -5068,6 +5226,112 @@ class DeleteSubnetResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteVpcEndPointRequest(AbstractModel):
+    """DeleteVpcEndPoint请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EndPointId: 终端节点ID。
+        :type EndPointId: str
+        """
+        self.EndPointId = None
+
+
+    def _deserialize(self, params):
+        self.EndPointId = params.get("EndPointId")
+
+
+class DeleteVpcEndPointResponse(AbstractModel):
+    """DeleteVpcEndPoint返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteVpcEndPointServiceRequest(AbstractModel):
+    """DeleteVpcEndPointService请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EndPointServiceId: 终端节点ID。
+        :type EndPointServiceId: str
+        """
+        self.EndPointServiceId = None
+
+
+    def _deserialize(self, params):
+        self.EndPointServiceId = params.get("EndPointServiceId")
+
+
+class DeleteVpcEndPointServiceResponse(AbstractModel):
+    """DeleteVpcEndPointService返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteVpcEndPointServiceWhiteListRequest(AbstractModel):
+    """DeleteVpcEndPointServiceWhiteList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param UserUin: 用户UIN数组。
+        :type UserUin: list of str
+        :param EndPointServiceId: 终端节点服务ID。
+        :type EndPointServiceId: str
+        """
+        self.UserUin = None
+        self.EndPointServiceId = None
+
+
+    def _deserialize(self, params):
+        self.UserUin = params.get("UserUin")
+        self.EndPointServiceId = params.get("EndPointServiceId")
+
+
+class DeleteVpcEndPointServiceWhiteListResponse(AbstractModel):
+    """DeleteVpcEndPointServiceWhiteList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteVpcRequest(AbstractModel):
     """DeleteVpc请求参数结构体
 
@@ -5382,6 +5646,7 @@ class DescribeAddressesRequest(AbstractModel):
 <li> is-arrears - String - 是否必填：否 - （过滤条件）按照 EIP 是否欠费进行过滤。（TRUE：EIP 处于欠费状态|FALSE：EIP 费用状态正常）</li>
 <li> address-type - String - 是否必填：否 - （过滤条件）按照 IP类型 进行过滤。可选值：'EIP'，'AnycastEIP'，'HighQualityEIP'</li>
 <li> address-isp - String - 是否必填：否 - （过滤条件）按照 运营商类型 进行过滤。可选值：'BGP'，'CMCC'，'CUCC', 'CTCC'</li>
+<li> dedicated-cluster-id - String - 是否必填：否 - （过滤条件）按照 CDC 的唯一 ID 过滤。CDC 唯一 ID 形如：cluster-11112222。</li>
         :type Filters: list of Filter
         :param Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/11646)中的相关小节。
         :type Offset: int
@@ -8336,6 +8601,203 @@ class DescribeTemplateLimitsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeVpcEndPointRequest(AbstractModel):
+    """DescribeVpcEndPoint请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Filters: 过滤条件。
+<li> end-point-service-id- String - （过滤条件）终端节点服务ID。</li>
+<li>end-point-name - String - （过滤条件）终端节点实例名称。</li>
+<li> end-point-id- String - （过滤条件）终端节点实例ID。</li>
+<li> vpc-id- String - （过滤条件）VPC实例ID。</li>
+        :type Filters: list of Filter
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 单页返回数量，默认为20，最大值为100。
+        :type Limit: int
+        :param EndPointId: 终端节点ID列表。
+        :type EndPointId: list of str
+        """
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+        self.EndPointId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.EndPointId = params.get("EndPointId")
+
+
+class DescribeVpcEndPointResponse(AbstractModel):
+    """DescribeVpcEndPoint返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EndPointSet: 终端节点对象。
+        :type EndPointSet: list of EndPoint
+        :param TotalCount: 符合查询条件的终端节点个数。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.EndPointSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("EndPointSet") is not None:
+            self.EndPointSet = []
+            for item in params.get("EndPointSet"):
+                obj = EndPoint()
+                obj._deserialize(item)
+                self.EndPointSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVpcEndPointServiceRequest(AbstractModel):
+    """DescribeVpcEndPointService请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Filters: 过滤条件。
+<li> service-id- String - （过滤条件）终端节点服务唯一ID。</li>
+<li>service-name - String - （过滤条件）终端节点实例名称。</li>
+<li>service-instance-id - String - （过滤条件）后端服务的唯一ID，比如lb-xxx。</li>
+        :type Filters: list of Filter
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 单页返回数量，默认为20，最大值为100。
+        :type Limit: int
+        :param EndPointServiceIds: 终端节点服务ID。
+        :type EndPointServiceIds: list of str
+        """
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+        self.EndPointServiceIds = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.EndPointServiceIds = params.get("EndPointServiceIds")
+
+
+class DescribeVpcEndPointServiceResponse(AbstractModel):
+    """DescribeVpcEndPointService返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EndPointServiceSet: 终端节点服务对象数组。
+        :type EndPointServiceSet: list of EndPointService
+        :param TotalCount: 符合查询条件的个数。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.EndPointServiceSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("EndPointServiceSet") is not None:
+            self.EndPointServiceSet = []
+            for item in params.get("EndPointServiceSet"):
+                obj = EndPointService()
+                obj._deserialize(item)
+                self.EndPointServiceSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVpcEndPointServiceWhiteListRequest(AbstractModel):
+    """DescribeVpcEndPointServiceWhiteList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 单页返回数量，默认为20，最大值为100。
+        :type Limit: int
+        :param Filters: 过滤条件。
+<li> user-uin String - （过滤条件）用户UIN。</li>
+<li> end-point-service-id String - （过滤条件）终端节点服务ID。</li>
+        :type Filters: list of Filter
+        """
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class DescribeVpcEndPointServiceWhiteListResponse(AbstractModel):
+    """DescribeVpcEndPointServiceWhiteList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcEndpointServiceUserSet: 白名单对象数组。
+        :type VpcEndpointServiceUserSet: list of VpcEndPointServiceUser
+        :param TotalCount: 符合条件的白名单个数。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.VpcEndpointServiceUserSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("VpcEndpointServiceUserSet") is not None:
+            self.VpcEndpointServiceUserSet = []
+            for item in params.get("VpcEndpointServiceUserSet"):
+                obj = VpcEndPointServiceUser()
+                obj._deserialize(item)
+                self.VpcEndpointServiceUserSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeVpcInstancesRequest(AbstractModel):
     """DescribeVpcInstances请求参数结构体
 
@@ -9526,6 +9988,44 @@ class DisassociateNetworkInterfaceSecurityGroupsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DisassociateVpcEndPointSecurityGroupsRequest(AbstractModel):
+    """DisassociateVpcEndPointSecurityGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SecurityGroupIds: 安全组ID数组。
+        :type SecurityGroupIds: list of str
+        :param EndPointId: 终端节点ID。
+        :type EndPointId: str
+        """
+        self.SecurityGroupIds = None
+        self.EndPointId = None
+
+
+    def _deserialize(self, params):
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        self.EndPointId = params.get("EndPointId")
+
+
+class DisassociateVpcEndPointSecurityGroupsResponse(AbstractModel):
+    """DisassociateVpcEndPointSecurityGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DownloadCustomerGatewayConfigurationRequest(AbstractModel):
     """DownloadCustomerGatewayConfiguration请求参数结构体
 
@@ -9693,6 +10193,174 @@ class EnableRoutesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class EnableVpcEndPointConnectRequest(AbstractModel):
+    """EnableVpcEndPointConnect请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EndPointServiceId: 终端节点服务ID。
+        :type EndPointServiceId: str
+        :param EndPointId: 终端节点ID。
+        :type EndPointId: list of str
+        :param AcceptFlag: 是否接受终端节点连接请求。
+        :type AcceptFlag: bool
+        """
+        self.EndPointServiceId = None
+        self.EndPointId = None
+        self.AcceptFlag = None
+
+
+    def _deserialize(self, params):
+        self.EndPointServiceId = params.get("EndPointServiceId")
+        self.EndPointId = params.get("EndPointId")
+        self.AcceptFlag = params.get("AcceptFlag")
+
+
+class EnableVpcEndPointConnectResponse(AbstractModel):
+    """EnableVpcEndPointConnect返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class EndPoint(AbstractModel):
+    """终端节点详情。
+
+    """
+
+    def __init__(self):
+        """
+        :param EndPointId: 终端节点ID。
+        :type EndPointId: str
+        :param VpcId: VPCID。
+        :type VpcId: str
+        :param SubnetId: 子网ID。
+        :type SubnetId: str
+        :param EndPointOwner: APPID。
+        :type EndPointOwner: str
+        :param EndPointName: 终端节点名称。
+        :type EndPointName: str
+        :param ServiceVpcId: 终端节点服务的VPCID。
+        :type ServiceVpcId: str
+        :param ServiceVip: 终端节点服务的VIP。
+        :type ServiceVip: str
+        :param EndPointServiceId: 终端节点服务的ID。
+        :type EndPointServiceId: str
+        :param EndPointVip: 终端节点的VIP。
+        :type EndPointVip: str
+        :param State: 终端节点状态，ACTIVE：可用，PENDING：待接受，ACCEPTING：接受中，REJECTED：已拒绝，FAILED：失败。
+        :type State: str
+        :param CreateTime: 创建时间。
+        :type CreateTime: str
+        :param GroupSet: 终端节点绑定的安全组实例ID列表。
+        :type GroupSet: list of str
+        :param ServiceName: 终端节点服务名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceName: str
+        """
+        self.EndPointId = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.EndPointOwner = None
+        self.EndPointName = None
+        self.ServiceVpcId = None
+        self.ServiceVip = None
+        self.EndPointServiceId = None
+        self.EndPointVip = None
+        self.State = None
+        self.CreateTime = None
+        self.GroupSet = None
+        self.ServiceName = None
+
+
+    def _deserialize(self, params):
+        self.EndPointId = params.get("EndPointId")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.EndPointOwner = params.get("EndPointOwner")
+        self.EndPointName = params.get("EndPointName")
+        self.ServiceVpcId = params.get("ServiceVpcId")
+        self.ServiceVip = params.get("ServiceVip")
+        self.EndPointServiceId = params.get("EndPointServiceId")
+        self.EndPointVip = params.get("EndPointVip")
+        self.State = params.get("State")
+        self.CreateTime = params.get("CreateTime")
+        self.GroupSet = params.get("GroupSet")
+        self.ServiceName = params.get("ServiceName")
+
+
+class EndPointService(AbstractModel):
+    """终端节点服务对象。
+
+    """
+
+    def __init__(self):
+        """
+        :param EndPointServiceId: 终端节点服务ID
+        :type EndPointServiceId: str
+        :param VpcId: VPCID。
+        :type VpcId: str
+        :param ServiceOwner: APPID。
+        :type ServiceOwner: str
+        :param ServiceName: 终端节点服务名称。
+        :type ServiceName: str
+        :param ServiceVip: 后端服务的VIP。
+        :type ServiceVip: str
+        :param ServiceInstanceId: 后端服务的ID，比如lb-xxx。
+        :type ServiceInstanceId: str
+        :param AutoAcceptFlag: 是否自动接受。
+        :type AutoAcceptFlag: bool
+        :param EndPointCount: 关联的终端节点个数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndPointCount: int
+        :param EndPointSet: 终端节点对象数组。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndPointSet: list of EndPoint
+        :param CreateTime: 创建时间。
+        :type CreateTime: str
+        """
+        self.EndPointServiceId = None
+        self.VpcId = None
+        self.ServiceOwner = None
+        self.ServiceName = None
+        self.ServiceVip = None
+        self.ServiceInstanceId = None
+        self.AutoAcceptFlag = None
+        self.EndPointCount = None
+        self.EndPointSet = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.EndPointServiceId = params.get("EndPointServiceId")
+        self.VpcId = params.get("VpcId")
+        self.ServiceOwner = params.get("ServiceOwner")
+        self.ServiceName = params.get("ServiceName")
+        self.ServiceVip = params.get("ServiceVip")
+        self.ServiceInstanceId = params.get("ServiceInstanceId")
+        self.AutoAcceptFlag = params.get("AutoAcceptFlag")
+        self.EndPointCount = params.get("EndPointCount")
+        if params.get("EndPointSet") is not None:
+            self.EndPointSet = []
+            for item in params.get("EndPointSet"):
+                obj = EndPoint()
+                obj._deserialize(item)
+                self.EndPointSet.append(obj)
+        self.CreateTime = params.get("CreateTime")
 
 
 class Filter(AbstractModel):
@@ -12383,6 +13051,140 @@ class ModifyVpcAttributeRequest(AbstractModel):
 
 class ModifyVpcAttributeResponse(AbstractModel):
     """ModifyVpcAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyVpcEndPointAttributeRequest(AbstractModel):
+    """ModifyVpcEndPointAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EndPointId: 终端节点ID。
+        :type EndPointId: str
+        :param EndPointName: 终端节点名称。
+        :type EndPointName: str
+        :param SecurityGroupIds: 安全组ID列表。
+        :type SecurityGroupIds: list of str
+        """
+        self.EndPointId = None
+        self.EndPointName = None
+        self.SecurityGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.EndPointId = params.get("EndPointId")
+        self.EndPointName = params.get("EndPointName")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+
+
+class ModifyVpcEndPointAttributeResponse(AbstractModel):
+    """ModifyVpcEndPointAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyVpcEndPointServiceAttributeRequest(AbstractModel):
+    """ModifyVpcEndPointServiceAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EndPointServiceId: 终端节点服务ID。
+        :type EndPointServiceId: str
+        :param VpcId: VPCID。
+        :type VpcId: str
+        :param EndPointServiceName: 终端节点服务名称。
+        :type EndPointServiceName: str
+        :param AutoAcceptFlag: 是否自动接受。
+        :type AutoAcceptFlag: bool
+        :param ServiceInstanceId: 后端服务的ID，比如lb-xxx。
+        :type ServiceInstanceId: str
+        """
+        self.EndPointServiceId = None
+        self.VpcId = None
+        self.EndPointServiceName = None
+        self.AutoAcceptFlag = None
+        self.ServiceInstanceId = None
+
+
+    def _deserialize(self, params):
+        self.EndPointServiceId = params.get("EndPointServiceId")
+        self.VpcId = params.get("VpcId")
+        self.EndPointServiceName = params.get("EndPointServiceName")
+        self.AutoAcceptFlag = params.get("AutoAcceptFlag")
+        self.ServiceInstanceId = params.get("ServiceInstanceId")
+
+
+class ModifyVpcEndPointServiceAttributeResponse(AbstractModel):
+    """ModifyVpcEndPointServiceAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyVpcEndPointServiceWhiteListRequest(AbstractModel):
+    """ModifyVpcEndPointServiceWhiteList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param UserUin: 用户UIN。
+        :type UserUin: str
+        :param EndPointServiceId: 终端节点服务ID。
+        :type EndPointServiceId: str
+        :param Description: 白名单描述信息。
+        :type Description: str
+        """
+        self.UserUin = None
+        self.EndPointServiceId = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.UserUin = params.get("UserUin")
+        self.EndPointServiceId = params.get("EndPointServiceId")
+        self.Description = params.get("Description")
+
+
+class ModifyVpcEndPointServiceWhiteListResponse(AbstractModel):
+    """ModifyVpcEndPointServiceWhiteList返回参数结构体
 
     """
 
@@ -15277,6 +16079,39 @@ class Vpc(AbstractModel):
                 obj = AssistantCidr()
                 obj._deserialize(item)
                 self.AssistantCidrSet.append(obj)
+
+
+class VpcEndPointServiceUser(AbstractModel):
+    """终端节点服务的服务白名单对象详情。
+
+    """
+
+    def __init__(self):
+        """
+        :param Owner: AppId。
+        :type Owner: int
+        :param UserUin: Uin。
+        :type UserUin: str
+        :param Description: 描述信息。
+        :type Description: str
+        :param CreateTime: 创建时间。
+        :type CreateTime: str
+        :param EndPointServiceId: 终端节点服务ID。
+        :type EndPointServiceId: str
+        """
+        self.Owner = None
+        self.UserUin = None
+        self.Description = None
+        self.CreateTime = None
+        self.EndPointServiceId = None
+
+
+    def _deserialize(self, params):
+        self.Owner = params.get("Owner")
+        self.UserUin = params.get("UserUin")
+        self.Description = params.get("Description")
+        self.CreateTime = params.get("CreateTime")
+        self.EndPointServiceId = params.get("EndPointServiceId")
 
 
 class VpcIpv6Address(AbstractModel):

@@ -4766,7 +4766,7 @@ class NodePool(AbstractModel):
         :type Name: str
         :param ClusterInstanceId: ClusterInstanceId 集群实例id
         :type ClusterInstanceId: str
-        :param LifeState: LifeState 状态
+        :param LifeState: LifeState 状态，当前节点池生命周期状态包括：creating，normal，updating，deleting，deleted
         :type LifeState: str
         :param LaunchConfigurationId: LaunchConfigurationId 配置
         :type LaunchConfigurationId: str

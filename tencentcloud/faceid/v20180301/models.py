@@ -748,7 +748,7 @@ class DetectInfoText(AbstractModel):
         :param Comparemsg: 本次流程最终一比一结果描述。（仅描述用，文案更新时不会通知。）
 注意：此字段可能返回 null，表示取不到有效值。
         :type Comparemsg: str
-        :param Sim: 本次流程活体一比一的分数。
+        :param Sim: 本次流程活体一比一的分数，取值范围 [0.00, 100.00]。相似度大于等于70时才判断为同一人，也可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）
 注意：此字段可能返回 null，表示取不到有效值。
         :type Sim: str
         :param Location: 地理位置经纬度。
@@ -1125,7 +1125,7 @@ class GetEidResultRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EidToken: 人脸核身流程的标识，调用DetectAuth接口时生成。
+        :param EidToken: 人脸核身流程的标识，调用GetEidToken接口时生成的。
         :type EidToken: str
         :param InfoType: 指定拉取的结果信息，取值（0：全部；1：文本类；2：身份证信息；3：最佳截图信息）。
 如 13表示拉取文本类、最佳截图信息。

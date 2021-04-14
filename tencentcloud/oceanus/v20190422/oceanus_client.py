@@ -138,6 +138,62 @@ class OceanusClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteResourceConfigs(self, request):
+        """删除资源版本
+
+        :param request: Request instance for DeleteResourceConfigs.
+        :type request: :class:`tencentcloud.oceanus.v20190422.models.DeleteResourceConfigsRequest`
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.DeleteResourceConfigsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteResourceConfigs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteResourceConfigsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteResources(self, request):
+        """删除资源接口
+
+        :param request: Request instance for DeleteResources.
+        :type request: :class:`tencentcloud.oceanus.v20190422.models.DeleteResourcesRequest`
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.DeleteResourcesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteResources", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteResourcesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteTableConfig(self, request):
         """删除作业表配置
 
@@ -208,6 +264,90 @@ class OceanusClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeJobsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeResourceConfigs(self, request):
+        """描述资源配置接口
+
+        :param request: Request instance for DescribeResourceConfigs.
+        :type request: :class:`tencentcloud.oceanus.v20190422.models.DescribeResourceConfigsRequest`
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.DescribeResourceConfigsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeResourceConfigs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeResourceConfigsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeResourceRelatedJobs(self, request):
+        """获取资源关联作业信息
+
+        :param request: Request instance for DescribeResourceRelatedJobs.
+        :type request: :class:`tencentcloud.oceanus.v20190422.models.DescribeResourceRelatedJobsRequest`
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.DescribeResourceRelatedJobsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeResourceRelatedJobs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeResourceRelatedJobsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeResources(self, request):
+        """描述资源接口
+
+        :param request: Request instance for DescribeResources.
+        :type request: :class:`tencentcloud.oceanus.v20190422.models.DescribeResourcesRequest`
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.DescribeResourcesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeResources", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeResourcesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

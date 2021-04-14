@@ -270,6 +270,78 @@ class CreateResourceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteResourceConfigsRequest(AbstractModel):
+    """DeleteResourceConfigs请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceId: 资源ID
+        :type ResourceId: str
+        :param ResourceConfigVersions: 资源版本数组
+        :type ResourceConfigVersions: list of int
+        """
+        self.ResourceId = None
+        self.ResourceConfigVersions = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
+        self.ResourceConfigVersions = params.get("ResourceConfigVersions")
+
+
+class DeleteResourceConfigsResponse(AbstractModel):
+    """DeleteResourceConfigs返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteResourcesRequest(AbstractModel):
+    """DeleteResources请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceIds: 待删除资源ID列表
+        :type ResourceIds: list of str
+        """
+        self.ResourceIds = None
+
+
+    def _deserialize(self, params):
+        self.ResourceIds = params.get("ResourceIds")
+
+
+class DeleteResourcesResponse(AbstractModel):
+    """DeleteResources返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteTableConfigRequest(AbstractModel):
     """DeleteTableConfig请求参数结构体
 
@@ -445,6 +517,196 @@ class DescribeJobsResponse(AbstractModel):
                 obj = JobV1()
                 obj._deserialize(item)
                 self.JobSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeResourceConfigsRequest(AbstractModel):
+    """DescribeResourceConfigs请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceId: 资源ID
+        :type ResourceId: str
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 返回值大小
+        :type Limit: int
+        :param ResourceConfigVersions: 资源配置Versions集合
+        :type ResourceConfigVersions: list of int
+        :param JobConfigVersion: 作业配置版本
+        :type JobConfigVersion: int
+        :param JobId: 作业ID
+        :type JobId: str
+        """
+        self.ResourceId = None
+        self.Offset = None
+        self.Limit = None
+        self.ResourceConfigVersions = None
+        self.JobConfigVersion = None
+        self.JobId = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.ResourceConfigVersions = params.get("ResourceConfigVersions")
+        self.JobConfigVersion = params.get("JobConfigVersion")
+        self.JobId = params.get("JobId")
+
+
+class DescribeResourceConfigsResponse(AbstractModel):
+    """DescribeResourceConfigs返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceConfigSet: 资源配置描述数组
+        :type ResourceConfigSet: list of ResourceConfigItem
+        :param TotalCount: 资源配置数量
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ResourceConfigSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ResourceConfigSet") is not None:
+            self.ResourceConfigSet = []
+            for item in params.get("ResourceConfigSet"):
+                obj = ResourceConfigItem()
+                obj._deserialize(item)
+                self.ResourceConfigSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeResourceRelatedJobsRequest(AbstractModel):
+    """DescribeResourceRelatedJobs请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceId: 资源ID
+        :type ResourceId: str
+        :param DESCByJobConfigCreateTime: 默认0;   1： 按照作业版本创建时间降序
+        :type DESCByJobConfigCreateTime: int
+        :param Offset: 偏移量，默认为0
+        :type Offset: int
+        :param Limit: 分页大小，默认为20，最大值为100
+        :type Limit: int
+        """
+        self.ResourceId = None
+        self.DESCByJobConfigCreateTime = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
+        self.DESCByJobConfigCreateTime = params.get("DESCByJobConfigCreateTime")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeResourceRelatedJobsResponse(AbstractModel):
+    """DescribeResourceRelatedJobs返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 总数
+        :type TotalCount: int
+        :param RefJobInfos: 关联作业信息
+        :type RefJobInfos: list of ResourceRefJobInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.RefJobInfos = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("RefJobInfos") is not None:
+            self.RefJobInfos = []
+            for item in params.get("RefJobInfos"):
+                obj = ResourceRefJobInfo()
+                obj._deserialize(item)
+                self.RefJobInfos.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeResourcesRequest(AbstractModel):
+    """DescribeResources请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceIds: 需要查询的资源ID数组
+        :type ResourceIds: list of str
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 条数限制
+        :type Limit: int
+        :param Filters: 查询资源配置列表， 如果不填写，返回该ResourceId下所有作业配置列表
+        :type Filters: list of Filter
+        """
+        self.ResourceIds = None
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.ResourceIds = params.get("ResourceIds")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class DescribeResourcesResponse(AbstractModel):
+    """DescribeResources返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceSet: 资源详细信息集合
+        :type ResourceSet: list of ResourceItem
+        :param TotalCount: 总数量
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ResourceSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ResourceSet") is not None:
+            self.ResourceSet = []
+            for item in params.get("ResourceSet"):
+                obj = ResourceItem()
+                obj._deserialize(item)
+                self.ResourceSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -791,6 +1053,145 @@ class Property(AbstractModel):
         self.Value = params.get("Value")
 
 
+class ResourceConfigItem(AbstractModel):
+    """描述资源配置的返回参数
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceId: 资源ID
+        :type ResourceId: str
+        :param ResourceType: 资源类型
+        :type ResourceType: int
+        :param Region: 资源所属地域
+        :type Region: str
+        :param AppId: 资源所属AppId
+        :type AppId: int
+        :param OwnerUin: 主账号Uin
+        :type OwnerUin: str
+        :param CreatorUin: 子账号Uin
+        :type CreatorUin: str
+        :param ResourceLoc: 资源位置描述
+        :type ResourceLoc: :class:`tencentcloud.oceanus.v20190422.models.ResourceLoc`
+        :param CreateTime: 资源创建时间
+        :type CreateTime: str
+        :param Version: 资源版本
+        :type Version: int
+        :param Remark: 资源描述
+        :type Remark: str
+        :param Status: 资源状态：0: 资源同步中，1:资源已就绪
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param RefJobCount: 关联作业个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RefJobCount: int
+        """
+        self.ResourceId = None
+        self.ResourceType = None
+        self.Region = None
+        self.AppId = None
+        self.OwnerUin = None
+        self.CreatorUin = None
+        self.ResourceLoc = None
+        self.CreateTime = None
+        self.Version = None
+        self.Remark = None
+        self.Status = None
+        self.RefJobCount = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
+        self.ResourceType = params.get("ResourceType")
+        self.Region = params.get("Region")
+        self.AppId = params.get("AppId")
+        self.OwnerUin = params.get("OwnerUin")
+        self.CreatorUin = params.get("CreatorUin")
+        if params.get("ResourceLoc") is not None:
+            self.ResourceLoc = ResourceLoc()
+            self.ResourceLoc._deserialize(params.get("ResourceLoc"))
+        self.CreateTime = params.get("CreateTime")
+        self.Version = params.get("Version")
+        self.Remark = params.get("Remark")
+        self.Status = params.get("Status")
+        self.RefJobCount = params.get("RefJobCount")
+
+
+class ResourceItem(AbstractModel):
+    """资源详细描述
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceId: 资源ID
+        :type ResourceId: str
+        :param Name: 资源名称
+        :type Name: str
+        :param ResourceType: 资源类型
+        :type ResourceType: int
+        :param ResourceLoc: 资源位置
+        :type ResourceLoc: :class:`tencentcloud.oceanus.v20190422.models.ResourceLoc`
+        :param Region: 资源地域
+        :type Region: str
+        :param AppId: 应用ID
+        :type AppId: int
+        :param OwnerUin: 主账号Uin
+        :type OwnerUin: str
+        :param CreatorUin: 子账号Uin
+        :type CreatorUin: str
+        :param CreateTime: 资源创建时间
+        :type CreateTime: str
+        :param UpdateTime: 资源最后更新时间
+        :type UpdateTime: str
+        :param LatestResourceConfigVersion: 资源的资源版本ID
+        :type LatestResourceConfigVersion: int
+        :param Remark: 资源备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param VersionCount: 版本个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionCount: int
+        :param RefJobCount: 关联作业数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RefJobCount: int
+        """
+        self.ResourceId = None
+        self.Name = None
+        self.ResourceType = None
+        self.ResourceLoc = None
+        self.Region = None
+        self.AppId = None
+        self.OwnerUin = None
+        self.CreatorUin = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.LatestResourceConfigVersion = None
+        self.Remark = None
+        self.VersionCount = None
+        self.RefJobCount = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
+        self.Name = params.get("Name")
+        self.ResourceType = params.get("ResourceType")
+        if params.get("ResourceLoc") is not None:
+            self.ResourceLoc = ResourceLoc()
+            self.ResourceLoc._deserialize(params.get("ResourceLoc"))
+        self.Region = params.get("Region")
+        self.AppId = params.get("AppId")
+        self.OwnerUin = params.get("OwnerUin")
+        self.CreatorUin = params.get("CreatorUin")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.LatestResourceConfigVersion = params.get("LatestResourceConfigVersion")
+        self.Remark = params.get("Remark")
+        self.VersionCount = params.get("VersionCount")
+        self.RefJobCount = params.get("RefJobCount")
+
+
 class ResourceLoc(AbstractModel):
     """资源位置描述
 
@@ -896,6 +1297,31 @@ class ResourceRefDetail(AbstractModel):
         self.Name = params.get("Name")
         self.Type = params.get("Type")
         self.SystemProvide = params.get("SystemProvide")
+
+
+class ResourceRefJobInfo(AbstractModel):
+    """资源被Job 引用信息
+
+    """
+
+    def __init__(self):
+        """
+        :param JobId: Job id
+        :type JobId: str
+        :param JobConfigVersion: Job配置版本
+        :type JobConfigVersion: int
+        :param ResourceVersion: 资源版本
+        :type ResourceVersion: int
+        """
+        self.JobId = None
+        self.JobConfigVersion = None
+        self.ResourceVersion = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.JobConfigVersion = params.get("JobConfigVersion")
+        self.ResourceVersion = params.get("ResourceVersion")
 
 
 class RunJobDescription(AbstractModel):

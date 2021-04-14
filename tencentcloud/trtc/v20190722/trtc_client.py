@@ -26,6 +26,34 @@ class TrtcClient(AbstractClient):
     _service = 'trtc'
 
 
+    def CreatePicture(self, request):
+        """上传图片
+
+        :param request: Request instance for CreatePicture.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.CreatePictureRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.CreatePictureResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreatePicture", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreatePictureResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateTroubleInfo(self, request):
         """创建异常信息
 
@@ -40,6 +68,34 @@ class TrtcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTroubleInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeletePicture(self, request):
+        """删除图片
+
+        :param request: Request instance for DeletePicture.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DeletePictureRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DeletePictureResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeletePicture", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeletePictureResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -153,6 +209,34 @@ class TrtcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeHistoryScaleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePicture(self, request):
+        """查询某图片相关参数。
+
+        :param request: Request instance for DescribePicture.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribePictureRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribePictureResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePicture", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePictureResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -448,6 +532,34 @@ class TrtcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DismissRoomByStrRoomIdResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyPicture(self, request):
+        """修改图片相关参数。
+
+        :param request: Request instance for ModifyPicture.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.ModifyPictureRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.ModifyPictureResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyPicture", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyPictureResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

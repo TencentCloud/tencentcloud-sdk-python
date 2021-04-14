@@ -1992,11 +1992,11 @@ class InvokeRequest(AbstractModel):
         :type FunctionName: str
         :param InvocationType: RequestResponse(同步) 和 Event(异步)，默认为同步
         :type InvocationType: str
-        :param Qualifier: 触发函数的版本号
+        :param Qualifier: 触发函数的版本号或别名
         :type Qualifier: str
         :param ClientContext: 运行函数时的参数，以json格式传入，最大支持的参数长度是 1M
         :type ClientContext: str
-        :param LogType: 同步调用时指定该字段，返回值会包含4K的日志，可选值为None和Tail，默认值为None。当该值为Tail时，返回参数中的logMsg字段会包含对应的函数执行日志
+        :param LogType: 同步调用时指定该字段，返回值会包含4K的日志，可选值为None和Tail，默认值为None。当该值为Tail时，返回参数中的Log字段会包含对应的函数执行日志
         :type LogType: str
         :param Namespace: 命名空间
         :type Namespace: str

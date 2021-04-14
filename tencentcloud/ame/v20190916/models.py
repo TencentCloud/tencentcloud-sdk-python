@@ -779,6 +779,42 @@ class Lyric(AbstractModel):
         self.SubItemType = params.get("SubItemType")
 
 
+class ModifyMusicOnShelvesRequest(AbstractModel):
+    """ModifyMusicOnShelves请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MusicDetailInfos: 无
+        :type MusicDetailInfos: :class:`tencentcloud.ame.v20190916.models.MusicDetailInfo`
+        """
+        self.MusicDetailInfos = None
+
+
+    def _deserialize(self, params):
+        if params.get("MusicDetailInfos") is not None:
+            self.MusicDetailInfos = MusicDetailInfo()
+            self.MusicDetailInfos._deserialize(params.get("MusicDetailInfos"))
+
+
+class ModifyMusicOnShelvesResponse(AbstractModel):
+    """ModifyMusicOnShelves返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class Music(AbstractModel):
     """音乐详情
 
@@ -817,6 +853,43 @@ Unit :ms
         self.AuditionBegin = params.get("AuditionBegin")
         self.AuditionEnd = params.get("AuditionEnd")
         self.FullUrl = params.get("FullUrl")
+
+
+class MusicDetailInfo(AbstractModel):
+    """歌曲变更细节
+
+    """
+
+    def __init__(self):
+        """
+        :param MusicId: 资源方音乐Id
+        :type MusicId: str
+        :param AmeId: 资源方识别信息
+        :type AmeId: str
+        :param Tags: 分类标签
+        :type Tags: list of str
+        :param HitWords: 关键词
+        :type HitWords: list of str
+        :param Bpm: 节奏信息
+        :type Bpm: int
+        :param Score: 商业化权益
+        :type Score: float
+        """
+        self.MusicId = None
+        self.AmeId = None
+        self.Tags = None
+        self.HitWords = None
+        self.Bpm = None
+        self.Score = None
+
+
+    def _deserialize(self, params):
+        self.MusicId = params.get("MusicId")
+        self.AmeId = params.get("AmeId")
+        self.Tags = params.get("Tags")
+        self.HitWords = params.get("HitWords")
+        self.Bpm = params.get("Bpm")
+        self.Score = params.get("Score")
 
 
 class MusicOpenDetail(AbstractModel):
@@ -980,6 +1053,53 @@ class PackageItem(AbstractModel):
         self.AuthorizedArea = params.get("AuthorizedArea")
 
 
+class PutMusicOnTheShelvesRequest(AbstractModel):
+    """PutMusicOnTheShelves请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MusicIds: 资源方歌曲Id
+        :type MusicIds: list of str
+        """
+        self.MusicIds = None
+
+
+    def _deserialize(self, params):
+        self.MusicIds = params.get("MusicIds")
+
+
+class PutMusicOnTheShelvesResponse(AbstractModel):
+    """PutMusicOnTheShelves返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SuccessNum: 操作成功数量
+        :type SuccessNum: int
+        :param FailedNum: 操作失败数量
+        :type FailedNum: int
+        :param FailedMusicIds: 失败歌曲Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailedMusicIds: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SuccessNum = None
+        self.FailedNum = None
+        self.FailedMusicIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SuccessNum = params.get("SuccessNum")
+        self.FailedNum = params.get("FailedNum")
+        self.FailedMusicIds = params.get("FailedMusicIds")
+        self.RequestId = params.get("RequestId")
+
+
 class ReportDataRequest(AbstractModel):
     """ReportData请求参数结构体
 
@@ -1066,6 +1186,79 @@ class Station(AbstractModel):
                 obj = ImagePath()
                 obj._deserialize(item)
                 self.ImagePathMap.append(obj)
+
+
+class TakeMusicOffShelves(AbstractModel):
+    """下架歌曲复合结构
+
+    """
+
+    def __init__(self):
+        """
+        :param MusicIds: 资源方对应音乐Id
+        :type MusicIds: str
+        :param SaleStatus: 当曲目临时下架时：已订购客户无影响，无需消息通知。当曲目封杀下架后，推送消息至已订购老客户，枚举值，判断是否上/下架
+        :type SaleStatus: str
+        """
+        self.MusicIds = None
+        self.SaleStatus = None
+
+
+    def _deserialize(self, params):
+        self.MusicIds = params.get("MusicIds")
+        self.SaleStatus = params.get("SaleStatus")
+
+
+class TakeMusicOffShelvesRequest(AbstractModel):
+    """TakeMusicOffShelves请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TakeMusicOffShelves: 资源方下架必传结构
+        :type TakeMusicOffShelves: list of TakeMusicOffShelves
+        """
+        self.TakeMusicOffShelves = None
+
+
+    def _deserialize(self, params):
+        if params.get("TakeMusicOffShelves") is not None:
+            self.TakeMusicOffShelves = []
+            for item in params.get("TakeMusicOffShelves"):
+                obj = TakeMusicOffShelves()
+                obj._deserialize(item)
+                self.TakeMusicOffShelves.append(obj)
+
+
+class TakeMusicOffShelvesResponse(AbstractModel):
+    """TakeMusicOffShelves返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SuccessNum: 返回成功数量
+        :type SuccessNum: int
+        :param FailedNum: 返回失败数量
+        :type FailedNum: int
+        :param FailedMusicIds: 返回失败歌曲musicId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailedMusicIds: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SuccessNum = None
+        self.FailedNum = None
+        self.FailedMusicIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SuccessNum = params.get("SuccessNum")
+        self.FailedNum = params.get("FailedNum")
+        self.FailedMusicIds = params.get("FailedMusicIds")
+        self.RequestId = params.get("RequestId")
 
 
 class UseRange(AbstractModel):

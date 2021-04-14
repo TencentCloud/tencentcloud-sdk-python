@@ -76,6 +76,68 @@ class AbnormalExperience(AbstractModel):
         self.EventTime = params.get("EventTime")
 
 
+class CreatePictureRequest(AbstractModel):
+    """CreatePicture请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SdkAppId: 应用id
+        :type SdkAppId: int
+        :param Content: 图片内容经base64编码后的string格式
+        :type Content: str
+        :param Suffix: 图片后缀名
+        :type Suffix: str
+        :param Height: 图片长度
+        :type Height: int
+        :param Width: 图片宽度
+        :type Width: int
+        :param XPosition: 显示位置x轴方向
+        :type XPosition: int
+        :param YPosition: 显示位置y轴方向
+        :type YPosition: int
+        """
+        self.SdkAppId = None
+        self.Content = None
+        self.Suffix = None
+        self.Height = None
+        self.Width = None
+        self.XPosition = None
+        self.YPosition = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.Content = params.get("Content")
+        self.Suffix = params.get("Suffix")
+        self.Height = params.get("Height")
+        self.Width = params.get("Width")
+        self.XPosition = params.get("XPosition")
+        self.YPosition = params.get("YPosition")
+
+
+class CreatePictureResponse(AbstractModel):
+    """CreatePicture返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PictureId: 图片id
+        :type PictureId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PictureId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PictureId = params.get("PictureId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateTroubleInfoRequest(AbstractModel):
     """CreateTroubleInfo请求参数结构体
 
@@ -131,6 +193,44 @@ class CreateTroubleInfoRequest(AbstractModel):
 
 class CreateTroubleInfoResponse(AbstractModel):
     """CreateTroubleInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeletePictureRequest(AbstractModel):
+    """DeletePicture请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PictureId: 图片id
+        :type PictureId: int
+        :param SdkAppId: 应用id
+        :type SdkAppId: int
+        """
+        self.PictureId = None
+        self.SdkAppId = None
+
+
+    def _deserialize(self, params):
+        self.PictureId = params.get("PictureId")
+        self.SdkAppId = params.get("SdkAppId")
+
+
+class DeletePictureResponse(AbstractModel):
+    """DeletePicture返回参数结构体
 
     """
 
@@ -416,6 +516,65 @@ class DescribeHistoryScaleResponse(AbstractModel):
                 obj = ScaleInfomation()
                 obj._deserialize(item)
                 self.ScaleList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePictureRequest(AbstractModel):
+    """DescribePicture请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SdkAppId: 应用id
+        :type SdkAppId: int
+        :param PictureId: 图片id,不传时返回该应用下所有图片
+        :type PictureId: int
+        :param PageSize: 每页数量
+        :type PageSize: int
+        :param PageNo: 页码
+        :type PageNo: int
+        """
+        self.SdkAppId = None
+        self.PictureId = None
+        self.PageSize = None
+        self.PageNo = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.PictureId = params.get("PictureId")
+        self.PageSize = params.get("PageSize")
+        self.PageNo = params.get("PageNo")
+
+
+class DescribePictureResponse(AbstractModel):
+    """DescribePicture返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Total: 返回的图片记录数
+        :type Total: int
+        :param PictureInfo: 图片信息列表
+        :type PictureInfo: list of PictureInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.PictureInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("PictureInfo") is not None:
+            self.PictureInfo = []
+            for item in params.get("PictureInfo"):
+                obj = PictureInfo()
+                obj._deserialize(item)
+                self.PictureInfo.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1146,6 +1305,60 @@ class LayoutParams(AbstractModel):
         self.PureAudioHoldPlaceMode = params.get("PureAudioHoldPlaceMode")
 
 
+class ModifyPictureRequest(AbstractModel):
+    """ModifyPicture请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PictureId: 图片id
+        :type PictureId: int
+        :param SdkAppId: 应用id
+        :type SdkAppId: int
+        :param Height: 图片长度
+        :type Height: int
+        :param Width: 图片宽度
+        :type Width: int
+        :param XPosition: 显示位置x轴方向
+        :type XPosition: int
+        :param YPosition: 显示位置y轴方向
+        :type YPosition: int
+        """
+        self.PictureId = None
+        self.SdkAppId = None
+        self.Height = None
+        self.Width = None
+        self.XPosition = None
+        self.YPosition = None
+
+
+    def _deserialize(self, params):
+        self.PictureId = params.get("PictureId")
+        self.SdkAppId = params.get("SdkAppId")
+        self.Height = params.get("Height")
+        self.Width = params.get("Width")
+        self.XPosition = params.get("XPosition")
+        self.YPosition = params.get("YPosition")
+
+
+class ModifyPictureResponse(AbstractModel):
+    """ModifyPicture返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class OneSdkAppIdTranscodeTimeUsagesInfo(AbstractModel):
     """旁路转码时长的查询结果
 
@@ -1233,6 +1446,43 @@ class OutputParams(AbstractModel):
         self.PureAudioStream = params.get("PureAudioStream")
         self.RecordId = params.get("RecordId")
         self.RecordAudioOnly = params.get("RecordAudioOnly")
+
+
+class PictureInfo(AbstractModel):
+    """图片列表信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Height: 图片长度
+        :type Height: int
+        :param Width: 图片宽度
+        :type Width: int
+        :param XPosition: 显示位置x轴方向
+        :type XPosition: int
+        :param YPosition: 显示位置y轴方向
+        :type YPosition: int
+        :param SdkAppId: 应用id
+        :type SdkAppId: int
+        :param PictureId: 图片id
+        :type PictureId: int
+        """
+        self.Height = None
+        self.Width = None
+        self.XPosition = None
+        self.YPosition = None
+        self.SdkAppId = None
+        self.PictureId = None
+
+
+    def _deserialize(self, params):
+        self.Height = params.get("Height")
+        self.Width = params.get("Width")
+        self.XPosition = params.get("XPosition")
+        self.YPosition = params.get("YPosition")
+        self.SdkAppId = params.get("SdkAppId")
+        self.PictureId = params.get("PictureId")
 
 
 class PresetLayoutConfig(AbstractModel):
