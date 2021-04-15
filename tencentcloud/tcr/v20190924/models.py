@@ -2789,6 +2789,84 @@ class DescribeWebhookTriggerResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DownloadHelmChartRequest(AbstractModel):
+    """DownloadHelmChart请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 实例ID
+        :type RegistryId: str
+        :param NamespaceName: 命名空间名称
+        :type NamespaceName: str
+        :param ChartName: Helm chart名称
+        :type ChartName: str
+        :param ChartVersion: Helm chart版本
+        :type ChartVersion: str
+        """
+        self.RegistryId = None
+        self.NamespaceName = None
+        self.ChartName = None
+        self.ChartVersion = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.NamespaceName = params.get("NamespaceName")
+        self.ChartName = params.get("ChartName")
+        self.ChartVersion = params.get("ChartVersion")
+
+
+class DownloadHelmChartResponse(AbstractModel):
+    """DownloadHelmChart返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TmpToken: 临时token
+        :type TmpToken: str
+        :param TmpSecretId: 临时的secretId
+        :type TmpSecretId: str
+        :param TmpSecretKey: 临时的secretKey
+        :type TmpSecretKey: str
+        :param Bucket: 存储桶信息
+        :type Bucket: str
+        :param Region: 实例ID
+        :type Region: str
+        :param Path: chart信息
+        :type Path: str
+        :param StartTime: 开始时间时间戳
+        :type StartTime: int
+        :param ExpiredTime: token过期时间时间戳
+        :type ExpiredTime: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TmpToken = None
+        self.TmpSecretId = None
+        self.TmpSecretKey = None
+        self.Bucket = None
+        self.Region = None
+        self.Path = None
+        self.StartTime = None
+        self.ExpiredTime = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TmpToken = params.get("TmpToken")
+        self.TmpSecretId = params.get("TmpSecretId")
+        self.TmpSecretKey = params.get("TmpSecretKey")
+        self.Bucket = params.get("Bucket")
+        self.Region = params.get("Region")
+        self.Path = params.get("Path")
+        self.StartTime = params.get("StartTime")
+        self.ExpiredTime = params.get("ExpiredTime")
+        self.RequestId = params.get("RequestId")
+
+
 class DupImageTagResp(AbstractModel):
     """复制镜像tag返回值
 

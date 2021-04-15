@@ -453,6 +453,7 @@ class CreateProjectRequest(AbstractModel):
 <li>SWITCHER：导播台。</li>
 <li>VIDEO_SEGMENTATION：视频拆条。</li>
 <li>STREAM_CONNECT：云转推。</li>
+<li>RECORD_REPLAY：录制回放。</li>
         :type Category: str
         :param Name: 项目名称，不可超过30个字符。
         :type Name: str
@@ -473,6 +474,8 @@ class CreateProjectRequest(AbstractModel):
         :type VideoSegmentationProjectInput: :class:`tencentcloud.cme.v20191029.models.VideoSegmentationProjectInput`
         :param StreamConnectProjectInput: 云转推项目信息，仅当项目类型为 STREAM_CONNECT 时必填。
         :type StreamConnectProjectInput: :class:`tencentcloud.cme.v20191029.models.StreamConnectProjectInput`
+        :param RecordReplayProjectInput: 录制回放项目信息，仅当项目类型为 RECORD_REPLAY 时必填。
+        :type RecordReplayProjectInput: :class:`tencentcloud.cme.v20191029.models.RecordReplayProjectInput`
         """
         self.Platform = None
         self.Category = None
@@ -485,6 +488,7 @@ class CreateProjectRequest(AbstractModel):
         self.VideoEditProjectInput = None
         self.VideoSegmentationProjectInput = None
         self.StreamConnectProjectInput = None
+        self.RecordReplayProjectInput = None
 
 
     def _deserialize(self, params):
@@ -511,6 +515,9 @@ class CreateProjectRequest(AbstractModel):
         if params.get("StreamConnectProjectInput") is not None:
             self.StreamConnectProjectInput = StreamConnectProjectInput()
             self.StreamConnectProjectInput._deserialize(params.get("StreamConnectProjectInput"))
+        if params.get("RecordReplayProjectInput") is not None:
+            self.RecordReplayProjectInput = RecordReplayProjectInput()
+            self.RecordReplayProjectInput._deserialize(params.get("RecordReplayProjectInput"))
 
 
 class CreateProjectResponse(AbstractModel):
@@ -1141,6 +1148,7 @@ class DescribeProjectsRequest(AbstractModel):
 <li>SWITCHER：导播台。</li>
 <li>VIDEO_SEGMENTATION：视频拆条。</li>
 <li>STREAM_CONNECT：云转推。</li>
+<li>RECORD_REPLAY：录制回放。</li>
         :type CategorySet: list of str
         :param Sort: 列表排序，支持下列排序字段：
 <li>CreateTime：创建时间；</li>
@@ -1904,6 +1912,8 @@ class ExportVideoEditProjectRequest(AbstractModel):
 <li>CME：云剪，即导出为云剪媒体；</li>
 <li>VOD：云点播，即导出为云点播媒资。</li>
         :type ExportDestination: str
+        :param CoverData: 视频封面图片文件（如 jpeg, png 等）进行 Base64 编码后的字符串，仅支持 gif、jpeg、png 三种图片格式，原图片文件不能超过2 M大 小。
+        :type CoverData: str
         :param CMEExportInfo: 导出的云剪媒体信息。指定 ExportDestination = CME 时有效。
         :type CMEExportInfo: :class:`tencentcloud.cme.v20191029.models.CMEExportInfo`
         :param VODExportInfo: 导出的云点播媒资信息。指定 ExportDestination = VOD 时有效。
@@ -1915,6 +1925,7 @@ class ExportVideoEditProjectRequest(AbstractModel):
         self.ProjectId = None
         self.Definition = None
         self.ExportDestination = None
+        self.CoverData = None
         self.CMEExportInfo = None
         self.VODExportInfo = None
         self.Operator = None
@@ -1925,6 +1936,7 @@ class ExportVideoEditProjectRequest(AbstractModel):
         self.ProjectId = params.get("ProjectId")
         self.Definition = params.get("Definition")
         self.ExportDestination = params.get("ExportDestination")
+        self.CoverData = params.get("CoverData")
         if params.get("CMEExportInfo") is not None:
             self.CMEExportInfo = CMEExportInfo()
             self.CMEExportInfo._deserialize(params.get("CMEExportInfo"))
@@ -3515,6 +3527,37 @@ class ProjectInfo(AbstractModel):
         self.CoverUrl = params.get("CoverUrl")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+
+
+class RecordReplayProjectInput(AbstractModel):
+    """录制回放项目输入信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param PullStreamUrl: 录制拉流地址。
+        :type PullStreamUrl: str
+        :param MaterialOwner: 录制文件归属者。
+        :type MaterialOwner: :class:`tencentcloud.cme.v20191029.models.Entity`
+        :param MaterialClassPath: 录制文件存储分类路径。
+        :type MaterialClassPath: str
+        :param PushStreamUrl: 回放推流地址。
+        :type PushStreamUrl: str
+        """
+        self.PullStreamUrl = None
+        self.MaterialOwner = None
+        self.MaterialClassPath = None
+        self.PushStreamUrl = None
+
+
+    def _deserialize(self, params):
+        self.PullStreamUrl = params.get("PullStreamUrl")
+        if params.get("MaterialOwner") is not None:
+            self.MaterialOwner = Entity()
+            self.MaterialOwner._deserialize(params.get("MaterialOwner"))
+        self.MaterialClassPath = params.get("MaterialClassPath")
+        self.PushStreamUrl = params.get("PushStreamUrl")
 
 
 class Resource(AbstractModel):

@@ -251,6 +251,34 @@ class GmeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyRoomInfo(self, request):
+        """修改房间信息
+
+        :param request: Request instance for ModifyRoomInfo.
+        :type request: :class:`tencentcloud.gme.v20180711.models.ModifyRoomInfoRequest`
+        :rtype: :class:`tencentcloud.gme.v20180711.models.ModifyRoomInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyRoomInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyRoomInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ScanVoice(self, request):
         """本接口(ScanVoice)用于提交语音检测任务，检测任务列表最多支持100个。使用前请您登录[控制台 - 服务配置](https://console.cloud.tencent.com/gamegme/conf)开启语音分析服务。
         </br></br>

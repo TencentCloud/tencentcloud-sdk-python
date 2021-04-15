@@ -721,6 +721,60 @@ class ModifyAppStatusResponse(AbstractModel):
         self.Status = params.get("Status")
 
 
+class ModifyRoomInfoRequest(AbstractModel):
+    """ModifyRoomInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SdkAppId: 应用ID，登录[控制台 - 服务管理](https://console.cloud.tencent.com/gamegme)创建应用得到的AppID
+        :type SdkAppId: int
+        :param RoomId: 房间id
+        :type RoomId: int
+        :param OperationType: 301 启动推流
+302 停止推流
+303 重置RTMP连接
+        :type OperationType: int
+        """
+        self.SdkAppId = None
+        self.RoomId = None
+        self.OperationType = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.RoomId = params.get("RoomId")
+        self.OperationType = params.get("OperationType")
+
+
+class ModifyRoomInfoResponse(AbstractModel):
+    """ModifyRoomInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 操作结果, 0成功, 非0失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: int
+        :param ErrMsg: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrMsg: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.ErrMsg = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.ErrMsg = params.get("ErrMsg")
+        self.RequestId = params.get("RequestId")
+
+
 class RealTimeSpeechStatisticsItem(AbstractModel):
     """实时语音用量统计数据
 

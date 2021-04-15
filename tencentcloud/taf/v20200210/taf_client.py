@@ -111,7 +111,9 @@ class TafClient(AbstractClient):
 
 
     def RecognizeEffectiveFlow(self, request):
-        """筛选敏感易骚扰人群
+        """该服务已不再对外提供能力
+
+        筛选敏感易骚扰人群
 
         :param request: Request instance for RecognizeEffectiveFlow.
         :type request: :class:`tencentcloud.taf.v20200210.models.RecognizeEffectiveFlowRequest`

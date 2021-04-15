@@ -1622,6 +1622,34 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DownloadHelmChart(self, request):
+        """用于在TCR中下载helm chart
+
+        :param request: Request instance for DownloadHelmChart.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DownloadHelmChartRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DownloadHelmChartResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DownloadHelmChart", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DownloadHelmChartResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DuplicateImagePersonal(self, request):
         """用于在个人版镜像仓库中复制镜像版本
 

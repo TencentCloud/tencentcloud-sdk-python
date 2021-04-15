@@ -842,6 +842,9 @@ class JobConfig(AbstractModel):
         :param LogCollect: 是否启用日志收集，0-未启用，1-已启用，2-历史集群未设置日志集，3-历史集群已开启
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogCollect: int
+        :param MaxParallelism: 作业的最大并行度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxParallelism: int
         """
         self.JobId = None
         self.EntrypointClass = None
@@ -856,6 +859,7 @@ class JobConfig(AbstractModel):
         self.UpdateTime = None
         self.COSBucket = None
         self.LogCollect = None
+        self.MaxParallelism = None
 
 
     def _deserialize(self, params):
@@ -882,6 +886,7 @@ class JobConfig(AbstractModel):
         self.UpdateTime = params.get("UpdateTime")
         self.COSBucket = params.get("COSBucket")
         self.LogCollect = params.get("LogCollect")
+        self.MaxParallelism = params.get("MaxParallelism")
 
 
 class JobV1(AbstractModel):
