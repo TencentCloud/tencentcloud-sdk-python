@@ -947,6 +947,95 @@ class DescribeGroupsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeRecordStreamData(AbstractModel):
+    """DescribeRecordStreamData 复杂类型
+
+    """
+
+    def __init__(self):
+        """
+        :param RtspAddr: Rtsp地址
+        :type RtspAddr: str
+        :param RtmpAddr: Rtmp地址
+        :type RtmpAddr: str
+        :param HlsAddr: Hls地址
+        :type HlsAddr: str
+        :param FlvAddr: Flv地址
+        :type FlvAddr: str
+        :param StreamId: 流Id
+        :type StreamId: str
+        """
+        self.RtspAddr = None
+        self.RtmpAddr = None
+        self.HlsAddr = None
+        self.FlvAddr = None
+        self.StreamId = None
+
+
+    def _deserialize(self, params):
+        self.RtspAddr = params.get("RtspAddr")
+        self.RtmpAddr = params.get("RtmpAddr")
+        self.HlsAddr = params.get("HlsAddr")
+        self.FlvAddr = params.get("FlvAddr")
+        self.StreamId = params.get("StreamId")
+
+
+class DescribeRecordStreamRequest(AbstractModel):
+    """DescribeRecordStream请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DeviceId: 设备Id
+        :type DeviceId: str
+        :param ExpireTime: 流失效时间
+        :type ExpireTime: int
+        :param RecordId: 录像文件Id
+        :type RecordId: str
+        :param StartTime: 录像流开始时间，当录像文件Id为空时有效
+        :type StartTime: int
+        :param EndTime: 录像流结束时间，当录像文件Id为空时有效
+        :type EndTime: int
+        """
+        self.DeviceId = None
+        self.ExpireTime = None
+        self.RecordId = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.DeviceId = params.get("DeviceId")
+        self.ExpireTime = params.get("ExpireTime")
+        self.RecordId = params.get("RecordId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+
+
+class DescribeRecordStreamResponse(AbstractModel):
+    """DescribeRecordStream返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 结果
+        :type Data: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeRecordStreamData`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = DescribeRecordStreamData()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSIPServerRequest(AbstractModel):
     """DescribeSIPServer请求参数结构体
 
@@ -1148,6 +1237,62 @@ class DescribeSubGroupsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.GroupList.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVideoListRequest(AbstractModel):
+    """DescribeVideoList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 开始时间戳，秒级
+        :type StartTime: int
+        :param EndTime: 结束时间戳，秒级
+        :type EndTime: int
+        :param Offset: 偏移
+        :type Offset: int
+        :param Limit: 限制
+        :type Limit: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeVideoListResponse(AbstractModel):
+    """DescribeVideoList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 总数
+        :type TotalCount: int
+        :param VideoList: 录像详情列表
+        :type VideoList: :class:`tencentcloud.iotvideoindustry.v20201201.models.RecordTaskItem`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.VideoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("VideoList") is not None:
+            self.VideoList = RecordTaskItem()
+            self.VideoList._deserialize(params.get("VideoList"))
         self.RequestId = params.get("RequestId")
 
 

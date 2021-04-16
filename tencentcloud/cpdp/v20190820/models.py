@@ -9795,6 +9795,98 @@ class UnifiedOrderResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class UploadTaxListRequest(AbstractModel):
+    """UploadTaxList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Channel: 平台渠道
+        :type Channel: int
+        :param BeginMonth: 起始月份，YYYY-MM
+        :type BeginMonth: str
+        :param EndMonth: 结束月份。如果只上传一个月，结束月份等于起始月份
+        :type EndMonth: str
+        :param FileUrl: 完税列表下载地址
+        :type FileUrl: str
+        """
+        self.Channel = None
+        self.BeginMonth = None
+        self.EndMonth = None
+        self.FileUrl = None
+
+
+    def _deserialize(self, params):
+        self.Channel = params.get("Channel")
+        self.BeginMonth = params.get("BeginMonth")
+        self.EndMonth = params.get("EndMonth")
+        self.FileUrl = params.get("FileUrl")
+
+
+class UploadTaxListResponse(AbstractModel):
+    """UploadTaxList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaxId: 完税ID
+        :type TaxId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaxId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaxId = params.get("TaxId")
+        self.RequestId = params.get("RequestId")
+
+
+class UploadTaxPaymentRequest(AbstractModel):
+    """UploadTaxPayment请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Channel: 平台渠道
+        :type Channel: int
+        :param TaxId: 完税ID
+        :type TaxId: str
+        :param FileUrl: 完税列表下载地址
+        :type FileUrl: str
+        """
+        self.Channel = None
+        self.TaxId = None
+        self.FileUrl = None
+
+
+    def _deserialize(self, params):
+        self.Channel = params.get("Channel")
+        self.TaxId = params.get("TaxId")
+        self.FileUrl = params.get("FileUrl")
+
+
+class UploadTaxPaymentResponse(AbstractModel):
+    """UploadTaxPayment返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class WithdrawBill(AbstractModel):
     """聚鑫提现订单内容
 

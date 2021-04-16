@@ -5229,6 +5229,44 @@ class UpgradeInstanceVersionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class UpgradeVersionToMultiAvailabilityZonesRequest(AbstractModel):
+    """UpgradeVersionToMultiAvailabilityZones请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class UpgradeVersionToMultiAvailabilityZonesResponse(AbstractModel):
+    """UpgradeVersionToMultiAvailabilityZones返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: 任务ID
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class ZoneCapacityConf(AbstractModel):
     """可用区内产品信息
 

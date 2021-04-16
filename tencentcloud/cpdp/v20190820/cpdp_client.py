@@ -2275,6 +2275,62 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def UploadTaxList(self, request):
+        """直播平台-上传代理商完税列表
+
+        :param request: Request instance for UploadTaxList.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.UploadTaxListRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.UploadTaxListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UploadTaxList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UploadTaxListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UploadTaxPayment(self, request):
+        """直播平台-上传代理商完税证明
+
+        :param request: Request instance for UploadTaxPayment.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.UploadTaxPaymentRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.UploadTaxPaymentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UploadTaxPayment", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UploadTaxPaymentResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def WithdrawCashMembership(self, request):
         """会员提现-不验证。此接口受理会员发起的提现申请。会员子账户的可提现余额、可用余额会减少，市场的资金汇总账户(监管账户)会减少相应的发生金额，提现到会员申请的收款账户。
 

@@ -1325,21 +1325,21 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Balance: 云账户信息中的”展示可用余额”字段，单位为"分"
+        :param Balance: 接口做过变更,为兼容老接口,本字段与RealBalance相同,为当前真实可用余额,单位 分
         :type Balance: int
         :param Uin: 查询的用户Uin
         :type Uin: int
-        :param RealBalance: 当前真实可用余额
+        :param RealBalance: 当前真实可用余额,单位 分
         :type RealBalance: float
-        :param CashAccountBalance: 现金账户余额
+        :param CashAccountBalance: 现金账户余额,单位 分
         :type CashAccountBalance: float
-        :param IncomeIntoAccountBalance: 收益转入账户余额
+        :param IncomeIntoAccountBalance: 收益转入账户余额,单位 分
         :type IncomeIntoAccountBalance: float
-        :param PresentAccountBalance: 赠送账户余额
+        :param PresentAccountBalance: 赠送账户余额,单位 分
         :type PresentAccountBalance: float
-        :param FreezeAmount: 冻结金额
+        :param FreezeAmount: 冻结金额,单位 分
         :type FreezeAmount: float
-        :param OweAmount: 欠费金额
+        :param OweAmount: 欠费金额,单位 分
         :type OweAmount: float
         :param IsAllowArrears: 是否允许欠费消费
         :type IsAllowArrears: bool
