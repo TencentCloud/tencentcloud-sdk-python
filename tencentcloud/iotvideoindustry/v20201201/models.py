@@ -1255,11 +1255,14 @@ class DescribeVideoListRequest(AbstractModel):
         :type Offset: int
         :param Limit: 限制
         :type Limit: int
+        :param DeviceId: 设备Id
+        :type DeviceId: str
         """
         self.StartTime = None
         self.EndTime = None
         self.Offset = None
         self.Limit = None
+        self.DeviceId = None
 
 
     def _deserialize(self, params):
@@ -1267,6 +1270,7 @@ class DescribeVideoListRequest(AbstractModel):
         self.EndTime = params.get("EndTime")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.DeviceId = params.get("DeviceId")
 
 
 class DescribeVideoListResponse(AbstractModel):

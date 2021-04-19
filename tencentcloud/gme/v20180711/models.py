@@ -480,6 +480,59 @@ class DescribeFilterResultResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeRoomInfoRequest(AbstractModel):
+    """DescribeRoomInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SdkAppId: 应用ID，登录[控制台 - 服务管理](https://console.cloud.tencent.com/gamegme)创建应用得到的AppID
+        :type SdkAppId: int
+        :param RoomIds: 房间号列表，最大不能超过10个
+        :type RoomIds: list of int non-negative
+        """
+        self.SdkAppId = None
+        self.RoomIds = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.RoomIds = params.get("RoomIds")
+
+
+class DescribeRoomInfoResponse(AbstractModel):
+    """DescribeRoomInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 操作结果, 0成功, 非0失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: int
+        :param RoomUsers: 房间用户信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoomUsers: list of RoomUser
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RoomUsers = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        if params.get("RoomUsers") is not None:
+            self.RoomUsers = []
+            for item in params.get("RoomUsers"):
+                obj = RoomUser()
+                obj._deserialize(item)
+                self.RoomUsers.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeScanResult(AbstractModel):
     """语音检测结果返回
 
@@ -831,6 +884,28 @@ class RealtimeSpeechConf(AbstractModel):
     def _deserialize(self, params):
         self.Status = params.get("Status")
         self.Quality = params.get("Quality")
+
+
+class RoomUser(AbstractModel):
+    """房间内用户信息
+
+    """
+
+    def __init__(self):
+        """
+        :param RoomId: 房间id
+        :type RoomId: int
+        :param Uins: 房间里用户uin列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uins: list of int non-negative
+        """
+        self.RoomId = None
+        self.Uins = None
+
+
+    def _deserialize(self, params):
+        self.RoomId = params.get("RoomId")
+        self.Uins = params.get("Uins")
 
 
 class ScanDetail(AbstractModel):

@@ -166,6 +166,34 @@ class GmeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeRoomInfo(self, request):
+        """获取房间内用户信息
+
+        :param request: Request instance for DescribeRoomInfo.
+        :type request: :class:`tencentcloud.gme.v20180711.models.DescribeRoomInfoRequest`
+        :rtype: :class:`tencentcloud.gme.v20180711.models.DescribeRoomInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRoomInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRoomInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeScanResultList(self, request):
         """本接口(DescribeScanResultList)用于查询语音检测结果，查询任务列表最多支持100个。
         <p style="color:red">如果在提交语音检测任务时未设置 Callback 字段，则需要通过本接口获取检测结果</p>

@@ -1679,7 +1679,7 @@ class DestroyDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DBInstanceId: 待删除实例标识符
+        :param DBInstanceId: 待下线实例ID
         :type DBInstanceId: str
         """
         self.DBInstanceId = None
@@ -1691,6 +1691,52 @@ class DestroyDBInstanceRequest(AbstractModel):
 
 class DestroyDBInstanceResponse(AbstractModel):
     """DestroyDBInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DisIsolateDBInstancesRequest(AbstractModel):
+    """DisIsolateDBInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DBInstanceIdSet: 资源ID列表
+        :type DBInstanceIdSet: list of str
+        :param Period: 包年包月实例解隔离时购买时常 以月为单位
+        :type Period: int
+        :param AutoVoucher: 是否使用代金券
+        :type AutoVoucher: bool
+        :param VoucherIds: 代金券id列表
+        :type VoucherIds: list of str
+        """
+        self.DBInstanceIdSet = None
+        self.Period = None
+        self.AutoVoucher = None
+        self.VoucherIds = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceIdSet = params.get("DBInstanceIdSet")
+        self.Period = params.get("Period")
+        self.AutoVoucher = params.get("AutoVoucher")
+        self.VoucherIds = params.get("VoucherIds")
+
+
+class DisIsolateDBInstancesResponse(AbstractModel):
+    """DisIsolateDBInstances返回参数结构体
 
     """
 
@@ -1971,6 +2017,40 @@ class InquiryPriceUpgradeDBInstanceResponse(AbstractModel):
     def _deserialize(self, params):
         self.OriginalPrice = params.get("OriginalPrice")
         self.Price = params.get("Price")
+        self.RequestId = params.get("RequestId")
+
+
+class IsolateDBInstancesRequest(AbstractModel):
+    """IsolateDBInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DBInstanceIdSet: 实例ID集合
+        :type DBInstanceIdSet: list of str
+        """
+        self.DBInstanceIdSet = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceIdSet = params.get("DBInstanceIdSet")
+
+
+class IsolateDBInstancesResponse(AbstractModel):
+    """IsolateDBInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
