@@ -309,12 +309,19 @@ class AbstractClient(object):
             data = data.decode('UTF-8')
         return data
 
-    def call_accept_json(self, action, params):
-        params = json.loads(params)
+    def call_json(self, action, params):
+        """
+        Call api with json object and return with json object.
+
+        :type action: str
+        :param action: api name e.g. ``DescribeInstances``
+        :type params: dict
+        :param params: params with this action
+        """
         body = self.call(action, params)
         response = json.loads(body)
         if "Error" not in response["Response"]:
-            return body
+            return response
         else:
             code = response["Response"]["Error"]["Code"]
             message = response["Response"]["Error"]["Message"]
