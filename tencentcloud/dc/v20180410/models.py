@@ -1067,6 +1067,18 @@ class DirectConnect(AbstractModel):
         :param SignLaw: 物理专线是否已签署用户协议
 注意：此字段可能返回 null，表示取不到有效值。
         :type SignLaw: bool
+        :param LocalZone: 物理专线是否为LocalZone
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LocalZone: bool
+        :param VlanZeroDirectConnectTunnelCount: 该物理专线下vlan 0的专线通道数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VlanZeroDirectConnectTunnelCount: int
+        :param OtherVlanDirectConnectTunnelCount: 该物理专线下非vlan 0的专线通道数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OtherVlanDirectConnectTunnelCount: int
+        :param MinBandwidth: 物理专线最小带宽
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MinBandwidth: int
         """
         self.DirectConnectId = None
         self.DirectConnectName = None
@@ -1096,6 +1108,10 @@ class DirectConnect(AbstractModel):
         self.ChargeState = None
         self.StartTime = None
         self.SignLaw = None
+        self.LocalZone = None
+        self.VlanZeroDirectConnectTunnelCount = None
+        self.OtherVlanDirectConnectTunnelCount = None
+        self.MinBandwidth = None
 
 
     def _deserialize(self, params):
@@ -1132,6 +1148,10 @@ class DirectConnect(AbstractModel):
         self.ChargeState = params.get("ChargeState")
         self.StartTime = params.get("StartTime")
         self.SignLaw = params.get("SignLaw")
+        self.LocalZone = params.get("LocalZone")
+        self.VlanZeroDirectConnectTunnelCount = params.get("VlanZeroDirectConnectTunnelCount")
+        self.OtherVlanDirectConnectTunnelCount = params.get("OtherVlanDirectConnectTunnelCount")
+        self.MinBandwidth = params.get("MinBandwidth")
 
 
 class DirectConnectTunnel(AbstractModel):

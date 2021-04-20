@@ -747,6 +747,100 @@ class CreateSecurityPolicyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateTagRetentionExecutionRequest(AbstractModel):
+    """CreateTagRetentionExecution请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 主实例iD
+        :type RegistryId: str
+        :param RetentionId: 版本保留规则Id
+        :type RetentionId: int
+        :param DryRun: 是否模拟执行
+        :type DryRun: bool
+        """
+        self.RegistryId = None
+        self.RetentionId = None
+        self.DryRun = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.RetentionId = params.get("RetentionId")
+        self.DryRun = params.get("DryRun")
+
+
+class CreateTagRetentionExecutionResponse(AbstractModel):
+    """CreateTagRetentionExecution返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateTagRetentionRuleRequest(AbstractModel):
+    """CreateTagRetentionRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 主实例iD
+        :type RegistryId: str
+        :param NamespaceId: 命名空间的Id
+        :type NamespaceId: int
+        :param RetentionRule: 保留策略
+        :type RetentionRule: :class:`tencentcloud.tcr.v20190924.models.RetentionRule`
+        :param CronSetting: 执行周期，当前只能选择： manual;daily;weekly;monthly
+        :type CronSetting: str
+        :param Disabled: 是否禁用规则
+        :type Disabled: bool
+        """
+        self.RegistryId = None
+        self.NamespaceId = None
+        self.RetentionRule = None
+        self.CronSetting = None
+        self.Disabled = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.NamespaceId = params.get("NamespaceId")
+        if params.get("RetentionRule") is not None:
+            self.RetentionRule = RetentionRule()
+            self.RetentionRule._deserialize(params.get("RetentionRule"))
+        self.CronSetting = params.get("CronSetting")
+        self.Disabled = params.get("Disabled")
+
+
+class CreateTagRetentionRuleResponse(AbstractModel):
+    """CreateTagRetentionRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateUserPersonalRequest(AbstractModel):
     """CreateUserPersonal请求参数结构体
 
@@ -1320,6 +1414,44 @@ class DeleteSecurityPolicyResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RegistryId = params.get("RegistryId")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteTagRetentionRuleRequest(AbstractModel):
+    """DeleteTagRetentionRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 主实例iD
+        :type RegistryId: str
+        :param RetentionId: 版本保留规则的Id
+        :type RetentionId: int
+        """
+        self.RegistryId = None
+        self.RetentionId = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.RetentionId = params.get("RetentionId")
+
+
+class DeleteTagRetentionRuleResponse(AbstractModel):
+    """DeleteTagRetentionRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -2638,6 +2770,187 @@ class DescribeSecurityPoliciesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTagRetentionExecutionRequest(AbstractModel):
+    """DescribeTagRetentionExecution请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 主实例iD
+        :type RegistryId: str
+        :param RetentionId: 规则Id
+        :type RetentionId: int
+        :param Limit: 分页PageSize
+        :type Limit: int
+        :param Offset: 分页Page
+        :type Offset: int
+        """
+        self.RegistryId = None
+        self.RetentionId = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.RetentionId = params.get("RetentionId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class DescribeTagRetentionExecutionResponse(AbstractModel):
+    """DescribeTagRetentionExecution返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RetentionExecutionList: 版本保留执行记录列表
+        :type RetentionExecutionList: list of RetentionExecution
+        :param TotalCount: 版本保留执行记录总数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RetentionExecutionList = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("RetentionExecutionList") is not None:
+            self.RetentionExecutionList = []
+            for item in params.get("RetentionExecutionList"):
+                obj = RetentionExecution()
+                obj._deserialize(item)
+                self.RetentionExecutionList.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTagRetentionExecutionTaskRequest(AbstractModel):
+    """DescribeTagRetentionExecutionTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 主实例iD
+        :type RegistryId: str
+        :param RetentionId: 规则Id
+        :type RetentionId: int
+        :param ExecutionId: 规则执行Id
+        :type ExecutionId: int
+        :param Offset: 分页Page
+        :type Offset: int
+        :param Limit: 分页PageSize
+        :type Limit: int
+        """
+        self.RegistryId = None
+        self.RetentionId = None
+        self.ExecutionId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.RetentionId = params.get("RetentionId")
+        self.ExecutionId = params.get("ExecutionId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeTagRetentionExecutionTaskResponse(AbstractModel):
+    """DescribeTagRetentionExecutionTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RetentionTaskList: 版本保留执行任务列表
+        :type RetentionTaskList: list of RetentionTask
+        :param TotalCount: 版本保留执行任务总数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RetentionTaskList = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("RetentionTaskList") is not None:
+            self.RetentionTaskList = []
+            for item in params.get("RetentionTaskList"):
+                obj = RetentionTask()
+                obj._deserialize(item)
+                self.RetentionTaskList.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTagRetentionRulesRequest(AbstractModel):
+    """DescribeTagRetentionRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 主实例iD
+        :type RegistryId: str
+        :param NamespaceName: 命名空间的名称
+        :type NamespaceName: str
+        :param Limit: 分页PageSize
+        :type Limit: int
+        :param Offset: 分页Page
+        :type Offset: int
+        """
+        self.RegistryId = None
+        self.NamespaceName = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.NamespaceName = params.get("NamespaceName")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class DescribeTagRetentionRulesResponse(AbstractModel):
+    """DescribeTagRetentionRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RetentionPolicyList: 版本保留策略列表
+        :type RetentionPolicyList: list of RetentionPolicy
+        :param TotalCount: 版本保留策略总数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RetentionPolicyList = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("RetentionPolicyList") is not None:
+            self.RetentionPolicyList = []
+            for item in params.get("RetentionPolicyList"):
+                obj = RetentionPolicy()
+                obj._deserialize(item)
+                self.RetentionPolicyList.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeUserQuotaPersonalRequest(AbstractModel):
     """DescribeUserQuotaPersonal请求参数结构体
 
@@ -3601,6 +3914,62 @@ class ModifySecurityPolicyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyTagRetentionRuleRequest(AbstractModel):
+    """ModifyTagRetentionRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 主实例iD
+        :type RegistryId: str
+        :param NamespaceId: 命名空间的Id，必须填写原有的命名空间id
+        :type NamespaceId: int
+        :param RetentionRule: 保留策略
+        :type RetentionRule: :class:`tencentcloud.tcr.v20190924.models.RetentionRule`
+        :param CronSetting: 执行周期，必须填写为原来的设置
+        :type CronSetting: str
+        :param RetentionId: 规则Id
+        :type RetentionId: int
+        :param Disabled: 是否禁用规则
+        :type Disabled: bool
+        """
+        self.RegistryId = None
+        self.NamespaceId = None
+        self.RetentionRule = None
+        self.CronSetting = None
+        self.RetentionId = None
+        self.Disabled = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.NamespaceId = params.get("NamespaceId")
+        if params.get("RetentionRule") is not None:
+            self.RetentionRule = RetentionRule()
+            self.RetentionRule._deserialize(params.get("RetentionRule"))
+        self.CronSetting = params.get("CronSetting")
+        self.RetentionId = params.get("RetentionId")
+        self.Disabled = params.get("Disabled")
+
+
+class ModifyTagRetentionRuleResponse(AbstractModel):
+    """ModifyTagRetentionRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyUserPasswordPersonalRequest(AbstractModel):
     """ModifyUserPasswordPersonal请求参数结构体
 
@@ -4226,6 +4595,147 @@ class RespLimit(AbstractModel):
                 obj = Limit()
                 obj._deserialize(item)
                 self.LimitInfo.append(obj)
+
+
+class RetentionExecution(AbstractModel):
+    """版本保留规则执行
+
+    """
+
+    def __init__(self):
+        """
+        :param ExecutionId: 执行Id
+        :type ExecutionId: int
+        :param RetentionId: 所属规则id
+        :type RetentionId: int
+        :param StartTime: 执行的开始时间
+        :type StartTime: str
+        :param EndTime: 执行的结束时间
+        :type EndTime: str
+        :param Status: 执行的状态，Failed, Succeed, Stopped, InProgress
+        :type Status: str
+        """
+        self.ExecutionId = None
+        self.RetentionId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.ExecutionId = params.get("ExecutionId")
+        self.RetentionId = params.get("RetentionId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Status = params.get("Status")
+
+
+class RetentionPolicy(AbstractModel):
+    """版本保留策略
+
+    """
+
+    def __init__(self):
+        """
+        :param RetentionId: 版本保留策略Id
+        :type RetentionId: int
+        :param NamespaceName: 命名空间的名称
+        :type NamespaceName: str
+        :param RetentionRuleList: 规则列表
+        :type RetentionRuleList: list of RetentionRule
+        :param CronSetting: 定期执行方式
+        :type CronSetting: str
+        :param Disabled: 是否启用规则
+        :type Disabled: bool
+        :param NextExecutionTime: 基于当前时间根据cronSetting后下一次任务要执行的时间，仅做参考使用
+        :type NextExecutionTime: str
+        """
+        self.RetentionId = None
+        self.NamespaceName = None
+        self.RetentionRuleList = None
+        self.CronSetting = None
+        self.Disabled = None
+        self.NextExecutionTime = None
+
+
+    def _deserialize(self, params):
+        self.RetentionId = params.get("RetentionId")
+        self.NamespaceName = params.get("NamespaceName")
+        if params.get("RetentionRuleList") is not None:
+            self.RetentionRuleList = []
+            for item in params.get("RetentionRuleList"):
+                obj = RetentionRule()
+                obj._deserialize(item)
+                self.RetentionRuleList.append(obj)
+        self.CronSetting = params.get("CronSetting")
+        self.Disabled = params.get("Disabled")
+        self.NextExecutionTime = params.get("NextExecutionTime")
+
+
+class RetentionRule(AbstractModel):
+    """版本保留规则
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: 支持的策略，可选值为latestPushedK（保留最新推送多少个版本）nDaysSinceLastPush（保留近天内推送）
+        :type Key: str
+        :param Value: 规则设置下的对应值
+        :type Value: int
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+
+
+class RetentionTask(AbstractModel):
+    """版本保留执行的规则
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务Id
+        :type TaskId: int
+        :param ExecutionId: 所属的规则执行Id
+        :type ExecutionId: int
+        :param StartTime: 任务开始时间
+        :type StartTime: str
+        :param EndTime: 任务结束时间
+        :type EndTime: str
+        :param Status: 任务的执行状态，Failed, Succeed, Stopped, InProgress
+        :type Status: str
+        :param Total: 总tag数
+        :type Total: int
+        :param Retained: 保留tag数
+        :type Retained: int
+        :param Repository: 应用的仓库
+        :type Repository: str
+        """
+        self.TaskId = None
+        self.ExecutionId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Status = None
+        self.Total = None
+        self.Retained = None
+        self.Repository = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.ExecutionId = params.get("ExecutionId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Status = params.get("Status")
+        self.Total = params.get("Total")
+        self.Retained = params.get("Retained")
+        self.Repository = params.get("Repository")
 
 
 class SameImagesResp(AbstractModel):

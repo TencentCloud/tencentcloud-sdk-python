@@ -418,6 +418,62 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateTagRetentionExecution(self, request):
+        """手动执行版本保留
+
+        :param request: Request instance for CreateTagRetentionExecution.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.CreateTagRetentionExecutionRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.CreateTagRetentionExecutionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateTagRetentionExecution", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateTagRetentionExecutionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateTagRetentionRule(self, request):
+        """创建版本保留规则
+
+        :param request: Request instance for CreateTagRetentionRule.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.CreateTagRetentionRuleRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.CreateTagRetentionRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateTagRetentionRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateTagRetentionRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateUserPersonal(self, request):
         """创建个人用户
 
@@ -824,6 +880,34 @@ class TcrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteSecurityPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteTagRetentionRule(self, request):
+        """删除版本保留规则
+
+        :param request: Request instance for DeleteTagRetentionRule.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteTagRetentionRuleRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DeleteTagRetentionRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteTagRetentionRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteTagRetentionRuleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1538,6 +1622,90 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeTagRetentionExecution(self, request):
+        """查询版本保留执行记录
+
+        :param request: Request instance for DescribeTagRetentionExecution.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeTagRetentionExecutionRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DescribeTagRetentionExecutionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTagRetentionExecution", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTagRetentionExecutionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTagRetentionExecutionTask(self, request):
+        """查询版本保留执行任务
+
+        :param request: Request instance for DescribeTagRetentionExecutionTask.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeTagRetentionExecutionTaskRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DescribeTagRetentionExecutionTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTagRetentionExecutionTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTagRetentionExecutionTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTagRetentionRules(self, request):
+        """查询版本保留规则
+
+        :param request: Request instance for DescribeTagRetentionRules.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeTagRetentionRulesRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DescribeTagRetentionRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTagRetentionRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTagRetentionRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeUserQuotaPersonal(self, request):
         """查询个人用户配额
 
@@ -1972,6 +2140,34 @@ class TcrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySecurityPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyTagRetentionRule(self, request):
+        """更新版本保留规则
+
+        :param request: Request instance for ModifyTagRetentionRule.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.ModifyTagRetentionRuleRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.ModifyTagRetentionRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyTagRetentionRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyTagRetentionRuleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

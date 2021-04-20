@@ -801,6 +801,9 @@ class Cluster(AbstractModel):
         :param ClustersZone: 集群所在的可用区
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClustersZone: :class:`tencentcloud.clb.v20180317.models.ClustersZone`
+        :param ClustersVersion: 集群版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClustersVersion: str
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -823,6 +826,7 @@ class Cluster(AbstractModel):
         self.LoadBalanceDirectorCount = None
         self.Isp = None
         self.ClustersZone = None
+        self.ClustersVersion = None
 
 
     def _deserialize(self, params):
@@ -849,6 +853,7 @@ class Cluster(AbstractModel):
         if params.get("ClustersZone") is not None:
             self.ClustersZone = ClustersZone()
             self.ClustersZone._deserialize(params.get("ClustersZone"))
+        self.ClustersVersion = params.get("ClustersVersion")
 
 
 class ClusterItem(AbstractModel):

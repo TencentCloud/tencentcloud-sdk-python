@@ -584,11 +584,21 @@ class ImageInfo(AbstractModel):
         :type DimensionsNameId: int
         :param UserId: 平台用户标识
         :type UserId: str
+        :param DownloadPrice: 平台用户下载图片购买的价格(单位:分)
+        :type DownloadPrice: int
+        :param DownloadType: 下载类型。匹配集合中的任意元素：
+<li>Single: 单张购买下载</li>
+<li>BasicEnterpriseMember: 企业基础会员下载</li>
+<li>AdvancedEnterpriseMember: 企业高级会员下载</li>
+<li>DistinguishedEnterpriseMember: 企业尊享会员下载</li>
+        :type DownloadType: str
         """
         self.ImageId = None
         self.LicenseScopeId = None
         self.DimensionsNameId = None
         self.UserId = None
+        self.DownloadPrice = None
+        self.DownloadType = None
 
 
     def _deserialize(self, params):
@@ -596,6 +606,8 @@ class ImageInfo(AbstractModel):
         self.LicenseScopeId = params.get("LicenseScopeId")
         self.DimensionsNameId = params.get("DimensionsNameId")
         self.UserId = params.get("UserId")
+        self.DownloadPrice = params.get("DownloadPrice")
+        self.DownloadType = params.get("DownloadType")
 
 
 class ImageItem(AbstractModel):
