@@ -673,6 +673,34 @@ class MariadbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeInstanceNodeInfo(self, request):
+        """本接口（DescribeInstanceNodeInfo）用于获取数据库实例主备节点信息
+
+        :param request: Request instance for DescribeInstanceNodeInfo.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.DescribeInstanceNodeInfoRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.DescribeInstanceNodeInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInstanceNodeInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstanceNodeInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeLogFileRetentionPeriod(self, request):
         """本接口(DescribeLogFileRetentionPeriod)用于查看数据库备份日志的备份天数的设置情况。
 

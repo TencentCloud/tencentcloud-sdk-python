@@ -369,18 +369,21 @@ class CreateDomainBatchRequest(AbstractModel):
         :type Period: int
         :param Domains: 批量购买的域名,最多为4000个
         :type Domains: list of str
-        :param PayMode: 付费模式 0手动在线付费，1使用余额付费
+        :param PayMode: 付费模式 0手动在线付费，1使用余额付费，2使用特惠包
         :type PayMode: int
         :param AutoRenewFlag: 自动续费开关。有两个可选值：
 0 表示关闭，不自动续费（默认值）
 1 表示开启，将自动续费
         :type AutoRenewFlag: int
+        :param PackageResourceId: 使用的特惠包ID，PayMode为2时必填
+        :type PackageResourceId: str
         """
         self.TemplateId = None
         self.Period = None
         self.Domains = None
         self.PayMode = None
         self.AutoRenewFlag = None
+        self.PackageResourceId = None
 
 
     def _deserialize(self, params):
@@ -389,6 +392,7 @@ class CreateDomainBatchRequest(AbstractModel):
         self.Domains = params.get("Domains")
         self.PayMode = params.get("PayMode")
         self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.PackageResourceId = params.get("PackageResourceId")
 
 
 class CreateDomainBatchResponse(AbstractModel):

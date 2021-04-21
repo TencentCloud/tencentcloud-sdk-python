@@ -150,6 +150,56 @@ class CreateDBDiagReportTaskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateDBDiagReportUrlRequest(AbstractModel):
+    """CreateDBDiagReportUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID。
+        :type InstanceId: str
+        :param AsyncRequestId: 健康报告相应的任务ID，可通过DescribeDBDiagReportTasks查询。
+        :type AsyncRequestId: int
+        :param Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :type Product: str
+        """
+        self.InstanceId = None
+        self.AsyncRequestId = None
+        self.Product = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.Product = params.get("Product")
+
+
+class CreateDBDiagReportUrlResponse(AbstractModel):
+    """CreateDBDiagReportUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ReportUrl: 健康报告浏览地址。
+        :type ReportUrl: str
+        :param ExpireTime: 健康报告浏览地址到期时间戳（秒）。
+        :type ExpireTime: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ReportUrl = None
+        self.ExpireTime = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ReportUrl = params.get("ReportUrl")
+        self.ExpireTime = params.get("ExpireTime")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateMailProfileRequest(AbstractModel):
     """CreateMailProfile请求参数结构体
 
@@ -597,6 +647,85 @@ class DescribeDBDiagHistoryResponse(AbstractModel):
                 obj = DiagHistoryEventItem()
                 obj._deserialize(item)
                 self.Events.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDBDiagReportTasksRequest(AbstractModel):
+    """DescribeDBDiagReportTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 第一个任务的开始时间，用于范围查询，时间格式如：2019-09-10 12:13:14。
+        :type StartTime: str
+        :param EndTime: 最后一个任务的开始时间，用于范围查询，时间格式如：2019-09-10 12:13:14。
+        :type EndTime: str
+        :param InstanceIds: 实例ID数组，用于筛选指定实例的任务列表。
+        :type InstanceIds: list of str
+        :param Sources: 任务的触发来源，支持的取值包括："DAILY_INSPECTION" - 实例巡检；"SCHEDULED" - 定时生成；"MANUAL" - 手动触发。
+        :type Sources: list of str
+        :param HealthLevels: 报告的健康等级，支持的取值包括："HEALTH" - 健康；"SUB_HEALTH" - 亚健康；"RISK" - 危险；"HIGH_RISK" - 高危。
+        :type HealthLevels: str
+        :param TaskStatuses: 任务的状态，支持的取值包括："created" - 新建；"chosen" - 待执行； "running" - 执行中；"failed" - 失败；"finished" - 已完成。
+        :type TaskStatuses: str
+        :param Offset: 偏移量，默认0。
+        :type Offset: int
+        :param Limit: 返回数量，默认20。
+        :type Limit: int
+        :param Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :type Product: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.InstanceIds = None
+        self.Sources = None
+        self.HealthLevels = None
+        self.TaskStatuses = None
+        self.Offset = None
+        self.Limit = None
+        self.Product = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.InstanceIds = params.get("InstanceIds")
+        self.Sources = params.get("Sources")
+        self.HealthLevels = params.get("HealthLevels")
+        self.TaskStatuses = params.get("TaskStatuses")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Product = params.get("Product")
+
+
+class DescribeDBDiagReportTasksResponse(AbstractModel):
+    """DescribeDBDiagReportTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 任务总数目。
+        :type TotalCount: int
+        :param Tasks: 任务列表。
+        :type Tasks: list of HealthReportTask
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Tasks = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Tasks") is not None:
+            self.Tasks = []
+            for item in params.get("Tasks"):
+                obj = HealthReportTask()
+                obj._deserialize(item)
+                self.Tasks.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1104,6 +1233,187 @@ class DescribeSlowLogTopSqlsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSlowLogUserHostStatsRequest(AbstractModel):
+    """DescribeSlowLogUserHostStats请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID。
+        :type InstanceId: str
+        :param StartTime: 查询范围的开始时间，时间格式如：2019-09-10 12:13:14。
+        :type StartTime: str
+        :param EndTime: 查询范围的结束时间，时间格式如：2019-09-10 12:13:14。
+        :type EndTime: str
+        :param Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :type Product: str
+        """
+        self.InstanceId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Product = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Product = params.get("Product")
+
+
+class DescribeSlowLogUserHostStatsResponse(AbstractModel):
+    """DescribeSlowLogUserHostStats返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 来源地址数目。
+        :type TotalCount: int
+        :param Items: 各来源地址的慢日志占比详情列表。
+        :type Items: list of SlowLogHost
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = SlowLogHost()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTopSpaceSchemaTimeSeriesRequest(AbstractModel):
+    """DescribeTopSpaceSchemaTimeSeries请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID。
+        :type InstanceId: str
+        :param Limit: 返回的Top库数量，最大值为100，默认为20。
+        :type Limit: int
+        :param SortBy: 筛选Top库所用的排序字段，可选字段包含DataLength、IndexLength、TotalLength、DataFree、FragRatio、TableRows、PhysicalFileSize（仅云数据库 MySQL实例支持），云数据库 MySQL实例默认为 PhysicalFileSize，其他产品实例默认为TotalLength。
+        :type SortBy: str
+        :param StartDate: 开始日期，最早为当日的前第29天，默认为截止日期的前第6天。
+        :type StartDate: str
+        :param EndDate: 截止日期，最早为当日的前第29天，默认为当日。
+        :type EndDate: str
+        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        :type Product: str
+        """
+        self.InstanceId = None
+        self.Limit = None
+        self.SortBy = None
+        self.StartDate = None
+        self.EndDate = None
+        self.Product = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Limit = params.get("Limit")
+        self.SortBy = params.get("SortBy")
+        self.StartDate = params.get("StartDate")
+        self.EndDate = params.get("EndDate")
+        self.Product = params.get("Product")
+
+
+class DescribeTopSpaceSchemaTimeSeriesResponse(AbstractModel):
+    """DescribeTopSpaceSchemaTimeSeries返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TopSpaceSchemaTimeSeries: 返回的Top库空间统计信息的时序数据列表。
+        :type TopSpaceSchemaTimeSeries: list of SchemaSpaceTimeSeries
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TopSpaceSchemaTimeSeries = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TopSpaceSchemaTimeSeries") is not None:
+            self.TopSpaceSchemaTimeSeries = []
+            for item in params.get("TopSpaceSchemaTimeSeries"):
+                obj = SchemaSpaceTimeSeries()
+                obj._deserialize(item)
+                self.TopSpaceSchemaTimeSeries.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTopSpaceSchemasRequest(AbstractModel):
+    """DescribeTopSpaceSchemas请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例 ID 。
+        :type InstanceId: str
+        :param Limit: 返回的Top库数量，最大值为100，默认为20。
+        :type Limit: int
+        :param SortBy: 筛选Top库所用的排序字段，可选字段包含DataLength、IndexLength、TotalLength、DataFree、FragRatio、TableRows、PhysicalFileSize（仅云数据库 MySQL实例支持），云数据库 MySQL实例默认为 PhysicalFileSize，其他产品实例默认为TotalLength。
+        :type SortBy: str
+        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        :type Product: str
+        """
+        self.InstanceId = None
+        self.Limit = None
+        self.SortBy = None
+        self.Product = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Limit = params.get("Limit")
+        self.SortBy = params.get("SortBy")
+        self.Product = params.get("Product")
+
+
+class DescribeTopSpaceSchemasResponse(AbstractModel):
+    """DescribeTopSpaceSchemas返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TopSpaceSchemas: 返回的Top库空间统计信息列表。
+        :type TopSpaceSchemas: list of SchemaSpaceData
+        :param Timestamp: 采集库空间数据的时间戳（秒）。
+        :type Timestamp: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TopSpaceSchemas = None
+        self.Timestamp = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TopSpaceSchemas") is not None:
+            self.TopSpaceSchemas = []
+            for item in params.get("TopSpaceSchemas"):
+                obj = SchemaSpaceData()
+                obj._deserialize(item)
+                self.TopSpaceSchemas.append(obj)
+        self.Timestamp = params.get("Timestamp")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTopSpaceTableTimeSeriesRequest(AbstractModel):
     """DescribeTopSpaceTableTimeSeries请求参数结构体
 
@@ -1113,7 +1423,7 @@ class DescribeTopSpaceTableTimeSeriesRequest(AbstractModel):
         """
         :param InstanceId: 实例 ID 。
         :type InstanceId: str
-        :param Limit: 返回的Top表数量，最大值为20，默认为最大值。
+        :param Limit: 返回的Top表数量，最大值为100，默认为20。
         :type Limit: int
         :param SortBy: 筛选Top表所用的排序字段，可选字段包含DataLength、IndexLength、TotalLength、DataFree、FragRatio、TableRows、PhysicalFileSize，默认为 PhysicalFileSize。
         :type SortBy: str
@@ -1176,9 +1486,9 @@ class DescribeTopSpaceTablesRequest(AbstractModel):
         """
         :param InstanceId: 实例 ID 。
         :type InstanceId: str
-        :param Limit: 返回的Top表数量，最大值为20，默认为最大值。
+        :param Limit: 返回的Top表数量，最大值为100，默认为20。
         :type Limit: int
-        :param SortBy: 筛选Top表所用的排序字段，可选字段包含DataLength、IndexLength、TotalLength、DataFree、FragRatio、TableRows、PhysicalFileSize，默认为 PhysicalFileSize。
+        :param SortBy: 筛选Top表所用的排序字段，可选字段包含DataLength、IndexLength、TotalLength、DataFree、FragRatio、TableRows、PhysicalFileSize（仅云数据库 MySQL实例支持），云数据库 MySQL实例默认为 PhysicalFileSize，其他产品实例默认为TotalLength。
         :type SortBy: str
         :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
         :type Product: str
@@ -1356,6 +1666,55 @@ class GroupItem(AbstractModel):
         self.MemberCount = params.get("MemberCount")
 
 
+class HealthReportTask(AbstractModel):
+    """健康报告任务详情。
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncRequestId: 异步任务请求 ID。
+        :type AsyncRequestId: int
+        :param Source: 任务的触发来源，支持的取值包括："DAILY_INSPECTION" - 实例巡检；"SCHEDULED" - 定时生成；"MANUAL" - 手动触发。
+        :type Source: str
+        :param Progress: 任务完成进度，单位%。
+        :type Progress: int
+        :param CreateTime: 任务创建时间。
+        :type CreateTime: str
+        :param StartTime: 任务开始执行时间。
+        :type StartTime: str
+        :param EndTime: 任务完成执行时间。
+        :type EndTime: str
+        :param InstanceInfo: 任务所属实例的基础信息。
+        :type InstanceInfo: :class:`tencentcloud.dbbrain.v20191016.models.InstanceBasicInfo`
+        :param HealthStatus: 健康报告中的健康信息。
+        :type HealthStatus: :class:`tencentcloud.dbbrain.v20191016.models.HealthStatus`
+        """
+        self.AsyncRequestId = None
+        self.Source = None
+        self.Progress = None
+        self.CreateTime = None
+        self.StartTime = None
+        self.EndTime = None
+        self.InstanceInfo = None
+        self.HealthStatus = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.Source = params.get("Source")
+        self.Progress = params.get("Progress")
+        self.CreateTime = params.get("CreateTime")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        if params.get("InstanceInfo") is not None:
+            self.InstanceInfo = InstanceBasicInfo()
+            self.InstanceInfo._deserialize(params.get("InstanceInfo"))
+        if params.get("HealthStatus") is not None:
+            self.HealthStatus = HealthStatus()
+            self.HealthStatus._deserialize(params.get("HealthStatus"))
+
+
 class HealthScoreInfo(AbstractModel):
     """获取健康得分返回的详情。
 
@@ -1388,6 +1747,78 @@ class HealthScoreInfo(AbstractModel):
         self.EventsTotalCount = params.get("EventsTotalCount")
         self.HealthScore = params.get("HealthScore")
         self.HealthLevel = params.get("HealthLevel")
+
+
+class HealthStatus(AbstractModel):
+    """实例健康详情。
+
+    """
+
+    def __init__(self):
+        """
+        :param HealthScore: 健康分数，满分100。
+        :type HealthScore: int
+        :param HealthLevel: 健康等级，取值包括："HEALTH" - 健康；"SUB_HEALTH" - 亚健康；"RISK"- 危险；"HIGH_RISK" - 高危。
+        :type HealthLevel: str
+        :param ScoreLost: 总扣分分数。
+        :type ScoreLost: int
+        :param ScoreDetails: 扣分详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScoreDetails: list of ScoreDetail
+        """
+        self.HealthScore = None
+        self.HealthLevel = None
+        self.ScoreLost = None
+        self.ScoreDetails = None
+
+
+    def _deserialize(self, params):
+        self.HealthScore = params.get("HealthScore")
+        self.HealthLevel = params.get("HealthLevel")
+        self.ScoreLost = params.get("ScoreLost")
+        if params.get("ScoreDetails") is not None:
+            self.ScoreDetails = []
+            for item in params.get("ScoreDetails"):
+                obj = ScoreDetail()
+                obj._deserialize(item)
+                self.ScoreDetails.append(obj)
+
+
+class InstanceBasicInfo(AbstractModel):
+    """实例基础信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID。
+        :type InstanceId: str
+        :param InstanceName: 实例名称。
+        :type InstanceName: str
+        :param Vip: 实例内网IP。
+        :type Vip: str
+        :param Vport: 实例内网Port。
+        :type Vport: int
+        :param Product: 实例产品。
+        :type Product: str
+        :param EngineVersion: 实例引擎版本。
+        :type EngineVersion: str
+        """
+        self.InstanceId = None
+        self.InstanceName = None
+        self.Vip = None
+        self.Vport = None
+        self.Product = None
+        self.EngineVersion = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.Vip = params.get("Vip")
+        self.Vport = params.get("Vport")
+        self.Product = params.get("Product")
+        self.EngineVersion = params.get("EngineVersion")
 
 
 class InstanceConfs(AbstractModel):
@@ -1793,6 +2224,143 @@ class SchemaItem(AbstractModel):
         self.Schema = params.get("Schema")
 
 
+class SchemaSpaceData(AbstractModel):
+    """库空间统计数据。
+
+    """
+
+    def __init__(self):
+        """
+        :param TableSchema: 库名。
+        :type TableSchema: str
+        :param DataLength: 数据空间（MB）。
+        :type DataLength: float
+        :param IndexLength: 索引空间（MB）。
+        :type IndexLength: float
+        :param DataFree: 碎片空间（MB）。
+        :type DataFree: float
+        :param TotalLength: 总使用空间（MB）。
+        :type TotalLength: float
+        :param FragRatio: 碎片率（%）。
+        :type FragRatio: float
+        :param TableRows: 行数。
+        :type TableRows: int
+        :param PhysicalFileSize: 库中所有表对应的独立物理文件大小加和（MB）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PhysicalFileSize: float
+        """
+        self.TableSchema = None
+        self.DataLength = None
+        self.IndexLength = None
+        self.DataFree = None
+        self.TotalLength = None
+        self.FragRatio = None
+        self.TableRows = None
+        self.PhysicalFileSize = None
+
+
+    def _deserialize(self, params):
+        self.TableSchema = params.get("TableSchema")
+        self.DataLength = params.get("DataLength")
+        self.IndexLength = params.get("IndexLength")
+        self.DataFree = params.get("DataFree")
+        self.TotalLength = params.get("TotalLength")
+        self.FragRatio = params.get("FragRatio")
+        self.TableRows = params.get("TableRows")
+        self.PhysicalFileSize = params.get("PhysicalFileSize")
+
+
+class SchemaSpaceTimeSeries(AbstractModel):
+    """库空间时序数据
+
+    """
+
+    def __init__(self):
+        """
+        :param TableSchema: 库名
+        :type TableSchema: str
+        :param SeriesData: 单位时间间隔内的空间指标数据。
+        :type SeriesData: :class:`tencentcloud.dbbrain.v20191016.models.MonitorMetricSeriesData`
+        """
+        self.TableSchema = None
+        self.SeriesData = None
+
+
+    def _deserialize(self, params):
+        self.TableSchema = params.get("TableSchema")
+        if params.get("SeriesData") is not None:
+            self.SeriesData = MonitorMetricSeriesData()
+            self.SeriesData._deserialize(params.get("SeriesData"))
+
+
+class ScoreDetail(AbstractModel):
+    """扣分详情。
+
+    """
+
+    def __init__(self):
+        """
+        :param IssueType: 扣分项分类，取值包括：可用性、可维护性、性能及可靠性。
+        :type IssueType: str
+        :param ScoreLost: 扣分总分。
+        :type ScoreLost: int
+        :param ScoreLostMax: 扣分总分上限。
+        :type ScoreLostMax: int
+        :param Items: 扣分项列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of ScoreItem
+        """
+        self.IssueType = None
+        self.ScoreLost = None
+        self.ScoreLostMax = None
+        self.Items = None
+
+
+    def _deserialize(self, params):
+        self.IssueType = params.get("IssueType")
+        self.ScoreLost = params.get("ScoreLost")
+        self.ScoreLostMax = params.get("ScoreLostMax")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = ScoreItem()
+                obj._deserialize(item)
+                self.Items.append(obj)
+
+
+class ScoreItem(AbstractModel):
+    """诊断扣分项。
+
+    """
+
+    def __init__(self):
+        """
+        :param DiagItem: 异常诊断项名称。
+        :type DiagItem: str
+        :param IssueType: 诊断项分类，取值包括：可用性、可维护性、性能及可靠性。
+        :type IssueType: str
+        :param TopSeverity: 健康等级，取值包括：信息、提示、告警、严重、致命。
+        :type TopSeverity: str
+        :param Count: 该异常诊断项出现次数。
+        :type Count: int
+        :param ScoreLost: 扣分分数。
+        :type ScoreLost: int
+        """
+        self.DiagItem = None
+        self.IssueType = None
+        self.TopSeverity = None
+        self.Count = None
+        self.ScoreLost = None
+
+
+    def _deserialize(self, params):
+        self.DiagItem = params.get("DiagItem")
+        self.IssueType = params.get("IssueType")
+        self.TopSeverity = params.get("TopSeverity")
+        self.Count = params.get("Count")
+        self.ScoreLost = params.get("ScoreLost")
+
+
 class SecLogExportTaskInfo(AbstractModel):
     """安全审计日志导出任务信息
 
@@ -1852,6 +2420,31 @@ class SecLogExportTaskInfo(AbstractModel):
         self.DangerLevels = params.get("DangerLevels")
 
 
+class SlowLogHost(AbstractModel):
+    """慢日志来源地址详情。
+
+    """
+
+    def __init__(self):
+        """
+        :param UserHost: 来源地址。
+        :type UserHost: str
+        :param Ratio: 该来源地址的慢日志数目占总数目的比例，单位%。
+        :type Ratio: float
+        :param Count: 该来源地址的慢日志数目。
+        :type Count: int
+        """
+        self.UserHost = None
+        self.Ratio = None
+        self.Count = None
+
+
+    def _deserialize(self, params):
+        self.UserHost = params.get("UserHost")
+        self.Ratio = params.get("Ratio")
+        self.Count = params.get("Count")
+
+
 class SlowLogTopSqlItem(AbstractModel):
     """慢日志TopSql
 
@@ -1899,6 +2492,14 @@ class SlowLogTopSqlItem(AbstractModel):
         :type RowsExaminedRatio: float
         :param RowsSentRatio: 总返回行数占比
         :type RowsSentRatio: float
+        :param QueryTimeAvg: 平均执行时间
+        :type QueryTimeAvg: float
+        :param RowsSentAvg: 平均返回行数
+        :type RowsSentAvg: float
+        :param LockTimeAvg: 平均锁等待时间
+        :type LockTimeAvg: float
+        :param RowsExaminedAvg: 平均扫描行数
+        :type RowsExaminedAvg: float
         """
         self.LockTime = None
         self.LockTimeMax = None
@@ -1920,6 +2521,10 @@ class SlowLogTopSqlItem(AbstractModel):
         self.LockTimeRatio = None
         self.RowsExaminedRatio = None
         self.RowsSentRatio = None
+        self.QueryTimeAvg = None
+        self.RowsSentAvg = None
+        self.LockTimeAvg = None
+        self.RowsExaminedAvg = None
 
 
     def _deserialize(self, params):
@@ -1943,6 +2548,10 @@ class SlowLogTopSqlItem(AbstractModel):
         self.LockTimeRatio = params.get("LockTimeRatio")
         self.RowsExaminedRatio = params.get("RowsExaminedRatio")
         self.RowsSentRatio = params.get("RowsSentRatio")
+        self.QueryTimeAvg = params.get("QueryTimeAvg")
+        self.RowsSentAvg = params.get("RowsSentAvg")
+        self.LockTimeAvg = params.get("LockTimeAvg")
+        self.RowsExaminedAvg = params.get("RowsExaminedAvg")
 
 
 class TableSpaceData(AbstractModel):

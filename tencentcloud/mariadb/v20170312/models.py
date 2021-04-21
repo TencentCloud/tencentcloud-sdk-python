@@ -1848,6 +1848,61 @@ class DescribeFlowResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeInstanceNodeInfoRequest(AbstractModel):
+    """DescribeInstanceNodeInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，形如tdsql-6ltok4u9
+        :type InstanceId: str
+        :param Limit: 一次最多返回多少条数据。默认为无穷大，返回符合要求的所有数据
+        :type Limit: int
+        :param Offset: 返回数据的偏移量，默认为0
+        :type Offset: int
+        """
+        self.InstanceId = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class DescribeInstanceNodeInfoResponse(AbstractModel):
+    """DescribeInstanceNodeInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 节点总个数
+        :type TotalCount: int
+        :param NodesInfo: 节点信息
+        :type NodesInfo: list of NodeInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.NodesInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("NodesInfo") is not None:
+            self.NodesInfo = []
+            for item in params.get("NodesInfo"):
+                obj = NodeInfo()
+                obj._deserialize(item)
+                self.NodesInfo.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeLogFileRetentionPeriodRequest(AbstractModel):
     """DescribeLogFileRetentionPeriod请求参数结构体
 
@@ -2879,6 +2934,27 @@ class MonitorData(AbstractModel):
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
         self.Data = params.get("Data")
+
+
+class NodeInfo(AbstractModel):
+    """描述实例的各个DB节点信息
+
+    """
+
+    def __init__(self):
+        """
+        :param NodeId: DB节点ID
+        :type NodeId: str
+        :param Role: DB节点角色，取值为master或者slave
+        :type Role: str
+        """
+        self.NodeId = None
+        self.Role = None
+
+
+    def _deserialize(self, params):
+        self.NodeId = params.get("NodeId")
+        self.Role = params.get("Role")
 
 
 class OpenDBExtranetAccessRequest(AbstractModel):

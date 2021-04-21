@@ -993,7 +993,7 @@ class ClbClient(AbstractClient):
 
 
     def DescribeLoadBalancers(self, request):
-        """查询一个地域的负载均衡实例列表
+        """查询一个地域的负载均衡实例列表。
 
         :param request: Request instance for DescribeLoadBalancers.
         :type request: :class:`tencentcloud.clb.v20180317.models.DescribeLoadBalancersRequest`

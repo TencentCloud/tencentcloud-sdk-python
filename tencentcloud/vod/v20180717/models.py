@@ -3555,11 +3555,14 @@ class AttachMediaSubtitlesRequest(AbstractModel):
         :type AdaptiveDynamicStreamingDefinition: int
         :param SubtitleIds: 字幕的唯一标识。
         :type SubtitleIds: list of str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID 。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
         """
         self.FileId = None
         self.Operation = None
         self.AdaptiveDynamicStreamingDefinition = None
         self.SubtitleIds = None
+        self.SubAppId = None
 
 
     def _deserialize(self, params):
@@ -3567,6 +3570,7 @@ class AttachMediaSubtitlesRequest(AbstractModel):
         self.Operation = params.get("Operation")
         self.AdaptiveDynamicStreamingDefinition = params.get("AdaptiveDynamicStreamingDefinition")
         self.SubtitleIds = params.get("SubtitleIds")
+        self.SubAppId = params.get("SubAppId")
 
 
 class AttachMediaSubtitlesResponse(AbstractModel):

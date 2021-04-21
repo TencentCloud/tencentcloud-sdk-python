@@ -1935,6 +1935,10 @@ class ModifyDirectConnectTunnelExtraRequest(AbstractModel):
         :type IPv6Enable: int
         :param CustomerIDCRoutes: 去往用户侧的路由信息
         :type CustomerIDCRoutes: list of RouteFilterPrefix
+        :param JumboEnable: 是否开启巨帧
+1：开启
+0：不开启
+        :type JumboEnable: int
         """
         self.DirectConnectTunnelId = None
         self.Vlan = None
@@ -1951,6 +1955,7 @@ class ModifyDirectConnectTunnelExtraRequest(AbstractModel):
         self.NqaInfo = None
         self.IPv6Enable = None
         self.CustomerIDCRoutes = None
+        self.JumboEnable = None
 
 
     def _deserialize(self, params):
@@ -1982,6 +1987,7 @@ class ModifyDirectConnectTunnelExtraRequest(AbstractModel):
                 obj = RouteFilterPrefix()
                 obj._deserialize(item)
                 self.CustomerIDCRoutes.append(obj)
+        self.JumboEnable = params.get("JumboEnable")
 
 
 class ModifyDirectConnectTunnelExtraResponse(AbstractModel):

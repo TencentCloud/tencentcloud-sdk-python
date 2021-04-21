@@ -1282,13 +1282,16 @@ class DescribeVideoListResponse(AbstractModel):
         """
         :param TotalCount: 总数
         :type TotalCount: int
-        :param VideoList: 录像详情列表
+        :param VideoList: 已废弃
         :type VideoList: :class:`tencentcloud.iotvideoindustry.v20201201.models.RecordTaskItem`
+        :param RecordList: 录像详情列表
+        :type RecordList: list of RecordTaskItem
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
         self.VideoList = None
+        self.RecordList = None
         self.RequestId = None
 
 
@@ -1297,6 +1300,12 @@ class DescribeVideoListResponse(AbstractModel):
         if params.get("VideoList") is not None:
             self.VideoList = RecordTaskItem()
             self.VideoList._deserialize(params.get("VideoList"))
+        if params.get("RecordList") is not None:
+            self.RecordList = []
+            for item in params.get("RecordList"):
+                obj = RecordTaskItem()
+                obj._deserialize(item)
+                self.RecordList.append(obj)
         self.RequestId = params.get("RequestId")
 
 

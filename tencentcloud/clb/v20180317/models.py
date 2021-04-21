@@ -2529,7 +2529,7 @@ class DescribeLoadBalancersRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param LoadBalancerIds: 负载均衡实例 ID。
+        :param LoadBalancerIds: 负载均衡实例ID。
         :type LoadBalancerIds: list of str
         :param LoadBalancerType: 负载均衡实例的网络类型：
 OPEN：公网属性， INTERNAL：内网属性。
@@ -2546,7 +2546,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         :type BackendPublicIps: list of str
         :param BackendPrivateIps: 负载均衡绑定的后端服务的内网 IP。
         :type BackendPrivateIps: list of str
-        :param Offset: 数据偏移量，默认为 0。
+        :param Offset: 数据偏移量，默认为0。
         :type Offset: int
         :param Limit: 返回负载均衡实例的数量，默认为20，最大值为100。
         :type Limit: int
@@ -2563,9 +2563,9 @@ OPEN：公网属性， INTERNAL：内网属性。
         :param VpcId: 负载均衡实例所属私有网络唯一ID，如 vpc-bhqkbhdx，
 基础网络可传入'0'。
         :type VpcId: str
-        :param SecurityGroup: 安全组ID，如 sg-m1cc9123
+        :param SecurityGroup: 安全组ID，如 sg-m1cc****。
         :type SecurityGroup: str
-        :param MasterZone: 主可用区ID，如 ："100001" （对应的是广州一区）
+        :param MasterZone: 主可用区ID，如 ："100001" （对应的是广州一区）。
         :type MasterZone: str
         :param Filters: 每次请求的`Filters`的上限为10，`Filter.Values`的上限为100。详细的过滤条件如下：
 <li> internet-charge-type - String - 是否必填：否 - （过滤条件）按照 CLB 的网络计费模式过滤，包括"BANDWIDTH_PREPAID","TRAFFIC_POSTPAID_BY_HOUR","BANDWIDTH_POSTPAID_BY_HOUR","BANDWIDTH_PACKAGE"。</li>
@@ -2573,6 +2573,8 @@ OPEN：公网属性， INTERNAL：内网属性。
 <li> tag-key - String - 是否必填：否 - （过滤条件）按照 CLB 标签的键过滤。</li>
 <li> tag:tag-key - String - 是否必填：否 - （过滤条件）按照CLB标签键值对进行过滤，tag-key使用具体的标签键进行替换。</li>
 <li> function-name - String - 是否必填：否 - （过滤条件）按照 CLB 后端绑定的SCF云函数的函数名称过滤。</li>
+<li> function-name - String - 是否必填：否 - （过滤条件）按照 CLB 后端绑定的SCF云函数的函数名称过滤。</li>
+<li> vip-isp - String - 是否必填：否 - （过滤条件）按照 CLB VIP的运营商类型过滤，如："BGP","INTERNAL","CMCC","CTCC","CUCC"等。</li>
         :type Filters: list of Filter
         """
         self.LoadBalancerIds = None

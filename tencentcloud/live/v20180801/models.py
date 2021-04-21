@@ -3438,14 +3438,18 @@ class DescribeLiveForbidStreamListRequest(AbstractModel):
 取值：1~100之前的任意整数。
 默认值：10。
         :type PageSize: int
+        :param StreamName: 搜索的推流 id 名称。
+        :type StreamName: str
         """
         self.PageNum = None
         self.PageSize = None
+        self.StreamName = None
 
 
     def _deserialize(self, params):
         self.PageNum = params.get("PageNum")
         self.PageSize = params.get("PageSize")
+        self.StreamName = params.get("StreamName")
 
 
 class DescribeLiveForbidStreamListResponse(AbstractModel):
