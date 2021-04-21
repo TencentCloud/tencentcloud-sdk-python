@@ -309,6 +309,25 @@ class AbstractClient(object):
             data = data.decode('UTF-8')
         return data
 
+    def call_json(self, action, params):
+        """
+        Call api with json object and return with json object.
+
+        :type action: str
+        :param action: api name e.g. ``DescribeInstances``
+        :type params: dict
+        :param params: params with this action
+        """
+        body = self.call(action, params)
+        response = json.loads(body)
+        if "Error" not in response["Response"]:
+            return response
+        else:
+            code = response["Response"]["Error"]["Code"]
+            message = response["Response"]["Error"]["Message"]
+            reqid = response["Response"]["RequestId"]
+            raise TencentCloudSDKException(code, message, reqid)
+
     def set_stream_logger(self, stream=None, level=logging.DEBUG, log_format=None):
         """
         Add a stream handler
