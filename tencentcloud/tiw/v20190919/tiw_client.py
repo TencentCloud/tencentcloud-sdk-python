@@ -138,6 +138,34 @@ class TiwClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeQualityMetrics(self, request):
+        """查询互动白板质量数据
+
+        :param request: Request instance for DescribeQualityMetrics.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeQualityMetricsRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.DescribeQualityMetricsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeQualityMetrics", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeQualityMetricsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTranscode(self, request):
         """查询文档转码任务的执行进度与转码结果
 

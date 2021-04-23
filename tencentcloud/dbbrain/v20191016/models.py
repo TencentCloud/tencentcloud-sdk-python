@@ -1536,6 +1536,76 @@ class DescribeTopSpaceTablesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeUserSqlAdviceRequest(AbstractModel):
+    """DescribeUserSqlAdvice请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID。
+        :type InstanceId: str
+        :param SqlText: SQL语句。
+        :type SqlText: str
+        :param Schema: 库名。
+        :type Schema: str
+        """
+        self.InstanceId = None
+        self.SqlText = None
+        self.Schema = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.SqlText = params.get("SqlText")
+        self.Schema = params.get("Schema")
+
+
+class DescribeUserSqlAdviceResponse(AbstractModel):
+    """DescribeUserSqlAdvice返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Advices: SQL优化建议，可解析为JSON数组。
+        :type Advices: str
+        :param Comments: SQL优化建议备注，可解析为String数组。
+        :type Comments: str
+        :param SqlText: SQL语句。
+        :type SqlText: str
+        :param Schema: 库名。
+        :type Schema: str
+        :param Tables: 相关表的DDL信息，可解析为JSON数组。
+        :type Tables: str
+        :param SqlPlan: SQL执行计划，可解析为JSON。
+        :type SqlPlan: str
+        :param Cost: SQL优化后的成本节约详情，可解析为JSON。
+        :type Cost: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Advices = None
+        self.Comments = None
+        self.SqlText = None
+        self.Schema = None
+        self.Tables = None
+        self.SqlPlan = None
+        self.Cost = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Advices = params.get("Advices")
+        self.Comments = params.get("Comments")
+        self.SqlText = params.get("SqlText")
+        self.Schema = params.get("Schema")
+        self.Tables = params.get("Tables")
+        self.SqlPlan = params.get("SqlPlan")
+        self.Cost = params.get("Cost")
+        self.RequestId = params.get("RequestId")
+
+
 class DiagHistoryEventItem(AbstractModel):
     """实例诊断历史事件
 

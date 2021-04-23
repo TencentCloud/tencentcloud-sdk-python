@@ -16,6 +16,126 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class APIDoc(AbstractModel):
+    """API文档基本信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ApiDocId: API文档ID
+        :type ApiDocId: str
+        :param ApiDocName: API文档名称
+        :type ApiDocName: str
+        :param ApiDocStatus: API文档构建状态
+        :type ApiDocStatus: str
+        """
+        self.ApiDocId = None
+        self.ApiDocName = None
+        self.ApiDocStatus = None
+
+
+    def _deserialize(self, params):
+        self.ApiDocId = params.get("ApiDocId")
+        self.ApiDocName = params.get("ApiDocName")
+        self.ApiDocStatus = params.get("ApiDocStatus")
+
+
+class APIDocInfo(AbstractModel):
+    """API文档详细信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ApiDocId: API文档ID
+        :type ApiDocId: str
+        :param ApiDocName: API文档名称
+        :type ApiDocName: str
+        :param ApiDocStatus: API文档构建状态
+        :type ApiDocStatus: str
+        :param ApiCount: API文档API数量
+        :type ApiCount: int
+        :param ViewCount: API文档查看次数
+        :type ViewCount: int
+        :param ReleaseCount: API文档发布次数
+        :type ReleaseCount: int
+        :param ApiDocUri: API文档访问URI
+        :type ApiDocUri: str
+        :param SharePassword: API文档分享密码
+        :type SharePassword: str
+        :param UpdatedTime: API文档更新时间
+        :type UpdatedTime: str
+        :param ServiceId: 服务ID
+        :type ServiceId: str
+        :param Environment: 环境信息
+        :type Environment: str
+        :param ApiIds: 生成API文档的API ID
+        :type ApiIds: list of str
+        :param ServiceName: 服务名称
+        :type ServiceName: str
+        :param ApiNames: 生成API文档的API名称
+        :type ApiNames: list of str
+        """
+        self.ApiDocId = None
+        self.ApiDocName = None
+        self.ApiDocStatus = None
+        self.ApiCount = None
+        self.ViewCount = None
+        self.ReleaseCount = None
+        self.ApiDocUri = None
+        self.SharePassword = None
+        self.UpdatedTime = None
+        self.ServiceId = None
+        self.Environment = None
+        self.ApiIds = None
+        self.ServiceName = None
+        self.ApiNames = None
+
+
+    def _deserialize(self, params):
+        self.ApiDocId = params.get("ApiDocId")
+        self.ApiDocName = params.get("ApiDocName")
+        self.ApiDocStatus = params.get("ApiDocStatus")
+        self.ApiCount = params.get("ApiCount")
+        self.ViewCount = params.get("ViewCount")
+        self.ReleaseCount = params.get("ReleaseCount")
+        self.ApiDocUri = params.get("ApiDocUri")
+        self.SharePassword = params.get("SharePassword")
+        self.UpdatedTime = params.get("UpdatedTime")
+        self.ServiceId = params.get("ServiceId")
+        self.Environment = params.get("Environment")
+        self.ApiIds = params.get("ApiIds")
+        self.ServiceName = params.get("ServiceName")
+        self.ApiNames = params.get("ApiNames")
+
+
+class APIDocs(AbstractModel):
+    """API文档列表
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: API文档数量
+        :type TotalCount: int
+        :param APIDocSet: API文档基本信息
+        :type APIDocSet: list of APIDoc
+        """
+        self.TotalCount = None
+        self.APIDocSet = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("APIDocSet") is not None:
+            self.APIDocSet = []
+            for item in params.get("APIDocSet"):
+                obj = APIDoc()
+                obj._deserialize(item)
+                self.APIDocSet.append(obj)
+
+
 class ApiEnvironmentStrategy(AbstractModel):
     """api环境绑定策略
 
@@ -1025,6 +1145,44 @@ class BindSubDomainResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class BuildAPIDocRequest(AbstractModel):
+    """BuildAPIDoc请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ApiDocId: API文档ID
+        :type ApiDocId: str
+        """
+        self.ApiDocId = None
+
+
+    def _deserialize(self, params):
+        self.ApiDocId = params.get("ApiDocId")
+
+
+class BuildAPIDocResponse(AbstractModel):
+    """BuildAPIDoc返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 操作是否成功
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class ConstantParameter(AbstractModel):
     """常量参数
 
@@ -1052,6 +1210,58 @@ class ConstantParameter(AbstractModel):
         self.Desc = params.get("Desc")
         self.Position = params.get("Position")
         self.DefaultValue = params.get("DefaultValue")
+
+
+class CreateAPIDocRequest(AbstractModel):
+    """CreateAPIDoc请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ApiDocName: API文档名称
+        :type ApiDocName: str
+        :param ServiceId: 服务名称
+        :type ServiceId: str
+        :param Environment: 环境名称
+        :type Environment: str
+        :param ApiIds: 生成文档的API列表
+        :type ApiIds: list of str
+        """
+        self.ApiDocName = None
+        self.ServiceId = None
+        self.Environment = None
+        self.ApiIds = None
+
+
+    def _deserialize(self, params):
+        self.ApiDocName = params.get("ApiDocName")
+        self.ServiceId = params.get("ServiceId")
+        self.Environment = params.get("Environment")
+        self.ApiIds = params.get("ApiIds")
+
+
+class CreateAPIDocResponse(AbstractModel):
+    """CreateAPIDoc返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: API文档基本信息
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.APIDoc`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = APIDoc()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
 
 
 class CreateApiKeyRequest(AbstractModel):
@@ -1130,7 +1340,7 @@ class CreateApiRequest(AbstractModel):
         :type ApiDesc: str
         :param ApiType: API 类型，支持NORMAL（普通API）和TSF（微服务API），默认为NORMAL。
         :type ApiType: str
-        :param AuthType: API 鉴权类型。支持SECRET（密钥对鉴权）、NONE（免鉴权）、OAUTH。默认为NONE。
+        :param AuthType: API 鉴权类型。支持SECRET（密钥对鉴权）、NONE（免鉴权）、OAUTH、APP（应用认证）。默认为NONE。
         :type AuthType: str
         :param EnableCORS: 是否开启跨域。
         :type EnableCORS: bool
@@ -1481,6 +1691,8 @@ class CreateServiceRequest(AbstractModel):
         :type AppIdType: str
         :param Tags: 标签。
         :type Tags: list of Tag
+        :param InstanceId: 独享实例id
+        :type InstanceId: str
         """
         self.ServiceName = None
         self.Protocol = None
@@ -1491,6 +1703,7 @@ class CreateServiceRequest(AbstractModel):
         self.SetServerName = None
         self.AppIdType = None
         self.Tags = None
+        self.InstanceId = None
 
 
     def _deserialize(self, params):
@@ -1508,6 +1721,7 @@ class CreateServiceRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.InstanceId = params.get("InstanceId")
 
 
 class CreateServiceResponse(AbstractModel):
@@ -1610,6 +1824,44 @@ class CreateUsagePlanResponse(AbstractModel):
         if params.get("Result") is not None:
             self.Result = UsagePlanInfo()
             self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteAPIDocRequest(AbstractModel):
+    """DeleteAPIDoc请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ApiDocId: API文档ID
+        :type ApiDocId: str
+        """
+        self.ApiDocId = None
+
+
+    def _deserialize(self, params):
+        self.ApiDocId = params.get("ApiDocId")
+
+
+class DeleteAPIDocResponse(AbstractModel):
+    """DeleteAPIDoc返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 操作是否成功
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
 
 
@@ -2015,6 +2267,90 @@ class DesApisStatus(AbstractModel):
         self.Tags = params.get("Tags")
         self.Path = params.get("Path")
         self.Method = params.get("Method")
+
+
+class DescribeAPIDocDetailRequest(AbstractModel):
+    """DescribeAPIDocDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ApiDocId: API文档ID
+        :type ApiDocId: str
+        """
+        self.ApiDocId = None
+
+
+    def _deserialize(self, params):
+        self.ApiDocId = params.get("ApiDocId")
+
+
+class DescribeAPIDocDetailResponse(AbstractModel):
+    """DescribeAPIDocDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: API文档详细信息
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.APIDocInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = APIDocInfo()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAPIDocsRequest(AbstractModel):
+    """DescribeAPIDocs请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Limit: 返回数量，默认为 20，最大值为 100。
+        :type Limit: int
+        :param Offset: 偏移量，默认为 0。
+        :type Offset: int
+        """
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class DescribeAPIDocsResponse(AbstractModel):
+    """DescribeAPIDocs返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: API文档列表信息
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.APIDocs`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = APIDocs()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
 
 
 class DescribeApiEnvironmentStrategyRequest(AbstractModel):
@@ -2964,6 +3300,15 @@ class DescribeServiceResponse(AbstractModel):
         :param Tags: 服务绑定的标签。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
+        :param InstanceId: 独享实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param InstanceName: 独享实例name
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param SetType: 集群类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SetType: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2988,6 +3333,9 @@ class DescribeServiceResponse(AbstractModel):
         self.UserType = None
         self.SetId = None
         self.Tags = None
+        self.InstanceId = None
+        self.InstanceName = None
+        self.SetType = None
         self.RequestId = None
 
 
@@ -3028,6 +3376,9 @@ class DescribeServiceResponse(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.SetType = params.get("SetType")
         self.RequestId = params.get("RequestId")
 
 
@@ -3183,7 +3534,7 @@ class DescribeServicesStatusRequest(AbstractModel):
         :type Limit: int
         :param Offset: 偏移量，默认为 0。
         :type Offset: int
-        :param Filters: 过滤条件。支持ServiceId、ServiceName、NotUsagePlanId、Environment、IpVersion。
+        :param Filters: 过滤条件。支持ServiceId、ServiceName、NotUsagePlanId、Environment、IpVersion。InstanceId
         :type Filters: list of Filter
         """
         self.Limit = None
@@ -3625,14 +3976,19 @@ class EnvironmentStrategy(AbstractModel):
         :type EnvironmentName: str
         :param Quota: 限流值
         :type Quota: int
+        :param MaxQuota: 限流最大值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxQuota: int
         """
         self.EnvironmentName = None
         self.Quota = None
+        self.MaxQuota = None
 
 
     def _deserialize(self, params):
         self.EnvironmentName = params.get("EnvironmentName")
         self.Quota = params.get("Quota")
+        self.MaxQuota = params.get("MaxQuota")
 
 
 class ErrorCodes(AbstractModel):
@@ -4009,6 +4365,62 @@ class MicroServiceReq(AbstractModel):
         self.MicroServiceName = params.get("MicroServiceName")
 
 
+class ModifyAPIDocRequest(AbstractModel):
+    """ModifyAPIDoc请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ApiDocId: API文档ID
+        :type ApiDocId: str
+        :param ApiDocName: API文档名称
+        :type ApiDocName: str
+        :param ServiceId: 服务名称
+        :type ServiceId: str
+        :param Environment: 环境名称
+        :type Environment: str
+        :param ApiIds: 生成文档的API列表
+        :type ApiIds: list of str
+        """
+        self.ApiDocId = None
+        self.ApiDocName = None
+        self.ServiceId = None
+        self.Environment = None
+        self.ApiIds = None
+
+
+    def _deserialize(self, params):
+        self.ApiDocId = params.get("ApiDocId")
+        self.ApiDocName = params.get("ApiDocName")
+        self.ServiceId = params.get("ServiceId")
+        self.Environment = params.get("Environment")
+        self.ApiIds = params.get("ApiIds")
+
+
+class ModifyAPIDocResponse(AbstractModel):
+    """ModifyAPIDoc返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: API文档基本信息
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.APIDoc`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = APIDoc()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyApiEnvironmentStrategyRequest(AbstractModel):
     """ModifyApiEnvironmentStrategy请求参数结构体
 
@@ -4131,7 +4543,7 @@ class ModifyApiRequest(AbstractModel):
         :type ApiDesc: str
         :param ApiType: API 类型，支持NORMAL和TSF，默认为NORMAL。
         :type ApiType: str
-        :param AuthType: API 鉴权类型。支持SECRET、NONE、OAUTH。默认为NONE。
+        :param AuthType: API 鉴权类型。支持SECRET、NONE、OAUTH、APP。默认为NONE。
         :type AuthType: str
         :param AuthRequired: 是否需要签名认证，True 表示需要，False 表示不需要。待废弃。
         :type AuthRequired: bool
@@ -4947,6 +5359,46 @@ class RequestParameter(AbstractModel):
         self.Required = params.get("Required")
 
 
+class ResetAPIDocPasswordRequest(AbstractModel):
+    """ResetAPIDocPassword请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ApiDocId: API文档ID
+        :type ApiDocId: str
+        """
+        self.ApiDocId = None
+
+
+    def _deserialize(self, params):
+        self.ApiDocId = params.get("ApiDocId")
+
+
+class ResetAPIDocPasswordResponse(AbstractModel):
+    """ResetAPIDocPassword返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: API文档基本信息
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.APIDoc`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = APIDoc()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class ResponseErrorCodeReq(AbstractModel):
     """错误码入参
 
@@ -5035,6 +5487,12 @@ class Service(AbstractModel):
         :param Tags: 服务绑定的标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
+        :param InstanceId: 独享实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param SetType: 集群类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SetType: str
         """
         self.InnerHttpsPort = None
         self.ServiceDesc = None
@@ -5052,6 +5510,8 @@ class Service(AbstractModel):
         self.InnerSubDomain = None
         self.TradeIsolateStatus = None
         self.Tags = None
+        self.InstanceId = None
+        self.SetType = None
 
 
     def _deserialize(self, params):
@@ -5076,6 +5536,8 @@ class Service(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.InstanceId = params.get("InstanceId")
+        self.SetType = params.get("SetType")
 
 
 class ServiceConfig(AbstractModel):
@@ -5157,12 +5619,16 @@ class ServiceEnvironmentStrategy(AbstractModel):
         :type VersionName: str
         :param Strategy: 限流值。
         :type Strategy: int
+        :param MaxStrategy: 最大限流值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxStrategy: int
         """
         self.EnvironmentName = None
         self.Url = None
         self.Status = None
         self.VersionName = None
         self.Strategy = None
+        self.MaxStrategy = None
 
 
     def _deserialize(self, params):
@@ -5171,6 +5637,7 @@ class ServiceEnvironmentStrategy(AbstractModel):
         self.Status = params.get("Status")
         self.VersionName = params.get("VersionName")
         self.Strategy = params.get("Strategy")
+        self.MaxStrategy = params.get("MaxStrategy")
 
 
 class ServiceEnvironmentStrategyStatus(AbstractModel):

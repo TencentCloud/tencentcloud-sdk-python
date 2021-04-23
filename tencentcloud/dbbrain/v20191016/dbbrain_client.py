@@ -726,6 +726,34 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeUserSqlAdvice(self, request):
+        """获取SQL优化建议。
+
+        :param request: Request instance for DescribeUserSqlAdvice.
+        :type request: :class:`tencentcloud.dbbrain.v20191016.models.DescribeUserSqlAdviceRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.DescribeUserSqlAdviceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeUserSqlAdvice", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeUserSqlAdviceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyDiagDBInstanceConf(self, request):
         """修改实例巡检开关。
 

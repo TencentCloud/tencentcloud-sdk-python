@@ -392,6 +392,34 @@ class DcdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDCDBInstanceNodeInfo(self, request):
+        """本接口（DescribeDCDBInstanceNodeInfo）用于获取实例节点信息
+
+        :param request: Request instance for DescribeDCDBInstanceNodeInfo.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDCDBInstanceNodeInfoRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.DescribeDCDBInstanceNodeInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDCDBInstanceNodeInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDCDBInstanceNodeInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDCDBInstances(self, request):
         """查询云数据库实例列表，支持通过项目ID、实例ID、内网地址、实例名称等来筛选实例。
         如果不指定任何筛选条件，则默认返回10条实例记录，单次请求最多支持返回100条实例记录。

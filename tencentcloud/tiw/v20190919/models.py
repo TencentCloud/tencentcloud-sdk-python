@@ -70,7 +70,7 @@ class CreateTranscodeRequest(AbstractModel):
         """
         :param SdkAppId: 客户的SdkAppId
         :type SdkAppId: int
-        :param Url: 需要进行转码文件地址
+        :param Url: 经过URL编码后的转码文件地址。URL 编码会将字符转换为可通过因特网传输的格式，比如文档地址为http://example.com/测试.pdf，经过URL编码之后为http://example.com/%E6%B5%8B%E8%AF%95.pdf。为了提高URL解析的成功率，请对URL进行编码。
         :type Url: str
         :param IsStaticPPT: 是否为静态PPT，默认为False；
 如果IsStaticPPT为False，后缀名为.ppt或.pptx的文档会动态转码成HTML5页面，其他格式的文档会静态转码成图片；如果IsStaticPPT为True，所有格式的文档会静态转码成图片；
@@ -383,6 +383,75 @@ class DescribeOnlineRecordResponse(AbstractModel):
                 obj._deserialize(item)
                 self.VideoInfos.append(obj)
         self.ReplayUrl = params.get("ReplayUrl")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeQualityMetricsRequest(AbstractModel):
+    """DescribeQualityMetrics请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SdkAppId: 白板应用的SdkAppId
+        :type SdkAppId: int
+        :param StartTime: 开始时间，Unix时间戳，单位秒，时间跨度不能超过7天
+        :type StartTime: int
+        :param EndTime: 结束时间，Unix时间戳，单位秒，时间跨度不能超过7天
+        :type EndTime: int
+        :param Metric: 查询的指标，目前支持以下值
+  - image_load_total_count: 图片加载总数
+  - image_load_fail_count: 图片加载失败数量
+  - image_load_success_rate: 图片加载成功率
+  - ppt_load_total_count: PPT加载总数
+  - ppt_load_fail_count: PPT加载失败总数
+  - ppt_load_success_rate: PPT加载成功率
+        :type Metric: str
+        :param Interval: 聚合的时间维度，目前只支持1小时，输入值为"1h"
+        :type Interval: str
+        """
+        self.SdkAppId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Metric = None
+        self.Interval = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Metric = params.get("Metric")
+        self.Interval = params.get("Interval")
+
+
+class DescribeQualityMetricsResponse(AbstractModel):
+    """DescribeQualityMetrics返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Metric: 输入的查询指标
+        :type Metric: str
+        :param Content: 时间序列
+        :type Content: list of TimeValue
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Metric = None
+        self.Content = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Metric = params.get("Metric")
+        if params.get("Content") is not None:
+            self.Content = []
+            for item in params.get("Content"):
+                obj = TimeValue()
+                obj._deserialize(item)
+                self.Content.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1726,6 +1795,27 @@ class StreamLayout(AbstractModel):
         self.InputStreamId = params.get("InputStreamId")
         self.BackgroundColor = params.get("BackgroundColor")
         self.FillMode = params.get("FillMode")
+
+
+class TimeValue(AbstractModel):
+    """查询指标返回的时间序列
+
+    """
+
+    def __init__(self):
+        """
+        :param Time: Unix时间戳，单位秒
+        :type Time: int
+        :param Value: 查询指标对应当前时间的值
+        :type Value: float
+        """
+        self.Time = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        self.Value = params.get("Value")
 
 
 class VideoInfo(AbstractModel):

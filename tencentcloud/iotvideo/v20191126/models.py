@@ -253,11 +253,14 @@ class CreateBindingRequest(AbstractModel):
         :type Role: str
         :param ForceBind: 是否踢掉之前的主人，true：踢掉；false：不踢掉。当role为guest时，可以不填
         :type ForceBind: bool
+        :param Nick: 设备昵称
+        :type Nick: str
         """
         self.AccessId = None
         self.Tid = None
         self.Role = None
         self.ForceBind = None
+        self.Nick = None
 
 
     def _deserialize(self, params):
@@ -265,6 +268,7 @@ class CreateBindingRequest(AbstractModel):
         self.Tid = params.get("Tid")
         self.Role = params.get("Role")
         self.ForceBind = params.get("ForceBind")
+        self.Nick = params.get("Nick")
 
 
 class CreateBindingResponse(AbstractModel):
@@ -719,6 +723,10 @@ class CreateStorageServiceResponse(AbstractModel):
         :param EndTime: 服务失效时间
         :type EndTime: int
         :param Status: 服务状态
+1：正常使用中
+2：待续费。设备云存服务已到期，但是历史云存数据未过期。续费后仍可查看这些历史数据。
+3：已过期。查询不到设备保存在云端的数据。
+4：等待服务生效。
         :type Status: int
         :param Data: 新增的云存定单列表
         :type Data: list of StorageOrder
@@ -847,16 +855,20 @@ class CreateUsrTokenRequest(AbstractModel):
         :type UniqueId: str
         :param TtlMinutes: Token的TTL(time to alive)分钟数
         :type TtlMinutes: int
+        :param OldAccessToken: 旧的AccessToken。续期Token时，此参数为必须。
+        :type OldAccessToken: str
         """
         self.AccessId = None
         self.UniqueId = None
         self.TtlMinutes = None
+        self.OldAccessToken = None
 
 
     def _deserialize(self, params):
         self.AccessId = params.get("AccessId")
         self.UniqueId = params.get("UniqueId")
         self.TtlMinutes = params.get("TtlMinutes")
+        self.OldAccessToken = params.get("OldAccessToken")
 
 
 class CreateUsrTokenResponse(AbstractModel):
@@ -1271,6 +1283,10 @@ class DeliverStorageServiceResponse(AbstractModel):
         :param EndTime: 服务失效时间
         :type EndTime: int
         :param Status: 服务状态
+1：正常使用中
+2：待续费。设备云存服务已到期，但是历史云存数据未过期。续费后仍可查看这些历史数据。
+3：已过期。查询不到设备保存在云端的数据。
+4：等待服务生效。
         :type Status: int
         :param Data: 新增的云存定单列表
         :type Data: list of StorageOrder
@@ -2313,6 +2329,10 @@ class DescribeStorageServiceResponse(AbstractModel):
         :param EndTime: 服务失效时间
         :type EndTime: int
         :param Status: 服务状态
+1：正常使用中
+2：待续费。设备云存服务已到期，但是历史云存数据未过期。续费后仍可查看这些历史数据。
+3：已过期。查询不到设备保存在云端的数据。
+4：等待服务生效。
         :type Status: int
         :param Data: 云存定单列表
         :type Data: list of StorageOrder
@@ -3417,6 +3437,10 @@ class RefundStorageServiceResponse(AbstractModel):
         :param EndTime: 服务失效时间
         :type EndTime: int
         :param Status: 服务状态
+1：正常使用中
+2：待续费。设备云存服务已到期，但是历史云存数据未过期。续费后仍可查看这些历史数据。
+3：已过期。查询不到设备保存在云端的数据。
+4：等待服务生效。
         :type Status: int
         :param Data: 有效云存定单列表
         :type Data: list of StorageOrder
@@ -3769,6 +3793,7 @@ class SetMessageQueueRequest(AbstractModel):
 3.控制状态变更
 4.状态信息变更
 5.事件发布
+6.系统事件
         :type MsgType: str
         :param Topic: 消息队列主题，不超过32字符
         :type Topic: str
@@ -3823,6 +3848,12 @@ class StorageOrder(AbstractModel):
         :param PkgId: 云存套餐ID
         :type PkgId: str
         :param Status: 定单服务状态
+1;订单正在使用。
+2:订单未开始。
+3:订单已经使用过，现在暂时未开始使用(该订单从其他服务转移而来)。
+4:订单已过期。
+5:订单已被退订。
+6:定单已被转移到其他云存服务。
         :type Status: int
         :param StartTime: 定单服务生效时间
         :type StartTime: int

@@ -448,6 +448,10 @@ class CreateProjectRequest(AbstractModel):
         """
         :param Platform: 平台名称，指定访问的平台。
         :type Platform: str
+        :param Name: 项目名称，不可超过30个字符。
+        :type Name: str
+        :param Owner: 项目归属者。
+        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
         :param Category: 项目类别，取值有：
 <li>VIDEO_EDIT：视频编辑。</li>
 <li>SWITCHER：导播台。</li>
@@ -455,10 +459,6 @@ class CreateProjectRequest(AbstractModel):
 <li>STREAM_CONNECT：云转推。</li>
 <li>RECORD_REPLAY：录制回放。</li>
         :type Category: str
-        :param Name: 项目名称，不可超过30个字符。
-        :type Name: str
-        :param Owner: 项目归属者。
-        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
         :param AspectRatio: 画布宽高比。
 该字段已经废弃，请使用具体项目输入中的 AspectRatio 字段。
         :type AspectRatio: str
@@ -478,9 +478,9 @@ class CreateProjectRequest(AbstractModel):
         :type RecordReplayProjectInput: :class:`tencentcloud.cme.v20191029.models.RecordReplayProjectInput`
         """
         self.Platform = None
-        self.Category = None
         self.Name = None
         self.Owner = None
+        self.Category = None
         self.AspectRatio = None
         self.Description = None
         self.SwitcherProjectInput = None
@@ -493,11 +493,11 @@ class CreateProjectRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.Platform = params.get("Platform")
-        self.Category = params.get("Category")
         self.Name = params.get("Name")
         if params.get("Owner") is not None:
             self.Owner = Entity()
             self.Owner._deserialize(params.get("Owner"))
+        self.Category = params.get("Category")
         self.AspectRatio = params.get("AspectRatio")
         self.Description = params.get("Description")
         if params.get("SwitcherProjectInput") is not None:
@@ -2173,6 +2173,70 @@ class GrantResourceAuthorizationResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class HandleStreamConnectProjectRequest(AbstractModel):
+    """HandleStreamConnectProject请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Platform: 平台名称，指定访问的平台。
+        :type Platform: str
+        :param ProjectId: 云转推项目Id 。
+        :type ProjectId: str
+        :param Operation: 请参考 [操作类型](#Operation)
+        :type Operation: str
+        :param InputInfo: 转推输入源操作参数。具体操作方式详见 [操作类型](#Operation) 及下文示例。
+        :type InputInfo: :class:`tencentcloud.cme.v20191029.models.StreamInputInfo`
+        :param InputEndpoint: 主备输入源标识，取值有：
+<li> Main ：主源；</li>
+<li> Backup ：备源。</li>
+        :type InputEndpoint: str
+        :param OutputInfo: 转推输出源操作参数。具体操作方式详见 [操作类型](#Operation) 及下文示例。
+        :type OutputInfo: :class:`tencentcloud.cme.v20191029.models.StreamConnectOutput`
+        :param CurrentStopTime: 云转推当前预计结束时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。具体操作方式详见 [操作类型](#Operation) 及下文示例。
+        :type CurrentStopTime: str
+        """
+        self.Platform = None
+        self.ProjectId = None
+        self.Operation = None
+        self.InputInfo = None
+        self.InputEndpoint = None
+        self.OutputInfo = None
+        self.CurrentStopTime = None
+
+
+    def _deserialize(self, params):
+        self.Platform = params.get("Platform")
+        self.ProjectId = params.get("ProjectId")
+        self.Operation = params.get("Operation")
+        if params.get("InputInfo") is not None:
+            self.InputInfo = StreamInputInfo()
+            self.InputInfo._deserialize(params.get("InputInfo"))
+        self.InputEndpoint = params.get("InputEndpoint")
+        if params.get("OutputInfo") is not None:
+            self.OutputInfo = StreamConnectOutput()
+            self.OutputInfo._deserialize(params.get("OutputInfo"))
+        self.CurrentStopTime = params.get("CurrentStopTime")
+
+
+class HandleStreamConnectProjectResponse(AbstractModel):
+    """HandleStreamConnectProject返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ImageMaterial(AbstractModel):
     """图片素材信息
 
@@ -3489,8 +3553,7 @@ class ProjectInfo(AbstractModel):
         :type Name: str
         :param AspectRatio: 画布宽高比。
         :type AspectRatio: str
-        :param Category: 项目类别，取值：
-项目类别，取值有：
+        :param Category: 项目类别，取值有：
 <li>VIDEO_EDIT：视频编辑。</li>
 <li>SWITCHER：导播台。</li>
 <li>VIDEO_SEGMENTATION：视频拆条。</li>
@@ -3501,6 +3564,9 @@ class ProjectInfo(AbstractModel):
         :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
         :param CoverUrl: 项目封面图片地址。
         :type CoverUrl: str
+        :param StreamConnectProjectInfo: 云转推项目信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StreamConnectProjectInfo: :class:`tencentcloud.cme.v20191029.models.StreamConnectProjectInfo`
         :param CreateTime: 项目创建时间，格式按照 ISO 8601 标准表示。
         :type CreateTime: str
         :param UpdateTime: 项目更新时间，格式按照 ISO 8601 标准表示。
@@ -3512,6 +3578,7 @@ class ProjectInfo(AbstractModel):
         self.Category = None
         self.Owner = None
         self.CoverUrl = None
+        self.StreamConnectProjectInfo = None
         self.CreateTime = None
         self.UpdateTime = None
 
@@ -3525,6 +3592,9 @@ class ProjectInfo(AbstractModel):
             self.Owner = Entity()
             self.Owner._deserialize(params.get("Owner"))
         self.CoverUrl = params.get("CoverUrl")
+        if params.get("StreamConnectProjectInfo") is not None:
+            self.StreamConnectProjectInfo = StreamConnectProjectInfo()
+            self.StreamConnectProjectInfo._deserialize(params.get("StreamConnectProjectInfo"))
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
 
@@ -3941,6 +4011,92 @@ class StreamConnectOutput(AbstractModel):
         self.Name = params.get("Name")
         self.Type = params.get("Type")
         self.PushUrl = params.get("PushUrl")
+
+
+class StreamConnectOutputInfo(AbstractModel):
+    """云转推输出源信息，包含输出源和输出源转推状态。
+
+    """
+
+    def __init__(self):
+        """
+        :param StreamConnectOutput: 输出源。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StreamConnectOutput: :class:`tencentcloud.cme.v20191029.models.StreamConnectOutput`
+        :param PushSwitch: 输出流状态：
+<li>On ：开；</li>
+<li>Off ：关 。</li>
+        :type PushSwitch: str
+        """
+        self.StreamConnectOutput = None
+        self.PushSwitch = None
+
+
+    def _deserialize(self, params):
+        if params.get("StreamConnectOutput") is not None:
+            self.StreamConnectOutput = StreamConnectOutput()
+            self.StreamConnectOutput._deserialize(params.get("StreamConnectOutput"))
+        self.PushSwitch = params.get("PushSwitch")
+
+
+class StreamConnectProjectInfo(AbstractModel):
+    """云转推项目信息，包含输入源、输出源、当前转推开始时间等信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 转推项目状态，取值有：
+<li>Working ：转推中；</li>
+<li>Idle ：空闲中。</li>
+        :type Status: str
+        :param CurrentInputEndpoint: 当前转推输入源，取值有：
+<li>Main ：主输入源；</li>
+<li>Backup ：备输入源。</li>
+        :type CurrentInputEndpoint: str
+        :param CurrentStartTime: 当前转推开始时间， 采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。仅 Status 取值 Working 时有效。
+        :type CurrentStartTime: str
+        :param CurrentStopTime: 当前转推计划结束时间， 采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。仅 Status 取值 Working 时有效。
+        :type CurrentStopTime: str
+        :param LastStopTime: 上一次转推结束时间， 采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。仅 Status 取值 Idle 时有效。
+        :type LastStopTime: str
+        :param MainInput: 云转推主输入源。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MainInput: :class:`tencentcloud.cme.v20191029.models.StreamInputInfo`
+        :param BackupInput: 云转推备输入源。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupInput: :class:`tencentcloud.cme.v20191029.models.StreamInputInfo`
+        :param OutputSet: 云转推输出源。
+        :type OutputSet: list of StreamConnectOutputInfo
+        """
+        self.Status = None
+        self.CurrentInputEndpoint = None
+        self.CurrentStartTime = None
+        self.CurrentStopTime = None
+        self.LastStopTime = None
+        self.MainInput = None
+        self.BackupInput = None
+        self.OutputSet = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.CurrentInputEndpoint = params.get("CurrentInputEndpoint")
+        self.CurrentStartTime = params.get("CurrentStartTime")
+        self.CurrentStopTime = params.get("CurrentStopTime")
+        self.LastStopTime = params.get("LastStopTime")
+        if params.get("MainInput") is not None:
+            self.MainInput = StreamInputInfo()
+            self.MainInput._deserialize(params.get("MainInput"))
+        if params.get("BackupInput") is not None:
+            self.BackupInput = StreamInputInfo()
+            self.BackupInput._deserialize(params.get("BackupInput"))
+        if params.get("OutputSet") is not None:
+            self.OutputSet = []
+            for item in params.get("OutputSet"):
+                obj = StreamConnectOutputInfo()
+                obj._deserialize(item)
+                self.OutputSet.append(obj)
 
 
 class StreamConnectProjectInput(AbstractModel):

@@ -248,7 +248,8 @@ class DescribeCloudMusicRequest(AbstractModel):
         """
         :param MusicId: 歌曲Id
         :type MusicId: str
-        :param MusicType: 歌曲类型，请填写：MP3-320K-FTD
+        :param MusicType: MP3-320K-FTD-P  为获取320kbps歌曲热门片段。
+MP3-320K-FTD 为获取320kbps已核验歌曲完整资源。
         :type MusicType: str
         """
         self.MusicId = None
@@ -477,7 +478,7 @@ class DescribeMusicRequest(AbstractModel):
         :type ItemId: str
         :param IdentityId: 在应用前端播放音乐C端用户的唯一标识。无需是账户信息，用户唯一标识即可。
         :type IdentityId: str
-        :param SubItemType: MP3-64K-FTD-P  为获取64kbps歌曲热门片段。
+        :param SubItemType: MP3-320K-FTD-P  为获取64kbps歌曲热门片段。
 MP3-320K-FTD 为获取320kbps已核验歌曲完整资源。
         :type SubItemType: str
         :param Ssl: CDN URL Protocol:HTTP or HTTPS/SSL

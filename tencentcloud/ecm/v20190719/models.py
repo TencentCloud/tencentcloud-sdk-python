@@ -1794,7 +1794,7 @@ class DeleteNetworkInterfaceRequest(AbstractModel):
         """
         :param NetworkInterfaceId: 弹性网卡实例ID，例如：eni-m6dyj72l。
         :type NetworkInterfaceId: str
-        :param EcmRegion: ECM 地域
+        :param EcmRegion: ECM 地域，形如ap-xian-ecm。
         :type EcmRegion: str
         """
         self.NetworkInterfaceId = None

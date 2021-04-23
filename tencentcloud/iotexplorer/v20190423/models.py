@@ -1521,6 +1521,52 @@ class FirmwareInfo(AbstractModel):
         self.ProductId = params.get("ProductId")
 
 
+class GetCOSURLRequest(AbstractModel):
+    """GetCOSURL请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductID: 产品ID
+        :type ProductID: str
+        :param FirmwareVersion: 固件版本
+        :type FirmwareVersion: str
+        :param FileSize: 文件大小
+        :type FileSize: int
+        """
+        self.ProductID = None
+        self.FirmwareVersion = None
+        self.FileSize = None
+
+
+    def _deserialize(self, params):
+        self.ProductID = params.get("ProductID")
+        self.FirmwareVersion = params.get("FirmwareVersion")
+        self.FileSize = params.get("FileSize")
+
+
+class GetCOSURLResponse(AbstractModel):
+    """GetCOSURL返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Url: 固件URL
+        :type Url: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Url = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
+        self.RequestId = params.get("RequestId")
+
+
 class GetDeviceListRequest(AbstractModel):
     """GetDeviceList请求参数结构体
 

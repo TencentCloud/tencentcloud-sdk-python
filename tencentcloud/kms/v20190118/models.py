@@ -1300,7 +1300,7 @@ class EncryptResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param CiphertextBlob: 加密后经过base64编码的密文
+        :param CiphertextBlob: 加密后的密文，base64编码。注意：本字段中打包了密文和密钥的相关信息，不是对明文的直接加密结果，只有将该字段作为Decrypt接口的输入参数，才可以解密出原文。
         :type CiphertextBlob: str
         :param KeyId: 加密使用的CMK的全局唯一标识
         :type KeyId: str

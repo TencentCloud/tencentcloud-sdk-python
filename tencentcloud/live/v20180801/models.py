@@ -630,14 +630,19 @@ class CommonMixControlParams(AbstractModel):
         :param AllowCopy: 取值范围[0,1]
 填1时，当InputStreamList中个数为1时，且OutputParams.OutputStreamType为1时，不执行取消操作，执行拷贝流操作
         :type AllowCopy: int
+        :param PassInputSei: 取值范围[0,1]
+填1时，透传原始流的sei
+        :type PassInputSei: int
         """
         self.UseMixCropCenter = None
         self.AllowCopy = None
+        self.PassInputSei = None
 
 
     def _deserialize(self, params):
         self.UseMixCropCenter = params.get("UseMixCropCenter")
         self.AllowCopy = params.get("AllowCopy")
+        self.PassInputSei = params.get("PassInputSei")
 
 
 class CommonMixCropParams(AbstractModel):

@@ -83,6 +83,31 @@ class AssociateSecurityGroupsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class BriefNodeInfo(AbstractModel):
+    """描述分片DB节点信息
+
+    """
+
+    def __init__(self):
+        """
+        :param NodeId: DB节点ID
+        :type NodeId: str
+        :param Role: DB节点角色，取值为master或者slave
+        :type Role: str
+        :param ShardId: 节点所属分片的分片ID
+        :type ShardId: str
+        """
+        self.NodeId = None
+        self.Role = None
+        self.ShardId = None
+
+
+    def _deserialize(self, params):
+        self.NodeId = params.get("NodeId")
+        self.Role = params.get("Role")
+        self.ShardId = params.get("ShardId")
+
+
 class CloneAccountRequest(AbstractModel):
     """CloneAccount请求参数结构体
 
@@ -1366,6 +1391,61 @@ class DescribeDBSyncModeResponse(AbstractModel):
         self.SyncMode = params.get("SyncMode")
         self.IsModifying = params.get("IsModifying")
         self.CurrentSyncMode = params.get("CurrentSyncMode")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDCDBInstanceNodeInfoRequest(AbstractModel):
+    """DescribeDCDBInstanceNodeInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param Limit: 单次最多返回多少条，取值范围为(0-100]，默认为100
+        :type Limit: int
+        :param Offset: 返回数据的偏移值，默认为0
+        :type Offset: int
+        """
+        self.InstanceId = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class DescribeDCDBInstanceNodeInfoResponse(AbstractModel):
+    """DescribeDCDBInstanceNodeInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 节点总个数
+        :type TotalCount: int
+        :param NodesInfo: 节点信息
+        :type NodesInfo: list of BriefNodeInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.NodesInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("NodesInfo") is not None:
+            self.NodesInfo = []
+            for item in params.get("NodesInfo"):
+                obj = BriefNodeInfo()
+                obj._deserialize(item)
+                self.NodesInfo.append(obj)
         self.RequestId = params.get("RequestId")
 
 

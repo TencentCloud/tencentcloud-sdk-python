@@ -754,6 +754,34 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetCOSURL(self, request):
+        """本接口（GetCOSURL）用于获取固件存储在COS的URL
+
+        :param request: Request instance for GetCOSURL.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.GetCOSURLRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.GetCOSURLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetCOSURL", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetCOSURLResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetDeviceList(self, request):
         """用于查询某个产品下的设备列表
 
