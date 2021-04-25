@@ -2259,15 +2259,20 @@ class DescribeClusterEndpointStatusResponse(AbstractModel):
         :param Status: 查询集群访问端口状态（Created 开启成功，Creating 开启中中，NotFound 未开启）
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
+        :param ErrorMsg: 开启访问入口失败信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Status = None
+        self.ErrorMsg = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.ErrorMsg = params.get("ErrorMsg")
         self.RequestId = params.get("RequestId")
 
 

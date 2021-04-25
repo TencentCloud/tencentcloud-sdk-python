@@ -222,6 +222,34 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def EncryptedPhoneVerification(self, request):
+        """本接口用于校验手机号、姓名和身份证号的真实性和一致性，入参支持MD5加密传输。
+
+        :param request: Request instance for EncryptedPhoneVerification.
+        :type request: :class:`tencentcloud.faceid.v20180301.models.EncryptedPhoneVerificationRequest`
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.EncryptedPhoneVerificationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("EncryptedPhoneVerification", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EncryptedPhoneVerificationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetActionSequence(self, request):
         """使用动作活体检测模式前，需调用本接口获取动作顺序。
 

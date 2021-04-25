@@ -1057,11 +1057,14 @@ class TaskResult(AbstractModel):
         :type ExecStartTime: str
         :param ExecEndTime: 命令执行结束时间。
         :type ExecEndTime: str
+        :param Dropped: 命令最终输出被截断的字节数。
+        :type Dropped: int
         """
         self.ExitCode = None
         self.Output = None
         self.ExecStartTime = None
         self.ExecEndTime = None
+        self.Dropped = None
 
 
     def _deserialize(self, params):
@@ -1069,3 +1072,4 @@ class TaskResult(AbstractModel):
         self.Output = params.get("Output")
         self.ExecStartTime = params.get("ExecStartTime")
         self.ExecEndTime = params.get("ExecEndTime")
+        self.Dropped = params.get("Dropped")

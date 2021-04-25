@@ -864,6 +864,71 @@ class EidInfo(AbstractModel):
         self.EidSign = params.get("EidSign")
 
 
+class EncryptedPhoneVerificationRequest(AbstractModel):
+    """EncryptedPhoneVerification请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param IdCard: 身份证号，加密方式以EncryptionMode为准
+        :type IdCard: str
+        :param Name: 姓名，加密方式以EncryptionMode为准
+        :type Name: str
+        :param Phone: 手机号，加密方式以EncryptionMode为准
+        :type Phone: str
+        :param EncryptionMode: 敏感信息的加密方式，目前只支持MD5加密传输，参数取值：
+
+0：明文，不加密
+1：使用MD5加密
+        :type EncryptionMode: str
+        """
+        self.IdCard = None
+        self.Name = None
+        self.Phone = None
+        self.EncryptionMode = None
+
+
+    def _deserialize(self, params):
+        self.IdCard = params.get("IdCard")
+        self.Name = params.get("Name")
+        self.Phone = params.get("Phone")
+        self.EncryptionMode = params.get("EncryptionMode")
+
+
+class EncryptedPhoneVerificationResponse(AbstractModel):
+    """EncryptedPhoneVerification返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 认证结果码:
+【收费结果码】
+0: 认证通过
+-4: 信息不一致
+
+【不收费结果码】
+-7: 身份证号码有误
+-9: 没有记录
+-11: 验证中心服务繁忙
+        :type Result: str
+        :param Description: 业务结果描述。
+        :type Description: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.Description = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.Description = params.get("Description")
+        self.RequestId = params.get("RequestId")
+
+
 class Encryption(AbstractModel):
     """敏感数据加密
 

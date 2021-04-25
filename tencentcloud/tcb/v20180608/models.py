@@ -1482,6 +1482,70 @@ class CreateStaticStoreResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateWxCloudBaseRunEnvRequest(AbstractModel):
+    """CreateWxCloudBaseRunEnv请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param WxAppId: wx应用Id
+        :type WxAppId: str
+        :param Alias: 环境别名，要以a-z开头，不能包含 a-z,0-9,- 以外的字符
+        :type Alias: str
+        :param FreeQuota: 用户享有的免费额度级别，目前只能为“basic”，不传该字段或该字段为空，标识不享受免费额度。
+        :type FreeQuota: str
+        :param Flag: 订单标记。建议使用方统一转大小写之后再判断。
+QuickStart：快速启动来源
+Activity：活动来源
+        :type Flag: str
+        :param VpcId: 私有网络Id
+        :type VpcId: str
+        :param SubNetIds: 子网列表
+        :type SubNetIds: list of str
+        """
+        self.WxAppId = None
+        self.Alias = None
+        self.FreeQuota = None
+        self.Flag = None
+        self.VpcId = None
+        self.SubNetIds = None
+
+
+    def _deserialize(self, params):
+        self.WxAppId = params.get("WxAppId")
+        self.Alias = params.get("Alias")
+        self.FreeQuota = params.get("FreeQuota")
+        self.Flag = params.get("Flag")
+        self.VpcId = params.get("VpcId")
+        self.SubNetIds = params.get("SubNetIds")
+
+
+class CreateWxCloudBaseRunEnvResponse(AbstractModel):
+    """CreateWxCloudBaseRunEnv返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境Id
+        :type EnvId: str
+        :param TranId: 后付费订单号
+        :type TranId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.EnvId = None
+        self.TranId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.TranId = params.get("TranId")
+        self.RequestId = params.get("RequestId")
+
+
 class DatabasesInfo(AbstractModel):
     """数据库资源信息
 
@@ -3182,6 +3246,91 @@ class DescribeSmsQuotasResponse(AbstractModel):
                 obj = SmsFreeQuota()
                 obj._deserialize(item)
                 self.SmsFreeQuotaList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeWxCloudBaseRunEnvsRequest(AbstractModel):
+    """DescribeWxCloudBaseRunEnvs请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param WxAppId: wx应用Id
+        :type WxAppId: str
+        """
+        self.WxAppId = None
+
+
+    def _deserialize(self, params):
+        self.WxAppId = params.get("WxAppId")
+
+
+class DescribeWxCloudBaseRunEnvsResponse(AbstractModel):
+    """DescribeWxCloudBaseRunEnvs返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvList: env列表
+        :type EnvList: list of EnvInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.EnvList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("EnvList") is not None:
+            self.EnvList = []
+            for item in params.get("EnvList"):
+                obj = EnvInfo()
+                obj._deserialize(item)
+                self.EnvList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeWxCloudBaseRunSubNetsRequest(AbstractModel):
+    """DescribeWxCloudBaseRunSubNets请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: VPC id
+        :type VpcId: str
+        :param Limit: 查询个数限制，不填或小于等于0，等于不限制
+        :type Limit: int
+        """
+        self.VpcId = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.Limit = params.get("Limit")
+
+
+class DescribeWxCloudBaseRunSubNetsResponse(AbstractModel):
+    """DescribeWxCloudBaseRunSubNets返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SubNetIds: 子网Id列表
+        :type SubNetIds: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SubNetIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SubNetIds = params.get("SubNetIds")
         self.RequestId = params.get("RequestId")
 
 

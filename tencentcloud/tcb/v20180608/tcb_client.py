@@ -278,6 +278,34 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateWxCloudBaseRunEnv(self, request):
+        """创建微信云托管
+
+        :param request: Request instance for CreateWxCloudBaseRunEnv.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.CreateWxCloudBaseRunEnvRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.CreateWxCloudBaseRunEnvResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateWxCloudBaseRunEnv", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateWxCloudBaseRunEnvResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteCloudBaseProjectLatestVersion(self, request):
         """删除云项目
 
@@ -995,6 +1023,62 @@ class TcbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSmsQuotasResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeWxCloudBaseRunEnvs(self, request):
+        """查询微信云托管环境信息
+
+        :param request: Request instance for DescribeWxCloudBaseRunEnvs.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeWxCloudBaseRunEnvsRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeWxCloudBaseRunEnvsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeWxCloudBaseRunEnvs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeWxCloudBaseRunEnvsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeWxCloudBaseRunSubNets(self, request):
+        """查询微信云托管子网
+
+        :param request: Request instance for DescribeWxCloudBaseRunSubNets.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeWxCloudBaseRunSubNetsRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeWxCloudBaseRunSubNetsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeWxCloudBaseRunSubNets", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeWxCloudBaseRunSubNetsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
