@@ -231,7 +231,7 @@ class Code(AbstractModel):
         :type CosBucketName: str
         :param CosObjectName: 对象存储对象路径
         :type CosObjectName: str
-        :param ZipFile: 包含函数代码文件及其依赖项的 zip 格式文件，使用该接口时要求将 zip 文件的内容转成 base64 编码，最大支持20M
+        :param ZipFile: 包含函数代码文件及其依赖项的 zip 格式文件，zip包大小上限为 50MB，使用该接口时要求将 zip 文件的内容转成 base64 编码
         :type ZipFile: str
         :param CosBucketRegion: 对象存储的地域，地域为北京时需要传入ap-beijing,北京一区时需要传递ap-beijing-1，其他的地域不需要传递。
         :type CosBucketRegion: str
@@ -461,6 +461,10 @@ class CreateFunctionRequest(AbstractModel):
         :type InitTimeout: int
         :param Tags: 函数 Tag 参数，以键值对数组形式传入
         :type Tags: list of Tag
+        :param AsyncRunEnable: 是否开启异步属性，TRUE 为开启，FALSE为关闭
+        :type AsyncRunEnable: str
+        :param TraceEnable: 是否开启事件追踪，TRUE 为开启，FALSE为关闭
+        :type TraceEnable: str
         """
         self.FunctionName = None
         self.Code = None
@@ -483,6 +487,8 @@ class CreateFunctionRequest(AbstractModel):
         self.CfsConfig = None
         self.InitTimeout = None
         self.Tags = None
+        self.AsyncRunEnable = None
+        self.TraceEnable = None
 
 
     def _deserialize(self, params):
@@ -529,6 +535,8 @@ class CreateFunctionRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.AsyncRunEnable = params.get("AsyncRunEnable")
+        self.TraceEnable = params.get("TraceEnable")
 
 
 class CreateFunctionResponse(AbstractModel):

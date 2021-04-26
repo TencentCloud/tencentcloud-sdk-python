@@ -6140,6 +6140,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyNetworkInterfaceQos(self, request):
+        """修改弹性网卡服务质量
+
+        :param request: Request instance for ModifyNetworkInterfaceQos.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyNetworkInterfaceQosRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyNetworkInterfaceQosResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyNetworkInterfaceQos", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyNetworkInterfaceQosResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyPrivateIpAddressesAttribute(self, request):
         """本接口（ModifyPrivateIpAddressesAttribute）用于修改弹性网卡内网IP属性。
 

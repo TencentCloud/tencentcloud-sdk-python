@@ -63,11 +63,14 @@ class BoundIpInfo(AbstractModel):
         :type DeviceType: str
         :param InstanceId: IP所属的资源实例ID，当绑定新IP时必须填写此字段；例如是弹性网卡的IP，则InstanceId填写弹性网卡的ID(eni-*); 如果绑定的是托管IP没有对应的资源实例ID，请填写"none";
         :type InstanceId: str
+        :param IspCode: 运营商，0：电信；1：联通；2：移动；5：BGP
+        :type IspCode: int
         """
         self.Ip = None
         self.BizType = None
         self.DeviceType = None
         self.InstanceId = None
+        self.IspCode = None
 
 
     def _deserialize(self, params):
@@ -75,6 +78,7 @@ class BoundIpInfo(AbstractModel):
         self.BizType = params.get("BizType")
         self.DeviceType = params.get("DeviceType")
         self.InstanceId = params.get("InstanceId")
+        self.IspCode = params.get("IspCode")
 
 
 class CCAlarmThreshold(AbstractModel):

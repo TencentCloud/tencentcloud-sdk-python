@@ -2779,6 +2779,29 @@ class DescribeMachineOsListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeMachineRegionsRequest(AbstractModel):
+    """DescribeMachineRegions请求参数结构体
+
+    """
+
+
+class DescribeMachineRegionsResponse(AbstractModel):
+    """DescribeMachineRegions返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeMachinesRequest(AbstractModel):
     """DescribeMachines请求参数结构体
 
@@ -7046,11 +7069,14 @@ class RegionInfo(AbstractModel):
         :type RegionId: int
         :param RegionCode: 地域代码，如 gz，sh，bj
         :type RegionCode: str
+        :param RegionNameEn: 地域英文名
+        :type RegionNameEn: str
         """
         self.Region = None
         self.RegionName = None
         self.RegionId = None
         self.RegionCode = None
+        self.RegionNameEn = None
 
 
     def _deserialize(self, params):
@@ -7058,6 +7084,7 @@ class RegionInfo(AbstractModel):
         self.RegionName = params.get("RegionName")
         self.RegionId = params.get("RegionId")
         self.RegionCode = params.get("RegionCode")
+        self.RegionNameEn = params.get("RegionNameEn")
 
 
 class RenewProVersionRequest(AbstractModel):

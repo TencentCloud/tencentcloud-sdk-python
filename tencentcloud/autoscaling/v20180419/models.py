@@ -804,7 +804,7 @@ class CreateLifecycleHookRequest(AbstractModel):
         :type LifecycleTransition: str
         :param DefaultResult: 定义伸缩组在生命周期挂钩超时的情况下应采取的操作，取值范围是 CONTINUE 或 ABANDON，默认值为 CONTINUE
         :type DefaultResult: str
-        :param HeartbeatTimeout: 生命周期挂钩超时之前可以经过的最长时间（以秒为单位），范围从30到3600秒，默认值为300秒
+        :param HeartbeatTimeout: 生命周期挂钩超时之前可以经过的最长时间（以秒为单位），范围从30到7200秒，默认值为300秒
         :type HeartbeatTimeout: int
         :param NotificationMetadata: 弹性伸缩向通知目标发送的附加信息，默认值为空字符串""。最大长度不能超过1024个字节。
         :type NotificationMetadata: str
@@ -4049,7 +4049,7 @@ class UpgradeLifecycleHookRequest(AbstractModel):
         :type LifecycleTransition: str
         :param DefaultResult: 定义伸缩组在生命周期挂钩超时的情况下应采取的操作，取值范围是“CONTINUE”或“ABANDON”，默认值为“CONTINUE”
         :type DefaultResult: str
-        :param HeartbeatTimeout: 生命周期挂钩超时之前可以经过的最长时间（以秒为单位），范围从30到3600秒，默认值为300秒
+        :param HeartbeatTimeout: 生命周期挂钩超时之前可以经过的最长时间（以秒为单位），范围从30到7200秒，默认值为300秒
         :type HeartbeatTimeout: int
         :param NotificationMetadata: 弹性伸缩向通知目标发送的附加信息，默认值为空字符串""
         :type NotificationMetadata: str

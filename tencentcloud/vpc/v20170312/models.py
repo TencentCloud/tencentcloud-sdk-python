@@ -12723,6 +12723,44 @@ class ModifyNetworkInterfaceAttributeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyNetworkInterfaceQosRequest(AbstractModel):
+    """ModifyNetworkInterfaceQos请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NetworkInterfaceIds: 弹性网卡ID，支持批量修改。
+        :type NetworkInterfaceIds: list of str
+        :param QosLevel: 服务质量，可选值：AU、AG、PT，分别代表金、银、白金三个等级。
+        :type QosLevel: str
+        """
+        self.NetworkInterfaceIds = None
+        self.QosLevel = None
+
+
+    def _deserialize(self, params):
+        self.NetworkInterfaceIds = params.get("NetworkInterfaceIds")
+        self.QosLevel = params.get("QosLevel")
+
+
+class ModifyNetworkInterfaceQosResponse(AbstractModel):
+    """ModifyNetworkInterfaceQos返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyPrivateIpAddressesAttributeRequest(AbstractModel):
     """ModifyPrivateIpAddressesAttribute请求参数结构体
 

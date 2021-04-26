@@ -2643,6 +2643,48 @@ class FirmwareTaskInfo(AbstractModel):
         self.CreateTime = params.get("CreateTime")
 
 
+class GenerateSignedVideoURLRequest(AbstractModel):
+    """GenerateSignedVideoURL请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VideoURL: 视频播放原始URL地址
+        :type VideoURL: str
+        :param ExpireTime: 播放链接过期时间
+        :type ExpireTime: int
+        """
+        self.VideoURL = None
+        self.ExpireTime = None
+
+
+    def _deserialize(self, params):
+        self.VideoURL = params.get("VideoURL")
+        self.ExpireTime = params.get("ExpireTime")
+
+
+class GenerateSignedVideoURLResponse(AbstractModel):
+    """GenerateSignedVideoURL返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SignedVideoURL: 视频防盗链播放URL
+        :type SignedVideoURL: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SignedVideoURL = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SignedVideoURL = params.get("SignedVideoURL")
+        self.RequestId = params.get("RequestId")
+
+
 class GetAllFirmwareVersionRequest(AbstractModel):
     """GetAllFirmwareVersion请求参数结构体
 

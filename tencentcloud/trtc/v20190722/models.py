@@ -526,13 +526,13 @@ class DescribePictureRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SdkAppId: 应用id
+        :param SdkAppId: 应用ID
         :type SdkAppId: int
-        :param PictureId: 图片id,不传时返回该应用下所有图片
+        :param PictureId: 图片ID，不填时返回该应用下所有图片
         :type PictureId: int
-        :param PageSize: 每页数量
+        :param PageSize: 每页数量，不填时默认为10
         :type PageSize: int
-        :param PageNo: 页码
+        :param PageNo: 页码，不填时默认为1
         :type PageNo: int
         """
         self.SdkAppId = None

@@ -1090,6 +1090,34 @@ class IotvideoClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GenerateSignedVideoURL(self, request):
+        """获取视频防盗链播放URL
+
+        :param request: Request instance for GenerateSignedVideoURL.
+        :type request: :class:`tencentcloud.iotvideo.v20201215.models.GenerateSignedVideoURLRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20201215.models.GenerateSignedVideoURLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GenerateSignedVideoURL", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GenerateSignedVideoURLResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetAllFirmwareVersion(self, request):
         """本接口（GetAllFirmwareVersion）用于获取所有的版本列表
 

@@ -1258,6 +1258,34 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeMachineRegions(self, request):
+        """获取机器地域列表
+
+        :param request: Request instance for DescribeMachineRegions.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMachineRegionsRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeMachineRegionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMachineRegions", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMachineRegionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeMachines(self, request):
         """本接口 (DescribeMachines) 用于获取区域主机列表。
 
