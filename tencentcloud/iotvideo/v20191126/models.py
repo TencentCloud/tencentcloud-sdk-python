@@ -253,7 +253,7 @@ class CreateBindingRequest(AbstractModel):
         :type Role: str
         :param ForceBind: 是否踢掉之前的主人，true：踢掉；false：不踢掉。当role为guest时，可以不填
         :type ForceBind: bool
-        :param Nick: 设备昵称
+        :param Nick: 设备昵称，最多不超过64个字符
         :type Nick: str
         """
         self.AccessId = None
@@ -2994,7 +2994,7 @@ class ModifyDeviceRequest(AbstractModel):
         :type Tid: str
         :param AccessId: 用户ID
         :type AccessId: str
-        :param Nick: 设备昵称
+        :param Nick: 设备昵称，最多不超过64个字符
         :type Nick: str
         """
         self.Tid = None

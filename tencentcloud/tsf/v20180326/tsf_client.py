@@ -1763,6 +1763,34 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeContainerEvents(self, request):
+        """获取容器事件列表
+
+        :param request: Request instance for DescribeContainerEvents.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeContainerEventsRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeContainerEventsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeContainerEvents", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeContainerEventsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeContainerGroupDetail(self, request):
         """容器部署组详情
 
@@ -2954,6 +2982,34 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTaskLastStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeUnitApiUseDetail(self, request):
+        """查询网关API监控明细数据（仅单元化网关），非单元化网关使用DescribeApiUseDetail
+
+        :param request: Request instance for DescribeUnitApiUseDetail.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeUnitApiUseDetailRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeUnitApiUseDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeUnitApiUseDetail", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeUnitApiUseDetailResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

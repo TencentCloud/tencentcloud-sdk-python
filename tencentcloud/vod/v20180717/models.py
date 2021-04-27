@@ -8521,6 +8521,14 @@ class DescribeTasksRequest(AbstractModel):
         :type Status: str
         :param FileId: 过滤条件：文件 ID。
         :type FileId: str
+        :param CreateTime: 过滤条件：任务创建时间。
+        :type CreateTime: :class:`tencentcloud.vod.v20180717.models.TimeRange`
+        :param FinishTime: 过滤条件：任务结束时间。
+        :type FinishTime: :class:`tencentcloud.vod.v20180717.models.TimeRange`
+        :param Sort: 排序方式。Sort.Field 可选：
+<li> CreateTime 任务创建时间。</li>
+<li>FinishTime 任务结束时间。</li>
+        :type Sort: :class:`tencentcloud.vod.v20180717.models.SortBy`
         :param Limit: 返回记录条数，默认值：10，最大值：100。
         :type Limit: int
         :param ScrollToken: 翻页标识，分批拉取时使用：当单次请求无法拉取所有数据，接口将会返回 ScrollToken，下一次请求携带该 Token，将会从下一条记录开始获取。
@@ -8530,6 +8538,9 @@ class DescribeTasksRequest(AbstractModel):
         """
         self.Status = None
         self.FileId = None
+        self.CreateTime = None
+        self.FinishTime = None
+        self.Sort = None
         self.Limit = None
         self.ScrollToken = None
         self.SubAppId = None
@@ -8538,6 +8549,15 @@ class DescribeTasksRequest(AbstractModel):
     def _deserialize(self, params):
         self.Status = params.get("Status")
         self.FileId = params.get("FileId")
+        if params.get("CreateTime") is not None:
+            self.CreateTime = TimeRange()
+            self.CreateTime._deserialize(params.get("CreateTime"))
+        if params.get("FinishTime") is not None:
+            self.FinishTime = TimeRange()
+            self.FinishTime._deserialize(params.get("FinishTime"))
+        if params.get("Sort") is not None:
+            self.Sort = SortBy()
+            self.Sort._deserialize(params.get("Sort"))
         self.Limit = params.get("Limit")
         self.ScrollToken = params.get("ScrollToken")
         self.SubAppId = params.get("SubAppId")
@@ -10694,6 +10714,10 @@ class MediaBasicInfo(AbstractModel):
 
 *注意：此字段暂不支持。
         :type Status: str
+        :param StorageClass: 媒体文件的存储类别：
+<li>STANDARD：标准存储。</li>
+<li>STANDARD_IA：低频存储。</li>
+        :type StorageClass: str
         """
         self.Name = None
         self.Description = None
@@ -10712,6 +10736,7 @@ class MediaBasicInfo(AbstractModel):
         self.Vid = None
         self.Category = None
         self.Status = None
+        self.StorageClass = None
 
 
     def _deserialize(self, params):
@@ -10734,6 +10759,7 @@ class MediaBasicInfo(AbstractModel):
         self.Vid = params.get("Vid")
         self.Category = params.get("Category")
         self.Status = params.get("Status")
+        self.StorageClass = params.get("StorageClass")
 
 
 class MediaClassInfo(AbstractModel):
@@ -16907,6 +16933,10 @@ class TaskSimpleInfo(AbstractModel):
         """
         :param TaskId: 任务 ID。
         :type TaskId: str
+        :param Status: 任务状态。取值：WAITING（等待中）、PROCESSING（处理中）、FINISH（已完成）。
+        :type Status: str
+        :param FileId: 视频 ID。
+        :type FileId: str
         :param TaskType: 任务类型，取值：
 <li>Procedure：视频处理任务；</li>
 <li>EditMedia：视频编辑任务</li>
@@ -16930,6 +16960,8 @@ class TaskSimpleInfo(AbstractModel):
         :type SessionContext: str
         """
         self.TaskId = None
+        self.Status = None
+        self.FileId = None
         self.TaskType = None
         self.CreateTime = None
         self.BeginProcessTime = None
@@ -16940,6 +16972,8 @@ class TaskSimpleInfo(AbstractModel):
 
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
+        self.Status = params.get("Status")
+        self.FileId = params.get("FileId")
         self.TaskType = params.get("TaskType")
         self.CreateTime = params.get("CreateTime")
         self.BeginProcessTime = params.get("BeginProcessTime")

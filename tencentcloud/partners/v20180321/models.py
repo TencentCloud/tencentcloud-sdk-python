@@ -1270,6 +1270,81 @@ class DescribeAgentPayDealsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeAgentPayDealsV2Request(AbstractModel):
+    """DescribeAgentPayDealsV2请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 限制数目
+        :type Limit: int
+        :param CreatTimeRangeStart: 下单时间范围起始点(不传时会默认查15天内订单，传值时需要传15天内的起始时间)
+        :type CreatTimeRangeStart: str
+        :param CreatTimeRangeEnd: 下单时间范围终止点
+        :type CreatTimeRangeEnd: str
+        :param Order: 0:下单时间降序；其他：下单时间升序
+        :type Order: int
+        :param Status: 订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
+        :type Status: int
+        :param OwnerUins: 下单人账号ID列表
+        :type OwnerUins: list of str
+        :param DealNames: 订单号列表
+        :type DealNames: list of str
+        """
+        self.Offset = None
+        self.Limit = None
+        self.CreatTimeRangeStart = None
+        self.CreatTimeRangeEnd = None
+        self.Order = None
+        self.Status = None
+        self.OwnerUins = None
+        self.DealNames = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.CreatTimeRangeStart = params.get("CreatTimeRangeStart")
+        self.CreatTimeRangeEnd = params.get("CreatTimeRangeEnd")
+        self.Order = params.get("Order")
+        self.Status = params.get("Status")
+        self.OwnerUins = params.get("OwnerUins")
+        self.DealNames = params.get("DealNames")
+
+
+class DescribeAgentPayDealsV2Response(AbstractModel):
+    """DescribeAgentPayDealsV2返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AgentPayDealSet: 订单数组
+        :type AgentPayDealSet: list of AgentDealNewElem
+        :param TotalCount: 符合条件的订单总数量
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AgentPayDealSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AgentPayDealSet") is not None:
+            self.AgentPayDealSet = []
+            for item in params.get("AgentPayDealSet"):
+                obj = AgentDealNewElem()
+                obj._deserialize(item)
+                self.AgentPayDealSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAgentSelfPayDealsRequest(AbstractModel):
     """DescribeAgentSelfPayDeals请求参数结构体
 
@@ -1339,6 +1414,81 @@ class DescribeAgentSelfPayDealsResponse(AbstractModel):
             self.AgentPayDealSet = []
             for item in params.get("AgentPayDealSet"):
                 obj = AgentDealElem()
+                obj._deserialize(item)
+                self.AgentPayDealSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAgentSelfPayDealsV2Request(AbstractModel):
+    """DescribeAgentSelfPayDealsV2请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param OwnerUin: 下单人账号ID
+        :type OwnerUin: str
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 限制数目
+        :type Limit: int
+        :param CreatTimeRangeStart: 下单时间范围起始点(不传时会默认查15天内订单，传值时需要传15天内的起始时间)
+        :type CreatTimeRangeStart: str
+        :param CreatTimeRangeEnd: 下单时间范围终止点
+        :type CreatTimeRangeEnd: str
+        :param Order: 0:下单时间降序；其他：下单时间升序
+        :type Order: int
+        :param Status: 订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
+        :type Status: int
+        :param DealNames: 订单号列表
+        :type DealNames: list of str
+        """
+        self.OwnerUin = None
+        self.Offset = None
+        self.Limit = None
+        self.CreatTimeRangeStart = None
+        self.CreatTimeRangeEnd = None
+        self.Order = None
+        self.Status = None
+        self.DealNames = None
+
+
+    def _deserialize(self, params):
+        self.OwnerUin = params.get("OwnerUin")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.CreatTimeRangeStart = params.get("CreatTimeRangeStart")
+        self.CreatTimeRangeEnd = params.get("CreatTimeRangeEnd")
+        self.Order = params.get("Order")
+        self.Status = params.get("Status")
+        self.DealNames = params.get("DealNames")
+
+
+class DescribeAgentSelfPayDealsV2Response(AbstractModel):
+    """DescribeAgentSelfPayDealsV2返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AgentPayDealSet: 订单数组
+        :type AgentPayDealSet: list of AgentDealNewElem
+        :param TotalCount: 符合条件的订单总数量
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AgentPayDealSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AgentPayDealSet") is not None:
+            self.AgentPayDealSet = []
+            for item in params.get("AgentPayDealSet"):
+                obj = AgentDealNewElem()
                 obj._deserialize(item)
                 self.AgentPayDealSet.append(obj)
         self.TotalCount = params.get("TotalCount")

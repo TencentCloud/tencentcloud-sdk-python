@@ -1146,6 +1146,34 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeImportMachineInfo(self, request):
+        """查询批量导入机器信息
+
+        :param request: Request instance for DescribeImportMachineInfo.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeImportMachineInfoRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeImportMachineInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeImportMachineInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeImportMachineInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeLoginWhiteList(self, request):
         """获取异地登录白名单列表
 
@@ -2588,6 +2616,62 @@ class CwpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExportTasksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ExportVulDetectionExcel(self, request):
+        """导出本次漏洞检测Excel
+
+        :param request: Request instance for ExportVulDetectionExcel.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.ExportVulDetectionExcelRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.ExportVulDetectionExcelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ExportVulDetectionExcel", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ExportVulDetectionExcelResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ExportVulDetectionReport(self, request):
+        """导出漏洞检测报告。
+
+        :param request: Request instance for ExportVulDetectionReport.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.ExportVulDetectionReportRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.ExportVulDetectionReportResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ExportVulDetectionReport", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ExportVulDetectionReportResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

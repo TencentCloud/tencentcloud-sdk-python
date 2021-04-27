@@ -341,6 +341,8 @@ class MonitorClient(AbstractClient):
     def DescribeAlarmHistories(self, request):
         """查询告警历史
 
+        请注意，**如果使用子用户进行告警历史的查询，只能查询到被授权项目下的告警历史**，或不区分项目的产品的告警历史。如何对子账户授予项目的权限，请参考 [访问管理-项目与标签](https://cloud.tencent.com/document/product/598/32738)。
+
         :param request: Request instance for DescribeAlarmHistories.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmHistoriesRequest`
         :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmHistoriesResponse`

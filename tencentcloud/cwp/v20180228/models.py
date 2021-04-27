@@ -2498,6 +2498,59 @@ class DescribeImpactedHostsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeImportMachineInfoRequest(AbstractModel):
+    """DescribeImportMachineInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MachineList: 服务器内网IP（默认）/ 服务器名称 / 服务器ID 数组
+        :type MachineList: list of str
+        :param ImportType: 批量导入的数据类型：Ip、Name、Id 三选一
+        :type ImportType: str
+        """
+        self.MachineList = None
+        self.ImportType = None
+
+
+    def _deserialize(self, params):
+        self.MachineList = params.get("MachineList")
+        self.ImportType = params.get("ImportType")
+
+
+class DescribeImportMachineInfoResponse(AbstractModel):
+    """DescribeImportMachineInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EffectiveMachineInfoList: 有效的机器信息列表：机器名称、机器公网/内网ip、机器标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EffectiveMachineInfoList: list of EffectiveMachineInfo
+        :param InvalidMachineList: 用户批量导入失败的机器列表（比如机器不存在等...）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InvalidMachineList: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.EffectiveMachineInfoList = None
+        self.InvalidMachineList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("EffectiveMachineInfoList") is not None:
+            self.EffectiveMachineInfoList = []
+            for item in params.get("EffectiveMachineInfoList"):
+                obj = EffectiveMachineInfo()
+                obj._deserialize(item)
+                self.EffectiveMachineInfoList.append(obj)
+        self.InvalidMachineList = params.get("InvalidMachineList")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeLoginWhiteListRequest(AbstractModel):
     """DescribeLoginWhiteList请求参数结构体
 
@@ -5073,6 +5126,49 @@ class EditTagsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class EffectiveMachineInfo(AbstractModel):
+    """批量导入机器信息.
+
+    """
+
+    def __init__(self):
+        """
+        :param MachineName: 机器名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MachineName: str
+        :param MachinePublicIp: 机器公网ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MachinePublicIp: str
+        :param MachinePrivateIp: 机器内网ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MachinePrivateIp: str
+        :param MachineTag: 机器标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MachineTag: list of MachineTag
+        :param Quuid: 机器Quuid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Quuid: str
+        """
+        self.MachineName = None
+        self.MachinePublicIp = None
+        self.MachinePrivateIp = None
+        self.MachineTag = None
+        self.Quuid = None
+
+
+    def _deserialize(self, params):
+        self.MachineName = params.get("MachineName")
+        self.MachinePublicIp = params.get("MachinePublicIp")
+        self.MachinePrivateIp = params.get("MachinePrivateIp")
+        if params.get("MachineTag") is not None:
+            self.MachineTag = []
+            for item in params.get("MachineTag"):
+                obj = MachineTag()
+                obj._deserialize(item)
+                self.MachineTag.append(obj)
+        self.Quuid = params.get("Quuid")
+
+
 class ExportAttackLogsRequest(AbstractModel):
     """ExportAttackLogs请求参数结构体
 
@@ -5513,6 +5609,107 @@ class ExportTasksResponse(AbstractModel):
     def _deserialize(self, params):
         self.Status = params.get("Status")
         self.DownloadUrl = params.get("DownloadUrl")
+        self.RequestId = params.get("RequestId")
+
+
+class ExportVulDetectionExcelRequest(AbstractModel):
+    """ExportVulDetectionExcel请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 本次漏洞检测任务id（不同于出参的导出本次漏洞检测Excel的任务Id）
+        :type TaskId: int
+        """
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+
+
+class ExportVulDetectionExcelResponse(AbstractModel):
+    """ExportVulDetectionExcel返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DownloadUrl: 导出文件下载链接地址
+        :type DownloadUrl: str
+        :param TaskId: 导出本次漏洞检测Excel的任务Id（不同于入参的本次漏洞检测任务id）
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DownloadUrl = None
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DownloadUrl = params.get("DownloadUrl")
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class ExportVulDetectionReportRequest(AbstractModel):
+    """ExportVulDetectionReport请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 漏洞扫描任务id（不同于出参的导出检测报告的任务Id）
+        :type TaskId: int
+        :param Filters: 过滤参数
+        :type Filters: list of Filters
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        """
+        self.TaskId = None
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+
+
+class ExportVulDetectionReportResponse(AbstractModel):
+    """ExportVulDetectionReport返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DownloadUrl: 导出文件下载链接地址
+        :type DownloadUrl: str
+        :param TaskId: 导出检测报告的任务Id（不同于入参的漏洞扫描任务id）
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DownloadUrl = None
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DownloadUrl = params.get("DownloadUrl")
+        self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
 
 

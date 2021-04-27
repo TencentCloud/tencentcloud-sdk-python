@@ -468,6 +468,12 @@ class ApiGroupInfo(AbstractModel):
         :param GroupType: 分组类型。 ms： 微服务分组； external:外部Api分组
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupType: str
+        :param GatewayInstanceType: 网关实例的类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GatewayInstanceType: str
+        :param GatewayInstanceId: 网关实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GatewayInstanceId: str
         """
         self.GroupId = None
         self.GroupName = None
@@ -481,6 +487,8 @@ class ApiGroupInfo(AbstractModel):
         self.AclMode = None
         self.Description = None
         self.GroupType = None
+        self.GatewayInstanceType = None
+        self.GatewayInstanceId = None
 
 
     def _deserialize(self, params):
@@ -501,6 +509,8 @@ class ApiGroupInfo(AbstractModel):
         self.AclMode = params.get("AclMode")
         self.Description = params.get("Description")
         self.GroupType = params.get("GroupType")
+        self.GatewayInstanceType = params.get("GatewayInstanceType")
+        self.GatewayInstanceId = params.get("GatewayInstanceId")
 
 
 class ApiInfo(AbstractModel):
@@ -1412,6 +1422,9 @@ class ContainGroup(AbstractModel):
         :param MemLimit: 最大分配的内存 MiB 数，对应 K8S limit
 注意：此字段可能返回 null，表示取不到有效值。
         :type MemLimit: str
+        :param Alias: 部署组备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Alias: str
         """
         self.GroupId = None
         self.GroupName = None
@@ -1427,6 +1440,7 @@ class ContainGroup(AbstractModel):
         self.CpuLimit = None
         self.MemRequest = None
         self.MemLimit = None
+        self.Alias = None
 
 
     def _deserialize(self, params):
@@ -1444,6 +1458,7 @@ class ContainGroup(AbstractModel):
         self.CpuLimit = params.get("CpuLimit")
         self.MemRequest = params.get("MemRequest")
         self.MemLimit = params.get("MemLimit")
+        self.Alias = params.get("Alias")
 
 
 class ContainGroupResult(AbstractModel):
@@ -1471,6 +1486,59 @@ class ContainGroupResult(AbstractModel):
                 obj._deserialize(item)
                 self.Content.append(obj)
         self.TotalCount = params.get("TotalCount")
+
+
+class ContainerEvent(AbstractModel):
+    """返回容器的事件，比如 k8s deployment 或者 pod 的 events
+
+    """
+
+    def __init__(self):
+        """
+        :param FirstTimestamp: 第一次出现的时间，以 ms 为单位的时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FirstTimestamp: int
+        :param LastTimestamp: 最后一次出现的时间，以 ms 为单位的时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastTimestamp: int
+        :param Type: 级别
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param Kind: 资源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Kind: str
+        :param Name: 资源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Reason: 内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Reason: str
+        :param Message: 详细描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param Count: 出现次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Count: int
+        """
+        self.FirstTimestamp = None
+        self.LastTimestamp = None
+        self.Type = None
+        self.Kind = None
+        self.Name = None
+        self.Reason = None
+        self.Message = None
+        self.Count = None
+
+
+    def _deserialize(self, params):
+        self.FirstTimestamp = params.get("FirstTimestamp")
+        self.LastTimestamp = params.get("LastTimestamp")
+        self.Type = params.get("Type")
+        self.Kind = params.get("Kind")
+        self.Name = params.get("Name")
+        self.Reason = params.get("Reason")
+        self.Message = params.get("Message")
+        self.Count = params.get("Count")
 
 
 class ContainerGroupDetail(AbstractModel):
@@ -2407,6 +2475,8 @@ class CreateGroupRequest(AbstractModel):
         :type GroupDesc: str
         :param GroupResourceType: 部署组资源类型
         :type GroupResourceType: str
+        :param Alias: 部署组备注
+        :type Alias: str
         """
         self.ApplicationId = None
         self.NamespaceId = None
@@ -2414,6 +2484,7 @@ class CreateGroupRequest(AbstractModel):
         self.ClusterId = None
         self.GroupDesc = None
         self.GroupResourceType = None
+        self.Alias = None
 
 
     def _deserialize(self, params):
@@ -2423,6 +2494,7 @@ class CreateGroupRequest(AbstractModel):
         self.ClusterId = params.get("ClusterId")
         self.GroupDesc = params.get("GroupDesc")
         self.GroupResourceType = params.get("GroupResourceType")
+        self.Alias = params.get("Alias")
 
 
 class CreateGroupResponse(AbstractModel):
@@ -4964,6 +5036,63 @@ class DescribeConfigsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeContainerEventsRequest(AbstractModel):
+    """DescribeContainerEvents请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceType: event 的资源类型, group 或者 instance
+        :type ResourceType: str
+        :param ResourceId: event 的资源 id
+        :type ResourceId: str
+        :param Offset: 偏移量，取值从0开始
+        :type Offset: int
+        :param Limit: 分页个数，默认为20， 取值应为1~50
+        :type Limit: int
+        :param GroupId: 当类型是 instance 时需要
+        :type GroupId: str
+        """
+        self.ResourceType = None
+        self.ResourceId = None
+        self.Offset = None
+        self.Limit = None
+        self.GroupId = None
+
+
+    def _deserialize(self, params):
+        self.ResourceType = params.get("ResourceType")
+        self.ResourceId = params.get("ResourceId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.GroupId = params.get("GroupId")
+
+
+class DescribeContainerEventsResponse(AbstractModel):
+    """DescribeContainerEvents返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: events 分页列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageContainerEvent`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = TsfPageContainerEvent()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeContainerGroupDetailRequest(AbstractModel):
     """DescribeContainerGroupDetail请求参数结构体
 
@@ -7241,6 +7370,78 @@ class DescribeTaskLastStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeUnitApiUseDetailRequest(AbstractModel):
+    """DescribeUnitApiUseDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GatewayDeployGroupId: 网关部署组ID
+        :type GatewayDeployGroupId: str
+        :param ApiId: 网关分组Api ID
+        :type ApiId: str
+        :param StartTime: 查询的日期,格式：yyyy-MM-dd HH:mm:ss
+        :type StartTime: str
+        :param EndTime: 查询的日期,格式：yyyy-MM-dd HH:mm:ss
+        :type EndTime: str
+        :param GatewayInstanceId: 网关实例ID
+        :type GatewayInstanceId: str
+        :param GroupId: 网关分组ID
+        :type GroupId: str
+        :param Offset: 翻页查询偏移量
+        :type Offset: int
+        :param Limit: 翻页查询每页记录数
+        :type Limit: int
+        :param Period: 监控统计数据粒度
+        :type Period: int
+        """
+        self.GatewayDeployGroupId = None
+        self.ApiId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.GatewayInstanceId = None
+        self.GroupId = None
+        self.Offset = None
+        self.Limit = None
+        self.Period = None
+
+
+    def _deserialize(self, params):
+        self.GatewayDeployGroupId = params.get("GatewayDeployGroupId")
+        self.ApiId = params.get("ApiId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.GatewayInstanceId = params.get("GatewayInstanceId")
+        self.GroupId = params.get("GroupId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Period = params.get("Period")
+
+
+class DescribeUnitApiUseDetailResponse(AbstractModel):
+    """DescribeUnitApiUseDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 单元化使用统计对象
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.GroupUnitApiUseStatistics`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = GroupUnitApiUseStatistics()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeUnitNamespacesRequest(AbstractModel):
     """DescribeUnitNamespaces请求参数结构体
 
@@ -7865,14 +8066,21 @@ class Env(AbstractModel):
         :type Name: str
         :param Value: 环境变量值
         :type Value: str
+        :param ValueFrom: k8s ValueFrom
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValueFrom: :class:`tencentcloud.tsf.v20180326.models.ValueFrom`
         """
         self.Name = None
         self.Value = None
+        self.ValueFrom = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Value = params.get("Value")
+        if params.get("ValueFrom") is not None:
+            self.ValueFrom = ValueFrom()
+            self.ValueFrom._deserialize(params.get("ValueFrom"))
 
 
 class ExecuteTaskFlowRequest(AbstractModel):
@@ -7996,6 +8204,24 @@ class ExpandGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class FieldRef(AbstractModel):
+    """容器 env 的 FieldRef
+
+    """
+
+    def __init__(self):
+        """
+        :param FieldPath: k8s 的 FieldPath
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FieldPath: str
+        """
+        self.FieldPath = None
+
+
+    def _deserialize(self, params):
+        self.FieldPath = params.get("FieldPath")
+
+
 class GatewayApiGroupVo(AbstractModel):
     """网关分组简单信息
 
@@ -8015,11 +8241,19 @@ class GatewayApiGroupVo(AbstractModel):
         :param GroupApis: 分组API列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupApis: list of GatewayGroupApiVo
+        :param GatewayInstanceType: 网关实例的类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GatewayInstanceType: str
+        :param GatewayInstanceId: 网关实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GatewayInstanceId: str
         """
         self.GroupId = None
         self.GroupName = None
         self.GroupApiCount = None
         self.GroupApis = None
+        self.GatewayInstanceType = None
+        self.GatewayInstanceId = None
 
 
     def _deserialize(self, params):
@@ -8032,6 +8266,8 @@ class GatewayApiGroupVo(AbstractModel):
                 obj = GatewayGroupApiVo()
                 obj._deserialize(item)
                 self.GroupApis.append(obj)
+        self.GatewayInstanceType = params.get("GatewayInstanceType")
+        self.GatewayInstanceId = params.get("GatewayInstanceId")
 
 
 class GatewayDeployGroup(AbstractModel):
@@ -8436,6 +8672,95 @@ class GroupPodResult(AbstractModel):
             self.Content = []
             for item in params.get("Content"):
                 obj = GroupPod()
+                obj._deserialize(item)
+                self.Content.append(obj)
+
+
+class GroupUnitApiDailyUseStatistics(AbstractModel):
+    """单元化API使用详情统计对象列表
+
+    """
+
+    def __init__(self):
+        """
+        :param NamespaceId: 命名空间ID
+        :type NamespaceId: str
+        :param NamespaceName: 命名空间名称
+        :type NamespaceName: str
+        :param SumReqAmount: 该API在该命名空间下的总调用次数
+        :type SumReqAmount: str
+        :param AvgFailureRate: 该API在该命名空间下的平均错误率
+        :type AvgFailureRate: str
+        :param AvgTimeCost: 该API在该命名空间下的平均响应时间
+        :type AvgTimeCost: str
+        :param MetricDataPointMap: 监控数据曲线点位图Map集合
+        :type MetricDataPointMap: :class:`tencentcloud.tsf.v20180326.models.MetricDataPointMap`
+        :param TopStatusCode: 状态码分布详情
+        :type TopStatusCode: list of ApiUseStatisticsEntity
+        :param TopTimeCost: 耗时分布详情
+        :type TopTimeCost: list of ApiUseStatisticsEntity
+        :param Quantile: 分位值对象
+        :type Quantile: :class:`tencentcloud.tsf.v20180326.models.QuantileEntity`
+        """
+        self.NamespaceId = None
+        self.NamespaceName = None
+        self.SumReqAmount = None
+        self.AvgFailureRate = None
+        self.AvgTimeCost = None
+        self.MetricDataPointMap = None
+        self.TopStatusCode = None
+        self.TopTimeCost = None
+        self.Quantile = None
+
+
+    def _deserialize(self, params):
+        self.NamespaceId = params.get("NamespaceId")
+        self.NamespaceName = params.get("NamespaceName")
+        self.SumReqAmount = params.get("SumReqAmount")
+        self.AvgFailureRate = params.get("AvgFailureRate")
+        self.AvgTimeCost = params.get("AvgTimeCost")
+        if params.get("MetricDataPointMap") is not None:
+            self.MetricDataPointMap = MetricDataPointMap()
+            self.MetricDataPointMap._deserialize(params.get("MetricDataPointMap"))
+        if params.get("TopStatusCode") is not None:
+            self.TopStatusCode = []
+            for item in params.get("TopStatusCode"):
+                obj = ApiUseStatisticsEntity()
+                obj._deserialize(item)
+                self.TopStatusCode.append(obj)
+        if params.get("TopTimeCost") is not None:
+            self.TopTimeCost = []
+            for item in params.get("TopTimeCost"):
+                obj = ApiUseStatisticsEntity()
+                obj._deserialize(item)
+                self.TopTimeCost.append(obj)
+        if params.get("Quantile") is not None:
+            self.Quantile = QuantileEntity()
+            self.Quantile._deserialize(params.get("Quantile"))
+
+
+class GroupUnitApiUseStatistics(AbstractModel):
+    """查询网关API监控明细数据（单元化网关使用详情）
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 总记录数
+        :type TotalCount: int
+        :param Content: 查询网关API监控明细对象集合
+        :type Content: list of GroupUnitApiDailyUseStatistics
+        """
+        self.TotalCount = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Content") is not None:
+            self.Content = []
+            for item in params.get("Content"):
+                obj = GroupUnitApiDailyUseStatistics()
                 obj._deserialize(item)
                 self.Content.append(obj)
 
@@ -9315,6 +9640,74 @@ class LaneRules(AbstractModel):
                 self.Content.append(obj)
 
 
+class MetricDataPoint(AbstractModel):
+    """监控统计数据点
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: 数据点键
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param Value: 数据点值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        :param Tag: 数据点标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tag: str
+        """
+        self.Key = None
+        self.Value = None
+        self.Tag = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        self.Tag = params.get("Tag")
+
+
+class MetricDataPointMap(AbstractModel):
+    """监控统计数据点Map集合（单元化网关使用）
+
+    """
+
+    def __init__(self):
+        """
+        :param SumReqAmount: 总调用次数监控数据点集合
+        :type SumReqAmount: list of MetricDataPoint
+        :param AvgFailureRate: 平均错误率监控数据点集合
+        :type AvgFailureRate: list of MetricDataPoint
+        :param AvgTimeCost: 平均响应时间监控数据点集合
+        :type AvgTimeCost: list of MetricDataPoint
+        """
+        self.SumReqAmount = None
+        self.AvgFailureRate = None
+        self.AvgTimeCost = None
+
+
+    def _deserialize(self, params):
+        if params.get("SumReqAmount") is not None:
+            self.SumReqAmount = []
+            for item in params.get("SumReqAmount"):
+                obj = MetricDataPoint()
+                obj._deserialize(item)
+                self.SumReqAmount.append(obj)
+        if params.get("AvgFailureRate") is not None:
+            self.AvgFailureRate = []
+            for item in params.get("AvgFailureRate"):
+                obj = MetricDataPoint()
+                obj._deserialize(item)
+                self.AvgFailureRate.append(obj)
+        if params.get("AvgTimeCost") is not None:
+            self.AvgTimeCost = []
+            for item in params.get("AvgTimeCost"):
+                obj = MetricDataPoint()
+                obj._deserialize(item)
+                self.AvgTimeCost.append(obj)
+
+
 class Microservice(AbstractModel):
     """微服务
 
@@ -9387,6 +9780,8 @@ class ModifyContainerGroupRequest(AbstractModel):
         :type UpdateIvl: int
         :param SubnetId: 子网ID
         :type SubnetId: str
+        :param Alias: 部署组备注
+        :type Alias: str
         """
         self.GroupId = None
         self.AccessType = None
@@ -9394,6 +9789,7 @@ class ModifyContainerGroupRequest(AbstractModel):
         self.UpdateType = None
         self.UpdateIvl = None
         self.SubnetId = None
+        self.Alias = None
 
 
     def _deserialize(self, params):
@@ -9408,6 +9804,7 @@ class ModifyContainerGroupRequest(AbstractModel):
         self.UpdateType = params.get("UpdateType")
         self.UpdateIvl = params.get("UpdateIvl")
         self.SubnetId = params.get("SubnetId")
+        self.Alias = params.get("Alias")
 
 
 class ModifyContainerGroupResponse(AbstractModel):
@@ -11009,6 +11406,24 @@ class RepositoryList(AbstractModel):
                 self.Content.append(obj)
 
 
+class ResourceFieldRef(AbstractModel):
+    """k8s env 的 ResourceFieldRef
+
+    """
+
+    def __init__(self):
+        """
+        :param Resource: k8s 的 Resource
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resource: str
+        """
+        self.Resource = None
+
+
+    def _deserialize(self, params):
+        self.Resource = params.get("Resource")
+
+
 class RevocationConfigRequest(AbstractModel):
     """RevocationConfig请求参数结构体
 
@@ -12366,6 +12781,32 @@ class TsfPageConfigReleaseLog(AbstractModel):
                 self.Content.append(obj)
 
 
+class TsfPageContainerEvent(AbstractModel):
+    """分页的 ContainerEvent
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 返回个数
+        :type TotalCount: int
+        :param Content: events 数组
+        :type Content: list of ContainerEvent
+        """
+        self.TotalCount = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Content") is not None:
+            self.Content = []
+            for item in params.get("Content"):
+                obj = ContainerEvent()
+                obj._deserialize(item)
+                self.Content.append(obj)
+
+
 class TsfPageGatewayDeployGroup(AbstractModel):
     """GatewayDeployGroup 翻页对象
 
@@ -13282,6 +13723,33 @@ class UpdateUnitRuleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ValueFrom(AbstractModel):
+    """k8s env 的 ValueFrom
+
+    """
+
+    def __init__(self):
+        """
+        :param FieldRef: k8s env 的 FieldRef
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FieldRef: :class:`tencentcloud.tsf.v20180326.models.FieldRef`
+        :param ResourceFieldRef: k8s env 的 ResourceFieldRef
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceFieldRef: :class:`tencentcloud.tsf.v20180326.models.ResourceFieldRef`
+        """
+        self.FieldRef = None
+        self.ResourceFieldRef = None
+
+
+    def _deserialize(self, params):
+        if params.get("FieldRef") is not None:
+            self.FieldRef = FieldRef()
+            self.FieldRef._deserialize(params.get("FieldRef"))
+        if params.get("ResourceFieldRef") is not None:
+            self.ResourceFieldRef = ResourceFieldRef()
+            self.ResourceFieldRef._deserialize(params.get("ResourceFieldRef"))
+
+
 class VmGroup(AbstractModel):
     """虚拟机部署组信息
 
@@ -13391,6 +13859,9 @@ class VmGroup(AbstractModel):
         :param StopScript: 停止脚本 base64编码
 注意：此字段可能返回 null，表示取不到有效值。
         :type StopScript: str
+        :param Alias: 部署组备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Alias: str
         """
         self.GroupId = None
         self.GroupName = None
@@ -13426,6 +13897,7 @@ class VmGroup(AbstractModel):
         self.PackageType = None
         self.StartScript = None
         self.StopScript = None
+        self.Alias = None
 
 
     def _deserialize(self, params):
@@ -13465,6 +13937,7 @@ class VmGroup(AbstractModel):
         self.PackageType = params.get("PackageType")
         self.StartScript = params.get("StartScript")
         self.StopScript = params.get("StopScript")
+        self.Alias = params.get("Alias")
 
 
 class VmGroupSimple(AbstractModel):
@@ -13525,6 +13998,9 @@ class VmGroupSimple(AbstractModel):
         :param DeployDesc: 部署应用描述信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeployDesc: str
+        :param Alias: 部署组备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Alias: str
         """
         self.GroupId = None
         self.GroupName = None
@@ -13543,6 +14019,7 @@ class VmGroupSimple(AbstractModel):
         self.GroupResourceType = None
         self.UpdatedTime = None
         self.DeployDesc = None
+        self.Alias = None
 
 
     def _deserialize(self, params):
@@ -13563,3 +14040,4 @@ class VmGroupSimple(AbstractModel):
         self.GroupResourceType = params.get("GroupResourceType")
         self.UpdatedTime = params.get("UpdatedTime")
         self.DeployDesc = params.get("DeployDesc")
+        self.Alias = params.get("Alias")

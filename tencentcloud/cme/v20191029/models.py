@@ -16,6 +16,37 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AccountInfo(AbstractModel):
+    """制作云用户账号信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param UserId: 用户 Id。
+        :type UserId: str
+        :param Phone: 用户手机号码。
+        :type Phone: str
+        :param Nick: 用户昵称。
+        :type Nick: str
+        :param Status: 账号状态，取值：
+<li>Normal：有效；</li>
+<li>Stopped：无效。</li>
+        :type Status: str
+        """
+        self.UserId = None
+        self.Phone = None
+        self.Nick = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.UserId = params.get("UserId")
+        self.Phone = params.get("Phone")
+        self.Nick = params.get("Nick")
+        self.Status = params.get("Status")
+
+
 class AddMemberInfo(AbstractModel):
     """添加的团队成员信息
 
@@ -850,6 +881,65 @@ class DeleteTeamResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAccountsRequest(AbstractModel):
+    """DescribeAccounts请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Platform: 平台唯一标识。
+        :type Platform: str
+        :param Phone: 手机号码。
+        :type Phone: str
+        :param Offset: 分页返回的起始偏移量，默认值：0。
+        :type Offset: int
+        :param Limit: 分页返回的记录条数，默认值：10，最大值：20。
+        :type Limit: int
+        """
+        self.Platform = None
+        self.Phone = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Platform = params.get("Platform")
+        self.Phone = params.get("Phone")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeAccountsResponse(AbstractModel):
+    """DescribeAccounts返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合搜索条件的记录总数。
+        :type TotalCount: int
+        :param AccountInfoSet: 账号信息列表。
+        :type AccountInfoSet: list of AccountInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.AccountInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("AccountInfoSet") is not None:
+            self.AccountInfoSet = []
+            for item in params.get("AccountInfoSet"):
+                obj = AccountInfo()
+                obj._deserialize(item)
+                self.AccountInfoSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 

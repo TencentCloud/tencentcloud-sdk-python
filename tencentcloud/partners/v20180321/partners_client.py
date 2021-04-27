@@ -307,7 +307,7 @@ class PartnersClient(AbstractClient):
 
 
     def DescribeAgentPayDeals(self, request):
-        """可以查询代理商代付的所有订单
+        """【该接口将逐步下线，请切换使用升级版本DescribeAgentPayDealsV2】可以查询代理商代付的所有订单
 
         :param request: Request instance for DescribeAgentPayDeals.
         :type request: :class:`tencentcloud.partners.v20180321.models.DescribeAgentPayDealsRequest`
@@ -334,8 +334,36 @@ class PartnersClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAgentPayDealsV2(self, request):
+        """可以查询代理商代付的所有订单
+
+        :param request: Request instance for DescribeAgentPayDealsV2.
+        :type request: :class:`tencentcloud.partners.v20180321.models.DescribeAgentPayDealsV2Request`
+        :rtype: :class:`tencentcloud.partners.v20180321.models.DescribeAgentPayDealsV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAgentPayDealsV2", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAgentPayDealsV2Response()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeAgentSelfPayDeals(self, request):
-        """可以查询代理商下指定客户的自付订单
+        """【该接口将逐步下线，请切换使用升级版本DescribeAgentSelfPayDealsV2】可以查询代理商下指定客户的自付订单
 
         :param request: Request instance for DescribeAgentSelfPayDeals.
         :type request: :class:`tencentcloud.partners.v20180321.models.DescribeAgentSelfPayDealsRequest`
@@ -348,6 +376,34 @@ class PartnersClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAgentSelfPayDealsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAgentSelfPayDealsV2(self, request):
+        """可以查询代理商下指定客户的自付订单
+
+        :param request: Request instance for DescribeAgentSelfPayDealsV2.
+        :type request: :class:`tencentcloud.partners.v20180321.models.DescribeAgentSelfPayDealsV2Request`
+        :rtype: :class:`tencentcloud.partners.v20180321.models.DescribeAgentSelfPayDealsV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAgentSelfPayDealsV2", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAgentSelfPayDealsV2Response()
                 model._deserialize(response["Response"])
                 return model
             else:

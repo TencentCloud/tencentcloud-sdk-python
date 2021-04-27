@@ -787,16 +787,20 @@ class ModifyMusicOnShelvesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param MusicDetailInfos: 无
+        :param MusicDetailInfos: 歌曲变更信息
         :type MusicDetailInfos: :class:`tencentcloud.ame.v20190916.models.MusicDetailInfo`
+        :param AmeKey: ame对接资源方密钥
+        :type AmeKey: str
         """
         self.MusicDetailInfos = None
+        self.AmeKey = None
 
 
     def _deserialize(self, params):
         if params.get("MusicDetailInfos") is not None:
             self.MusicDetailInfos = MusicDetailInfo()
             self.MusicDetailInfos._deserialize(params.get("MusicDetailInfos"))
+        self.AmeKey = params.get("AmeKey")
 
 
 class ModifyMusicOnShelvesResponse(AbstractModel):
