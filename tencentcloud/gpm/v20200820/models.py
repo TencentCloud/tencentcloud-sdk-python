@@ -1528,6 +1528,64 @@ class RuleInfo(AbstractModel):
         self.CreateUin = params.get("CreateUin")
 
 
+class StartMatchingBackfillRequest(AbstractModel):
+    """StartMatchingBackfill请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MatchCode: 匹配code
+        :type MatchCode: str
+        :param Players: 玩家信息
+        :type Players: list of Player
+        :param GameServerSessionId: 游戏服务器回话 ID [1-256] 个ASCII 字符
+        :type GameServerSessionId: str
+        :param MatchTicketId: 匹配票据 Id 默认 "" 为空则由 GPM 自动生成 长度 [1, 128]
+        :type MatchTicketId: str
+        """
+        self.MatchCode = None
+        self.Players = None
+        self.GameServerSessionId = None
+        self.MatchTicketId = None
+
+
+    def _deserialize(self, params):
+        self.MatchCode = params.get("MatchCode")
+        if params.get("Players") is not None:
+            self.Players = []
+            for item in params.get("Players"):
+                obj = Player()
+                obj._deserialize(item)
+                self.Players.append(obj)
+        self.GameServerSessionId = params.get("GameServerSessionId")
+        self.MatchTicketId = params.get("MatchTicketId")
+
+
+class StartMatchingBackfillResponse(AbstractModel):
+    """StartMatchingBackfill返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MatchTicket: 匹配票据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MatchTicket: :class:`tencentcloud.gpm.v20200820.models.MatchTicket`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MatchTicket = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("MatchTicket") is not None:
+            self.MatchTicket = MatchTicket()
+            self.MatchTicket._deserialize(params.get("MatchTicket"))
+        self.RequestId = params.get("RequestId")
+
+
 class StartMatchingRequest(AbstractModel):
     """StartMatching请求参数结构体
 

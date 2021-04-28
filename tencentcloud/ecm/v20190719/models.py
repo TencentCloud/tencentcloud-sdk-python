@@ -4932,6 +4932,9 @@ PROTECTIVELY_ISOLATED：表示被安全隔离的实例。
         :param ISP: 实例运营商字段。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ISP: str
+        :param PhysicalPosition: 物理位置信息。注意该字段目前为保留字段，均为空值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PhysicalPosition: :class:`tencentcloud.ecm.v20190719.models.PhysicalPosition`
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -4960,6 +4963,7 @@ PROTECTIVELY_ISOLATED：表示被安全隔离的实例。
         self.SecurityGroupIds = None
         self.VirtualPrivateCloud = None
         self.ISP = None
+        self.PhysicalPosition = None
 
 
     def _deserialize(self, params):
@@ -5014,6 +5018,9 @@ PROTECTIVELY_ISOLATED：表示被安全隔离的实例。
             self.VirtualPrivateCloud = VirtualPrivateCloud()
             self.VirtualPrivateCloud._deserialize(params.get("VirtualPrivateCloud"))
         self.ISP = params.get("ISP")
+        if params.get("PhysicalPosition") is not None:
+            self.PhysicalPosition = PhysicalPosition()
+            self.PhysicalPosition._deserialize(params.get("PhysicalPosition"))
 
 
 class InstanceFamilyConfig(AbstractModel):
@@ -5238,10 +5245,10 @@ class Internet(AbstractModel):
 
     def __init__(self):
         """
-        :param PrivateIPAddressSet: 实例的内网相关信息列表。
+        :param PrivateIPAddressSet: 实例的内网相关信息列表。顺序为主网卡在前，辅助网卡按绑定先后顺序排列。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PrivateIPAddressSet: list of PrivateIPAddressInfo
-        :param PublicIPAddressSet: 实例的公网相关信息列表。
+        :param PublicIPAddressSet: 实例的公网相关信息列表。顺序为主网卡在前，辅助网卡按绑定先后顺序排列。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PublicIPAddressSet: list of PublicIPAddressInfo
         :param InstanceNetworkInfoSet: 实例网络相关信息。
@@ -7437,6 +7444,34 @@ class PeakNetworkRegionInfo(AbstractModel):
                 obj = PeakNetwork()
                 obj._deserialize(item)
                 self.PeakNetworkSet.append(obj)
+
+
+class PhysicalPosition(AbstractModel):
+    """物理位置信息
+
+    """
+
+    def __init__(self):
+        """
+        :param PosId: 机位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PosId: str
+        :param RackId: 机架
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RackId: str
+        :param SwitchId: 交换机
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SwitchId: str
+        """
+        self.PosId = None
+        self.RackId = None
+        self.SwitchId = None
+
+
+    def _deserialize(self, params):
+        self.PosId = params.get("PosId")
+        self.RackId = params.get("RackId")
+        self.SwitchId = params.get("SwitchId")
 
 
 class Position(AbstractModel):

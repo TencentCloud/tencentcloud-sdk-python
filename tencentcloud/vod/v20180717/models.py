@@ -12842,6 +12842,59 @@ class ModifyContentReviewTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyEventConfigRequest(AbstractModel):
+    """ModifyEventConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Mode: 接收事件通知的方式。
+<li>PUSH：[HTTP 回调通知](https://cloud.tencent.com/document/product/266/33779)；</li>
+<li>PULL：[基于消息队列的可靠通知](https://cloud.tencent.com/document/product/266/33779)。</li>
+        :type Mode: str
+        :param NotificationUrl: 采用 [HTTP 回调通知](https://cloud.tencent.com/document/product/266/33779) 接收方式时，用于接收 3.0 格式回调的地址。
+注意：如果带 NotificationUrl  参数且值为空字符串时将会清空 3.0 格式回调地址。
+        :type NotificationUrl: str
+        :param UploadMediaCompleteEventSwitch: 是否接收 [视频上传完成](https://cloud.tencent.com/document/product/266/7830) 事件通知， 默认 "OFF" 为忽略该事件通知，"ON" 为接收事件通知。
+        :type UploadMediaCompleteEventSwitch: str
+        :param DeleteMediaCompleteEventSwitch: 是否接收 [视频删除完成](https://cloud.tencent.com/document/product/266/13434) 事件通知，  默认 "OFF" 为忽略该事件通知，"ON" 为接收事件通知。
+        :type DeleteMediaCompleteEventSwitch: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Mode = None
+        self.NotificationUrl = None
+        self.UploadMediaCompleteEventSwitch = None
+        self.DeleteMediaCompleteEventSwitch = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Mode = params.get("Mode")
+        self.NotificationUrl = params.get("NotificationUrl")
+        self.UploadMediaCompleteEventSwitch = params.get("UploadMediaCompleteEventSwitch")
+        self.DeleteMediaCompleteEventSwitch = params.get("DeleteMediaCompleteEventSwitch")
+        self.SubAppId = params.get("SubAppId")
+
+
+class ModifyEventConfigResponse(AbstractModel):
+    """ModifyEventConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyImageSpriteTemplateRequest(AbstractModel):
     """ModifyImageSpriteTemplate请求参数结构体
 

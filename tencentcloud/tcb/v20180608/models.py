@@ -2479,9 +2479,9 @@ class DescribeCloudBaseRunVersionSnapshotRequest(AbstractModel):
         :type EnvId: str
         :param SnapshotName: 版本历史名
         :type SnapshotName: str
-        :param Offset: 偏移量
+        :param Offset: 偏移量。默认0
         :type Offset: int
-        :param Limit: 限制大小
+        :param Limit: 限制大小。默认10，最大20
         :type Limit: int
         """
         self.ServerName = None

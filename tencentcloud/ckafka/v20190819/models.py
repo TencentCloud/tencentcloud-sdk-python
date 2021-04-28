@@ -131,6 +131,57 @@ class Assignment(AbstractModel):
                 self.Topics.append(obj)
 
 
+class ClusterInfo(AbstractModel):
+    """集群信息实体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群Id
+        :type ClusterId: int
+        :param ClusterName: 集群名称
+        :type ClusterName: str
+        :param MaxDiskSize: 集群最大磁盘 单位GB
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxDiskSize: int
+        :param MaxBandWidth: 集群最大带宽 单位MB/s
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxBandWidth: int
+        :param AvailableDiskSize: 集群当前可用磁盘  单位GB
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AvailableDiskSize: int
+        :param AvailableBandWidth: 集群当前可用带宽 单位MB/s
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AvailableBandWidth: int
+        :param ZoneId: 集群所属可用区，表明集群归属的可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneId: int
+        :param ZoneIds: 集群节点所在的可用区，若该集群为跨可用区集群，则包含该集群节点所在的多个可用区。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneIds: list of int
+        """
+        self.ClusterId = None
+        self.ClusterName = None
+        self.MaxDiskSize = None
+        self.MaxBandWidth = None
+        self.AvailableDiskSize = None
+        self.AvailableBandWidth = None
+        self.ZoneId = None
+        self.ZoneIds = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterName = params.get("ClusterName")
+        self.MaxDiskSize = params.get("MaxDiskSize")
+        self.MaxBandWidth = params.get("MaxBandWidth")
+        self.AvailableDiskSize = params.get("AvailableDiskSize")
+        self.AvailableBandWidth = params.get("AvailableBandWidth")
+        self.ZoneId = params.get("ZoneId")
+        self.ZoneIds = params.get("ZoneIds")
+
+
 class Config(AbstractModel):
     """高级配置对象
 
@@ -1059,6 +1110,35 @@ class DescribeAppInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCkafkaZoneRequest(AbstractModel):
+    """DescribeCkafkaZone请求参数结构体
+
+    """
+
+
+class DescribeCkafkaZoneResponse(AbstractModel):
+    """DescribeCkafkaZone返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 查询结果复杂对象实体
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.ZoneResponse`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = ZoneResponse()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeConsumerGroupRequest(AbstractModel):
     """DescribeConsumerGroup请求参数结构体
 
@@ -1462,6 +1542,58 @@ class DescribeInstancesResponse(AbstractModel):
         if params.get("Result") is not None:
             self.Result = InstanceResponse()
             self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRegionRequest(AbstractModel):
+    """DescribeRegion请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 返回最大结果数
+        :type Limit: int
+        :param Business: 业务字段，可忽略
+        :type Business: str
+        """
+        self.Offset = None
+        self.Limit = None
+        self.Business = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Business = params.get("Business")
+
+
+class DescribeRegionResponse(AbstractModel):
+    """DescribeRegion返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 返回地域枚举结果列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: list of Region
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = []
+            for item in params.get("Result"):
+                obj = Region()
+                obj._deserialize(item)
+                self.Result.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2772,6 +2904,77 @@ class PartitionOffset(AbstractModel):
         self.Offset = params.get("Offset")
 
 
+class Price(AbstractModel):
+    """消息价格实体
+
+    """
+
+    def __init__(self):
+        """
+        :param RealTotalCost: 折扣价
+        :type RealTotalCost: float
+        :param TotalCost: 原价
+        :type TotalCost: float
+        """
+        self.RealTotalCost = None
+        self.TotalCost = None
+
+
+    def _deserialize(self, params):
+        self.RealTotalCost = params.get("RealTotalCost")
+        self.TotalCost = params.get("TotalCost")
+
+
+class Region(AbstractModel):
+    """地域实体对象
+
+    """
+
+    def __init__(self):
+        """
+        :param RegionId: 地域ID
+        :type RegionId: int
+        :param RegionName: 地域名称
+        :type RegionName: str
+        :param AreaName: 区域名称
+        :type AreaName: str
+        :param RegionCode: 地域代码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionCode: str
+        :param RegionCodeV3: 地域代码（V3版本）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionCodeV3: str
+        :param Support: NONE:默认值不支持任何特殊机型\nCVM:支持CVM类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Support: str
+        :param Ipv6: 是否支持ipv6, 0：表示不支持，1：表示支持
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ipv6: int
+        :param MultiZone: 是否支持跨可用区, 0：表示不支持，1：表示支持
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MultiZone: int
+        """
+        self.RegionId = None
+        self.RegionName = None
+        self.AreaName = None
+        self.RegionCode = None
+        self.RegionCodeV3 = None
+        self.Support = None
+        self.Ipv6 = None
+        self.MultiZone = None
+
+
+    def _deserialize(self, params):
+        self.RegionId = params.get("RegionId")
+        self.RegionName = params.get("RegionName")
+        self.AreaName = params.get("AreaName")
+        self.RegionCode = params.get("RegionCode")
+        self.RegionCodeV3 = params.get("RegionCodeV3")
+        self.Support = params.get("Support")
+        self.Ipv6 = params.get("Ipv6")
+        self.MultiZone = params.get("MultiZone")
+
+
 class Route(AbstractModel):
     """路由实体对象
 
@@ -3240,3 +3443,120 @@ class VipEntity(AbstractModel):
     def _deserialize(self, params):
         self.Vip = params.get("Vip")
         self.Vport = params.get("Vport")
+
+
+class ZoneInfo(AbstractModel):
+    """zone信息实体
+
+    """
+
+    def __init__(self):
+        """
+        :param ZoneId: zone的id
+        :type ZoneId: str
+        :param IsInternalApp: 是否内部APP
+        :type IsInternalApp: int
+        :param AppId: app id
+        :type AppId: int
+        :param Flag: 标识
+        :type Flag: bool
+        :param ZoneName: zone名称
+        :type ZoneName: str
+        :param ZoneStatus: zone状态
+        :type ZoneStatus: int
+        :param Exflag: 额外标识
+        :type Exflag: str
+        :param SoldOut: json对象，key为机型，value true为售罄，false为未售罄
+        :type SoldOut: str
+        """
+        self.ZoneId = None
+        self.IsInternalApp = None
+        self.AppId = None
+        self.Flag = None
+        self.ZoneName = None
+        self.ZoneStatus = None
+        self.Exflag = None
+        self.SoldOut = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.IsInternalApp = params.get("IsInternalApp")
+        self.AppId = params.get("AppId")
+        self.Flag = params.get("Flag")
+        self.ZoneName = params.get("ZoneName")
+        self.ZoneStatus = params.get("ZoneStatus")
+        self.Exflag = params.get("Exflag")
+        self.SoldOut = params.get("SoldOut")
+
+
+class ZoneResponse(AbstractModel):
+    """查询kafka的zone信息返回的实体
+
+    """
+
+    def __init__(self):
+        """
+        :param ZoneList: zone列表
+        :type ZoneList: list of ZoneInfo
+        :param MaxBuyInstanceNum: 最大购买实例个数
+        :type MaxBuyInstanceNum: int
+        :param MaxBandwidth: 最大购买带宽 单位Mb/s
+        :type MaxBandwidth: int
+        :param UnitPrice: 后付费单位价格
+        :type UnitPrice: :class:`tencentcloud.ckafka.v20190819.models.Price`
+        :param MessagePrice: 后付费消息单价
+        :type MessagePrice: :class:`tencentcloud.ckafka.v20190819.models.Price`
+        :param ClusterInfo: 用户独占集群信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterInfo: list of ClusterInfo
+        :param Standard: 购买标准版配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Standard: str
+        :param StandardS2: 购买标准版S2配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StandardS2: str
+        :param Profession: 购买专业版配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Profession: str
+        :param Physical: 购买物理独占版配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Physical: str
+        """
+        self.ZoneList = None
+        self.MaxBuyInstanceNum = None
+        self.MaxBandwidth = None
+        self.UnitPrice = None
+        self.MessagePrice = None
+        self.ClusterInfo = None
+        self.Standard = None
+        self.StandardS2 = None
+        self.Profession = None
+        self.Physical = None
+
+
+    def _deserialize(self, params):
+        if params.get("ZoneList") is not None:
+            self.ZoneList = []
+            for item in params.get("ZoneList"):
+                obj = ZoneInfo()
+                obj._deserialize(item)
+                self.ZoneList.append(obj)
+        self.MaxBuyInstanceNum = params.get("MaxBuyInstanceNum")
+        self.MaxBandwidth = params.get("MaxBandwidth")
+        if params.get("UnitPrice") is not None:
+            self.UnitPrice = Price()
+            self.UnitPrice._deserialize(params.get("UnitPrice"))
+        if params.get("MessagePrice") is not None:
+            self.MessagePrice = Price()
+            self.MessagePrice._deserialize(params.get("MessagePrice"))
+        if params.get("ClusterInfo") is not None:
+            self.ClusterInfo = []
+            for item in params.get("ClusterInfo"):
+                obj = ClusterInfo()
+                obj._deserialize(item)
+                self.ClusterInfo.append(obj)
+        self.Standard = params.get("Standard")
+        self.StandardS2 = params.get("StandardS2")
+        self.Profession = params.get("Profession")
+        self.Physical = params.get("Physical")

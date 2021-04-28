@@ -1213,6 +1213,31 @@ class ExpandCfwVerticalResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class IocListData(AbstractModel):
+    """黑白名单IOC列表
+
+    """
+
+    def __init__(self):
+        """
+        :param IP: 待处置IP地址，IP/Domain字段二选一
+        :type IP: str
+        :param Direction: 只能为0或者1   0代表出站 1代表入站
+        :type Direction: int
+        :param Domain: 待处置域名，IP/Domain字段二选一
+        :type Domain: str
+        """
+        self.IP = None
+        self.Direction = None
+        self.Domain = None
+
+
+    def _deserialize(self, params):
+        self.IP = params.get("IP")
+        self.Direction = params.get("Direction")
+        self.Domain = params.get("Domain")
+
+
 class ModifyAcRuleRequest(AbstractModel):
     """ModifyAcRule请求参数结构体
 
@@ -1375,6 +1400,69 @@ class ModifyAllSwitchStatusResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyBlockIgnoreListRequest(AbstractModel):
+    """ModifyBlockIgnoreList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleType: 1拦截列表 2 忽略列表
+        :type RuleType: int
+        :param IOC: IP、Domain二选一，不能同时为空
+        :type IOC: list of IocListData
+        :param IocAction: 默认值:delete（删除）、edit（编辑）、add（添加）  其他值无效
+        :type IocAction: str
+        :param StartTime: 时间格式：yyyy-MM-dd HH:mm:ss
+        :type StartTime: str
+        :param EndTime: 时间格式：yyyy-MM-dd HH:mm:ss
+        :type EndTime: str
+        """
+        self.RuleType = None
+        self.IOC = None
+        self.IocAction = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.RuleType = params.get("RuleType")
+        if params.get("IOC") is not None:
+            self.IOC = []
+            for item in params.get("IOC"):
+                obj = IocListData()
+                obj._deserialize(item)
+                self.IOC.append(obj)
+        self.IocAction = params.get("IocAction")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+
+
+class ModifyBlockIgnoreListResponse(AbstractModel):
+    """ModifyBlockIgnoreList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ReturnMsg: 接口返回信息
+        :type ReturnMsg: str
+        :param ReturnCode: 接口返回错误码，0请求成功  非0失败
+        :type ReturnCode: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ReturnMsg = None
+        self.ReturnCode = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ReturnMsg = params.get("ReturnMsg")
+        self.ReturnCode = params.get("ReturnCode")
         self.RequestId = params.get("RequestId")
 
 

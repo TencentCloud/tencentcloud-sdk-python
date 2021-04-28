@@ -586,6 +586,37 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyBlockIgnoreList(self, request):
+        """支持对拦截列表、忽略列表如下操作：
+        批量增加拦截IP、忽略IP/域名
+        批量删除拦截IP、忽略IP/域名
+        批量修改拦截IP、忽略IP/域名生效事件
+
+        :param request: Request instance for ModifyBlockIgnoreList.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyBlockIgnoreListRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.ModifyBlockIgnoreListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyBlockIgnoreList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyBlockIgnoreListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyItemSwitchStatus(self, request):
         """修改单个防火墙开关
 

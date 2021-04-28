@@ -500,3 +500,31 @@ class GpmClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StartMatchingBackfill(self, request):
+        """通过调用StartMatchingBackfill，用户可以传入一个回填的匹配请求，GPM为回填请求搜索符合条件的ticket并形成一个新的match。
+
+        :param request: Request instance for StartMatchingBackfill.
+        :type request: :class:`tencentcloud.gpm.v20200820.models.StartMatchingBackfillRequest`
+        :rtype: :class:`tencentcloud.gpm.v20200820.models.StartMatchingBackfillResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StartMatchingBackfill", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StartMatchingBackfillResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

@@ -490,6 +490,11 @@ class CreateProjectRequest(AbstractModel):
 <li>STREAM_CONNECT：云转推。</li>
 <li>RECORD_REPLAY：录制回放。</li>
         :type Category: str
+        :param Mode: 项目模式，一个项目可以有多种模式并相互切换。
+当 Category 为 VIDEO_EDIT 时，可选模式有：
+<li>Default：默认模式。</li>
+<li>VideoEditTemplate：视频编辑模板制作模式。</li>
+        :type Mode: str
         :param AspectRatio: 画布宽高比。
 该字段已经废弃，请使用具体项目输入中的 AspectRatio 字段。
         :type AspectRatio: str
@@ -512,6 +517,7 @@ class CreateProjectRequest(AbstractModel):
         self.Name = None
         self.Owner = None
         self.Category = None
+        self.Mode = None
         self.AspectRatio = None
         self.Description = None
         self.SwitcherProjectInput = None
@@ -529,6 +535,7 @@ class CreateProjectRequest(AbstractModel):
             self.Owner = Entity()
             self.Owner._deserialize(params.get("Owner"))
         self.Category = params.get("Category")
+        self.Mode = params.get("Mode")
         self.AspectRatio = params.get("AspectRatio")
         self.Description = params.get("Description")
         if params.get("SwitcherProjectInput") is not None:
@@ -1240,6 +1247,11 @@ class DescribeProjectsRequest(AbstractModel):
 <li>STREAM_CONNECT：云转推。</li>
 <li>RECORD_REPLAY：录制回放。</li>
         :type CategorySet: list of str
+        :param Modes: 项目模式，一个项目可以有多种模式并相互切换。
+当 Category 为 VIDEO_EDIT 时，可选模式有：
+<li>Default：默认模式。</li>
+<li>VideoEditTemplate：视频编辑模板制作模式。</li>
+        :type Modes: list of str
         :param Sort: 列表排序，支持下列排序字段：
 <li>CreateTime：创建时间；</li>
 <li>UpdateTime：更新时间。</li>
@@ -1257,6 +1269,7 @@ class DescribeProjectsRequest(AbstractModel):
         self.ProjectIds = None
         self.AspectRatioSet = None
         self.CategorySet = None
+        self.Modes = None
         self.Sort = None
         self.Owner = None
         self.Offset = None
@@ -1269,6 +1282,7 @@ class DescribeProjectsRequest(AbstractModel):
         self.ProjectIds = params.get("ProjectIds")
         self.AspectRatioSet = params.get("AspectRatioSet")
         self.CategorySet = params.get("CategorySet")
+        self.Modes = params.get("Modes")
         if params.get("Sort") is not None:
             self.Sort = SortBy()
             self.Sort._deserialize(params.get("Sort"))
@@ -3279,12 +3293,18 @@ class ModifyProjectRequest(AbstractModel):
         :type AspectRatio: str
         :param Owner: 项目归属者。
         :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
+        :param Mode: 项目模式，一个项目可以有多种模式并相互切换。
+当 Category 为 VIDEO_EDIT 时，可选模式有：
+<li>Defualt：默认模式。</li>
+<li>VideoEditTemplate：视频编辑模板制作模式。</li>
+        :type Mode: str
         """
         self.Platform = None
         self.ProjectId = None
         self.Name = None
         self.AspectRatio = None
         self.Owner = None
+        self.Mode = None
 
 
     def _deserialize(self, params):
@@ -3295,6 +3315,7 @@ class ModifyProjectRequest(AbstractModel):
         if params.get("Owner") is not None:
             self.Owner = Entity()
             self.Owner._deserialize(params.get("Owner"))
+        self.Mode = params.get("Mode")
 
 
 class ModifyProjectResponse(AbstractModel):
@@ -3654,7 +3675,7 @@ class ProjectInfo(AbstractModel):
         :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
         :param CoverUrl: 项目封面图片地址。
         :type CoverUrl: str
-        :param StreamConnectProjectInfo: 云转推项目信息。
+        :param StreamConnectProjectInfo: 云转推项目信息，仅当项目类别取值 STREAM_CONNECT 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type StreamConnectProjectInfo: :class:`tencentcloud.cme.v20191029.models.StreamConnectProjectInfo`
         :param CreateTime: 项目创建时间，格式按照 ISO 8601 标准表示。
