@@ -7433,6 +7433,56 @@ class DescribeDrmDataKeyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeEventConfigRequest(AbstractModel):
+    """DescribeEventConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
+
+
+class DescribeEventConfigResponse(AbstractModel):
+    """DescribeEventConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Mode: 接收事件通知的方式。"PUSH" 为 [HTTP 回调通知](https://cloud.tencent.com/document/product/266/7829#http.E5.9B.9E.E8.B0.83)，"PULL" 为 [基于消息队列的可靠通知](https://cloud.tencent.com/document/product/266/7829#.E5.9F.BA.E4.BA.8E.E6.B6.88.E6.81.AF.E9.98.9F.E5.88.97.E7.9A.84.E5.8F.AF.E9.9D.A0.E9.80.9A.E7.9F.A5)。
+        :type Mode: str
+        :param NotificationUrl: 采用 [HTTP 回调通知](https://cloud.tencent.com/document/product/266/7829#http.E5.9B.9E.E8.B0.83) 接收方式时，用于接收 V3 版本事件通知的地址。
+        :type NotificationUrl: str
+        :param UploadMediaCompleteEventSwitch: 是否接收 [视频上传完成](https://cloud.tencent.com/document/product/266/7830) 事件通知，"OFF" 为忽略该事件通知，"ON" 为接收事件通知。
+        :type UploadMediaCompleteEventSwitch: str
+        :param DeleteMediaCompleteEventSwitch: 是否接收 [视频删除完成](https://cloud.tencent.com/document/product/266/13434) 事件通知，"OFF" 为忽略该事件通知，"ON" 为接收事件通知。
+        :type DeleteMediaCompleteEventSwitch: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Mode = None
+        self.NotificationUrl = None
+        self.UploadMediaCompleteEventSwitch = None
+        self.DeleteMediaCompleteEventSwitch = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Mode = params.get("Mode")
+        self.NotificationUrl = params.get("NotificationUrl")
+        self.UploadMediaCompleteEventSwitch = params.get("UploadMediaCompleteEventSwitch")
+        self.DeleteMediaCompleteEventSwitch = params.get("DeleteMediaCompleteEventSwitch")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeEventsStateRequest(AbstractModel):
     """DescribeEventsState请求参数结构体
 

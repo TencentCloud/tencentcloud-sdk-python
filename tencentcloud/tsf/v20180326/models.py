@@ -1245,6 +1245,9 @@ class ConfigRelease(AbstractModel):
         :param ReleaseDesc: 发布描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReleaseDesc: str
+        :param ApplicationId: 应用ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationId: str
         """
         self.ConfigReleaseId = None
         self.ConfigId = None
@@ -1258,6 +1261,7 @@ class ConfigRelease(AbstractModel):
         self.ClusterId = None
         self.ClusterName = None
         self.ReleaseDesc = None
+        self.ApplicationId = None
 
 
     def _deserialize(self, params):
@@ -1273,6 +1277,7 @@ class ConfigRelease(AbstractModel):
         self.ClusterId = params.get("ClusterId")
         self.ClusterName = params.get("ClusterName")
         self.ReleaseDesc = params.get("ReleaseDesc")
+        self.ApplicationId = params.get("ApplicationId")
 
 
 class ConfigReleaseLog(AbstractModel):

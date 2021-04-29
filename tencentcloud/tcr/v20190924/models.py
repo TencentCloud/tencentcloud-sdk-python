@@ -2459,6 +2459,56 @@ class DescribeReplicationInstanceCreateTasksResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeReplicationInstanceSyncStatusRequest(AbstractModel):
+    """DescribeReplicationInstanceSyncStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 主实例Id
+        :type RegistryId: str
+        :param ReplicationRegistryId: 复制实例Id
+        :type ReplicationRegistryId: str
+        :param ReplicationRegionId: 复制实例的地域Id
+        :type ReplicationRegionId: int
+        """
+        self.RegistryId = None
+        self.ReplicationRegistryId = None
+        self.ReplicationRegionId = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.ReplicationRegistryId = params.get("ReplicationRegistryId")
+        self.ReplicationRegionId = params.get("ReplicationRegionId")
+
+
+class DescribeReplicationInstanceSyncStatusResponse(AbstractModel):
+    """DescribeReplicationInstanceSyncStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ReplicationStatus: 同步状态
+        :type ReplicationStatus: str
+        :param ReplicationTime: 同步完成时间
+        :type ReplicationTime: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ReplicationStatus = None
+        self.ReplicationTime = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ReplicationStatus = params.get("ReplicationStatus")
+        self.ReplicationTime = params.get("ReplicationTime")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeReplicationInstancesRequest(AbstractModel):
     """DescribeReplicationInstances请求参数结构体
 
