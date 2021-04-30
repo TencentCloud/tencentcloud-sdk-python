@@ -60,3 +60,41 @@ class DescribeServiceAlertObjectResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class DescribeTokenRequest(AbstractModel):
+    """DescribeToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Namespace: 命名空间
+        :type Namespace: str
+        """
+        self.Namespace = None
+
+
+    def _deserialize(self, params):
+        self.Namespace = params.get("Namespace")
+
+
+class DescribeTokenResponse(AbstractModel):
+    """DescribeToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: token
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")

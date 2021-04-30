@@ -9366,7 +9366,7 @@ class TransferSinglePayRequest(AbstractModel):
 支付宝为会员alipay_user_id;
 平安为收款方银行账号
         :type PayeeId: str
-        :param PayeeName: 收款方姓名，微信，支付宝可选；平安模式下必传
+        :param PayeeName: 收款方姓名。支付宝可选；微信，平安模式下必传
         :type PayeeName: str
         :param PayeeExtends: 收款方附加信息，平安接入使用。需要以JSON格式提供以下字段：
 PayeeBankName：收款人开户行名称

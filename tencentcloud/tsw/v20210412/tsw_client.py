@@ -80,3 +80,31 @@ class TswClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeToken(self, request):
+        """查询token
+
+        :param request: Request instance for DescribeToken.
+        :type request: :class:`tencentcloud.tsw.v20210412.models.DescribeTokenRequest`
+        :rtype: :class:`tencentcloud.tsw.v20210412.models.DescribeTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeToken", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTokenResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

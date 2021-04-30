@@ -567,15 +567,25 @@ class CreateProjectResponse(AbstractModel):
         """
         :param ProjectId: 项目 Id。
         :type ProjectId: str
+        :param RtmpPushInputInfoSet: 输入源推流信息。
+ <li> 当 Catagory 为 STREAM_CONNECT 时，数组返回长度为 2 ，第 0 个代表主输入源，第 1 个代表备输入源。只有当各自输入源类型为推流时才有有效内容。</li>
+        :type RtmpPushInputInfoSet: list of RtmpPushInputInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.ProjectId = None
+        self.RtmpPushInputInfoSet = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.ProjectId = params.get("ProjectId")
+        if params.get("RtmpPushInputInfoSet") is not None:
+            self.RtmpPushInputInfoSet = []
+            for item in params.get("RtmpPushInputInfoSet"):
+                obj = RtmpPushInputInfo()
+                obj._deserialize(item)
+                self.RtmpPushInputInfoSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2331,13 +2341,17 @@ class HandleStreamConnectProjectResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param StreamInputRtmpPushUrl: 输入源推流地址，当 Operation 取值 AddInput 且 InputType 为 RtmpPush 类型时有效。
+        :type StreamInputRtmpPushUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.StreamInputRtmpPushUrl = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.StreamInputRtmpPushUrl = params.get("StreamInputRtmpPushUrl")
         self.RequestId = params.get("RequestId")
 
 
