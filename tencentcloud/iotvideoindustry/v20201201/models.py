@@ -233,17 +233,21 @@ class CreateDeviceRequest(AbstractModel):
         :type NickName: str
         :param PassWord: 设备密码
         :type PassWord: str
+        :param DeviceType: 设备类型 2:国标IPC设备; 3:NVR设备
+        :type DeviceType: int
         :param GroupId: 设备需要绑定的分组ID，参数为空则默认绑定到根分组
         :type GroupId: str
         """
         self.NickName = None
         self.PassWord = None
+        self.DeviceType = None
         self.GroupId = None
 
 
     def _deserialize(self, params):
         self.NickName = params.get("NickName")
         self.PassWord = params.get("PassWord")
+        self.DeviceType = params.get("DeviceType")
         self.GroupId = params.get("GroupId")
 
 

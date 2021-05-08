@@ -89,8 +89,9 @@ class InputManageMarketingRisk(AbstractModel):
         """
         :param Account: 账号信息。
         :type Account: :class:`tencentcloud.rce.v20201103.models.AccountInfo`
-        :param SceneCode: 场景code;
-e_activity_antirush；活动防刷场景e_login_protection；登陆保护场景e_register_protection：注册保护场景
+        :param SceneCode: 场景类型：场景SceneCode, 控制台上新建对应的场景并获取对应的值；
+例如：e_register_protection_1521184361
+控制台链接：https://console.cloud.tencent.com/rce/risk/sceneroot；
         :type SceneCode: str
         :param UserIp: 登录来源的外网IP
         :type UserIp: str

@@ -345,6 +345,8 @@ class CopyFleetRequest(AbstractModel):
         :type SelectedTimerType: str
         :param CcnInfos: 云联网信息，包含对应的账号信息及所属id
         :type CcnInfos: list of CcnInfo
+        :param InternetMaxBandwidthOut: fleet公网出带宽最大值，默认100Mbps，范围1-200Mbps
+        :type InternetMaxBandwidthOut: int
         """
         self.FleetId = None
         self.CopyNumber = None
@@ -365,6 +367,7 @@ class CopyFleetRequest(AbstractModel):
         self.DataDiskInfo = None
         self.SelectedTimerType = None
         self.CcnInfos = None
+        self.InternetMaxBandwidthOut = None
 
 
     def _deserialize(self, params):
@@ -413,6 +416,7 @@ class CopyFleetRequest(AbstractModel):
                 obj = CcnInfo()
                 obj._deserialize(item)
                 self.CcnInfos.append(obj)
+        self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
 
 
 class CopyFleetResponse(AbstractModel):
@@ -520,7 +524,7 @@ class CreateAssetRequest(AbstractModel):
         :type AssetVersion: str
         :param AssetRegion: 生成包所在地域，详见产品支持的 [地域列表](https://cloud.tencent.com/document/api/1165/42053#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8)
         :type AssetRegion: str
-        :param OperateSystem: 生成包可运行的操作系统，若传入参数为CentOS7.16则不需要传入ImageId字段，否则，需要传入Imageid字段（该方式是为了兼容之前的版本，后续建议使用ImageId来替代该字段）
+        :param OperateSystem: 生成包可运行的操作系统，若传入参数为CentOS7.16则不需要传入ImageId字段，否则，需要传入Imageid字段（该方式是为了兼容之前的版本，后续建议使用ImageId来替代该字段）。这里可通过[DescribeAssetSystems](https://cloud.tencent.com/document/product/1165/49191)接口获取asset支持的操作系统进行传入（使用AssetSupportSys的OsVersion字段）
         :type OperateSystem: str
         :param ImageId: 生成包支持的操作系统镜像id，若传入OperateSystem字段的值是CentOS7.16，则不需要传入该值；如果不是，则需要通过[DescribeAssetSystems](https://cloud.tencent.com/document/product/1165/49191)接口获取asset支持的操作系统ImageId进行传入
         :type ImageId: str
@@ -689,6 +693,8 @@ class CreateFleetRequest(AbstractModel):
         :type DataDiskInfo: list of DiskInfo
         :param CcnInfos: 云联网信息，包含对应的账号信息及所属id
         :type CcnInfos: list of CcnInfo
+        :param InternetMaxBandwidthOut: fleet公网出带宽最大值，默认100Mbps，范围1-200Mbps
+        :type InternetMaxBandwidthOut: int
         """
         self.AssetId = None
         self.Description = None
@@ -706,6 +712,7 @@ class CreateFleetRequest(AbstractModel):
         self.SystemDiskInfo = None
         self.DataDiskInfo = None
         self.CcnInfos = None
+        self.InternetMaxBandwidthOut = None
 
 
     def _deserialize(self, params):
@@ -751,6 +758,7 @@ class CreateFleetRequest(AbstractModel):
                 obj = CcnInfo()
                 obj._deserialize(item)
                 self.CcnInfos.append(obj)
+        self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
 
 
 class CreateFleetResponse(AbstractModel):
@@ -1533,16 +1541,28 @@ class DescribeFleetEventsRequest(AbstractModel):
         :type Limit: int
         :param Offset: 分页时的数据偏移量，默认为0
         :type Offset: int
+        :param EventCode: 事件代码
+        :type EventCode: str
+        :param StartTime: 发生事件的开始时间
+        :type StartTime: str
+        :param EndTime: 发生事件的结束时间
+        :type EndTime: str
         """
         self.FleetId = None
         self.Limit = None
         self.Offset = None
+        self.EventCode = None
+        self.StartTime = None
+        self.EndTime = None
 
 
     def _deserialize(self, params):
         self.FleetId = params.get("FleetId")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        self.EventCode = params.get("EventCode")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
 
 
 class DescribeFleetEventsResponse(AbstractModel):
@@ -2913,6 +2933,9 @@ class FleetAttributes(AbstractModel):
         :param RelatedCcnInfos: 云联网相关信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type RelatedCcnInfos: list of RelatedCcnInfo
+        :param InternetMaxBandwidthOut: fleet公网出带宽最大值，默认100Mbps，范围1-200Mbps
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InternetMaxBandwidthOut: int
         """
         self.AssetId = None
         self.CreationTime = None
@@ -2934,6 +2957,7 @@ class FleetAttributes(AbstractModel):
         self.DataDiskInfo = None
         self.SystemDiskInfo = None
         self.RelatedCcnInfos = None
+        self.InternetMaxBandwidthOut = None
 
 
     def _deserialize(self, params):
@@ -2976,6 +3000,7 @@ class FleetAttributes(AbstractModel):
                 obj = RelatedCcnInfo()
                 obj._deserialize(item)
                 self.RelatedCcnInfos.append(obj)
+        self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
 
 
 class FleetCapacity(AbstractModel):

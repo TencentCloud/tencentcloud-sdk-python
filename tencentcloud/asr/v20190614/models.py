@@ -308,9 +308,9 @@ class CreateRecTaskRequest(AbstractModel):
         :type ResTextFormat: int
         :param SourceType: 语音数据来源。0：语音 URL；1：语音数据（post body）。
         :type SourceType: int
-        :param SpeakerDiarization: 是否开启说话人分离，0：不开启，1：开启(仅支持8k_zh，16k_zh，16k_zh_video引擎模型，单声道音频)
+        :param SpeakerDiarization: 是否开启说话人分离，0：不开启，1：开启(仅支持8k_zh，16k_zh，16k_zh_video引擎模型，单声道音频)，默认值为 0。
         :type SpeakerDiarization: int
-        :param SpeakerNumber: 说话人分离人数（需配合开启说话人分离使用），取值范围：0-10，0代表自动分离（目前仅支持≤6个人），1-10代表指定说话人数分离。
+        :param SpeakerNumber: 说话人分离人数（需配合开启说话人分离使用），取值范围：0-10，0代表自动分离（目前仅支持≤6个人），1-10代表指定说话人数分离。默认值为 0。
 注：话者分离目前是beta版本，请根据您的需要谨慎使用
         :type SpeakerNumber: int
         :param CallbackUrl: 回调 URL，用户自行搭建的用于接收识别结果的服务URL。如果用户使用轮询方式获取识别结果，则无需提交该参数。回调格式&内容详见：[录音识别回调说明](https://cloud.tencent.com/document/product/1093/52632)
@@ -329,9 +329,9 @@ class CreateRecTaskRequest(AbstractModel):
         :type FilterModal: int
         :param ConvertNumMode: 是否进行阿拉伯数字智能转换（目前支持中文普通话引擎）。0：不转换，直接输出中文数字，1：根据场景智能转换为阿拉伯数字，3: 打开数学相关数字转换。默认值为 1。
         :type ConvertNumMode: int
-        :param Extra: 附加参数
+        :param Extra: 附加参数(该参数无意义，忽略即可)
         :type Extra: str
-        :param FilterPunc: 是否过滤标点符号（目前支持中文普通话引擎）。 0：不过滤，1：过滤句末标点，2：过滤所有标点。默认为0。
+        :param FilterPunc: 是否过滤标点符号（目前支持中文普通话引擎）。 0：不过滤，1：过滤句末标点，2：过滤所有标点。默认值为 0。
         :type FilterPunc: int
         """
         self.EngineModelType = None
@@ -743,9 +743,9 @@ class GetCustomizationListRequest(AbstractModel):
         """
         :param TagInfos: 标签信息，格式为“$TagKey : $TagValue ”，中间分隔符为“空格”+“:”+“空格”
         :type TagInfos: list of str
-        :param Limit: 分页大小
+        :param Limit: 分页大小，默认1000
         :type Limit: int
-        :param Offset: 分页offset
+        :param Offset: 分页offset，默认0
         :type Offset: int
         """
         self.TagInfos = None
@@ -1036,15 +1036,15 @@ class SentenceRecognitionRequest(AbstractModel):
         :type DataLen: int
         :param HotwordId: 热词id。用于调用对应的热词表，如果在调用语音识别服务时，不进行单独的热词id设置，自动生效默认热词；如果进行了单独的热词id设置，那么将生效单独设置的热词id。
         :type HotwordId: str
-        :param FilterDirty: 是否过滤脏词（目前支持中文普通话引擎）。0：不过滤脏词；1：过滤脏词；2：将脏词替换为 * 。
+        :param FilterDirty: 是否过滤脏词（目前支持中文普通话引擎）。0：不过滤脏词；1：过滤脏词；2：将脏词替换为 * 。默认值为 0。
         :type FilterDirty: int
-        :param FilterModal: 是否过语气词（目前支持中文普通话引擎）。0：不过滤语气词；1：部分过滤；2：严格过滤 。
+        :param FilterModal: 是否过语气词（目前支持中文普通话引擎）。0：不过滤语气词；1：部分过滤；2：严格过滤 。默认值为 0。
         :type FilterModal: int
-        :param FilterPunc: 是否过滤标点符号（目前支持中文普通话引擎）。 0：不过滤，1：过滤句末标点，2：过滤所有标点。默认为0。
+        :param FilterPunc: 是否过滤标点符号（目前支持中文普通话引擎）。 0：不过滤，1：过滤句末标点，2：过滤所有标点。默认值为 0。
         :type FilterPunc: int
-        :param ConvertNumMode: 是否进行阿拉伯数字智能转换。0：不转换，直接输出中文数字，1：根据场景智能转换为阿拉伯数字。默认值为1
+        :param ConvertNumMode: 是否进行阿拉伯数字智能转换。0：不转换，直接输出中文数字，1：根据场景智能转换为阿拉伯数字。默认值为1。
         :type ConvertNumMode: int
-        :param WordInfo: 是否显示词级别时间戳。0：不显示；1：显示，不包含标点时间戳，2：显示，包含标点时间戳。支持引擎8k_zh，16k_zh，16k_en，16k_ca，16k_ja，16k_wuu-SH
+        :param WordInfo: 是否显示词级别时间戳。0：不显示；1：显示，不包含标点时间戳，2：显示，包含标点时间戳。支持引擎8k_zh，16k_zh，16k_en，16k_ca，16k_ja，16k_wuu-SH。默认值为 0。
         :type WordInfo: int
         """
         self.ProjectId = None
@@ -1286,14 +1286,14 @@ class UpdateAsrVocabRequest(AbstractModel):
         """
         :param VocabId: 热词表ID
         :type VocabId: str
-        :param Name: 热词表名称
+        :param Name: 热词表名称，长度在1-255之间
         :type Name: str
         :param WordWeights: 词权重数组，包含全部的热词和对应的权重。每个热词的长度不大于10，权重为[1,10]之间整数，数组长度不大于128
         :type WordWeights: list of HotWord
         :param WordWeightStr: 词权重文件（纯文本文件）的二进制base64编码，以行分隔，每行的格式为word|weight，即以英文符号|为分割，左边为词，右边为权重，如：你好|5。
 当用户传此参数（参数长度大于0），即以此参数解析词权重，WordWeights会被忽略
         :type WordWeightStr: str
-        :param Description: 热词表描述
+        :param Description: 热词表描述，长度在0-1000之间
         :type Description: str
         """
         self.VocabId = None

@@ -54,8 +54,36 @@ class TemClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateCosTokenV2(self, request):
+        """生成Cos临时秘钥
+
+        :param request: Request instance for CreateCosTokenV2.
+        :type request: :class:`tencentcloud.tem.v20201221.models.CreateCosTokenV2Request`
+        :rtype: :class:`tencentcloud.tem.v20201221.models.CreateCosTokenV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateCosTokenV2", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateCosTokenV2Response()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateNamespace(self, request):
-        """创建命名空间
+        """创建环境
 
         :param request: Request instance for CreateNamespace.
         :type request: :class:`tencentcloud.tem.v20201221.models.CreateNamespaceRequest`
@@ -82,8 +110,179 @@ class TemClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateResource(self, request):
+        """绑定云资源
+
+        :param request: Request instance for CreateResource.
+        :type request: :class:`tencentcloud.tem.v20201221.models.CreateResourceRequest`
+        :rtype: :class:`tencentcloud.tem.v20201221.models.CreateResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateResource", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateResourceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateServiceV2(self, request):
+        """创建服务
+
+        :param request: Request instance for CreateServiceV2.
+        :type request: :class:`tencentcloud.tem.v20201221.models.CreateServiceV2Request`
+        :rtype: :class:`tencentcloud.tem.v20201221.models.CreateServiceV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateServiceV2", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateServiceV2Response()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteIngress(self, request):
+        """删除 Ingress 规则
+
+        :param request: Request instance for DeleteIngress.
+        :type request: :class:`tencentcloud.tem.v20201221.models.DeleteIngressRequest`
+        :rtype: :class:`tencentcloud.tem.v20201221.models.DeleteIngressResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteIngress", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteIngressResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeployServiceV2(self, request):
+        """服务部署
+         - 创建新版本
+         - 部署新版本
+         - 一个服务只能有一个版本，所以前端无需关心版本及版本ID
+
+        :param request: Request instance for DeployServiceV2.
+        :type request: :class:`tencentcloud.tem.v20201221.models.DeployServiceV2Request`
+        :rtype: :class:`tencentcloud.tem.v20201221.models.DeployServiceV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeployServiceV2", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeployServiceV2Response()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeIngress(self, request):
+        """查询 Ingress 规则
+
+        :param request: Request instance for DescribeIngress.
+        :type request: :class:`tencentcloud.tem.v20201221.models.DescribeIngressRequest`
+        :rtype: :class:`tencentcloud.tem.v20201221.models.DescribeIngressResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeIngress", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeIngressResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeIngresses(self, request):
+        """查询 Ingress 规则列表
+
+        :param request: Request instance for DescribeIngresses.
+        :type request: :class:`tencentcloud.tem.v20201221.models.DescribeIngressesRequest`
+        :rtype: :class:`tencentcloud.tem.v20201221.models.DescribeIngressesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeIngresses", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeIngressesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeNamespaces(self, request):
-        """获取租户命名空间列表
+        """获取租户环境列表
 
         :param request: Request instance for DescribeNamespaces.
         :type request: :class:`tencentcloud.tem.v20201221.models.DescribeNamespacesRequest`
@@ -96,6 +295,34 @@ class TemClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNamespacesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeServiceRunPodListV2(self, request):
+        """获取服务下面运行pod列表
+
+        :param request: Request instance for DescribeServiceRunPodListV2.
+        :type request: :class:`tencentcloud.tem.v20201221.models.DescribeServiceRunPodListV2Request`
+        :rtype: :class:`tencentcloud.tem.v20201221.models.DescribeServiceRunPodListV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeServiceRunPodListV2", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeServiceRunPodListV2Response()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -139,7 +366,7 @@ class TemClient(AbstractClient):
 
 
     def ModifyNamespace(self, request):
-        """编辑命名空间
+        """编辑环境
 
         :param request: Request instance for ModifyNamespace.
         :type request: :class:`tencentcloud.tem.v20201221.models.ModifyNamespaceRequest`
