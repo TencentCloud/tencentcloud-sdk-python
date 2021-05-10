@@ -196,9 +196,6 @@ class TemClient(AbstractClient):
 
     def DeployServiceV2(self, request):
         """服务部署
-         - 创建新版本
-         - 部署新版本
-         - 一个服务只能有一个版本，所以前端无需关心版本及版本ID
 
         :param request: Request instance for DeployServiceV2.
         :type request: :class:`tencentcloud.tem.v20201221.models.DeployServiceV2Request`

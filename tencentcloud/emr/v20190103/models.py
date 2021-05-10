@@ -1496,6 +1496,8 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
         :type Currency: str
         :param RouterCount: 扩容的Router节点数量。
         :type RouterCount: int
+        :param MasterCount: 扩容的Master节点数量。
+        :type MasterCount: int
         """
         self.TimeUnit = None
         self.TimeSpan = None
@@ -1506,6 +1508,7 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
         self.TaskCount = None
         self.Currency = None
         self.RouterCount = None
+        self.MasterCount = None
 
 
     def _deserialize(self, params):
@@ -1518,6 +1521,7 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
         self.TaskCount = params.get("TaskCount")
         self.Currency = params.get("Currency")
         self.RouterCount = params.get("RouterCount")
+        self.MasterCount = params.get("MasterCount")
 
 
 class InquiryPriceScaleOutInstanceResponse(AbstractModel):

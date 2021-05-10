@@ -1999,12 +1999,16 @@ class DeleteServiceRequest(AbstractModel):
         """
         :param ServiceId: 待删除服务的唯一 ID。
         :type ServiceId: str
+        :param SkipVerification: 跳过删除前置条件校验（仅支持独享实例上的服务）
+        :type SkipVerification: int
         """
         self.ServiceId = None
+        self.SkipVerification = None
 
 
     def _deserialize(self, params):
         self.ServiceId = params.get("ServiceId")
+        self.SkipVerification = params.get("SkipVerification")
 
 
 class DeleteServiceResponse(AbstractModel):

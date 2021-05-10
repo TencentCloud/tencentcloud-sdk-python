@@ -5015,6 +5015,69 @@ class CreateContentReviewTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateHeadTailTemplateRequest(AbstractModel):
+    """CreateHeadTailTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 模板名，长度限制 64 个字符。
+        :type Name: str
+        :param Comment: 模板描述信息，长度限制 256 个字符。
+        :type Comment: str
+        :param HeadCandidateSet: 片头候选列表，填写视频的 FileId。转码时将自动选择与正片宽高比最接近的一个片头（相同宽高比时，靠前的候选项优先）。最多支持 5 个候选片头。
+        :type HeadCandidateSet: list of str
+        :param TailCandidateSet: 片尾候选列表，填写视频的 FileId。转码时将自动选择与正片宽高比最接近的一个片尾（相同宽高比时，靠前的候选项优先）。最多支持 5 个候选片尾。
+        :type TailCandidateSet: list of str
+        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+<li> gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊；</li>
+<li> white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充；</li>
+<li> black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+默认值：stretch 。
+        :type FillType: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Name = None
+        self.Comment = None
+        self.HeadCandidateSet = None
+        self.TailCandidateSet = None
+        self.FillType = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        self.HeadCandidateSet = params.get("HeadCandidateSet")
+        self.TailCandidateSet = params.get("TailCandidateSet")
+        self.FillType = params.get("FillType")
+        self.SubAppId = params.get("SubAppId")
+
+
+class CreateHeadTailTemplateResponse(AbstractModel):
+    """CreateHeadTailTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 片头片尾模板号。
+        :type Definition: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Definition = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateImageProcessingTemplateRequest(AbstractModel):
     """CreateImageProcessingTemplate请求参数结构体
 
@@ -6145,6 +6208,44 @@ class DeleteContentReviewTemplateRequest(AbstractModel):
 
 class DeleteContentReviewTemplateResponse(AbstractModel):
     """DeleteContentReviewTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteHeadTailTemplateRequest(AbstractModel):
+    """DeleteHeadTailTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 片头片尾模板号。
+        :type Definition: int
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Definition = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DeleteHeadTailTemplateResponse(AbstractModel):
+    """DeleteHeadTailTemplate返回参数结构体
 
     """
 
@@ -7518,6 +7619,65 @@ class DescribeEventsStateResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.CountOfEventsToPull = params.get("CountOfEventsToPull")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeHeadTailTemplatesRequest(AbstractModel):
+    """DescribeHeadTailTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definitions: 片头片尾模板号，数组长度限制：100。
+        :type Definitions: list of int
+        :param Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param Limit: 返回记录条数，默认值：10，最大值：100。
+        :type Limit: int
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Definitions = None
+        self.Offset = None
+        self.Limit = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definitions = params.get("Definitions")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.SubAppId = params.get("SubAppId")
+
+
+class DescribeHeadTailTemplatesResponse(AbstractModel):
+    """DescribeHeadTailTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合过滤条件的记录总数。
+        :type TotalCount: int
+        :param HeadTailTemplateSet: 片头片尾模板详情列表。
+        :type HeadTailTemplateSet: list of HeadTailTemplate
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.HeadTailTemplateSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("HeadTailTemplateSet") is not None:
+            self.HeadTailTemplateSet = []
+            for item in params.get("HeadTailTemplateSet"):
+                obj = HeadTailTemplate()
+                obj._deserialize(item)
+                self.HeadTailTemplateSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -9822,6 +9982,65 @@ class HeadTailConfigureInfoForUpdate(AbstractModel):
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
+
+
+class HeadTailTaskInput(AbstractModel):
+    """片尾任务输入类型。
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 片头片尾模板号。
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+
+
+class HeadTailTemplate(AbstractModel):
+    """片头片尾模板详情
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 片头片尾模板号。
+        :type Definition: int
+        :param Name: 模板名，最大支持 64 个字符。
+        :type Name: str
+        :param Comment: 模板描述，最大支持 256 个字符。
+        :type Comment: str
+        :param HeadCandidateSet: 片头候选列表。使用时会选择跟正片分辨率最贴近的一个使用，当存在相同的候选时，选择第一个使用，最大支持 5 个。
+        :type HeadCandidateSet: list of str
+        :param TailCandidateSet: 片尾候选列表。使用时会选择跟正片分辨率最贴近的一个使用，当存在相同的候选时，选择第一个使用，最大支持 5 个。
+        :type TailCandidateSet: list of str
+        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+<li> gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊；</li>
+<li> white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充；</li>
+<li> black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+默认值：stretch 。
+        :type FillType: str
+        """
+        self.Definition = None
+        self.Name = None
+        self.Comment = None
+        self.HeadCandidateSet = None
+        self.TailCandidateSet = None
+        self.FillType = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        self.HeadCandidateSet = params.get("HeadCandidateSet")
+        self.TailCandidateSet = params.get("TailCandidateSet")
+        self.FillType = params.get("FillType")
 
 
 class HighlightSegmentItem(AbstractModel):
@@ -12931,6 +13150,69 @@ class ModifyEventConfigRequest(AbstractModel):
 
 class ModifyEventConfigResponse(AbstractModel):
     """ModifyEventConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyHeadTailTemplateRequest(AbstractModel):
+    """ModifyHeadTailTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Definition: 片头片尾模板号。
+        :type Definition: int
+        :param Name: 模板名，长度限制 64 个字符。不传代表不修改。
+        :type Name: str
+        :param Comment: 模板描述，长度限制 256 个字符。不传代表不修改，传空代表清空。
+        :type Comment: str
+        :param HeadCandidateSet: 片头候选列表，填写视频的 FileId。转码时将自动选择与正片宽高比最接近的一个片头（相同宽高比时，靠前的候选项优先）。最多支持 5 个候选片头。不传代表不修改，传空数组代表清空。
+        :type HeadCandidateSet: list of str
+        :param TailCandidateSet: 片尾候选列表，填写视频的 FileId。转码时将自动选择与正片宽高比最接近的一个片尾（相同宽高比时，靠前的候选项优先）。最多支持 5 个候选片头。不传代表不修改，传空数组代表清空。
+        :type TailCandidateSet: list of str
+        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+<li> gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊；</li>
+<li> white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充；</li>
+<li> black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+默认值为不修改。
+        :type FillType: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.Definition = None
+        self.Name = None
+        self.Comment = None
+        self.HeadCandidateSet = None
+        self.TailCandidateSet = None
+        self.FillType = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        self.HeadCandidateSet = params.get("HeadCandidateSet")
+        self.TailCandidateSet = params.get("TailCandidateSet")
+        self.FillType = params.get("FillType")
+        self.SubAppId = params.get("SubAppId")
+
+
+class ModifyHeadTailTemplateResponse(AbstractModel):
+    """ModifyHeadTailTemplate返回参数结构体
 
     """
 
@@ -17589,6 +17871,8 @@ class TranscodeTaskInput(AbstractModel):
         :type WatermarkSet: list of WatermarkInput
         :param MosaicSet: 马赛克列表，最大可支持 10 张。
         :type MosaicSet: list of MosaicInput
+        :param HeadTailSet: 片头片尾列表，支持多片头片尾，最大可支持 10 个。
+        :type HeadTailSet: list of HeadTailTaskInput
         :param StartTimeOffset: 转码后的视频的起始时间偏移，单位：秒。
 <li>不填或填0，表示转码后的视频从原始视频的起始位置开始；</li>
 <li>当数值大于0时（假设为 n），表示转码后的视频从原始视频的第 n 秒位置开始；</li>
@@ -17603,6 +17887,7 @@ class TranscodeTaskInput(AbstractModel):
         self.Definition = None
         self.WatermarkSet = None
         self.MosaicSet = None
+        self.HeadTailSet = None
         self.StartTimeOffset = None
         self.EndTimeOffset = None
 
@@ -17621,6 +17906,12 @@ class TranscodeTaskInput(AbstractModel):
                 obj = MosaicInput()
                 obj._deserialize(item)
                 self.MosaicSet.append(obj)
+        if params.get("HeadTailSet") is not None:
+            self.HeadTailSet = []
+            for item in params.get("HeadTailSet"):
+                obj = HeadTailTaskInput()
+                obj._deserialize(item)
+                self.HeadTailSet.append(obj)
         self.StartTimeOffset = params.get("StartTimeOffset")
         self.EndTimeOffset = params.get("EndTimeOffset")
 
