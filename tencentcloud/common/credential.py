@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Copyright (c) 2018 Tencent Ltd.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,6 +25,7 @@ except ImportError:
     from urllib import urlopen
 
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
+from common_client import CommonClient
 
 class Credential(object):
     def __init__(self, secretId, secretKey, token=None):
@@ -131,3 +133,75 @@ class CVMRoleCredential(object):
             # we shoud log it
             # maybe we should validate token to None as well
             pass
+
+
+class STSAssumeRoleCredential(object):
+    """使用STSAssumeRoleCredential，制动role，
+    可以自动生成临时凭证，并使用临时凭证调用接口
+
+    """
+    _region = "ap-guangzhou"
+    _version = '2018-08-13'
+    _service = "sts"
+
+    def __init__(self, secret_id=None, secret_key=None):
+        """
+        :param secret_id: 接口调用凭证id
+        :type secret_id: str
+        :param secret_key: 接口调用凭证key
+        :type secret_key: str
+        """
+
+        if secret_id is None or secret_key is None:
+            raise TencentCloudSDKException("STSAssumeRoleCredential Parameter Error, "
+                                           "secret_id and secret_key all required.")
+        self._secret_id = secret_id
+        self._secret_key = secret_key
+        self._token = None
+        self._tmp_secret_id = None
+        self._tmp_secret_key = None
+        self._expired_time = 0
+
+        self._last_role_arn = None
+        self._tmp_credential = None
+
+    def get_credential(self, role_arn, role_session_name, duration_seconds=7200):
+        """
+        https://cloud.tencent.com/document/api/1312/48197
+        此函数自动使用初始secret_id和secret_key，自动调用上述链接中获取临时凭证的接口，并返回临时凭证
+
+        :param role_arn: 角色的资源描述，上述链接RoleArn参数中有详细获取方式
+        :type role_arn: str
+        :param role_session_name: 临时会话名称，由用户自定义名称
+        :type role_session_name: str
+        :param duration_seconds: 获取临时凭证的有效期，默认7200s
+        :type duration_seconds: int
+
+        """
+
+        if role_arn == self._last_role_arn and self._tmp_credential and self._expired_time >= int(time.time()):
+            return self._tmp_credential
+
+        return self.get_sts_tmp_role_arn(role_arn, role_session_name, duration_seconds)
+
+    def get_sts_tmp_role_arn(self, role_arn, role_session_name, duration_seconds=7200):
+        cred = Credential(self._secret_id, self._secret_key)
+
+        common_client = CommonClient(credential=cred, region=self._region, version=self._version, service=self._service)
+        params = {
+            "RoleArn": role_arn,
+            "RoleSessionName": role_session_name,
+            "DurationSeconds": duration_seconds
+
+        }
+
+        t_c = common_client.call_json("AssumeRole", params)
+        self._token = t_c["Response"]["Credentials"]["Token"]
+        self._tmp_secret_id = t_c["Response"]["Credentials"]["TmpSecretId"]
+        self._tmp_secret_key = t_c["Response"]["Credentials"]["TmpSecretKey"]
+        self._expired_time = t_c["Response"]["ExpiredTime"]
+
+        self._tmp_credential = Credential(self._tmp_secret_id, self._tmp_secret_key, self._token)
+        self._last_role_arn = role_arn
+
+        return self._tmp_credential
