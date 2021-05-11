@@ -2547,12 +2547,15 @@ class CreateDirectConnectGatewayRequest(AbstractModel):
         :type GatewayType: str
         :param ModeType: 云联网路由发布模式，可选值：`standard`（标准模式）、`exquisite`（精细模式）。只有云联网类型专线网关才支持`ModeType`。
         :type ModeType: str
+        :param Zone: 专线网关可用区
+        :type Zone: str
         """
         self.DirectConnectGatewayName = None
         self.NetworkType = None
         self.NetworkInstanceId = None
         self.GatewayType = None
         self.ModeType = None
+        self.Zone = None
 
 
     def _deserialize(self, params):
@@ -2561,6 +2564,7 @@ class CreateDirectConnectGatewayRequest(AbstractModel):
         self.NetworkInstanceId = params.get("NetworkInstanceId")
         self.GatewayType = params.get("GatewayType")
         self.ModeType = params.get("ModeType")
+        self.Zone = params.get("Zone")
 
 
 class CreateDirectConnectGatewayResponse(AbstractModel):
@@ -9577,6 +9581,12 @@ NAT类型支持网络地址转换配置，类型确定后不能修改；一个�
         :param ModeType: 云联网路由发布模式：`standard`（标准模式）、`exquisite`（精细模式）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModeType: str
+        :param LocalZone: 是否为localZone专线网关。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LocalZone: bool
+        :param Zone: 专线网关所在可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
         """
         self.DirectConnectGatewayId = None
         self.DirectConnectGatewayName = None
@@ -9593,6 +9603,8 @@ NAT类型支持网络地址转换配置，类型确定后不能修改；一个�
         self.NatGatewayId = None
         self.VXLANSupport = None
         self.ModeType = None
+        self.LocalZone = None
+        self.Zone = None
 
 
     def _deserialize(self, params):
@@ -9611,6 +9623,8 @@ NAT类型支持网络地址转换配置，类型确定后不能修改；一个�
         self.NatGatewayId = params.get("NatGatewayId")
         self.VXLANSupport = params.get("VXLANSupport")
         self.ModeType = params.get("ModeType")
+        self.LocalZone = params.get("LocalZone")
+        self.Zone = params.get("Zone")
 
 
 class DirectConnectGatewayCcnRoute(AbstractModel):

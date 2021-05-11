@@ -66,22 +66,22 @@ class CCIToken(AbstractModel):
 
     def __init__(self):
         """
+        :param Word: 错别字内容
+        :type Word: str
         :param BeginOffset: 错别字的起始位置，从0开始
         :type BeginOffset: int
         :param CorrectWord: 错别字纠错结果
         :type CorrectWord: str
-        :param Word: 错别字内容
-        :type Word: str
         """
+        self.Word = None
         self.BeginOffset = None
         self.CorrectWord = None
-        self.Word = None
 
 
     def _deserialize(self, params):
+        self.Word = params.get("Word")
         self.BeginOffset = params.get("BeginOffset")
         self.CorrectWord = params.get("CorrectWord")
-        self.Word = params.get("Word")
 
 
 class ChatBotRequest(AbstractModel):
@@ -93,20 +93,20 @@ class ChatBotRequest(AbstractModel):
         """
         :param Query: 用户请求的query
         :type Query: str
-        :param Flag: 0: 通用闲聊, 1:儿童闲聊, 默认是通用闲聊
-        :type Flag: int
         :param OpenId: 服务的id,  主要用于儿童闲聊接口，比如手Q的openid
         :type OpenId: str
+        :param Flag: 0: 通用闲聊, 1:儿童闲聊, 默认是通用闲聊
+        :type Flag: int
         """
         self.Query = None
-        self.Flag = None
         self.OpenId = None
+        self.Flag = None
 
 
     def _deserialize(self, params):
         self.Query = params.get("Query")
-        self.Flag = params.get("Flag")
         self.OpenId = params.get("OpenId")
+        self.Flag = params.get("Flag")
 
 
 class ChatBotResponse(AbstractModel):
@@ -116,21 +116,21 @@ class ChatBotResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Confidence: 对于当前输出回复的自信度
-        :type Confidence: float
         :param Reply: 闲聊回复
         :type Reply: str
+        :param Confidence: 对于当前输出回复的自信度
+        :type Confidence: float
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Confidence = None
         self.Reply = None
+        self.Confidence = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
-        self.Confidence = params.get("Confidence")
         self.Reply = params.get("Reply")
+        self.Confidence = params.get("Confidence")
         self.RequestId = params.get("RequestId")
 
 
@@ -143,24 +143,56 @@ class ClassificationResult(AbstractModel):
         """
         :param FirstClassName: 一级分类名称
         :type FirstClassName: str
-        :param FirstClassProbability: 一级分类概率
-        :type FirstClassProbability: float
         :param SecondClassName: 二级分类名称
         :type SecondClassName: str
+        :param FirstClassProbability: 一级分类概率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FirstClassProbability: float
         :param SecondClassProbability: 二级分类概率
+注意：此字段可能返回 null，表示取不到有效值。
         :type SecondClassProbability: float
+        :param ThirdClassName: 三级分类名称，仅有当新闻领域五分类可能出现，详情见文本分类文档
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ThirdClassName: str
+        :param ThirdClassProbability: 三级分类概率，仅有当新闻领域五分类可能出现，详情见文本分类文档
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ThirdClassProbability: float
+        :param FourthClassName: 四级分类名称，仅有当新闻领域五分类可能出现，详情见文本分类文档
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FourthClassName: str
+        :param FourthClassProbability: 四级分类概率，仅有当新闻领域五分类可能出现，详情见文本分类文档
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FourthClassProbability: float
+        :param FifthClassName: 五级分类名称，仅有当新闻领域五分类可能出现，详情见文本分类文档
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FifthClassName: str
+        :param FifthClassProbability: 五级分类概率，仅有当新闻领域五分类可能出现，详情见文本分类文档
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FifthClassProbability: float
         """
         self.FirstClassName = None
-        self.FirstClassProbability = None
         self.SecondClassName = None
+        self.FirstClassProbability = None
         self.SecondClassProbability = None
+        self.ThirdClassName = None
+        self.ThirdClassProbability = None
+        self.FourthClassName = None
+        self.FourthClassProbability = None
+        self.FifthClassName = None
+        self.FifthClassProbability = None
 
 
     def _deserialize(self, params):
         self.FirstClassName = params.get("FirstClassName")
-        self.FirstClassProbability = params.get("FirstClassProbability")
         self.SecondClassName = params.get("SecondClassName")
+        self.FirstClassProbability = params.get("FirstClassProbability")
         self.SecondClassProbability = params.get("SecondClassProbability")
+        self.ThirdClassName = params.get("ThirdClassName")
+        self.ThirdClassProbability = params.get("ThirdClassProbability")
+        self.FourthClassName = params.get("FourthClassName")
+        self.FourthClassProbability = params.get("FourthClassProbability")
+        self.FifthClassName = params.get("FifthClassName")
+        self.FifthClassProbability = params.get("FifthClassProbability")
 
 
 class CreateDictRequest(AbstractModel):
@@ -192,6 +224,7 @@ class CreateDictResponse(AbstractModel):
     def __init__(self):
         """
         :param DictId: 创建的自定义词库ID。
+注意：此字段可能返回 null，表示取不到有效值。
         :type DictId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -212,23 +245,23 @@ class CreateWordItemsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param WordItems: 待添加的词条集合。
-        :type WordItems: list of WordItem
         :param DictId: 自定义词库ID。
         :type DictId: str
+        :param WordItems: 待添加的词条集合。
+        :type WordItems: list of WordItem
         """
-        self.WordItems = None
         self.DictId = None
+        self.WordItems = None
 
 
     def _deserialize(self, params):
+        self.DictId = params.get("DictId")
         if params.get("WordItems") is not None:
             self.WordItems = []
             for item in params.get("WordItems"):
                 obj = WordItem()
                 obj._deserialize(item)
                 self.WordItems.append(obj)
-        self.DictId = params.get("DictId")
 
 
 class CreateWordItemsResponse(AbstractModel):
@@ -289,23 +322,23 @@ class DeleteWordItemsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param WordItems: 待删除的词条集合。
-        :type WordItems: list of WordItem
         :param DictId: 自定义词库ID。
         :type DictId: str
+        :param WordItems: 待删除的词条集合。
+        :type WordItems: list of WordItem
         """
-        self.WordItems = None
         self.DictId = None
+        self.WordItems = None
 
 
     def _deserialize(self, params):
+        self.DictId = params.get("DictId")
         if params.get("WordItems") is not None:
             self.WordItems = []
             for item in params.get("WordItems"):
                 obj = WordItem()
                 obj._deserialize(item)
                 self.WordItems.append(obj)
-        self.DictId = params.get("DictId")
 
 
 class DeleteWordItemsResponse(AbstractModel):
@@ -412,6 +445,7 @@ class DescribeDictResponse(AbstractModel):
     def __init__(self):
         """
         :param Dicts: 查询到的词库信息列表。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Dicts: list of DictInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -458,26 +492,27 @@ class DescribeDictsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Dicts: 自定义词库信息列表。
-        :type Dicts: list of DictInfo
         :param TotalCount: 记录总条数。
         :type TotalCount: int
+        :param Dicts: 自定义词库信息列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Dicts: list of DictInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Dicts = None
         self.TotalCount = None
+        self.Dicts = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
         if params.get("Dicts") is not None:
             self.Dicts = []
             for item in params.get("Dicts"):
                 obj = DictInfo()
                 obj._deserialize(item)
                 self.Dicts.append(obj)
-        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -618,23 +653,23 @@ class DescribeWordItemsRequest(AbstractModel):
         """
         :param DictId: 自定义词库ID。
         :type DictId: str
-        :param Limit: 每页数据量，范围为1~100，默认为10。
-        :type Limit: int
         :param Offset: 分页偏移量，从0开始，默认为0。
         :type Offset: int
+        :param Limit: 每页数据量，范围为1~100，默认为10。
+        :type Limit: int
         :param Text: 待检索的词条文本，支持模糊匹配。
         :type Text: str
         """
         self.DictId = None
-        self.Limit = None
         self.Offset = None
+        self.Limit = None
         self.Text = None
 
 
     def _deserialize(self, params):
         self.DictId = params.get("DictId")
-        self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
         self.Text = params.get("Text")
 
 
@@ -645,26 +680,27 @@ class DescribeWordItemsResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param WordItems: 词条信息列表。
-        :type WordItems: list of WordItem
         :param TotalCount: 词条记录总条数。
         :type TotalCount: int
+        :param WordItems: 词条信息列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WordItems: list of WordItem
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.WordItems = None
         self.TotalCount = None
+        self.WordItems = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
         if params.get("WordItems") is not None:
             self.WordItems = []
             for item in params.get("WordItems"):
                 obj = WordItem()
                 obj._deserialize(item)
                 self.WordItems.append(obj)
-        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -675,30 +711,33 @@ class DictInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: 自定义词库ID。
-        :type Id: str
         :param Name: 自定义词库名称。
         :type Name: str
-        :param CreateTime: 自定义词库创建时间，形式为:yyyy-mm-dd hh:mm:ss。
-        :type CreateTime: str
+        :param Id: 自定义词库ID。
+        :type Id: str
         :param Description: 自定义词库描述信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param UpdateTime: 自定义词库修改时间，形式为:yyyy-mm-dd hh:mm:ss。
+注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
+        :param CreateTime: 自定义词库创建时间，形式为:yyyy-mm-dd hh:mm:ss。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
         """
-        self.Id = None
         self.Name = None
-        self.CreateTime = None
+        self.Id = None
         self.Description = None
         self.UpdateTime = None
+        self.CreateTime = None
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
         self.Name = params.get("Name")
-        self.CreateTime = params.get("CreateTime")
+        self.Id = params.get("Id")
         self.Description = params.get("Description")
         self.UpdateTime = params.get("UpdateTime")
+        self.CreateTime = params.get("CreateTime")
 
 
 class DpToken(AbstractModel):
@@ -708,26 +747,30 @@ class DpToken(AbstractModel):
 
     def __init__(self):
         """
-        :param HeadId: 当前词父节点的序号
-        :type HeadId: int
-        :param Id: 基础词的序号
-        :type Id: int
         :param Relation: 句法依存关系的类型
+注意：此字段可能返回 null，表示取不到有效值。
         :type Relation: str
+        :param HeadId: 当前词父节点的序号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HeadId: int
         :param Word: 基础词
+注意：此字段可能返回 null，表示取不到有效值。
         :type Word: str
+        :param Id: 基础词的序号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
         """
-        self.HeadId = None
-        self.Id = None
         self.Relation = None
+        self.HeadId = None
         self.Word = None
+        self.Id = None
 
 
     def _deserialize(self, params):
-        self.HeadId = params.get("HeadId")
-        self.Id = params.get("Id")
         self.Relation = params.get("Relation")
+        self.HeadId = params.get("HeadId")
         self.Word = params.get("Word")
+        self.Id = params.get("Id")
 
 
 class EntityRelationContent(AbstractModel):
@@ -738,15 +781,18 @@ class EntityRelationContent(AbstractModel):
     def __init__(self):
         """
         :param Object: 实体关系查询返回关系的object
+注意：此字段可能返回 null，表示取不到有效值。
         :type Object: list of EntityRelationObject
-        :param Subject: 实体关系查询返回关系的subject
-        :type Subject: list of EntityRelationSubject
         :param Relation: 实体关系查询返回的关系名称
+注意：此字段可能返回 null，表示取不到有效值。
         :type Relation: str
+        :param Subject: 实体关系查询返回关系的subject
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Subject: list of EntityRelationSubject
         """
         self.Object = None
-        self.Subject = None
         self.Relation = None
+        self.Subject = None
 
 
     def _deserialize(self, params):
@@ -756,13 +802,13 @@ class EntityRelationContent(AbstractModel):
                 obj = EntityRelationObject()
                 obj._deserialize(item)
                 self.Object.append(obj)
+        self.Relation = params.get("Relation")
         if params.get("Subject") is not None:
             self.Subject = []
             for item in params.get("Subject"):
                 obj = EntityRelationSubject()
                 obj._deserialize(item)
                 self.Subject.append(obj)
-        self.Relation = params.get("Relation")
 
 
 class EntityRelationObject(AbstractModel):
@@ -772,22 +818,25 @@ class EntityRelationObject(AbstractModel):
 
     def __init__(self):
         """
+        :param Popular: object对应popular值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Popular: list of int
         :param Id: object对应id
+注意：此字段可能返回 null，表示取不到有效值。
         :type Id: list of str
         :param Name: object对应name
+注意：此字段可能返回 null，表示取不到有效值。
         :type Name: list of str
-        :param Popular: object对应popular值
-        :type Popular: list of int
         """
+        self.Popular = None
         self.Id = None
         self.Name = None
-        self.Popular = None
 
 
     def _deserialize(self, params):
+        self.Popular = params.get("Popular")
         self.Id = params.get("Id")
         self.Name = params.get("Name")
-        self.Popular = params.get("Popular")
 
 
 class EntityRelationSubject(AbstractModel):
@@ -797,22 +846,22 @@ class EntityRelationSubject(AbstractModel):
 
     def __init__(self):
         """
+        :param Popular: Subject对应popular
+        :type Popular: list of int
         :param Id: Subject对应id
         :type Id: list of str
         :param Name: Subject对应name
         :type Name: list of str
-        :param Popular: Subject对应popular
-        :type Popular: list of int
         """
+        self.Popular = None
         self.Id = None
         self.Name = None
-        self.Popular = None
 
 
     def _deserialize(self, params):
+        self.Popular = params.get("Popular")
         self.Id = params.get("Id")
         self.Name = params.get("Name")
-        self.Popular = params.get("Popular")
 
 
 class Keyword(AbstractModel):
@@ -865,6 +914,7 @@ class KeywordsExtractionResponse(AbstractModel):
     def __init__(self):
         """
         :param Keywords: 关键词提取结果
+注意：此字段可能返回 null，表示取不到有效值。
         :type Keywords: list of Keyword
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -922,6 +972,7 @@ class LexicalAnalysisResponse(AbstractModel):
 <li>LOC：表示地名，如北京、华山</li>
 <li>ORG：表示机构团体名，如腾讯、最高人民法院、人大附中</li>
 <li>PRODUCTION：表示产品名，如QQ、微信、iPhone</li>
+注意：此字段可能返回 null，表示取不到有效值。
         :type NerTokens: list of NerToken
         :param PosTokens: 分词&词性标注结果（词性表请参见附录）
         :type PosTokens: list of PosToken
@@ -956,26 +1007,26 @@ class NerToken(AbstractModel):
 
     def __init__(self):
         """
-        :param BeginOffset: 起始位置
-        :type BeginOffset: int
-        :param Length: 长度
-        :type Length: int
-        :param Type: 命名实体类型
-        :type Type: str
         :param Word: 基础词
         :type Word: str
+        :param Length: 长度
+        :type Length: int
+        :param BeginOffset: 起始位置
+        :type BeginOffset: int
+        :param Type: 命名实体类型
+        :type Type: str
         """
-        self.BeginOffset = None
-        self.Length = None
-        self.Type = None
         self.Word = None
+        self.Length = None
+        self.BeginOffset = None
+        self.Type = None
 
 
     def _deserialize(self, params):
-        self.BeginOffset = params.get("BeginOffset")
-        self.Length = params.get("Length")
-        self.Type = params.get("Type")
         self.Word = params.get("Word")
+        self.Length = params.get("Length")
+        self.BeginOffset = params.get("BeginOffset")
+        self.Type = params.get("Type")
 
 
 class PosToken(AbstractModel):
@@ -985,26 +1036,26 @@ class PosToken(AbstractModel):
 
     def __init__(self):
         """
-        :param BeginOffset: 起始位置
-        :type BeginOffset: int
-        :param Length: 长度
-        :type Length: int
-        :param Pos: 词性
-        :type Pos: str
         :param Word: 基础词
         :type Word: str
+        :param Length: 长度
+        :type Length: int
+        :param BeginOffset: 起始位置
+        :type BeginOffset: int
+        :param Pos: 词性
+        :type Pos: str
         """
-        self.BeginOffset = None
-        self.Length = None
-        self.Pos = None
         self.Word = None
+        self.Length = None
+        self.BeginOffset = None
+        self.Pos = None
 
 
     def _deserialize(self, params):
-        self.BeginOffset = params.get("BeginOffset")
-        self.Length = params.get("Length")
-        self.Pos = params.get("Pos")
         self.Word = params.get("Word")
+        self.Length = params.get("Length")
+        self.BeginOffset = params.get("BeginOffset")
+        self.Pos = params.get("Pos")
 
 
 class SearchResult(AbstractModel):
@@ -1014,25 +1065,27 @@ class SearchResult(AbstractModel):
 
     def __init__(self):
         """
+        :param Text: 被搜索的词条文本。
+        :type Text: str
         :param IsExist: 0表示词条不存在，1表示存在。
         :type IsExist: int
         :param MatchText: 匹配到的词条文本。
+注意：此字段可能返回 null，表示取不到有效值。
         :type MatchText: str
-        :param Text: 被搜索的词条文本。
-        :type Text: str
         :param Pos: 词条的词性。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Pos: str
         """
+        self.Text = None
         self.IsExist = None
         self.MatchText = None
-        self.Text = None
         self.Pos = None
 
 
     def _deserialize(self, params):
+        self.Text = params.get("Text")
         self.IsExist = params.get("IsExist")
         self.MatchText = params.get("MatchText")
-        self.Text = params.get("Text")
         self.Pos = params.get("Pos")
 
 
@@ -1043,23 +1096,23 @@ class SearchWordItemsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param WordItems: 待检索的词条集合。
-        :type WordItems: list of WordItem
         :param DictId: 自定义词库ID。
         :type DictId: str
+        :param WordItems: 待检索的词条集合。
+        :type WordItems: list of WordItem
         """
-        self.WordItems = None
         self.DictId = None
+        self.WordItems = None
 
 
     def _deserialize(self, params):
+        self.DictId = params.get("DictId")
         if params.get("WordItems") is not None:
             self.WordItems = []
             for item in params.get("WordItems"):
                 obj = WordItem()
                 obj._deserialize(item)
                 self.WordItems.append(obj)
-        self.DictId = params.get("DictId")
 
 
 class SearchWordItemsResponse(AbstractModel):
@@ -1070,6 +1123,7 @@ class SearchWordItemsResponse(AbstractModel):
     def __init__(self):
         """
         :param Results: 词条检索结果集合。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Results: list of SearchResult
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1112,21 +1166,21 @@ class SentenceEmbeddingResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Dimension: 句向量的维度
-        :type Dimension: int
         :param Vector: 句向量数组
         :type Vector: list of float
+        :param Dimension: 句向量的维度
+        :type Dimension: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Dimension = None
         self.Vector = None
+        self.Dimension = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
-        self.Dimension = params.get("Dimension")
         self.Vector = params.get("Vector")
+        self.Dimension = params.get("Dimension")
         self.RequestId = params.get("RequestId")
 
 
@@ -1168,12 +1222,13 @@ class SentimentAnalysisResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Negative: 负面情感概率
-        :type Negative: float
-        :param Neutral: 中性情感概率，当输入参数Mode取值为3class时有效，否则值为空
-        :type Neutral: float
         :param Positive: 正面情感概率
         :type Positive: float
+        :param Neutral: 中性情感概率，当输入参数Mode取值为3class时有效，否则值为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Neutral: float
+        :param Negative: 负面情感概率
+        :type Negative: float
         :param Sentiment: 情感分类结果：
 1、positive，表示正面情感
 2、negative，表示负面情感
@@ -1182,17 +1237,17 @@ class SentimentAnalysisResponse(AbstractModel):
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Negative = None
-        self.Neutral = None
         self.Positive = None
+        self.Neutral = None
+        self.Negative = None
         self.Sentiment = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
-        self.Negative = params.get("Negative")
-        self.Neutral = params.get("Neutral")
         self.Positive = params.get("Positive")
+        self.Neutral = params.get("Neutral")
+        self.Negative = params.get("Negative")
         self.Sentiment = params.get("Sentiment")
         self.RequestId = params.get("RequestId")
 
@@ -1246,18 +1301,18 @@ class Similarity(AbstractModel):
 
     def __init__(self):
         """
-        :param Score: 相似度分数
-        :type Score: float
         :param Text: 目标文本句子
         :type Text: str
+        :param Score: 相似度分数
+        :type Score: float
         """
-        self.Score = None
         self.Text = None
+        self.Score = None
 
 
     def _deserialize(self, params):
-        self.Score = params.get("Score")
         self.Text = params.get("Text")
+        self.Score = params.get("Score")
 
 
 class TextClassificationRequest(AbstractModel):
@@ -1270,8 +1325,8 @@ class TextClassificationRequest(AbstractModel):
         :param Text: 待分类的文本（仅支持UTF-8格式，不超过10000字）
         :type Text: str
         :param Flag: 领域分类体系（默认取1值）：
-1、通用领域
-2、新闻领域
+1、通用领域，二分类
+2、新闻领域，五分类。类别数据不一定全部返回，详情见类目映射表
         :type Flag: int
         """
         self.Text = None
@@ -1316,7 +1371,7 @@ class TextCorrectionRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Text: 待纠错的文本（仅支持UTF-8格式，不超过2000字）
+        :param Text: 待纠错的文本（仅支持UTF-8格式，不超过2000字符）
         :type Text: str
         """
         self.Text = None
@@ -1334,6 +1389,7 @@ class TextCorrectionResponse(AbstractModel):
     def __init__(self):
         """
         :param CCITokens: 纠错详情
+注意：此字段可能返回 null，表示取不到有效值。
         :type CCITokens: list of CCIToken
         :param ResultText: 纠错后的文本
         :type ResultText: str
@@ -1365,8 +1421,7 @@ class TextSimilarityRequest(AbstractModel):
         """
         :param SrcText: 需要与目标句子计算相似度的源句子（仅支持UTF-8格式，不超过500字符）
         :type SrcText: str
-        :param TargetText: 需要与源句子计算相似度的一个或多个目标句子（仅支持UTF-8格式，目标句子的数量不超过100个，每个句子不超过500字符）
-注意：每成功计算1个目标句子与源句子的相似度算1次调用
+        :param TargetText: 目标句子
         :type TargetText: list of str
         """
         self.SrcText = None
@@ -1411,26 +1466,30 @@ class TripleContent(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: 实体id
-        :type Id: str
+        :param Popular: 实体流行度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Popular: int
         :param Name: 实体名称
+注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param Order: 实体order
+注意：此字段可能返回 null，表示取不到有效值。
         :type Order: int
-        :param Popular: 实体流行度
-        :type Popular: int
+        :param Id: 实体id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
         """
-        self.Id = None
+        self.Popular = None
         self.Name = None
         self.Order = None
-        self.Popular = None
+        self.Id = None
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
+        self.Popular = params.get("Popular")
         self.Name = params.get("Name")
         self.Order = params.get("Order")
-        self.Popular = params.get("Popular")
+        self.Id = params.get("Id")
 
 
 class UpdateDictRequest(AbstractModel):
@@ -1499,21 +1558,21 @@ class WordEmbeddingResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Dimension: 词向量的维度
-        :type Dimension: int
         :param Vector: 词向量数组
         :type Vector: list of float
+        :param Dimension: 词向量的维度
+        :type Dimension: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Dimension = None
         self.Vector = None
+        self.Dimension = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
-        self.Dimension = params.get("Dimension")
         self.Vector = params.get("Vector")
+        self.Dimension = params.get("Dimension")
         self.RequestId = params.get("RequestId")
 
 
@@ -1529,6 +1588,7 @@ class WordItem(AbstractModel):
         :param CreateTime: 词条创建时间。
         :type CreateTime: str
         :param Pos: 词条的词性。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Pos: str
         """
         self.Text = None

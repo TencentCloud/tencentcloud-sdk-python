@@ -2609,6 +2609,10 @@ class LaunchConfiguration(AbstractModel):
         :type InstanceNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
         :param InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
         :type InstanceChargePrepaid: :class:`tencentcloud.autoscaling.v20180419.models.InstanceChargePrepaid`
+        :param DiskTypePolicy: 云盘类型选择策略。取值范围：
+<br><li>ORIGINAL：使用设置的云盘类型
+<br><li>AUTOMATIC：自动选择当前可用区下可用的云盘类型
+        :type DiskTypePolicy: str
         """
         self.ProjectId = None
         self.LaunchConfigurationId = None
@@ -2636,6 +2640,7 @@ class LaunchConfiguration(AbstractModel):
         self.HostNameSettings = None
         self.InstanceNameSettings = None
         self.InstanceChargePrepaid = None
+        self.DiskTypePolicy = None
 
 
     def _deserialize(self, params):
@@ -2696,6 +2701,7 @@ class LaunchConfiguration(AbstractModel):
         if params.get("InstanceChargePrepaid") is not None:
             self.InstanceChargePrepaid = InstanceChargePrepaid()
             self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        self.DiskTypePolicy = params.get("DiskTypePolicy")
 
 
 class LifecycleActionResultInfo(AbstractModel):

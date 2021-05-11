@@ -391,6 +391,34 @@ class LighthouseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBundleDiscount(self, request):
+        """本接口（DescribeBundleDiscount）用于查询套餐折扣信息。
+
+        :param request: Request instance for DescribeBundleDiscount.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeBundleDiscountRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DescribeBundleDiscountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBundleDiscount", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBundleDiscountResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBundles(self, request):
         """本接口（DescribeBundles）用于查询套餐信息。
 

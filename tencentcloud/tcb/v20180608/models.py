@@ -936,7 +936,7 @@ class CreateAndDeployCloudBaseProjectRequest(AbstractModel):
         :type Type: str
         :param Parameters: 环境变量
         :type Parameters: list of KVPair
-        :param EnvAlias: 环境别名
+        :param EnvAlias: 环境别名。要以a-z开头，不能包含a-zA-z0-9-以外的字符
         :type EnvAlias: str
         :param RcJson: rc.json的内容
         :type RcJson: str
@@ -946,7 +946,7 @@ class CreateAndDeployCloudBaseProjectRequest(AbstractModel):
         :type Tags: list of str
         :param NetworkConfig: 网络配置
         :type NetworkConfig: str
-        :param FreeQuota: 免费额度的"basic", 不使用的用""
+        :param FreeQuota: 用户享有的免费额度级别，目前只能为“basic”，不传该字段或该字段为空，标识不享受免费额度。
         :type FreeQuota: str
         :param AutoDeployOnCodeChange: 是否代码变更触发自动部署
         :type AutoDeployOnCodeChange: bool
@@ -1546,6 +1546,48 @@ class CreateWxCloudBaseRunEnvResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateWxCloudBaseRunServerDBClusterRequest(AbstractModel):
+    """CreateWxCloudBaseRunServerDBCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AccountPassword: 账户密码
+        :type AccountPassword: str
+        :param EnvId: 环境ID
+        :type EnvId: str
+        :param WxAppId: 微信appid
+        :type WxAppId: str
+        """
+        self.AccountPassword = None
+        self.EnvId = None
+        self.WxAppId = None
+
+
+    def _deserialize(self, params):
+        self.AccountPassword = params.get("AccountPassword")
+        self.EnvId = params.get("EnvId")
+        self.WxAppId = params.get("WxAppId")
+
+
+class CreateWxCloudBaseRunServerDBClusterResponse(AbstractModel):
+    """CreateWxCloudBaseRunServerDBCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DatabasesInfo(AbstractModel):
     """数据库资源信息
 
@@ -1904,9 +1946,9 @@ class DescribeCloudBaseProjectVersionListRequest(AbstractModel):
         :type PageSize: int
         :param PageNum: 第几页,从0开始
         :type PageNum: int
-        :param StartTime: 起始时间
+        :param StartTime: 起始时间 2021-03-27 12:00:00
         :type StartTime: str
-        :param EndTime: 终止时间
+        :param EndTime: 终止时间 2021-03-27 12:00:00
         :type EndTime: str
         """
         self.EnvId = None
@@ -4084,6 +4126,8 @@ class ModifyEndUserRequest(AbstractModel):
         :param UUId: C端用户端的唯一ID
         :type UUId: str
         :param Status: 帐号的状态
+<li>ENABLE</li>
+<li>DISABLE</li>
         :type Status: str
         """
         self.EnvId = None

@@ -956,6 +956,89 @@ class CreateAlarmPolicyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateAlertRuleRequest(AbstractModel):
+    """CreateAlertRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Prometheus 实例 ID
+        :type InstanceId: str
+        :param RuleName: 规则名称
+        :type RuleName: str
+        :param Expr: 规则表达式
+        :type Expr: str
+        :param Receivers: 告警通知模板 ID 列表
+        :type Receivers: list of str
+        :param RuleState: 规则状态码，取值如下：
+<li>2=RuleEnabled</li>
+<li>3=RuleDisabled</li>
+        :type RuleState: int
+        :param Duration: 规则报警持续时间
+        :type Duration: str
+        :param Labels: 标签列表
+        :type Labels: list of PrometheusRuleKV
+        :param Annotations: 注释列表
+        :type Annotations: list of PrometheusRuleKV
+        :param Type: 报警策略模板分类
+        :type Type: str
+        """
+        self.InstanceId = None
+        self.RuleName = None
+        self.Expr = None
+        self.Receivers = None
+        self.RuleState = None
+        self.Duration = None
+        self.Labels = None
+        self.Annotations = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.RuleName = params.get("RuleName")
+        self.Expr = params.get("Expr")
+        self.Receivers = params.get("Receivers")
+        self.RuleState = params.get("RuleState")
+        self.Duration = params.get("Duration")
+        if params.get("Labels") is not None:
+            self.Labels = []
+            for item in params.get("Labels"):
+                obj = PrometheusRuleKV()
+                obj._deserialize(item)
+                self.Labels.append(obj)
+        if params.get("Annotations") is not None:
+            self.Annotations = []
+            for item in params.get("Annotations"):
+                obj = PrometheusRuleKV()
+                obj._deserialize(item)
+                self.Annotations.append(obj)
+        self.Type = params.get("Type")
+
+
+class CreateAlertRuleResponse(AbstractModel):
+    """CreateAlertRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleId: 规则 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RuleId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreatePolicyGroupCondition(AbstractModel):
     """创建策略传入的阈值告警条件
 
@@ -1273,6 +1356,44 @@ class DeleteAlarmPolicyRequest(AbstractModel):
 
 class DeleteAlarmPolicyResponse(AbstractModel):
     """DeleteAlarmPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteAlertRulesRequest(AbstractModel):
+    """DeleteAlertRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleIds: 规则 ID 列表
+        :type RuleIds: list of str
+        :param InstanceId: Prometheus 实例 ID
+        :type InstanceId: str
+        """
+        self.RuleIds = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.RuleIds = params.get("RuleIds")
+        self.InstanceId = params.get("InstanceId")
+
+
+class DeleteAlertRulesResponse(AbstractModel):
+    """DeleteAlertRules返回参数结构体
 
     """
 
@@ -2072,6 +2193,80 @@ class DescribeAlarmPolicyResponse(AbstractModel):
         if params.get("Policy") is not None:
             self.Policy = AlarmPolicy()
             self.Policy._deserialize(params.get("Policy"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAlertRulesRequest(AbstractModel):
+    """DescribeAlertRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: Prometheus 实例 ID
+        :type InstanceId: str
+        :param Limit: 返回数量，默认为 20，最大值为 100
+        :type Limit: int
+        :param Offset: 偏移量，默认为 0
+        :type Offset: int
+        :param RuleId: 规则 ID
+        :type RuleId: str
+        :param RuleState: 规则状态码，取值如下：
+<li>2=RuleEnabled</li>
+<li>3=RuleDisabled</li>
+        :type RuleState: int
+        :param RuleName: 规则名称
+        :type RuleName: str
+        :param Type: 报警策略模板分类
+        :type Type: str
+        """
+        self.InstanceId = None
+        self.Limit = None
+        self.Offset = None
+        self.RuleId = None
+        self.RuleState = None
+        self.RuleName = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.RuleId = params.get("RuleId")
+        self.RuleState = params.get("RuleState")
+        self.RuleName = params.get("RuleName")
+        self.Type = params.get("Type")
+
+
+class DescribeAlertRulesResponse(AbstractModel):
+    """DescribeAlertRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 报警规则数量
+        :type TotalCount: int
+        :param AlertRuleSet: 报警规则详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlertRuleSet: list of PrometheusRuleSet
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.AlertRuleSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("AlertRuleSet") is not None:
+            self.AlertRuleSet = []
+            for item in params.get("AlertRuleSet"):
+                obj = PrometheusRuleSet()
+                obj._deserialize(item)
+                self.AlertRuleSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -5266,6 +5461,110 @@ class ProductSimple(AbstractModel):
         self.ProductEnName = params.get("ProductEnName")
 
 
+class PrometheusRuleKV(AbstractModel):
+    """prometheus 报警规则 KV 参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: 键
+        :type Key: str
+        :param Value: 值
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+
+
+class PrometheusRuleSet(AbstractModel):
+    """prometheus 报警规则集
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleId: 规则 ID
+        :type RuleId: str
+        :param RuleName: 规则名称
+        :type RuleName: str
+        :param RuleState: 规则状态码
+        :type RuleState: int
+        :param Type: 规则类别
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param Labels: 规则标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Labels: list of PrometheusRuleKV
+        :param Annotations: 规则注释列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Annotations: list of PrometheusRuleKV
+        :param Expr: 规则表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Expr: str
+        :param Duration: 规则报警持续时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Duration: str
+        :param Receivers: 报警接收组列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Receivers: list of str
+        :param Health: 规则运行健康状态，取值如下：
+<li>unknown 未知状态</li>
+<li>pending 加载中</li>
+<li>ok 运行正常</li>
+<li>err 运行错误</li>
+        :type Health: str
+        :param CreatedAt: 规则创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedAt: str
+        :param UpdatedAt: 规则更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatedAt: str
+        """
+        self.RuleId = None
+        self.RuleName = None
+        self.RuleState = None
+        self.Type = None
+        self.Labels = None
+        self.Annotations = None
+        self.Expr = None
+        self.Duration = None
+        self.Receivers = None
+        self.Health = None
+        self.CreatedAt = None
+        self.UpdatedAt = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        self.RuleName = params.get("RuleName")
+        self.RuleState = params.get("RuleState")
+        self.Type = params.get("Type")
+        if params.get("Labels") is not None:
+            self.Labels = []
+            for item in params.get("Labels"):
+                obj = PrometheusRuleKV()
+                obj._deserialize(item)
+                self.Labels.append(obj)
+        if params.get("Annotations") is not None:
+            self.Annotations = []
+            for item in params.get("Annotations"):
+                obj = PrometheusRuleKV()
+                obj._deserialize(item)
+                self.Annotations.append(obj)
+        self.Expr = params.get("Expr")
+        self.Duration = params.get("Duration")
+        self.Receivers = params.get("Receivers")
+        self.Health = params.get("Health")
+        self.CreatedAt = params.get("CreatedAt")
+        self.UpdatedAt = params.get("UpdatedAt")
+
+
 class PutMonitorDataRequest(AbstractModel):
     """PutMonitorData请求参数结构体
 
@@ -5667,6 +5966,139 @@ class UnBindingPolicyObjectRequest(AbstractModel):
 
 class UnBindingPolicyObjectResponse(AbstractModel):
     """UnBindingPolicyObject返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateAlertRuleRequest(AbstractModel):
+    """UpdateAlertRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleId: Prometheus 报警规则 ID
+        :type RuleId: str
+        :param InstanceId: Prometheus 实例 ID
+        :type InstanceId: str
+        :param RuleState: 规则状态码，取值如下：
+<li>1=RuleDeleted</li>
+<li>2=RuleEnabled</li>
+<li>3=RuleDisabled</li>
+默认状态码为 2 启用。
+        :type RuleState: int
+        :param RuleName: 报警规则名称
+        :type RuleName: str
+        :param Expr: 报警规则表达式
+        :type Expr: str
+        :param Duration: 报警规则持续时间
+        :type Duration: str
+        :param Receivers: 报警规则接收组列表
+        :type Receivers: list of str
+        :param Labels: 报警规则标签列表
+        :type Labels: list of PrometheusRuleKV
+        :param Annotations: 报警规则注释列表
+        :type Annotations: list of PrometheusRuleKV
+        :param Type: 报警策略模板分类
+        :type Type: str
+        """
+        self.RuleId = None
+        self.InstanceId = None
+        self.RuleState = None
+        self.RuleName = None
+        self.Expr = None
+        self.Duration = None
+        self.Receivers = None
+        self.Labels = None
+        self.Annotations = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        self.InstanceId = params.get("InstanceId")
+        self.RuleState = params.get("RuleState")
+        self.RuleName = params.get("RuleName")
+        self.Expr = params.get("Expr")
+        self.Duration = params.get("Duration")
+        self.Receivers = params.get("Receivers")
+        if params.get("Labels") is not None:
+            self.Labels = []
+            for item in params.get("Labels"):
+                obj = PrometheusRuleKV()
+                obj._deserialize(item)
+                self.Labels.append(obj)
+        if params.get("Annotations") is not None:
+            self.Annotations = []
+            for item in params.get("Annotations"):
+                obj = PrometheusRuleKV()
+                obj._deserialize(item)
+                self.Annotations.append(obj)
+        self.Type = params.get("Type")
+
+
+class UpdateAlertRuleResponse(AbstractModel):
+    """UpdateAlertRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleId: 规则 ID
+        :type RuleId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RuleId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateAlertRuleStateRequest(AbstractModel):
+    """UpdateAlertRuleState请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleIds: 规则 ID 列表
+        :type RuleIds: list of str
+        :param InstanceId: Prometheus 实例 ID
+        :type InstanceId: str
+        :param RuleState: 规则状态码，取值如下：
+<li>2=RuleEnabled</li>
+<li>3=RuleDisabled</li>
+默认状态码为 2 启用。
+        :type RuleState: int
+        """
+        self.RuleIds = None
+        self.InstanceId = None
+        self.RuleState = None
+
+
+    def _deserialize(self, params):
+        self.RuleIds = params.get("RuleIds")
+        self.InstanceId = params.get("InstanceId")
+        self.RuleState = params.get("RuleState")
+
+
+class UpdateAlertRuleStateResponse(AbstractModel):
+    """UpdateAlertRuleState返回参数结构体
 
     """
 

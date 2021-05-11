@@ -779,6 +779,53 @@ class DescribeBlueprintsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBundleDiscountRequest(AbstractModel):
+    """DescribeBundleDiscount请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BundleId: 套餐 ID。
+        :type BundleId: str
+        """
+        self.BundleId = None
+
+
+    def _deserialize(self, params):
+        self.BundleId = params.get("BundleId")
+
+
+class DescribeBundleDiscountResponse(AbstractModel):
+    """DescribeBundleDiscount返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Currency: 币种：CNY人民币，USD 美元。
+        :type Currency: str
+        :param DiscountDetail: 折扣梯度详情，每个梯度包含的信息有：时长，折扣数，总价，折扣价，折扣详情（用户折扣、官网折扣、最终折扣）。
+        :type DiscountDetail: list of DiscountDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Currency = None
+        self.DiscountDetail = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Currency = params.get("Currency")
+        if params.get("DiscountDetail") is not None:
+            self.DiscountDetail = []
+            for item in params.get("DiscountDetail"):
+                obj = DiscountDetail()
+                obj._deserialize(item)
+                self.DiscountDetail.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeBundlesRequest(AbstractModel):
     """DescribeBundles请求参数结构体
 
@@ -1688,6 +1735,45 @@ class DisassociateInstancesKeyPairsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class DiscountDetail(AbstractModel):
+    """套餐折扣详情（仅用于控制台调用询价相关接口返回）。
+
+    """
+
+    def __init__(self):
+        """
+        :param TimeSpan: 计费时长。
+        :type TimeSpan: int
+        :param TimeUnit: 计费单元。
+        :type TimeUnit: str
+        :param TotalCost: 总价。
+        :type TotalCost: float
+        :param RealTotalCost: 折后总价。
+        :type RealTotalCost: float
+        :param Discount: 折扣。
+        :type Discount: int
+        :param PolicyDetail: 具体折扣详情。
+        :type PolicyDetail: :class:`tencentcloud.lighthouse.v20200324.models.PolicyDetail`
+        """
+        self.TimeSpan = None
+        self.TimeUnit = None
+        self.TotalCost = None
+        self.RealTotalCost = None
+        self.Discount = None
+        self.PolicyDetail = None
+
+
+    def _deserialize(self, params):
+        self.TimeSpan = params.get("TimeSpan")
+        self.TimeUnit = params.get("TimeUnit")
+        self.TotalCost = params.get("TotalCost")
+        self.RealTotalCost = params.get("RealTotalCost")
+        self.Discount = params.get("Discount")
+        if params.get("PolicyDetail") is not None:
+            self.PolicyDetail = PolicyDetail()
+            self.PolicyDetail._deserialize(params.get("PolicyDetail"))
 
 
 class Filter(AbstractModel):
@@ -2660,6 +2746,31 @@ class ModifySnapshotAttributeResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class PolicyDetail(AbstractModel):
+    """折扣详情信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param UserDiscount: 用户折扣。
+        :type UserDiscount: int
+        :param CommonDiscount: 公共折扣。
+        :type CommonDiscount: int
+        :param FinalDiscount: 最终折扣。
+        :type FinalDiscount: int
+        """
+        self.UserDiscount = None
+        self.CommonDiscount = None
+        self.FinalDiscount = None
+
+
+    def _deserialize(self, params):
+        self.UserDiscount = params.get("UserDiscount")
+        self.CommonDiscount = params.get("CommonDiscount")
+        self.FinalDiscount = params.get("FinalDiscount")
 
 
 class Price(AbstractModel):

@@ -16,6 +16,87 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AccountQuota(AbstractModel):
+    """配额详情
+
+    """
+
+    def __init__(self):
+        """
+        :param PostPaidQuotaSet: 后付费配额列表
+        :type PostPaidQuotaSet: list of PostPaidQuota
+        :param PrePaidQuotaSet: 预付费配额列表
+        :type PrePaidQuotaSet: list of PrePaidQuota
+        :param SpotPaidQuotaSet: spot配额列表
+        :type SpotPaidQuotaSet: list of SpotPaidQuota
+        :param ImageQuotaSet: 镜像配额列表
+        :type ImageQuotaSet: list of ImageQuota
+        :param DisasterRecoverGroupQuotaSet: 置放群组配额列表
+        :type DisasterRecoverGroupQuotaSet: list of DisasterRecoverGroupQuota
+        """
+        self.PostPaidQuotaSet = None
+        self.PrePaidQuotaSet = None
+        self.SpotPaidQuotaSet = None
+        self.ImageQuotaSet = None
+        self.DisasterRecoverGroupQuotaSet = None
+
+
+    def _deserialize(self, params):
+        if params.get("PostPaidQuotaSet") is not None:
+            self.PostPaidQuotaSet = []
+            for item in params.get("PostPaidQuotaSet"):
+                obj = PostPaidQuota()
+                obj._deserialize(item)
+                self.PostPaidQuotaSet.append(obj)
+        if params.get("PrePaidQuotaSet") is not None:
+            self.PrePaidQuotaSet = []
+            for item in params.get("PrePaidQuotaSet"):
+                obj = PrePaidQuota()
+                obj._deserialize(item)
+                self.PrePaidQuotaSet.append(obj)
+        if params.get("SpotPaidQuotaSet") is not None:
+            self.SpotPaidQuotaSet = []
+            for item in params.get("SpotPaidQuotaSet"):
+                obj = SpotPaidQuota()
+                obj._deserialize(item)
+                self.SpotPaidQuotaSet.append(obj)
+        if params.get("ImageQuotaSet") is not None:
+            self.ImageQuotaSet = []
+            for item in params.get("ImageQuotaSet"):
+                obj = ImageQuota()
+                obj._deserialize(item)
+                self.ImageQuotaSet.append(obj)
+        if params.get("DisasterRecoverGroupQuotaSet") is not None:
+            self.DisasterRecoverGroupQuotaSet = []
+            for item in params.get("DisasterRecoverGroupQuotaSet"):
+                obj = DisasterRecoverGroupQuota()
+                obj._deserialize(item)
+                self.DisasterRecoverGroupQuotaSet.append(obj)
+
+
+class AccountQuotaOverview(AbstractModel):
+    """配额详情概览
+
+    """
+
+    def __init__(self):
+        """
+        :param Region: 地域
+        :type Region: str
+        :param AccountQuota: 配额数据
+        :type AccountQuota: :class:`tencentcloud.cvm.v20170312.models.AccountQuota`
+        """
+        self.Region = None
+        self.AccountQuota = None
+
+
+    def _deserialize(self, params):
+        self.Region = params.get("Region")
+        if params.get("AccountQuota") is not None:
+            self.AccountQuota = AccountQuota()
+            self.AccountQuota._deserialize(params.get("AccountQuota"))
+
+
 class ActionTimer(AbstractModel):
     """定时任务
 
@@ -560,6 +641,58 @@ class DeleteKeyPairsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAccountQuotaRequest(AbstractModel):
+    """DescribeAccountQuota请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Filters: <li><strong>zone</strong></li>
+<p style="padding-left: 30px;">按照【<strong>可用区</strong>】进行过滤。可用区形如：ap-guangzhou-1。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：<a href="https://cloud.tencent.com/document/product/213/6091">可用区列表</a></p>
+<li><strong>quota-type</strong></li>
+<p style="padding-left: 30px;">按照【<strong>配额类型</strong>】进行过滤。配额类型形如：PostPaidQuotaSet。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：PostPaidQuotaSet,DisasterRecoverGroupQuotaSet,PrePaidQuotaSet,SpotPaidQuotaSet</p>
+        :type Filters: list of Filter
+        """
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+
+
+class DescribeAccountQuotaResponse(AbstractModel):
+    """DescribeAccountQuota返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AppId: 用户appid
+        :type AppId: str
+        :param AccountQuotaOverview: 配额数据
+        :type AccountQuotaOverview: :class:`tencentcloud.cvm.v20170312.models.AccountQuotaOverview`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AppId = None
+        self.AccountQuotaOverview = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AppId = params.get("AppId")
+        if params.get("AccountQuotaOverview") is not None:
+            self.AccountQuotaOverview = AccountQuotaOverview()
+            self.AccountQuotaOverview._deserialize(params.get("AccountQuotaOverview"))
         self.RequestId = params.get("RequestId")
 
 
@@ -1865,6 +1998,39 @@ class DisasterRecoverGroup(AbstractModel):
         self.CreateTime = params.get("CreateTime")
 
 
+class DisasterRecoverGroupQuota(AbstractModel):
+    """置放群组配置数据
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupQuota: 可创建置放群组数量的上限。
+        :type GroupQuota: int
+        :param CurrentNum: 当前用户已经创建的置放群组数量。
+        :type CurrentNum: int
+        :param CvmInHostGroupQuota: 物理机类型容灾组内实例的配额数。
+        :type CvmInHostGroupQuota: int
+        :param CvmInSwitchGroupQuota: 交换机类型容灾组内实例的配额数。
+        :type CvmInSwitchGroupQuota: int
+        :param CvmInRackGroupQuota: 机架类型容灾组内实例的配额数。
+        :type CvmInRackGroupQuota: int
+        """
+        self.GroupQuota = None
+        self.CurrentNum = None
+        self.CvmInHostGroupQuota = None
+        self.CvmInSwitchGroupQuota = None
+        self.CvmInRackGroupQuota = None
+
+
+    def _deserialize(self, params):
+        self.GroupQuota = params.get("GroupQuota")
+        self.CurrentNum = params.get("CurrentNum")
+        self.CvmInHostGroupQuota = params.get("CvmInHostGroupQuota")
+        self.CvmInSwitchGroupQuota = params.get("CvmInSwitchGroupQuota")
+        self.CvmInRackGroupQuota = params.get("CvmInRackGroupQuota")
+
+
 class EnhancedService(AbstractModel):
     """描述了实例的增强服务启用情况与其设置，如云安全，云监控等实例 Agent
 
@@ -2172,6 +2338,27 @@ class ImageOsList(AbstractModel):
     def _deserialize(self, params):
         self.Windows = params.get("Windows")
         self.Linux = params.get("Linux")
+
+
+class ImageQuota(AbstractModel):
+    """镜像配额
+
+    """
+
+    def __init__(self):
+        """
+        :param UsedQuota: 已使用配额
+        :type UsedQuota: int
+        :param TotalQuota: 总配额
+        :type TotalQuota: int
+        """
+        self.UsedQuota = None
+        self.TotalQuota = None
+
+
+    def _deserialize(self, params):
+        self.UsedQuota = params.get("UsedQuota")
+        self.TotalQuota = params.get("TotalQuota")
 
 
 class ImportImageRequest(AbstractModel):
@@ -4010,6 +4197,68 @@ class Placement(AbstractModel):
         self.HostId = params.get("HostId")
 
 
+class PostPaidQuota(AbstractModel):
+    """后付费实例配额
+
+    """
+
+    def __init__(self):
+        """
+        :param UsedQuota: 累计已使用配额
+        :type UsedQuota: int
+        :param RemainingQuota: 剩余配额
+        :type RemainingQuota: int
+        :param TotalQuota: 总配额
+        :type TotalQuota: int
+        :param Zone: 可用区
+        :type Zone: str
+        """
+        self.UsedQuota = None
+        self.RemainingQuota = None
+        self.TotalQuota = None
+        self.Zone = None
+
+
+    def _deserialize(self, params):
+        self.UsedQuota = params.get("UsedQuota")
+        self.RemainingQuota = params.get("RemainingQuota")
+        self.TotalQuota = params.get("TotalQuota")
+        self.Zone = params.get("Zone")
+
+
+class PrePaidQuota(AbstractModel):
+    """预付费实例配额
+
+    """
+
+    def __init__(self):
+        """
+        :param UsedQuota: 当月已使用配额
+        :type UsedQuota: int
+        :param OnceQuota: 单次购买最大数量
+        :type OnceQuota: int
+        :param RemainingQuota: 剩余配额
+        :type RemainingQuota: int
+        :param TotalQuota: 总配额
+        :type TotalQuota: int
+        :param Zone: 可用区
+        :type Zone: str
+        """
+        self.UsedQuota = None
+        self.OnceQuota = None
+        self.RemainingQuota = None
+        self.TotalQuota = None
+        self.Zone = None
+
+
+    def _deserialize(self, params):
+        self.UsedQuota = params.get("UsedQuota")
+        self.OnceQuota = params.get("OnceQuota")
+        self.RemainingQuota = params.get("RemainingQuota")
+        self.TotalQuota = params.get("TotalQuota")
+        self.Zone = params.get("Zone")
+
+
 class Price(AbstractModel):
     """价格
 
@@ -5089,6 +5338,35 @@ class SpotMarketOptions(AbstractModel):
     def _deserialize(self, params):
         self.MaxPrice = params.get("MaxPrice")
         self.SpotInstanceType = params.get("SpotInstanceType")
+
+
+class SpotPaidQuota(AbstractModel):
+    """竞价实例配额
+
+    """
+
+    def __init__(self):
+        """
+        :param UsedQuota: 已使用配额，单位：vCPU核心数
+        :type UsedQuota: int
+        :param RemainingQuota: 剩余配额，单位：vCPU核心数
+        :type RemainingQuota: int
+        :param TotalQuota: 总配额，单位：vCPU核心数
+        :type TotalQuota: int
+        :param Zone: 可用区
+        :type Zone: str
+        """
+        self.UsedQuota = None
+        self.RemainingQuota = None
+        self.TotalQuota = None
+        self.Zone = None
+
+
+    def _deserialize(self, params):
+        self.UsedQuota = params.get("UsedQuota")
+        self.RemainingQuota = params.get("RemainingQuota")
+        self.TotalQuota = params.get("TotalQuota")
+        self.Zone = params.get("Zone")
 
 
 class StartInstancesRequest(AbstractModel):

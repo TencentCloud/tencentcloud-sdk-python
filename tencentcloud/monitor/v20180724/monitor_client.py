@@ -110,6 +110,34 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateAlertRule(self, request):
+        """创建 Prometheus 告警规则
+
+        :param request: Request instance for CreateAlertRule.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.CreateAlertRuleRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.CreateAlertRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAlertRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAlertRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreatePolicyGroup(self, request):
         """增加策略组
 
@@ -210,6 +238,34 @@ class MonitorClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAlarmPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteAlertRules(self, request):
+        """批量删除 Prometheus 报警规则
+
+        :param request: Request instance for DeleteAlertRules.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DeleteAlertRulesRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DeleteAlertRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteAlertRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteAlertRulesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -522,6 +578,34 @@ class MonitorClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAlarmPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAlertRules(self, request):
+        """Prometheus 报警规则查询接口
+
+        :param request: Request instance for DescribeAlertRules.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAlertRulesRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeAlertRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAlertRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAlertRulesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1261,6 +1345,62 @@ class MonitorClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnBindingPolicyObjectResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateAlertRule(self, request):
+        """更新 Prometheus 的报警规则
+
+        :param request: Request instance for UpdateAlertRule.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.UpdateAlertRuleRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.UpdateAlertRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateAlertRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateAlertRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateAlertRuleState(self, request):
+        """更新 Prometheus 报警策略状态
+
+        :param request: Request instance for UpdateAlertRuleState.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.UpdateAlertRuleStateRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.UpdateAlertRuleStateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateAlertRuleState", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateAlertRuleStateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

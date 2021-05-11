@@ -801,7 +801,7 @@ class AuthenticationTypeA(AbstractModel):
 仅允许大小写字母、数字或下划线，长度 1~100 位，不能以数字开头
         :type SignParam: str
         :param ExpireTime: 签名过期时间设置
-单位为秒，最大可设置为 31536000
+单位为秒，最大可设置为 630720000
         :type ExpireTime: int
         :param FileExtensions: 鉴权/不做鉴权的文件扩展名列表设置
 如果包含字符 *  则表示所有文件
@@ -837,7 +837,7 @@ class AuthenticationTypeB(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecretKey: str
         :param ExpireTime: 签名过期时间设置
-单位为秒，最大可设置为 31536000
+单位为秒，最大可设置为 630720000
         :type ExpireTime: int
         :param FileExtensions: 鉴权/不做鉴权的文件扩展名列表设置
 如果包含字符 *  则表示所有文件
@@ -874,7 +874,7 @@ class AuthenticationTypeC(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecretKey: str
         :param ExpireTime: 签名过期时间设置
-单位为秒，最大可设置为 31536000
+单位为秒，最大可设置为 630720000
         :type ExpireTime: int
         :param FileExtensions: 鉴权/不做鉴权的文件扩展名列表设置
 如果包含字符 *  则表示所有文件
@@ -918,7 +918,7 @@ class AuthenticationTypeD(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecretKey: str
         :param ExpireTime: 签名过期时间设置
-单位为秒，最大可设置为 31536000
+单位为秒，最大可设置为 630720000
         :type ExpireTime: int
         :param FileExtensions: 鉴权/不做鉴权的文件扩展名列表设置
 如果包含字符 *  则表示所有文件

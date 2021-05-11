@@ -3713,20 +3713,28 @@ class ModifyInstanceTokenRequest(AbstractModel):
         """
         :param TokenId: 实例长期访问凭证 ID
         :type TokenId: str
-        :param Enable: 启用或禁用实例长期访问凭证
-        :type Enable: bool
         :param RegistryId: 实例 ID
         :type RegistryId: str
+        :param Enable: 启用或禁用实例长期访问凭证
+        :type Enable: bool
+        :param Desc: 访问凭证描述
+        :type Desc: str
+        :param ModifyFlag: 1为修改描述 2为启动禁用，不填写默认为修改启动禁用
+        :type ModifyFlag: int
         """
         self.TokenId = None
-        self.Enable = None
         self.RegistryId = None
+        self.Enable = None
+        self.Desc = None
+        self.ModifyFlag = None
 
 
     def _deserialize(self, params):
         self.TokenId = params.get("TokenId")
-        self.Enable = params.get("Enable")
         self.RegistryId = params.get("RegistryId")
+        self.Enable = params.get("Enable")
+        self.Desc = params.get("Desc")
+        self.ModifyFlag = params.get("ModifyFlag")
 
 
 class ModifyInstanceTokenResponse(AbstractModel):

@@ -1034,6 +1034,34 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeESHits(self, request):
+        """获取ES查询文档列表
+
+        :param request: Request instance for DescribeESHits.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeESHitsRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeESHitsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeESHits", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeESHitsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeExportMachines(self, request):
         """本接口 (DescribeExportMachines) 用于导出区域主机列表。
 

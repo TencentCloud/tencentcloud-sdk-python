@@ -306,6 +306,34 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateWxCloudBaseRunServerDBCluster(self, request):
+        """开通微信云托管MySQL数据库服务
+
+        :param request: Request instance for CreateWxCloudBaseRunServerDBCluster.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.CreateWxCloudBaseRunServerDBClusterRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.CreateWxCloudBaseRunServerDBClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateWxCloudBaseRunServerDBCluster", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateWxCloudBaseRunServerDBClusterResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteCloudBaseProjectLatestVersion(self, request):
         """删除云项目
 

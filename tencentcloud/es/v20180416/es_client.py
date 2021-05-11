@@ -166,6 +166,34 @@ class EsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DiagnoseInstance(self, request):
+        """智能运维诊断集群
+
+        :param request: Request instance for DiagnoseInstance.
+        :type request: :class:`tencentcloud.es.v20180416.models.DiagnoseInstanceRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.DiagnoseInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DiagnoseInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DiagnoseInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetRequestTargetNodeTypes(self, request):
         """获取接收客户端请求的节点类型
 
@@ -264,6 +292,34 @@ class EsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RestartNodesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateDiagnoseSettings(self, request):
+        """更新智能运维配置
+
+        :param request: Request instance for UpdateDiagnoseSettings.
+        :type request: :class:`tencentcloud.es.v20180416.models.UpdateDiagnoseSettingsRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.UpdateDiagnoseSettingsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateDiagnoseSettings", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateDiagnoseSettingsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

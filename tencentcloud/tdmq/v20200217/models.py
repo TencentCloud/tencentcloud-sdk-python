@@ -1009,11 +1009,17 @@ class DescribeEnvironmentsRequest(AbstractModel):
         :type Limit: int
         :param ClusterId: Pulsar 集群的ID
         :type ClusterId: str
+        :param Filters: * EnvironmentId
+按照名称空间进行过滤，精确查询。
+类型：String
+必选：否
+        :type Filters: list of Filter
         """
         self.EnvironmentId = None
         self.Offset = None
         self.Limit = None
         self.ClusterId = None
+        self.Filters = None
 
 
     def _deserialize(self, params):
@@ -1021,6 +1027,12 @@ class DescribeEnvironmentsRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.ClusterId = params.get("ClusterId")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
 
 
 class DescribeEnvironmentsResponse(AbstractModel):
@@ -1221,6 +1233,11 @@ class DescribeTopicsRequest(AbstractModel):
         :type TopicType: int
         :param ClusterId: Pulsar 集群的ID
         :type ClusterId: str
+        :param Filters: * TopicName
+按照主题名字查询，精确查询。
+类型：String
+必选：否
+        :type Filters: list of Filter
         """
         self.EnvironmentId = None
         self.TopicName = None
@@ -1228,6 +1245,7 @@ class DescribeTopicsRequest(AbstractModel):
         self.Limit = None
         self.TopicType = None
         self.ClusterId = None
+        self.Filters = None
 
 
     def _deserialize(self, params):
@@ -1237,6 +1255,12 @@ class DescribeTopicsRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.TopicType = params.get("TopicType")
         self.ClusterId = params.get("ClusterId")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
 
 
 class DescribeTopicsResponse(AbstractModel):
@@ -1347,6 +1371,27 @@ class EnvironmentRole(AbstractModel):
         self.UpdateTime = params.get("UpdateTime")
 
 
+class Filter(AbstractModel):
+    """过滤参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 过滤参数的名字
+        :type Name: str
+        :param Values: 数值
+        :type Values: list of str
+        """
+        self.Name = None
+        self.Values = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Values = params.get("Values")
+
+
 class FilterSubscription(AbstractModel):
     """过滤订阅列表
 
@@ -1360,16 +1405,20 @@ class FilterSubscription(AbstractModel):
         :type ConsumerHasBacklog: bool
         :param ConsumerHasExpired: 是否仅展示存在消息超期丢弃的订阅。
         :type ConsumerHasExpired: bool
+        :param SubscriptionNames: 按照订阅名过滤，精确查询。
+        :type SubscriptionNames: list of str
         """
         self.ConsumerHasCount = None
         self.ConsumerHasBacklog = None
         self.ConsumerHasExpired = None
+        self.SubscriptionNames = None
 
 
     def _deserialize(self, params):
         self.ConsumerHasCount = params.get("ConsumerHasCount")
         self.ConsumerHasBacklog = params.get("ConsumerHasBacklog")
         self.ConsumerHasExpired = params.get("ConsumerHasExpired")
+        self.SubscriptionNames = params.get("SubscriptionNames")
 
 
 class ModifyClusterRequest(AbstractModel):
@@ -2071,6 +2120,12 @@ class Topic(AbstractModel):
         :param UpdateTime: 最近修改时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
+        :param ProducerLimit: 生产者上限。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProducerLimit: str
+        :param ConsumerLimit: 消费者上限。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConsumerLimit: str
         """
         self.AverageMsgSize = None
         self.ConsumerCount = None
@@ -2091,6 +2146,8 @@ class Topic(AbstractModel):
         self.Remark = None
         self.CreateTime = None
         self.UpdateTime = None
+        self.ProducerLimit = None
+        self.ConsumerLimit = None
 
 
     def _deserialize(self, params):
@@ -2118,6 +2175,8 @@ class Topic(AbstractModel):
         self.Remark = params.get("Remark")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+        self.ProducerLimit = params.get("ProducerLimit")
+        self.ConsumerLimit = params.get("ConsumerLimit")
 
 
 class TopicRecord(AbstractModel):

@@ -2223,6 +2223,52 @@ class DescribeComponentsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeESHitsRequest(AbstractModel):
+    """DescribeESHits请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Query: ES查询条件JSON
+        :type Query: str
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 返回数量，默认为10，最大值为100。
+        :type Limit: int
+        """
+        self.Query = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Query = params.get("Query")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeESHitsResponse(AbstractModel):
+    """DescribeESHits返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: ES查询结果JSON
+        :type Data: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Data = params.get("Data")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeExportMachinesRequest(AbstractModel):
     """DescribeExportMachines请求参数结构体
 

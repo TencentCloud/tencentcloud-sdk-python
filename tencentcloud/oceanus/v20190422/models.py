@@ -221,7 +221,7 @@ class CreateResourceRequest(AbstractModel):
         :type ResourceLoc: :class:`tencentcloud.oceanus.v20190422.models.ResourceLoc`
         :param Name: 资源名称
         :type Name: str
-        :param ResourceType: 资源类型，占时只支持jar，填1
+        :param ResourceType: 资源类型。目前只支持 JAR，取值为 1
         :type ResourceType: int
         :param Remark: 资源描述
         :type Remark: str
@@ -465,7 +465,7 @@ class DescribeJobsRequest(AbstractModel):
         """
         :param JobIds: 按照一个或者多个作业ID查询。作业ID形如：cql-11112222，每次请求的作业上限为100。参数不支持同时指定JobIds和Filters。
         :type JobIds: list of str
-        :param Filters: 过滤条件，详见作业过滤条件表。每次请求的Filters的上限为10，Filter.Values的上限为5。参数不支持同时指定JobIds和Filters。
+        :param Filters: 过滤条件，支持的 Filter.Name 为：作业名 Name、作业状态 Status、所属集群 ClusterId。每次请求的 Filters 个数的上限为 3，Filter.Values 的个数上限为 5。参数不支持同时指定 JobIds 和 Filters。
         :type Filters: list of Filter
         :param Offset: 偏移量，默认为0
         :type Offset: int
@@ -529,9 +529,9 @@ class DescribeResourceConfigsRequest(AbstractModel):
         """
         :param ResourceId: 资源ID
         :type ResourceId: str
-        :param Offset: 偏移量
+        :param Offset: 偏移量，仅当设置 Limit 时该参数有效
         :type Offset: int
-        :param Limit: 返回值大小
+        :param Limit: 返回值大小，不填则返回全量数据
         :type Limit: int
         :param ResourceConfigVersions: 资源配置Versions集合
         :type ResourceConfigVersions: list of int
@@ -655,9 +655,9 @@ class DescribeResourcesRequest(AbstractModel):
         """
         :param ResourceIds: 需要查询的资源ID数组
         :type ResourceIds: list of str
-        :param Offset: 偏移量
+        :param Offset: 偏移量，仅当设置 Limit 参数时有效
         :type Offset: int
-        :param Limit: 条数限制
+        :param Limit: 条数限制。如果不填，默认返回 20 条
         :type Limit: int
         :param Filters: 查询资源配置列表， 如果不填写，返回该ResourceId下所有作业配置列表
         :type Filters: list of Filter
@@ -719,11 +719,11 @@ class DescribeSystemResourcesRequest(AbstractModel):
         """
         :param ResourceIds: 需要查询的资源ID数组
         :type ResourceIds: list of str
-        :param Offset: 偏移量
+        :param Offset: 偏移量，仅当设置 Limit 参数时有效
         :type Offset: int
-        :param Limit: 条数限制
+        :param Limit: 条数限制，默认返回 20 条
         :type Limit: int
-        :param Filters: 查询资源配置列表， 如果不填写，返回该ResourceId下所有作业配置列表
+        :param Filters: 查询资源配置列表， 如果不填写，返回该 ResourceIds.N 下所有作业配置列表
         :type Filters: list of Filter
         :param ClusterId: 集群ID
         :type ClusterId: str
@@ -1340,9 +1340,9 @@ class RunJobDescription(AbstractModel):
         :type JobId: str
         :param RunType: 运行类型，1：启动，2：恢复
         :type RunType: int
-        :param StartMode: SQL类型作业启动参数：指定数据源消费起始时间点
+        :param StartMode: 已废弃。旧版 SQL 类型作业启动参数：指定数据源消费起始时间点
         :type StartMode: str
-        :param JobConfigVersion: 已发布上线的作业配置版本
+        :param JobConfigVersion: 当前作业的某个版本
         :type JobConfigVersion: int
         """
         self.JobId = None
@@ -1468,7 +1468,7 @@ class SystemResourceItem(AbstractModel):
         :type ResourceId: str
         :param Name: 资源名称
         :type Name: str
-        :param ResourceType: 资源类型
+        :param ResourceType: 资源类型。1 表示 JAR 包，目前只支持该值。
         :type ResourceType: int
         :param Remark: 资源备注
         :type Remark: str

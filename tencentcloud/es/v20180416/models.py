@@ -468,6 +468,48 @@ class DescribeInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DiagnoseInstanceRequest(AbstractModel):
+    """DiagnoseInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: ES实例ID
+        :type InstanceId: str
+        :param DiagnoseJobs: 需要触发的诊断项
+        :type DiagnoseJobs: list of str
+        :param DiagnoseIndices: 需要诊断的索引，支持通配符
+        :type DiagnoseIndices: str
+        """
+        self.InstanceId = None
+        self.DiagnoseJobs = None
+        self.DiagnoseIndices = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.DiagnoseJobs = params.get("DiagnoseJobs")
+        self.DiagnoseIndices = params.get("DiagnoseIndices")
+
+
+class DiagnoseInstanceResponse(AbstractModel):
+    """DiagnoseInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DictInfo(AbstractModel):
     """ik插件词典信息
 
@@ -1356,6 +1398,48 @@ class TaskDetail(AbstractModel):
                 obj = SubTaskDetail()
                 obj._deserialize(item)
                 self.SubTasks.append(obj)
+
+
+class UpdateDiagnoseSettingsRequest(AbstractModel):
+    """UpdateDiagnoseSettings请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: ES实例ID
+        :type InstanceId: str
+        :param Status: 0：开启智能运维；-1：关闭智能运维
+        :type Status: int
+        :param CronTime: 智能运维每天定时巡检时间
+        :type CronTime: str
+        """
+        self.InstanceId = None
+        self.Status = None
+        self.CronTime = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Status = params.get("Status")
+        self.CronTime = params.get("CronTime")
+
+
+class UpdateDiagnoseSettingsResponse(AbstractModel):
+    """UpdateDiagnoseSettings返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class UpdateInstanceRequest(AbstractModel):
