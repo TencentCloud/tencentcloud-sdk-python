@@ -5,7 +5,6 @@ import json
 from tencentcloud.common.common_client import CommonClient
 from tencentcloud.common import credential
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
-# 导入对应产品模块的client models。
 
 # 导入可选配置类
 from tencentcloud.common.profile.client_profile import ClientProfile
@@ -13,8 +12,7 @@ from tencentcloud.common.profile.http_profile import HttpProfile
 
 try:
     # 实例化一个认证对象，入参需要传入腾讯云账户secretId，secretKey
-    first_cred = credential.STSAssumeRoleCredential(os.environ.get("TENCENTCLOUD_SECRET_ID"), os.environ.get("TENCENTCLOUD_SECRET_KEY"))
-    cred = first_cred.get_credential("qcs::cam::uin/11111:roleName/first", "testfirst")
+    cred = credential.STSAssumeRoleCredential("AKIDe4btvBbWs2xgtsBChx1rSr10Yonbx0bv", "BTVHp7IJ4oSu6rNoAMSJuEGG3bryswbC", "qcs::cam::uin/100014602071:roleName/first", "firsttest")
 
     # 实例化一个http选项，可选的，没有特殊需求可以跳过。
     httpProfile = HttpProfile()
@@ -32,7 +30,7 @@ try:
     clientProfile.httpProfile = httpProfile
 
     # 实例化要请求产品(以cvm为例)的client对象，clientProfile是可选的。
-    common_client = CommonClient(credential=cred, region="ap-shanghai", version='2020-11-06', service='api', profile=clientProfile)
+    common_client = CommonClient(credential=cred, region="ap-shanghai", version='2020-11-06', profile=clientProfile, service='api')
 
     print common_client.call_json("DescribeZones", {"Product": "cvm"})
 

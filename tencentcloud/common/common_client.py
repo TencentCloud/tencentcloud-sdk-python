@@ -27,10 +27,10 @@ class CommonClient(AbstractClient):
 
     """
 
-    def __init__(self, credential=None, region=None, version=None, service=None, profile=None):
+    def __init__(self, credential=None, region=None, version=None, profile=None, service=None):
         """
         :param credential: 接口调用凭证
-        :type credential: tencentcloud.common.credential.Credential
+        :type credential: tencentcloud.common.credential.Credential or tencentcloud.common.credential.STSAssumeRoleCredential
         :param region: 接口调用地域
         :type region: str
         :param version: 接口版本
