@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Copyright (c) 2018 Tencent Ltd.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,6 +25,7 @@ except ImportError:
     from urllib import urlopen
 
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
+from common_client import CommonClient
 
 class Credential(object):
     def __init__(self, secretId, secretKey, token=None):
@@ -131,3 +133,96 @@ class CVMRoleCredential(object):
             # we shoud log it
             # maybe we should validate token to None as well
             pass
+
+
+class STSAssumeRoleCredential(object):
+    """使用STSAssumeRoleCredential，制动role，
+    可以自动生成临时凭证，并使用临时凭证调用接口
+
+    """
+    _region = "ap-guangzhou"
+    _version = '2018-08-13'
+    _service = "sts"
+
+    def __init__(self, secret_id=None, secret_key=None, role_arn=None, role_session_name=None, duration_seconds=7200):
+        """
+        :param secret_id: 接口调用凭证id
+        :type secret_id: str
+        :param secret_key: 接口调用凭证key
+        :type secret_key: str
+
+        https://cloud.tencent.com/document/api/1312/48197
+        :param role_arn: 角色的资源描述，上述链接RoleArn参数中有详细获取方式
+        :type role_arn: str
+        :param role_session_name: 临时会话名称，由用户自定义名称
+        :type role_session_name: str
+        :param duration_seconds: 获取临时凭证的有效期，默认7200s
+        :type duration_seconds: int
+        """
+
+        if None in [secret_id, secret_key, role_arn, role_session_name]:
+            raise TencentCloudSDKException("STSAssumeRoleCredential Parameter Error, "
+                                           "secret_id, secret_key, role_arn, role_session_name all required.")
+        self._long_secret_id = secret_id
+        self._long_secret_key = secret_key
+        self._role_arn = role_arn
+        self._role_session_name = role_session_name
+        self._duration_seconds = duration_seconds
+
+        self._token = None
+        self._tmp_secret_id = None
+        self._tmp_secret_key = None
+        self._expired_time = 0
+
+        self._last_role_arn = None
+        self._tmp_credential = None
+
+    @property
+    def secretId(self):
+        self._need_refresh()
+        return self._tmp_secret_id
+
+    @property
+    def secretKey(self):
+        self._need_refresh()
+        return self._tmp_secret_key
+
+    @property
+    def token(self):
+        self._need_refresh()
+        return self._token
+
+    def _need_refresh(self):
+        """
+        https://cloud.tencent.com/document/api/1312/48197
+        此函数自动使用初始secret_id和secret_key，自动调用上述链接中获取临时凭证的接口，并返回临时凭证
+
+        :param role_arn: 角色的资源描述，上述链接RoleArn参数中有详细获取方式
+        :type role_arn: str
+        :param role_session_name: 临时会话名称，由用户自定义名称
+        :type role_session_name: str
+        :param duration_seconds: 获取临时凭证的有效期，默认7200s
+        :type duration_seconds: int
+
+        """
+
+        if None in [self._token, self._tmp_secret_key, self._tmp_secret_id] or self._expired_time < int(time.time()):
+            self.get_sts_tmp_role_arn()
+
+    def get_sts_tmp_role_arn(self):
+        cred = Credential(self._long_secret_id, self._long_secret_key)
+
+        common_client = CommonClient(credential=cred, region=self._region, version=self._version, service=self._service)
+        params = {
+            "RoleArn": self._role_arn,
+            "RoleSessionName": self._role_session_name,
+            "DurationSeconds": self._duration_seconds
+
+        }
+
+        t_c = common_client.call_json("AssumeRole", params)
+        self._token = t_c["Response"]["Credentials"]["Token"]
+        self._tmp_secret_id = t_c["Response"]["Credentials"]["TmpSecretId"]
+        self._tmp_secret_key = t_c["Response"]["Credentials"]["TmpSecretKey"]
+        self._expired_time = t_c["Response"]["ExpiredTime"] - self._duration_seconds*0.9
+
