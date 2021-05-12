@@ -1043,16 +1043,24 @@ class LogOutputConf(AbstractModel):
         :type ClsLogsetName: str
         :param ClsLogTopicId: cls日志主题
         :type ClsLogTopicId: str
+        :param ClsLogsetId: cls日志集id
+        :type ClsLogsetId: str
+        :param ClsLogTopicName: cls日志名称
+        :type ClsLogTopicName: str
         """
         self.OutputType = None
         self.ClsLogsetName = None
         self.ClsLogTopicId = None
+        self.ClsLogsetId = None
+        self.ClsLogTopicName = None
 
 
     def _deserialize(self, params):
         self.OutputType = params.get("OutputType")
         self.ClsLogsetName = params.get("ClsLogsetName")
         self.ClsLogTopicId = params.get("ClsLogTopicId")
+        self.ClsLogsetId = params.get("ClsLogsetId")
+        self.ClsLogTopicName = params.get("ClsLogTopicName")
 
 
 class ModifyIngressRequest(AbstractModel):
@@ -1334,6 +1342,8 @@ class TemNamespaceInfo(AbstractModel):
         :type TcbEnvStatus: str
         :param ClusterStatus: eks cluster status
         :type ClusterStatus: str
+        :param EnableTswTraceService: 是否开启tsw
+        :type EnableTswTraceService: bool
         """
         self.NamespaceId = None
         self.Channel = None
@@ -1351,6 +1361,7 @@ class TemNamespaceInfo(AbstractModel):
         self.SubnetId = None
         self.TcbEnvStatus = None
         self.ClusterStatus = None
+        self.EnableTswTraceService = None
 
 
     def _deserialize(self, params):
@@ -1370,3 +1381,4 @@ class TemNamespaceInfo(AbstractModel):
         self.SubnetId = params.get("SubnetId")
         self.TcbEnvStatus = params.get("TcbEnvStatus")
         self.ClusterStatus = params.get("ClusterStatus")
+        self.EnableTswTraceService = params.get("EnableTswTraceService")

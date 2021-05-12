@@ -110,6 +110,34 @@ class IcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyUserCardRemark(self, request):
+        """编辑卡片备注
+
+        :param request: Request instance for ModifyUserCardRemark.
+        :type request: :class:`tencentcloud.ic.v20190307.models.ModifyUserCardRemarkRequest`
+        :rtype: :class:`tencentcloud.ic.v20190307.models.ModifyUserCardRemarkResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyUserCardRemark", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyUserCardRemarkResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RenewCards(self, request):
         """批量为卡片续费，此接口建议调用至少间隔10s,如果出现返回deal lock failed相关的错误，请过10s再重试。
         续费的必要条件：

@@ -231,7 +231,7 @@ class CheckDomainResponse(AbstractModel):
         :param FeeRenew: 溢价词的续费价格
 注意：此字段可能返回 null，表示取不到有效值。
         :type FeeRenew: int
-        :param RealPrice: 域名真实价格
+        :param RealPrice: 域名真实价格, 溢价词时价格跟年限有关，非溢价词时价格为1年的价格
 注意：此字段可能返回 null，表示取不到有效值。
         :type RealPrice: int
         :param FeeTransfer: 溢价词的转入价格

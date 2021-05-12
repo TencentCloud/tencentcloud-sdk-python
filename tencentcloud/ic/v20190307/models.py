@@ -362,6 +362,48 @@ class DescribeCardsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyUserCardRemarkRequest(AbstractModel):
+    """ModifyUserCardRemark请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Sdkappid: 应用ID
+        :type Sdkappid: int
+        :param Iccid: 物联卡ICCID
+        :type Iccid: str
+        :param Remark: 备注信息，限50字
+        :type Remark: str
+        """
+        self.Sdkappid = None
+        self.Iccid = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.Sdkappid = params.get("Sdkappid")
+        self.Iccid = params.get("Iccid")
+        self.Remark = params.get("Remark")
+
+
+class ModifyUserCardRemarkResponse(AbstractModel):
+    """ModifyUserCardRemark返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class RenewCardsRequest(AbstractModel):
     """RenewCards请求参数结构体
 

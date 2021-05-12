@@ -1177,6 +1177,8 @@ class CreateCloudBaseRunServerVersionRequest(AbstractModel):
         :type Security: :class:`tencentcloud.tcb.v20180608.models.CloudBaseSecurityContext`
         :param ServiceVolumes: 服务磁盘挂载
         :type ServiceVolumes: list of CloudRunServiceVolume
+        :param IsCreateJnsGw: 是否创建JnsGw 0未传默认创建 1创建 2不创建
+        :type IsCreateJnsGw: int
         """
         self.EnvId = None
         self.UploadType = None
@@ -1214,6 +1216,7 @@ class CreateCloudBaseRunServerVersionRequest(AbstractModel):
         self.SidecarSpecs = None
         self.Security = None
         self.ServiceVolumes = None
+        self.IsCreateJnsGw = None
 
 
     def _deserialize(self, params):
@@ -1278,6 +1281,7 @@ class CreateCloudBaseRunServerVersionRequest(AbstractModel):
                 obj = CloudRunServiceVolume()
                 obj._deserialize(item)
                 self.ServiceVolumes.append(obj)
+        self.IsCreateJnsGw = params.get("IsCreateJnsGw")
 
 
 class CreateCloudBaseRunServerVersionResponse(AbstractModel):
@@ -4405,6 +4409,187 @@ class ReinstateEnvResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class RollUpdateCloudBaseRunServerVersionRequest(AbstractModel):
+    """RollUpdateCloudBaseRunServerVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境ID
+        :type EnvId: str
+        :param VersionName: 要替换的版本名称，可以为latest
+        :type VersionName: str
+        :param UploadType: 枚举（package/repository/image)
+        :type UploadType: str
+        :param RepositoryType: repository的类型(coding/gitlab/github)
+        :type RepositoryType: str
+        :param FlowRatio: 流量占比
+        :type FlowRatio: int
+        :param DockerfilePath: dockerfile地址
+        :type DockerfilePath: str
+        :param BuildDir: 构建目录
+        :type BuildDir: str
+        :param Cpu: Cpu的大小，单位：核
+        :type Cpu: str
+        :param Mem: Mem的大小，单位：G
+        :type Mem: str
+        :param MinNum: 最小副本数，最小值：0
+        :type MinNum: str
+        :param MaxNum: 最大副本数
+        :type MaxNum: str
+        :param PolicyType: 策略类型
+        :type PolicyType: str
+        :param PolicyThreshold: 策略阈值
+        :type PolicyThreshold: str
+        :param EnvParams: 环境变量
+        :type EnvParams: str
+        :param ContainerPort: 容器端口
+        :type ContainerPort: int
+        :param ServerName: 服务名称
+        :type ServerName: str
+        :param Repository: repository地址
+        :type Repository: str
+        :param Branch: 分支
+        :type Branch: str
+        :param VersionRemark: 版本备注
+        :type VersionRemark: str
+        :param PackageName: 代码包名字
+        :type PackageName: str
+        :param PackageVersion: 代码包版本
+        :type PackageVersion: str
+        :param ImageInfo: Image的详情
+        :type ImageInfo: :class:`tencentcloud.tcb.v20180608.models.CloudBaseRunImageInfo`
+        :param CodeDetail: Github等拉取代码的详情
+        :type CodeDetail: :class:`tencentcloud.tcb.v20180608.models.CloudBaseCodeRepoDetail`
+        :param IsRebuild: 是否回放流量
+        :type IsRebuild: bool
+        :param InitialDelaySeconds: 延迟多长时间开始健康检查（单位s）
+        :type InitialDelaySeconds: int
+        :param MountVolumeInfo: cfs挂载信息
+        :type MountVolumeInfo: list of CloudBaseRunVolumeMount
+        :param Rollback: 是否回滚
+        :type Rollback: bool
+        :param SnapshotName: 版本历史名
+        :type SnapshotName: str
+        :param CustomLogs: 自定义采集路径
+        :type CustomLogs: str
+        :param EnableUnion: 是否启用统一域名
+        :type EnableUnion: bool
+        :param OperatorRemark: 操作备注
+        :type OperatorRemark: str
+        :param ServerPath: 服务路径（只会第一次生效）
+        :type ServerPath: str
+        """
+        self.EnvId = None
+        self.VersionName = None
+        self.UploadType = None
+        self.RepositoryType = None
+        self.FlowRatio = None
+        self.DockerfilePath = None
+        self.BuildDir = None
+        self.Cpu = None
+        self.Mem = None
+        self.MinNum = None
+        self.MaxNum = None
+        self.PolicyType = None
+        self.PolicyThreshold = None
+        self.EnvParams = None
+        self.ContainerPort = None
+        self.ServerName = None
+        self.Repository = None
+        self.Branch = None
+        self.VersionRemark = None
+        self.PackageName = None
+        self.PackageVersion = None
+        self.ImageInfo = None
+        self.CodeDetail = None
+        self.IsRebuild = None
+        self.InitialDelaySeconds = None
+        self.MountVolumeInfo = None
+        self.Rollback = None
+        self.SnapshotName = None
+        self.CustomLogs = None
+        self.EnableUnion = None
+        self.OperatorRemark = None
+        self.ServerPath = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.VersionName = params.get("VersionName")
+        self.UploadType = params.get("UploadType")
+        self.RepositoryType = params.get("RepositoryType")
+        self.FlowRatio = params.get("FlowRatio")
+        self.DockerfilePath = params.get("DockerfilePath")
+        self.BuildDir = params.get("BuildDir")
+        self.Cpu = params.get("Cpu")
+        self.Mem = params.get("Mem")
+        self.MinNum = params.get("MinNum")
+        self.MaxNum = params.get("MaxNum")
+        self.PolicyType = params.get("PolicyType")
+        self.PolicyThreshold = params.get("PolicyThreshold")
+        self.EnvParams = params.get("EnvParams")
+        self.ContainerPort = params.get("ContainerPort")
+        self.ServerName = params.get("ServerName")
+        self.Repository = params.get("Repository")
+        self.Branch = params.get("Branch")
+        self.VersionRemark = params.get("VersionRemark")
+        self.PackageName = params.get("PackageName")
+        self.PackageVersion = params.get("PackageVersion")
+        if params.get("ImageInfo") is not None:
+            self.ImageInfo = CloudBaseRunImageInfo()
+            self.ImageInfo._deserialize(params.get("ImageInfo"))
+        if params.get("CodeDetail") is not None:
+            self.CodeDetail = CloudBaseCodeRepoDetail()
+            self.CodeDetail._deserialize(params.get("CodeDetail"))
+        self.IsRebuild = params.get("IsRebuild")
+        self.InitialDelaySeconds = params.get("InitialDelaySeconds")
+        if params.get("MountVolumeInfo") is not None:
+            self.MountVolumeInfo = []
+            for item in params.get("MountVolumeInfo"):
+                obj = CloudBaseRunVolumeMount()
+                obj._deserialize(item)
+                self.MountVolumeInfo.append(obj)
+        self.Rollback = params.get("Rollback")
+        self.SnapshotName = params.get("SnapshotName")
+        self.CustomLogs = params.get("CustomLogs")
+        self.EnableUnion = params.get("EnableUnion")
+        self.OperatorRemark = params.get("OperatorRemark")
+        self.ServerPath = params.get("ServerPath")
+
+
+class RollUpdateCloudBaseRunServerVersionResponse(AbstractModel):
+    """RollUpdateCloudBaseRunServerVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: succ为成功
+        :type Result: str
+        :param VersionName: 滚动更新的VersionName
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionName: str
+        :param RunId: 操作记录id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.VersionName = None
+        self.RunId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.VersionName = params.get("VersionName")
+        self.RunId = params.get("RunId")
         self.RequestId = params.get("RequestId")
 
 

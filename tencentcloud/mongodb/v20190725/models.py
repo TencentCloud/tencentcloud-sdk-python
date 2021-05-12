@@ -1179,6 +1179,49 @@ class DescribeDBInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSecurityGroupRequest(AbstractModel):
+    """DescribeSecurityGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5。
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+
+
+class DescribeSecurityGroupResponse(AbstractModel):
+    """DescribeSecurityGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Groups: 实例绑定的安全组
+        :type Groups: list of SecurityGroup
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Groups = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Groups") is not None:
+            self.Groups = []
+            for item in params.get("Groups"):
+                obj = SecurityGroup()
+                obj._deserialize(item)
+                self.Groups.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSlowLogPatternsRequest(AbstractModel):
     """DescribeSlowLogPatterns请求参数结构体
 
@@ -2117,6 +2160,86 @@ class ResetDBInstancePasswordResponse(AbstractModel):
     def _deserialize(self, params):
         self.AsyncRequestId = params.get("AsyncRequestId")
         self.RequestId = params.get("RequestId")
+
+
+class SecurityGroup(AbstractModel):
+    """安全组信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ProjectId: 所属项目id
+        :type ProjectId: int
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param Inbound: 入站规则
+        :type Inbound: list of SecurityGroupBound
+        :param Outbound: 出站规则
+        :type Outbound: list of SecurityGroupBound
+        :param SecurityGroupId: 安全组id
+        :type SecurityGroupId: str
+        :param SecurityGroupName: 安全组名称
+        :type SecurityGroupName: str
+        :param SecurityGroupRemark: 安全组备注
+        :type SecurityGroupRemark: str
+        """
+        self.ProjectId = None
+        self.CreateTime = None
+        self.Inbound = None
+        self.Outbound = None
+        self.SecurityGroupId = None
+        self.SecurityGroupName = None
+        self.SecurityGroupRemark = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.CreateTime = params.get("CreateTime")
+        if params.get("Inbound") is not None:
+            self.Inbound = []
+            for item in params.get("Inbound"):
+                obj = SecurityGroupBound()
+                obj._deserialize(item)
+                self.Inbound.append(obj)
+        if params.get("Outbound") is not None:
+            self.Outbound = []
+            for item in params.get("Outbound"):
+                obj = SecurityGroupBound()
+                obj._deserialize(item)
+                self.Outbound.append(obj)
+        self.SecurityGroupId = params.get("SecurityGroupId")
+        self.SecurityGroupName = params.get("SecurityGroupName")
+        self.SecurityGroupRemark = params.get("SecurityGroupRemark")
+
+
+class SecurityGroupBound(AbstractModel):
+    """安全组规则
+
+    """
+
+    def __init__(self):
+        """
+        :param Action: 执行规则。ACCEPT或DROP
+        :type Action: str
+        :param CidrIp: ip段。
+        :type CidrIp: str
+        :param PortRange: 端口范围
+        :type PortRange: str
+        :param IpProtocol: 传输层协议。tcp，udp或ALL
+        :type IpProtocol: str
+        """
+        self.Action = None
+        self.CidrIp = None
+        self.PortRange = None
+        self.IpProtocol = None
+
+
+    def _deserialize(self, params):
+        self.Action = params.get("Action")
+        self.CidrIp = params.get("CidrIp")
+        self.PortRange = params.get("PortRange")
+        self.IpProtocol = params.get("IpProtocol")
 
 
 class ShardInfo(AbstractModel):

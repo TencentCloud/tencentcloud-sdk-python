@@ -392,6 +392,34 @@ class MongodbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeSecurityGroup(self, request):
+        """查询实例绑定的安全组
+
+        :param request: Request instance for DescribeSecurityGroup.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeSecurityGroupRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.DescribeSecurityGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSecurityGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSecurityGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeSlowLogPatterns(self, request):
         """本接口（DescribeSlowLogPatterns）用于获取数据库实例慢日志的统计信息。
 
