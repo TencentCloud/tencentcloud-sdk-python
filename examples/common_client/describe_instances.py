@@ -12,7 +12,8 @@ from tencentcloud.common.profile.http_profile import HttpProfile
 
 try:
     # 实例化一个认证对象，入参需要传入腾讯云账户secretId，secretKey
-    cred = credential.STSAssumeRoleCredential("AKIDe4btvBbWs2xgtsBChx1rSr10Yonbx0bv", "BTVHp7IJ4oSu6rNoAMSJuEGG3bryswbC", "qcs::cam::uin/100014602071:roleName/first", "firsttest")
+    cred = credential.STSAssumeRoleCredential(os.environ.get("TENCENTCLOUD_SECRET_ID"),
+        os.environ.get("TENCENTCLOUD_SECRET_KEY"), "qcs::cam::uin/123:roleName/first", "firsttest")
 
     # 实例化一个http选项，可选的，没有特殊需求可以跳过。
     httpProfile = HttpProfile()
