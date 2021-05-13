@@ -27,7 +27,7 @@ class CommonClient(AbstractClient):
 
     """
 
-    def __init__(self, credential=None, region=None, version=None, profile=None, service=None):
+    def __init__(self, service, version, credential, region, profile=None):
         """
         :param credential: 接口调用凭证
         :type credential: tencentcloud.common.credential.Credential or tencentcloud.common.credential.STSAssumeRoleCredential
