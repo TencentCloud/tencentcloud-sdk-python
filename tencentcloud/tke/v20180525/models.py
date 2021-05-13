@@ -904,6 +904,27 @@ class ClusterVersion(AbstractModel):
         self.Versions = params.get("Versions")
 
 
+class CommonName(AbstractModel):
+    """账户UIN与客户端证书CommonName的映射
+
+    """
+
+    def __init__(self):
+        """
+        :param SubaccountUin: 子账户UIN
+        :type SubaccountUin: str
+        :param CN: 子账户客户端证书中的CommonName字段
+        :type CN: str
+        """
+        self.SubaccountUin = None
+        self.CN = None
+
+
+    def _deserialize(self, params):
+        self.SubaccountUin = params.get("SubaccountUin")
+        self.CN = params.get("CN")
+
+
 class CreateClusterAsGroupRequest(AbstractModel):
     """CreateClusterAsGroup请求参数结构体
 
@@ -2225,6 +2246,57 @@ class DescribeClusterAsGroupsResponse(AbstractModel):
                 obj = ClusterAsGroup()
                 obj._deserialize(item)
                 self.ClusterAsGroupSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClusterCommonNamesRequest(AbstractModel):
+    """DescribeClusterCommonNames请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param SubaccountUins: 子账户列表，不可超出最大值50
+        :type SubaccountUins: list of str
+        :param RoleIds: 角色ID列表，不可超出最大值50
+        :type RoleIds: list of str
+        """
+        self.ClusterId = None
+        self.SubaccountUins = None
+        self.RoleIds = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.SubaccountUins = params.get("SubaccountUins")
+        self.RoleIds = params.get("RoleIds")
+
+
+class DescribeClusterCommonNamesResponse(AbstractModel):
+    """DescribeClusterCommonNames返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CommonNames: 子账户Uin与其客户端证书的CN字段映射
+        :type CommonNames: list of CommonName
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CommonNames = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CommonNames") is not None:
+            self.CommonNames = []
+            for item in params.get("CommonNames"):
+                obj = CommonName()
+                obj._deserialize(item)
+                self.CommonNames.append(obj)
         self.RequestId = params.get("RequestId")
 
 

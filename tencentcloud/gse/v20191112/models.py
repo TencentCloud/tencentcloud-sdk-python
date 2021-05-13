@@ -3904,6 +3904,9 @@ class Instance(AbstractModel):
         :param ReserveValue: 实例是否保留, 1-保留，0-不保留,默认
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReserveValue: int
+        :param PrivateIpAddress: 实例的私有IP地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrivateIpAddress: str
         """
         self.FleetId = None
         self.InstanceId = None
@@ -3915,6 +3918,7 @@ class Instance(AbstractModel):
         self.CreateTime = None
         self.Weight = None
         self.ReserveValue = None
+        self.PrivateIpAddress = None
 
 
     def _deserialize(self, params):
@@ -3928,6 +3932,7 @@ class Instance(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.Weight = params.get("Weight")
         self.ReserveValue = params.get("ReserveValue")
+        self.PrivateIpAddress = params.get("PrivateIpAddress")
 
 
 class InstanceAccess(AbstractModel):

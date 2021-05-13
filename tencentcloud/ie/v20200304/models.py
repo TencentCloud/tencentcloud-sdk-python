@@ -42,6 +42,23 @@ wdaf：速度慢，保护边缘效果好
         self.Algorithm = params.get("Algorithm")
 
 
+class AudioEnhance(AbstractModel):
+    """音频音效增强，只支持无背景音的音频
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 音效增强种类，可选项：normal
+        :type Type: str
+        """
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+
+
 class AudioInfo(AbstractModel):
     """音频参数信息
 
@@ -68,6 +85,12 @@ class AudioInfo(AbstractModel):
 1：开启，
 默认不开启
         :type EnableMuteAudio: int
+        :param LoudnessInfo: 音频响度信息
+        :type LoudnessInfo: :class:`tencentcloud.ie.v20200304.models.LoudnessInfo`
+        :param AudioEnhance: 音频音效增强
+        :type AudioEnhance: :class:`tencentcloud.ie.v20200304.models.AudioEnhance`
+        :param RemoveReverb: 去除混音
+        :type RemoveReverb: :class:`tencentcloud.ie.v20200304.models.RemoveReverb`
         """
         self.Bitrate = None
         self.Codec = None
@@ -75,6 +98,9 @@ class AudioInfo(AbstractModel):
         self.SampleRate = None
         self.Denoise = None
         self.EnableMuteAudio = None
+        self.LoudnessInfo = None
+        self.AudioEnhance = None
+        self.RemoveReverb = None
 
 
     def _deserialize(self, params):
@@ -86,6 +112,15 @@ class AudioInfo(AbstractModel):
             self.Denoise = Denoise()
             self.Denoise._deserialize(params.get("Denoise"))
         self.EnableMuteAudio = params.get("EnableMuteAudio")
+        if params.get("LoudnessInfo") is not None:
+            self.LoudnessInfo = LoudnessInfo()
+            self.LoudnessInfo._deserialize(params.get("LoudnessInfo"))
+        if params.get("AudioEnhance") is not None:
+            self.AudioEnhance = AudioEnhance()
+            self.AudioEnhance._deserialize(params.get("AudioEnhance"))
+        if params.get("RemoveReverb") is not None:
+            self.RemoveReverb = RemoveReverb()
+            self.RemoveReverb._deserialize(params.get("RemoveReverb"))
 
 
 class AudioInfoResultItem(AbstractModel):
@@ -1374,6 +1409,27 @@ class IntervalTime(AbstractModel):
         self.StartTime = params.get("StartTime")
 
 
+class LoudnessInfo(AbstractModel):
+    """音频响度信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Loudness: 音频整体响度
+        :type Loudness: float
+        :param LoudnessRange: 音频响度范围
+        :type LoudnessRange: float
+        """
+        self.Loudness = None
+        self.LoudnessRange = None
+
+
+    def _deserialize(self, params):
+        self.Loudness = params.get("Loudness")
+        self.LoudnessRange = params.get("LoudnessRange")
+
+
 class LowLightEnhance(AbstractModel):
     """低光照增强参数
 
@@ -2319,6 +2375,23 @@ class QualityControlResultItems(AbstractModel):
                 obj = QualityControlItem()
                 obj._deserialize(item)
                 self.QualityControlItems.append(obj)
+
+
+class RemoveReverb(AbstractModel):
+    """音频去除混响
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 去混响类型，可选项：normal
+        :type Type: str
+        """
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
 
 
 class ResultAudioInfo(AbstractModel):

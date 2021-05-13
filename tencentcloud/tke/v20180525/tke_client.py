@@ -866,6 +866,34 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeClusterCommonNames(self, request):
+        """获取指定子账户在RBAC授权模式中对应kube-apiserver客户端证书的CommonName字段，如果没有客户端证书，将会签发一个，此接口有最大传入子账户数量上限，当前为50
+
+        :param request: Request instance for DescribeClusterCommonNames.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterCommonNamesRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClusterCommonNamesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeClusterCommonNames", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClusterCommonNamesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeClusterEndpointStatus(self, request):
         """查询集群访问端口状态(独立集群开启内网/外网访问，托管集群支持开启内网访问)
 

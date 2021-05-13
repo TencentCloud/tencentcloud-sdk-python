@@ -724,6 +724,84 @@ class CreateProcessTaskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateSearchLogRequest(AbstractModel):
+    """CreateSearchLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SearchContent: 搜索内容
+        :type SearchContent: str
+        """
+        self.SearchContent = None
+
+
+    def _deserialize(self, params):
+        self.SearchContent = params.get("SearchContent")
+
+
+class CreateSearchLogResponse(AbstractModel):
+    """CreateSearchLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 0：成功，非0：失败
+        :type Status: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateSearchTemplateRequest(AbstractModel):
+    """CreateSearchTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SearchTemplate: 搜索模板
+        :type SearchTemplate: :class:`tencentcloud.cwp.v20180228.models.SearchTemplate`
+        """
+        self.SearchTemplate = None
+
+
+    def _deserialize(self, params):
+        if params.get("SearchTemplate") is not None:
+            self.SearchTemplate = SearchTemplate()
+            self.SearchTemplate._deserialize(params.get("SearchTemplate"))
+
+
+class CreateSearchTemplateResponse(AbstractModel):
+    """CreateSearchTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 0：成功，非0：失败
+        :type Status: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateUsualLoginPlacesRequest(AbstractModel):
     """CreateUsualLoginPlaces请求参数结构体
 
@@ -1317,6 +1395,44 @@ class DeleteReverseShellRulesResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteSearchTemplateRequest(AbstractModel):
+    """DeleteSearchTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 模板ID
+        :type Id: int
+        """
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+
+
+class DeleteSearchTemplateResponse(AbstractModel):
+    """DeleteSearchTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 0：成功，非0：失败
+        :type Status: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
         self.RequestId = params.get("RequestId")
 
 
@@ -2223,6 +2339,44 @@ class DescribeComponentsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeESAggregationsRequest(AbstractModel):
+    """DescribeESAggregations请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Query: ES聚合条件JSON
+        :type Query: str
+        """
+        self.Query = None
+
+
+    def _deserialize(self, params):
+        self.Query = params.get("Query")
+
+
+class DescribeESAggregationsResponse(AbstractModel):
+    """DescribeESAggregations返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: ES聚合结果JSON
+        :type Data: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Data = params.get("Data")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeESHitsRequest(AbstractModel):
     """DescribeESHits请求参数结构体
 
@@ -2479,6 +2633,53 @@ class DescribeHistoryAccountsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeHistoryServiceRequest(AbstractModel):
+    """DescribeHistoryService请求参数结构体
+
+    """
+
+
+class DescribeHistoryServiceResponse(AbstractModel):
+    """DescribeHistoryService返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BuyStatus: 1 可购买 2 只能升降配 3 只能跳到续费管理页
+        :type BuyStatus: int
+        :param InquireNum: 用户已购容量 单位 G
+        :type InquireNum: int
+        :param EndTime: 到期时间
+        :type EndTime: str
+        :param IsAutoOpenRenew: 是否自动续费,0 初始值, 1 开通 2 没开通
+        :type IsAutoOpenRenew: int
+        :param ResourceId: 资源ID
+        :type ResourceId: str
+        :param Status: 0 没开通 1 正常 2隔离 3销毁
+        :type Status: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BuyStatus = None
+        self.InquireNum = None
+        self.EndTime = None
+        self.IsAutoOpenRenew = None
+        self.ResourceId = None
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BuyStatus = params.get("BuyStatus")
+        self.InquireNum = params.get("InquireNum")
+        self.EndTime = params.get("EndTime")
+        self.IsAutoOpenRenew = params.get("IsAutoOpenRenew")
+        self.ResourceId = params.get("ResourceId")
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeImpactedHostsRequest(AbstractModel):
     """DescribeImpactedHosts请求参数结构体
 
@@ -2594,6 +2795,64 @@ class DescribeImportMachineInfoResponse(AbstractModel):
                 obj._deserialize(item)
                 self.EffectiveMachineInfoList.append(obj)
         self.InvalidMachineList = params.get("InvalidMachineList")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeIndexListRequest(AbstractModel):
+    """DescribeIndexList请求参数结构体
+
+    """
+
+
+class DescribeIndexListResponse(AbstractModel):
+    """DescribeIndexList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: ES 索引信息
+        :type Data: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Data = params.get("Data")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLogStorageStatisticRequest(AbstractModel):
+    """DescribeLogStorageStatistic请求参数结构体
+
+    """
+
+
+class DescribeLogStorageStatisticResponse(AbstractModel):
+    """DescribeLogStorageStatistic返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalSize: 总容量
+        :type TotalSize: int
+        :param UsedSize: 已使用容量
+        :type UsedSize: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalSize = None
+        self.UsedSize = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalSize = params.get("TotalSize")
+        self.UsedSize = params.get("UsedSize")
         self.RequestId = params.get("RequestId")
 
 
@@ -3994,6 +4253,126 @@ class DescribeScanMalwareScheduleResponse(AbstractModel):
         self.RiskFileNumber = params.get("RiskFileNumber")
         self.IsSchedule = params.get("IsSchedule")
         self.ScanStatus = params.get("ScanStatus")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSearchExportListRequest(AbstractModel):
+    """DescribeSearchExportList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Query: ES查询条件JSON
+        :type Query: str
+        """
+        self.Query = None
+
+
+    def _deserialize(self, params):
+        self.Query = params.get("Query")
+
+
+class DescribeSearchExportListResponse(AbstractModel):
+    """DescribeSearchExportList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 导出的任务号
+        :type TaskId: int
+        :param DownloadUrl: 下载地址
+        :type DownloadUrl: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.DownloadUrl = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.DownloadUrl = params.get("DownloadUrl")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSearchLogsRequest(AbstractModel):
+    """DescribeSearchLogs请求参数结构体
+
+    """
+
+
+class DescribeSearchLogsResponse(AbstractModel):
+    """DescribeSearchLogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 历史搜索记录
+        :type Data: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Data = params.get("Data")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSearchTemplatesRequest(AbstractModel):
+    """DescribeSearchTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 返回数量，默认为10，最大值为100。
+        :type Limit: int
+        """
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+
+
+class DescribeSearchTemplatesResponse(AbstractModel):
+    """DescribeSearchTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 总数
+        :type TotalCount: int
+        :param List: 模板列表
+        :type List: list of SearchTemplate
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.List = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = SearchTemplate()
+                obj._deserialize(item)
+                self.List.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -7548,6 +7927,51 @@ class ReverseShellRule(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.ModifyTime = params.get("ModifyTime")
         self.Hostip = params.get("Hostip")
+
+
+class SearchTemplate(AbstractModel):
+    """快速搜索模板
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 检索名称
+        :type Name: str
+        :param LogType: 检索索引类型
+        :type LogType: str
+        :param Condition: 检索语句
+        :type Condition: str
+        :param TimeRange: 时间范围
+        :type TimeRange: str
+        :param Query: 转换的检索语句内容
+        :type Query: str
+        :param Flag: 检索方式。输入框检索：standard,过滤，检索：simple
+        :type Flag: str
+        :param DisplayData: 展示数据
+        :type DisplayData: str
+        :param Id: 规则ID
+        :type Id: int
+        """
+        self.Name = None
+        self.LogType = None
+        self.Condition = None
+        self.TimeRange = None
+        self.Query = None
+        self.Flag = None
+        self.DisplayData = None
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.LogType = params.get("LogType")
+        self.Condition = params.get("Condition")
+        self.TimeRange = params.get("TimeRange")
+        self.Query = params.get("Query")
+        self.Flag = params.get("Flag")
+        self.DisplayData = params.get("DisplayData")
+        self.Id = params.get("Id")
 
 
 class SecurityDynamic(AbstractModel):
