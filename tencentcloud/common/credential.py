@@ -25,7 +25,7 @@ except ImportError:
     from urllib import urlopen
 
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
-from common_client import CommonClient
+from tencentcloud.common.common_client import CommonClient
 
 class Credential(object):
     def __init__(self, secretId, secretKey, token=None):

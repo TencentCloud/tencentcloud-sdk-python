@@ -33,7 +33,7 @@ try:
     # 实例化要请求的common client对象，clientProfile是可选的。
     common_client = CommonClient("api", '2020-11-06', cred, "ap-shanghai", profile=clientProfile)
 
-    print common_client.call_json("DescribeZones", {"Product": "cvm"})
+    print(common_client.call_json("DescribeZones", {"Product": "cvm"}))
 
 
 except TencentCloudSDKException as err:
