@@ -2940,6 +2940,49 @@ class DescribeEKSClustersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeEnableVpcCniProgressRequest(AbstractModel):
+    """DescribeEnableVpcCniProgress请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 开启vpc-cni的集群ID
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+
+
+class DescribeEnableVpcCniProgressResponse(AbstractModel):
+    """DescribeEnableVpcCniProgress返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 任务进度的描述：Running/Succeed/Failed
+        :type Status: str
+        :param ErrorMessage: 当任务进度为Failed时，对任务状态的进一步描述，例如IPAMD组件安装失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMessage: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.ErrorMessage = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrorMessage = params.get("ErrorMessage")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeExistedInstancesRequest(AbstractModel):
     """DescribeExistedInstances请求参数结构体
 
@@ -3707,6 +3750,52 @@ class EksCluster(AbstractModel):
                 obj = TagSpecification()
                 obj._deserialize(item)
                 self.TagSpecification.append(obj)
+
+
+class EnableVpcCniNetworkTypeRequest(AbstractModel):
+    """EnableVpcCniNetworkType请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param VpcCniType: 开启vpc-cni的模式，tke-route-eni开启的是策略路由模式，tke-direct-eni开启的是独立网卡模式
+        :type VpcCniType: str
+        :param EnableStaticIp: 是否开启固定IP模式
+        :type EnableStaticIp: bool
+        :param Subnets: 使用的容器子网
+        :type Subnets: list of str
+        """
+        self.ClusterId = None
+        self.VpcCniType = None
+        self.EnableStaticIp = None
+        self.Subnets = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.VpcCniType = params.get("VpcCniType")
+        self.EnableStaticIp = params.get("EnableStaticIp")
+        self.Subnets = params.get("Subnets")
+
+
+class EnableVpcCniNetworkTypeResponse(AbstractModel):
+    """EnableVpcCniNetworkType返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class EnhancedService(AbstractModel):

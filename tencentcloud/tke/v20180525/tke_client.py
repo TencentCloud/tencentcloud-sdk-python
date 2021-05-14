@@ -1230,6 +1230,34 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeEnableVpcCniProgress(self, request):
+        """本接口用于查询开启vpc-cni模式的任务进度
+
+        :param request: Request instance for DescribeEnableVpcCniProgress.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeEnableVpcCniProgressRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeEnableVpcCniProgressResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeEnableVpcCniProgress", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeEnableVpcCniProgressResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeExistedInstances(self, request):
         """查询已经存在的节点，判断是否可以加入集群
 
@@ -1552,6 +1580,34 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRouteTableConflictsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def EnableVpcCniNetworkType(self, request):
+        """GR集群可以通过本接口附加vpc-cni容器网络插件，开启vpc-cni容器网络能力
+
+        :param request: Request instance for EnableVpcCniNetworkType.
+        :type request: :class:`tencentcloud.tke.v20180525.models.EnableVpcCniNetworkTypeRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.EnableVpcCniNetworkTypeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("EnableVpcCniNetworkType", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EnableVpcCniNetworkTypeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

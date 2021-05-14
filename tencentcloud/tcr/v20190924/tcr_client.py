@@ -1006,6 +1006,34 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeChartDownloadInfo(self, request):
+        """用于在企业版中返回Chart的下载信息
+
+        :param request: Request instance for DescribeChartDownloadInfo.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeChartDownloadInfoRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DescribeChartDownloadInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeChartDownloadInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeChartDownloadInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeExternalEndpointStatus(self, request):
         """查询实例公网访问入口状态
 

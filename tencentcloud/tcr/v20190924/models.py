@@ -1658,6 +1658,56 @@ class DescribeApplicationTriggerPersonalResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeChartDownloadInfoRequest(AbstractModel):
+    """DescribeChartDownloadInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 实例ID
+        :type RegistryId: str
+        :param NamespaceName: 命名空间
+        :type NamespaceName: str
+        :param ChartName: Chart包的名称
+        :type ChartName: str
+        :param ChartVersion: Chart包的版本
+        :type ChartVersion: str
+        """
+        self.RegistryId = None
+        self.NamespaceName = None
+        self.ChartName = None
+        self.ChartVersion = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.NamespaceName = params.get("NamespaceName")
+        self.ChartName = params.get("ChartName")
+        self.ChartVersion = params.get("ChartVersion")
+
+
+class DescribeChartDownloadInfoResponse(AbstractModel):
+    """DescribeChartDownloadInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PreSignedDownloadURL: 用于下载的url的预签名地址
+        :type PreSignedDownloadURL: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PreSignedDownloadURL = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PreSignedDownloadURL = params.get("PreSignedDownloadURL")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeExternalEndpointStatusRequest(AbstractModel):
     """DescribeExternalEndpointStatus请求参数结构体
 

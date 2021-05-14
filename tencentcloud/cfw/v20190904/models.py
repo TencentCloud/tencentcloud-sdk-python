@@ -725,6 +725,35 @@ class DescribeCfwEipsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeGuideScanInfoRequest(AbstractModel):
+    """DescribeGuideScanInfo请求参数结构体
+
+    """
+
+
+class DescribeGuideScanInfoResponse(AbstractModel):
+    """DescribeGuideScanInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 扫描信息
+        :type Data: :class:`tencentcloud.cfw.v20190904.models.ScanInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = ScanInfo()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeNatRuleOverviewRequest(AbstractModel):
     """DescribeNatRuleOverview请求参数结构体
 
@@ -1818,6 +1847,79 @@ class RunSyncAssetResponse(AbstractModel):
     def _deserialize(self, params):
         self.Status = params.get("Status")
         self.RequestId = params.get("RequestId")
+
+
+class ScanInfo(AbstractModel):
+    """新手引导扫描信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ScanResultInfo: 扫描结果信息
+        :type ScanResultInfo: :class:`tencentcloud.cfw.v20190904.models.ScanResultInfo`
+        :param ScanStatus: 扫描状态 0扫描中 1完成   2没赠送过扫描显示开启界面
+        :type ScanStatus: int
+        :param ScanPercent: 进度
+        :type ScanPercent: float
+        :param ScanTime: 预计完成时间
+        :type ScanTime: str
+        """
+        self.ScanResultInfo = None
+        self.ScanStatus = None
+        self.ScanPercent = None
+        self.ScanTime = None
+
+
+    def _deserialize(self, params):
+        if params.get("ScanResultInfo") is not None:
+            self.ScanResultInfo = ScanResultInfo()
+            self.ScanResultInfo._deserialize(params.get("ScanResultInfo"))
+        self.ScanStatus = params.get("ScanStatus")
+        self.ScanPercent = params.get("ScanPercent")
+        self.ScanTime = params.get("ScanTime")
+
+
+class ScanResultInfo(AbstractModel):
+    """新手引导扫描结果信息PortNum   int
+    	LeakNum   int
+    	IPNum     int
+    	IPStatus  bool
+    	IdpStatus bool
+    	BanStatus bool
+
+    """
+
+    def __init__(self):
+        """
+        :param LeakNum: 暴漏漏洞数量
+        :type LeakNum: int
+        :param IPNum: 防护ip数量
+        :type IPNum: int
+        :param PortNum: 暴漏端口数量
+        :type PortNum: int
+        :param IPStatus: 是否开启防护
+        :type IPStatus: bool
+        :param IdpStatus: 是否拦截攻击
+        :type IdpStatus: bool
+        :param BanStatus: 是否禁封端口
+        :type BanStatus: bool
+        """
+        self.LeakNum = None
+        self.IPNum = None
+        self.PortNum = None
+        self.IPStatus = None
+        self.IdpStatus = None
+        self.BanStatus = None
+
+
+    def _deserialize(self, params):
+        self.LeakNum = params.get("LeakNum")
+        self.IPNum = params.get("IPNum")
+        self.PortNum = params.get("PortNum")
+        self.IPStatus = params.get("IPStatus")
+        self.IdpStatus = params.get("IdpStatus")
+        self.BanStatus = params.get("BanStatus")
 
 
 class SecurityGroupApiRuleData(AbstractModel):
