@@ -38,7 +38,7 @@ from tencentcloud.common.http.request import RequestInternal
 from tencentcloud.common.profile.client_profile import ClientProfile
 from tencentcloud.common.sign import Sign
 
-warnings.filterwarnings("ignore")
+# warnings.filterwarnings("ignore")
 
 _json_content = 'application/json'
 _multipart_content = 'multipart/form-data'
