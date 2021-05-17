@@ -14,7 +14,7 @@ from tencentcloud.common.profile.http_profile import HttpProfile
 
 def test_serialization():
     try:
-        mock_result = {
+        mocked = {
             "InstanceSet": [
                 {
                     "RenewFlag": "flag_demo",
@@ -48,14 +48,17 @@ def test_serialization():
                             "KmsKeyId": None,
                             "DiskSize": 10,
                             "SnapshotId": None,
-                            "DiskId": "disk-8888888"
+                            "DiskId": "disk-8888888",
+                            "CdcId": None,
+                            "ThroughputPerformance": None,
                         }
                     ],
                     "InstanceType": "S2.MEDIUM4",
                     "SystemDisk": {
                         "DiskSize": 50,
                         "DiskId": "disk-8888888",
-                        "DiskType": "CLOUD_BASIC"
+                        "DiskType": "CLOUD_BASIC",
+                        "CdcId": None
                     },
                     "Placement": {
                         "HostIds": None,
@@ -96,12 +99,15 @@ def test_serialization():
             "TotalCount": 1,
             "RequestId": "46fc254d-c862-401b-a2a0-8888888"
         }
-        result = dict(mock_result)
+        mocked_json = json.dumps(mocked)
+        res = models.DescribeInstancesResponse()
+        res.from_json_string(mocked_json)
 
-        result_json = json.dumps(result)
-        res_model = models.DescribeInstancesResponse()
-        res_model.from_json_string(result_json)
-
-        assert json.loads(res_model.to_json_string()) == json.loads(result_json)
+        actual = json.loads(res.to_json_string())
+        for key in actual["InstanceSet"][0]:
+            assert actual["InstanceSet"][0][key] == mocked["InstanceSet"][0][key], key
+        for key in mocked["InstanceSet"][0]:
+            assert actual["InstanceSet"][0][key] == mocked["InstanceSet"][0][key], key
+        assert actual == mocked
     except TencentCloudSDKException as err:
         print(err)
