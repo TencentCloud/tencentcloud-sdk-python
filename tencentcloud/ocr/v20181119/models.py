@@ -860,6 +860,27 @@ class Coord(AbstractModel):
         self.Y = params.get("Y")
 
 
+class Detail(AbstractModel):
+    """企业四要素核验结果
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 企业四要素核验结果状态码
+        :type Result: int
+        :param Desc: 企业四要素核验结果描述
+        :type Desc: str
+        """
+        self.Result = None
+        self.Desc = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.Desc = params.get("Desc")
+
+
 class DriverLicenseOCRRequest(AbstractModel):
     """DriverLicenseOCR请求参数结构体
 
@@ -6522,6 +6543,63 @@ class VerifyBizLicenseResponse(AbstractModel):
         if params.get("RegNumResult") is not None:
             self.RegNumResult = BizLicenseVerifyResult()
             self.RegNumResult._deserialize(params.get("RegNumResult"))
+        self.RequestId = params.get("RequestId")
+
+
+class VerifyEnterpriseFourFactorsRequest(AbstractModel):
+    """VerifyEnterpriseFourFactors请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RealName: 姓名
+        :type RealName: str
+        :param IdCard: 证件号码（公司注册证件号）
+        :type IdCard: str
+        :param EnterpriseName: 企业全称
+        :type EnterpriseName: str
+        :param EnterpriseMark: 企业标识（注册号，统一社会信用代码）
+        :type EnterpriseMark: str
+        """
+        self.RealName = None
+        self.IdCard = None
+        self.EnterpriseName = None
+        self.EnterpriseMark = None
+
+
+    def _deserialize(self, params):
+        self.RealName = params.get("RealName")
+        self.IdCard = params.get("IdCard")
+        self.EnterpriseName = params.get("EnterpriseName")
+        self.EnterpriseMark = params.get("EnterpriseMark")
+
+
+class VerifyEnterpriseFourFactorsResponse(AbstractModel):
+    """VerifyEnterpriseFourFactors返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param State: 核验一致性（1:一致，2:不一致）
+        :type State: int
+        :param Detail: 返回不一致时，返回明细，-22：姓名不一致，-23：证件号码不一致，-24：企业名称不一致，-25：企业标识不一致
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Detail: :class:`tencentcloud.ocr.v20181119.models.Detail`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.State = None
+        self.Detail = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.State = params.get("State")
+        if params.get("Detail") is not None:
+            self.Detail = Detail()
+            self.Detail._deserialize(params.get("Detail"))
         self.RequestId = params.get("RequestId")
 
 

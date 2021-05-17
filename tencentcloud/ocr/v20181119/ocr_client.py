@@ -2005,6 +2005,34 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def VerifyEnterpriseFourFactors(self, request):
+        """此接口基于企业四要素授权“姓名、证件号码、企业标识、企业全称”，验证企业信息是否一致。
+
+        :param request: Request instance for VerifyEnterpriseFourFactors.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.VerifyEnterpriseFourFactorsRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.VerifyEnterpriseFourFactorsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("VerifyEnterpriseFourFactors", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.VerifyEnterpriseFourFactorsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def VerifyOfdVatInvoiceOCR(self, request):
         """本接口支持OFD格式的增值税电子普通发票和增值税电子专用发票的识别，返回发票代码、发票号码、开票日期、验证码、机器编号、密码区，购买方和销售方信息，包括名称、纳税人识别号、地址电话、开户行及账号，以及价税合计、开票人、收款人、复核人、税额、不含税金额等字段信息。
 

@@ -243,11 +243,11 @@ class CreateResourceRequest(AbstractModel):
         """
         :param NamespaceId: 命名空间 Id
         :type NamespaceId: str
-        :param ResourceType: 资源类型
+        :param ResourceType: 资源类型，目前支持文件系统：CFS；日志服务：CLS；注册中心：TSE_SRE
         :type ResourceType: str
         :param ResourceId: 资源 Id
         :type ResourceId: str
-        :param SourceChannel: 来源
+        :param SourceChannel: 来源渠道
         :type SourceChannel: int
         """
         self.NamespaceId = None
@@ -296,7 +296,7 @@ class CreateServiceV2Request(AbstractModel):
         :type ServiceName: str
         :param Description: 描述
         :type Description: str
-        :param UseDefaultImageService: 是否使用默认镜像服务
+        :param UseDefaultImageService: 是否使用默认镜像服务 1-是，0-否
         :type UseDefaultImageService: int
         :param RepoType: 如果是绑定仓库，绑定的仓库类型，0-个人版，1-企业版
         :type RepoType: int
@@ -310,9 +310,14 @@ class CreateServiceV2Request(AbstractModel):
         :type SourceChannel: int
         :param SubnetList: 服务所在子网
         :type SubnetList: list of str
-        :param CodingLanguage: 编程语言
+        :param CodingLanguage: 编程语言 
+- JAVA
+- OTHER
         :type CodingLanguage: str
-        :param DeployMode: 部署方式
+        :param DeployMode: 部署方式 
+- IMAGE
+- JAR
+- WAR
         :type DeployMode: str
         """
         self.ServiceName = None
@@ -604,7 +609,7 @@ class DescribeIngressResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Result: ingressInfo
+        :param Result: Ingress 规则配置
         :type Result: :class:`tencentcloud.tem.v20201221.models.IngressInfo`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -631,7 +636,7 @@ class DescribeIngressesRequest(AbstractModel):
         :type NamespaceId: str
         :param EksNamespace: namespace
         :type EksNamespace: str
-        :param SourceChannel: 来源
+        :param SourceChannel: 来源渠道
         :type SourceChannel: int
         """
         self.NamespaceId = None
@@ -769,13 +774,16 @@ class DescribeServiceRunPodListV2Request(AbstractModel):
         :type NamespaceId: str
         :param ServiceId: 服务名id
         :type ServiceId: str
-        :param Limit: 单页条数
+        :param Limit: 单页条数，默认值20
         :type Limit: int
-        :param Offset: 分页下标
+        :param Offset: 分页下标，默认值0
         :type Offset: int
-        :param Status: pod状态
+        :param Status: 实例状态 
+- Running 
+- Pending 
+- Error
         :type Status: str
-        :param PodName: 名字
+        :param PodName: 实例名字
         :type PodName: str
         :param SourceChannel: 来源渠道
         :type SourceChannel: int

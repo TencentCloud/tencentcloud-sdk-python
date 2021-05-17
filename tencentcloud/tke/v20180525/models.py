@@ -5954,6 +5954,29 @@ class SetNodePoolNodeProtectionRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        """
+        :param ClusterId: 集群id
+        :type ClusterId: str
+        :param NodePoolId: 节点池id
+        :type NodePoolId: str
+        :param InstanceIds: 节点id
+        :type InstanceIds: list of str
+        :param ProtectedFromScaleIn: 节点是否需要移出保护
+        :type ProtectedFromScaleIn: bool
+        """
+        self.ClusterId = None
+        self.NodePoolId = None
+        self.InstanceIds = None
+        self.ProtectedFromScaleIn = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.NodePoolId = params.get("NodePoolId")
+        self.InstanceIds = params.get("InstanceIds")
+        self.ProtectedFromScaleIn = params.get("ProtectedFromScaleIn")
+
 
 class SetNodePoolNodeProtectionResponse(AbstractModel):
     """SetNodePoolNodeProtection返回参数结构体
@@ -5962,13 +5985,23 @@ class SetNodePoolNodeProtectionResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param SucceedInstanceIds: 成功设置的节点id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SucceedInstanceIds: list of str
+        :param FailedInstanceIds: 没有成功设置的节点id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailedInstanceIds: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.SucceedInstanceIds = None
+        self.FailedInstanceIds = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.SucceedInstanceIds = params.get("SucceedInstanceIds")
+        self.FailedInstanceIds = params.get("FailedInstanceIds")
         self.RequestId = params.get("RequestId")
 
 
