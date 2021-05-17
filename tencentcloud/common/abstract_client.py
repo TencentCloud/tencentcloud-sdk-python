@@ -40,6 +40,7 @@ from tencentcloud.common.sign import Sign
 
 # warnings.filterwarnings("ignore")
 
+
 _json_content = 'application/json'
 _multipart_content = 'multipart/form-data'
 _form_urlencoded_content = 'application/x-www-form-urlencoded'
