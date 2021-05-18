@@ -26,6 +26,34 @@ class IotcloudClient(AbstractClient):
     _service = 'iotcloud'
 
 
+    def BatchUpdateFirmware(self, request):
+        """本接口（BatchUpdateFirmware）用于批量更新设备固件
+
+        :param request: Request instance for BatchUpdateFirmware.
+        :type request: :class:`tencentcloud.iotcloud.v20180614.models.BatchUpdateFirmwareRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.BatchUpdateFirmwareResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("BatchUpdateFirmware", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.BatchUpdateFirmwareResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def BindDevices(self, request):
         """本接口（BindDevices）用于网关设备批量绑定子设备
 
@@ -1244,6 +1272,34 @@ class IotcloudClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EnableTopicRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetCOSURL(self, request):
+        """本接口（GetCOSURL）用于获取固件存储在COS的URL
+
+        :param request: Request instance for GetCOSURL.
+        :type request: :class:`tencentcloud.iotcloud.v20180614.models.GetCOSURLRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.GetCOSURLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetCOSURL", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetCOSURLResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

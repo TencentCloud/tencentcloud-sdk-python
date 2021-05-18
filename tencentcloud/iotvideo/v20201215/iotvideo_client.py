@@ -362,6 +362,62 @@ class IotvideoClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBalance(self, request):
+        """查询账户余额
+
+        :param request: Request instance for DescribeBalance.
+        :type request: :class:`tencentcloud.iotvideo.v20201215.models.DescribeBalanceRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20201215.models.DescribeBalanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBalance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBalanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBalanceTransactions(self, request):
+        """拉取账户流水
+
+        :param request: Request instance for DescribeBalanceTransactions.
+        :type request: :class:`tencentcloud.iotvideo.v20201215.models.DescribeBalanceTransactionsRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20201215.models.DescribeBalanceTransactionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBalanceTransactions", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBalanceTransactionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBatch(self, request):
         """获取批次详情
 

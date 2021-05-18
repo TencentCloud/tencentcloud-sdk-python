@@ -71,6 +71,43 @@ class ActionHistory(AbstractModel):
         self.Status = params.get("Status")
 
 
+class BalanceTransaction(AbstractModel):
+    """账户流水
+
+    """
+
+    def __init__(self):
+        """
+        :param AccountType: 账户类型：1-设备接入 2-云存。
+        :type AccountType: int
+        :param Operation: 账户变更类型：Rechareg-充值；CreateOrder-新购。
+        :type Operation: str
+        :param DealId: 流水ID。
+        :type DealId: str
+        :param Amount: 变更金额，单位：分（人民币）。
+        :type Amount: int
+        :param Balance: 变更后账户余额，单位：分（人民币）。
+        :type Balance: int
+        :param OperationTime: 变更时间。
+        :type OperationTime: int
+        """
+        self.AccountType = None
+        self.Operation = None
+        self.DealId = None
+        self.Amount = None
+        self.Balance = None
+        self.OperationTime = None
+
+
+    def _deserialize(self, params):
+        self.AccountType = params.get("AccountType")
+        self.Operation = params.get("Operation")
+        self.DealId = params.get("DealId")
+        self.Amount = params.get("Amount")
+        self.Balance = params.get("Balance")
+        self.OperationTime = params.get("OperationTime")
+
+
 class BatchUpdateFirmwareRequest(AbstractModel):
     """BatchUpdateFirmware请求参数结构体
 
@@ -824,6 +861,103 @@ class DeleteProductResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBalanceRequest(AbstractModel):
+    """DescribeBalance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AccountType: 账户类型：1-设备接入；2-云存。
+        :type AccountType: int
+        """
+        self.AccountType = None
+
+
+    def _deserialize(self, params):
+        self.AccountType = params.get("AccountType")
+
+
+class DescribeBalanceResponse(AbstractModel):
+    """DescribeBalance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Balance: 账户余额，单位：分（人民币）。
+        :type Balance: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Balance = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Balance = params.get("Balance")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBalanceTransactionsRequest(AbstractModel):
+    """DescribeBalanceTransactions请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AccountType: 账户类型：1-设备接入；2-云存。
+        :type AccountType: int
+        :param Offset: 分页游标开始，默认为0开始拉取第一条。
+        :type Offset: int
+        :param Limit: 分页每页数量。
+        :type Limit: int
+        :param Operation: 流水类型：All-全部类型；Recharge-充值；CreateOrder-新购。
+        :type Operation: str
+        """
+        self.AccountType = None
+        self.Offset = None
+        self.Limit = None
+        self.Operation = None
+
+
+    def _deserialize(self, params):
+        self.AccountType = params.get("AccountType")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Operation = params.get("Operation")
+
+
+class DescribeBalanceTransactionsResponse(AbstractModel):
+    """DescribeBalanceTransactions返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 账户流水总数。
+        :type TotalCount: int
+        :param Transactions: 账户流水详情数组。
+        :type Transactions: list of BalanceTransaction
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Transactions = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Transactions") is not None:
+            self.Transactions = []
+            for item in params.get("Transactions"):
+                obj = BalanceTransaction()
+                obj._deserialize(item)
+                self.Transactions.append(obj)
         self.RequestId = params.get("RequestId")
 
 

@@ -1070,10 +1070,10 @@ class DirectConnect(AbstractModel):
         :param LocalZone: 物理专线是否为LocalZone
 注意：此字段可能返回 null，表示取不到有效值。
         :type LocalZone: bool
-        :param VlanZeroDirectConnectTunnelCount: 该物理专线下vlan 0的专线通道数量
+        :param VlanZeroDirectConnectTunnelCount: 该物理专线下vlan 0的专用通道数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type VlanZeroDirectConnectTunnelCount: int
-        :param OtherVlanDirectConnectTunnelCount: 该物理专线下非vlan 0的专线通道数量
+        :param OtherVlanDirectConnectTunnelCount: 该物理专线下非vlan 0的专用通道数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type OtherVlanDirectConnectTunnelCount: int
         :param MinBandwidth: 物理专线最小带宽
@@ -1521,7 +1521,7 @@ REJECTED:拒绝
 
 
 class DirectConnectTunnelRoute(AbstractModel):
-    """专线通道路由
+    """专用通道路由
 
     """
 

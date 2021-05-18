@@ -446,6 +446,34 @@ class PartnersClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeClientBaseInfo(self, request):
+        """国际站根据UIN查询代客基础信息
+
+        :param request: Request instance for DescribeClientBaseInfo.
+        :type request: :class:`tencentcloud.partners.v20180321.models.DescribeClientBaseInfoRequest`
+        :rtype: :class:`tencentcloud.partners.v20180321.models.DescribeClientBaseInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeClientBaseInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClientBaseInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRebateInfos(self, request):
         """代理商可查询自己名下全部返佣信息
 

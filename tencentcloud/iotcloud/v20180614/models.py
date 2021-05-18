@@ -59,6 +59,76 @@ class BatchPublishMessage(AbstractModel):
         self.Payload = params.get("Payload")
 
 
+class BatchUpdateFirmwareRequest(AbstractModel):
+    """BatchUpdateFirmware请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductID: 产品ID
+        :type ProductID: str
+        :param FirmwareVersion: 固件新版本号
+        :type FirmwareVersion: str
+        :param FirmwareOriVersion: 固件原版本号，根据文件列表升级固件不需要填写此参数
+        :type FirmwareOriVersion: str
+        :param UpgradeMethod: 升级方式，0 静默升级  1 用户确认升级。 不填默认为静默升级方式
+        :type UpgradeMethod: int
+        :param FileName: 设备列表文件名称，根据文件列表升级固件需要填写此参数
+        :type FileName: str
+        :param FileMd5: 设备列表的文件md5值
+        :type FileMd5: str
+        :param FileSize: 设备列表的文件大小值
+        :type FileSize: int
+        :param DeviceNames: 需要升级的设备名称列表
+        :type DeviceNames: list of str
+        :param TimeoutInterval: 固件升级任务，默认超时时间。 最小取值60秒，最大为3600秒
+        :type TimeoutInterval: int
+        """
+        self.ProductID = None
+        self.FirmwareVersion = None
+        self.FirmwareOriVersion = None
+        self.UpgradeMethod = None
+        self.FileName = None
+        self.FileMd5 = None
+        self.FileSize = None
+        self.DeviceNames = None
+        self.TimeoutInterval = None
+
+
+    def _deserialize(self, params):
+        self.ProductID = params.get("ProductID")
+        self.FirmwareVersion = params.get("FirmwareVersion")
+        self.FirmwareOriVersion = params.get("FirmwareOriVersion")
+        self.UpgradeMethod = params.get("UpgradeMethod")
+        self.FileName = params.get("FileName")
+        self.FileMd5 = params.get("FileMd5")
+        self.FileSize = params.get("FileSize")
+        self.DeviceNames = params.get("DeviceNames")
+        self.TimeoutInterval = params.get("TimeoutInterval")
+
+
+class BatchUpdateFirmwareResponse(AbstractModel):
+    """BatchUpdateFirmware返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class BatchUpdateShadow(AbstractModel):
     """批量更新设备影子任务
 
@@ -2915,6 +2985,48 @@ class FirmwareTaskInfo(AbstractModel):
         self.Status = params.get("Status")
         self.Type = params.get("Type")
         self.CreateTime = params.get("CreateTime")
+
+
+class GetCOSURLRequest(AbstractModel):
+    """GetCOSURL请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductID: 产品ID
+        :type ProductID: str
+        :param FirmwareVersion: 固件版本
+        :type FirmwareVersion: str
+        """
+        self.ProductID = None
+        self.FirmwareVersion = None
+
+
+    def _deserialize(self, params):
+        self.ProductID = params.get("ProductID")
+        self.FirmwareVersion = params.get("FirmwareVersion")
+
+
+class GetCOSURLResponse(AbstractModel):
+    """GetCOSURL返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Url: 固件URL
+        :type Url: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Url = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
+        self.RequestId = params.get("RequestId")
 
 
 class GetUserResourceInfoRequest(AbstractModel):

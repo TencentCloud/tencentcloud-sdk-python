@@ -1021,6 +1021,8 @@ class CreateListenerRequest(AbstractModel):
         :type KeepaliveEnable: int
         :param EndPort: 创建端口段监听器时必须传入此参数，用以标识结束端口。同时，入参Ports只允许传入一个成员，用以标识开始端口。【如果您需要体验端口段功能，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)】。
         :type EndPort: int
+        :param DeregisterTargetRst: 解绑后端目标时，是否发RST给客户端，此参数仅适用于TCP监听器。
+        :type DeregisterTargetRst: bool
         """
         self.LoadBalancerId = None
         self.Ports = None
@@ -1035,6 +1037,7 @@ class CreateListenerRequest(AbstractModel):
         self.SessionType = None
         self.KeepaliveEnable = None
         self.EndPort = None
+        self.DeregisterTargetRst = None
 
 
     def _deserialize(self, params):
@@ -1055,6 +1058,7 @@ class CreateListenerRequest(AbstractModel):
         self.SessionType = params.get("SessionType")
         self.KeepaliveEnable = params.get("KeepaliveEnable")
         self.EndPort = params.get("EndPort")
+        self.DeregisterTargetRst = params.get("DeregisterTargetRst")
 
 
 class CreateListenerResponse(AbstractModel):
@@ -3387,6 +3391,9 @@ class Listener(AbstractModel):
         :param Toa: 仅支持Nat64 CLB TCP监听器
 注意：此字段可能返回 null，表示取不到有效值。
         :type Toa: bool
+        :param DeregisterTargetRst: 解绑后端目标时，是否发RST给客户端，（此参数仅对于TCP监听器有意义）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeregisterTargetRst: bool
         """
         self.ListenerId = None
         self.Protocol = None
@@ -3405,6 +3412,7 @@ class Listener(AbstractModel):
         self.SessionType = None
         self.KeepaliveEnable = None
         self.Toa = None
+        self.DeregisterTargetRst = None
 
 
     def _deserialize(self, params):
@@ -3436,6 +3444,7 @@ class Listener(AbstractModel):
         self.SessionType = params.get("SessionType")
         self.KeepaliveEnable = params.get("KeepaliveEnable")
         self.Toa = params.get("Toa")
+        self.DeregisterTargetRst = params.get("DeregisterTargetRst")
 
 
 class ListenerBackend(AbstractModel):
@@ -4320,6 +4329,8 @@ class ModifyListenerRequest(AbstractModel):
         :type SniSwitch: int
         :param KeepaliveEnable: 是否开启长连接，此参数仅适用于HTTP/HTTPS监听器。
         :type KeepaliveEnable: int
+        :param DeregisterTargetRst: 解绑后端目标时，是否发RST给客户端，此参数仅适用于TCP监听器。
+        :type DeregisterTargetRst: bool
         """
         self.LoadBalancerId = None
         self.ListenerId = None
@@ -4330,6 +4341,7 @@ class ModifyListenerRequest(AbstractModel):
         self.Scheduler = None
         self.SniSwitch = None
         self.KeepaliveEnable = None
+        self.DeregisterTargetRst = None
 
 
     def _deserialize(self, params):
@@ -4346,6 +4358,7 @@ class ModifyListenerRequest(AbstractModel):
         self.Scheduler = params.get("Scheduler")
         self.SniSwitch = params.get("SniSwitch")
         self.KeepaliveEnable = params.get("KeepaliveEnable")
+        self.DeregisterTargetRst = params.get("DeregisterTargetRst")
 
 
 class ModifyListenerResponse(AbstractModel):

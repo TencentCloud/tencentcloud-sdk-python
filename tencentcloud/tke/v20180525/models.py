@@ -3767,11 +3767,14 @@ class EnableVpcCniNetworkTypeRequest(AbstractModel):
         :type EnableStaticIp: bool
         :param Subnets: 使用的容器子网
         :type Subnets: list of str
+        :param ExpiredSeconds: 在固定IP模式下，Pod销毁后退还IP的时间，传参必须大于300；不传默认IP永不销毁。
+        :type ExpiredSeconds: int
         """
         self.ClusterId = None
         self.VpcCniType = None
         self.EnableStaticIp = None
         self.Subnets = None
+        self.ExpiredSeconds = None
 
 
     def _deserialize(self, params):
@@ -3779,6 +3782,7 @@ class EnableVpcCniNetworkTypeRequest(AbstractModel):
         self.VpcCniType = params.get("VpcCniType")
         self.EnableStaticIp = params.get("EnableStaticIp")
         self.Subnets = params.get("Subnets")
+        self.ExpiredSeconds = params.get("ExpiredSeconds")
 
 
 class EnableVpcCniNetworkTypeResponse(AbstractModel):
