@@ -14884,7 +14884,7 @@ class ResourceDashboard(AbstractModel):
 
     def __init__(self):
         """
-        :param VpcId: Vpc实例ID，例如：vpc-f1xjkw1b。
+        :param VpcId: Vpc实例ID，例如：vpc-bq4bzxpj。
         :type VpcId: str
         :param SubnetId: 子网实例ID，例如：subnet-bthucmmy。
         :type SubnetId: str
@@ -14894,7 +14894,7 @@ class ResourceDashboard(AbstractModel):
         :type Dcg: int
         :param Pcx: 对等连接。
         :type Pcx: int
-        :param Ip: 当前已使用的IP总数。
+        :param Ip: 统计当前除云服务器 IP、弹性网卡IP和网络探测IP以外的所有已使用的IP总数。云服务器 IP、弹性网卡IP和网络探测IP单独计数。
         :type Ip: int
         :param Nat: NAT网关。
         :type Nat: int
