@@ -16,6 +16,161 @@
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class Application(AbstractModel):
+    """审批申请单
+
+    """
+
+    def __init__(self):
+        """
+        :param ApplicationId: 审批单号
+        :type ApplicationId: str
+        :param ApplicationType: 申请类型
+        :type ApplicationType: int
+        :param ClusterId: 集群Id
+        :type ClusterId: str
+        :param ClusterName: 集群名称
+        :type ClusterName: str
+        :param TableGroupName: 表格组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableGroupName: str
+        :param TableName: 表格名称
+        :type TableName: str
+        :param Applicant: 申请人
+        :type Applicant: str
+        :param CreatedTime: 建单时间
+        :type CreatedTime: str
+        :param ApplicationStatus: 处理状态 -1 撤回 0-待审核 1-已经审核并提交任务 2-已驳回
+        :type ApplicationStatus: int
+        :param TableGroupId: 表格组Id
+        :type TableGroupId: str
+        :param TaskId: 已提交的任务Id，未提交申请为0
+        :type TaskId: str
+        :param TableInstanceId: 腾讯云上table的唯一键
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableInstanceId: str
+        :param UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param ExecuteUser: 审批人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecuteUser: str
+        :param ExecuteStatus: 执行状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecuteStatus: str
+        :param CanCensor: 该申请单是否可以被当前用户审批
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CanCensor: bool
+        :param CanWithdrawal: 该申请单是否可以被当前用户撤回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CanWithdrawal: bool
+        """
+        self.ApplicationId = None
+        self.ApplicationType = None
+        self.ClusterId = None
+        self.ClusterName = None
+        self.TableGroupName = None
+        self.TableName = None
+        self.Applicant = None
+        self.CreatedTime = None
+        self.ApplicationStatus = None
+        self.TableGroupId = None
+        self.TaskId = None
+        self.TableInstanceId = None
+        self.UpdateTime = None
+        self.ExecuteUser = None
+        self.ExecuteStatus = None
+        self.CanCensor = None
+        self.CanWithdrawal = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.ApplicationType = params.get("ApplicationType")
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterName = params.get("ClusterName")
+        self.TableGroupName = params.get("TableGroupName")
+        self.TableName = params.get("TableName")
+        self.Applicant = params.get("Applicant")
+        self.CreatedTime = params.get("CreatedTime")
+        self.ApplicationStatus = params.get("ApplicationStatus")
+        self.TableGroupId = params.get("TableGroupId")
+        self.TaskId = params.get("TaskId")
+        self.TableInstanceId = params.get("TableInstanceId")
+        self.UpdateTime = params.get("UpdateTime")
+        self.ExecuteUser = params.get("ExecuteUser")
+        self.ExecuteStatus = params.get("ExecuteStatus")
+        self.CanCensor = params.get("CanCensor")
+        self.CanWithdrawal = params.get("CanWithdrawal")
+
+
+class ApplyResult(AbstractModel):
+    """更新申请单结果
+
+    """
+
+    def __init__(self):
+        """
+        :param ApplicationId: 申请单id
+        :type ApplicationId: str
+        :param ApplicationType: 申请类型
+        :type ApplicationType: int
+        :param ApplicationStatus: 处理状态 0-待审核 1-已经审核并提交任务 2-已驳回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationStatus: int
+        :param TaskId: 已提交的任务Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param Error: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
+        """
+        self.ApplicationId = None
+        self.ApplicationType = None
+        self.ApplicationStatus = None
+        self.TaskId = None
+        self.Error = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.ApplicationType = params.get("ApplicationType")
+        self.ApplicationStatus = params.get("ApplicationStatus")
+        self.TaskId = params.get("TaskId")
+        if params.get("Error") is not None:
+            self.Error = ErrorInfo()
+            self.Error._deserialize(params.get("Error"))
+
+
+class ApplyStatus(AbstractModel):
+    """申请单id及其状态
+
+    """
+
+    def __init__(self):
+        """
+        :param ApplicationId: 集群id-申请单id
+        :type ApplicationId: str
+        :param ApplicationStatus: 处理状态-1-撤回 1-通过 2-驳回，非0状态的申请单不可改变状态。
+        :type ApplicationStatus: int
+        :param ApplicationType: 申请单类型
+        :type ApplicationType: int
+        :param ClusterId: 集群Id
+        :type ClusterId: str
+        """
+        self.ApplicationId = None
+        self.ApplicationStatus = None
+        self.ApplicationType = None
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.ApplicationStatus = params.get("ApplicationStatus")
+        self.ApplicationType = params.get("ApplicationType")
+        self.ClusterId = params.get("ClusterId")
+
+
 class ClearTablesRequest(AbstractModel):
     """ClearTables请求参数结构体
 
@@ -132,6 +287,11 @@ class ClusterInfo(AbstractModel):
         :param ProxyList: 独占proxy机器信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyList: list of ProxyDetailInfo
+        :param Censorship: 是否开启审核 0-不开启 1-开启
+        :type Censorship: int
+        :param DbaUins: 审批人uin列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DbaUins: list of str
         """
         self.ClusterName = None
         self.ClusterId = None
@@ -155,6 +315,8 @@ class ClusterInfo(AbstractModel):
         self.DiskVolume = None
         self.ServerList = None
         self.ProxyList = None
+        self.Censorship = None
+        self.DbaUins = None
 
 
     def _deserialize(self, params):
@@ -190,6 +352,8 @@ class ClusterInfo(AbstractModel):
                 obj = ProxyDetailInfo()
                 obj._deserialize(item)
                 self.ProxyList.append(obj)
+        self.Censorship = params.get("Censorship")
+        self.DbaUins = params.get("DbaUins")
 
 
 class CompareIdlFilesRequest(AbstractModel):
@@ -275,6 +439,51 @@ class CompareIdlFilesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CompareTablesInfo(AbstractModel):
+    """比较表格的Meta信息
+
+    """
+
+    def __init__(self):
+        """
+        :param SrcTableClusterId: 源表格的集群id
+        :type SrcTableClusterId: str
+        :param SrcTableGroupId: 源表格的表格组id
+        :type SrcTableGroupId: str
+        :param SrcTableName: 源表格的表名
+        :type SrcTableName: str
+        :param DstTableClusterId: 目标表格的集群id
+        :type DstTableClusterId: str
+        :param DstTableGroupId: 目标表格的表格组id
+        :type DstTableGroupId: str
+        :param DstTableName: 目标表格的表名
+        :type DstTableName: str
+        :param SrcTableInstanceId: 源表格的实例id
+        :type SrcTableInstanceId: str
+        :param DstTableInstanceId: 目标表格的实例id
+        :type DstTableInstanceId: str
+        """
+        self.SrcTableClusterId = None
+        self.SrcTableGroupId = None
+        self.SrcTableName = None
+        self.DstTableClusterId = None
+        self.DstTableGroupId = None
+        self.DstTableName = None
+        self.SrcTableInstanceId = None
+        self.DstTableInstanceId = None
+
+
+    def _deserialize(self, params):
+        self.SrcTableClusterId = params.get("SrcTableClusterId")
+        self.SrcTableGroupId = params.get("SrcTableGroupId")
+        self.SrcTableName = params.get("SrcTableName")
+        self.DstTableClusterId = params.get("DstTableClusterId")
+        self.DstTableGroupId = params.get("DstTableGroupId")
+        self.DstTableName = params.get("DstTableName")
+        self.SrcTableInstanceId = params.get("SrcTableInstanceId")
+        self.DstTableInstanceId = params.get("DstTableInstanceId")
+
+
 class CreateBackupRequest(AbstractModel):
     """CreateBackup请求参数结构体
 
@@ -313,16 +522,22 @@ class CreateBackupResponse(AbstractModel):
     def __init__(self):
         """
         :param TaskIds: 创建的备份任务ID列表
+注意：此字段可能返回 null，表示取不到有效值。
         :type TaskIds: list of str
+        :param ApplicationIds: 创建的备份申请ID列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationIds: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TaskIds = None
+        self.ApplicationIds = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.TaskIds = params.get("TaskIds")
+        self.ApplicationIds = params.get("ApplicationIds")
         self.RequestId = params.get("RequestId")
 
 
@@ -901,6 +1116,81 @@ class DeleteTablesResponse(AbstractModel):
                 obj = TableResultNew()
                 obj._deserialize(item)
                 self.TableResults.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeApplicationsRequest(AbstractModel):
+    """DescribeApplications请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群ID，用于获取指定集群的单据
+        :type ClusterId: str
+        :param Limit: 分页
+        :type Limit: int
+        :param Offset: 分页
+        :type Offset: int
+        :param CensorStatus: 申请单状态，用于过滤
+        :type CensorStatus: int
+        :param TableGroupId: 表格组id，用于过滤
+        :type TableGroupId: str
+        :param TableName: 表格名，用于过滤
+        :type TableName: str
+        :param Applicant: 申请人uin，用于过滤
+        :type Applicant: str
+        :param ApplyType: 申请类型，用于过滤
+        :type ApplyType: int
+        """
+        self.ClusterId = None
+        self.Limit = None
+        self.Offset = None
+        self.CensorStatus = None
+        self.TableGroupId = None
+        self.TableName = None
+        self.Applicant = None
+        self.ApplyType = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.CensorStatus = params.get("CensorStatus")
+        self.TableGroupId = params.get("TableGroupId")
+        self.TableName = params.get("TableName")
+        self.Applicant = params.get("Applicant")
+        self.ApplyType = params.get("ApplyType")
+
+
+class DescribeApplicationsResponse(AbstractModel):
+    """DescribeApplications返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Applications: 申请单列表
+        :type Applications: list of Application
+        :param TotalCount: 申请单个数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Applications = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Applications") is not None:
+            self.Applications = []
+            for item in params.get("Applications"):
+                obj = Application()
+                obj._deserialize(item)
+                self.Applications.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -1784,14 +2074,18 @@ class Filter(AbstractModel):
         :type Name: str
         :param Value: 过滤字段值
         :type Value: str
+        :param Values: 过滤字段值
+        :type Values: list of str
         """
         self.Name = None
         self.Value = None
+        self.Values = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Value = params.get("Value")
+        self.Values = params.get("Values")
 
 
 class IdlFileInfo(AbstractModel):
@@ -1993,6 +2287,172 @@ class MachineInfo(AbstractModel):
     def _deserialize(self, params):
         self.MachineType = params.get("MachineType")
         self.MachineNum = params.get("MachineNum")
+
+
+class MergeTableResult(AbstractModel):
+    """合服结果
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param Error: 成功时此字段返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Error: :class:`tencentcloud.tcaplusdb.v20190823.models.ErrorInfo`
+        :param Table: 对比的表格信息
+        :type Table: :class:`tencentcloud.tcaplusdb.v20190823.models.CompareTablesInfo`
+        :param ApplicationId: 申请单Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationId: str
+        """
+        self.TaskId = None
+        self.Error = None
+        self.Table = None
+        self.ApplicationId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        if params.get("Error") is not None:
+            self.Error = ErrorInfo()
+            self.Error._deserialize(params.get("Error"))
+        if params.get("Table") is not None:
+            self.Table = CompareTablesInfo()
+            self.Table._deserialize(params.get("Table"))
+        self.ApplicationId = params.get("ApplicationId")
+
+
+class MergeTablesDataRequest(AbstractModel):
+    """MergeTablesData请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SelectedTables: 选取的表格
+        :type SelectedTables: list of MergeTablesInfo
+        :param IsOnlyCompare: true只做对比，false既对比又执行
+        :type IsOnlyCompare: bool
+        """
+        self.SelectedTables = None
+        self.IsOnlyCompare = None
+
+
+    def _deserialize(self, params):
+        if params.get("SelectedTables") is not None:
+            self.SelectedTables = []
+            for item in params.get("SelectedTables"):
+                obj = MergeTablesInfo()
+                obj._deserialize(item)
+                self.SelectedTables.append(obj)
+        self.IsOnlyCompare = params.get("IsOnlyCompare")
+
+
+class MergeTablesDataResponse(AbstractModel):
+    """MergeTablesData返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Results: 合服结果集
+        :type Results: list of MergeTableResult
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Results = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Results") is not None:
+            self.Results = []
+            for item in params.get("Results"):
+                obj = MergeTableResult()
+                obj._deserialize(item)
+                self.Results.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class MergeTablesInfo(AbstractModel):
+    """合服请求入参
+
+    """
+
+    def __init__(self):
+        """
+        :param MergeTables: 合服的表格信息
+        :type MergeTables: :class:`tencentcloud.tcaplusdb.v20190823.models.CompareTablesInfo`
+        :param CheckIndex: 是否检查索引
+        :type CheckIndex: bool
+        """
+        self.MergeTables = None
+        self.CheckIndex = None
+
+
+    def _deserialize(self, params):
+        if params.get("MergeTables") is not None:
+            self.MergeTables = CompareTablesInfo()
+            self.MergeTables._deserialize(params.get("MergeTables"))
+        self.CheckIndex = params.get("CheckIndex")
+
+
+class ModifyCensorshipRequest(AbstractModel):
+    """ModifyCensorship请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群id
+        :type ClusterId: str
+        :param Censorship: 集群是否开启审核 0-关闭 1-开启
+        :type Censorship: int
+        :param Uins: 审批人uin列表
+        :type Uins: list of str
+        """
+        self.ClusterId = None
+        self.Censorship = None
+        self.Uins = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Censorship = params.get("Censorship")
+        self.Uins = params.get("Uins")
+
+
+class ModifyCensorshipResponse(AbstractModel):
+    """ModifyCensorship返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群id
+        :type ClusterId: str
+        :param Uins: 已加入审批人的uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uins: list of str
+        :param Censorship: 集群是否开启审核 0-关闭 1-开启
+        :type Censorship: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ClusterId = None
+        self.Uins = None
+        self.Censorship = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Uins = params.get("Uins")
+        self.Censorship = params.get("Censorship")
+        self.RequestId = params.get("RequestId")
 
 
 class ModifyClusterMachineRequest(AbstractModel):
@@ -3536,6 +3996,9 @@ class TableResultNew(AbstractModel):
         :param TaskIds: 任务ID列表，对于创建多任务的接口有效
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskIds: list of str
+        :param ApplicationId: 腾讯云申请审核单Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationId: str
         """
         self.TableInstanceId = None
         self.TaskId = None
@@ -3545,6 +4008,7 @@ class TableResultNew(AbstractModel):
         self.TableGroupId = None
         self.Error = None
         self.TaskIds = None
+        self.ApplicationId = None
 
 
     def _deserialize(self, params):
@@ -3558,6 +4022,7 @@ class TableResultNew(AbstractModel):
             self.Error = ErrorInfo()
             self.Error._deserialize(params.get("Error"))
         self.TaskIds = params.get("TaskIds")
+        self.ApplicationId = params.get("ApplicationId")
 
 
 class TableRollbackResultNew(AbstractModel):
@@ -3823,6 +4288,59 @@ class TaskInfoNew(AbstractModel):
         self.UpdateTime = params.get("UpdateTime")
         self.Operator = params.get("Operator")
         self.Content = params.get("Content")
+
+
+class UpdateApplyRequest(AbstractModel):
+    """UpdateApply请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ApplyStatus: 申请单状态
+        :type ApplyStatus: list of ApplyStatus
+        """
+        self.ApplyStatus = None
+
+
+    def _deserialize(self, params):
+        if params.get("ApplyStatus") is not None:
+            self.ApplyStatus = []
+            for item in params.get("ApplyStatus"):
+                obj = ApplyStatus()
+                obj._deserialize(item)
+                self.ApplyStatus.append(obj)
+
+
+class UpdateApplyResponse(AbstractModel):
+    """UpdateApply返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ApplyResults: 已更新的申请单列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplyResults: list of ApplyResult
+        :param TotalCount: 更新数量
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ApplyResults = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ApplyResults") is not None:
+            self.ApplyResults = []
+            for item in params.get("ApplyResults"):
+                obj = ApplyResult()
+                obj._deserialize(item)
+                self.ApplyResults.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
 
 
 class VerifyIdlFilesRequest(AbstractModel):

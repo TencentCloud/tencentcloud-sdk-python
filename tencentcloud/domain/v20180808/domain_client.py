@@ -257,8 +257,6 @@ class DomainClient(AbstractClient):
     def DescribeDomainBaseInfo(self, request):
         """本接口 (  DescribeDomainBaseInfo) 获取域名基础信息。
 
-        默认接口请求频率限制：20次/秒。
-
         :param request: Request instance for DescribeDomainBaseInfo.
         :type request: :class:`tencentcloud.domain.v20180808.models.DescribeDomainBaseInfoRequest`
         :rtype: :class:`tencentcloud.domain.v20180808.models.DescribeDomainBaseInfoResponse`

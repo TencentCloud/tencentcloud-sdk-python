@@ -3322,6 +3322,46 @@ class DescribeLiveDomainPlayInfoListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeLiveDomainRefererRequest(AbstractModel):
+    """DescribeLiveDomainReferer请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: 播放域名。
+        :type DomainName: str
+        """
+        self.DomainName = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+
+
+class DescribeLiveDomainRefererResponse(AbstractModel):
+    """DescribeLiveDomainReferer返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RefererAuthConfig: 域名 Referer 黑白名单配置。
+        :type RefererAuthConfig: :class:`tencentcloud.live.v20180801.models.RefererAuthConfig`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RefererAuthConfig = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("RefererAuthConfig") is not None:
+            self.RefererAuthConfig = RefererAuthConfig()
+            self.RefererAuthConfig._deserialize(params.get("RefererAuthConfig"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeLiveDomainRequest(AbstractModel):
     """DescribeLiveDomain请求参数结构体
 
@@ -6422,6 +6462,56 @@ class ModifyLiveDomainCertResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyLiveDomainRefererRequest(AbstractModel):
+    """ModifyLiveDomainReferer请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: 播放域名。
+        :type DomainName: str
+        :param Enable: 是否开启当前域名的 Referer 黑白名单鉴权。
+        :type Enable: int
+        :param Type: 名单类型，0：黑名单，1：白名单。
+        :type Type: int
+        :param AllowEmpty: 是否允许空 Referer，0：不允许，1：允许。
+        :type AllowEmpty: int
+        :param Rules: Referer 名单列表，以;分隔。
+        :type Rules: str
+        """
+        self.DomainName = None
+        self.Enable = None
+        self.Type = None
+        self.AllowEmpty = None
+        self.Rules = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.Enable = params.get("Enable")
+        self.Type = params.get("Type")
+        self.AllowEmpty = params.get("AllowEmpty")
+        self.Rules = params.get("Rules")
+
+
+class ModifyLiveDomainRefererResponse(AbstractModel):
+    """ModifyLiveDomainReferer返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyLivePlayAuthKeyRequest(AbstractModel):
     """ModifyLivePlayAuthKey请求参数结构体
 
@@ -7626,6 +7716,39 @@ class RecordTemplateInfo(AbstractModel):
         if params.get("Mp3Param") is not None:
             self.Mp3Param = RecordParam()
             self.Mp3Param._deserialize(params.get("Mp3Param"))
+
+
+class RefererAuthConfig(AbstractModel):
+    """直播域名Referer黑白名单配置
+
+    """
+
+    def __init__(self):
+        """
+        :param DomainName: 域名。
+        :type DomainName: str
+        :param Enable: 是否启用，0：关闭，1：启用。
+        :type Enable: int
+        :param Type: 名单类型，0：黑名单，1：白名单。
+        :type Type: int
+        :param AllowEmpty: 是否允许空Referer，0：不允许，1：允许。
+        :type AllowEmpty: int
+        :param Rules: 名单列表，以分号(;)分隔。
+        :type Rules: str
+        """
+        self.DomainName = None
+        self.Enable = None
+        self.Type = None
+        self.AllowEmpty = None
+        self.Rules = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.Enable = params.get("Enable")
+        self.Type = params.get("Type")
+        self.AllowEmpty = params.get("AllowEmpty")
+        self.Rules = params.get("Rules")
 
 
 class ResumeDelayLiveStreamRequest(AbstractModel):

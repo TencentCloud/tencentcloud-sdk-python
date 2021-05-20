@@ -390,6 +390,34 @@ class TcaplusdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeApplications(self, request):
+        """获取审批管理的申请单
+
+        :param request: Request instance for DescribeApplications.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DescribeApplicationsRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.DescribeApplicationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeApplications", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeApplicationsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeClusterTags(self, request):
         """获取集群关联的标签列表
 
@@ -838,6 +866,62 @@ class TcaplusdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def MergeTablesData(self, request):
+        """合并指定表格
+
+        :param request: Request instance for MergeTablesData.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.MergeTablesDataRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.MergeTablesDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("MergeTablesData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.MergeTablesDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyCensorship(self, request):
+        """修改集群审批状态
+
+        :param request: Request instance for ModifyCensorship.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.ModifyCensorshipRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.ModifyCensorshipResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyCensorship", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyCensorshipResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyClusterMachine(self, request):
         """修改独占集群机器
 
@@ -1216,6 +1300,34 @@ class TcaplusdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetTableIndexResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateApply(self, request):
+        """更新申请单状态
+
+        :param request: Request instance for UpdateApply.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.UpdateApplyRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.UpdateApplyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateApply", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateApplyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

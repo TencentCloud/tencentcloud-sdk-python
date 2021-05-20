@@ -5840,7 +5840,7 @@ class VatInvoiceOCRResponse(AbstractModel):
         :type VatInvoiceInfos: list of TextVatInvoice
         :param Items: 明细条目。VatInvoiceInfos中关于明细项的具体条目。
         :type Items: list of VatInvoiceItem
-        :param PdfPageSize: 图片为PDF时，返回PDF的总页数，默认为0
+        :param PdfPageSize: 默认值为0。如果图片为PDF时，返回PDF的总页数。
         :type PdfPageSize: int
         :param Angle: 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
         :type Angle: float

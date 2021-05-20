@@ -184,7 +184,7 @@ class CreateDBInstancesRequest(AbstractModel):
         """
         :param SpecCode: 售卖规格ID。该参数可以通过调用DescribeProductConfig的返回值中的SpecCode字段来获取。
         :type SpecCode: str
-        :param DBVersion: PostgreSQL内核版本，目前支持：9.3.5、9.5.4、10.4三种版本。
+        :param DBVersion: PostgreSQL内核版本，目前支持以下版本：9.3.5、9.5.4、10.4、11.8、12.4 。
         :type DBVersion: str
         :param Storage: 实例容量大小，单位：GB。
         :type Storage: int
@@ -277,6 +277,137 @@ class CreateDBInstancesResponse(AbstractModel):
         :param BillId: 冻结流水号
         :type BillId: str
         :param DBInstanceIdSet: 创建成功的实例ID集合，只在后付费情景下有返回值
+        :type DBInstanceIdSet: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DealNames = None
+        self.BillId = None
+        self.DBInstanceIdSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DealNames = params.get("DealNames")
+        self.BillId = params.get("BillId")
+        self.DBInstanceIdSet = params.get("DBInstanceIdSet")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateInstancesRequest(AbstractModel):
+    """CreateInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SpecCode: 售卖规格ID。该参数可以通过调用DescribeProductConfig的返回值中的SpecCode字段来获取。
+        :type SpecCode: str
+        :param DBVersion: PostgreSQL内核版本，目前支持：9.3.5、9.5.4、10.4、11.8、12.4五种版本。
+        :type DBVersion: str
+        :param Storage: 实例容量大小，单位：GB。
+        :type Storage: int
+        :param InstanceCount: 一次性购买的实例数量。取值1-10。
+        :type InstanceCount: int
+        :param Period: 购买时长，单位：月。目前只支持1,2,3,4,5,6,7,8,9,10,11,12,24,36这些值，按量计费模式下该参数传1。
+        :type Period: int
+        :param Zone: 可用区ID。该参数可以通过调用 DescribeZones 接口的返回值中的Zone字段来获取。
+        :type Zone: str
+        :param Charset: 实例字符集，目前只支持：UTF8、LATIN1。
+        :type Charset: str
+        :param AdminName: 实例根账号用户名。
+        :type AdminName: str
+        :param AdminPassword: 实例根账号用户名对应的密码。
+        :type AdminPassword: str
+        :param ProjectId: 项目ID。
+        :type ProjectId: int
+        :param InstanceChargeType: 实例计费类型。目前支持：PREPAID（预付费，即包年包月），POSTPAID_BY_HOUR（后付费，即按量计费）。
+        :type InstanceChargeType: str
+        :param AutoVoucher: 是否自动使用代金券。1（是），0（否），默认不使用。
+        :type AutoVoucher: int
+        :param VoucherIds: 代金券ID列表，目前仅支持指定一张代金券。
+        :type VoucherIds: list of str
+        :param VpcId: 私有网络ID。
+        :type VpcId: str
+        :param SubnetId: 已配置的私有网络中的子网ID。
+        :type SubnetId: str
+        :param AutoRenewFlag: 续费标记：0-正常续费（默认）；1-自动续费。
+        :type AutoRenewFlag: int
+        :param ActivityId: 活动ID。
+        :type ActivityId: int
+        :param Name: 实例名。
+        :type Name: str
+        :param NeedSupportIpv6: 是否需要支持Ipv6，1：是，0：否。
+        :type NeedSupportIpv6: int
+        :param TagList: 实例需要绑定的Tag信息，默认为空。
+        :type TagList: list of Tag
+        :param SecurityGroupIds: 安全组ID。
+        :type SecurityGroupIds: list of str
+        """
+        self.SpecCode = None
+        self.DBVersion = None
+        self.Storage = None
+        self.InstanceCount = None
+        self.Period = None
+        self.Zone = None
+        self.Charset = None
+        self.AdminName = None
+        self.AdminPassword = None
+        self.ProjectId = None
+        self.InstanceChargeType = None
+        self.AutoVoucher = None
+        self.VoucherIds = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.AutoRenewFlag = None
+        self.ActivityId = None
+        self.Name = None
+        self.NeedSupportIpv6 = None
+        self.TagList = None
+        self.SecurityGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.SpecCode = params.get("SpecCode")
+        self.DBVersion = params.get("DBVersion")
+        self.Storage = params.get("Storage")
+        self.InstanceCount = params.get("InstanceCount")
+        self.Period = params.get("Period")
+        self.Zone = params.get("Zone")
+        self.Charset = params.get("Charset")
+        self.AdminName = params.get("AdminName")
+        self.AdminPassword = params.get("AdminPassword")
+        self.ProjectId = params.get("ProjectId")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        self.AutoVoucher = params.get("AutoVoucher")
+        self.VoucherIds = params.get("VoucherIds")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.ActivityId = params.get("ActivityId")
+        self.Name = params.get("Name")
+        self.NeedSupportIpv6 = params.get("NeedSupportIpv6")
+        if params.get("TagList") is not None:
+            self.TagList = []
+            for item in params.get("TagList"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagList.append(obj)
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+
+
+class CreateInstancesResponse(AbstractModel):
+    """CreateInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DealNames: 订单号列表。每个实例对应一个订单号。
+        :type DealNames: list of str
+        :param BillId: 冻结流水号。
+        :type BillId: str
+        :param DBInstanceIdSet: 创建成功的实例ID集合，只在后付费情景下有返回值。
         :type DBInstanceIdSet: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1717,7 +1848,7 @@ class DisIsolateDBInstancesRequest(AbstractModel):
         :type DBInstanceIdSet: list of str
         :param Period: 包年包月实例解隔离时购买时常 以月为单位
         :type Period: int
-        :param AutoVoucher: 是否使用代金券
+        :param AutoVoucher: 是否使用代金券：true-使用,false-不使用，默认不使用
         :type AutoVoucher: bool
         :param VoucherIds: 代金券id列表
         :type VoucherIds: list of str

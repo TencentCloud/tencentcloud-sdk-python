@@ -770,11 +770,14 @@ class DescribeTemplateListRequest(AbstractModel):
         :type Type: str
         :param Status: 认证状态：未实名认证:NotUpload, 实名审核中:InAudit，已实名认证:Approved，实名审核失败:Reject
         :type Status: str
+        :param Keyword: 域名所有者筛选
+        :type Keyword: str
         """
         self.Offset = None
         self.Limit = None
         self.Type = None
         self.Status = None
+        self.Keyword = None
 
 
     def _deserialize(self, params):
@@ -782,6 +785,7 @@ class DescribeTemplateListRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.Type = params.get("Type")
         self.Status = params.get("Status")
+        self.Keyword = params.get("Keyword")
 
 
 class DescribeTemplateListResponse(AbstractModel):

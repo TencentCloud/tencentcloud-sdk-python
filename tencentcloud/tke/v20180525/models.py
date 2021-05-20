@@ -4256,6 +4256,9 @@ class InstanceAdvancedSettings(AbstractModel):
         :param ExtraArgs: 节点相关的自定义参数信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.InstanceExtraArgs`
+        :param DesiredPodNumber: 该节点属于podCIDR大小自定义模式时，可指定节点上运行的pod数量上限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DesiredPodNumber: int
         """
         self.MountTarget = None
         self.DockerGraphPath = None
@@ -4264,6 +4267,7 @@ class InstanceAdvancedSettings(AbstractModel):
         self.Labels = None
         self.DataDisks = None
         self.ExtraArgs = None
+        self.DesiredPodNumber = None
 
 
     def _deserialize(self, params):
@@ -4286,6 +4290,7 @@ class InstanceAdvancedSettings(AbstractModel):
         if params.get("ExtraArgs") is not None:
             self.ExtraArgs = InstanceExtraArgs()
             self.ExtraArgs._deserialize(params.get("ExtraArgs"))
+        self.DesiredPodNumber = params.get("DesiredPodNumber")
 
 
 class InstanceDataDiskMountSetting(AbstractModel):

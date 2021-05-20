@@ -1233,16 +1233,20 @@ class DeleteNonlocalLoginPlacesRequest(AbstractModel):
         :type Ids: list of int non-negative
         :param Ip: 异地登录事件的Ip。DelType为Ip时必填
         :type Ip: list of str
+        :param Uuid: 主机Uuid
+        :type Uuid: str
         """
         self.DelType = None
         self.Ids = None
         self.Ip = None
+        self.Uuid = None
 
 
     def _deserialize(self, params):
         self.DelType = params.get("DelType")
         self.Ids = params.get("Ids")
         self.Ip = params.get("Ip")
+        self.Uuid = params.get("Uuid")
 
 
 class DeleteNonlocalLoginPlacesResponse(AbstractModel):
@@ -2838,9 +2842,9 @@ class DescribeLogStorageStatisticResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalSize: 总容量
+        :param TotalSize: 总容量（单位：GB）
         :type TotalSize: int
-        :param UsedSize: 已使用容量
+        :param UsedSize: 已使用容量（单位：GB）
         :type UsedSize: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
