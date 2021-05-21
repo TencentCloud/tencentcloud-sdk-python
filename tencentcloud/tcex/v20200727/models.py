@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -71,6 +73,13 @@ class AlgorithmResult(AbstractModel):
         self.Result = params.get("Result")
         self.Error = params.get("Error")
         self.AlgoType = params.get("AlgoType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeInvocationResultRequest(AbstractModel):
@@ -88,6 +97,13 @@ class DescribeInvocationResultRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.InvokeId = params.get("InvokeId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeInvocationResultResponse(AbstractModel):
@@ -120,6 +136,13 @@ class DescribeInvocationResultResponse(AbstractModel):
                 self.Results.append(obj)
         self.Status = params.get("Status")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InvokeServiceRequest(AbstractModel):
@@ -149,6 +172,13 @@ class InvokeServiceRequest(AbstractModel):
         self.ServiceStatus = params.get("ServiceStatus")
         self.FileUrl = params.get("FileUrl")
         self.Input = params.get("Input")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InvokeServiceResponse(AbstractModel):
@@ -166,3 +196,10 @@ class InvokeServiceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

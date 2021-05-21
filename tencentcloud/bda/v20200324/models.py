@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -36,6 +38,13 @@ class Age(AbstractModel):
     def _deserialize(self, params):
         self.Type = params.get("Type")
         self.Probability = params.get("Probability")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AttributesOptions(AbstractModel):
@@ -75,6 +84,13 @@ class AttributesOptions(AbstractModel):
         self.Orientation = params.get("Orientation")
         self.UpperBodyCloth = params.get("UpperBodyCloth")
         self.LowerBodyCloth = params.get("LowerBodyCloth")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Bag(AbstractModel):
@@ -97,6 +113,13 @@ class Bag(AbstractModel):
     def _deserialize(self, params):
         self.Type = params.get("Type")
         self.Probability = params.get("Probability")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BodyAttributeInfo(AbstractModel):
@@ -158,6 +181,13 @@ AttributesType 不含 LowerBodyCloth 或检测超过 5 个人体时，此参数�
         if params.get("LowerBodyCloth") is not None:
             self.LowerBodyCloth = LowerBodyCloth()
             self.LowerBodyCloth._deserialize(params.get("LowerBodyCloth"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BodyDetectResult(AbstractModel):
@@ -189,6 +219,13 @@ class BodyDetectResult(AbstractModel):
         if params.get("BodyAttributeInfo") is not None:
             self.BodyAttributeInfo = BodyAttributeInfo()
             self.BodyAttributeInfo._deserialize(params.get("BodyAttributeInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BodyJointsResult(AbstractModel):
@@ -221,6 +258,13 @@ class BodyJointsResult(AbstractModel):
                 obj._deserialize(item)
                 self.BodyJoints.append(obj)
         self.Confidence = params.get("Confidence")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BodyRect(AbstractModel):
@@ -250,6 +294,13 @@ class BodyRect(AbstractModel):
         self.Y = params.get("Y")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BoundRect(AbstractModel):
@@ -279,6 +330,13 @@ class BoundRect(AbstractModel):
         self.Y = params.get("Y")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Candidate(AbstractModel):
@@ -309,6 +367,13 @@ class Candidate(AbstractModel):
         self.PersonId = params.get("PersonId")
         self.TraceId = params.get("TraceId")
         self.Score = params.get("Score")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateGroupRequest(AbstractModel):
@@ -340,6 +405,13 @@ class CreateGroupRequest(AbstractModel):
         self.GroupId = params.get("GroupId")
         self.Tag = params.get("Tag")
         self.BodyModelVersion = params.get("BodyModelVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateGroupResponse(AbstractModel):
@@ -357,6 +429,13 @@ class CreateGroupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreatePersonRequest(AbstractModel):
@@ -389,6 +468,13 @@ class CreatePersonRequest(AbstractModel):
         if params.get("Trace") is not None:
             self.Trace = Trace()
             self.Trace._deserialize(params.get("Trace"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreatePersonResponse(AbstractModel):
@@ -426,6 +512,13 @@ RetCode 的顺序和入参中Images 或 Urls 的顺序一致。
         self.InputRetCode = params.get("InputRetCode")
         self.InputRetCodeDetails = params.get("InputRetCodeDetails")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateSegmentationTaskRequest(AbstractModel):
@@ -453,6 +546,13 @@ class CreateSegmentationTaskRequest(AbstractModel):
         self.VideoUrl = params.get("VideoUrl")
         self.BackgroundImageUrl = params.get("BackgroundImageUrl")
         self.Config = params.get("Config")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateSegmentationTaskResponse(AbstractModel):
@@ -478,6 +578,13 @@ class CreateSegmentationTaskResponse(AbstractModel):
         self.TaskID = params.get("TaskID")
         self.EstimatedProcessingTime = params.get("EstimatedProcessingTime")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateTraceRequest(AbstractModel):
@@ -501,6 +608,13 @@ class CreateTraceRequest(AbstractModel):
         if params.get("Trace") is not None:
             self.Trace = Trace()
             self.Trace._deserialize(params.get("Trace"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateTraceResponse(AbstractModel):
@@ -537,6 +651,13 @@ class CreateTraceResponse(AbstractModel):
         self.InputRetCode = params.get("InputRetCode")
         self.InputRetCodeDetails = params.get("InputRetCodeDetails")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteGroupRequest(AbstractModel):
@@ -554,6 +675,13 @@ class DeleteGroupRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteGroupResponse(AbstractModel):
@@ -571,6 +699,13 @@ class DeleteGroupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeletePersonRequest(AbstractModel):
@@ -588,6 +723,13 @@ class DeletePersonRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.PersonId = params.get("PersonId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeletePersonResponse(AbstractModel):
@@ -605,6 +747,13 @@ class DeletePersonResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSegmentationTaskRequest(AbstractModel):
@@ -622,6 +771,13 @@ class DescribeSegmentationTaskRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.TaskID = params.get("TaskID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSegmentationTaskResponse(AbstractModel):
@@ -668,6 +824,13 @@ FINISHED 处理完成
             self.VideoBasicInformation._deserialize(params.get("VideoBasicInformation"))
         self.ErrorMsg = params.get("ErrorMsg")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DetectBodyJointsRequest(AbstractModel):
@@ -694,6 +857,13 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
     def _deserialize(self, params):
         self.Image = params.get("Image")
         self.Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DetectBodyJointsResponse(AbstractModel):
@@ -720,6 +890,13 @@ class DetectBodyJointsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.BodyJointsResults.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DetectBodyRequest(AbstractModel):
@@ -765,6 +942,13 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
         if params.get("AttributesOptions") is not None:
             self.AttributesOptions = AttributesOptions()
             self.AttributesOptions._deserialize(params.get("AttributesOptions"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DetectBodyResponse(AbstractModel):
@@ -795,6 +979,13 @@ class DetectBodyResponse(AbstractModel):
                 self.BodyDetectResults.append(obj)
         self.BodyModelVersion = params.get("BodyModelVersion")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Gender(AbstractModel):
@@ -817,6 +1008,13 @@ class Gender(AbstractModel):
     def _deserialize(self, params):
         self.Type = params.get("Type")
         self.Probability = params.get("Probability")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetGroupListRequest(AbstractModel):
@@ -838,6 +1036,13 @@ class GetGroupListRequest(AbstractModel):
     def _deserialize(self, params):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetGroupListResponse(AbstractModel):
@@ -868,6 +1073,13 @@ class GetGroupListResponse(AbstractModel):
                 self.GroupInfos.append(obj)
         self.GroupNum = params.get("GroupNum")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetPersonListRequest(AbstractModel):
@@ -893,6 +1105,13 @@ class GetPersonListRequest(AbstractModel):
         self.GroupId = params.get("GroupId")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetPersonListResponse(AbstractModel):
@@ -927,6 +1146,13 @@ class GetPersonListResponse(AbstractModel):
         self.PersonNum = params.get("PersonNum")
         self.BodyModelVersion = params.get("BodyModelVersion")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GroupInfo(AbstractModel):
@@ -961,6 +1187,13 @@ Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 。
         self.Tag = params.get("Tag")
         self.BodyModelVersion = params.get("BodyModelVersion")
         self.CreationTimestamp = params.get("CreationTimestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ImageRect(AbstractModel):
@@ -994,6 +1227,13 @@ class ImageRect(AbstractModel):
         self.Width = params.get("Width")
         self.Height = params.get("Height")
         self.Label = params.get("Label")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class KeyPointInfo(AbstractModel):
@@ -1019,6 +1259,13 @@ class KeyPointInfo(AbstractModel):
         self.KeyPointType = params.get("KeyPointType")
         self.X = params.get("X")
         self.Y = params.get("Y")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class LowerBodyCloth(AbstractModel):
@@ -1050,6 +1297,13 @@ class LowerBodyCloth(AbstractModel):
         if params.get("Type") is not None:
             self.Type = LowerBodyClothType()
             self.Type._deserialize(params.get("Type"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class LowerBodyClothColor(AbstractModel):
@@ -1071,6 +1325,13 @@ class LowerBodyClothColor(AbstractModel):
     def _deserialize(self, params):
         self.Type = params.get("Type")
         self.Probability = params.get("Probability")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class LowerBodyClothLength(AbstractModel):
@@ -1092,6 +1353,13 @@ class LowerBodyClothLength(AbstractModel):
     def _deserialize(self, params):
         self.Type = params.get("Type")
         self.Probability = params.get("Probability")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class LowerBodyClothType(AbstractModel):
@@ -1113,6 +1381,13 @@ class LowerBodyClothType(AbstractModel):
     def _deserialize(self, params):
         self.Type = params.get("Type")
         self.Probability = params.get("Probability")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyGroupRequest(AbstractModel):
@@ -1138,6 +1413,13 @@ class ModifyGroupRequest(AbstractModel):
         self.GroupId = params.get("GroupId")
         self.GroupName = params.get("GroupName")
         self.Tag = params.get("Tag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyGroupResponse(AbstractModel):
@@ -1155,6 +1437,13 @@ class ModifyGroupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyPersonInfoRequest(AbstractModel):
@@ -1176,6 +1465,13 @@ class ModifyPersonInfoRequest(AbstractModel):
     def _deserialize(self, params):
         self.PersonId = params.get("PersonId")
         self.PersonName = params.get("PersonName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyPersonInfoResponse(AbstractModel):
@@ -1193,6 +1489,13 @@ class ModifyPersonInfoResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Orientation(AbstractModel):
@@ -1215,6 +1518,13 @@ class Orientation(AbstractModel):
     def _deserialize(self, params):
         self.Type = params.get("Type")
         self.Probability = params.get("Probability")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PersonInfo(AbstractModel):
@@ -1245,6 +1555,13 @@ class PersonInfo(AbstractModel):
                 obj = TraceInfo()
                 obj._deserialize(item)
                 self.TraceInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SearchTraceRequest(AbstractModel):
@@ -1279,6 +1596,13 @@ class SearchTraceRequest(AbstractModel):
             self.Trace._deserialize(params.get("Trace"))
         self.MaxPersonNum = params.get("MaxPersonNum")
         self.TraceMatchThreshold = params.get("TraceMatchThreshold")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SearchTraceResponse(AbstractModel):
@@ -1320,6 +1644,13 @@ class SearchTraceResponse(AbstractModel):
         self.InputRetCodeDetails = params.get("InputRetCodeDetails")
         self.BodyModelVersion = params.get("BodyModelVersion")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SegmentCustomizedPortraitPicRequest(AbstractModel):
@@ -1354,6 +1685,13 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
             self.SegmentationOptions._deserialize(params.get("SegmentationOptions"))
         self.Image = params.get("Image")
         self.Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SegmentCustomizedPortraitPicResponse(AbstractModel):
@@ -1389,6 +1727,13 @@ class SegmentCustomizedPortraitPicResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ImageRects.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SegmentPortraitPicRequest(AbstractModel):
@@ -1417,6 +1762,13 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
     def _deserialize(self, params):
         self.Image = params.get("Image")
         self.Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SegmentPortraitPicResponse(AbstractModel):
@@ -1442,6 +1794,13 @@ class SegmentPortraitPicResponse(AbstractModel):
         self.ResultImage = params.get("ResultImage")
         self.ResultMask = params.get("ResultMask")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SegmentationOptions(AbstractModel):
@@ -1539,6 +1898,13 @@ class SegmentationOptions(AbstractModel):
         self.Earrings = params.get("Earrings")
         self.Necklace = params.get("Necklace")
         self.Belongings = params.get("Belongings")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TerminateSegmentationTaskRequest(AbstractModel):
@@ -1556,6 +1922,13 @@ class TerminateSegmentationTaskRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.TaskID = params.get("TaskID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TerminateSegmentationTaskResponse(AbstractModel):
@@ -1573,6 +1946,13 @@ class TerminateSegmentationTaskResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Trace(AbstractModel):
@@ -1615,6 +1995,13 @@ Urls、Images必须提供一个，如果都提供，只使用 Urls。
                 obj = BodyRect()
                 obj._deserialize(item)
                 self.BodyRects.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TraceInfo(AbstractModel):
@@ -1636,6 +2023,13 @@ class TraceInfo(AbstractModel):
     def _deserialize(self, params):
         self.TraceId = params.get("TraceId")
         self.BodyIds = params.get("BodyIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UpperBodyCloth(AbstractModel):
@@ -1667,6 +2061,13 @@ class UpperBodyCloth(AbstractModel):
         if params.get("Sleeve") is not None:
             self.Sleeve = UpperBodyClothSleeve()
             self.Sleeve._deserialize(params.get("Sleeve"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UpperBodyClothColor(AbstractModel):
@@ -1688,6 +2089,13 @@ class UpperBodyClothColor(AbstractModel):
     def _deserialize(self, params):
         self.Type = params.get("Type")
         self.Probability = params.get("Probability")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UpperBodyClothSleeve(AbstractModel):
@@ -1709,6 +2117,13 @@ class UpperBodyClothSleeve(AbstractModel):
     def _deserialize(self, params):
         self.Type = params.get("Type")
         self.Probability = params.get("Probability")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UpperBodyClothTexture(AbstractModel):
@@ -1730,6 +2145,13 @@ class UpperBodyClothTexture(AbstractModel):
     def _deserialize(self, params):
         self.Type = params.get("Type")
         self.Probability = params.get("Probability")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VideoBasicInformation(AbstractModel):
@@ -1763,3 +2185,10 @@ class VideoBasicInformation(AbstractModel):
         self.FramesPerSecond = params.get("FramesPerSecond")
         self.Duration = params.get("Duration")
         self.TotalFrames = params.get("TotalFrames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

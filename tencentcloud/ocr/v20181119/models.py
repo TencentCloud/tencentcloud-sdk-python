@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -39,6 +41,13 @@ class AdvertiseOCRRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AdvertiseOCRResponse(AbstractModel):
@@ -65,6 +74,13 @@ class AdvertiseOCRResponse(AbstractModel):
                 obj._deserialize(item)
                 self.TextDetections.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AdvertiseTextDetection(AbstractModel):
@@ -100,6 +116,13 @@ GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。
                 obj._deserialize(item)
                 self.Polygon.append(obj)
         self.AdvancedInfo = params.get("AdvancedInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ArithmeticOCRRequest(AbstractModel):
@@ -152,6 +175,13 @@ class ArithmeticOCRRequest(AbstractModel):
         self.EnableDispMidResult = params.get("EnableDispMidResult")
         self.EnablePdfRecognize = params.get("EnablePdfRecognize")
         self.PdfPageIndex = params.get("PdfPageIndex")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ArithmeticOCRResponse(AbstractModel):
@@ -182,6 +212,13 @@ class ArithmeticOCRResponse(AbstractModel):
                 self.TextDetections.append(obj)
         self.Angle = params.get("Angle")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BankCardOCRRequest(AbstractModel):
@@ -225,6 +262,13 @@ class BankCardOCRRequest(AbstractModel):
         self.EnableCopyCheck = params.get("EnableCopyCheck")
         self.EnableReshootCheck = params.get("EnableReshootCheck")
         self.EnableBorderCheck = params.get("EnableBorderCheck")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BankCardOCRResponse(AbstractModel):
@@ -283,6 +327,13 @@ class BankCardOCRResponse(AbstractModel):
         self.CardNoImage = params.get("CardNoImage")
         self.WarningCode = params.get("WarningCode")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BizLicenseOCRRequest(AbstractModel):
@@ -311,6 +362,13 @@ class BizLicenseOCRRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BizLicenseOCRResponse(AbstractModel):
@@ -380,6 +438,13 @@ OCR_WARNING_TPYE_NOT_MATCH 非营业执照
         self.RecognizeWarnCode = params.get("RecognizeWarnCode")
         self.RecognizeWarnMsg = params.get("RecognizeWarnMsg")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BizLicenseVerifyResult(AbstractModel):
@@ -410,6 +475,13 @@ class BizLicenseVerifyResult(AbstractModel):
         self.RegNum = params.get("RegNum")
         self.Name = params.get("Name")
         self.Address = params.get("Address")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BusInvoiceInfo(AbstractModel):
@@ -438,6 +510,13 @@ class BusInvoiceInfo(AbstractModel):
         if params.get("Rect") is not None:
             self.Rect = Rect()
             self.Rect._deserialize(params.get("Rect"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BusInvoiceOCRRequest(AbstractModel):
@@ -466,6 +545,13 @@ class BusInvoiceOCRRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BusInvoiceOCRResponse(AbstractModel):
@@ -496,6 +582,13 @@ class BusInvoiceOCRResponse(AbstractModel):
                 self.BusInvoiceInfos.append(obj)
         self.Angle = params.get("Angle")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BusinessCardInfo(AbstractModel):
@@ -524,6 +617,13 @@ class BusinessCardInfo(AbstractModel):
         if params.get("ItemCoord") is not None:
             self.ItemCoord = ItemCoord()
             self.ItemCoord._deserialize(params.get("ItemCoord"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BusinessCardOCRRequest(AbstractModel):
@@ -564,6 +664,13 @@ Config = {"RetImageType":"PROPROCESS"}
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
         self.Config = params.get("Config")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BusinessCardOCRResponse(AbstractModel):
@@ -598,6 +705,13 @@ class BusinessCardOCRResponse(AbstractModel):
         self.RetImageBase64 = params.get("RetImageBase64")
         self.Angle = params.get("Angle")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CandWord(AbstractModel):
@@ -620,6 +734,13 @@ class CandWord(AbstractModel):
                 obj = Words()
                 obj._deserialize(item)
                 self.CandWords.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CarInvoiceInfo(AbstractModel):
@@ -656,6 +777,13 @@ class CarInvoiceInfo(AbstractModel):
         if params.get("Polygon") is not None:
             self.Polygon = Polygon()
             self.Polygon._deserialize(params.get("Polygon"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CarInvoiceOCRRequest(AbstractModel):
@@ -684,6 +812,13 @@ class CarInvoiceOCRRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CarInvoiceOCRResponse(AbstractModel):
@@ -710,6 +845,13 @@ class CarInvoiceOCRResponse(AbstractModel):
                 obj._deserialize(item)
                 self.CarInvoiceInfos.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CellContent(AbstractModel):
@@ -733,6 +875,13 @@ class CellContent(AbstractModel):
     def _deserialize(self, params):
         self.ParagNo = params.get("ParagNo")
         self.WordSize = params.get("WordSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ClassifyDetectInfo(AbstractModel):
@@ -761,6 +910,13 @@ class ClassifyDetectInfo(AbstractModel):
         if params.get("Rect") is not None:
             self.Rect = Rect()
             self.Rect._deserialize(params.get("Rect"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ClassifyDetectOCRRequest(AbstractModel):
@@ -811,6 +967,13 @@ BizLicense: 营业执照
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
         self.DiscernType = params.get("DiscernType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ClassifyDetectOCRResponse(AbstractModel):
@@ -837,6 +1000,13 @@ class ClassifyDetectOCRResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ClassifyDetectInfos.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Coord(AbstractModel):
@@ -858,6 +1028,13 @@ class Coord(AbstractModel):
     def _deserialize(self, params):
         self.X = params.get("X")
         self.Y = params.get("Y")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Detail(AbstractModel):
@@ -879,6 +1056,13 @@ class Detail(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.Desc = params.get("Desc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DriverLicenseOCRRequest(AbstractModel):
@@ -908,6 +1092,13 @@ BACK 为驾驶证副页正面（有档案编号的一面）。
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
         self.CardSide = params.get("CardSide")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DriverLicenseOCRResponse(AbstractModel):
@@ -993,6 +1184,13 @@ WARN_DRIVER_LICENSE_PS_CARD ps告警
         self.RecognizeWarnMsg = params.get("RecognizeWarnMsg")
         self.IssuingAuthority = params.get("IssuingAuthority")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DutyPaidProofInfo(AbstractModel):
@@ -1021,6 +1219,13 @@ class DutyPaidProofInfo(AbstractModel):
         if params.get("Rect") is not None:
             self.Rect = Rect()
             self.Rect._deserialize(params.get("Rect"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DutyPaidProofOCRRequest(AbstractModel):
@@ -1049,6 +1254,13 @@ class DutyPaidProofOCRRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DutyPaidProofOCRResponse(AbstractModel):
@@ -1079,6 +1291,13 @@ class DutyPaidProofOCRResponse(AbstractModel):
                 self.DutyPaidProofInfos.append(obj)
         self.Angle = params.get("Angle")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class EduPaperOCRRequest(AbstractModel):
@@ -1117,6 +1336,13 @@ class EduPaperOCRRequest(AbstractModel):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
         self.Config = params.get("Config")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class EduPaperOCRResponse(AbstractModel):
@@ -1156,6 +1382,13 @@ class EduPaperOCRResponse(AbstractModel):
                 obj._deserialize(item)
                 self.QuestionBlockInfos.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class EnglishOCRRequest(AbstractModel):
@@ -1194,6 +1427,13 @@ class EnglishOCRRequest(AbstractModel):
         self.ImageUrl = params.get("ImageUrl")
         self.EnableCoordPoint = params.get("EnableCoordPoint")
         self.EnableCandWord = params.get("EnableCandWord")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class EnglishOCRResponse(AbstractModel):
@@ -1224,6 +1464,13 @@ class EnglishOCRResponse(AbstractModel):
                 self.TextDetections.append(obj)
         self.Angel = params.get("Angel")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class EnterpriseLicenseInfo(AbstractModel):
@@ -1246,6 +1493,13 @@ class EnterpriseLicenseInfo(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class EnterpriseLicenseOCRRequest(AbstractModel):
@@ -1274,6 +1528,13 @@ class EnterpriseLicenseOCRRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class EnterpriseLicenseOCRResponse(AbstractModel):
@@ -1304,6 +1565,13 @@ class EnterpriseLicenseOCRResponse(AbstractModel):
                 self.EnterpriseLicenseInfos.append(obj)
         self.Angle = params.get("Angle")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class EstateCertOCRRequest(AbstractModel):
@@ -1332,6 +1600,13 @@ class EstateCertOCRRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class EstateCertOCRResponse(AbstractModel):
@@ -1397,6 +1672,13 @@ class EstateCertOCRResponse(AbstractModel):
         self.Angle = params.get("Angle")
         self.Number = params.get("Number")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FinanBillInfo(AbstractModel):
@@ -1424,6 +1706,13 @@ class FinanBillInfo(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FinanBillOCRRequest(AbstractModel):
@@ -1452,6 +1741,13 @@ class FinanBillOCRRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FinanBillOCRResponse(AbstractModel):
@@ -1478,6 +1774,13 @@ class FinanBillOCRResponse(AbstractModel):
                 obj._deserialize(item)
                 self.FinanBillInfos.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FinanBillSliceInfo(AbstractModel):
@@ -1500,6 +1803,13 @@ class FinanBillSliceInfo(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FinanBillSliceOCRRequest(AbstractModel):
@@ -1528,6 +1838,13 @@ class FinanBillSliceOCRRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FinanBillSliceOCRResponse(AbstractModel):
@@ -1554,6 +1871,13 @@ class FinanBillSliceOCRResponse(AbstractModel):
                 obj._deserialize(item)
                 self.FinanBillSliceInfos.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FlightInvoiceInfo(AbstractModel):
@@ -1580,6 +1904,13 @@ class FlightInvoiceInfo(AbstractModel):
         self.Name = params.get("Name")
         self.Value = params.get("Value")
         self.Row = params.get("Row")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FlightInvoiceOCRRequest(AbstractModel):
@@ -1608,6 +1939,13 @@ class FlightInvoiceOCRRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FlightInvoiceOCRResponse(AbstractModel):
@@ -1634,6 +1972,13 @@ class FlightInvoiceOCRResponse(AbstractModel):
                 obj._deserialize(item)
                 self.FlightInvoiceInfos.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FormulaOCRRequest(AbstractModel):
@@ -1662,6 +2007,13 @@ class FormulaOCRRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FormulaOCRResponse(AbstractModel):
@@ -1692,6 +2044,13 @@ class FormulaOCRResponse(AbstractModel):
                 obj._deserialize(item)
                 self.FormulaInfos.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GeneralAccurateOCRRequest(AbstractModel):
@@ -1717,6 +2076,13 @@ class GeneralAccurateOCRRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GeneralAccurateOCRResponse(AbstractModel):
@@ -1747,6 +2113,13 @@ class GeneralAccurateOCRResponse(AbstractModel):
                 self.TextDetections.append(obj)
         self.Angel = params.get("Angel")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GeneralBasicOCRRequest(AbstractModel):
@@ -1802,6 +2175,13 @@ nor\hun\tha\lat\ara
         self.LanguageType = params.get("LanguageType")
         self.IsPdf = params.get("IsPdf")
         self.PdfPageNumber = params.get("PdfPageNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GeneralBasicOCRResponse(AbstractModel):
@@ -1840,6 +2220,13 @@ class GeneralBasicOCRResponse(AbstractModel):
         self.Angel = params.get("Angel")
         self.PdfPageSize = params.get("PdfPageSize")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GeneralEfficientOCRRequest(AbstractModel):
@@ -1865,6 +2252,13 @@ class GeneralEfficientOCRRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GeneralEfficientOCRResponse(AbstractModel):
@@ -1895,6 +2289,13 @@ class GeneralEfficientOCRResponse(AbstractModel):
                 self.TextDetections.append(obj)
         self.Angel = params.get("Angel")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GeneralFastOCRRequest(AbstractModel):
@@ -1931,6 +2332,13 @@ class GeneralFastOCRRequest(AbstractModel):
         self.ImageUrl = params.get("ImageUrl")
         self.IsPdf = params.get("IsPdf")
         self.PdfPageNumber = params.get("PdfPageNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GeneralFastOCRResponse(AbstractModel):
@@ -1970,6 +2378,13 @@ class GeneralFastOCRResponse(AbstractModel):
         self.Angel = params.get("Angel")
         self.PdfPageSize = params.get("PdfPageSize")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GeneralHandwritingOCRRequest(AbstractModel):
@@ -2007,6 +2422,13 @@ class GeneralHandwritingOCRRequest(AbstractModel):
         self.ImageUrl = params.get("ImageUrl")
         self.Scene = params.get("Scene")
         self.EnableWordPolygon = params.get("EnableWordPolygon")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GeneralHandwritingOCRResponse(AbstractModel):
@@ -2037,6 +2459,13 @@ class GeneralHandwritingOCRResponse(AbstractModel):
                 self.TextDetections.append(obj)
         self.Angel = params.get("Angel")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class HKIDCardOCRRequest(AbstractModel):
@@ -2072,6 +2501,13 @@ class HKIDCardOCRRequest(AbstractModel):
         self.ReturnHeadImage = params.get("ReturnHeadImage")
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class HKIDCardOCRResponse(AbstractModel):
@@ -2153,6 +2589,13 @@ class HKIDCardOCRResponse(AbstractModel):
         self.HeadImage = params.get("HeadImage")
         self.WarningCode = params.get("WarningCode")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class HmtResidentPermitOCRRequest(AbstractModel):
@@ -2187,6 +2630,13 @@ BACK：无照片的一面（国徽面），
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
         self.CardSide = params.get("CardSide")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class HmtResidentPermitOCRResponse(AbstractModel):
@@ -2245,6 +2695,13 @@ class HmtResidentPermitOCRResponse(AbstractModel):
         self.VisaNum = params.get("VisaNum")
         self.PassNo = params.get("PassNo")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class IDCardOCRRequest(AbstractModel):
@@ -2294,6 +2751,13 @@ Config = {"CropIdCard":true,"CropPortrait":true}
         self.ImageUrl = params.get("ImageUrl")
         self.CardSide = params.get("CardSide")
         self.Config = params.get("Config")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class IDCardOCRResponse(AbstractModel):
@@ -2362,6 +2826,13 @@ WarnInfos，告警信息，Code 告警码列表和释义：
         self.ValidDate = params.get("ValidDate")
         self.AdvancedInfo = params.get("AdvancedInfo")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InstitutionOCRRequest(AbstractModel):
@@ -2390,6 +2861,13 @@ class InstitutionOCRRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InstitutionOCRResponse(AbstractModel):
@@ -2427,6 +2905,13 @@ class InstitutionOCRResponse(AbstractModel):
         self.Name = params.get("Name")
         self.LegalPerson = params.get("LegalPerson")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InsuranceBillInfo(AbstractModel):
@@ -2456,6 +2941,13 @@ class InsuranceBillInfo(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InsuranceBillOCRRequest(AbstractModel):
@@ -2484,6 +2976,13 @@ class InsuranceBillOCRRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InsuranceBillOCRResponse(AbstractModel):
@@ -2510,6 +3009,13 @@ class InsuranceBillOCRResponse(AbstractModel):
                 obj._deserialize(item)
                 self.InsuranceBillInfos.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InvoiceDetectInfo(AbstractModel):
@@ -2558,6 +3064,13 @@ class InvoiceDetectInfo(AbstractModel):
             self.Rect = Rect()
             self.Rect._deserialize(params.get("Rect"))
         self.Image = params.get("Image")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InvoiceGeneralInfo(AbstractModel):
@@ -2586,6 +3099,13 @@ class InvoiceGeneralInfo(AbstractModel):
         if params.get("Rect") is not None:
             self.Rect = Rect()
             self.Rect._deserialize(params.get("Rect"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InvoiceGeneralOCRRequest(AbstractModel):
@@ -2614,6 +3134,13 @@ class InvoiceGeneralOCRRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InvoiceGeneralOCRResponse(AbstractModel):
@@ -2644,6 +3171,13 @@ class InvoiceGeneralOCRResponse(AbstractModel):
                 self.InvoiceGeneralInfos.append(obj)
         self.Angle = params.get("Angle")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ItemCoord(AbstractModel):
@@ -2673,6 +3207,13 @@ class ItemCoord(AbstractModel):
         self.Y = params.get("Y")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class LicensePlateOCRRequest(AbstractModel):
@@ -2701,6 +3242,13 @@ class LicensePlateOCRRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class LicensePlateOCRResponse(AbstractModel):
@@ -2732,6 +3280,13 @@ class LicensePlateOCRResponse(AbstractModel):
             self.Rect = Rect()
             self.Rect._deserialize(params.get("Rect"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MLIDCardOCRRequest(AbstractModel):
@@ -2763,6 +3318,13 @@ class MLIDCardOCRRequest(AbstractModel):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
         self.RetImage = params.get("RetImage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MLIDCardOCRResponse(AbstractModel):
@@ -2834,6 +3396,13 @@ MyKid 儿童卡
         self.Type = params.get("Type")
         self.Birthday = params.get("Birthday")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MLIDPassportOCRRequest(AbstractModel):
@@ -2855,6 +3424,13 @@ class MLIDPassportOCRRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.RetImage = params.get("RetImage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MLIDPassportOCRResponse(AbstractModel):
@@ -2923,6 +3499,13 @@ class MLIDPassportOCRResponse(AbstractModel):
         self.Image = params.get("Image")
         self.AdvancedInfo = params.get("AdvancedInfo")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MainlandPermitOCRRequest(AbstractModel):
@@ -2955,6 +3538,13 @@ class MainlandPermitOCRRequest(AbstractModel):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
         self.RetProfile = params.get("RetProfile")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MainlandPermitOCRResponse(AbstractModel):
@@ -3016,6 +3606,13 @@ class MainlandPermitOCRResponse(AbstractModel):
         self.Type = params.get("Type")
         self.Profile = params.get("Profile")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MixedInvoiceDetectRequest(AbstractModel):
@@ -3048,6 +3645,13 @@ class MixedInvoiceDetectRequest(AbstractModel):
         self.ReturnImage = params.get("ReturnImage")
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MixedInvoiceDetectResponse(AbstractModel):
@@ -3074,6 +3678,13 @@ class MixedInvoiceDetectResponse(AbstractModel):
                 obj._deserialize(item)
                 self.InvoiceDetectInfos.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MixedInvoiceItem(AbstractModel):
@@ -3129,6 +3740,13 @@ FailedOperation.UnKnowError：表示识别失败；
                 obj = SingleInvoiceInfo()
                 obj._deserialize(item)
                 self.SingleInvoiceInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MixedInvoiceOCRRequest(AbstractModel):
@@ -3172,6 +3790,13 @@ class MixedInvoiceOCRRequest(AbstractModel):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
         self.Types = params.get("Types")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MixedInvoiceOCRResponse(AbstractModel):
@@ -3198,6 +3823,13 @@ class MixedInvoiceOCRResponse(AbstractModel):
                 obj._deserialize(item)
                 self.MixedInvoiceItems.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class OrgCodeCertOCRRequest(AbstractModel):
@@ -3226,6 +3858,13 @@ class OrgCodeCertOCRRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class OrgCodeCertOCRResponse(AbstractModel):
@@ -3259,6 +3898,13 @@ class OrgCodeCertOCRResponse(AbstractModel):
         self.Address = params.get("Address")
         self.ValidDate = params.get("ValidDate")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PassportOCRRequest(AbstractModel):
@@ -3287,6 +3933,13 @@ class PassportOCRRequest(AbstractModel):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
         self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PassportOCRResponse(AbstractModel):
@@ -3364,6 +4017,13 @@ class PassportOCRResponse(AbstractModel):
         self.FamilyName = params.get("FamilyName")
         self.FirstName = params.get("FirstName")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PermitOCRRequest(AbstractModel):
@@ -3392,6 +4052,13 @@ class PermitOCRRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PermitOCRResponse(AbstractModel):
@@ -3441,6 +4108,13 @@ class PermitOCRResponse(AbstractModel):
         self.IssueAddress = params.get("IssueAddress")
         self.Birthday = params.get("Birthday")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Polygon(AbstractModel):
@@ -3479,6 +4153,13 @@ class Polygon(AbstractModel):
         if params.get("LeftBottom") is not None:
             self.LeftBottom = Coord()
             self.LeftBottom._deserialize(params.get("LeftBottom"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ProductDataRecord(AbstractModel):
@@ -3571,6 +4252,13 @@ E008	        经查，该企业厂商识别代码以及条码尚未通报
         self.FirmCode = params.get("FirmCode")
         self.CheckResult = params.get("CheckResult")
         self.CategoryCode = params.get("CategoryCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PropOwnerCertOCRRequest(AbstractModel):
@@ -3599,6 +4287,13 @@ class PropOwnerCertOCRRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PropOwnerCertOCRResponse(AbstractModel):
@@ -3640,6 +4335,13 @@ class PropOwnerCertOCRResponse(AbstractModel):
         self.Nature = params.get("Nature")
         self.Location = params.get("Location")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class QrcodeImgSize(AbstractModel):
@@ -3661,6 +4363,13 @@ class QrcodeImgSize(AbstractModel):
     def _deserialize(self, params):
         self.Wide = params.get("Wide")
         self.High = params.get("High")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class QrcodeOCRRequest(AbstractModel):
@@ -3684,6 +4393,13 @@ class QrcodeOCRRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class QrcodeOCRResponse(AbstractModel):
@@ -3716,6 +4432,13 @@ class QrcodeOCRResponse(AbstractModel):
             self.ImgSize = QrcodeImgSize()
             self.ImgSize._deserialize(params.get("ImgSize"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class QrcodePositionObj(AbstractModel):
@@ -3753,6 +4476,13 @@ class QrcodePositionObj(AbstractModel):
         if params.get("LeftBottom") is not None:
             self.LeftBottom = Coord()
             self.LeftBottom._deserialize(params.get("LeftBottom"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class QrcodeResultsInfo(AbstractModel):
@@ -3780,6 +4510,13 @@ class QrcodeResultsInfo(AbstractModel):
         if params.get("Position") is not None:
             self.Position = QrcodePositionObj()
             self.Position._deserialize(params.get("Position"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class QueryBarCodeRequest(AbstractModel):
@@ -3797,6 +4534,13 @@ class QueryBarCodeRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.BarCode = params.get("BarCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class QueryBarCodeResponse(AbstractModel):
@@ -3827,6 +4571,13 @@ class QueryBarCodeResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ProductDataRecords.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class QuestionBlockObj(AbstractModel):
@@ -3855,6 +4606,13 @@ class QuestionBlockObj(AbstractModel):
         if params.get("QuestionBboxCoord") is not None:
             self.QuestionBboxCoord = Rect()
             self.QuestionBboxCoord._deserialize(params.get("QuestionBboxCoord"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class QuestionObj(AbstractModel):
@@ -3900,6 +4658,13 @@ class QuestionObj(AbstractModel):
                 obj = Rect()
                 obj._deserialize(item)
                 self.QuestionImageCoords.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class QuotaInvoiceOCRRequest(AbstractModel):
@@ -3928,6 +4693,13 @@ class QuotaInvoiceOCRRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class QuotaInvoiceOCRResponse(AbstractModel):
@@ -3980,6 +4752,13 @@ class QuotaInvoiceOCRResponse(AbstractModel):
         self.City = params.get("City")
         self.HasStamp = params.get("HasStamp")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RecognizeTableOCRRequest(AbstractModel):
@@ -4017,6 +4796,13 @@ class RecognizeTableOCRRequest(AbstractModel):
         self.IsPdf = params.get("IsPdf")
         self.PdfPageNumber = params.get("PdfPageNumber")
         self.TableLanguage = params.get("TableLanguage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RecognizeTableOCRResponse(AbstractModel):
@@ -4055,6 +4841,13 @@ class RecognizeTableOCRResponse(AbstractModel):
         self.PdfPageSize = params.get("PdfPageSize")
         self.Angle = params.get("Angle")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RecognizeThaiIDCardOCRRequest(AbstractModel):
@@ -4078,6 +4871,13 @@ class RecognizeThaiIDCardOCRRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RecognizeThaiIDCardOCRResponse(AbstractModel):
@@ -4127,6 +4927,13 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         self.ExpirationDate = params.get("ExpirationDate")
         self.EnLastName = params.get("EnLastName")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Rect(AbstractModel):
@@ -4156,6 +4963,13 @@ class Rect(AbstractModel):
         self.Y = params.get("Y")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ResidenceBookletOCRRequest(AbstractModel):
@@ -4184,6 +4998,13 @@ class ResidenceBookletOCRRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ResidenceBookletOCRResponse(AbstractModel):
@@ -4249,6 +5070,13 @@ class ResidenceBookletOCRResponse(AbstractModel):
         self.Household = params.get("Household")
         self.Address = params.get("Address")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RideHailingDriverLicenseOCRRequest(AbstractModel):
@@ -4272,6 +5100,13 @@ class RideHailingDriverLicenseOCRRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RideHailingDriverLicenseOCRResponse(AbstractModel):
@@ -4309,6 +5144,13 @@ class RideHailingDriverLicenseOCRResponse(AbstractModel):
         self.EndDate = params.get("EndDate")
         self.ReleaseDate = params.get("ReleaseDate")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RideHailingTransportLicenseOCRRequest(AbstractModel):
@@ -4332,6 +5174,13 @@ class RideHailingTransportLicenseOCRRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RideHailingTransportLicenseOCRResponse(AbstractModel):
@@ -4373,6 +5222,13 @@ class RideHailingTransportLicenseOCRResponse(AbstractModel):
         self.EndDate = params.get("EndDate")
         self.ReleaseDate = params.get("ReleaseDate")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SealOCRRequest(AbstractModel):
@@ -4396,6 +5252,13 @@ class SealOCRRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SealOCRResponse(AbstractModel):
@@ -4427,6 +5290,13 @@ class SealOCRResponse(AbstractModel):
             self.Location._deserialize(params.get("Location"))
         self.OtherTexts = params.get("OtherTexts")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ShipInvoiceInfo(AbstractModel):
@@ -4455,6 +5325,13 @@ class ShipInvoiceInfo(AbstractModel):
         if params.get("Rect") is not None:
             self.Rect = Rect()
             self.Rect._deserialize(params.get("Rect"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ShipInvoiceOCRRequest(AbstractModel):
@@ -4483,6 +5360,13 @@ class ShipInvoiceOCRRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ShipInvoiceOCRResponse(AbstractModel):
@@ -4513,6 +5397,13 @@ class ShipInvoiceOCRResponse(AbstractModel):
                 self.ShipInvoiceInfos.append(obj)
         self.Angle = params.get("Angle")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SingleInvoiceInfo(AbstractModel):
@@ -4534,6 +5425,13 @@ class SingleInvoiceInfo(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TableCell(AbstractModel):
@@ -4598,6 +5496,13 @@ class TableCell(AbstractModel):
                 obj = CellContent()
                 obj._deserialize(item)
                 self.Contents.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TableDetectInfo(AbstractModel):
@@ -4649,6 +5554,13 @@ class TableDetectInfo(AbstractModel):
                 obj = Coord()
                 obj._deserialize(item)
                 self.TableCoordPoint.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TableOCRRequest(AbstractModel):
@@ -4677,6 +5589,13 @@ class TableOCRRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TableOCRResponse(AbstractModel):
@@ -4707,6 +5626,13 @@ class TableOCRResponse(AbstractModel):
                 self.TextDetections.append(obj)
         self.Data = params.get("Data")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TableTitle(AbstractModel):
@@ -4725,6 +5651,13 @@ class TableTitle(AbstractModel):
 
     def _deserialize(self, params):
         self.Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TaxiInvoiceOCRRequest(AbstractModel):
@@ -4753,6 +5686,13 @@ class TaxiInvoiceOCRRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TaxiInvoiceOCRResponse(AbstractModel):
@@ -4820,6 +5760,13 @@ class TaxiInvoiceOCRResponse(AbstractModel):
         self.Province = params.get("Province")
         self.City = params.get("City")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TextArithmetic(AbstractModel):
@@ -4884,6 +5831,13 @@ class TextArithmetic(AbstractModel):
             self.ItemCoord._deserialize(params.get("ItemCoord"))
         self.ExpressionType = params.get("ExpressionType")
         self.Answer = params.get("Answer")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TextDetectRequest(AbstractModel):
@@ -4912,6 +5866,13 @@ class TextDetectRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TextDetectResponse(AbstractModel):
@@ -4933,6 +5894,13 @@ class TextDetectResponse(AbstractModel):
     def _deserialize(self, params):
         self.HasText = params.get("HasText")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TextDetection(AbstractModel):
@@ -4975,6 +5943,13 @@ GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。
         if params.get("ItemPolygon") is not None:
             self.ItemPolygon = ItemCoord()
             self.ItemPolygon._deserialize(params.get("ItemPolygon"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TextDetectionEn(AbstractModel):
@@ -5037,6 +6012,13 @@ class TextDetectionEn(AbstractModel):
                 obj = Words()
                 obj._deserialize(item)
                 self.Words.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TextEduPaper(AbstractModel):
@@ -5064,6 +6046,13 @@ class TextEduPaper(AbstractModel):
         if params.get("Itemcoord") is not None:
             self.Itemcoord = ItemCoord()
             self.Itemcoord._deserialize(params.get("Itemcoord"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TextFormula(AbstractModel):
@@ -5081,6 +6070,13 @@ class TextFormula(AbstractModel):
 
     def _deserialize(self, params):
         self.DetectedText = params.get("DetectedText")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TextGeneralHandwriting(AbstractModel):
@@ -5127,6 +6123,13 @@ class TextGeneralHandwriting(AbstractModel):
                 obj = Polygon()
                 obj._deserialize(item)
                 self.WordPolygon.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TextTable(AbstractModel):
@@ -5181,6 +6184,13 @@ class TextTable(AbstractModel):
                 obj._deserialize(item)
                 self.Polygon.append(obj)
         self.AdvancedInfo = params.get("AdvancedInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TextVatInvoice(AbstractModel):
@@ -5211,6 +6221,13 @@ class TextVatInvoice(AbstractModel):
         if params.get("Polygon") is not None:
             self.Polygon = Polygon()
             self.Polygon._deserialize(params.get("Polygon"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TextVehicleBack(AbstractModel):
@@ -5274,6 +6291,13 @@ class TextVehicleBack(AbstractModel):
         self.Marks = params.get("Marks")
         self.Record = params.get("Record")
         self.TotalQuasiMass = params.get("TotalQuasiMass")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TextVehicleFront(AbstractModel):
@@ -5342,6 +6366,13 @@ class TextVehicleFront(AbstractModel):
         self.RegisterDate = params.get("RegisterDate")
         self.IssueDate = params.get("IssueDate")
         self.Seal = params.get("Seal")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TextWaybill(AbstractModel):
@@ -5397,6 +6428,13 @@ class TextWaybill(AbstractModel):
         if params.get("WaybillNum") is not None:
             self.WaybillNum = WaybillObj()
             self.WaybillNum._deserialize(params.get("WaybillNum"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TollInvoiceInfo(AbstractModel):
@@ -5425,6 +6463,13 @@ class TollInvoiceInfo(AbstractModel):
         if params.get("Rect") is not None:
             self.Rect = Rect()
             self.Rect._deserialize(params.get("Rect"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TollInvoiceOCRRequest(AbstractModel):
@@ -5453,6 +6498,13 @@ class TollInvoiceOCRRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TollInvoiceOCRResponse(AbstractModel):
@@ -5483,6 +6535,13 @@ class TollInvoiceOCRResponse(AbstractModel):
                 self.TollInvoiceInfos.append(obj)
         self.Angle = params.get("Angle")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TrainTicketOCRRequest(AbstractModel):
@@ -5511,6 +6570,13 @@ class TrainTicketOCRRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TrainTicketOCRResponse(AbstractModel):
@@ -5576,6 +6642,13 @@ class TrainTicketOCRResponse(AbstractModel):
         self.InvoiceType = params.get("InvoiceType")
         self.SerialNumber = params.get("SerialNumber")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VatInvoice(AbstractModel):
@@ -5697,6 +6770,13 @@ Y: 有清单 N：无清单
                 obj = VatInvoiceItem()
                 obj._deserialize(item)
                 self.Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VatInvoiceGoodsInfo(AbstractModel):
@@ -5742,6 +6822,13 @@ class VatInvoiceGoodsInfo(AbstractModel):
         self.Amount = params.get("Amount")
         self.TaxScheme = params.get("TaxScheme")
         self.TaxAmount = params.get("TaxAmount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VatInvoiceItem(AbstractModel):
@@ -5791,6 +6878,13 @@ class VatInvoiceItem(AbstractModel):
         self.AmountWithoutTax = params.get("AmountWithoutTax")
         self.TaxRate = params.get("TaxRate")
         self.TaxAmount = params.get("TaxAmount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VatInvoiceOCRRequest(AbstractModel):
@@ -5827,6 +6921,13 @@ class VatInvoiceOCRRequest(AbstractModel):
         self.ImageUrl = params.get("ImageUrl")
         self.IsPdf = params.get("IsPdf")
         self.PdfPageNumber = params.get("PdfPageNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VatInvoiceOCRResponse(AbstractModel):
@@ -5870,6 +6971,13 @@ class VatInvoiceOCRResponse(AbstractModel):
         self.PdfPageSize = params.get("PdfPageSize")
         self.Angle = params.get("Angle")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VatInvoiceUserInfo(AbstractModel):
@@ -5899,6 +7007,13 @@ class VatInvoiceUserInfo(AbstractModel):
         self.TaxId = params.get("TaxId")
         self.AddrTel = params.get("AddrTel")
         self.FinancialAccount = params.get("FinancialAccount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VatInvoiceVerifyRequest(AbstractModel):
@@ -5933,6 +7048,13 @@ class VatInvoiceVerifyRequest(AbstractModel):
         self.InvoiceNo = params.get("InvoiceNo")
         self.InvoiceDate = params.get("InvoiceDate")
         self.Additional = params.get("Additional")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VatInvoiceVerifyResponse(AbstractModel):
@@ -5956,6 +7078,13 @@ class VatInvoiceVerifyResponse(AbstractModel):
             self.Invoice = VatInvoice()
             self.Invoice._deserialize(params.get("Invoice"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VatRollInvoiceInfo(AbstractModel):
@@ -5984,6 +7113,13 @@ class VatRollInvoiceInfo(AbstractModel):
         if params.get("Rect") is not None:
             self.Rect = Rect()
             self.Rect._deserialize(params.get("Rect"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VatRollInvoiceOCRRequest(AbstractModel):
@@ -6012,6 +7148,13 @@ class VatRollInvoiceOCRRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VatRollInvoiceOCRResponse(AbstractModel):
@@ -6042,6 +7185,13 @@ class VatRollInvoiceOCRResponse(AbstractModel):
                 self.VatRollInvoiceInfos.append(obj)
         self.Angle = params.get("Angle")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VehicleLicenseOCRRequest(AbstractModel):
@@ -6071,6 +7221,13 @@ BACK 为行驶证副页正面（有号码号牌的一面）。
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
         self.CardSide = params.get("CardSide")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VehicleLicenseOCRResponse(AbstractModel):
@@ -6118,6 +7275,13 @@ WARN_DRIVER_LICENSE_PS_CARD ps告警
         self.RecognizeWarnCode = params.get("RecognizeWarnCode")
         self.RecognizeWarnMsg = params.get("RecognizeWarnMsg")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VehicleRegCertInfo(AbstractModel):
@@ -6150,6 +7314,13 @@ class VehicleRegCertInfo(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VehicleRegCertOCRRequest(AbstractModel):
@@ -6178,6 +7349,13 @@ class VehicleRegCertOCRRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VehicleRegCertOCRResponse(AbstractModel):
@@ -6204,6 +7382,13 @@ class VehicleRegCertOCRResponse(AbstractModel):
                 obj._deserialize(item)
                 self.VehicleRegCertInfos.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VerifyBasicBizLicenseRequest(AbstractModel):
@@ -6255,6 +7440,13 @@ Config = {"Name":true,"Address":true}
         self.Name = params.get("Name")
         self.Address = params.get("Address")
         self.RegCapital = params.get("RegCapital")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VerifyBasicBizLicenseResponse(AbstractModel):
@@ -6342,6 +7534,13 @@ class VerifyBasicBizLicenseResponse(AbstractModel):
             self.RegNumResult._deserialize(params.get("RegNumResult"))
         self.RegCapital = params.get("RegCapital")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VerifyBizLicenseRequest(AbstractModel):
@@ -6389,6 +7588,13 @@ Config = {"Name":true,"Address":true}
         self.RegNum = params.get("RegNum")
         self.Name = params.get("Name")
         self.Address = params.get("Address")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VerifyBizLicenseResponse(AbstractModel):
@@ -6544,6 +7750,13 @@ class VerifyBizLicenseResponse(AbstractModel):
             self.RegNumResult = BizLicenseVerifyResult()
             self.RegNumResult._deserialize(params.get("RegNumResult"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VerifyEnterpriseFourFactorsRequest(AbstractModel):
@@ -6573,6 +7786,13 @@ class VerifyEnterpriseFourFactorsRequest(AbstractModel):
         self.IdCard = params.get("IdCard")
         self.EnterpriseName = params.get("EnterpriseName")
         self.EnterpriseMark = params.get("EnterpriseMark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VerifyEnterpriseFourFactorsResponse(AbstractModel):
@@ -6601,6 +7821,13 @@ class VerifyEnterpriseFourFactorsResponse(AbstractModel):
             self.Detail = Detail()
             self.Detail._deserialize(params.get("Detail"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VerifyOfdVatInvoiceOCRRequest(AbstractModel):
@@ -6623,6 +7850,13 @@ OfdFileUrl 和 OfdFileBase64 必传其一，若两者都传，只解析OfdFileBa
     def _deserialize(self, params):
         self.OfdFileUrl = params.get("OfdFileUrl")
         self.OfdFileBase64 = params.get("OfdFileBase64")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VerifyOfdVatInvoiceOCRResponse(AbstractModel):
@@ -6719,6 +7953,13 @@ class VerifyOfdVatInvoiceOCRResponse(AbstractModel):
                 obj._deserialize(item)
                 self.GoodsInfos.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VinOCRRequest(AbstractModel):
@@ -6747,6 +7988,13 @@ class VinOCRRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VinOCRResponse(AbstractModel):
@@ -6768,6 +8016,13 @@ class VinOCRResponse(AbstractModel):
     def _deserialize(self, params):
         self.Vin = params.get("Vin")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class WaybillOCRRequest(AbstractModel):
@@ -6800,6 +8055,13 @@ class WaybillOCRRequest(AbstractModel):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
         self.EnablePreDetect = params.get("EnablePreDetect")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class WaybillOCRResponse(AbstractModel):
@@ -6823,6 +8085,13 @@ class WaybillOCRResponse(AbstractModel):
             self.TextDetections = TextWaybill()
             self.TextDetections._deserialize(params.get("TextDetections"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class WaybillObj(AbstractModel):
@@ -6840,6 +8109,13 @@ class WaybillObj(AbstractModel):
 
     def _deserialize(self, params):
         self.Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class WordCoordPoint(AbstractModel):
@@ -6862,6 +8138,13 @@ class WordCoordPoint(AbstractModel):
                 obj = Coord()
                 obj._deserialize(item)
                 self.WordCoordinate.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Words(AbstractModel):
@@ -6883,3 +8166,10 @@ class Words(AbstractModel):
     def _deserialize(self, params):
         self.Confidence = params.get("Confidence")
         self.Character = params.get("Character")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -47,6 +49,13 @@ class AuthInfo(AbstractModel):
         self.Code = params.get("Code")
         self.Type = params.get("Type")
         self.CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BatchDescribeOrderCertificateRequest(AbstractModel):
@@ -64,6 +73,13 @@ class BatchDescribeOrderCertificateRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.OrderIds = params.get("OrderIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BatchDescribeOrderCertificateResponse(AbstractModel):
@@ -85,6 +101,13 @@ class BatchDescribeOrderCertificateResponse(AbstractModel):
     def _deserialize(self, params):
         self.CertificateUrls = params.get("CertificateUrls")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BatchDescribeOrderImageRequest(AbstractModel):
@@ -102,6 +125,13 @@ class BatchDescribeOrderImageRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.OrderIds = params.get("OrderIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BatchDescribeOrderImageResponse(AbstractModel):
@@ -123,6 +153,13 @@ class BatchDescribeOrderImageResponse(AbstractModel):
     def _deserialize(self, params):
         self.ImageUrls = params.get("ImageUrls")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateOrderAndDownloadsRequest(AbstractModel):
@@ -145,6 +182,13 @@ class CreateOrderAndDownloadsRequest(AbstractModel):
                 obj = ImageInfo()
                 obj._deserialize(item)
                 self.ImageInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateOrderAndDownloadsResponse(AbstractModel):
@@ -176,6 +220,13 @@ class CreateOrderAndDownloadsResponse(AbstractModel):
                 self.DownloadInfos.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateOrderAndPayRequest(AbstractModel):
@@ -201,6 +252,13 @@ class CreateOrderAndPayRequest(AbstractModel):
         self.ImageId = params.get("ImageId")
         self.AuthUserId = params.get("AuthUserId")
         self.MarshalId = params.get("MarshalId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateOrderAndPayResponse(AbstractModel):
@@ -222,6 +280,13 @@ class CreateOrderAndPayResponse(AbstractModel):
     def _deserialize(self, params):
         self.OrderId = params.get("OrderId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAuthUsersRequest(AbstractModel):
@@ -243,6 +308,13 @@ class DescribeAuthUsersRequest(AbstractModel):
     def _deserialize(self, params):
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAuthUsersResponse(AbstractModel):
@@ -278,6 +350,13 @@ class DescribeAuthUsersResponse(AbstractModel):
         self.TotalCount = params.get("TotalCount")
         self.OldUser = params.get("OldUser")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDownloadInfosRequest(AbstractModel):
@@ -311,6 +390,13 @@ class DescribeDownloadInfosRequest(AbstractModel):
         self.BeginTime = params.get("BeginTime")
         self.EndTime = params.get("EndTime")
         self.ImageIds = params.get("ImageIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDownloadInfosResponse(AbstractModel):
@@ -342,6 +428,13 @@ class DescribeDownloadInfosResponse(AbstractModel):
                 self.DownloadInfos.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeImageRequest(AbstractModel):
@@ -359,6 +452,13 @@ class DescribeImageRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.ImageId = params.get("ImageId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeImageResponse(AbstractModel):
@@ -437,6 +537,13 @@ class DescribeImageResponse(AbstractModel):
         self.LayeredGalleryId = params.get("LayeredGalleryId")
         self.Orientation = params.get("Orientation")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeImagesRequest(AbstractModel):
@@ -474,6 +581,13 @@ class DescribeImagesRequest(AbstractModel):
         self.Orientation = params.get("Orientation")
         self.ImageSenseType = params.get("ImageSenseType")
         self.LayeredGalleryIds = params.get("LayeredGalleryIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeImagesResponse(AbstractModel):
@@ -516,6 +630,13 @@ class DescribeImagesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Items.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DownloadInfo(AbstractModel):
@@ -567,6 +688,13 @@ class DownloadInfo(AbstractModel):
         self.DownloadTime = params.get("DownloadTime")
         self.ConsumeType = params.get("ConsumeType")
         self.FirstDownload = params.get("FirstDownload")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ImageInfo(AbstractModel):
@@ -608,6 +736,13 @@ class ImageInfo(AbstractModel):
         self.UserId = params.get("UserId")
         self.DownloadPrice = params.get("DownloadPrice")
         self.DownloadType = params.get("DownloadType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ImageItem(AbstractModel):
@@ -657,6 +792,13 @@ class ImageItem(AbstractModel):
         self.Keywords = params.get("Keywords")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ImageMarshal(AbstractModel):
@@ -714,3 +856,10 @@ class ImageMarshal(AbstractModel):
         self.LicenseScopeId = params.get("LicenseScopeId")
         self.DimensionsName = params.get("DimensionsName")
         self.DimensionsNameId = params.get("DimensionsNameId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

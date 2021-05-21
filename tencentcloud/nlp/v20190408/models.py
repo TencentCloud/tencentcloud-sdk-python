@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -36,6 +38,13 @@ class AutoSummarizationRequest(AbstractModel):
     def _deserialize(self, params):
         self.Text = params.get("Text")
         self.Length = params.get("Length")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AutoSummarizationResponse(AbstractModel):
@@ -57,6 +66,13 @@ class AutoSummarizationResponse(AbstractModel):
     def _deserialize(self, params):
         self.Summary = params.get("Summary")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CCIToken(AbstractModel):
@@ -82,6 +98,13 @@ class CCIToken(AbstractModel):
         self.Word = params.get("Word")
         self.BeginOffset = params.get("BeginOffset")
         self.CorrectWord = params.get("CorrectWord")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ChatBotRequest(AbstractModel):
@@ -107,6 +130,13 @@ class ChatBotRequest(AbstractModel):
         self.Query = params.get("Query")
         self.OpenId = params.get("OpenId")
         self.Flag = params.get("Flag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ChatBotResponse(AbstractModel):
@@ -132,6 +162,13 @@ class ChatBotResponse(AbstractModel):
         self.Reply = params.get("Reply")
         self.Confidence = params.get("Confidence")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ClassificationResult(AbstractModel):
@@ -193,6 +230,13 @@ class ClassificationResult(AbstractModel):
         self.FourthClassProbability = params.get("FourthClassProbability")
         self.FifthClassName = params.get("FifthClassName")
         self.FifthClassProbability = params.get("FifthClassProbability")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateDictRequest(AbstractModel):
@@ -214,6 +258,13 @@ class CreateDictRequest(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateDictResponse(AbstractModel):
@@ -236,6 +287,13 @@ class CreateDictResponse(AbstractModel):
     def _deserialize(self, params):
         self.DictId = params.get("DictId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateWordItemsRequest(AbstractModel):
@@ -262,6 +320,13 @@ class CreateWordItemsRequest(AbstractModel):
                 obj = WordItem()
                 obj._deserialize(item)
                 self.WordItems.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateWordItemsResponse(AbstractModel):
@@ -279,6 +344,13 @@ class CreateWordItemsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteDictRequest(AbstractModel):
@@ -296,6 +368,13 @@ class DeleteDictRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.DictId = params.get("DictId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteDictResponse(AbstractModel):
@@ -313,6 +392,13 @@ class DeleteDictResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteWordItemsRequest(AbstractModel):
@@ -339,6 +425,13 @@ class DeleteWordItemsRequest(AbstractModel):
                 obj = WordItem()
                 obj._deserialize(item)
                 self.WordItems.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteWordItemsResponse(AbstractModel):
@@ -356,6 +449,13 @@ class DeleteWordItemsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DependencyParsingRequest(AbstractModel):
@@ -373,6 +473,13 @@ class DependencyParsingRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DependencyParsingResponse(AbstractModel):
@@ -414,6 +521,13 @@ class DependencyParsingResponse(AbstractModel):
                 obj._deserialize(item)
                 self.DpTokens.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDictRequest(AbstractModel):
@@ -435,6 +549,13 @@ class DescribeDictRequest(AbstractModel):
     def _deserialize(self, params):
         self.DictId = params.get("DictId")
         self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDictResponse(AbstractModel):
@@ -462,6 +583,13 @@ class DescribeDictResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Dicts.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDictsRequest(AbstractModel):
@@ -483,6 +611,13 @@ class DescribeDictsRequest(AbstractModel):
     def _deserialize(self, params):
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDictsResponse(AbstractModel):
@@ -514,6 +649,13 @@ class DescribeDictsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Dicts.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeEntityRequest(AbstractModel):
@@ -531,6 +673,13 @@ class DescribeEntityRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.EntityName = params.get("EntityName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeEntityResponse(AbstractModel):
@@ -552,6 +701,13 @@ class DescribeEntityResponse(AbstractModel):
     def _deserialize(self, params):
         self.Content = params.get("Content")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeRelationRequest(AbstractModel):
@@ -573,6 +729,13 @@ class DescribeRelationRequest(AbstractModel):
     def _deserialize(self, params):
         self.LeftEntityName = params.get("LeftEntityName")
         self.RightEntityName = params.get("RightEntityName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeRelationResponse(AbstractModel):
@@ -599,6 +762,13 @@ class DescribeRelationResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Content.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeTripleRequest(AbstractModel):
@@ -616,6 +786,13 @@ class DescribeTripleRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.TripleCondition = params.get("TripleCondition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeTripleResponse(AbstractModel):
@@ -642,6 +819,13 @@ class DescribeTripleResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Content.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeWordItemsRequest(AbstractModel):
@@ -671,6 +855,13 @@ class DescribeWordItemsRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeWordItemsResponse(AbstractModel):
@@ -702,6 +893,13 @@ class DescribeWordItemsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.WordItems.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DictInfo(AbstractModel):
@@ -738,6 +936,13 @@ class DictInfo(AbstractModel):
         self.Description = params.get("Description")
         self.UpdateTime = params.get("UpdateTime")
         self.CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DpToken(AbstractModel):
@@ -771,6 +976,13 @@ class DpToken(AbstractModel):
         self.HeadId = params.get("HeadId")
         self.Word = params.get("Word")
         self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class EntityRelationContent(AbstractModel):
@@ -809,6 +1021,13 @@ class EntityRelationContent(AbstractModel):
                 obj = EntityRelationSubject()
                 obj._deserialize(item)
                 self.Subject.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class EntityRelationObject(AbstractModel):
@@ -837,6 +1056,13 @@ class EntityRelationObject(AbstractModel):
         self.Popular = params.get("Popular")
         self.Id = params.get("Id")
         self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class EntityRelationSubject(AbstractModel):
@@ -862,6 +1088,13 @@ class EntityRelationSubject(AbstractModel):
         self.Popular = params.get("Popular")
         self.Id = params.get("Id")
         self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Keyword(AbstractModel):
@@ -883,6 +1116,13 @@ class Keyword(AbstractModel):
     def _deserialize(self, params):
         self.Score = params.get("Score")
         self.Word = params.get("Word")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class KeywordsExtractionRequest(AbstractModel):
@@ -904,6 +1144,13 @@ class KeywordsExtractionRequest(AbstractModel):
     def _deserialize(self, params):
         self.Text = params.get("Text")
         self.Num = params.get("Num")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class KeywordsExtractionResponse(AbstractModel):
@@ -931,6 +1178,13 @@ class KeywordsExtractionResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Keywords.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class LexicalAnalysisRequest(AbstractModel):
@@ -958,6 +1212,13 @@ class LexicalAnalysisRequest(AbstractModel):
         self.Text = params.get("Text")
         self.DictId = params.get("DictId")
         self.Flag = params.get("Flag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class LexicalAnalysisResponse(AbstractModel):
@@ -998,6 +1259,13 @@ class LexicalAnalysisResponse(AbstractModel):
                 obj._deserialize(item)
                 self.PosTokens.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class NerToken(AbstractModel):
@@ -1027,6 +1295,13 @@ class NerToken(AbstractModel):
         self.Length = params.get("Length")
         self.BeginOffset = params.get("BeginOffset")
         self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PosToken(AbstractModel):
@@ -1056,6 +1331,13 @@ class PosToken(AbstractModel):
         self.Length = params.get("Length")
         self.BeginOffset = params.get("BeginOffset")
         self.Pos = params.get("Pos")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SearchResult(AbstractModel):
@@ -1087,6 +1369,13 @@ class SearchResult(AbstractModel):
         self.IsExist = params.get("IsExist")
         self.MatchText = params.get("MatchText")
         self.Pos = params.get("Pos")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SearchWordItemsRequest(AbstractModel):
@@ -1113,6 +1402,13 @@ class SearchWordItemsRequest(AbstractModel):
                 obj = WordItem()
                 obj._deserialize(item)
                 self.WordItems.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SearchWordItemsResponse(AbstractModel):
@@ -1140,6 +1436,13 @@ class SearchWordItemsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Results.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SentenceEmbeddingRequest(AbstractModel):
@@ -1157,6 +1460,13 @@ class SentenceEmbeddingRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SentenceEmbeddingResponse(AbstractModel):
@@ -1182,6 +1492,13 @@ class SentenceEmbeddingResponse(AbstractModel):
         self.Vector = params.get("Vector")
         self.Dimension = params.get("Dimension")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SentimentAnalysisRequest(AbstractModel):
@@ -1213,6 +1530,13 @@ class SentimentAnalysisRequest(AbstractModel):
         self.Text = params.get("Text")
         self.Flag = params.get("Flag")
         self.Mode = params.get("Mode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SentimentAnalysisResponse(AbstractModel):
@@ -1250,6 +1574,13 @@ class SentimentAnalysisResponse(AbstractModel):
         self.Negative = params.get("Negative")
         self.Sentiment = params.get("Sentiment")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SimilarWordsRequest(AbstractModel):
@@ -1271,6 +1602,13 @@ class SimilarWordsRequest(AbstractModel):
     def _deserialize(self, params):
         self.Text = params.get("Text")
         self.WordNumber = params.get("WordNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SimilarWordsResponse(AbstractModel):
@@ -1292,6 +1630,13 @@ class SimilarWordsResponse(AbstractModel):
     def _deserialize(self, params):
         self.SimilarWords = params.get("SimilarWords")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Similarity(AbstractModel):
@@ -1313,6 +1658,13 @@ class Similarity(AbstractModel):
     def _deserialize(self, params):
         self.Text = params.get("Text")
         self.Score = params.get("Score")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TextClassificationRequest(AbstractModel):
@@ -1336,6 +1688,13 @@ class TextClassificationRequest(AbstractModel):
     def _deserialize(self, params):
         self.Text = params.get("Text")
         self.Flag = params.get("Flag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TextClassificationResponse(AbstractModel):
@@ -1362,6 +1721,13 @@ class TextClassificationResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Classes.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TextCorrectionRequest(AbstractModel):
@@ -1379,6 +1745,13 @@ class TextCorrectionRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TextCorrectionResponse(AbstractModel):
@@ -1410,6 +1783,13 @@ class TextCorrectionResponse(AbstractModel):
                 self.CCITokens.append(obj)
         self.ResultText = params.get("ResultText")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TextSimilarityRequest(AbstractModel):
@@ -1431,6 +1811,13 @@ class TextSimilarityRequest(AbstractModel):
     def _deserialize(self, params):
         self.SrcText = params.get("SrcText")
         self.TargetText = params.get("TargetText")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TextSimilarityResponse(AbstractModel):
@@ -1457,6 +1844,13 @@ class TextSimilarityResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Similarity.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TripleContent(AbstractModel):
@@ -1490,6 +1884,13 @@ class TripleContent(AbstractModel):
         self.Name = params.get("Name")
         self.Order = params.get("Order")
         self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UpdateDictRequest(AbstractModel):
@@ -1515,6 +1916,13 @@ class UpdateDictRequest(AbstractModel):
         self.DictId = params.get("DictId")
         self.Description = params.get("Description")
         self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UpdateDictResponse(AbstractModel):
@@ -1532,6 +1940,13 @@ class UpdateDictResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class WordEmbeddingRequest(AbstractModel):
@@ -1549,6 +1964,13 @@ class WordEmbeddingRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class WordEmbeddingResponse(AbstractModel):
@@ -1574,6 +1996,13 @@ class WordEmbeddingResponse(AbstractModel):
         self.Vector = params.get("Vector")
         self.Dimension = params.get("Dimension")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class WordItem(AbstractModel):
@@ -1600,6 +2029,13 @@ class WordItem(AbstractModel):
         self.Text = params.get("Text")
         self.CreateTime = params.get("CreateTime")
         self.Pos = params.get("Pos")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class WordSimilarityRequest(AbstractModel):
@@ -1621,6 +2057,13 @@ class WordSimilarityRequest(AbstractModel):
     def _deserialize(self, params):
         self.SrcWord = params.get("SrcWord")
         self.TargetWord = params.get("TargetWord")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class WordSimilarityResponse(AbstractModel):
@@ -1642,3 +2085,10 @@ class WordSimilarityResponse(AbstractModel):
     def _deserialize(self, params):
         self.Similarity = params.get("Similarity")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

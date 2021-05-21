@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -51,6 +53,13 @@ class CompareMetricsData(AbstractModel):
         self.LongStructRecall = params.get("LongStructRecall")
         self.LongContentAccuracy = params.get("LongContentAccuracy")
         self.LongContentRecall = params.get("LongContentRecall")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateStructureTaskRequest(AbstractModel):
@@ -99,6 +108,13 @@ AccidentInsurance：意外险
         self.FileList = params.get("FileList")
         self.InsuranceTypes = params.get("InsuranceTypes")
         self.ImageList = params.get("ImageList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateStructureTaskResponse(AbstractModel):
@@ -120,6 +136,13 @@ class CreateStructureTaskResponse(AbstractModel):
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeStructCompareDataRequest(AbstractModel):
@@ -137,6 +160,13 @@ class DescribeStructCompareDataRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeStructCompareDataResponse(AbstractModel):
@@ -196,6 +226,13 @@ class DescribeStructCompareDataResponse(AbstractModel):
         self.NewItems = params.get("NewItems")
         self.ModifyItems = params.get("ModifyItems")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeStructureTaskResultRequest(AbstractModel):
@@ -213,6 +250,13 @@ class DescribeStructureTaskResultRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeStructureTaskResultResponse(AbstractModel):
@@ -247,6 +291,13 @@ class DescribeStructureTaskResultResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Results.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ResultObject(AbstractModel):
@@ -268,3 +319,10 @@ class ResultObject(AbstractModel):
     def _deserialize(self, params):
         self.Quality = params.get("Quality")
         self.StructureResult = params.get("StructureResult")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

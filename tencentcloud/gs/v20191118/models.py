@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -95,6 +97,13 @@ class CreateSessionRequest(AbstractModel):
         self.HostUserId = params.get("HostUserId")
         self.Role = params.get("Role")
         self.GameContext = params.get("GameContext")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateSessionResponse(AbstractModel):
@@ -124,6 +133,13 @@ class CreateSessionResponse(AbstractModel):
         self.RoleNumber = params.get("RoleNumber")
         self.Role = params.get("Role")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeInstancesCountRequest(AbstractModel):
@@ -145,6 +161,13 @@ class DescribeInstancesCountRequest(AbstractModel):
     def _deserialize(self, params):
         self.GameId = params.get("GameId")
         self.GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeInstancesCountResponse(AbstractModel):
@@ -170,6 +193,13 @@ class DescribeInstancesCountResponse(AbstractModel):
         self.Total = params.get("Total")
         self.Running = params.get("Running")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SaveGameArchiveRequest(AbstractModel):
@@ -191,6 +221,13 @@ class SaveGameArchiveRequest(AbstractModel):
     def _deserialize(self, params):
         self.UserId = params.get("UserId")
         self.GameId = params.get("GameId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SaveGameArchiveResponse(AbstractModel):
@@ -208,6 +245,13 @@ class SaveGameArchiveResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StopGameRequest(AbstractModel):
@@ -229,6 +273,13 @@ class StopGameRequest(AbstractModel):
     def _deserialize(self, params):
         self.UserId = params.get("UserId")
         self.HostUserId = params.get("HostUserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StopGameResponse(AbstractModel):
@@ -246,6 +297,13 @@ class StopGameResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SwitchGameArchiveRequest(AbstractModel):
@@ -275,6 +333,13 @@ class SwitchGameArchiveRequest(AbstractModel):
         self.GameId = params.get("GameId")
         self.GameArchiveUrl = params.get("GameArchiveUrl")
         self.GameContext = params.get("GameContext")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SwitchGameArchiveResponse(AbstractModel):
@@ -292,6 +357,13 @@ class SwitchGameArchiveResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TrylockWorkerRequest(AbstractModel):
@@ -329,6 +401,13 @@ class TrylockWorkerRequest(AbstractModel):
         self.SetNo = params.get("SetNo")
         self.UserIp = params.get("UserIp")
         self.GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TrylockWorkerResponse(AbstractModel):
@@ -346,3 +425,10 @@ class TrylockWorkerResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

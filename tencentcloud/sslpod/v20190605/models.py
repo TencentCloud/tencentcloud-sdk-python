@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -72,6 +74,13 @@ class CertInfo(AbstractModel):
         self.Brand = params.get("Brand")
         self.TrustStatus = params.get("TrustStatus")
         self.CertType = params.get("CertType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ChartHistogram(AbstractModel):
@@ -98,6 +107,13 @@ class ChartHistogram(AbstractModel):
                 obj = ChartNameValue()
                 obj._deserialize(item)
                 self.Children.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ChartNameValue(AbstractModel):
@@ -119,6 +135,13 @@ class ChartNameValue(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateDomainRequest(AbstractModel):
@@ -156,6 +179,13 @@ class CreateDomainRequest(AbstractModel):
         self.IP = params.get("IP")
         self.Notice = params.get("Notice")
         self.Tags = params.get("Tags")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateDomainResponse(AbstractModel):
@@ -173,6 +203,13 @@ class CreateDomainResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DashboardResult(AbstractModel):
@@ -240,6 +277,13 @@ class DashboardResult(AbstractModel):
                 obj = ChartHistogram()
                 obj._deserialize(item)
                 self.ComplianceHistogram.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteDomainRequest(AbstractModel):
@@ -257,6 +301,13 @@ class DeleteDomainRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.DomainId = params.get("DomainId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteDomainResponse(AbstractModel):
@@ -274,6 +325,13 @@ class DeleteDomainResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDashboardRequest(AbstractModel):
@@ -304,6 +362,13 @@ class DescribeDashboardResponse(AbstractModel):
             self.Data = DashboardResult()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDomainCertsRequest(AbstractModel):
@@ -321,6 +386,13 @@ class DescribeDomainCertsRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.DomainId = params.get("DomainId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDomainCertsResponse(AbstractModel):
@@ -347,6 +419,13 @@ class DescribeDomainCertsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Data.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDomainTagsRequest(AbstractModel):
@@ -374,6 +453,13 @@ class DescribeDomainTagsResponse(AbstractModel):
     def _deserialize(self, params):
         self.Data = params.get("Data")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDomains(AbstractModel):
@@ -417,6 +503,13 @@ class DescribeDomains(AbstractModel):
         self.AllowMonitoringCount = params.get("AllowMonitoringCount")
         self.CurrentMonitoringCount = params.get("CurrentMonitoringCount")
         self.AllowMaxAddDomain = params.get("AllowMaxAddDomain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDomainsRequest(AbstractModel):
@@ -470,6 +563,13 @@ class DescribeDomainsRequest(AbstractModel):
         self.Hash = params.get("Hash")
         self.Item = params.get("Item")
         self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDomainsResponse(AbstractModel):
@@ -493,6 +593,13 @@ class DescribeDomainsResponse(AbstractModel):
             self.Data = DescribeDomains()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeNoticeInfoRequest(AbstractModel):
@@ -522,6 +629,13 @@ class DescribeNoticeInfoResponse(AbstractModel):
             self.Data = NoticeInfoResult()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DomainSiteInfo(AbstractModel):
@@ -588,6 +702,13 @@ class DomainSiteInfo(AbstractModel):
         self.Tags = params.get("Tags")
         self.Status = params.get("Status")
         self.Port = params.get("Port")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class LimitInfo(AbstractModel):
@@ -613,6 +734,13 @@ class LimitInfo(AbstractModel):
         self.Type = params.get("Type")
         self.Total = params.get("Total")
         self.Sent = params.get("Sent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyDomainTagsRequest(AbstractModel):
@@ -634,6 +762,13 @@ class ModifyDomainTagsRequest(AbstractModel):
     def _deserialize(self, params):
         self.AccountDomainId = params.get("AccountDomainId")
         self.Tags = params.get("Tags")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyDomainTagsResponse(AbstractModel):
@@ -651,6 +786,13 @@ class ModifyDomainTagsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class NoticeInfoResult(AbstractModel):
@@ -681,6 +823,13 @@ class NoticeInfoResult(AbstractModel):
                 obj = LimitInfo()
                 obj._deserialize(item)
                 self.LimitInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RefreshDomainRequest(AbstractModel):
@@ -698,6 +847,13 @@ class RefreshDomainRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.DomainId = params.get("DomainId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RefreshDomainResponse(AbstractModel):
@@ -715,6 +871,13 @@ class RefreshDomainResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ResolveDomainRequest(AbstractModel):
@@ -732,6 +895,13 @@ class ResolveDomainRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ResolveDomainResponse(AbstractModel):
@@ -753,3 +923,10 @@ class ResolveDomainResponse(AbstractModel):
     def _deserialize(self, params):
         self.Data = params.get("Data")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

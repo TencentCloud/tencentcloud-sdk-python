@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -31,6 +33,13 @@ class DescribeEntityRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.EntityName = params.get("EntityName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeEntityResponse(AbstractModel):
@@ -52,6 +61,13 @@ class DescribeEntityResponse(AbstractModel):
     def _deserialize(self, params):
         self.Content = params.get("Content")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeRelationRequest(AbstractModel):
@@ -73,6 +89,13 @@ class DescribeRelationRequest(AbstractModel):
     def _deserialize(self, params):
         self.LeftEntityName = params.get("LeftEntityName")
         self.RightEntityName = params.get("RightEntityName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeRelationResponse(AbstractModel):
@@ -99,6 +122,13 @@ class DescribeRelationResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Content.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeTripleRequest(AbstractModel):
@@ -116,6 +146,13 @@ class DescribeTripleRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.TripleCondition = params.get("TripleCondition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeTripleResponse(AbstractModel):
@@ -142,6 +179,13 @@ class DescribeTripleResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Content.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class EntityRelationContent(AbstractModel):
@@ -177,6 +221,13 @@ class EntityRelationContent(AbstractModel):
                 obj._deserialize(item)
                 self.Subject.append(obj)
         self.Relation = params.get("Relation")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class EntityRelationObject(AbstractModel):
@@ -202,6 +253,13 @@ class EntityRelationObject(AbstractModel):
         self.Id = params.get("Id")
         self.Name = params.get("Name")
         self.Popular = params.get("Popular")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class EntityRelationSubject(AbstractModel):
@@ -227,6 +285,13 @@ class EntityRelationSubject(AbstractModel):
         self.Id = params.get("Id")
         self.Name = params.get("Name")
         self.Popular = params.get("Popular")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TripleContent(AbstractModel):
@@ -256,3 +321,10 @@ class TripleContent(AbstractModel):
         self.Name = params.get("Name")
         self.Order = params.get("Order")
         self.Popular = params.get("Popular")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

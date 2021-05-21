@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -55,6 +57,13 @@ class CreateSessionRequest(AbstractModel):
         self.GameRegion = params.get("GameRegion")
         self.ImageUrl = params.get("ImageUrl")
         self.Resolution = params.get("Resolution")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateSessionResponse(AbstractModel):
@@ -76,6 +85,13 @@ class CreateSessionResponse(AbstractModel):
     def _deserialize(self, params):
         self.ServerSession = params.get("ServerSession")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DayStreamPlayInfo(AbstractModel):
@@ -109,6 +125,13 @@ class DayStreamPlayInfo(AbstractModel):
         self.Online = params.get("Online")
         self.Request = params.get("Request")
         self.Time = params.get("Time")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeStreamPlayInfoListRequest(AbstractModel):
@@ -141,6 +164,13 @@ class DescribeStreamPlayInfoListRequest(AbstractModel):
         self.PlayDomain = params.get("PlayDomain")
         self.StartTime = params.get("StartTime")
         self.StreamName = params.get("StreamName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeStreamPlayInfoListResponse(AbstractModel):
@@ -167,6 +197,13 @@ class DescribeStreamPlayInfoListResponse(AbstractModel):
                 obj._deserialize(item)
                 self.DataInfoList.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeWorkersRequest(AbstractModel):
@@ -207,6 +244,13 @@ class DescribeWorkersResponse(AbstractModel):
         self.Idle = params.get("Idle")
         self.RegionNum = params.get("RegionNum")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ForbidLiveStreamRequest(AbstractModel):
@@ -237,6 +281,13 @@ class ForbidLiveStreamRequest(AbstractModel):
         self.DomainName = params.get("DomainName")
         self.StreamName = params.get("StreamName")
         self.ResumeTime = params.get("ResumeTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ForbidLiveStreamResponse(AbstractModel):
@@ -254,6 +305,13 @@ class ForbidLiveStreamResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RegisterIMRequest(AbstractModel):
@@ -283,6 +341,13 @@ class RegisterIMRequest(AbstractModel):
         self.UserId = params.get("UserId")
         self.HeadImgUrl = params.get("HeadImgUrl")
         self.Level = params.get("Level")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RegisterIMResponse(AbstractModel):
@@ -304,6 +369,13 @@ class RegisterIMResponse(AbstractModel):
     def _deserialize(self, params):
         self.UserKey = params.get("UserKey")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StopGameRequest(AbstractModel):
@@ -321,6 +393,13 @@ class StopGameRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StopGameResponse(AbstractModel):
@@ -338,6 +417,13 @@ class StopGameResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class WorkerRegionInfo(AbstractModel):
@@ -359,3 +445,10 @@ class WorkerRegionInfo(AbstractModel):
     def _deserialize(self, params):
         self.Idle = params.get("Idle")
         self.Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -161,6 +163,13 @@ class QueryRegisterProtectionRequest(AbstractModel):
         self.WxSubType = params.get("WxSubType")
         self.RandNum = params.get("RandNum")
         self.WxToken = params.get("WxToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class QueryRegisterProtectionResponse(AbstractModel):
@@ -212,3 +221,10 @@ class QueryRegisterProtectionResponse(AbstractModel):
         self.Level = params.get("Level")
         self.RiskType = params.get("RiskType")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

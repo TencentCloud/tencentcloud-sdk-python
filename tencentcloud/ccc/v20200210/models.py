@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -35,6 +37,13 @@ class CreateSDKLoginTokenRequest(AbstractModel):
     def _deserialize(self, params):
         self.SdkAppId = params.get("SdkAppId")
         self.SeatUserId = params.get("SeatUserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateSDKLoginTokenResponse(AbstractModel):
@@ -64,6 +73,13 @@ class CreateSDKLoginTokenResponse(AbstractModel):
         self.ExpiredTime = params.get("ExpiredTime")
         self.SdkURL = params.get("SdkURL")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateStaffRequest(AbstractModel):
@@ -90,6 +106,13 @@ class CreateStaffRequest(AbstractModel):
                 obj = SeatUserInfo()
                 obj._deserialize(item)
                 self.Staffs.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateStaffResponse(AbstractModel):
@@ -107,6 +130,13 @@ class CreateStaffResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeChatMessagesRequest(AbstractModel):
@@ -144,6 +174,13 @@ class DescribeChatMessagesRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
         self.Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeChatMessagesResponse(AbstractModel):
@@ -174,6 +211,13 @@ class DescribeChatMessagesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Messages.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeIMCdrsRequest(AbstractModel):
@@ -215,6 +259,13 @@ class DescribeIMCdrsRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
         self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeIMCdrsResponse(AbstractModel):
@@ -245,6 +296,13 @@ class DescribeIMCdrsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.IMCdrs.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribePSTNActiveSessionListRequest(AbstractModel):
@@ -270,6 +328,13 @@ class DescribePSTNActiveSessionListRequest(AbstractModel):
         self.SdkAppId = params.get("SdkAppId")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribePSTNActiveSessionListResponse(AbstractModel):
@@ -300,6 +365,13 @@ class DescribePSTNActiveSessionListResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Sessions.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSeatUserListRequest(AbstractModel):
@@ -325,6 +397,13 @@ class DescribeSeatUserListRequest(AbstractModel):
         self.InstanceId = params.get("InstanceId")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSeatUserListResponse(AbstractModel):
@@ -355,6 +434,13 @@ class DescribeSeatUserListResponse(AbstractModel):
                 obj._deserialize(item)
                 self.SeatUsers.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSkillGroupInfoListRequest(AbstractModel):
@@ -388,6 +474,13 @@ class DescribeSkillGroupInfoListRequest(AbstractModel):
         self.PageNumber = params.get("PageNumber")
         self.SkillGroupId = params.get("SkillGroupId")
         self.ModifiedTime = params.get("ModifiedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSkillGroupInfoListResponse(AbstractModel):
@@ -418,6 +511,13 @@ class DescribeSkillGroupInfoListResponse(AbstractModel):
                 obj._deserialize(item)
                 self.SkillGroupList.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeStaffInfoListRequest(AbstractModel):
@@ -451,6 +551,13 @@ class DescribeStaffInfoListRequest(AbstractModel):
         self.PageNumber = params.get("PageNumber")
         self.StaffMail = params.get("StaffMail")
         self.ModifiedTime = params.get("ModifiedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeStaffInfoListResponse(AbstractModel):
@@ -481,6 +588,13 @@ class DescribeStaffInfoListResponse(AbstractModel):
                 obj._deserialize(item)
                 self.StaffList.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeTelCallInfoRequest(AbstractModel):
@@ -506,6 +620,13 @@ class DescribeTelCallInfoRequest(AbstractModel):
         self.StartTimeStamp = params.get("StartTimeStamp")
         self.EndTimeStamp = params.get("EndTimeStamp")
         self.SdkAppIdList = params.get("SdkAppIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeTelCallInfoResponse(AbstractModel):
@@ -535,6 +656,13 @@ class DescribeTelCallInfoResponse(AbstractModel):
         self.TelCallInCount = params.get("TelCallInCount")
         self.SeatUsedCount = params.get("SeatUsedCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeTelCdrRequest(AbstractModel):
@@ -580,6 +708,13 @@ class DescribeTelCdrRequest(AbstractModel):
         self.SdkAppId = params.get("SdkAppId")
         self.PageSize = params.get("PageSize")
         self.PageNumber = params.get("PageNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeTelCdrResponse(AbstractModel):
@@ -610,6 +745,13 @@ class DescribeTelCdrResponse(AbstractModel):
                 obj._deserialize(item)
                 self.TelCdrs.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeTelSessionRequest(AbstractModel):
@@ -631,6 +773,13 @@ class DescribeTelSessionRequest(AbstractModel):
     def _deserialize(self, params):
         self.SdkAppId = params.get("SdkAppId")
         self.SessionId = params.get("SessionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeTelSessionResponse(AbstractModel):
@@ -654,6 +803,13 @@ class DescribeTelSessionResponse(AbstractModel):
             self.Session = PSTNSession()
             self.Session._deserialize(params.get("Session"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class IMCdrInfo(AbstractModel):
@@ -695,6 +851,13 @@ class IMCdrInfo(AbstractModel):
         self.Type = params.get("Type")
         self.StaffId = params.get("StaffId")
         self.Timestamp = params.get("Timestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class IVRKeyPressedElement(AbstractModel):
@@ -718,6 +881,13 @@ class IVRKeyPressedElement(AbstractModel):
     def _deserialize(self, params):
         self.Key = params.get("Key")
         self.Label = params.get("Label")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Message(AbstractModel):
@@ -739,6 +909,13 @@ class Message(AbstractModel):
     def _deserialize(self, params):
         self.Type = params.get("Type")
         self.Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MessageBody(AbstractModel):
@@ -769,6 +946,13 @@ class MessageBody(AbstractModel):
                 obj = Message()
                 obj._deserialize(item)
                 self.Messages.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PSTNSession(AbstractModel):
@@ -838,6 +1022,13 @@ finished 已完成
         self.Direction = params.get("Direction")
         self.OutBoundCaller = params.get("OutBoundCaller")
         self.OutBoundCallee = params.get("OutBoundCallee")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PSTNSessionInfo(AbstractModel):
@@ -895,6 +1086,13 @@ class PSTNSessionInfo(AbstractModel):
         self.SessionStatus = params.get("SessionStatus")
         self.Direction = params.get("Direction")
         self.RingTimestamp = params.get("RingTimestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SeatUserInfo(AbstractModel):
@@ -938,6 +1136,13 @@ class SeatUserInfo(AbstractModel):
         self.UserId = params.get("UserId")
         self.SkillGroupNameList = params.get("SkillGroupNameList")
         self.StaffNumber = params.get("StaffNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ServeParticipant(AbstractModel):
@@ -1031,6 +1236,13 @@ class ServeParticipant(AbstractModel):
         self.Sequence = params.get("Sequence")
         self.StartTimestamp = params.get("StartTimestamp")
         self.SkillGroupName = params.get("SkillGroupName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SkillGroupInfoItem(AbstractModel):
@@ -1076,6 +1288,13 @@ class SkillGroupInfoItem(AbstractModel):
         self.UsingLastSeat = params.get("UsingLastSeat")
         self.MaxConcurrency = params.get("MaxConcurrency")
         self.LastModifyTimestamp = params.get("LastModifyTimestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SkillGroupItem(AbstractModel):
@@ -1105,6 +1324,13 @@ class SkillGroupItem(AbstractModel):
         self.SkillGroupName = params.get("SkillGroupName")
         self.Priority = params.get("Priority")
         self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StaffInfo(AbstractModel):
@@ -1157,6 +1383,13 @@ class StaffInfo(AbstractModel):
                 obj._deserialize(item)
                 self.SkillGroupList.append(obj)
         self.LastModifyTimestamp = params.get("LastModifyTimestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TelCdrInfo(AbstractModel):
@@ -1335,3 +1568,10 @@ notInService       不在服务区
                 self.PostIVRKeyPressed.append(obj)
         self.QueuedSkillGroupId = params.get("QueuedSkillGroupId")
         self.SessionId = params.get("SessionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

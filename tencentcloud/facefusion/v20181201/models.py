@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -43,6 +45,13 @@ class DescribeMaterialListRequest(AbstractModel):
         self.MaterialId = params.get("MaterialId")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeMaterialListResponse(AbstractModel):
@@ -73,6 +82,13 @@ class DescribeMaterialListResponse(AbstractModel):
                 self.MaterialInfos.append(obj)
         self.Count = params.get("Count")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FaceFusionLiteRequest(AbstractModel):
@@ -115,6 +131,13 @@ class FaceFusionLiteRequest(AbstractModel):
         self.RspImgType = params.get("RspImgType")
         self.CelebrityIdentify = params.get("CelebrityIdentify")
         self.Engine = params.get("Engine")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FaceFusionLiteResponse(AbstractModel):
@@ -146,6 +169,13 @@ class FaceFusionLiteResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ReviewResultSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FaceFusionRequest(AbstractModel):
@@ -184,6 +214,13 @@ class FaceFusionRequest(AbstractModel):
         self.RspImgType = params.get("RspImgType")
         self.PornDetect = params.get("PornDetect")
         self.CelebrityIdentify = params.get("CelebrityIdentify")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FaceFusionResponse(AbstractModel):
@@ -214,6 +251,13 @@ class FaceFusionResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ReviewResultSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FaceInfo(AbstractModel):
@@ -243,6 +287,13 @@ class FaceInfo(AbstractModel):
         self.Y = params.get("Y")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FaceRect(AbstractModel):
@@ -272,6 +323,13 @@ class FaceRect(AbstractModel):
         self.Y = params.get("Y")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FuseFaceRequest(AbstractModel):
@@ -321,6 +379,13 @@ class FuseFaceRequest(AbstractModel):
         self.FuseProfileDegree = params.get("FuseProfileDegree")
         self.FuseFaceDegree = params.get("FuseFaceDegree")
         self.CelebrityIdentify = params.get("CelebrityIdentify")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FuseFaceResponse(AbstractModel):
@@ -352,6 +417,13 @@ class FuseFaceResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ReviewResultSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FuseFaceReviewDetail(AbstractModel):
@@ -387,6 +459,13 @@ BLOCK：违规
         self.Label = params.get("Label")
         self.Confidence = params.get("Confidence")
         self.Suggestion = params.get("Suggestion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FuseFaceReviewResult(AbstractModel):
@@ -429,6 +508,13 @@ class FuseFaceReviewResult(AbstractModel):
                 obj = FuseFaceReviewDetail()
                 obj._deserialize(item)
                 self.DetailSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MaterialFaceList(AbstractModel):
@@ -452,6 +538,13 @@ class MaterialFaceList(AbstractModel):
         if params.get("FaceInfo") is not None:
             self.FaceInfo = FaceInfo()
             self.FaceInfo._deserialize(params.get("FaceInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MergeInfo(AbstractModel):
@@ -483,6 +576,13 @@ class MergeInfo(AbstractModel):
             self.InputImageFaceRect = FaceRect()
             self.InputImageFaceRect._deserialize(params.get("InputImageFaceRect"))
         self.TemplateFaceID = params.get("TemplateFaceID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PublicMaterialInfos(AbstractModel):
@@ -541,3 +641,10 @@ class PublicMaterialInfos(AbstractModel):
                 obj = MaterialFaceList()
                 obj._deserialize(item)
                 self.MaterialFaceList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

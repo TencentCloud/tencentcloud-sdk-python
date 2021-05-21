@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -129,6 +131,13 @@ ID 区分统计数据
         self.Mac = params.get("Mac")
         self.Imsi = params.get("Imsi")
         self.NameCryptoType = params.get("NameCryptoType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class QueryAntiFraudVipResponse(AbstractModel):
@@ -173,6 +182,13 @@ class QueryAntiFraudVipResponse(AbstractModel):
                 self.RiskInfo.append(obj)
         self.CodeDesc = params.get("CodeDesc")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RiskDetail(AbstractModel):
@@ -190,3 +206,10 @@ class RiskDetail(AbstractModel):
 
     def _deserialize(self, params):
         self.RiskCode = params.get("RiskCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

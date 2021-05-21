@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -35,6 +37,13 @@ class DescribeDomainInfoRequest(AbstractModel):
     def _deserialize(self, params):
         self.Key = params.get("Key")
         self.Option = params.get("Option")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDomainInfoResponse(AbstractModel):
@@ -106,6 +115,13 @@ malware IP = 恶意IP
                 self.Intelligences.append(obj)
         self.Context = params.get("Context")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeFileInfoRequest(AbstractModel):
@@ -127,6 +143,13 @@ class DescribeFileInfoRequest(AbstractModel):
     def _deserialize(self, params):
         self.Key = params.get("Key")
         self.Option = params.get("Option")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeFileInfoResponse(AbstractModel):
@@ -189,6 +212,13 @@ class DescribeFileInfoResponse(AbstractModel):
                 self.Intelligences.append(obj)
         self.Context = params.get("Context")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeIpInfoRequest(AbstractModel):
@@ -210,6 +240,13 @@ class DescribeIpInfoRequest(AbstractModel):
     def _deserialize(self, params):
         self.Key = params.get("Key")
         self.Option = params.get("Option")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeIpInfoResponse(AbstractModel):
@@ -281,6 +318,13 @@ malware IP = 恶意IP
                 self.Intelligences.append(obj)
         self.Context = params.get("Context")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeThreatInfoRequest(AbstractModel):
@@ -306,6 +350,13 @@ class DescribeThreatInfoRequest(AbstractModel):
         self.Key = params.get("Key")
         self.Type = params.get("Type")
         self.Option = params.get("Option")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeThreatInfoResponse(AbstractModel):
@@ -373,6 +424,13 @@ expired = 过期
         self.Status = params.get("Status")
         self.Context = params.get("Context")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FileInfoType(AbstractModel):
@@ -458,6 +516,13 @@ class FileInfoType(AbstractModel):
         self.UserDefName = params.get("UserDefName")
         self.VirusType = params.get("VirusType")
         self.WhiteScore = params.get("WhiteScore")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class IntelligenceType(AbstractModel):
@@ -483,6 +548,13 @@ class IntelligenceType(AbstractModel):
         self.Source = params.get("Source")
         self.Stamp = params.get("Stamp")
         self.Time = params.get("Time")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TagType(AbstractModel):
@@ -504,3 +576,10 @@ class TagType(AbstractModel):
     def _deserialize(self, params):
         self.Tag = params.get("Tag")
         self.Desc = params.get("Desc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

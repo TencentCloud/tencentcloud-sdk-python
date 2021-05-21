@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -60,6 +62,13 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
         self.FaceLifting = params.get("FaceLifting")
         self.EyeEnlarging = params.get("EyeEnlarging")
         self.RspImgType = params.get("RspImgType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BeautifyPicResponse(AbstractModel):
@@ -85,6 +94,13 @@ class BeautifyPicResponse(AbstractModel):
         self.ResultImage = params.get("ResultImage")
         self.ResultUrl = params.get("ResultUrl")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BeautifyVideoOutput(AbstractModel):
@@ -133,6 +149,13 @@ class BeautifyVideoOutput(AbstractModel):
         self.Height = params.get("Height")
         self.Fps = params.get("Fps")
         self.DurationInSec = params.get("DurationInSec")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BeautifyVideoRequest(AbstractModel):
@@ -163,6 +186,13 @@ class BeautifyVideoRequest(AbstractModel):
                 obj._deserialize(item)
                 self.BeautyParam.append(obj)
         self.OutputVideoType = params.get("OutputVideoType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BeautifyVideoResponse(AbstractModel):
@@ -188,6 +218,13 @@ class BeautifyVideoResponse(AbstractModel):
         self.JobId = params.get("JobId")
         self.EstimatedProcessTime = params.get("EstimatedProcessTime")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BeautyParam(AbstractModel):
@@ -217,6 +254,13 @@ class BeautyParam(AbstractModel):
         self.SmoothingLevel = params.get("SmoothingLevel")
         self.EyeEnlargeLevel = params.get("EyeEnlargeLevel")
         self.FaceShrinkLevel = params.get("FaceShrinkLevel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CancelBeautifyVideoJobRequest(AbstractModel):
@@ -234,6 +278,13 @@ class CancelBeautifyVideoJobRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CancelBeautifyVideoJobResponse(AbstractModel):
@@ -251,6 +302,13 @@ class CancelBeautifyVideoJobResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateModelRequest(AbstractModel):
@@ -272,6 +330,13 @@ class CreateModelRequest(AbstractModel):
     def _deserialize(self, params):
         self.LUTFile = params.get("LUTFile")
         self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateModelResponse(AbstractModel):
@@ -293,6 +358,13 @@ class CreateModelResponse(AbstractModel):
     def _deserialize(self, params):
         self.ModelId = params.get("ModelId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteModelRequest(AbstractModel):
@@ -310,6 +382,13 @@ class DeleteModelRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.ModelId = params.get("ModelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteModelResponse(AbstractModel):
@@ -327,6 +406,13 @@ class DeleteModelResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FaceRect(AbstractModel):
@@ -356,6 +442,13 @@ class FaceRect(AbstractModel):
         self.Y = params.get("Y")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetModelListRequest(AbstractModel):
@@ -377,6 +470,13 @@ class GetModelListRequest(AbstractModel):
     def _deserialize(self, params):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetModelListResponse(AbstractModel):
@@ -408,6 +508,13 @@ class GetModelListResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ModelInfos.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class LipColorInfo(AbstractModel):
@@ -443,6 +550,13 @@ ModelId 和 RGBA 两个参数只需提供一个，若都提供只使用 ModelId�
             self.FaceRect = FaceRect()
             self.FaceRect._deserialize(params.get("FaceRect"))
         self.ModelAlpha = params.get("ModelAlpha")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModelInfo(AbstractModel):
@@ -468,6 +582,13 @@ class ModelInfo(AbstractModel):
         self.ModelId = params.get("ModelId")
         self.LUTFileUrl = params.get("LUTFileUrl")
         self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class QueryBeautifyVideoJobRequest(AbstractModel):
@@ -485,6 +606,13 @@ class QueryBeautifyVideoJobRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class QueryBeautifyVideoJobResponse(AbstractModel):
@@ -513,6 +641,13 @@ class QueryBeautifyVideoJobResponse(AbstractModel):
             self.BeautifyVideoOutput = BeautifyVideoOutput()
             self.BeautifyVideoOutput._deserialize(params.get("BeautifyVideoOutput"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RGBAInfo(AbstractModel):
@@ -542,6 +677,13 @@ class RGBAInfo(AbstractModel):
         self.G = params.get("G")
         self.B = params.get("B")
         self.A = params.get("A")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StyleImageProRequest(AbstractModel):
@@ -581,6 +723,13 @@ class StyleImageProRequest(AbstractModel):
         self.Url = params.get("Url")
         self.FilterDegree = params.get("FilterDegree")
         self.RspImgType = params.get("RspImgType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StyleImageProResponse(AbstractModel):
@@ -608,6 +757,13 @@ class StyleImageProResponse(AbstractModel):
         self.ResultImage = params.get("ResultImage")
         self.ResultUrl = params.get("ResultUrl")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StyleImageRequest(AbstractModel):
@@ -647,6 +803,13 @@ class StyleImageRequest(AbstractModel):
         self.Url = params.get("Url")
         self.FilterDegree = params.get("FilterDegree")
         self.RspImgType = params.get("RspImgType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StyleImageResponse(AbstractModel):
@@ -674,6 +837,13 @@ class StyleImageResponse(AbstractModel):
         self.ResultImage = params.get("ResultImage")
         self.ResultUrl = params.get("ResultUrl")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TryLipstickPicRequest(AbstractModel):
@@ -714,6 +884,13 @@ class TryLipstickPicRequest(AbstractModel):
         self.Image = params.get("Image")
         self.Url = params.get("Url")
         self.RspImgType = params.get("RspImgType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TryLipstickPicResponse(AbstractModel):
@@ -739,3 +916,10 @@ class TryLipstickPicResponse(AbstractModel):
         self.ResultImage = params.get("ResultImage")
         self.ResultUrl = params.get("ResultUrl")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

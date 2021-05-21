@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -47,6 +49,13 @@ accountType不同对应不同的用户ID。如果是QQ或微信用户则填入�
         self.Uid = params.get("Uid")
         self.UserIp = params.get("UserIp")
         self.ValueScore = params.get("ValueScore")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MarketingValueJudgementRequest(AbstractModel):
@@ -84,6 +93,13 @@ class MarketingValueJudgementRequest(AbstractModel):
         self.PostTime = params.get("PostTime")
         self.Imei = params.get("Imei")
         self.Referer = params.get("Referer")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MarketingValueJudgementResponse(AbstractModel):
@@ -107,3 +123,10 @@ class MarketingValueJudgementResponse(AbstractModel):
             self.Data = Data()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

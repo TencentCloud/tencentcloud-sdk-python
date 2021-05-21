@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -63,6 +65,13 @@ class AIAssistantRequest(AbstractModel):
         self.VocabLibNameList = params.get("VocabLibNameList")
         self.VoiceEncodeType = params.get("VoiceEncodeType")
         self.VoiceFileType = params.get("VoiceFileType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AIAssistantResponse(AbstractModel):
@@ -93,6 +102,13 @@ class AIAssistantResponse(AbstractModel):
                 self.ImageResults.append(obj)
         self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ASRStat(AbstractModel):
@@ -142,6 +158,13 @@ class ASRStat(AbstractModel):
         self.TotalDuration = params.get("TotalDuration")
         self.VadNum = params.get("VadNum")
         self.WordNum = params.get("WordNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AbsenceInfo(AbstractModel):
@@ -163,6 +186,13 @@ class AbsenceInfo(AbstractModel):
     def _deserialize(self, params):
         self.LibraryIds = params.get("LibraryIds")
         self.PersonId = params.get("PersonId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ActionCountStatistic(AbstractModel):
@@ -184,6 +214,13 @@ class ActionCountStatistic(AbstractModel):
     def _deserialize(self, params):
         self.Count = params.get("Count")
         self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ActionDurationRatioStatistic(AbstractModel):
@@ -205,6 +242,13 @@ class ActionDurationRatioStatistic(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Ratio = params.get("Ratio")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ActionDurationStatistic(AbstractModel):
@@ -226,6 +270,13 @@ class ActionDurationStatistic(AbstractModel):
     def _deserialize(self, params):
         self.Duration = params.get("Duration")
         self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ActionInfo(AbstractModel):
@@ -279,6 +330,13 @@ class ActionInfo(AbstractModel):
         self.Left = params.get("Left")
         self.Top = params.get("Top")
         self.Width = params.get("Width")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ActionStatistic(AbstractModel):
@@ -319,6 +377,13 @@ class ActionStatistic(AbstractModel):
                 obj = ActionDurationRatioStatistic()
                 obj._deserialize(item)
                 self.ActionDurationRatio.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ActionType(AbstractModel):
@@ -340,6 +405,13 @@ class ActionType(AbstractModel):
     def _deserialize(self, params):
         self.Confidence = params.get("Confidence")
         self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AllMuteSlice(AbstractModel):
@@ -370,6 +442,13 @@ class AllMuteSlice(AbstractModel):
                 self.MuteSlice.append(obj)
         self.MuteRatio = params.get("MuteRatio")
         self.TotalMuteDuration = params.get("TotalMuteDuration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AttendanceInfo(AbstractModel):
@@ -393,6 +472,13 @@ class AttendanceInfo(AbstractModel):
             self.Face = FrameInfo()
             self.Face._deserialize(params.get("Face"))
         self.PersonId = params.get("PersonId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BodyMovementResult(AbstractModel):
@@ -434,6 +520,13 @@ class BodyMovementResult(AbstractModel):
         self.Movements = params.get("Movements")
         self.Top = params.get("Top")
         self.Width = params.get("Width")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CancelTaskRequest(AbstractModel):
@@ -451,6 +544,13 @@ class CancelTaskRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CancelTaskResponse(AbstractModel):
@@ -472,6 +572,13 @@ class CancelTaskResponse(AbstractModel):
     def _deserialize(self, params):
         self.JobId = params.get("JobId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CheckFacePhotoRequest(AbstractModel):
@@ -493,6 +600,13 @@ class CheckFacePhotoRequest(AbstractModel):
     def _deserialize(self, params):
         self.FileContent = params.get("FileContent")
         self.FileType = params.get("FileType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CheckFacePhotoResponse(AbstractModel):
@@ -514,6 +628,13 @@ class CheckFacePhotoResponse(AbstractModel):
     def _deserialize(self, params):
         self.CheckResult = params.get("CheckResult")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateFaceRequest(AbstractModel):
@@ -543,6 +664,13 @@ class CreateFaceRequest(AbstractModel):
         self.Images = params.get("Images")
         self.LibraryId = params.get("LibraryId")
         self.Urls = params.get("Urls")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateFaceResponse(AbstractModel):
@@ -569,6 +697,13 @@ class CreateFaceResponse(AbstractModel):
                 obj._deserialize(item)
                 self.FaceInfoSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateLibraryRequest(AbstractModel):
@@ -590,6 +725,13 @@ class CreateLibraryRequest(AbstractModel):
     def _deserialize(self, params):
         self.LibraryName = params.get("LibraryName")
         self.LibraryId = params.get("LibraryId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateLibraryResponse(AbstractModel):
@@ -615,6 +757,13 @@ class CreateLibraryResponse(AbstractModel):
         self.LibraryId = params.get("LibraryId")
         self.LibraryName = params.get("LibraryName")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreatePersonRequest(AbstractModel):
@@ -668,6 +817,13 @@ class CreatePersonRequest(AbstractModel):
         self.PhoneNumber = params.get("PhoneNumber")
         self.StudentNumber = params.get("StudentNumber")
         self.Urls = params.get("Urls")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreatePersonResponse(AbstractModel):
@@ -706,6 +862,13 @@ class CreatePersonResponse(AbstractModel):
         self.PersonId = params.get("PersonId")
         self.PersonName = params.get("PersonName")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateVocabLibRequest(AbstractModel):
@@ -723,6 +886,13 @@ class CreateVocabLibRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.VocabLibName = params.get("VocabLibName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateVocabLibResponse(AbstractModel):
@@ -740,6 +910,13 @@ class CreateVocabLibResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateVocabRequest(AbstractModel):
@@ -761,6 +938,13 @@ class CreateVocabRequest(AbstractModel):
     def _deserialize(self, params):
         self.VocabLibName = params.get("VocabLibName")
         self.VocabList = params.get("VocabList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateVocabResponse(AbstractModel):
@@ -778,6 +962,13 @@ class CreateVocabResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteFaceRequest(AbstractModel):
@@ -803,6 +994,13 @@ class DeleteFaceRequest(AbstractModel):
         self.FaceIdSet = params.get("FaceIdSet")
         self.PersonId = params.get("PersonId")
         self.LibraryId = params.get("LibraryId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteFaceResponse(AbstractModel):
@@ -829,6 +1027,13 @@ class DeleteFaceResponse(AbstractModel):
                 obj._deserialize(item)
                 self.FaceInfoSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteLibraryRequest(AbstractModel):
@@ -846,6 +1051,13 @@ class DeleteLibraryRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.LibraryId = params.get("LibraryId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteLibraryResponse(AbstractModel):
@@ -871,6 +1083,13 @@ class DeleteLibraryResponse(AbstractModel):
         self.LibraryId = params.get("LibraryId")
         self.LibraryName = params.get("LibraryName")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeletePersonRequest(AbstractModel):
@@ -892,6 +1111,13 @@ class DeletePersonRequest(AbstractModel):
     def _deserialize(self, params):
         self.LibraryId = params.get("LibraryId")
         self.PersonId = params.get("PersonId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeletePersonResponse(AbstractModel):
@@ -930,6 +1156,13 @@ class DeletePersonResponse(AbstractModel):
         self.PersonId = params.get("PersonId")
         self.PersonName = params.get("PersonName")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteVocabLibRequest(AbstractModel):
@@ -947,6 +1180,13 @@ class DeleteVocabLibRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.VocabLibName = params.get("VocabLibName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteVocabLibResponse(AbstractModel):
@@ -964,6 +1204,13 @@ class DeleteVocabLibResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteVocabRequest(AbstractModel):
@@ -985,6 +1232,13 @@ class DeleteVocabRequest(AbstractModel):
     def _deserialize(self, params):
         self.VocabLibName = params.get("VocabLibName")
         self.VocabList = params.get("VocabList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteVocabResponse(AbstractModel):
@@ -1002,6 +1256,13 @@ class DeleteVocabResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAITaskResultRequest(AbstractModel):
@@ -1027,6 +1288,13 @@ class DescribeAITaskResultRequest(AbstractModel):
         self.TaskId = params.get("TaskId")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAITaskResultResponse(AbstractModel):
@@ -1070,6 +1338,13 @@ class DescribeAITaskResultResponse(AbstractModel):
         self.Status = params.get("Status")
         self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAttendanceResultRequest(AbstractModel):
@@ -1087,6 +1362,13 @@ class DescribeAttendanceResultRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAttendanceResultResponse(AbstractModel):
@@ -1139,6 +1421,13 @@ class DescribeAttendanceResultResponse(AbstractModel):
         self.AbsenceSet = params.get("AbsenceSet")
         self.Progress = params.get("Progress")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAudioTaskRequest(AbstractModel):
@@ -1164,6 +1453,13 @@ class DescribeAudioTaskRequest(AbstractModel):
         self.JobId = params.get("JobId")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAudioTaskResponse(AbstractModel):
@@ -1236,6 +1532,13 @@ class DescribeAudioTaskResponse(AbstractModel):
         self.Progress = params.get("Progress")
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeConversationTaskRequest(AbstractModel):
@@ -1265,6 +1568,13 @@ class DescribeConversationTaskRequest(AbstractModel):
         self.Identity = params.get("Identity")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeConversationTaskResponse(AbstractModel):
@@ -1331,6 +1641,13 @@ class DescribeConversationTaskResponse(AbstractModel):
         self.Progress = params.get("Progress")
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeHighlightResultRequest(AbstractModel):
@@ -1348,6 +1665,13 @@ class DescribeHighlightResultRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeHighlightResultResponse(AbstractModel):
@@ -1382,6 +1706,13 @@ class DescribeHighlightResultResponse(AbstractModel):
         self.JobId = params.get("JobId")
         self.Progress = params.get("Progress")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeImageTaskRequest(AbstractModel):
@@ -1407,6 +1738,13 @@ class DescribeImageTaskRequest(AbstractModel):
         self.JobId = params.get("JobId")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeImageTaskResponse(AbstractModel):
@@ -1445,6 +1783,13 @@ class DescribeImageTaskResponse(AbstractModel):
         self.Progress = params.get("Progress")
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeImageTaskStatisticRequest(AbstractModel):
@@ -1462,6 +1807,13 @@ class DescribeImageTaskStatisticRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeImageTaskStatisticResponse(AbstractModel):
@@ -1489,6 +1841,13 @@ class DescribeImageTaskStatisticResponse(AbstractModel):
             self.Statistic._deserialize(params.get("Statistic"))
         self.JobId = params.get("JobId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeLibrariesRequest(AbstractModel):
@@ -1525,6 +1884,13 @@ class DescribeLibrariesResponse(AbstractModel):
                 self.LibrarySet.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribePersonRequest(AbstractModel):
@@ -1546,6 +1912,13 @@ class DescribePersonRequest(AbstractModel):
     def _deserialize(self, params):
         self.LibraryId = params.get("LibraryId")
         self.PersonId = params.get("PersonId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribePersonResponse(AbstractModel):
@@ -1612,6 +1985,13 @@ class DescribePersonResponse(AbstractModel):
         self.StudentNumber = params.get("StudentNumber")
         self.UpdateTime = params.get("UpdateTime")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribePersonsRequest(AbstractModel):
@@ -1637,6 +2017,13 @@ class DescribePersonsRequest(AbstractModel):
         self.LibraryId = params.get("LibraryId")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribePersonsResponse(AbstractModel):
@@ -1667,6 +2054,13 @@ class DescribePersonsResponse(AbstractModel):
                 self.PersonSet.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeVocabLibRequest(AbstractModel):
@@ -1694,6 +2088,13 @@ class DescribeVocabLibResponse(AbstractModel):
     def _deserialize(self, params):
         self.VocabLibNameSet = params.get("VocabLibNameSet")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeVocabRequest(AbstractModel):
@@ -1711,6 +2112,13 @@ class DescribeVocabRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.VocabLibName = params.get("VocabLibName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeVocabResponse(AbstractModel):
@@ -1732,6 +2140,13 @@ class DescribeVocabResponse(AbstractModel):
     def _deserialize(self, params):
         self.VocabNameSet = params.get("VocabNameSet")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DetailInfo(AbstractModel):
@@ -1758,6 +2173,13 @@ class DetailInfo(AbstractModel):
                 obj._deserialize(item)
                 self.Value.append(obj)
         self.Keyword = params.get("Keyword")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DoubleVideoFunction(AbstractModel):
@@ -1775,6 +2197,13 @@ class DoubleVideoFunction(AbstractModel):
 
     def _deserialize(self, params):
         self.EnableCoverPictures = params.get("EnableCoverPictures")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ExpressRatioStatistic(AbstractModel):
@@ -1804,6 +2233,13 @@ class ExpressRatioStatistic(AbstractModel):
         self.Express = params.get("Express")
         self.Ratio = params.get("Ratio")
         self.RatioUseDuration = params.get("RatioUseDuration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Face(AbstractModel):
@@ -1829,6 +2265,13 @@ class Face(AbstractModel):
         self.FaceId = params.get("FaceId")
         self.FaceUrl = params.get("FaceUrl")
         self.PersonId = params.get("PersonId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FaceAttrResult(AbstractModel):
@@ -1850,6 +2293,13 @@ class FaceAttrResult(AbstractModel):
     def _deserialize(self, params):
         self.Age = params.get("Age")
         self.Sex = params.get("Sex")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FaceDetectStatistic(AbstractModel):
@@ -1895,6 +2345,13 @@ class FaceDetectStatistic(AbstractModel):
         self.SideFaceCount = params.get("SideFaceCount")
         self.SideFaceRatio = params.get("SideFaceRatio")
         self.SideFaceRealRatio = params.get("SideFaceRealRatio")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FaceExpressStatistic(AbstractModel):
@@ -1921,6 +2378,13 @@ class FaceExpressStatistic(AbstractModel):
                 obj = ExpressRatioStatistic()
                 obj._deserialize(item)
                 self.ExpressRatio.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FaceExpressionResult(AbstractModel):
@@ -1942,6 +2406,13 @@ class FaceExpressionResult(AbstractModel):
     def _deserialize(self, params):
         self.Confidence = params.get("Confidence")
         self.Expression = params.get("Expression")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FaceIdentifyResult(AbstractModel):
@@ -1971,6 +2442,13 @@ class FaceIdentifyResult(AbstractModel):
         self.LibraryId = params.get("LibraryId")
         self.PersonId = params.get("PersonId")
         self.Similarity = params.get("Similarity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FaceIdentifyStatistic(AbstractModel):
@@ -2004,6 +2482,13 @@ class FaceIdentifyStatistic(AbstractModel):
         self.PersonId = params.get("PersonId")
         self.Similarity = params.get("Similarity")
         self.StartTs = params.get("StartTs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FaceInfo(AbstractModel):
@@ -2037,6 +2522,13 @@ class FaceInfo(AbstractModel):
         self.FaceId = params.get("FaceId")
         self.FaceUrl = params.get("FaceUrl")
         self.PersonId = params.get("PersonId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FaceInfoResult(AbstractModel):
@@ -2078,6 +2570,13 @@ class FaceInfoResult(AbstractModel):
         self.Left = params.get("Left")
         self.Top = params.get("Top")
         self.Width = params.get("Width")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FacePoseResult(AbstractModel):
@@ -2107,6 +2606,13 @@ class FacePoseResult(AbstractModel):
         self.Pitch = params.get("Pitch")
         self.Roll = params.get("Roll")
         self.Yaw = params.get("Yaw")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FrameInfo(AbstractModel):
@@ -2132,6 +2638,13 @@ class FrameInfo(AbstractModel):
         self.Similarity = params.get("Similarity")
         self.SnapshotUrl = params.get("SnapshotUrl")
         self.Ts = params.get("Ts")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Function(AbstractModel):
@@ -2165,6 +2678,13 @@ class Function(AbstractModel):
         self.EnableMuteDetect = params.get("EnableMuteDetect")
         self.EnableVadInfo = params.get("EnableVadInfo")
         self.EnableVolume = params.get("EnableVolume")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GestureResult(AbstractModel):
@@ -2202,6 +2722,13 @@ class GestureResult(AbstractModel):
         self.Left = params.get("Left")
         self.Top = params.get("Top")
         self.Width = params.get("Width")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class HLFunction(AbstractModel):
@@ -2235,6 +2762,13 @@ class HLFunction(AbstractModel):
         self.EnableFaceIdent = params.get("EnableFaceIdent")
         self.EnableKeywordWonderfulTime = params.get("EnableKeywordWonderfulTime")
         self.EnableSmileWonderfulTime = params.get("EnableSmileWonderfulTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class HandTrackingResult(AbstractModel):
@@ -2272,6 +2806,13 @@ class HandTrackingResult(AbstractModel):
         self.Left = params.get("Left")
         self.Top = params.get("Top")
         self.Width = params.get("Width")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class HighlightsInfomation(AbstractModel):
@@ -2311,6 +2852,13 @@ class HighlightsInfomation(AbstractModel):
                 self.Smile.append(obj)
         self.HighlightsUrl = params.get("HighlightsUrl")
         self.PersonId = params.get("PersonId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ImageTaskFunction(AbstractModel):
@@ -2364,6 +2912,13 @@ class ImageTaskFunction(AbstractModel):
         self.EnableStudentBodyMovements = params.get("EnableStudentBodyMovements")
         self.EnableTeacherBodyMovements = params.get("EnableTeacherBodyMovements")
         self.EnableTeacherOutScreen = params.get("EnableTeacherOutScreen")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ImageTaskResult(AbstractModel):
@@ -2455,6 +3010,13 @@ class ImageTaskResult(AbstractModel):
         if params.get("TimeInfo") is not None:
             self.TimeInfo = TimeInfoResult()
             self.TimeInfo._deserialize(params.get("TimeInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ImageTaskStatistic(AbstractModel):
@@ -2525,6 +3087,13 @@ class ImageTaskStatistic(AbstractModel):
         if params.get("TeacherMovement") is not None:
             self.TeacherMovement = ActionStatistic()
             self.TeacherMovement._deserialize(params.get("TeacherMovement"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Library(AbstractModel):
@@ -2558,6 +3127,13 @@ class Library(AbstractModel):
         self.LibraryName = params.get("LibraryName")
         self.PersonCount = params.get("PersonCount")
         self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class LightDistributionStatistic(AbstractModel):
@@ -2579,6 +3155,13 @@ class LightDistributionStatistic(AbstractModel):
     def _deserialize(self, params):
         self.Time = params.get("Time")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class LightLevelRatioStatistic(AbstractModel):
@@ -2600,6 +3183,13 @@ class LightLevelRatioStatistic(AbstractModel):
     def _deserialize(self, params):
         self.Level = params.get("Level")
         self.Ratio = params.get("Ratio")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class LightResult(AbstractModel):
@@ -2621,6 +3211,13 @@ class LightResult(AbstractModel):
     def _deserialize(self, params):
         self.LightLevel = params.get("LightLevel")
         self.LightValue = params.get("LightValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class LightStandard(AbstractModel):
@@ -2647,6 +3244,13 @@ class LightStandard(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Range = params.get("Range")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class LightStatistic(AbstractModel):
@@ -2678,6 +3282,13 @@ class LightStatistic(AbstractModel):
                 obj = LightLevelRatioStatistic()
                 obj._deserialize(item)
                 self.LightLevelRatio.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyLibraryRequest(AbstractModel):
@@ -2699,6 +3310,13 @@ class ModifyLibraryRequest(AbstractModel):
     def _deserialize(self, params):
         self.LibraryId = params.get("LibraryId")
         self.LibraryName = params.get("LibraryName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyLibraryResponse(AbstractModel):
@@ -2724,6 +3342,13 @@ class ModifyLibraryResponse(AbstractModel):
         self.LibraryId = params.get("LibraryId")
         self.LibraryName = params.get("LibraryName")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyPersonRequest(AbstractModel):
@@ -2769,6 +3394,13 @@ class ModifyPersonRequest(AbstractModel):
         self.PersonName = params.get("PersonName")
         self.PhoneNumber = params.get("PhoneNumber")
         self.StudentNumber = params.get("StudentNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyPersonResponse(AbstractModel):
@@ -2807,6 +3439,13 @@ class ModifyPersonResponse(AbstractModel):
         self.PersonId = params.get("PersonId")
         self.PersonName = params.get("PersonName")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MuteSlice(AbstractModel):
@@ -2828,6 +3467,13 @@ class MuteSlice(AbstractModel):
     def _deserialize(self, params):
         self.MuteBtm = params.get("MuteBtm")
         self.MuteEtm = params.get("MuteEtm")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Person(AbstractModel):
@@ -2881,6 +3527,13 @@ class Person(AbstractModel):
         self.PhoneNumber = params.get("PhoneNumber")
         self.StudentNumber = params.get("StudentNumber")
         self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PersonInfo(AbstractModel):
@@ -2906,6 +3559,13 @@ class PersonInfo(AbstractModel):
         self.PersonId = params.get("PersonId")
         self.CoverBeginUrl = params.get("CoverBeginUrl")
         self.CoverEndUrl = params.get("CoverEndUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StandardAudioResult(AbstractModel):
@@ -2964,6 +3624,13 @@ class StandardAudioResult(AbstractModel):
         self.Message = params.get("Message")
         self.Status = params.get("Status")
         self.TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StandardImageResult(AbstractModel):
@@ -3004,6 +3671,13 @@ class StandardImageResult(AbstractModel):
         self.Message = params.get("Message")
         self.Status = params.get("Status")
         self.TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StandardVideoResult(AbstractModel):
@@ -3034,6 +3708,13 @@ class StandardVideoResult(AbstractModel):
                 self.HighlightsInfo.append(obj)
         self.Message = params.get("Message")
         self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StatInfo(AbstractModel):
@@ -3055,6 +3736,13 @@ class StatInfo(AbstractModel):
     def _deserialize(self, params):
         self.Keyword = params.get("Keyword")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StudentBodyMovementResult(AbstractModel):
@@ -3108,6 +3796,13 @@ class StudentBodyMovementResult(AbstractModel):
         self.StandStatus = params.get("StandStatus")
         self.Top = params.get("Top")
         self.Width = params.get("Width")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SubmitAudioTaskRequest(AbstractModel):
@@ -3155,6 +3850,13 @@ class SubmitAudioTaskRequest(AbstractModel):
         self.FileType = params.get("FileType")
         self.MuteThreshold = params.get("MuteThreshold")
         self.VocabLibNameList = params.get("VocabLibNameList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SubmitAudioTaskResponse(AbstractModel):
@@ -3176,6 +3878,13 @@ class SubmitAudioTaskResponse(AbstractModel):
     def _deserialize(self, params):
         self.JobId = params.get("JobId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SubmitCheckAttendanceTaskPlusRequest(AbstractModel):
@@ -3227,6 +3936,13 @@ class SubmitCheckAttendanceTaskPlusRequest(AbstractModel):
         self.NoticeUrl = params.get("NoticeUrl")
         self.StartTime = params.get("StartTime")
         self.Threshold = params.get("Threshold")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SubmitCheckAttendanceTaskPlusResponse(AbstractModel):
@@ -3252,6 +3968,13 @@ class SubmitCheckAttendanceTaskPlusResponse(AbstractModel):
         self.JobId = params.get("JobId")
         self.NotRegisteredSet = params.get("NotRegisteredSet")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SubmitCheckAttendanceTaskRequest(AbstractModel):
@@ -3303,6 +4026,13 @@ class SubmitCheckAttendanceTaskRequest(AbstractModel):
         self.NoticeUrl = params.get("NoticeUrl")
         self.StartTime = params.get("StartTime")
         self.Threshold = params.get("Threshold")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SubmitCheckAttendanceTaskResponse(AbstractModel):
@@ -3328,6 +4058,13 @@ class SubmitCheckAttendanceTaskResponse(AbstractModel):
         self.JobId = params.get("JobId")
         self.NotRegisteredSet = params.get("NotRegisteredSet")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SubmitConversationTaskRequest(AbstractModel):
@@ -3371,6 +4108,13 @@ class SubmitConversationTaskRequest(AbstractModel):
             self.Functions = Function()
             self.Functions._deserialize(params.get("Functions"))
         self.VocabLibNameList = params.get("VocabLibNameList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SubmitConversationTaskResponse(AbstractModel):
@@ -3392,6 +4136,13 @@ class SubmitConversationTaskResponse(AbstractModel):
     def _deserialize(self, params):
         self.JobId = params.get("JobId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SubmitDoubleVideoHighlightsRequest(AbstractModel):
@@ -3444,6 +4195,13 @@ class SubmitDoubleVideoHighlightsRequest(AbstractModel):
         self.PersonIds = params.get("PersonIds")
         self.SimThreshold = params.get("SimThreshold")
         self.TeacherFileContent = params.get("TeacherFileContent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SubmitDoubleVideoHighlightsResponse(AbstractModel):
@@ -3469,6 +4227,13 @@ class SubmitDoubleVideoHighlightsResponse(AbstractModel):
         self.JobId = params.get("JobId")
         self.NotRegistered = params.get("NotRegistered")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SubmitFullBodyClassTaskRequest(AbstractModel):
@@ -3514,6 +4279,13 @@ class SubmitFullBodyClassTaskRequest(AbstractModel):
         self.VocabLibNameList = params.get("VocabLibNameList")
         self.VoiceEncodeType = params.get("VoiceEncodeType")
         self.VoiceFileType = params.get("VoiceFileType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SubmitFullBodyClassTaskResponse(AbstractModel):
@@ -3544,6 +4316,13 @@ class SubmitFullBodyClassTaskResponse(AbstractModel):
                 self.ImageResults.append(obj)
         self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SubmitHighlightsRequest(AbstractModel):
@@ -3595,6 +4374,13 @@ class SubmitHighlightsRequest(AbstractModel):
         self.KeywordsStrings = params.get("KeywordsStrings")
         self.MaxVideoDuration = params.get("MaxVideoDuration")
         self.SimThreshold = params.get("SimThreshold")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SubmitHighlightsResponse(AbstractModel):
@@ -3616,6 +4402,13 @@ class SubmitHighlightsResponse(AbstractModel):
     def _deserialize(self, params):
         self.JobId = params.get("JobId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SubmitImageTaskPlusRequest(AbstractModel):
@@ -3668,6 +4461,13 @@ class SubmitImageTaskPlusRequest(AbstractModel):
         self.LibrarySet = params.get("LibrarySet")
         self.MaxVideoDuration = params.get("MaxVideoDuration")
         self.SimThreshold = params.get("SimThreshold")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SubmitImageTaskPlusResponse(AbstractModel):
@@ -3706,6 +4506,13 @@ class SubmitImageTaskPlusResponse(AbstractModel):
         self.Progress = params.get("Progress")
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SubmitImageTaskRequest(AbstractModel):
@@ -3762,6 +4569,13 @@ class SubmitImageTaskRequest(AbstractModel):
         self.LibrarySet = params.get("LibrarySet")
         self.MaxVideoDuration = params.get("MaxVideoDuration")
         self.SimThreshold = params.get("SimThreshold")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SubmitImageTaskResponse(AbstractModel):
@@ -3800,6 +4614,13 @@ class SubmitImageTaskResponse(AbstractModel):
         self.Progress = params.get("Progress")
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SubmitOneByOneClassTaskRequest(AbstractModel):
@@ -3845,6 +4666,13 @@ class SubmitOneByOneClassTaskRequest(AbstractModel):
         self.VocabLibNameList = params.get("VocabLibNameList")
         self.VoiceEncodeType = params.get("VoiceEncodeType")
         self.VoiceFileType = params.get("VoiceFileType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SubmitOneByOneClassTaskResponse(AbstractModel):
@@ -3875,6 +4703,13 @@ class SubmitOneByOneClassTaskResponse(AbstractModel):
                 self.ImageResults.append(obj)
         self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SubmitOpenClassTaskRequest(AbstractModel):
@@ -3904,6 +4739,13 @@ class SubmitOpenClassTaskRequest(AbstractModel):
         self.FileType = params.get("FileType")
         self.LibrarySet = params.get("LibrarySet")
         self.MaxVideoDuration = params.get("MaxVideoDuration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SubmitOpenClassTaskResponse(AbstractModel):
@@ -3934,6 +4776,13 @@ class SubmitOpenClassTaskResponse(AbstractModel):
                 self.ImageResults.append(obj)
         self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SubmitPartialBodyClassTaskRequest(AbstractModel):
@@ -3979,6 +4828,13 @@ class SubmitPartialBodyClassTaskRequest(AbstractModel):
         self.VocabLibNameList = params.get("VocabLibNameList")
         self.VoiceEncodeType = params.get("VoiceEncodeType")
         self.VoiceFileType = params.get("VoiceFileType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SubmitPartialBodyClassTaskResponse(AbstractModel):
@@ -4009,6 +4865,13 @@ class SubmitPartialBodyClassTaskResponse(AbstractModel):
                 self.ImageResults.append(obj)
         self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SubmitTraditionalClassTaskRequest(AbstractModel):
@@ -4038,6 +4901,13 @@ class SubmitTraditionalClassTaskRequest(AbstractModel):
         self.FileType = params.get("FileType")
         self.LibrarySet = params.get("LibrarySet")
         self.MaxVideoDuration = params.get("MaxVideoDuration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SubmitTraditionalClassTaskResponse(AbstractModel):
@@ -4068,6 +4938,13 @@ class SubmitTraditionalClassTaskResponse(AbstractModel):
                 self.ImageResults.append(obj)
         self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SuspectedInfo(AbstractModel):
@@ -4094,6 +4971,13 @@ class SuspectedInfo(AbstractModel):
                 obj._deserialize(item)
                 self.FaceSet.append(obj)
         self.PersonId = params.get("PersonId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TeacherOutScreenResult(AbstractModel):
@@ -4128,6 +5012,13 @@ OutScreen：不在屏幕内
         self.Left = params.get("Left")
         self.Top = params.get("Top")
         self.Width = params.get("Width")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TextItem(AbstractModel):
@@ -4174,6 +5065,13 @@ class TextItem(AbstractModel):
         self.Tag = params.get("Tag")
         self.Text = params.get("Text")
         self.TextSize = params.get("TextSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TimeInfoResult(AbstractModel):
@@ -4199,6 +5097,13 @@ class TimeInfoResult(AbstractModel):
         self.Duration = params.get("Duration")
         self.EndTs = params.get("EndTs")
         self.StartTs = params.get("StartTs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TimeType(AbstractModel):
@@ -4220,6 +5125,13 @@ class TimeType(AbstractModel):
     def _deserialize(self, params):
         self.EndTime = params.get("EndTime")
         self.StartTime = params.get("StartTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TransmitAudioStreamRequest(AbstractModel):
@@ -4275,6 +5187,13 @@ class TransmitAudioStreamRequest(AbstractModel):
         self.Lang = params.get("Lang")
         self.StorageMode = params.get("StorageMode")
         self.VocabLibNameList = params.get("VocabLibNameList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TransmitAudioStreamResponse(AbstractModel):
@@ -4333,6 +5252,13 @@ class TransmitAudioStreamResponse(AbstractModel):
         self.AllTexts = params.get("AllTexts")
         self.AudioUrl = params.get("AudioUrl")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VocabDetailInfomation(AbstractModel):
@@ -4359,6 +5285,13 @@ class VocabDetailInfomation(AbstractModel):
                 obj._deserialize(item)
                 self.VocabDetailInfo.append(obj)
         self.VocabLibName = params.get("VocabLibName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VocabStatInfomation(AbstractModel):
@@ -4385,6 +5318,13 @@ class VocabStatInfomation(AbstractModel):
                 obj._deserialize(item)
                 self.VocabDetailInfo.append(obj)
         self.VocabLibName = params.get("VocabLibName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class WholeTextItem(AbstractModel):
@@ -4420,6 +5360,13 @@ class WholeTextItem(AbstractModel):
         self.MaxVolume = params.get("MaxVolume")
         self.MinVolume = params.get("MinVolume")
         self.Speed = params.get("Speed")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Word(AbstractModel):
@@ -4453,6 +5400,13 @@ class Word(AbstractModel):
         self.Metm = params.get("Metm")
         self.Text = params.get("Text")
         self.Wsize = params.get("Wsize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class WordTimePair(AbstractModel):
@@ -4474,3 +5428,10 @@ class WordTimePair(AbstractModel):
     def _deserialize(self, params):
         self.Mbtm = params.get("Mbtm")
         self.Metm = params.get("Metm")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

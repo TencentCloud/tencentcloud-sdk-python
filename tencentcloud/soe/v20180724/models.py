@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -75,6 +77,13 @@ class InitOralProcessRequest(AbstractModel):
         self.ServerType = params.get("ServerType")
         self.IsAsync = params.get("IsAsync")
         self.TextMode = params.get("TextMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InitOralProcessResponse(AbstractModel):
@@ -96,6 +105,13 @@ class InitOralProcessResponse(AbstractModel):
     def _deserialize(self, params):
         self.SessionId = params.get("SessionId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Keyword(AbstractModel):
@@ -129,6 +145,13 @@ class Keyword(AbstractModel):
         self.ScoreCoeff = params.get("ScoreCoeff")
         self.ServerType = params.get("ServerType")
         self.TextMode = params.get("TextMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class KeywordEvaluateRequest(AbstractModel):
@@ -183,6 +206,13 @@ class KeywordEvaluateRequest(AbstractModel):
                 self.Keywords.append(obj)
         self.SoeAppId = params.get("SoeAppId")
         self.IsQuery = params.get("IsQuery")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class KeywordEvaluateResponse(AbstractModel):
@@ -213,6 +243,13 @@ class KeywordEvaluateResponse(AbstractModel):
                 self.KeywordScores.append(obj)
         self.SessionId = params.get("SessionId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class KeywordScore(AbstractModel):
@@ -256,6 +293,13 @@ class KeywordScore(AbstractModel):
                 obj._deserialize(item)
                 self.Words.append(obj)
         self.SuggestedScore = params.get("SuggestedScore")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PhoneInfo(AbstractModel):
@@ -301,6 +345,13 @@ class PhoneInfo(AbstractModel):
         self.Stress = params.get("Stress")
         self.ReferencePhone = params.get("ReferencePhone")
         self.MatchTag = params.get("MatchTag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SentenceInfo(AbstractModel):
@@ -343,6 +394,13 @@ class SentenceInfo(AbstractModel):
         self.PronFluency = params.get("PronFluency")
         self.PronCompletion = params.get("PronCompletion")
         self.SuggestedScore = params.get("SuggestedScore")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TransmitOralProcessRequest(AbstractModel):
@@ -392,6 +450,13 @@ class TransmitOralProcessRequest(AbstractModel):
         self.SoeAppId = params.get("SoeAppId")
         self.IsLongLifeSession = params.get("IsLongLifeSession")
         self.IsQuery = params.get("IsQuery")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TransmitOralProcessResponse(AbstractModel):
@@ -455,6 +520,13 @@ class TransmitOralProcessResponse(AbstractModel):
         self.Status = params.get("Status")
         self.SuggestedScore = params.get("SuggestedScore")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TransmitOralProcessWithInitRequest(AbstractModel):
@@ -574,6 +646,13 @@ class TransmitOralProcessWithInitRequest(AbstractModel):
         self.IsAsync = params.get("IsAsync")
         self.IsQuery = params.get("IsQuery")
         self.TextMode = params.get("TextMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TransmitOralProcessWithInitResponse(AbstractModel):
@@ -637,6 +716,13 @@ class TransmitOralProcessWithInitResponse(AbstractModel):
         self.Status = params.get("Status")
         self.SuggestedScore = params.get("SuggestedScore")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class WordRsp(AbstractModel):
@@ -687,3 +773,10 @@ class WordRsp(AbstractModel):
                 obj._deserialize(item)
                 self.PhoneInfos.append(obj)
         self.ReferenceWord = params.get("ReferenceWord")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

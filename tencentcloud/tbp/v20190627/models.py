@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -41,6 +43,13 @@ class Group(AbstractModel):
         self.ContentType = params.get("ContentType")
         self.Url = params.get("Url")
         self.Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ResponseMessage(AbstractModel):
@@ -64,6 +73,13 @@ class ResponseMessage(AbstractModel):
                 obj = Group()
                 obj._deserialize(item)
                 self.GroupList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SlotInfo(AbstractModel):
@@ -87,6 +103,13 @@ class SlotInfo(AbstractModel):
     def _deserialize(self, params):
         self.SlotName = params.get("SlotName")
         self.SlotValue = params.get("SlotValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TextProcessRequest(AbstractModel):
@@ -128,6 +151,13 @@ class TextProcessRequest(AbstractModel):
         self.SessionAttributes = params.get("SessionAttributes")
         self.PlatformType = params.get("PlatformType")
         self.PlatformId = params.get("PlatformId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TextProcessResponse(AbstractModel):
@@ -192,6 +222,13 @@ class TextProcessResponse(AbstractModel):
         self.SessionAttributes = params.get("SessionAttributes")
         self.ResultType = params.get("ResultType")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TextResetRequest(AbstractModel):
@@ -225,6 +262,13 @@ class TextResetRequest(AbstractModel):
         self.TerminalId = params.get("TerminalId")
         self.PlatformType = params.get("PlatformType")
         self.PlatformId = params.get("PlatformId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TextResetResponse(AbstractModel):
@@ -289,3 +333,10 @@ class TextResetResponse(AbstractModel):
         self.SessionAttributes = params.get("SessionAttributes")
         self.ResultType = params.get("ResultType")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

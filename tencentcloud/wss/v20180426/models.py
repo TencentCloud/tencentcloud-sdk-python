@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -35,6 +37,13 @@ class DeleteCertRequest(AbstractModel):
     def _deserialize(self, params):
         self.Id = params.get("Id")
         self.ModuleType = params.get("ModuleType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteCertResponse(AbstractModel):
@@ -52,6 +61,13 @@ class DeleteCertResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCertListRequest(AbstractModel):
@@ -97,6 +113,13 @@ class DescribeCertListRequest(AbstractModel):
         self.Id = params.get("Id")
         self.WithCert = params.get("WithCert")
         self.AltDomain = params.get("AltDomain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCertListResponse(AbstractModel):
@@ -127,6 +150,13 @@ class DescribeCertListResponse(AbstractModel):
                 obj._deserialize(item)
                 self.CertificateSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SSLCertificate(AbstractModel):
@@ -272,6 +302,13 @@ class SSLCertificate(AbstractModel):
         self.IsWildcard = params.get("IsWildcard")
         self.IsVulnerability = params.get("IsVulnerability")
         self.Cert = params.get("Cert")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SSLProjectInfo(AbstractModel):
@@ -315,6 +352,13 @@ class SSLProjectInfo(AbstractModel):
         self.CreatorUin = params.get("CreatorUin")
         self.CreateTime = params.get("CreateTime")
         self.Info = params.get("Info")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UploadCertRequest(AbstractModel):
@@ -352,6 +396,13 @@ class UploadCertRequest(AbstractModel):
         self.ModuleType = params.get("ModuleType")
         self.Key = params.get("Key")
         self.Alias = params.get("Alias")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UploadCertResponse(AbstractModel):
@@ -373,3 +424,10 @@ class UploadCertResponse(AbstractModel):
     def _deserialize(self, params):
         self.Id = params.get("Id")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

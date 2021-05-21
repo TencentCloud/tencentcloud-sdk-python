@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -37,6 +39,13 @@ class Canvas(AbstractModel):
             self.LayoutParams = LayoutParams()
             self.LayoutParams._deserialize(params.get("LayoutParams"))
         self.BackgroundColor = params.get("BackgroundColor")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Concat(AbstractModel):
@@ -59,6 +68,13 @@ class Concat(AbstractModel):
     def _deserialize(self, params):
         self.Enabled = params.get("Enabled")
         self.Image = params.get("Image")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateTranscodeRequest(AbstractModel):
@@ -106,6 +122,13 @@ tar.gz： 生成`.tar.gz`压缩包
         self.ThumbnailResolution = params.get("ThumbnailResolution")
         self.CompressFileType = params.get("CompressFileType")
         self.ExtraData = params.get("ExtraData")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateTranscodeResponse(AbstractModel):
@@ -127,6 +150,13 @@ class CreateTranscodeResponse(AbstractModel):
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateVideoGenerationTaskRequest(AbstractModel):
@@ -184,6 +214,13 @@ class CreateVideoGenerationTaskRequest(AbstractModel):
             self.RecordControl = RecordControl()
             self.RecordControl._deserialize(params.get("RecordControl"))
         self.ExtraData = params.get("ExtraData")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateVideoGenerationTaskResponse(AbstractModel):
@@ -205,6 +242,13 @@ class CreateVideoGenerationTaskResponse(AbstractModel):
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CustomLayout(AbstractModel):
@@ -233,6 +277,13 @@ class CustomLayout(AbstractModel):
                 obj = StreamLayout()
                 obj._deserialize(item)
                 self.InputStreamList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeOnlineRecordCallbackRequest(AbstractModel):
@@ -250,6 +301,13 @@ class DescribeOnlineRecordCallbackRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.SdkAppId = params.get("SdkAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeOnlineRecordCallbackResponse(AbstractModel):
@@ -275,6 +333,13 @@ class DescribeOnlineRecordCallbackResponse(AbstractModel):
         self.Callback = params.get("Callback")
         self.CallbackKey = params.get("CallbackKey")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeOnlineRecordRequest(AbstractModel):
@@ -296,6 +361,13 @@ class DescribeOnlineRecordRequest(AbstractModel):
     def _deserialize(self, params):
         self.SdkAppId = params.get("SdkAppId")
         self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeOnlineRecordResponse(AbstractModel):
@@ -384,6 +456,13 @@ class DescribeOnlineRecordResponse(AbstractModel):
                 self.VideoInfos.append(obj)
         self.ReplayUrl = params.get("ReplayUrl")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeQualityMetricsRequest(AbstractModel):
@@ -428,6 +507,13 @@ class DescribeQualityMetricsRequest(AbstractModel):
         self.EndTime = params.get("EndTime")
         self.Metric = params.get("Metric")
         self.Interval = params.get("Interval")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeQualityMetricsResponse(AbstractModel):
@@ -458,6 +544,13 @@ class DescribeQualityMetricsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Content.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeTranscodeCallbackRequest(AbstractModel):
@@ -475,6 +568,13 @@ class DescribeTranscodeCallbackRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.SdkAppId = params.get("SdkAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeTranscodeCallbackResponse(AbstractModel):
@@ -500,6 +600,13 @@ class DescribeTranscodeCallbackResponse(AbstractModel):
         self.Callback = params.get("Callback")
         self.CallbackKey = params.get("CallbackKey")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeTranscodeRequest(AbstractModel):
@@ -521,6 +628,13 @@ class DescribeTranscodeRequest(AbstractModel):
     def _deserialize(self, params):
         self.SdkAppId = params.get("SdkAppId")
         self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeTranscodeResponse(AbstractModel):
@@ -587,6 +701,13 @@ class DescribeTranscodeResponse(AbstractModel):
         self.ThumbnailResolution = params.get("ThumbnailResolution")
         self.CompressFileUrl = params.get("CompressFileUrl")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeVideoGenerationTaskCallbackRequest(AbstractModel):
@@ -604,6 +725,13 @@ class DescribeVideoGenerationTaskCallbackRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.SdkAppId = params.get("SdkAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeVideoGenerationTaskCallbackResponse(AbstractModel):
@@ -629,6 +757,13 @@ class DescribeVideoGenerationTaskCallbackResponse(AbstractModel):
         self.Callback = params.get("Callback")
         self.CallbackKey = params.get("CallbackKey")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeVideoGenerationTaskRequest(AbstractModel):
@@ -650,6 +785,13 @@ class DescribeVideoGenerationTaskRequest(AbstractModel):
     def _deserialize(self, params):
         self.SdkAppId = params.get("SdkAppId")
         self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeVideoGenerationTaskResponse(AbstractModel):
@@ -709,6 +851,13 @@ class DescribeVideoGenerationTaskResponse(AbstractModel):
                 obj._deserialize(item)
                 self.VideoInfoList.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeWhiteboardPushCallbackRequest(AbstractModel):
@@ -726,6 +875,13 @@ class DescribeWhiteboardPushCallbackRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.SdkAppId = params.get("SdkAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeWhiteboardPushCallbackResponse(AbstractModel):
@@ -751,6 +907,13 @@ class DescribeWhiteboardPushCallbackResponse(AbstractModel):
         self.Callback = params.get("Callback")
         self.CallbackKey = params.get("CallbackKey")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeWhiteboardPushRequest(AbstractModel):
@@ -772,6 +935,13 @@ class DescribeWhiteboardPushRequest(AbstractModel):
     def _deserialize(self, params):
         self.SdkAppId = params.get("SdkAppId")
         self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeWhiteboardPushResponse(AbstractModel):
@@ -840,6 +1010,13 @@ class DescribeWhiteboardPushResponse(AbstractModel):
         self.IMSyncTime = params.get("IMSyncTime")
         self.Backup = params.get("Backup")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class LayoutParams(AbstractModel):
@@ -874,6 +1051,13 @@ z轴确定了重叠画面的遮盖顺序，z轴值大的画面处于顶层
         self.X = params.get("X")
         self.Y = params.get("Y")
         self.ZOrder = params.get("ZOrder")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MixStream(AbstractModel):
@@ -913,6 +1097,13 @@ class MixStream(AbstractModel):
         if params.get("Custom") is not None:
             self.Custom = CustomLayout()
             self.Custom._deserialize(params.get("Custom"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class OmittedDuration(AbstractModel):
@@ -938,6 +1129,13 @@ class OmittedDuration(AbstractModel):
         self.VideoTime = params.get("VideoTime")
         self.PauseTime = params.get("PauseTime")
         self.ResumeTime = params.get("ResumeTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PauseOnlineRecordRequest(AbstractModel):
@@ -959,6 +1157,13 @@ class PauseOnlineRecordRequest(AbstractModel):
     def _deserialize(self, params):
         self.SdkAppId = params.get("SdkAppId")
         self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PauseOnlineRecordResponse(AbstractModel):
@@ -976,6 +1181,13 @@ class PauseOnlineRecordResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RecordControl(AbstractModel):
@@ -1029,6 +1241,13 @@ false - 所有流都录制大画面，默认为false。
                 obj = StreamControl()
                 obj._deserialize(item)
                 self.StreamControls.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ResumeOnlineRecordRequest(AbstractModel):
@@ -1050,6 +1269,13 @@ class ResumeOnlineRecordRequest(AbstractModel):
     def _deserialize(self, params):
         self.SdkAppId = params.get("SdkAppId")
         self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ResumeOnlineRecordResponse(AbstractModel):
@@ -1067,6 +1293,13 @@ class ResumeOnlineRecordResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SetOnlineRecordCallbackKeyRequest(AbstractModel):
@@ -1088,6 +1321,13 @@ class SetOnlineRecordCallbackKeyRequest(AbstractModel):
     def _deserialize(self, params):
         self.SdkAppId = params.get("SdkAppId")
         self.CallbackKey = params.get("CallbackKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SetOnlineRecordCallbackKeyResponse(AbstractModel):
@@ -1105,6 +1345,13 @@ class SetOnlineRecordCallbackKeyResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SetOnlineRecordCallbackRequest(AbstractModel):
@@ -1126,6 +1373,13 @@ class SetOnlineRecordCallbackRequest(AbstractModel):
     def _deserialize(self, params):
         self.SdkAppId = params.get("SdkAppId")
         self.Callback = params.get("Callback")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SetOnlineRecordCallbackResponse(AbstractModel):
@@ -1143,6 +1397,13 @@ class SetOnlineRecordCallbackResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SetTranscodeCallbackKeyRequest(AbstractModel):
@@ -1164,6 +1425,13 @@ class SetTranscodeCallbackKeyRequest(AbstractModel):
     def _deserialize(self, params):
         self.SdkAppId = params.get("SdkAppId")
         self.CallbackKey = params.get("CallbackKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SetTranscodeCallbackKeyResponse(AbstractModel):
@@ -1181,6 +1449,13 @@ class SetTranscodeCallbackKeyResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SetTranscodeCallbackRequest(AbstractModel):
@@ -1203,6 +1478,13 @@ class SetTranscodeCallbackRequest(AbstractModel):
     def _deserialize(self, params):
         self.SdkAppId = params.get("SdkAppId")
         self.Callback = params.get("Callback")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SetTranscodeCallbackResponse(AbstractModel):
@@ -1220,6 +1502,13 @@ class SetTranscodeCallbackResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SetVideoGenerationTaskCallbackKeyRequest(AbstractModel):
@@ -1241,6 +1530,13 @@ class SetVideoGenerationTaskCallbackKeyRequest(AbstractModel):
     def _deserialize(self, params):
         self.SdkAppId = params.get("SdkAppId")
         self.CallbackKey = params.get("CallbackKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SetVideoGenerationTaskCallbackKeyResponse(AbstractModel):
@@ -1258,6 +1554,13 @@ class SetVideoGenerationTaskCallbackKeyResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SetVideoGenerationTaskCallbackRequest(AbstractModel):
@@ -1279,6 +1582,13 @@ class SetVideoGenerationTaskCallbackRequest(AbstractModel):
     def _deserialize(self, params):
         self.SdkAppId = params.get("SdkAppId")
         self.Callback = params.get("Callback")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SetVideoGenerationTaskCallbackResponse(AbstractModel):
@@ -1296,6 +1606,13 @@ class SetVideoGenerationTaskCallbackResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SetWhiteboardPushCallbackKeyRequest(AbstractModel):
@@ -1317,6 +1634,13 @@ class SetWhiteboardPushCallbackKeyRequest(AbstractModel):
     def _deserialize(self, params):
         self.SdkAppId = params.get("SdkAppId")
         self.CallbackKey = params.get("CallbackKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SetWhiteboardPushCallbackKeyResponse(AbstractModel):
@@ -1334,6 +1658,13 @@ class SetWhiteboardPushCallbackKeyResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SetWhiteboardPushCallbackRequest(AbstractModel):
@@ -1355,6 +1686,13 @@ class SetWhiteboardPushCallbackRequest(AbstractModel):
     def _deserialize(self, params):
         self.SdkAppId = params.get("SdkAppId")
         self.Callback = params.get("Callback")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SetWhiteboardPushCallbackResponse(AbstractModel):
@@ -1372,6 +1710,13 @@ class SetWhiteboardPushCallbackResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StartOnlineRecordRequest(AbstractModel):
@@ -1466,6 +1811,13 @@ VIDEO_GENERATION_MODE - 视频生成模式（内测中，需邮件申请开通�
         self.ChatGroupId = params.get("ChatGroupId")
         self.AutoStopTimeout = params.get("AutoStopTimeout")
         self.ExtraData = params.get("ExtraData")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StartOnlineRecordResponse(AbstractModel):
@@ -1487,6 +1839,13 @@ class StartOnlineRecordResponse(AbstractModel):
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StartWhiteboardPushRequest(AbstractModel):
@@ -1604,6 +1963,13 @@ SdkAppID = 12345678，RoomID = 12345，PushUserID = push_user_1
         self.AutoPublish = params.get("AutoPublish")
         self.UserDefinedStreamId = params.get("UserDefinedStreamId")
         self.ExtraData = params.get("ExtraData")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StartWhiteboardPushResponse(AbstractModel):
@@ -1630,6 +1996,13 @@ class StartWhiteboardPushResponse(AbstractModel):
         self.TaskId = params.get("TaskId")
         self.Backup = params.get("Backup")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StopOnlineRecordRequest(AbstractModel):
@@ -1651,6 +2024,13 @@ class StopOnlineRecordRequest(AbstractModel):
     def _deserialize(self, params):
         self.SdkAppId = params.get("SdkAppId")
         self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StopOnlineRecordResponse(AbstractModel):
@@ -1668,6 +2048,13 @@ class StopOnlineRecordResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StopWhiteboardPushRequest(AbstractModel):
@@ -1689,6 +2076,13 @@ class StopWhiteboardPushRequest(AbstractModel):
     def _deserialize(self, params):
         self.SdkAppId = params.get("SdkAppId")
         self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StopWhiteboardPushResponse(AbstractModel):
@@ -1711,6 +2105,13 @@ class StopWhiteboardPushResponse(AbstractModel):
     def _deserialize(self, params):
         self.Backup = params.get("Backup")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StreamControl(AbstractModel):
@@ -1761,6 +2162,13 @@ false - 录制大画面。
         self.DisableRecord = params.get("DisableRecord")
         self.DisableAudio = params.get("DisableAudio")
         self.PullSmallVideo = params.get("PullSmallVideo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StreamLayout(AbstractModel):
@@ -1800,6 +2208,13 @@ class StreamLayout(AbstractModel):
         self.InputStreamId = params.get("InputStreamId")
         self.BackgroundColor = params.get("BackgroundColor")
         self.FillMode = params.get("FillMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TimeValue(AbstractModel):
@@ -1821,6 +2236,13 @@ class TimeValue(AbstractModel):
     def _deserialize(self, params):
         self.Time = params.get("Time")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VideoInfo(AbstractModel):
@@ -1879,6 +2301,13 @@ class VideoInfo(AbstractModel):
         self.UserId = params.get("UserId")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Whiteboard(AbstractModel):
@@ -1904,6 +2333,13 @@ class Whiteboard(AbstractModel):
         self.Width = params.get("Width")
         self.Height = params.get("Height")
         self.InitParam = params.get("InitParam")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class WhiteboardPushBackupParam(AbstractModel):
@@ -1926,3 +2362,10 @@ class WhiteboardPushBackupParam(AbstractModel):
     def _deserialize(self, params):
         self.PushUserId = params.get("PushUserId")
         self.PushUserSig = params.get("PushUserSig")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

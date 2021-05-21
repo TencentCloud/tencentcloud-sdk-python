@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -52,6 +54,13 @@ openssl在生成rsa时，可能会需要设置加密密钥，请记住设置的�
         self.PemDecryptKey = params.get("PemDecryptKey")
         self.BailorId = params.get("BailorId")
         self.Priority = params.get("Priority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AddFairPlayPemResponse(AbstractModel):
@@ -79,6 +88,13 @@ class AddFairPlayPemResponse(AbstractModel):
         self.FairPlayPemId = params.get("FairPlayPemId")
         self.Priority = params.get("Priority")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateEncryptKeysRequest(AbstractModel):
@@ -113,6 +129,13 @@ class CreateEncryptKeysRequest(AbstractModel):
                 self.Keys.append(obj)
         self.ContentId = params.get("ContentId")
         self.ContentType = params.get("ContentType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateEncryptKeysResponse(AbstractModel):
@@ -130,6 +153,13 @@ class CreateEncryptKeysResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateLicenseRequest(AbstractModel):
@@ -166,6 +196,13 @@ class CreateLicenseRequest(AbstractModel):
         if params.get("PlaybackPolicy") is not None:
             self.PlaybackPolicy = PlaybackPolicy()
             self.PlaybackPolicy._deserialize(params.get("PlaybackPolicy"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateLicenseResponse(AbstractModel):
@@ -191,6 +228,13 @@ class CreateLicenseResponse(AbstractModel):
         self.License = params.get("License")
         self.ContentId = params.get("ContentId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteFairPlayPemRequest(AbstractModel):
@@ -213,6 +257,13 @@ class DeleteFairPlayPemRequest(AbstractModel):
     def _deserialize(self, params):
         self.BailorId = params.get("BailorId")
         self.FairPlayPemId = params.get("FairPlayPemId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteFairPlayPemResponse(AbstractModel):
@@ -230,6 +281,13 @@ class DeleteFairPlayPemResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAllKeysRequest(AbstractModel):
@@ -260,6 +318,13 @@ class DescribeAllKeysRequest(AbstractModel):
         self.RsaPublicKey = params.get("RsaPublicKey")
         self.ContentId = params.get("ContentId")
         self.ContentType = params.get("ContentType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAllKeysResponse(AbstractModel):
@@ -299,6 +364,13 @@ class DescribeAllKeysResponse(AbstractModel):
         self.SessionKey = params.get("SessionKey")
         self.ContentId = params.get("ContentId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeFairPlayPemRequest(AbstractModel):
@@ -321,6 +393,13 @@ class DescribeFairPlayPemRequest(AbstractModel):
     def _deserialize(self, params):
         self.BailorId = params.get("BailorId")
         self.FairPlayPemId = params.get("FairPlayPemId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeFairPlayPemResponse(AbstractModel):
@@ -348,6 +427,13 @@ class DescribeFairPlayPemResponse(AbstractModel):
                 obj._deserialize(item)
                 self.FairPlayPems.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeKeysRequest(AbstractModel):
@@ -383,6 +469,13 @@ class DescribeKeysRequest(AbstractModel):
         self.ContentType = params.get("ContentType")
         self.RsaPublicKey = params.get("RsaPublicKey")
         self.ContentId = params.get("ContentId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeKeysResponse(AbstractModel):
@@ -424,6 +517,13 @@ Fairplay方案无该值。
         self.ContentId = params.get("ContentId")
         self.Pssh = params.get("Pssh")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DrmOutputObject(AbstractModel):
@@ -451,6 +551,13 @@ class DrmOutputObject(AbstractModel):
         if params.get("Para") is not None:
             self.Para = DrmOutputPara()
             self.Para._deserialize(params.get("Para"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DrmOutputPara(AbstractModel):
@@ -472,6 +579,13 @@ class DrmOutputPara(AbstractModel):
     def _deserialize(self, params):
         self.Type = params.get("Type")
         self.Language = params.get("Language")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DrmSourceObject(AbstractModel):
@@ -493,6 +607,13 @@ class DrmSourceObject(AbstractModel):
     def _deserialize(self, params):
         self.BucketName = params.get("BucketName")
         self.ObjectName = params.get("ObjectName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FairPlayPemDigestInfo(AbstractModel):
@@ -531,6 +652,13 @@ class FairPlayPemDigestInfo(AbstractModel):
         self.Md5Pem = params.get("Md5Pem")
         self.Md5Ask = params.get("Md5Ask")
         self.Md5PemDecryptKey = params.get("Md5PemDecryptKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Key(AbstractModel):
@@ -565,6 +693,13 @@ class Key(AbstractModel):
         self.Key = params.get("Key")
         self.Iv = params.get("Iv")
         self.InsertTimestamp = params.get("InsertTimestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class KeyParam(AbstractModel):
@@ -595,6 +730,13 @@ SD、HD、UHD1、UHD2、AUDIO
         self.Key = params.get("Key")
         self.KeyId = params.get("KeyId")
         self.Iv = params.get("Iv")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyFairPlayPemRequest(AbstractModel):
@@ -637,6 +779,13 @@ openssl在生成rsa时，可能会需要设置加密密钥，请记住设置的�
         self.PemDecryptKey = params.get("PemDecryptKey")
         self.BailorId = params.get("BailorId")
         self.Priority = params.get("Priority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyFairPlayPemResponse(AbstractModel):
@@ -664,6 +813,13 @@ class ModifyFairPlayPemResponse(AbstractModel):
         self.FairPlayPemId = params.get("FairPlayPemId")
         self.Priority = params.get("Priority")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PlaybackPolicy(AbstractModel):
@@ -685,6 +841,13 @@ class PlaybackPolicy(AbstractModel):
     def _deserialize(self, params):
         self.LicenseDurationSeconds = params.get("LicenseDurationSeconds")
         self.PlaybackDurationSeconds = params.get("PlaybackDurationSeconds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StartEncryptionRequest(AbstractModel):
@@ -729,6 +892,13 @@ class StartEncryptionRequest(AbstractModel):
                 obj = DrmOutputObject()
                 obj._deserialize(item)
                 self.OutputObjects.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StartEncryptionResponse(AbstractModel):
@@ -746,3 +916,10 @@ class StartEncryptionResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

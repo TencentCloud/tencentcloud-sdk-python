@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -59,6 +61,13 @@ class ActionSummaryOverviewItem(AbstractModel):
         self.IncentivePayAmount = params.get("IncentivePayAmount")
         self.VoucherPayAmount = params.get("VoucherPayAmount")
         self.BillMonth = params.get("BillMonth")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BillDetail(AbstractModel):
@@ -183,6 +192,13 @@ class BillDetail(AbstractModel):
         self.ActionType = params.get("ActionType")
         self.RegionId = params.get("RegionId")
         self.ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BillDetailComponent(AbstractModel):
@@ -275,6 +291,13 @@ class BillDetailComponent(AbstractModel):
         self.ItemCode = params.get("ItemCode")
         self.ComponentCode = params.get("ComponentCode")
         self.ContractPrice = params.get("ContractPrice")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BillResourceSummary(AbstractModel):
@@ -426,6 +449,13 @@ class BillResourceSummary(AbstractModel):
         self.BusinessCode = params.get("BusinessCode")
         self.ProductCode = params.get("ProductCode")
         self.RegionId = params.get("RegionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BillTagInfo(AbstractModel):
@@ -447,6 +477,13 @@ class BillTagInfo(AbstractModel):
     def _deserialize(self, params):
         self.TagKey = params.get("TagKey")
         self.TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BillTransactionInfo(AbstractModel):
@@ -504,6 +541,13 @@ class BillTransactionInfo(AbstractModel):
         self.Freezing = params.get("Freezing")
         self.PayChannel = params.get("PayChannel")
         self.DeductMode = params.get("DeductMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BusinessSummaryOverviewItem(AbstractModel):
@@ -550,6 +594,13 @@ class BusinessSummaryOverviewItem(AbstractModel):
         self.IncentivePayAmount = params.get("IncentivePayAmount")
         self.VoucherPayAmount = params.get("VoucherPayAmount")
         self.BillMonth = params.get("BillMonth")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BusinessSummaryTotal(AbstractModel):
@@ -579,6 +630,13 @@ class BusinessSummaryTotal(AbstractModel):
         self.VoucherPayAmount = params.get("VoucherPayAmount")
         self.IncentivePayAmount = params.get("IncentivePayAmount")
         self.CashPayAmount = params.get("CashPayAmount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ConditionBusiness(AbstractModel):
@@ -600,6 +658,13 @@ class ConditionBusiness(AbstractModel):
     def _deserialize(self, params):
         self.BusinessCode = params.get("BusinessCode")
         self.BusinessCodeName = params.get("BusinessCodeName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ConditionPayMode(AbstractModel):
@@ -621,6 +686,13 @@ class ConditionPayMode(AbstractModel):
     def _deserialize(self, params):
         self.PayMode = params.get("PayMode")
         self.PayModeName = params.get("PayModeName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ConditionProject(AbstractModel):
@@ -642,6 +714,13 @@ class ConditionProject(AbstractModel):
     def _deserialize(self, params):
         self.ProjectId = params.get("ProjectId")
         self.ProjectName = params.get("ProjectName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ConditionRegion(AbstractModel):
@@ -663,6 +742,13 @@ class ConditionRegion(AbstractModel):
     def _deserialize(self, params):
         self.RegionId = params.get("RegionId")
         self.RegionName = params.get("RegionName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Conditions(AbstractModel):
@@ -752,6 +838,13 @@ class Conditions(AbstractModel):
         self.FileIds = params.get("FileIds")
         self.FileTypes = params.get("FileTypes")
         self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ConsumptionBusinessSummaryDataItem(AbstractModel):
@@ -783,6 +876,13 @@ class ConsumptionBusinessSummaryDataItem(AbstractModel):
         if params.get("Trend") is not None:
             self.Trend = ConsumptionSummaryTrend()
             self.Trend._deserialize(params.get("Trend"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ConsumptionProjectSummaryDataItem(AbstractModel):
@@ -823,6 +923,13 @@ class ConsumptionProjectSummaryDataItem(AbstractModel):
                 obj = ConsumptionBusinessSummaryDataItem()
                 obj._deserialize(item)
                 self.Business.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ConsumptionRegionSummaryDataItem(AbstractModel):
@@ -863,6 +970,13 @@ class ConsumptionRegionSummaryDataItem(AbstractModel):
                 obj = ConsumptionBusinessSummaryDataItem()
                 obj._deserialize(item)
                 self.Business.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ConsumptionResourceSummaryConditionValue(AbstractModel):
@@ -912,6 +1026,13 @@ class ConsumptionResourceSummaryConditionValue(AbstractModel):
                 obj = ConditionPayMode()
                 obj._deserialize(item)
                 self.PayMode.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ConsumptionResourceSummaryDataItem(AbstractModel):
@@ -977,6 +1098,13 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
         self.BusinessCode = params.get("BusinessCode")
         self.BusinessCodeName = params.get("BusinessCodeName")
         self.ConsumptionTypeName = params.get("ConsumptionTypeName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ConsumptionSummaryTotal(AbstractModel):
@@ -994,6 +1122,13 @@ class ConsumptionSummaryTotal(AbstractModel):
 
     def _deserialize(self, params):
         self.RealTotalCost = params.get("RealTotalCost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ConsumptionSummaryTrend(AbstractModel):
@@ -1016,6 +1151,13 @@ class ConsumptionSummaryTrend(AbstractModel):
     def _deserialize(self, params):
         self.Type = params.get("Type")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CosDetailSets(AbstractModel):
@@ -1057,6 +1199,13 @@ class CosDetailSets(AbstractModel):
         self.BillingItemCodeName = params.get("BillingItemCodeName")
         self.DosageValue = params.get("DosageValue")
         self.Unit = params.get("Unit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CostComponentSet(AbstractModel):
@@ -1118,6 +1267,13 @@ class CostComponentSet(AbstractModel):
         self.VoucherPayAmount = params.get("VoucherPayAmount")
         self.CashPayAmount = params.get("CashPayAmount")
         self.IncentivePayAmount = params.get("IncentivePayAmount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CostDetail(AbstractModel):
@@ -1201,6 +1357,13 @@ class CostDetail(AbstractModel):
                 obj._deserialize(item)
                 self.ComponentSet.append(obj)
         self.ProductCode = params.get("ProductCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Deal(AbstractModel):
@@ -1310,6 +1473,13 @@ class Deal(AbstractModel):
         self.Formula = params.get("Formula")
         self.RefReturnDeals = params.get("RefReturnDeals")
         self.PayMode = params.get("PayMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAccountBalanceRequest(AbstractModel):
@@ -1385,6 +1555,13 @@ class DescribeAccountBalanceResponse(AbstractModel):
         self.CreditBalance = params.get("CreditBalance")
         self.RealCreditBalance = params.get("RealCreditBalance")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeBillDetailRequest(AbstractModel):
@@ -1447,6 +1624,13 @@ class DescribeBillDetailRequest(AbstractModel):
         self.ResourceId = params.get("ResourceId")
         self.ActionType = params.get("ActionType")
         self.ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeBillDetailResponse(AbstractModel):
@@ -1478,6 +1662,13 @@ class DescribeBillDetailResponse(AbstractModel):
                 self.DetailSet.append(obj)
         self.Total = params.get("Total")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeBillListRequest(AbstractModel):
@@ -1519,6 +1710,13 @@ class DescribeBillListRequest(AbstractModel):
         self.PayType = params.get("PayType")
         self.SubPayType = params.get("SubPayType")
         self.WithZeroAmount = params.get("WithZeroAmount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeBillListResponse(AbstractModel):
@@ -1589,6 +1787,13 @@ class DescribeBillListResponse(AbstractModel):
         self.AgentOutAmount = params.get("AgentOutAmount")
         self.AdvancePayAmount = params.get("AdvancePayAmount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeBillResourceSummaryRequest(AbstractModel):
@@ -1627,6 +1832,13 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
         self.Month = params.get("Month")
         self.NeedRecordNum = params.get("NeedRecordNum")
         self.ActionType = params.get("ActionType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeBillResourceSummaryResponse(AbstractModel):
@@ -1658,6 +1870,13 @@ class DescribeBillResourceSummaryResponse(AbstractModel):
                 self.ResourceSummarySet.append(obj)
         self.Total = params.get("Total")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeBillSummaryByPayModeRequest(AbstractModel):
@@ -1683,6 +1902,13 @@ class DescribeBillSummaryByPayModeRequest(AbstractModel):
         self.BeginTime = params.get("BeginTime")
         self.EndTime = params.get("EndTime")
         self.PayerUin = params.get("PayerUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeBillSummaryByPayModeResponse(AbstractModel):
@@ -1714,6 +1940,13 @@ class DescribeBillSummaryByPayModeResponse(AbstractModel):
                 obj._deserialize(item)
                 self.SummaryOverview.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeBillSummaryByProductRequest(AbstractModel):
@@ -1739,6 +1972,13 @@ class DescribeBillSummaryByProductRequest(AbstractModel):
         self.BeginTime = params.get("BeginTime")
         self.EndTime = params.get("EndTime")
         self.PayerUin = params.get("PayerUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeBillSummaryByProductResponse(AbstractModel):
@@ -1777,6 +2017,13 @@ class DescribeBillSummaryByProductResponse(AbstractModel):
                 obj._deserialize(item)
                 self.SummaryOverview.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeBillSummaryByProjectRequest(AbstractModel):
@@ -1802,6 +2049,13 @@ class DescribeBillSummaryByProjectRequest(AbstractModel):
         self.BeginTime = params.get("BeginTime")
         self.EndTime = params.get("EndTime")
         self.PayerUin = params.get("PayerUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeBillSummaryByProjectResponse(AbstractModel):
@@ -1833,6 +2087,13 @@ class DescribeBillSummaryByProjectResponse(AbstractModel):
                 obj._deserialize(item)
                 self.SummaryOverview.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeBillSummaryByRegionRequest(AbstractModel):
@@ -1858,6 +2119,13 @@ class DescribeBillSummaryByRegionRequest(AbstractModel):
         self.BeginTime = params.get("BeginTime")
         self.EndTime = params.get("EndTime")
         self.PayerUin = params.get("PayerUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeBillSummaryByRegionResponse(AbstractModel):
@@ -1889,6 +2157,13 @@ class DescribeBillSummaryByRegionResponse(AbstractModel):
                 obj._deserialize(item)
                 self.SummaryOverview.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeBillSummaryByTagRequest(AbstractModel):
@@ -1918,6 +2193,13 @@ class DescribeBillSummaryByTagRequest(AbstractModel):
         self.EndTime = params.get("EndTime")
         self.TagKey = params.get("TagKey")
         self.PayerUin = params.get("PayerUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeBillSummaryByTagResponse(AbstractModel):
@@ -1949,6 +2231,13 @@ class DescribeBillSummaryByTagResponse(AbstractModel):
                 obj._deserialize(item)
                 self.SummaryOverview.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCostDetailRequest(AbstractModel):
@@ -1999,6 +2288,13 @@ class DescribeCostDetailRequest(AbstractModel):
         self.ProductCode = params.get("ProductCode")
         self.PayMode = params.get("PayMode")
         self.ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCostDetailResponse(AbstractModel):
@@ -2031,6 +2327,13 @@ class DescribeCostDetailResponse(AbstractModel):
                 self.DetailSet.append(obj)
         self.Total = params.get("Total")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCostSummaryByProductRequest(AbstractModel):
@@ -2068,6 +2371,13 @@ class DescribeCostSummaryByProductRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.PayerUin = params.get("PayerUin")
         self.NeedRecordNum = params.get("NeedRecordNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCostSummaryByProductResponse(AbstractModel):
@@ -2110,6 +2420,13 @@ class DescribeCostSummaryByProductResponse(AbstractModel):
                 self.Data.append(obj)
         self.RecordNum = params.get("RecordNum")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCostSummaryByProjectRequest(AbstractModel):
@@ -2147,6 +2464,13 @@ class DescribeCostSummaryByProjectRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.PayerUin = params.get("PayerUin")
         self.NeedRecordNum = params.get("NeedRecordNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCostSummaryByProjectResponse(AbstractModel):
@@ -2187,6 +2511,13 @@ class DescribeCostSummaryByProjectResponse(AbstractModel):
                 self.Data.append(obj)
         self.RecordNum = params.get("RecordNum")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCostSummaryByRegionRequest(AbstractModel):
@@ -2224,6 +2555,13 @@ class DescribeCostSummaryByRegionRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.PayerUin = params.get("PayerUin")
         self.NeedRecordNum = params.get("NeedRecordNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCostSummaryByRegionResponse(AbstractModel):
@@ -2265,6 +2603,13 @@ class DescribeCostSummaryByRegionResponse(AbstractModel):
                 self.Data.append(obj)
         self.RecordNum = params.get("RecordNum")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCostSummaryByResourceRequest(AbstractModel):
@@ -2312,6 +2657,13 @@ class DescribeCostSummaryByResourceRequest(AbstractModel):
         if params.get("Conditions") is not None:
             self.Conditions = Conditions()
             self.Conditions._deserialize(params.get("Conditions"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCostSummaryByResourceResponse(AbstractModel):
@@ -2362,6 +2714,13 @@ class DescribeCostSummaryByResourceResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Data.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDealsByCondRequest(AbstractModel):
@@ -2415,6 +2774,13 @@ class DescribeDealsByCondRequest(AbstractModel):
         self.Status = params.get("Status")
         self.OrderId = params.get("OrderId")
         self.BigDealId = params.get("BigDealId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDealsByCondResponse(AbstractModel):
@@ -2445,6 +2811,13 @@ class DescribeDealsByCondResponse(AbstractModel):
                 self.Deals.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDosageCosDetailByDateRequest(AbstractModel):
@@ -2470,6 +2843,13 @@ class DescribeDosageCosDetailByDateRequest(AbstractModel):
         self.StartDate = params.get("StartDate")
         self.EndDate = params.get("EndDate")
         self.BucketName = params.get("BucketName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDosageCosDetailByDateResponse(AbstractModel):
@@ -2496,6 +2876,13 @@ class DescribeDosageCosDetailByDateResponse(AbstractModel):
                 obj._deserialize(item)
                 self.DetailSets.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDosageDetailByDateRequest(AbstractModel):
@@ -2550,6 +2937,13 @@ cdn业务：
         self.ProductCode = params.get("ProductCode")
         self.Domain = params.get("Domain")
         self.InstanceID = params.get("InstanceID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDosageDetailByDateResponse(AbstractModel):
@@ -2592,6 +2986,13 @@ class DescribeDosageDetailByDateResponse(AbstractModel):
         self.RetCode = params.get("RetCode")
         self.RetMsg = params.get("RetMsg")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DetailPoint(AbstractModel):
@@ -2613,6 +3014,13 @@ class DetailPoint(AbstractModel):
     def _deserialize(self, params):
         self.Time = params.get("Time")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DetailSet(AbstractModel):
@@ -2644,6 +3052,13 @@ class DetailSet(AbstractModel):
                 obj._deserialize(item)
                 self.DetailPoints.append(obj)
         self.InstanceID = params.get("InstanceID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PayDealsRequest(AbstractModel):
@@ -2673,6 +3088,13 @@ class PayDealsRequest(AbstractModel):
         self.AutoVoucher = params.get("AutoVoucher")
         self.VoucherIds = params.get("VoucherIds")
         self.BigDealIds = params.get("BigDealIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PayDealsResponse(AbstractModel):
@@ -2702,6 +3124,13 @@ class PayDealsResponse(AbstractModel):
         self.ResourceIds = params.get("ResourceIds")
         self.BigDealIds = params.get("BigDealIds")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PayModeSummaryOverviewItem(AbstractModel):
@@ -2752,6 +3181,13 @@ class PayModeSummaryOverviewItem(AbstractModel):
         self.CashPayAmount = params.get("CashPayAmount")
         self.IncentivePayAmount = params.get("IncentivePayAmount")
         self.VoucherPayAmount = params.get("VoucherPayAmount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ProductInfo(AbstractModel):
@@ -2773,6 +3209,13 @@ class ProductInfo(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ProjectSummaryOverviewItem(AbstractModel):
@@ -2818,6 +3261,13 @@ class ProjectSummaryOverviewItem(AbstractModel):
         self.IncentivePayAmount = params.get("IncentivePayAmount")
         self.VoucherPayAmount = params.get("VoucherPayAmount")
         self.BillMonth = params.get("BillMonth")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RegionSummaryOverviewItem(AbstractModel):
@@ -2864,6 +3314,13 @@ class RegionSummaryOverviewItem(AbstractModel):
         self.IncentivePayAmount = params.get("IncentivePayAmount")
         self.VoucherPayAmount = params.get("VoucherPayAmount")
         self.BillMonth = params.get("BillMonth")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TagSummaryOverviewItem(AbstractModel):
@@ -2892,3 +3349,10 @@ class TagSummaryOverviewItem(AbstractModel):
         self.TagValue = params.get("TagValue")
         self.RealTotalCost = params.get("RealTotalCost")
         self.RealTotalCostRatio = params.get("RealTotalCostRatio")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

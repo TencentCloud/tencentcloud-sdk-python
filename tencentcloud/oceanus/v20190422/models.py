@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -77,6 +79,13 @@ class CreateJobConfigRequest(AbstractModel):
         self.AutoDelete = params.get("AutoDelete")
         self.COSBucket = params.get("COSBucket")
         self.LogCollect = params.get("LogCollect")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateJobConfigResponse(AbstractModel):
@@ -98,6 +107,13 @@ class CreateJobConfigResponse(AbstractModel):
     def _deserialize(self, params):
         self.Version = params.get("Version")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateJobRequest(AbstractModel):
@@ -135,6 +151,13 @@ class CreateJobRequest(AbstractModel):
         self.ClusterId = params.get("ClusterId")
         self.CuMem = params.get("CuMem")
         self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateJobResponse(AbstractModel):
@@ -156,6 +179,13 @@ class CreateJobResponse(AbstractModel):
     def _deserialize(self, params):
         self.JobId = params.get("JobId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateResourceConfigRequest(AbstractModel):
@@ -187,6 +217,13 @@ class CreateResourceConfigRequest(AbstractModel):
             self.ResourceLoc._deserialize(params.get("ResourceLoc"))
         self.Remark = params.get("Remark")
         self.AutoDelete = params.get("AutoDelete")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateResourceConfigResponse(AbstractModel):
@@ -208,6 +245,13 @@ class CreateResourceConfigResponse(AbstractModel):
     def _deserialize(self, params):
         self.Version = params.get("Version")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateResourceRequest(AbstractModel):
@@ -243,6 +287,13 @@ class CreateResourceRequest(AbstractModel):
         self.ResourceType = params.get("ResourceType")
         self.Remark = params.get("Remark")
         self.ResourceConfigRemark = params.get("ResourceConfigRemark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateResourceResponse(AbstractModel):
@@ -268,6 +319,13 @@ class CreateResourceResponse(AbstractModel):
         self.ResourceId = params.get("ResourceId")
         self.Version = params.get("Version")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteResourceConfigsRequest(AbstractModel):
@@ -289,6 +347,13 @@ class DeleteResourceConfigsRequest(AbstractModel):
     def _deserialize(self, params):
         self.ResourceId = params.get("ResourceId")
         self.ResourceConfigVersions = params.get("ResourceConfigVersions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteResourceConfigsResponse(AbstractModel):
@@ -306,6 +371,13 @@ class DeleteResourceConfigsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteResourcesRequest(AbstractModel):
@@ -323,6 +395,13 @@ class DeleteResourcesRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.ResourceIds = params.get("ResourceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteResourcesResponse(AbstractModel):
@@ -340,6 +419,13 @@ class DeleteResourcesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteTableConfigRequest(AbstractModel):
@@ -365,6 +451,13 @@ class DeleteTableConfigRequest(AbstractModel):
         self.JobId = params.get("JobId")
         self.DebugId = params.get("DebugId")
         self.TableName = params.get("TableName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteTableConfigResponse(AbstractModel):
@@ -382,6 +475,13 @@ class DeleteTableConfigResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeJobConfigsRequest(AbstractModel):
@@ -424,6 +524,13 @@ class DescribeJobConfigsRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Filters.append(obj)
         self.OnlyDraft = params.get("OnlyDraft")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeJobConfigsResponse(AbstractModel):
@@ -454,6 +561,13 @@ class DescribeJobConfigsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.JobConfigSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeJobsRequest(AbstractModel):
@@ -488,6 +602,13 @@ class DescribeJobsRequest(AbstractModel):
                 self.Filters.append(obj)
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeJobsResponse(AbstractModel):
@@ -518,6 +639,13 @@ class DescribeJobsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.JobSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeResourceConfigsRequest(AbstractModel):
@@ -555,6 +683,13 @@ class DescribeResourceConfigsRequest(AbstractModel):
         self.ResourceConfigVersions = params.get("ResourceConfigVersions")
         self.JobConfigVersion = params.get("JobConfigVersion")
         self.JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeResourceConfigsResponse(AbstractModel):
@@ -585,6 +720,13 @@ class DescribeResourceConfigsResponse(AbstractModel):
                 self.ResourceConfigSet.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeResourceRelatedJobsRequest(AbstractModel):
@@ -614,6 +756,13 @@ class DescribeResourceRelatedJobsRequest(AbstractModel):
         self.DESCByJobConfigCreateTime = params.get("DESCByJobConfigCreateTime")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeResourceRelatedJobsResponse(AbstractModel):
@@ -644,6 +793,13 @@ class DescribeResourceRelatedJobsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.RefJobInfos.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeResourcesRequest(AbstractModel):
@@ -678,6 +834,13 @@ class DescribeResourcesRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeResourcesResponse(AbstractModel):
@@ -708,6 +871,13 @@ class DescribeResourcesResponse(AbstractModel):
                 self.ResourceSet.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSystemResourcesRequest(AbstractModel):
@@ -746,6 +916,13 @@ class DescribeSystemResourcesRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Filters.append(obj)
         self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSystemResourcesResponse(AbstractModel):
@@ -776,6 +953,13 @@ class DescribeSystemResourcesResponse(AbstractModel):
                 self.ResourceSet.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Filter(AbstractModel):
@@ -797,6 +981,13 @@ class Filter(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class JobConfig(AbstractModel):
@@ -887,6 +1078,13 @@ class JobConfig(AbstractModel):
         self.COSBucket = params.get("COSBucket")
         self.LogCollect = params.get("LogCollect")
         self.MaxParallelism = params.get("MaxParallelism")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class JobV1(AbstractModel):
@@ -1035,6 +1233,13 @@ class JobV1(AbstractModel):
         self.WebUIUrl = params.get("WebUIUrl")
         self.SchedulerType = params.get("SchedulerType")
         self.ClusterStatus = params.get("ClusterStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Property(AbstractModel):
@@ -1056,6 +1261,13 @@ class Property(AbstractModel):
     def _deserialize(self, params):
         self.Key = params.get("Key")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ResourceConfigItem(AbstractModel):
@@ -1121,6 +1333,13 @@ class ResourceConfigItem(AbstractModel):
         self.Remark = params.get("Remark")
         self.Status = params.get("Status")
         self.RefJobCount = params.get("RefJobCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ResourceItem(AbstractModel):
@@ -1195,6 +1414,13 @@ class ResourceItem(AbstractModel):
         self.Remark = params.get("Remark")
         self.VersionCount = params.get("VersionCount")
         self.RefJobCount = params.get("RefJobCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ResourceLoc(AbstractModel):
@@ -1218,6 +1444,13 @@ class ResourceLoc(AbstractModel):
         if params.get("Param") is not None:
             self.Param = ResourceLocParam()
             self.Param._deserialize(params.get("Param"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ResourceLocParam(AbstractModel):
@@ -1244,6 +1477,13 @@ class ResourceLocParam(AbstractModel):
         self.Bucket = params.get("Bucket")
         self.Path = params.get("Path")
         self.Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ResourceRef(AbstractModel):
@@ -1269,6 +1509,13 @@ class ResourceRef(AbstractModel):
         self.ResourceId = params.get("ResourceId")
         self.Version = params.get("Version")
         self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ResourceRefDetail(AbstractModel):
@@ -1302,6 +1549,13 @@ class ResourceRefDetail(AbstractModel):
         self.Name = params.get("Name")
         self.Type = params.get("Type")
         self.SystemProvide = params.get("SystemProvide")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ResourceRefJobInfo(AbstractModel):
@@ -1327,6 +1581,13 @@ class ResourceRefJobInfo(AbstractModel):
         self.JobId = params.get("JobId")
         self.JobConfigVersion = params.get("JobConfigVersion")
         self.ResourceVersion = params.get("ResourceVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RunJobDescription(AbstractModel):
@@ -1356,6 +1617,13 @@ class RunJobDescription(AbstractModel):
         self.RunType = params.get("RunType")
         self.StartMode = params.get("StartMode")
         self.JobConfigVersion = params.get("JobConfigVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RunJobsRequest(AbstractModel):
@@ -1378,6 +1646,13 @@ class RunJobsRequest(AbstractModel):
                 obj = RunJobDescription()
                 obj._deserialize(item)
                 self.RunJobDescriptions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RunJobsResponse(AbstractModel):
@@ -1395,6 +1670,13 @@ class RunJobsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StopJobDescription(AbstractModel):
@@ -1416,6 +1698,13 @@ class StopJobDescription(AbstractModel):
     def _deserialize(self, params):
         self.JobId = params.get("JobId")
         self.StopType = params.get("StopType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StopJobsRequest(AbstractModel):
@@ -1438,6 +1727,13 @@ class StopJobsRequest(AbstractModel):
                 obj = StopJobDescription()
                 obj._deserialize(item)
                 self.StopJobDescriptions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StopJobsResponse(AbstractModel):
@@ -1455,6 +1751,13 @@ class StopJobsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SystemResourceItem(AbstractModel):
@@ -1492,3 +1795,10 @@ class SystemResourceItem(AbstractModel):
         self.Remark = params.get("Remark")
         self.Region = params.get("Region")
         self.LatestResourceConfigVersion = params.get("LatestResourceConfigVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

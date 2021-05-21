@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -39,6 +41,13 @@ class AddResourceTagRequest(AbstractModel):
         self.TagKey = params.get("TagKey")
         self.TagValue = params.get("TagValue")
         self.Resource = params.get("Resource")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AddResourceTagResponse(AbstractModel):
@@ -56,6 +65,13 @@ class AddResourceTagResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AttachResourcesTagRequest(AbstractModel):
@@ -93,6 +109,13 @@ class AttachResourcesTagRequest(AbstractModel):
         self.TagValue = params.get("TagValue")
         self.ResourceRegion = params.get("ResourceRegion")
         self.ResourcePrefix = params.get("ResourcePrefix")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AttachResourcesTagResponse(AbstractModel):
@@ -110,6 +133,13 @@ class AttachResourcesTagResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateTagRequest(AbstractModel):
@@ -131,6 +161,13 @@ class CreateTagRequest(AbstractModel):
     def _deserialize(self, params):
         self.TagKey = params.get("TagKey")
         self.TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateTagResponse(AbstractModel):
@@ -148,6 +185,13 @@ class CreateTagResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteResourceTagRequest(AbstractModel):
@@ -169,6 +213,13 @@ class DeleteResourceTagRequest(AbstractModel):
     def _deserialize(self, params):
         self.TagKey = params.get("TagKey")
         self.Resource = params.get("Resource")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteResourceTagResponse(AbstractModel):
@@ -186,6 +237,13 @@ class DeleteResourceTagResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteTagRequest(AbstractModel):
@@ -207,6 +265,13 @@ class DeleteTagRequest(AbstractModel):
     def _deserialize(self, params):
         self.TagKey = params.get("TagKey")
         self.TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteTagResponse(AbstractModel):
@@ -224,6 +289,13 @@ class DeleteTagResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeResourceTagsByResourceIdsRequest(AbstractModel):
@@ -261,6 +333,13 @@ class DescribeResourceTagsByResourceIdsRequest(AbstractModel):
         self.ResourceRegion = params.get("ResourceRegion")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeResourceTagsByResourceIdsResponse(AbstractModel):
@@ -299,6 +378,13 @@ class DescribeResourceTagsByResourceIdsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeResourceTagsByResourceIdsSeqRequest(AbstractModel):
@@ -336,6 +422,13 @@ class DescribeResourceTagsByResourceIdsSeqRequest(AbstractModel):
         self.ResourceRegion = params.get("ResourceRegion")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeResourceTagsByResourceIdsSeqResponse(AbstractModel):
@@ -374,6 +467,13 @@ class DescribeResourceTagsByResourceIdsSeqResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeResourceTagsByTagKeysRequest(AbstractModel):
@@ -415,6 +515,13 @@ class DescribeResourceTagsByTagKeysRequest(AbstractModel):
         self.TagKeys = params.get("TagKeys")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeResourceTagsByTagKeysResponse(AbstractModel):
@@ -453,6 +560,13 @@ class DescribeResourceTagsByTagKeysResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Rows.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeResourceTagsRequest(AbstractModel):
@@ -498,6 +612,13 @@ class DescribeResourceTagsRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.CosResourceId = params.get("CosResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeResourceTagsResponse(AbstractModel):
@@ -537,6 +658,13 @@ class DescribeResourceTagsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Rows.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeResourcesByTagsRequest(AbstractModel):
@@ -587,6 +715,13 @@ class DescribeResourcesByTagsRequest(AbstractModel):
         self.ResourceId = params.get("ResourceId")
         self.ResourceRegion = params.get("ResourceRegion")
         self.ServiceType = params.get("ServiceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeResourcesByTagsResponse(AbstractModel):
@@ -626,6 +761,13 @@ class DescribeResourcesByTagsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Rows.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeResourcesByTagsUnionRequest(AbstractModel):
@@ -676,6 +818,13 @@ class DescribeResourcesByTagsUnionRequest(AbstractModel):
         self.ResourceId = params.get("ResourceId")
         self.ResourceRegion = params.get("ResourceRegion")
         self.ServiceType = params.get("ServiceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeResourcesByTagsUnionResponse(AbstractModel):
@@ -714,6 +863,13 @@ class DescribeResourcesByTagsUnionResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Rows.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeTagKeysRequest(AbstractModel):
@@ -743,6 +899,13 @@ class DescribeTagKeysRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.ShowProject = params.get("ShowProject")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeTagKeysResponse(AbstractModel):
@@ -776,6 +939,13 @@ class DescribeTagKeysResponse(AbstractModel):
         self.Limit = params.get("Limit")
         self.Tags = params.get("Tags")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeTagValuesRequest(AbstractModel):
@@ -805,6 +975,13 @@ class DescribeTagValuesRequest(AbstractModel):
         self.CreateUin = params.get("CreateUin")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeTagValuesResponse(AbstractModel):
@@ -843,6 +1020,13 @@ class DescribeTagValuesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeTagValuesSeqRequest(AbstractModel):
@@ -872,6 +1056,13 @@ class DescribeTagValuesSeqRequest(AbstractModel):
         self.CreateUin = params.get("CreateUin")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeTagValuesSeqResponse(AbstractModel):
@@ -910,6 +1101,13 @@ class DescribeTagValuesSeqResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeTagsRequest(AbstractModel):
@@ -951,6 +1149,13 @@ class DescribeTagsRequest(AbstractModel):
         self.CreateUin = params.get("CreateUin")
         self.TagKeys = params.get("TagKeys")
         self.ShowProject = params.get("ShowProject")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeTagsResponse(AbstractModel):
@@ -989,6 +1194,13 @@ class DescribeTagsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeTagsSeqRequest(AbstractModel):
@@ -1030,6 +1242,13 @@ class DescribeTagsSeqRequest(AbstractModel):
         self.CreateUin = params.get("CreateUin")
         self.TagKeys = params.get("TagKeys")
         self.ShowProject = params.get("ShowProject")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeTagsSeqResponse(AbstractModel):
@@ -1068,6 +1287,13 @@ class DescribeTagsSeqResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DetachResourcesTagRequest(AbstractModel):
@@ -1101,6 +1327,13 @@ class DetachResourcesTagRequest(AbstractModel):
         self.TagKey = params.get("TagKey")
         self.ResourceRegion = params.get("ResourceRegion")
         self.ResourcePrefix = params.get("ResourcePrefix")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DetachResourcesTagResponse(AbstractModel):
@@ -1118,6 +1351,13 @@ class DetachResourcesTagResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyResourceTagsRequest(AbstractModel):
@@ -1153,6 +1393,13 @@ class ModifyResourceTagsRequest(AbstractModel):
                 obj = TagKeyObject()
                 obj._deserialize(item)
                 self.DeleteTags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyResourceTagsResponse(AbstractModel):
@@ -1170,6 +1417,13 @@ class ModifyResourceTagsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyResourcesTagValueRequest(AbstractModel):
@@ -1207,6 +1461,13 @@ class ModifyResourcesTagValueRequest(AbstractModel):
         self.TagValue = params.get("TagValue")
         self.ResourceRegion = params.get("ResourceRegion")
         self.ResourcePrefix = params.get("ResourcePrefix")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyResourcesTagValueResponse(AbstractModel):
@@ -1224,6 +1485,13 @@ class ModifyResourcesTagValueResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ResourceIdTag(AbstractModel):
@@ -1252,6 +1520,13 @@ class ResourceIdTag(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.TagKeyValues.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ResourceTag(AbstractModel):
@@ -1295,6 +1570,13 @@ class ResourceTag(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Tag(AbstractModel):
@@ -1316,6 +1598,13 @@ class Tag(AbstractModel):
     def _deserialize(self, params):
         self.TagKey = params.get("TagKey")
         self.TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TagFilter(AbstractModel):
@@ -1337,6 +1626,13 @@ class TagFilter(AbstractModel):
     def _deserialize(self, params):
         self.TagKey = params.get("TagKey")
         self.TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TagKeyObject(AbstractModel):
@@ -1354,6 +1650,13 @@ class TagKeyObject(AbstractModel):
 
     def _deserialize(self, params):
         self.TagKey = params.get("TagKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TagResource(AbstractModel):
@@ -1392,6 +1695,13 @@ class TagResource(AbstractModel):
         self.TagKeyMd5 = params.get("TagKeyMd5")
         self.TagValueMd5 = params.get("TagValueMd5")
         self.ServiceType = params.get("ServiceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TagWithDelete(AbstractModel):
@@ -1417,6 +1727,13 @@ class TagWithDelete(AbstractModel):
         self.TagKey = params.get("TagKey")
         self.TagValue = params.get("TagValue")
         self.CanDelete = params.get("CanDelete")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UpdateResourceTagValueRequest(AbstractModel):
@@ -1442,6 +1759,13 @@ class UpdateResourceTagValueRequest(AbstractModel):
         self.TagKey = params.get("TagKey")
         self.TagValue = params.get("TagValue")
         self.Resource = params.get("Resource")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UpdateResourceTagValueResponse(AbstractModel):
@@ -1459,3 +1783,10 @@ class UpdateResourceTagValueResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

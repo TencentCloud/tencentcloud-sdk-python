@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -31,6 +33,13 @@ class AuthTestTidRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.Data = params.get("Data")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AuthTestTidResponse(AbstractModel):
@@ -52,6 +61,13 @@ class AuthTestTidResponse(AbstractModel):
     def _deserialize(self, params):
         self.Pass = params.get("Pass")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BurnTidNotifyRequest(AbstractModel):
@@ -73,6 +89,13 @@ class BurnTidNotifyRequest(AbstractModel):
     def _deserialize(self, params):
         self.OrderId = params.get("OrderId")
         self.Tid = params.get("Tid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BurnTidNotifyResponse(AbstractModel):
@@ -94,6 +117,13 @@ class BurnTidNotifyResponse(AbstractModel):
     def _deserialize(self, params):
         self.Tid = params.get("Tid")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeliverTidNotifyRequest(AbstractModel):
@@ -115,6 +145,13 @@ class DeliverTidNotifyRequest(AbstractModel):
     def _deserialize(self, params):
         self.OrderId = params.get("OrderId")
         self.Tid = params.get("Tid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeliverTidNotifyResponse(AbstractModel):
@@ -144,6 +181,13 @@ class DeliverTidNotifyResponse(AbstractModel):
         self.Tid = params.get("Tid")
         self.ProductKey = params.get("ProductKey")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeliverTidsRequest(AbstractModel):
@@ -165,6 +209,13 @@ class DeliverTidsRequest(AbstractModel):
     def _deserialize(self, params):
         self.OrderId = params.get("OrderId")
         self.Quantity = params.get("Quantity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeliverTidsResponse(AbstractModel):
@@ -196,6 +247,13 @@ class DeliverTidsResponse(AbstractModel):
                 self.TidSet.append(obj)
         self.ProductKey = params.get("ProductKey")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAvailableLibCountRequest(AbstractModel):
@@ -213,6 +271,13 @@ class DescribeAvailableLibCountRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.OrderId = params.get("OrderId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAvailableLibCountResponse(AbstractModel):
@@ -234,6 +299,13 @@ class DescribeAvailableLibCountResponse(AbstractModel):
     def _deserialize(self, params):
         self.Quantity = params.get("Quantity")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribePermissionRequest(AbstractModel):
@@ -269,6 +341,13 @@ class DescribePermissionResponse(AbstractModel):
         self.DownloadPermission = params.get("DownloadPermission")
         self.UsePermission = params.get("UsePermission")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DownloadTidsRequest(AbstractModel):
@@ -290,6 +369,13 @@ class DownloadTidsRequest(AbstractModel):
     def _deserialize(self, params):
         self.OrderId = params.get("OrderId")
         self.Quantity = params.get("Quantity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DownloadTidsResponse(AbstractModel):
@@ -317,6 +403,13 @@ class DownloadTidsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.TidSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TidKeysInfo(AbstractModel):
@@ -354,6 +447,13 @@ class TidKeysInfo(AbstractModel):
         self.Psk = params.get("Psk")
         self.DownloadUrl = params.get("DownloadUrl")
         self.DeviceCode = params.get("DeviceCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UploadDeviceUniqueCodeRequest(AbstractModel):
@@ -375,6 +475,13 @@ class UploadDeviceUniqueCodeRequest(AbstractModel):
     def _deserialize(self, params):
         self.CodeSet = params.get("CodeSet")
         self.OrderId = params.get("OrderId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UploadDeviceUniqueCodeResponse(AbstractModel):
@@ -410,6 +517,13 @@ class UploadDeviceUniqueCodeResponse(AbstractModel):
         self.LeftQuantity = params.get("LeftQuantity")
         self.IllegalCodeSet = params.get("IllegalCodeSet")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VerifyChipBurnInfoRequest(AbstractModel):
@@ -427,6 +541,13 @@ class VerifyChipBurnInfoRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.Data = params.get("Data")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VerifyChipBurnInfoResponse(AbstractModel):
@@ -456,3 +577,10 @@ class VerifyChipBurnInfoResponse(AbstractModel):
         self.VerifiedTimes = params.get("VerifiedTimes")
         self.LeftTimes = params.get("LeftTimes")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

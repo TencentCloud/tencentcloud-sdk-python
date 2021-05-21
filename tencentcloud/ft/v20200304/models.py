@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -38,6 +40,13 @@ class AgeInfo(AbstractModel):
         if params.get("FaceRect") is not None:
             self.FaceRect = FaceRect()
             self.FaceRect._deserialize(params.get("FaceRect"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CancelFaceMorphJobRequest(AbstractModel):
@@ -55,6 +64,13 @@ class CancelFaceMorphJobRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CancelFaceMorphJobResponse(AbstractModel):
@@ -72,6 +88,13 @@ class CancelFaceMorphJobResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ChangeAgePicRequest(AbstractModel):
@@ -112,6 +135,13 @@ class ChangeAgePicRequest(AbstractModel):
         self.Image = params.get("Image")
         self.Url = params.get("Url")
         self.RspImgType = params.get("RspImgType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ChangeAgePicResponse(AbstractModel):
@@ -137,6 +167,13 @@ class ChangeAgePicResponse(AbstractModel):
         self.ResultImage = params.get("ResultImage")
         self.ResultUrl = params.get("ResultUrl")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FaceCartoonPicRequest(AbstractModel):
@@ -171,6 +208,13 @@ class FaceCartoonPicRequest(AbstractModel):
         self.Url = params.get("Url")
         self.RspImgType = params.get("RspImgType")
         self.DisableGlobalEffect = params.get("DisableGlobalEffect")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FaceCartoonPicResponse(AbstractModel):
@@ -196,6 +240,13 @@ class FaceCartoonPicResponse(AbstractModel):
         self.ResultImage = params.get("ResultImage")
         self.ResultUrl = params.get("ResultUrl")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FaceMorphOutput(AbstractModel):
@@ -224,6 +275,13 @@ class FaceMorphOutput(AbstractModel):
         self.MorphUrl = params.get("MorphUrl")
         self.MorphMd5 = params.get("MorphMd5")
         self.CoverImage = params.get("CoverImage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FaceRect(AbstractModel):
@@ -253,6 +311,13 @@ class FaceRect(AbstractModel):
         self.X = params.get("X")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GenderInfo(AbstractModel):
@@ -277,6 +342,13 @@ class GenderInfo(AbstractModel):
         if params.get("FaceRect") is not None:
             self.FaceRect = FaceRect()
             self.FaceRect._deserialize(params.get("FaceRect"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GradientInfo(AbstractModel):
@@ -298,6 +370,13 @@ class GradientInfo(AbstractModel):
     def _deserialize(self, params):
         self.Tempo = params.get("Tempo")
         self.MorphTime = params.get("MorphTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MorphFaceRequest(AbstractModel):
@@ -353,6 +432,13 @@ Url、Image必须提供一个，如果都提供，只使用 Url。图片存储�
         self.OutputType = params.get("OutputType")
         self.OutputWidth = params.get("OutputWidth")
         self.OutputHeight = params.get("OutputHeight")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MorphFaceResponse(AbstractModel):
@@ -378,6 +464,13 @@ class MorphFaceResponse(AbstractModel):
         self.JobId = params.get("JobId")
         self.EstimatedProcessTime = params.get("EstimatedProcessTime")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class QueryFaceMorphJobRequest(AbstractModel):
@@ -395,6 +488,13 @@ class QueryFaceMorphJobRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class QueryFaceMorphJobResponse(AbstractModel):
@@ -423,6 +523,13 @@ class QueryFaceMorphJobResponse(AbstractModel):
             self.FaceMorphOutput = FaceMorphOutput()
             self.FaceMorphOutput._deserialize(params.get("FaceMorphOutput"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SwapGenderPicRequest(AbstractModel):
@@ -463,6 +570,13 @@ class SwapGenderPicRequest(AbstractModel):
         self.Image = params.get("Image")
         self.Url = params.get("Url")
         self.RspImgType = params.get("RspImgType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SwapGenderPicResponse(AbstractModel):
@@ -488,3 +602,10 @@ class SwapGenderPicResponse(AbstractModel):
         self.ResultImage = params.get("ResultImage")
         self.ResultUrl = params.get("ResultUrl")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

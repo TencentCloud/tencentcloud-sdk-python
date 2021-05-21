@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -39,6 +41,13 @@ class Aspect(AbstractModel):
         self.Name = params.get("Name")
         self.Score = params.get("Score")
         self.Percentage = params.get("Percentage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CompostionContext(AbstractModel):
@@ -73,6 +82,13 @@ class CompostionContext(AbstractModel):
             self.CorrectData._deserialize(params.get("CorrectData"))
         self.TaskId = params.get("TaskId")
         self.SessionId = params.get("SessionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CorrectData(AbstractModel):
@@ -109,6 +125,13 @@ class CorrectData(AbstractModel):
                 obj = SentenceCom()
                 obj._deserialize(item)
                 self.SentenceComments.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CorrectMultiImageRequest(AbstractModel):
@@ -166,6 +189,13 @@ class CorrectMultiImageRequest(AbstractModel):
         self.ModelTitle = params.get("ModelTitle")
         self.ModelContent = params.get("ModelContent")
         self.IsAsync = params.get("IsAsync")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CorrectMultiImageResponse(AbstractModel):
@@ -189,6 +219,13 @@ class CorrectMultiImageResponse(AbstractModel):
             self.Data = CompostionContext()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeTaskRequest(AbstractModel):
@@ -210,6 +247,13 @@ class DescribeTaskRequest(AbstractModel):
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
         self.EccAppid = params.get("EccAppid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeTaskResponse(AbstractModel):
@@ -243,6 +287,13 @@ class DescribeTaskResponse(AbstractModel):
             self.CorrectData._deserialize(params.get("CorrectData"))
         self.Status = params.get("Status")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ECCRequest(AbstractModel):
@@ -292,6 +343,13 @@ class ECCRequest(AbstractModel):
         self.EccAppid = params.get("EccAppid")
         self.IsAsync = params.get("IsAsync")
         self.SessionId = params.get("SessionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ECCResponse(AbstractModel):
@@ -321,6 +379,13 @@ class ECCResponse(AbstractModel):
             self.Data._deserialize(params.get("Data"))
         self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class EHOCRRequest(AbstractModel):
@@ -378,6 +443,13 @@ class EHOCRRequest(AbstractModel):
         self.ModelTitle = params.get("ModelTitle")
         self.ModelContent = params.get("ModelContent")
         self.IsAsync = params.get("IsAsync")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class EHOCRResponse(AbstractModel):
@@ -401,6 +473,13 @@ class EHOCRResponse(AbstractModel):
             self.Data = CompostionContext()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ErrorCoordinate(AbstractModel):
@@ -418,6 +497,13 @@ class ErrorCoordinate(AbstractModel):
 
     def _deserialize(self, params):
         self.Coordinate = params.get("Coordinate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ScoreCategory(AbstractModel):
@@ -463,6 +549,13 @@ class ScoreCategory(AbstractModel):
             self.Content._deserialize(params.get("Content"))
         self.Score = params.get("Score")
         self.Percentage = params.get("Percentage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SentenceCom(AbstractModel):
@@ -491,6 +584,13 @@ class SentenceCom(AbstractModel):
         if params.get("Sentence") is not None:
             self.Sentence = SentenceItem()
             self.Sentence._deserialize(params.get("Sentence"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SentenceItem(AbstractModel):
@@ -516,6 +616,13 @@ class SentenceItem(AbstractModel):
         self.Sentence = params.get("Sentence")
         self.ParaID = params.get("ParaID")
         self.SentenceID = params.get("SentenceID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SentenceSuggest(AbstractModel):
@@ -562,3 +669,10 @@ class SentenceSuggest(AbstractModel):
                 obj = ErrorCoordinate()
                 obj._deserialize(item)
                 self.ErrorCoordinates.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -95,6 +97,13 @@ class CdsAuditInstance(AbstractModel):
         self.PrivateIp = params.get("PrivateIp")
         self.InstanceType = params.get("InstanceType")
         self.Pdomain = params.get("Pdomain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DbauditTypesInfo(AbstractModel):
@@ -136,6 +145,13 @@ class DbauditTypesInfo(AbstractModel):
         self.InsertSpeed = params.get("InsertSpeed")
         self.OnlineStorageCapacity = params.get("OnlineStorageCapacity")
         self.ArchivingStorageCapacity = params.get("ArchivingStorageCapacity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDasbImageIdsRequest(AbstractModel):
@@ -167,6 +183,13 @@ class DescribeDasbImageIdsResponse(AbstractModel):
         self.BaseImageId = params.get("BaseImageId")
         self.AiImageId = params.get("AiImageId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDbauditInstanceTypeRequest(AbstractModel):
@@ -199,6 +222,13 @@ class DescribeDbauditInstanceTypeResponse(AbstractModel):
                 obj._deserialize(item)
                 self.DbauditTypesSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDbauditInstancesRequest(AbstractModel):
@@ -224,6 +254,13 @@ class DescribeDbauditInstancesRequest(AbstractModel):
         self.SearchRegion = params.get("SearchRegion")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDbauditInstancesResponse(AbstractModel):
@@ -254,6 +291,13 @@ class DescribeDbauditInstancesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.CdsAuditInstanceSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDbauditUsedRegionsRequest(AbstractModel):
@@ -286,6 +330,13 @@ class DescribeDbauditUsedRegionsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.RegionSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InquiryPriceDbauditInstanceRequest(AbstractModel):
@@ -319,6 +370,13 @@ class InquiryPriceDbauditInstanceRequest(AbstractModel):
         self.TimeSpan = params.get("TimeSpan")
         self.TimeUnit = params.get("TimeUnit")
         self.ServiceRegion = params.get("ServiceRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InquiryPriceDbauditInstanceResponse(AbstractModel):
@@ -344,6 +402,13 @@ class InquiryPriceDbauditInstanceResponse(AbstractModel):
         self.TotalPrice = params.get("TotalPrice")
         self.RealTotalCost = params.get("RealTotalCost")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyDbauditInstancesRenewFlagRequest(AbstractModel):
@@ -365,6 +430,13 @@ class ModifyDbauditInstancesRenewFlagRequest(AbstractModel):
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.AutoRenewFlag = params.get("AutoRenewFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyDbauditInstancesRenewFlagResponse(AbstractModel):
@@ -382,6 +454,13 @@ class ModifyDbauditInstancesRenewFlagResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RegionInfo(AbstractModel):
@@ -411,3 +490,10 @@ class RegionInfo(AbstractModel):
         self.Region = params.get("Region")
         self.RegionName = params.get("RegionName")
         self.RegionState = params.get("RegionState")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

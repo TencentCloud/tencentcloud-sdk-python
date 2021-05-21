@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -94,6 +96,13 @@ class CallBackCdr(AbstractModel):
         self.CallType = params.get("CallType")
         self.BizId = params.get("BizId")
         self.OrderId = params.get("OrderId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CallBackPhoneCode(AbstractModel):
@@ -115,6 +124,13 @@ class CallBackPhoneCode(AbstractModel):
     def _deserialize(self, params):
         self.Nation = params.get("Nation")
         self.Phone = params.get("Phone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateCallBackRequest(AbstractModel):
@@ -191,6 +207,13 @@ class CreateCallBackRequest(AbstractModel):
             self.PreCallerHandle = RreCallerHandle()
             self.PreCallerHandle._deserialize(params.get("PreCallerHandle"))
         self.OrderId = params.get("OrderId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateCallBackResponse(AbstractModel):
@@ -232,6 +255,13 @@ class CreateCallBackResponse(AbstractModel):
         self.ErrorCode = params.get("ErrorCode")
         self.Msg = params.get("Msg")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DelVirtualNumRequest(AbstractModel):
@@ -257,6 +287,13 @@ class DelVirtualNumRequest(AbstractModel):
         self.BizAppId = params.get("BizAppId")
         self.BindId = params.get("BindId")
         self.BizId = params.get("BizId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DelVirtualNumResponse(AbstractModel):
@@ -293,6 +330,13 @@ class DelVirtualNumResponse(AbstractModel):
         self.BindId = params.get("BindId")
         self.RefLeftNum = params.get("RefLeftNum")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteCallBackRequest(AbstractModel):
@@ -318,6 +362,13 @@ class DeleteCallBackRequest(AbstractModel):
         self.BizAppId = params.get("BizAppId")
         self.CallId = params.get("CallId")
         self.CancelFlag = params.get("CancelFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteCallBackResponse(AbstractModel):
@@ -349,6 +400,13 @@ class DeleteCallBackResponse(AbstractModel):
         self.Msg = params.get("Msg")
         self.CallId = params.get("CallId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCallBackCdrRequest(AbstractModel):
@@ -382,6 +440,13 @@ class DescribeCallBackCdrRequest(AbstractModel):
         self.Src = params.get("Src")
         self.StartTimeStamp = params.get("StartTimeStamp")
         self.EndTimeStamp = params.get("EndTimeStamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCallBackCdrResponse(AbstractModel):
@@ -424,6 +489,13 @@ class DescribeCallBackCdrResponse(AbstractModel):
         self.ErrorCode = params.get("ErrorCode")
         self.Msg = params.get("Msg")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCallBackStatusRequest(AbstractModel):
@@ -457,6 +529,13 @@ class DescribeCallBackStatusRequest(AbstractModel):
         self.Src = params.get("Src")
         self.Dst = params.get("Dst")
         self.CallStatus = params.get("CallStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCallBackStatusResponse(AbstractModel):
@@ -502,6 +581,13 @@ class DescribeCallBackStatusResponse(AbstractModel):
         self.Dst = params.get("Dst")
         self.CallStatus = params.get("CallStatus")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCallerDisplayListRequest(AbstractModel):
@@ -519,6 +605,13 @@ class DescribeCallerDisplayListRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.BizAppId = params.get("BizAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCallerDisplayListResponse(AbstractModel):
@@ -560,6 +653,13 @@ class DescribeCallerDisplayListResponse(AbstractModel):
         self.ErrorCode = params.get("ErrorCode")
         self.Msg = params.get("Msg")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Get400CdrRequest(AbstractModel):
@@ -593,6 +693,13 @@ class Get400CdrRequest(AbstractModel):
         self.Src = params.get("Src")
         self.StartTimeStamp = params.get("StartTimeStamp")
         self.EndTimeStamp = params.get("EndTimeStamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Get400CdrResponse(AbstractModel):
@@ -634,6 +741,13 @@ class Get400CdrResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Cdr.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetVirtualNumRequest(AbstractModel):
@@ -715,6 +829,13 @@ class GetVirtualNumRequest(AbstractModel):
         self.StatusUrl = params.get("StatusUrl")
         self.HangupUrl = params.get("HangupUrl")
         self.RecordUrl = params.get("RecordUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetVirtualNumResponse(AbstractModel):
@@ -756,6 +877,13 @@ class GetVirtualNumResponse(AbstractModel):
         self.VirtualNum = params.get("VirtualNum")
         self.Msg = params.get("Msg")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class KeyList(AbstractModel):
@@ -777,6 +905,13 @@ class KeyList(AbstractModel):
     def _deserialize(self, params):
         self.Key = params.get("Key")
         self.Operate = params.get("Operate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RreCallerHandle(AbstractModel):
@@ -819,6 +954,13 @@ class RreCallerHandle(AbstractModel):
         self.RepeatTimes = params.get("RepeatTimes")
         self.KeyPressUrl = params.get("KeyPressUrl")
         self.PromptGender = params.get("PromptGender")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VirturalNumCdr(AbstractModel):
@@ -888,3 +1030,10 @@ class VirturalNumCdr(AbstractModel):
         self.SrcDuration = params.get("SrcDuration")
         self.DstDuration = params.get("DstDuration")
         self.RecordUrl = params.get("RecordUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

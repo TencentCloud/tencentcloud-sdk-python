@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -35,6 +37,13 @@ class CreateBotRequest(AbstractModel):
     def _deserialize(self, params):
         self.BotName = params.get("BotName")
         self.BotCnName = params.get("BotCnName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateBotResponse(AbstractModel):
@@ -60,6 +69,13 @@ class CreateBotResponse(AbstractModel):
         self.TaskRequestId = params.get("TaskRequestId")
         self.Msg = params.get("Msg")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ResetRequest(AbstractModel):
@@ -89,6 +105,13 @@ class ResetRequest(AbstractModel):
         self.UserId = params.get("UserId")
         self.BotVersion = params.get("BotVersion")
         self.BotEnv = params.get("BotEnv")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ResetResponse(AbstractModel):
@@ -155,6 +178,13 @@ class ResetResponse(AbstractModel):
         self.WaveUrl = params.get("WaveUrl")
         self.WaveData = params.get("WaveData")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SlotInfo(AbstractModel):
@@ -178,6 +208,13 @@ class SlotInfo(AbstractModel):
     def _deserialize(self, params):
         self.SlotName = params.get("SlotName")
         self.SlotValue = params.get("SlotValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TextProcessRequest(AbstractModel):
@@ -211,6 +248,13 @@ class TextProcessRequest(AbstractModel):
         self.InputText = params.get("InputText")
         self.BotEnv = params.get("BotEnv")
         self.SessionAttributes = params.get("SessionAttributes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TextProcessResponse(AbstractModel):
@@ -268,6 +312,13 @@ class TextProcessResponse(AbstractModel):
         self.SessionAttributes = params.get("SessionAttributes")
         self.ResponseText = params.get("ResponseText")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TextResetRequest(AbstractModel):
@@ -293,6 +344,13 @@ class TextResetRequest(AbstractModel):
         self.BotId = params.get("BotId")
         self.TerminalId = params.get("TerminalId")
         self.BotEnv = params.get("BotEnv")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TextResetResponse(AbstractModel):
@@ -350,3 +408,10 @@ class TextResetResponse(AbstractModel):
         self.SessionAttributes = params.get("SessionAttributes")
         self.ResponseText = params.get("ResponseText")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
