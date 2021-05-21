@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -43,6 +45,13 @@ class DataManipulationRequest(AbstractModel):
         self.Encoding = params.get("Encoding")
         self.Contents = params.get("Contents")
         self.ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DataManipulationResponse(AbstractModel):
@@ -66,6 +75,13 @@ class DataManipulationResponse(AbstractModel):
             self.Data = DataManipulationResult()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DataManipulationResult(AbstractModel):
@@ -106,6 +122,13 @@ class DataManipulationResult(AbstractModel):
                 obj._deserialize(item)
                 self.Result.append(obj)
         self.ErrorResult = params.get("ErrorResult")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DataManipulationResultItem(AbstractModel):
@@ -131,6 +154,13 @@ class DataManipulationResultItem(AbstractModel):
         self.Result = params.get("Result")
         self.DocId = params.get("DocId")
         self.Errno = params.get("Errno")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DataSearchRequest(AbstractModel):
@@ -236,6 +266,13 @@ class DataSearchRequest(AbstractModel):
         self.Longitude = params.get("Longitude")
         self.Latitude = params.get("Latitude")
         self.MultiFilter = params.get("MultiFilter")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DataSearchResponse(AbstractModel):
@@ -259,6 +296,13 @@ class DataSearchResponse(AbstractModel):
             self.Data = SearchResult()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SearchResult(AbstractModel):
@@ -312,6 +356,13 @@ class SearchResult(AbstractModel):
                 obj = SearchResultSeg()
                 obj._deserialize(item)
                 self.SegList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SearchResultItem(AbstractModel):
@@ -345,6 +396,13 @@ class SearchResultItem(AbstractModel):
         self.DocMeta = params.get("DocMeta")
         self.L2Score = params.get("L2Score")
         self.SearchDebuginfo = params.get("SearchDebuginfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SearchResultSeg(AbstractModel):
@@ -362,3 +420,10 @@ class SearchResultSeg(AbstractModel):
 
     def _deserialize(self, params):
         self.SegStr = params.get("SegStr")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

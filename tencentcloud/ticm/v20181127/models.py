@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -35,6 +37,13 @@ class Candidate(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Confidence = params.get("Confidence")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeVideoTaskRequest(AbstractModel):
@@ -52,6 +61,13 @@ class DescribeVideoTaskRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.VodTaskId = params.get("VodTaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeVideoTaskResponse(AbstractModel):
@@ -132,6 +148,13 @@ FINISH：已完成。
             self.MetaData = VodMetaData()
             self.MetaData._deserialize(params.get("MetaData"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DisgustResult(AbstractModel):
@@ -167,6 +190,13 @@ BLOCK：违规
         self.Msg = params.get("Msg")
         self.Suggestion = params.get("Suggestion")
         self.Confidence = params.get("Confidence")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FaceRect(AbstractModel):
@@ -196,6 +226,13 @@ class FaceRect(AbstractModel):
         self.Y = params.get("Y")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FaceResult(AbstractModel):
@@ -224,6 +261,13 @@ class FaceResult(AbstractModel):
                 obj = Candidate()
                 obj._deserialize(item)
                 self.Candidates.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ImageModerationRequest(AbstractModel):
@@ -268,6 +312,13 @@ class ImageModerationRequest(AbstractModel):
         self.Config = params.get("Config")
         self.Extra = params.get("Extra")
         self.ImageBase64 = params.get("ImageBase64")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ImageModerationResponse(AbstractModel):
@@ -324,6 +375,13 @@ BLOCK：违规
             self.DisgustResult = DisgustResult()
             self.DisgustResult._deserialize(params.get("DisgustResult"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PoliticsResult(AbstractModel):
@@ -386,6 +444,13 @@ Type为FACE时：
                 self.FaceResults.append(obj)
         self.Type = params.get("Type")
         self.AdvancedInfo = params.get("AdvancedInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PornResult(AbstractModel):
@@ -430,6 +495,13 @@ BLOCK：违规
         self.Confidence = params.get("Confidence")
         self.AdvancedInfo = params.get("AdvancedInfo")
         self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TerrorismResult(AbstractModel):
@@ -491,6 +563,13 @@ Type为FACE时：
                 self.FaceResults.append(obj)
         self.AdvancedInfo = params.get("AdvancedInfo")
         self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VideoModerationRequest(AbstractModel):
@@ -520,6 +599,13 @@ class VideoModerationRequest(AbstractModel):
         self.DeveloperId = params.get("DeveloperId")
         self.CBUrl = params.get("CBUrl")
         self.Extra = params.get("Extra")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VideoModerationResponse(AbstractModel):
@@ -541,6 +627,13 @@ class VideoModerationResponse(AbstractModel):
     def _deserialize(self, params):
         self.VodTaskId = params.get("VodTaskId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VodAsrTextSegmentItem(AbstractModel):
@@ -583,6 +676,13 @@ block。
         self.Confidence = params.get("Confidence")
         self.Suggestion = params.get("Suggestion")
         self.KeywordSet = params.get("KeywordSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VodAudioStreamItem(AbstractModel):
@@ -611,6 +711,13 @@ class VodAudioStreamItem(AbstractModel):
         self.Bitrate = params.get("Bitrate")
         self.SamplingRate = params.get("SamplingRate")
         self.Codec = params.get("Codec")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VodMetaData(AbstractModel):
@@ -689,6 +796,13 @@ class VodMetaData(AbstractModel):
                 self.AudioStreamSet.append(obj)
         self.VideoDuration = params.get("VideoDuration")
         self.AudioDuration = params.get("AudioDuration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VodOcrTextSegmentItem(AbstractModel):
@@ -736,6 +850,13 @@ block。
         self.Suggestion = params.get("Suggestion")
         self.KeywordSet = params.get("KeywordSet")
         self.AreaCoordSet = params.get("AreaCoordSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VodPoliticalAsrReviewResult(AbstractModel):
@@ -792,6 +913,13 @@ block。
                 obj = VodAsrTextSegmentItem()
                 obj._deserialize(item)
                 self.SegmentSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VodPoliticalOcrReviewResult(AbstractModel):
@@ -840,6 +968,13 @@ block。
                 obj = VodOcrTextSegmentItem()
                 obj._deserialize(item)
                 self.SegmentSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VodPoliticalReviewResult(AbstractModel):
@@ -899,6 +1034,13 @@ violation_photo：违规图标。
                 obj = VodPoliticalReviewSegmentItem()
                 obj._deserialize(item)
                 self.SegmentSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VodPoliticalReviewSegmentItem(AbstractModel):
@@ -962,6 +1104,13 @@ PicUrlExpireTime 时间点后图片将被删除）。
         self.Url = params.get("Url")
         self.PicUrlExpireTimeStamp = params.get("PicUrlExpireTimeStamp")
         self.AreaCoordSet = params.get("AreaCoordSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VodPornAsrReviewResult(AbstractModel):
@@ -1013,6 +1162,13 @@ block。
                 obj = VodAsrTextSegmentItem()
                 obj._deserialize(item)
                 self.SegmentSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VodPornOcrResult(AbstractModel):
@@ -1064,6 +1220,13 @@ block。
                 obj = VodOcrTextSegmentItem()
                 obj._deserialize(item)
                 self.SegmentSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VodPornReviewResult(AbstractModel):
@@ -1125,6 +1288,13 @@ intimacy：亲密行为。
                 obj = VodPornReviewSegmentItem()
                 obj._deserialize(item)
                 self.SegmentSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VodPornReviewSegmentItem(AbstractModel):
@@ -1178,6 +1348,13 @@ PicUrlExpireTime 时间点后图片将被删除）。
         self.Suggestion = params.get("Suggestion")
         self.Url = params.get("Url")
         self.PicUrlExpireTimeStamp = params.get("PicUrlExpireTimeStamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VodTerrorismReviewResult(AbstractModel):
@@ -1243,6 +1420,13 @@ terrorists：暴恐人物。
                 obj = VodPornReviewSegmentItem()
                 obj._deserialize(item)
                 self.SegmentSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VodVideoStreamItem(AbstractModel):
@@ -1281,3 +1465,10 @@ class VodVideoStreamItem(AbstractModel):
         self.Width = params.get("Width")
         self.Codec = params.get("Codec")
         self.Fps = params.get("Fps")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

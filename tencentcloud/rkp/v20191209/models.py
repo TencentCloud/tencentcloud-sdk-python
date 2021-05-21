@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -49,6 +51,13 @@ class DevInfoQ(AbstractModel):
                 obj._deserialize(item)
                 self.RiskInfo.append(obj)
         self.Probability = params.get("Probability")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetOpenIdRequest(AbstractModel):
@@ -82,6 +91,13 @@ class GetOpenIdRequest(AbstractModel):
         self.BusinessUserId = params.get("BusinessUserId")
         self.Platform = params.get("Platform")
         self.Option = params.get("Option")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetOpenIdResponse(AbstractModel):
@@ -114,6 +130,13 @@ class GetOpenIdResponse(AbstractModel):
                 obj._deserialize(item)
                 self.RiskInfo.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetTokenRequest(AbstractModel):
@@ -151,6 +174,13 @@ class GetTokenRequest(AbstractModel):
         self.AppClientIp = params.get("AppClientIp")
         self.ExpireTime = params.get("ExpireTime")
         self.OldToken = params.get("OldToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetTokenResponse(AbstractModel):
@@ -176,6 +206,13 @@ class GetTokenResponse(AbstractModel):
         self.Token = params.get("Token")
         self.ExpireTime = params.get("ExpireTime")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class QueryDevAndRiskRequest(AbstractModel):
@@ -285,6 +322,13 @@ class QueryDevAndRiskRequest(AbstractModel):
         self.IphoneModel = params.get("IphoneModel")
         self.Fingerprint = params.get("Fingerprint")
         self.SerialId = params.get("SerialId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class QueryDevAndRiskResponse(AbstractModel):
@@ -321,6 +365,13 @@ class QueryDevAndRiskResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Matches.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RiskDetail(AbstractModel):
@@ -343,6 +394,13 @@ class RiskDetail(AbstractModel):
     def _deserialize(self, params):
         self.RiskCode = params.get("RiskCode")
         self.RiskCodeValue = params.get("RiskCodeValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RiskInfo(AbstractModel):
@@ -365,3 +423,10 @@ class RiskInfo(AbstractModel):
     def _deserialize(self, params):
         self.Key = params.get("Key")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

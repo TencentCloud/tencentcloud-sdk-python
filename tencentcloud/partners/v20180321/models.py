@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -94,6 +96,13 @@ class AgentAuditedClient(AbstractModel):
         self.SalesUin = params.get("SalesUin")
         self.SalesName = params.get("SalesName")
         self.Mail = params.get("Mail")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AgentBillElem(AbstractModel):
@@ -162,6 +171,13 @@ class AgentBillElem(AbstractModel):
         self.ClientType = params.get("ClientType")
         self.ProjectType = params.get("ProjectType")
         self.ActivityId = params.get("ActivityId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AgentClientElem(AbstractModel):
@@ -217,6 +233,13 @@ class AgentClientElem(AbstractModel):
         self.Status = params.get("Status")
         self.SalesUin = params.get("SalesUin")
         self.SalesName = params.get("SalesName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AgentDealElem(AbstractModel):
@@ -363,6 +386,13 @@ class AgentDealElem(AbstractModel):
                 obj = ProductInfoElem()
                 obj._deserialize(item)
                 self.ProductInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AgentDealNewElem(AbstractModel):
@@ -509,6 +539,13 @@ class AgentDealNewElem(AbstractModel):
                 obj = ProductInfoElem()
                 obj._deserialize(item)
                 self.ProductInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AgentPayDealsRequest(AbstractModel):
@@ -534,6 +571,13 @@ class AgentPayDealsRequest(AbstractModel):
         self.OwnerUin = params.get("OwnerUin")
         self.AgentPay = params.get("AgentPay")
         self.DealNames = params.get("DealNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AgentPayDealsResponse(AbstractModel):
@@ -551,6 +595,13 @@ class AgentPayDealsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AgentSalesmanElem(AbstractModel):
@@ -580,6 +631,13 @@ class AgentSalesmanElem(AbstractModel):
         self.SalesUin = params.get("SalesUin")
         self.SalesName = params.get("SalesName")
         self.CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AgentTransferMoneyRequest(AbstractModel):
@@ -601,6 +659,13 @@ class AgentTransferMoneyRequest(AbstractModel):
     def _deserialize(self, params):
         self.ClientUin = params.get("ClientUin")
         self.Amount = params.get("Amount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AgentTransferMoneyResponse(AbstractModel):
@@ -618,6 +683,13 @@ class AgentTransferMoneyResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AuditApplyClientRequest(AbstractModel):
@@ -643,6 +715,13 @@ class AuditApplyClientRequest(AbstractModel):
         self.ClientUin = params.get("ClientUin")
         self.AuditResult = params.get("AuditResult")
         self.Note = params.get("Note")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AuditApplyClientResponse(AbstractModel):
@@ -676,6 +755,13 @@ class AuditApplyClientResponse(AbstractModel):
         self.AuditResult = params.get("AuditResult")
         self.AgentTime = params.get("AgentTime")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ClientBaseElem(AbstractModel):
@@ -709,6 +795,13 @@ class ClientBaseElem(AbstractModel):
         self.ClientRelateType = params.get("ClientRelateType")
         self.AgentCooperationMode = params.get("AgentCooperationMode")
         self.AgentCountry = params.get("AgentCountry")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreatePayRelationForClientRequest(AbstractModel):
@@ -726,6 +819,13 @@ class CreatePayRelationForClientRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.ClientUin = params.get("ClientUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreatePayRelationForClientResponse(AbstractModel):
@@ -743,6 +843,13 @@ class CreatePayRelationForClientResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DealGoodsPriceElem(AbstractModel):
@@ -760,6 +867,13 @@ class DealGoodsPriceElem(AbstractModel):
 
     def _deserialize(self, params):
         self.RealTotalCost = params.get("RealTotalCost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DealGoodsPriceNewElem(AbstractModel):
@@ -777,6 +891,13 @@ class DealGoodsPriceNewElem(AbstractModel):
 
     def _deserialize(self, params):
         self.RealTotalCost = params.get("RealTotalCost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAgentAuditedClientsRequest(AbstractModel):
@@ -842,6 +963,13 @@ class DescribeAgentAuditedClientsRequest(AbstractModel):
         self.ProjectType = params.get("ProjectType")
         self.SalesUin = params.get("SalesUin")
         self.SalesName = params.get("SalesName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAgentAuditedClientsResponse(AbstractModel):
@@ -872,6 +1000,13 @@ class DescribeAgentAuditedClientsResponse(AbstractModel):
                 self.AgentClientSet.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAgentBillsRequest(AbstractModel):
@@ -913,6 +1048,13 @@ class DescribeAgentBillsRequest(AbstractModel):
         self.ClientRemark = params.get("ClientRemark")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAgentBillsResponse(AbstractModel):
@@ -943,6 +1085,13 @@ class DescribeAgentBillsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.AgentBillSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAgentClientGradeRequest(AbstractModel):
@@ -960,6 +1109,13 @@ class DescribeAgentClientGradeRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.ClientUin = params.get("ClientUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAgentClientGradeResponse(AbstractModel):
@@ -993,6 +1149,13 @@ class DescribeAgentClientGradeResponse(AbstractModel):
         self.ClientGrade = params.get("ClientGrade")
         self.ClientType = params.get("ClientType")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAgentClientsRequest(AbstractModel):
@@ -1038,6 +1201,13 @@ class DescribeAgentClientsRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.SalesUin = params.get("SalesUin")
         self.SalesName = params.get("SalesName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAgentClientsResponse(AbstractModel):
@@ -1068,6 +1238,13 @@ class DescribeAgentClientsResponse(AbstractModel):
                 self.AgentClientSet.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAgentDealsByCacheRequest(AbstractModel):
@@ -1117,6 +1294,13 @@ class DescribeAgentDealsByCacheRequest(AbstractModel):
         self.OwnerUins = params.get("OwnerUins")
         self.DealNames = params.get("DealNames")
         self.PayerMode = params.get("PayerMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAgentDealsByCacheResponse(AbstractModel):
@@ -1147,6 +1331,13 @@ class DescribeAgentDealsByCacheResponse(AbstractModel):
                 self.AgentDealSet.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAgentDealsCacheRequest(AbstractModel):
@@ -1196,6 +1387,13 @@ class DescribeAgentDealsCacheRequest(AbstractModel):
         self.OwnerUins = params.get("OwnerUins")
         self.DealNames = params.get("DealNames")
         self.PayerMode = params.get("PayerMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAgentDealsCacheResponse(AbstractModel):
@@ -1226,6 +1424,13 @@ class DescribeAgentDealsCacheResponse(AbstractModel):
                 self.AgentDealSet.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAgentPayDealsRequest(AbstractModel):
@@ -1271,6 +1476,13 @@ class DescribeAgentPayDealsRequest(AbstractModel):
         self.Status = params.get("Status")
         self.OwnerUins = params.get("OwnerUins")
         self.DealNames = params.get("DealNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAgentPayDealsResponse(AbstractModel):
@@ -1301,6 +1513,13 @@ class DescribeAgentPayDealsResponse(AbstractModel):
                 self.AgentPayDealSet.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAgentPayDealsV2Request(AbstractModel):
@@ -1346,6 +1565,13 @@ class DescribeAgentPayDealsV2Request(AbstractModel):
         self.Status = params.get("Status")
         self.OwnerUins = params.get("OwnerUins")
         self.DealNames = params.get("DealNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAgentPayDealsV2Response(AbstractModel):
@@ -1376,6 +1602,13 @@ class DescribeAgentPayDealsV2Response(AbstractModel):
                 self.AgentPayDealSet.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAgentSelfPayDealsRequest(AbstractModel):
@@ -1421,6 +1654,13 @@ class DescribeAgentSelfPayDealsRequest(AbstractModel):
         self.Order = params.get("Order")
         self.Status = params.get("Status")
         self.DealNames = params.get("DealNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAgentSelfPayDealsResponse(AbstractModel):
@@ -1451,6 +1691,13 @@ class DescribeAgentSelfPayDealsResponse(AbstractModel):
                 self.AgentPayDealSet.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAgentSelfPayDealsV2Request(AbstractModel):
@@ -1496,6 +1743,13 @@ class DescribeAgentSelfPayDealsV2Request(AbstractModel):
         self.Order = params.get("Order")
         self.Status = params.get("Status")
         self.DealNames = params.get("DealNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAgentSelfPayDealsV2Response(AbstractModel):
@@ -1526,6 +1780,13 @@ class DescribeAgentSelfPayDealsV2Response(AbstractModel):
                 self.AgentPayDealSet.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeClientBalanceRequest(AbstractModel):
@@ -1543,6 +1804,13 @@ class DescribeClientBalanceRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.ClientUin = params.get("ClientUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeClientBalanceResponse(AbstractModel):
@@ -1568,6 +1836,13 @@ class DescribeClientBalanceResponse(AbstractModel):
         self.Balance = params.get("Balance")
         self.Cash = params.get("Cash")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeClientBaseInfoRequest(AbstractModel):
@@ -1585,6 +1860,13 @@ class DescribeClientBaseInfoRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.ClientUin = params.get("ClientUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeClientBaseInfoResponse(AbstractModel):
@@ -1615,6 +1897,13 @@ class DescribeClientBaseInfoResponse(AbstractModel):
                 self.ClientBaseSet.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeRebateInfosRequest(AbstractModel):
@@ -1640,6 +1929,13 @@ class DescribeRebateInfosRequest(AbstractModel):
         self.RebateMonth = params.get("RebateMonth")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeRebateInfosResponse(AbstractModel):
@@ -1670,6 +1966,13 @@ class DescribeRebateInfosResponse(AbstractModel):
                 self.RebateInfoSet.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSalesmansRequest(AbstractModel):
@@ -1703,6 +2006,13 @@ class DescribeSalesmansRequest(AbstractModel):
         self.SalesName = params.get("SalesName")
         self.SalesUin = params.get("SalesUin")
         self.OrderDirection = params.get("OrderDirection")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSalesmansResponse(AbstractModel):
@@ -1733,6 +2043,13 @@ class DescribeSalesmansResponse(AbstractModel):
                 self.AgentSalesmanSet.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeUnbindClientListRequest(AbstractModel):
@@ -1774,6 +2091,13 @@ class DescribeUnbindClientListRequest(AbstractModel):
         self.ApplyTimeStart = params.get("ApplyTimeStart")
         self.ApplyTimeEnd = params.get("ApplyTimeEnd")
         self.OrderDirection = params.get("OrderDirection")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeUnbindClientListResponse(AbstractModel):
@@ -1804,6 +2128,13 @@ class DescribeUnbindClientListResponse(AbstractModel):
                 obj._deserialize(item)
                 self.UnbindClientList.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyClientRemarkRequest(AbstractModel):
@@ -1825,6 +2156,13 @@ class ModifyClientRemarkRequest(AbstractModel):
     def _deserialize(self, params):
         self.ClientRemark = params.get("ClientRemark")
         self.ClientUin = params.get("ClientUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyClientRemarkResponse(AbstractModel):
@@ -1842,6 +2180,13 @@ class ModifyClientRemarkResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ProductInfoElem(AbstractModel):
@@ -1863,6 +2208,13 @@ class ProductInfoElem(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RebateInfoElem(AbstractModel):
@@ -1900,6 +2252,13 @@ class RebateInfoElem(AbstractModel):
         self.MonthSales = params.get("MonthSales")
         self.QuarterSales = params.get("QuarterSales")
         self.ExceptionFlag = params.get("ExceptionFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RemovePayRelationForClientRequest(AbstractModel):
@@ -1917,6 +2276,13 @@ class RemovePayRelationForClientRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.ClientUin = params.get("ClientUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RemovePayRelationForClientResponse(AbstractModel):
@@ -1934,6 +2300,13 @@ class RemovePayRelationForClientResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UnbindClientElem(AbstractModel):
@@ -1969,3 +2342,10 @@ class UnbindClientElem(AbstractModel):
         self.Status = params.get("Status")
         self.ApplyTime = params.get("ApplyTime")
         self.ActionTime = params.get("ActionTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

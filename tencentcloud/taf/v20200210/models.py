@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -33,6 +35,13 @@ class DetectFraudKOLRequest(AbstractModel):
         if params.get("BspData") is not None:
             self.BspData = InputKolBspData()
             self.BspData._deserialize(params.get("BspData"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DetectFraudKOLResponse(AbstractModel):
@@ -57,6 +66,13 @@ class DetectFraudKOLResponse(AbstractModel):
             self.Data = OutputKolData()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class EnhanceTaDegreeRequest(AbstractModel):
@@ -76,6 +92,13 @@ class EnhanceTaDegreeRequest(AbstractModel):
         if params.get("BspData") is not None:
             self.BspData = InputTaBspData()
             self.BspData._deserialize(params.get("BspData"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class EnhanceTaDegreeResponse(AbstractModel):
@@ -100,6 +123,13 @@ class EnhanceTaDegreeResponse(AbstractModel):
             self.Data = OutputTaData()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InputKolBspData(AbstractModel):
@@ -122,6 +152,13 @@ class InputKolBspData(AbstractModel):
                 obj = InputKolDataList()
                 obj._deserialize(item)
                 self.DataList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InputKolDataList(AbstractModel):
@@ -155,6 +192,13 @@ class InputKolDataList(AbstractModel):
         self.Name = params.get("Name")
         self.Phone = params.get("Phone")
         self.AgentInfo = params.get("AgentInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InputRecognizeEffectiveFlow(AbstractModel):
@@ -326,6 +370,13 @@ class InputRecognizeTargetAudience(AbstractModel):
         self.AppName = params.get("AppName")
         self.AppVer = params.get("AppVer")
         self.ReqType = params.get("ReqType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InputSendTrafficSecuritySmsMsg(AbstractModel):
@@ -347,6 +398,13 @@ class InputSendTrafficSecuritySmsMsg(AbstractModel):
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
         self.Mobiles = params.get("Mobiles")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InputTaBspData(AbstractModel):
@@ -460,6 +518,13 @@ class InputTaBspData(AbstractModel):
         self.Latitude = params.get("Latitude")
         self.Longitude = params.get("Longitude")
         self.Context = params.get("Context")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class OutputKolData(AbstractModel):
@@ -493,6 +558,13 @@ class OutputKolData(AbstractModel):
                 obj = OutputKolValue()
                 obj._deserialize(item)
                 self.Value.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class OutputKolValue(AbstractModel):
@@ -526,6 +598,13 @@ class OutputKolValue(AbstractModel):
         self.IsCheck = params.get("IsCheck")
         self.FraudPScore = params.get("FraudPScore")
         self.EvilPScore = params.get("EvilPScore")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class OutputRecognizeEffectiveFlow(AbstractModel):
@@ -556,6 +635,13 @@ class OutputRecognizeEffectiveFlow(AbstractModel):
         if params.get("Value") is not None:
             self.Value = OutputRecognizeEffectiveFlowValue()
             self.Value._deserialize(params.get("Value"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class OutputRecognizeEffectiveFlowValue(AbstractModel):
@@ -579,6 +665,13 @@ class OutputRecognizeEffectiveFlowValue(AbstractModel):
     def _deserialize(self, params):
         self.Lable = params.get("Lable")
         self.Score = params.get("Score")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class OutputRecognizeTargetAudience(AbstractModel):
@@ -611,6 +704,13 @@ class OutputRecognizeTargetAudience(AbstractModel):
                 obj = OutputRecognizeTargetAudienceValue()
                 obj._deserialize(item)
                 self.Value.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class OutputRecognizeTargetAudienceValue(AbstractModel):
@@ -639,6 +739,13 @@ class OutputRecognizeTargetAudienceValue(AbstractModel):
         self.ModelId = params.get("ModelId")
         self.IsFound = params.get("IsFound")
         self.Score = params.get("Score")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class OutputSendTrafficSecuritySmsMsg(AbstractModel):
@@ -666,6 +773,13 @@ class OutputSendTrafficSecuritySmsMsg(AbstractModel):
         self.Code = params.get("Code")
         self.Message = params.get("Message")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class OutputTaData(AbstractModel):
@@ -695,6 +809,13 @@ class OutputTaData(AbstractModel):
         if params.get("Value") is not None:
             self.Value = OutputTaValue()
             self.Value._deserialize(params.get("Value"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class OutputTaValue(AbstractModel):
@@ -718,6 +839,13 @@ class OutputTaValue(AbstractModel):
     def _deserialize(self, params):
         self.IsCheck = params.get("IsCheck")
         self.IsMatch = params.get("IsMatch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RecognizeCustomizedAudienceRequest(AbstractModel):
@@ -737,6 +865,13 @@ class RecognizeCustomizedAudienceRequest(AbstractModel):
         if params.get("BspData") is not None:
             self.BspData = InputRecognizeTargetAudience()
             self.BspData._deserialize(params.get("BspData"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RecognizeCustomizedAudienceResponse(AbstractModel):
@@ -761,6 +896,13 @@ class RecognizeCustomizedAudienceResponse(AbstractModel):
             self.Data = OutputRecognizeTargetAudience()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RecognizeEffectiveFlowRequest(AbstractModel):
@@ -780,6 +922,13 @@ class RecognizeEffectiveFlowRequest(AbstractModel):
         if params.get("BusinessSecurityData") is not None:
             self.BusinessSecurityData = InputRecognizeEffectiveFlow()
             self.BusinessSecurityData._deserialize(params.get("BusinessSecurityData"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RecognizeEffectiveFlowResponse(AbstractModel):
@@ -803,6 +952,13 @@ class RecognizeEffectiveFlowResponse(AbstractModel):
             self.Data = OutputRecognizeEffectiveFlow()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RecognizePreciseTargetAudienceRequest(AbstractModel):
@@ -822,6 +978,13 @@ class RecognizePreciseTargetAudienceRequest(AbstractModel):
         if params.get("BspData") is not None:
             self.BspData = InputRecognizeTargetAudience()
             self.BspData._deserialize(params.get("BspData"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RecognizePreciseTargetAudienceResponse(AbstractModel):
@@ -846,6 +1009,13 @@ class RecognizePreciseTargetAudienceResponse(AbstractModel):
             self.Data = OutputRecognizeTargetAudience()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RecognizeTargetAudienceRequest(AbstractModel):
@@ -865,6 +1035,13 @@ class RecognizeTargetAudienceRequest(AbstractModel):
         if params.get("BspData") is not None:
             self.BspData = InputRecognizeTargetAudience()
             self.BspData._deserialize(params.get("BspData"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RecognizeTargetAudienceResponse(AbstractModel):
@@ -889,6 +1066,13 @@ class RecognizeTargetAudienceResponse(AbstractModel):
             self.Data = OutputRecognizeTargetAudience()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SendTrafficSecuritySmsMessageRequest(AbstractModel):
@@ -908,6 +1092,13 @@ class SendTrafficSecuritySmsMessageRequest(AbstractModel):
         if params.get("BspData") is not None:
             self.BspData = InputSendTrafficSecuritySmsMsg()
             self.BspData._deserialize(params.get("BspData"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SendTrafficSecuritySmsMessageResponse(AbstractModel):
@@ -932,3 +1123,10 @@ class SendTrafficSecuritySmsMessageResponse(AbstractModel):
             self.Data = OutputSendTrafficSecuritySmsMsg()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

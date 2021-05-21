@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -63,6 +65,13 @@ class CreateFlowServiceRequest(AbstractModel):
         self.Description = params.get("Description")
         self.EnableCLS = params.get("EnableCLS")
         self.Input = params.get("Input")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateFlowServiceResponse(AbstractModel):
@@ -88,6 +97,13 @@ class CreateFlowServiceResponse(AbstractModel):
         self.FlowServiceResource = params.get("FlowServiceResource")
         self.CreateDate = params.get("CreateDate")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeExecutionHistoryRequest(AbstractModel):
@@ -105,6 +121,13 @@ class DescribeExecutionHistoryRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.ExecutionResourceName = params.get("ExecutionResourceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeExecutionHistoryResponse(AbstractModel):
@@ -131,6 +154,13 @@ class DescribeExecutionHistoryResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Events.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeExecutionRequest(AbstractModel):
@@ -148,6 +178,13 @@ class DescribeExecutionRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.ExecutionResourceName = params.get("ExecutionResourceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeExecutionResponse(AbstractModel):
@@ -203,6 +240,13 @@ class DescribeExecutionResponse(AbstractModel):
         self.Output = params.get("Output")
         self.ExecutionDefinition = params.get("ExecutionDefinition")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeExecutionsRequest(AbstractModel):
@@ -236,6 +280,13 @@ class DescribeExecutionsRequest(AbstractModel):
         self.PageIndex = params.get("PageIndex")
         self.FilterExecutionStatus = params.get("FilterExecutionStatus")
         self.FilterExecutionResourceName = params.get("FilterExecutionResourceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeExecutionsResponse(AbstractModel):
@@ -253,6 +304,13 @@ class DescribeExecutionsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeFlowServiceDetailRequest(AbstractModel):
@@ -270,6 +328,13 @@ class DescribeFlowServiceDetailRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.FlowServiceResource = params.get("FlowServiceResource")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeFlowServiceDetailResponse(AbstractModel):
@@ -338,6 +403,13 @@ class DescribeFlowServiceDetailResponse(AbstractModel):
         self.CLSUrl = params.get("CLSUrl")
         self.FlowInput = params.get("FlowInput")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeFlowServicesRequest(AbstractModel):
@@ -368,6 +440,13 @@ class DescribeFlowServicesRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeFlowServicesResponse(AbstractModel):
@@ -398,6 +477,13 @@ class DescribeFlowServicesResponse(AbstractModel):
                 self.FlowServiceSet.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ExecutionEvent(AbstractModel):
@@ -444,6 +530,13 @@ class ExecutionEvent(AbstractModel):
         self.Timestamp = params.get("Timestamp")
         self.Content = params.get("Content")
         self.Exception = params.get("Exception")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Filter(AbstractModel):
@@ -465,6 +558,13 @@ class Filter(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyFlowServiceRequest(AbstractModel):
@@ -514,6 +614,13 @@ class ModifyFlowServiceRequest(AbstractModel):
         self.RoleResource = params.get("RoleResource")
         self.Description = params.get("Description")
         self.EnableCLS = params.get("EnableCLS")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyFlowServiceResponse(AbstractModel):
@@ -539,6 +646,13 @@ class ModifyFlowServiceResponse(AbstractModel):
         self.FlowServiceResource = params.get("FlowServiceResource")
         self.UpdateDate = params.get("UpdateDate")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StartExecutionRequest(AbstractModel):
@@ -564,6 +678,13 @@ class StartExecutionRequest(AbstractModel):
         self.StateMachineResourceName = params.get("StateMachineResourceName")
         self.Input = params.get("Input")
         self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StartExecutionResponse(AbstractModel):
@@ -589,6 +710,13 @@ class StartExecutionResponse(AbstractModel):
         self.ExecutionResourceName = params.get("ExecutionResourceName")
         self.StartDate = params.get("StartDate")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StateMachine(AbstractModel):
@@ -652,6 +780,13 @@ class StateMachine(AbstractModel):
         self.FlowServiceId = params.get("FlowServiceId")
         self.TemplateId = params.get("TemplateId")
         self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StopExecutionRequest(AbstractModel):
@@ -669,6 +804,13 @@ class StopExecutionRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.ExecutionQrn = params.get("ExecutionQrn")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StopExecutionResponse(AbstractModel):
@@ -686,3 +828,10 @@ class StopExecutionResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

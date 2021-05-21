@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -98,6 +100,13 @@ class Activity(AbstractModel):
                 obj = LifecycleActionResultInfo()
                 obj._deserialize(item)
                 self.LifecycleActionResultSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ActivtyRelatedInstance(AbstractModel):
@@ -123,6 +132,13 @@ class ActivtyRelatedInstance(AbstractModel):
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.InstanceStatus = params.get("InstanceStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AttachInstancesRequest(AbstractModel):
@@ -144,6 +160,13 @@ class AttachInstancesRequest(AbstractModel):
     def _deserialize(self, params):
         self.AutoScalingGroupId = params.get("AutoScalingGroupId")
         self.InstanceIds = params.get("InstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AttachInstancesResponse(AbstractModel):
@@ -165,6 +188,13 @@ class AttachInstancesResponse(AbstractModel):
     def _deserialize(self, params):
         self.ActivityId = params.get("ActivityId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AutoScalingGroup(AbstractModel):
@@ -296,6 +326,13 @@ class AutoScalingGroup(AbstractModel):
             self.ServiceSettings._deserialize(params.get("ServiceSettings"))
         self.Ipv6AddressCount = params.get("Ipv6AddressCount")
         self.MultiZoneSubnetPolicy = params.get("MultiZoneSubnetPolicy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AutoScalingGroupAbstract(AbstractModel):
@@ -317,6 +354,13 @@ class AutoScalingGroupAbstract(AbstractModel):
     def _deserialize(self, params):
         self.AutoScalingGroupId = params.get("AutoScalingGroupId")
         self.AutoScalingGroupName = params.get("AutoScalingGroupName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AutoScalingNotification(AbstractModel):
@@ -346,6 +390,13 @@ class AutoScalingNotification(AbstractModel):
         self.NotificationUserGroupIds = params.get("NotificationUserGroupIds")
         self.NotificationTypes = params.get("NotificationTypes")
         self.AutoScalingNotificationId = params.get("AutoScalingNotificationId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ClearLaunchConfigurationAttributesRequest(AbstractModel):
@@ -368,6 +419,13 @@ class ClearLaunchConfigurationAttributesRequest(AbstractModel):
     def _deserialize(self, params):
         self.LaunchConfigurationId = params.get("LaunchConfigurationId")
         self.ClearDataDisks = params.get("ClearDataDisks")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ClearLaunchConfigurationAttributesResponse(AbstractModel):
@@ -385,6 +443,13 @@ class ClearLaunchConfigurationAttributesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CompleteLifecycleActionRequest(AbstractModel):
@@ -414,6 +479,13 @@ class CompleteLifecycleActionRequest(AbstractModel):
         self.LifecycleActionResult = params.get("LifecycleActionResult")
         self.InstanceId = params.get("InstanceId")
         self.LifecycleActionToken = params.get("LifecycleActionToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CompleteLifecycleActionResponse(AbstractModel):
@@ -431,6 +503,13 @@ class CompleteLifecycleActionResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateAutoScalingGroupFromInstanceRequest(AbstractModel):
@@ -468,6 +547,13 @@ class CreateAutoScalingGroupFromInstanceRequest(AbstractModel):
         self.MaxSize = params.get("MaxSize")
         self.DesiredCapacity = params.get("DesiredCapacity")
         self.InheritInstanceTag = params.get("InheritInstanceTag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateAutoScalingGroupFromInstanceResponse(AbstractModel):
@@ -489,6 +575,13 @@ class CreateAutoScalingGroupFromInstanceResponse(AbstractModel):
     def _deserialize(self, params):
         self.AutoScalingGroupId = params.get("AutoScalingGroupId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateAutoScalingGroupRequest(AbstractModel):
@@ -608,6 +701,13 @@ class CreateAutoScalingGroupRequest(AbstractModel):
             self.ServiceSettings._deserialize(params.get("ServiceSettings"))
         self.Ipv6AddressCount = params.get("Ipv6AddressCount")
         self.MultiZoneSubnetPolicy = params.get("MultiZoneSubnetPolicy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateAutoScalingGroupResponse(AbstractModel):
@@ -629,6 +729,13 @@ class CreateAutoScalingGroupResponse(AbstractModel):
     def _deserialize(self, params):
         self.AutoScalingGroupId = params.get("AutoScalingGroupId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateLaunchConfigurationRequest(AbstractModel):
@@ -766,6 +873,13 @@ class CreateLaunchConfigurationRequest(AbstractModel):
             self.InstanceChargePrepaid = InstanceChargePrepaid()
             self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
         self.DiskTypePolicy = params.get("DiskTypePolicy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateLaunchConfigurationResponse(AbstractModel):
@@ -787,6 +901,13 @@ class CreateLaunchConfigurationResponse(AbstractModel):
     def _deserialize(self, params):
         self.LaunchConfigurationId = params.get("LaunchConfigurationId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateLifecycleHookRequest(AbstractModel):
@@ -834,6 +955,13 @@ class CreateLifecycleHookRequest(AbstractModel):
             self.NotificationTarget = NotificationTarget()
             self.NotificationTarget._deserialize(params.get("NotificationTarget"))
         self.LifecycleTransitionType = params.get("LifecycleTransitionType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateLifecycleHookResponse(AbstractModel):
@@ -855,6 +983,13 @@ class CreateLifecycleHookResponse(AbstractModel):
     def _deserialize(self, params):
         self.LifecycleHookId = params.get("LifecycleHookId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateNotificationConfigurationRequest(AbstractModel):
@@ -886,6 +1021,13 @@ class CreateNotificationConfigurationRequest(AbstractModel):
         self.AutoScalingGroupId = params.get("AutoScalingGroupId")
         self.NotificationTypes = params.get("NotificationTypes")
         self.NotificationUserGroupIds = params.get("NotificationUserGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateNotificationConfigurationResponse(AbstractModel):
@@ -907,6 +1049,13 @@ class CreateNotificationConfigurationResponse(AbstractModel):
     def _deserialize(self, params):
         self.AutoScalingNotificationId = params.get("AutoScalingNotificationId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreatePaiInstanceRequest(AbstractModel):
@@ -970,6 +1119,13 @@ class CreatePaiInstanceRequest(AbstractModel):
         if params.get("InstanceChargePrepaid") is not None:
             self.InstanceChargePrepaid = InstanceChargePrepaid()
             self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreatePaiInstanceResponse(AbstractModel):
@@ -991,6 +1147,13 @@ class CreatePaiInstanceResponse(AbstractModel):
     def _deserialize(self, params):
         self.InstanceIdSet = params.get("InstanceIdSet")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateScalingPolicyRequest(AbstractModel):
@@ -1034,6 +1197,13 @@ class CreateScalingPolicyRequest(AbstractModel):
             self.MetricAlarm._deserialize(params.get("MetricAlarm"))
         self.Cooldown = params.get("Cooldown")
         self.NotificationUserGroupIds = params.get("NotificationUserGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateScalingPolicyResponse(AbstractModel):
@@ -1055,6 +1225,13 @@ class CreateScalingPolicyResponse(AbstractModel):
     def _deserialize(self, params):
         self.AutoScalingPolicyId = params.get("AutoScalingPolicyId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateScheduledActionRequest(AbstractModel):
@@ -1100,6 +1277,13 @@ class CreateScheduledActionRequest(AbstractModel):
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
         self.Recurrence = params.get("Recurrence")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateScheduledActionResponse(AbstractModel):
@@ -1121,6 +1305,13 @@ class CreateScheduledActionResponse(AbstractModel):
     def _deserialize(self, params):
         self.ScheduledActionId = params.get("ScheduledActionId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DataDisk(AbstractModel):
@@ -1149,6 +1340,13 @@ class DataDisk(AbstractModel):
         self.DiskType = params.get("DiskType")
         self.DiskSize = params.get("DiskSize")
         self.SnapshotId = params.get("SnapshotId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteAutoScalingGroupRequest(AbstractModel):
@@ -1166,6 +1364,13 @@ class DeleteAutoScalingGroupRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.AutoScalingGroupId = params.get("AutoScalingGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteAutoScalingGroupResponse(AbstractModel):
@@ -1183,6 +1388,13 @@ class DeleteAutoScalingGroupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteLaunchConfigurationRequest(AbstractModel):
@@ -1200,6 +1412,13 @@ class DeleteLaunchConfigurationRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.LaunchConfigurationId = params.get("LaunchConfigurationId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteLaunchConfigurationResponse(AbstractModel):
@@ -1217,6 +1436,13 @@ class DeleteLaunchConfigurationResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteLifecycleHookRequest(AbstractModel):
@@ -1234,6 +1460,13 @@ class DeleteLifecycleHookRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.LifecycleHookId = params.get("LifecycleHookId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteLifecycleHookResponse(AbstractModel):
@@ -1251,6 +1484,13 @@ class DeleteLifecycleHookResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteNotificationConfigurationRequest(AbstractModel):
@@ -1268,6 +1508,13 @@ class DeleteNotificationConfigurationRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.AutoScalingNotificationId = params.get("AutoScalingNotificationId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteNotificationConfigurationResponse(AbstractModel):
@@ -1285,6 +1532,13 @@ class DeleteNotificationConfigurationResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteScalingPolicyRequest(AbstractModel):
@@ -1302,6 +1556,13 @@ class DeleteScalingPolicyRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.AutoScalingPolicyId = params.get("AutoScalingPolicyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteScalingPolicyResponse(AbstractModel):
@@ -1319,6 +1580,13 @@ class DeleteScalingPolicyResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteScheduledActionRequest(AbstractModel):
@@ -1336,6 +1604,13 @@ class DeleteScheduledActionRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.ScheduledActionId = params.get("ScheduledActionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteScheduledActionResponse(AbstractModel):
@@ -1353,6 +1628,13 @@ class DeleteScheduledActionResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAccountLimitsRequest(AbstractModel):
@@ -1392,6 +1674,13 @@ class DescribeAccountLimitsResponse(AbstractModel):
         self.MaxNumberOfAutoScalingGroups = params.get("MaxNumberOfAutoScalingGroups")
         self.NumberOfAutoScalingGroups = params.get("NumberOfAutoScalingGroups")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAutoScalingActivitiesRequest(AbstractModel):
@@ -1439,6 +1728,13 @@ class DescribeAutoScalingActivitiesRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAutoScalingActivitiesResponse(AbstractModel):
@@ -1469,6 +1765,13 @@ class DescribeAutoScalingActivitiesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ActivitySet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAutoScalingGroupLastActivitiesRequest(AbstractModel):
@@ -1486,6 +1789,13 @@ class DescribeAutoScalingGroupLastActivitiesRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.AutoScalingGroupIds = params.get("AutoScalingGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAutoScalingGroupLastActivitiesResponse(AbstractModel):
@@ -1512,6 +1822,13 @@ class DescribeAutoScalingGroupLastActivitiesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ActivitySet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAutoScalingGroupsRequest(AbstractModel):
@@ -1554,6 +1871,13 @@ class DescribeAutoScalingGroupsRequest(AbstractModel):
                 self.Filters.append(obj)
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAutoScalingGroupsResponse(AbstractModel):
@@ -1584,6 +1908,13 @@ class DescribeAutoScalingGroupsResponse(AbstractModel):
                 self.AutoScalingGroupSet.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAutoScalingInstancesRequest(AbstractModel):
@@ -1621,6 +1952,13 @@ class DescribeAutoScalingInstancesRequest(AbstractModel):
                 self.Filters.append(obj)
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAutoScalingInstancesResponse(AbstractModel):
@@ -1651,6 +1989,13 @@ class DescribeAutoScalingInstancesResponse(AbstractModel):
                 self.AutoScalingInstanceSet.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeLaunchConfigurationsRequest(AbstractModel):
@@ -1689,6 +2034,13 @@ class DescribeLaunchConfigurationsRequest(AbstractModel):
                 self.Filters.append(obj)
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeLaunchConfigurationsResponse(AbstractModel):
@@ -1719,6 +2071,13 @@ class DescribeLaunchConfigurationsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.LaunchConfigurationSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeLifecycleHooksRequest(AbstractModel):
@@ -1761,6 +2120,13 @@ class DescribeLifecycleHooksRequest(AbstractModel):
                 self.Filters.append(obj)
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeLifecycleHooksResponse(AbstractModel):
@@ -1791,6 +2157,13 @@ class DescribeLifecycleHooksResponse(AbstractModel):
                 self.LifecycleHookSet.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeNotificationConfigurationsRequest(AbstractModel):
@@ -1828,6 +2201,13 @@ class DescribeNotificationConfigurationsRequest(AbstractModel):
                 self.Filters.append(obj)
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeNotificationConfigurationsResponse(AbstractModel):
@@ -1858,6 +2238,13 @@ class DescribeNotificationConfigurationsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.AutoScalingNotificationSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribePaiInstancesRequest(AbstractModel):
@@ -1892,6 +2279,13 @@ class DescribePaiInstancesRequest(AbstractModel):
                 self.Filters.append(obj)
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribePaiInstancesResponse(AbstractModel):
@@ -1922,6 +2316,13 @@ class DescribePaiInstancesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.PaiInstanceSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeScalingPoliciesRequest(AbstractModel):
@@ -1960,6 +2361,13 @@ class DescribeScalingPoliciesRequest(AbstractModel):
                 self.Filters.append(obj)
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeScalingPoliciesResponse(AbstractModel):
@@ -1990,6 +2398,13 @@ class DescribeScalingPoliciesResponse(AbstractModel):
                 self.ScalingPolicySet.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeScheduledActionsRequest(AbstractModel):
@@ -2027,6 +2442,13 @@ class DescribeScheduledActionsRequest(AbstractModel):
                 self.Filters.append(obj)
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeScheduledActionsResponse(AbstractModel):
@@ -2057,6 +2479,13 @@ class DescribeScheduledActionsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ScheduledActionSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DetachInstancesRequest(AbstractModel):
@@ -2078,6 +2507,13 @@ class DetachInstancesRequest(AbstractModel):
     def _deserialize(self, params):
         self.AutoScalingGroupId = params.get("AutoScalingGroupId")
         self.InstanceIds = params.get("InstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DetachInstancesResponse(AbstractModel):
@@ -2099,6 +2535,13 @@ class DetachInstancesResponse(AbstractModel):
     def _deserialize(self, params):
         self.ActivityId = params.get("ActivityId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DisableAutoScalingGroupRequest(AbstractModel):
@@ -2116,6 +2559,13 @@ class DisableAutoScalingGroupRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.AutoScalingGroupId = params.get("AutoScalingGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DisableAutoScalingGroupResponse(AbstractModel):
@@ -2133,6 +2583,13 @@ class DisableAutoScalingGroupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class EnableAutoScalingGroupRequest(AbstractModel):
@@ -2150,6 +2607,13 @@ class EnableAutoScalingGroupRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.AutoScalingGroupId = params.get("AutoScalingGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class EnableAutoScalingGroupResponse(AbstractModel):
@@ -2167,6 +2631,13 @@ class EnableAutoScalingGroupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class EnhancedService(AbstractModel):
@@ -2192,6 +2663,13 @@ class EnhancedService(AbstractModel):
         if params.get("MonitorService") is not None:
             self.MonitorService = RunMonitorServiceEnabled()
             self.MonitorService._deserialize(params.get("MonitorService"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ExecuteScalingPolicyRequest(AbstractModel):
@@ -2217,6 +2695,13 @@ class ExecuteScalingPolicyRequest(AbstractModel):
         self.AutoScalingPolicyId = params.get("AutoScalingPolicyId")
         self.HonorCooldown = params.get("HonorCooldown")
         self.TriggerSource = params.get("TriggerSource")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ExecuteScalingPolicyResponse(AbstractModel):
@@ -2238,6 +2723,13 @@ class ExecuteScalingPolicyResponse(AbstractModel):
     def _deserialize(self, params):
         self.ActivityId = params.get("ActivityId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Filter(AbstractModel):
@@ -2270,6 +2762,13 @@ class Filter(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ForwardLoadBalancer(AbstractModel):
@@ -2308,6 +2807,13 @@ class ForwardLoadBalancer(AbstractModel):
                 self.TargetAttributes.append(obj)
         self.LocationId = params.get("LocationId")
         self.Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class HostNameSettings(AbstractModel):
@@ -2336,6 +2842,13 @@ class HostNameSettings(AbstractModel):
     def _deserialize(self, params):
         self.HostName = params.get("HostName")
         self.HostNameStyle = params.get("HostNameStyle")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Instance(AbstractModel):
@@ -2414,6 +2927,13 @@ class Instance(AbstractModel):
         self.InstanceType = params.get("InstanceType")
         self.VersionNumber = params.get("VersionNumber")
         self.AutoScalingGroupName = params.get("AutoScalingGroupName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InstanceChargePrepaid(AbstractModel):
@@ -2435,6 +2955,13 @@ class InstanceChargePrepaid(AbstractModel):
     def _deserialize(self, params):
         self.Period = params.get("Period")
         self.RenewFlag = params.get("RenewFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InstanceMarketOptionsRequest(AbstractModel):
@@ -2459,6 +2986,13 @@ class InstanceMarketOptionsRequest(AbstractModel):
             self.SpotOptions = SpotMarketOptions()
             self.SpotOptions._deserialize(params.get("SpotOptions"))
         self.MarketType = params.get("MarketType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InstanceNameSettings(AbstractModel):
@@ -2490,6 +3024,13 @@ UNIQUE，入参所填的 InstanceName 相当于实例名前缀，AS 和 CVM 会�
     def _deserialize(self, params):
         self.InstanceName = params.get("InstanceName")
         self.InstanceNameStyle = params.get("InstanceNameStyle")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InstanceTag(AbstractModel):
@@ -2511,6 +3052,13 @@ class InstanceTag(AbstractModel):
     def _deserialize(self, params):
         self.Key = params.get("Key")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InternetAccessible(AbstractModel):
@@ -2544,6 +3092,13 @@ class InternetAccessible(AbstractModel):
         self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
         self.PublicIpAssigned = params.get("PublicIpAssigned")
         self.BandwidthPackageId = params.get("BandwidthPackageId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class LaunchConfiguration(AbstractModel):
@@ -2702,6 +3257,13 @@ class LaunchConfiguration(AbstractModel):
             self.InstanceChargePrepaid = InstanceChargePrepaid()
             self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
         self.DiskTypePolicy = params.get("DiskTypePolicy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class LifecycleActionResultInfo(AbstractModel):
@@ -2735,6 +3297,13 @@ class LifecycleActionResultInfo(AbstractModel):
         self.NotificationResult = params.get("NotificationResult")
         self.LifecycleActionResult = params.get("LifecycleActionResult")
         self.ResultReason = params.get("ResultReason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class LifecycleHook(AbstractModel):
@@ -2790,6 +3359,13 @@ class LifecycleHook(AbstractModel):
             self.NotificationTarget = NotificationTarget()
             self.NotificationTarget._deserialize(params.get("NotificationTarget"))
         self.LifecycleTransitionType = params.get("LifecycleTransitionType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class LimitedLoginSettings(AbstractModel):
@@ -2807,6 +3383,13 @@ class LimitedLoginSettings(AbstractModel):
 
     def _deserialize(self, params):
         self.KeyIds = params.get("KeyIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class LoginSettings(AbstractModel):
@@ -2834,6 +3417,13 @@ class LoginSettings(AbstractModel):
         self.Password = params.get("Password")
         self.KeyIds = params.get("KeyIds")
         self.KeepImageLogin = params.get("KeepImageLogin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MetricAlarm(AbstractModel):
@@ -2871,6 +3461,13 @@ class MetricAlarm(AbstractModel):
         self.Period = params.get("Period")
         self.ContinuousTime = params.get("ContinuousTime")
         self.Statistic = params.get("Statistic")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyAutoScalingGroupRequest(AbstractModel):
@@ -2972,6 +3569,13 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
             self.ServiceSettings._deserialize(params.get("ServiceSettings"))
         self.Ipv6AddressCount = params.get("Ipv6AddressCount")
         self.MultiZoneSubnetPolicy = params.get("MultiZoneSubnetPolicy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyAutoScalingGroupResponse(AbstractModel):
@@ -2989,6 +3593,13 @@ class ModifyAutoScalingGroupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyDesiredCapacityRequest(AbstractModel):
@@ -3010,6 +3621,13 @@ class ModifyDesiredCapacityRequest(AbstractModel):
     def _deserialize(self, params):
         self.AutoScalingGroupId = params.get("AutoScalingGroupId")
         self.DesiredCapacity = params.get("DesiredCapacity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyDesiredCapacityResponse(AbstractModel):
@@ -3027,6 +3645,13 @@ class ModifyDesiredCapacityResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyLaunchConfigurationAttributesRequest(AbstractModel):
@@ -3126,6 +3751,13 @@ class ModifyLaunchConfigurationAttributesRequest(AbstractModel):
                 obj = DataDisk()
                 obj._deserialize(item)
                 self.DataDisks.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyLaunchConfigurationAttributesResponse(AbstractModel):
@@ -3143,6 +3775,13 @@ class ModifyLaunchConfigurationAttributesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyLoadBalancersRequest(AbstractModel):
@@ -3179,6 +3818,13 @@ class ModifyLoadBalancersRequest(AbstractModel):
                 obj._deserialize(item)
                 self.ForwardLoadBalancers.append(obj)
         self.LoadBalancersCheckPolicy = params.get("LoadBalancersCheckPolicy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyLoadBalancersResponse(AbstractModel):
@@ -3200,6 +3846,13 @@ class ModifyLoadBalancersResponse(AbstractModel):
     def _deserialize(self, params):
         self.ActivityId = params.get("ActivityId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyNotificationConfigurationRequest(AbstractModel):
@@ -3231,6 +3884,13 @@ class ModifyNotificationConfigurationRequest(AbstractModel):
         self.AutoScalingNotificationId = params.get("AutoScalingNotificationId")
         self.NotificationTypes = params.get("NotificationTypes")
         self.NotificationUserGroupIds = params.get("NotificationUserGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyNotificationConfigurationResponse(AbstractModel):
@@ -3248,6 +3908,13 @@ class ModifyNotificationConfigurationResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyScalingPolicyRequest(AbstractModel):
@@ -3292,6 +3959,13 @@ class ModifyScalingPolicyRequest(AbstractModel):
             self.MetricAlarm = MetricAlarm()
             self.MetricAlarm._deserialize(params.get("MetricAlarm"))
         self.NotificationUserGroupIds = params.get("NotificationUserGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyScalingPolicyResponse(AbstractModel):
@@ -3309,6 +3983,13 @@ class ModifyScalingPolicyResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyScheduledActionRequest(AbstractModel):
@@ -3354,6 +4035,13 @@ class ModifyScheduledActionRequest(AbstractModel):
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
         self.Recurrence = params.get("Recurrence")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyScheduledActionResponse(AbstractModel):
@@ -3371,6 +4059,13 @@ class ModifyScheduledActionResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class NotificationTarget(AbstractModel):
@@ -3398,6 +4093,13 @@ class NotificationTarget(AbstractModel):
         self.TargetType = params.get("TargetType")
         self.QueueName = params.get("QueueName")
         self.TopicName = params.get("TopicName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PaiInstance(AbstractModel):
@@ -3423,6 +4125,13 @@ class PaiInstance(AbstractModel):
         self.InstanceId = params.get("InstanceId")
         self.DomainName = params.get("DomainName")
         self.PaiMateUrl = params.get("PaiMateUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PreviewPaiDomainNameRequest(AbstractModel):
@@ -3440,6 +4149,13 @@ class PreviewPaiDomainNameRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.DomainNameType = params.get("DomainNameType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PreviewPaiDomainNameResponse(AbstractModel):
@@ -3461,6 +4177,13 @@ class PreviewPaiDomainNameResponse(AbstractModel):
     def _deserialize(self, params):
         self.DomainName = params.get("DomainName")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RemoveInstancesRequest(AbstractModel):
@@ -3482,6 +4205,13 @@ class RemoveInstancesRequest(AbstractModel):
     def _deserialize(self, params):
         self.AutoScalingGroupId = params.get("AutoScalingGroupId")
         self.InstanceIds = params.get("InstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RemoveInstancesResponse(AbstractModel):
@@ -3503,6 +4233,13 @@ class RemoveInstancesResponse(AbstractModel):
     def _deserialize(self, params):
         self.ActivityId = params.get("ActivityId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RunMonitorServiceEnabled(AbstractModel):
@@ -3521,6 +4258,13 @@ class RunMonitorServiceEnabled(AbstractModel):
 
     def _deserialize(self, params):
         self.Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RunSecurityServiceEnabled(AbstractModel):
@@ -3539,6 +4283,13 @@ class RunSecurityServiceEnabled(AbstractModel):
 
     def _deserialize(self, params):
         self.Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ScalingPolicy(AbstractModel):
@@ -3586,6 +4337,13 @@ class ScalingPolicy(AbstractModel):
             self.MetricAlarm = MetricAlarm()
             self.MetricAlarm._deserialize(params.get("MetricAlarm"))
         self.NotificationUserGroupIds = params.get("NotificationUserGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ScheduledAction(AbstractModel):
@@ -3639,6 +4397,13 @@ class ScheduledAction(AbstractModel):
         self.DesiredCapacity = params.get("DesiredCapacity")
         self.MinSize = params.get("MinSize")
         self.CreatedTime = params.get("CreatedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ServiceSettings(AbstractModel):
@@ -3663,6 +4428,13 @@ WAKE_UP_STOPPED_SCALING：扩容优先开机。扩容时优先对已关机的实
     def _deserialize(self, params):
         self.ReplaceMonitorUnhealthy = params.get("ReplaceMonitorUnhealthy")
         self.ScalingMode = params.get("ScalingMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SetInstancesProtectionRequest(AbstractModel):
@@ -3688,6 +4460,13 @@ class SetInstancesProtectionRequest(AbstractModel):
         self.AutoScalingGroupId = params.get("AutoScalingGroupId")
         self.InstanceIds = params.get("InstanceIds")
         self.ProtectedFromScaleIn = params.get("ProtectedFromScaleIn")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SetInstancesProtectionResponse(AbstractModel):
@@ -3705,6 +4484,13 @@ class SetInstancesProtectionResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SpotMarketOptions(AbstractModel):
@@ -3727,6 +4513,13 @@ class SpotMarketOptions(AbstractModel):
     def _deserialize(self, params):
         self.MaxPrice = params.get("MaxPrice")
         self.SpotInstanceType = params.get("SpotInstanceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StartAutoScalingInstancesRequest(AbstractModel):
@@ -3748,6 +4541,13 @@ class StartAutoScalingInstancesRequest(AbstractModel):
     def _deserialize(self, params):
         self.AutoScalingGroupId = params.get("AutoScalingGroupId")
         self.InstanceIds = params.get("InstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StartAutoScalingInstancesResponse(AbstractModel):
@@ -3769,6 +4569,13 @@ class StartAutoScalingInstancesResponse(AbstractModel):
     def _deserialize(self, params):
         self.ActivityId = params.get("ActivityId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StopAutoScalingInstancesRequest(AbstractModel):
@@ -3797,6 +4604,13 @@ STOP_CHARGING：关机停止收费
         self.AutoScalingGroupId = params.get("AutoScalingGroupId")
         self.InstanceIds = params.get("InstanceIds")
         self.StoppedMode = params.get("StoppedMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StopAutoScalingInstancesResponse(AbstractModel):
@@ -3818,6 +4632,13 @@ class StopAutoScalingInstancesResponse(AbstractModel):
     def _deserialize(self, params):
         self.ActivityId = params.get("ActivityId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SystemDisk(AbstractModel):
@@ -3841,6 +4662,13 @@ class SystemDisk(AbstractModel):
     def _deserialize(self, params):
         self.DiskType = params.get("DiskType")
         self.DiskSize = params.get("DiskSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Tag(AbstractModel):
@@ -3867,6 +4695,13 @@ class Tag(AbstractModel):
         self.Key = params.get("Key")
         self.Value = params.get("Value")
         self.ResourceType = params.get("ResourceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TargetAttribute(AbstractModel):
@@ -3888,6 +4723,13 @@ class TargetAttribute(AbstractModel):
     def _deserialize(self, params):
         self.Port = params.get("Port")
         self.Weight = params.get("Weight")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UpgradeLaunchConfigurationRequest(AbstractModel):
@@ -4021,6 +4863,13 @@ class UpgradeLaunchConfigurationRequest(AbstractModel):
             self.InstanceChargePrepaid = InstanceChargePrepaid()
             self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
         self.DiskTypePolicy = params.get("DiskTypePolicy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UpgradeLaunchConfigurationResponse(AbstractModel):
@@ -4038,6 +4887,13 @@ class UpgradeLaunchConfigurationResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UpgradeLifecycleHookRequest(AbstractModel):
@@ -4085,6 +4941,13 @@ class UpgradeLifecycleHookRequest(AbstractModel):
             self.NotificationTarget = NotificationTarget()
             self.NotificationTarget._deserialize(params.get("NotificationTarget"))
         self.LifecycleTransitionType = params.get("LifecycleTransitionType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UpgradeLifecycleHookResponse(AbstractModel):
@@ -4102,3 +4965,10 @@ class UpgradeLifecycleHookResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

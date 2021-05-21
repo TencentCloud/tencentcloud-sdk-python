@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -39,6 +41,13 @@ class ApiKey(AbstractModel):
         self.SecretId = params.get("SecretId")
         self.CreateTime = params.get("CreateTime")
         self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AssumeRoleRequest(AbstractModel):
@@ -82,6 +91,13 @@ qcs::cam::uin/12345678:role/tencentcloudServiceRole/4611686018427397920、qcs::c
         self.DurationSeconds = params.get("DurationSeconds")
         self.Policy = params.get("Policy")
         self.ExternalId = params.get("ExternalId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AssumeRoleResponse(AbstractModel):
@@ -113,6 +129,13 @@ class AssumeRoleResponse(AbstractModel):
         self.ExpiredTime = params.get("ExpiredTime")
         self.Expiration = params.get("Expiration")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AssumeRoleWithSAMLRequest(AbstractModel):
@@ -146,6 +169,13 @@ class AssumeRoleWithSAMLRequest(AbstractModel):
         self.RoleArn = params.get("RoleArn")
         self.RoleSessionName = params.get("RoleSessionName")
         self.DurationSeconds = params.get("DurationSeconds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AssumeRoleWithSAMLResponse(AbstractModel):
@@ -177,6 +207,13 @@ class AssumeRoleWithSAMLResponse(AbstractModel):
         self.ExpiredTime = params.get("ExpiredTime")
         self.Expiration = params.get("Expiration")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Credentials(AbstractModel):
@@ -202,6 +239,13 @@ class Credentials(AbstractModel):
         self.Token = params.get("Token")
         self.TmpSecretId = params.get("TmpSecretId")
         self.TmpSecretKey = params.get("TmpSecretKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetFederationTokenRequest(AbstractModel):
@@ -231,6 +275,13 @@ class GetFederationTokenRequest(AbstractModel):
         self.Name = params.get("Name")
         self.Policy = params.get("Policy")
         self.DurationSeconds = params.get("DurationSeconds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetFederationTokenResponse(AbstractModel):
@@ -263,6 +314,13 @@ class GetFederationTokenResponse(AbstractModel):
         self.ExpiredTime = params.get("ExpiredTime")
         self.Expiration = params.get("Expiration")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class QueryApiKeyRequest(AbstractModel):
@@ -280,6 +338,13 @@ class QueryApiKeyRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.TargetUin = params.get("TargetUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class QueryApiKeyResponse(AbstractModel):
@@ -306,3 +371,10 @@ class QueryApiKeyResponse(AbstractModel):
                 obj._deserialize(item)
                 self.IdKeys.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

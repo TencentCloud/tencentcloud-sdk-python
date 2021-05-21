@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -51,6 +53,13 @@ class AddCrowdPackInfoRequest(AbstractModel):
         self.Desc = params.get("Desc")
         self.CosUrl = params.get("CosUrl")
         self.PhoneNum = params.get("PhoneNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AddCrowdPackInfoResponse(AbstractModel):
@@ -74,6 +83,13 @@ class AddCrowdPackInfoResponse(AbstractModel):
             self.Data = SmsAddCrowdPackInfoResponse()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AddSmsSignRequest(AbstractModel):
@@ -132,6 +148,13 @@ class AddSmsSignRequest(AbstractModel):
         self.ProofImage = params.get("ProofImage")
         self.SignName = params.get("SignName")
         self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AddSmsSignResponse(AbstractModel):
@@ -155,6 +178,13 @@ class AddSmsSignResponse(AbstractModel):
             self.Data = PaasCreateSignResp()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AddSmsTemplateDataStruct(AbstractModel):
@@ -172,6 +202,13 @@ class AddSmsTemplateDataStruct(AbstractModel):
 
     def _deserialize(self, params):
         self.TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AddSmsTemplateRequest(AbstractModel):
@@ -227,6 +264,13 @@ class AddSmsTemplateRequest(AbstractModel):
         self.Urls = params.get("Urls")
         self.CommonParams = params.get("CommonParams")
         self.UrlParams = params.get("UrlParams")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AddSmsTemplateResponse(AbstractModel):
@@ -250,6 +294,13 @@ class AddSmsTemplateResponse(AbstractModel):
             self.Data = AddSmsTemplateDataStruct()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CancelActivityData(AbstractModel):
@@ -267,6 +318,13 @@ class CancelActivityData(AbstractModel):
 
     def _deserialize(self, params):
         self.Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CancelCampaignRequest(AbstractModel):
@@ -288,6 +346,13 @@ class CancelCampaignRequest(AbstractModel):
     def _deserialize(self, params):
         self.License = params.get("License")
         self.CampaignId = params.get("CampaignId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CancelCampaignResponse(AbstractModel):
@@ -311,6 +376,13 @@ class CancelCampaignResponse(AbstractModel):
             self.Data = CancelActivityData()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateCampaignRequest(AbstractModel):
@@ -357,6 +429,13 @@ class CreateCampaignRequest(AbstractModel):
         self.TemplateId = params.get("TemplateId")
         self.CrowdID = params.get("CrowdID")
         self.SmsType = params.get("SmsType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateCampaignResponse(AbstractModel):
@@ -380,6 +459,13 @@ class CreateCampaignResponse(AbstractModel):
             self.Data = SmsCreateCampaignResponse()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateMmsInstanceItem(AbstractModel):
@@ -401,6 +487,13 @@ class CreateMmsInstanceItem(AbstractModel):
     def _deserialize(self, params):
         self.ContentType = params.get("ContentType")
         self.Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateMmsInstanceRequest(AbstractModel):
@@ -455,6 +548,13 @@ class CreateMmsInstanceRequest(AbstractModel):
         self.PhoneType = params.get("PhoneType")
         self.CommonParams = params.get("CommonParams")
         self.UrlParams = params.get("UrlParams")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateMmsInstanceResp(AbstractModel):
@@ -480,6 +580,13 @@ class CreateMmsInstanceResp(AbstractModel):
         self.ReturnCode = params.get("ReturnCode")
         self.ReturnMsg = params.get("ReturnMsg")
         self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateMmsInstanceResponse(AbstractModel):
@@ -503,6 +610,13 @@ class CreateMmsInstanceResponse(AbstractModel):
             self.Data = CreateMmsInstanceResp()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DelCrowdPackRequest(AbstractModel):
@@ -524,6 +638,13 @@ class DelCrowdPackRequest(AbstractModel):
     def _deserialize(self, params):
         self.License = params.get("License")
         self.ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DelCrowdPackResponse(AbstractModel):
@@ -547,6 +668,13 @@ class DelCrowdPackResponse(AbstractModel):
             self.Data = SmsSuccessResponse()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DelMmsInstanceData(AbstractModel):
@@ -564,6 +692,13 @@ class DelMmsInstanceData(AbstractModel):
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DelTemplateRequest(AbstractModel):
@@ -585,6 +720,13 @@ class DelTemplateRequest(AbstractModel):
     def _deserialize(self, params):
         self.License = params.get("License")
         self.TemplateID = params.get("TemplateID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DelTemplateResponse(AbstractModel):
@@ -608,6 +750,13 @@ class DelTemplateResponse(AbstractModel):
             self.Data = SmsSuccessResponse()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteMmsInstanceRequest(AbstractModel):
@@ -629,6 +778,13 @@ class DeleteMmsInstanceRequest(AbstractModel):
     def _deserialize(self, params):
         self.License = params.get("License")
         self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteMmsInstanceResponse(AbstractModel):
@@ -652,6 +808,13 @@ class DeleteMmsInstanceResponse(AbstractModel):
             self.Data = DelMmsInstanceData()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeMmsInstanceInfoRequest(AbstractModel):
@@ -673,6 +836,13 @@ class DescribeMmsInstanceInfoRequest(AbstractModel):
     def _deserialize(self, params):
         self.License = params.get("License")
         self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeMmsInstanceInfoResponse(AbstractModel):
@@ -696,6 +866,13 @@ class DescribeMmsInstanceInfoResponse(AbstractModel):
             self.Data = MmsInstanceInfo()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeMmsInstanceListRequest(AbstractModel):
@@ -729,6 +906,13 @@ class DescribeMmsInstanceListRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.AppSubId = params.get("AppSubId")
         self.Title = params.get("Title")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeMmsInstanceListResponse(AbstractModel):
@@ -752,6 +936,13 @@ class DescribeMmsInstanceListResponse(AbstractModel):
             self.Data = MmsInstanceInfoList()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSmsCampaignStatisticsRequest(AbstractModel):
@@ -773,6 +964,13 @@ class DescribeSmsCampaignStatisticsRequest(AbstractModel):
     def _deserialize(self, params):
         self.CampaignId = params.get("CampaignId")
         self.License = params.get("License")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSmsCampaignStatisticsResponse(AbstractModel):
@@ -796,6 +994,13 @@ class DescribeSmsCampaignStatisticsResponse(AbstractModel):
             self.Data = SmsCampaignStatisticsData()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSmsSignListDataStruct(AbstractModel):
@@ -837,6 +1042,13 @@ class DescribeSmsSignListDataStruct(AbstractModel):
         self.ReviewReply = params.get("ReviewReply")
         self.SignName = params.get("SignName")
         self.CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSmsSignListRequest(AbstractModel):
@@ -864,6 +1076,13 @@ class DescribeSmsSignListRequest(AbstractModel):
         self.License = params.get("License")
         self.SignIdSet = params.get("SignIdSet")
         self.International = params.get("International")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSmsSignListResponse(AbstractModel):
@@ -890,6 +1109,13 @@ class DescribeSmsSignListResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Data.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSmsTemplateListDataStruct(AbstractModel):
@@ -931,6 +1157,13 @@ class DescribeSmsTemplateListDataStruct(AbstractModel):
         self.ReviewReply = params.get("ReviewReply")
         self.TemplateName = params.get("TemplateName")
         self.CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSmsTemplateListRequest(AbstractModel):
@@ -958,6 +1191,13 @@ class DescribeSmsTemplateListRequest(AbstractModel):
         self.License = params.get("License")
         self.TemplateIdSet = params.get("TemplateIdSet")
         self.International = params.get("International")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSmsTemplateListResponse(AbstractModel):
@@ -984,6 +1224,13 @@ class DescribeSmsTemplateListResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Data.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetCrowdPackListRequest(AbstractModel):
@@ -1017,6 +1264,13 @@ class GetCrowdPackListRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.Name = params.get("Name")
         self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetCrowdPackListResponse(AbstractModel):
@@ -1040,6 +1294,13 @@ class GetCrowdPackListResponse(AbstractModel):
             self.Data = SmsGetCrowdPackListResponse()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetCrowdUploadInfoRequest(AbstractModel):
@@ -1061,6 +1322,13 @@ class GetCrowdUploadInfoRequest(AbstractModel):
     def _deserialize(self, params):
         self.License = params.get("License")
         self.FileName = params.get("FileName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetCrowdUploadInfoResponse(AbstractModel):
@@ -1084,6 +1352,13 @@ class GetCrowdUploadInfoResponse(AbstractModel):
             self.Data = SmsGetCrowdUploadInfoResponse()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetSmsAmountInfoRequest(AbstractModel):
@@ -1101,6 +1376,13 @@ class GetSmsAmountInfoRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.License = params.get("License")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetSmsAmountInfoResponse(AbstractModel):
@@ -1124,6 +1406,13 @@ class GetSmsAmountInfoResponse(AbstractModel):
             self.Data = SmsAmountDataStruct()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetSmsCampaignStatusRequest(AbstractModel):
@@ -1145,6 +1434,13 @@ class GetSmsCampaignStatusRequest(AbstractModel):
     def _deserialize(self, params):
         self.License = params.get("License")
         self.CampaignId = params.get("CampaignId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetSmsCampaignStatusResponse(AbstractModel):
@@ -1168,6 +1464,13 @@ class GetSmsCampaignStatusResponse(AbstractModel):
             self.Data = PaasSmsCampaignStatusResp()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MmsInstanceInfo(AbstractModel):
@@ -1252,6 +1555,13 @@ class MmsInstanceInfo(AbstractModel):
         self.PhoneType = params.get("PhoneType")
         self.CommonParams = params.get("CommonParams")
         self.UrlParams = params.get("UrlParams")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MmsInstanceInfoList(AbstractModel):
@@ -1278,6 +1588,13 @@ class MmsInstanceInfoList(AbstractModel):
                 obj = MmsInstanceInfo()
                 obj._deserialize(item)
                 self.List.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MmsInstanceStateInfo(AbstractModel):
@@ -1299,6 +1616,13 @@ class MmsInstanceStateInfo(AbstractModel):
     def _deserialize(self, params):
         self.Operator = params.get("Operator")
         self.State = params.get("State")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifySmsTemplateDataStruct(AbstractModel):
@@ -1317,6 +1641,13 @@ class ModifySmsTemplateDataStruct(AbstractModel):
 
     def _deserialize(self, params):
         self.TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifySmsTemplateRequest(AbstractModel):
@@ -1376,6 +1707,13 @@ class ModifySmsTemplateRequest(AbstractModel):
         self.Urls = params.get("Urls")
         self.CommonParams = params.get("CommonParams")
         self.UrlParams = params.get("UrlParams")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifySmsTemplateResponse(AbstractModel):
@@ -1399,6 +1737,13 @@ class ModifySmsTemplateResponse(AbstractModel):
             self.Data = ModifySmsTemplateDataStruct()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PaasCreateSignResp(AbstractModel):
@@ -1416,6 +1761,13 @@ class PaasCreateSignResp(AbstractModel):
 
     def _deserialize(self, params):
         self.SignId = params.get("SignId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PaasSmsCampaignStatusResp(AbstractModel):
@@ -1433,6 +1785,13 @@ class PaasSmsCampaignStatusResp(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PaasStrategy(AbstractModel):
@@ -1459,6 +1818,13 @@ class PaasStrategy(AbstractModel):
                 obj = PaasStrategyItem()
                 obj._deserialize(item)
                 self.Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PaasStrategyItem(AbstractModel):
@@ -1480,6 +1846,13 @@ class PaasStrategyItem(AbstractModel):
     def _deserialize(self, params):
         self.Id = params.get("Id")
         self.ContentType = params.get("ContentType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PushMmsContentRequest(AbstractModel):
@@ -1517,6 +1890,13 @@ class PushMmsContentRequest(AbstractModel):
         self.Session = params.get("Session")
         self.DynamicParaKey = params.get("DynamicParaKey")
         self.DynamicParaValue = params.get("DynamicParaValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PushMmsContentResp(AbstractModel):
@@ -1542,6 +1922,13 @@ class PushMmsContentResp(AbstractModel):
         self.ReturnCode = params.get("ReturnCode")
         self.ReturnMsg = params.get("ReturnMsg")
         self.MessageId = params.get("MessageId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PushMmsContentResponse(AbstractModel):
@@ -1565,6 +1952,13 @@ class PushMmsContentResponse(AbstractModel):
             self.Data = PushMmsContentResp()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SendSmsPaasDataStruct(AbstractModel):
@@ -1598,6 +1992,13 @@ class SendSmsPaasDataStruct(AbstractModel):
         self.Fee = params.get("Fee")
         self.Code = params.get("Code")
         self.Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SendSmsRequest(AbstractModel):
@@ -1649,6 +2050,13 @@ class SendSmsRequest(AbstractModel):
         self.SmsType = params.get("SmsType")
         self.International = params.get("International")
         self.Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SendSmsResponse(AbstractModel):
@@ -1675,6 +2083,13 @@ class SendSmsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Data.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SmsAddCrowdPackInfoResponse(AbstractModel):
@@ -1692,6 +2107,13 @@ class SmsAddCrowdPackInfoResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SmsAmountDataStruct(AbstractModel):
@@ -1737,6 +2159,13 @@ class SmsAmountDataStruct(AbstractModel):
         self.MmsCampaignConsume = params.get("MmsCampaignConsume")
         self.MmsSendAmount = params.get("MmsSendAmount")
         self.MmsSendConsume = params.get("MmsSendConsume")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SmsCampaignStatisticsCrowdData(AbstractModel):
@@ -1771,6 +2200,13 @@ class SmsCampaignStatisticsCrowdData(AbstractModel):
                 obj = SmsCampaignStatisticsTemplateData()
                 obj._deserialize(item)
                 self.TemplateList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SmsCampaignStatisticsData(AbstractModel):
@@ -1797,6 +2233,13 @@ class SmsCampaignStatisticsData(AbstractModel):
                 obj = SmsCampaignStatisticsCrowdData()
                 obj._deserialize(item)
                 self.Statistics.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SmsCampaignStatisticsTemplateData(AbstractModel):
@@ -1826,6 +2269,13 @@ class SmsCampaignStatisticsTemplateData(AbstractModel):
         self.TemplateContent = params.get("TemplateContent")
         self.SendCount = params.get("SendCount")
         self.ClickCount = params.get("ClickCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SmsCreateCampaignResponse(AbstractModel):
@@ -1843,6 +2293,13 @@ class SmsCreateCampaignResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.CampaignId = params.get("CampaignId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SmsGetCrowdPackList(AbstractModel):
@@ -1892,6 +2349,13 @@ class SmsGetCrowdPackList(AbstractModel):
         self.MD5 = params.get("MD5")
         self.FileName = params.get("FileName")
         self.Desc = params.get("Desc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SmsGetCrowdPackListResponse(AbstractModel):
@@ -1919,6 +2383,13 @@ class SmsGetCrowdPackListResponse(AbstractModel):
                 obj = SmsGetCrowdPackList()
                 obj._deserialize(item)
                 self.List.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SmsGetCrowdUploadInfoResponse(AbstractModel):
@@ -1954,6 +2425,13 @@ class SmsGetCrowdUploadInfoResponse(AbstractModel):
         if params.get("CosInfo") is not None:
             self.CosInfo = UploadFansInfoCosInfo()
             self.CosInfo._deserialize(params.get("CosInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SmsSuccessResponse(AbstractModel):
@@ -1971,6 +2449,13 @@ class SmsSuccessResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UploadFansInfoCosInfo(AbstractModel):
@@ -1996,3 +2481,10 @@ class UploadFansInfoCosInfo(AbstractModel):
         self.Bucket = params.get("Bucket")
         self.Key = params.get("Key")
         self.Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

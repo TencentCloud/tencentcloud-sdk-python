@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -31,6 +33,13 @@ class DeregisterMigrationTaskRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeregisterMigrationTaskResponse(AbstractModel):
@@ -48,6 +57,13 @@ class DeregisterMigrationTaskResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeMigrationTaskRequest(AbstractModel):
@@ -65,6 +81,13 @@ class DescribeMigrationTaskRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeMigrationTaskResponse(AbstractModel):
@@ -91,6 +114,13 @@ class DescribeMigrationTaskResponse(AbstractModel):
                 obj._deserialize(item)
                 self.TaskStatus.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DstInfo(AbstractModel):
@@ -120,6 +150,13 @@ class DstInfo(AbstractModel):
         self.Ip = params.get("Ip")
         self.Port = params.get("Port")
         self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ListMigrationProjectRequest(AbstractModel):
@@ -141,6 +178,13 @@ class ListMigrationProjectRequest(AbstractModel):
     def _deserialize(self, params):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ListMigrationProjectResponse(AbstractModel):
@@ -171,6 +215,13 @@ class ListMigrationProjectResponse(AbstractModel):
                 self.Projects.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ListMigrationTaskRequest(AbstractModel):
@@ -196,6 +247,13 @@ class ListMigrationTaskRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ListMigrationTaskResponse(AbstractModel):
@@ -226,6 +284,13 @@ class ListMigrationTaskResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Tasks.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyMigrationTaskBelongToProjectRequest(AbstractModel):
@@ -247,6 +312,13 @@ class ModifyMigrationTaskBelongToProjectRequest(AbstractModel):
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
         self.ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyMigrationTaskBelongToProjectResponse(AbstractModel):
@@ -264,6 +336,13 @@ class ModifyMigrationTaskBelongToProjectResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyMigrationTaskStatusRequest(AbstractModel):
@@ -285,6 +364,13 @@ class ModifyMigrationTaskStatusRequest(AbstractModel):
     def _deserialize(self, params):
         self.Status = params.get("Status")
         self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyMigrationTaskStatusResponse(AbstractModel):
@@ -302,6 +388,13 @@ class ModifyMigrationTaskStatusResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Project(AbstractModel):
@@ -323,6 +416,13 @@ class Project(AbstractModel):
     def _deserialize(self, params):
         self.ProjectId = params.get("ProjectId")
         self.ProjectName = params.get("ProjectName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RegisterMigrationTaskRequest(AbstractModel):
@@ -388,6 +488,13 @@ class RegisterMigrationTaskRequest(AbstractModel):
         self.SrcDatabaseType = params.get("SrcDatabaseType")
         self.DstAccessType = params.get("DstAccessType")
         self.DstDatabaseType = params.get("DstDatabaseType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RegisterMigrationTaskResponse(AbstractModel):
@@ -409,6 +516,13 @@ class RegisterMigrationTaskResponse(AbstractModel):
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SrcInfo(AbstractModel):
@@ -438,6 +552,13 @@ class SrcInfo(AbstractModel):
         self.Ip = params.get("Ip")
         self.Port = params.get("Port")
         self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Task(AbstractModel):
@@ -497,6 +618,13 @@ class Task(AbstractModel):
         if params.get("DstInfo") is not None:
             self.DstInfo = DstInfo()
             self.DstInfo._deserialize(params.get("DstInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TaskStatus(AbstractModel):
@@ -522,6 +650,13 @@ class TaskStatus(AbstractModel):
         self.Status = params.get("Status")
         self.Progress = params.get("Progress")
         self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TimeObj(AbstractModel):
@@ -543,3 +678,10 @@ class TimeObj(AbstractModel):
     def _deserialize(self, params):
         self.CreateTime = params.get("CreateTime")
         self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -31,6 +33,13 @@ class GetLocalEngineRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.Key = params.get("Key")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetLocalEngineResponse(AbstractModel):
@@ -60,6 +69,13 @@ class GetLocalEngineResponse(AbstractModel):
         self.Info = params.get("Info")
         self.Data = params.get("Data")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetScanResultRequest(AbstractModel):
@@ -81,6 +97,13 @@ class GetScanResultRequest(AbstractModel):
     def _deserialize(self, params):
         self.Key = params.get("Key")
         self.Md5 = params.get("Md5")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetScanResultResponse(AbstractModel):
@@ -111,6 +134,13 @@ scan_status样本状态：-1无检出信息需上传扫描、0样本扫描中、
         self.Info = params.get("Info")
         self.Data = params.get("Data")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ScanFileHashRequest(AbstractModel):
@@ -140,6 +170,13 @@ class ScanFileHashRequest(AbstractModel):
         self.Md5s = params.get("Md5s")
         self.WithCategory = params.get("WithCategory")
         self.SensitiveLevel = params.get("SensitiveLevel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ScanFileHashResponse(AbstractModel):
@@ -171,6 +208,13 @@ virus_state文状件态：0文件不存在、1白、2黑、3未知、4感染性�
         self.Info = params.get("Info")
         self.Data = params.get("Data")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ScanFileRequest(AbstractModel):
@@ -196,6 +240,13 @@ class ScanFileRequest(AbstractModel):
         self.Key = params.get("Key")
         self.Sample = params.get("Sample")
         self.Md5 = params.get("Md5")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ScanFileResponse(AbstractModel):
@@ -225,3 +276,10 @@ class ScanFileResponse(AbstractModel):
         self.Info = params.get("Info")
         self.Data = params.get("Data")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

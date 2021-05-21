@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -51,6 +53,13 @@ class ArrivedMallInfo(AbstractModel):
         self.InCapPic = params.get("InCapPic")
         self.OutCapPic = params.get("OutCapPic")
         self.TraceId = params.get("TraceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CameraPersonInfo(AbstractModel):
@@ -90,6 +99,13 @@ class CameraPersonInfo(AbstractModel):
         if params.get("PersonInfo") is not None:
             self.PersonInfo = PersonInfo()
             self.PersonInfo._deserialize(params.get("PersonInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateAccountRequest(AbstractModel):
@@ -123,6 +139,13 @@ class CreateAccountRequest(AbstractModel):
         self.Password = params.get("Password")
         self.ShopCode = params.get("ShopCode")
         self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateAccountResponse(AbstractModel):
@@ -140,6 +163,13 @@ class CreateAccountResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateFacePictureRequest(AbstractModel):
@@ -177,6 +207,13 @@ class CreateFacePictureRequest(AbstractModel):
         self.PictureName = params.get("PictureName")
         self.ShopId = params.get("ShopId")
         self.IsForceUpload = params.get("IsForceUpload")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateFacePictureResponse(AbstractModel):
@@ -206,6 +243,13 @@ class CreateFacePictureResponse(AbstractModel):
         self.Status = params.get("Status")
         self.PictureUrl = params.get("PictureUrl")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DailyTracePoint(AbstractModel):
@@ -232,6 +276,13 @@ class DailyTracePoint(AbstractModel):
                 obj = PersonTracePoint()
                 obj._deserialize(item)
                 self.TracePointSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeletePersonFeatureRequest(AbstractModel):
@@ -257,6 +308,13 @@ class DeletePersonFeatureRequest(AbstractModel):
         self.CompanyId = params.get("CompanyId")
         self.ShopId = params.get("ShopId")
         self.PersonId = params.get("PersonId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeletePersonFeatureResponse(AbstractModel):
@@ -274,6 +332,13 @@ class DeletePersonFeatureResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCameraPersonRequest(AbstractModel):
@@ -319,6 +384,13 @@ class DescribeCameraPersonRequest(AbstractModel):
         self.PosId = params.get("PosId")
         self.Num = params.get("Num")
         self.IsNeedPic = params.get("IsNeedPic")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCameraPersonResponse(AbstractModel):
@@ -361,6 +433,13 @@ class DescribeCameraPersonResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Infos.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeClusterPersonArrivedMallRequest(AbstractModel):
@@ -390,6 +469,13 @@ class DescribeClusterPersonArrivedMallRequest(AbstractModel):
         self.PersonId = params.get("PersonId")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeClusterPersonArrivedMallResponse(AbstractModel):
@@ -428,6 +514,13 @@ class DescribeClusterPersonArrivedMallResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ArrivedMallSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeClusterPersonTraceRequest(AbstractModel):
@@ -457,6 +550,13 @@ class DescribeClusterPersonTraceRequest(AbstractModel):
         self.PersonId = params.get("PersonId")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeClusterPersonTraceResponse(AbstractModel):
@@ -495,6 +595,13 @@ class DescribeClusterPersonTraceResponse(AbstractModel):
                 obj._deserialize(item)
                 self.TracePointSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeFaceIdByTempIdRequest(AbstractModel):
@@ -532,6 +639,13 @@ class DescribeFaceIdByTempIdRequest(AbstractModel):
         self.CameraId = params.get("CameraId")
         self.PosId = params.get("PosId")
         self.PictureExpires = params.get("PictureExpires")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeFaceIdByTempIdResponse(AbstractModel):
@@ -579,6 +693,13 @@ class DescribeFaceIdByTempIdResponse(AbstractModel):
             self.PersonInfo = PersonInfo()
             self.PersonInfo._deserialize(params.get("PersonInfo"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeHistoryNetworkInfoRequest(AbstractModel):
@@ -620,6 +741,13 @@ class DescribeHistoryNetworkInfoRequest(AbstractModel):
         self.EndDay = params.get("EndDay")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeHistoryNetworkInfoResponse(AbstractModel):
@@ -643,6 +771,13 @@ class DescribeHistoryNetworkInfoResponse(AbstractModel):
             self.InstanceSet = NetworkHistoryInfo()
             self.InstanceSet._deserialize(params.get("InstanceSet"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeNetworkInfoRequest(AbstractModel):
@@ -668,6 +803,13 @@ class DescribeNetworkInfoRequest(AbstractModel):
         self.Time = params.get("Time")
         self.CompanyId = params.get("CompanyId")
         self.ShopId = params.get("ShopId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeNetworkInfoResponse(AbstractModel):
@@ -691,6 +833,13 @@ class DescribeNetworkInfoResponse(AbstractModel):
             self.InstanceSet = NetworkLastInfo()
             self.InstanceSet._deserialize(params.get("InstanceSet"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribePersonArrivedMallRequest(AbstractModel):
@@ -720,6 +869,13 @@ class DescribePersonArrivedMallRequest(AbstractModel):
         self.PersonId = params.get("PersonId")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribePersonArrivedMallResponse(AbstractModel):
@@ -758,6 +914,13 @@ class DescribePersonArrivedMallResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ArrivedMallSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribePersonInfoByFacePictureRequest(AbstractModel):
@@ -783,6 +946,13 @@ class DescribePersonInfoByFacePictureRequest(AbstractModel):
         self.CompanyId = params.get("CompanyId")
         self.ShopId = params.get("ShopId")
         self.Picture = params.get("Picture")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribePersonInfoByFacePictureResponse(AbstractModel):
@@ -828,6 +998,13 @@ class DescribePersonInfoByFacePictureResponse(AbstractModel):
         self.FirstVisitTime = params.get("FirstVisitTime")
         self.VisitTimes = params.get("VisitTimes")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribePersonInfoRequest(AbstractModel):
@@ -869,6 +1046,13 @@ class DescribePersonInfoRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.PictureExpires = params.get("PictureExpires")
         self.PersonType = params.get("PersonType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribePersonInfoResponse(AbstractModel):
@@ -907,6 +1091,13 @@ class DescribePersonInfoResponse(AbstractModel):
                 obj._deserialize(item)
                 self.PersonInfoSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribePersonRequest(AbstractModel):
@@ -932,6 +1123,13 @@ class DescribePersonRequest(AbstractModel):
         self.MallId = params.get("MallId")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribePersonResponse(AbstractModel):
@@ -962,6 +1160,13 @@ class DescribePersonResponse(AbstractModel):
                 obj._deserialize(item)
                 self.PersonSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribePersonTraceDetailRequest(AbstractModel):
@@ -987,6 +1192,13 @@ class DescribePersonTraceDetailRequest(AbstractModel):
         self.MallId = params.get("MallId")
         self.PersonId = params.get("PersonId")
         self.TraceId = params.get("TraceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribePersonTraceDetailResponse(AbstractModel):
@@ -1025,6 +1237,13 @@ class DescribePersonTraceDetailResponse(AbstractModel):
                 obj._deserialize(item)
                 self.CoordinateSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribePersonTraceRequest(AbstractModel):
@@ -1054,6 +1273,13 @@ class DescribePersonTraceRequest(AbstractModel):
         self.PersonId = params.get("PersonId")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribePersonTraceResponse(AbstractModel):
@@ -1092,6 +1318,13 @@ class DescribePersonTraceResponse(AbstractModel):
                 obj._deserialize(item)
                 self.TraceRouteSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribePersonVisitInfoRequest(AbstractModel):
@@ -1141,6 +1374,13 @@ class DescribePersonVisitInfoRequest(AbstractModel):
         self.PictureExpires = params.get("PictureExpires")
         self.StartDateTime = params.get("StartDateTime")
         self.EndDateTime = params.get("EndDateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribePersonVisitInfoResponse(AbstractModel):
@@ -1179,6 +1419,13 @@ class DescribePersonVisitInfoResponse(AbstractModel):
                 obj._deserialize(item)
                 self.PersonVisitInfoSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeShopHourTrafficInfoRequest(AbstractModel):
@@ -1216,6 +1463,13 @@ class DescribeShopHourTrafficInfoRequest(AbstractModel):
         self.EndDate = params.get("EndDate")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeShopHourTrafficInfoResponse(AbstractModel):
@@ -1254,6 +1508,13 @@ class DescribeShopHourTrafficInfoResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ShopHourTrafficInfoSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeShopInfoRequest(AbstractModel):
@@ -1275,6 +1536,13 @@ class DescribeShopInfoRequest(AbstractModel):
     def _deserialize(self, params):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeShopInfoResponse(AbstractModel):
@@ -1305,6 +1573,13 @@ class DescribeShopInfoResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ShopInfoSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeShopTrafficInfoRequest(AbstractModel):
@@ -1342,6 +1617,13 @@ class DescribeShopTrafficInfoRequest(AbstractModel):
         self.EndDate = params.get("EndDate")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeShopTrafficInfoResponse(AbstractModel):
@@ -1380,6 +1662,13 @@ class DescribeShopTrafficInfoResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ShopDayTrafficInfoSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeTrajectoryDataRequest(AbstractModel):
@@ -1417,6 +1706,13 @@ class DescribeTrajectoryDataRequest(AbstractModel):
         self.EndDate = params.get("EndDate")
         self.Limit = params.get("Limit")
         self.Gender = params.get("Gender")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeTrajectoryDataResponse(AbstractModel):
@@ -1467,6 +1763,13 @@ class DescribeTrajectoryDataResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Data.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeZoneFlowAgeInfoByZoneIdRequest(AbstractModel):
@@ -1500,6 +1803,13 @@ class DescribeZoneFlowAgeInfoByZoneIdRequest(AbstractModel):
         self.ZoneId = params.get("ZoneId")
         self.StartDate = params.get("StartDate")
         self.EndDate = params.get("EndDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeZoneFlowAgeInfoByZoneIdResponse(AbstractModel):
@@ -1537,6 +1847,13 @@ class DescribeZoneFlowAgeInfoByZoneIdResponse(AbstractModel):
         self.ZoneName = params.get("ZoneName")
         self.Data = params.get("Data")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeZoneFlowAndStayTimeRequest(AbstractModel):
@@ -1566,6 +1883,13 @@ class DescribeZoneFlowAndStayTimeRequest(AbstractModel):
         self.ShopId = params.get("ShopId")
         self.StartDate = params.get("StartDate")
         self.EndDate = params.get("EndDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeZoneFlowAndStayTimeResponse(AbstractModel):
@@ -1600,6 +1924,13 @@ class DescribeZoneFlowAndStayTimeResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Data.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeZoneFlowDailyByZoneIdRequest(AbstractModel):
@@ -1633,6 +1964,13 @@ class DescribeZoneFlowDailyByZoneIdRequest(AbstractModel):
         self.ZoneId = params.get("ZoneId")
         self.StartDate = params.get("StartDate")
         self.EndDate = params.get("EndDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeZoneFlowDailyByZoneIdResponse(AbstractModel):
@@ -1675,6 +2013,13 @@ class DescribeZoneFlowDailyByZoneIdResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Data.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeZoneFlowGenderAvrStayTimeByZoneIdRequest(AbstractModel):
@@ -1708,6 +2053,13 @@ class DescribeZoneFlowGenderAvrStayTimeByZoneIdRequest(AbstractModel):
         self.ZoneId = params.get("ZoneId")
         self.StartDate = params.get("StartDate")
         self.EndDate = params.get("EndDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeZoneFlowGenderAvrStayTimeByZoneIdResponse(AbstractModel):
@@ -1750,6 +2102,13 @@ class DescribeZoneFlowGenderAvrStayTimeByZoneIdResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Data.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeZoneFlowGenderInfoByZoneIdRequest(AbstractModel):
@@ -1783,6 +2142,13 @@ class DescribeZoneFlowGenderInfoByZoneIdRequest(AbstractModel):
         self.ZoneId = params.get("ZoneId")
         self.StartDate = params.get("StartDate")
         self.EndDate = params.get("EndDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeZoneFlowGenderInfoByZoneIdResponse(AbstractModel):
@@ -1824,6 +2190,13 @@ class DescribeZoneFlowGenderInfoByZoneIdResponse(AbstractModel):
         self.MalePercent = params.get("MalePercent")
         self.FemalePercent = params.get("FemalePercent")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeZoneFlowHourlyByZoneIdRequest(AbstractModel):
@@ -1857,6 +2230,13 @@ class DescribeZoneFlowHourlyByZoneIdRequest(AbstractModel):
         self.ZoneId = params.get("ZoneId")
         self.StartDate = params.get("StartDate")
         self.EndDate = params.get("EndDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeZoneFlowHourlyByZoneIdResponse(AbstractModel):
@@ -1899,6 +2279,13 @@ class DescribeZoneFlowHourlyByZoneIdResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Data.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeZoneTrafficInfoRequest(AbstractModel):
@@ -1936,6 +2323,13 @@ class DescribeZoneTrafficInfoRequest(AbstractModel):
         self.EndDate = params.get("EndDate")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeZoneTrafficInfoResponse(AbstractModel):
@@ -1974,6 +2368,13 @@ class DescribeZoneTrafficInfoResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ZoneTrafficInfoSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GenderAgeTrafficDetail(AbstractModel):
@@ -1999,6 +2400,13 @@ class GenderAgeTrafficDetail(AbstractModel):
         self.Gender = params.get("Gender")
         self.AgeGap = params.get("AgeGap")
         self.TrafficCount = params.get("TrafficCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class HourTrafficInfoDetail(AbstractModel):
@@ -2020,6 +2428,13 @@ class HourTrafficInfoDetail(AbstractModel):
     def _deserialize(self, params):
         self.Hour = params.get("Hour")
         self.HourTrafficTotalCount = params.get("HourTrafficTotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyPersonFeatureInfoRequest(AbstractModel):
@@ -2057,6 +2472,13 @@ class ModifyPersonFeatureInfoRequest(AbstractModel):
         self.PictureName = params.get("PictureName")
         self.PersonType = params.get("PersonType")
         self.ShopId = params.get("ShopId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyPersonFeatureInfoResponse(AbstractModel):
@@ -2098,6 +2520,13 @@ class ModifyPersonFeatureInfoResponse(AbstractModel):
         self.PersonType = params.get("PersonType")
         self.SimilarPersonIds = params.get("SimilarPersonIds")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyPersonTagInfoRequest(AbstractModel):
@@ -2128,6 +2557,13 @@ class ModifyPersonTagInfoRequest(AbstractModel):
                 obj = PersonTagInfo()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyPersonTagInfoResponse(AbstractModel):
@@ -2145,6 +2581,13 @@ class ModifyPersonTagInfoResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyPersonTypeRequest(AbstractModel):
@@ -2181,6 +2624,13 @@ PersonType=2时(黑名单)，0普通黑名单，1小偷)
         self.PersonId = params.get("PersonId")
         self.PersonType = params.get("PersonType")
         self.PersonSubType = params.get("PersonSubType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyPersonTypeResponse(AbstractModel):
@@ -2198,6 +2648,13 @@ class ModifyPersonTypeResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class NetworkAndShopInfo(AbstractModel):
@@ -2267,6 +2724,13 @@ class NetworkAndShopInfo(AbstractModel):
         self.Loss = params.get("Loss")
         self.UpdateTime = params.get("UpdateTime")
         self.Mac = params.get("Mac")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class NetworkHistoryInfo(AbstractModel):
@@ -2313,6 +2777,13 @@ class NetworkHistoryInfo(AbstractModel):
                 obj = NetworkInfo()
                 obj._deserialize(item)
                 self.Infos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class NetworkInfo(AbstractModel):
@@ -2362,6 +2833,13 @@ class NetworkInfo(AbstractModel):
         self.Loss = params.get("Loss")
         self.UpdateTime = params.get("UpdateTime")
         self.Mac = params.get("Mac")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class NetworkLastInfo(AbstractModel):
@@ -2388,6 +2866,13 @@ class NetworkLastInfo(AbstractModel):
                 obj = NetworkAndShopInfo()
                 obj._deserialize(item)
                 self.Infos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PersonCoordinate(AbstractModel):
@@ -2433,6 +2918,13 @@ class PersonCoordinate(AbstractModel):
         self.PosId = params.get("PosId")
         self.ShopId = params.get("ShopId")
         self.Event = params.get("Event")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PersonInfo(AbstractModel):
@@ -2485,6 +2977,13 @@ PersonType=2时(黑名单)，0普通黑名单，1小偷)
         self.PersonSubType = params.get("PersonSubType")
         self.VisitTimes = params.get("VisitTimes")
         self.VisitDays = params.get("VisitDays")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PersonProfile(AbstractModel):
@@ -2526,6 +3025,13 @@ class PersonProfile(AbstractModel):
         self.ArrivedCount = params.get("ArrivedCount")
         self.PicUrl = params.get("PicUrl")
         self.Similarity = params.get("Similarity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PersonTagInfo(AbstractModel):
@@ -2551,6 +3057,13 @@ class PersonTagInfo(AbstractModel):
         self.OldType = params.get("OldType")
         self.NewType = params.get("NewType")
         self.PersonId = params.get("PersonId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PersonTracePoint(AbstractModel):
@@ -2596,6 +3109,13 @@ class PersonTracePoint(AbstractModel):
         self.CapPic = params.get("CapPic")
         self.ShoppingBagType = params.get("ShoppingBagType")
         self.ShoppingBagCount = params.get("ShoppingBagCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PersonTraceRoute(AbstractModel):
@@ -2622,6 +3142,13 @@ class PersonTraceRoute(AbstractModel):
                 obj = PersonTracePoint()
                 obj._deserialize(item)
                 self.TracePointSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PersonVisitInfo(AbstractModel):
@@ -2673,6 +3200,13 @@ class PersonVisitInfo(AbstractModel):
         if params.get("SceneInfo") is not None:
             self.SceneInfo = SceneInfo()
             self.SceneInfo._deserialize(params.get("SceneInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RegisterCallbackRequest(AbstractModel):
@@ -2702,6 +3236,13 @@ class RegisterCallbackRequest(AbstractModel):
         self.BackUrl = params.get("BackUrl")
         self.Time = params.get("Time")
         self.NeedFacePic = params.get("NeedFacePic")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RegisterCallbackResponse(AbstractModel):
@@ -2719,6 +3260,13 @@ class RegisterCallbackResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SceneInfo(AbstractModel):
@@ -2752,6 +3300,13 @@ class SceneInfo(AbstractModel):
         self.HeadY = params.get("HeadY")
         self.HeadWidth = params.get("HeadWidth")
         self.HeadHeight = params.get("HeadHeight")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ShopDayTrafficInfo(AbstractModel):
@@ -2782,6 +3337,13 @@ class ShopDayTrafficInfo(AbstractModel):
                 obj = GenderAgeTrafficDetail()
                 obj._deserialize(item)
                 self.GenderAgeTrafficDetailSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ShopHourTrafficInfo(AbstractModel):
@@ -2808,6 +3370,13 @@ class ShopHourTrafficInfo(AbstractModel):
                 obj = HourTrafficInfoDetail()
                 obj._deserialize(item)
                 self.HourTrafficInfoDetailSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ShopInfo(AbstractModel):
@@ -2849,6 +3418,13 @@ class ShopInfo(AbstractModel):
         self.Province = params.get("Province")
         self.City = params.get("City")
         self.CompanyName = params.get("CompanyName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TrajectorySunData(AbstractModel):
@@ -2874,6 +3450,13 @@ class TrajectorySunData(AbstractModel):
         self.Zones = params.get("Zones")
         self.Count = params.get("Count")
         self.AvgStayTime = params.get("AvgStayTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ZoneAgeGroupAvrStayTime(AbstractModel):
@@ -2895,6 +3478,13 @@ class ZoneAgeGroupAvrStayTime(AbstractModel):
     def _deserialize(self, params):
         self.MaleAvrStayTime = params.get("MaleAvrStayTime")
         self.FemaleAvrStayTime = params.get("FemaleAvrStayTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ZoneDayFlow(AbstractModel):
@@ -2916,6 +3506,13 @@ class ZoneDayFlow(AbstractModel):
     def _deserialize(self, params):
         self.Day = params.get("Day")
         self.FlowCount = params.get("FlowCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ZoneFlowAndAvrStayTime(AbstractModel):
@@ -2945,6 +3542,13 @@ class ZoneFlowAndAvrStayTime(AbstractModel):
         self.ZoneName = params.get("ZoneName")
         self.FlowCount = params.get("FlowCount")
         self.AvrStayTime = params.get("AvrStayTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ZoneHourFlow(AbstractModel):
@@ -2966,6 +3570,13 @@ class ZoneHourFlow(AbstractModel):
     def _deserialize(self, params):
         self.Hour = params.get("Hour")
         self.FlowCount = params.get("FlowCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ZoneTrafficInfo(AbstractModel):
@@ -2992,6 +3603,13 @@ class ZoneTrafficInfo(AbstractModel):
                 obj = ZoneTrafficInfoDetail()
                 obj._deserialize(item)
                 self.ZoneTrafficInfoDetailSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ZoneTrafficInfoDetail(AbstractModel):
@@ -3021,3 +3639,10 @@ class ZoneTrafficInfoDetail(AbstractModel):
         self.ZoneName = params.get("ZoneName")
         self.TrafficTotalCount = params.get("TrafficTotalCount")
         self.AvgStayTime = params.get("AvgStayTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -31,6 +33,13 @@ class AcceptOrganizationInvitationRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AcceptOrganizationInvitationResponse(AbstractModel):
@@ -48,6 +57,13 @@ class AcceptOrganizationInvitationResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AddOrganizationNodeRequest(AbstractModel):
@@ -69,6 +85,13 @@ class AddOrganizationNodeRequest(AbstractModel):
     def _deserialize(self, params):
         self.ParentNodeId = params.get("ParentNodeId")
         self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AddOrganizationNodeResponse(AbstractModel):
@@ -90,6 +113,13 @@ class AddOrganizationNodeResponse(AbstractModel):
     def _deserialize(self, params):
         self.NodeId = params.get("NodeId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CancelOrganizationInvitationRequest(AbstractModel):
@@ -107,6 +137,13 @@ class CancelOrganizationInvitationRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CancelOrganizationInvitationResponse(AbstractModel):
@@ -124,6 +161,13 @@ class CancelOrganizationInvitationResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateOrganizationRequest(AbstractModel):
@@ -141,6 +185,13 @@ class CreateOrganizationRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.OrgType = params.get("OrgType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateOrganizationResponse(AbstractModel):
@@ -174,6 +225,13 @@ class CreateOrganizationResponse(AbstractModel):
         self.Mail = params.get("Mail")
         self.OrgType = params.get("OrgType")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteOrganizationMemberFromNodeRequest(AbstractModel):
@@ -195,6 +253,13 @@ class DeleteOrganizationMemberFromNodeRequest(AbstractModel):
     def _deserialize(self, params):
         self.MemberUin = params.get("MemberUin")
         self.NodeId = params.get("NodeId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteOrganizationMemberFromNodeResponse(AbstractModel):
@@ -212,6 +277,13 @@ class DeleteOrganizationMemberFromNodeResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteOrganizationMembersRequest(AbstractModel):
@@ -229,6 +301,13 @@ class DeleteOrganizationMembersRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.Uins = params.get("Uins")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteOrganizationMembersResponse(AbstractModel):
@@ -246,6 +325,13 @@ class DeleteOrganizationMembersResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteOrganizationNodesRequest(AbstractModel):
@@ -263,6 +349,13 @@ class DeleteOrganizationNodesRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.NodeIds = params.get("NodeIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteOrganizationNodesResponse(AbstractModel):
@@ -280,6 +373,13 @@ class DeleteOrganizationNodesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteOrganizationRequest(AbstractModel):
@@ -303,6 +403,13 @@ class DeleteOrganizationResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DenyOrganizationInvitationRequest(AbstractModel):
@@ -320,6 +427,13 @@ class DenyOrganizationInvitationRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DenyOrganizationInvitationResponse(AbstractModel):
@@ -337,6 +451,13 @@ class DenyOrganizationInvitationResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetOrganizationMemberRequest(AbstractModel):
@@ -354,6 +475,13 @@ class GetOrganizationMemberRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.MemberUin = params.get("MemberUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetOrganizationMemberResponse(AbstractModel):
@@ -399,6 +527,13 @@ class GetOrganizationMemberResponse(AbstractModel):
         self.NodeName = params.get("NodeName")
         self.ParentNodeId = params.get("ParentNodeId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetOrganizationRequest(AbstractModel):
@@ -446,6 +581,13 @@ class GetOrganizationResponse(AbstractModel):
         self.OrgType = params.get("OrgType")
         self.IsEmpty = params.get("IsEmpty")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ListOrganizationInvitationsRequest(AbstractModel):
@@ -471,6 +613,13 @@ class ListOrganizationInvitationsRequest(AbstractModel):
         self.Invited = params.get("Invited")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ListOrganizationInvitationsResponse(AbstractModel):
@@ -501,6 +650,13 @@ class ListOrganizationInvitationsResponse(AbstractModel):
                 self.Invitations.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ListOrganizationMembersRequest(AbstractModel):
@@ -522,6 +678,13 @@ class ListOrganizationMembersRequest(AbstractModel):
     def _deserialize(self, params):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ListOrganizationMembersResponse(AbstractModel):
@@ -552,6 +715,13 @@ class ListOrganizationMembersResponse(AbstractModel):
                 self.Members.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ListOrganizationNodeMembersRequest(AbstractModel):
@@ -577,6 +747,13 @@ class ListOrganizationNodeMembersRequest(AbstractModel):
         self.NodeId = params.get("NodeId")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ListOrganizationNodeMembersResponse(AbstractModel):
@@ -607,6 +784,13 @@ class ListOrganizationNodeMembersResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Members.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ListOrganizationNodesRequest(AbstractModel):
@@ -639,6 +823,13 @@ class ListOrganizationNodesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Nodes.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MoveOrganizationMembersToNodeRequest(AbstractModel):
@@ -660,6 +851,13 @@ class MoveOrganizationMembersToNodeRequest(AbstractModel):
     def _deserialize(self, params):
         self.NodeId = params.get("NodeId")
         self.Uins = params.get("Uins")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MoveOrganizationMembersToNodeResponse(AbstractModel):
@@ -677,6 +875,13 @@ class MoveOrganizationMembersToNodeResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class OrgInvitation(AbstractModel):
@@ -734,6 +939,13 @@ class OrgInvitation(AbstractModel):
         self.OrgType = params.get("OrgType")
         self.InviteTime = params.get("InviteTime")
         self.ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class OrgMember(AbstractModel):
@@ -763,6 +975,13 @@ class OrgMember(AbstractModel):
         self.Name = params.get("Name")
         self.Remark = params.get("Remark")
         self.JoinTime = params.get("JoinTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class OrgNode(AbstractModel):
@@ -792,6 +1011,13 @@ class OrgNode(AbstractModel):
         self.Name = params.get("Name")
         self.ParentNodeId = params.get("ParentNodeId")
         self.MemberCount = params.get("MemberCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class QuitOrganizationRequest(AbstractModel):
@@ -809,6 +1035,13 @@ class QuitOrganizationRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.OrgId = params.get("OrgId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class QuitOrganizationResponse(AbstractModel):
@@ -826,6 +1059,13 @@ class QuitOrganizationResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SendOrganizationInvitationRequest(AbstractModel):
@@ -851,6 +1091,13 @@ class SendOrganizationInvitationRequest(AbstractModel):
         self.InviteUin = params.get("InviteUin")
         self.Name = params.get("Name")
         self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SendOrganizationInvitationResponse(AbstractModel):
@@ -868,6 +1115,13 @@ class SendOrganizationInvitationResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UpdateOrganizationMemberRequest(AbstractModel):
@@ -893,6 +1147,13 @@ class UpdateOrganizationMemberRequest(AbstractModel):
         self.MemberUin = params.get("MemberUin")
         self.Name = params.get("Name")
         self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UpdateOrganizationMemberResponse(AbstractModel):
@@ -910,6 +1171,13 @@ class UpdateOrganizationMemberResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UpdateOrganizationNodeRequest(AbstractModel):
@@ -935,6 +1203,13 @@ class UpdateOrganizationNodeRequest(AbstractModel):
         self.NodeId = params.get("NodeId")
         self.Name = params.get("Name")
         self.ParentNodeId = params.get("ParentNodeId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UpdateOrganizationNodeResponse(AbstractModel):
@@ -952,3 +1227,10 @@ class UpdateOrganizationNodeResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

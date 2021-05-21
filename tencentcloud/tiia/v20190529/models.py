@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -43,6 +45,13 @@ class AssessQualityRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageUrl = params.get("ImageUrl")
         self.ImageBase64 = params.get("ImageBase64")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AssessQualityResponse(AbstractModel):
@@ -88,6 +97,13 @@ class AssessQualityResponse(AbstractModel):
         self.ClarityScore = params.get("ClarityScore")
         self.AestheticScore = params.get("AestheticScore")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CarTagItem(AbstractModel):
@@ -134,6 +150,13 @@ class CarTagItem(AbstractModel):
                 obj = Coord()
                 obj._deserialize(item)
                 self.CarLocation.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Coord(AbstractModel):
@@ -155,6 +178,13 @@ class Coord(AbstractModel):
     def _deserialize(self, params):
         self.X = params.get("X")
         self.Y = params.get("Y")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CropImageRequest(AbstractModel):
@@ -196,6 +226,13 @@ Width : Height建议取值在[1, 2.5]之间，超过这个范围可能会影响�
         self.Height = params.get("Height")
         self.ImageUrl = params.get("ImageUrl")
         self.ImageBase64 = params.get("ImageBase64")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CropImageResponse(AbstractModel):
@@ -249,6 +286,13 @@ class CropImageResponse(AbstractModel):
         self.OriginalHeight = params.get("OriginalHeight")
         self.CropResult = params.get("CropResult")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DetectCelebrityRequest(AbstractModel):
@@ -278,6 +322,13 @@ class DetectCelebrityRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageUrl = params.get("ImageUrl")
         self.ImageBase64 = params.get("ImageBase64")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DetectCelebrityResponse(AbstractModel):
@@ -314,6 +365,13 @@ FalseRate1Percent, FalseRate5Permil, FalseRate1Permil分别代表误识率在百
             self.Threshold = Threshold()
             self.Threshold._deserialize(params.get("Threshold"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DetectDisgustRequest(AbstractModel):
@@ -343,6 +401,13 @@ class DetectDisgustRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageUrl = params.get("ImageUrl")
         self.ImageBase64 = params.get("ImageBase64")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DetectDisgustResponse(AbstractModel):
@@ -368,6 +433,13 @@ class DetectDisgustResponse(AbstractModel):
         self.Confidence = params.get("Confidence")
         self.Type = params.get("Type")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DetectLabelItem(AbstractModel):
@@ -397,6 +469,13 @@ class DetectLabelItem(AbstractModel):
         self.Confidence = params.get("Confidence")
         self.FirstCategory = params.get("FirstCategory")
         self.SecondCategory = params.get("SecondCategory")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DetectLabelRequest(AbstractModel):
@@ -437,6 +516,13 @@ NEWS，针对新闻、资讯、广电等行业优化；
         self.ImageUrl = params.get("ImageUrl")
         self.ImageBase64 = params.get("ImageBase64")
         self.Scenes = params.get("Scenes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DetectLabelResponse(AbstractModel):
@@ -495,6 +581,13 @@ class DetectLabelResponse(AbstractModel):
                 obj._deserialize(item)
                 self.NewsLabels.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DetectMisbehaviorRequest(AbstractModel):
@@ -524,6 +617,13 @@ class DetectMisbehaviorRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageUrl = params.get("ImageUrl")
         self.ImageBase64 = params.get("ImageBase64")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DetectMisbehaviorResponse(AbstractModel):
@@ -549,6 +649,13 @@ class DetectMisbehaviorResponse(AbstractModel):
         self.Confidence = params.get("Confidence")
         self.Type = params.get("Type")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DetectProductBetaRequest(AbstractModel):
@@ -572,6 +679,13 @@ class DetectProductBetaRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageUrl = params.get("ImageUrl")
         self.ImageBase64 = params.get("ImageBase64")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DetectProductBetaResponse(AbstractModel):
@@ -607,6 +721,13 @@ class DetectProductBetaResponse(AbstractModel):
             self.ProductInfo = ProductInfo()
             self.ProductInfo._deserialize(params.get("ProductInfo"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DetectProductRequest(AbstractModel):
@@ -636,6 +757,13 @@ class DetectProductRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageUrl = params.get("ImageUrl")
         self.ImageBase64 = params.get("ImageBase64")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DetectProductResponse(AbstractModel):
@@ -662,6 +790,13 @@ class DetectProductResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Products.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class EnhanceImageRequest(AbstractModel):
@@ -691,6 +826,13 @@ class EnhanceImageRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageUrl = params.get("ImageUrl")
         self.ImageBase64 = params.get("ImageBase64")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class EnhanceImageResponse(AbstractModel):
@@ -712,6 +854,13 @@ class EnhanceImageResponse(AbstractModel):
     def _deserialize(self, params):
         self.EnhancedImage = params.get("EnhancedImage")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Face(AbstractModel):
@@ -767,6 +916,13 @@ class Face(AbstractModel):
         self.Width = params.get("Width")
         self.Height = params.get("Height")
         self.ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Labels(AbstractModel):
@@ -790,6 +946,13 @@ class Labels(AbstractModel):
     def _deserialize(self, params):
         self.FirstLabel = params.get("FirstLabel")
         self.SecondLabel = params.get("SecondLabel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Location(AbstractModel):
@@ -819,6 +982,13 @@ class Location(AbstractModel):
         self.YMin = params.get("YMin")
         self.XMax = params.get("XMax")
         self.YMax = params.get("YMax")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Product(AbstractModel):
@@ -860,6 +1030,13 @@ class Product(AbstractModel):
         self.YMin = params.get("YMin")
         self.XMax = params.get("XMax")
         self.YMax = params.get("YMax")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ProductInfo(AbstractModel):
@@ -912,6 +1089,13 @@ class ProductInfo(AbstractModel):
         self.ProductCategory = params.get("ProductCategory")
         self.Score = params.get("Score")
         self.Image = params.get("Image")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RecognizeCarRequest(AbstractModel):
@@ -942,6 +1126,13 @@ class RecognizeCarRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageUrl = params.get("ImageUrl")
         self.ImageBase64 = params.get("ImageBase64")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RecognizeCarResponse(AbstractModel):
@@ -977,6 +1168,13 @@ class RecognizeCarResponse(AbstractModel):
                 obj._deserialize(item)
                 self.CarTags.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RegionDetected(AbstractModel):
@@ -1007,6 +1205,13 @@ class RegionDetected(AbstractModel):
         if params.get("Location") is not None:
             self.Location = Location()
             self.Location._deserialize(params.get("Location"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Threshold(AbstractModel):
@@ -1035,3 +1240,10 @@ class Threshold(AbstractModel):
         self.FalseRate1Percent = params.get("FalseRate1Percent")
         self.FalseRate5Permil = params.get("FalseRate5Permil")
         self.FalseRate1Permil = params.get("FalseRate1Permil")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

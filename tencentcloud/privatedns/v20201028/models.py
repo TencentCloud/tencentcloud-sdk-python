@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -48,6 +50,13 @@ class AuditLog(AbstractModel):
                 obj = AuditLogInfo()
                 obj._deserialize(item)
                 self.DataSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AuditLogInfo(AbstractModel):
@@ -73,6 +82,13 @@ class AuditLogInfo(AbstractModel):
         self.Date = params.get("Date")
         self.OperatorUin = params.get("OperatorUin")
         self.Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreatePrivateZoneRecordRequest(AbstractModel):
@@ -114,6 +130,13 @@ class CreatePrivateZoneRecordRequest(AbstractModel):
         self.Weight = params.get("Weight")
         self.MX = params.get("MX")
         self.TTL = params.get("TTL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreatePrivateZoneRecordResponse(AbstractModel):
@@ -135,6 +158,13 @@ class CreatePrivateZoneRecordResponse(AbstractModel):
     def _deserialize(self, params):
         self.RecordId = params.get("RecordId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreatePrivateZoneRequest(AbstractModel):
@@ -187,6 +217,13 @@ class CreatePrivateZoneRequest(AbstractModel):
                 obj = VpcInfo()
                 obj._deserialize(item)
                 self.Vpcs.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreatePrivateZoneResponse(AbstractModel):
@@ -212,6 +249,13 @@ class CreatePrivateZoneResponse(AbstractModel):
         self.ZoneId = params.get("ZoneId")
         self.Domain = params.get("Domain")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DatePoint(AbstractModel):
@@ -233,6 +277,13 @@ class DatePoint(AbstractModel):
     def _deserialize(self, params):
         self.Date = params.get("Date")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeletePrivateZoneRecordRequest(AbstractModel):
@@ -258,6 +309,13 @@ class DeletePrivateZoneRecordRequest(AbstractModel):
         self.ZoneId = params.get("ZoneId")
         self.RecordId = params.get("RecordId")
         self.RecordIdSet = params.get("RecordIdSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeletePrivateZoneRecordResponse(AbstractModel):
@@ -275,6 +333,13 @@ class DeletePrivateZoneRecordResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeletePrivateZoneRequest(AbstractModel):
@@ -296,6 +361,13 @@ class DeletePrivateZoneRequest(AbstractModel):
     def _deserialize(self, params):
         self.ZoneId = params.get("ZoneId")
         self.ZoneIdSet = params.get("ZoneIdSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeletePrivateZoneResponse(AbstractModel):
@@ -313,6 +385,13 @@ class DeletePrivateZoneResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAuditLogRequest(AbstractModel):
@@ -351,6 +430,13 @@ class DescribeAuditLogRequest(AbstractModel):
         self.TimeRangeEnd = params.get("TimeRangeEnd")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAuditLogResponse(AbstractModel):
@@ -377,6 +463,13 @@ class DescribeAuditLogResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Data.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDashboardRequest(AbstractModel):
@@ -421,6 +514,13 @@ class DescribeDashboardResponse(AbstractModel):
                 obj._deserialize(item)
                 self.FlowUsage.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribePrivateZoneListRequest(AbstractModel):
@@ -451,6 +551,13 @@ class DescribePrivateZoneListRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribePrivateZoneListResponse(AbstractModel):
@@ -481,6 +588,13 @@ class DescribePrivateZoneListResponse(AbstractModel):
                 obj._deserialize(item)
                 self.PrivateZoneSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribePrivateZoneRecordListRequest(AbstractModel):
@@ -515,6 +629,13 @@ class DescribePrivateZoneRecordListRequest(AbstractModel):
                 self.Filters.append(obj)
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribePrivateZoneRecordListResponse(AbstractModel):
@@ -545,6 +666,13 @@ class DescribePrivateZoneRecordListResponse(AbstractModel):
                 obj._deserialize(item)
                 self.RecordSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribePrivateZoneRequest(AbstractModel):
@@ -562,6 +690,13 @@ class DescribePrivateZoneRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.ZoneId = params.get("ZoneId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribePrivateZoneResponse(AbstractModel):
@@ -585,6 +720,13 @@ class DescribePrivateZoneResponse(AbstractModel):
             self.PrivateZone = PrivateZone()
             self.PrivateZone._deserialize(params.get("PrivateZone"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribePrivateZoneServiceRequest(AbstractModel):
@@ -612,6 +754,13 @@ class DescribePrivateZoneServiceResponse(AbstractModel):
     def _deserialize(self, params):
         self.ServiceStatus = params.get("ServiceStatus")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeRequestDataRequest(AbstractModel):
@@ -642,6 +791,13 @@ class DescribeRequestDataRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Filters.append(obj)
         self.TimeRangeEnd = params.get("TimeRangeEnd")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeRequestDataResponse(AbstractModel):
@@ -672,6 +828,13 @@ class DescribeRequestDataResponse(AbstractModel):
                 self.Data.append(obj)
         self.Interval = params.get("Interval")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Filter(AbstractModel):
@@ -693,6 +856,13 @@ class Filter(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FlowUsage(AbstractModel):
@@ -718,6 +888,13 @@ class FlowUsage(AbstractModel):
         self.FlowType = params.get("FlowType")
         self.TotalQuantity = params.get("TotalQuantity")
         self.AvailableQuantity = params.get("AvailableQuantity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MetricData(AbstractModel):
@@ -748,6 +925,13 @@ class MetricData(AbstractModel):
                 obj = DatePoint()
                 obj._deserialize(item)
                 self.DataSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyPrivateZoneRecordRequest(AbstractModel):
@@ -793,6 +977,13 @@ class ModifyPrivateZoneRecordRequest(AbstractModel):
         self.Weight = params.get("Weight")
         self.MX = params.get("MX")
         self.TTL = params.get("TTL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyPrivateZoneRecordResponse(AbstractModel):
@@ -810,6 +1001,13 @@ class ModifyPrivateZoneRecordResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyPrivateZoneRequest(AbstractModel):
@@ -835,6 +1033,13 @@ class ModifyPrivateZoneRequest(AbstractModel):
         self.ZoneId = params.get("ZoneId")
         self.Remark = params.get("Remark")
         self.DnsForwardStatus = params.get("DnsForwardStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyPrivateZoneResponse(AbstractModel):
@@ -852,6 +1057,13 @@ class ModifyPrivateZoneResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyPrivateZoneVpcRequest(AbstractModel):
@@ -878,6 +1090,13 @@ class ModifyPrivateZoneVpcRequest(AbstractModel):
                 obj = VpcInfo()
                 obj._deserialize(item)
                 self.VpcSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyPrivateZoneVpcResponse(AbstractModel):
@@ -908,6 +1127,13 @@ class ModifyPrivateZoneVpcResponse(AbstractModel):
                 obj._deserialize(item)
                 self.VpcSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PrivateZone(AbstractModel):
@@ -976,6 +1202,13 @@ class PrivateZone(AbstractModel):
                 obj = TagInfo()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PrivateZoneRecord(AbstractModel):
@@ -1040,6 +1273,13 @@ class PrivateZoneRecord(AbstractModel):
         self.CreatedOn = params.get("CreatedOn")
         self.UpdatedOn = params.get("UpdatedOn")
         self.Extra = params.get("Extra")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SubscribePrivateZoneServiceRequest(AbstractModel):
@@ -1067,6 +1307,13 @@ class SubscribePrivateZoneServiceResponse(AbstractModel):
     def _deserialize(self, params):
         self.ServiceStatus = params.get("ServiceStatus")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TagInfo(AbstractModel):
@@ -1088,6 +1335,13 @@ class TagInfo(AbstractModel):
     def _deserialize(self, params):
         self.TagKey = params.get("TagKey")
         self.TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VpcInfo(AbstractModel):
@@ -1109,3 +1363,10 @@ class VpcInfo(AbstractModel):
     def _deserialize(self, params):
         self.UniqVpcId = params.get("UniqVpcId")
         self.Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

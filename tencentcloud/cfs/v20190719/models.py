@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -35,6 +37,13 @@ class AvailableProtoStatus(AbstractModel):
     def _deserialize(self, params):
         self.SaleStatus = params.get("SaleStatus")
         self.Protocol = params.get("Protocol")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AvailableRegion(AbstractModel):
@@ -73,6 +82,13 @@ class AvailableRegion(AbstractModel):
                 obj._deserialize(item)
                 self.Zones.append(obj)
         self.RegionCnName = params.get("RegionCnName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AvailableType(AbstractModel):
@@ -103,6 +119,13 @@ class AvailableType(AbstractModel):
                 self.Protocols.append(obj)
         self.Type = params.get("Type")
         self.Prepayment = params.get("Prepayment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AvailableZone(AbstractModel):
@@ -141,6 +164,13 @@ class AvailableZone(AbstractModel):
                 obj._deserialize(item)
                 self.Types.append(obj)
         self.ZoneName = params.get("ZoneName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateCfsFileSystemRequest(AbstractModel):
@@ -203,6 +233,13 @@ class CreateCfsFileSystemRequest(AbstractModel):
                 obj._deserialize(item)
                 self.ResourceTags.append(obj)
         self.ClientToken = params.get("ClientToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateCfsFileSystemResponse(AbstractModel):
@@ -252,6 +289,13 @@ class CreateCfsFileSystemResponse(AbstractModel):
         self.FsName = params.get("FsName")
         self.Encrypted = params.get("Encrypted")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateCfsPGroupRequest(AbstractModel):
@@ -273,6 +317,13 @@ class CreateCfsPGroupRequest(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.DescInfo = params.get("DescInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateCfsPGroupResponse(AbstractModel):
@@ -310,6 +361,13 @@ class CreateCfsPGroupResponse(AbstractModel):
         self.BindCfsNum = params.get("BindCfsNum")
         self.CDate = params.get("CDate")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateCfsRuleRequest(AbstractModel):
@@ -343,6 +401,13 @@ class CreateCfsRuleRequest(AbstractModel):
         self.Priority = params.get("Priority")
         self.RWPermission = params.get("RWPermission")
         self.UserPermission = params.get("UserPermission")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateCfsRuleResponse(AbstractModel):
@@ -384,6 +449,13 @@ class CreateCfsRuleResponse(AbstractModel):
         self.UserPermission = params.get("UserPermission")
         self.Priority = params.get("Priority")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteCfsFileSystemRequest(AbstractModel):
@@ -401,6 +473,13 @@ class DeleteCfsFileSystemRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.FileSystemId = params.get("FileSystemId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteCfsFileSystemResponse(AbstractModel):
@@ -418,6 +497,13 @@ class DeleteCfsFileSystemResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteCfsPGroupRequest(AbstractModel):
@@ -435,6 +521,13 @@ class DeleteCfsPGroupRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.PGroupId = params.get("PGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteCfsPGroupResponse(AbstractModel):
@@ -460,6 +553,13 @@ class DeleteCfsPGroupResponse(AbstractModel):
         self.PGroupId = params.get("PGroupId")
         self.AppId = params.get("AppId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteCfsRuleRequest(AbstractModel):
@@ -481,6 +581,13 @@ class DeleteCfsRuleRequest(AbstractModel):
     def _deserialize(self, params):
         self.PGroupId = params.get("PGroupId")
         self.RuleId = params.get("RuleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteCfsRuleResponse(AbstractModel):
@@ -506,6 +613,13 @@ class DeleteCfsRuleResponse(AbstractModel):
         self.RuleId = params.get("RuleId")
         self.PGroupId = params.get("PGroupId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteMountTargetRequest(AbstractModel):
@@ -527,6 +641,13 @@ class DeleteMountTargetRequest(AbstractModel):
     def _deserialize(self, params):
         self.FileSystemId = params.get("FileSystemId")
         self.MountTargetId = params.get("MountTargetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteMountTargetResponse(AbstractModel):
@@ -544,6 +665,13 @@ class DeleteMountTargetResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAvailableZoneInfoRequest(AbstractModel):
@@ -576,6 +704,13 @@ class DescribeAvailableZoneInfoResponse(AbstractModel):
                 obj._deserialize(item)
                 self.RegionZones.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCfsFileSystemClientsRequest(AbstractModel):
@@ -593,6 +728,13 @@ class DescribeCfsFileSystemClientsRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.FileSystemId = params.get("FileSystemId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCfsFileSystemClientsResponse(AbstractModel):
@@ -619,6 +761,13 @@ class DescribeCfsFileSystemClientsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ClientList.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCfsFileSystemsRequest(AbstractModel):
@@ -644,6 +793,13 @@ class DescribeCfsFileSystemsRequest(AbstractModel):
         self.FileSystemId = params.get("FileSystemId")
         self.VpcId = params.get("VpcId")
         self.SubnetId = params.get("SubnetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCfsFileSystemsResponse(AbstractModel):
@@ -674,6 +830,13 @@ class DescribeCfsFileSystemsResponse(AbstractModel):
                 self.FileSystems.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCfsPGroupsRequest(AbstractModel):
@@ -706,6 +869,13 @@ class DescribeCfsPGroupsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.PGroupList.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCfsRulesRequest(AbstractModel):
@@ -723,6 +893,13 @@ class DescribeCfsRulesRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.PGroupId = params.get("PGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCfsRulesResponse(AbstractModel):
@@ -749,6 +926,13 @@ class DescribeCfsRulesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.RuleList.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCfsServiceStatusRequest(AbstractModel):
@@ -776,6 +960,13 @@ class DescribeCfsServiceStatusResponse(AbstractModel):
     def _deserialize(self, params):
         self.CfsServiceStatus = params.get("CfsServiceStatus")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeMountTargetsRequest(AbstractModel):
@@ -793,6 +984,13 @@ class DescribeMountTargetsRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.FileSystemId = params.get("FileSystemId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeMountTargetsResponse(AbstractModel):
@@ -823,6 +1021,13 @@ class DescribeMountTargetsResponse(AbstractModel):
                 self.MountTargets.append(obj)
         self.NumberOfMountTargets = params.get("NumberOfMountTargets")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FileSystemClient(AbstractModel):
@@ -860,6 +1065,13 @@ class FileSystemClient(AbstractModel):
         self.Zone = params.get("Zone")
         self.ZoneName = params.get("ZoneName")
         self.MountDirectory = params.get("MountDirectory")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FileSystemInfo(AbstractModel):
@@ -947,6 +1159,13 @@ class FileSystemInfo(AbstractModel):
         self.KmsKeyId = params.get("KmsKeyId")
         self.AppId = params.get("AppId")
         self.BandwidthLimit = params.get("BandwidthLimit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MountInfo(AbstractModel):
@@ -1000,6 +1219,13 @@ class MountInfo(AbstractModel):
         self.VpcName = params.get("VpcName")
         self.SubnetId = params.get("SubnetId")
         self.SubnetName = params.get("SubnetName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PGroup(AbstractModel):
@@ -1021,6 +1247,13 @@ class PGroup(AbstractModel):
     def _deserialize(self, params):
         self.PGroupId = params.get("PGroupId")
         self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PGroupInfo(AbstractModel):
@@ -1054,6 +1287,13 @@ class PGroupInfo(AbstractModel):
         self.DescInfo = params.get("DescInfo")
         self.CDate = params.get("CDate")
         self.BindCfsNum = params.get("BindCfsNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PGroupRuleInfo(AbstractModel):
@@ -1087,6 +1327,13 @@ class PGroupRuleInfo(AbstractModel):
         self.RWPermission = params.get("RWPermission")
         self.UserPermission = params.get("UserPermission")
         self.Priority = params.get("Priority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SignUpCfsServiceRequest(AbstractModel):
@@ -1114,6 +1361,13 @@ class SignUpCfsServiceResponse(AbstractModel):
     def _deserialize(self, params):
         self.CfsServiceStatus = params.get("CfsServiceStatus")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TagInfo(AbstractModel):
@@ -1135,6 +1389,13 @@ class TagInfo(AbstractModel):
     def _deserialize(self, params):
         self.TagKey = params.get("TagKey")
         self.TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UpdateCfsFileSystemNameRequest(AbstractModel):
@@ -1156,6 +1417,13 @@ class UpdateCfsFileSystemNameRequest(AbstractModel):
     def _deserialize(self, params):
         self.FileSystemId = params.get("FileSystemId")
         self.FsName = params.get("FsName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UpdateCfsFileSystemNameResponse(AbstractModel):
@@ -1185,6 +1453,13 @@ class UpdateCfsFileSystemNameResponse(AbstractModel):
         self.FileSystemId = params.get("FileSystemId")
         self.FsName = params.get("FsName")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UpdateCfsFileSystemPGroupRequest(AbstractModel):
@@ -1206,6 +1481,13 @@ class UpdateCfsFileSystemPGroupRequest(AbstractModel):
     def _deserialize(self, params):
         self.PGroupId = params.get("PGroupId")
         self.FileSystemId = params.get("FileSystemId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UpdateCfsFileSystemPGroupResponse(AbstractModel):
@@ -1231,6 +1513,13 @@ class UpdateCfsFileSystemPGroupResponse(AbstractModel):
         self.PGroupId = params.get("PGroupId")
         self.FileSystemId = params.get("FileSystemId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UpdateCfsFileSystemSizeLimitRequest(AbstractModel):
@@ -1252,6 +1541,13 @@ class UpdateCfsFileSystemSizeLimitRequest(AbstractModel):
     def _deserialize(self, params):
         self.FsLimit = params.get("FsLimit")
         self.FileSystemId = params.get("FileSystemId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UpdateCfsFileSystemSizeLimitResponse(AbstractModel):
@@ -1269,6 +1565,13 @@ class UpdateCfsFileSystemSizeLimitResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UpdateCfsPGroupRequest(AbstractModel):
@@ -1294,6 +1597,13 @@ class UpdateCfsPGroupRequest(AbstractModel):
         self.PGroupId = params.get("PGroupId")
         self.Name = params.get("Name")
         self.DescInfo = params.get("DescInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UpdateCfsPGroupResponse(AbstractModel):
@@ -1323,6 +1633,13 @@ class UpdateCfsPGroupResponse(AbstractModel):
         self.Name = params.get("Name")
         self.DescInfo = params.get("DescInfo")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UpdateCfsRuleRequest(AbstractModel):
@@ -1360,6 +1677,13 @@ class UpdateCfsRuleRequest(AbstractModel):
         self.RWPermission = params.get("RWPermission")
         self.UserPermission = params.get("UserPermission")
         self.Priority = params.get("Priority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UpdateCfsRuleResponse(AbstractModel):
@@ -1401,3 +1725,10 @@ class UpdateCfsRuleResponse(AbstractModel):
         self.UserPermission = params.get("UserPermission")
         self.Priority = params.get("Priority")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

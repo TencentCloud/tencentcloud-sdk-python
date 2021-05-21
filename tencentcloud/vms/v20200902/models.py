@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -48,6 +50,13 @@ class SendCodeVoiceRequest(AbstractModel):
         self.VoiceSdkAppid = params.get("VoiceSdkAppid")
         self.PlayTimes = params.get("PlayTimes")
         self.SessionContext = params.get("SessionContext")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SendCodeVoiceResponse(AbstractModel):
@@ -71,6 +80,13 @@ class SendCodeVoiceResponse(AbstractModel):
             self.SendStatus = SendStatus()
             self.SendStatus._deserialize(params.get("SendStatus"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SendStatus(AbstractModel):
@@ -93,6 +109,13 @@ class SendStatus(AbstractModel):
     def _deserialize(self, params):
         self.CallId = params.get("CallId")
         self.SessionContext = params.get("SessionContext")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SendTtsVoiceRequest(AbstractModel):
@@ -132,6 +155,13 @@ class SendTtsVoiceRequest(AbstractModel):
         self.TemplateParamSet = params.get("TemplateParamSet")
         self.PlayTimes = params.get("PlayTimes")
         self.SessionContext = params.get("SessionContext")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SendTtsVoiceResponse(AbstractModel):
@@ -155,3 +185,10 @@ class SendTtsVoiceResponse(AbstractModel):
             self.SendStatus = SendStatus()
             self.SendStatus._deserialize(params.get("SendStatus"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

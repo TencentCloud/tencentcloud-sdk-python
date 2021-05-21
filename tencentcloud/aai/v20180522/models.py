@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -39,6 +41,13 @@ class ChatRequest(AbstractModel):
         self.Text = params.get("Text")
         self.ProjectId = params.get("ProjectId")
         self.User = params.get("User")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ChatResponse(AbstractModel):
@@ -60,6 +69,13 @@ class ChatResponse(AbstractModel):
     def _deserialize(self, params):
         self.Answer = params.get("Answer")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SentenceRecognitionRequest(AbstractModel):
@@ -109,6 +125,13 @@ class SentenceRecognitionRequest(AbstractModel):
         self.Url = params.get("Url")
         self.Data = params.get("Data")
         self.DataLen = params.get("DataLen")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SentenceRecognitionResponse(AbstractModel):
@@ -130,6 +153,13 @@ class SentenceRecognitionResponse(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SimultaneousInterpretingRequest(AbstractModel):
@@ -191,6 +221,13 @@ class SimultaneousInterpretingRequest(AbstractModel):
         self.SourceLanguage = params.get("SourceLanguage")
         self.TargetLanguage = params.get("TargetLanguage")
         self.Seq = params.get("Seq")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SimultaneousInterpretingResponse(AbstractModel):
@@ -216,6 +253,13 @@ class SimultaneousInterpretingResponse(AbstractModel):
         self.AsrText = params.get("AsrText")
         self.NmtText = params.get("NmtText")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TextToVoiceRequest(AbstractModel):
@@ -271,6 +315,13 @@ class TextToVoiceRequest(AbstractModel):
         self.PrimaryLanguage = params.get("PrimaryLanguage")
         self.SampleRate = params.get("SampleRate")
         self.Codec = params.get("Codec")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TextToVoiceResponse(AbstractModel):
@@ -296,3 +347,10 @@ class TextToVoiceResponse(AbstractModel):
         self.Audio = params.get("Audio")
         self.SessionId = params.get("SessionId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -43,6 +45,13 @@ class CaptchaOperDataInterceptUnit(AbstractModel):
         self.AllStopCnt = params.get("AllStopCnt")
         self.PicStopCnt = params.get("PicStopCnt")
         self.StrategyStopCnt = params.get("StrategyStopCnt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CaptchaOperDataLoadTimeUnit(AbstractModel):
@@ -68,6 +77,13 @@ class CaptchaOperDataLoadTimeUnit(AbstractModel):
         self.DateKey = params.get("DateKey")
         self.MarketLoadTime = params.get("MarketLoadTime")
         self.AppIdLoadTime = params.get("AppIdLoadTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CaptchaOperDataRes(AbstractModel):
@@ -121,6 +137,13 @@ class CaptchaOperDataRes(AbstractModel):
                 obj = CaptchaOperDataTryTimesDistributeUnit()
                 obj._deserialize(item)
                 self.OperDataTryTimesDistributeUnitArray.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CaptchaOperDataTryTimesDistributeUnit(AbstractModel):
@@ -142,6 +165,13 @@ class CaptchaOperDataTryTimesDistributeUnit(AbstractModel):
     def _deserialize(self, params):
         self.TryCount = params.get("TryCount")
         self.UserCount = params.get("UserCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CaptchaOperDataTryTimesUnit(AbstractModel):
@@ -167,6 +197,13 @@ class CaptchaOperDataTryTimesUnit(AbstractModel):
         self.DateKey = params.get("DateKey")
         self.CntPerPass = params.get("CntPerPass")
         self.MarketCntPerPass = params.get("MarketCntPerPass")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CaptchaQueryData(AbstractModel):
@@ -188,6 +225,13 @@ class CaptchaQueryData(AbstractModel):
     def _deserialize(self, params):
         self.Cnt = params.get("Cnt")
         self.Date = params.get("Date")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CaptchaTicketDataRes(AbstractModel):
@@ -228,6 +272,13 @@ class CaptchaTicketDataRes(AbstractModel):
                 obj = TicketInterceptUnit()
                 obj._deserialize(item)
                 self.TicketInterceptArray.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CaptchaUserAllAppId(AbstractModel):
@@ -257,6 +308,13 @@ class CaptchaUserAllAppId(AbstractModel):
         self.AppName = params.get("AppName")
         self.TcAppId = params.get("TcAppId")
         self.ChannelInfo = params.get("ChannelInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCaptchaAppIdInfoRequest(AbstractModel):
@@ -274,6 +332,13 @@ class DescribeCaptchaAppIdInfoRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.CaptchaAppId = params.get("CaptchaAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCaptchaAppIdInfoResponse(AbstractModel):
@@ -353,6 +418,13 @@ class DescribeCaptchaAppIdInfoResponse(AbstractModel):
         self.CaptchaCode = params.get("CaptchaCode")
         self.CaptchaMsg = params.get("CaptchaMsg")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCaptchaDataRequest(AbstractModel):
@@ -382,6 +454,13 @@ class DescribeCaptchaDataRequest(AbstractModel):
         self.Start = params.get("Start")
         self.End = params.get("End")
         self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCaptchaDataResponse(AbstractModel):
@@ -418,6 +497,13 @@ class DescribeCaptchaDataResponse(AbstractModel):
                 self.Data.append(obj)
         self.CaptchaMsg = params.get("CaptchaMsg")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCaptchaDataSumRequest(AbstractModel):
@@ -443,6 +529,13 @@ class DescribeCaptchaDataSumRequest(AbstractModel):
         self.CaptchaAppId = params.get("CaptchaAppId")
         self.Start = params.get("Start")
         self.End = params.get("End")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCaptchaDataSumResponse(AbstractModel):
@@ -489,6 +582,13 @@ class DescribeCaptchaDataSumResponse(AbstractModel):
         self.CaptchaCode = params.get("CaptchaCode")
         self.CheckTicketSum = params.get("CheckTicketSum")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCaptchaMiniDataRequest(AbstractModel):
@@ -518,6 +618,13 @@ class DescribeCaptchaMiniDataRequest(AbstractModel):
         self.Start = params.get("Start")
         self.End = params.get("End")
         self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCaptchaMiniDataResponse(AbstractModel):
@@ -554,6 +661,13 @@ class DescribeCaptchaMiniDataResponse(AbstractModel):
                 self.Data.append(obj)
         self.CaptchaMsg = params.get("CaptchaMsg")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCaptchaMiniDataSumRequest(AbstractModel):
@@ -579,6 +693,13 @@ class DescribeCaptchaMiniDataSumRequest(AbstractModel):
         self.CaptchaAppId = params.get("CaptchaAppId")
         self.Start = params.get("Start")
         self.End = params.get("End")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCaptchaMiniDataSumResponse(AbstractModel):
@@ -641,6 +762,13 @@ class DescribeCaptchaMiniDataSumResponse(AbstractModel):
         self.TicketThroughputSum = params.get("TicketThroughputSum")
         self.TicketInterceptSum = params.get("TicketInterceptSum")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCaptchaMiniOperDataRequest(AbstractModel):
@@ -666,6 +794,13 @@ class DescribeCaptchaMiniOperDataRequest(AbstractModel):
         self.CaptchaAppId = params.get("CaptchaAppId")
         self.Start = params.get("Start")
         self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCaptchaMiniOperDataResponse(AbstractModel):
@@ -699,6 +834,13 @@ class DescribeCaptchaMiniOperDataResponse(AbstractModel):
             self.Data = CaptchaOperDataRes()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCaptchaMiniResultRequest(AbstractModel):
@@ -748,6 +890,13 @@ class DescribeCaptchaMiniResultRequest(AbstractModel):
         self.SceneId = params.get("SceneId")
         self.MacAddress = params.get("MacAddress")
         self.Imei = params.get("Imei")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCaptchaMiniResultResponse(AbstractModel):
@@ -782,6 +931,13 @@ class DescribeCaptchaMiniResultResponse(AbstractModel):
         self.CaptchaCode = params.get("CaptchaCode")
         self.CaptchaMsg = params.get("CaptchaMsg")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCaptchaMiniRiskResultRequest(AbstractModel):
@@ -839,6 +995,13 @@ class DescribeCaptchaMiniRiskResultRequest(AbstractModel):
         self.Imei = params.get("Imei")
         self.SceneCode = params.get("SceneCode")
         self.WeChatOpenId = params.get("WeChatOpenId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCaptchaMiniRiskResultResponse(AbstractModel):
@@ -883,6 +1046,13 @@ class DescribeCaptchaMiniRiskResultResponse(AbstractModel):
             self.ManageMarketingRiskValue = OutputManageMarketingRiskValue()
             self.ManageMarketingRiskValue._deserialize(params.get("ManageMarketingRiskValue"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCaptchaOperDataRequest(AbstractModel):
@@ -908,6 +1078,13 @@ class DescribeCaptchaOperDataRequest(AbstractModel):
         self.CaptchaAppId = params.get("CaptchaAppId")
         self.Start = params.get("Start")
         self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCaptchaOperDataResponse(AbstractModel):
@@ -941,6 +1118,13 @@ class DescribeCaptchaOperDataResponse(AbstractModel):
             self.Data = CaptchaOperDataRes()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCaptchaResultRequest(AbstractModel):
@@ -998,6 +1182,13 @@ class DescribeCaptchaResultRequest(AbstractModel):
         self.MacAddress = params.get("MacAddress")
         self.Imei = params.get("Imei")
         self.NeedGetCaptchaTime = params.get("NeedGetCaptchaTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCaptchaResultResponse(AbstractModel):
@@ -1056,6 +1247,13 @@ class DescribeCaptchaResultResponse(AbstractModel):
         self.EvilLevel = params.get("EvilLevel")
         self.GetCaptchaTime = params.get("GetCaptchaTime")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCaptchaTicketDataRequest(AbstractModel):
@@ -1077,6 +1275,13 @@ class DescribeCaptchaTicketDataRequest(AbstractModel):
     def _deserialize(self, params):
         self.CaptchaAppId = params.get("CaptchaAppId")
         self.Start = params.get("Start")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCaptchaTicketDataResponse(AbstractModel):
@@ -1110,6 +1315,13 @@ class DescribeCaptchaTicketDataResponse(AbstractModel):
             self.Data = CaptchaTicketDataRes()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCaptchaUserAllAppIdRequest(AbstractModel):
@@ -1152,6 +1364,13 @@ class DescribeCaptchaUserAllAppIdResponse(AbstractModel):
         self.CaptchaCode = params.get("CaptchaCode")
         self.CaptchaMsg = params.get("CaptchaMsg")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class OutputManageMarketingRiskValue(AbstractModel):
@@ -1226,6 +1445,13 @@ reject：拒绝，高风险恶意
         self.UserIp = params.get("UserIp")
         self.RiskLevel = params.get("RiskLevel")
         self.RiskType = params.get("RiskType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TicketAmountUnit(AbstractModel):
@@ -1247,6 +1473,13 @@ class TicketAmountUnit(AbstractModel):
     def _deserialize(self, params):
         self.DateKey = params.get("DateKey")
         self.Amount = params.get("Amount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TicketInterceptUnit(AbstractModel):
@@ -1268,6 +1501,13 @@ class TicketInterceptUnit(AbstractModel):
     def _deserialize(self, params):
         self.DateKey = params.get("DateKey")
         self.Intercept = params.get("Intercept")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TicketThroughUnit(AbstractModel):
@@ -1289,6 +1529,13 @@ class TicketThroughUnit(AbstractModel):
     def _deserialize(self, params):
         self.DateKey = params.get("DateKey")
         self.Through = params.get("Through")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UpdateCaptchaAppIdInfoRequest(AbstractModel):
@@ -1354,6 +1601,13 @@ class UpdateCaptchaAppIdInfoRequest(AbstractModel):
         self.MailAlarm = params.get("MailAlarm")
         self.TopFullScreen = params.get("TopFullScreen")
         self.TrafficThreshold = params.get("TrafficThreshold")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UpdateCaptchaAppIdInfoResponse(AbstractModel):
@@ -1380,3 +1634,10 @@ class UpdateCaptchaAppIdInfoResponse(AbstractModel):
         self.CaptchaCode = params.get("CaptchaCode")
         self.CaptchaMsg = params.get("CaptchaMsg")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

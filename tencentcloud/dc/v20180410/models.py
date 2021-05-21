@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -31,6 +33,13 @@ class AcceptDirectConnectTunnelRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.DirectConnectTunnelId = params.get("DirectConnectTunnelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AcceptDirectConnectTunnelResponse(AbstractModel):
@@ -48,6 +57,13 @@ class AcceptDirectConnectTunnelResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AccessPoint(AbstractModel):
@@ -107,6 +123,13 @@ class AccessPoint(AbstractModel):
             self.Coordinate._deserialize(params.get("Coordinate"))
         self.City = params.get("City")
         self.Area = params.get("Area")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ApplyInternetAddressRequest(AbstractModel):
@@ -136,6 +159,13 @@ class ApplyInternetAddressRequest(AbstractModel):
         self.MaskLen = params.get("MaskLen")
         self.AddrType = params.get("AddrType")
         self.AddrProto = params.get("AddrProto")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ApplyInternetAddressResponse(AbstractModel):
@@ -158,6 +188,13 @@ class ApplyInternetAddressResponse(AbstractModel):
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BFDInfo(AbstractModel):
@@ -179,6 +216,13 @@ class BFDInfo(AbstractModel):
     def _deserialize(self, params):
         self.ProbeFailedTimes = params.get("ProbeFailedTimes")
         self.Interval = params.get("Interval")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BGPStatus(AbstractModel):
@@ -200,6 +244,13 @@ class BGPStatus(AbstractModel):
     def _deserialize(self, params):
         self.TencentAddressBgpState = params.get("TencentAddressBgpState")
         self.TencentBackupAddressBgpState = params.get("TencentBackupAddressBgpState")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BgpPeer(AbstractModel):
@@ -221,6 +272,13 @@ class BgpPeer(AbstractModel):
     def _deserialize(self, params):
         self.Asn = params.get("Asn")
         self.AuthKey = params.get("AuthKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Coordinate(AbstractModel):
@@ -242,6 +300,13 @@ class Coordinate(AbstractModel):
     def _deserialize(self, params):
         self.Lat = params.get("Lat")
         self.Lng = params.get("Lng")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateDirectConnectRequest(AbstractModel):
@@ -324,6 +389,13 @@ class CreateDirectConnectRequest(AbstractModel):
         self.FaultReportContactPerson = params.get("FaultReportContactPerson")
         self.FaultReportContactNumber = params.get("FaultReportContactNumber")
         self.SignLaw = params.get("SignLaw")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateDirectConnectResponse(AbstractModel):
@@ -345,6 +417,13 @@ class CreateDirectConnectResponse(AbstractModel):
     def _deserialize(self, params):
         self.DirectConnectIdSet = params.get("DirectConnectIdSet")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateDirectConnectTunnelRequest(AbstractModel):
@@ -438,6 +517,13 @@ STATIC：静态
         self.CustomerAddress = params.get("CustomerAddress")
         self.TencentBackupAddress = params.get("TencentBackupAddress")
         self.CloudAttachId = params.get("CloudAttachId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateDirectConnectTunnelResponse(AbstractModel):
@@ -459,6 +545,13 @@ class CreateDirectConnectTunnelResponse(AbstractModel):
     def _deserialize(self, params):
         self.DirectConnectTunnelIdSet = params.get("DirectConnectTunnelIdSet")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteDirectConnectRequest(AbstractModel):
@@ -476,6 +569,13 @@ class DeleteDirectConnectRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.DirectConnectId = params.get("DirectConnectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteDirectConnectResponse(AbstractModel):
@@ -493,6 +593,13 @@ class DeleteDirectConnectResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteDirectConnectTunnelRequest(AbstractModel):
@@ -510,6 +617,13 @@ class DeleteDirectConnectTunnelRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.DirectConnectTunnelId = params.get("DirectConnectTunnelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteDirectConnectTunnelResponse(AbstractModel):
@@ -527,6 +641,13 @@ class DeleteDirectConnectTunnelResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAccessPointsRequest(AbstractModel):
@@ -554,6 +675,13 @@ class DescribeAccessPointsRequest(AbstractModel):
         self.RegionId = params.get("RegionId")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAccessPointsResponse(AbstractModel):
@@ -584,6 +712,13 @@ class DescribeAccessPointsResponse(AbstractModel):
                 self.AccessPointSet.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDirectConnectTunnelExtraRequest(AbstractModel):
@@ -601,6 +736,13 @@ class DescribeDirectConnectTunnelExtraRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.DirectConnectTunnelId = params.get("DirectConnectTunnelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDirectConnectTunnelExtraResponse(AbstractModel):
@@ -624,6 +766,13 @@ class DescribeDirectConnectTunnelExtraResponse(AbstractModel):
             self.DirectConnectTunnelExtra = DirectConnectTunnelExtra()
             self.DirectConnectTunnelExtra._deserialize(params.get("DirectConnectTunnelExtra"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDirectConnectTunnelsRequest(AbstractModel):
@@ -662,6 +811,13 @@ class DescribeDirectConnectTunnelsRequest(AbstractModel):
         self.DirectConnectTunnelIds = params.get("DirectConnectTunnelIds")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDirectConnectTunnelsResponse(AbstractModel):
@@ -692,6 +848,13 @@ class DescribeDirectConnectTunnelsResponse(AbstractModel):
                 self.DirectConnectTunnelSet.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDirectConnectsRequest(AbstractModel):
@@ -726,6 +889,13 @@ class DescribeDirectConnectsRequest(AbstractModel):
         self.DirectConnectIds = params.get("DirectConnectIds")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDirectConnectsResponse(AbstractModel):
@@ -761,6 +931,13 @@ class DescribeDirectConnectsResponse(AbstractModel):
         self.TotalCount = params.get("TotalCount")
         self.AllSignLaw = params.get("AllSignLaw")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeInternetAddressQuotaRequest(AbstractModel):
@@ -809,6 +986,13 @@ class DescribeInternetAddressQuotaResponse(AbstractModel):
         self.Ipv4BgpNum = params.get("Ipv4BgpNum")
         self.Ipv4OtherNum = params.get("Ipv4OtherNum")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeInternetAddressRequest(AbstractModel):
@@ -844,6 +1028,13 @@ class DescribeInternetAddressRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeInternetAddressResponse(AbstractModel):
@@ -875,6 +1066,13 @@ class DescribeInternetAddressResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Subnets.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeInternetAddressStatisticsRequest(AbstractModel):
@@ -912,6 +1110,13 @@ class DescribeInternetAddressStatisticsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.InternetAddressStatistics.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribePublicDirectConnectTunnelRoutesRequest(AbstractModel):
@@ -948,6 +1153,13 @@ route-subnet：路由cidr，取值如：192.68.1.0/24
                 self.Filters.append(obj)
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribePublicDirectConnectTunnelRoutesResponse(AbstractModel):
@@ -978,6 +1190,13 @@ class DescribePublicDirectConnectTunnelRoutesResponse(AbstractModel):
                 self.Routes.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DirectConnect(AbstractModel):
@@ -1152,6 +1371,13 @@ class DirectConnect(AbstractModel):
         self.VlanZeroDirectConnectTunnelCount = params.get("VlanZeroDirectConnectTunnelCount")
         self.OtherVlanDirectConnectTunnelCount = params.get("OtherVlanDirectConnectTunnelCount")
         self.MinBandwidth = params.get("MinBandwidth")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DirectConnectTunnel(AbstractModel):
@@ -1318,6 +1544,13 @@ REJECTED:拒绝
         self.TencentBackupAddress = params.get("TencentBackupAddress")
         self.SignLaw = params.get("SignLaw")
         self.CloudAttachId = params.get("CloudAttachId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DirectConnectTunnelExtra(AbstractModel):
@@ -1518,6 +1751,13 @@ REJECTED:拒绝
             self.BgpIPv6Status = BGPStatus()
             self.BgpIPv6Status._deserialize(params.get("BgpIPv6Status"))
         self.CustomerIPv6Address = params.get("CustomerIPv6Address")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DirectConnectTunnelRoute(AbstractModel):
@@ -1555,6 +1795,13 @@ class DirectConnectTunnelRoute(AbstractModel):
         self.Status = params.get("Status")
         self.ASPath = params.get("ASPath")
         self.NextHop = params.get("NextHop")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DisableInternetAddressRequest(AbstractModel):
@@ -1572,6 +1819,13 @@ class DisableInternetAddressRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DisableInternetAddressResponse(AbstractModel):
@@ -1589,6 +1843,13 @@ class DisableInternetAddressResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class EnableInternetAddressRequest(AbstractModel):
@@ -1606,6 +1867,13 @@ class EnableInternetAddressRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class EnableInternetAddressResponse(AbstractModel):
@@ -1623,6 +1891,13 @@ class EnableInternetAddressResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Filter(AbstractModel):
@@ -1644,6 +1919,13 @@ class Filter(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InternetAddressDetail(AbstractModel):
@@ -1721,6 +2003,13 @@ class InternetAddressDetail(AbstractModel):
         self.AppId = params.get("AppId")
         self.AddrProto = params.get("AddrProto")
         self.ReserveTime = params.get("ReserveTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InternetAddressStatistics(AbstractModel):
@@ -1744,6 +2033,13 @@ class InternetAddressStatistics(AbstractModel):
     def _deserialize(self, params):
         self.Region = params.get("Region")
         self.SubnetNum = params.get("SubnetNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyDirectConnectAttributeRequest(AbstractModel):
@@ -1809,6 +2105,13 @@ class ModifyDirectConnectAttributeRequest(AbstractModel):
         self.FaultReportContactNumber = params.get("FaultReportContactNumber")
         self.SignLaw = params.get("SignLaw")
         self.Bandwidth = params.get("Bandwidth")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyDirectConnectAttributeResponse(AbstractModel):
@@ -1826,6 +2129,13 @@ class ModifyDirectConnectAttributeResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyDirectConnectTunnelAttributeRequest(AbstractModel):
@@ -1878,6 +2188,13 @@ class ModifyDirectConnectTunnelAttributeRequest(AbstractModel):
         self.CustomerAddress = params.get("CustomerAddress")
         self.Bandwidth = params.get("Bandwidth")
         self.TencentBackupAddress = params.get("TencentBackupAddress")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyDirectConnectTunnelAttributeResponse(AbstractModel):
@@ -1895,6 +2212,13 @@ class ModifyDirectConnectTunnelAttributeResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyDirectConnectTunnelExtraRequest(AbstractModel):
@@ -1988,6 +2312,13 @@ class ModifyDirectConnectTunnelExtraRequest(AbstractModel):
                 obj._deserialize(item)
                 self.CustomerIDCRoutes.append(obj)
         self.JumboEnable = params.get("JumboEnable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyDirectConnectTunnelExtraResponse(AbstractModel):
@@ -2005,6 +2336,13 @@ class ModifyDirectConnectTunnelExtraResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class NQAInfo(AbstractModel):
@@ -2030,6 +2368,13 @@ class NQAInfo(AbstractModel):
         self.ProbeFailedTimes = params.get("ProbeFailedTimes")
         self.Interval = params.get("Interval")
         self.DestinationIp = params.get("DestinationIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RejectDirectConnectTunnelRequest(AbstractModel):
@@ -2047,6 +2392,13 @@ class RejectDirectConnectTunnelRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.DirectConnectTunnelId = params.get("DirectConnectTunnelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RejectDirectConnectTunnelResponse(AbstractModel):
@@ -2064,6 +2416,13 @@ class RejectDirectConnectTunnelResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ReleaseInternetAddressRequest(AbstractModel):
@@ -2081,6 +2440,13 @@ class ReleaseInternetAddressRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ReleaseInternetAddressResponse(AbstractModel):
@@ -2098,6 +2464,13 @@ class ReleaseInternetAddressResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RouteFilterPrefix(AbstractModel):
@@ -2115,6 +2488,13 @@ class RouteFilterPrefix(AbstractModel):
 
     def _deserialize(self, params):
         self.Cidr = params.get("Cidr")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Tag(AbstractModel):
@@ -2138,3 +2518,10 @@ class Tag(AbstractModel):
     def _deserialize(self, params):
         self.Key = params.get("Key")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

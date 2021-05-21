@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -59,6 +61,13 @@ class Device(AbstractModel):
         self.IDFA = params.get("IDFA")
         self.IDFV = params.get("IDFV")
         self.IpType = params.get("IpType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ImageModerationRequest(AbstractModel):
@@ -108,6 +117,13 @@ class ImageModerationRequest(AbstractModel):
         if params.get("Device") is not None:
             self.Device = Device()
             self.Device._deserialize(params.get("Device"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ImageModerationResponse(AbstractModel):
@@ -203,6 +219,13 @@ class ImageModerationResponse(AbstractModel):
         self.Extra = params.get("Extra")
         self.FileMD5 = params.get("FileMD5")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ImageRecognitionRequest(AbstractModel):
@@ -272,6 +295,13 @@ class ImageRecognitionRequest(AbstractModel):
         self.CustomUin = params.get("CustomUin")
         self.CustomSubAccountUin = params.get("CustomSubAccountUin")
         self.StreamId = params.get("StreamId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ImageRecognitionResponse(AbstractModel):
@@ -367,6 +397,13 @@ class ImageRecognitionResponse(AbstractModel):
         self.Extra = params.get("Extra")
         self.FileMD5 = params.get("FileMD5")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class LabelDetailItem(AbstractModel):
@@ -395,6 +432,13 @@ class LabelDetailItem(AbstractModel):
         self.Id = params.get("Id")
         self.Name = params.get("Name")
         self.Score = params.get("Score")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class LabelResult(AbstractModel):
@@ -440,6 +484,13 @@ class LabelResult(AbstractModel):
                 obj = LabelDetailItem()
                 obj._deserialize(item)
                 self.Details.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class LibDetail(AbstractModel):
@@ -484,6 +535,13 @@ class LibDetail(AbstractModel):
         self.Label = params.get("Label")
         self.Tag = params.get("Tag")
         self.Score = params.get("Score")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class LibResult(AbstractModel):
@@ -530,6 +588,13 @@ class LibResult(AbstractModel):
                 obj = LibDetail()
                 obj._deserialize(item)
                 self.Details.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Location(AbstractModel):
@@ -563,6 +628,13 @@ class Location(AbstractModel):
         self.Width = params.get("Width")
         self.Height = params.get("Height")
         self.Rotate = params.get("Rotate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ObjectDetail(AbstractModel):
@@ -599,6 +671,13 @@ class ObjectDetail(AbstractModel):
         if params.get("Location") is not None:
             self.Location = Location()
             self.Location._deserialize(params.get("Location"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ObjectResult(AbstractModel):
@@ -649,6 +728,13 @@ class ObjectResult(AbstractModel):
                 obj = ObjectDetail()
                 obj._deserialize(item)
                 self.Details.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class OcrResult(AbstractModel):
@@ -698,6 +784,13 @@ class OcrResult(AbstractModel):
                 obj._deserialize(item)
                 self.Details.append(obj)
         self.Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class OcrTextDetail(AbstractModel):
@@ -746,6 +839,13 @@ class OcrTextDetail(AbstractModel):
             self.Location = Location()
             self.Location._deserialize(params.get("Location"))
         self.Rate = params.get("Rate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class User(AbstractModel):
@@ -795,3 +895,10 @@ class User(AbstractModel):
         self.Phone = params.get("Phone")
         self.Desc = params.get("Desc")
         self.HeadUrl = params.get("HeadUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

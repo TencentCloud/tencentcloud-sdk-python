@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -39,6 +41,13 @@ class AccessConfiguration(AbstractModel):
         self.AccessRegion = params.get("AccessRegion")
         self.Bandwidth = params.get("Bandwidth")
         self.Concurrent = params.get("Concurrent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AccessRegionDetial(AbstractModel):
@@ -68,6 +77,13 @@ class AccessRegionDetial(AbstractModel):
         self.RegionName = params.get("RegionName")
         self.ConcurrentList = params.get("ConcurrentList")
         self.BandwidthList = params.get("BandwidthList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AccessRegionDomainConf(AbstractModel):
@@ -89,6 +105,13 @@ class AccessRegionDomainConf(AbstractModel):
     def _deserialize(self, params):
         self.RegionId = params.get("RegionId")
         self.NationCountryInnerList = params.get("NationCountryInnerList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AddRealServersRequest(AbstractModel):
@@ -123,6 +146,13 @@ class AddRealServersRequest(AbstractModel):
                 obj = TagPair()
                 obj._deserialize(item)
                 self.TagSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AddRealServersResponse(AbstractModel):
@@ -149,6 +179,13 @@ class AddRealServersResponse(AbstractModel):
                 obj._deserialize(item)
                 self.RealServerSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BandwidthPriceGradient(AbstractModel):
@@ -174,6 +211,13 @@ class BandwidthPriceGradient(AbstractModel):
         self.BandwidthRange = params.get("BandwidthRange")
         self.BandwidthUnitPrice = params.get("BandwidthUnitPrice")
         self.DiscountBandwidthUnitPrice = params.get("DiscountBandwidthUnitPrice")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BindListenerRealServersRequest(AbstractModel):
@@ -200,6 +244,13 @@ class BindListenerRealServersRequest(AbstractModel):
                 obj = RealServerBindSetReq()
                 obj._deserialize(item)
                 self.RealServerBindSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BindListenerRealServersResponse(AbstractModel):
@@ -217,6 +268,13 @@ class BindListenerRealServersResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BindRealServer(AbstractModel):
@@ -259,6 +317,13 @@ class BindRealServer(AbstractModel):
         self.RealServerStatus = params.get("RealServerStatus")
         self.RealServerPort = params.get("RealServerPort")
         self.DownIPList = params.get("DownIPList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BindRealServerInfo(AbstractModel):
@@ -298,6 +363,13 @@ class BindRealServerInfo(AbstractModel):
                 obj = TagPair()
                 obj._deserialize(item)
                 self.TagSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BindRuleRealServersRequest(AbstractModel):
@@ -327,6 +399,13 @@ class BindRuleRealServersRequest(AbstractModel):
                 obj = RealServerBindSetReq()
                 obj._deserialize(item)
                 self.RealServerBindSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BindRuleRealServersResponse(AbstractModel):
@@ -344,6 +423,13 @@ class BindRuleRealServersResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Certificate(AbstractModel):
@@ -398,6 +484,13 @@ class Certificate(AbstractModel):
         self.EndTime = params.get("EndTime")
         self.IssuerCN = params.get("IssuerCN")
         self.SubjectCN = params.get("SubjectCN")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CertificateAliasInfo(AbstractModel):
@@ -419,6 +512,13 @@ class CertificateAliasInfo(AbstractModel):
     def _deserialize(self, params):
         self.CertificateId = params.get("CertificateId")
         self.CertificateAlias = params.get("CertificateAlias")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CertificateDetail(AbstractModel):
@@ -479,6 +579,13 @@ class CertificateDetail(AbstractModel):
         self.EndTime = params.get("EndTime")
         self.IssuerCN = params.get("IssuerCN")
         self.SubjectCN = params.get("SubjectCN")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CheckProxyCreateRequest(AbstractModel):
@@ -512,6 +619,13 @@ class CheckProxyCreateRequest(AbstractModel):
         self.Bandwidth = params.get("Bandwidth")
         self.Concurrent = params.get("Concurrent")
         self.GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CheckProxyCreateResponse(AbstractModel):
@@ -533,6 +647,13 @@ class CheckProxyCreateResponse(AbstractModel):
     def _deserialize(self, params):
         self.CheckFlag = params.get("CheckFlag")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CloseProxiesRequest(AbstractModel):
@@ -559,6 +680,13 @@ class CloseProxiesRequest(AbstractModel):
         self.InstanceIds = params.get("InstanceIds")
         self.ClientToken = params.get("ClientToken")
         self.ProxyIds = params.get("ProxyIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CloseProxiesResponse(AbstractModel):
@@ -584,6 +712,13 @@ class CloseProxiesResponse(AbstractModel):
         self.InvalidStatusInstanceSet = params.get("InvalidStatusInstanceSet")
         self.OperationFailedInstanceSet = params.get("OperationFailedInstanceSet")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CloseProxyGroupRequest(AbstractModel):
@@ -601,6 +736,13 @@ class CloseProxyGroupRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CloseProxyGroupResponse(AbstractModel):
@@ -626,6 +768,13 @@ class CloseProxyGroupResponse(AbstractModel):
         self.InvalidStatusInstanceSet = params.get("InvalidStatusInstanceSet")
         self.OperationFailedInstanceSet = params.get("OperationFailedInstanceSet")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CloseSecurityPolicyRequest(AbstractModel):
@@ -647,6 +796,13 @@ class CloseSecurityPolicyRequest(AbstractModel):
     def _deserialize(self, params):
         self.ProxyId = params.get("ProxyId")
         self.PolicyId = params.get("PolicyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CloseSecurityPolicyResponse(AbstractModel):
@@ -668,6 +824,13 @@ class CloseSecurityPolicyResponse(AbstractModel):
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CountryAreaMap(AbstractModel):
@@ -705,6 +868,13 @@ class CountryAreaMap(AbstractModel):
         self.GeographicalZoneInnerCode = params.get("GeographicalZoneInnerCode")
         self.ContinentName = params.get("ContinentName")
         self.ContinentInnerCode = params.get("ContinentInnerCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateCertificateRequest(AbstractModel):
@@ -741,6 +911,13 @@ class CreateCertificateRequest(AbstractModel):
         self.CertificateContent = params.get("CertificateContent")
         self.CertificateAlias = params.get("CertificateAlias")
         self.CertificateKey = params.get("CertificateKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateCertificateResponse(AbstractModel):
@@ -762,6 +939,13 @@ class CreateCertificateResponse(AbstractModel):
     def _deserialize(self, params):
         self.CertificateId = params.get("CertificateId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateDomainErrorPageInfoRequest(AbstractModel):
@@ -808,6 +992,13 @@ class CreateDomainErrorPageInfoRequest(AbstractModel):
                 obj = HttpHeaderParam()
                 obj._deserialize(item)
                 self.SetHeaders.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateDomainErrorPageInfoResponse(AbstractModel):
@@ -829,6 +1020,13 @@ class CreateDomainErrorPageInfoResponse(AbstractModel):
     def _deserialize(self, params):
         self.ErrorPageId = params.get("ErrorPageId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateDomainRequest(AbstractModel):
@@ -864,6 +1062,13 @@ class CreateDomainRequest(AbstractModel):
         self.CertificateId = params.get("CertificateId")
         self.ClientCertificateId = params.get("ClientCertificateId")
         self.PolyClientCertificateIds = params.get("PolyClientCertificateIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateDomainResponse(AbstractModel):
@@ -881,6 +1086,13 @@ class CreateDomainResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateHTTPListenerRequest(AbstractModel):
@@ -910,6 +1122,13 @@ class CreateHTTPListenerRequest(AbstractModel):
         self.Port = params.get("Port")
         self.ProxyId = params.get("ProxyId")
         self.GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateHTTPListenerResponse(AbstractModel):
@@ -931,6 +1150,13 @@ class CreateHTTPListenerResponse(AbstractModel):
     def _deserialize(self, params):
         self.ListenerId = params.get("ListenerId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateHTTPSListenerRequest(AbstractModel):
@@ -983,6 +1209,13 @@ class CreateHTTPSListenerRequest(AbstractModel):
         self.ClientCertificateId = params.get("ClientCertificateId")
         self.PolyClientCertificateIds = params.get("PolyClientCertificateIds")
         self.GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateHTTPSListenerResponse(AbstractModel):
@@ -1004,6 +1237,13 @@ class CreateHTTPSListenerResponse(AbstractModel):
     def _deserialize(self, params):
         self.ListenerId = params.get("ListenerId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateProxyGroupDomainRequest(AbstractModel):
@@ -1021,6 +1261,13 @@ class CreateProxyGroupDomainRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateProxyGroupDomainResponse(AbstractModel):
@@ -1042,6 +1289,13 @@ class CreateProxyGroupDomainResponse(AbstractModel):
     def _deserialize(self, params):
         self.GroupId = params.get("GroupId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateProxyGroupRequest(AbstractModel):
@@ -1085,6 +1339,13 @@ class CreateProxyGroupRequest(AbstractModel):
                 obj = AccessConfiguration()
                 obj._deserialize(item)
                 self.AccessRegionSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateProxyGroupResponse(AbstractModel):
@@ -1106,6 +1367,13 @@ class CreateProxyGroupResponse(AbstractModel):
     def _deserialize(self, params):
         self.GroupId = params.get("GroupId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateProxyRequest(AbstractModel):
@@ -1170,6 +1438,13 @@ class CreateProxyRequest(AbstractModel):
                 self.TagSet.append(obj)
         self.ClonedProxyId = params.get("ClonedProxyId")
         self.BillingType = params.get("BillingType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateProxyResponse(AbstractModel):
@@ -1191,6 +1466,13 @@ class CreateProxyResponse(AbstractModel):
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateRuleRequest(AbstractModel):
@@ -1243,6 +1525,13 @@ class CreateRuleRequest(AbstractModel):
             self.CheckParams._deserialize(params.get("CheckParams"))
         self.ForwardProtocol = params.get("ForwardProtocol")
         self.ForwardHost = params.get("ForwardHost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateRuleResponse(AbstractModel):
@@ -1264,6 +1553,13 @@ class CreateRuleResponse(AbstractModel):
     def _deserialize(self, params):
         self.RuleId = params.get("RuleId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateSecurityPolicyRequest(AbstractModel):
@@ -1289,6 +1585,13 @@ class CreateSecurityPolicyRequest(AbstractModel):
         self.DefaultAction = params.get("DefaultAction")
         self.ProxyId = params.get("ProxyId")
         self.GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateSecurityPolicyResponse(AbstractModel):
@@ -1310,6 +1613,13 @@ class CreateSecurityPolicyResponse(AbstractModel):
     def _deserialize(self, params):
         self.PolicyId = params.get("PolicyId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateSecurityRulesRequest(AbstractModel):
@@ -1336,6 +1646,13 @@ class CreateSecurityRulesRequest(AbstractModel):
                 obj = SecurityPolicyRuleIn()
                 obj._deserialize(item)
                 self.RuleList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateSecurityRulesResponse(AbstractModel):
@@ -1357,6 +1674,13 @@ class CreateSecurityRulesResponse(AbstractModel):
     def _deserialize(self, params):
         self.RuleIdList = params.get("RuleIdList")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateTCPListenersRequest(AbstractModel):
@@ -1418,6 +1742,13 @@ class CreateTCPListenersRequest(AbstractModel):
         self.RealServerPorts = params.get("RealServerPorts")
         self.ClientIPMethod = params.get("ClientIPMethod")
         self.FailoverSwitch = params.get("FailoverSwitch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateTCPListenersResponse(AbstractModel):
@@ -1439,6 +1770,13 @@ class CreateTCPListenersResponse(AbstractModel):
     def _deserialize(self, params):
         self.ListenerIds = params.get("ListenerIds")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateUDPListenersRequest(AbstractModel):
@@ -1480,6 +1818,13 @@ class CreateUDPListenersRequest(AbstractModel):
         self.ProxyId = params.get("ProxyId")
         self.GroupId = params.get("GroupId")
         self.RealServerPorts = params.get("RealServerPorts")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateUDPListenersResponse(AbstractModel):
@@ -1501,6 +1846,13 @@ class CreateUDPListenersResponse(AbstractModel):
     def _deserialize(self, params):
         self.ListenerIds = params.get("ListenerIds")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteCertificateRequest(AbstractModel):
@@ -1518,6 +1870,13 @@ class DeleteCertificateRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.CertificateId = params.get("CertificateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteCertificateResponse(AbstractModel):
@@ -1535,6 +1894,13 @@ class DeleteCertificateResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteDomainErrorPageInfoRequest(AbstractModel):
@@ -1552,6 +1918,13 @@ class DeleteDomainErrorPageInfoRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.ErrorPageId = params.get("ErrorPageId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteDomainErrorPageInfoResponse(AbstractModel):
@@ -1569,6 +1942,13 @@ class DeleteDomainErrorPageInfoResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteDomainRequest(AbstractModel):
@@ -1595,6 +1975,13 @@ class DeleteDomainRequest(AbstractModel):
         self.ListenerId = params.get("ListenerId")
         self.Domain = params.get("Domain")
         self.Force = params.get("Force")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteDomainResponse(AbstractModel):
@@ -1612,6 +1999,13 @@ class DeleteDomainResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteListenersRequest(AbstractModel):
@@ -1641,6 +2035,13 @@ class DeleteListenersRequest(AbstractModel):
         self.Force = params.get("Force")
         self.GroupId = params.get("GroupId")
         self.ProxyId = params.get("ProxyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteListenersResponse(AbstractModel):
@@ -1670,6 +2071,13 @@ class DeleteListenersResponse(AbstractModel):
         self.OperationSucceedListenerSet = params.get("OperationSucceedListenerSet")
         self.InvalidStatusListenerSet = params.get("InvalidStatusListenerSet")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteProxyGroupRequest(AbstractModel):
@@ -1694,6 +2102,13 @@ class DeleteProxyGroupRequest(AbstractModel):
     def _deserialize(self, params):
         self.GroupId = params.get("GroupId")
         self.Force = params.get("Force")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteProxyGroupResponse(AbstractModel):
@@ -1711,6 +2126,13 @@ class DeleteProxyGroupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteRuleRequest(AbstractModel):
@@ -1736,6 +2158,13 @@ class DeleteRuleRequest(AbstractModel):
         self.ListenerId = params.get("ListenerId")
         self.RuleId = params.get("RuleId")
         self.Force = params.get("Force")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteRuleResponse(AbstractModel):
@@ -1753,6 +2182,13 @@ class DeleteRuleResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteSecurityPolicyRequest(AbstractModel):
@@ -1770,6 +2206,13 @@ class DeleteSecurityPolicyRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.PolicyId = params.get("PolicyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteSecurityPolicyResponse(AbstractModel):
@@ -1787,6 +2230,13 @@ class DeleteSecurityPolicyResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteSecurityRulesRequest(AbstractModel):
@@ -1808,6 +2258,13 @@ class DeleteSecurityRulesRequest(AbstractModel):
     def _deserialize(self, params):
         self.PolicyId = params.get("PolicyId")
         self.RuleIdList = params.get("RuleIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteSecurityRulesResponse(AbstractModel):
@@ -1825,6 +2282,13 @@ class DeleteSecurityRulesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAccessRegionsByDestRegionRequest(AbstractModel):
@@ -1842,6 +2306,13 @@ class DescribeAccessRegionsByDestRegionRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.DestRegion = params.get("DestRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAccessRegionsByDestRegionResponse(AbstractModel):
@@ -1872,6 +2343,13 @@ class DescribeAccessRegionsByDestRegionResponse(AbstractModel):
                 obj._deserialize(item)
                 self.AccessRegionSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAccessRegionsRequest(AbstractModel):
@@ -1908,6 +2386,13 @@ class DescribeAccessRegionsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.AccessRegionSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCertificateDetailRequest(AbstractModel):
@@ -1925,6 +2410,13 @@ class DescribeCertificateDetailRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.CertificateId = params.get("CertificateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCertificateDetailResponse(AbstractModel):
@@ -1948,6 +2440,13 @@ class DescribeCertificateDetailResponse(AbstractModel):
             self.CertificateDetail = CertificateDetail()
             self.CertificateDetail._deserialize(params.get("CertificateDetail"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCertificatesRequest(AbstractModel):
@@ -1980,6 +2479,13 @@ class DescribeCertificatesRequest(AbstractModel):
         self.CertificateType = params.get("CertificateType")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCertificatesResponse(AbstractModel):
@@ -2010,6 +2516,13 @@ class DescribeCertificatesResponse(AbstractModel):
                 self.CertificateSet.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCountryAreaMappingRequest(AbstractModel):
@@ -2042,6 +2555,13 @@ class DescribeCountryAreaMappingResponse(AbstractModel):
                 obj._deserialize(item)
                 self.CountryAreaMappingList.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDestRegionsRequest(AbstractModel):
@@ -2078,6 +2598,13 @@ class DescribeDestRegionsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.DestRegionSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDomainErrorPageInfoByIdsRequest(AbstractModel):
@@ -2095,6 +2622,13 @@ class DescribeDomainErrorPageInfoByIdsRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.ErrorPageIds = params.get("ErrorPageIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDomainErrorPageInfoByIdsResponse(AbstractModel):
@@ -2122,6 +2656,13 @@ class DescribeDomainErrorPageInfoByIdsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ErrorPageSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDomainErrorPageInfoRequest(AbstractModel):
@@ -2143,6 +2684,13 @@ class DescribeDomainErrorPageInfoRequest(AbstractModel):
     def _deserialize(self, params):
         self.ListenerId = params.get("ListenerId")
         self.Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDomainErrorPageInfoResponse(AbstractModel):
@@ -2170,6 +2718,13 @@ class DescribeDomainErrorPageInfoResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ErrorPageSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeGroupAndStatisticsProxyRequest(AbstractModel):
@@ -2187,6 +2742,13 @@ class DescribeGroupAndStatisticsProxyRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeGroupAndStatisticsProxyResponse(AbstractModel):
@@ -2217,6 +2779,13 @@ class DescribeGroupAndStatisticsProxyResponse(AbstractModel):
                 self.GroupSet.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeGroupDomainConfigRequest(AbstractModel):
@@ -2234,6 +2803,13 @@ class DescribeGroupDomainConfigRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeGroupDomainConfigResponse(AbstractModel):
@@ -2272,6 +2848,13 @@ class DescribeGroupDomainConfigResponse(AbstractModel):
         self.GroupId = params.get("GroupId")
         self.AccessRegionCount = params.get("AccessRegionCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeHTTPListenersRequest(AbstractModel):
@@ -2317,6 +2900,13 @@ class DescribeHTTPListenersRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.SearchValue = params.get("SearchValue")
         self.GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeHTTPListenersResponse(AbstractModel):
@@ -2347,6 +2937,13 @@ class DescribeHTTPListenersResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ListenerSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeHTTPSListenersRequest(AbstractModel):
@@ -2392,6 +2989,13 @@ class DescribeHTTPSListenersRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.SearchValue = params.get("SearchValue")
         self.GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeHTTPSListenersResponse(AbstractModel):
@@ -2422,6 +3026,13 @@ class DescribeHTTPSListenersResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ListenerSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeListenerRealServersRequest(AbstractModel):
@@ -2439,6 +3050,13 @@ class DescribeListenerRealServersRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.ListenerId = params.get("ListenerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeListenerRealServersResponse(AbstractModel):
@@ -2482,6 +3100,13 @@ class DescribeListenerRealServersResponse(AbstractModel):
                 obj._deserialize(item)
                 self.BindRealServerSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeListenerStatisticsRequest(AbstractModel):
@@ -2518,6 +3143,13 @@ class DescribeListenerStatisticsRequest(AbstractModel):
         self.EndTime = params.get("EndTime")
         self.MetricNames = params.get("MetricNames")
         self.Granularity = params.get("Granularity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeListenerStatisticsResponse(AbstractModel):
@@ -2544,6 +3176,13 @@ class DescribeListenerStatisticsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.StatisticsData.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeProxiesRequest(AbstractModel):
@@ -2603,6 +3242,13 @@ GroupId - String - 是否必填：否 - （过滤条件）按照通道组ID过�
                 obj._deserialize(item)
                 self.TagSet.append(obj)
         self.Independent = params.get("Independent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeProxiesResponse(AbstractModel):
@@ -2642,6 +3288,13 @@ class DescribeProxiesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ProxySet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeProxiesStatusRequest(AbstractModel):
@@ -2663,6 +3316,13 @@ class DescribeProxiesStatusRequest(AbstractModel):
     def _deserialize(self, params):
         self.InstanceIds = params.get("InstanceIds")
         self.ProxyIds = params.get("ProxyIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeProxiesStatusResponse(AbstractModel):
@@ -2689,6 +3349,13 @@ class DescribeProxiesStatusResponse(AbstractModel):
                 obj._deserialize(item)
                 self.InstanceStatusSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeProxyAndStatisticsListenersRequest(AbstractModel):
@@ -2706,6 +3373,13 @@ class DescribeProxyAndStatisticsListenersRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeProxyAndStatisticsListenersResponse(AbstractModel):
@@ -2736,6 +3410,13 @@ class DescribeProxyAndStatisticsListenersResponse(AbstractModel):
                 self.ProxySet.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeProxyDetailRequest(AbstractModel):
@@ -2753,6 +3434,13 @@ class DescribeProxyDetailRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.ProxyId = params.get("ProxyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeProxyDetailResponse(AbstractModel):
@@ -2776,6 +3464,13 @@ class DescribeProxyDetailResponse(AbstractModel):
             self.ProxyDetail = ProxyInfo()
             self.ProxyDetail._deserialize(params.get("ProxyDetail"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeProxyGroupDetailsRequest(AbstractModel):
@@ -2793,6 +3488,13 @@ class DescribeProxyGroupDetailsRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeProxyGroupDetailsResponse(AbstractModel):
@@ -2816,6 +3518,13 @@ class DescribeProxyGroupDetailsResponse(AbstractModel):
             self.ProxyGroupDetail = ProxyGroupDetail()
             self.ProxyGroupDetail._deserialize(params.get("ProxyGroupDetail"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeProxyGroupListRequest(AbstractModel):
@@ -2865,6 +3574,13 @@ RealServerRegion - String - 是否必填：否 -（过滤条件）按照源站�
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeProxyGroupListResponse(AbstractModel):
@@ -2896,6 +3612,13 @@ class DescribeProxyGroupListResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ProxyGroupList.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeProxyGroupStatisticsRequest(AbstractModel):
@@ -2932,6 +3655,13 @@ class DescribeProxyGroupStatisticsRequest(AbstractModel):
         self.EndTime = params.get("EndTime")
         self.MetricNames = params.get("MetricNames")
         self.Granularity = params.get("Granularity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeProxyGroupStatisticsResponse(AbstractModel):
@@ -2958,6 +3688,13 @@ class DescribeProxyGroupStatisticsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.StatisticsData.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeProxyStatisticsRequest(AbstractModel):
@@ -2994,6 +3731,13 @@ class DescribeProxyStatisticsRequest(AbstractModel):
         self.EndTime = params.get("EndTime")
         self.MetricNames = params.get("MetricNames")
         self.Granularity = params.get("Granularity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeProxyStatisticsResponse(AbstractModel):
@@ -3020,6 +3764,13 @@ class DescribeProxyStatisticsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.StatisticsData.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeRealServerStatisticsRequest(AbstractModel):
@@ -3061,6 +3812,13 @@ class DescribeRealServerStatisticsRequest(AbstractModel):
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
         self.Granularity = params.get("Granularity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeRealServerStatisticsResponse(AbstractModel):
@@ -3096,6 +3854,13 @@ class DescribeRealServerStatisticsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.RsStatisticsData.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeRealServersRequest(AbstractModel):
@@ -3144,6 +3909,13 @@ class DescribeRealServersRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeRealServersResponse(AbstractModel):
@@ -3174,6 +3946,13 @@ class DescribeRealServersResponse(AbstractModel):
                 self.RealServerSet.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeRealServersStatusRequest(AbstractModel):
@@ -3191,6 +3970,13 @@ class DescribeRealServersStatusRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.RealServerIds = params.get("RealServerIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeRealServersStatusResponse(AbstractModel):
@@ -3221,6 +4007,13 @@ class DescribeRealServersStatusResponse(AbstractModel):
                 obj._deserialize(item)
                 self.RealServerStatusSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeRegionAndPriceRequest(AbstractModel):
@@ -3272,6 +4065,13 @@ USD 美元
                 self.BandwidthUnitPrice.append(obj)
         self.Currency = params.get("Currency")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeResourcesByTagRequest(AbstractModel):
@@ -3301,6 +4101,13 @@ RealServer表示源站。
         self.TagKey = params.get("TagKey")
         self.TagValue = params.get("TagValue")
         self.ResourceType = params.get("ResourceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeResourcesByTagResponse(AbstractModel):
@@ -3331,6 +4138,13 @@ class DescribeResourcesByTagResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ResourceSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeRuleRealServersRequest(AbstractModel):
@@ -3356,6 +4170,13 @@ class DescribeRuleRealServersRequest(AbstractModel):
         self.RuleId = params.get("RuleId")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeRuleRealServersResponse(AbstractModel):
@@ -3399,6 +4220,13 @@ class DescribeRuleRealServersResponse(AbstractModel):
                 obj._deserialize(item)
                 self.BindRealServerSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeRulesByRuleIdsRequest(AbstractModel):
@@ -3416,6 +4244,13 @@ class DescribeRulesByRuleIdsRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.RuleIds = params.get("RuleIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeRulesByRuleIdsResponse(AbstractModel):
@@ -3446,6 +4281,13 @@ class DescribeRulesByRuleIdsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.RuleSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeRulesRequest(AbstractModel):
@@ -3463,6 +4305,13 @@ class DescribeRulesRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.ListenerId = params.get("ListenerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeRulesResponse(AbstractModel):
@@ -3493,6 +4342,13 @@ class DescribeRulesResponse(AbstractModel):
                 self.DomainRuleSet.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSecurityPolicyDetailRequest(AbstractModel):
@@ -3510,6 +4366,13 @@ class DescribeSecurityPolicyDetailRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.PolicyId = params.get("PolicyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSecurityPolicyDetailResponse(AbstractModel):
@@ -3557,6 +4420,13 @@ UNBINDING，安全策略关闭中。
                 obj._deserialize(item)
                 self.RuleList.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSecurityRulesRequest(AbstractModel):
@@ -3574,6 +4444,13 @@ class DescribeSecurityRulesRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.SecurityRuleIds = params.get("SecurityRuleIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSecurityRulesResponse(AbstractModel):
@@ -3604,6 +4481,13 @@ class DescribeSecurityRulesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.SecurityRuleSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeTCPListenersRequest(AbstractModel):
@@ -3651,6 +4535,13 @@ class DescribeTCPListenersRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.GroupId = params.get("GroupId")
         self.SearchValue = params.get("SearchValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeTCPListenersResponse(AbstractModel):
@@ -3681,6 +4572,13 @@ class DescribeTCPListenersResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ListenerSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeUDPListenersRequest(AbstractModel):
@@ -3728,6 +4626,13 @@ class DescribeUDPListenersRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.GroupId = params.get("GroupId")
         self.SearchValue = params.get("SearchValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeUDPListenersResponse(AbstractModel):
@@ -3758,6 +4663,13 @@ class DescribeUDPListenersResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ListenerSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DestroyProxiesRequest(AbstractModel):
@@ -3791,6 +4703,13 @@ class DestroyProxiesRequest(AbstractModel):
         self.InstanceIds = params.get("InstanceIds")
         self.ClientToken = params.get("ClientToken")
         self.ProxyIds = params.get("ProxyIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DestroyProxiesResponse(AbstractModel):
@@ -3816,6 +4735,13 @@ class DestroyProxiesResponse(AbstractModel):
         self.InvalidStatusInstanceSet = params.get("InvalidStatusInstanceSet")
         self.OperationFailedInstanceSet = params.get("OperationFailedInstanceSet")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DomainAccessRegionDict(AbstractModel):
@@ -3863,6 +4789,13 @@ class DomainAccessRegionDict(AbstractModel):
         self.GeographicalZoneInnerCode = params.get("GeographicalZoneInnerCode")
         self.ContinentInnerCode = params.get("ContinentInnerCode")
         self.RegionName = params.get("RegionName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DomainErrorPageInfo(AbstractModel):
@@ -3922,6 +4855,13 @@ class DomainErrorPageInfo(AbstractModel):
                 self.SetHeaders.append(obj)
         self.Body = params.get("Body")
         self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DomainRuleSet(AbstractModel):
@@ -4052,6 +4992,13 @@ class DomainRuleSet(AbstractModel):
                 obj._deserialize(item)
                 self.PolyRealServerCertificateAliasInfo.append(obj)
         self.DomainStatus = params.get("DomainStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Filter(AbstractModel):
@@ -4073,6 +5020,13 @@ class Filter(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GroupStatisticsInfo(AbstractModel):
@@ -4103,6 +5057,13 @@ class GroupStatisticsInfo(AbstractModel):
                 obj = ProxySimpleInfo()
                 obj._deserialize(item)
                 self.ProxySet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class HTTPListener(AbstractModel):
@@ -4145,6 +5106,13 @@ class HTTPListener(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.Protocol = params.get("Protocol")
         self.ListenerStatus = params.get("ListenerStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class HTTPSListener(AbstractModel):
@@ -4227,6 +5195,13 @@ class HTTPSListener(AbstractModel):
                 obj = CertificateAliasInfo()
                 obj._deserialize(item)
                 self.PolyClientCertificateAliasInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class HttpHeaderParam(AbstractModel):
@@ -4248,6 +5223,13 @@ class HttpHeaderParam(AbstractModel):
     def _deserialize(self, params):
         self.HeaderName = params.get("HeaderName")
         self.HeaderValue = params.get("HeaderValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InquiryPriceCreateProxyRequest(AbstractModel):
@@ -4289,6 +5271,13 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
         self.RealServerRegion = params.get("RealServerRegion")
         self.Concurrent = params.get("Concurrent")
         self.BillingType = params.get("BillingType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InquiryPriceCreateProxyResponse(AbstractModel):
@@ -4338,6 +5327,13 @@ class InquiryPriceCreateProxyResponse(AbstractModel):
         self.FlowUnitPrice = params.get("FlowUnitPrice")
         self.DiscountFlowUnitPrice = params.get("DiscountFlowUnitPrice")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ListenerInfo(AbstractModel):
@@ -4367,6 +5363,13 @@ class ListenerInfo(AbstractModel):
         self.ListenerName = params.get("ListenerName")
         self.Port = params.get("Port")
         self.Protocol = params.get("Protocol")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MetricStatisticsInfo(AbstractModel):
@@ -4393,6 +5396,13 @@ class MetricStatisticsInfo(AbstractModel):
                 obj = StatisticsDataInfo()
                 obj._deserialize(item)
                 self.MetricData.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyCertificateAttributesRequest(AbstractModel):
@@ -4414,6 +5424,13 @@ class ModifyCertificateAttributesRequest(AbstractModel):
     def _deserialize(self, params):
         self.CertificateId = params.get("CertificateId")
         self.CertificateAlias = params.get("CertificateAlias")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyCertificateAttributesResponse(AbstractModel):
@@ -4431,6 +5448,13 @@ class ModifyCertificateAttributesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyCertificateRequest(AbstractModel):
@@ -4468,6 +5492,13 @@ class ModifyCertificateRequest(AbstractModel):
         self.CertificateId = params.get("CertificateId")
         self.ClientCertificateId = params.get("ClientCertificateId")
         self.PolyClientCertificateIds = params.get("PolyClientCertificateIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyCertificateResponse(AbstractModel):
@@ -4485,6 +5516,13 @@ class ModifyCertificateResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyDomainRequest(AbstractModel):
@@ -4531,6 +5569,13 @@ class ModifyDomainRequest(AbstractModel):
         self.CertificateId = params.get("CertificateId")
         self.ClientCertificateId = params.get("ClientCertificateId")
         self.PolyClientCertificateIds = params.get("PolyClientCertificateIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyDomainResponse(AbstractModel):
@@ -4548,6 +5593,13 @@ class ModifyDomainResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyGroupDomainConfigRequest(AbstractModel):
@@ -4578,6 +5630,13 @@ class ModifyGroupDomainConfigRequest(AbstractModel):
                 obj = AccessRegionDomainConf()
                 obj._deserialize(item)
                 self.AccessRegionList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyGroupDomainConfigResponse(AbstractModel):
@@ -4595,6 +5654,13 @@ class ModifyGroupDomainConfigResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyHTTPListenerAttributeRequest(AbstractModel):
@@ -4620,6 +5686,13 @@ class ModifyHTTPListenerAttributeRequest(AbstractModel):
         self.ListenerId = params.get("ListenerId")
         self.ListenerName = params.get("ListenerName")
         self.ProxyId = params.get("ProxyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyHTTPListenerAttributeResponse(AbstractModel):
@@ -4637,6 +5710,13 @@ class ModifyHTTPListenerAttributeResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyHTTPSListenerAttributeRequest(AbstractModel):
@@ -4678,6 +5758,13 @@ class ModifyHTTPSListenerAttributeRequest(AbstractModel):
         self.CertificateId = params.get("CertificateId")
         self.ClientCertificateId = params.get("ClientCertificateId")
         self.PolyClientCertificateIds = params.get("PolyClientCertificateIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyHTTPSListenerAttributeResponse(AbstractModel):
@@ -4695,6 +5782,13 @@ class ModifyHTTPSListenerAttributeResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyProxiesAttributeRequest(AbstractModel):
@@ -4725,6 +5819,13 @@ class ModifyProxiesAttributeRequest(AbstractModel):
         self.ProxyName = params.get("ProxyName")
         self.ClientToken = params.get("ClientToken")
         self.ProxyIds = params.get("ProxyIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyProxiesAttributeResponse(AbstractModel):
@@ -4742,6 +5843,13 @@ class ModifyProxiesAttributeResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyProxiesProjectRequest(AbstractModel):
@@ -4772,6 +5880,13 @@ class ModifyProxiesProjectRequest(AbstractModel):
         self.InstanceIds = params.get("InstanceIds")
         self.ClientToken = params.get("ClientToken")
         self.ProxyIds = params.get("ProxyIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyProxiesProjectResponse(AbstractModel):
@@ -4789,6 +5904,13 @@ class ModifyProxiesProjectResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyProxyConfigurationRequest(AbstractModel):
@@ -4829,6 +5951,13 @@ Bandwidth与Concurrent必须至少设置一个。取值范围根据DescribeAcces
         self.ClientToken = params.get("ClientToken")
         self.ProxyId = params.get("ProxyId")
         self.BillingType = params.get("BillingType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyProxyConfigurationResponse(AbstractModel):
@@ -4846,6 +5975,13 @@ class ModifyProxyConfigurationResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyProxyGroupAttributeRequest(AbstractModel):
@@ -4871,6 +6007,13 @@ class ModifyProxyGroupAttributeRequest(AbstractModel):
         self.GroupId = params.get("GroupId")
         self.GroupName = params.get("GroupName")
         self.ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyProxyGroupAttributeResponse(AbstractModel):
@@ -4888,6 +6031,13 @@ class ModifyProxyGroupAttributeResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyRealServerNameRequest(AbstractModel):
@@ -4909,6 +6059,13 @@ class ModifyRealServerNameRequest(AbstractModel):
     def _deserialize(self, params):
         self.RealServerName = params.get("RealServerName")
         self.RealServerId = params.get("RealServerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyRealServerNameResponse(AbstractModel):
@@ -4926,6 +6083,13 @@ class ModifyRealServerNameResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyRuleAttributeRequest(AbstractModel):
@@ -4980,6 +6144,13 @@ lc，最小连接数。
         self.Path = params.get("Path")
         self.ForwardProtocol = params.get("ForwardProtocol")
         self.ForwardHost = params.get("ForwardHost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyRuleAttributeResponse(AbstractModel):
@@ -4997,6 +6168,13 @@ class ModifyRuleAttributeResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifySecurityRuleRequest(AbstractModel):
@@ -5042,6 +6220,13 @@ class ModifySecurityRuleRequest(AbstractModel):
         self.SourceCidr = params.get("SourceCidr")
         self.Protocol = params.get("Protocol")
         self.DestPortRange = params.get("DestPortRange")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifySecurityRuleResponse(AbstractModel):
@@ -5059,6 +6244,13 @@ class ModifySecurityRuleResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyTCPListenerAttributeRequest(AbstractModel):
@@ -5108,6 +6300,13 @@ class ModifyTCPListenerAttributeRequest(AbstractModel):
         self.ConnectTimeout = params.get("ConnectTimeout")
         self.HealthCheck = params.get("HealthCheck")
         self.FailoverSwitch = params.get("FailoverSwitch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyTCPListenerAttributeResponse(AbstractModel):
@@ -5125,6 +6324,13 @@ class ModifyTCPListenerAttributeResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyUDPListenerAttributeRequest(AbstractModel):
@@ -5158,6 +6364,13 @@ class ModifyUDPListenerAttributeRequest(AbstractModel):
         self.ProxyId = params.get("ProxyId")
         self.ListenerName = params.get("ListenerName")
         self.Scheduler = params.get("Scheduler")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyUDPListenerAttributeResponse(AbstractModel):
@@ -5175,6 +6388,13 @@ class ModifyUDPListenerAttributeResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class NationCountryInnerInfo(AbstractModel):
@@ -5196,6 +6416,13 @@ class NationCountryInnerInfo(AbstractModel):
     def _deserialize(self, params):
         self.NationCountryName = params.get("NationCountryName")
         self.NationCountryInnerCode = params.get("NationCountryInnerCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class NewRealServer(AbstractModel):
@@ -5217,6 +6444,13 @@ class NewRealServer(AbstractModel):
     def _deserialize(self, params):
         self.RealServerId = params.get("RealServerId")
         self.RealServerIP = params.get("RealServerIP")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class OpenProxiesRequest(AbstractModel):
@@ -5243,6 +6477,13 @@ class OpenProxiesRequest(AbstractModel):
         self.InstanceIds = params.get("InstanceIds")
         self.ClientToken = params.get("ClientToken")
         self.ProxyIds = params.get("ProxyIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class OpenProxiesResponse(AbstractModel):
@@ -5268,6 +6509,13 @@ class OpenProxiesResponse(AbstractModel):
         self.InvalidStatusInstanceSet = params.get("InvalidStatusInstanceSet")
         self.OperationFailedInstanceSet = params.get("OperationFailedInstanceSet")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class OpenProxyGroupRequest(AbstractModel):
@@ -5285,6 +6533,13 @@ class OpenProxyGroupRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class OpenProxyGroupResponse(AbstractModel):
@@ -5310,6 +6565,13 @@ class OpenProxyGroupResponse(AbstractModel):
         self.InvalidStatusInstanceSet = params.get("InvalidStatusInstanceSet")
         self.OperationFailedInstanceSet = params.get("OperationFailedInstanceSet")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class OpenSecurityPolicyRequest(AbstractModel):
@@ -5331,6 +6593,13 @@ class OpenSecurityPolicyRequest(AbstractModel):
     def _deserialize(self, params):
         self.ProxyId = params.get("ProxyId")
         self.PolicyId = params.get("PolicyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class OpenSecurityPolicyResponse(AbstractModel):
@@ -5352,6 +6621,13 @@ class OpenSecurityPolicyResponse(AbstractModel):
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ProxyGroupDetail(AbstractModel):
@@ -5445,6 +6721,13 @@ class ProxyGroupDetail(AbstractModel):
         self.PolicyId = params.get("PolicyId")
         self.Version = params.get("Version")
         self.ClientIPMethod = params.get("ClientIPMethod")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ProxyGroupInfo(AbstractModel):
@@ -5515,6 +6798,13 @@ MOVING表示通道迁移中。
         self.Version = params.get("Version")
         self.CreateTime = params.get("CreateTime")
         self.ProxyType = params.get("ProxyType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ProxyIdDict(AbstractModel):
@@ -5532,6 +6822,13 @@ class ProxyIdDict(AbstractModel):
 
     def _deserialize(self, params):
         self.ProxyId = params.get("ProxyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ProxyInfo(AbstractModel):
@@ -5686,6 +6983,13 @@ UNKNOWN表示未知状态。
         self.ModifyConfigTime = params.get("ModifyConfigTime")
         self.ProxyType = params.get("ProxyType")
         self.ClientIPMethod = params.get("ClientIPMethod")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ProxySimpleInfo(AbstractModel):
@@ -5716,6 +7020,13 @@ class ProxySimpleInfo(AbstractModel):
                 obj = ListenerInfo()
                 obj._deserialize(item)
                 self.ListenerList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ProxyStatus(AbstractModel):
@@ -5748,6 +7059,13 @@ UNKNOWN表示未知状态。
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RealServer(AbstractModel):
@@ -5777,6 +7095,13 @@ class RealServer(AbstractModel):
         self.RealServerId = params.get("RealServerId")
         self.RealServerName = params.get("RealServerName")
         self.ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RealServerBindSetReq(AbstractModel):
@@ -5810,6 +7135,13 @@ class RealServerBindSetReq(AbstractModel):
         self.RealServerIP = params.get("RealServerIP")
         self.RealServerWeight = params.get("RealServerWeight")
         self.RealServerFailoverRole = params.get("RealServerFailoverRole")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RealServerStatus(AbstractModel):
@@ -5835,6 +7167,13 @@ class RealServerStatus(AbstractModel):
         self.RealServerId = params.get("RealServerId")
         self.BindStatus = params.get("BindStatus")
         self.ProxyId = params.get("ProxyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RegionDetail(AbstractModel):
@@ -5856,6 +7195,13 @@ class RegionDetail(AbstractModel):
     def _deserialize(self, params):
         self.RegionId = params.get("RegionId")
         self.RegionName = params.get("RegionName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RemoveRealServersRequest(AbstractModel):
@@ -5873,6 +7219,13 @@ class RemoveRealServersRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.RealServerIds = params.get("RealServerIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RemoveRealServersResponse(AbstractModel):
@@ -5890,6 +7243,13 @@ class RemoveRealServersResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RuleCheckParams(AbstractModel):
@@ -5943,6 +7303,13 @@ class RuleCheckParams(AbstractModel):
         self.FailedCountInter = params.get("FailedCountInter")
         self.FailedThreshold = params.get("FailedThreshold")
         self.BlockInter = params.get("BlockInter")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RuleInfo(AbstractModel):
@@ -6014,6 +7381,13 @@ class RuleInfo(AbstractModel):
                 self.RealServerSet.append(obj)
         self.BindStatus = params.get("BindStatus")
         self.ForwardHost = params.get("ForwardHost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SecurityPolicyRuleIn(AbstractModel):
@@ -6051,6 +7425,13 @@ class SecurityPolicyRuleIn(AbstractModel):
         self.AliasName = params.get("AliasName")
         self.Protocol = params.get("Protocol")
         self.DestPortRange = params.get("DestPortRange")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SecurityPolicyRuleOut(AbstractModel):
@@ -6095,6 +7476,13 @@ class SecurityPolicyRuleOut(AbstractModel):
         self.RuleId = params.get("RuleId")
         self.Protocol = params.get("Protocol")
         self.PolicyId = params.get("PolicyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SetAuthenticationRequest(AbstractModel):
@@ -6157,6 +7545,13 @@ class SetAuthenticationRequest(AbstractModel):
         self.RealServerCertificateId = params.get("RealServerCertificateId")
         self.RealServerCertificateDomain = params.get("RealServerCertificateDomain")
         self.PolyRealServerCertificateIds = params.get("PolyRealServerCertificateIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SetAuthenticationResponse(AbstractModel):
@@ -6174,6 +7569,13 @@ class SetAuthenticationResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StatisticsDataInfo(AbstractModel):
@@ -6196,6 +7598,13 @@ class StatisticsDataInfo(AbstractModel):
     def _deserialize(self, params):
         self.Time = params.get("Time")
         self.Data = params.get("Data")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TCPListener(AbstractModel):
@@ -6289,6 +7698,13 @@ lc表示最小连接数。
                 self.RealServerSet.append(obj)
         self.CreateTime = params.get("CreateTime")
         self.ClientIPMethod = params.get("ClientIPMethod")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TagPair(AbstractModel):
@@ -6310,6 +7726,13 @@ class TagPair(AbstractModel):
     def _deserialize(self, params):
         self.TagKey = params.get("TagKey")
         self.TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TagResourceInfo(AbstractModel):
@@ -6334,6 +7757,13 @@ RealServer表示源站
     def _deserialize(self, params):
         self.ResourceType = params.get("ResourceType")
         self.ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UDPListener(AbstractModel):
@@ -6402,3 +7832,10 @@ class UDPListener(AbstractModel):
                 obj._deserialize(item)
                 self.RealServerSet.append(obj)
         self.CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

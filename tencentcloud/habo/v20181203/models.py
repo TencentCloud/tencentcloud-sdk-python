@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -35,6 +37,13 @@ class DescribeStatusRequest(AbstractModel):
     def _deserialize(self, params):
         self.Pk = params.get("Pk")
         self.Md5 = params.get("Md5")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeStatusResponse(AbstractModel):
@@ -64,6 +73,13 @@ class DescribeStatusResponse(AbstractModel):
         self.Info = params.get("Info")
         self.Data = params.get("Data")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StartAnalyseRequest(AbstractModel):
@@ -89,6 +105,13 @@ class StartAnalyseRequest(AbstractModel):
         self.Pk = params.get("Pk")
         self.Md5 = params.get("Md5")
         self.DlUrl = params.get("DlUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StartAnalyseResponse(AbstractModel):
@@ -118,3 +141,10 @@ class StartAnalyseResponse(AbstractModel):
         self.Info = params.get("Info")
         self.Data = params.get("Data")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

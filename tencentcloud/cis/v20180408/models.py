@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -84,6 +86,13 @@ class Container(AbstractModel):
             self.PreviousState._deserialize(params.get("PreviousState"))
         self.WorkingDir = params.get("WorkingDir")
         self.ContainerId = params.get("ContainerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ContainerInstance(AbstractModel):
@@ -162,6 +171,13 @@ class ContainerInstance(AbstractModel):
         self.SubnetName = params.get("SubnetName")
         self.SubnetCidr = params.get("SubnetCidr")
         self.LanIp = params.get("LanIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ContainerLog(AbstractModel):
@@ -187,6 +203,13 @@ class ContainerLog(AbstractModel):
         self.Name = params.get("Name")
         self.Log = params.get("Log")
         self.Time = params.get("Time")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ContainerState(AbstractModel):
@@ -220,6 +243,13 @@ class ContainerState(AbstractModel):
         self.Reason = params.get("Reason")
         self.FinishTime = params.get("FinishTime")
         self.ExitCode = params.get("ExitCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateContainerInstanceRequest(AbstractModel):
@@ -262,6 +292,13 @@ class CreateContainerInstanceRequest(AbstractModel):
                 obj = Container()
                 obj._deserialize(item)
                 self.Containers.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateContainerInstanceResponse(AbstractModel):
@@ -283,6 +320,13 @@ class CreateContainerInstanceResponse(AbstractModel):
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteContainerInstanceRequest(AbstractModel):
@@ -300,6 +344,13 @@ class DeleteContainerInstanceRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.InstanceName = params.get("InstanceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteContainerInstanceResponse(AbstractModel):
@@ -321,6 +372,13 @@ class DeleteContainerInstanceResponse(AbstractModel):
     def _deserialize(self, params):
         self.Msg = params.get("Msg")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeContainerInstanceEventsRequest(AbstractModel):
@@ -338,6 +396,13 @@ class DescribeContainerInstanceEventsRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.InstanceName = params.get("InstanceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeContainerInstanceEventsResponse(AbstractModel):
@@ -364,6 +429,13 @@ class DescribeContainerInstanceEventsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.EventList.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeContainerInstanceRequest(AbstractModel):
@@ -381,6 +453,13 @@ class DescribeContainerInstanceRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.InstanceName = params.get("InstanceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeContainerInstanceResponse(AbstractModel):
@@ -404,6 +483,13 @@ class DescribeContainerInstanceResponse(AbstractModel):
             self.ContainerInstance = ContainerInstance()
             self.ContainerInstance._deserialize(params.get("ContainerInstance"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeContainerInstancesRequest(AbstractModel):
@@ -437,6 +523,13 @@ class DescribeContainerInstancesRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeContainerInstancesResponse(AbstractModel):
@@ -467,6 +560,13 @@ class DescribeContainerInstancesResponse(AbstractModel):
                 self.ContainerInstanceList.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeContainerLogRequest(AbstractModel):
@@ -496,6 +596,13 @@ class DescribeContainerLogRequest(AbstractModel):
         self.ContainerName = params.get("ContainerName")
         self.Tail = params.get("Tail")
         self.SinceTime = params.get("SinceTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeContainerLogResponse(AbstractModel):
@@ -522,6 +629,13 @@ class DescribeContainerLogResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ContainerLogList.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class EnvironmentVar(AbstractModel):
@@ -543,6 +657,13 @@ class EnvironmentVar(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Event(AbstractModel):
@@ -580,6 +701,13 @@ class Event(AbstractModel):
         self.Count = params.get("Count")
         self.Reason = params.get("Reason")
         self.Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Filter(AbstractModel):
@@ -601,6 +729,13 @@ class Filter(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.ValueList = params.get("ValueList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InquiryPriceCreateCisRequest(AbstractModel):
@@ -626,6 +761,13 @@ class InquiryPriceCreateCisRequest(AbstractModel):
         self.Zone = params.get("Zone")
         self.Cpu = params.get("Cpu")
         self.Memory = params.get("Memory")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InquiryPriceCreateCisResponse(AbstractModel):
@@ -649,6 +791,13 @@ class InquiryPriceCreateCisResponse(AbstractModel):
             self.Price = Price()
             self.Price._deserialize(params.get("Price"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Price(AbstractModel):
@@ -670,3 +819,10 @@ class Price(AbstractModel):
     def _deserialize(self, params):
         self.DiscountPrice = params.get("DiscountPrice")
         self.OriginalPrice = params.get("OriginalPrice")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

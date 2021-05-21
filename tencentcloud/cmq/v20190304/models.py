@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -31,6 +33,13 @@ class ClearQueueRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.QueueName = params.get("QueueName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ClearQueueResponse(AbstractModel):
@@ -48,6 +57,13 @@ class ClearQueueResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ClearSubscriptionFilterTagsRequest(AbstractModel):
@@ -69,6 +85,13 @@ class ClearSubscriptionFilterTagsRequest(AbstractModel):
     def _deserialize(self, params):
         self.TopicName = params.get("TopicName")
         self.SubscriptionName = params.get("SubscriptionName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ClearSubscriptionFilterTagsResponse(AbstractModel):
@@ -86,6 +109,13 @@ class ClearSubscriptionFilterTagsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateQueueRequest(AbstractModel):
@@ -159,6 +189,13 @@ class CreateQueueRequest(AbstractModel):
         self.MaxReceiveCount = params.get("MaxReceiveCount")
         self.MaxTimeToLive = params.get("MaxTimeToLive")
         self.Trace = params.get("Trace")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateQueueResponse(AbstractModel):
@@ -180,6 +217,13 @@ class CreateQueueResponse(AbstractModel):
     def _deserialize(self, params):
         self.QueueId = params.get("QueueId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateSubscribeRequest(AbstractModel):
@@ -225,6 +269,13 @@ class CreateSubscribeRequest(AbstractModel):
         self.FilterTag = params.get("FilterTag")
         self.BindingKey = params.get("BindingKey")
         self.NotifyContentFormat = params.get("NotifyContentFormat")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateSubscribeResponse(AbstractModel):
@@ -246,6 +297,13 @@ class CreateSubscribeResponse(AbstractModel):
     def _deserialize(self, params):
         self.SubscriptionId = params.get("SubscriptionId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateTopicRequest(AbstractModel):
@@ -279,6 +337,13 @@ class CreateTopicRequest(AbstractModel):
         self.FilterType = params.get("FilterType")
         self.MsgRetentionSeconds = params.get("MsgRetentionSeconds")
         self.Trace = params.get("Trace")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateTopicResponse(AbstractModel):
@@ -300,6 +365,13 @@ class CreateTopicResponse(AbstractModel):
     def _deserialize(self, params):
         self.TopicId = params.get("TopicId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeadLetterPolicy(AbstractModel):
@@ -338,6 +410,13 @@ class DeadLetterPolicy(AbstractModel):
         self.Policy = params.get("Policy")
         self.MaxTimeToLive = params.get("MaxTimeToLive")
         self.MaxReceiveCount = params.get("MaxReceiveCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeadLetterSource(AbstractModel):
@@ -361,6 +440,13 @@ class DeadLetterSource(AbstractModel):
     def _deserialize(self, params):
         self.QueueId = params.get("QueueId")
         self.QueueName = params.get("QueueName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteQueueRequest(AbstractModel):
@@ -378,6 +464,13 @@ class DeleteQueueRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.QueueName = params.get("QueueName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteQueueResponse(AbstractModel):
@@ -395,6 +488,13 @@ class DeleteQueueResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteSubscribeRequest(AbstractModel):
@@ -416,6 +516,13 @@ class DeleteSubscribeRequest(AbstractModel):
     def _deserialize(self, params):
         self.TopicName = params.get("TopicName")
         self.SubscriptionName = params.get("SubscriptionName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteSubscribeResponse(AbstractModel):
@@ -433,6 +540,13 @@ class DeleteSubscribeResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteTopicRequest(AbstractModel):
@@ -450,6 +564,13 @@ class DeleteTopicRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.TopicName = params.get("TopicName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteTopicResponse(AbstractModel):
@@ -467,6 +588,13 @@ class DeleteTopicResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDeadLetterSourceQueuesRequest(AbstractModel):
@@ -501,6 +629,13 @@ class DescribeDeadLetterSourceQueuesRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDeadLetterSourceQueuesResponse(AbstractModel):
@@ -531,6 +666,13 @@ class DescribeDeadLetterSourceQueuesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.QueueSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeQueueDetailRequest(AbstractModel):
@@ -569,6 +711,13 @@ class DescribeQueueDetailRequest(AbstractModel):
                 self.Filters.append(obj)
         self.TagKey = params.get("TagKey")
         self.QueueName = params.get("QueueName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeQueueDetailResponse(AbstractModel):
@@ -599,6 +748,13 @@ class DescribeQueueDetailResponse(AbstractModel):
                 obj._deserialize(item)
                 self.QueueSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSubscriptionDetailRequest(AbstractModel):
@@ -633,6 +789,13 @@ class DescribeSubscriptionDetailRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSubscriptionDetailResponse(AbstractModel):
@@ -664,6 +827,13 @@ class DescribeSubscriptionDetailResponse(AbstractModel):
                 obj._deserialize(item)
                 self.SubscriptionSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeTopicDetailRequest(AbstractModel):
@@ -702,6 +872,13 @@ class DescribeTopicDetailRequest(AbstractModel):
                 self.Filters.append(obj)
         self.TagKey = params.get("TagKey")
         self.TopicName = params.get("TopicName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeTopicDetailResponse(AbstractModel):
@@ -732,6 +909,13 @@ class DescribeTopicDetailResponse(AbstractModel):
                 obj._deserialize(item)
                 self.TopicSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Filter(AbstractModel):
@@ -753,6 +937,13 @@ class Filter(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyQueueAttributeRequest(AbstractModel):
@@ -822,6 +1013,13 @@ class ModifyQueueAttributeRequest(AbstractModel):
         self.MaxReceiveCount = params.get("MaxReceiveCount")
         self.Policy = params.get("Policy")
         self.Trace = params.get("Trace")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyQueueAttributeResponse(AbstractModel):
@@ -839,6 +1037,13 @@ class ModifyQueueAttributeResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifySubscriptionAttributeRequest(AbstractModel):
@@ -878,6 +1083,13 @@ class ModifySubscriptionAttributeRequest(AbstractModel):
         self.NotifyContentFormat = params.get("NotifyContentFormat")
         self.FilterTags = params.get("FilterTags")
         self.BindingKey = params.get("BindingKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifySubscriptionAttributeResponse(AbstractModel):
@@ -895,6 +1107,13 @@ class ModifySubscriptionAttributeResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyTopicAttributeRequest(AbstractModel):
@@ -924,6 +1143,13 @@ class ModifyTopicAttributeRequest(AbstractModel):
         self.MaxMsgSize = params.get("MaxMsgSize")
         self.MsgRetentionSeconds = params.get("MsgRetentionSeconds")
         self.Trace = params.get("Trace")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyTopicAttributeResponse(AbstractModel):
@@ -941,6 +1167,13 @@ class ModifyTopicAttributeResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class QueueSet(AbstractModel):
@@ -1091,6 +1324,13 @@ class QueueSet(AbstractModel):
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.Trace = params.get("Trace")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RewindQueueRequest(AbstractModel):
@@ -1112,6 +1352,13 @@ class RewindQueueRequest(AbstractModel):
     def _deserialize(self, params):
         self.QueueName = params.get("QueueName")
         self.StartConsumeTime = params.get("StartConsumeTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RewindQueueResponse(AbstractModel):
@@ -1129,6 +1376,13 @@ class RewindQueueResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Subscription(AbstractModel):
@@ -1206,6 +1460,13 @@ filterType = 2表示用户使用 bindingKey 过滤。
         self.Protocol = params.get("Protocol")
         self.NotifyStrategy = params.get("NotifyStrategy")
         self.NotifyContentFormat = params.get("NotifyContentFormat")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Tag(AbstractModel):
@@ -1229,6 +1490,13 @@ class Tag(AbstractModel):
     def _deserialize(self, params):
         self.TagKey = params.get("TagKey")
         self.TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TopicSet(AbstractModel):
@@ -1309,6 +1577,13 @@ FilterType = 2表示用户使用 BindingKey 过滤。
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.Trace = params.get("Trace")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TransactionPolicy(AbstractModel):
@@ -1332,6 +1607,13 @@ class TransactionPolicy(AbstractModel):
     def _deserialize(self, params):
         self.FirstQueryInterval = params.get("FirstQueryInterval")
         self.MaxQueryCount = params.get("MaxQueryCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UnbindDeadLetterRequest(AbstractModel):
@@ -1349,6 +1631,13 @@ class UnbindDeadLetterRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.QueueName = params.get("QueueName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UnbindDeadLetterResponse(AbstractModel):
@@ -1366,3 +1655,10 @@ class UnbindDeadLetterResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

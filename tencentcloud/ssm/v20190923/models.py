@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -60,6 +62,13 @@ class CreateSecretRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateSecretResponse(AbstractModel):
@@ -95,6 +104,13 @@ class CreateSecretResponse(AbstractModel):
         self.TagCode = params.get("TagCode")
         self.TagMsg = params.get("TagMsg")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteSecretRequest(AbstractModel):
@@ -116,6 +132,13 @@ class DeleteSecretRequest(AbstractModel):
     def _deserialize(self, params):
         self.SecretName = params.get("SecretName")
         self.RecoveryWindowInDays = params.get("RecoveryWindowInDays")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteSecretResponse(AbstractModel):
@@ -141,6 +164,13 @@ class DeleteSecretResponse(AbstractModel):
         self.SecretName = params.get("SecretName")
         self.DeleteTime = params.get("DeleteTime")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteSecretVersionRequest(AbstractModel):
@@ -162,6 +192,13 @@ class DeleteSecretVersionRequest(AbstractModel):
     def _deserialize(self, params):
         self.SecretName = params.get("SecretName")
         self.VersionId = params.get("VersionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteSecretVersionResponse(AbstractModel):
@@ -187,6 +224,13 @@ class DeleteSecretVersionResponse(AbstractModel):
         self.SecretName = params.get("SecretName")
         self.VersionId = params.get("VersionId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSecretRequest(AbstractModel):
@@ -204,6 +248,13 @@ class DescribeSecretRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.SecretName = params.get("SecretName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSecretResponse(AbstractModel):
@@ -249,6 +300,13 @@ class DescribeSecretResponse(AbstractModel):
         self.DeleteTime = params.get("DeleteTime")
         self.CreateTime = params.get("CreateTime")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DisableSecretRequest(AbstractModel):
@@ -266,6 +324,13 @@ class DisableSecretRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.SecretName = params.get("SecretName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DisableSecretResponse(AbstractModel):
@@ -287,6 +352,13 @@ class DisableSecretResponse(AbstractModel):
     def _deserialize(self, params):
         self.SecretName = params.get("SecretName")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class EnableSecretRequest(AbstractModel):
@@ -304,6 +376,13 @@ class EnableSecretRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.SecretName = params.get("SecretName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class EnableSecretResponse(AbstractModel):
@@ -325,6 +404,13 @@ class EnableSecretResponse(AbstractModel):
     def _deserialize(self, params):
         self.SecretName = params.get("SecretName")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetRegionsRequest(AbstractModel):
@@ -352,6 +438,13 @@ class GetRegionsResponse(AbstractModel):
     def _deserialize(self, params):
         self.Regions = params.get("Regions")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetSecretValueRequest(AbstractModel):
@@ -373,6 +466,13 @@ class GetSecretValueRequest(AbstractModel):
     def _deserialize(self, params):
         self.SecretName = params.get("SecretName")
         self.VersionId = params.get("VersionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetSecretValueResponse(AbstractModel):
@@ -406,6 +506,13 @@ class GetSecretValueResponse(AbstractModel):
         self.SecretBinary = params.get("SecretBinary")
         self.SecretString = params.get("SecretString")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetServiceStatusRequest(AbstractModel):
@@ -437,6 +544,13 @@ class GetServiceStatusResponse(AbstractModel):
         self.ServiceEnabled = params.get("ServiceEnabled")
         self.InvalidType = params.get("InvalidType")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ListSecretVersionIdsRequest(AbstractModel):
@@ -454,6 +568,13 @@ class ListSecretVersionIdsRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.SecretName = params.get("SecretName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ListSecretVersionIdsResponse(AbstractModel):
@@ -485,6 +606,13 @@ class ListSecretVersionIdsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Versions.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ListSecretsRequest(AbstractModel):
@@ -527,6 +655,13 @@ class ListSecretsRequest(AbstractModel):
                 obj = TagFilter()
                 obj._deserialize(item)
                 self.TagFilters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ListSecretsResponse(AbstractModel):
@@ -557,6 +692,13 @@ class ListSecretsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.SecretMetadatas.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PutSecretValueRequest(AbstractModel):
@@ -586,6 +728,13 @@ class PutSecretValueRequest(AbstractModel):
         self.VersionId = params.get("VersionId")
         self.SecretBinary = params.get("SecretBinary")
         self.SecretString = params.get("SecretString")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PutSecretValueResponse(AbstractModel):
@@ -611,6 +760,13 @@ class PutSecretValueResponse(AbstractModel):
         self.SecretName = params.get("SecretName")
         self.VersionId = params.get("VersionId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RestoreSecretRequest(AbstractModel):
@@ -628,6 +784,13 @@ class RestoreSecretRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.SecretName = params.get("SecretName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RestoreSecretResponse(AbstractModel):
@@ -649,6 +812,13 @@ class RestoreSecretResponse(AbstractModel):
     def _deserialize(self, params):
         self.SecretName = params.get("SecretName")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SecretMetadata(AbstractModel):
@@ -694,6 +864,13 @@ class SecretMetadata(AbstractModel):
         self.DeleteTime = params.get("DeleteTime")
         self.CreateTime = params.get("CreateTime")
         self.KmsKeyType = params.get("KmsKeyType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Tag(AbstractModel):
@@ -715,6 +892,13 @@ class Tag(AbstractModel):
     def _deserialize(self, params):
         self.TagKey = params.get("TagKey")
         self.TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TagFilter(AbstractModel):
@@ -736,6 +920,13 @@ class TagFilter(AbstractModel):
     def _deserialize(self, params):
         self.TagKey = params.get("TagKey")
         self.TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UpdateDescriptionRequest(AbstractModel):
@@ -757,6 +948,13 @@ class UpdateDescriptionRequest(AbstractModel):
     def _deserialize(self, params):
         self.SecretName = params.get("SecretName")
         self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UpdateDescriptionResponse(AbstractModel):
@@ -778,6 +976,13 @@ class UpdateDescriptionResponse(AbstractModel):
     def _deserialize(self, params):
         self.SecretName = params.get("SecretName")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UpdateSecretRequest(AbstractModel):
@@ -807,6 +1012,13 @@ class UpdateSecretRequest(AbstractModel):
         self.VersionId = params.get("VersionId")
         self.SecretBinary = params.get("SecretBinary")
         self.SecretString = params.get("SecretString")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UpdateSecretResponse(AbstractModel):
@@ -832,6 +1044,13 @@ class UpdateSecretResponse(AbstractModel):
         self.SecretName = params.get("SecretName")
         self.VersionId = params.get("VersionId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VersionInfo(AbstractModel):
@@ -853,3 +1072,10 @@ class VersionInfo(AbstractModel):
     def _deserialize(self, params):
         self.VersionId = params.get("VersionId")
         self.CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

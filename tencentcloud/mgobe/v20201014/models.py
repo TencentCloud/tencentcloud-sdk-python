@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -39,6 +41,13 @@ class ChangeRoomPlayerProfileRequest(AbstractModel):
         self.GameId = params.get("GameId")
         self.PlayerId = params.get("PlayerId")
         self.CustomProfile = params.get("CustomProfile")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ChangeRoomPlayerProfileResponse(AbstractModel):
@@ -62,6 +71,13 @@ class ChangeRoomPlayerProfileResponse(AbstractModel):
             self.Room = Room()
             self.Room._deserialize(params.get("Room"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ChangeRoomPlayerStatusRequest(AbstractModel):
@@ -87,6 +103,13 @@ class ChangeRoomPlayerStatusRequest(AbstractModel):
         self.GameId = params.get("GameId")
         self.CustomStatus = params.get("CustomStatus")
         self.PlayerId = params.get("PlayerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ChangeRoomPlayerStatusResponse(AbstractModel):
@@ -110,6 +133,13 @@ class ChangeRoomPlayerStatusResponse(AbstractModel):
             self.Room = Room()
             self.Room._deserialize(params.get("Room"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribePlayerRequest(AbstractModel):
@@ -135,6 +165,13 @@ class DescribePlayerRequest(AbstractModel):
         self.GameId = params.get("GameId")
         self.OpenId = params.get("OpenId")
         self.PlayerId = params.get("PlayerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribePlayerResponse(AbstractModel):
@@ -158,6 +195,13 @@ class DescribePlayerResponse(AbstractModel):
             self.Player = Player()
             self.Player._deserialize(params.get("Player"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeRoomRequest(AbstractModel):
@@ -183,6 +227,13 @@ class DescribeRoomRequest(AbstractModel):
         self.GameId = params.get("GameId")
         self.PlayerId = params.get("PlayerId")
         self.RoomId = params.get("RoomId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeRoomResponse(AbstractModel):
@@ -206,6 +257,13 @@ class DescribeRoomResponse(AbstractModel):
             self.Room = Room()
             self.Room._deserialize(params.get("Room"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DismissRoomRequest(AbstractModel):
@@ -227,6 +285,13 @@ class DismissRoomRequest(AbstractModel):
     def _deserialize(self, params):
         self.GameId = params.get("GameId")
         self.RoomId = params.get("RoomId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DismissRoomResponse(AbstractModel):
@@ -244,6 +309,13 @@ class DismissRoomResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyRoomRequest(AbstractModel):
@@ -301,6 +373,13 @@ class ModifyRoomRequest(AbstractModel):
         self.IsPrivate = params.get("IsPrivate")
         self.CustomProperties = params.get("CustomProperties")
         self.IsForbidJoin = params.get("IsForbidJoin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyRoomResponse(AbstractModel):
@@ -324,6 +403,13 @@ class ModifyRoomResponse(AbstractModel):
             self.Room = Room()
             self.Room._deserialize(params.get("Room"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Player(AbstractModel):
@@ -365,6 +451,13 @@ class Player(AbstractModel):
         self.PlayerId = params.get("PlayerId")
         self.CustomPlayerStatus = params.get("CustomPlayerStatus")
         self.CustomProfile = params.get("CustomProfile")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RemoveRoomPlayerRequest(AbstractModel):
@@ -386,6 +479,13 @@ class RemoveRoomPlayerRequest(AbstractModel):
     def _deserialize(self, params):
         self.GameId = params.get("GameId")
         self.RemovePlayerId = params.get("RemovePlayerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RemoveRoomPlayerResponse(AbstractModel):
@@ -409,6 +509,13 @@ class RemoveRoomPlayerResponse(AbstractModel):
             self.Room = Room()
             self.Room._deserialize(params.get("Room"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Room(AbstractModel):
@@ -500,6 +607,13 @@ class Room(AbstractModel):
         self.StartGameTime = params.get("StartGameTime")
         self.IsForbidJoin = params.get("IsForbidJoin")
         self.Owner = params.get("Owner")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Team(AbstractModel):
@@ -529,3 +643,10 @@ class Team(AbstractModel):
         self.Name = params.get("Name")
         self.MinPlayers = params.get("MinPlayers")
         self.MaxPlayers = params.get("MaxPlayers")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

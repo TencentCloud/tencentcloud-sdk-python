@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -59,6 +61,13 @@ class CreateAudioDepositRequest(AbstractModel):
         self.FileUrl = params.get("FileUrl")
         self.HashType = params.get("HashType")
         self.EvidenceDescription = params.get("EvidenceDescription")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateAudioDepositResponse(AbstractModel):
@@ -85,6 +94,13 @@ class CreateAudioDepositResponse(AbstractModel):
         self.BusinessId = params.get("BusinessId")
         self.EvidenceId = params.get("EvidenceId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateDataDepositRequest(AbstractModel):
@@ -122,6 +138,13 @@ class CreateDataDepositRequest(AbstractModel):
         self.BusinessId = params.get("BusinessId")
         self.HashType = params.get("HashType")
         self.EvidenceDescription = params.get("EvidenceDescription")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateDataDepositResponse(AbstractModel):
@@ -148,6 +171,13 @@ class CreateDataDepositResponse(AbstractModel):
         self.BusinessId = params.get("BusinessId")
         self.EvidenceId = params.get("EvidenceId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateDocDepositRequest(AbstractModel):
@@ -193,6 +223,13 @@ class CreateDocDepositRequest(AbstractModel):
         self.FileUrl = params.get("FileUrl")
         self.HashType = params.get("HashType")
         self.EvidenceDescription = params.get("EvidenceDescription")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateDocDepositResponse(AbstractModel):
@@ -219,6 +256,13 @@ class CreateDocDepositResponse(AbstractModel):
         self.BusinessId = params.get("BusinessId")
         self.EvidenceId = params.get("EvidenceId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateHashDepositNoCertRequest(AbstractModel):
@@ -248,6 +292,13 @@ class CreateHashDepositNoCertRequest(AbstractModel):
         self.BusinessId = params.get("BusinessId")
         self.HashType = params.get("HashType")
         self.EvidenceInfo = params.get("EvidenceInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateHashDepositNoCertResponse(AbstractModel):
@@ -286,6 +337,13 @@ class CreateHashDepositNoCertResponse(AbstractModel):
         self.EvidenceTxHash = params.get("EvidenceTxHash")
         self.BlockchainHeight = params.get("BlockchainHeight")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateHashDepositNoSealRequest(AbstractModel):
@@ -315,6 +373,13 @@ class CreateHashDepositNoSealRequest(AbstractModel):
         self.BusinessId = params.get("BusinessId")
         self.HashType = params.get("HashType")
         self.EvidenceInfo = params.get("EvidenceInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateHashDepositNoSealResponse(AbstractModel):
@@ -353,6 +418,13 @@ class CreateHashDepositNoSealResponse(AbstractModel):
         self.EvidenceTxHash = params.get("EvidenceTxHash")
         self.BlockchainHeight = params.get("BlockchainHeight")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateHashDepositRequest(AbstractModel):
@@ -386,6 +458,13 @@ class CreateHashDepositRequest(AbstractModel):
         self.BusinessId = params.get("BusinessId")
         self.HashType = params.get("HashType")
         self.EvidenceDescription = params.get("EvidenceDescription")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateHashDepositResponse(AbstractModel):
@@ -412,6 +491,13 @@ class CreateHashDepositResponse(AbstractModel):
         self.BusinessId = params.get("BusinessId")
         self.EvidenceId = params.get("EvidenceId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateImageDepositRequest(AbstractModel):
@@ -457,6 +543,13 @@ class CreateImageDepositRequest(AbstractModel):
         self.FileUrl = params.get("FileUrl")
         self.HashType = params.get("HashType")
         self.EvidenceDescription = params.get("EvidenceDescription")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateImageDepositResponse(AbstractModel):
@@ -483,6 +576,13 @@ class CreateImageDepositResponse(AbstractModel):
         self.BusinessId = params.get("BusinessId")
         self.EvidenceId = params.get("EvidenceId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateVideoDepositRequest(AbstractModel):
@@ -528,6 +628,13 @@ class CreateVideoDepositRequest(AbstractModel):
         self.FileUrl = params.get("FileUrl")
         self.HashType = params.get("HashType")
         self.EvidenceDescription = params.get("EvidenceDescription")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateVideoDepositResponse(AbstractModel):
@@ -554,6 +661,13 @@ class CreateVideoDepositResponse(AbstractModel):
         self.BusinessId = params.get("BusinessId")
         self.EvidenceId = params.get("EvidenceId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateWebpageDepositRequest(AbstractModel):
@@ -587,6 +701,13 @@ class CreateWebpageDepositRequest(AbstractModel):
         self.BusinessId = params.get("BusinessId")
         self.HashType = params.get("HashType")
         self.EvidenceDescription = params.get("EvidenceDescription")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateWebpageDepositResponse(AbstractModel):
@@ -613,6 +734,13 @@ class CreateWebpageDepositResponse(AbstractModel):
         self.BusinessId = params.get("BusinessId")
         self.EvidenceId = params.get("EvidenceId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetDepositCertRequest(AbstractModel):
@@ -630,6 +758,13 @@ class GetDepositCertRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.EvidenceId = params.get("EvidenceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetDepositCertResponse(AbstractModel):
@@ -655,6 +790,13 @@ class GetDepositCertResponse(AbstractModel):
         self.EvidenceId = params.get("EvidenceId")
         self.EvidenceCert = params.get("EvidenceCert")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetDepositFileRequest(AbstractModel):
@@ -672,6 +814,13 @@ class GetDepositFileRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.EvidenceId = params.get("EvidenceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetDepositFileResponse(AbstractModel):
@@ -697,6 +846,13 @@ class GetDepositFileResponse(AbstractModel):
         self.EvidenceId = params.get("EvidenceId")
         self.EvidenceFile = params.get("EvidenceFile")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetDepositInfoRequest(AbstractModel):
@@ -714,6 +870,13 @@ class GetDepositInfoRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.EvidenceId = params.get("EvidenceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetDepositInfoResponse(AbstractModel):
@@ -747,3 +910,10 @@ class GetDepositInfoResponse(AbstractModel):
         self.EvidenceTxHash = params.get("EvidenceTxHash")
         self.BlockchainHeight = params.get("BlockchainHeight")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

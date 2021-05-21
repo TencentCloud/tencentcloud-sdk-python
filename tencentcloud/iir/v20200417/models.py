@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -43,6 +45,13 @@ class Location(AbstractModel):
         self.YMin = params.get("YMin")
         self.XMax = params.get("XMax")
         self.YMax = params.get("YMax")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ProductInfo(AbstractModel):
@@ -95,6 +104,13 @@ class ProductInfo(AbstractModel):
         self.ProductCategory = params.get("ProductCategory")
         self.Score = params.get("Score")
         self.Image = params.get("Image")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RecognizeProductRequest(AbstractModel):
@@ -119,6 +135,13 @@ class RecognizeProductRequest(AbstractModel):
     def _deserialize(self, params):
         self.ImageUrl = params.get("ImageUrl")
         self.ImageBase64 = params.get("ImageBase64")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RecognizeProductResponse(AbstractModel):
@@ -154,6 +177,13 @@ class RecognizeProductResponse(AbstractModel):
             self.ProductInfo = ProductInfo()
             self.ProductInfo._deserialize(params.get("ProductInfo"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RegionDetected(AbstractModel):
@@ -184,3 +214,10 @@ class RegionDetected(AbstractModel):
         if params.get("Location") is not None:
             self.Location = Location()
             self.Location._deserialize(params.get("Location"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

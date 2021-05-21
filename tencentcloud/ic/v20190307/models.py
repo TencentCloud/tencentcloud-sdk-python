@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -60,6 +62,13 @@ class AppInfo(AbstractModel):
         self.CreatedTime = params.get("CreatedTime")
         self.BizType = params.get("BizType")
         self.Uin = params.get("Uin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CardInfo(AbstractModel):
@@ -199,6 +208,13 @@ class CardInfo(AbstractModel):
         self.NeedSms = params.get("NeedSms")
         self.Provider = params.get("Provider")
         self.CertificationState = params.get("CertificationState")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CardList(AbstractModel):
@@ -226,6 +242,13 @@ class CardList(AbstractModel):
                 obj = CardInfo()
                 obj._deserialize(item)
                 self.List.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAppRequest(AbstractModel):
@@ -243,6 +266,13 @@ class DescribeAppRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.Sdkappid = params.get("Sdkappid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAppResponse(AbstractModel):
@@ -267,6 +297,13 @@ class DescribeAppResponse(AbstractModel):
             self.Data = AppInfo()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCardRequest(AbstractModel):
@@ -288,6 +325,13 @@ class DescribeCardRequest(AbstractModel):
     def _deserialize(self, params):
         self.Sdkappid = params.get("Sdkappid")
         self.Iccid = params.get("Iccid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCardResponse(AbstractModel):
@@ -312,6 +356,13 @@ class DescribeCardResponse(AbstractModel):
             self.Data = CardInfo()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCardsRequest(AbstractModel):
@@ -337,6 +388,13 @@ class DescribeCardsRequest(AbstractModel):
         self.Sdkappid = params.get("Sdkappid")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeCardsResponse(AbstractModel):
@@ -360,6 +418,13 @@ class DescribeCardsResponse(AbstractModel):
             self.Data = CardList()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyUserCardRemarkRequest(AbstractModel):
@@ -385,6 +450,13 @@ class ModifyUserCardRemarkRequest(AbstractModel):
         self.Sdkappid = params.get("Sdkappid")
         self.Iccid = params.get("Iccid")
         self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyUserCardRemarkResponse(AbstractModel):
@@ -402,6 +474,13 @@ class ModifyUserCardRemarkResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RenewCardsRequest(AbstractModel):
@@ -427,6 +506,13 @@ class RenewCardsRequest(AbstractModel):
         self.Sdkappid = params.get("Sdkappid")
         self.Iccids = params.get("Iccids")
         self.RenewNum = params.get("RenewNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RenewCardsResponse(AbstractModel):
@@ -451,6 +537,13 @@ class RenewCardsResponse(AbstractModel):
             self.Data = ResRenew()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ResRenew(AbstractModel):
@@ -469,6 +562,13 @@ class ResRenew(AbstractModel):
 
     def _deserialize(self, params):
         self.OrderIds = params.get("OrderIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SendMultiSmsRequest(AbstractModel):
@@ -494,6 +594,13 @@ class SendMultiSmsRequest(AbstractModel):
         self.Sdkappid = params.get("Sdkappid")
         self.Iccids = params.get("Iccids")
         self.Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SendMultiSmsResponse(AbstractModel):
@@ -521,6 +628,13 @@ class SendMultiSmsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Data.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SendSmsRequest(AbstractModel):
@@ -546,6 +660,13 @@ class SendSmsRequest(AbstractModel):
         self.Sdkappid = params.get("Sdkappid")
         self.Iccid = params.get("Iccid")
         self.Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SendSmsResponse(AbstractModel):
@@ -570,6 +691,13 @@ class SendSmsResponse(AbstractModel):
             self.Data = SmsSid()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SmsRet(AbstractModel):
@@ -599,6 +727,13 @@ class SmsRet(AbstractModel):
         self.Msg = params.get("Msg")
         self.Iccid = params.get("Iccid")
         self.Sid = params.get("Sid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SmsSid(AbstractModel):
@@ -621,3 +756,10 @@ class SmsSid(AbstractModel):
     def _deserialize(self, params):
         self.Iccid = params.get("Iccid")
         self.Sid = params.get("Sid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -36,6 +38,13 @@ class ImageRecord(AbstractModel):
                 obj = ItemValue()
                 obj._deserialize(item)
                 self.Value.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ImageTranslateRequest(AbstractModel):
@@ -87,6 +96,13 @@ class ImageTranslateRequest(AbstractModel):
         self.Source = params.get("Source")
         self.Target = params.get("Target")
         self.ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ImageTranslateResponse(AbstractModel):
@@ -122,6 +138,13 @@ class ImageTranslateResponse(AbstractModel):
             self.ImageRecord = ImageRecord()
             self.ImageRecord._deserialize(params.get("ImageRecord"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ItemValue(AbstractModel):
@@ -159,6 +182,13 @@ class ItemValue(AbstractModel):
         self.Y = params.get("Y")
         self.W = params.get("W")
         self.H = params.get("H")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class LanguageDetectRequest(AbstractModel):
@@ -180,6 +210,13 @@ class LanguageDetectRequest(AbstractModel):
     def _deserialize(self, params):
         self.Text = params.get("Text")
         self.ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class LanguageDetectResponse(AbstractModel):
@@ -202,6 +239,13 @@ class LanguageDetectResponse(AbstractModel):
     def _deserialize(self, params):
         self.Lang = params.get("Lang")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SpeechTranslateRequest(AbstractModel):
@@ -255,6 +299,13 @@ class SpeechTranslateRequest(AbstractModel):
         self.ProjectId = params.get("ProjectId")
         self.Mode = params.get("Mode")
         self.TransType = params.get("TransType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SpeechTranslateResponse(AbstractModel):
@@ -304,6 +355,13 @@ class SpeechTranslateResponse(AbstractModel):
         self.Target = params.get("Target")
         self.VadSeq = params.get("VadSeq")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TextTranslateBatchRequest(AbstractModel):
@@ -371,6 +429,13 @@ hi：印地语
         self.Target = params.get("Target")
         self.ProjectId = params.get("ProjectId")
         self.SourceTextList = params.get("SourceTextList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TextTranslateBatchResponse(AbstractModel):
@@ -400,6 +465,13 @@ class TextTranslateBatchResponse(AbstractModel):
         self.Target = params.get("Target")
         self.TargetTextList = params.get("TargetTextList")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TextTranslateRequest(AbstractModel):
@@ -471,6 +543,13 @@ hi：印地语
         self.Target = params.get("Target")
         self.ProjectId = params.get("ProjectId")
         self.UntranslatedText = params.get("UntranslatedText")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TextTranslateResponse(AbstractModel):
@@ -500,3 +579,10 @@ class TextTranslateResponse(AbstractModel):
         self.Source = params.get("Source")
         self.Target = params.get("Target")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

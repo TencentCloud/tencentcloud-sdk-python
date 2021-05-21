@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -35,6 +37,13 @@ class AttributeMap(AbstractModel):
     def _deserialize(self, params):
         self.Key = params.get("Key")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CancelMatchingRequest(AbstractModel):
@@ -56,6 +65,13 @@ class CancelMatchingRequest(AbstractModel):
     def _deserialize(self, params):
         self.MatchCode = params.get("MatchCode")
         self.MatchTicketId = params.get("MatchTicketId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CancelMatchingResponse(AbstractModel):
@@ -77,6 +93,13 @@ class CancelMatchingResponse(AbstractModel):
     def _deserialize(self, params):
         self.ErrCode = params.get("ErrCode")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateMatchRequest(AbstractModel):
@@ -152,6 +175,13 @@ class CreateMatchRequest(AbstractModel):
                 obj = StringKV()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateMatchResponse(AbstractModel):
@@ -175,6 +205,13 @@ class CreateMatchResponse(AbstractModel):
             self.MatchInfo = MatchInfo()
             self.MatchInfo._deserialize(params.get("MatchInfo"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateRuleRequest(AbstractModel):
@@ -209,6 +246,13 @@ class CreateRuleRequest(AbstractModel):
                 obj = StringKV()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateRuleResponse(AbstractModel):
@@ -232,6 +276,13 @@ class CreateRuleResponse(AbstractModel):
             self.RuleInfo = RuleInfo()
             self.RuleInfo._deserialize(params.get("RuleInfo"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteMatchRequest(AbstractModel):
@@ -249,6 +300,13 @@ class DeleteMatchRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.MatchCode = params.get("MatchCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteMatchResponse(AbstractModel):
@@ -266,6 +324,13 @@ class DeleteMatchResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteRuleRequest(AbstractModel):
@@ -283,6 +348,13 @@ class DeleteRuleRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.RuleCode = params.get("RuleCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteRuleResponse(AbstractModel):
@@ -300,6 +372,13 @@ class DeleteRuleResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDataRequest(AbstractModel):
@@ -329,6 +408,13 @@ class DescribeDataRequest(AbstractModel):
         self.EndTime = params.get("EndTime")
         self.TimeType = params.get("TimeType")
         self.MatchCode = params.get("MatchCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeDataResponse(AbstractModel):
@@ -360,6 +446,13 @@ class DescribeDataResponse(AbstractModel):
             self.TrendData = ReportTrendData()
             self.TrendData._deserialize(params.get("TrendData"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeMatchCodesRequest(AbstractModel):
@@ -385,6 +478,13 @@ class DescribeMatchCodesRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.MatchCode = params.get("MatchCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeMatchCodesResponse(AbstractModel):
@@ -417,6 +517,13 @@ class DescribeMatchCodesResponse(AbstractModel):
                 self.MatchCodes.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeMatchRequest(AbstractModel):
@@ -434,6 +541,13 @@ class DescribeMatchRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.MatchCode = params.get("MatchCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeMatchResponse(AbstractModel):
@@ -458,6 +572,13 @@ class DescribeMatchResponse(AbstractModel):
             self.MatchInfo = MatchInfo()
             self.MatchInfo._deserialize(params.get("MatchInfo"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeMatchesRequest(AbstractModel):
@@ -496,6 +617,13 @@ class DescribeMatchesRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeMatchesResponse(AbstractModel):
@@ -543,6 +671,13 @@ class DescribeMatchesResponse(AbstractModel):
         self.SearchType = params.get("SearchType")
         self.Keyword = params.get("Keyword")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeMatchingProgressRequest(AbstractModel):
@@ -565,6 +700,13 @@ class DescribeMatchingProgressRequest(AbstractModel):
                 obj = MTicket()
                 obj._deserialize(item)
                 self.MatchTicketIds.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeMatchingProgressResponse(AbstractModel):
@@ -597,6 +739,13 @@ class DescribeMatchingProgressResponse(AbstractModel):
                 self.MatchTickets.append(obj)
         self.ErrCode = params.get("ErrCode")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeRuleRequest(AbstractModel):
@@ -614,6 +763,13 @@ class DescribeRuleRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.RuleCode = params.get("RuleCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeRuleResponse(AbstractModel):
@@ -638,6 +794,13 @@ class DescribeRuleResponse(AbstractModel):
             self.RuleInfo = RuleInfo()
             self.RuleInfo._deserialize(params.get("RuleInfo"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeRulesRequest(AbstractModel):
@@ -676,6 +839,13 @@ class DescribeRulesRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeRulesResponse(AbstractModel):
@@ -723,6 +893,13 @@ class DescribeRulesResponse(AbstractModel):
         self.SearchType = params.get("SearchType")
         self.Keyword = params.get("Keyword")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeTokenRequest(AbstractModel):
@@ -740,6 +917,13 @@ class DescribeTokenRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.MatchCode = params.get("MatchCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeTokenResponse(AbstractModel):
@@ -767,6 +951,13 @@ class DescribeTokenResponse(AbstractModel):
         self.MatchToken = params.get("MatchToken")
         self.CompatibleSpan = params.get("CompatibleSpan")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MTicket(AbstractModel):
@@ -788,6 +979,13 @@ class MTicket(AbstractModel):
     def _deserialize(self, params):
         self.MatchCode = params.get("MatchCode")
         self.MatchTicketId = params.get("MatchTicketId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MatchAttribute(AbstractModel):
@@ -830,6 +1028,13 @@ class MatchAttribute(AbstractModel):
                 obj = AttributeMap()
                 obj._deserialize(item)
                 self.MapValue.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MatchCodeAttr(AbstractModel):
@@ -848,6 +1053,13 @@ class MatchCodeAttr(AbstractModel):
 
     def _deserialize(self, params):
         self.MatchCode = params.get("MatchCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MatchInfo(AbstractModel):
@@ -988,6 +1200,13 @@ class MatchInfo(AbstractModel):
         self.CreateUin = params.get("CreateUin")
         self.RuleName = params.get("RuleName")
         self.LogStatus = params.get("LogStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MatchTicket(AbstractModel):
@@ -1051,6 +1270,13 @@ class MatchTicket(AbstractModel):
         self.StatusReason = params.get("StatusReason")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyMatchRequest(AbstractModel):
@@ -1130,6 +1356,13 @@ class ModifyMatchRequest(AbstractModel):
                 obj = StringKV()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyMatchResponse(AbstractModel):
@@ -1153,6 +1386,13 @@ class ModifyMatchResponse(AbstractModel):
             self.MatchInfo = MatchInfo()
             self.MatchInfo._deserialize(params.get("MatchInfo"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyRuleRequest(AbstractModel):
@@ -1187,6 +1427,13 @@ class ModifyRuleRequest(AbstractModel):
                 obj = StringKV()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyRuleResponse(AbstractModel):
@@ -1210,6 +1457,13 @@ class ModifyRuleResponse(AbstractModel):
             self.RuleInfo = RuleInfo()
             self.RuleInfo._deserialize(params.get("RuleInfo"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyTokenRequest(AbstractModel):
@@ -1235,6 +1489,13 @@ class ModifyTokenRequest(AbstractModel):
         self.MatchCode = params.get("MatchCode")
         self.CompatibleSpan = params.get("CompatibleSpan")
         self.MatchToken = params.get("MatchToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ModifyTokenResponse(AbstractModel):
@@ -1261,6 +1522,13 @@ class ModifyTokenResponse(AbstractModel):
         self.MatchToken = params.get("MatchToken")
         self.CompatibleSpan = params.get("CompatibleSpan")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Player(AbstractModel):
@@ -1312,6 +1580,13 @@ class Player(AbstractModel):
                 obj = RegionLatency()
                 obj._deserialize(item)
                 self.RegionLatencies.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RegionLatency(AbstractModel):
@@ -1348,6 +1623,13 @@ ap-tokyo          亚太地区(东京)
     def _deserialize(self, params):
         self.Region = params.get("Region")
         self.Latency = params.get("Latency")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ReportOverviewData(AbstractModel):
@@ -1381,6 +1663,13 @@ class ReportOverviewData(AbstractModel):
         self.TimeoutPercent = params.get("TimeoutPercent")
         self.FailPercent = params.get("FailPercent")
         self.AverageSec = params.get("AverageSec")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ReportTrendData(AbstractModel):
@@ -1418,6 +1707,13 @@ class ReportTrendData(AbstractModel):
         self.FailList = params.get("FailList")
         self.TimeoutList = params.get("TimeoutList")
         self.TimeList = params.get("TimeList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RuleBriefInfo(AbstractModel):
@@ -1452,6 +1748,13 @@ class RuleBriefInfo(AbstractModel):
                 self.MatchCodeList.append(obj)
         self.CreateTime = params.get("CreateTime")
         self.RuleCode = params.get("RuleCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RuleInfo(AbstractModel):
@@ -1526,6 +1829,13 @@ class RuleInfo(AbstractModel):
         self.AppId = params.get("AppId")
         self.Uin = params.get("Uin")
         self.CreateUin = params.get("CreateUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StartMatchingBackfillRequest(AbstractModel):
@@ -1560,6 +1870,13 @@ class StartMatchingBackfillRequest(AbstractModel):
                 self.Players.append(obj)
         self.GameServerSessionId = params.get("GameServerSessionId")
         self.MatchTicketId = params.get("MatchTicketId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StartMatchingBackfillResponse(AbstractModel):
@@ -1584,6 +1901,13 @@ class StartMatchingBackfillResponse(AbstractModel):
             self.MatchTicket = MatchTicket()
             self.MatchTicket._deserialize(params.get("MatchTicket"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StartMatchingRequest(AbstractModel):
@@ -1614,6 +1938,13 @@ class StartMatchingRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Players.append(obj)
         self.MatchTicketId = params.get("MatchTicketId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StartMatchingResponse(AbstractModel):
@@ -1639,6 +1970,13 @@ class StartMatchingResponse(AbstractModel):
         self.ErrCode = params.get("ErrCode")
         self.MatchTicketId = params.get("MatchTicketId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StringKV(AbstractModel):
@@ -1660,6 +1998,13 @@ class StringKV(AbstractModel):
     def _deserialize(self, params):
         self.Key = params.get("Key")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Tag(AbstractModel):
@@ -1681,3 +2026,10 @@ class Tag(AbstractModel):
     def _deserialize(self, params):
         self.TagKey = params.get("TagKey")
         self.TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

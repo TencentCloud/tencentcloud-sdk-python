@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -35,6 +37,13 @@ class AgePortrait(AbstractModel):
     def _deserialize(self, params):
         self.AgeRange = params.get("AgeRange")
         self.Percent = params.get("Percent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AgePortraitInfo(AbstractModel):
@@ -57,6 +66,13 @@ class AgePortraitInfo(AbstractModel):
                 obj = AgePortrait()
                 obj._deserialize(item)
                 self.PortraitSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BrandReportArticle(AbstractModel):
@@ -106,6 +122,13 @@ class BrandReportArticle(AbstractModel):
         self.Level = params.get("Level")
         self.Abstract = params.get("Abstract")
         self.ArticleId = params.get("ArticleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Comment(AbstractModel):
@@ -131,6 +154,13 @@ class Comment(AbstractModel):
         self.Date = params.get("Date")
         self.NegCommentCount = params.get("NegCommentCount")
         self.PosCommentCount = params.get("PosCommentCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CommentInfo(AbstractModel):
@@ -152,6 +182,13 @@ class CommentInfo(AbstractModel):
     def _deserialize(self, params):
         self.Comment = params.get("Comment")
         self.Date = params.get("Date")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DateCount(AbstractModel):
@@ -173,6 +210,13 @@ class DateCount(AbstractModel):
     def _deserialize(self, params):
         self.Date = params.get("Date")
         self.Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeBrandCommentCountRequest(AbstractModel):
@@ -198,6 +242,13 @@ class DescribeBrandCommentCountRequest(AbstractModel):
         self.BrandId = params.get("BrandId")
         self.StartDate = params.get("StartDate")
         self.EndDate = params.get("EndDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeBrandCommentCountResponse(AbstractModel):
@@ -224,6 +275,13 @@ class DescribeBrandCommentCountResponse(AbstractModel):
                 obj._deserialize(item)
                 self.CommentSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeBrandExposureRequest(AbstractModel):
@@ -249,6 +307,13 @@ class DescribeBrandExposureRequest(AbstractModel):
         self.BrandId = params.get("BrandId")
         self.StartDate = params.get("StartDate")
         self.EndDate = params.get("EndDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeBrandExposureResponse(AbstractModel):
@@ -279,6 +344,13 @@ class DescribeBrandExposureResponse(AbstractModel):
                 obj._deserialize(item)
                 self.DateCountSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeBrandMediaReportRequest(AbstractModel):
@@ -304,6 +376,13 @@ class DescribeBrandMediaReportRequest(AbstractModel):
         self.BrandId = params.get("BrandId")
         self.StartDate = params.get("StartDate")
         self.EndDate = params.get("EndDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeBrandMediaReportResponse(AbstractModel):
@@ -334,6 +413,13 @@ class DescribeBrandMediaReportResponse(AbstractModel):
                 obj._deserialize(item)
                 self.DateCountSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeBrandNegCommentsRequest(AbstractModel):
@@ -367,6 +453,13 @@ class DescribeBrandNegCommentsRequest(AbstractModel):
         self.EndDate = params.get("EndDate")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeBrandNegCommentsResponse(AbstractModel):
@@ -397,6 +490,13 @@ class DescribeBrandNegCommentsResponse(AbstractModel):
                 self.BrandCommentSet.append(obj)
         self.TotalComments = params.get("TotalComments")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeBrandPosCommentsRequest(AbstractModel):
@@ -430,6 +530,13 @@ class DescribeBrandPosCommentsRequest(AbstractModel):
         self.EndDate = params.get("EndDate")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeBrandPosCommentsResponse(AbstractModel):
@@ -460,6 +567,13 @@ class DescribeBrandPosCommentsResponse(AbstractModel):
                 self.BrandCommentSet.append(obj)
         self.TotalComments = params.get("TotalComments")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeBrandSocialOpinionRequest(AbstractModel):
@@ -497,6 +611,13 @@ class DescribeBrandSocialOpinionRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.ShowList = params.get("ShowList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeBrandSocialOpinionResponse(AbstractModel):
@@ -535,6 +656,13 @@ class DescribeBrandSocialOpinionResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ArticleSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeBrandSocialReportRequest(AbstractModel):
@@ -560,6 +688,13 @@ class DescribeBrandSocialReportRequest(AbstractModel):
         self.BrandId = params.get("BrandId")
         self.StartDate = params.get("StartDate")
         self.EndDate = params.get("EndDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeBrandSocialReportResponse(AbstractModel):
@@ -590,6 +725,13 @@ class DescribeBrandSocialReportResponse(AbstractModel):
                 obj._deserialize(item)
                 self.DateCountSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeIndustryNewsRequest(AbstractModel):
@@ -627,6 +769,13 @@ class DescribeIndustryNewsRequest(AbstractModel):
         self.ShowList = params.get("ShowList")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeIndustryNewsResponse(AbstractModel):
@@ -674,6 +823,13 @@ class DescribeIndustryNewsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.DateCountSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeUserPortraitRequest(AbstractModel):
@@ -691,6 +847,13 @@ class DescribeUserPortraitRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.BrandId = params.get("BrandId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeUserPortraitResponse(AbstractModel):
@@ -738,6 +901,13 @@ class DescribeUserPortraitResponse(AbstractModel):
             self.Star = StarPortraitInfo()
             self.Star._deserialize(params.get("Star"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GenderPortrait(AbstractModel):
@@ -759,6 +929,13 @@ class GenderPortrait(AbstractModel):
     def _deserialize(self, params):
         self.Gender = params.get("Gender")
         self.Percent = params.get("Percent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GenderPortraitInfo(AbstractModel):
@@ -781,6 +958,13 @@ class GenderPortraitInfo(AbstractModel):
                 obj = GenderPortrait()
                 obj._deserialize(item)
                 self.PortraitSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class IndustryNews(AbstractModel):
@@ -830,6 +1014,13 @@ class IndustryNews(AbstractModel):
         self.Hot = params.get("Hot")
         self.Flag = params.get("Flag")
         self.Abstract = params.get("Abstract")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MoviePortrait(AbstractModel):
@@ -851,6 +1042,13 @@ class MoviePortrait(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Percent = params.get("Percent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MoviePortraitInfo(AbstractModel):
@@ -873,6 +1071,13 @@ class MoviePortraitInfo(AbstractModel):
                 obj = MoviePortrait()
                 obj._deserialize(item)
                 self.PortraitSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ProvincePortrait(AbstractModel):
@@ -894,6 +1099,13 @@ class ProvincePortrait(AbstractModel):
     def _deserialize(self, params):
         self.Province = params.get("Province")
         self.Percent = params.get("Percent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ProvincePortraitInfo(AbstractModel):
@@ -916,6 +1128,13 @@ class ProvincePortraitInfo(AbstractModel):
                 obj = ProvincePortrait()
                 obj._deserialize(item)
                 self.PortraitSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StarPortrait(AbstractModel):
@@ -937,6 +1156,13 @@ class StarPortrait(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Percent = params.get("Percent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StarPortraitInfo(AbstractModel):
@@ -959,3 +1185,10 @@ class StarPortraitInfo(AbstractModel):
                 obj = StarPortrait()
                 obj._deserialize(item)
                 self.PortraitSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

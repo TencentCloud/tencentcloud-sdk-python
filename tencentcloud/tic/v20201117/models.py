@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -35,6 +37,13 @@ class ApplyStackRequest(AbstractModel):
     def _deserialize(self, params):
         self.StackId = params.get("StackId")
         self.VersionId = params.get("VersionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ApplyStackResponse(AbstractModel):
@@ -56,6 +65,13 @@ class ApplyStackResponse(AbstractModel):
     def _deserialize(self, params):
         self.EventId = params.get("EventId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateStackRequest(AbstractModel):
@@ -85,6 +101,13 @@ class CreateStackRequest(AbstractModel):
         self.StackRegion = params.get("StackRegion")
         self.TemplateUrl = params.get("TemplateUrl")
         self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateStackResponse(AbstractModel):
@@ -110,6 +133,13 @@ class CreateStackResponse(AbstractModel):
         self.StackId = params.get("StackId")
         self.VersionId = params.get("VersionId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateStackVersionRequest(AbstractModel):
@@ -139,6 +169,13 @@ class CreateStackVersionRequest(AbstractModel):
         self.TemplateUrl = params.get("TemplateUrl")
         self.VersionName = params.get("VersionName")
         self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateStackVersionResponse(AbstractModel):
@@ -160,6 +197,13 @@ class CreateStackVersionResponse(AbstractModel):
     def _deserialize(self, params):
         self.VersionId = params.get("VersionId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteStackRequest(AbstractModel):
@@ -177,6 +221,13 @@ class DeleteStackRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.StackId = params.get("StackId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteStackResponse(AbstractModel):
@@ -194,6 +245,13 @@ class DeleteStackResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteStackVersionRequest(AbstractModel):
@@ -211,6 +269,13 @@ class DeleteStackVersionRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.VersionId = params.get("VersionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteStackVersionResponse(AbstractModel):
@@ -228,6 +293,13 @@ class DeleteStackVersionResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeStackEventRequest(AbstractModel):
@@ -245,6 +317,13 @@ class DescribeStackEventRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.EventId = params.get("EventId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeStackEventResponse(AbstractModel):
@@ -294,6 +373,13 @@ class DescribeStackEventResponse(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.ConsoleLog = params.get("ConsoleLog")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeStackEventsRequest(AbstractModel):
@@ -342,6 +428,13 @@ class DescribeStackEventsRequest(AbstractModel):
                 self.Filters.append(obj)
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeStackEventsResponse(AbstractModel):
@@ -372,6 +465,13 @@ class DescribeStackEventsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Events.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeStackVersionsRequest(AbstractModel):
@@ -416,6 +516,13 @@ class DescribeStackVersionsRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeStackVersionsResponse(AbstractModel):
@@ -446,6 +553,13 @@ class DescribeStackVersionsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Versions.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeStacksRequest(AbstractModel):
@@ -471,6 +585,13 @@ class DescribeStacksRequest(AbstractModel):
         self.StackIds = params.get("StackIds")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeStacksResponse(AbstractModel):
@@ -501,6 +622,13 @@ class DescribeStacksResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Stacks.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DestroyStackRequest(AbstractModel):
@@ -522,6 +650,13 @@ class DestroyStackRequest(AbstractModel):
     def _deserialize(self, params):
         self.StackId = params.get("StackId")
         self.VersionId = params.get("VersionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DestroyStackResponse(AbstractModel):
@@ -543,6 +678,13 @@ class DestroyStackResponse(AbstractModel):
     def _deserialize(self, params):
         self.EventId = params.get("EventId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class EventInfo(AbstractModel):
@@ -584,6 +726,13 @@ class EventInfo(AbstractModel):
         self.Status = params.get("Status")
         self.Message = params.get("Message")
         self.CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Filter(AbstractModel):
@@ -605,6 +754,13 @@ class Filter(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PlanStackRequest(AbstractModel):
@@ -626,6 +782,13 @@ class PlanStackRequest(AbstractModel):
     def _deserialize(self, params):
         self.StackId = params.get("StackId")
         self.VersionId = params.get("VersionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PlanStackResponse(AbstractModel):
@@ -647,6 +810,13 @@ class PlanStackResponse(AbstractModel):
     def _deserialize(self, params):
         self.EventId = params.get("EventId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StackInfo(AbstractModel):
@@ -684,6 +854,13 @@ class StackInfo(AbstractModel):
         self.Region = params.get("Region")
         self.Status = params.get("Status")
         self.CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UpdateStackRequest(AbstractModel):
@@ -709,6 +886,13 @@ class UpdateStackRequest(AbstractModel):
         self.StackId = params.get("StackId")
         self.StackName = params.get("StackName")
         self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UpdateStackResponse(AbstractModel):
@@ -726,6 +910,13 @@ class UpdateStackResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UpdateStackVersionRequest(AbstractModel):
@@ -755,6 +946,13 @@ class UpdateStackVersionRequest(AbstractModel):
         self.TemplateUrl = params.get("TemplateUrl")
         self.VersionName = params.get("VersionName")
         self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UpdateStackVersionResponse(AbstractModel):
@@ -772,6 +970,13 @@ class UpdateStackVersionResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VersionInfo(AbstractModel):
@@ -809,3 +1014,10 @@ class VersionInfo(AbstractModel):
         self.StackId = params.get("StackId")
         self.Status = params.get("Status")
         self.CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

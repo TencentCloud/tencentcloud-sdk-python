@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -31,6 +33,13 @@ class CHPRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.PhoneNumber = params.get("PhoneNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CHPResponse(AbstractModel):
@@ -60,6 +69,13 @@ class CHPResponse(AbstractModel):
     def _deserialize(self, params):
         self.TagType = params.get("TagType")
         self.TagCount = params.get("TagCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateSmpnEpaRequest(AbstractModel):
@@ -83,6 +99,13 @@ class CreateSmpnEpaRequest(AbstractModel):
             self.RequestData = EPARequest()
             self.RequestData._deserialize(params.get("RequestData"))
         self.ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateSmpnEpaResponse(AbstractModel):
@@ -106,6 +129,13 @@ class CreateSmpnEpaResponse(AbstractModel):
             self.ResponseData = EPAResponse()
             self.ResponseData._deserialize(params.get("ResponseData"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSmpnChpRequest(AbstractModel):
@@ -129,6 +159,13 @@ class DescribeSmpnChpRequest(AbstractModel):
         if params.get("RequestData") is not None:
             self.RequestData = CHPRequest()
             self.RequestData._deserialize(params.get("RequestData"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSmpnChpResponse(AbstractModel):
@@ -152,6 +189,13 @@ class DescribeSmpnChpResponse(AbstractModel):
             self.ResponseData = CHPResponse()
             self.ResponseData._deserialize(params.get("ResponseData"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSmpnFnrRequest(AbstractModel):
@@ -175,6 +219,13 @@ class DescribeSmpnFnrRequest(AbstractModel):
             self.RequestData = FNRRequest()
             self.RequestData._deserialize(params.get("RequestData"))
         self.ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSmpnFnrResponse(AbstractModel):
@@ -198,6 +249,13 @@ class DescribeSmpnFnrResponse(AbstractModel):
             self.ResponseData = FNRResponse()
             self.ResponseData._deserialize(params.get("ResponseData"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSmpnMhmRequest(AbstractModel):
@@ -221,6 +279,13 @@ class DescribeSmpnMhmRequest(AbstractModel):
             self.RequestData = MHMRequest()
             self.RequestData._deserialize(params.get("RequestData"))
         self.ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSmpnMhmResponse(AbstractModel):
@@ -244,6 +309,13 @@ class DescribeSmpnMhmResponse(AbstractModel):
             self.ResponseData = MHMResponse()
             self.ResponseData._deserialize(params.get("ResponseData"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSmpnMrlRequest(AbstractModel):
@@ -267,6 +339,13 @@ class DescribeSmpnMrlRequest(AbstractModel):
             self.RequestData = MRLRequest()
             self.RequestData._deserialize(params.get("RequestData"))
         self.ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeSmpnMrlResponse(AbstractModel):
@@ -290,6 +369,13 @@ class DescribeSmpnMrlResponse(AbstractModel):
             self.ResponseData = MRLResponse()
             self.ResponseData._deserialize(params.get("ResponseData"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class EPARequest(AbstractModel):
@@ -311,6 +397,13 @@ class EPARequest(AbstractModel):
     def _deserialize(self, params):
         self.PhoneNumber = params.get("PhoneNumber")
         self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class EPAResponse(AbstractModel):
@@ -328,6 +421,13 @@ class EPAResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RetCode = params.get("RetCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FNRRequest(AbstractModel):
@@ -345,6 +445,13 @@ class FNRRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.PhoneNumber = params.get("PhoneNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class FNRResponse(AbstractModel):
@@ -362,6 +469,13 @@ class FNRResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MHMRequest(AbstractModel):
@@ -379,6 +493,13 @@ class MHMRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.PhoneNumber = params.get("PhoneNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MHMResponse(AbstractModel):
@@ -408,6 +529,13 @@ class MHMResponse(AbstractModel):
     def _deserialize(self, params):
         self.TagType = params.get("TagType")
         self.TagCount = params.get("TagCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MRLRequest(AbstractModel):
@@ -425,6 +553,13 @@ class MRLRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.PhoneNumber = params.get("PhoneNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class MRLResponse(AbstractModel):
@@ -458,3 +593,10 @@ class MRLResponse(AbstractModel):
         self.InsuranceLevel = params.get("InsuranceLevel")
         self.SalesLevel = params.get("SalesLevel")
         self.CheatLevel = params.get("CheatLevel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

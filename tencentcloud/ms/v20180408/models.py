@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -81,6 +83,13 @@ class AdInfo(AbstractModel):
                 obj = PluginInfo()
                 obj._deserialize(item)
                 self.NotifyBars.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AppDetailInfo(AbstractModel):
@@ -122,6 +131,13 @@ class AppDetailInfo(AbstractModel):
         self.AppMd5 = params.get("AppMd5")
         self.AppIconUrl = params.get("AppIconUrl")
         self.FileName = params.get("FileName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AppInfo(AbstractModel):
@@ -167,6 +183,13 @@ class AppInfo(AbstractModel):
         self.AppVersion = params.get("AppVersion")
         self.AppIconUrl = params.get("AppIconUrl")
         self.AppName = params.get("AppName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AppScanSet(AbstractModel):
@@ -232,6 +255,13 @@ class AppScanSet(AbstractModel):
         self.AppSid = params.get("AppSid")
         self.SafeType = params.get("SafeType")
         self.VulCount = params.get("VulCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AppSetInfo(AbstractModel):
@@ -305,6 +335,13 @@ class AppSetInfo(AbstractModel):
         self.AppIconUrl = params.get("AppIconUrl")
         self.ShieldMd5 = params.get("ShieldMd5")
         self.ShieldSize = params.get("ShieldSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BindInfo(AbstractModel):
@@ -330,6 +367,13 @@ class BindInfo(AbstractModel):
         self.AppIconUrl = params.get("AppIconUrl")
         self.AppName = params.get("AppName")
         self.AppPkgName = params.get("AppPkgName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateBindInstanceRequest(AbstractModel):
@@ -359,6 +403,13 @@ class CreateBindInstanceRequest(AbstractModel):
         self.AppIconUrl = params.get("AppIconUrl")
         self.AppName = params.get("AppName")
         self.AppPkgName = params.get("AppPkgName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateBindInstanceResponse(AbstractModel):
@@ -380,6 +431,13 @@ class CreateBindInstanceResponse(AbstractModel):
     def _deserialize(self, params):
         self.Progress = params.get("Progress")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateCosSecKeyInstanceRequest(AbstractModel):
@@ -401,6 +459,13 @@ class CreateCosSecKeyInstanceRequest(AbstractModel):
     def _deserialize(self, params):
         self.CosRegion = params.get("CosRegion")
         self.Duration = params.get("Duration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateCosSecKeyInstanceResponse(AbstractModel):
@@ -450,6 +515,13 @@ class CreateCosSecKeyInstanceResponse(AbstractModel):
         self.CosTocken = params.get("CosTocken")
         self.CosPrefix = params.get("CosPrefix")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateResourceInstancesRequest(AbstractModel):
@@ -479,6 +551,13 @@ class CreateResourceInstancesRequest(AbstractModel):
         self.TimeUnit = params.get("TimeUnit")
         self.TimeSpan = params.get("TimeSpan")
         self.ResourceNum = params.get("ResourceNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateResourceInstancesResponse(AbstractModel):
@@ -500,6 +579,13 @@ class CreateResourceInstancesResponse(AbstractModel):
     def _deserialize(self, params):
         self.ResourceSet = params.get("ResourceSet")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateScanInstancesRequest(AbstractModel):
@@ -528,6 +614,13 @@ class CreateScanInstancesRequest(AbstractModel):
         if params.get("ScanInfo") is not None:
             self.ScanInfo = ScanInfo()
             self.ScanInfo._deserialize(params.get("ScanInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateScanInstancesResponse(AbstractModel):
@@ -565,6 +658,13 @@ class CreateScanInstancesResponse(AbstractModel):
         self.LimitCount = params.get("LimitCount")
         self.LimitTime = params.get("LimitTime")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateShieldInstanceRequest(AbstractModel):
@@ -590,6 +690,13 @@ class CreateShieldInstanceRequest(AbstractModel):
         if params.get("ServiceInfo") is not None:
             self.ServiceInfo = ServiceInfo()
             self.ServiceInfo._deserialize(params.get("ServiceInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateShieldInstanceResponse(AbstractModel):
@@ -615,6 +722,13 @@ class CreateShieldInstanceResponse(AbstractModel):
         self.Progress = params.get("Progress")
         self.ItemId = params.get("ItemId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateShieldPlanInstanceRequest(AbstractModel):
@@ -642,6 +756,13 @@ class CreateShieldPlanInstanceRequest(AbstractModel):
         if params.get("PlanInfo") is not None:
             self.PlanInfo = PlanInfo()
             self.PlanInfo._deserialize(params.get("PlanInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateShieldPlanInstanceResponse(AbstractModel):
@@ -667,6 +788,13 @@ class CreateShieldPlanInstanceResponse(AbstractModel):
         self.PlanId = params.get("PlanId")
         self.Progress = params.get("Progress")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteScanInstancesRequest(AbstractModel):
@@ -684,6 +812,13 @@ class DeleteScanInstancesRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.AppSids = params.get("AppSids")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteScanInstancesResponse(AbstractModel):
@@ -705,6 +840,13 @@ class DeleteScanInstancesResponse(AbstractModel):
     def _deserialize(self, params):
         self.Progress = params.get("Progress")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteShieldInstancesRequest(AbstractModel):
@@ -722,6 +864,13 @@ class DeleteShieldInstancesRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.ItemIds = params.get("ItemIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteShieldInstancesResponse(AbstractModel):
@@ -743,6 +892,13 @@ class DeleteShieldInstancesResponse(AbstractModel):
     def _deserialize(self, params):
         self.Progress = params.get("Progress")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeResourceInstancesRequest(AbstractModel):
@@ -785,6 +941,13 @@ class DescribeResourceInstancesRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.OrderField = params.get("OrderField")
         self.OrderDirection = params.get("OrderDirection")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeResourceInstancesResponse(AbstractModel):
@@ -815,6 +978,13 @@ class DescribeResourceInstancesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ResourceSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeScanInstancesRequest(AbstractModel):
@@ -857,6 +1027,13 @@ class DescribeScanInstancesRequest(AbstractModel):
         self.ItemIds = params.get("ItemIds")
         self.OrderField = params.get("OrderField")
         self.OrderDirection = params.get("OrderDirection")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeScanInstancesResponse(AbstractModel):
@@ -887,6 +1064,13 @@ class DescribeScanInstancesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ScanSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeScanResultsRequest(AbstractModel):
@@ -908,6 +1092,13 @@ class DescribeScanResultsRequest(AbstractModel):
     def _deserialize(self, params):
         self.ItemId = params.get("ItemId")
         self.AppMd5s = params.get("AppMd5s")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeScanResultsResponse(AbstractModel):
@@ -938,6 +1129,13 @@ class DescribeScanResultsResponse(AbstractModel):
                 self.ScanSet.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeShieldInstancesRequest(AbstractModel):
@@ -980,6 +1178,13 @@ class DescribeShieldInstancesRequest(AbstractModel):
         self.ItemIds = params.get("ItemIds")
         self.OrderField = params.get("OrderField")
         self.OrderDirection = params.get("OrderDirection")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeShieldInstancesResponse(AbstractModel):
@@ -1010,6 +1215,13 @@ class DescribeShieldInstancesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.AppSet.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeShieldPlanInstanceRequest(AbstractModel):
@@ -1031,6 +1243,13 @@ class DescribeShieldPlanInstanceRequest(AbstractModel):
     def _deserialize(self, params):
         self.ResourceId = params.get("ResourceId")
         self.Pid = params.get("Pid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeShieldPlanInstanceResponse(AbstractModel):
@@ -1066,6 +1285,13 @@ class DescribeShieldPlanInstanceResponse(AbstractModel):
             self.ResourceServiceInfo = ResourceServiceInfo()
             self.ResourceServiceInfo._deserialize(params.get("ResourceServiceInfo"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeShieldResultRequest(AbstractModel):
@@ -1083,6 +1309,13 @@ class DescribeShieldResultRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.ItemId = params.get("ItemId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeShieldResultResponse(AbstractModel):
@@ -1124,6 +1357,13 @@ class DescribeShieldResultResponse(AbstractModel):
         self.StatusDesc = params.get("StatusDesc")
         self.StatusRef = params.get("StatusRef")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeUserBaseInfoInstanceRequest(AbstractModel):
@@ -1159,6 +1399,13 @@ class DescribeUserBaseInfoInstanceResponse(AbstractModel):
         self.UserAppid = params.get("UserAppid")
         self.TimeStamp = params.get("TimeStamp")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Filter(AbstractModel):
@@ -1180,6 +1427,13 @@ class Filter(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PlanDetailInfo(AbstractModel):
@@ -1211,6 +1465,13 @@ class PlanDetailInfo(AbstractModel):
         if params.get("PlanInfo") is not None:
             self.PlanInfo = PlanInfo()
             self.PlanInfo._deserialize(params.get("PlanInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PlanInfo(AbstractModel):
@@ -1290,6 +1551,13 @@ class PlanInfo(AbstractModel):
         self.AntiAssets = params.get("AntiAssets")
         self.AntiScreenshot = params.get("AntiScreenshot")
         self.AntiSSL = params.get("AntiSSL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class PluginInfo(AbstractModel):
@@ -1315,6 +1583,13 @@ class PluginInfo(AbstractModel):
         self.PluginType = params.get("PluginType")
         self.PluginName = params.get("PluginName")
         self.PluginDesc = params.get("PluginDesc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ResourceInfo(AbstractModel):
@@ -1358,6 +1633,13 @@ class ResourceInfo(AbstractModel):
             self.BindInfo = BindInfo()
             self.BindInfo._deserialize(params.get("BindInfo"))
         self.ResourceName = params.get("ResourceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ResourceServiceInfo(AbstractModel):
@@ -1383,6 +1665,13 @@ class ResourceServiceInfo(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.ExpireTime = params.get("ExpireTime")
         self.ResourceName = params.get("ResourceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ScanInfo(AbstractModel):
@@ -1404,6 +1693,13 @@ class ScanInfo(AbstractModel):
     def _deserialize(self, params):
         self.CallbackUrl = params.get("CallbackUrl")
         self.ScanTypes = params.get("ScanTypes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ScanPermissionInfo(AbstractModel):
@@ -1421,6 +1717,13 @@ class ScanPermissionInfo(AbstractModel):
 
     def _deserialize(self, params):
         self.Permission = params.get("Permission")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ScanPermissionList(AbstractModel):
@@ -1443,6 +1746,13 @@ class ScanPermissionList(AbstractModel):
                 obj = ScanPermissionInfo()
                 obj._deserialize(item)
                 self.PermissionList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ScanSensitiveInfo(AbstractModel):
@@ -1468,6 +1778,13 @@ class ScanSensitiveInfo(AbstractModel):
         self.WordList = params.get("WordList")
         self.FilePath = params.get("FilePath")
         self.FileSha = params.get("FileSha")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ScanSensitiveList(AbstractModel):
@@ -1490,6 +1807,13 @@ class ScanSensitiveList(AbstractModel):
                 obj = ScanSensitiveInfo()
                 obj._deserialize(item)
                 self.SensitiveList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ScanSetInfo(AbstractModel):
@@ -1559,6 +1883,13 @@ class ScanSetInfo(AbstractModel):
         if params.get("SensitiveInfo") is not None:
             self.SensitiveInfo = ScanSensitiveList()
             self.SensitiveInfo._deserialize(params.get("SensitiveInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ServiceInfo(AbstractModel):
@@ -1588,6 +1919,13 @@ class ServiceInfo(AbstractModel):
         self.CallbackUrl = params.get("CallbackUrl")
         self.SubmitSource = params.get("SubmitSource")
         self.PlanId = params.get("PlanId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ShieldInfo(AbstractModel):
@@ -1629,6 +1967,13 @@ class ShieldInfo(AbstractModel):
         self.TaskTime = params.get("TaskTime")
         self.ItemId = params.get("ItemId")
         self.ServiceEdition = params.get("ServiceEdition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ShieldPlanInfo(AbstractModel):
@@ -1655,6 +2000,13 @@ class ShieldPlanInfo(AbstractModel):
                 obj = PlanDetailInfo()
                 obj._deserialize(item)
                 self.PlanSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SoInfo(AbstractModel):
@@ -1672,6 +2024,13 @@ class SoInfo(AbstractModel):
 
     def _deserialize(self, params):
         self.SoFileNames = params.get("SoFileNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VirusInfo(AbstractModel):
@@ -1697,6 +2056,13 @@ class VirusInfo(AbstractModel):
         self.SafeType = params.get("SafeType")
         self.VirusName = params.get("VirusName")
         self.VirusDesc = params.get("VirusDesc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VulInfo(AbstractModel):
@@ -1723,6 +2089,13 @@ class VulInfo(AbstractModel):
                 obj._deserialize(item)
                 self.VulList.append(obj)
         self.VulFileScore = params.get("VulFileScore")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class VulList(AbstractModel):
@@ -1768,3 +2141,10 @@ class VulList(AbstractModel):
         self.VulSrcType = params.get("VulSrcType")
         self.VulFilepath = params.get("VulFilepath")
         self.RiskLevel = params.get("RiskLevel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

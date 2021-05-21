@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -47,6 +49,13 @@ class AttributeKeyDetail(AbstractModel):
         self.Order = params.get("Order")
         self.Value = params.get("Value")
         self.Label = params.get("Label")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class AuditSummary(AbstractModel):
@@ -76,6 +85,13 @@ class AuditSummary(AbstractModel):
         self.CosBucketName = params.get("CosBucketName")
         self.AuditName = params.get("AuditName")
         self.LogFilePrefix = params.get("LogFilePrefix")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CmqRegionInfo(AbstractModel):
@@ -97,6 +113,13 @@ class CmqRegionInfo(AbstractModel):
     def _deserialize(self, params):
         self.CmqRegionName = params.get("CmqRegionName")
         self.CmqRegion = params.get("CmqRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CosRegionInfo(AbstractModel):
@@ -118,6 +141,13 @@ class CosRegionInfo(AbstractModel):
     def _deserialize(self, params):
         self.CosRegion = params.get("CosRegion")
         self.CosRegionName = params.get("CosRegionName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateAuditRequest(AbstractModel):
@@ -183,6 +213,13 @@ class CreateAuditRequest(AbstractModel):
         self.CmqRegion = params.get("CmqRegion")
         self.LogFilePrefix = params.get("LogFilePrefix")
         self.IsCreateNewQueue = params.get("IsCreateNewQueue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateAuditResponse(AbstractModel):
@@ -204,6 +241,13 @@ class CreateAuditResponse(AbstractModel):
     def _deserialize(self, params):
         self.IsSuccess = params.get("IsSuccess")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteAuditRequest(AbstractModel):
@@ -221,6 +265,13 @@ class DeleteAuditRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.AuditName = params.get("AuditName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteAuditResponse(AbstractModel):
@@ -242,6 +293,13 @@ class DeleteAuditResponse(AbstractModel):
     def _deserialize(self, params):
         self.IsSuccess = params.get("IsSuccess")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAuditRequest(AbstractModel):
@@ -259,6 +317,13 @@ class DescribeAuditRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.AuditName = params.get("AuditName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeAuditResponse(AbstractModel):
@@ -328,6 +393,13 @@ class DescribeAuditResponse(AbstractModel):
         self.CmqRegion = params.get("CmqRegion")
         self.LogFilePrefix = params.get("LogFilePrefix")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeEventsRequest(AbstractModel):
@@ -366,6 +438,13 @@ class DescribeEventsRequest(AbstractModel):
                 obj = LookupAttribute()
                 obj._deserialize(item)
                 self.LookupAttributes.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeEventsResponse(AbstractModel):
@@ -401,6 +480,13 @@ class DescribeEventsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Events.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Event(AbstractModel):
@@ -482,6 +568,13 @@ class Event(AbstractModel):
             self.Resources = Resource()
             self.Resources._deserialize(params.get("Resources"))
         self.EventRegion = params.get("EventRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetAttributeKeyRequest(AbstractModel):
@@ -499,6 +592,13 @@ class GetAttributeKeyRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.WebsiteType = params.get("WebsiteType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetAttributeKeyResponse(AbstractModel):
@@ -525,6 +625,13 @@ class GetAttributeKeyResponse(AbstractModel):
                 obj._deserialize(item)
                 self.AttributeKeyDetails.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InquireAuditCreditRequest(AbstractModel):
@@ -552,6 +659,13 @@ class InquireAuditCreditResponse(AbstractModel):
     def _deserialize(self, params):
         self.AuditAmount = params.get("AuditAmount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class KeyMetadata(AbstractModel):
@@ -573,6 +687,13 @@ class KeyMetadata(AbstractModel):
     def _deserialize(self, params):
         self.Alias = params.get("Alias")
         self.KeyId = params.get("KeyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ListAuditsRequest(AbstractModel):
@@ -606,6 +727,13 @@ class ListAuditsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.AuditSummarys.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ListCmqEnableRegionRequest(AbstractModel):
@@ -623,6 +751,13 @@ class ListCmqEnableRegionRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.WebsiteType = params.get("WebsiteType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ListCmqEnableRegionResponse(AbstractModel):
@@ -649,6 +784,13 @@ class ListCmqEnableRegionResponse(AbstractModel):
                 obj._deserialize(item)
                 self.EnableRegions.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ListCosEnableRegionRequest(AbstractModel):
@@ -666,6 +808,13 @@ class ListCosEnableRegionRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.WebsiteType = params.get("WebsiteType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ListCosEnableRegionResponse(AbstractModel):
@@ -692,6 +841,13 @@ class ListCosEnableRegionResponse(AbstractModel):
                 obj._deserialize(item)
                 self.EnableRegions.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ListKeyAliasByRegionRequest(AbstractModel):
@@ -717,6 +873,13 @@ class ListKeyAliasByRegionRequest(AbstractModel):
         self.KmsRegion = params.get("KmsRegion")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ListKeyAliasByRegionResponse(AbstractModel):
@@ -747,6 +910,13 @@ class ListKeyAliasByRegionResponse(AbstractModel):
                 obj._deserialize(item)
                 self.KeyMetadatas.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class LookUpEventsRequest(AbstractModel):
@@ -789,6 +959,13 @@ class LookUpEventsRequest(AbstractModel):
         self.NextToken = params.get("NextToken")
         self.MaxResults = params.get("MaxResults")
         self.Mode = params.get("Mode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class LookUpEventsResponse(AbstractModel):
@@ -826,6 +1003,13 @@ class LookUpEventsResponse(AbstractModel):
                 self.Events.append(obj)
         self.ListOver = params.get("ListOver")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class LookupAttribute(AbstractModel):
@@ -849,6 +1033,13 @@ class LookupAttribute(AbstractModel):
     def _deserialize(self, params):
         self.AttributeKey = params.get("AttributeKey")
         self.AttributeValue = params.get("AttributeValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Resource(AbstractModel):
@@ -871,6 +1062,13 @@ class Resource(AbstractModel):
     def _deserialize(self, params):
         self.ResourceType = params.get("ResourceType")
         self.ResourceName = params.get("ResourceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StartLoggingRequest(AbstractModel):
@@ -888,6 +1086,13 @@ class StartLoggingRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.AuditName = params.get("AuditName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StartLoggingResponse(AbstractModel):
@@ -909,6 +1114,13 @@ class StartLoggingResponse(AbstractModel):
     def _deserialize(self, params):
         self.IsSuccess = params.get("IsSuccess")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StopLoggingRequest(AbstractModel):
@@ -926,6 +1138,13 @@ class StopLoggingRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.AuditName = params.get("AuditName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class StopLoggingResponse(AbstractModel):
@@ -947,6 +1166,13 @@ class StopLoggingResponse(AbstractModel):
     def _deserialize(self, params):
         self.IsSuccess = params.get("IsSuccess")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UpdateAuditRequest(AbstractModel):
@@ -1012,6 +1238,13 @@ class UpdateAuditRequest(AbstractModel):
         self.CmqRegion = params.get("CmqRegion")
         self.LogFilePrefix = params.get("LogFilePrefix")
         self.IsCreateNewQueue = params.get("IsCreateNewQueue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UpdateAuditResponse(AbstractModel):
@@ -1033,3 +1266,10 @@ class UpdateAuditResponse(AbstractModel):
     def _deserialize(self, params):
         self.IsSuccess = params.get("IsSuccess")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

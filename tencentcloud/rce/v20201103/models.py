@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -57,6 +59,13 @@ class AccountInfo(AbstractModel):
         if params.get("OtherAccount") is not None:
             self.OtherAccount = OtherAccountInfo()
             self.OtherAccount._deserialize(params.get("OtherAccount"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InputDetails(AbstractModel):
@@ -78,6 +87,13 @@ class InputDetails(AbstractModel):
     def _deserialize(self, params):
         self.FieldName = params.get("FieldName")
         self.FieldValue = params.get("FieldValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class InputManageMarketingRisk(AbstractModel):
@@ -253,6 +269,13 @@ IOS wifi_mac String 否 WiFi MAC地址
         if params.get("OnlineScam") is not None:
             self.OnlineScam = OnlineScamInfo()
             self.OnlineScam._deserialize(params.get("OnlineScam"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ManageMarketingRiskRequest(AbstractModel):
@@ -272,6 +295,13 @@ class ManageMarketingRiskRequest(AbstractModel):
         if params.get("BusinessSecurityData") is not None:
             self.BusinessSecurityData = InputManageMarketingRisk()
             self.BusinessSecurityData._deserialize(params.get("BusinessSecurityData"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ManageMarketingRiskResponse(AbstractModel):
@@ -295,6 +325,13 @@ class ManageMarketingRiskResponse(AbstractModel):
             self.Data = OutputManageMarketingRisk()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class OnlineScamInfo(AbstractModel):
@@ -334,6 +371,13 @@ class OnlineScamInfo(AbstractModel):
         self.ContentType = params.get("ContentType")
         self.FraudType = params.get("FraudType")
         self.FraudAccount = params.get("FraudAccount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class OtherAccountInfo(AbstractModel):
@@ -364,6 +408,13 @@ AccountType是10004时，填入手机号的MD5值。
         self.AccountId = params.get("AccountId")
         self.MobilePhone = params.get("MobilePhone")
         self.DeviceId = params.get("DeviceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class OutputManageMarketingRisk(AbstractModel):
@@ -399,6 +450,13 @@ class OutputManageMarketingRisk(AbstractModel):
             self.Value = OutputManageMarketingRiskValue()
             self.Value._deserialize(params.get("Value"))
         self.UUid = params.get("UUid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class OutputManageMarketingRiskValue(AbstractModel):
@@ -476,6 +534,13 @@ reject：拒绝，高风险恶意
         self.UserIp = params.get("UserIp")
         self.RiskLevel = params.get("RiskLevel")
         self.RiskType = params.get("RiskType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class QQAccountInfo(AbstractModel):
@@ -509,6 +574,13 @@ class QQAccountInfo(AbstractModel):
         self.AssociateAccount = params.get("AssociateAccount")
         self.MobilePhone = params.get("MobilePhone")
         self.DeviceId = params.get("DeviceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SponsorInfo(AbstractModel):
@@ -542,6 +614,13 @@ class SponsorInfo(AbstractModel):
         self.SponsorPhone = params.get("SponsorPhone")
         self.SponsorIp = params.get("SponsorIp")
         self.CampaignUrl = params.get("CampaignUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class WeChatAccountInfo(AbstractModel):
@@ -586,3 +665,10 @@ class WeChatAccountInfo(AbstractModel):
         self.AssociateAccount = params.get("AssociateAccount")
         self.MobilePhone = params.get("MobilePhone")
         self.DeviceId = params.get("DeviceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

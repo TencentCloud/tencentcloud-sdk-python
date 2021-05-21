@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -35,6 +37,13 @@ class Attachment(AbstractModel):
     def _deserialize(self, params):
         self.FileName = params.get("FileName")
         self.Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class BlackEmailAddress(AbstractModel):
@@ -56,6 +65,13 @@ class BlackEmailAddress(AbstractModel):
     def _deserialize(self, params):
         self.BounceTime = params.get("BounceTime")
         self.EmailAddress = params.get("EmailAddress")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateEmailAddressRequest(AbstractModel):
@@ -77,6 +93,13 @@ class CreateEmailAddressRequest(AbstractModel):
     def _deserialize(self, params):
         self.EmailAddress = params.get("EmailAddress")
         self.EmailSenderName = params.get("EmailSenderName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateEmailAddressResponse(AbstractModel):
@@ -94,6 +117,13 @@ class CreateEmailAddressResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateEmailIdentityRequest(AbstractModel):
@@ -111,6 +141,13 @@ class CreateEmailIdentityRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.EmailIdentity = params.get("EmailIdentity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateEmailIdentityResponse(AbstractModel):
@@ -145,6 +182,13 @@ class CreateEmailIdentityResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Attributes.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateEmailTemplateRequest(AbstractModel):
@@ -168,6 +212,13 @@ class CreateEmailTemplateRequest(AbstractModel):
         if params.get("TemplateContent") is not None:
             self.TemplateContent = TemplateContent()
             self.TemplateContent._deserialize(params.get("TemplateContent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class CreateEmailTemplateResponse(AbstractModel):
@@ -185,6 +236,13 @@ class CreateEmailTemplateResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DNSAttributes(AbstractModel):
@@ -218,6 +276,13 @@ class DNSAttributes(AbstractModel):
         self.ExpectedValue = params.get("ExpectedValue")
         self.CurrentValue = params.get("CurrentValue")
         self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteBlackListRequest(AbstractModel):
@@ -235,6 +300,13 @@ class DeleteBlackListRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.EmailAddressList = params.get("EmailAddressList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteBlackListResponse(AbstractModel):
@@ -252,6 +324,13 @@ class DeleteBlackListResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteEmailAddressRequest(AbstractModel):
@@ -269,6 +348,13 @@ class DeleteEmailAddressRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.EmailAddress = params.get("EmailAddress")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteEmailAddressResponse(AbstractModel):
@@ -286,6 +372,13 @@ class DeleteEmailAddressResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteEmailIdentityRequest(AbstractModel):
@@ -303,6 +396,13 @@ class DeleteEmailIdentityRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.EmailIdentity = params.get("EmailIdentity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteEmailIdentityResponse(AbstractModel):
@@ -320,6 +420,13 @@ class DeleteEmailIdentityResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteEmailTemplateRequest(AbstractModel):
@@ -337,6 +444,13 @@ class DeleteEmailTemplateRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.TemplateID = params.get("TemplateID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DeleteEmailTemplateResponse(AbstractModel):
@@ -354,6 +468,13 @@ class DeleteEmailTemplateResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class EmailIdentity(AbstractModel):
@@ -379,6 +500,13 @@ class EmailIdentity(AbstractModel):
         self.IdentityName = params.get("IdentityName")
         self.IdentityType = params.get("IdentityType")
         self.SendingEnabled = params.get("SendingEnabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class EmailSender(AbstractModel):
@@ -406,6 +534,13 @@ class EmailSender(AbstractModel):
         self.EmailAddress = params.get("EmailAddress")
         self.EmailSenderName = params.get("EmailSenderName")
         self.CreatedTimestamp = params.get("CreatedTimestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetEmailIdentityRequest(AbstractModel):
@@ -423,6 +558,13 @@ class GetEmailIdentityRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.EmailIdentity = params.get("EmailIdentity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetEmailIdentityResponse(AbstractModel):
@@ -457,6 +599,13 @@ class GetEmailIdentityResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Attributes.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetEmailTemplateRequest(AbstractModel):
@@ -474,6 +623,13 @@ class GetEmailTemplateRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.TemplateID = params.get("TemplateID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetEmailTemplateResponse(AbstractModel):
@@ -497,6 +653,13 @@ class GetEmailTemplateResponse(AbstractModel):
             self.TemplateContent = TemplateContent()
             self.TemplateContent._deserialize(params.get("TemplateContent"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetSendEmailStatusRequest(AbstractModel):
@@ -530,6 +693,13 @@ class GetSendEmailStatusRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.MessageId = params.get("MessageId")
         self.ToEmailAddress = params.get("ToEmailAddress")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetSendEmailStatusResponse(AbstractModel):
@@ -556,6 +726,13 @@ class GetSendEmailStatusResponse(AbstractModel):
                 obj._deserialize(item)
                 self.EmailStatusList.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetStatisticsReportRequest(AbstractModel):
@@ -585,6 +762,13 @@ class GetStatisticsReportRequest(AbstractModel):
         self.EndDate = params.get("EndDate")
         self.Domain = params.get("Domain")
         self.ReceivingMailboxType = params.get("ReceivingMailboxType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class GetStatisticsReportResponse(AbstractModel):
@@ -617,6 +801,13 @@ class GetStatisticsReportResponse(AbstractModel):
             self.OverallVolume = Volume()
             self.OverallVolume._deserialize(params.get("OverallVolume"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ListBlackEmailAddressRequest(AbstractModel):
@@ -654,6 +845,13 @@ class ListBlackEmailAddressRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.EmailAddress = params.get("EmailAddress")
         self.TaskID = params.get("TaskID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ListBlackEmailAddressResponse(AbstractModel):
@@ -684,6 +882,13 @@ class ListBlackEmailAddressResponse(AbstractModel):
                 self.BlackList.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ListEmailAddressRequest(AbstractModel):
@@ -717,6 +922,13 @@ class ListEmailAddressResponse(AbstractModel):
                 obj._deserialize(item)
                 self.EmailSenders.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ListEmailIdentitiesRequest(AbstractModel):
@@ -749,6 +961,13 @@ class ListEmailIdentitiesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.EmailIdentities.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ListEmailTemplatesRequest(AbstractModel):
@@ -770,6 +989,13 @@ class ListEmailTemplatesRequest(AbstractModel):
     def _deserialize(self, params):
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class ListEmailTemplatesResponse(AbstractModel):
@@ -800,6 +1026,13 @@ class ListEmailTemplatesResponse(AbstractModel):
                 self.TemplatesMetadata.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SendEmailRequest(AbstractModel):
@@ -852,6 +1085,13 @@ class SendEmailRequest(AbstractModel):
                 obj = Attachment()
                 obj._deserialize(item)
                 self.Attachments.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SendEmailResponse(AbstractModel):
@@ -873,6 +1113,13 @@ class SendEmailResponse(AbstractModel):
     def _deserialize(self, params):
         self.MessageId = params.get("MessageId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class SendEmailStatus(AbstractModel):
@@ -961,6 +1208,13 @@ class SendEmailStatus(AbstractModel):
         self.UserClicked = params.get("UserClicked")
         self.UserUnsubscribed = params.get("UserUnsubscribed")
         self.UserComplainted = params.get("UserComplainted")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Simple(AbstractModel):
@@ -982,6 +1236,13 @@ class Simple(AbstractModel):
     def _deserialize(self, params):
         self.Html = params.get("Html")
         self.Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Template(AbstractModel):
@@ -1003,6 +1264,13 @@ class Template(AbstractModel):
     def _deserialize(self, params):
         self.TemplateID = params.get("TemplateID")
         self.TemplateData = params.get("TemplateData")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TemplateContent(AbstractModel):
@@ -1024,6 +1292,13 @@ class TemplateContent(AbstractModel):
     def _deserialize(self, params):
         self.Html = params.get("Html")
         self.Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TemplatesMetadata(AbstractModel):
@@ -1057,6 +1332,13 @@ class TemplatesMetadata(AbstractModel):
         self.TemplateStatus = params.get("TemplateStatus")
         self.TemplateID = params.get("TemplateID")
         self.ReviewReason = params.get("ReviewReason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UpdateEmailIdentityRequest(AbstractModel):
@@ -1074,6 +1356,13 @@ class UpdateEmailIdentityRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.EmailIdentity = params.get("EmailIdentity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UpdateEmailIdentityResponse(AbstractModel):
@@ -1108,6 +1397,13 @@ class UpdateEmailIdentityResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Attributes.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UpdateEmailTemplateRequest(AbstractModel):
@@ -1135,6 +1431,13 @@ class UpdateEmailTemplateRequest(AbstractModel):
             self.TemplateContent._deserialize(params.get("TemplateContent"))
         self.TemplateID = params.get("TemplateID")
         self.TemplateName = params.get("TemplateName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class UpdateEmailTemplateResponse(AbstractModel):
@@ -1152,6 +1455,13 @@ class UpdateEmailTemplateResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Volume(AbstractModel):
@@ -1199,3 +1509,10 @@ class Volume(AbstractModel):
         self.ClickedCount = params.get("ClickedCount")
         self.BounceCount = params.get("BounceCount")
         self.UnsubscribeCount = params.get("UnsubscribeCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        

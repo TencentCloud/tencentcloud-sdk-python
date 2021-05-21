@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import warnings
+
 from tencentcloud.common.abstract_model import AbstractModel
 
 
@@ -63,6 +65,13 @@ class DetailResults(AbstractModel):
         self.LibType = params.get("LibType")
         self.LibId = params.get("LibId")
         self.LibName = params.get("LibName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class Device(AbstractModel):
@@ -104,6 +113,13 @@ class Device(AbstractModel):
         self.IMEI = params.get("IMEI")
         self.IDFA = params.get("IDFA")
         self.IDFV = params.get("IDFV")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class RiskDetails(AbstractModel):
@@ -125,6 +141,13 @@ class RiskDetails(AbstractModel):
     def _deserialize(self, params):
         self.Label = params.get("Label")
         self.Level = params.get("Level")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TextModerationRequest(AbstractModel):
@@ -162,6 +185,13 @@ class TextModerationRequest(AbstractModel):
         if params.get("Device") is not None:
             self.Device = Device()
             self.Device._deserialize(params.get("Device"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class TextModerationResponse(AbstractModel):
@@ -234,6 +264,13 @@ class TextModerationResponse(AbstractModel):
         self.Extra = params.get("Extra")
         self.DataId = params.get("DataId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class User(AbstractModel):
@@ -275,3 +312,10 @@ class User(AbstractModel):
         self.Age = params.get("Age")
         self.Level = params.get("Level")
         self.Phone = params.get("Phone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
