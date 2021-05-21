@@ -2996,6 +2996,34 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeTaskRecords(self, request):
+        """翻页查询任务列表
+
+        :param request: Request instance for DescribeTaskRecords.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeTaskRecordsRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeTaskRecordsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTaskRecords", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTaskRecordsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeUnitApiUseDetail(self, request):
         """查询网关API监控明细数据（仅单元化网关），非单元化网关使用DescribeApiUseDetail
 

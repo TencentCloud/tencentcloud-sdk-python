@@ -336,6 +336,31 @@ class CloudBaseProjectVersion(AbstractModel):
         self.AutoDeployOnCodeChange = params.get("AutoDeployOnCodeChange")
 
 
+class CloudBaseRunEmptyDirVolumeSource(AbstractModel):
+    """emptydir 数据卷详细信息
+
+    """
+
+    def __init__(self):
+        """
+        :param EnableEmptyDirVolume: 启用emptydir数据卷
+        :type EnableEmptyDirVolume: bool
+        :param Medium: "","Memory","HugePages"
+        :type Medium: str
+        :param SizeLimit: emptydir数据卷大小
+        :type SizeLimit: str
+        """
+        self.EnableEmptyDirVolume = None
+        self.Medium = None
+        self.SizeLimit = None
+
+
+    def _deserialize(self, params):
+        self.EnableEmptyDirVolume = params.get("EnableEmptyDirVolume")
+        self.Medium = params.get("Medium")
+        self.SizeLimit = params.get("SizeLimit")
+
+
 class CloudBaseRunImageInfo(AbstractModel):
     """CloudBaseRun 镜像信息
 
@@ -429,6 +454,39 @@ class CloudBaseRunNfsVolumeSource(AbstractModel):
         self.ReadOnly = params.get("ReadOnly")
         self.SecretName = params.get("SecretName")
         self.EnableEmptyDirVolume = params.get("EnableEmptyDirVolume")
+
+
+class CloudBaseRunServiceVolumeMount(AbstractModel):
+    """对标 EKS VolumeMount
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: Volume 名称
+        :type Name: str
+        :param MountPath: 挂载路径
+        :type MountPath: str
+        :param ReadOnly: 是否只读
+        :type ReadOnly: bool
+        :param SubPath: 子路径
+        :type SubPath: str
+        :param MountPropagation: 传播挂载方式
+        :type MountPropagation: str
+        """
+        self.Name = None
+        self.MountPath = None
+        self.ReadOnly = None
+        self.SubPath = None
+        self.MountPropagation = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.MountPath = params.get("MountPath")
+        self.ReadOnly = params.get("ReadOnly")
+        self.SubPath = params.get("SubPath")
+        self.MountPropagation = params.get("MountPropagation")
 
 
 class CloudBaseRunSideSpec(AbstractModel):
@@ -805,14 +863,18 @@ class CloudRunServiceVolume(AbstractModel):
         :param SecretName: secret名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecretName: str
-        :param EnableEmptyDirVolume: 是否开启临时目录
+        :param EnableEmptyDirVolume: 是否开启临时目录逐步废弃，请使用 EmptyDir
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableEmptyDirVolume: bool
+        :param EmptyDir: emptydir数据卷详细信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EmptyDir: :class:`tencentcloud.tcb.v20180608.models.CloudBaseRunEmptyDirVolumeSource`
         """
         self.Name = None
         self.NFS = None
         self.SecretName = None
         self.EnableEmptyDirVolume = None
+        self.EmptyDir = None
 
 
     def _deserialize(self, params):
@@ -822,6 +884,9 @@ class CloudRunServiceVolume(AbstractModel):
             self.NFS._deserialize(params.get("NFS"))
         self.SecretName = params.get("SecretName")
         self.EnableEmptyDirVolume = params.get("EnableEmptyDirVolume")
+        if params.get("EmptyDir") is not None:
+            self.EmptyDir = CloudBaseRunEmptyDirVolumeSource()
+            self.EmptyDir._deserialize(params.get("EmptyDir"))
 
 
 class CodeSource(AbstractModel):
@@ -1179,6 +1244,8 @@ class CreateCloudBaseRunServerVersionRequest(AbstractModel):
         :type ServiceVolumes: list of CloudRunServiceVolume
         :param IsCreateJnsGw: 是否创建JnsGw 0未传默认创建 1创建 2不创建
         :type IsCreateJnsGw: int
+        :param ServiceVolumeMounts: 数据卷挂载参数
+        :type ServiceVolumeMounts: list of CloudBaseRunServiceVolumeMount
         """
         self.EnvId = None
         self.UploadType = None
@@ -1217,6 +1284,7 @@ class CreateCloudBaseRunServerVersionRequest(AbstractModel):
         self.Security = None
         self.ServiceVolumes = None
         self.IsCreateJnsGw = None
+        self.ServiceVolumeMounts = None
 
 
     def _deserialize(self, params):
@@ -1282,6 +1350,12 @@ class CreateCloudBaseRunServerVersionRequest(AbstractModel):
                 obj._deserialize(item)
                 self.ServiceVolumes.append(obj)
         self.IsCreateJnsGw = params.get("IsCreateJnsGw")
+        if params.get("ServiceVolumeMounts") is not None:
+            self.ServiceVolumeMounts = []
+            for item in params.get("ServiceVolumeMounts"):
+                obj = CloudBaseRunServiceVolumeMount()
+                obj._deserialize(item)
+                self.ServiceVolumeMounts.append(obj)
 
 
 class CreateCloudBaseRunServerVersionResponse(AbstractModel):
@@ -3668,6 +3742,9 @@ class EnvInfo(AbstractModel):
         :param Region: 环境所属地域
 注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
+        :param Tags: 环境标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         """
         self.EnvId = None
         self.Source = None
@@ -3687,6 +3764,7 @@ class EnvInfo(AbstractModel):
         self.PayMode = None
         self.IsDefault = None
         self.Region = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -3733,6 +3811,12 @@ class EnvInfo(AbstractModel):
         self.PayMode = params.get("PayMode")
         self.IsDefault = params.get("IsDefault")
         self.Region = params.get("Region")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
 
 
 class EstablishCloudBaseRunServerRequest(AbstractModel):
@@ -4697,3 +4781,24 @@ class StorageInfo(AbstractModel):
         self.Bucket = params.get("Bucket")
         self.CdnDomain = params.get("CdnDomain")
         self.AppId = params.get("AppId")
+
+
+class Tag(AbstractModel):
+    """标签键值对
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: 标签键
+        :type Key: str
+        :param Value: 标签值
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")

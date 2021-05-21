@@ -10351,10 +10351,16 @@ class RawImageWatermarkInput(AbstractModel):
 <li>当字符串以 px 结尾，表示水印 Height 单位为像素，如 100px 表示 Height 为 100 像素。</li>
 默认值：0px，表示 Height 按照原始水印图片的宽高比缩放。
         :type Height: str
+        :param RepeatType: 水印重复类型。使用场景：水印为动态图像。取值范围：
+<li>once：动态水印播放完后，不再出现；</li>
+<li>repeat_last_frame：水印播放完后，停留在最后一帧；</li>
+<li>repeat：水印循环播放，直到视频结束（默认值）。</li>
+        :type RepeatType: str
         """
         self.ImageContent = None
         self.Width = None
         self.Height = None
+        self.RepeatType = None
 
 
     def _deserialize(self, params):
@@ -10363,6 +10369,7 @@ class RawImageWatermarkInput(AbstractModel):
             self.ImageContent._deserialize(params.get("ImageContent"))
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        self.RepeatType = params.get("RepeatType")
 
 
 class RawTranscodeParameter(AbstractModel):

@@ -9578,7 +9578,11 @@ class ZoneInstanceCountISP(AbstractModel):
         :type Zone: str
         :param InstanceCount: 在当前可用区欲创建的实例数目。
         :type InstanceCount: int
-        :param ISP: 运营商，CTCC电信，CUCC联通，CMCC移动，多个运营商用英文分号连接";"。多运营商需要开通白名单，请直接联系腾讯云客服。
+        :param ISP: 运营商如下：
+CTCC：中国电信
+CUCC：中国联通
+CMCC：中国移动
+多个运营商用英文分号连接";"，例如："CMCC;CUCC;CTCC"。多运营商需要开通白名单，请直接联系腾讯云客服。
         :type ISP: str
         :param VpcId: 指定私有网络编号，SubnetId与VpcId必须同时指定或不指定
         :type VpcId: str

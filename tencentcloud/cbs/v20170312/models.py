@@ -86,22 +86,26 @@ class AttachDisksRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DiskIds: 将要被挂载的弹性云盘ID。通过[DescribeDisks](/document/product/362/16315)接口查询。单次最多可挂载10块弹性云盘。
-        :type DiskIds: list of str
         :param InstanceId: 云服务器实例ID。云盘将被挂载到此云服务器上，通过[DescribeInstances](/document/product/213/15728)接口查询。
         :type InstanceId: str
+        :param DiskIds: 将要被挂载的弹性云盘ID。通过[DescribeDisks](/document/product/362/16315)接口查询。单次最多可挂载10块弹性云盘。
+        :type DiskIds: list of str
         :param DeleteWithInstance: 可选参数，不传该参数则仅执行挂载操作。传入`True`时，会在挂载成功后将云硬盘设置为随云主机销毁模式，仅对按量计费云硬盘有效。
         :type DeleteWithInstance: bool
+        :param AttachMode: 可选参数，用于控制云盘挂载时使用的挂载模式，目前仅对黑石裸金属机型有效。取值范围：<br><li>PF<br><li>VF
+        :type AttachMode: str
         """
-        self.DiskIds = None
         self.InstanceId = None
+        self.DiskIds = None
         self.DeleteWithInstance = None
+        self.AttachMode = None
 
 
     def _deserialize(self, params):
-        self.DiskIds = params.get("DiskIds")
         self.InstanceId = params.get("InstanceId")
+        self.DiskIds = params.get("DiskIds")
         self.DeleteWithInstance = params.get("DeleteWithInstance")
+        self.AttachMode = params.get("AttachMode")
 
 
 class AttachDisksResponse(AbstractModel):

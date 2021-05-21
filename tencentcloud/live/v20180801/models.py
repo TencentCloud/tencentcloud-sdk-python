@@ -5155,6 +5155,73 @@ class DescribePullStreamConfigsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeRecordTaskRequest(AbstractModel):
+    """DescribeRecordTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 查询任务开始时间，Unix 时间戳。设置时间不早于当前时间之前90天的时间，且查询时间跨度不超过一周。
+        :type StartTime: int
+        :param EndTime: 查询任务结束时间，Unix 时间戳。EndTime 必须大于 StartTime，设置时间不早于当前时间之前90天的时间，且查询时间跨度不超过一周。（注意：任务开始结束时间必须在查询时间范围内）。
+        :type EndTime: int
+        :param StreamName: 流名称。
+        :type StreamName: str
+        :param DomainName: 推流域名。
+        :type DomainName: str
+        :param AppName: 推流路径。
+        :type AppName: str
+        :param ScrollToken: 翻页标识，分批拉取时使用：当单次请求无法拉取所有数据，接口将会返回 ScrollToken，下一次请求携带该 Token，将会从下一条记录开始获取。
+        :type ScrollToken: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.StreamName = None
+        self.DomainName = None
+        self.AppName = None
+        self.ScrollToken = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.StreamName = params.get("StreamName")
+        self.DomainName = params.get("DomainName")
+        self.AppName = params.get("AppName")
+        self.ScrollToken = params.get("ScrollToken")
+
+
+class DescribeRecordTaskResponse(AbstractModel):
+    """DescribeRecordTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ScrollToken: 翻页标识，当请求未返回所有数据，该字段表示下一条记录的 Token。当该字段为空，说明已无更多数据。
+        :type ScrollToken: str
+        :param TaskList: 录制任务列表。当该字段为空，说明已返回所有数据。
+        :type TaskList: list of RecordTask
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ScrollToken = None
+        self.TaskList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ScrollToken = params.get("ScrollToken")
+        if params.get("TaskList") is not None:
+            self.TaskList = []
+            for item in params.get("TaskList"):
+                obj = RecordTask()
+                obj._deserialize(item)
+                self.TaskList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeScreenShotSheetNumListRequest(AbstractModel):
     """DescribeScreenShotSheetNumList请求参数结构体
 
@@ -7650,6 +7717,51 @@ class RecordParam(AbstractModel):
         self.Enable = params.get("Enable")
         self.VodSubAppId = params.get("VodSubAppId")
         self.VodFileName = params.get("VodFileName")
+
+
+class RecordTask(AbstractModel):
+    """录制任务
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 录制任务ID。
+        :type TaskId: str
+        :param DomainName: 推流域名。
+        :type DomainName: str
+        :param AppName: 推流路径。
+        :type AppName: str
+        :param StreamName: 流名称。
+        :type StreamName: str
+        :param StartTime: 任务开始时间，Unix时间戳。
+        :type StartTime: int
+        :param EndTime: 任务结束时间，Unix时间戳。
+        :type EndTime: int
+        :param TemplateId: 录制模板ID。
+        :type TemplateId: int
+        :param Stopped: 调用 StopRecordTask 停止任务时间，Unix时间戳。值为0表示未曾调用接口停止任务。
+        :type Stopped: int
+        """
+        self.TaskId = None
+        self.DomainName = None
+        self.AppName = None
+        self.StreamName = None
+        self.StartTime = None
+        self.EndTime = None
+        self.TemplateId = None
+        self.Stopped = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.DomainName = params.get("DomainName")
+        self.AppName = params.get("AppName")
+        self.StreamName = params.get("StreamName")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.TemplateId = params.get("TemplateId")
+        self.Stopped = params.get("Stopped")
 
 
 class RecordTemplateInfo(AbstractModel):

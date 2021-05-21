@@ -7375,6 +7375,70 @@ class DescribeTaskLastStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTaskRecordsRequest(AbstractModel):
+    """DescribeTaskRecords请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Offset: 翻页偏移量。
+        :type Offset: int
+        :param Limit: 翻页查询单页数量。
+        :type Limit: int
+        :param SearchWord: 模糊查询关键字，支持任务ID和任务名称。
+        :type SearchWord: str
+        :param TaskState: 任务启用状态。enabled/disabled
+        :type TaskState: str
+        :param GroupId: 分组ID。
+        :type GroupId: str
+        :param TaskType: 任务类型。
+        :type TaskType: str
+        :param ExecuteType: 任务触发类型，UNICAST、BROADCAST。
+        :type ExecuteType: str
+        """
+        self.Offset = None
+        self.Limit = None
+        self.SearchWord = None
+        self.TaskState = None
+        self.GroupId = None
+        self.TaskType = None
+        self.ExecuteType = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.SearchWord = params.get("SearchWord")
+        self.TaskState = params.get("TaskState")
+        self.GroupId = params.get("GroupId")
+        self.TaskType = params.get("TaskType")
+        self.ExecuteType = params.get("ExecuteType")
+
+
+class DescribeTaskRecordsResponse(AbstractModel):
+    """DescribeTaskRecords返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 任务记录列表
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.TaskRecordPage`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = TaskRecordPage()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeUnitApiUseDetailRequest(AbstractModel):
     """DescribeUnitApiUseDetail请求参数结构体
 
@@ -12527,6 +12591,32 @@ class TaskRecord(AbstractModel):
         self.TaskLogId = params.get("TaskLogId")
         self.TriggerType = params.get("TriggerType")
         self.TaskArgument = params.get("TaskArgument")
+
+
+class TaskRecordPage(AbstractModel):
+    """翻页查询的任务记录返回
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 总数量
+        :type TotalCount: int
+        :param Content: 任务记录列表
+        :type Content: list of TaskRecord
+        """
+        self.TotalCount = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Content") is not None:
+            self.Content = []
+            for item in params.get("Content"):
+                obj = TaskRecord()
+                obj._deserialize(item)
+                self.Content.append(obj)
 
 
 class TaskRule(AbstractModel):

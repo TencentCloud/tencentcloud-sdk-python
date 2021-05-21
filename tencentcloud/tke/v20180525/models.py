@@ -75,6 +75,10 @@ class AddExistedInstancesRequest(AbstractModel):
         :type NodePool: :class:`tencentcloud.tke.v20180525.models.NodePoolOption`
         :param SkipValidateOptions: 校验规则相关选项，可配置跳过某些校验规则。目前支持GlobalRouteCIDRCheck（跳过GlobalRouter的相关校验），VpcCniCIDRCheck（跳过VpcCni相关校验）
         :type SkipValidateOptions: list of str
+        :param InstanceAdvancedSettingsOverrides: 参数InstanceAdvancedSettingsOverride数组用于定制化地配置各台instance，与InstanceIds顺序对应。当传入InstanceAdvancedSettingsOverrides数组时，将覆盖默认参数InstanceAdvancedSettings；当没有传入参数InstanceAdvancedSettingsOverrides时，InstanceAdvancedSettings参数对每台instance生效。
+
+参数InstanceAdvancedSettingsOverride数组的长度应与InstanceIds数组一致；当长度大于InstanceIds数组长度时将报错；当长度小于InstanceIds数组时，没有对应配置的instace将使用默认配置。
+        :type InstanceAdvancedSettingsOverrides: list of InstanceAdvancedSettings
         """
         self.ClusterId = None
         self.InstanceIds = None
@@ -85,6 +89,7 @@ class AddExistedInstancesRequest(AbstractModel):
         self.SecurityGroupIds = None
         self.NodePool = None
         self.SkipValidateOptions = None
+        self.InstanceAdvancedSettingsOverrides = None
 
 
     def _deserialize(self, params):
@@ -105,6 +110,12 @@ class AddExistedInstancesRequest(AbstractModel):
             self.NodePool = NodePoolOption()
             self.NodePool._deserialize(params.get("NodePool"))
         self.SkipValidateOptions = params.get("SkipValidateOptions")
+        if params.get("InstanceAdvancedSettingsOverrides") is not None:
+            self.InstanceAdvancedSettingsOverrides = []
+            for item in params.get("InstanceAdvancedSettingsOverrides"):
+                obj = InstanceAdvancedSettings()
+                obj._deserialize(item)
+                self.InstanceAdvancedSettingsOverrides.append(obj)
 
 
 class AddExistedInstancesResponse(AbstractModel):
@@ -3923,10 +3934,13 @@ class ExistedInstancesForNode(AbstractModel):
         :type ExistedInstancesPara: :class:`tencentcloud.tke.v20180525.models.ExistedInstancesPara`
         :param InstanceAdvancedSettingsOverride: 节点高级设置，会覆盖集群级别设置的InstanceAdvancedSettings（当前只对节点自定义参数ExtraArgs生效）
         :type InstanceAdvancedSettingsOverride: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
+        :param DesiredPodNumbers: 自定义模式集群，可指定每个节点的pod数量
+        :type DesiredPodNumbers: list of int
         """
         self.NodeRole = None
         self.ExistedInstancesPara = None
         self.InstanceAdvancedSettingsOverride = None
+        self.DesiredPodNumbers = None
 
 
     def _deserialize(self, params):
@@ -3937,6 +3951,7 @@ class ExistedInstancesForNode(AbstractModel):
         if params.get("InstanceAdvancedSettingsOverride") is not None:
             self.InstanceAdvancedSettingsOverride = InstanceAdvancedSettings()
             self.InstanceAdvancedSettingsOverride._deserialize(params.get("InstanceAdvancedSettingsOverride"))
+        self.DesiredPodNumbers = params.get("DesiredPodNumbers")
 
 
 class ExistedInstancesPara(AbstractModel):

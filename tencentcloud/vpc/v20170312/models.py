@@ -226,6 +226,9 @@ class Address(AbstractModel):
         :param InternetChargeType: 弹性公网IP的网络计费模式。注意，传统账户类型账户的弹性公网IP没有网络计费模式属性，值为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InternetChargeType: str
+        :param TagSet: 弹性公网IP关联的标签列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagSet: list of Tag
         """
         self.AddressId = None
         self.AddressName = None
@@ -245,6 +248,7 @@ class Address(AbstractModel):
         self.LocalBgp = None
         self.Bandwidth = None
         self.InternetChargeType = None
+        self.TagSet = None
 
 
     def _deserialize(self, params):
@@ -268,6 +272,12 @@ class Address(AbstractModel):
         self.LocalBgp = params.get("LocalBgp")
         self.Bandwidth = params.get("Bandwidth")
         self.InternetChargeType = params.get("InternetChargeType")
+        if params.get("TagSet") is not None:
+            self.TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagSet.append(obj)
 
 
 class AddressChargePrepaid(AbstractModel):
@@ -1168,14 +1178,18 @@ class AttachNetworkInterfaceRequest(AbstractModel):
         :type NetworkInterfaceId: str
         :param InstanceId: CVM实例ID。形如：ins-r8hr2upy。
         :type InstanceId: str
+        :param AttachType: 网卡的挂载类型：0 标准型，1扩展型，默认值0。
+        :type AttachType: int
         """
         self.NetworkInterfaceId = None
         self.InstanceId = None
+        self.AttachType = None
 
 
     def _deserialize(self, params):
         self.NetworkInterfaceId = params.get("NetworkInterfaceId")
         self.InstanceId = params.get("InstanceId")
+        self.AttachType = params.get("AttachType")
 
 
 class AttachNetworkInterfaceResponse(AbstractModel):
@@ -2049,6 +2063,8 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
         :type NetworkInterfaceDescription: str
         :param Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
         :type Tags: list of Tag
+        :param AttachType: 绑定类型：0 标准型 1 扩展型。
+        :type AttachType: int
         """
         self.VpcId = None
         self.NetworkInterfaceName = None
@@ -2059,6 +2075,7 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
         self.SecurityGroupIds = None
         self.NetworkInterfaceDescription = None
         self.Tags = None
+        self.AttachType = None
 
 
     def _deserialize(self, params):
@@ -2081,6 +2098,7 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.AttachType = params.get("AttachType")
 
 
 class CreateAndAttachNetworkInterfaceResponse(AbstractModel):
@@ -5651,6 +5669,9 @@ class DescribeAddressesRequest(AbstractModel):
 <li> address-type - String - 是否必填：否 - （过滤条件）按照 IP类型 进行过滤。可选值：'EIP'，'AnycastEIP'，'HighQualityEIP'</li>
 <li> address-isp - String - 是否必填：否 - （过滤条件）按照 运营商类型 进行过滤。可选值：'BGP'，'CMCC'，'CUCC', 'CTCC'</li>
 <li> dedicated-cluster-id - String - 是否必填：否 - （过滤条件）按照 CDC 的唯一 ID 过滤。CDC 唯一 ID 形如：cluster-11112222。</li>
+<li> tag-key - String - 是否必填：否 - （过滤条件）按照标签键进行过滤。</li>
+<li> tag-value - String - 是否必填：否 - （过滤条件）按照标签值进行过滤。</li>
+<li> tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。tag-key使用具体的标签键进行替换。</li>
         :type Filters: list of Filter
         :param Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/11646)中的相关小节。
         :type Offset: int
@@ -5924,11 +5945,14 @@ class DescribeBandwidthPackagesRequest(AbstractModel):
         :param Filters: 每次请求的`Filters`的上限为10。参数不支持同时指定`BandwidthPackageIds`和`Filters`。详细的过滤条件如下：
 <li> bandwidth-package_id - String - 是否必填：否 - （过滤条件）按照带宽包的唯一标识ID过滤。</li>
 <li> bandwidth-package-name - String - 是否必填：否 - （过滤条件）按照 带宽包名称过滤。不支持模糊过滤。</li>
-<li> network-type - String - 是否必填：否 - （过滤条件）按照带宽包的类型过滤。类型包括'BGP','SINGLEISP'和'ANYCAST'。</li>
-<li> charge-type - String - 是否必填：否 - （过滤条件）按照带宽包的计费类型过滤。计费类型包括'TOP5_POSTPAID_BY_MONTH'和'PERCENT95_POSTPAID_BY_MONTH'</li>
+<li> network-type - String - 是否必填：否 - （过滤条件）按照带宽包的类型过滤。类型包括'HIGH_QUALITY_BGP','BGP','SINGLEISP'和'ANYCAST'。</li>
+<li> charge-type - String - 是否必填：否 - （过滤条件）按照带宽包的计费类型过滤。计费类型包括'TOP5_POSTPAID_BY_MONTH'和'PERCENT95_POSTPAID_BY_MONTH'。</li>
 <li> resource.resource-type - String - 是否必填：否 - （过滤条件）按照带宽包资源类型过滤。资源类型包括'Address'和'LoadBalance'</li>
 <li> resource.resource-id - String - 是否必填：否 - （过滤条件）按照带宽包资源Id过滤。资源Id形如'eip-xxxx','lb-xxxx'</li>
 <li> resource.address-ip - String - 是否必填：否 - （过滤条件）按照带宽包资源Ip过滤。</li>
+<li> tag-key - String - 是否必填：否 - （过滤条件）按照标签键进行过滤。</li>
+<li> tag-value - String - 是否必填：否 - （过滤条件）按照标签值进行过滤。</li>
+<li> tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。tag-key使用具体的标签键进行替换。</li>
         :type Filters: list of Filter
         :param Offset: 查询带宽包偏移量
         :type Offset: int
@@ -7849,21 +7873,31 @@ class DescribeNetworkInterfaceLimitResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param EniQuantity: 弹性网卡配额
+        :param EniQuantity: 标准型弹性网卡配额
         :type EniQuantity: int
-        :param EniPrivateIpAddressQuantity: 每个弹性网卡可以分配的IP配额
+        :param EniPrivateIpAddressQuantity: 每个标准型弹性网卡可以分配的IP配额
         :type EniPrivateIpAddressQuantity: int
+        :param ExtendEniQuantity: 扩展型网卡配额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtendEniQuantity: int
+        :param ExtendEniPrivateIpAddressQuantity: 每个扩展型弹性网卡可以分配的IP配额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtendEniPrivateIpAddressQuantity: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.EniQuantity = None
         self.EniPrivateIpAddressQuantity = None
+        self.ExtendEniQuantity = None
+        self.ExtendEniPrivateIpAddressQuantity = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.EniQuantity = params.get("EniQuantity")
         self.EniPrivateIpAddressQuantity = params.get("EniPrivateIpAddressQuantity")
+        self.ExtendEniQuantity = params.get("ExtendEniQuantity")
+        self.ExtendEniPrivateIpAddressQuantity = params.get("ExtendEniPrivateIpAddressQuantity")
         self.RequestId = params.get("RequestId")
 
 
@@ -8475,6 +8509,8 @@ class DescribeSubnetsRequest(AbstractModel):
 <li>zone - String - （过滤条件）可用区。</li>
 <li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。</li>
 <li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2。</li>
+<li>cdc-id - String - 是否必填：否 - （过滤条件）按照cdc信息进行过滤。过滤出来制定cdc下的子网。</li>
+<li>is-cdc-subnet - String - 是否必填：否 - （过滤条件）按照是否是cdc子网进行过滤。取值：“0”-非cdc子网，“1”--cdc子网</li>
         :type Filters: list of Filter
         :param Offset: 偏移量，默认为0。
         :type Offset: str
@@ -11430,16 +11466,20 @@ class MigrateNetworkInterfaceRequest(AbstractModel):
         :type SourceInstanceId: str
         :param DestinationInstanceId: 待迁移的目的CVM实例ID。
         :type DestinationInstanceId: str
+        :param AttachType: 网卡绑定类型：0 标准型 1 扩展型。
+        :type AttachType: int
         """
         self.NetworkInterfaceId = None
         self.SourceInstanceId = None
         self.DestinationInstanceId = None
+        self.AttachType = None
 
 
     def _deserialize(self, params):
         self.NetworkInterfaceId = params.get("NetworkInterfaceId")
         self.SourceInstanceId = params.get("SourceInstanceId")
         self.DestinationInstanceId = params.get("DestinationInstanceId")
+        self.AttachType = params.get("AttachType")
 
 
 class MigrateNetworkInterfaceResponse(AbstractModel):
@@ -13898,6 +13938,9 @@ class NetworkInterface(AbstractModel):
         :param CdcId: 网卡所关联的CDC实例ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CdcId: str
+        :param AttachType: 弹性网卡类型：0:标准型/1:扩展型。默认值为0。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttachType: int
         """
         self.NetworkInterfaceId = None
         self.NetworkInterfaceName = None
@@ -13917,6 +13960,7 @@ class NetworkInterface(AbstractModel):
         self.EniType = None
         self.Business = None
         self.CdcId = None
+        self.AttachType = None
 
 
     def _deserialize(self, params):
@@ -13955,6 +13999,7 @@ class NetworkInterface(AbstractModel):
         self.EniType = params.get("EniType")
         self.Business = params.get("Business")
         self.CdcId = params.get("CdcId")
+        self.AttachType = params.get("AttachType")
 
 
 class NetworkInterfaceAttachment(AbstractModel):
