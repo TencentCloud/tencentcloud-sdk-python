@@ -2191,6 +2191,37 @@ class Entity(AbstractModel):
         
 
 
+class EventContent(AbstractModel):
+    """回调事件内容。
+
+    """
+
+    def __init__(self):
+        """
+        :param EventType: 事件类型，可取值为：
+<li>Storage.NewFileCreated：新文件产生。</li>
+        :type EventType: str
+        :param StorageNewFileCreatedEvent: 新文件产生事件信息。仅当 EventType 为 Storage.NewFileCreated 时有效。
+        :type StorageNewFileCreatedEvent: :class:`tencentcloud.cme.v20191029.models.StorageNewFileCreatedEvent`
+        """
+        self.EventType = None
+        self.StorageNewFileCreatedEvent = None
+
+
+    def _deserialize(self, params):
+        self.EventType = params.get("EventType")
+        if params.get("StorageNewFileCreatedEvent") is not None:
+            self.StorageNewFileCreatedEvent = StorageNewFileCreatedEvent()
+            self.StorageNewFileCreatedEvent._deserialize(params.get("StorageNewFileCreatedEvent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class ExportVideoByEditorTrackDataRequest(AbstractModel):
     """ExportVideoByEditorTrackData请求参数结构体
 
@@ -4374,6 +4405,64 @@ class OtherMaterial(AbstractModel):
         
 
 
+class ParseEventRequest(AbstractModel):
+    """ParseEvent请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Platform: 平台名称，指定访问的平台。
+        :type Platform: str
+        :param EventContent: 回调事件内容。
+        :type EventContent: str
+        """
+        self.Platform = None
+        self.EventContent = None
+
+
+    def _deserialize(self, params):
+        self.Platform = params.get("Platform")
+        self.EventContent = params.get("EventContent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class ParseEventResponse(AbstractModel):
+    """ParseEvent返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EventContent: 事件内容。
+        :type EventContent: :class:`tencentcloud.cme.v20191029.models.EventContent`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.EventContent = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("EventContent") is not None:
+            self.EventContent = EventContent()
+            self.EventContent._deserialize(params.get("EventContent"))
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class PenguinMediaPlatformPublishInfo(AbstractModel):
     """企鹅号发布信息。
 
@@ -5010,6 +5099,55 @@ class SortBy(AbstractModel):
     def _deserialize(self, params):
         self.Field = params.get("Field")
         self.Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class StorageNewFileCreatedEvent(AbstractModel):
+    """新文件生成事件
+
+    """
+
+    def __init__(self):
+        """
+        :param FileId: 云点播文件  Id。
+        :type FileId: str
+        :param MaterialId: 媒体 Id。
+        :type MaterialId: str
+        :param Operator: 操作者 Id。
+        :type Operator: str
+        :param OperationType: 操作类型，可取值为：
+<li>Upload：上传；</li>
+<li>PullUpload：拉取上传；</li>
+<li>Record：直播录制。</li>
+        :type OperationType: str
+        :param Owner: 媒体归属。
+        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
+        :param ClassPath: 媒体分类路径。
+        :type ClassPath: str
+        """
+        self.FileId = None
+        self.MaterialId = None
+        self.Operator = None
+        self.OperationType = None
+        self.Owner = None
+        self.ClassPath = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
+        self.MaterialId = params.get("MaterialId")
+        self.Operator = params.get("Operator")
+        self.OperationType = params.get("OperationType")
+        if params.get("Owner") is not None:
+            self.Owner = Entity()
+            self.Owner._deserialize(params.get("Owner"))
+        self.ClassPath = params.get("ClassPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

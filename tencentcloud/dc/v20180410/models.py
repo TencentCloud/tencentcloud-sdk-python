@@ -1651,6 +1651,9 @@ REJECTED:拒绝
         :param CustomerIPv6Address: 用户侧互联IPv6地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type CustomerIPv6Address: str
+        :param JumboEnable: 专线通道是否支持巨帧。1 支持，0 不支持
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JumboEnable: int
         """
         self.DirectConnectTunnelId = None
         self.DirectConnectId = None
@@ -1690,6 +1693,7 @@ REJECTED:拒绝
         self.TencentBackupIPv6Address = None
         self.BgpIPv6Status = None
         self.CustomerIPv6Address = None
+        self.JumboEnable = None
 
 
     def _deserialize(self, params):
@@ -1751,6 +1755,7 @@ REJECTED:拒绝
             self.BgpIPv6Status = BGPStatus()
             self.BgpIPv6Status._deserialize(params.get("BgpIPv6Status"))
         self.CustomerIPv6Address = params.get("CustomerIPv6Address")
+        self.JumboEnable = params.get("JumboEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

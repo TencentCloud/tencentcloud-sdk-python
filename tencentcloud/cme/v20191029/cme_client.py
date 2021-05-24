@@ -1211,6 +1211,34 @@ class CmeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ParseEvent(self, request):
+        """该接口接受制作云回调给客户的事件内容，将其转化为对应的 EventContent 结构，请不要实际调用该接口，只需要将接收到的事件内容直接使用 JSON 解析到 EventContent  即可使用。
+
+        :param request: Request instance for ParseEvent.
+        :type request: :class:`tencentcloud.cme.v20191029.models.ParseEventRequest`
+        :rtype: :class:`tencentcloud.cme.v20191029.models.ParseEventResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ParseEvent", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ParseEventResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RevokeResourceAuthorization(self, request):
         """资源所属实体对目标实体回收目标资源的相应权限，若原本没有相应权限则不产生变更。
 

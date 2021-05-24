@@ -3758,6 +3758,7 @@ DIRECTCONNECT：专线网关；
 PEERCONNECTION：对等连接；
 NAT：NAT网关；
 NORMAL_CVM：普通云服务器；
+CCN：云联网网关；
         :type NextHopType: str
         :param NextHopDestination: 下一跳目的网关，取值与“下一跳类型”相关：
 下一跳类型为VPN，取值VPN网关ID，形如：vpngw-12345678；
@@ -3765,6 +3766,7 @@ NORMAL_CVM：普通云服务器；
 下一跳类型为PEERCONNECTION，取值对等连接ID，形如：pcx-12345678；
 下一跳类型为NAT，取值Nat网关，形如：nat-12345678；
 下一跳类型为NORMAL_CVM，取值云服务器IPv4地址，形如：10.0.0.12；
+下一跳类型为CCN，取值云联网ID，形如：ccn-12345678；
         :type NextHopDestination: str
         :param NetDetectDescription: 网络探测描述。
         :type NetDetectDescription: str
@@ -17159,6 +17161,7 @@ DIRECTCONNECT：专线网关；
 PEERCONNECTION：对等连接；
 NAT：NAT网关；
 NORMAL_CVM：普通云服务器；
+CCN：云联网网关；
         :type NextHopType: str
         :param NextHopDestination: 下一跳目的网关，取值与“下一跳类型”相关：
 下一跳类型为VPN，取值VPN网关ID，形如：vpngw-12345678；
@@ -17166,6 +17169,7 @@ NORMAL_CVM：普通云服务器；
 下一跳类型为PEERCONNECTION，取值对等连接ID，形如：pcx-12345678；
 下一跳类型为NAT，取值Nat网关，形如：nat-12345678；
 下一跳类型为NORMAL_CVM，取值云服务器IPv4地址，形如：10.0.0.12；
+下一跳类型为CCN，取值云联网网关，形如：ccn-12345678；
         :type NextHopDestination: str
         :param NextHopName: 下一跳网关名称。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -19589,9 +19593,12 @@ class SetCcnRegionBandwidthLimitsRequest(AbstractModel):
         :type CcnId: str
         :param CcnRegionBandwidthLimits: 云联网（CCN）各地域出带宽上限。
         :type CcnRegionBandwidthLimits: list of CcnRegionBandwidthLimit
+        :param SetDefaultLimitFlag: 是否设置带宽为默认值。
+        :type SetDefaultLimitFlag: bool
         """
         self.CcnId = None
         self.CcnRegionBandwidthLimits = None
+        self.SetDefaultLimitFlag = None
 
 
     def _deserialize(self, params):
@@ -19602,6 +19609,7 @@ class SetCcnRegionBandwidthLimitsRequest(AbstractModel):
                 obj = CcnRegionBandwidthLimit()
                 obj._deserialize(item)
                 self.CcnRegionBandwidthLimits.append(obj)
+        self.SetDefaultLimitFlag = params.get("SetDefaultLimitFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

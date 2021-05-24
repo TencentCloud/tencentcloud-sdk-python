@@ -63,8 +63,10 @@ class AccountInfo(AbstractModel):
         :type ModifyTime: str
         :param ModifyPasswordTime: 修改密码的时间
         :type ModifyPasswordTime: str
-        :param CreateTime: 账号的创建时间
+        :param CreateTime: 该值已废弃
         :type CreateTime: str
+        :param MaxUserConnections: 用户最大可用实例连接数
+        :type MaxUserConnections: int
         """
         self.Notes = None
         self.Host = None
@@ -72,6 +74,7 @@ class AccountInfo(AbstractModel):
         self.ModifyTime = None
         self.ModifyPasswordTime = None
         self.CreateTime = None
+        self.MaxUserConnections = None
 
 
     def _deserialize(self, params):
@@ -81,6 +84,7 @@ class AccountInfo(AbstractModel):
         self.ModifyTime = params.get("ModifyTime")
         self.ModifyPasswordTime = params.get("ModifyPasswordTime")
         self.CreateTime = params.get("CreateTime")
+        self.MaxUserConnections = params.get("MaxUserConnections")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -979,11 +983,14 @@ class CreateAccountsRequest(AbstractModel):
         :type Password: str
         :param Description: 备注信息。
         :type Description: str
+        :param MaxUserConnections: 新账户最大可用连接数。
+        :type MaxUserConnections: int
         """
         self.InstanceId = None
         self.Accounts = None
         self.Password = None
         self.Description = None
+        self.MaxUserConnections = None
 
 
     def _deserialize(self, params):
@@ -996,6 +1003,7 @@ class CreateAccountsRequest(AbstractModel):
                 self.Accounts.append(obj)
         self.Password = params.get("Password")
         self.Description = params.get("Description")
+        self.MaxUserConnections = params.get("MaxUserConnections")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2803,11 +2811,14 @@ class DescribeAccountsResponse(AbstractModel):
         :type TotalCount: int
         :param Items: 符合查询条件的账号详细信息。
         :type Items: list of AccountInfo
+        :param MaxUserConnections: 用户可设置实例最大连接数。
+        :type MaxUserConnections: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
         self.Items = None
+        self.MaxUserConnections = None
         self.RequestId = None
 
 
@@ -2819,6 +2830,7 @@ class DescribeAccountsResponse(AbstractModel):
                 obj = AccountInfo()
                 obj._deserialize(item)
                 self.Items.append(obj)
+        self.MaxUserConnections = params.get("MaxUserConnections")
         self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -6954,6 +6966,9 @@ class InstanceInfo(AbstractModel):
         :type ZoneId: int
         :param InstanceNodes: 节点数
         :type InstanceNodes: int
+        :param TagList: 标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagList: list of TagInfoItem
         """
         self.WanStatus = None
         self.Zone = None
@@ -6997,6 +7012,7 @@ class InstanceInfo(AbstractModel):
         self.DeployGroupId = None
         self.ZoneId = None
         self.InstanceNodes = None
+        self.TagList = None
 
 
     def _deserialize(self, params):
@@ -7058,6 +7074,12 @@ class InstanceInfo(AbstractModel):
         self.DeployGroupId = params.get("DeployGroupId")
         self.ZoneId = params.get("ZoneId")
         self.InstanceNodes = params.get("InstanceNodes")
+        if params.get("TagList") is not None:
+            self.TagList = []
+            for item in params.get("TagList"):
+                obj = TagInfoItem()
+                obj._deserialize(item)
+                self.TagList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7346,6 +7368,71 @@ class ModifyAccountDescriptionResponse(AbstractModel):
         
 
 
+class ModifyAccountMaxUserConnectionsRequest(AbstractModel):
+    """ModifyAccountMaxUserConnections请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Accounts: 云数据库账号。
+        :type Accounts: list of Account
+        :param InstanceId: 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+        :type InstanceId: str
+        :param MaxUserConnections: 设置账户最大可用连接数。
+        :type MaxUserConnections: int
+        """
+        self.Accounts = None
+        self.InstanceId = None
+        self.MaxUserConnections = None
+
+
+    def _deserialize(self, params):
+        if params.get("Accounts") is not None:
+            self.Accounts = []
+            for item in params.get("Accounts"):
+                obj = Account()
+                obj._deserialize(item)
+                self.Accounts.append(obj)
+        self.InstanceId = params.get("InstanceId")
+        self.MaxUserConnections = params.get("MaxUserConnections")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class ModifyAccountMaxUserConnectionsResponse(AbstractModel):
+    """ModifyAccountMaxUserConnections返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AsyncRequestId: 异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。
+        :type AsyncRequestId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class ModifyAccountPasswordRequest(AbstractModel):
     """ModifyAccountPassword请求参数结构体
 
@@ -7434,6 +7521,8 @@ class ModifyAccountPrivilegesRequest(AbstractModel):
         :param ColumnPrivileges: 数据库表中列的权限。Privileges 权限的可选值为："SELECT","INSERT","UPDATE","REFERENCES"。
 注意，不传该参数表示清除该权限。
         :type ColumnPrivileges: list of ColumnPrivilege
+        :param ModifyAction: 该参数不为空时，为批量修改权限。可选值为：grant，revoke。
+        :type ModifyAction: str
         """
         self.InstanceId = None
         self.Accounts = None
@@ -7441,6 +7530,7 @@ class ModifyAccountPrivilegesRequest(AbstractModel):
         self.DatabasePrivileges = None
         self.TablePrivileges = None
         self.ColumnPrivileges = None
+        self.ModifyAction = None
 
 
     def _deserialize(self, params):
@@ -7470,6 +7560,7 @@ class ModifyAccountPrivilegesRequest(AbstractModel):
                 obj = ColumnPrivilege()
                 obj._deserialize(item)
                 self.ColumnPrivileges.append(obj)
+        self.ModifyAction = params.get("ModifyAction")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10598,6 +10689,36 @@ class TagInfo(AbstractModel):
         :type TagKey: str
         :param TagValue: 标签值
         :type TagValue: list of str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class TagInfoItem(AbstractModel):
+    """标签信息
+
+    """
+
+    def __init__(self):
+        """
+        :param TagKey: 标签键
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagKey: str
+        :param TagValue: 标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagValue: str
         """
         self.TagKey = None
         self.TagValue = None
