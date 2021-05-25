@@ -1563,6 +1563,8 @@ class LayoutParams(AbstractModel):
         :type PlaceHolderMode: int
         :param PureAudioHoldPlaceMode: 悬浮模板、九宫格、屏幕分享模板生效，用于控制纯音频上行是否占用画面布局位置。设置为0是代表后台默认处理方式，悬浮小画面占布局位置，九宫格画面占布局位置、屏幕分享小画面不占布局位置；设置为1时代表纯音频上行占布局位置；设置为2时代表纯音频上行不占布局位置。默认为0。
         :type PureAudioHoldPlaceMode: int
+        :param WaterMarkParams: 水印参数。
+        :type WaterMarkParams: :class:`tencentcloud.trtc.v20190722.models.WaterMarkParams`
         """
         self.Template = None
         self.MainVideoUserId = None
@@ -1573,6 +1575,7 @@ class LayoutParams(AbstractModel):
         self.PresetLayoutConfig = None
         self.PlaceHolderMode = None
         self.PureAudioHoldPlaceMode = None
+        self.WaterMarkParams = None
 
 
     def _deserialize(self, params):
@@ -1592,6 +1595,9 @@ class LayoutParams(AbstractModel):
                 self.PresetLayoutConfig.append(obj)
         self.PlaceHolderMode = params.get("PlaceHolderMode")
         self.PureAudioHoldPlaceMode = params.get("PureAudioHoldPlaceMode")
+        if params.get("WaterMarkParams") is not None:
+            self.WaterMarkParams = WaterMarkParams()
+            self.WaterMarkParams._deserialize(params.get("WaterMarkParams"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2713,6 +2719,46 @@ class UserInformation(AbstractModel):
         self.SdkVersion = params.get("SdkVersion")
         self.ClientIp = params.get("ClientIp")
         self.Finished = params.get("Finished")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class WaterMarkParams(AbstractModel):
+    """MCU混流水印参数
+
+    """
+
+    def __init__(self):
+        """
+        :param WaterMarkId: 混流-水印图片ID。取值为实时音视频控制台上传的图片ID。
+        :type WaterMarkId: int
+        :param WaterMarkWidth: 混流-水印宽。单位为像素值。
+        :type WaterMarkWidth: int
+        :param WaterMarkHeight: 混流-水印高。单位为像素值。
+        :type WaterMarkHeight: int
+        :param LocationX: 水印在输出时的X偏移。单位为像素值。
+        :type LocationX: int
+        :param LocationY: 水印在输出时的Y偏移。单位为像素值。
+        :type LocationY: int
+        """
+        self.WaterMarkId = None
+        self.WaterMarkWidth = None
+        self.WaterMarkHeight = None
+        self.LocationX = None
+        self.LocationY = None
+
+
+    def _deserialize(self, params):
+        self.WaterMarkId = params.get("WaterMarkId")
+        self.WaterMarkWidth = params.get("WaterMarkWidth")
+        self.WaterMarkHeight = params.get("WaterMarkHeight")
+        self.LocationX = params.get("LocationX")
+        self.LocationY = params.get("LocationY")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

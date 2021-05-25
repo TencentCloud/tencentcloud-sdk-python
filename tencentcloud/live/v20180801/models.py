@@ -1350,6 +1350,151 @@ class CreateLiveCertResponse(AbstractModel):
         
 
 
+class CreateLivePullStreamTaskRequest(AbstractModel):
+    """CreateLivePullStreamTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SourceType: 拉流源的类型：
+PullLivePushLive -直播，
+PullVodPushLive -点播。
+        :type SourceType: str
+        :param SourceUrls: 拉流源 url 列表。
+SourceType 为直播（PullLivePushLive）只可以填1个，
+SourceType 为点播（PullVodPushLive）可以填多个，上限30个。
+当前支持的文件格式：flv，mp4，hls。
+当前支持的拉流协议：http，https，rtmp。
+        :type SourceUrls: list of str
+        :param DomainName: 推流域名。
+将拉取过来的流推到该域名。
+注意：请使用已在云直播配置的推流域名。
+        :type DomainName: str
+        :param AppName: 推流路径。
+将拉取过来的流推到该路径。
+        :type AppName: str
+        :param StreamName: 推流名称。
+将拉取过来的流推到该流名称。
+        :type StreamName: str
+        :param StartTime: 开始时间。
+使用 UTC 格式时间，
+例如：2019-01-08T10:00:00Z。
+注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type StartTime: str
+        :param EndTime: 结束时间，注意：
+1. 结束时间必须大于开始时间；
+2. 结束时间和开始时间必须大于当前时间；
+3. 结束时间 和 开始时间 间隔必须小于七天。
+使用 UTC 格式时间，
+例如：2019-01-08T10:00:00Z。
+注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type EndTime: str
+        :param Operator: 任务操作人备注。
+        :type Operator: str
+        :param PushArgs: 推流参数。
+推流时携带自定义参数。
+示例：
+bak=1&test=2 。
+        :type PushArgs: str
+        :param CallbackEvents: 选择需要回调的事件（不填则回调全部）：
+TaskStart：任务启动回调，
+TaskExit：任务停止回调，
+VodSourceFileStart：从点播源文件开始拉流回调，
+VodSourceFileFinish：从点播源文件拉流结束回调，
+ResetTaskConfig：任务更新回调。
+        :type CallbackEvents: list of str
+        :param VodLoopTimes: 点播拉流转推循环次数。默认：-1。
+-1：无限循环，直到任务结束。
+0：不循环。
+>0：具体循环次数。次数和时间以先结束的为准。
+注意：该配置仅对拉流源为点播时生效。
+        :type VodLoopTimes: str
+        :param VodRefreshType: 点播更新SourceUrls后的播放方式：
+ImmediateNewSource：立即播放新的拉流源内容；
+ContinueBreakPoint：播放完当前正在播放的点播 url 后再使用新的拉流源播放。（旧拉流源未播放的点播 url 不会再播放）
+
+注意：该配置生效仅对变更前拉流源为点播时生效。
+        :type VodRefreshType: str
+        :param CallbackUrl: 自定义回调地址。
+拉流转推任务相关事件会回调到该地址。
+        :type CallbackUrl: str
+        :param ExtraCmd: 其他参数。
+示例: ignore_region  用于忽略传入地域, 内部按负载分配。
+        :type ExtraCmd: str
+        :param Comment: 任务描述，限制 512 字节。
+        :type Comment: str
+        """
+        self.SourceType = None
+        self.SourceUrls = None
+        self.DomainName = None
+        self.AppName = None
+        self.StreamName = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Operator = None
+        self.PushArgs = None
+        self.CallbackEvents = None
+        self.VodLoopTimes = None
+        self.VodRefreshType = None
+        self.CallbackUrl = None
+        self.ExtraCmd = None
+        self.Comment = None
+
+
+    def _deserialize(self, params):
+        self.SourceType = params.get("SourceType")
+        self.SourceUrls = params.get("SourceUrls")
+        self.DomainName = params.get("DomainName")
+        self.AppName = params.get("AppName")
+        self.StreamName = params.get("StreamName")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Operator = params.get("Operator")
+        self.PushArgs = params.get("PushArgs")
+        self.CallbackEvents = params.get("CallbackEvents")
+        self.VodLoopTimes = params.get("VodLoopTimes")
+        self.VodRefreshType = params.get("VodRefreshType")
+        self.CallbackUrl = params.get("CallbackUrl")
+        self.ExtraCmd = params.get("ExtraCmd")
+        self.Comment = params.get("Comment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class CreateLivePullStreamTaskResponse(AbstractModel):
+    """CreateLivePullStreamTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务 Id 。
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class CreateLiveRecordRequest(AbstractModel):
     """CreateLiveRecord请求参数结构体
 
@@ -2506,6 +2651,58 @@ class DeleteLiveDomainRequest(AbstractModel):
 
 class DeleteLiveDomainResponse(AbstractModel):
     """DeleteLiveDomain返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DeleteLivePullStreamTaskRequest(AbstractModel):
+    """DeleteLivePullStreamTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务 Id。
+        :type TaskId: str
+        :param Operator: 操作人姓名。
+        :type Operator: str
+        """
+        self.TaskId = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Operator = params.get("Operator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DeleteLivePullStreamTaskResponse(AbstractModel):
+    """DeleteLivePullStreamTask返回参数结构体
 
     """
 
@@ -4554,6 +4751,94 @@ class DescribeLivePlayAuthKeyResponse(AbstractModel):
         if params.get("PlayAuthKeyInfo") is not None:
             self.PlayAuthKeyInfo = PlayAuthKeyInfo()
             self.PlayAuthKeyInfo._deserialize(params.get("PlayAuthKeyInfo"))
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DescribeLivePullStreamTasksRequest(AbstractModel):
+    """DescribeLivePullStreamTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务 ID。 
+来源：调用 CreateLivePullStreamTask 接口时返回。
+不填默认查询所有任务，按更新时间倒序排序。
+        :type TaskId: str
+        :param PageNum: 取得第几页，默认值：1。
+        :type PageNum: int
+        :param PageSize: 分页大小，默认值：10。
+取值范围：1~20 之前的任意整数。
+        :type PageSize: int
+        """
+        self.TaskId = None
+        self.PageNum = None
+        self.PageSize = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.PageNum = params.get("PageNum")
+        self.PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DescribeLivePullStreamTasksResponse(AbstractModel):
+    """DescribeLivePullStreamTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskInfos: 直播拉流任务信息列表。
+        :type TaskInfos: list of PullStreamTaskInfo
+        :param PageNum: 分页的页码。
+        :type PageNum: int
+        :param PageSize: 每页大小。
+        :type PageSize: int
+        :param TotalNum: 符合条件的总个数。
+        :type TotalNum: int
+        :param TotalPage: 总页数。
+        :type TotalPage: int
+        :param LimitTaskNum: 限制可创建的最大任务数。
+        :type LimitTaskNum: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskInfos = None
+        self.PageNum = None
+        self.PageSize = None
+        self.TotalNum = None
+        self.TotalPage = None
+        self.LimitTaskNum = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TaskInfos") is not None:
+            self.TaskInfos = []
+            for item in params.get("TaskInfos"):
+                obj = PullStreamTaskInfo()
+                obj._deserialize(item)
+                self.TaskInfos.append(obj)
+        self.PageNum = params.get("PageNum")
+        self.PageSize = params.get("PageSize")
+        self.TotalNum = params.get("TotalNum")
+        self.TotalPage = params.get("TotalPage")
+        self.LimitTaskNum = params.get("LimitTaskNum")
         self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -8206,6 +8491,136 @@ class ModifyLivePlayDomainResponse(AbstractModel):
         
 
 
+class ModifyLivePullStreamTaskRequest(AbstractModel):
+    """ModifyLivePullStreamTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务Id。
+        :type TaskId: str
+        :param Operator: 操作人姓名。
+        :type Operator: str
+        :param SourceUrls: 拉流源url列表。
+SourceType为直播（PullLivePushLive）只可以填1个，
+SourceType为点播（PullVodPushLive）可以填多个，上限30个。
+        :type SourceUrls: list of str
+        :param StartTime: 开始时间。
+使用UTC格式时间，
+例如：2019-01-08T10:00:00Z。
+注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type StartTime: str
+        :param EndTime: 结束时间，注意：
+1. 结束时间必须大于开始时间；
+2. 结束时间和开始时间必须大于当前时间；
+3. 结束时间 和 开始时间 间隔必须小于七天。
+使用UTC格式时间，
+例如：2019-01-08T10:00:00Z。
+注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type EndTime: str
+        :param VodLoopTimes: 点播拉流转推循环次数。
+-1：无限循环，直到任务结束。
+0：不循环。
+>0：具体循环次数。次数和时间以先结束的为准。
+注意：拉流源为点播，该配置生效。
+        :type VodLoopTimes: int
+        :param VodRefreshType: 点播更新SourceUrls后的播放方式：
+ImmediateNewSource：立即从更新的拉流源开始播放；
+ContinueBreakPoint：从上次断流url源的断点处继续，结束后再使用新的拉流源。
+注意：拉流源为点播，该配置生效。
+        :type VodRefreshType: str
+        :param Status: 任务状态：
+enable - 启用，
+pause - 暂停。
+        :type Status: str
+        :param CallbackEvents: 选择需要回调的事件（不填则回调全部）：
+TaskStart：任务启动回调，
+TaskExit：任务停止回调，
+VodSourceFileStart：从点播源文件开始拉流回调，
+VodSourceFileFinish：从点播源文件拉流结束回调，
+ResetTaskConfig：任务更新回调。
+        :type CallbackEvents: list of str
+        :param CallbackUrl: 自定义回调地址。
+相关事件会回调到该地址。
+        :type CallbackUrl: str
+        :param FileIndex: 指定播放文件索引。
+注意：
+1. 从1开始，不大于SourceUrls中文件个数。
+2. 只有VodRefreshType为ContinueBeginPoint时指定才有效。
+3. 只有当前任务处于暂停时，指定后启动任务才会生效。
+        :type FileIndex: int
+        :param OffsetTime: 指定播放文件偏移。
+注意：
+1. 单位：秒，配合FileIndex使用。
+2. 只有VodRefreshType为ContinueBeginPoint时指定才有效。
+3. 只有当前任务处于暂停时，指定后启动任务才会生效。
+        :type OffsetTime: int
+        :param Comment: 任务备注。
+        :type Comment: str
+        """
+        self.TaskId = None
+        self.Operator = None
+        self.SourceUrls = None
+        self.StartTime = None
+        self.EndTime = None
+        self.VodLoopTimes = None
+        self.VodRefreshType = None
+        self.Status = None
+        self.CallbackEvents = None
+        self.CallbackUrl = None
+        self.FileIndex = None
+        self.OffsetTime = None
+        self.Comment = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Operator = params.get("Operator")
+        self.SourceUrls = params.get("SourceUrls")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.VodLoopTimes = params.get("VodLoopTimes")
+        self.VodRefreshType = params.get("VodRefreshType")
+        self.Status = params.get("Status")
+        self.CallbackEvents = params.get("CallbackEvents")
+        self.CallbackUrl = params.get("CallbackUrl")
+        self.FileIndex = params.get("FileIndex")
+        self.OffsetTime = params.get("OffsetTime")
+        self.Comment = params.get("Comment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class ModifyLivePullStreamTaskResponse(AbstractModel):
+    """ModifyLivePullStreamTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class ModifyLivePushAuthKeyRequest(AbstractModel):
     """ModifyLivePushAuthKey请求参数结构体
 
@@ -9143,6 +9558,166 @@ UTC格式时间，例如：2019-01-08T10:00:00Z。
         
 
 
+class PullStreamTaskInfo(AbstractModel):
+    """直播拉流任务信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 拉流任务Id。
+        :type TaskId: str
+        :param SourceType: 拉流源的类型：
+PullLivePushLive -直播，
+PullVodPushLive -点播。
+        :type SourceType: str
+        :param SourceUrls: 拉流源url列表。
+SourceType为直播（PullLiveToLive）只可以填1个，
+SourceType为点播（PullVodToLive）可以填多个，上限10个。
+        :type SourceUrls: list of str
+        :param DomainName: 推流域名。
+将拉到的源推到该域名。
+        :type DomainName: str
+        :param AppName: 推流路径。
+将拉到的源推到该路径。
+        :type AppName: str
+        :param StreamName: 流名称。
+将拉到的源推到该流名称。
+        :type StreamName: str
+        :param PushArgs: 推流参数。
+推流携带的自定义参数。
+        :type PushArgs: str
+        :param StartTime: 开始时间。
+使用UTC格式时间，
+例如：2019-01-08T10:00:00Z。
+注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type StartTime: str
+        :param EndTime: 结束时间，注意：
+1. 结束时间必须大于开始时间；
+2. 结束时间和开始时间必须大于当前时间；
+3. 结束时间 和 开始时间 间隔必须小于七天。
+使用UTC格式时间，
+例如：2019-01-08T10:00:00Z。
+注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type EndTime: str
+        :param Region: 拉流源所在地域（请就近选取）：
+ap-beijing - 华北地区(北京)，
+ap-shanghai -华东地区(上海)，
+ap-guangzhou -华南地区(广州)，
+ap-mumbai - 印度。
+        :type Region: str
+        :param VodLoopTimes: 点播拉流转推循环次数。
+-1：无限循环，直到任务结束。
+0：不循环。
+>0：具体循环次数。次数和时间以先结束的为准。
+注意：拉流源为点播，该配置生效。
+        :type VodLoopTimes: int
+        :param VodRefreshType: 点播更新SourceUrls后的播放方式：
+ImmediateNewSource：立即从更新的拉流源开始播放；
+ContinueBreakPoint：从上次断流url源的断点处继续，结束后再使用新的拉流源。
+
+注意：拉流源为点播，该配置生效。
+        :type VodRefreshType: str
+        :param CreateTime: 任务创建时间。
+使用UTC格式时间，
+例如：2019-01-08T10:00:00Z。
+注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type CreateTime: str
+        :param UpdateTime: 任务更新时间。
+使用UTC格式时间，
+例如：2019-01-08T10:00:00Z。
+注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type UpdateTime: str
+        :param CreateBy: 创建任务的操作者。
+        :type CreateBy: str
+        :param UpdateBy: 最后更新任务的操作者。
+        :type UpdateBy: str
+        :param CallbackUrl: 回调地址。
+        :type CallbackUrl: str
+        :param CallbackEvents: 选择需要回调的事件：
+TaskStart：任务启动回调，
+TaskExit：任务停止回调，
+VodSourceFileStart：从点播源文件开始拉流回调，
+VodSourceFileFinish：从点播源文件拉流结束回调，
+ResetTaskConfig：任务更新回调。
+        :type CallbackEvents: list of str
+        :param CallbackInfo: 注意：该信息暂不返回。
+最后一次回调信息。
+        :type CallbackInfo: str
+        :param ErrorInfo: 注意：该信息暂不返回。
+错误信息。
+        :type ErrorInfo: str
+        :param Status: 状态。
+enable：生效中。
+pause：暂停中。
+        :type Status: str
+        :param RecentPullInfo: 注意：该信息仅在查询单个任务时返回。
+任务最新拉流信息。
+包含：源 url，偏移时间，上报时间。
+        :type RecentPullInfo: :class:`tencentcloud.live.v20180801.models.RecentPullInfo`
+        :param Comment: 任务备注信息。
+        :type Comment: str
+        """
+        self.TaskId = None
+        self.SourceType = None
+        self.SourceUrls = None
+        self.DomainName = None
+        self.AppName = None
+        self.StreamName = None
+        self.PushArgs = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Region = None
+        self.VodLoopTimes = None
+        self.VodRefreshType = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.CreateBy = None
+        self.UpdateBy = None
+        self.CallbackUrl = None
+        self.CallbackEvents = None
+        self.CallbackInfo = None
+        self.ErrorInfo = None
+        self.Status = None
+        self.RecentPullInfo = None
+        self.Comment = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.SourceType = params.get("SourceType")
+        self.SourceUrls = params.get("SourceUrls")
+        self.DomainName = params.get("DomainName")
+        self.AppName = params.get("AppName")
+        self.StreamName = params.get("StreamName")
+        self.PushArgs = params.get("PushArgs")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Region = params.get("Region")
+        self.VodLoopTimes = params.get("VodLoopTimes")
+        self.VodRefreshType = params.get("VodRefreshType")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.CreateBy = params.get("CreateBy")
+        self.UpdateBy = params.get("UpdateBy")
+        self.CallbackUrl = params.get("CallbackUrl")
+        self.CallbackEvents = params.get("CallbackEvents")
+        self.CallbackInfo = params.get("CallbackInfo")
+        self.ErrorInfo = params.get("ErrorInfo")
+        self.Status = params.get("Status")
+        if params.get("RecentPullInfo") is not None:
+            self.RecentPullInfo = RecentPullInfo()
+            self.RecentPullInfo._deserialize(params.get("RecentPullInfo"))
+        self.Comment = params.get("Comment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class PushAuthKeyInfo(AbstractModel):
     """推流鉴权key信息。
 
@@ -9364,6 +9939,44 @@ class PushQualityData(AbstractModel):
         self.MetaAudioRate = params.get("MetaAudioRate")
         self.MateFps = params.get("MateFps")
         self.StreamParam = params.get("StreamParam")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class RecentPullInfo(AbstractModel):
+    """直播拉流当前正在拉的文件信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param FileUrl: 当前正在拉的文件地址。
+        :type FileUrl: str
+        :param OffsetTime: 当前正在拉的文件偏移，单位：秒。
+        :type OffsetTime: int
+        :param ReportTime: 最新上报偏移信息时间。UTC格式。
+如：2020-07-23T03:20:39Z。
+注意：与北京时间相差八小时。
+        :type ReportTime: str
+        :param LoopedTimes: 已经轮播的次数。
+        :type LoopedTimes: int
+        """
+        self.FileUrl = None
+        self.OffsetTime = None
+        self.ReportTime = None
+        self.LoopedTimes = None
+
+
+    def _deserialize(self, params):
+        self.FileUrl = params.get("FileUrl")
+        self.OffsetTime = params.get("OffsetTime")
+        self.ReportTime = params.get("ReportTime")
+        self.LoopedTimes = params.get("LoopedTimes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -288,6 +288,39 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateLivePullStreamTask(self, request):
+        """创建直播拉流任务。支持将外部已有的点播文件，或者直播源拉取过来转推到直播系统。
+        注意：
+        1. 源流视频编码目前只支持: H264, H265。其他编码格式建议先进行转码处理。
+        2. 源流音频编码目前只支持: AAC。其他编码格式建议先进行转码处理。
+        3. 拉流转推功能为计费增值服务，计费规则详情可参见[计费文档](https://cloud.tencent.com/document/product/267/53308)。
+        4. 拉流转推功能仅提供内容拉取与推送服务，请确保内容已获得授权并符合内容传播相关的法律法规。若内容有侵权或违规相关问题，云直播会停止相关的功能服务并保留追究法律责任的权利。
+
+        :param request: Request instance for CreateLivePullStreamTask.
+        :type request: :class:`tencentcloud.live.v20180801.models.CreateLivePullStreamTaskRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.CreateLivePullStreamTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateLivePullStreamTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateLivePullStreamTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateLiveRecord(self, request):
         """- 使用前提
           1. 录制文件存放于点播平台，所以用户如需使用录制功能，需首先自行开通点播服务。
@@ -701,6 +734,37 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLiveDomainResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteLivePullStreamTask(self, request):
+        """删除接口 CreateLivePullStreamTask 创建的拉流任务。
+        注意：
+        1. 入参中的 TaskId 为 CreateLivePullStreamTask 接口创建时返回的TaskId。
+        2. 也可通过 DescribeLivePullStreamTasks 进行查询创建的任务。
+
+        :param request: Request instance for DeleteLivePullStreamTask.
+        :type request: :class:`tencentcloud.live.v20180801.models.DeleteLivePullStreamTaskRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DeleteLivePullStreamTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteLivePullStreamTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteLivePullStreamTaskResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1628,6 +1692,35 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLivePlayAuthKeyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLivePullStreamTasks(self, request):
+        """查询使用 CreateLivePullStreamTask 接口创建的直播拉流任务。
+        排序方式：默认按更新时间 倒序排列。
+
+        :param request: Request instance for DescribeLivePullStreamTasks.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLivePullStreamTasksRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLivePullStreamTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLivePullStreamTasks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLivePullStreamTasksResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2842,6 +2935,36 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLivePlayDomainResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyLivePullStreamTask(self, request):
+        """更新直播拉流任务。
+        1. 不支持修改目标地址，如需推到新地址，请创建新任务。
+        2. 不支持修改任务类型，如需更换，请创建新任务。
+
+        :param request: Request instance for ModifyLivePullStreamTask.
+        :type request: :class:`tencentcloud.live.v20180801.models.ModifyLivePullStreamTaskRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.ModifyLivePullStreamTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyLivePullStreamTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyLivePullStreamTaskResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -4280,6 +4280,8 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type WithMaster: int
         :param DeployGroupIds: 置放群组ID列表。
         :type DeployGroupIds: list of str
+        :param TagKeysForSearch: 是否以标签键为过滤条件。
+        :type TagKeysForSearch: list of str
         """
         self.ProjectId = None
         self.InstanceTypes = None
@@ -4307,6 +4309,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.WithRo = None
         self.WithMaster = None
         self.DeployGroupIds = None
+        self.TagKeysForSearch = None
 
 
     def _deserialize(self, params):
@@ -4336,6 +4339,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.WithRo = params.get("WithRo")
         self.WithMaster = params.get("WithMaster")
         self.DeployGroupIds = params.get("DeployGroupIds")
+        self.TagKeysForSearch = params.get("TagKeysForSearch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4389,20 +4393,20 @@ class DescribeDBPriceRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Zone: 可用区信息，格式如 "ap-guangzhou-2"。具体能设置的值请通过 <a href="https://cloud.tencent.com/document/api/236/17229">DescribeDBZoneConfig</a> 接口查询。
-        :type Zone: str
-        :param GoodsNum: 实例数量，默认值为 1，最小值 1，最大值为 100。
-        :type GoodsNum: int
-        :param Memory: 实例内存大小，单位：MB。
-        :type Memory: int
-        :param Volume: 实例硬盘大小，单位：GB。
-        :type Volume: int
-        :param PayType: 付费类型，支持值包括：PRE_PAID - 包年包月，HOUR_PAID - 按量计费。
-        :type PayType: str
         :param Period: 实例时长，单位：月，最小值 1，最大值为 36；查询按量计费价格时，该字段无效。
         :type Period: int
-        :param InstanceRole: 实例类型，默认为 master，支持值包括：master - 表示主实例，ro - 表示只读实例，dr - 表示灾备实例。
+        :param Zone: 可用区信息，格式如 "ap-guangzhou-2"。具体能设置的值请通过 <a href="https://cloud.tencent.com/document/api/236/17229">DescribeDBZoneConfig</a> 接口查询。InstanceId为空时该参数为必填项。
+        :type Zone: str
+        :param GoodsNum: 实例数量，默认值为 1，最小值 1，最大值为 100。InstanceId为空时该参数为必填项。
+        :type GoodsNum: int
+        :param Memory: 实例内存大小，单位：MB。InstanceId为空时该参数为必填项。
+        :type Memory: int
+        :param Volume: 实例硬盘大小，单位：GB。InstanceId为空时该参数为必填项。
+        :type Volume: int
+        :param InstanceRole: 实例类型，默认为 master，支持值包括：master - 表示主实例，ro - 表示只读实例，dr - 表示灾备实例。InstanceId为空时该参数为必填项。
         :type InstanceRole: str
+        :param PayType: 付费类型，支持值包括：PRE_PAID - 包年包月，HOUR_PAID - 按量计费。InstanceId为空时该参数为必填项。
+        :type PayType: str
         :param ProtectMode: 数据复制方式，默认为 0，支持值包括：0 - 表示异步复制，1 - 表示半同步复制，2 - 表示强同步复制。
         :type ProtectMode: int
         :param DeviceType: 实例隔离类型。支持值包括： "UNIVERSAL" - 通用型实例， "EXCLUSIVE" - 独享型实例， "BASIC" - 基础版实例。 不指定则默认为通用型实例。
@@ -4411,32 +4415,36 @@ class DescribeDBPriceRequest(AbstractModel):
         :type InstanceNodes: int
         :param Cpu: 询价实例的CPU核心数目，单位：核，为保证传入 CPU 值有效，请使用 [获取云数据库可售卖规格](https://cloud.tencent.com/document/product/236/17229) 接口获取可售卖的核心数目，当未指定该值时，将按照 Memory 大小补全一个默认值。
         :type Cpu: int
+        :param InstanceId: 续费询价实例ID。如需查询实例续费价格，填写InstanceId和Period即可。
+        :type InstanceId: str
         """
+        self.Period = None
         self.Zone = None
         self.GoodsNum = None
         self.Memory = None
         self.Volume = None
-        self.PayType = None
-        self.Period = None
         self.InstanceRole = None
+        self.PayType = None
         self.ProtectMode = None
         self.DeviceType = None
         self.InstanceNodes = None
         self.Cpu = None
+        self.InstanceId = None
 
 
     def _deserialize(self, params):
+        self.Period = params.get("Period")
         self.Zone = params.get("Zone")
         self.GoodsNum = params.get("GoodsNum")
         self.Memory = params.get("Memory")
         self.Volume = params.get("Volume")
-        self.PayType = params.get("PayType")
-        self.Period = params.get("Period")
         self.InstanceRole = params.get("InstanceRole")
+        self.PayType = params.get("PayType")
         self.ProtectMode = params.get("ProtectMode")
         self.DeviceType = params.get("DeviceType")
         self.InstanceNodes = params.get("InstanceNodes")
         self.Cpu = params.get("Cpu")
+        self.InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

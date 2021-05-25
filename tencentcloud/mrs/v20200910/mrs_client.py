@@ -17,29 +17,29 @@ import json
 
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.common.abstract_client import AbstractClient
-from tencentcloud.tse.v20201207 import models
+from tencentcloud.mrs.v20200910 import models
 
 
-class TseClient(AbstractClient):
-    _apiVersion = '2020-12-07'
-    _endpoint = 'tse.tencentcloudapi.com'
-    _service = 'tse'
+class MrsClient(AbstractClient):
+    _apiVersion = '2020-09-10'
+    _endpoint = 'mrs.tencentcloudapi.com'
+    _service = 'mrs'
 
 
-    def DescribeConfig(self, request):
-        """查看配置项
+    def ImageToClass(self, request):
+        """图片分类
 
-        :param request: Request instance for DescribeConfig.
-        :type request: :class:`tencentcloud.tse.v20201207.models.DescribeConfigRequest`
-        :rtype: :class:`tencentcloud.tse.v20201207.models.DescribeConfigResponse`
+        :param request: Request instance for ImageToClass.
+        :type request: :class:`tencentcloud.mrs.v20200910.models.ImageToClassRequest`
+        :rtype: :class:`tencentcloud.mrs.v20200910.models.ImageToClassResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeConfig", params)
+            body = self.call("ImageToClass", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeConfigResponse()
+                model = models.ImageToClassResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -54,20 +54,20 @@ class TseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeSREInstanceAccessAddress(self, request):
-        """查询微服务注册引擎实例访问地址
+    def ImageToObject(self, request):
+        """图片转结构化对象
 
-        :param request: Request instance for DescribeSREInstanceAccessAddress.
-        :type request: :class:`tencentcloud.tse.v20201207.models.DescribeSREInstanceAccessAddressRequest`
-        :rtype: :class:`tencentcloud.tse.v20201207.models.DescribeSREInstanceAccessAddressResponse`
+        :param request: Request instance for ImageToObject.
+        :type request: :class:`tencentcloud.mrs.v20200910.models.ImageToObjectRequest`
+        :rtype: :class:`tencentcloud.mrs.v20200910.models.ImageToObjectResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSREInstanceAccessAddress", params)
+            body = self.call("ImageToObject", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeSREInstanceAccessAddressResponse()
+                model = models.ImageToObjectResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -82,20 +82,20 @@ class TseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeSREInstances(self, request):
-        """用于查询微服务注册中心实例列表
+    def TextToClass(self, request):
+        """文本分类
 
-        :param request: Request instance for DescribeSREInstances.
-        :type request: :class:`tencentcloud.tse.v20201207.models.DescribeSREInstancesRequest`
-        :rtype: :class:`tencentcloud.tse.v20201207.models.DescribeSREInstancesResponse`
+        :param request: Request instance for TextToClass.
+        :type request: :class:`tencentcloud.mrs.v20200910.models.TextToClassRequest`
+        :rtype: :class:`tencentcloud.mrs.v20200910.models.TextToClassResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSREInstances", params)
+            body = self.call("TextToClass", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeSREInstancesResponse()
+                model = models.TextToClassResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -110,20 +110,20 @@ class TseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ManageConfig(self, request):
-        """管理配置
+    def TextToObject(self, request):
+        """文本转结构化对象
 
-        :param request: Request instance for ManageConfig.
-        :type request: :class:`tencentcloud.tse.v20201207.models.ManageConfigRequest`
-        :rtype: :class:`tencentcloud.tse.v20201207.models.ManageConfigResponse`
+        :param request: Request instance for TextToObject.
+        :type request: :class:`tencentcloud.mrs.v20200910.models.TextToObjectRequest`
+        :rtype: :class:`tencentcloud.mrs.v20200910.models.TextToObjectResponse`
 
         """
         try:
             params = request._serialize()
-            body = self.call("ManageConfig", params)
+            body = self.call("TextToObject", params)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ManageConfigResponse()
+                model = models.TextToObjectResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

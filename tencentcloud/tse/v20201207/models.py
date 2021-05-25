@@ -18,6 +18,78 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class DescribeConfigRequest(AbstractModel):
+    """DescribeConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param Type: 配置中心类型（consul、zookeeper、apollo等）
+        :type Type: str
+        :param Key: 配置项的节点路径key
+        :type Key: str
+        """
+        self.InstanceId = None
+        self.Type = None
+        self.Key = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Type = params.get("Type")
+        self.Key = params.get("Key")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DescribeConfigResponse(AbstractModel):
+    """DescribeConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: 配置项或路径key
+        :type Key: str
+        :param Value: 配置项的值
+        :type Value: str
+        :param IsDir: 当前key是否为路径
+        :type IsDir: bool
+        :param List: 当前key下的子路径
+        :type List: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Key = None
+        self.Value = None
+        self.IsDir = None
+        self.List = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        self.IsDir = params.get("IsDir")
+        self.List = params.get("List")
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class DescribeSREInstanceAccessAddressRequest(AbstractModel):
     """DescribeSREInstanceAccessAddress请求参数结构体
 
@@ -222,15 +294,20 @@ class ManageConfigResponse(AbstractModel):
         :param Result: 对配置中心操作配置之后的返回值
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
+        :param OpResult: 操作是否成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OpResult: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Result = None
+        self.OpResult = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.Result = params.get("Result")
+        self.OpResult = params.get("OpResult")
         self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
