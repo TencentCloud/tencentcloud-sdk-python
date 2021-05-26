@@ -1511,14 +1511,14 @@ class GetEidTokenRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param MerchantId: EID商户id
+        :param MerchantId: EID商户id，字段长度最长50位。
         :type MerchantId: str
         :param IdCard: 身份标识（未使用OCR服务时，必须传入）。
 规则：a-zA-Z0-9组合。最长长度32位。
         :type IdCard: str
         :param Name: 姓名。（未使用OCR服务时，必须传入）最长长度32位。中文请使用UTF-8编码。
         :type Name: str
-        :param Extra: 透传字段，在获取验证结果时返回。
+        :param Extra: 透传字段，在获取验证结果时返回。最长长度1024位。
         :type Extra: str
         :param Config: 小程序模式配置，包括如何传入姓名身份证的配置。
         :type Config: :class:`tencentcloud.faceid.v20180301.models.GetEidTokenConfig`

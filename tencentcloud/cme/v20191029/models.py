@@ -427,6 +427,42 @@ class ClassInfo(AbstractModel):
         
 
 
+class CosPublishInputInfo(AbstractModel):
+    """COS 发布信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param Bucket: 发布生成的对象存储文件所在的 COS Bucket 名，如 TopRankVideo-125xxx88。
+        :type Bucket: str
+        :param Region: 发布生成的对象存储文件所在的 COS Bucket 所属园区，如 ap-chongqing。
+        :type Region: str
+        :param VideoKey: 发布生成的视频在 COS 存储的对象键。对象键（ObjectKey）是对象（Object）在存储桶（Bucket）中的唯一标识。
+        :type VideoKey: str
+        :param CoverKey: 发布生成的封面在 COS 存储的对象键。
+        :type CoverKey: str
+        """
+        self.Bucket = None
+        self.Region = None
+        self.VideoKey = None
+        self.CoverKey = None
+
+
+    def _deserialize(self, params):
+        self.Bucket = params.get("Bucket")
+        self.Region = params.get("Region")
+        self.VideoKey = params.get("VideoKey")
+        self.CoverKey = params.get("CoverKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class CreateClassRequest(AbstractModel):
     """CreateClass请求参数结构体
 
@@ -5601,11 +5637,14 @@ class ThirdPartyPublishInfo(AbstractModel):
         :type WeiboPublishInfo: :class:`tencentcloud.cme.v20191029.models.WeiboPublishInfo`
         :param KuaishouPublishInfo: 快手发布信息，如果使用的发布通道为快手时必填。
         :type KuaishouPublishInfo: :class:`tencentcloud.cme.v20191029.models.KuaishouPublishInfo`
+        :param CosPublishInfo: 腾讯云对象存储发布信息， 如果使用的发布通道为腾讯云对象存储时必填。
+        :type CosPublishInfo: :class:`tencentcloud.cme.v20191029.models.CosPublishInputInfo`
         """
         self.ChannelMaterialId = None
         self.PenguinMediaPlatformPublishInfo = None
         self.WeiboPublishInfo = None
         self.KuaishouPublishInfo = None
+        self.CosPublishInfo = None
 
 
     def _deserialize(self, params):
@@ -5619,6 +5658,9 @@ class ThirdPartyPublishInfo(AbstractModel):
         if params.get("KuaishouPublishInfo") is not None:
             self.KuaishouPublishInfo = KuaishouPublishInfo()
             self.KuaishouPublishInfo._deserialize(params.get("KuaishouPublishInfo"))
+        if params.get("CosPublishInfo") is not None:
+            self.CosPublishInfo = CosPublishInputInfo()
+            self.CosPublishInfo._deserialize(params.get("CosPublishInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

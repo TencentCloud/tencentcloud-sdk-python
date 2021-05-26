@@ -530,6 +530,8 @@ class Event(AbstractModel):
         :type Resources: :class:`tencentcloud.cloudaudit.v20190319.models.Resource`
         :param EventRegion: 事件地域
         :type EventRegion: str
+        :param Location: IP 归属地
+        :type Location: str
         """
         self.EventId = None
         self.Username = None
@@ -547,6 +549,7 @@ class Event(AbstractModel):
         self.EventNameCn = None
         self.Resources = None
         self.EventRegion = None
+        self.Location = None
 
 
     def _deserialize(self, params):
@@ -568,6 +571,7 @@ class Event(AbstractModel):
             self.Resources = Resource()
             self.Resources._deserialize(params.get("Resources"))
         self.EventRegion = params.get("EventRegion")
+        self.Location = params.get("Location")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
