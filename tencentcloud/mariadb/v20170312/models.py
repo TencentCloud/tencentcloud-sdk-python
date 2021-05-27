@@ -943,6 +943,70 @@ class Database(AbstractModel):
         
 
 
+class DcnDetailItem(AbstractModel):
+    """DCN详情条目
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param InstanceName: 实例名称
+        :type InstanceName: str
+        :param Region: 实例地域
+        :type Region: str
+        :param Zone: 实例可用区
+        :type Zone: str
+        :param Vip: 实例IP地址
+        :type Vip: str
+        :param Vipv6: 实例IPv6地址
+        :type Vipv6: str
+        :param Vport: 实例端口
+        :type Vport: int
+        :param Status: 实例状态
+        :type Status: int
+        :param StatusDesc: 实例状态描述
+        :type StatusDesc: str
+        :param DcnFlag: 实例DCN标志，1-主，2-备
+        :type DcnFlag: int
+        :param DcnStatus: 实例DCN状态，0-无，1-创建中，2-同步中，3-已断开
+        :type DcnStatus: int
+        """
+        self.InstanceId = None
+        self.InstanceName = None
+        self.Region = None
+        self.Zone = None
+        self.Vip = None
+        self.Vipv6 = None
+        self.Vport = None
+        self.Status = None
+        self.StatusDesc = None
+        self.DcnFlag = None
+        self.DcnStatus = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.Region = params.get("Region")
+        self.Zone = params.get("Zone")
+        self.Vip = params.get("Vip")
+        self.Vipv6 = params.get("Vipv6")
+        self.Vport = params.get("Vport")
+        self.Status = params.get("Status")
+        self.StatusDesc = params.get("StatusDesc")
+        self.DcnFlag = params.get("DcnFlag")
+        self.DcnStatus = params.get("DcnStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class Deal(AbstractModel):
     """订单信息
 
@@ -2152,6 +2216,63 @@ class DescribeDatabasesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Databases.append(obj)
         self.InstanceId = params.get("InstanceId")
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DescribeDcnDetailRequest(AbstractModel):
+    """DescribeDcnDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DescribeDcnDetailResponse(AbstractModel):
+    """DescribeDcnDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DcnDetails: DCN同步详情
+        :type DcnDetails: list of DcnDetailItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DcnDetails = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DcnDetails") is not None:
+            self.DcnDetails = []
+            for item in params.get("DcnDetails"):
+                obj = DcnDetailItem()
+                obj._deserialize(item)
+                self.DcnDetails.append(obj)
         self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

@@ -673,6 +673,34 @@ class DcdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDcnDetail(self, request):
+        """获取实例灾备详情
+
+        :param request: Request instance for DescribeDcnDetail.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDcnDetailRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.DescribeDcnDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDcnDetail", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDcnDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeOrders(self, request):
         """本接口（DescribeOrders）用于查询分布式数据库订单信息。传入订单ID来查询订单关联的分布式数据库实例，和对应的任务流程ID。
 

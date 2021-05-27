@@ -47,7 +47,7 @@ class AddClusterInstancesRequest(AbstractModel):
         :type FeatureIdList: list of str
         :param InstanceAdvancedSettings: 实例额外需要设置参数信息
         :type InstanceAdvancedSettings: :class:`tencentcloud.tsf.v20180326.models.InstanceAdvancedSettings`
-        :param SecurityGroupIds: 部署组ID
+        :param SecurityGroupIds: 安全组 ID 列表
         :type SecurityGroupIds: list of str
         """
         self.ClusterId = None

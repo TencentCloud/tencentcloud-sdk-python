@@ -1337,8 +1337,8 @@ class CreateModuleRequest(AbstractModel):
         :param DefaultDataDiskSize: 默认数据盘大小，单位：G。范围不得超过数据盘范围大小，详看DescribeConfig。
         :type DefaultDataDiskSize: int
         :param CloseIpDirect: 是否关闭IP直通。取值范围：
-1：表示关闭IP直通
-0：表示开通IP直通
+true：表示关闭IP直通
+false：表示开通IP直通
         :type CloseIpDirect: bool
         :param TagSpecification: 标签列表。
         :type TagSpecification: list of TagSpecification
@@ -3101,6 +3101,7 @@ image-id - String - 是否必填： 否 - （过滤条件）按照镜像ID进行
 image-type - String - 是否必填： 否 - （过滤条件）按照镜像类型进行过滤。取值范围：
 PRIVATE_IMAGE: 私有镜像 (本帐户创建的镜像) 
 PUBLIC_IMAGE: 公共镜像 (腾讯云官方镜像)
+instance-type -String - 是否必填: 否 - (过滤条件) 按机型过滤支持的镜像
         :type Filters: list of Filter
         :param Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。
         :type Offset: int

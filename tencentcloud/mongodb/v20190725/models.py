@@ -2713,11 +2713,23 @@ class SecurityGroupBound(AbstractModel):
         :type PortRange: str
         :param IpProtocol: 传输层协议。tcp，udp或ALL
         :type IpProtocol: str
+        :param Id: 安全组id代表的地址集合
+        :type Id: str
+        :param AddressModule: 地址组id代表的地址集合
+        :type AddressModule: str
+        :param ServiceModule: 服务组id代表的协议和端口集合
+        :type ServiceModule: str
+        :param Desc: 描述
+        :type Desc: str
         """
         self.Action = None
         self.CidrIp = None
         self.PortRange = None
         self.IpProtocol = None
+        self.Id = None
+        self.AddressModule = None
+        self.ServiceModule = None
+        self.Desc = None
 
 
     def _deserialize(self, params):
@@ -2725,6 +2737,10 @@ class SecurityGroupBound(AbstractModel):
         self.CidrIp = params.get("CidrIp")
         self.PortRange = params.get("PortRange")
         self.IpProtocol = params.get("IpProtocol")
+        self.Id = params.get("Id")
+        self.AddressModule = params.get("AddressModule")
+        self.ServiceModule = params.get("ServiceModule")
+        self.Desc = params.get("Desc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

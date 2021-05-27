@@ -20575,11 +20575,17 @@ class StorageStatData(AbstractModel):
         :type InfrequentStorage: int
         :param StandardStorage: 当前标准存储量，单位是字节。
         :type StandardStorage: int
+        :param ArchiveStorage: 当前归档存储量，单位是字节。
+        :type ArchiveStorage: int
+        :param DeepArchiveStorage: 当前深度归档存储量，单位是字节。
+        :type DeepArchiveStorage: int
         """
         self.Area = None
         self.TotalStorage = None
         self.InfrequentStorage = None
         self.StandardStorage = None
+        self.ArchiveStorage = None
+        self.DeepArchiveStorage = None
 
 
     def _deserialize(self, params):
@@ -20587,6 +20593,8 @@ class StorageStatData(AbstractModel):
         self.TotalStorage = params.get("TotalStorage")
         self.InfrequentStorage = params.get("InfrequentStorage")
         self.StandardStorage = params.get("StandardStorage")
+        self.ArchiveStorage = params.get("ArchiveStorage")
+        self.DeepArchiveStorage = params.get("DeepArchiveStorage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

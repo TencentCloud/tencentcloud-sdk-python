@@ -7422,6 +7422,8 @@ Config = {"Name":true,"Address":true}
         :type Address: str
         :param RegCapital: 1表示输出注册资本字段（单位：万元），其他值表示不输出。默认不输出。
         :type RegCapital: int
+        :param EstablishTime: true表示展示成立/注册日期
+        :type EstablishTime: bool
         """
         self.ImageBase64 = None
         self.ImageUrl = None
@@ -7430,6 +7432,7 @@ Config = {"Name":true,"Address":true}
         self.Name = None
         self.Address = None
         self.RegCapital = None
+        self.EstablishTime = None
 
 
     def _deserialize(self, params):
@@ -7440,6 +7443,7 @@ Config = {"Name":true,"Address":true}
         self.Name = params.get("Name")
         self.Address = params.get("Address")
         self.RegCapital = params.get("RegCapital")
+        self.EstablishTime = params.get("EstablishTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7490,6 +7494,8 @@ class VerifyBasicBizLicenseResponse(AbstractModel):
         :type RegNumResult: :class:`tencentcloud.ocr.v20181119.models.BizLicenseVerifyResult`
         :param RegCapital: 注册资本（单位：万元）,只有输入参数regCapital为1的时候才输出
         :type RegCapital: str
+        :param EstablishTime: 成立/注册日期，只有输入参数EstablishTime为true时展示，默认为空
+        :type EstablishTime: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7510,6 +7516,7 @@ class VerifyBasicBizLicenseResponse(AbstractModel):
         self.Dom = None
         self.RegNumResult = None
         self.RegCapital = None
+        self.EstablishTime = None
         self.RequestId = None
 
 
@@ -7533,6 +7540,7 @@ class VerifyBasicBizLicenseResponse(AbstractModel):
             self.RegNumResult = BizLicenseVerifyResult()
             self.RegNumResult._deserialize(params.get("RegNumResult"))
         self.RegCapital = params.get("RegCapital")
+        self.EstablishTime = params.get("EstablishTime")
         self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

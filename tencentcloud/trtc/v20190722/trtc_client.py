@@ -27,7 +27,7 @@ class TrtcClient(AbstractClient):
 
 
     def CreatePicture(self, request):
-        """上传图片
+        """此接口已废弃，调用将报错。如需使用相关功能请参见 [控制台指南 > 应用管理 > 素材管理](https://cloud.tencent.com/document/product/647/50769)  。
 
         :param request: Request instance for CreatePicture.
         :type request: :class:`tencentcloud.trtc.v20190722.models.CreatePictureRequest`
@@ -83,7 +83,7 @@ class TrtcClient(AbstractClient):
 
 
     def DeletePicture(self, request):
-        """删除图片
+        """此接口已废弃，调用将报错。如需使用相关功能请参见 [控制台指南 > 应用管理 > 素材管理](https://cloud.tencent.com/document/product/647/50769)  。
 
         :param request: Request instance for DeletePicture.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DeletePictureRequest`
@@ -224,7 +224,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribePicture(self, request):
-        """查询某图片相关参数。
+        """此接口已废弃，调用将报错。如需使用相关功能请参见 [控制台指南 > 应用管理 > 素材管理](https://cloud.tencent.com/document/product/647/50769)  。
 
         :param request: Request instance for DescribePicture.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribePictureRequest`
@@ -547,7 +547,7 @@ class TrtcClient(AbstractClient):
 
 
     def ModifyPicture(self, request):
-        """修改图片相关参数。
+        """此接口已废弃，调用将报错。如需使用相关功能请参见 [控制台指南 > 应用管理 > 素材管理](https://cloud.tencent.com/document/product/647/50769)  。
 
         :param request: Request instance for ModifyPicture.
         :type request: :class:`tencentcloud.trtc.v20190722.models.ModifyPictureRequest`

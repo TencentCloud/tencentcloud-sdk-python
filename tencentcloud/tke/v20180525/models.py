@@ -1031,16 +1031,20 @@ class ClusterPublicLB(AbstractModel):
         :type AllowFromCidrs: list of str
         :param SecurityPolicies: 安全策略放通单个IP或CIDR(例如: "192.168.1.0/24",默认为拒绝所有)
         :type SecurityPolicies: list of str
+        :param ExtraParam: 外网访问相关的扩展参数，格式为json
+        :type ExtraParam: str
         """
         self.Enabled = None
         self.AllowFromCidrs = None
         self.SecurityPolicies = None
+        self.ExtraParam = None
 
 
     def _deserialize(self, params):
         self.Enabled = params.get("Enabled")
         self.AllowFromCidrs = params.get("AllowFromCidrs")
         self.SecurityPolicies = params.get("SecurityPolicies")
+        self.ExtraParam = params.get("ExtraParam")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
