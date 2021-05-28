@@ -1500,21 +1500,26 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Filters: 过滤条件，目前支持：db-instance-id、db-instance-name、db-project-id、db-pay-mode、db-tag-key。
+        :param Filters: 按照一个或者多个过滤条件进行查询，目前支持的过滤条件有：
+db-instance-id：按照实例ID过滤，类型为string
+db-instance-name：按照实例名过滤，类型为string
+db-project-id：按照项目ID过滤，类型为integer
+db-pay-mode：按照付费模式过滤，类型为string
+db-tag-key：按照标签键过滤，类型为string
         :type Filters: list of Filter
-        :param Limit: 每页显示数量，默认返回10条。
+        :param Limit: 每页显示数量，取值范围为1-100，默认为返回10条。
         :type Limit: int
-        :param Offset: 数据偏移量，从0开始。
-        :type Offset: int
         :param OrderBy: 排序指标，如实例名、创建时间等，支持DBInstanceId,CreateTime,Name,EndTime
         :type OrderBy: str
-        :param OrderByType: 排序方式，包括升序、降序
+        :param Offset: 页码偏移量，从0开始。
+        :type Offset: int
+        :param OrderByType: 排序方式，包括升序：asc、降序：desc。
         :type OrderByType: str
         """
         self.Filters = None
         self.Limit = None
-        self.Offset = None
         self.OrderBy = None
+        self.Offset = None
         self.OrderByType = None
 
 
@@ -1526,8 +1531,8 @@ class DescribeDBInstancesRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Filters.append(obj)
         self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
         self.OrderBy = params.get("OrderBy")
+        self.Offset = params.get("Offset")
         self.OrderByType = params.get("OrderByType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

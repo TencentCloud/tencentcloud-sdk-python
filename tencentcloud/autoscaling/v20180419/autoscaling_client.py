@@ -1239,6 +1239,70 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ScaleInInstances(self, request):
+        """为伸缩组指定数量缩容实例，返回缩容活动的 ActivityId。
+        * 伸缩组需要未处于活动中
+        * 根据伸缩组的`TerminationPolicies`策略，选择被缩容的实例，可参考[缩容处理](https://cloud.tencent.com/document/product/377/8563)
+        * 接口只会选择`IN_SERVICE`实例缩容，如果需要缩容其他状态实例，可以使用 [DetachInstances](https://cloud.tencent.com/document/api/377/20436) 或 [RemoveInstances](https://cloud.tencent.com/document/api/377/20431) 接口
+        * 接口会减少期望实例数，新的期望实例数需要大于等于最小实例数
+        * 缩容如果失败或者部分成功，最后期望实例数只会扣减实际缩容成功的实例数量
+
+        :param request: Request instance for ScaleInInstances.
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.ScaleInInstancesRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.ScaleInInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ScaleInInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ScaleInInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ScaleOutInstances(self, request):
+        """为伸缩组指定数量扩容实例，返回扩容活动的 ActivityId。
+        * 伸缩组需要未处于活动中
+        * 接口会增加期望实例数，新的期望实例数需要小于等于最大实例数
+        * 扩容如果失败或者部分成功，最后期望实例数只会增加实际成功的实例数量
+
+        :param request: Request instance for ScaleOutInstances.
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.ScaleOutInstancesRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.ScaleOutInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ScaleOutInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ScaleOutInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def SetInstancesProtection(self, request):
         """本接口（SetInstancesProtection）用于设置实例移除保护。
         子机设置为移除保护之后，当发生不健康替换、报警策略、期望值变更等触发缩容时，将不对此子机缩容操作。

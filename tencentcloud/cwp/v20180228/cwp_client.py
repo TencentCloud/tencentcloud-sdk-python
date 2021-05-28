@@ -1006,6 +1006,34 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBruteAttackList(self, request):
+        """获取密码破解列表
+
+        :param request: Request instance for DescribeBruteAttackList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBruteAttackListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeBruteAttackListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBruteAttackList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBruteAttackListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBruteAttacks(self, request):
         """本接口{DescribeBruteAttacks}用于获取暴力破解事件列表。
 

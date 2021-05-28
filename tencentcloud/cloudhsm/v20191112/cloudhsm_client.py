@@ -110,6 +110,34 @@ class CloudhsmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeSupportedHsm(self, request):
+        """获取当前地域所支持的设备列表
+
+        :param request: Request instance for DescribeSupportedHsm.
+        :type request: :class:`tencentcloud.cloudhsm.v20191112.models.DescribeSupportedHsmRequest`
+        :rtype: :class:`tencentcloud.cloudhsm.v20191112.models.DescribeSupportedHsmResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSupportedHsm", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSupportedHsmResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeUsg(self, request):
         """根据用户的AppId获取用户安全组列表
 

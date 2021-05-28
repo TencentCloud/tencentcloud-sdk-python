@@ -270,6 +270,66 @@ class ClientCert(AbstractModel):
         
 
 
+class CreateVerifyRecordRequest(AbstractModel):
+    """CreateVerifyRecord请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Domain: 要取回的域名
+        :type Domain: str
+        """
+        self.Domain = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class CreateVerifyRecordResponse(AbstractModel):
+    """CreateVerifyRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SubDomain: 子解析
+        :type SubDomain: str
+        :param Record: 解析值
+        :type Record: str
+        :param RecordType: 解析类型
+        :type RecordType: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SubDomain = None
+        self.Record = None
+        self.RecordType = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SubDomain = params.get("SubDomain")
+        self.Record = params.get("Record")
+        self.RecordType = params.get("RecordType")
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class DeleteEcdnDomainRequest(AbstractModel):
     """DeleteEcdnDomain请求参数结构体
 

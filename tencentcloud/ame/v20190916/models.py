@@ -306,8 +306,11 @@ class DescribeCloudMusicRequest(AbstractModel):
         """
         :param MusicId: 歌曲Id
         :type MusicId: str
-        :param MusicType: MP3-320K-FTD-P  为获取320kbps歌曲热门片段。
-MP3-320K-FTD 为获取320kbps已核验歌曲完整资源。
+        :param MusicType: 歌曲类型，可选值有：
+<li>MP3-128K-FTW：含有水印的试听资源；</li>
+<li>MP3-320K-FTD-P：320kbps歌曲热门片段；</li>
+<li>MP3-320K-FTD：320kbps已核验歌曲完整资源。</li>
+默认为：MP3-128K-FTW
         :type MusicType: str
         """
         self.MusicId = None
@@ -1091,6 +1094,18 @@ class MusicDetailInfo(AbstractModel):
         :type Bpm: int
         :param Score: 商业化权益
         :type Score: float
+        :param Scene: 场景信息
+        :type Scene: list of str
+        :param Region: 应用地域
+        :type Region: list of str
+        :param AuthPeriod: 授权期限
+        :type AuthPeriod: str
+        :param Commercialization: 商业化权益
+        :type Commercialization: str
+        :param Platform: 跨平台传播权益
+        :type Platform: str
+        :param Channel: 传播渠道
+        :type Channel: str
         """
         self.MusicId = None
         self.AmeId = None
@@ -1098,6 +1113,12 @@ class MusicDetailInfo(AbstractModel):
         self.HitWords = None
         self.Bpm = None
         self.Score = None
+        self.Scene = None
+        self.Region = None
+        self.AuthPeriod = None
+        self.Commercialization = None
+        self.Platform = None
+        self.Channel = None
 
 
     def _deserialize(self, params):
@@ -1107,6 +1128,12 @@ class MusicDetailInfo(AbstractModel):
         self.HitWords = params.get("HitWords")
         self.Bpm = params.get("Bpm")
         self.Score = params.get("Score")
+        self.Scene = params.get("Scene")
+        self.Region = params.get("Region")
+        self.AuthPeriod = params.get("AuthPeriod")
+        self.Commercialization = params.get("Commercialization")
+        self.Platform = params.get("Platform")
+        self.Channel = params.get("Channel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

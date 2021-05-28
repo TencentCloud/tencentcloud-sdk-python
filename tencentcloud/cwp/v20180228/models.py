@@ -530,6 +530,120 @@ class BruteAttack(AbstractModel):
         
 
 
+class BruteAttackInfo(AbstractModel):
+    """密码破解列表实体
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 唯一Id
+        :type Id: int
+        :param Uuid: 云镜客户端唯一标识UUID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uuid: str
+        :param MachineIp: 主机ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MachineIp: str
+        :param MachineName: 主机名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MachineName: str
+        :param UserName: 用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param SrcIp: 来源ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SrcIp: str
+        :param Status: 失败：FAILED；成功：SUCCESS
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param Country: 国家id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Country: int
+        :param City: 城市id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type City: int
+        :param Province: 省份id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Province: int
+        :param CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param BanStatus: 阻断状态：0-未阻断；1-已阻断；2-阻断失败；3-内网攻击暂不支持阻断；4-安平暂不支持阻断
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BanStatus: int
+        :param EventType: 事件类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventType: int
+        :param Count: 发生次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Count: int
+        :param Quuid: 机器UUID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Quuid: str
+        :param IsProVersion: 是否为专业版（true/false）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsProVersion: bool
+        :param Protocol: 被攻击的服务的用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Protocol: str
+        :param Port: 端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param ModifyTime: 最近攻击时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: str
+        """
+        self.Id = None
+        self.Uuid = None
+        self.MachineIp = None
+        self.MachineName = None
+        self.UserName = None
+        self.SrcIp = None
+        self.Status = None
+        self.Country = None
+        self.City = None
+        self.Province = None
+        self.CreateTime = None
+        self.BanStatus = None
+        self.EventType = None
+        self.Count = None
+        self.Quuid = None
+        self.IsProVersion = None
+        self.Protocol = None
+        self.Port = None
+        self.ModifyTime = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Uuid = params.get("Uuid")
+        self.MachineIp = params.get("MachineIp")
+        self.MachineName = params.get("MachineName")
+        self.UserName = params.get("UserName")
+        self.SrcIp = params.get("SrcIp")
+        self.Status = params.get("Status")
+        self.Country = params.get("Country")
+        self.City = params.get("City")
+        self.Province = params.get("Province")
+        self.CreateTime = params.get("CreateTime")
+        self.BanStatus = params.get("BanStatus")
+        self.EventType = params.get("EventType")
+        self.Count = params.get("Count")
+        self.Quuid = params.get("Quuid")
+        self.IsProVersion = params.get("IsProVersion")
+        self.Protocol = params.get("Protocol")
+        self.Port = params.get("Port")
+        self.ModifyTime = params.get("ModifyTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class ChargePrepaid(AbstractModel):
     """预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
 
@@ -2635,6 +2749,89 @@ class DescribeBashRulesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.List.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DescribeBruteAttackListRequest(AbstractModel):
+    """DescribeBruteAttackList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Filters: 过滤条件。
+<li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
+<li>Status - String - 是否必填：否 - 状态筛选：失败：FAILED 成功：SUCCESS</li>
+<li>UserName - String - 是否必填：否 - UserName筛选</li>
+<li>SrcIp - String - 是否必填：否 - 来源ip筛选</li>
+<li>CreateBeginTime - String - 是否必填：否 - 创建时间筛选，开始时间</li>
+<li>CreateEndTime - String - 是否必填：否 - 创建时间筛选，结束时间</li>
+<li>Banned - String - 是否必填：否 - 阻断状态筛选，多个用","分割：0-未阻断（全局ZK开关关闭），82-未阻断(非专业版)，83-未阻断(已加白名单)，1-已阻断，2-未阻断-程序异常，3-未阻断-内网攻击暂不支持阻断，4-未阻断-安平暂不支持阻断</li>
+        :type Filters: list of Filter
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DescribeBruteAttackListResponse(AbstractModel):
+    """DescribeBruteAttackList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param BruteAttackList: 密码破解列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BruteAttackList: list of BruteAttackInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.BruteAttackList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("BruteAttackList") is not None:
+            self.BruteAttackList = []
+            for item in params.get("BruteAttackList"):
+                obj = BruteAttackInfo()
+                obj._deserialize(item)
+                self.BruteAttackList.append(obj)
         self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

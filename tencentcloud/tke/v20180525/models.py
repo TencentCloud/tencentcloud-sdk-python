@@ -241,6 +241,62 @@ class AddNodeToNodePoolResponse(AbstractModel):
         
 
 
+class AddVpcCniSubnetsRequest(AbstractModel):
+    """AddVpcCniSubnets请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param SubnetIds: 为集群容器网络增加的子网列表
+        :type SubnetIds: list of str
+        :param VpcId: 集群所属的VPC的ID
+        :type VpcId: str
+        """
+        self.ClusterId = None
+        self.SubnetIds = None
+        self.VpcId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.SubnetIds = params.get("SubnetIds")
+        self.VpcId = params.get("VpcId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class AddVpcCniSubnetsResponse(AbstractModel):
+    """AddVpcCniSubnets返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class AutoScalingGroupRange(AbstractModel):
     """集群关联的伸缩组最大实例数最小值实例数
 
@@ -991,6 +1047,15 @@ class ClusterNetworkSettings(AbstractModel):
         :type VpcId: str
         :param Cni: 网络插件是否启用CNI(默认开启)
         :type Cni: bool
+        :param KubeProxyMode: service的网络模式，当前参数只适用于ipvs+bpf模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KubeProxyMode: str
+        :param ServiceCIDR: 用于分配service的IP range，不得与 VPC CIDR 冲突，也不得与同 VPC 内其他集群 CIDR 冲突
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceCIDR: str
+        :param Subnets: 集群关联的容器子网
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Subnets: list of str
         """
         self.ClusterCIDR = None
         self.IgnoreClusterCIDRConflict = None
@@ -999,6 +1064,9 @@ class ClusterNetworkSettings(AbstractModel):
         self.Ipvs = None
         self.VpcId = None
         self.Cni = None
+        self.KubeProxyMode = None
+        self.ServiceCIDR = None
+        self.Subnets = None
 
 
     def _deserialize(self, params):
@@ -1009,6 +1077,9 @@ class ClusterNetworkSettings(AbstractModel):
         self.Ipvs = params.get("Ipvs")
         self.VpcId = params.get("VpcId")
         self.Cni = params.get("Cni")
+        self.KubeProxyMode = params.get("KubeProxyMode")
+        self.ServiceCIDR = params.get("ServiceCIDR")
+        self.Subnets = params.get("Subnets")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

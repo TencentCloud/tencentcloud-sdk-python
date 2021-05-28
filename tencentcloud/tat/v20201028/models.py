@@ -93,6 +93,8 @@ class Command(AbstractModel):
         :type FormattedDescription: str
         :param CreatedBy: 命令创建者。TAT 代表公共命令，USER 代表个人命令。
         :type CreatedBy: str
+        :param Tags: 命令关联的标签列表。
+        :type Tags: list of Tag
         """
         self.CommandId = None
         self.CommandName = None
@@ -107,6 +109,7 @@ class Command(AbstractModel):
         self.DefaultParameters = None
         self.FormattedDescription = None
         self.CreatedBy = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -123,6 +126,12 @@ class Command(AbstractModel):
         self.DefaultParameters = params.get("DefaultParameters")
         self.FormattedDescription = params.get("FormattedDescription")
         self.CreatedBy = params.get("CreatedBy")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1238,6 +1247,34 @@ class RunCommandResponse(AbstractModel):
         self.CommandId = params.get("CommandId")
         self.InvocationId = params.get("InvocationId")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class Tag(AbstractModel):
+    """标签
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: 标签键。
+        :type Key: str
+        :param Value: 标签值。
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

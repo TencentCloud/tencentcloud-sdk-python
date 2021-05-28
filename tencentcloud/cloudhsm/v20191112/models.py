@@ -204,6 +204,45 @@ class DescribeSubnetResponse(AbstractModel):
         
 
 
+class DescribeSupportedHsmRequest(AbstractModel):
+    """DescribeSupportedHsm请求参数结构体
+
+    """
+
+
+class DescribeSupportedHsmResponse(AbstractModel):
+    """DescribeSupportedHsm返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DeviceTypes: 当前地域所支持的设备列表
+        :type DeviceTypes: list of DeviceInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DeviceTypes = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DeviceTypes") is not None:
+            self.DeviceTypes = []
+            for item in params.get("DeviceTypes"):
+                obj = DeviceInfo()
+                obj._deserialize(item)
+                self.DeviceTypes.append(obj)
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class DescribeUsgRequest(AbstractModel):
     """DescribeUsg请求参数结构体
 
@@ -493,6 +532,9 @@ class DescribeVsmAttributesResponse(AbstractModel):
         :param RenewFlag: 资源续费标识，0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)
 注意：此字段可能返回 null，表示取不到有效值。
         :type RenewFlag: int
+        :param Manufacturer: 厂商
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Manufacturer: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -518,6 +560,7 @@ class DescribeVsmAttributesResponse(AbstractModel):
         self.SubnetCidrBlock = None
         self.Tags = None
         self.RenewFlag = None
+        self.Manufacturer = None
         self.RequestId = None
 
 
@@ -554,6 +597,7 @@ class DescribeVsmAttributesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.RenewFlag = params.get("RenewFlag")
+        self.Manufacturer = params.get("Manufacturer")
         self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -579,11 +623,14 @@ class DescribeVsmsRequest(AbstractModel):
         :type SearchWord: str
         :param TagFilters: 标签过滤条件
         :type TagFilters: list of TagFilter
+        :param Manufacturer: 设备所属的厂商名称，根据厂商来进行筛选
+        :type Manufacturer: str
         """
         self.Offset = None
         self.Limit = None
         self.SearchWord = None
         self.TagFilters = None
+        self.Manufacturer = None
 
 
     def _deserialize(self, params):
@@ -596,6 +643,7 @@ class DescribeVsmsRequest(AbstractModel):
                 obj = TagFilter()
                 obj._deserialize(item)
                 self.TagFilters.append(obj)
+        self.Manufacturer = params.get("Manufacturer")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -634,6 +682,72 @@ class DescribeVsmsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.VsmList.append(obj)
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DeviceInfo(AbstractModel):
+    """设备厂商信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Manufacturer: 厂商名称
+        :type Manufacturer: str
+        :param HsmTypes: 此厂商旗下的设备信息列表
+        :type HsmTypes: list of HsmInfo
+        """
+        self.Manufacturer = None
+        self.HsmTypes = None
+
+
+    def _deserialize(self, params):
+        self.Manufacturer = params.get("Manufacturer")
+        if params.get("HsmTypes") is not None:
+            self.HsmTypes = []
+            for item in params.get("HsmTypes"):
+                obj = HsmInfo()
+                obj._deserialize(item)
+                self.HsmTypes.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class HsmInfo(AbstractModel):
+    """支持的加密机类型信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Model: 加密机型号
+        :type Model: str
+        :param VsmTypes: 此类型的加密机所支持的VSM类型列表
+        :type VsmTypes: list of VsmInfo
+        """
+        self.Model = None
+        self.VsmTypes = None
+
+
+    def _deserialize(self, params):
+        self.Model = params.get("Model")
+        if params.get("VsmTypes") is not None:
+            self.VsmTypes = []
+            for item in params.get("VsmTypes"):
+                obj = VsmInfo()
+                obj._deserialize(item)
+                self.VsmTypes.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -877,6 +991,9 @@ class ResourceInfo(AbstractModel):
         :param Tags: 标签列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
+        :param Manufacturer: 厂商
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Manufacturer: str
         """
         self.ResourceId = None
         self.ResourceName = None
@@ -899,6 +1016,7 @@ class ResourceInfo(AbstractModel):
         self.CreateUin = None
         self.RenewFlag = None
         self.Tags = None
+        self.Manufacturer = None
 
 
     def _deserialize(self, params):
@@ -933,6 +1051,7 @@ class ResourceInfo(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.Manufacturer = params.get("Manufacturer")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1259,6 +1378,34 @@ class Vpc(AbstractModel):
         self.VpcId = params.get("VpcId")
         self.CreatedTime = params.get("CreatedTime")
         self.IsDefault = params.get("IsDefault")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class VsmInfo(AbstractModel):
+    """支持的Vsm类型信息
+
+    """
+
+    def __init__(self):
+        """
+        :param TypeName: VSM类型名称
+        :type TypeName: str
+        :param TypeID: VSM类型值
+        :type TypeID: int
+        """
+        self.TypeName = None
+        self.TypeID = None
+
+
+    def _deserialize(self, params):
+        self.TypeName = params.get("TypeName")
+        self.TypeID = params.get("TypeID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

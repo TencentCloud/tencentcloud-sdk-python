@@ -110,6 +110,34 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AddVpcCniSubnets(self, request):
+        """针对VPC-CNI模式的集群，增加集群容器网络可使用的子网
+
+        :param request: Request instance for AddVpcCniSubnets.
+        :type request: :class:`tencentcloud.tke.v20180525.models.AddVpcCniSubnetsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.AddVpcCniSubnetsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AddVpcCniSubnets", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddVpcCniSubnetsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CheckInstancesUpgradeAble(self, request):
         """检查给定节点列表中哪些是可升级的
 

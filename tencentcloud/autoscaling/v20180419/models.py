@@ -4292,6 +4292,118 @@ class RunSecurityServiceEnabled(AbstractModel):
         
 
 
+class ScaleInInstancesRequest(AbstractModel):
+    """ScaleInInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AutoScalingGroupId: 伸缩组ID。
+        :type AutoScalingGroupId: str
+        :param ScaleInNumber: 希望缩容的实例数量。
+        :type ScaleInNumber: int
+        """
+        self.AutoScalingGroupId = None
+        self.ScaleInNumber = None
+
+
+    def _deserialize(self, params):
+        self.AutoScalingGroupId = params.get("AutoScalingGroupId")
+        self.ScaleInNumber = params.get("ScaleInNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class ScaleInInstancesResponse(AbstractModel):
+    """ScaleInInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ActivityId: 伸缩活动ID。
+        :type ActivityId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ActivityId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ActivityId = params.get("ActivityId")
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class ScaleOutInstancesRequest(AbstractModel):
+    """ScaleOutInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AutoScalingGroupId: 伸缩组ID。
+        :type AutoScalingGroupId: str
+        :param ScaleOutNumber: 希望扩容的实例数量。
+        :type ScaleOutNumber: int
+        """
+        self.AutoScalingGroupId = None
+        self.ScaleOutNumber = None
+
+
+    def _deserialize(self, params):
+        self.AutoScalingGroupId = params.get("AutoScalingGroupId")
+        self.ScaleOutNumber = params.get("ScaleOutNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class ScaleOutInstancesResponse(AbstractModel):
+    """ScaleOutInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ActivityId: 伸缩活动ID。
+        :type ActivityId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ActivityId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ActivityId = params.get("ActivityId")
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class ScalingPolicy(AbstractModel):
     """告警触发策略。
 
