@@ -397,6 +397,34 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ContractOrder(self, request):
+        """应用需要先带上签约信息调用本接口生成支付订单号，并将应答的PayInfo透传给聚鑫SDK，拉起客户端（包括微信公众号/微信小程序/客户端App）支付。
+
+        :param request: Request instance for ContractOrder.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.ContractOrderRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.ContractOrderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ContractOrder", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ContractOrderResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateAcct(self, request):
         """子商户入驻聚鑫平台
 
@@ -1322,6 +1350,34 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def QueryContract(self, request):
+        """通过此接口查询签约数据
+
+        :param request: Request instance for QueryContract.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryContractRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryContractResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryContract", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryContractResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def QueryCustAcctIdBalance(self, request):
         """查询银行子账户余额。查询会员子账户以及平台的功能子账户的余额。
 
@@ -2149,6 +2205,62 @@ class CpdpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RevokeRechargeByThirdPayResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SyncContractData(self, request):
+        """对于存量的签约关系导入或者部分场景下米大师无法收到签约通知的场景，需要由调用方主动将签约状态同步至米大师
+
+        :param request: Request instance for SyncContractData.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.SyncContractDataRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.SyncContractDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SyncContractData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SyncContractDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def TerminateContract(self, request):
+        """通过此接口进行解约
+
+        :param request: Request instance for TerminateContract.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.TerminateContractRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.TerminateContractResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("TerminateContract", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.TerminateContractResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

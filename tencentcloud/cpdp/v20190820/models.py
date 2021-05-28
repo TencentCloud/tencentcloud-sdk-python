@@ -1631,6 +1631,68 @@ class BindRelateAcctUnionPayResponse(AbstractModel):
         
 
 
+class ChannelContractInfo(AbstractModel):
+    """米大师内部存放的合约信息
+
+    """
+
+    def __init__(self):
+        """
+        :param OutContractCode: 外部合约协议号
+        :type OutContractCode: str
+        :param ChannelContractCode: 米大师内部生成的合约协议号
+        :type ChannelContractCode: str
+        """
+        self.OutContractCode = None
+        self.ChannelContractCode = None
+
+
+    def _deserialize(self, params):
+        self.OutContractCode = params.get("OutContractCode")
+        self.ChannelContractCode = params.get("ChannelContractCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class ChannelReturnContractInfo(AbstractModel):
+    """米大师内部生成的合约信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ContractStatus: 平台合约状态
+协议状态，枚举值：
+CONTRACT_STATUS_SIGNED：已签约
+CONTRACT_STATUS_TERMINATED：未签约
+CONTRACT_STATUS_PENDING：签约进行中
+        :type ContractStatus: str
+        :param ChannelContractInfo: 米大师内部存放的合约信息
+        :type ChannelContractInfo: :class:`tencentcloud.cpdp.v20190820.models.ChannelContractInfo`
+        """
+        self.ContractStatus = None
+        self.ChannelContractInfo = None
+
+
+    def _deserialize(self, params):
+        self.ContractStatus = params.get("ContractStatus")
+        if params.get("ChannelContractInfo") is not None:
+            self.ChannelContractInfo = ChannelContractInfo()
+            self.ChannelContractInfo._deserialize(params.get("ChannelContractInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class CheckAcctRequest(AbstractModel):
     """CheckAcct请求参数结构体
 
@@ -1956,6 +2018,418 @@ class CloseOrderResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class ContractInfo(AbstractModel):
+    """合约信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ChannelContractMerchantId: 米大师内部签约商户号
+        :type ChannelContractMerchantId: str
+        :param ChannelContractSubMerchantId: 米大师内部签约子商户号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChannelContractSubMerchantId: str
+        :param ChannelContractAppId: 米大师内部签约应用ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChannelContractAppId: str
+        :param ChannelContractSubAppId: 米大师内部签约子应用ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChannelContractSubAppId: str
+        :param OutContractCode: 业务合约协议号
+        :type OutContractCode: str
+        :param ExternalContractUserInfoList: 第三方渠道用户信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalContractUserInfoList: list of ExternalContractUserInfo
+        :param ContractMethod: 签约方式，如 wechat_app ，使用app方式下的微信签
+        :type ContractMethod: str
+        :param ContractSceneId: 合约场景id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContractSceneId: str
+        :param UserInfo: 用户信息
+        :type UserInfo: :class:`tencentcloud.cpdp.v20190820.models.ContractUserInfo`
+        :param ExternalContractData: 第三方渠道签约数据
+        :type ExternalContractData: str
+        """
+        self.ChannelContractMerchantId = None
+        self.ChannelContractSubMerchantId = None
+        self.ChannelContractAppId = None
+        self.ChannelContractSubAppId = None
+        self.OutContractCode = None
+        self.ExternalContractUserInfoList = None
+        self.ContractMethod = None
+        self.ContractSceneId = None
+        self.UserInfo = None
+        self.ExternalContractData = None
+
+
+    def _deserialize(self, params):
+        self.ChannelContractMerchantId = params.get("ChannelContractMerchantId")
+        self.ChannelContractSubMerchantId = params.get("ChannelContractSubMerchantId")
+        self.ChannelContractAppId = params.get("ChannelContractAppId")
+        self.ChannelContractSubAppId = params.get("ChannelContractSubAppId")
+        self.OutContractCode = params.get("OutContractCode")
+        if params.get("ExternalContractUserInfoList") is not None:
+            self.ExternalContractUserInfoList = []
+            for item in params.get("ExternalContractUserInfoList"):
+                obj = ExternalContractUserInfo()
+                obj._deserialize(item)
+                self.ExternalContractUserInfoList.append(obj)
+        self.ContractMethod = params.get("ContractMethod")
+        self.ContractSceneId = params.get("ContractSceneId")
+        if params.get("UserInfo") is not None:
+            self.UserInfo = ContractUserInfo()
+            self.UserInfo._deserialize(params.get("UserInfo"))
+        self.ExternalContractData = params.get("ExternalContractData")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class ContractOrderInSubOrder(AbstractModel):
+    """支付中签约子订单列表
+
+    """
+
+    def __init__(self):
+        """
+        :param SubMchIncome: 子订单结算应收金额，单位： 分
+        :type SubMchIncome: int
+        :param PlatformIncome: 子订单平台应收金额，单位：分
+        :type PlatformIncome: int
+        :param ProductDetail: 子订单商品详情
+        :type ProductDetail: str
+        :param ProductName: 子订单商品名称
+        :type ProductName: str
+        :param SubAppId: 聚鑫计费SubAppId，代表子商户
+        :type SubAppId: str
+        :param SubOutTradeNo: 子订单号
+        :type SubOutTradeNo: str
+        :param Amt: 子订单支付金额
+        :type Amt: int
+        :param OriginalAmt: 子订单原始金额
+        :type OriginalAmt: int
+        :param Metadata: 发货标识，由业务在调用聚鑫下单接口的 时候下发
+        :type Metadata: str
+        """
+        self.SubMchIncome = None
+        self.PlatformIncome = None
+        self.ProductDetail = None
+        self.ProductName = None
+        self.SubAppId = None
+        self.SubOutTradeNo = None
+        self.Amt = None
+        self.OriginalAmt = None
+        self.Metadata = None
+
+
+    def _deserialize(self, params):
+        self.SubMchIncome = params.get("SubMchIncome")
+        self.PlatformIncome = params.get("PlatformIncome")
+        self.ProductDetail = params.get("ProductDetail")
+        self.ProductName = params.get("ProductName")
+        self.SubAppId = params.get("SubAppId")
+        self.SubOutTradeNo = params.get("SubOutTradeNo")
+        self.Amt = params.get("Amt")
+        self.OriginalAmt = params.get("OriginalAmt")
+        self.Metadata = params.get("Metadata")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class ContractOrderRequest(AbstractModel):
+    """ContractOrder请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CurrencyType: ISO 货币代码，CNY
+        :type CurrencyType: str
+        :param MidasAppId: 聚鑫分配的支付主MidasAppId
+        :type MidasAppId: str
+        :param OutTradeNo: 支付订单号，仅支持数字、字母、下划线（_）、横杠字符（-）、点（.）的组合
+        :type OutTradeNo: str
+        :param ProductDetail: 商品详情，需要URL编码
+        :type ProductDetail: str
+        :param ProductId: 商品ID，仅支持数字、字母、下划线（_）、横杠字符（-）、点（.）的组合
+        :type ProductId: str
+        :param ProductName: 商品名称，需要URL编码
+        :type ProductName: str
+        :param TotalAmt: 支付金额，单位： 分
+        :type TotalAmt: int
+        :param UserId: 用户ID，长度不小于5位，仅支持字母和数字的组合
+        :type UserId: str
+        :param RealChannel: 银行真实渠道.如:bank_pingan
+        :type RealChannel: str
+        :param OriginalAmt: 原始金额
+        :type OriginalAmt: int
+        :param MidasSecretId: 聚鑫分配的安全ID
+        :type MidasSecretId: str
+        :param MidasSignature: 按照聚鑫安全密钥计算的签名
+        :type MidasSignature: str
+        :param ContractNotifyUrl: 签约通知地址
+        :type ContractNotifyUrl: str
+        :param CallbackUrl: Web端回调地址
+        :type CallbackUrl: str
+        :param Channel: 指定支付渠道：  wechat：微信支付  qqwallet：QQ钱包 
+ bank：网银支付  只有一个渠道时需要指定
+        :type Channel: str
+        :param Metadata: 透传字段，支付成功回调透传给应用，用于业务透传自定义内容
+        :type Metadata: str
+        :param Quantity: 购买数量，不传默认为1
+        :type Quantity: int
+        :param SubAppId: 聚鑫计费SubAppId，代表子商户
+        :type SubAppId: str
+        :param SubOrderList: 子订单信息列表，格式：子订单号、子应用ID、金额。 压缩后最长不可超过65535字节(去除空格，换行，制表符等无意义字符)
+注：接入银行或其他支付渠道服务商模式下，必传
+        :type SubOrderList: list of ContractOrderInSubOrder
+        :param TotalMchIncome: 结算应收金额，单位：分
+        :type TotalMchIncome: int
+        :param TotalPlatformIncome: 平台应收金额，单位：分
+        :type TotalPlatformIncome: int
+        :param WxOpenId: 微信公众号/小程序支付时为必选，需要传微信下的openid
+        :type WxOpenId: str
+        :param WxSubOpenId: 在服务商模式下，微信公众号/小程序支付时wx_sub_openid和wx_openid二选一
+        :type WxSubOpenId: str
+        :param MidasEnvironment: 环境名:
+release: 现网环境
+sandbox: 沙箱环境
+development: 开发环境
+缺省: release
+        :type MidasEnvironment: str
+        :param WxAppId: 微信商户应用ID
+        :type WxAppId: str
+        :param WxSubAppId: 微信商户子应用ID
+        :type WxSubAppId: str
+        :param PaymentNotifyUrl: 支付通知地址
+        :type PaymentNotifyUrl: str
+        :param ContractSceneId: 传入调用方在Midas注册签约信息时获得的ContractSceneId。若未在Midas注册签约信息，则传入ExternalContractData。注意：ContractSceneId与ExternalContractData必须二选一传入其中一个
+        :type ContractSceneId: str
+        :param ExternalContractData: 需要按照各个渠道的扩展签约信息规范组装好该字段。若未在Midas注册签约信息，则传入该字段。注意：ContractSceneId与ExternalContractData必须二选一传入其中一个
+        :type ExternalContractData: str
+        :param OutContractCode: 外部签约协议号，唯一标记一个签约关系。仅支持数字、字母、下划线（_）、横杠字符（-）、点（.）的组合
+        :type OutContractCode: str
+        :param AttachData: 透传给第三方渠道的附加数据
+        :type AttachData: str
+        :param ContractDisplayName: 展示用的签约用户名称，若不传入时，默认取UserId
+        :type ContractDisplayName: str
+        """
+        self.CurrencyType = None
+        self.MidasAppId = None
+        self.OutTradeNo = None
+        self.ProductDetail = None
+        self.ProductId = None
+        self.ProductName = None
+        self.TotalAmt = None
+        self.UserId = None
+        self.RealChannel = None
+        self.OriginalAmt = None
+        self.MidasSecretId = None
+        self.MidasSignature = None
+        self.ContractNotifyUrl = None
+        self.CallbackUrl = None
+        self.Channel = None
+        self.Metadata = None
+        self.Quantity = None
+        self.SubAppId = None
+        self.SubOrderList = None
+        self.TotalMchIncome = None
+        self.TotalPlatformIncome = None
+        self.WxOpenId = None
+        self.WxSubOpenId = None
+        self.MidasEnvironment = None
+        self.WxAppId = None
+        self.WxSubAppId = None
+        self.PaymentNotifyUrl = None
+        self.ContractSceneId = None
+        self.ExternalContractData = None
+        self.OutContractCode = None
+        self.AttachData = None
+        self.ContractDisplayName = None
+
+
+    def _deserialize(self, params):
+        self.CurrencyType = params.get("CurrencyType")
+        self.MidasAppId = params.get("MidasAppId")
+        self.OutTradeNo = params.get("OutTradeNo")
+        self.ProductDetail = params.get("ProductDetail")
+        self.ProductId = params.get("ProductId")
+        self.ProductName = params.get("ProductName")
+        self.TotalAmt = params.get("TotalAmt")
+        self.UserId = params.get("UserId")
+        self.RealChannel = params.get("RealChannel")
+        self.OriginalAmt = params.get("OriginalAmt")
+        self.MidasSecretId = params.get("MidasSecretId")
+        self.MidasSignature = params.get("MidasSignature")
+        self.ContractNotifyUrl = params.get("ContractNotifyUrl")
+        self.CallbackUrl = params.get("CallbackUrl")
+        self.Channel = params.get("Channel")
+        self.Metadata = params.get("Metadata")
+        self.Quantity = params.get("Quantity")
+        self.SubAppId = params.get("SubAppId")
+        if params.get("SubOrderList") is not None:
+            self.SubOrderList = []
+            for item in params.get("SubOrderList"):
+                obj = ContractOrderInSubOrder()
+                obj._deserialize(item)
+                self.SubOrderList.append(obj)
+        self.TotalMchIncome = params.get("TotalMchIncome")
+        self.TotalPlatformIncome = params.get("TotalPlatformIncome")
+        self.WxOpenId = params.get("WxOpenId")
+        self.WxSubOpenId = params.get("WxSubOpenId")
+        self.MidasEnvironment = params.get("MidasEnvironment")
+        self.WxAppId = params.get("WxAppId")
+        self.WxSubAppId = params.get("WxSubAppId")
+        self.PaymentNotifyUrl = params.get("PaymentNotifyUrl")
+        self.ContractSceneId = params.get("ContractSceneId")
+        self.ExternalContractData = params.get("ExternalContractData")
+        self.OutContractCode = params.get("OutContractCode")
+        self.AttachData = params.get("AttachData")
+        self.ContractDisplayName = params.get("ContractDisplayName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class ContractOrderResponse(AbstractModel):
+    """ContractOrder返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalAmt: 支付金额，单位： 分
+        :type TotalAmt: int
+        :param OutTradeNo: 应用支付订单号
+        :type OutTradeNo: str
+        :param PayInfo: 支付参数透传给聚鑫SDK（原文透传给SDK即可，不需要解码）
+        :type PayInfo: str
+        :param TransactionId: 聚鑫的交易订单号
+        :type TransactionId: str
+        :param OutContractCode: 外部签约协议号
+        :type OutContractCode: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalAmt = None
+        self.OutTradeNo = None
+        self.PayInfo = None
+        self.TransactionId = None
+        self.OutContractCode = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalAmt = params.get("TotalAmt")
+        self.OutTradeNo = params.get("OutTradeNo")
+        self.PayInfo = params.get("PayInfo")
+        self.TransactionId = params.get("TransactionId")
+        self.OutContractCode = params.get("OutContractCode")
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class ContractSyncInfo(AbstractModel):
+    """签约同步信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ExternalReturnContractInfo: 第三方渠道合约信息
+        :type ExternalReturnContractInfo: :class:`tencentcloud.cpdp.v20190820.models.ExternalReturnContractInfo`
+        :param ExternalContractUserInfo: 第三方渠道用户信息
+        :type ExternalContractUserInfo: list of ExternalContractUserInfo
+        :param ContractMethod: 签约方式，枚举值，
+<br/>CONTRACT_METHOD_WECHAT_INVALID: 无效
+CONTRACT_METHOD_WECHAT_APP: 微信APP
+CONTRACT_METHOD_WECHAT_PUBLIC: 微信公众号
+CONTRACT_METHOD_WECHAT_MINIPROGRAM: 微信小程序
+CONTRACT_METHOD_WECHAT_H5: 微信H5
+        :type ContractMethod: str
+        :param ContractSceneId: 在米大师侧分配的场景id
+        :type ContractSceneId: str
+        :param ExternalReturnContractData: 调用方从第三方渠道查询到的签约数据，由各个渠道定义
+        :type ExternalReturnContractData: str
+        """
+        self.ExternalReturnContractInfo = None
+        self.ExternalContractUserInfo = None
+        self.ContractMethod = None
+        self.ContractSceneId = None
+        self.ExternalReturnContractData = None
+
+
+    def _deserialize(self, params):
+        if params.get("ExternalReturnContractInfo") is not None:
+            self.ExternalReturnContractInfo = ExternalReturnContractInfo()
+            self.ExternalReturnContractInfo._deserialize(params.get("ExternalReturnContractInfo"))
+        if params.get("ExternalContractUserInfo") is not None:
+            self.ExternalContractUserInfo = []
+            for item in params.get("ExternalContractUserInfo"):
+                obj = ExternalContractUserInfo()
+                obj._deserialize(item)
+                self.ExternalContractUserInfo.append(obj)
+        self.ContractMethod = params.get("ContractMethod")
+        self.ContractSceneId = params.get("ContractSceneId")
+        self.ExternalReturnContractData = params.get("ExternalReturnContractData")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class ContractUserInfo(AbstractModel):
+    """用户信息
+
+    """
+
+    def __init__(self):
+        """
+        :param UserType: USER_ID: 用户ID
+ANONYMOUS: 匿名类型用户ID
+        :type UserType: str
+        :param UserId: 用户类型
+        :type UserId: str
+        """
+        self.UserType = None
+        self.UserId = None
+
+
+    def _deserialize(self, params):
+        self.UserType = params.get("UserType")
+        self.UserId = params.get("UserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4323,6 +4797,108 @@ class ExecuteMemberTransactionResponse(AbstractModel):
         
 
 
+class ExternalContractUserInfo(AbstractModel):
+    """第三方渠道用户信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ExternalUserType: 第三方用户类型，例如:  WX_OPENID, WX_SUB_OPENID,WX_PAYER_OPENID
+        :type ExternalUserType: str
+        :param ExternalUserId: 第三方用户ID
+        :type ExternalUserId: str
+        """
+        self.ExternalUserType = None
+        self.ExternalUserId = None
+
+
+    def _deserialize(self, params):
+        self.ExternalUserType = params.get("ExternalUserType")
+        self.ExternalUserId = params.get("ExternalUserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class ExternalReturnContractInfo(AbstractModel):
+    """第三方渠道合约信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ExternalReturnAgreementId: 第三方渠道协议id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalReturnAgreementId: str
+        :param ExternalReturnContractEffectiveTimestamp: 第三方渠道协议生效时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalReturnContractEffectiveTimestamp: str
+        :param ExternalReturnContractTerminationTimestamp: 第三方渠道协议解约时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalReturnContractTerminationTimestamp: str
+        :param ExternalReturnContractStatus: 平台合约状态
+协议状态，枚举值：
+CONTRACT_STATUS_SIGNED：已签约
+CONTRACT_STATUS_TERMINATED：未签约
+CONTRACT_STATUS_PENDING：签约进行中
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalReturnContractStatus: str
+        :param ExternalReturnRequestId: 第三方渠道请求序列号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalReturnRequestId: str
+        :param ExternalReturnContractSignedTimestamp: 第三方渠道协议签署时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalReturnContractSignedTimestamp: str
+        :param ExternalReturnContractExpiredTimestamp: 第三方渠道协议到期时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalReturnContractExpiredTimestamp: str
+        :param ExternalReturnContractData: 第三方渠道返回的合约数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalReturnContractData: str
+        :param ExternalReturnContractTerminationRemark: 第三方渠道解约备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalReturnContractTerminationRemark: str
+        :param ExternalReturnContractTerminationMode: 第三方渠道协议解约方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalReturnContractTerminationMode: str
+        """
+        self.ExternalReturnAgreementId = None
+        self.ExternalReturnContractEffectiveTimestamp = None
+        self.ExternalReturnContractTerminationTimestamp = None
+        self.ExternalReturnContractStatus = None
+        self.ExternalReturnRequestId = None
+        self.ExternalReturnContractSignedTimestamp = None
+        self.ExternalReturnContractExpiredTimestamp = None
+        self.ExternalReturnContractData = None
+        self.ExternalReturnContractTerminationRemark = None
+        self.ExternalReturnContractTerminationMode = None
+
+
+    def _deserialize(self, params):
+        self.ExternalReturnAgreementId = params.get("ExternalReturnAgreementId")
+        self.ExternalReturnContractEffectiveTimestamp = params.get("ExternalReturnContractEffectiveTimestamp")
+        self.ExternalReturnContractTerminationTimestamp = params.get("ExternalReturnContractTerminationTimestamp")
+        self.ExternalReturnContractStatus = params.get("ExternalReturnContractStatus")
+        self.ExternalReturnRequestId = params.get("ExternalReturnRequestId")
+        self.ExternalReturnContractSignedTimestamp = params.get("ExternalReturnContractSignedTimestamp")
+        self.ExternalReturnContractExpiredTimestamp = params.get("ExternalReturnContractExpiredTimestamp")
+        self.ExternalReturnContractData = params.get("ExternalReturnContractData")
+        self.ExternalReturnContractTerminationRemark = params.get("ExternalReturnContractTerminationRemark")
+        self.ExternalReturnContractTerminationMode = params.get("ExternalReturnContractTerminationMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class FileItem(AbstractModel):
     """对账文件信息
 
@@ -6222,6 +6798,121 @@ class QueryCommonTransferRechargeResponse(AbstractModel):
                 obj._deserialize(item)
                 self.TranItemArray.append(obj)
         self.ReservedMsg = params.get("ReservedMsg")
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class QueryContractRequest(AbstractModel):
+    """QueryContract请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MidasAppId: 聚鑫分配的支付主MidasAppId
+        :type MidasAppId: str
+        :param UserId: 用户ID，长度不小于5位，仅支持字母和数字的组合
+        :type UserId: str
+        :param Channel: 指定渠道：  wechat：微信支付  qqwallet：QQ钱包 
+ bank：网银支付  只有一个渠道时需要指定
+        :type Channel: str
+        :param ContractQueryMode: 枚举值：
+CONTRACT_QUERY_MODE_BY_OUT_CONTRACT_CODE：按 OutContractCode + ContractSceneId 查询
+CONTRACT_QUERY_MODE_BY_CHANNEL_CONTRACT_CODE：按ChannelContractCode查询
+        :type ContractQueryMode: str
+        :param MidasSignature: 按照聚鑫安全密钥计算的签名
+        :type MidasSignature: str
+        :param MidasSecretId: 聚鑫分配的安全ID
+        :type MidasSecretId: str
+        :param SubAppId: 聚鑫计费SubAppId，代表子商户
+        :type SubAppId: str
+        :param OutContractCode: 业务签约合同协议号 当 ContractQueryMode=CONTRACT_QUERY_MODE_BY_OUT_CONTRACT_CODE 时 ，必填
+        :type OutContractCode: str
+        :param ContractSceneId: 签约场景ID，当 ContractQueryMode=CONTRACT_QUERY_MODE_BY_OUT_CONTRACT_CODE 时 必填，在米大师侧托管后生成
+        :type ContractSceneId: str
+        :param ChannelContractCode: 米大师生成的协议号 ，当 ContractQueryMode=CONTRACT_QUERY_MODE_BY_CHANNEL_CONTRACT_CODE 时必填
+        :type ChannelContractCode: str
+        :param ExternalContractData: 第三方渠道合约数据，为json字符串，与特定渠道有关
+        :type ExternalContractData: str
+        :param MidasEnvironment: 环境名:
+release: 现网环境
+sandbox: 沙箱环境
+development: 开发环境
+缺省: release
+        :type MidasEnvironment: str
+        :param UserType: USER_ID: 用户ID
+ANONYMOUS: 匿名类型 USER_ID
+默认值为 USER_ID
+        :type UserType: str
+        """
+        self.MidasAppId = None
+        self.UserId = None
+        self.Channel = None
+        self.ContractQueryMode = None
+        self.MidasSignature = None
+        self.MidasSecretId = None
+        self.SubAppId = None
+        self.OutContractCode = None
+        self.ContractSceneId = None
+        self.ChannelContractCode = None
+        self.ExternalContractData = None
+        self.MidasEnvironment = None
+        self.UserType = None
+
+
+    def _deserialize(self, params):
+        self.MidasAppId = params.get("MidasAppId")
+        self.UserId = params.get("UserId")
+        self.Channel = params.get("Channel")
+        self.ContractQueryMode = params.get("ContractQueryMode")
+        self.MidasSignature = params.get("MidasSignature")
+        self.MidasSecretId = params.get("MidasSecretId")
+        self.SubAppId = params.get("SubAppId")
+        self.OutContractCode = params.get("OutContractCode")
+        self.ContractSceneId = params.get("ContractSceneId")
+        self.ChannelContractCode = params.get("ChannelContractCode")
+        self.ExternalContractData = params.get("ExternalContractData")
+        self.MidasEnvironment = params.get("MidasEnvironment")
+        self.UserType = params.get("UserType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class QueryContractResponse(AbstractModel):
+    """QueryContract返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ContractData: 签约数据
+        :type ContractData: :class:`tencentcloud.cpdp.v20190820.models.ResponseQueryContract`
+        :param Msg: 请求处理信息
+        :type Msg: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ContractData = None
+        self.Msg = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ContractData") is not None:
+            self.ContractData = ResponseQueryContract()
+            self.ContractData._deserialize(params.get("ContractData"))
+        self.Msg = params.get("Msg")
         self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -10035,6 +10726,148 @@ class RegisterBillSupportWithdrawResponse(AbstractModel):
         
 
 
+class ResponseQueryContract(AbstractModel):
+    """签约数据
+
+    """
+
+    def __init__(self):
+        """
+        :param ExternalReturnCode: 第三方渠道错误码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalReturnCode: str
+        :param ExternalReturnMessage: 第三方渠道错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalReturnMessage: str
+        :param ExternalReturnData: 第三方渠道返回的原始数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalReturnData: str
+        :param ChannelMerchantId: 米大师内部商户号
+        :type ChannelMerchantId: str
+        :param ChannelSubMerchantId: 米大师内部子商户号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChannelSubMerchantId: str
+        :param ChannelAppId: 米大师内部应用ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChannelAppId: str
+        :param ChannelSubAppId: 米大师内部子应用ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChannelSubAppId: str
+        :param ChannelName: 渠道名称
+        :type ChannelName: str
+        :param ReturnContractInfo: 返回的合约信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReturnContractInfo: :class:`tencentcloud.cpdp.v20190820.models.ReturnContractInfo`
+        :param NotifyUrl: 签约通知地址
+        :type NotifyUrl: str
+        """
+        self.ExternalReturnCode = None
+        self.ExternalReturnMessage = None
+        self.ExternalReturnData = None
+        self.ChannelMerchantId = None
+        self.ChannelSubMerchantId = None
+        self.ChannelAppId = None
+        self.ChannelSubAppId = None
+        self.ChannelName = None
+        self.ReturnContractInfo = None
+        self.NotifyUrl = None
+
+
+    def _deserialize(self, params):
+        self.ExternalReturnCode = params.get("ExternalReturnCode")
+        self.ExternalReturnMessage = params.get("ExternalReturnMessage")
+        self.ExternalReturnData = params.get("ExternalReturnData")
+        self.ChannelMerchantId = params.get("ChannelMerchantId")
+        self.ChannelSubMerchantId = params.get("ChannelSubMerchantId")
+        self.ChannelAppId = params.get("ChannelAppId")
+        self.ChannelSubAppId = params.get("ChannelSubAppId")
+        self.ChannelName = params.get("ChannelName")
+        if params.get("ReturnContractInfo") is not None:
+            self.ReturnContractInfo = ReturnContractInfo()
+            self.ReturnContractInfo._deserialize(params.get("ReturnContractInfo"))
+        self.NotifyUrl = params.get("NotifyUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class ResponseTerminateContract(AbstractModel):
+    """解约数据
+
+    """
+
+    def __init__(self):
+        """
+        :param ExternalReturnCode: 第三方渠道错误码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalReturnCode: str
+        :param ExternalReturnMessage: 第三方渠道错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalReturnMessage: str
+        :param ExternalReturnData: 第三方渠道返回的原始数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalReturnData: str
+        """
+        self.ExternalReturnCode = None
+        self.ExternalReturnMessage = None
+        self.ExternalReturnData = None
+
+
+    def _deserialize(self, params):
+        self.ExternalReturnCode = params.get("ExternalReturnCode")
+        self.ExternalReturnMessage = params.get("ExternalReturnMessage")
+        self.ExternalReturnData = params.get("ExternalReturnData")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class ReturnContractInfo(AbstractModel):
+    """返回的合约信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ContractInfo: 合约信息
+        :type ContractInfo: :class:`tencentcloud.cpdp.v20190820.models.ContractInfo`
+        :param ChannelReturnContractInfo: 米大师内部生成的合约信息
+        :type ChannelReturnContractInfo: :class:`tencentcloud.cpdp.v20190820.models.ChannelReturnContractInfo`
+        :param ExternalReturnContractInfo: 第三方渠道合约信息
+        :type ExternalReturnContractInfo: :class:`tencentcloud.cpdp.v20190820.models.ExternalReturnContractInfo`
+        """
+        self.ContractInfo = None
+        self.ChannelReturnContractInfo = None
+        self.ExternalReturnContractInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("ContractInfo") is not None:
+            self.ContractInfo = ContractInfo()
+            self.ContractInfo._deserialize(params.get("ContractInfo"))
+        if params.get("ChannelReturnContractInfo") is not None:
+            self.ChannelReturnContractInfo = ChannelReturnContractInfo()
+            self.ChannelReturnContractInfo._deserialize(params.get("ChannelReturnContractInfo"))
+        if params.get("ExternalReturnContractInfo") is not None:
+            self.ExternalReturnContractInfo = ExternalReturnContractInfo()
+            self.ExternalReturnContractInfo._deserialize(params.get("ExternalReturnContractInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class RevResigterBillSupportWithdrawRequest(AbstractModel):
     """RevResigterBillSupportWithdraw请求参数结构体
 
@@ -10472,6 +11305,272 @@ class RevokeRechargeByThirdPayResponse(AbstractModel):
         self.RequestType = params.get("RequestType")
         self.ReservedMessage = params.get("ReservedMessage")
         self.FrontSequenceNumber = params.get("FrontSequenceNumber")
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class SceneInfo(AbstractModel):
+    """场景信息
+
+    """
+
+    def __init__(self):
+        """
+        :param LocaleCode: 语言代码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LocaleCode: str
+        :param RegionCode: 地区代码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionCode: str
+        :param UserClientIp: 用户IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserClientIp: str
+        """
+        self.LocaleCode = None
+        self.RegionCode = None
+        self.UserClientIp = None
+
+
+    def _deserialize(self, params):
+        self.LocaleCode = params.get("LocaleCode")
+        self.RegionCode = params.get("RegionCode")
+        self.UserClientIp = params.get("UserClientIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class SyncContractDataRequest(AbstractModel):
+    """SyncContractData请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MidasAppId: 聚鑫分配的支付主MidasAppId
+        :type MidasAppId: str
+        :param UserId: 用户ID，长度不小于5位，仅支持字母和数字的组合
+        :type UserId: str
+        :param Channel: 签约使用的渠道
+        :type Channel: str
+        :param OutContractCode: 业务签约合同协议号
+        :type OutContractCode: str
+        :param ContractStatus: 签约状态，枚举值
+CONTRACT_STATUS_INVALID=无效状态
+CONTRACT_STATUS_SIGNED=已签约
+CONTRACT_STATUS_TERMINATED=已解约
+CONTRACT_STATUS_PENDING=签约进行中
+        :type ContractStatus: str
+        :param ContractSyncInfo: 签约同步信息
+        :type ContractSyncInfo: :class:`tencentcloud.cpdp.v20190820.models.ContractSyncInfo`
+        :param MidasSignature: 按照聚鑫安全密钥计算的签名
+        :type MidasSignature: str
+        :param MidasSecretId: 聚鑫分配的安全ID
+        :type MidasSecretId: str
+        :param SubAppId: 聚鑫计费SubAppId，代表子商户
+        :type SubAppId: str
+        :param UserType: 用户类型，枚举值
+USER_ID: 用户ID
+ANONYMOUS: 匿名类型 USER_ID
+默认值为 USER_ID
+        :type UserType: str
+        :param SceneInfo: 场景信息
+        :type SceneInfo: :class:`tencentcloud.cpdp.v20190820.models.SceneInfo`
+        :param MidasEnvironment: 环境名:
+release: 现网环境
+sandbox: 沙箱环境
+development: 开发环境
+缺省: release
+        :type MidasEnvironment: str
+        """
+        self.MidasAppId = None
+        self.UserId = None
+        self.Channel = None
+        self.OutContractCode = None
+        self.ContractStatus = None
+        self.ContractSyncInfo = None
+        self.MidasSignature = None
+        self.MidasSecretId = None
+        self.SubAppId = None
+        self.UserType = None
+        self.SceneInfo = None
+        self.MidasEnvironment = None
+
+
+    def _deserialize(self, params):
+        self.MidasAppId = params.get("MidasAppId")
+        self.UserId = params.get("UserId")
+        self.Channel = params.get("Channel")
+        self.OutContractCode = params.get("OutContractCode")
+        self.ContractStatus = params.get("ContractStatus")
+        if params.get("ContractSyncInfo") is not None:
+            self.ContractSyncInfo = ContractSyncInfo()
+            self.ContractSyncInfo._deserialize(params.get("ContractSyncInfo"))
+        self.MidasSignature = params.get("MidasSignature")
+        self.MidasSecretId = params.get("MidasSecretId")
+        self.SubAppId = params.get("SubAppId")
+        self.UserType = params.get("UserType")
+        if params.get("SceneInfo") is not None:
+            self.SceneInfo = SceneInfo()
+            self.SceneInfo._deserialize(params.get("SceneInfo"))
+        self.MidasEnvironment = params.get("MidasEnvironment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class SyncContractDataResponse(AbstractModel):
+    """SyncContractData返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Msg: 请求处理信息
+        :type Msg: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Msg = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Msg = params.get("Msg")
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class TerminateContractRequest(AbstractModel):
+    """TerminateContract请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MidasAppId: 聚鑫分配的支付主MidasAppId
+        :type MidasAppId: str
+        :param UserId: 用户ID，长度不小于5位，仅支持字母和数字的组合
+        :type UserId: str
+        :param Channel: 指定渠道：  wechat：微信支付  qqwallet：QQ钱包 
+ bank：网银支付  只有一个渠道时需要指定
+        :type Channel: str
+        :param TerminateMode: 枚举值：
+CONTRACT_TERMINATION_MODE_BY_OUT_CONTRACT_CODE: 按OutContractCode+ContractSceneId解约
+CONTRACT_TERMINATION_MODE_BY_CHANNEL_CONTRACT_CODE：按ChannelContractCode解约
+        :type TerminateMode: str
+        :param MidasSecretId: 聚鑫分配的安全ID
+        :type MidasSecretId: str
+        :param MidasSignature: 按照聚鑫安全密钥计算的签名
+        :type MidasSignature: str
+        :param SubAppId: 聚鑫计费SubAppId，代表子商户
+        :type SubAppId: str
+        :param OutContractCode: 业务签约合同协议号 当TerminateMode=CONTRACT_TERMINATION_MODE_BY_OUT_CONTRACT_CODE 时 必填
+        :type OutContractCode: str
+        :param ContractSceneId: 签约场景ID，当 TerminateMode=CONTRACT_TERMINATION_MODE_BY_OUT_CONTRACT_CODE 时 必填，在米大师侧托管后生成
+        :type ContractSceneId: str
+        :param ChannelContractCode: 米大师生成的协议号 当 TerminateMode=CONTRACT_TERMINATION_MODE_BY_CHANNEL_CONTRACT_CODE 时 必填
+        :type ChannelContractCode: str
+        :param ExternalContractData: 第三方渠道合约数据，json字符串，与特定渠道有关
+        :type ExternalContractData: str
+        :param TerminationReason: 终止合约原因
+        :type TerminationReason: str
+        :param MidasEnvironment: 环境名:
+release: 现网环境
+sandbox: 沙箱环境
+development: 开发环境
+缺省: release
+        :type MidasEnvironment: str
+        :param UserType: USER_ID: 用户ID
+ANONYMOUS: 匿名类型 USER_ID
+默认值为 USER_ID
+        :type UserType: str
+        """
+        self.MidasAppId = None
+        self.UserId = None
+        self.Channel = None
+        self.TerminateMode = None
+        self.MidasSecretId = None
+        self.MidasSignature = None
+        self.SubAppId = None
+        self.OutContractCode = None
+        self.ContractSceneId = None
+        self.ChannelContractCode = None
+        self.ExternalContractData = None
+        self.TerminationReason = None
+        self.MidasEnvironment = None
+        self.UserType = None
+
+
+    def _deserialize(self, params):
+        self.MidasAppId = params.get("MidasAppId")
+        self.UserId = params.get("UserId")
+        self.Channel = params.get("Channel")
+        self.TerminateMode = params.get("TerminateMode")
+        self.MidasSecretId = params.get("MidasSecretId")
+        self.MidasSignature = params.get("MidasSignature")
+        self.SubAppId = params.get("SubAppId")
+        self.OutContractCode = params.get("OutContractCode")
+        self.ContractSceneId = params.get("ContractSceneId")
+        self.ChannelContractCode = params.get("ChannelContractCode")
+        self.ExternalContractData = params.get("ExternalContractData")
+        self.TerminationReason = params.get("TerminationReason")
+        self.MidasEnvironment = params.get("MidasEnvironment")
+        self.UserType = params.get("UserType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class TerminateContractResponse(AbstractModel):
+    """TerminateContract返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ContractTerminateData: 解约数据
+        :type ContractTerminateData: :class:`tencentcloud.cpdp.v20190820.models.ResponseTerminateContract`
+        :param Msg: 请求处理信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Msg: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ContractTerminateData = None
+        self.Msg = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ContractTerminateData") is not None:
+            self.ContractTerminateData = ResponseTerminateContract()
+            self.ContractTerminateData._deserialize(params.get("ContractTerminateData"))
+        self.Msg = params.get("Msg")
         self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
