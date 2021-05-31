@@ -169,7 +169,7 @@ class CreateDomainAliasRequest(AbstractModel):
         :type DomainAlias: str
         :param Domain: 域名
         :type Domain: str
-        :param DomainId: 域名ID,域名ID，参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain
+        :param DomainId: 域名ID，参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain
         :type DomainId: int
         """
         self.DomainAlias = None
@@ -1183,11 +1183,11 @@ class DescribeDomainListRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Type: 域名分组类型，默认为ALL
+        :param Type: 域名分组类型，默认为ALL。可取值为ALL，MINE，SHARE，ISMARK，PAUSE，VIP，RECENT，SHARE_OUT。
         :type Type: str
-        :param Offset: 记录开始的偏移, 第一条记录为 0, 依次类推
+        :param Offset: 记录开始的偏移, 第一条记录为 0, 依次类推。默认值为0。
         :type Offset: int
-        :param Limit: 要获取的域名数量, 比如获取20个, 则为20
+        :param Limit: 要获取的域名数量, 比如获取20个, 则为20。默认值为3000。
         :type Limit: int
         :param GroupId: 分组ID, 获取指定分组的域名
         :type GroupId: int
@@ -1611,13 +1611,13 @@ class DescribeRecordListRequest(AbstractModel):
         :type GroupId: int
         :param Keyword: 通过关键字搜索解析记录，当前支持搜索主机头和记录值
         :type Keyword: str
-        :param SortField: 排序字段，支持 name,line,type,value,weight,mx,ttl,updated_on 几个字段
+        :param SortField: 排序字段，支持 name,line,type,value,weight,mx,ttl,updated_on 几个字段。默认值为updated_on。
         :type SortField: str
-        :param SortType: 排序方式，正序：ASC，逆序：DESC
+        :param SortType: 排序方式，正序：ASC，逆序：DESC。默认值为ASC。
         :type SortType: str
-        :param Offset: 偏移量
+        :param Offset: 偏移量，默认值为0。
         :type Offset: int
-        :param Limit: 限制数量，当前Limit最大支持3000
+        :param Limit: 限制数量，当前Limit最大支持3000。默认值为3000。
         :type Limit: int
         """
         self.Domain = None
@@ -2485,7 +2485,7 @@ class ModifyDomainStatusRequest(AbstractModel):
         """
         :param Domain: 域名
         :type Domain: str
-        :param Status: 域名状态，”enable” 、”disable” 分别代表启用和暂
+        :param Status: 域名状态，”enable” 、”disable” 分别代表启用和暂停
         :type Status: str
         :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
         :type DomainId: int

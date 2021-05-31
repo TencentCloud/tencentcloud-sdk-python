@@ -752,6 +752,12 @@ class CynosdbClusterDetail(AbstractModel):
         :type Zone: str
         :param ResourceTags: 实例绑定的tag数组信息
         :type ResourceTags: list of Tag
+        :param ServerlessStatus: 当Db类型为SERVERLESS时，serverless集群状态，可选值:
+resume
+resuming
+pause
+pausing
+        :type ServerlessStatus: str
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -776,6 +782,7 @@ class CynosdbClusterDetail(AbstractModel):
         self.ProjectID = None
         self.Zone = None
         self.ResourceTags = None
+        self.ServerlessStatus = None
 
 
     def _deserialize(self, params):
@@ -817,6 +824,7 @@ class CynosdbClusterDetail(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.ResourceTags.append(obj)
+        self.ServerlessStatus = params.get("ServerlessStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

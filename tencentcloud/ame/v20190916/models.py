@@ -525,6 +525,64 @@ class DescribeItemsResponse(AbstractModel):
         
 
 
+class DescribeKTVMusicDetailRequest(AbstractModel):
+    """DescribeKTVMusicDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MusicId: 曲目 Id
+        :type MusicId: str
+        """
+        self.MusicId = None
+
+
+    def _deserialize(self, params):
+        self.MusicId = params.get("MusicId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DescribeKTVMusicDetailResponse(AbstractModel):
+    """DescribeKTVMusicDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param KTVMusicBaseInfo: 歌曲基础信息
+        :type KTVMusicBaseInfo: :class:`tencentcloud.ame.v20190916.models.KTVMusicBaseInfo`
+        :param PlayToken: 播放凭证
+        :type PlayToken: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.KTVMusicBaseInfo = None
+        self.PlayToken = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("KTVMusicBaseInfo") is not None:
+            self.KTVMusicBaseInfo = KTVMusicBaseInfo()
+            self.KTVMusicBaseInfo._deserialize(params.get("KTVMusicBaseInfo"))
+        self.PlayToken = params.get("PlayToken")
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class DescribeLyricRequest(AbstractModel):
     """DescribeLyric请求参数结构体
 
@@ -933,6 +991,50 @@ class Item(AbstractModel):
                 obj._deserialize(item)
                 self.Artists.append(obj)
         self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class KTVMusicBaseInfo(AbstractModel):
+    """KTV 曲目基础信息
+
+    """
+
+    def __init__(self):
+        """
+        :param MusicId: 歌曲 Id
+        :type MusicId: str
+        :param Name: 歌曲名称
+        :type Name: str
+        :param SingerSet: 演唱者列表
+        :type SingerSet: list of str
+        :param LyricistSet: 作词者列表
+        :type LyricistSet: list of str
+        :param ComposerSet: 作曲者列表
+        :type ComposerSet: list of str
+        :param TagSet: 标签列表
+        :type TagSet: list of str
+        """
+        self.MusicId = None
+        self.Name = None
+        self.SingerSet = None
+        self.LyricistSet = None
+        self.ComposerSet = None
+        self.TagSet = None
+
+
+    def _deserialize(self, params):
+        self.MusicId = params.get("MusicId")
+        self.Name = params.get("Name")
+        self.SingerSet = params.get("SingerSet")
+        self.LyricistSet = params.get("LyricistSet")
+        self.ComposerSet = params.get("ComposerSet")
+        self.TagSet = params.get("TagSet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1436,6 +1538,75 @@ class ReportDataResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class SearchKTVMusicsRequest(AbstractModel):
+    """SearchKTVMusics请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param KeyWord: 搜索关键词
+        :type KeyWord: str
+        :param Offset: 分页游标
+        :type Offset: int
+        :param Limit: 分页页长
+        :type Limit: int
+        """
+        self.KeyWord = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.KeyWord = params.get("KeyWord")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class SearchKTVMusicsResponse(AbstractModel):
+    """SearchKTVMusics返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 总记录数
+        :type TotalCount: int
+        :param KTVMusicInfoSet: KTV 曲目列表
+        :type KTVMusicInfoSet: list of KTVMusicBaseInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.KTVMusicInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("KTVMusicInfoSet") is not None:
+            self.KTVMusicInfoSet = []
+            for item in params.get("KTVMusicInfoSet"):
+                obj = KTVMusicBaseInfo()
+                obj._deserialize(item)
+                self.KTVMusicInfoSet.append(obj)
         self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

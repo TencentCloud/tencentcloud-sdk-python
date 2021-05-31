@@ -4368,10 +4368,10 @@ class UpdateFunctionCodeRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Handler: 函数处理方法名称。名称格式支持“文件名称.函数名称”形式（java 名称格式 包名.类名::方法名），文件名称和函数名称之间以"."隔开，文件名称和函数名称要求以字母开始和结尾，中间允许插入字母、数字、下划线和连接符，文件名称和函数名字的长度要求 2-60 个字符
-        :type Handler: str
         :param FunctionName: 要修改的函数名称
         :type FunctionName: str
+        :param Handler: 函数处理方法名称。名称格式支持“文件名称.函数名称”形式（java 名称格式 包名.类名::方法名），文件名称和函数名称之间以"."隔开，文件名称和函数名称要求以字母开始和结尾，中间允许插入字母、数字、下划线和连接符，文件名称和函数名字的长度要求 2-60 个字符
+        :type Handler: str
         :param CosBucketName: 对象存储桶名称
         :type CosBucketName: str
         :param CosObjectName: 对象存储对象路径
@@ -4391,8 +4391,8 @@ class UpdateFunctionCodeRequest(AbstractModel):
         :param CodeSource: 代码来源方式，支持 ZipFile, Cos, Inline 之一
         :type CodeSource: str
         """
-        self.Handler = None
         self.FunctionName = None
+        self.Handler = None
         self.CosBucketName = None
         self.CosObjectName = None
         self.ZipFile = None
@@ -4405,8 +4405,8 @@ class UpdateFunctionCodeRequest(AbstractModel):
 
 
     def _deserialize(self, params):
-        self.Handler = params.get("Handler")
         self.FunctionName = params.get("FunctionName")
+        self.Handler = params.get("Handler")
         self.CosBucketName = params.get("CosBucketName")
         self.CosObjectName = params.get("CosObjectName")
         self.ZipFile = params.get("ZipFile")

@@ -6137,17 +6137,17 @@ class RsWeightRule(AbstractModel):
 
     def __init__(self):
         """
-        :param ListenerId: 负载均衡监听器 ID
+        :param ListenerId: 负载均衡监听器 ID。
         :type ListenerId: str
-        :param Targets: 要修改权重的后端机器列表
+        :param Targets: 要修改权重的后端机器列表。
         :type Targets: list of Target
-        :param LocationId: 转发规则的ID，七层规则时需要此参数，4层规则不需要
+        :param LocationId: 转发规则的ID，七层规则时需要此参数，4层规则不需要。
         :type LocationId: str
-        :param Domain: 目标规则的域名，提供LocationId参数时本参数不生效
+        :param Domain: 目标规则的域名，提供LocationId参数时本参数不生效。
         :type Domain: str
-        :param Url: 目标规则的URL，提供LocationId参数时本参数不生效
+        :param Url: 目标规则的URL，提供LocationId参数时本参数不生效。
         :type Url: str
-        :param Weight: 后端服务新的转发权重，取值范围：0~100。
+        :param Weight: 后端服务修改后的转发权重，取值范围：[0，100]。此参数的优先级低于前述[Target](https://cloud.tencent.com/document/api/214/30694#Target)中的Weight参数，即最终的权重值以Target中的Weight参数值为准，仅当Target中的Weight参数为空时，才以RsWeightRule中的Weight参数为准。
         :type Weight: int
         """
         self.ListenerId = None
@@ -6707,7 +6707,7 @@ class Target(AbstractModel):
 注意：参数 InstanceId、EniIp 只能传入一个且必须传入一个。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
-        :param Weight: 后端服务的转发权重，取值范围：[0, 100]，默认为 10。
+        :param Weight: 后端服务修改后的转发权重，取值范围：[0, 100]，默认为 10。此参数的优先级高于[RsWeightRule](https://cloud.tencent.com/document/api/214/30694#RsWeightRule)中的Weight参数，即最终的权重值以此Weight参数值为准，仅当此Weight参数为空时，才以RsWeightRule中的Weight参数为准。
         :type Weight: int
         :param EniIp: 绑定IP时需要传入此参数，支持弹性网卡的IP和其他内网IP，如果是弹性网卡则必须先绑定至CVM，然后才能绑定到负载均衡实例。
 注意：参数 InstanceId、EniIp 只能传入一个且必须传入一个。如果绑定双栈IPV6子机，必须传该参数。

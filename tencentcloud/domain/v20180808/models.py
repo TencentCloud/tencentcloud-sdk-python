@@ -238,7 +238,7 @@ class CheckDomainRequest(AbstractModel):
         """
         :param DomainName: 所查询域名名称
         :type DomainName: str
-        :param Period: 年限
+        :param Period: 年限。该参数为空时无法查询溢价词域名
         :type Period: str
         """
         self.DomainName = None

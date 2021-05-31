@@ -1895,6 +1895,9 @@ class FirmwareInfo(AbstractModel):
         :param ProductId: 产品ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductId: str
+        :param FwType: 固件升级模块
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FwType: str
         """
         self.Version = None
         self.Md5sum = None
@@ -1903,6 +1906,7 @@ class FirmwareInfo(AbstractModel):
         self.Name = None
         self.Description = None
         self.ProductId = None
+        self.FwType = None
 
 
     def _deserialize(self, params):
@@ -1913,6 +1917,7 @@ class FirmwareInfo(AbstractModel):
         self.Name = params.get("Name")
         self.Description = params.get("Description")
         self.ProductId = params.get("ProductId")
+        self.FwType = params.get("FwType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3845,6 +3850,8 @@ class UploadFirmwareRequest(AbstractModel):
         :type FirmwareName: str
         :param FirmwareDescription: 固件描述
         :type FirmwareDescription: str
+        :param FwType: 固件升级模块；可选值 mcu|moudule
+        :type FwType: str
         """
         self.ProductID = None
         self.FirmwareVersion = None
@@ -3852,6 +3859,7 @@ class UploadFirmwareRequest(AbstractModel):
         self.FileSize = None
         self.FirmwareName = None
         self.FirmwareDescription = None
+        self.FwType = None
 
 
     def _deserialize(self, params):
@@ -3861,6 +3869,7 @@ class UploadFirmwareRequest(AbstractModel):
         self.FileSize = params.get("FileSize")
         self.FirmwareName = params.get("FirmwareName")
         self.FirmwareDescription = params.get("FirmwareDescription")
+        self.FwType = params.get("FwType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

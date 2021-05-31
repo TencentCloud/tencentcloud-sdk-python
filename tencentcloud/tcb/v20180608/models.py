@@ -4571,6 +4571,8 @@ class EstablishCloudBaseRunServerRequest(AbstractModel):
         :type VpcInfo: :class:`tencentcloud.tcb.v20180608.models.CloudBaseRunVpcInfo`
         :param PublicAccess: 0/1=允许公网访问;2=关闭公网访问
         :type PublicAccess: int
+        :param OpenAccessTypes: OA PUBLIC MINIAPP VPC
+        :type OpenAccessTypes: list of str
         """
         self.EnvId = None
         self.ServiceName = None
@@ -4583,6 +4585,7 @@ class EstablishCloudBaseRunServerRequest(AbstractModel):
         self.Source = None
         self.VpcInfo = None
         self.PublicAccess = None
+        self.OpenAccessTypes = None
 
 
     def _deserialize(self, params):
@@ -4601,6 +4604,7 @@ class EstablishCloudBaseRunServerRequest(AbstractModel):
             self.VpcInfo = CloudBaseRunVpcInfo()
             self.VpcInfo._deserialize(params.get("VpcInfo"))
         self.PublicAccess = params.get("PublicAccess")
+        self.OpenAccessTypes = params.get("OpenAccessTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

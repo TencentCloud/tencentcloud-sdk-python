@@ -1869,6 +1869,8 @@ class DescribeFirmwareResponse(AbstractModel):
         :type Createtime: int
         :param ProductName: 产品名称
         :type ProductName: str
+        :param FwType: 固件类型。选项：mcu、module
+        :type FwType: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1879,6 +1881,7 @@ class DescribeFirmwareResponse(AbstractModel):
         self.Md5sum = None
         self.Createtime = None
         self.ProductName = None
+        self.FwType = None
         self.RequestId = None
 
 
@@ -1890,6 +1893,7 @@ class DescribeFirmwareResponse(AbstractModel):
         self.Md5sum = params.get("Md5sum")
         self.Createtime = params.get("Createtime")
         self.ProductName = params.get("ProductName")
+        self.FwType = params.get("FwType")
         self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -3563,11 +3567,14 @@ class EditFirmwareRequest(AbstractModel):
         :type FirmwareName: str
         :param FirmwareDescription: 固件描述
         :type FirmwareDescription: str
+        :param FwType: 固件类型：选填 mcu、moudule。默认：mcu
+        :type FwType: str
         """
         self.ProductID = None
         self.FirmwareVersion = None
         self.FirmwareName = None
         self.FirmwareDescription = None
+        self.FwType = None
 
 
     def _deserialize(self, params):
@@ -3575,6 +3582,7 @@ class EditFirmwareRequest(AbstractModel):
         self.FirmwareVersion = params.get("FirmwareVersion")
         self.FirmwareName = params.get("FirmwareName")
         self.FirmwareDescription = params.get("FirmwareDescription")
+        self.FwType = params.get("FwType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5125,6 +5133,8 @@ class UploadFirmwareRequest(AbstractModel):
         :type FirmwareName: str
         :param FirmwareDescription: 固件描述
         :type FirmwareDescription: str
+        :param FwType: 固件类型：选填 mcu、moudule。默认：mcu
+        :type FwType: str
         """
         self.ProductID = None
         self.FirmwareVersion = None
@@ -5132,6 +5142,7 @@ class UploadFirmwareRequest(AbstractModel):
         self.FileSize = None
         self.FirmwareName = None
         self.FirmwareDescription = None
+        self.FwType = None
 
 
     def _deserialize(self, params):
@@ -5141,6 +5152,7 @@ class UploadFirmwareRequest(AbstractModel):
         self.FileSize = params.get("FileSize")
         self.FirmwareName = params.get("FirmwareName")
         self.FirmwareDescription = params.get("FirmwareDescription")
+        self.FwType = params.get("FwType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
