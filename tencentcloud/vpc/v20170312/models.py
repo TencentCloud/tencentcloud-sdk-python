@@ -19593,7 +19593,7 @@ class SetCcnRegionBandwidthLimitsRequest(AbstractModel):
         :type CcnId: str
         :param CcnRegionBandwidthLimits: 云联网（CCN）各地域出带宽上限。
         :type CcnRegionBandwidthLimits: list of CcnRegionBandwidthLimit
-        :param SetDefaultLimitFlag: 是否设置带宽为默认值。
+        :param SetDefaultLimitFlag: 是否恢复云联网地域出口/地域间带宽限速为默认值（1Gbps）。false表示不恢复；true表示恢复。恢复默认值后，限速实例将不在控制台展示。该参数默认为 false，不恢复。
         :type SetDefaultLimitFlag: bool
         """
         self.CcnId = None

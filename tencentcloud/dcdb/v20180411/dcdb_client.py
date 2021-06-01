@@ -701,6 +701,34 @@ class DcdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeFlow(self, request):
+        """本接口（DescribeFlow）用于查询流程状态
+
+        :param request: Request instance for DescribeFlow.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeFlowRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.DescribeFlowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeFlow", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeFlowResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeOrders(self, request):
         """本接口（DescribeOrders）用于查询分布式数据库订单信息。传入订单ID来查询订单关联的分布式数据库实例，和对应的任务流程ID。
 
@@ -855,6 +883,62 @@ class DcdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUserTasksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DestroyDCDBInstance(self, request):
+        """本接口(DestroyDCDBInstance)用于销毁已隔离的包年包月实例。
+
+        :param request: Request instance for DestroyDCDBInstance.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.DestroyDCDBInstanceRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.DestroyDCDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DestroyDCDBInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DestroyDCDBInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DestroyHourDCDBInstance(self, request):
+        """本接口（DestroyHourDCDBInstance）用于销毁按量计费实例。
+
+        :param request: Request instance for DestroyHourDCDBInstance.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.DestroyHourDCDBInstanceRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.DestroyHourDCDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DestroyHourDCDBInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DestroyHourDCDBInstanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

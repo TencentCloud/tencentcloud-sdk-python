@@ -3871,12 +3871,16 @@ class DescribeMachineInfoRequest(AbstractModel):
         """
         :param Uuid: 云镜客户端唯一Uuid。
         :type Uuid: str
+        :param Quuid: cvm id， quuid、uuid必填一个
+        :type Quuid: str
         """
         self.Uuid = None
+        self.Quuid = None
 
 
     def _deserialize(self, params):
         self.Uuid = params.get("Uuid")
+        self.Quuid = params.get("Quuid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3937,6 +3941,8 @@ class DescribeMachineInfoResponse(AbstractModel):
         :type AgentVersion: str
         :param ProVersionDeadline: 专业版到期时间(仅预付费)
         :type ProVersionDeadline: str
+        :param HasAssetScan: 是否有资产扫描记录，0无，1有
+        :type HasAssetScan: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3958,6 +3964,7 @@ class DescribeMachineInfoResponse(AbstractModel):
         self.FreeVulsLeft = None
         self.AgentVersion = None
         self.ProVersionDeadline = None
+        self.HasAssetScan = None
         self.RequestId = None
 
 
@@ -3980,6 +3987,7 @@ class DescribeMachineInfoResponse(AbstractModel):
         self.FreeVulsLeft = params.get("FreeVulsLeft")
         self.AgentVersion = params.get("AgentVersion")
         self.ProVersionDeadline = params.get("ProVersionDeadline")
+        self.HasAssetScan = params.get("HasAssetScan")
         self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -7111,6 +7119,81 @@ class EffectiveMachineInfo(AbstractModel):
                 obj._deserialize(item)
                 self.MachineTag.append(obj)
         self.Quuid = params.get("Quuid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class ExportAssetCoreModuleListRequest(AbstractModel):
+    """ExportAssetCoreModuleList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Filters: 过滤条件。
+<li>Name- string - 是否必填：否 - 包名</li>
+<li>User- string - 是否必填：否 - 用户</li>
+        :type Filters: list of AssetFilters
+        :param Order: 排序方式，asc升序 或 desc降序
+        :type Order: str
+        :param By: 排序依据:Size,ProcessCount,ModuleCount
+        :type By: str
+        :param Uuid: 服务器Uuid
+        :type Uuid: str
+        :param Quuid: 服务器Quuid
+        :type Quuid: str
+        """
+        self.Filters = None
+        self.Order = None
+        self.By = None
+        self.Uuid = None
+        self.Quuid = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = AssetFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        self.Uuid = params.get("Uuid")
+        self.Quuid = params.get("Quuid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class ExportAssetCoreModuleListResponse(AbstractModel):
+    """ExportAssetCoreModuleList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 异步下载任务ID，需要配合ExportTasks接口使用
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

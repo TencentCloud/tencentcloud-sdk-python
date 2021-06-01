@@ -182,7 +182,7 @@ class CreatePrivateZoneRequest(AbstractModel):
         :type VpcSet: list of VpcInfo
         :param Remark: 备注
         :type Remark: str
-        :param DnsForwardStatus: 是否开启子域名递归, ENABLED， DISABLED
+        :param DnsForwardStatus: 是否开启子域名递归, ENABLED， DISABLED。默认值为DISABLED
         :type DnsForwardStatus: str
         :param Vpcs: 创建私有域的同时，将其关联至VPC
         :type Vpcs: list of VpcInfo
@@ -403,7 +403,7 @@ class DescribeAuditLogRequest(AbstractModel):
         """
         :param TimeRangeBegin: 请求量统计起始时间
         :type TimeRangeBegin: str
-        :param Filters: 筛选参数：
+        :param Filters: 筛选参数：ZoneId：私有域ID；Domain：私有域；OperatorUin：操作者账号ID
         :type Filters: list of Filter
         :param TimeRangeEnd: 请求量统计结束时间
         :type TimeRangeEnd: str
@@ -742,7 +742,7 @@ class DescribePrivateZoneServiceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param ServiceStatus: 私有域解析服务开通状态
+        :param ServiceStatus: 私有域解析服务开通状态。ENABLED已开通，DISABLED未开通
         :type ServiceStatus: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -770,11 +770,11 @@ class DescribeRequestDataRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TimeRangeBegin: 请求量统计起始时间
+        :param TimeRangeBegin: 请求量统计起始时间，格式：2020-11-22 00:00:00
         :type TimeRangeBegin: str
         :param Filters: 筛选参数：
         :type Filters: list of Filter
-        :param TimeRangeEnd: 请求量统计结束时间
+        :param TimeRangeEnd: 请求量统计结束时间，格式：2020-11-22 23:59:59
         :type TimeRangeEnd: str
         """
         self.TimeRangeBegin = None
@@ -1017,7 +1017,7 @@ class ModifyPrivateZoneRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ZoneId: 域名，格式必须是标准的TLD
+        :param ZoneId: 私有域ID
         :type ZoneId: str
         :param Remark: 备注
         :type Remark: str

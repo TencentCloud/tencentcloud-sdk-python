@@ -2714,6 +2714,34 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ExportAssetCoreModuleList(self, request):
+        """导出资产管理内核模块列表
+
+        :param request: Request instance for ExportAssetCoreModuleList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.ExportAssetCoreModuleListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.ExportAssetCoreModuleListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ExportAssetCoreModuleList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ExportAssetCoreModuleListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ExportAttackLogs(self, request):
         """导出网络攻击日志
 

@@ -3519,6 +3519,10 @@ class DescribeEnvLimitResponse(AbstractModel):
         :type MaxDeleteMonthly: int
         :param CurrentDeleteMonthly: 本月已销毁环境次数
         :type CurrentDeleteMonthly: int
+        :param MaxFreeTrialNum: 微信网关体验版可购买月份数
+        :type MaxFreeTrialNum: int
+        :param CurrentFreeTrialNum: 微信网关体验版已购买月份数
+        :type CurrentFreeTrialNum: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3530,6 +3534,8 @@ class DescribeEnvLimitResponse(AbstractModel):
         self.CurrentDeleteTotal = None
         self.MaxDeleteMonthly = None
         self.CurrentDeleteMonthly = None
+        self.MaxFreeTrialNum = None
+        self.CurrentFreeTrialNum = None
         self.RequestId = None
 
 
@@ -3542,6 +3548,8 @@ class DescribeEnvLimitResponse(AbstractModel):
         self.CurrentDeleteTotal = params.get("CurrentDeleteTotal")
         self.MaxDeleteMonthly = params.get("MaxDeleteMonthly")
         self.CurrentDeleteMonthly = params.get("CurrentDeleteMonthly")
+        self.MaxFreeTrialNum = params.get("MaxFreeTrialNum")
+        self.CurrentFreeTrialNum = params.get("CurrentFreeTrialNum")
         self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

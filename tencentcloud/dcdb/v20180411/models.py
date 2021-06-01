@@ -504,6 +504,8 @@ class CreateDCDBInstanceRequest(AbstractModel):
         :type Ipv6Flag: int
         :param ResourceTags: 标签键值对数组
         :type ResourceTags: list of ResourceTag
+        :param InitParams: 参数列表。本接口的可选值为：character_set_server（字符集，必传），lower_case_table_names（表名大小写敏感，必传，0 - 敏感；1-不敏感），innodb_page_size（innodb数据页，默认16K），sync_mode（同步模式：0 - 异步； 1 - 强同步；2 - 强同步可退化。默认为强同步可退化）。
+        :type InitParams: list of DBParamValue
         """
         self.Zones = None
         self.Period = None
@@ -522,6 +524,7 @@ class CreateDCDBInstanceRequest(AbstractModel):
         self.InstanceName = None
         self.Ipv6Flag = None
         self.ResourceTags = None
+        self.InitParams = None
 
 
     def _deserialize(self, params):
@@ -547,6 +550,12 @@ class CreateDCDBInstanceRequest(AbstractModel):
                 obj = ResourceTag()
                 obj._deserialize(item)
                 self.ResourceTags.append(obj)
+        if params.get("InitParams") is not None:
+            self.InitParams = []
+            for item in params.get("InitParams"):
+                obj = DBParamValue()
+                obj._deserialize(item)
+                self.InitParams.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -692,7 +701,7 @@ class DCDBInstanceInfo(AbstractModel):
         :type SubnetId: int
         :param StatusDesc: 状态中文描述
         :type StatusDesc: str
-        :param Status: 状态
+        :param Status: 实例状态：0 创建中，1 流程处理中， 2 运行中，3 实例未初始化，-1 实例已隔离，-2 实例已删除，4 实例初始化中，5 实例删除中，6 实例重启中，7 数据迁移中
         :type Status: int
         :param Vip: 内网IP
         :type Vip: str
@@ -1841,6 +1850,10 @@ class DescribeDCDBInstancesRequest(AbstractModel):
         :type TagKeys: list of str
         :param FilterInstanceType: 实例类型过滤，1-独享实例，2-主实例，3-灾备实例，多个按逗号分隔
         :type FilterInstanceType: str
+        :param Status: 按实例状态筛选
+        :type Status: list of int
+        :param ExcludeStatus: 排除实例状态
+        :type ExcludeStatus: list of int
         """
         self.InstanceIds = None
         self.SearchName = None
@@ -1858,6 +1871,8 @@ class DescribeDCDBInstancesRequest(AbstractModel):
         self.ExclusterIds = None
         self.TagKeys = None
         self.FilterInstanceType = None
+        self.Status = None
+        self.ExcludeStatus = None
 
 
     def _deserialize(self, params):
@@ -1877,6 +1892,8 @@ class DescribeDCDBInstancesRequest(AbstractModel):
         self.ExclusterIds = params.get("ExclusterIds")
         self.TagKeys = params.get("TagKeys")
         self.FilterInstanceType = params.get("FilterInstanceType")
+        self.Status = params.get("Status")
+        self.ExcludeStatus = params.get("ExcludeStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2567,6 +2584,58 @@ class DescribeDcnDetailResponse(AbstractModel):
         
 
 
+class DescribeFlowRequest(AbstractModel):
+    """DescribeFlow请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: 异步请求接口返回的任务流程号。
+        :type FlowId: int
+        """
+        self.FlowId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DescribeFlowResponse(AbstractModel):
+    """DescribeFlow返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 流程状态，0：成功，1：失败，2：运行中
+        :type Status: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class DescribeOrdersRequest(AbstractModel):
     """DescribeOrders请求参数结构体
 
@@ -2931,6 +3000,118 @@ class DescribeUserTasksResponse(AbstractModel):
                 obj = UserTaskInfo()
                 obj._deserialize(item)
                 self.FlowSet.append(obj)
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DestroyDCDBInstanceRequest(AbstractModel):
+    """DestroyDCDBInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例 ID，格式如：tdsqlshard-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DestroyDCDBInstanceResponse(AbstractModel):
+    """DestroyDCDBInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例 ID，与入参InstanceId一致。
+        :type InstanceId: str
+        :param FlowId: 异步任务的请求 ID，可使用此 ID [查询异步任务的执行结果](https://cloud.tencent.com/document/product/237/16177)。
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceId = None
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DestroyHourDCDBInstanceRequest(AbstractModel):
+    """DestroyHourDCDBInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例 ID，格式如：tdsqlshard-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DestroyHourDCDBInstanceResponse(AbstractModel):
+    """DestroyHourDCDBInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: 异步任务的请求 ID，可使用此 ID [查询异步任务的执行结果](https://cloud.tencent.com/document/product/237/16177)。
+        :type FlowId: int
+        :param InstanceId: 实例 ID，与入参InstanceId一致。
+        :type InstanceId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.InstanceId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.InstanceId = params.get("InstanceId")
         self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

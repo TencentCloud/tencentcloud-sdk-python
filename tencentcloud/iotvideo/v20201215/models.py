@@ -520,16 +520,20 @@ ye1y30d ：事件30天存储年套餐。
 yc1w7d : 全时7天存储周套餐。
 ye1w7d : 事件7天存储周套餐。
         :type PackageId: str
+        :param Override: 如果当前设备已开启云存套餐，Override=1会使用新套餐覆盖原有套餐。不传此参数则默认为0。
+        :type Override: int
         """
         self.ProductId = None
         self.DeviceName = None
         self.PackageId = None
+        self.Override = None
 
 
     def _deserialize(self, params):
         self.ProductId = params.get("ProductId")
         self.DeviceName = params.get("DeviceName")
         self.PackageId = params.get("PackageId")
+        self.Override = params.get("Override")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
