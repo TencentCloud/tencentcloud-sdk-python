@@ -2051,6 +2051,34 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def RegisterBehavior(self, request):
+        """商户查询是否签约和签约行为上报
+
+        :param request: Request instance for RegisterBehavior.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.RegisterBehaviorRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.RegisterBehaviorResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RegisterBehavior", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RegisterBehaviorResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RegisterBill(self, request):
         """登记挂账(支持撤销)
 

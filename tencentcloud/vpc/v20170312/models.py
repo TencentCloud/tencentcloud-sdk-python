@@ -13580,9 +13580,9 @@ class IPSECOptionsSpecification(AbstractModel):
 
     def __init__(self):
         """
-        :param EncryptAlgorithm: 加密算法，可选值：'3DES-CBC', 'AES-CBC-128', 'AES-CBC-192', 'AES-CBC-256', 'DES-CBC', 'NULL'， 默认为AES-CBC-128
+        :param EncryptAlgorithm: 加密算法，可选值：'3DES-CBC', 'AES-CBC-128', 'AES-CBC-192', 'AES-CBC-256', 'DES-CBC', 'SM4', 'NULL'， 默认为AES-CBC-128
         :type EncryptAlgorithm: str
-        :param IntegrityAlgorith: 认证算法：可选值：'MD5', 'SHA1'，默认为
+        :param IntegrityAlgorith: 认证算法：可选值：'MD5', 'SHA1'，'SHA-256' 默认为
         :type IntegrityAlgorith: str
         :param IPSECSaLifetimeSeconds: IPsec SA lifetime(s)：单位秒，取值范围：180-604800
         :type IPSECSaLifetimeSeconds: int

@@ -626,6 +626,67 @@ class CreateInternalEndpointDnsResponse(AbstractModel):
         
 
 
+class CreateMultipleSecurityPolicyRequest(AbstractModel):
+    """CreateMultipleSecurityPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param SecurityGroupPolicySet: 安全组策略
+        :type SecurityGroupPolicySet: list of SecurityPolicy
+        """
+        self.RegistryId = None
+        self.SecurityGroupPolicySet = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        if params.get("SecurityGroupPolicySet") is not None:
+            self.SecurityGroupPolicySet = []
+            for item in params.get("SecurityGroupPolicySet"):
+                obj = SecurityPolicy()
+                obj._deserialize(item)
+                self.SecurityGroupPolicySet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class CreateMultipleSecurityPolicyResponse(AbstractModel):
+    """CreateMultipleSecurityPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RegistryId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class CreateNamespacePersonalRequest(AbstractModel):
     """CreateNamespacePersonal请求参数结构体
 
@@ -1593,6 +1654,67 @@ class DeleteInternalEndpointDnsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DeleteMultipleSecurityPolicyRequest(AbstractModel):
+    """DeleteMultipleSecurityPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param SecurityGroupPolicySet: 安全组策略
+        :type SecurityGroupPolicySet: list of SecurityPolicy
+        """
+        self.RegistryId = None
+        self.SecurityGroupPolicySet = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        if params.get("SecurityGroupPolicySet") is not None:
+            self.SecurityGroupPolicySet = []
+            for item in params.get("SecurityGroupPolicySet"):
+                obj = SecurityPolicy()
+                obj._deserialize(item)
+                self.SecurityGroupPolicySet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DeleteMultipleSecurityPolicyResponse(AbstractModel):
+    """DeleteMultipleSecurityPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RegistryId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
         self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -6262,7 +6384,7 @@ class SecurityPolicy(AbstractModel):
         :type PolicyIndex: int
         :param Description: 备注
         :type Description: str
-        :param CidrBlock: 192.168.1.0/24
+        :param CidrBlock: 运行访问的公网IP地址端
         :type CidrBlock: str
         :param PolicyVersion: 安全策略的版本
         :type PolicyVersion: str

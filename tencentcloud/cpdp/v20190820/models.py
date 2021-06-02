@@ -73,6 +73,42 @@ class Acct(AbstractModel):
         
 
 
+class AgencyClientInfo(AbstractModel):
+    """经办人信息
+
+    """
+
+    def __init__(self):
+        """
+        :param AgencyClientName: 经办人姓名，存在经办人必输
+        :type AgencyClientName: str
+        :param AgencyClientGlobalType: 经办人证件类型，存在经办人必输
+        :type AgencyClientGlobalType: str
+        :param AgencyClientGlobalId: 经办人证件号，存在经办人必输
+        :type AgencyClientGlobalId: str
+        :param AgencyClientMobile: 经办人手机号，存在经办人必输
+        :type AgencyClientMobile: str
+        """
+        self.AgencyClientName = None
+        self.AgencyClientGlobalType = None
+        self.AgencyClientGlobalId = None
+        self.AgencyClientMobile = None
+
+
+    def _deserialize(self, params):
+        self.AgencyClientName = params.get("AgencyClientName")
+        self.AgencyClientGlobalType = params.get("AgencyClientGlobalType")
+        self.AgencyClientGlobalId = params.get("AgencyClientGlobalId")
+        self.AgencyClientMobile = params.get("AgencyClientMobile")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class AgentTaxPayment(AbstractModel):
     """代理商完税证明
 
@@ -1246,6 +1282,8 @@ sandbox: 沙箱环境
 development: 开发环境
 缺省: release
         :type MidasEnvironment: str
+        :param AgencyClientInfo: 经办人信息
+        :type AgencyClientInfo: :class:`tencentcloud.cpdp.v20190820.models.AgencyClientInfo`
         """
         self.MidasAppId = None
         self.SubAppId = None
@@ -1263,6 +1301,7 @@ development: 开发环境
         self.EiconBankBranchId = None
         self.EncryptType = None
         self.MidasEnvironment = None
+        self.AgencyClientInfo = None
 
 
     def _deserialize(self, params):
@@ -1282,6 +1321,9 @@ development: 开发环境
         self.EiconBankBranchId = params.get("EiconBankBranchId")
         self.EncryptType = params.get("EncryptType")
         self.MidasEnvironment = params.get("MidasEnvironment")
+        if params.get("AgencyClientInfo") is not None:
+            self.AgencyClientInfo = AgencyClientInfo()
+            self.AgencyClientInfo._deserialize(params.get("AgencyClientInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2470,6 +2512,7 @@ class CreateAcctRequest(AbstractModel):
         :param SubMchType: 子商户类型：
 个人: personal
 企业: enterprise
+个体工商户: individual
 缺省: enterprise
         :type SubMchType: str
         :param ShortName: 不填则默认子商户名称
@@ -2498,6 +2541,11 @@ sandbox: 沙箱环境
 development: 开发环境
 缺省: release
         :type MidasEnvironment: str
+        :param SubMerchantStoreName: 店铺名称
+企业、个体工商户必输
+        :type SubMerchantStoreName: str
+        :param OrganizationInfo: 公司信息
+        :type OrganizationInfo: :class:`tencentcloud.cpdp.v20190820.models.OrganizationInfo`
         """
         self.MidasAppId = None
         self.SubMchId = None
@@ -2516,6 +2564,8 @@ development: 开发环境
         self.EncryptType = None
         self.SubAcctNo = None
         self.MidasEnvironment = None
+        self.SubMerchantStoreName = None
+        self.OrganizationInfo = None
 
 
     def _deserialize(self, params):
@@ -2536,6 +2586,10 @@ development: 开发环境
         self.EncryptType = params.get("EncryptType")
         self.SubAcctNo = params.get("SubAcctNo")
         self.MidasEnvironment = params.get("MidasEnvironment")
+        self.SubMerchantStoreName = params.get("SubMerchantStoreName")
+        if params.get("OrganizationInfo") is not None:
+            self.OrganizationInfo = OrganizationInfo()
+            self.OrganizationInfo._deserialize(params.get("OrganizationInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5475,6 +5529,50 @@ class OrderItem(AbstractModel):
         self.Status = params.get("Status")
         self.Price = params.get("Price")
         self.TaxCode = params.get("TaxCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class OrganizationInfo(AbstractModel):
+    """公司信息
+
+    """
+
+    def __init__(self):
+        """
+        :param OrganizationName: 公司名称，个体工商户必输
+        :type OrganizationName: str
+        :param OrganizationType: 公司证件类型，个体工商户必输，证件类型仅支持73
+        :type OrganizationType: str
+        :param OrganizationCode: 公司证件号码，个体工商户必输
+        :type OrganizationCode: str
+        :param LegalPersonName: 法人名称，如果SubMchName不是法人，需要另外送入法人信息（企业必输）
+        :type LegalPersonName: str
+        :param LegalPersonIdType: 法人证件类型，如果SubMchName不是法人，需要另外送入法人信息（企业必输）
+        :type LegalPersonIdType: str
+        :param LegalPersonIdCode: 法人证件号码，如果SubMchName不是法人，需要另外送入法人信息（企业必输）
+        :type LegalPersonIdCode: str
+        """
+        self.OrganizationName = None
+        self.OrganizationType = None
+        self.OrganizationCode = None
+        self.LegalPersonName = None
+        self.LegalPersonIdType = None
+        self.LegalPersonIdCode = None
+
+
+    def _deserialize(self, params):
+        self.OrganizationName = params.get("OrganizationName")
+        self.OrganizationType = params.get("OrganizationType")
+        self.OrganizationCode = params.get("OrganizationCode")
+        self.LegalPersonName = params.get("LegalPersonName")
+        self.LegalPersonIdType = params.get("LegalPersonIdType")
+        self.LegalPersonIdCode = params.get("LegalPersonIdCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10487,6 +10585,120 @@ class RefundResponse(AbstractModel):
         
 
 
+class RegisterBehaviorRequest(AbstractModel):
+    """RegisterBehavior请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MidasAppId: 聚鑫分配的支付主MidasAppId
+        :type MidasAppId: str
+        :param SubAppId: 聚鑫计费SubAppId，代表子商户
+        :type SubAppId: str
+        :param MidasSecretId: 聚鑫分配的安全ID
+        :type MidasSecretId: str
+        :param MidasSignature: 按照聚鑫安全密钥计算的签名
+        :type MidasSignature: str
+        :param FunctionFlag: 功能标志
+1：登记行为记录信息
+2：查询补录信息
+        :type FunctionFlag: int
+        :param MidasEnvironment: 环境名:
+release: 现网环境
+sandbox: 沙箱环境
+development: 开发环境
+缺省: release
+        :type MidasEnvironment: str
+        :param OperationClickTime: 操作点击时间
+yyyyMMddHHmmss
+功能标志FunctionFlag=1时必输
+        :type OperationClickTime: str
+        :param IpAddress: IP地址
+功能标志FunctionFlag=1时必输
+        :type IpAddress: str
+        :param MacAddress: MAC地址
+功能标志FunctionFlag=1时必输
+        :type MacAddress: str
+        :param SignChannel: 签约渠道
+1:  App
+2:  平台H5网页
+3：公众号
+4：小程序
+功能标志FunctionFlag=1时必输
+        :type SignChannel: int
+        """
+        self.MidasAppId = None
+        self.SubAppId = None
+        self.MidasSecretId = None
+        self.MidasSignature = None
+        self.FunctionFlag = None
+        self.MidasEnvironment = None
+        self.OperationClickTime = None
+        self.IpAddress = None
+        self.MacAddress = None
+        self.SignChannel = None
+
+
+    def _deserialize(self, params):
+        self.MidasAppId = params.get("MidasAppId")
+        self.SubAppId = params.get("SubAppId")
+        self.MidasSecretId = params.get("MidasSecretId")
+        self.MidasSignature = params.get("MidasSignature")
+        self.FunctionFlag = params.get("FunctionFlag")
+        self.MidasEnvironment = params.get("MidasEnvironment")
+        self.OperationClickTime = params.get("OperationClickTime")
+        self.IpAddress = params.get("IpAddress")
+        self.MacAddress = params.get("MacAddress")
+        self.SignChannel = params.get("SignChannel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class RegisterBehaviorResponse(AbstractModel):
+    """RegisterBehavior返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ReplenishSuccessFlag: 补录是否成功标志
+功能标志为2时存在。
+S：成功
+F：失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReplenishSuccessFlag: str
+        :param RegisterInfo: 签约信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegisterInfo: :class:`tencentcloud.cpdp.v20190820.models.RegisterInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ReplenishSuccessFlag = None
+        self.RegisterInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ReplenishSuccessFlag = params.get("ReplenishSuccessFlag")
+        if params.get("RegisterInfo") is not None:
+            self.RegisterInfo = RegisterInfo()
+            self.RegisterInfo._deserialize(params.get("RegisterInfo"))
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class RegisterBillRequest(AbstractModel):
     """RegisterBill请求参数结构体
 
@@ -10717,6 +10929,56 @@ class RegisterBillSupportWithdrawResponse(AbstractModel):
         self.CnsmrSeqNo = params.get("CnsmrSeqNo")
         self.ReservedMsg = params.get("ReservedMsg")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class RegisterInfo(AbstractModel):
+    """签约信息
+
+    """
+
+    def __init__(self):
+        """
+        :param LegalPersonIdCode: 法人证件号码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LegalPersonIdCode: str
+        :param LegalPersonIdType: 法人证件类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LegalPersonIdType: str
+        :param LegalPersonName: 法人名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LegalPersonName: str
+        :param OrganizationCode: 公司证件号码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrganizationCode: str
+        :param OrganizationName: 公司名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrganizationName: str
+        :param OrganizationType: 公司证件类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrganizationType: str
+        """
+        self.LegalPersonIdCode = None
+        self.LegalPersonIdType = None
+        self.LegalPersonName = None
+        self.OrganizationCode = None
+        self.OrganizationName = None
+        self.OrganizationType = None
+
+
+    def _deserialize(self, params):
+        self.LegalPersonIdCode = params.get("LegalPersonIdCode")
+        self.LegalPersonIdType = params.get("LegalPersonIdType")
+        self.LegalPersonName = params.get("LegalPersonName")
+        self.OrganizationCode = params.get("OrganizationCode")
+        self.OrganizationName = params.get("OrganizationName")
+        self.OrganizationType = params.get("OrganizationType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

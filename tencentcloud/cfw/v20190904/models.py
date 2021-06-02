@@ -1760,7 +1760,7 @@ class ModifyBlockIgnoreListRequest(AbstractModel):
         :type RuleType: int
         :param IOC: IP、Domain二选一，不能同时为空
         :type IOC: list of IocListData
-        :param IocAction: 默认值:delete（删除）、edit（编辑）、add（添加）  其他值无效
+        :param IocAction: 可选值：delete（删除）、edit（编辑）、add（添加）  其他值无效
         :type IocAction: str
         :param StartTime: 时间格式：yyyy-MM-dd HH:mm:ss
         :type StartTime: str

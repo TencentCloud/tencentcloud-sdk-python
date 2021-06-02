@@ -250,6 +250,34 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateMultipleSecurityPolicy(self, request):
+        """用于在TCR实例中，创建多个白名单策略
+
+        :param request: Request instance for CreateMultipleSecurityPolicy.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.CreateMultipleSecurityPolicyRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.CreateMultipleSecurityPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateMultipleSecurityPolicy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateMultipleSecurityPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateNamespace(self, request):
         """用于在企业版中创建命名空间
 
@@ -740,6 +768,34 @@ class TcrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteInternalEndpointDnsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteMultipleSecurityPolicy(self, request):
+        """用于删除实例多个公网访问白名单策略
+
+        :param request: Request instance for DeleteMultipleSecurityPolicy.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteMultipleSecurityPolicyRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DeleteMultipleSecurityPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteMultipleSecurityPolicy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteMultipleSecurityPolicyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
