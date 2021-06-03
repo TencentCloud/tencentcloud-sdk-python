@@ -3410,6 +3410,62 @@ class DiskInfo(AbstractModel):
         
 
 
+class EndGameServerSessionAndProcessRequest(AbstractModel):
+    """EndGameServerSessionAndProcess请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GameServerSessionId: 游戏服务器会话ID
+        :type GameServerSessionId: str
+        :param IpAddress: CVM的公网IP地址
+        :type IpAddress: str
+        :param Port: 端口号，最小值不小于1，最大值不超过60000
+        :type Port: int
+        """
+        self.GameServerSessionId = None
+        self.IpAddress = None
+        self.Port = None
+
+
+    def _deserialize(self, params):
+        self.GameServerSessionId = params.get("GameServerSessionId")
+        self.IpAddress = params.get("IpAddress")
+        self.Port = params.get("Port")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class EndGameServerSessionAndProcessResponse(AbstractModel):
+    """EndGameServerSessionAndProcess返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class Event(AbstractModel):
     """事件对象
 

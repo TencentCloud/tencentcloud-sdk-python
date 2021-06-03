@@ -114,6 +114,42 @@ class AddCustomRuleResponse(AbstractModel):
         
 
 
+class BotStatPointItem(AbstractModel):
+    """bot的趋势图对象
+
+    """
+
+    def __init__(self):
+        """
+        :param TimeStamp: 横坐标
+        :type TimeStamp: str
+        :param Key: value的所属对象
+        :type Key: str
+        :param Value: 纵列表
+        :type Value: int
+        :param Label: Key对应的页面展示内容
+        :type Label: str
+        """
+        self.TimeStamp = None
+        self.Key = None
+        self.Value = None
+        self.Label = None
+
+
+    def _deserialize(self, params):
+        self.TimeStamp = params.get("TimeStamp")
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        self.Label = params.get("Label")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class CreateAttackDownloadTaskRequest(AbstractModel):
     """CreateAttackDownloadTask请求参数结构体
 
@@ -514,6 +550,71 @@ class DescribeCustomRulesRspRuleListItem(AbstractModel):
                 obj = Strategy()
                 obj._deserialize(item)
                 self.Strategies.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DescribeFlowTrendRequest(AbstractModel):
+    """DescribeFlowTrend请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Domain: 需要获取流量趋势的域名, all表示所有域名
+        :type Domain: str
+        :param StartTs: 起始时间戳，精度秒
+        :type StartTs: int
+        :param EndTs: 结束时间戳，精度秒
+        :type EndTs: int
+        """
+        self.Domain = None
+        self.StartTs = None
+        self.EndTs = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.StartTs = params.get("StartTs")
+        self.EndTs = params.get("EndTs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DescribeFlowTrendResponse(AbstractModel):
+    """DescribeFlowTrend返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 流量趋势数据
+        :type Data: list of BotStatPointItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = BotStatPointItem()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

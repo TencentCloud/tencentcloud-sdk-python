@@ -1245,6 +1245,34 @@ class GseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def EndGameServerSessionAndProcess(self, request):
+        """本接口（EndGameServerSessionAndProcess）用于终止游戏服务器会话和对应的进程。
+
+        :param request: Request instance for EndGameServerSessionAndProcess.
+        :type request: :class:`tencentcloud.gse.v20191112.models.EndGameServerSessionAndProcessRequest`
+        :rtype: :class:`tencentcloud.gse.v20191112.models.EndGameServerSessionAndProcessResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("EndGameServerSessionAndProcess", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EndGameServerSessionAndProcessResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetGameServerInstanceLogUrl(self, request):
         """本接口用于获取游戏服务器实例的日志URL。
 

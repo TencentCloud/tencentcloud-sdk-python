@@ -1070,6 +1070,11 @@ class IngressInfo(AbstractModel):
         :param Vip: clb ip
 注意：此字段可能返回 null，表示取不到有效值。
         :type Vip: str
+        :param CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param Mixed: 是否混合 https，默认 false，可选值 true 代表有 https 协议监听
+        :type Mixed: bool
         """
         self.NamespaceId = None
         self.EksNamespace = None
@@ -1080,6 +1085,8 @@ class IngressInfo(AbstractModel):
         self.Tls = None
         self.ClusterId = None
         self.Vip = None
+        self.CreateTime = None
+        self.Mixed = None
 
 
     def _deserialize(self, params):
@@ -1102,6 +1109,8 @@ class IngressInfo(AbstractModel):
                 self.Tls.append(obj)
         self.ClusterId = params.get("ClusterId")
         self.Vip = params.get("Vip")
+        self.CreateTime = params.get("CreateTime")
+        self.Mixed = params.get("Mixed")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1123,9 +1132,12 @@ class IngressRule(AbstractModel):
         :param Host: host 地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type Host: str
+        :param Protocol: 协议，选项为 http， https，默认为 http
+        :type Protocol: str
         """
         self.Http = None
         self.Host = None
+        self.Protocol = None
 
 
     def _deserialize(self, params):
@@ -1133,6 +1145,7 @@ class IngressRule(AbstractModel):
             self.Http = IngressRuleValue()
             self.Http._deserialize(params.get("Http"))
         self.Host = params.get("Host")
+        self.Protocol = params.get("Protocol")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1236,18 +1249,22 @@ class IngressTls(AbstractModel):
 
     def __init__(self):
         """
-        :param Hosts: host 数组
+        :param Hosts: host 数组, 空数组表示全部域名的默认证书
         :type Hosts: list of str
-        :param SecretName: secret name
+        :param SecretName: secret name，如使用证书，则填空字符串
         :type SecretName: str
+        :param CertificateId: SSL Certificate Id
+        :type CertificateId: str
         """
         self.Hosts = None
         self.SecretName = None
+        self.CertificateId = None
 
 
     def _deserialize(self, params):
         self.Hosts = params.get("Hosts")
         self.SecretName = params.get("SecretName")
+        self.CertificateId = params.get("CertificateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1513,14 +1530,22 @@ class RunVersionPod(AbstractModel):
         :type Status: str
         :param CreateTime: 创建时间
         :type CreateTime: str
-        :param PodIp: pod的ip
+        :param PodIp: 实例的ip
         :type PodIp: str
+        :param Zone: 可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        :param DeployVersion: 部署版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeployVersion: str
         """
         self.Webshell = None
         self.PodId = None
         self.Status = None
         self.CreateTime = None
         self.PodIp = None
+        self.Zone = None
+        self.DeployVersion = None
 
 
     def _deserialize(self, params):
@@ -1529,6 +1554,8 @@ class RunVersionPod(AbstractModel):
         self.Status = params.get("Status")
         self.CreateTime = params.get("CreateTime")
         self.PodIp = params.get("PodIp")
+        self.Zone = params.get("Zone")
+        self.DeployVersion = params.get("DeployVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

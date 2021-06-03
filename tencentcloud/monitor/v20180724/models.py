@@ -747,27 +747,28 @@ class BindingPolicyObjectRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param GroupId: 策略组id，如传入 PolicyId 则该字段会被忽略可传入任意值如 0
-        :type GroupId: int
         :param Module: 必填。固定值"monitor"
         :type Module: str
+        :param GroupId: 策略组id，如传入 PolicyId 则该字段会被忽略可传入任意值如 0
+        :type GroupId: int
+        :param PolicyId: 告警策略ID，使用此字段时 GroupId 会被忽略
+        :type PolicyId: str
         :param InstanceGroupId: 实例分组ID
         :type InstanceGroupId: int
         :param Dimensions: 需要绑定的对象维度信息
         :type Dimensions: list of BindingPolicyObjectDimension
-        :param PolicyId: 告警策略ID，使用此字段时 GroupId 会被忽略
-        :type PolicyId: str
         """
-        self.GroupId = None
         self.Module = None
+        self.GroupId = None
+        self.PolicyId = None
         self.InstanceGroupId = None
         self.Dimensions = None
-        self.PolicyId = None
 
 
     def _deserialize(self, params):
-        self.GroupId = params.get("GroupId")
         self.Module = params.get("Module")
+        self.GroupId = params.get("GroupId")
+        self.PolicyId = params.get("PolicyId")
         self.InstanceGroupId = params.get("InstanceGroupId")
         if params.get("Dimensions") is not None:
             self.Dimensions = []
@@ -775,7 +776,6 @@ class BindingPolicyObjectRequest(AbstractModel):
                 obj = BindingPolicyObjectDimension()
                 obj._deserialize(item)
                 self.Dimensions.append(obj)
-        self.PolicyId = params.get("PolicyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

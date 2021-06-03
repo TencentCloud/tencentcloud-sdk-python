@@ -299,16 +299,16 @@ class DischargeDiagnosis(AbstractModel):
         :param TableIndex: 表格位置
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableIndex: int
-        :param OutDiagnosis: ""
+        :param OutDiagnosis: 出院诊断
 注意：此字段可能返回 null，表示取不到有效值。
         :type OutDiagnosis: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
-        :param DiseaseCode: ""
+        :param DiseaseCode: 疾病编码
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiseaseCode: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
-        :param InStatus: ""
+        :param InStatus: 入院情况
 注意：此字段可能返回 null，表示取不到有效值。
         :type InStatus: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
-        :param OutStatus: ""
+        :param OutStatus: 出院情况
 注意：此字段可能返回 null，表示取不到有效值。
         :type OutStatus: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         """
@@ -439,13 +439,13 @@ class FamilyMedicalHistory(AbstractModel):
 
     def __init__(self):
         """
-        :param RelativeHistory: ""
+        :param RelativeHistory: 家族成员史
 注意：此字段可能返回 null，表示取不到有效值。
         :type RelativeHistory: str
-        :param RelativeCancerHistory: ""
+        :param RelativeCancerHistory: 家族肿瘤史
 注意：此字段可能返回 null，表示取不到有效值。
         :type RelativeCancerHistory: str
-        :param GeneticHistory: ""
+        :param GeneticHistory: 家族遗传史
 注意：此字段可能返回 null，表示取不到有效值。
         :type GeneticHistory: str
         """
@@ -570,7 +570,7 @@ class HistologyLevel(AbstractModel):
 
     def __init__(self):
         """
-        :param Grade: “”
+        :param Grade: 等级
 注意：此字段可能返回 null，表示取不到有效值。
         :type Grade: str
         :param Index: 原文位置
@@ -605,7 +605,7 @@ class HistologyType(AbstractModel):
 
     def __init__(self):
         """
-        :param Infiltration: “”
+        :param Infiltration: 浸润
 注意：此字段可能返回 null，表示取不到有效值。
         :type Infiltration: str
         :param Index: 原文位置
@@ -648,13 +648,13 @@ class IHCInfo(AbstractModel):
         :param Index: 原文位置
 注意：此字段可能返回 null，表示取不到有效值。
         :type Index: list of int
-        :param Src: “”
+        :param Src: 原文
 注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
-        :param Name: “”
+        :param Name: 名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param Value: “”
+        :param Value: 值
         :type Value: :class:`tencentcloud.mrs.v20200910.models.Value`
         """
         self.Index = None
@@ -718,7 +718,7 @@ class ImageToClassRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ImageInfoList: 图片列表
+        :param ImageInfoList: 图片列表，允许传入多张图片，支持传入图片的url或base64编码
         :type ImageInfoList: list of ImageInfo
         :param HandleParam: 图片处理参数
         :type HandleParam: :class:`tencentcloud.mrs.v20200910.models.HandleParam`
@@ -791,7 +791,7 @@ class ImageToObjectRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ImageInfoList: 图片列表
+        :param ImageInfoList: 图片列表，允许传入多张图片，支持传入图片的url或base64编码
         :type ImageInfoList: list of ImageInfo
         :param HandleParam: 图片处理参数
         :type HandleParam: :class:`tencentcloud.mrs.v20200910.models.HandleParam`
@@ -895,28 +895,28 @@ class IndicatorItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Code: “”
+        :param Code: 英文缩写
 注意：此字段可能返回 null，表示取不到有效值。
         :type Code: str
-        :param Scode: “”
+        :param Scode: 标准缩写
 注意：此字段可能返回 null，表示取不到有效值。
         :type Scode: str
-        :param Name: “”
+        :param Name: 项目名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param Sname: “”
+        :param Sname: 标准名
 注意：此字段可能返回 null，表示取不到有效值。
         :type Sname: str
-        :param Result: “”
+        :param Result: 结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
-        :param Unit: “”
+        :param Unit: 单位
 注意：此字段可能返回 null，表示取不到有效值。
         :type Unit: str
-        :param Range: “”
+        :param Range: 参考范围
 注意：此字段可能返回 null，表示取不到有效值。
         :type Range: str
-        :param Arrow: “”
+        :param Arrow: 上下箭头
 注意：此字段可能返回 null，表示取不到有效值。
         :type Arrow: str
         :param Normal: 是否正常
@@ -1049,24 +1049,24 @@ class MedDoc(AbstractModel):
 
     def __init__(self):
         """
-        :param Advice: “”
+        :param Advice: 建议
 注意：此字段可能返回 null，表示取不到有效值。
         :type Advice: :class:`tencentcloud.mrs.v20200910.models.Advice`
-        :param Diagnosis: “”
+        :param Diagnosis: 诊断结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Diagnosis: list of DiagCertItem
-        :param DiseaseMedicalHistory: “”
+        :param DiseaseMedicalHistory: 疾病史
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiseaseMedicalHistory: :class:`tencentcloud.mrs.v20200910.models.DiseaseMedicalHistory`
-        :param PersonalMedicalHistory: “”
+        :param PersonalMedicalHistory: 个人史
         :type PersonalMedicalHistory: :class:`tencentcloud.mrs.v20200910.models.PersonalMedicalHistory`
-        :param ObstericalMedicalHistory: “”
+        :param ObstericalMedicalHistory: 婚孕史
         :type ObstericalMedicalHistory: :class:`tencentcloud.mrs.v20200910.models.ObstericalMedicalHistory`
-        :param FamilyMedicalHistory: “”
+        :param FamilyMedicalHistory: 家族史
         :type FamilyMedicalHistory: :class:`tencentcloud.mrs.v20200910.models.FamilyMedicalHistory`
-        :param MenstrualMedicalHistory: “”
+        :param MenstrualMedicalHistory: 月经史
         :type MenstrualMedicalHistory: :class:`tencentcloud.mrs.v20200910.models.MenstrualMedicalHistory`
-        :param TreatmentRecord: “”
+        :param TreatmentRecord: 诊疗记录
         :type TreatmentRecord: :class:`tencentcloud.mrs.v20200910.models.TreatmentRecord`
         """
         self.Advice = None
@@ -1123,22 +1123,22 @@ class MenstrualMedicalHistory(AbstractModel):
 
     def __init__(self):
         """
-        :param LastMenstrualPeriod: “”
+        :param LastMenstrualPeriod: 末次月经时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastMenstrualPeriod: str
-        :param MenstrualFlow: “”
+        :param MenstrualFlow: 经量
 注意：此字段可能返回 null，表示取不到有效值。
         :type MenstrualFlow: str
-        :param MenarcheAge: “”
+        :param MenarcheAge: 月经初潮年龄
 注意：此字段可能返回 null，表示取不到有效值。
         :type MenarcheAge: str
-        :param MenstruationOrNot: “”
+        :param MenstruationOrNot: 是否来月经
 注意：此字段可能返回 null，表示取不到有效值。
         :type MenstruationOrNot: str
-        :param MenstrualCycles: “”
+        :param MenstrualCycles: 月经周期
 注意：此字段可能返回 null，表示取不到有效值。
         :type MenstrualCycles: str
-        :param MenstrualPeriod: “”
+        :param MenstrualPeriod: 月经持续天数
 注意：此字段可能返回 null，表示取不到有效值。
         :type MenstrualPeriod: str
         """
@@ -1334,58 +1334,58 @@ class Organ(AbstractModel):
         :param Size: 大小
 注意：此字段可能返回 null，表示取不到有效值。
         :type Size: list of Size
-        :param Envelope: ""
+        :param Envelope: 包膜
 注意：此字段可能返回 null，表示取不到有效值。
         :type Envelope: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
-        :param Edge: ""
+        :param Edge: 边缘
 注意：此字段可能返回 null，表示取不到有效值。
         :type Edge: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
-        :param InnerEcho: ""
+        :param InnerEcho: 内部回声
 注意：此字段可能返回 null，表示取不到有效值。
         :type InnerEcho: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
-        :param Gland: ""
+        :param Gland: 腺体
 注意：此字段可能返回 null，表示取不到有效值。
         :type Gland: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
-        :param Shape: ""
+        :param Shape: 形状
 注意：此字段可能返回 null，表示取不到有效值。
         :type Shape: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
-        :param Thickness: ""
+        :param Thickness: 厚度
 注意：此字段可能返回 null，表示取不到有效值。
         :type Thickness: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
-        :param ShapeAttr: ""
+        :param ShapeAttr: 形态
 注意：此字段可能返回 null，表示取不到有效值。
         :type ShapeAttr: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
-        :param CDFI: ""
+        :param CDFI: 血液cdfi
 注意：此字段可能返回 null，表示取不到有效值。
         :type CDFI: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
-        :param SymDesc: ""
+        :param SymDesc: 描述信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type SymDesc: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
-        :param SizeStatus: ""
+        :param SizeStatus: 大小状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type SizeStatus: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
-        :param Outline: ""
+        :param Outline: 轮廓
 注意：此字段可能返回 null，表示取不到有效值。
         :type Outline: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
-        :param Structure: ""
+        :param Structure: 结构
 注意：此字段可能返回 null，表示取不到有效值。
         :type Structure: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
-        :param Density: ""
+        :param Density: 密度
 注意：此字段可能返回 null，表示取不到有效值。
         :type Density: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
-        :param Vas: ""
+        :param Vas: 血管
 注意：此字段可能返回 null，表示取不到有效值。
         :type Vas: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
-        :param Cysticwall: ""
+        :param Cysticwall: 囊壁
 注意：此字段可能返回 null，表示取不到有效值。
         :type Cysticwall: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
-        :param Capsule: ""
+        :param Capsule: 被膜
 注意：此字段可能返回 null，表示取不到有效值。
         :type Capsule: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
-        :param IsthmusThicknese: ""
+        :param IsthmusThicknese: 峡部厚度
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsthmusThicknese: :class:`tencentcloud.mrs.v20200910.models.Size`
-        :param InnerEchoDistribution: ""
+        :param InnerEchoDistribution: 内部回声分布
 注意：此字段可能返回 null，表示取不到有效值。
         :type InnerEchoDistribution: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param Src: 原文
@@ -1548,46 +1548,46 @@ class PathologyReport(AbstractModel):
 
     def __init__(self):
         """
-        :param CancerPart: ""
+        :param CancerPart: 癌症部位
 注意：此字段可能返回 null，表示取不到有效值。
         :type CancerPart: :class:`tencentcloud.mrs.v20200910.models.Part`
-        :param CancerSize: ""
+        :param CancerSize: 癌症部位大小
 注意：此字段可能返回 null，表示取不到有效值。
         :type CancerSize: list of Size
         :param DescText: 描述文本
 注意：此字段可能返回 null，表示取不到有效值。
         :type DescText: str
-        :param HistologyLevel: 癌症
+        :param HistologyLevel: 组织学等级
 注意：此字段可能返回 null，表示取不到有效值。
         :type HistologyLevel: :class:`tencentcloud.mrs.v20200910.models.HistologyLevel`
-        :param HistologyType: 扩散
+        :param HistologyType: 组织学类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type HistologyType: :class:`tencentcloud.mrs.v20200910.models.HistologyType`
-        :param IHC: 淋巴
+        :param IHC: IHC信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type IHC: list of IHCInfo
-        :param InfiltrationDepth: ""
+        :param InfiltrationDepth: 浸润深度
 注意：此字段可能返回 null，表示取不到有效值。
         :type InfiltrationDepth: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
-        :param Invasive: ""
+        :param Invasive: 肿瘤扩散
 注意：此字段可能返回 null，表示取不到有效值。
         :type Invasive: list of Invas
-        :param LymphNodes: ""
+        :param LymphNodes: 淋巴结
 注意：此字段可能返回 null，表示取不到有效值。
         :type LymphNodes: list of Lymph
-        :param PTNM: ""
+        :param PTNM: PTNM信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type PTNM: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
-        :param PathologicalReportType: ""
+        :param PathologicalReportType: 病理报告类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type PathologicalReportType: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
-        :param ReportText: ""
+        :param ReportText: 报告原文
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReportText: str
-        :param SampleType: ""
+        :param SampleType: 标本类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type SampleType: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
-        :param SummaryText: ""
+        :param SummaryText: 结论文本
 注意：此字段可能返回 null，表示取不到有效值。
         :type SummaryText: str
         """
@@ -2245,85 +2245,85 @@ class TreatmentRecord(AbstractModel):
 
     def __init__(self):
         """
-        :param DmissionCondition: ""
+        :param DmissionCondition: 入院
 注意：此字段可能返回 null，表示取不到有效值。
         :type DmissionCondition: str
-        :param ChiefComplaint: ""
+        :param ChiefComplaint: 主诉
 注意：此字段可能返回 null，表示取不到有效值。
         :type ChiefComplaint: str
-        :param DiseasePresent: ""
+        :param DiseasePresent: 现病史
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiseasePresent: str
-        :param SymptomsAndSigns: ""
+        :param SymptomsAndSigns: 主要症状体征
 注意：此字段可能返回 null，表示取不到有效值。
         :type SymptomsAndSigns: str
-        :param AuxiliaryExamination: “”
+        :param AuxiliaryExamination: 辅助检查
 注意：此字段可能返回 null，表示取不到有效值。
         :type AuxiliaryExamination: str
-        :param BodyExamination: “”
+        :param BodyExamination: 体格检查
 注意：此字段可能返回 null，表示取不到有效值。
         :type BodyExamination: str
-        :param SpecialistExamination: “”
+        :param SpecialistExamination: 专科检查
 注意：此字段可能返回 null，表示取不到有效值。
         :type SpecialistExamination: str
-        :param MentalExamination: “”
+        :param MentalExamination: 精神检查
 注意：此字段可能返回 null，表示取不到有效值。
         :type MentalExamination: str
-        :param CheckRecord: “”
+        :param CheckRecord: 检查记录
 注意：此字段可能返回 null，表示取不到有效值。
         :type CheckRecord: str
-        :param InspectResult: “”
+        :param InspectResult: 化验结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type InspectResult: str
-        :param IncisionHealing: “”
+        :param IncisionHealing: 切口愈合情况
 注意：此字段可能返回 null，表示取不到有效值。
         :type IncisionHealing: str
-        :param TreatmentSuggestion: “”
+        :param TreatmentSuggestion: 处理意见
 注意：此字段可能返回 null，表示取不到有效值。
         :type TreatmentSuggestion: str
-        :param FollowUpRequirements: “”
+        :param FollowUpRequirements: 门诊随访要求
 注意：此字段可能返回 null，表示取不到有效值。
         :type FollowUpRequirements: str
-        :param CheckAndTreatmentProcess: “”
+        :param CheckAndTreatmentProcess: 诊疗经过
 注意：此字段可能返回 null，表示取不到有效值。
         :type CheckAndTreatmentProcess: str
-        :param SurgeryCondition: “”
+        :param SurgeryCondition: 手术经过
 注意：此字段可能返回 null，表示取不到有效值。
         :type SurgeryCondition: str
-        :param ConditionChanges: “”
+        :param ConditionChanges: 入院情况
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConditionChanges: str
-        :param DischargeCondition: “”
+        :param DischargeCondition: 出院情况
 注意：此字段可能返回 null，表示取不到有效值。
         :type DischargeCondition: str
-        :param PTNM: “”
+        :param PTNM: pTNM信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type PTNM: str
-        :param PTNMM: “”
+        :param PTNMM: pTNMM信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type PTNMM: str
-        :param PTNMN: “”
+        :param PTNMN: pTNMN信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type PTNMN: str
-        :param PTNMT: “”
+        :param PTNMT: pTNMT信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type PTNMT: str
-        :param ECOG: “”
+        :param ECOG: ECOG信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ECOG: str
-        :param NRS: “”
+        :param NRS: NRS信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type NRS: str
-        :param KPS: “”
+        :param KPS: KPS信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type KPS: str
-        :param DeathDate: “”
+        :param DeathDate: 死亡日期
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeathDate: str
-        :param RelapseDate: “”
+        :param RelapseDate: 复发日期
 注意：此字段可能返回 null，表示取不到有效值。
         :type RelapseDate: str
-        :param ObservationDays: “”
+        :param ObservationDays: 观测天数
 注意：此字段可能返回 null，表示取不到有效值。
         :type ObservationDays: str
         """
@@ -2409,7 +2409,7 @@ class TuberInfo(AbstractModel):
         :param Size: 大小
 注意：此字段可能返回 null，表示取不到有效值。
         :type Size: list of Size
-        :param Multiple: 数量
+        :param Multiple: 多发
 注意：此字段可能返回 null，表示取不到有效值。
         :type Multiple: :class:`tencentcloud.mrs.v20200910.models.Multiple`
         :param AspectRatio: 纵横比
@@ -2424,19 +2424,19 @@ class TuberInfo(AbstractModel):
         :param RearEcho: 外部回声
 注意：此字段可能返回 null，表示取不到有效值。
         :type RearEcho: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
-        :param Elastic: 质地
+        :param Elastic: 质地弹性
 注意：此字段可能返回 null，表示取不到有效值。
         :type Elastic: :class:`tencentcloud.mrs.v20200910.models.Elastic`
-        :param Shape: 形态
+        :param Shape: 形状
 注意：此字段可能返回 null，表示取不到有效值。
         :type Shape: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
-        :param ShapeAttr: 形态属性
+        :param ShapeAttr: 形态
 注意：此字段可能返回 null，表示取不到有效值。
         :type ShapeAttr: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
-        :param SkinMedulla: “”
+        :param SkinMedulla: 皮髓质信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type SkinMedulla: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
-        :param Trend: “”
+        :param Trend: 变化趋势
 注意：此字段可能返回 null，表示取不到有效值。
         :type Trend: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param Calcification: 钙化
@@ -2457,46 +2457,46 @@ class TuberInfo(AbstractModel):
         :param Activity: 活动度
 注意：此字段可能返回 null，表示取不到有效值。
         :type Activity: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
-        :param Operation: “”
+        :param Operation: 手术情况
 注意：此字段可能返回 null，表示取不到有效值。
         :type Operation: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
-        :param CDFI: “”
+        :param CDFI: 血液cdfi
 注意：此字段可能返回 null，表示取不到有效值。
         :type CDFI: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
         :param Index: 原文位置
 注意：此字段可能返回 null，表示取不到有效值。
         :type Index: list of int
-        :param SizeStatus: “”
+        :param SizeStatus: 大小状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type SizeStatus: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
-        :param InnerEchoDistribution: “”
+        :param InnerEchoDistribution: 内部回声分布
 注意：此字段可能返回 null，表示取不到有效值。
         :type InnerEchoDistribution: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
-        :param InnerEchoType: “”
+        :param InnerEchoType: 内部回声类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type InnerEchoType: list of BlockInfo
-        :param Outline: “”
+        :param Outline: 轮廓
 注意：此字段可能返回 null，表示取不到有效值。
         :type Outline: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
-        :param Structure: “”
+        :param Structure: 结构
 注意：此字段可能返回 null，表示取不到有效值。
         :type Structure: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
-        :param Density: “”
+        :param Density: 密度
 注意：此字段可能返回 null，表示取不到有效值。
         :type Density: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
-        :param Vas: “”
+        :param Vas: 血管
 注意：此字段可能返回 null，表示取不到有效值。
         :type Vas: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
-        :param Cysticwall: “”
+        :param Cysticwall: 囊壁
 注意：此字段可能返回 null，表示取不到有效值。
         :type Cysticwall: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
-        :param Capsule: “”
+        :param Capsule: 被膜
 注意：此字段可能返回 null，表示取不到有效值。
         :type Capsule: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
-        :param IsthmusThicknese: “”
+        :param IsthmusThicknese: 峡部厚度
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsthmusThicknese: :class:`tencentcloud.mrs.v20200910.models.Size`
-        :param Src: “”
+        :param Src: 原文
 注意：此字段可能返回 null，表示取不到有效值。
         :type Src: str
         """
@@ -2653,10 +2653,10 @@ class Value(AbstractModel):
 
     def __init__(self):
         """
-        :param Grade: “”
+        :param Grade: 等级
 注意：此字段可能返回 null，表示取不到有效值。
         :type Grade: str
-        :param Percent: “”
+        :param Percent: 百分比
 注意：此字段可能返回 null，表示取不到有效值。
         :type Percent: list of float
         :param Positive: 阳性
