@@ -200,6 +200,62 @@ class BigKeyTypeInfo(AbstractModel):
         
 
 
+class ChangeReplicaToMasterRequest(AbstractModel):
+    """ChangeReplicaToMaster请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例Id
+        :type InstanceId: str
+        :param GroupId: 副本Id
+        :type GroupId: int
+        """
+        self.InstanceId = None
+        self.GroupId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class ChangeReplicaToMasterResponse(AbstractModel):
+    """ChangeReplicaToMaster返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 异步任务ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class CleanUpInstanceRequest(AbstractModel):
     """CleanUpInstance请求参数结构体
 

@@ -18973,11 +18973,10 @@ CVM：公网网关类型的云服务器；
 VPN：VPN网关；
 DIRECTCONNECT：专线网关；
 PEERCONNECTION：对等连接；
-SSLVPN：sslvpn网关；
+HAVIP：高可用虚拟IP；
 NAT：NAT网关; 
 NORMAL_CVM：普通云服务器；
 EIP：云服务器的公网IP；
-CCN：云联网；
 LOCAL_GATEWAY：本地网关。
         :type GatewayType: str
         :param GatewayId: 下一跳地址，这里只需要指定不同下一跳类型的网关ID，系统会自动匹配到下一跳地址。

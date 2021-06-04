@@ -1141,7 +1141,7 @@ class RegionInfo(AbstractModel):
         :type Region: str
         :param RegionName: 地域描述，例如: 广州
         :type RegionName: str
-        :param RegionState: 地域是否可用状态
+        :param RegionState: 地域是否可用状态，AVAILABLE 代表可用
         :type RegionState: str
         """
         self.Region = None

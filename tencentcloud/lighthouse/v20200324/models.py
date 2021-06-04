@@ -1704,16 +1704,25 @@ class DescribeKeyPairsRequest(AbstractModel):
         :type Offset: int
         :param Limit: 返回数量，默认为 20，最大值为 100。
         :type Limit: int
+        :param Filters: 过滤条件，每次请求的 Filters 的上限为10， Filters.Values 的上限为5。参数不可以同时指定 KeyIds 和 Filters 。详细的过滤条件如下： key-id - String - 是否必填： 否 - （过滤条件）按照KeyID进行过滤; key-name - String - 是否必填： 否 - （过滤条件）按照KeyName进行过滤。
+        :type Filters: list of Filter
         """
         self.KeyIds = None
         self.Offset = None
         self.Limit = None
+        self.Filters = None
 
 
     def _deserialize(self, params):
         self.KeyIds = params.get("KeyIds")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2504,7 +2513,7 @@ class InquirePriceCreateInstancesRequest(AbstractModel):
         :type InstanceCount: int
         :param InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
         :type InstanceChargePrepaid: :class:`tencentcloud.lighthouse.v20200324.models.InstanceChargePrepaid`
-        :param BlueprintId: 应用镜像 ID，使用收费应用镜像时必填。
+        :param BlueprintId: 应用镜像 ID，使用收费应用镜像时必填。可通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回值中的BlueprintId获取。
         :type BlueprintId: str
         """
         self.BundleId = None

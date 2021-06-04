@@ -4174,16 +4174,20 @@ class PublishBroadcastMessageRequest(AbstractModel):
         :type Payload: str
         :param Qos: 消息质量等级
         :type Qos: int
+        :param PayloadEncoding: Payload内容的编码格式，取值为base64或空。base64表示云端将收到的请求数据进行base64解码后下发到设备，空则直接将原始内容下发到设备
+        :type PayloadEncoding: str
         """
         self.ProductId = None
         self.Payload = None
         self.Qos = None
+        self.PayloadEncoding = None
 
 
     def _deserialize(self, params):
         self.ProductId = params.get("ProductId")
         self.Payload = params.get("Payload")
         self.Qos = params.get("Qos")
+        self.PayloadEncoding = params.get("PayloadEncoding")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

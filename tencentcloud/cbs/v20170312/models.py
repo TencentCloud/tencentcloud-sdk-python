@@ -2241,9 +2241,12 @@ class ModifyDisksChargeTypeRequest(AbstractModel):
         :type DiskIds: list of str
         :param DiskChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
         :type DiskChargePrepaid: :class:`tencentcloud.cbs.v20170312.models.DiskChargePrepaid`
+        :param DiskChargePostpaid: 后付费模式
+        :type DiskChargePostpaid: bool
         """
         self.DiskIds = None
         self.DiskChargePrepaid = None
+        self.DiskChargePostpaid = None
 
 
     def _deserialize(self, params):
@@ -2251,6 +2254,7 @@ class ModifyDisksChargeTypeRequest(AbstractModel):
         if params.get("DiskChargePrepaid") is not None:
             self.DiskChargePrepaid = DiskChargePrepaid()
             self.DiskChargePrepaid._deserialize(params.get("DiskChargePrepaid"))
+        self.DiskChargePostpaid = params.get("DiskChargePostpaid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

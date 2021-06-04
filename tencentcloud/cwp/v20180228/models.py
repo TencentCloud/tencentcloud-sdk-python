@@ -3659,14 +3659,18 @@ class DescribeImportMachineInfoRequest(AbstractModel):
         :type MachineList: list of str
         :param ImportType: 批量导入的数据类型：Ip、Name、Id 三选一
         :type ImportType: str
+        :param IsQueryProMachine: 是否仅支持专业版机器的查询（true：仅专业版   false：专业版+基础版）
+        :type IsQueryProMachine: bool
         """
         self.MachineList = None
         self.ImportType = None
+        self.IsQueryProMachine = None
 
 
     def _deserialize(self, params):
         self.MachineList = params.get("MachineList")
         self.ImportType = params.get("ImportType")
+        self.IsQueryProMachine = params.get("IsQueryProMachine")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7100,12 +7104,16 @@ class EffectiveMachineInfo(AbstractModel):
         :param Quuid: 机器Quuid
 注意：此字段可能返回 null，表示取不到有效值。
         :type Quuid: str
+        :param Uuid: 云镜Uuid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uuid: str
         """
         self.MachineName = None
         self.MachinePublicIp = None
         self.MachinePrivateIp = None
         self.MachineTag = None
         self.Quuid = None
+        self.Uuid = None
 
 
     def _deserialize(self, params):
@@ -7119,6 +7127,7 @@ class EffectiveMachineInfo(AbstractModel):
                 obj._deserialize(item)
                 self.MachineTag.append(obj)
         self.Quuid = params.get("Quuid")
+        self.Uuid = params.get("Uuid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

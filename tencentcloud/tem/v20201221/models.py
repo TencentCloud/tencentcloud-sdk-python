@@ -231,6 +231,8 @@ class CreateNamespaceRequest(AbstractModel):
         :type K8sVersion: str
         :param SourceChannel: 来源渠道
         :type SourceChannel: int
+        :param EnableTswTraceService: 是否开启tsw服务
+        :type EnableTswTraceService: bool
         """
         self.NamespaceName = None
         self.Vpc = None
@@ -238,6 +240,7 @@ class CreateNamespaceRequest(AbstractModel):
         self.Description = None
         self.K8sVersion = None
         self.SourceChannel = None
+        self.EnableTswTraceService = None
 
 
     def _deserialize(self, params):
@@ -247,6 +250,7 @@ class CreateNamespaceRequest(AbstractModel):
         self.Description = params.get("Description")
         self.K8sVersion = params.get("K8sVersion")
         self.SourceChannel = params.get("SourceChannel")
+        self.EnableTswTraceService = params.get("EnableTswTraceService")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -572,6 +576,10 @@ class DeployServiceV2Request(AbstractModel):
         :type ImageCommand: str
         :param ImageArgs: 镜像命令参数
         :type ImageArgs: list of str
+        :param PortMappings: 服务端口映射
+        :type PortMappings: list of PortMapping
+        :param UseRegistryDefaultConfig: 是否添加默认注册中心配置
+        :type UseRegistryDefaultConfig: bool
         """
         self.ServiceId = None
         self.ContainerPort = None
@@ -597,6 +605,8 @@ class DeployServiceV2Request(AbstractModel):
         self.Description = None
         self.ImageCommand = None
         self.ImageArgs = None
+        self.PortMappings = None
+        self.UseRegistryDefaultConfig = None
 
 
     def _deserialize(self, params):
@@ -643,6 +653,13 @@ class DeployServiceV2Request(AbstractModel):
         self.Description = params.get("Description")
         self.ImageCommand = params.get("ImageCommand")
         self.ImageArgs = params.get("ImageArgs")
+        if params.get("PortMappings") is not None:
+            self.PortMappings = []
+            for item in params.get("PortMappings"):
+                obj = PortMapping()
+                obj._deserialize(item)
+                self.PortMappings.append(obj)
+        self.UseRegistryDefaultConfig = params.get("UseRegistryDefaultConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -759,16 +776,20 @@ class DescribeIngressesRequest(AbstractModel):
         :type EksNamespace: str
         :param SourceChannel: 来源渠道
         :type SourceChannel: int
+        :param Names: ingress 规则名列表
+        :type Names: list of str
         """
         self.NamespaceId = None
         self.EksNamespace = None
         self.SourceChannel = None
+        self.Names = None
 
 
     def _deserialize(self, params):
         self.NamespaceId = params.get("NamespaceId")
         self.EksNamespace = params.get("EksNamespace")
         self.SourceChannel = params.get("SourceChannel")
+        self.Names = params.get("Names")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -864,6 +885,76 @@ class DescribeNamespacesResponse(AbstractModel):
         if params.get("Result") is not None:
             self.Result = NamespacePage()
             self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DescribeRelatedIngressesRequest(AbstractModel):
+    """DescribeRelatedIngresses请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NamespaceId: 环境 id
+        :type NamespaceId: str
+        :param EksNamespace: EKS namespace
+        :type EksNamespace: str
+        :param SourceChannel: 来源渠道
+        :type SourceChannel: int
+        :param ServiceId: 服务 ID
+        :type ServiceId: str
+        """
+        self.NamespaceId = None
+        self.EksNamespace = None
+        self.SourceChannel = None
+        self.ServiceId = None
+
+
+    def _deserialize(self, params):
+        self.NamespaceId = params.get("NamespaceId")
+        self.EksNamespace = params.get("EksNamespace")
+        self.SourceChannel = params.get("SourceChannel")
+        self.ServiceId = params.get("ServiceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DescribeRelatedIngressesResponse(AbstractModel):
+    """DescribeRelatedIngresses返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: ingress 数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: list of IngressInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = []
+            for item in params.get("Result"):
+                obj = IngressInfo()
+                obj._deserialize(item)
+                self.Result.append(obj)
         self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -1446,6 +1537,67 @@ class ModifyNamespaceResponse(AbstractModel):
         
 
 
+class ModifyServiceInfoRequest(AbstractModel):
+    """ModifyServiceInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ServiceId: 服务ID
+        :type ServiceId: str
+        :param Description: 描述
+        :type Description: str
+        :param SourceChannel: 来源渠道
+        :type SourceChannel: int
+        """
+        self.ServiceId = None
+        self.Description = None
+        self.SourceChannel = None
+
+
+    def _deserialize(self, params):
+        self.ServiceId = params.get("ServiceId")
+        self.Description = params.get("Description")
+        self.SourceChannel = params.get("SourceChannel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class ModifyServiceInfoResponse(AbstractModel):
+    """ModifyServiceInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 成功与否
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class NamespacePage(AbstractModel):
     """命名空间分页
 
@@ -1506,6 +1658,115 @@ class Pair(AbstractModel):
     def _deserialize(self, params):
         self.Key = params.get("Key")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class PortMapping(AbstractModel):
+    """服务端口映射
+
+    """
+
+    def __init__(self):
+        """
+        :param Port: 端口
+        :type Port: int
+        :param TargetPort: 映射端口
+        :type TargetPort: int
+        :param Protocol: 协议栈 TCP/UDP
+        :type Protocol: str
+        """
+        self.Port = None
+        self.TargetPort = None
+        self.Protocol = None
+
+
+    def _deserialize(self, params):
+        self.Port = params.get("Port")
+        self.TargetPort = params.get("TargetPort")
+        self.Protocol = params.get("Protocol")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class RestartServiceRunPodRequest(AbstractModel):
+    """RestartServiceRunPod请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NamespaceId: 环境id
+        :type NamespaceId: str
+        :param ServiceId: 服务名id
+        :type ServiceId: str
+        :param PodName: 名字
+        :type PodName: str
+        :param Limit: 单页条数
+        :type Limit: int
+        :param Offset: 分页下标
+        :type Offset: int
+        :param Status: pod状态
+        :type Status: str
+        :param SourceChannel: 来源渠道
+        :type SourceChannel: int
+        """
+        self.NamespaceId = None
+        self.ServiceId = None
+        self.PodName = None
+        self.Limit = None
+        self.Offset = None
+        self.Status = None
+        self.SourceChannel = None
+
+
+    def _deserialize(self, params):
+        self.NamespaceId = params.get("NamespaceId")
+        self.ServiceId = params.get("ServiceId")
+        self.PodName = params.get("PodName")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Status = params.get("Status")
+        self.SourceChannel = params.get("SourceChannel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class RestartServiceRunPodResponse(AbstractModel):
+    """RestartServiceRunPod返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 返回结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

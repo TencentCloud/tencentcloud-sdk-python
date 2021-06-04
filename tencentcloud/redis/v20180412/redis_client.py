@@ -54,6 +54,34 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ChangeReplicaToMaster(self, request):
+        """该接口仅支持多AZ实例副本组提主
+
+        :param request: Request instance for ChangeReplicaToMaster.
+        :type request: :class:`tencentcloud.redis.v20180412.models.ChangeReplicaToMasterRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ChangeReplicaToMasterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ChangeReplicaToMaster", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ChangeReplicaToMasterResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CleanUpInstance(self, request):
         """回收站实例立即下线
 
