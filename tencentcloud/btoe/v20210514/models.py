@@ -793,7 +793,7 @@ class VerifyEvidenceBlockChainTxHashRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EvidenceTxHash: ‘区块链交易hash，在"存证基本信息查询”中可以获取
+        :param EvidenceTxHash: 区块链交易 hash，在“存证基本信息查询（GetDepositInfo）”接口中可以获取。
         :type EvidenceTxHash: str
         """
         self.EvidenceTxHash = None

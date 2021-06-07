@@ -1258,6 +1258,34 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def SendMsg(self, request):
+        """此接口仅用于测试发生消息，不能作为现网正式生产使用
+
+        :param request: Request instance for SendMsg.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.SendMsgRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.SendMsgResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SendMsg", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SendMsgResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def UnbindCmqDeadLetter(self, request):
         """解绑cmq死信队列
 

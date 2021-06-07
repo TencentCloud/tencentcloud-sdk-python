@@ -54,6 +54,46 @@ class AmsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateAudioModerationSyncTask(self, request):
+        """本接口（CreateAudioModerationSyncTask） 用于提交短音频内容进行智能审核任务，使用前请您登陆控制台开通音频内容安全服务。
+
+        功能使用说明：
+        前往“内容安全控制台-音频内容安全”开启使用音频内容安全服务，首次开通可获得10小时免费调用时长；
+
+        接口限制：
+        - 音频文件大小支持：文件 < 5M;
+        - 音频文件时长小于60s，超过60s音频调用则报错；
+        - 音频码率类型支持：8Kbps - 16Kbps；
+        - 音频文件支持格式：wav、mp3；
+        - 接口仅限音频文件传入，视频文件传入请调用长音频异步接口；
+        - 接口默认QPS为10，默认接口请求频率限制20次/秒，如需要更高的并发或请求频率，请工单咨询；
+        - 接口超时为5s，每一次请求超过该时长会报错；
+
+        :param request: Request instance for CreateAudioModerationSyncTask.
+        :type request: :class:`tencentcloud.ams.v20201229.models.CreateAudioModerationSyncTaskRequest`
+        :rtype: :class:`tencentcloud.ams.v20201229.models.CreateAudioModerationSyncTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAudioModerationSyncTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAudioModerationSyncTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateAudioModerationTask(self, request):
         """本接口（Audio Moderation）用于提交音频内容（包括音频文件或流地址）进行智能审核任务，使用前请您登陆控制台开通音频内容安全服务。
 

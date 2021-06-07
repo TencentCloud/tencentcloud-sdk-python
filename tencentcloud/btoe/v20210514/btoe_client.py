@@ -336,7 +336,7 @@ class BtoeClient(AbstractClient):
 
 
     def VerifyEvidenceBlockChainTxHash(self, request):
-        """用户向BTOE核验存证结果中的区块链交易hash
+        """用户向BTOE核验存证结果中的区块链交易hash的真实性
 
         :param request: Request instance for VerifyEvidenceBlockChainTxHash.
         :type request: :class:`tencentcloud.btoe.v20210514.models.VerifyEvidenceBlockChainTxHashRequest`

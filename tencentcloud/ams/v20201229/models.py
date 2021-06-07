@@ -362,6 +362,129 @@ class CancelTaskResponse(AbstractModel):
         
 
 
+class CreateAudioModerationSyncTaskRequest(AbstractModel):
+    """CreateAudioModerationSyncTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BizType: Biztype为策略的具体的编号，用于接口调度，在内容安全控制台中可配置。不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。Biztype仅为数字、字母与下划线的组合，长度为3-32个字符；调用时不传入Biztype代表采用默认的识别策略。
+        :type BizType: str
+        :param DataId: 数据标识，可以由英文字母、数字、下划线、-、@#组成，不超过64个字符
+        :type DataId: str
+        :param FileFormat: 音频文件资源格式，当前为mp3，wav，请按照实际文件格式填入
+        :type FileFormat: str
+        :param Name: 文件名称，可以由英文字母、数字、下划线、-、@#组成，不超过64个字符
+        :type Name: str
+        :param FileContent: 数据Base64编码，短音频同步接口仅传入可音频内容；
+支持范围：文件大小不能超过5M，时长不可超过60s，码率范围为8-16Kbps；
+支持格式：wav、mp3
+        :type FileContent: str
+        :param FileUrl: 音频资源访问链接，与FileContent参数必须二选一输入；
+支持范围：同FileContent；
+        :type FileUrl: str
+        """
+        self.BizType = None
+        self.DataId = None
+        self.FileFormat = None
+        self.Name = None
+        self.FileContent = None
+        self.FileUrl = None
+
+
+    def _deserialize(self, params):
+        self.BizType = params.get("BizType")
+        self.DataId = params.get("DataId")
+        self.FileFormat = params.get("FileFormat")
+        self.Name = params.get("Name")
+        self.FileContent = params.get("FileContent")
+        self.FileUrl = params.get("FileUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class CreateAudioModerationSyncTaskResponse(AbstractModel):
+    """CreateAudioModerationSyncTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DataId: 请求接口时传入的数据标识
+        :type DataId: str
+        :param Name: 文件名称，可以由英文字母、数字、下划线、-、@#组成，不超过64个字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param BizType: Biztype为策略的具体的编号，用于接口调度，在内容安全控制台中可配置。不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。Biztype仅为数字、字母与下划线的组合，长度为3-32个字符；调用时不传入Biztype代表采用默认的识别策略。
+        :type BizType: str
+        :param Suggestion: 智能审核服务对于内容违规类型的等级，可选值：
+Pass 建议通过；
+Reveiw 建议复审；
+Block 建议屏蔽；
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Suggestion: str
+        :param Label: 智能审核服务对于内容违规类型的判断，详见返回值列表
+如：Label：Porn（色情）；
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Label: str
+        :param AsrText: 音频文本，备注：这里的文本最大只返回前1000个字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsrText: str
+        :param TextResults: 音频中对话内容审核结果；
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TextResults: list of TextResult
+        :param MoanResults: 音频中低俗内容审核结果；
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MoanResults: list of MoanResult
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DataId = None
+        self.Name = None
+        self.BizType = None
+        self.Suggestion = None
+        self.Label = None
+        self.AsrText = None
+        self.TextResults = None
+        self.MoanResults = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DataId = params.get("DataId")
+        self.Name = params.get("Name")
+        self.BizType = params.get("BizType")
+        self.Suggestion = params.get("Suggestion")
+        self.Label = params.get("Label")
+        self.AsrText = params.get("AsrText")
+        if params.get("TextResults") is not None:
+            self.TextResults = []
+            for item in params.get("TextResults"):
+                obj = TextResult()
+                obj._deserialize(item)
+                self.TextResults.append(obj)
+        if params.get("MoanResults") is not None:
+            self.MoanResults = []
+            for item in params.get("MoanResults"):
+                obj = MoanResult()
+                obj._deserialize(item)
+                self.MoanResults.append(obj)
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class CreateAudioModerationTaskRequest(AbstractModel):
     """CreateAudioModerationTask请求参数结构体
 
@@ -753,6 +876,49 @@ class MediaInfo(AbstractModel):
         
 
 
+class MoanResult(AbstractModel):
+    """呻吟低俗检测结果
+
+    """
+
+    def __init__(self):
+        """
+        :param Label: 固定取值为Moan（呻吟/娇喘），如音频中无复杂类型「MoanResult」的返回则代表改音频中无呻吟/娇喘相关违规内容；
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Label: str
+        :param Score: 机器判断当前分类的置信度，取值范围：0~100。分数越高，表示越有可能属于当前分类。
+（如：Moan 99，则该样本属于呻吟/娇喘的置信度非常高。）
+        :type Score: int
+        :param Suggestion: 建议您拿到判断结果后的执行操作。
+建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
+        :type Suggestion: str
+        :param StartTime: 违规事件开始时间，单位为毫秒（ms）；
+        :type StartTime: float
+        :param EndTime: 违规事件结束时间，单位为毫秒（ms）；
+        :type EndTime: float
+        """
+        self.Label = None
+        self.Score = None
+        self.Suggestion = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.Label = params.get("Label")
+        self.Score = params.get("Score")
+        self.Suggestion = params.get("Suggestion")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class StorageInfo(AbstractModel):
     """数据存储信息
 
@@ -1006,6 +1172,69 @@ class TaskResult(AbstractModel):
         self.TaskId = params.get("TaskId")
         self.Code = params.get("Code")
         self.Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class TextResult(AbstractModel):
+    """音频文本内容审核结果
+
+    """
+
+    def __init__(self):
+        """
+        :param Label: 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
+以及其他令人反感、不安全或不适宜的内容类型。
+
+如音频中无复杂类型「TextResults」的返回则代表改音频中无相关违规内容；
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Label: str
+        :param Keywords: 命中的关键词，为空则代表该违规内容出自于模型的判断；
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Keywords: list of str
+        :param LibId: 命中关键词库的库标识；
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LibId: str
+        :param LibName: 命中关键词库的名字；
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LibName: str
+        :param Score: 机器判断当前分类的置信度，取值范围：0~100。分数越高，表示越有可能属于当前分类。
+（如：Porn 99，则该样本属于色情的置信度非常高。）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Score: int
+        :param Suggestion: 建议您拿到判断结果后的执行操作。
+建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Suggestion: str
+        :param LibType: 自定义词库的类型，自定义词库相关的信息可登录控制台中查看；
+
+1：自定义黑白库；
+
+2：自定义库；
+        :type LibType: int
+        """
+        self.Label = None
+        self.Keywords = None
+        self.LibId = None
+        self.LibName = None
+        self.Score = None
+        self.Suggestion = None
+        self.LibType = None
+
+
+    def _deserialize(self, params):
+        self.Label = params.get("Label")
+        self.Keywords = params.get("Keywords")
+        self.LibId = params.get("LibId")
+        self.LibName = params.get("LibName")
+        self.Score = params.get("Score")
+        self.Suggestion = params.get("Suggestion")
+        self.LibType = params.get("LibType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

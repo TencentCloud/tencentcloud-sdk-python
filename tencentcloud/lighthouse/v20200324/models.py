@@ -147,7 +147,7 @@ class Blueprint(AbstractModel):
         :type BlueprintType: str
         :param ImageUrl: 镜像图片 URL。
         :type ImageUrl: str
-        :param RequiredSystemDiskSize: 镜像所需系统盘大小。
+        :param RequiredSystemDiskSize: 镜像所需系统盘大小，单位 GB。
         :type RequiredSystemDiskSize: int
         :param BlueprintState: 镜像状态。
         :type BlueprintState: str
@@ -3576,7 +3576,7 @@ class RegionInfo(AbstractModel):
         :type Region: str
         :param RegionName: 地域描述，例如，华南地区(广州)。
         :type RegionName: str
-        :param RegionState: 地域是否可用状态。
+        :param RegionState: 地域是否可用状态，取值为AVAILABLE。
         :type RegionState: str
         :param IsChinaMainland: 是否中国大陆地域
         :type IsChinaMainland: bool

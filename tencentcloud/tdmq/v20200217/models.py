@@ -4066,6 +4066,66 @@ class SendMessagesResponse(AbstractModel):
         
 
 
+class SendMsgRequest(AbstractModel):
+    """SendMsg请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvironmentId: 环境（命名空间）名称。
+        :type EnvironmentId: str
+        :param TopicName: 主题名称，如果是分区topic需要指定具体分区，如果没有指定则默认发到0分区，例如：my_topic-partition-0。
+        :type TopicName: str
+        :param MsgContent: 消息内容，不能为空且大小不得大于5242880个byte。
+        :type MsgContent: str
+        :param ClusterId: Pulsar 集群的ID
+        :type ClusterId: str
+        """
+        self.EnvironmentId = None
+        self.TopicName = None
+        self.MsgContent = None
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.TopicName = params.get("TopicName")
+        self.MsgContent = params.get("MsgContent")
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class SendMsgResponse(AbstractModel):
+    """SendMsg返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class Subscription(AbstractModel):
     """订阅者
 
