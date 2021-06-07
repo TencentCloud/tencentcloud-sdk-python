@@ -1,17 +1,17 @@
 # -*- coding: utf-8 -*-
-# 发音数据传输接口（https://cloud.tencent.com/document/product/884/19318）
+# 发音数据传输接口附带初始化过程（https://cloud.tencent.com/document/product/884/32605）
 from tencentcloud.common import credential
 from tencentcloud.common.profile.client_profile import ClientProfile
 from tencentcloud.common.profile.http_profile import HttpProfile
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.soe.v20180724 import soe_client, models
 import base64
-
+import uuid
 
 try:
     file = ""  # 音频文件路径地址
     slice_num = 1 * 1024  # 分片大小， 1 * 1024即为1k
-    SessionId = ""  # 需要使用请求初始化相同的SessionId
+    SessionId = str(uuid.uuid1())  # 使用uuid作为请求SessionId
 
     # 实例化一个认证对象，入参需要传入腾讯云账户secretId，secretKey
     cred = credential.Credential("secretId", "secretKey")
@@ -50,7 +50,7 @@ try:
         base64_data = base64.b64encode(send_content).decode()
 
         # 请求参数赋值
-        req = models.TransmitOralProcessRequest()
+        req = models.TransmitOralProcessWithInitRequest()
         req.SeqId = j + 1  # 流式数据包的序号，从1开始，当IsEnd字段为1后后续序号无意义，当IsLongLifeSession不为1且为非流式模式时无意义。
         req.IsEnd = IsEnd  # 是否传输完毕标志，若为0表示未完毕，若为1则传输完毕开始评估，非流式模式下无意义。
         req.VoiceFileType = 3  # 语音文件类型 1: raw, 2: wav, 3: mp3, 4: speex (语言文件格式目前仅支持 16k 采样率 16bit 编码单声道，如有不一致可能导致评估不准确或失败)。
