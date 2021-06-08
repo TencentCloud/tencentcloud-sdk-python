@@ -470,17 +470,18 @@ class BatchTarget(AbstractModel):
 
     def __init__(self):
         """
-        :param ListenerId: 监听器ID
+        :param ListenerId: 监听器 ID。
         :type ListenerId: str
-        :param Port: 绑定端口
+        :param Port: 绑定端口。
         :type Port: int
-        :param InstanceId: 子机ID。表示绑定主网卡主IP
+        :param InstanceId: 子机 ID。表示绑定主网卡主 IP。
         :type InstanceId: str
-        :param EniIp: 弹性网卡ip或其他内网IP。如果是双栈IPV6子机，必须传该参数。
+        :param EniIp: 绑定 IP 时需要传入此参数，支持弹性网卡的 IP 和其他内网 IP，如果是弹性网卡则必须先绑定至CVM，然后才能绑定到负载均衡实例。
+注意：参数 InstanceId、EniIp 只能传入一个且必须传入一个。如果绑定双栈IPV6子机，必须传该参数。
         :type EniIp: str
-        :param Weight: 子机权重，范围[0, 100]。绑定时如果不存在，则默认为10
+        :param Weight: 子机权重，范围[0, 100]。绑定时如果不存在，则默认为10。
         :type Weight: int
-        :param LocationId: 七层规则ID
+        :param LocationId: 七层规则 ID。
         :type LocationId: str
         """
         self.ListenerId = None

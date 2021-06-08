@@ -10978,6 +10978,10 @@ class UpgradeDBInstanceRequest(AbstractModel):
         :type BackupZone: str
         :param InstanceRole: 实例类型，默认为 master，支持值包括：master - 表示主实例，dr - 表示灾备实例，ro - 表示只读实例。
         :type InstanceRole: str
+        :param DeviceType: 实例隔离类型。支持值包括： "UNIVERSAL" - 通用型实例， "EXCLUSIVE" - 独享型实例， "BASIC" - 基础版实例。
+        :type DeviceType: str
+        :param Cpu: 升级后的实例cpu核数， 如果不传将根据 Memory 指定的内存值自动填充对应的cpu值。
+        :type Cpu: int
         """
         self.InstanceId = None
         self.Memory = None
@@ -10989,6 +10993,8 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self.WaitSwitch = None
         self.BackupZone = None
         self.InstanceRole = None
+        self.DeviceType = None
+        self.Cpu = None
 
 
     def _deserialize(self, params):
@@ -11002,6 +11008,8 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self.WaitSwitch = params.get("WaitSwitch")
         self.BackupZone = params.get("BackupZone")
         self.InstanceRole = params.get("InstanceRole")
+        self.DeviceType = params.get("DeviceType")
+        self.Cpu = params.get("Cpu")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

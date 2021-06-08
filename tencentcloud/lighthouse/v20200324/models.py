@@ -2941,7 +2941,9 @@ class InternetAccessible(AbstractModel):
 
     def __init__(self):
         """
-        :param InternetChargeType: 网络计费类型。
+        :param InternetChargeType: 网络计费类型,，取值范围：
+<li>按流量包付费：TRAFFIC_POSTPAID_BY_HOUR</li>
+<li>按带宽付费： BANDWIDTH_POSTPAID_BY_HOUR</li>
         :type InternetChargeType: str
         :param InternetMaxBandwidthOut: 公网出带宽上限，单位：Mbps。
         :type InternetMaxBandwidthOut: int
