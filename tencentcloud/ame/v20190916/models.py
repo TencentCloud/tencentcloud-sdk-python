@@ -1507,7 +1507,7 @@ reportData由两部分数据组成：
 不同的report_type对应的data数据结构不一样。
 
 详细说明请参考文档reportdata.docx：
-https://github.com/ame-demo/doc
+https://github.com/tencentyun/ame-documents
         :type ReportData: str
         """
         self.ReportData = None

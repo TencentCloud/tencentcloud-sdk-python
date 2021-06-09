@@ -5411,11 +5411,14 @@ class RedisNode(AbstractModel):
         :type NodeId: str
         :param Status: 节点的状态
         :type Status: str
+        :param Role: 节点角色
+        :type Role: str
         """
         self.Keys = None
         self.Slot = None
         self.NodeId = None
         self.Status = None
+        self.Role = None
 
 
     def _deserialize(self, params):
@@ -5423,6 +5426,7 @@ class RedisNode(AbstractModel):
         self.Slot = params.get("Slot")
         self.NodeId = params.get("NodeId")
         self.Status = params.get("Status")
+        self.Role = params.get("Role")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5477,16 +5481,20 @@ class RedisNodes(AbstractModel):
         :type NodeRole: str
         :param ClusterId: 分片ID
         :type ClusterId: int
+        :param ZoneId: 可用区ID
+        :type ZoneId: int
         """
         self.NodeId = None
         self.NodeRole = None
         self.ClusterId = None
+        self.ZoneId = None
 
 
     def _deserialize(self, params):
         self.NodeId = params.get("NodeId")
         self.NodeRole = params.get("NodeRole")
         self.ClusterId = params.get("ClusterId")
+        self.ZoneId = params.get("ZoneId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

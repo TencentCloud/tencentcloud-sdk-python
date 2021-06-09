@@ -1407,6 +1407,34 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyPurgeFetchTaskStatus(self, request):
+        """ModifyPurgeFetchTaskStatus 用于上报定时刷新预热任务执行状态
+
+        :param request: Request instance for ModifyPurgeFetchTaskStatus.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.ModifyPurgeFetchTaskStatusRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.ModifyPurgeFetchTaskStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyPurgeFetchTaskStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyPurgeFetchTaskStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def PurgePathCache(self, request):
         """PurgePathCache 用于批量提交目录刷新，根据域名的加速区域进行对应区域的刷新。
         默认情况下境内、境外加速区域每日目录刷新额度为各 100 条，每次最多可提交 20 条。

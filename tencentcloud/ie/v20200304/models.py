@@ -31,8 +31,7 @@ class ArtifactReduction(AbstractModel):
 edaf,
 wdaf，
 默认edaf。
-注意：edaf：速度快，去毛刺效果强，保护边缘效果较弱；
-wdaf：速度慢，保护边缘效果好
+注意：此参数已经弃用
         :type Algorithm: str
         """
         self.Type = None
@@ -3872,6 +3871,7 @@ class VideoEnhance(AbstractModel):
         :param Sharp: 细节增强参数。
         :type Sharp: :class:`tencentcloud.ie.v20200304.models.Sharp`
         :param WdSuperResolution: 超分参数，可选项：2，目前仅支持2倍超分。
+注意：此参数已经弃用，超分可以使用VideoSuperResolution参数
         :type WdSuperResolution: int
         :param FaceProtect: 人脸保护信息。
         :type FaceProtect: :class:`tencentcloud.ie.v20200304.models.FaceProtect`
@@ -3882,6 +3882,10 @@ class VideoEnhance(AbstractModel):
         :type ScratchRepair: :class:`tencentcloud.ie.v20200304.models.ScratchRepair`
         :param LowLightEnhance: 低光照增强参数
         :type LowLightEnhance: :class:`tencentcloud.ie.v20200304.models.LowLightEnhance`
+        :param VideoSuperResolution: 视频超分参数
+        :type VideoSuperResolution: :class:`tencentcloud.ie.v20200304.models.VideoSuperResolution`
+        :param VideoRepair: 视频画质修复参数
+        :type VideoRepair: :class:`tencentcloud.ie.v20200304.models.VideoRepair`
         """
         self.ArtifactReduction = None
         self.Denoising = None
@@ -3892,6 +3896,8 @@ class VideoEnhance(AbstractModel):
         self.WdFps = None
         self.ScratchRepair = None
         self.LowLightEnhance = None
+        self.VideoSuperResolution = None
+        self.VideoRepair = None
 
 
     def _deserialize(self, params):
@@ -3918,6 +3924,12 @@ class VideoEnhance(AbstractModel):
         if params.get("LowLightEnhance") is not None:
             self.LowLightEnhance = LowLightEnhance()
             self.LowLightEnhance._deserialize(params.get("LowLightEnhance"))
+        if params.get("VideoSuperResolution") is not None:
+            self.VideoSuperResolution = VideoSuperResolution()
+            self.VideoSuperResolution._deserialize(params.get("VideoSuperResolution"))
+        if params.get("VideoRepair") is not None:
+            self.VideoRepair = VideoRepair()
+            self.VideoRepair._deserialize(params.get("VideoRepair"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4104,6 +4116,63 @@ class VideoInfoResultItem(AbstractModel):
         self.Rotate = params.get("Rotate")
         self.Duration = params.get("Duration")
         self.PixFormat = params.get("PixFormat")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class VideoRepair(AbstractModel):
+    """综合画质修复，包括：去噪，去毛刺，细节增强，主观画质提升。
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 画质修复类型，可选值：weak，normal，strong;
+默认值: weak
+        :type Type: str
+        """
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class VideoSuperResolution(AbstractModel):
+    """视频超分
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 超分视频类型：可选值：lq,hq
+lq: 针对低清晰度有较多噪声视频的超分;
+hq: 针对高清晰度视频超分;
+默认取值：lq。
+        :type Type: str
+        :param Size: 超分倍数，可选值：2。
+注意：当前只支持两倍超分。
+        :type Size: int
+        """
+        self.Type = None
+        self.Size = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Size = params.get("Size")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

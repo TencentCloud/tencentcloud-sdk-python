@@ -320,12 +320,15 @@ class CreateBindingRequest(AbstractModel):
         :type ForceBind: bool
         :param Nick: 设备昵称，最多不超过64个字符
         :type Nick: str
+        :param BindToken: 绑定过程中的会话token，由设备通过SDK接口确认是否允许绑定的token，用于增加设备被绑定的安全性
+        :type BindToken: str
         """
         self.AccessId = None
         self.Tid = None
         self.Role = None
         self.ForceBind = None
         self.Nick = None
+        self.BindToken = None
 
 
     def _deserialize(self, params):
@@ -334,6 +337,7 @@ class CreateBindingRequest(AbstractModel):
         self.Role = params.get("Role")
         self.ForceBind = params.get("ForceBind")
         self.Nick = params.get("Nick")
+        self.BindToken = params.get("BindToken")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

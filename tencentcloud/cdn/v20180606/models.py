@@ -7672,6 +7672,68 @@ index 时填充 /
         
 
 
+class ModifyPurgeFetchTaskStatusRequest(AbstractModel):
+    """ModifyPurgeFetchTaskStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ExecutionTime: 执行时间
+        :type ExecutionTime: str
+        :param ExecutionStatus: 执行状态
+success: 成功
+failed: 失败
+        :type ExecutionStatus: str
+        :param Id: 任务 ID
+        :type Id: str
+        :param ExecutionStatusDesc: 执行状态详情
+        :type ExecutionStatusDesc: str
+        """
+        self.ExecutionTime = None
+        self.ExecutionStatus = None
+        self.Id = None
+        self.ExecutionStatusDesc = None
+
+
+    def _deserialize(self, params):
+        self.ExecutionTime = params.get("ExecutionTime")
+        self.ExecutionStatus = params.get("ExecutionStatus")
+        self.Id = params.get("Id")
+        self.ExecutionStatusDesc = params.get("ExecutionStatusDesc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class ModifyPurgeFetchTaskStatusResponse(AbstractModel):
+    """ModifyPurgeFetchTaskStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class OfflineCache(AbstractModel):
     """离线缓存是否开启
 
