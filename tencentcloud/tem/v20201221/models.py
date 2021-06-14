@@ -580,6 +580,10 @@ class DeployServiceV2Request(AbstractModel):
         :type PortMappings: list of PortMapping
         :param UseRegistryDefaultConfig: 是否添加默认注册中心配置
         :type UseRegistryDefaultConfig: bool
+        :param SettingConfs: 挂载配置信息
+        :type SettingConfs: list of MountedSettingConf
+        :param EksService: eks 访问设置
+        :type EksService: :class:`tencentcloud.tem.v20201221.models.EksService`
         """
         self.ServiceId = None
         self.ContainerPort = None
@@ -607,6 +611,8 @@ class DeployServiceV2Request(AbstractModel):
         self.ImageArgs = None
         self.PortMappings = None
         self.UseRegistryDefaultConfig = None
+        self.SettingConfs = None
+        self.EksService = None
 
 
     def _deserialize(self, params):
@@ -660,6 +666,15 @@ class DeployServiceV2Request(AbstractModel):
                 obj._deserialize(item)
                 self.PortMappings.append(obj)
         self.UseRegistryDefaultConfig = params.get("UseRegistryDefaultConfig")
+        if params.get("SettingConfs") is not None:
+            self.SettingConfs = []
+            for item in params.get("SettingConfs"):
+                obj = MountedSettingConf()
+                obj._deserialize(item)
+                self.SettingConfs.append(obj)
+        if params.get("EksService") is not None:
+            self.EksService = EksService()
+            self.EksService._deserialize(params.get("EksService"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1082,6 +1097,86 @@ class DescribeServiceRunPodListV2Response(AbstractModel):
             self.Result = DescribeRunPodPage()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class EksService(AbstractModel):
+    """eks service info
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: service name
+        :type Name: str
+        :param Ports: 可用端口
+        :type Ports: list of int
+        :param Yaml: yaml 内容
+        :type Yaml: str
+        :param ServiceName: 服务名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceName: str
+        :param VersionName: 版本名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionName: str
+        :param ClusterIp: 内网ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterIp: list of str
+        :param ExternalIp: 外网ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalIp: str
+        :param Type: 访问类型，可选值：
+- EXTERNAL（公网访问）
+- VPC（vpc内访问）
+- CLUSTER（集群内访问）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param SubnetId: 子网ID，只在类型为vpc访问时才有值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
+        :param LoadBalanceId: 负载均衡ID，只在外网访问和vpc内访问才有值，默认自动创建
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalanceId: str
+        :param PortMappings: 端口映射
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PortMappings: list of PortMapping
+        """
+        self.Name = None
+        self.Ports = None
+        self.Yaml = None
+        self.ServiceName = None
+        self.VersionName = None
+        self.ClusterIp = None
+        self.ExternalIp = None
+        self.Type = None
+        self.SubnetId = None
+        self.LoadBalanceId = None
+        self.PortMappings = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Ports = params.get("Ports")
+        self.Yaml = params.get("Yaml")
+        self.ServiceName = params.get("ServiceName")
+        self.VersionName = params.get("VersionName")
+        self.ClusterIp = params.get("ClusterIp")
+        self.ExternalIp = params.get("ExternalIp")
+        self.Type = params.get("Type")
+        self.SubnetId = params.get("SubnetId")
+        self.LoadBalanceId = params.get("LoadBalanceId")
+        if params.get("PortMappings") is not None:
+            self.PortMappings = []
+            for item in params.get("PortMappings"):
+                obj = PortMapping()
+                obj._deserialize(item)
+                self.PortMappings.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1589,6 +1684,43 @@ class ModifyServiceInfoResponse(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class MountedSettingConf(AbstractModel):
+    """挂载配置信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigDataName: 配置名称
+        :type ConfigDataName: str
+        :param MountedPath: 挂载路径
+        :type MountedPath: str
+        :param Data: 配置内容
+        :type Data: list of Pair
+        """
+        self.ConfigDataName = None
+        self.MountedPath = None
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        self.ConfigDataName = params.get("ConfigDataName")
+        self.MountedPath = params.get("MountedPath")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = Pair()
+                obj._deserialize(item)
+                self.Data.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -866,6 +866,62 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAssetInfo(self, request):
+        """获取资产数量： 主机数、账号数、端口数、进程数、软件数、数据库数、Web应用数、Web框架数、Web服务数、Web站点数
+
+        :param request: Request instance for DescribeAssetInfo.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetInfoRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAssetInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAssetInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAssetRecentMachineInfo(self, request):
+        """获取主机最近趋势情况
+
+        :param request: Request instance for DescribeAssetRecentMachineInfo.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetRecentMachineInfoRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAssetRecentMachineInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAssetRecentMachineInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAssetRecentMachineInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeAttackLogInfo(self, request):
         """网络攻击日志详情
 
@@ -3484,6 +3540,34 @@ class CwpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SwitchBashRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SyncAssetScan(self, request):
+        """同步资产扫描信息
+
+        :param request: Request instance for SyncAssetScan.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.SyncAssetScanRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.SyncAssetScanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SyncAssetScan", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SyncAssetScanResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

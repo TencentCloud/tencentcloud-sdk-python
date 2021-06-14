@@ -307,6 +307,39 @@ class AssetFilters(AbstractModel):
         
 
 
+class AssetKeyVal(AbstractModel):
+    """key-val类型的通用数据结构
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: 标签
+        :type Key: str
+        :param Value: 数量
+        :type Value: int
+        :param Desc: 描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Desc: str
+        """
+        self.Key = None
+        self.Value = None
+        self.Desc = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        self.Desc = params.get("Desc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class BashEvent(AbstractModel):
     """高危命令数据
 
@@ -2359,6 +2392,168 @@ class DescribeAlarmAttributeResponse(AbstractModel):
         self.Malware = params.get("Malware")
         self.NonlocalLogin = params.get("NonlocalLogin")
         self.CrackSuccess = params.get("CrackSuccess")
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DescribeAssetInfoRequest(AbstractModel):
+    """DescribeAssetInfo请求参数结构体
+
+    """
+
+
+class DescribeAssetInfoResponse(AbstractModel):
+    """DescribeAssetInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MachineCount: 主机数
+        :type MachineCount: int
+        :param AccountCount: 账号数
+        :type AccountCount: int
+        :param PortCount: 端口数
+        :type PortCount: int
+        :param ProcessCount: 进程数
+        :type ProcessCount: int
+        :param SoftwareCount: 软件数
+        :type SoftwareCount: int
+        :param DatabaseCount: 数据库数
+        :type DatabaseCount: int
+        :param WebAppCount: Web应用数
+        :type WebAppCount: int
+        :param WebFrameCount: Web框架数
+        :type WebFrameCount: int
+        :param WebServiceCount: Web服务数
+        :type WebServiceCount: int
+        :param WebLocationCount: Web站点数
+        :type WebLocationCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MachineCount = None
+        self.AccountCount = None
+        self.PortCount = None
+        self.ProcessCount = None
+        self.SoftwareCount = None
+        self.DatabaseCount = None
+        self.WebAppCount = None
+        self.WebFrameCount = None
+        self.WebServiceCount = None
+        self.WebLocationCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MachineCount = params.get("MachineCount")
+        self.AccountCount = params.get("AccountCount")
+        self.PortCount = params.get("PortCount")
+        self.ProcessCount = params.get("ProcessCount")
+        self.SoftwareCount = params.get("SoftwareCount")
+        self.DatabaseCount = params.get("DatabaseCount")
+        self.WebAppCount = params.get("WebAppCount")
+        self.WebFrameCount = params.get("WebFrameCount")
+        self.WebServiceCount = params.get("WebServiceCount")
+        self.WebLocationCount = params.get("WebLocationCount")
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DescribeAssetRecentMachineInfoRequest(AbstractModel):
+    """DescribeAssetRecentMachineInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BeginDate: 开始时间。
+        :type BeginDate: str
+        :param EndDate: 结束时间。
+        :type EndDate: str
+        """
+        self.BeginDate = None
+        self.EndDate = None
+
+
+    def _deserialize(self, params):
+        self.BeginDate = params.get("BeginDate")
+        self.EndDate = params.get("EndDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DescribeAssetRecentMachineInfoResponse(AbstractModel):
+    """DescribeAssetRecentMachineInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalList: 总数量列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalList: list of AssetKeyVal
+        :param LiveList: 在线数量列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LiveList: list of AssetKeyVal
+        :param OfflineList: 离线数量列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OfflineList: list of AssetKeyVal
+        :param RiskList: 风险数量列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskList: list of AssetKeyVal
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalList = None
+        self.LiveList = None
+        self.OfflineList = None
+        self.RiskList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TotalList") is not None:
+            self.TotalList = []
+            for item in params.get("TotalList"):
+                obj = AssetKeyVal()
+                obj._deserialize(item)
+                self.TotalList.append(obj)
+        if params.get("LiveList") is not None:
+            self.LiveList = []
+            for item in params.get("LiveList"):
+                obj = AssetKeyVal()
+                obj._deserialize(item)
+                self.LiveList.append(obj)
+        if params.get("OfflineList") is not None:
+            self.OfflineList = []
+            for item in params.get("OfflineList"):
+                obj = AssetKeyVal()
+                obj._deserialize(item)
+                self.OfflineList.append(obj)
+        if params.get("RiskList") is not None:
+            self.RiskList = []
+            for item in params.get("RiskList"):
+                obj = AssetKeyVal()
+                obj._deserialize(item)
+                self.RiskList.append(obj)
         self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -10346,6 +10541,54 @@ class SwitchBashRulesRequest(AbstractModel):
 
 class SwitchBashRulesResponse(AbstractModel):
     """SwitchBashRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class SyncAssetScanRequest(AbstractModel):
+    """SyncAssetScan请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Sync: 是否同步
+        :type Sync: bool
+        """
+        self.Sync = None
+
+
+    def _deserialize(self, params):
+        self.Sync = params.get("Sync")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class SyncAssetScanResponse(AbstractModel):
+    """SyncAssetScan返回参数结构体
 
     """
 
