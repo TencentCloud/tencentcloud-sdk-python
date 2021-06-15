@@ -26,6 +26,118 @@ class WavClient(AbstractClient):
     _service = 'wav'
 
 
+    def CreateChannelCode(self, request):
+        """新增渠道活码接口
+
+        :param request: Request instance for CreateChannelCode.
+        :type request: :class:`tencentcloud.wav.v20210129.models.CreateChannelCodeRequest`
+        :rtype: :class:`tencentcloud.wav.v20210129.models.CreateChannelCodeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateChannelCode", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateChannelCodeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateCorpTag(self, request):
+        """该接口用户设置标签库, 每个企业最多可配置3000个企业标签。
+
+        :param request: Request instance for CreateCorpTag.
+        :type request: :class:`tencentcloud.wav.v20210129.models.CreateCorpTagRequest`
+        :rtype: :class:`tencentcloud.wav.v20210129.models.CreateCorpTagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateCorpTag", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateCorpTagResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryActivityJoinList(self, request):
+        """根据游标拉取活动参与列表信息
+
+        :param request: Request instance for QueryActivityJoinList.
+        :type request: :class:`tencentcloud.wav.v20210129.models.QueryActivityJoinListRequest`
+        :rtype: :class:`tencentcloud.wav.v20210129.models.QueryActivityJoinListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryActivityJoinList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryActivityJoinListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryActivityList(self, request):
+        """根据游标拉取活动列表信息
+
+        :param request: Request instance for QueryActivityList.
+        :type request: :class:`tencentcloud.wav.v20210129.models.QueryActivityListRequest`
+        :rtype: :class:`tencentcloud.wav.v20210129.models.QueryActivityListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryActivityList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryActivityListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def QueryActivityLiveCodeList(self, request):
         """根据游标拉取活动活码列表信息
 
@@ -40,6 +152,146 @@ class WavClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryActivityLiveCodeListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryChannelCodeList(self, request):
+        """根据游标拉取渠道活码列表信息
+
+        :param request: Request instance for QueryChannelCodeList.
+        :type request: :class:`tencentcloud.wav.v20210129.models.QueryChannelCodeListRequest`
+        :rtype: :class:`tencentcloud.wav.v20210129.models.QueryChannelCodeListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryChannelCodeList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryChannelCodeListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryChatArchivingList(self, request):
+        """根据游标拉取会话存档列表信息
+
+        :param request: Request instance for QueryChatArchivingList.
+        :type request: :class:`tencentcloud.wav.v20210129.models.QueryChatArchivingListRequest`
+        :rtype: :class:`tencentcloud.wav.v20210129.models.QueryChatArchivingListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryChatArchivingList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryChatArchivingListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryExternalContactDetail(self, request):
+        """企业可通过此接口，根据外部联系人的userid，拉取客户详情
+
+        :param request: Request instance for QueryExternalContactDetail.
+        :type request: :class:`tencentcloud.wav.v20210129.models.QueryExternalContactDetailRequest`
+        :rtype: :class:`tencentcloud.wav.v20210129.models.QueryExternalContactDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryExternalContactDetail", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryExternalContactDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryExternalContactList(self, request):
+        """企业可通过此接口获取指定成员添加的客户列表。客户是指配置了客户联系功能的成员所添加的外部联系人。没有配置客户联系功能的成员，所添加的外部联系人将不会作为客户返回。
+
+        :param request: Request instance for QueryExternalContactList.
+        :type request: :class:`tencentcloud.wav.v20210129.models.QueryExternalContactListRequest`
+        :rtype: :class:`tencentcloud.wav.v20210129.models.QueryExternalContactListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryExternalContactList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryExternalContactListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryMiniAppCodeList(self, request):
+        """查询小程序码列表接口
+
+        :param request: Request instance for QueryMiniAppCodeList.
+        :type request: :class:`tencentcloud.wav.v20210129.models.QueryMiniAppCodeListRequest`
+        :rtype: :class:`tencentcloud.wav.v20210129.models.QueryMiniAppCodeListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryMiniAppCodeList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryMiniAppCodeListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
