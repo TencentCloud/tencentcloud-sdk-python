@@ -433,6 +433,80 @@ class CloudStorageTimeInfo(AbstractModel):
         
 
 
+class ControlDeviceDataRequest(AbstractModel):
+    """ControlDeviceData请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        :param Data: 属性数据, JSON格式字符串, 注意字段需要在物模型属性里定义
+        :type Data: str
+        :param Method: 请求类型 , 不填该参数或者 desired 表示下发属性给设备,  reported 表示模拟设备上报属性
+        :type Method: str
+        :param DataTimestamp: 上报数据UNIX时间戳(毫秒), 仅对Method:reported有效
+        :type DataTimestamp: int
+        """
+        self.ProductId = None
+        self.DeviceName = None
+        self.Data = None
+        self.Method = None
+        self.DataTimestamp = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+        self.Data = params.get("Data")
+        self.Method = params.get("Method")
+        self.DataTimestamp = params.get("DataTimestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class ControlDeviceDataResponse(AbstractModel):
+    """ControlDeviceData返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 返回信息
+        :type Data: str
+        :param Result: JSON字符串， 返回下发控制的结果信息, 
+Sent = 1 表示设备已经在线并且订阅了控制下发的mqtt topic
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Data = params.get("Data")
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class CreateBatchRequest(AbstractModel):
     """CreateBatch请求参数结构体
 
@@ -4081,6 +4155,74 @@ class ProductTemplate(AbstractModel):
         self.ListOrder = params.get("ListOrder")
         self.IconUrl = params.get("IconUrl")
         self.IconUrlGrid = params.get("IconUrlGrid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class PublishMessageRequest(AbstractModel):
+    """PublishMessage请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        :param Topic: 消息发往的主题
+        :type Topic: str
+        :param Payload: 云端下发到设备的控制报文
+        :type Payload: str
+        :param Qos: 消息服务质量等级，取值为0或1
+        :type Qos: int
+        :param PayloadEncoding: Payload的内容编码格式，取值为base64或空。base64表示云端将接收到的base64编码后的报文再转换成二进制报文下发至设备，为空表示不作转换，透传下发至设备
+        :type PayloadEncoding: str
+        """
+        self.ProductId = None
+        self.DeviceName = None
+        self.Topic = None
+        self.Payload = None
+        self.Qos = None
+        self.PayloadEncoding = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+        self.Topic = params.get("Topic")
+        self.Payload = params.get("Payload")
+        self.Qos = params.get("Qos")
+        self.PayloadEncoding = params.get("PayloadEncoding")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class PublishMessageResponse(AbstractModel):
+    """PublishMessage返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

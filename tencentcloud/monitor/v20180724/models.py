@@ -1114,7 +1114,9 @@ class CreateAlertRuleRequest(AbstractModel):
         :type Duration: str
         :param Labels: 标签列表
         :type Labels: list of PrometheusRuleKV
-        :param Annotations: 注释列表
+        :param Annotations: 注释列表。
+
+告警对象和告警消息是 Prometheus Rule Annotations 的特殊字段，需要通过 annotations 来传递，对应的 Key 分别为summary/description。
         :type Annotations: list of PrometheusRuleKV
         :param Type: 报警策略模板分类
         :type Type: str
@@ -7144,7 +7146,9 @@ class UpdateAlertRuleRequest(AbstractModel):
         :type Receivers: list of str
         :param Labels: 报警规则标签列表
         :type Labels: list of PrometheusRuleKV
-        :param Annotations: 报警规则注释列表
+        :param Annotations: 报警规则注释列表。
+
+告警对象和告警消息是 Prometheus Rule Annotations 的特殊字段，需要通过 annotations 来传递，对应的 Key 分别为summary/description。
         :type Annotations: list of PrometheusRuleKV
         :param Type: 报警策略模板分类
         :type Type: str

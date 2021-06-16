@@ -794,7 +794,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DescribeResetInstanceBlueprints(self, request):
-        """查询重置实例的镜像信息
+        """本接口（DescribeResetInstanceBlueprints）查询重置实例的镜像信息。
 
         :param request: Request instance for DescribeResetInstanceBlueprints.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeResetInstanceBlueprintsRequest`

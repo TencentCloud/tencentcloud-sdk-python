@@ -2235,13 +2235,17 @@ class EventContent(AbstractModel):
     def __init__(self):
         """
         :param EventType: 事件类型，可取值为：
-<li>Storage.NewFileCreated：新文件产生。</li>
+<li>Storage.NewFileCreated：新文件产生；</li>
+<li>Project.StreamConnect.StatusChanged：云转推项目状态变更。</li>
         :type EventType: str
         :param StorageNewFileCreatedEvent: 新文件产生事件信息。仅当 EventType 为 Storage.NewFileCreated 时有效。
         :type StorageNewFileCreatedEvent: :class:`tencentcloud.cme.v20191029.models.StorageNewFileCreatedEvent`
+        :param ProjectStreamConnectStatusChangedEvent: 云转推项目状态变更事件信息。仅当 EventType 为 Project.StreamConnect.StatusChanged 时有效。
+        :type ProjectStreamConnectStatusChangedEvent: :class:`tencentcloud.cme.v20191029.models.ProjectStreamConnectStatusChangedEvent`
         """
         self.EventType = None
         self.StorageNewFileCreatedEvent = None
+        self.ProjectStreamConnectStatusChangedEvent = None
 
 
     def _deserialize(self, params):
@@ -2249,6 +2253,9 @@ class EventContent(AbstractModel):
         if params.get("StorageNewFileCreatedEvent") is not None:
             self.StorageNewFileCreatedEvent = StorageNewFileCreatedEvent()
             self.StorageNewFileCreatedEvent._deserialize(params.get("StorageNewFileCreatedEvent"))
+        if params.get("ProjectStreamConnectStatusChangedEvent") is not None:
+            self.ProjectStreamConnectStatusChangedEvent = ProjectStreamConnectStatusChangedEvent()
+            self.ProjectStreamConnectStatusChangedEvent._deserialize(params.get("ProjectStreamConnectStatusChangedEvent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4668,6 +4675,36 @@ class ProjectInfo(AbstractModel):
             self.StreamConnectProjectInfo._deserialize(params.get("StreamConnectProjectInfo"))
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class ProjectStreamConnectStatusChangedEvent(AbstractModel):
+    """云转推项目状态变更事件。
+
+    """
+
+    def __init__(self):
+        """
+        :param ProjectId: 项目 Id。
+        :type ProjectId: str
+        :param Status: 项目状态，取值有：
+<li>Working：云转推推流开始；</li>
+<li>Stopped：云转推推流结束。</li>
+        :type Status: str
+        """
+        self.ProjectId = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

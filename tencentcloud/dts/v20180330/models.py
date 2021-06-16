@@ -101,12 +101,16 @@ class CompleteMigrateJobRequest(AbstractModel):
         """
         :param JobId: 数据迁移任务ID
         :type JobId: str
+        :param CompleteMode: 完成任务的方式,仅支持旧版MySQL迁移任务。waitForSync-等待主从差距为0才停止,immediately-立即完成，不会等待主从差距一致。默认为waitForSync
+        :type CompleteMode: str
         """
         self.JobId = None
+        self.CompleteMode = None
 
 
     def _deserialize(self, params):
         self.JobId = params.get("JobId")
+        self.CompleteMode = params.get("CompleteMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

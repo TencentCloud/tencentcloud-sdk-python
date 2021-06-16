@@ -44,7 +44,7 @@ class Advice(AbstractModel):
 
 
 class AspectRatio(AbstractModel):
-    """横纵比
+    """纵横比
 
     """
 
@@ -388,7 +388,7 @@ class DiseaseMedicalHistory(AbstractModel):
 
 
 class Elastic(AbstractModel):
-    """质地
+    """弹性质地
 
     """
 
@@ -564,7 +564,7 @@ class HandleParam(AbstractModel):
 
 
 class HistologyLevel(AbstractModel):
-    """等级
+    """组织学等级
 
     """
 
@@ -599,7 +599,7 @@ class HistologyLevel(AbstractModel):
 
 
 class HistologyType(AbstractModel):
-    """类型
+    """组织学类型
 
     """
 
@@ -629,6 +629,66 @@ class HistologyType(AbstractModel):
         self.Index = params.get("Index")
         self.Src = params.get("Src")
         self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class Hospitalization(AbstractModel):
+    """出入院信息
+
+    """
+
+    def __init__(self):
+        """
+        :param AdmissionTime: 入院时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdmissionTime: str
+        :param DischargeTime: 出院时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DischargeTime: str
+        :param AdmissionDays: 住院天数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdmissionDays: str
+        :param AdmissionDignosis: 入院诊断
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdmissionDignosis: str
+        :param AdmissionCondition: 入院情况
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdmissionCondition: str
+        :param DiagnosisTreatment: 诊疗经过
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiagnosisTreatment: str
+        :param DischargeDiagnosis: 出院诊断
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DischargeDiagnosis: str
+        :param DischargeInstruction: 出院医嘱
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DischargeInstruction: str
+        """
+        self.AdmissionTime = None
+        self.DischargeTime = None
+        self.AdmissionDays = None
+        self.AdmissionDignosis = None
+        self.AdmissionCondition = None
+        self.DiagnosisTreatment = None
+        self.DischargeDiagnosis = None
+        self.DischargeInstruction = None
+
+
+    def _deserialize(self, params):
+        self.AdmissionTime = params.get("AdmissionTime")
+        self.DischargeTime = params.get("DischargeTime")
+        self.AdmissionDays = params.get("AdmissionDays")
+        self.AdmissionDignosis = params.get("AdmissionDignosis")
+        self.AdmissionCondition = params.get("AdmissionCondition")
+        self.DiagnosisTreatment = params.get("DiagnosisTreatment")
+        self.DischargeDiagnosis = params.get("DischargeDiagnosis")
+        self.DischargeInstruction = params.get("DischargeInstruction")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -722,7 +782,7 @@ class ImageToClassRequest(AbstractModel):
         :type ImageInfoList: list of ImageInfo
         :param HandleParam: 图片处理参数
         :type HandleParam: :class:`tencentcloud.mrs.v20200910.models.HandleParam`
-        :param Type: 图片类型
+        :param Type: 图片类型，目前支持11（检验报告），12（检查报告），15（病理报告），218（诊断证明）。
         :type Type: int
         """
         self.ImageInfoList = None
@@ -795,9 +855,10 @@ class ImageToObjectRequest(AbstractModel):
         :type ImageInfoList: list of ImageInfo
         :param HandleParam: 图片处理参数
         :type HandleParam: :class:`tencentcloud.mrs.v20200910.models.HandleParam`
-        :param Type: 图片类别
+        :param Type: 报告类型，目前支持11（检验报告），12（检查报告），15（病理报告），28（出院报告），29（入院报告），210（门诊病历），212（手术记录），218（诊断证明）。如果不清楚报告类型，可以使用分类引擎，该字段传0（同时IsUsedClassify字段必须为True，否则无法输出结果）
         :type Type: int
-        :param IsUsedClassify: 是否使用分类引擎
+        :param IsUsedClassify: 是否使用分类引擎，当不确定报告类型时，可以使用收费的报告分类引擎服务。若该字段为 False，则 Type 字段不能为 0，否则无法输出结果。
+注意：当 IsUsedClassify 为True 时，表示使用收费的报告分类服务，将会产生额外的费用，具体收费标准参见 [购买指南的产品价格](https://cloud.tencent.com/document/product/1314/54264)。
         :type IsUsedClassify: bool
         """
         self.ImageInfoList = None
@@ -889,7 +950,7 @@ class Indicator(AbstractModel):
 
 
 class IndicatorItem(AbstractModel):
-    """指标项
+    """检验指标项
 
     """
 
@@ -954,7 +1015,7 @@ class IndicatorItem(AbstractModel):
 
 
 class Invas(AbstractModel):
-    """Invasive
+    """侵犯扩散
 
     """
 
@@ -1116,6 +1177,66 @@ class MedDoc(AbstractModel):
         
 
 
+class MedicalRecordInfo(AbstractModel):
+    """门诊病历信息
+
+    """
+
+    def __init__(self):
+        """
+        :param DiagnosisTime: 就诊日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiagnosisTime: str
+        :param DiagnosisDepartmentName: 就诊科室
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiagnosisDepartmentName: str
+        :param DiagnosisDoctorName: 就诊医生
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiagnosisDoctorName: str
+        :param ClinicalDiagnosis: 临床诊断
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClinicalDiagnosis: str
+        :param MainNarration: 主述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MainNarration: str
+        :param PhysicalExamination: 体格检查
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PhysicalExamination: str
+        :param InspectionFindings: 检查结论
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InspectionFindings: str
+        :param TreatmentOpinion: 治疗意见
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TreatmentOpinion: str
+        """
+        self.DiagnosisTime = None
+        self.DiagnosisDepartmentName = None
+        self.DiagnosisDoctorName = None
+        self.ClinicalDiagnosis = None
+        self.MainNarration = None
+        self.PhysicalExamination = None
+        self.InspectionFindings = None
+        self.TreatmentOpinion = None
+
+
+    def _deserialize(self, params):
+        self.DiagnosisTime = params.get("DiagnosisTime")
+        self.DiagnosisDepartmentName = params.get("DiagnosisDepartmentName")
+        self.DiagnosisDoctorName = params.get("DiagnosisDoctorName")
+        self.ClinicalDiagnosis = params.get("ClinicalDiagnosis")
+        self.MainNarration = params.get("MainNarration")
+        self.PhysicalExamination = params.get("PhysicalExamination")
+        self.InspectionFindings = params.get("InspectionFindings")
+        self.TreatmentOpinion = params.get("TreatmentOpinion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class MenstrualMedicalHistory(AbstractModel):
     """月经史
 
@@ -1167,7 +1288,7 @@ class MenstrualMedicalHistory(AbstractModel):
 
 
 class Multiple(AbstractModel):
-    """数量
+    """多发
 
     """
 
@@ -1212,7 +1333,7 @@ class Multiple(AbstractModel):
 
 
 class NormPart(AbstractModel):
-    """部位
+    """标准部位
 
     """
 
@@ -1495,7 +1616,7 @@ class Organ(AbstractModel):
 
 
 class Part(AbstractModel):
-    """部位
+    """部位信息
 
     """
 
@@ -1690,6 +1811,36 @@ class PatientInfo(AbstractModel):
         :param IdCard: 患者身份证
 注意：此字段可能返回 null，表示取不到有效值。
         :type IdCard: str
+        :param HealthCardNo: 健康卡号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HealthCardNo: str
+        :param SocialSecurityCardNo: 社保卡号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SocialSecurityCardNo: str
+        :param Birthday: 出生日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Birthday: str
+        :param Ethnicity: 民族
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ethnicity: str
+        :param Married: 婚姻状况
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Married: str
+        :param Profession: 职业
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Profession: str
+        :param EducationBackground: 教育程度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EducationBackground: str
+        :param Nationality: 国籍
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Nationality: str
+        :param BirthPlace: 籍贯
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BirthPlace: str
+        :param MedicalInsuranceType: 医保类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MedicalInsuranceType: str
         """
         self.Name = None
         self.Sex = None
@@ -1697,6 +1848,16 @@ class PatientInfo(AbstractModel):
         self.Phone = None
         self.Address = None
         self.IdCard = None
+        self.HealthCardNo = None
+        self.SocialSecurityCardNo = None
+        self.Birthday = None
+        self.Ethnicity = None
+        self.Married = None
+        self.Profession = None
+        self.EducationBackground = None
+        self.Nationality = None
+        self.BirthPlace = None
+        self.MedicalInsuranceType = None
 
 
     def _deserialize(self, params):
@@ -1706,6 +1867,16 @@ class PatientInfo(AbstractModel):
         self.Phone = params.get("Phone")
         self.Address = params.get("Address")
         self.IdCard = params.get("IdCard")
+        self.HealthCardNo = params.get("HealthCardNo")
+        self.SocialSecurityCardNo = params.get("SocialSecurityCardNo")
+        self.Birthday = params.get("Birthday")
+        self.Ethnicity = params.get("Ethnicity")
+        self.Married = params.get("Married")
+        self.Profession = params.get("Profession")
+        self.EducationBackground = params.get("EducationBackground")
+        self.Nationality = params.get("Nationality")
+        self.BirthPlace = params.get("BirthPlace")
+        self.MedicalInsuranceType = params.get("MedicalInsuranceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1818,6 +1989,9 @@ class ReportInfo(AbstractModel):
         :param UltraNum: 超声号
 注意：此字段可能返回 null，表示取不到有效值。
         :type UltraNum: str
+        :param Diagnose: 临床诊断
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Diagnose: str
         """
         self.Hospital = None
         self.DepartmentName = None
@@ -1836,6 +2010,7 @@ class ReportInfo(AbstractModel):
         self.MedicalRecordNum = None
         self.ReportName = None
         self.UltraNum = None
+        self.Diagnose = None
 
 
     def _deserialize(self, params):
@@ -1856,6 +2031,7 @@ class ReportInfo(AbstractModel):
         self.MedicalRecordNum = params.get("MedicalRecordNum")
         self.ReportName = params.get("ReportName")
         self.UltraNum = params.get("UltraNum")
+        self.Diagnose = params.get("Diagnose")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1908,7 +2084,7 @@ class Size(AbstractModel):
 
 
 class Summary(AbstractModel):
-    """总结
+    """结论
 
     """
 
@@ -1942,8 +2118,127 @@ class Summary(AbstractModel):
         
 
 
+class Surgery(AbstractModel):
+    """手术记录
+
+    """
+
+    def __init__(self):
+        """
+        :param SurgeryHistory: 手术史
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SurgeryHistory: :class:`tencentcloud.mrs.v20200910.models.SurgeryHistory`
+        """
+        self.SurgeryHistory = None
+
+
+    def _deserialize(self, params):
+        if params.get("SurgeryHistory") is not None:
+            self.SurgeryHistory = SurgeryHistory()
+            self.SurgeryHistory._deserialize(params.get("SurgeryHistory"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class SurgeryAttr(AbstractModel):
+    """手术记录属性
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Value: 值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self.Name = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class SurgeryHistory(AbstractModel):
+    """手术史
+
+    """
+
+    def __init__(self):
+        """
+        :param SurgeryName: 手术名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SurgeryName: :class:`tencentcloud.mrs.v20200910.models.SurgeryAttr`
+        :param SurgeryDate: 手术日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SurgeryDate: :class:`tencentcloud.mrs.v20200910.models.SurgeryAttr`
+        :param PreoperativePathology: 术前诊断
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PreoperativePathology: :class:`tencentcloud.mrs.v20200910.models.SurgeryAttr`
+        :param IntraoperativePathology: 术中诊断
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IntraoperativePathology: :class:`tencentcloud.mrs.v20200910.models.SurgeryAttr`
+        :param PostoperativePathology: 术后诊断
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PostoperativePathology: :class:`tencentcloud.mrs.v20200910.models.SurgeryAttr`
+        :param DischargeDiagnosis: 出院诊断
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DischargeDiagnosis: :class:`tencentcloud.mrs.v20200910.models.SurgeryAttr`
+        """
+        self.SurgeryName = None
+        self.SurgeryDate = None
+        self.PreoperativePathology = None
+        self.IntraoperativePathology = None
+        self.PostoperativePathology = None
+        self.DischargeDiagnosis = None
+
+
+    def _deserialize(self, params):
+        if params.get("SurgeryName") is not None:
+            self.SurgeryName = SurgeryAttr()
+            self.SurgeryName._deserialize(params.get("SurgeryName"))
+        if params.get("SurgeryDate") is not None:
+            self.SurgeryDate = SurgeryAttr()
+            self.SurgeryDate._deserialize(params.get("SurgeryDate"))
+        if params.get("PreoperativePathology") is not None:
+            self.PreoperativePathology = SurgeryAttr()
+            self.PreoperativePathology._deserialize(params.get("PreoperativePathology"))
+        if params.get("IntraoperativePathology") is not None:
+            self.IntraoperativePathology = SurgeryAttr()
+            self.IntraoperativePathology._deserialize(params.get("IntraoperativePathology"))
+        if params.get("PostoperativePathology") is not None:
+            self.PostoperativePathology = SurgeryAttr()
+            self.PostoperativePathology._deserialize(params.get("PostoperativePathology"))
+        if params.get("DischargeDiagnosis") is not None:
+            self.DischargeDiagnosis = SurgeryAttr()
+            self.DischargeDiagnosis._deserialize(params.get("DischargeDiagnosis"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class SymptomInfo(AbstractModel):
-    """病症描述
+    """病症描述信息
 
     """
 
@@ -2037,6 +2332,15 @@ class Template(AbstractModel):
         :param ReportType: 报告类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReportType: str
+        :param MedicalRecordInfo: 门诊病历信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MedicalRecordInfo: :class:`tencentcloud.mrs.v20200910.models.MedicalRecordInfo`
+        :param Hospitalization: 出入院信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Hospitalization: :class:`tencentcloud.mrs.v20200910.models.Hospitalization`
+        :param Surgery: 手术记录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Surgery: :class:`tencentcloud.mrs.v20200910.models.Surgery`
         """
         self.PatientInfo = None
         self.ReportInfo = None
@@ -2047,6 +2351,9 @@ class Template(AbstractModel):
         self.FirstPage = None
         self.Indicator = None
         self.ReportType = None
+        self.MedicalRecordInfo = None
+        self.Hospitalization = None
+        self.Surgery = None
 
 
     def _deserialize(self, params):
@@ -2075,6 +2382,15 @@ class Template(AbstractModel):
             self.Indicator = Indicator()
             self.Indicator._deserialize(params.get("Indicator"))
         self.ReportType = params.get("ReportType")
+        if params.get("MedicalRecordInfo") is not None:
+            self.MedicalRecordInfo = MedicalRecordInfo()
+            self.MedicalRecordInfo._deserialize(params.get("MedicalRecordInfo"))
+        if params.get("Hospitalization") is not None:
+            self.Hospitalization = Hospitalization()
+            self.Hospitalization._deserialize(params.get("Hospitalization"))
+        if params.get("Surgery") is not None:
+            self.Surgery = Surgery()
+            self.Surgery._deserialize(params.get("Surgery"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2150,9 +2466,10 @@ class TextToObjectRequest(AbstractModel):
         """
         :param Text: 报告文本
         :type Text: str
-        :param Type: 报告类型，目前支持12（检查报告单），15（病理报告），218（诊断证明）。如果不清楚报告类型，可以使用分类引擎，该字段传0（同时IsUsedClassify字段必须为True，否则无法输出结果）
+        :param Type: 报告类型，目前支持12（检查报告），15（病理报告），28（出院报告），29（入院报告），210（门诊病历），212（手术记录），218（诊断证明）。如果不清楚报告类型，可以使用分类引擎，该字段传0（同时IsUsedClassify字段必须为True，否则无法输出结果）
         :type Type: int
         :param IsUsedClassify: 是否使用分类引擎，当不确定报告类型时，可以使用收费的报告分类引擎服务。若该字段为False，则Type字段不能为0，否则无法输出结果。
+注意：当 IsUsedClassify 为True 时，表示使用收费的报告分类服务，将会产生额外的费用，具体收费标准参见 [购买指南的产品价格](https://cloud.tencent.com/document/product/1314/54264)。
         :type IsUsedClassify: bool
         """
         self.Text = None
@@ -2424,7 +2741,7 @@ class TuberInfo(AbstractModel):
         :param RearEcho: 外部回声
 注意：此字段可能返回 null，表示取不到有效值。
         :type RearEcho: :class:`tencentcloud.mrs.v20200910.models.BlockInfo`
-        :param Elastic: 质地弹性
+        :param Elastic: 弹性质地
 注意：此字段可能返回 null，表示取不到有效值。
         :type Elastic: :class:`tencentcloud.mrs.v20200910.models.Elastic`
         :param Shape: 形状

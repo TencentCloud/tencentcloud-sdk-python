@@ -1027,6 +1027,63 @@ class CreateProcessTaskResponse(AbstractModel):
         
 
 
+class CreateProtectServerRequest(AbstractModel):
+    """CreateProtectServer请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProtectDir: 防护目录地址
+        :type ProtectDir: str
+        :param ProtectHostConfig: 防护机器 信息
+        :type ProtectHostConfig: list of ProtectHostConfig
+        """
+        self.ProtectDir = None
+        self.ProtectHostConfig = None
+
+
+    def _deserialize(self, params):
+        self.ProtectDir = params.get("ProtectDir")
+        if params.get("ProtectHostConfig") is not None:
+            self.ProtectHostConfig = []
+            for item in params.get("ProtectHostConfig"):
+                obj = ProtectHostConfig()
+                obj._deserialize(item)
+                self.ProtectHostConfig.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class CreateProtectServerResponse(AbstractModel):
+    """CreateProtectServer返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class CreateSearchLogRequest(AbstractModel):
     """CreateSearchLog请求参数结构体
 
@@ -2080,6 +2137,36 @@ class DeleteUsualLoginPlacesRequest(AbstractModel):
 
 class DeleteUsualLoginPlacesResponse(AbstractModel):
     """DeleteUsualLoginPlaces返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DeleteWebPageEventLogRequest(AbstractModel):
+    """DeleteWebPageEventLog请求参数结构体
+
+    """
+
+
+class DeleteWebPageEventLogResponse(AbstractModel):
+    """DeleteWebPageEventLog返回参数结构体
 
     """
 
@@ -6565,6 +6652,64 @@ class DescribeVulsResponse(AbstractModel):
         
 
 
+class DescribeWebPageGeneralizeRequest(AbstractModel):
+    """DescribeWebPageGeneralize请求参数结构体
+
+    """
+
+
+class DescribeWebPageGeneralizeResponse(AbstractModel):
+    """DescribeWebPageGeneralize返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProtectMonitor: 防护监测 0 未开启 1 已开启 2 异常
+        :type ProtectMonitor: int
+        :param ProtectDirNum: 防护目录数
+        :type ProtectDirNum: int
+        :param ProtectFileNum: 防护文件数
+        :type ProtectFileNum: int
+        :param TamperFileNum: 篡改文件数
+        :type TamperFileNum: int
+        :param TamperNum: 篡改数
+        :type TamperNum: int
+        :param ProtectToday: 今日防护
+        :type ProtectToday: int
+        :param ProtectHostNum: 防护主机数
+        :type ProtectHostNum: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ProtectMonitor = None
+        self.ProtectDirNum = None
+        self.ProtectFileNum = None
+        self.TamperFileNum = None
+        self.TamperNum = None
+        self.ProtectToday = None
+        self.ProtectHostNum = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ProtectMonitor = params.get("ProtectMonitor")
+        self.ProtectDirNum = params.get("ProtectDirNum")
+        self.ProtectFileNum = params.get("ProtectFileNum")
+        self.TamperFileNum = params.get("TamperFileNum")
+        self.TamperNum = params.get("TamperNum")
+        self.ProtectToday = params.get("ProtectToday")
+        self.ProtectHostNum = params.get("ProtectHostNum")
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class DescribeWeeklyReportBruteAttacksRequest(AbstractModel):
     """DescribeWeeklyReportBruteAttacks请求参数结构体
 
@@ -9267,6 +9412,62 @@ class ModifyProVersionRenewFlagResponse(AbstractModel):
         
 
 
+class ModifyWebPageProtectSettingRequest(AbstractModel):
+    """ModifyWebPageProtectSetting请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ModifyType: 需要操作的类型1 目录名称 2 防护文件类型
+        :type ModifyType: int
+        :param Value: 提交值
+        :type Value: str
+        :param Id: 配置对应的protect_path
+        :type Id: str
+        """
+        self.ModifyType = None
+        self.Value = None
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.ModifyType = params.get("ModifyType")
+        self.Value = params.get("Value")
+        self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class ModifyWebPageProtectSettingResponse(AbstractModel):
+    """ModifyWebPageProtectSetting返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class NonLocalLoginPlace(AbstractModel):
     """异地登录
 
@@ -9888,6 +10089,38 @@ class ProcessStatistics(AbstractModel):
         
 
 
+class ProtectHostConfig(AbstractModel):
+    """防护机器信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Quuid: 机器唯一ID
+        :type Quuid: str
+        :param ProtectSwitch: 防护开关 0  关闭 1开启
+        :type ProtectSwitch: int
+        :param AutoRecovery: 自动恢复开关 0 关闭 1开启
+        :type AutoRecovery: int
+        """
+        self.Quuid = None
+        self.ProtectSwitch = None
+        self.AutoRecovery = None
+
+
+    def _deserialize(self, params):
+        self.Quuid = params.get("Quuid")
+        self.ProtectSwitch = params.get("ProtectSwitch")
+        self.AutoRecovery = params.get("AutoRecovery")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class RecoverMalwaresRequest(AbstractModel):
     """RecoverMalwares请求参数结构体
 
@@ -10237,6 +10470,75 @@ class ReverseShellRule(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.ModifyTime = params.get("ModifyTime")
         self.Hostip = params.get("Hostip")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class ScanVulRequest(AbstractModel):
+    """ScanVul请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VulCategories: 漏洞类型：1: web应用漏洞 2:系统组件漏洞 (多选英文;分隔)
+        :type VulCategories: str
+        :param VulLevels: 危害等级：1-低危；2-中危；3-高危；4-严重 (多选英文;分隔)
+        :type VulLevels: str
+        :param HostType: 服务器分类：1:专业版服务器；2:自选服务器
+        :type HostType: int
+        :param QuuidList: 自选服务器时生效，主机quuid的string数组
+        :type QuuidList: list of str
+        :param VulEmergency: 是否是应急漏洞 0 否 1 是
+        :type VulEmergency: int
+        """
+        self.VulCategories = None
+        self.VulLevels = None
+        self.HostType = None
+        self.QuuidList = None
+        self.VulEmergency = None
+
+
+    def _deserialize(self, params):
+        self.VulCategories = params.get("VulCategories")
+        self.VulLevels = params.get("VulLevels")
+        self.HostType = params.get("HostType")
+        self.QuuidList = params.get("QuuidList")
+        self.VulEmergency = params.get("VulEmergency")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class ScanVulResponse(AbstractModel):
+    """ScanVul返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

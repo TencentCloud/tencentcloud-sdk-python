@@ -194,6 +194,34 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateProtectServer(self, request):
+        """添加房展防护服务器
+
+        :param request: Request instance for CreateProtectServer.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.CreateProtectServerRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.CreateProtectServerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateProtectServer", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateProtectServerResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateSearchLog(self, request):
         """添加历史搜索记录
 
@@ -740,6 +768,34 @@ class CwpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteUsualLoginPlacesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteWebPageEventLog(self, request):
+        """网站防篡改-删除事件记录
+
+        :param request: Request instance for DeleteWebPageEventLog.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteWebPageEventLogRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DeleteWebPageEventLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteWebPageEventLog", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteWebPageEventLogResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2490,6 +2546,34 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeWebPageGeneralize(self, request):
+        """查询网站防篡改 概览信息
+
+        :param request: Request instance for DescribeWebPageGeneralize.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeWebPageGeneralizeRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeWebPageGeneralizeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeWebPageGeneralize", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeWebPageGeneralizeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeWeeklyReportBruteAttacks(self, request):
         """本接口 (DescribeWeeklyReportBruteAttacks) 用于获取专业周报密码破解数据。
 
@@ -3330,6 +3414,34 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyWebPageProtectSetting(self, request):
+        """网站防篡改-修改网站防护设置
+
+        :param request: Request instance for ModifyWebPageProtectSetting.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyWebPageProtectSettingRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.ModifyWebPageProtectSettingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyWebPageProtectSetting", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyWebPageProtectSettingResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def OpenProVersion(self, request):
         """本接口 (OpenProVersion) 用于开通专业版。
 
@@ -3456,6 +3568,34 @@ class CwpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RescanImpactedHostResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ScanVul(self, request):
+        """漏洞管理 - 一键检测
+
+        :param request: Request instance for ScanVul.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.ScanVulRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.ScanVulResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ScanVul", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ScanVulResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

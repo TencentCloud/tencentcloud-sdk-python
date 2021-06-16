@@ -4062,6 +4062,62 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def SearchBusinessLog(self, request):
+        """业务日志搜索
+
+        :param request: Request instance for SearchBusinessLog.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.SearchBusinessLogRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.SearchBusinessLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SearchBusinessLog", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SearchBusinessLogResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SearchStdoutLog(self, request):
+        """标准输出日志搜索
+
+        :param request: Request instance for SearchStdoutLog.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.SearchStdoutLogRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.SearchStdoutLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SearchStdoutLog", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SearchStdoutLogResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ShrinkGroup(self, request):
         """下线部署组所有机器实例
 

@@ -1086,6 +1086,56 @@ class BindPluginResponse(AbstractModel):
         
 
 
+class BusinessLogV2(AbstractModel):
+    """业务日志
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param Content: 日志内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: str
+        :param Timestamp: 日志时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timestamp: int
+        :param InstanceIp: 实例IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceIp: str
+        :param LogId: 日志ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogId: str
+        :param GroupId: 部署组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
+        """
+        self.InstanceId = None
+        self.Content = None
+        self.Timestamp = None
+        self.InstanceIp = None
+        self.LogId = None
+        self.GroupId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Content = params.get("Content")
+        self.Timestamp = params.get("Timestamp")
+        self.InstanceIp = params.get("InstanceIp")
+        self.LogId = params.get("LogId")
+        self.GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class ChangeApiUsableStatusRequest(AbstractModel):
     """ChangeApiUsableStatus请求参数结构体
 
@@ -14208,6 +14258,212 @@ class SchedulingStrategy(AbstractModel):
         
 
 
+class SearchBusinessLogRequest(AbstractModel):
+    """SearchBusinessLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigId: 日志配置项ID
+        :type ConfigId: str
+        :param InstanceIds: 机器实例ID，不传表示全部实例
+        :type InstanceIds: list of str
+        :param StartTime: 开始时间
+        :type StartTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
+        :param Offset: 请求偏移量，取值范围大于等于0，默认值为0
+        :type Offset: int
+        :param Limit: 单页请求配置数量，取值范围[1, 200]，默认值为50
+        :type Limit: int
+        :param OrderBy: 排序规则，默认值"time"
+        :type OrderBy: str
+        :param OrderType: 排序方式，取值"asc"或"desc"，默认值"desc"
+        :type OrderType: str
+        :param SearchWords: 检索关键词
+        :type SearchWords: list of str
+        :param GroupIds: 部署组ID列表，不传表示全部部署组
+        :type GroupIds: list of str
+        :param SearchWordType: 检索类型，取值"LUCENE", "REGEXP", "NORMAL"
+        :type SearchWordType: str
+        :param BatchType: 批量请求类型，取值"page"或"scroll"
+        :type BatchType: str
+        :param ScrollId: 游标ID
+        :type ScrollId: str
+        """
+        self.ConfigId = None
+        self.InstanceIds = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Offset = None
+        self.Limit = None
+        self.OrderBy = None
+        self.OrderType = None
+        self.SearchWords = None
+        self.GroupIds = None
+        self.SearchWordType = None
+        self.BatchType = None
+        self.ScrollId = None
+
+
+    def _deserialize(self, params):
+        self.ConfigId = params.get("ConfigId")
+        self.InstanceIds = params.get("InstanceIds")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderType = params.get("OrderType")
+        self.SearchWords = params.get("SearchWords")
+        self.GroupIds = params.get("GroupIds")
+        self.SearchWordType = params.get("SearchWordType")
+        self.BatchType = params.get("BatchType")
+        self.ScrollId = params.get("ScrollId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class SearchBusinessLogResponse(AbstractModel):
+    """SearchBusinessLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 业务日志列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageBusinessLogV2`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = TsfPageBusinessLogV2()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class SearchStdoutLogRequest(AbstractModel):
+    """SearchStdoutLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 机器实例ID
+        :type InstanceId: str
+        :param Limit: 单页请求配置数量，取值范围[1, 500]，默认值为100
+        :type Limit: int
+        :param SearchWords: 检索关键词
+        :type SearchWords: list of str
+        :param StartTime: 查询起始时间
+        :type StartTime: str
+        :param GroupId: 部署组ID
+        :type GroupId: str
+        :param EndTime: 查询结束时间
+        :type EndTime: str
+        :param Offset: 请求偏移量，取值范围大于等于0，默认值为
+0
+        :type Offset: int
+        :param OrderBy: 排序规则，默认值"time"
+        :type OrderBy: str
+        :param OrderType: 排序方式，取值"asc"或"desc"，默认
+值"desc"
+        :type OrderType: str
+        :param SearchWordType: 检索类型，取值"LUCENE", "REGEXP",
+"NORMAL"
+        :type SearchWordType: str
+        :param BatchType: 批量请求类型，取值"page"或"scroll"，默认
+值"page"
+        :type BatchType: str
+        :param ScrollId: 游标ID
+        :type ScrollId: str
+        """
+        self.InstanceId = None
+        self.Limit = None
+        self.SearchWords = None
+        self.StartTime = None
+        self.GroupId = None
+        self.EndTime = None
+        self.Offset = None
+        self.OrderBy = None
+        self.OrderType = None
+        self.SearchWordType = None
+        self.BatchType = None
+        self.ScrollId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Limit = params.get("Limit")
+        self.SearchWords = params.get("SearchWords")
+        self.StartTime = params.get("StartTime")
+        self.GroupId = params.get("GroupId")
+        self.EndTime = params.get("EndTime")
+        self.Offset = params.get("Offset")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderType = params.get("OrderType")
+        self.SearchWordType = params.get("SearchWordType")
+        self.BatchType = params.get("BatchType")
+        self.ScrollId = params.get("ScrollId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class SearchStdoutLogResponse(AbstractModel):
+    """SearchStdoutLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 标准输出日志列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageStdoutLogV2`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = TsfPageStdoutLogV2()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class ServerlessGroup(AbstractModel):
     """Serverless部署组信息
 
@@ -14840,6 +15096,46 @@ class StartGroupResponse(AbstractModel):
             self.Result = TaskId()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class StdoutLogV2(AbstractModel):
+    """标准输出日志
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param Content: 日志内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: str
+        :param Timestamp: 日志时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timestamp: int
+        :param InstanceIp: 实例IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceIp: str
+        """
+        self.InstanceId = None
+        self.Content = None
+        self.Timestamp = None
+        self.InstanceIp = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Content = params.get("Content")
+        self.Timestamp = params.get("Timestamp")
+        self.InstanceIp = params.get("InstanceIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -15589,6 +15885,51 @@ class TsfPageApplication(AbstractModel):
         
 
 
+class TsfPageBusinessLogV2(AbstractModel):
+    """业务日志列表
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param Content: 业务日志列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: list of BusinessLogV2
+        :param ScrollId: 游标ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScrollId: str
+        :param Status: 查询状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        """
+        self.TotalCount = None
+        self.Content = None
+        self.ScrollId = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Content") is not None:
+            self.Content = []
+            for item in params.get("Content"):
+                obj = BusinessLogV2()
+                obj._deserialize(item)
+                self.Content.append(obj)
+        self.ScrollId = params.get("ScrollId")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class TsfPageCluster(AbstractModel):
     """Tsf分页集群对象
 
@@ -16029,6 +16370,51 @@ class TsfPageSimpleGroup(AbstractModel):
                 obj = SimpleGroup()
                 obj._deserialize(item)
                 self.Content.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class TsfPageStdoutLogV2(AbstractModel):
+    """标准输出日志列表
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param Content: 标准输出日志列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: list of StdoutLogV2
+        :param ScrollId: 游标ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScrollId: str
+        :param Status: 查询状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        """
+        self.TotalCount = None
+        self.Content = None
+        self.ScrollId = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Content") is not None:
+            self.Content = []
+            for item in params.get("Content"):
+                obj = StdoutLogV2()
+                obj._deserialize(item)
+                self.Content.append(obj)
+        self.ScrollId = params.get("ScrollId")
+        self.Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

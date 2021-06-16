@@ -133,14 +133,18 @@ class CreateDatabaseRequest(AbstractModel):
         """
         :param DatabaseInfo: 数据库基础信息
         :type DatabaseInfo: :class:`tencentcloud.dlc.v20210125.models.DatabaseInfo`
+        :param DatasourceConnectionName: 数据源名称，默认为CosDataCatalog
+        :type DatasourceConnectionName: str
         """
         self.DatabaseInfo = None
+        self.DatasourceConnectionName = None
 
 
     def _deserialize(self, params):
         if params.get("DatabaseInfo") is not None:
             self.DatabaseInfo = DatabaseInfo()
             self.DatabaseInfo._deserialize(params.get("DatabaseInfo"))
+        self.DatasourceConnectionName = params.get("DatasourceConnectionName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -240,6 +244,54 @@ class CreateScriptResponse(AbstractModel):
         
 
 
+class CreateStoreLocationRequest(AbstractModel):
+    """CreateStoreLocation请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StoreLocation: 计算结果存储cos路径，如：cosn://bucketname/
+        :type StoreLocation: str
+        """
+        self.StoreLocation = None
+
+
+    def _deserialize(self, params):
+        self.StoreLocation = params.get("StoreLocation")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class CreateStoreLocationResponse(AbstractModel):
+    """CreateStoreLocation返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class CreateTableRequest(AbstractModel):
     """CreateTable请求参数结构体
 
@@ -307,9 +359,12 @@ class CreateTaskRequest(AbstractModel):
         :type Task: :class:`tencentcloud.dlc.v20210125.models.Task`
         :param DatabaseName: 数据库名称。任务在执行前均会USE该数据库， 除了首次建库时，其他情况建议均添加上。
         :type DatabaseName: str
+        :param DatasourceConnectionName: 默认数据源名称。
+        :type DatasourceConnectionName: str
         """
         self.Task = None
         self.DatabaseName = None
+        self.DatasourceConnectionName = None
 
 
     def _deserialize(self, params):
@@ -317,6 +372,7 @@ class CreateTaskRequest(AbstractModel):
             self.Task = Task()
             self.Task._deserialize(params.get("Task"))
         self.DatabaseName = params.get("DatabaseName")
+        self.DatasourceConnectionName = params.get("DatasourceConnectionName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -570,16 +626,20 @@ class DescribeDatabasesRequest(AbstractModel):
         :type Offset: int
         :param KeyWord: 模糊匹配，库名关键字。
         :type KeyWord: str
+        :param DatasourceConnectionName: 数据源唯名称，该名称可以通过DescribeDatasourceConnection接口查询到。默认为CosDataCatalog
+        :type DatasourceConnectionName: str
         """
         self.Limit = None
         self.Offset = None
         self.KeyWord = None
+        self.DatasourceConnectionName = None
 
 
     def _deserialize(self, params):
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
         self.KeyWord = params.get("KeyWord")
+        self.DatasourceConnectionName = params.get("DatasourceConnectionName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -722,14 +782,18 @@ class DescribeTableRequest(AbstractModel):
         :type TableName: str
         :param DatabaseName: 查询表所在的数据库名称。
         :type DatabaseName: str
+        :param DatasourceConnectionName: 查询表所在的数据源名称
+        :type DatasourceConnectionName: str
         """
         self.TableName = None
         self.DatabaseName = None
+        self.DatasourceConnectionName = None
 
 
     def _deserialize(self, params):
         self.TableName = params.get("TableName")
         self.DatabaseName = params.get("DatabaseName")
+        self.DatasourceConnectionName = params.get("DatasourceConnectionName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -786,11 +850,14 @@ class DescribeTablesRequest(AbstractModel):
 table-name - String - （过滤条件）数据表名称,形如：table-001。
 table-id - String - （过滤条件）table id形如：12342。
         :type Filters: list of Filter
+        :param DatasourceConnectionName: 指定查询的数据源名称，默认为CosDataCatalog
+        :type DatasourceConnectionName: str
         """
         self.DatabaseName = None
         self.Limit = None
         self.Offset = None
         self.Filters = None
+        self.DatasourceConnectionName = None
 
 
     def _deserialize(self, params):
@@ -803,6 +870,7 @@ table-id - String - （过滤条件）table id形如：12342。
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.DatasourceConnectionName = params.get("DatasourceConnectionName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -959,11 +1027,14 @@ class DescribeViewsRequest(AbstractModel):
 view-name - String - （过滤条件）数据表名称,形如：view-001。
 view-id - String - （过滤条件）view id形如：12342。
         :type Filters: list of Filter
+        :param DatasourceConnectionName: 数据库所属的数据源名称
+        :type DatasourceConnectionName: str
         """
         self.DatabaseName = None
         self.Limit = None
         self.Offset = None
         self.Filters = None
+        self.DatasourceConnectionName = None
 
 
     def _deserialize(self, params):
@@ -976,6 +1047,7 @@ view-id - String - （过滤条件）view id形如：12342。
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.DatasourceConnectionName = params.get("DatasourceConnectionName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1065,6 +1137,36 @@ class Filter(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class KVPair(AbstractModel):
+    """配置格式
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: 配置的key值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param Value: 配置的value值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1167,12 +1269,21 @@ class SQLTask(AbstractModel):
         """
         :param SQL: base64加密后的SQL语句
         :type SQL: str
+        :param Config: 任务的配置信息
+        :type Config: list of KVPair
         """
         self.SQL = None
+        self.Config = None
 
 
     def _deserialize(self, params):
         self.SQL = params.get("SQL")
+        if params.get("Config") is not None:
+            self.Config = []
+            for item in params.get("Config"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self.Config.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1243,14 +1354,19 @@ class TableBaseInfo(AbstractModel):
         :type DatabaseName: str
         :param TableName: 数据表名字
         :type TableName: str
+        :param DatasourceConnectionName: 该数据表所属数据源名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceConnectionName: str
         """
         self.DatabaseName = None
         self.TableName = None
+        self.DatasourceConnectionName = None
 
 
     def _deserialize(self, params):
         self.DatabaseName = params.get("DatabaseName")
         self.TableName = params.get("TableName")
+        self.DatasourceConnectionName = params.get("DatasourceConnectionName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1399,14 +1515,20 @@ class Task(AbstractModel):
         """
         :param SQLTask: SQL查询任务
         :type SQLTask: :class:`tencentcloud.dlc.v20210125.models.SQLTask`
+        :param SparkSQLTask: Spark SQL查询任务
+        :type SparkSQLTask: :class:`tencentcloud.dlc.v20210125.models.SQLTask`
         """
         self.SQLTask = None
+        self.SparkSQLTask = None
 
 
     def _deserialize(self, params):
         if params.get("SQLTask") is not None:
             self.SQLTask = SQLTask()
             self.SQLTask._deserialize(params.get("SQLTask"))
+        if params.get("SparkSQLTask") is not None:
+            self.SparkSQLTask = SQLTask()
+            self.SparkSQLTask._deserialize(params.get("SparkSQLTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1454,6 +1576,8 @@ class TaskResponseInfo(AbstractModel):
         :type Percentage: int
         :param OutputMessage: 任务执行输出信息。
         :type OutputMessage: str
+        :param TaskType: 执行SQL的引擎类型
+        :type TaskType: str
         """
         self.DatabaseName = None
         self.DataAmount = None
@@ -1470,6 +1594,7 @@ class TaskResponseInfo(AbstractModel):
         self.Error = None
         self.Percentage = None
         self.OutputMessage = None
+        self.TaskType = None
 
 
     def _deserialize(self, params):
@@ -1488,6 +1613,7 @@ class TaskResponseInfo(AbstractModel):
         self.Error = params.get("Error")
         self.Percentage = params.get("Percentage")
         self.OutputMessage = params.get("OutputMessage")
+        self.TaskType = params.get("TaskType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

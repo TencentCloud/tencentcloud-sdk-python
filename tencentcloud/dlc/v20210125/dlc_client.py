@@ -82,6 +82,34 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateStoreLocation(self, request):
+        """该接口（CreateStoreLocation）新增或覆盖计算结果存储位置。
+
+        :param request: Request instance for CreateStoreLocation.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CreateStoreLocationRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CreateStoreLocationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateStoreLocation", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateStoreLocationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateTable(self, request):
         """本接口（CreateTable）用于生成建表SQL。
 

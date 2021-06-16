@@ -1916,7 +1916,7 @@ class DescribeResetInstanceBlueprintsRequest(AbstractModel):
 类型：String
 必选：否
 <li>blueprint-type</li>按照【镜像类型】进行过滤。
-取值： APP_OS（预置应用的系统 ）；PURE_OS（纯净的 OS 系统）。
+取值： APP_OS（预置应用的系统 ）；PURE_OS（纯净的 OS 系统）；PRIVATE（自定义镜像）。
 类型：String
 必选：否
 <li>platform-type</li>按照【镜像平台类型】进行过滤。
@@ -2941,7 +2941,7 @@ class InternetAccessible(AbstractModel):
 
     def __init__(self):
         """
-        :param InternetChargeType: 网络计费类型,，取值范围：
+        :param InternetChargeType: 网络计费类型，取值范围：
 <li>按流量包付费：TRAFFIC_POSTPAID_BY_HOUR</li>
 <li>按带宽付费： BANDWIDTH_POSTPAID_BY_HOUR</li>
         :type InternetChargeType: str
@@ -3578,7 +3578,7 @@ class RegionInfo(AbstractModel):
         :type Region: str
         :param RegionName: 地域描述，例如，华南地区(广州)。
         :type RegionName: str
-        :param RegionState: 地域是否可用状态，取值为AVAILABLE。
+        :param RegionState: 地域是否可用状态，取值仅为AVAILABLE。
         :type RegionState: str
         :param IsChinaMainland: 是否中国大陆地域
         :type IsChinaMainland: bool
