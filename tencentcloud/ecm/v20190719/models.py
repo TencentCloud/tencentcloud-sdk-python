@@ -10767,6 +10767,9 @@ class SecurityGroupPolicy(AbstractModel):
         :param ModifyTime: 修改时间，例如 2020-07-22 19：27：23
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyTime: str
+        :param Ipv6CidrBlock: 网段或IPv6(互斥)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ipv6CidrBlock: str
         """
         self.PolicyIndex = None
         self.Protocol = None
@@ -10778,6 +10781,7 @@ class SecurityGroupPolicy(AbstractModel):
         self.Action = None
         self.PolicyDescription = None
         self.ModifyTime = None
+        self.Ipv6CidrBlock = None
 
 
     def _deserialize(self, params):
@@ -10795,6 +10799,7 @@ class SecurityGroupPolicy(AbstractModel):
         self.Action = params.get("Action")
         self.PolicyDescription = params.get("PolicyDescription")
         self.ModifyTime = params.get("ModifyTime")
+        self.Ipv6CidrBlock = params.get("Ipv6CidrBlock")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

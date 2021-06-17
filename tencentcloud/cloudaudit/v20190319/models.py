@@ -419,12 +419,15 @@ class DescribeEventsRequest(AbstractModel):
         :type MaxResults: int
         :param LookupAttributes: 检索条件（目前支持 RequestId：请求 ID、EventName：事件名称、ActionType：操作类型（Write：写；Read：读）、PrincipalId：子账号、ResourceType：资源类型、ResourceName：资源名称、AccessKeyId：密钥 ID、SensitiveAction：是否敏感操作、ApiErrorCode：API 错误码、CamErrorCode：CAM 错误码）
         :type LookupAttributes: list of LookupAttribute
+        :param IsReturnLocation: 是否返回 IP 归属地（1 返回，0 不返回）
+        :type IsReturnLocation: int
         """
         self.StartTime = None
         self.EndTime = None
         self.NextToken = None
         self.MaxResults = None
         self.LookupAttributes = None
+        self.IsReturnLocation = None
 
 
     def _deserialize(self, params):
@@ -438,6 +441,7 @@ class DescribeEventsRequest(AbstractModel):
                 obj = LookupAttribute()
                 obj._deserialize(item)
                 self.LookupAttributes.append(obj)
+        self.IsReturnLocation = params.get("IsReturnLocation")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -18,6 +18,67 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AcknowledgeMessageRequest(AbstractModel):
+    """AcknowledgeMessage请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MessageId: 用作标识消息的唯一的ID（可从 receiveMessage 的返回值中获得）
+        :type MessageId: str
+        :param AckTopic: Topic 名字（可从 receiveMessage 的返回值中获得）这里尽量需要使用topic的全路径，如果不指定，默认使用的是：public/default
+        :type AckTopic: str
+        :param SubName: 订阅者的名字，可以从receiveMessage的返回值中获取到。这里尽量与receiveMessage中的订阅者保持一致，否则没办法正确ack 接收回来的消息。
+        :type SubName: str
+        """
+        self.MessageId = None
+        self.AckTopic = None
+        self.SubName = None
+
+
+    def _deserialize(self, params):
+        self.MessageId = params.get("MessageId")
+        self.AckTopic = params.get("AckTopic")
+        self.SubName = params.get("SubName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class AcknowledgeMessageResponse(AbstractModel):
+    """AcknowledgeMessage返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ErrorMsg: 如果为“”，则说明没有错误返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrorMsg = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrorMsg = params.get("ErrorMsg")
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class BindCluster(AbstractModel):
     """用户专享集群信息
 
@@ -3713,6 +3774,88 @@ class PublishCmqMsgResponse(AbstractModel):
         
 
 
+class ReceiveMessageRequest(AbstractModel):
+    """ReceiveMessage请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Topic: 接收消息的topic的名字, 这里尽量需要使用topic的全路径，如果不指定，默认使用的是：public/default
+        :type Topic: str
+        :param SubscriptionName: 订阅者的名字
+        :type SubscriptionName: str
+        :param ReceiverQueueSize: 默认值为1000，consumer接收的消息会首先存储到receiverQueueSize这个队列中，用作调优接收消息的速率
+        :type ReceiverQueueSize: int
+        :param SubInitialPosition: 默认值为：Latest。用作判定consumer初始接收消息的位置，可选参数为：Earliest, Latest
+        :type SubInitialPosition: str
+        """
+        self.Topic = None
+        self.SubscriptionName = None
+        self.ReceiverQueueSize = None
+        self.SubInitialPosition = None
+
+
+    def _deserialize(self, params):
+        self.Topic = params.get("Topic")
+        self.SubscriptionName = params.get("SubscriptionName")
+        self.ReceiverQueueSize = params.get("ReceiverQueueSize")
+        self.SubInitialPosition = params.get("SubInitialPosition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class ReceiveMessageResponse(AbstractModel):
+    """ReceiveMessage返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MessageID: 用作标识消息的唯一主键
+        :type MessageID: str
+        :param MessagePayload: 接收消息的内容
+        :type MessagePayload: str
+        :param AckTopic: 提供给 Ack 接口，用来Ack哪一个topic中的消息
+        :type AckTopic: str
+        :param ErrorMsg: 返回的错误信息，如果为空，说明没有错误
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param SubName: 返回订阅者的名字，用来创建 ack consumer时使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubName: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MessageID = None
+        self.MessagePayload = None
+        self.AckTopic = None
+        self.ErrorMsg = None
+        self.SubName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MessageID = params.get("MessageID")
+        self.MessagePayload = params.get("MessagePayload")
+        self.AckTopic = params.get("AckTopic")
+        self.ErrorMsg = params.get("ErrorMsg")
+        self.SubName = params.get("SubName")
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class ResetMsgSubOffsetByTimestampRequest(AbstractModel):
     """ResetMsgSubOffsetByTimestamp请求参数结构体
 
@@ -3841,11 +3984,11 @@ class SendBatchMessagesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Topic: Topic name
+        :param Topic: 消息要发送的topic的名字, 这里尽量需要使用topic的全路径，如果不指定，默认使用的是：public/default
         :type Topic: str
         :param Payload: 需要发送消息的内容
         :type Payload: str
-        :param StringToken: String 类型的 token，用来校验客户端和服务端之间的连接
+        :param StringToken: String 类型的 token，可以不填，系统会自动获取
         :type StringToken: str
         :param ProducerName: producer 的名字，要求全局是唯一的，如果不设置，系统会自动生成
         :type ProducerName: str
@@ -3995,12 +4138,12 @@ class SendMessagesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param StringToken: Token 是用来做鉴权使用的
-        :type StringToken: str
-        :param Topic: 消息要发送的topic的名字
+        :param Topic: 消息要发送的topic的名字, 这里尽量需要使用topic的全路径，如果不指定，默认使用的是：public/default
         :type Topic: str
         :param Payload: 要发送的消息的内容
         :type Payload: str
+        :param StringToken: Token 是用来做鉴权使用的，可以不填，系统会自动获取
+        :type StringToken: str
         :param ProducerName: 设置 producer 的名字，要求全局唯一，用户不配置，系统会随机生成
         :type ProducerName: str
         :param SendTimeout: 设置消息发送的超时时间，默认为30s
@@ -4008,18 +4151,18 @@ class SendMessagesRequest(AbstractModel):
         :param MaxPendingMessages: 内存中缓存的最大的生产消息的数量，默认为1000条
         :type MaxPendingMessages: int
         """
-        self.StringToken = None
         self.Topic = None
         self.Payload = None
+        self.StringToken = None
         self.ProducerName = None
         self.SendTimeout = None
         self.MaxPendingMessages = None
 
 
     def _deserialize(self, params):
-        self.StringToken = params.get("StringToken")
         self.Topic = params.get("Topic")
         self.Payload = params.get("Payload")
+        self.StringToken = params.get("StringToken")
         self.ProducerName = params.get("ProducerName")
         self.SendTimeout = params.get("SendTimeout")
         self.MaxPendingMessages = params.get("MaxPendingMessages")

@@ -647,6 +647,10 @@ class CreateAutoScalingGroupRequest(AbstractModel):
 <br><li> 创建实例时，先保证多机型的策略，后保证多可用区/子网的策略。例如多机型A、B，多子网1、2、3（按照PRIORITY策略），会按照A1、A2、A3、B1、B2、B3 进行尝试，如果A1售罄，会尝试A2（而非B1）。
 <br><li> 无论使用哪种策略，单次伸缩活动总是优先保持使用一种具体配置（机型 * 可用区/子网）。
         :type MultiZoneSubnetPolicy: str
+        :param HealthCheckType: 伸缩组实例健康检查类型，取值如下：<br><li>CVM：根据实例网络状态判断实例是否处于不健康状态，不健康的网络状态即发生实例 PING 不可达事件，详细判断标准可参考[实例健康检查](https://cloud.tencent.com/document/product/377/8553)<br><li>CLB：根据 CLB 的健康检查状态判断实例是否处于不健康状态，CLB健康检查原理可参考[健康检查](https://cloud.tencent.com/document/product/214/6097) <br>如果选择了`CLB`类型，伸缩组将同时检查实例网络状态与CLB健康检查状态，如果出现实例网络状态不健康，实例将被标记为 UNHEALTHY 状态；如果出现 CLB 健康检查状态异常，实例将被标记为CLB_UNHEALTHY 状态，如果两个异常状态同时出现，实例`HealthStatus`字段将返回 UNHEALTHY|CLB_UNHEALTHY。默认值：CLB
+        :type HealthCheckType: str
+        :param LoadBalancerHealthCheckGracePeriod: CLB健康检查宽限期，当扩容的实例进入`IN_SERVICE`后，在宽限期时间范围内将不会被标记为不健康`CLB_UNHEALTHY`。<br>默认值：0。取值范围[0, 7200]，单位：秒。
+        :type LoadBalancerHealthCheckGracePeriod: int
         """
         self.AutoScalingGroupName = None
         self.LaunchConfigurationId = None
@@ -667,6 +671,8 @@ class CreateAutoScalingGroupRequest(AbstractModel):
         self.ServiceSettings = None
         self.Ipv6AddressCount = None
         self.MultiZoneSubnetPolicy = None
+        self.HealthCheckType = None
+        self.LoadBalancerHealthCheckGracePeriod = None
 
 
     def _deserialize(self, params):
@@ -701,6 +707,8 @@ class CreateAutoScalingGroupRequest(AbstractModel):
             self.ServiceSettings._deserialize(params.get("ServiceSettings"))
         self.Ipv6AddressCount = params.get("Ipv6AddressCount")
         self.MultiZoneSubnetPolicy = params.get("MultiZoneSubnetPolicy")
+        self.HealthCheckType = params.get("HealthCheckType")
+        self.LoadBalancerHealthCheckGracePeriod = params.get("LoadBalancerHealthCheckGracePeriod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3529,6 +3537,10 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
 <br><li> 创建实例时，先保证多机型的策略，后保证多可用区/子网的策略。例如多机型A、B，多子网1、2、3（按照PRIORITY策略），会按照A1、A2、A3、B1、B2、B3 进行尝试，如果A1售罄，会尝试A2（而非B1）。
 <br><li> 无论使用哪种策略，单次伸缩活动总是优先保持使用一种具体配置（机型 * 可用区/子网）。
         :type MultiZoneSubnetPolicy: str
+        :param HealthCheckType: 伸缩组实例健康检查类型，取值如下：<br><li>CVM：根据实例网络状态判断实例是否处于不健康状态，不健康的网络状态即发生实例 PING 不可达事件，详细判断标准可参考[实例健康检查](https://cloud.tencent.com/document/product/377/8553)<br><li>CLB：根据 CLB 的健康检查状态判断实例是否处于不健康状态，CLB健康检查原理可参考[健康检查](https://cloud.tencent.com/document/product/214/6097)
+        :type HealthCheckType: str
+        :param LoadBalancerHealthCheckGracePeriod: CLB健康检查宽限期。
+        :type LoadBalancerHealthCheckGracePeriod: int
         """
         self.AutoScalingGroupId = None
         self.AutoScalingGroupName = None
@@ -3547,6 +3559,8 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
         self.ServiceSettings = None
         self.Ipv6AddressCount = None
         self.MultiZoneSubnetPolicy = None
+        self.HealthCheckType = None
+        self.LoadBalancerHealthCheckGracePeriod = None
 
 
     def _deserialize(self, params):
@@ -3569,6 +3583,8 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
             self.ServiceSettings._deserialize(params.get("ServiceSettings"))
         self.Ipv6AddressCount = params.get("Ipv6AddressCount")
         self.MultiZoneSubnetPolicy = params.get("MultiZoneSubnetPolicy")
+        self.HealthCheckType = params.get("HealthCheckType")
+        self.LoadBalancerHealthCheckGracePeriod = params.get("LoadBalancerHealthCheckGracePeriod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4532,14 +4548,18 @@ CLASSIC_SCALING：经典方式，使用创建、销毁实例来实现扩缩容�
 WAKE_UP_STOPPED_SCALING：扩容优先开机。扩容时优先对已关机的实例执行开机操作，若开机后实例数仍低于期望实例数，则创建实例，缩容仍采用销毁实例的方式。用户可以使用StopAutoScalingInstances接口来关闭伸缩组内的实例。监控告警触发的扩容仍将创建实例
 默认取值：CLASSIC_SCALING
         :type ScalingMode: str
+        :param ReplaceLoadBalancerUnhealthy: 开启负载均衡不健康替换服务。若开启则对于负载均衡健康检查判断不健康的实例，弹性伸缩服务会进行替换。若不指定该参数，则默认为 False。
+        :type ReplaceLoadBalancerUnhealthy: bool
         """
         self.ReplaceMonitorUnhealthy = None
         self.ScalingMode = None
+        self.ReplaceLoadBalancerUnhealthy = None
 
 
     def _deserialize(self, params):
         self.ReplaceMonitorUnhealthy = params.get("ReplaceMonitorUnhealthy")
         self.ScalingMode = params.get("ScalingMode")
+        self.ReplaceLoadBalancerUnhealthy = params.get("ReplaceLoadBalancerUnhealthy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

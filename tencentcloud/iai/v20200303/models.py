@@ -3105,7 +3105,7 @@ Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00
         :type ToFaceModelVersion: str
         :param GroupId: 人员库ID。
         :type GroupId: str
-        :param FailedFacesUrl: 无法升级的人脸Id信息，文件格式
+        :param FailedFacesUrl: 无法升级的人脸Id信息，文件格式为json。内容参见下方示例。url有效期为半小时。
         :type FailedFacesUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4349,7 +4349,7 @@ class UpgradeGroupFaceModelVersionRequest(AbstractModel):
         """
         :param GroupId: 需要升级的人员库ID。
         :type GroupId: str
-        :param FaceModelVersion: 需要升级至的算法模型版本。默认为最新版本。
+        :param FaceModelVersion: 需要升级至的算法模型版本。默认为最新版本。不可逆向升级
         :type FaceModelVersion: str
         """
         self.GroupId = None

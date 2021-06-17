@@ -8041,6 +8041,10 @@ class DescribeCrossBorderComplianceRequest(AbstractModel):
         :type ServiceEndDate: str
         :param State: （精确匹配）状态。待审批：`PENDING`，通过：`APPROVED `，拒绝：`DENY`。
         :type State: str
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 返回数量
+        :type Limit: int
         """
         self.ServiceProvider = None
         self.ComplianceId = None
@@ -8058,6 +8062,8 @@ class DescribeCrossBorderComplianceRequest(AbstractModel):
         self.ServiceStartDate = None
         self.ServiceEndDate = None
         self.State = None
+        self.Offset = None
+        self.Limit = None
 
 
     def _deserialize(self, params):
@@ -8077,6 +8083,8 @@ class DescribeCrossBorderComplianceRequest(AbstractModel):
         self.ServiceStartDate = params.get("ServiceStartDate")
         self.ServiceEndDate = params.get("ServiceEndDate")
         self.State = params.get("State")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

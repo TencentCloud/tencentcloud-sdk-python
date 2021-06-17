@@ -5864,9 +5864,12 @@ class VideoEditTemplateMaterial(AbstractModel):
         :type AspectRatio: str
         :param SlotSet: 卡槽信息。
         :type SlotSet: list of SlotInfo
+        :param PreviewVideoUrl: 模板预览视频 URL 地址 。
+        :type PreviewVideoUrl: str
         """
         self.AspectRatio = None
         self.SlotSet = None
+        self.PreviewVideoUrl = None
 
 
     def _deserialize(self, params):
@@ -5877,6 +5880,7 @@ class VideoEditTemplateMaterial(AbstractModel):
                 obj = SlotInfo()
                 obj._deserialize(item)
                 self.SlotSet.append(obj)
+        self.PreviewVideoUrl = params.get("PreviewVideoUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

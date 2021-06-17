@@ -2149,16 +2149,32 @@ class GetProjectListRequest(AbstractModel):
         :type Limit: int
         :param InstanceId: 实例ID
         :type InstanceId: str
+        :param ProjectId: 按项目D搜索
+        :type ProjectId: str
+        :param ProductId: 按产品ID搜索
+        :type ProductId: str
+        :param Includes: 加载 ProductCount、DeviceCount、ApplicationCount，可选值：ProductCount、DeviceCount、ApplicationCount，可多选
+        :type Includes: list of str
+        :param ProjectName: 按项目名称搜索
+        :type ProjectName: str
         """
         self.Offset = None
         self.Limit = None
         self.InstanceId = None
+        self.ProjectId = None
+        self.ProductId = None
+        self.Includes = None
+        self.ProjectName = None
 
 
     def _deserialize(self, params):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.InstanceId = params.get("InstanceId")
+        self.ProjectId = params.get("ProjectId")
+        self.ProductId = params.get("ProductId")
+        self.Includes = params.get("Includes")
+        self.ProjectName = params.get("ProjectName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3287,6 +3303,12 @@ class ProjectEntryEx(AbstractModel):
         :param InstanceId: 实例ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
+        :param ApplicationCount: 应用数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationCount: int
+        :param DeviceCount: 设备注册总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceCount: int
         """
         self.ProjectId = None
         self.ProjectName = None
@@ -3297,6 +3319,8 @@ class ProjectEntryEx(AbstractModel):
         self.NativeAppCount = None
         self.WebAppCount = None
         self.InstanceId = None
+        self.ApplicationCount = None
+        self.DeviceCount = None
 
 
     def _deserialize(self, params):
@@ -3309,6 +3333,8 @@ class ProjectEntryEx(AbstractModel):
         self.NativeAppCount = params.get("NativeAppCount")
         self.WebAppCount = params.get("WebAppCount")
         self.InstanceId = params.get("InstanceId")
+        self.ApplicationCount = params.get("ApplicationCount")
+        self.DeviceCount = params.get("DeviceCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3483,12 +3509,15 @@ class SearchStudioProductRequest(AbstractModel):
         :type Offset: int
         :param DevStatus: 产品Status
         :type DevStatus: str
+        :param ProductId: 产品ID
+        :type ProductId: str
         """
         self.ProjectId = None
         self.ProductName = None
         self.Limit = None
         self.Offset = None
         self.DevStatus = None
+        self.ProductId = None
 
 
     def _deserialize(self, params):
@@ -3497,6 +3526,7 @@ class SearchStudioProductRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
         self.DevStatus = params.get("DevStatus")
+        self.ProductId = params.get("ProductId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

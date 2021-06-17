@@ -304,9 +304,12 @@ https://open.work.weixin.qq.com/api/doc/90000/90135/91774
         :param MsgTime: 消息发送的时间戳，单位为秒
 注意：此字段可能返回 null，表示取不到有效值。
         :type MsgTime: int
-        :param Video: MsgType=video时的消息体
+        :param Video: MsgType=video时的消息体，忽略此字段，见BodyJson字段
 注意：此字段可能返回 null，表示取不到有效值。
         :type Video: :class:`tencentcloud.wav.v20210129.models.ChatArchivingMsgTypeVideo`
+        :param BodyJson: 根据MsgType的不同取值，解析内容不同，参考：https://open.work.weixin.qq.com/api/doc/90000/90135/91774
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BodyJson: str
         """
         self.MsgId = None
         self.Action = None
@@ -316,6 +319,7 @@ https://open.work.weixin.qq.com/api/doc/90000/90135/91774
         self.RoomId = None
         self.MsgTime = None
         self.Video = None
+        self.BodyJson = None
 
 
     def _deserialize(self, params):
@@ -329,6 +333,7 @@ https://open.work.weixin.qq.com/api/doc/90000/90135/91774
         if params.get("Video") is not None:
             self.Video = ChatArchivingMsgTypeVideo()
             self.Video._deserialize(params.get("Video"))
+        self.BodyJson = params.get("BodyJson")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1160,9 +1165,9 @@ class QueryExternalContactDetailRequest(AbstractModel):
         """
         :param ExternalUserId: 外部联系人的userid，注意不是企业成员的帐号
         :type ExternalUserId: str
-        :param Cursor: 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+        :param Cursor: 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填。当客户在企业内的跟进人超过500人时需要使用cursor参数进行分页获取
         :type Cursor: str
-        :param Limit: 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+        :param Limit: 当前接口Limit不需要传参， 保留Limit只是为了保持向后兼容性， Limit默认值为500，当返回结果超过500时， NextCursor才有返回值
         :type Limit: int
         """
         self.ExternalUserId = None
