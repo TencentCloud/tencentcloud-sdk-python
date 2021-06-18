@@ -26,6 +26,34 @@ class MarketClient(AbstractClient):
     _service = 'market'
 
 
+    def FlowProductRemind(self, request):
+        """计量商品用量提醒，用于服务商调用云服务，云服务向客户发送提醒信息
+
+        :param request: Request instance for FlowProductRemind.
+        :type request: :class:`tencentcloud.market.v20191010.models.FlowProductRemindRequest`
+        :rtype: :class:`tencentcloud.market.v20191010.models.FlowProductRemindResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("FlowProductRemind", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.FlowProductRemindResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetCateTree(self, request):
         """获取分类名称
 
@@ -56,8 +84,6 @@ class MarketClient(AbstractClient):
 
     def GetUsagePlanUsageAmount(self, request):
         """该接口可以根据InstanceId查询实例的api的使用情况。
-
-        默认接口请求频率限制：20次/秒。
 
         :param request: Request instance for GetUsagePlanUsageAmount.
         :type request: :class:`tencentcloud.market.v20191010.models.GetUsagePlanUsageAmountRequest`

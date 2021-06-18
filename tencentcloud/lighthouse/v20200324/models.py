@@ -2137,6 +2137,49 @@ class DescribeSnapshotsResponse(AbstractModel):
         
 
 
+class DescribeZonesRequest(AbstractModel):
+    """DescribeZones请求参数结构体
+
+    """
+
+
+class DescribeZonesResponse(AbstractModel):
+    """DescribeZones返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 可用区数量
+        :type TotalCount: int
+        :param ZoneInfoSet: 可用区详细信息列表
+        :type ZoneInfoSet: list of ZoneInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ZoneInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ZoneInfoSet") is not None:
+            self.ZoneInfoSet = []
+            for item in params.get("ZoneInfoSet"):
+                obj = ZoneInfo()
+                obj._deserialize(item)
+                self.ZoneInfoSet.append(obj)
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class DisassociateInstancesKeyPairsRequest(AbstractModel):
     """DisassociateInstancesKeyPairs请求参数结构体
 
@@ -4166,6 +4209,34 @@ class TrafficPackage(AbstractModel):
         self.EndTime = params.get("EndTime")
         self.Deadline = params.get("Deadline")
         self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class ZoneInfo(AbstractModel):
+    """可用区详细信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Zone: 可用区
+        :type Zone: str
+        :param ZoneName: 可用区中文名称
+        :type ZoneName: str
+        """
+        self.Zone = None
+        self.ZoneName = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.ZoneName = params.get("ZoneName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

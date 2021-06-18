@@ -613,6 +613,8 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
         :type EnableCustomizedPodCIDR: bool
         :param BasePodNumber: 自定义模式下的基础pod数量
         :type BasePodNumber: int
+        :param CiliumMode: 启用 CiliumMode 的模式，空值表示不启用，“clusterIP” 表示启用 Cilium 支持 ClusterIP
+        :type CiliumMode: str
         """
         self.IPVS = None
         self.AsEnabled = None
@@ -630,6 +632,7 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
         self.RuntimeVersion = None
         self.EnableCustomizedPodCIDR = None
         self.BasePodNumber = None
+        self.CiliumMode = None
 
 
     def _deserialize(self, params):
@@ -651,6 +654,7 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
         self.RuntimeVersion = params.get("RuntimeVersion")
         self.EnableCustomizedPodCIDR = params.get("EnableCustomizedPodCIDR")
         self.BasePodNumber = params.get("BasePodNumber")
+        self.CiliumMode = params.get("CiliumMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6584,6 +6588,15 @@ running = 运行中
         :type Status: str
         :param COSBucket: COS桶存储
         :type COSBucket: str
+        :param GrafanaURL: grafana默认地址，如果开启外网访问得为域名，否则为内网地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GrafanaURL: str
+        :param BoundTotal: 关联集群总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BoundTotal: int
+        :param BoundNormal: 运行正常的集群数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BoundNormal: int
         """
         self.InstanceId = None
         self.Name = None
@@ -6591,6 +6604,9 @@ running = 运行中
         self.SubnetId = None
         self.Status = None
         self.COSBucket = None
+        self.GrafanaURL = None
+        self.BoundTotal = None
+        self.BoundNormal = None
 
 
     def _deserialize(self, params):
@@ -6600,6 +6616,9 @@ running = 运行中
         self.SubnetId = params.get("SubnetId")
         self.Status = params.get("Status")
         self.COSBucket = params.get("COSBucket")
+        self.GrafanaURL = params.get("GrafanaURL")
+        self.BoundTotal = params.get("BoundTotal")
+        self.BoundNormal = params.get("BoundNormal")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

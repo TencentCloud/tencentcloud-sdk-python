@@ -317,7 +317,7 @@ class PhoneInfo(AbstractModel):
         :type PronAccuracy: float
         :param DetectedStress: 当前音节是否检测为重音
         :type DetectedStress: bool
-        :param Phone: 当前音节
+        :param Phone: 当前音节，当前评测识别的音素
         :type Phone: str
         :param Stress: 当前音节是否应为重音
         :type Stress: bool
@@ -325,6 +325,8 @@ class PhoneInfo(AbstractModel):
         :type ReferencePhone: str
         :param MatchTag: 当前词与输入语句的匹配情况，0：匹配单词、1：新增单词、2：缺少单词、3：错读的词、4：未录入单词。
         :type MatchTag: int
+        :param ReferenceLetter: 参考字符，在单词诊断模式下，代表音素对应的原始文本
+        :type ReferenceLetter: str
         """
         self.MemBeginTime = None
         self.MemEndTime = None
@@ -334,6 +336,7 @@ class PhoneInfo(AbstractModel):
         self.Stress = None
         self.ReferencePhone = None
         self.MatchTag = None
+        self.ReferenceLetter = None
 
 
     def _deserialize(self, params):
@@ -345,6 +348,7 @@ class PhoneInfo(AbstractModel):
         self.Stress = params.get("Stress")
         self.ReferencePhone = params.get("ReferencePhone")
         self.MatchTag = params.get("MatchTag")
+        self.ReferenceLetter = params.get("ReferenceLetter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

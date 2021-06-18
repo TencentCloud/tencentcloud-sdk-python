@@ -3749,6 +3749,58 @@ class DescribeExtraPkgBillingInfoResponse(AbstractModel):
         
 
 
+class DescribeHostingDomainTaskRequest(AbstractModel):
+    """DescribeHostingDomainTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境ID
+        :type EnvId: str
+        """
+        self.EnvId = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DescribeHostingDomainTaskResponse(AbstractModel):
+    """DescribeHostingDomainTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: todo/doing/done/error
+        :type Status: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class DescribePostpayFreeQuotasRequest(AbstractModel):
     """DescribePostpayFreeQuotas请求参数结构体
 

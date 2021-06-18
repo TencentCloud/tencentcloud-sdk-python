@@ -18,6 +18,87 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class FlowProductRemindRequest(AbstractModel):
+    """FlowProductRemind请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProviderUin: 服务商uin
+        :type ProviderUin: str
+        :param SignId: 服务商实例ID
+        :type SignId: str
+        :param ResourceId: 云市场实例ID
+        :type ResourceId: str
+        :param TotalFlow: 实例总流量
+        :type TotalFlow: str
+        :param LeftFlow: 剩余流量
+        :type LeftFlow: str
+        :param FlowUnit: 流量单位
+        :type FlowUnit: str
+        """
+        self.ProviderUin = None
+        self.SignId = None
+        self.ResourceId = None
+        self.TotalFlow = None
+        self.LeftFlow = None
+        self.FlowUnit = None
+
+
+    def _deserialize(self, params):
+        self.ProviderUin = params.get("ProviderUin")
+        self.SignId = params.get("SignId")
+        self.ResourceId = params.get("ResourceId")
+        self.TotalFlow = params.get("TotalFlow")
+        self.LeftFlow = params.get("LeftFlow")
+        self.FlowUnit = params.get("FlowUnit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class FlowProductRemindResponse(AbstractModel):
+    """FlowProductRemind返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Success: 是否成功
+        :type Success: str
+        :param FlowId: 流水号
+        :type FlowId: str
+        :param Info: 消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Info: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Success = None
+        self.FlowId = None
+        self.Info = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Success = params.get("Success")
+        self.FlowId = params.get("FlowId")
+        self.Info = params.get("Info")
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class GetCateTreeRequest(AbstractModel):
     """GetCateTree请求参数结构体
 
