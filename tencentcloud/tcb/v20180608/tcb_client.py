@@ -950,6 +950,34 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeHostingDomainTask(self, request):
+        """查询静态托管域名任务状态
+
+        :param request: Request instance for DescribeHostingDomainTask.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeHostingDomainTaskRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeHostingDomainTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeHostingDomainTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeHostingDomainTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribePostpayFreeQuotas(self, request):
         """查询后付费资源免费量
 

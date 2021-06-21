@@ -559,12 +559,16 @@ class ExternalContact(AbstractModel):
         :param UnionId: 外部联系人在微信开放平台的唯一身份标识（微信unionid），通过此字段企业可将外部联系人与公众号/小程序用户关联起来。仅当联系人类型是微信用户，且企业或第三方服务商绑定了微信开发者ID有此字段。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UnionId: str
+        :param Phone: 外部联系人联系电话
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Phone: str
         """
         self.ExternalUserId = None
         self.Gender = None
         self.Name = None
         self.Type = None
         self.UnionId = None
+        self.Phone = None
 
 
     def _deserialize(self, params):
@@ -573,6 +577,7 @@ class ExternalContact(AbstractModel):
         self.Name = params.get("Name")
         self.Type = params.get("Type")
         self.UnionId = params.get("UnionId")
+        self.Phone = params.get("Phone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -593,14 +598,19 @@ class ExternalContactSimpleInfo(AbstractModel):
         :type ExternalUserId: str
         :param UserId: 添加了此外部联系人的企业成员userId
         :type UserId: str
+        :param SalesName: 添加了此外部联系人的企业成员的姓名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SalesName: str
         """
         self.ExternalUserId = None
         self.UserId = None
+        self.SalesName = None
 
 
     def _deserialize(self, params):
         self.ExternalUserId = params.get("ExternalUserId")
         self.UserId = params.get("UserId")
+        self.SalesName = params.get("SalesName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

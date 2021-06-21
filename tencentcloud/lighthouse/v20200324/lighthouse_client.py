@@ -877,6 +877,34 @@ class LighthouseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeZones(self, request):
+        """查询地域下可用区
+
+        :param request: Request instance for DescribeZones.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeZonesRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DescribeZonesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeZones", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeZonesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DisassociateInstancesKeyPairs(self, request):
         """本接口（DisassociateInstancesKeyPairs）用于解除实例与指定密钥对的绑定关系。
 
