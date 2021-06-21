@@ -13,21 +13,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-try:
-    # py3
-    import configparser
-except ImportError:
-    # py2
-    import ConfigParser as configparser
 import json
 import os
 import time
 try:
     # py3
+    import configparser
     from urllib.parse import urlencode
     from urllib.request import urlopen
 except ImportError:
     # py2
+    import ConfigParser as configparser
     from urllib import urlencode
     from urllib import urlopen
 
