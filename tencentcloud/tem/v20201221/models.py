@@ -160,11 +160,14 @@ class CreateCosTokenV2Request(AbstractModel):
         :type OptType: int
         :param SourceChannel: 来源 channel
         :type SourceChannel: int
+        :param TimeVersion: 充当deployVersion入参
+        :type TimeVersion: str
         """
         self.ServiceId = None
         self.PkgName = None
         self.OptType = None
         self.SourceChannel = None
+        self.TimeVersion = None
 
 
     def _deserialize(self, params):
@@ -172,6 +175,7 @@ class CreateCosTokenV2Request(AbstractModel):
         self.PkgName = params.get("PkgName")
         self.OptType = params.get("OptType")
         self.SourceChannel = params.get("SourceChannel")
+        self.TimeVersion = params.get("TimeVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -584,6 +588,8 @@ class DeployServiceV2Request(AbstractModel):
         :type SettingConfs: list of MountedSettingConf
         :param EksService: eks 访问设置
         :type EksService: :class:`tencentcloud.tem.v20201221.models.EksService`
+        :param VersionId: 要回滚到的历史版本id
+        :type VersionId: str
         """
         self.ServiceId = None
         self.ContainerPort = None
@@ -613,6 +619,7 @@ class DeployServiceV2Request(AbstractModel):
         self.UseRegistryDefaultConfig = None
         self.SettingConfs = None
         self.EksService = None
+        self.VersionId = None
 
 
     def _deserialize(self, params):
@@ -675,6 +682,7 @@ class DeployServiceV2Request(AbstractModel):
         if params.get("EksService") is not None:
             self.EksService = EksService()
             self.EksService._deserialize(params.get("EksService"))
+        self.VersionId = params.get("VersionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1217,6 +1225,71 @@ class EsInfo(AbstractModel):
         self.EsStrategy = params.get("EsStrategy")
         self.Threshold = params.get("Threshold")
         self.VersionId = params.get("VersionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class GenerateDownloadUrlRequest(AbstractModel):
+    """GenerateDownloadUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ServiceId: 服务ID
+        :type ServiceId: str
+        :param PkgName: 包名
+        :type PkgName: str
+        :param DeployVersion: 需要下载的包版本
+        :type DeployVersion: str
+        :param SourceChannel: 来源 channel
+        :type SourceChannel: int
+        """
+        self.ServiceId = None
+        self.PkgName = None
+        self.DeployVersion = None
+        self.SourceChannel = None
+
+
+    def _deserialize(self, params):
+        self.ServiceId = params.get("ServiceId")
+        self.PkgName = params.get("PkgName")
+        self.DeployVersion = params.get("DeployVersion")
+        self.SourceChannel = params.get("SourceChannel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class GenerateDownloadUrlResponse(AbstractModel):
+    """GenerateDownloadUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 包下载临时链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -418,7 +418,7 @@ class TransmitOralProcessRequest(AbstractModel):
         :type SeqId: int
         :param IsEnd: 是否传输完毕标志，若为0表示未完毕，若为1则传输完毕开始评估，非流式模式下无意义。
         :type IsEnd: int
-        :param VoiceFileType: 语音文件类型 	1:raw, 2:wav, 3:mp3(三种格式目前仅支持16k采样率16bit编码单声道，如有不一致可能导致评估不准确或失败)。
+        :param VoiceFileType: 语音文件类型 	1: raw, 2: wav, 3: mp3, 4: speex (语言文件格式目前仅支持 16k 采样率 16bit 编码单声道，如有不一致可能导致评估不准确或失败)。
         :type VoiceFileType: int
         :param VoiceEncodeType: 语音编码类型	1:pcm。
         :type VoiceEncodeType: int

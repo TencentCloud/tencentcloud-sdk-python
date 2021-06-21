@@ -356,6 +356,12 @@ class SREInstance(AbstractModel):
         :param Paymode: 计费方式
 注意：此字段可能返回 null，表示取不到有效值。
         :type Paymode: str
+        :param EKSClusterID: EKS集群的ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EKSClusterID: str
+        :param CreateTime: 集群创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
         """
         self.InstanceId = None
         self.Name = None
@@ -370,6 +376,8 @@ class SREInstance(AbstractModel):
         self.StorageType = None
         self.StorageCapacity = None
         self.Paymode = None
+        self.EKSClusterID = None
+        self.CreateTime = None
 
 
     def _deserialize(self, params):
@@ -386,6 +394,8 @@ class SREInstance(AbstractModel):
         self.StorageType = params.get("StorageType")
         self.StorageCapacity = params.get("StorageCapacity")
         self.Paymode = params.get("Paymode")
+        self.EKSClusterID = params.get("EKSClusterID")
+        self.CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
