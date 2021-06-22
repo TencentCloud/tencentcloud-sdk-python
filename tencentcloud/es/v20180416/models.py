@@ -55,7 +55,7 @@ class CreateInstanceRequest(AbstractModel):
         """
         :param Zone: 可用区
         :type Zone: str
-        :param EsVersion: 实例版本（支持"5.6.4"、"6.4.3"、"6.8.2"、"7.5.1"）
+        :param EsVersion: 实例版本（支持"5.6.4"、"6.4.3"、"6.8.2"、"7.5.1"、"7.10.1"）
         :type EsVersion: str
         :param VpcId: 私有网络ID
         :type VpcId: str
@@ -117,6 +117,8 @@ class CreateInstanceRequest(AbstractModel):
         :type BasicSecurityType: int
         :param SceneType: 场景化模板类型 0：不启用 1：通用 2：日志 3：搜索
         :type SceneType: int
+        :param WebNodeTypeInfo: 可视化节点配置
+        :type WebNodeTypeInfo: :class:`tencentcloud.es.v20180416.models.WebNodeTypeInfo`
         """
         self.Zone = None
         self.EsVersion = None
@@ -146,6 +148,7 @@ class CreateInstanceRequest(AbstractModel):
         self.TagList = None
         self.BasicSecurityType = None
         self.SceneType = None
+        self.WebNodeTypeInfo = None
 
 
     def _deserialize(self, params):
@@ -192,6 +195,9 @@ class CreateInstanceRequest(AbstractModel):
                 self.TagList.append(obj)
         self.BasicSecurityType = params.get("BasicSecurityType")
         self.SceneType = params.get("SceneType")
+        if params.get("WebNodeTypeInfo") is not None:
+            self.WebNodeTypeInfo = WebNodeTypeInfo()
+            self.WebNodeTypeInfo._deserialize(params.get("WebNodeTypeInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -936,6 +942,9 @@ class InstanceInfo(AbstractModel):
         :param KibanaConfig: Kibana配置项
 注意：此字段可能返回 null，表示取不到有效值。
         :type KibanaConfig: str
+        :param KibanaNodeInfo: Kibana节点信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KibanaNodeInfo: :class:`tencentcloud.es.v20180416.models.KibanaNodeInfo`
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -991,6 +1000,7 @@ class InstanceInfo(AbstractModel):
         self.SecurityType = None
         self.SceneType = None
         self.KibanaConfig = None
+        self.KibanaNodeInfo = None
 
 
     def _deserialize(self, params):
@@ -1073,6 +1083,9 @@ class InstanceInfo(AbstractModel):
         self.SecurityType = params.get("SecurityType")
         self.SceneType = params.get("SceneType")
         self.KibanaConfig = params.get("KibanaConfig")
+        if params.get("KibanaNodeInfo") is not None:
+            self.KibanaNodeInfo = KibanaNodeInfo()
+            self.KibanaNodeInfo._deserialize(params.get("KibanaNodeInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1137,6 +1150,50 @@ class KeyValue(AbstractModel):
     def _deserialize(self, params):
         self.Key = params.get("Key")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class KibanaNodeInfo(AbstractModel):
+    """实例Kibana节点相关信息
+
+    """
+
+    def __init__(self):
+        """
+        :param KibanaNodeType: Kibana节点规格
+        :type KibanaNodeType: str
+        :param KibanaNodeNum: Kibana节点个数
+        :type KibanaNodeNum: int
+        :param KibanaNodeCpuNum: Kibana节点CPU数
+        :type KibanaNodeCpuNum: int
+        :param KibanaNodeMemSize: Kibana节点内存GB
+        :type KibanaNodeMemSize: int
+        :param KibanaNodeDiskType: Kibana节点磁盘类型
+        :type KibanaNodeDiskType: str
+        :param KibanaNodeDiskSize: Kibana节点磁盘大小
+        :type KibanaNodeDiskSize: int
+        """
+        self.KibanaNodeType = None
+        self.KibanaNodeNum = None
+        self.KibanaNodeCpuNum = None
+        self.KibanaNodeMemSize = None
+        self.KibanaNodeDiskType = None
+        self.KibanaNodeDiskSize = None
+
+
+    def _deserialize(self, params):
+        self.KibanaNodeType = params.get("KibanaNodeType")
+        self.KibanaNodeNum = params.get("KibanaNodeNum")
+        self.KibanaNodeCpuNum = params.get("KibanaNodeCpuNum")
+        self.KibanaNodeMemSize = params.get("KibanaNodeMemSize")
+        self.KibanaNodeDiskType = params.get("KibanaNodeDiskType")
+        self.KibanaNodeDiskSize = params.get("KibanaNodeDiskSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2115,6 +2172,34 @@ class UpgradeLicenseResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class WebNodeTypeInfo(AbstractModel):
+    """可视化节点配置
+
+    """
+
+    def __init__(self):
+        """
+        :param NodeNum: 可视化节点个数，固定为1
+        :type NodeNum: int
+        :param NodeType: 可视化节点规格
+        :type NodeType: str
+        """
+        self.NodeNum = None
+        self.NodeType = None
+
+
+    def _deserialize(self, params):
+        self.NodeNum = params.get("NodeNum")
+        self.NodeType = params.get("NodeType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -5125,17 +5125,21 @@ class SlotReplacementInfo(AbstractModel):
         :param Id: 卡槽 Id。
         :type Id: int
         :param ReplacementType: 替换类型，可取值有：
-<li> AUDIO :音频;</li>
-<li> VIDEO :视频;</li>
-<li> IMAGE :图片。</li>
-注意：这里必须保证替换的素材类型与模板轨道数据的素材类型一致。
+<li> AUDIO ：音频；</li>
+<li> VIDEO ：视频；</li>
+<li> IMAGE ：图片；</li>
+<li> TEXT ：文本。</li>
+注意：这里必须保证替换的素材类型与模板轨道数据的素材类型一致。如果替换的类型为Text,，则必须保证模板轨道数据中相应卡槽的位置标记的是文本。
         :type ReplacementType: str
         :param MediaReplacementInfo: 媒体替换信息，仅当要替换的媒体类型为音频、视频、图片时有效。
         :type MediaReplacementInfo: :class:`tencentcloud.cme.v20191029.models.MediaReplacementInfo`
+        :param TextReplacementInfo: 文本替换信息，仅当要替换的卡槽类型为文本时有效。
+        :type TextReplacementInfo: :class:`tencentcloud.cme.v20191029.models.TextReplacementInfo`
         """
         self.Id = None
         self.ReplacementType = None
         self.MediaReplacementInfo = None
+        self.TextReplacementInfo = None
 
 
     def _deserialize(self, params):
@@ -5144,6 +5148,9 @@ class SlotReplacementInfo(AbstractModel):
         if params.get("MediaReplacementInfo") is not None:
             self.MediaReplacementInfo = MediaReplacementInfo()
             self.MediaReplacementInfo._deserialize(params.get("MediaReplacementInfo"))
+        if params.get("TextReplacementInfo") is not None:
+            self.TextReplacementInfo = TextReplacementInfo()
+            self.TextReplacementInfo._deserialize(params.get("TextReplacementInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5650,6 +5657,30 @@ class TeamMemberInfo(AbstractModel):
         self.MemberId = params.get("MemberId")
         self.Remark = params.get("Remark")
         self.Role = params.get("Role")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class TextReplacementInfo(AbstractModel):
+    """模板插槽文本替换信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param Text: 替换的文本信息。
+        :type Text: str
+        """
+        self.Text = None
+
+
+    def _deserialize(self, params):
+        self.Text = params.get("Text")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

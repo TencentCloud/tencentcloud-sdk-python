@@ -702,11 +702,15 @@ class DetectProductBetaResponse(AbstractModel):
         :param ProductInfo: 图像识别出的商品的详细信息。 
 当图像中检测到多个物品时，会对显著性最高的进行识别。
         :type ProductInfo: :class:`tencentcloud.tiia.v20190529.models.ProductInfo`
+        :param ProductInfoList: 相似商品信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductInfoList: list of ProductInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RegionDetected = None
         self.ProductInfo = None
+        self.ProductInfoList = None
         self.RequestId = None
 
 
@@ -720,6 +724,12 @@ class DetectProductBetaResponse(AbstractModel):
         if params.get("ProductInfo") is not None:
             self.ProductInfo = ProductInfo()
             self.ProductInfo._deserialize(params.get("ProductInfo"))
+        if params.get("ProductInfoList") is not None:
+            self.ProductInfoList = []
+            for item in params.get("ProductInfoList"):
+                obj = ProductInfo()
+                obj._deserialize(item)
+                self.ProductInfoList.append(obj)
         self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

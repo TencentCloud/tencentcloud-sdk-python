@@ -6446,6 +6446,9 @@ class PrometheusAlertRule(AbstractModel):
         :param Describe: 该条规则的描述信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Describe: str
+        :param Annotations: 参考prometheus rule中的annotations
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Annotations: list of Label
         """
         self.Name = None
         self.Rule = None
@@ -6453,6 +6456,7 @@ class PrometheusAlertRule(AbstractModel):
         self.Template = None
         self.For = None
         self.Describe = None
+        self.Annotations = None
 
 
     def _deserialize(self, params):
@@ -6467,6 +6471,12 @@ class PrometheusAlertRule(AbstractModel):
         self.Template = params.get("Template")
         self.For = params.get("For")
         self.Describe = params.get("Describe")
+        if params.get("Annotations") is not None:
+            self.Annotations = []
+            for item in params.get("Annotations"):
+                obj = Label()
+                obj._deserialize(item)
+                self.Annotations.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -5552,10 +5552,12 @@ class OrganizationInfo(AbstractModel):
         :param OrganizationCode: 公司证件号码，个体工商户必输
         :type OrganizationCode: str
         :param LegalPersonName: 法人名称，如果SubMchName不是法人，需要另外送入法人信息（企业必输）
+<敏感信息>加密详见<a href="https://cloud.tencent.com/document/product/1122/48979" target="_blank">《商户端接口敏感信息加密说明》</a>
         :type LegalPersonName: str
         :param LegalPersonIdType: 法人证件类型，如果SubMchName不是法人，需要另外送入法人信息（企业必输）
         :type LegalPersonIdType: str
         :param LegalPersonIdCode: 法人证件号码，如果SubMchName不是法人，需要另外送入法人信息（企业必输）
+<敏感信息>加密详见<a href="https://cloud.tencent.com/document/product/1122/48979" target="_blank">《商户端接口敏感信息加密说明》</a>
         :type LegalPersonIdCode: str
         """
         self.OrganizationName = None

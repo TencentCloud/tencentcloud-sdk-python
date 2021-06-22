@@ -560,11 +560,14 @@ class DescribeKTVMusicDetailResponse(AbstractModel):
         :type KTVMusicBaseInfo: :class:`tencentcloud.ame.v20190916.models.KTVMusicBaseInfo`
         :param PlayToken: 播放凭证
         :type PlayToken: str
+        :param LyricsUrl: 歌词下载地址
+        :type LyricsUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.KTVMusicBaseInfo = None
         self.PlayToken = None
+        self.LyricsUrl = None
         self.RequestId = None
 
 
@@ -573,6 +576,7 @@ class DescribeKTVMusicDetailResponse(AbstractModel):
             self.KTVMusicBaseInfo = KTVMusicBaseInfo()
             self.KTVMusicBaseInfo._deserialize(params.get("KTVMusicBaseInfo"))
         self.PlayToken = params.get("PlayToken")
+        self.LyricsUrl = params.get("LyricsUrl")
         self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

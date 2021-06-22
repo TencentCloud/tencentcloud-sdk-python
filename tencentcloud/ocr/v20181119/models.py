@@ -336,6 +336,108 @@ class BankCardOCRResponse(AbstractModel):
         
 
 
+class BankSlipInfo(AbstractModel):
+    """银行回单识别出的字段
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 识别出的字段名称(关键字)，支持以下字段：
+付款开户行、收款开户行、付款账号、收款账号、回单类型、回单编号、币种、流水号、凭证号码、交易机构、交易金额、手续费、日期等字段信息。
+        :type Name: str
+        :param Value: 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
+        :type Value: str
+        :param Rect: 文本行在旋转纠正之后的图像中的像素坐标。
+        :type Rect: :class:`tencentcloud.ocr.v20181119.models.Rect`
+        """
+        self.Name = None
+        self.Value = None
+        self.Rect = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
+        if params.get("Rect") is not None:
+            self.Rect = Rect()
+            self.Rect._deserialize(params.get("Rect"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class BankSlipOCRRequest(AbstractModel):
+    """BankSlipOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageBase64: 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。
+建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+        :type ImageUrl: str
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class BankSlipOCRResponse(AbstractModel):
+    """BankSlipOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BankSlipInfos: 银行回单识别结果，具体内容请点击左侧链接。
+        :type BankSlipInfos: list of BankSlipInfo
+        :param Angle: 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
+        :type Angle: float
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BankSlipInfos = None
+        self.Angle = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("BankSlipInfos") is not None:
+            self.BankSlipInfos = []
+            for item in params.get("BankSlipInfos"):
+                obj = BankSlipInfo()
+                obj._deserialize(item)
+                self.BankSlipInfos.append(obj)
+        self.Angle = params.get("Angle")
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class BizLicenseOCRRequest(AbstractModel):
     """BizLicenseOCR请求参数结构体
 
@@ -1056,6 +1158,63 @@ class Detail(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.Desc = params.get("Desc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DetectedWordCoordPoint(AbstractModel):
+    """单字在原图中的坐标，以四个顶点坐标表示，以左上角为起点，顺时针返回。
+
+    """
+
+    def __init__(self):
+        """
+        :param WordCoordinate: 单字在原图中的坐标，以四个顶点坐标表示，以左上角为起点，顺时针返回。
+        :type WordCoordinate: list of Coord
+        """
+        self.WordCoordinate = None
+
+
+    def _deserialize(self, params):
+        if params.get("WordCoordinate") is not None:
+            self.WordCoordinate = []
+            for item in params.get("WordCoordinate"):
+                obj = Coord()
+                obj._deserialize(item)
+                self.WordCoordinate.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DetectedWords(AbstractModel):
+    """识别出来的单字信息包括单字（包括单字Character和单字置信度confidence）
+
+    """
+
+    def __init__(self):
+        """
+        :param Confidence: 置信度 0 ~100
+        :type Confidence: int
+        :param Character: 候选字Character
+        :type Character: str
+        """
+        self.Confidence = None
+        self.Character = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.Character = params.get("Character")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2068,14 +2227,18 @@ class GeneralAccurateOCRRequest(AbstractModel):
 要求图片经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP格式。
 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :type ImageUrl: str
+        :param IsWords: 是否返回单字信息，默认关
+        :type IsWords: bool
         """
         self.ImageBase64 = None
         self.ImageUrl = None
+        self.IsWords = None
 
 
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        self.IsWords = params.get("IsWords")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2159,6 +2322,8 @@ nor\hun\tha\lat\ara
         :type IsPdf: bool
         :param PdfPageNumber: 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
         :type PdfPageNumber: int
+        :param IsWords: 是否返回单字信息，默认关
+        :type IsWords: bool
         """
         self.ImageBase64 = None
         self.ImageUrl = None
@@ -2166,6 +2331,7 @@ nor\hun\tha\lat\ara
         self.LanguageType = None
         self.IsPdf = None
         self.PdfPageNumber = None
+        self.IsWords = None
 
 
     def _deserialize(self, params):
@@ -2175,6 +2341,7 @@ nor\hun\tha\lat\ara
         self.LanguageType = params.get("LanguageType")
         self.IsPdf = params.get("IsPdf")
         self.PdfPageNumber = params.get("PdfPageNumber")
+        self.IsWords = params.get("IsWords")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5922,12 +6089,18 @@ GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。
         :type AdvancedInfo: str
         :param ItemPolygon: 文本行在旋转纠正之后的图像中的像素坐标，表示为（左上角x, 左上角y，宽width，高height）
         :type ItemPolygon: :class:`tencentcloud.ocr.v20181119.models.ItemCoord`
+        :param Words: 识别出来的单字信息包括单字（包括单字Character和单字置信度confidence）， 支持识别的接口：GeneralBasicOCR、GeneralAccurateOCR
+        :type Words: list of DetectedWords
+        :param WordCoordPoint: 单字在原图中的四点坐标， 支持识别的接口：GeneralBasicOCR、GeneralAccurateOCR
+        :type WordCoordPoint: list of DetectedWordCoordPoint
         """
         self.DetectedText = None
         self.Confidence = None
         self.Polygon = None
         self.AdvancedInfo = None
         self.ItemPolygon = None
+        self.Words = None
+        self.WordCoordPoint = None
 
 
     def _deserialize(self, params):
@@ -5943,6 +6116,18 @@ GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。
         if params.get("ItemPolygon") is not None:
             self.ItemPolygon = ItemCoord()
             self.ItemPolygon._deserialize(params.get("ItemPolygon"))
+        if params.get("Words") is not None:
+            self.Words = []
+            for item in params.get("Words"):
+                obj = DetectedWords()
+                obj._deserialize(item)
+                self.Words.append(obj)
+        if params.get("WordCoordPoint") is not None:
+            self.WordCoordPoint = []
+            for item in params.get("WordCoordPoint"):
+                obj = DetectedWordCoordPoint()
+                obj._deserialize(item)
+                self.WordCoordPoint.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

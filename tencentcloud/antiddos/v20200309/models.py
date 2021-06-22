@@ -326,6 +326,10 @@ class BGPInstance(AbstractModel):
 "failed"：绑定失败
 ]
         :type BoundStatus: str
+        :param DDoSLevel: 四层防护严格级别
+        :type DDoSLevel: str
+        :param CCEnable: CC防护开关
+        :type CCEnable: int
         """
         self.InstanceDetail = None
         self.SpecificationLimit = None
@@ -338,6 +342,8 @@ class BGPInstance(AbstractModel):
         self.PackInfo = None
         self.EipProductInfos = None
         self.BoundStatus = None
+        self.DDoSLevel = None
+        self.CCEnable = None
 
 
     def _deserialize(self, params):
@@ -367,6 +373,8 @@ class BGPInstance(AbstractModel):
                 obj._deserialize(item)
                 self.EipProductInfos.append(obj)
         self.BoundStatus = params.get("BoundStatus")
+        self.DDoSLevel = params.get("DDoSLevel")
+        self.CCEnable = params.get("CCEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
