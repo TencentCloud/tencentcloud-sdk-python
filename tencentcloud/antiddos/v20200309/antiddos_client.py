@@ -222,6 +222,34 @@ class AntiddosClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateL7RuleCerts(self, request):
+        """批量配置L7转发规则的证书供SSL测调用
+
+        :param request: Request instance for CreateL7RuleCerts.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateL7RuleCertsRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.CreateL7RuleCertsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateL7RuleCerts", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateL7RuleCertsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreatePacketFilterConfig(self, request):
         """添加DDoS防护的特征过滤规则
 
@@ -572,6 +600,34 @@ class AntiddosClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDefaultAlarmThresholdResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeL7RulesBySSLCertId(self, request):
+        """查询与证书ID对于域名匹配的七层规则
+
+        :param request: Request instance for DescribeL7RulesBySSLCertId.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeL7RulesBySSLCertIdRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.DescribeL7RulesBySSLCertIdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeL7RulesBySSLCertId", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeL7RulesBySSLCertIdResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

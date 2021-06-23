@@ -5439,24 +5439,24 @@ class EnhancedService(AbstractModel):
 
 
 class Filter(AbstractModel):
-    """过滤器Filter;由Name和ValueSet组成，是string的key和字符串数组的value
+    """描述键值对过滤器，用于条件过滤查询。
 
     """
 
     def __init__(self):
         """
-        :param Name: 过滤字段名称
-        :type Name: str
-        :param Values: 过滤字段内容数组
+        :param Values: 一个或者多个过滤值。
         :type Values: list of str
+        :param Name: 过滤键的名称。
+        :type Name: str
         """
-        self.Name = None
         self.Values = None
+        self.Name = None
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
         self.Values = params.get("Values")
+        self.Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

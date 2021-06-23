@@ -1190,6 +1190,34 @@ class CommonName(AbstractModel):
         
 
 
+class ControllerStatus(AbstractModel):
+    """集群中控制器的状态描述
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 控制器的名字
+        :type Name: str
+        :param Enabled: 控制器是否开启
+        :type Enabled: bool
+        """
+        self.Name = None
+        self.Enabled = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class CreateClusterAsGroupRequest(AbstractModel):
     """CreateClusterAsGroup请求参数结构体
 
@@ -2940,6 +2968,63 @@ class DescribeClusterCommonNamesResponse(AbstractModel):
                 obj = CommonName()
                 obj._deserialize(item)
                 self.CommonNames.append(obj)
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DescribeClusterControllersRequest(AbstractModel):
+    """DescribeClusterControllers请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DescribeClusterControllersResponse(AbstractModel):
+    """DescribeClusterControllers返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ControllerStatusSet: 描述集群中各个控制器的状态
+        :type ControllerStatusSet: list of ControllerStatus
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ControllerStatusSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ControllerStatusSet") is not None:
+            self.ControllerStatusSet = []
+            for item in params.get("ControllerStatusSet"):
+                obj = ControllerStatus()
+                obj._deserialize(item)
+                self.ControllerStatusSet.append(obj)
         self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
