@@ -42,7 +42,7 @@ class CreateTtsTaskRequest(AbstractModel):
         :type PrimaryLanguage: int
         :param SampleRate: 音频采样率：<li>16000：16k（默认）</li><li>8000：8k</li>
         :type SampleRate: int
-        :param Codec: 返回音频格式，可取值：mp3（默认），mp3，pcm
+        :param Codec: 返回音频格式，可取值：mp3（默认），wav，pcm
         :type Codec: str
         :param CallbackUrl: 回调 URL，用户自行搭建的用于接收识别结果的服务URL。如果用户使用轮询方式获取识别结果，则无需提交该参数。[回调说明](https://cloud.tencent.com/document/product/1073/55746)
         :type CallbackUrl: str

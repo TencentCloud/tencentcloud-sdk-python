@@ -37,10 +37,10 @@ class ActivityDetail(AbstractModel):
         :param ActivityType: 活动类型，100:留资活动
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActivityType: int
-        :param StartTime: 活动开始时间，单位：秒
+        :param StartTime: 活动开始时间戳，单位：秒
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: int
-        :param EndTime: 活动结束时间，单位：秒
+        :param EndTime: 活动结束时间戳，单位：秒
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: int
         :param MainPhoto: 活动主图
@@ -49,7 +49,7 @@ class ActivityDetail(AbstractModel):
         :param PrivacyAgreementId: 协议编号
 注意：此字段可能返回 null，表示取不到有效值。
         :type PrivacyAgreementId: str
-        :param UpdateTime: 活动更新时间，单位：秒
+        :param UpdateTime: 活动更新时间戳，单位：秒
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: int
         :param ActivityDataList: 活动数据列表
