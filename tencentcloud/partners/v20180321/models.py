@@ -201,7 +201,7 @@ class AgentClientElem(AbstractModel):
         :type Phone: str
         :param HasOverdueBill: 0表示不欠费，1表示欠费
         :type HasOverdueBill: int
-        :param Status: 1:待代理商审核;2:待腾讯云审核
+        :param Status: 1:待代理商审核;2:待腾讯云审核4:待腾讯云渠道审批
         :type Status: int
         :param SalesUin: 业务员ID
 注意：此字段可能返回 null，表示取不到有效值。
@@ -209,6 +209,9 @@ class AgentClientElem(AbstractModel):
         :param SalesName: 业务员姓名
 注意：此字段可能返回 null，表示取不到有效值。
         :type SalesName: str
+        :param ClientName: 客户名称，此字段和控制台返回一致。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientName: str
         """
         self.Uin = None
         self.ClientUin = None
@@ -220,6 +223,7 @@ class AgentClientElem(AbstractModel):
         self.Status = None
         self.SalesUin = None
         self.SalesName = None
+        self.ClientName = None
 
 
     def _deserialize(self, params):
@@ -233,6 +237,7 @@ class AgentClientElem(AbstractModel):
         self.Status = params.get("Status")
         self.SalesUin = params.get("SalesUin")
         self.SalesName = params.get("SalesName")
+        self.ClientName = params.get("ClientName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -323,6 +328,12 @@ class AgentDealElem(AbstractModel):
         :param ProductInfo: 产品详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductInfo: list of ProductInfoElem
+        :param PaymentMethod: 付款方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PaymentMethod: str
+        :param UpdateTime: 订单更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
         """
         self.DealId = None
         self.DealName = None
@@ -350,6 +361,8 @@ class AgentDealElem(AbstractModel):
         self.ActivityId = None
         self.OverdueTime = None
         self.ProductInfo = None
+        self.PaymentMethod = None
+        self.UpdateTime = None
 
 
     def _deserialize(self, params):
@@ -386,6 +399,8 @@ class AgentDealElem(AbstractModel):
                 obj = ProductInfoElem()
                 obj._deserialize(item)
                 self.ProductInfo.append(obj)
+        self.PaymentMethod = params.get("PaymentMethod")
+        self.UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -476,6 +491,12 @@ class AgentDealNewElem(AbstractModel):
         :param ProductInfo: 产品详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductInfo: list of ProductInfoElem
+        :param PaymentMethod: 付款方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PaymentMethod: str
+        :param UpdateTime: 订单更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
         """
         self.DealId = None
         self.DealName = None
@@ -503,6 +524,8 @@ class AgentDealNewElem(AbstractModel):
         self.ActivityId = None
         self.OverdueTime = None
         self.ProductInfo = None
+        self.PaymentMethod = None
+        self.UpdateTime = None
 
 
     def _deserialize(self, params):
@@ -539,6 +562,8 @@ class AgentDealNewElem(AbstractModel):
                 obj = ProductInfoElem()
                 obj._deserialize(item)
                 self.ProductInfo.append(obj)
+        self.PaymentMethod = params.get("PaymentMethod")
+        self.UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -859,14 +884,18 @@ class DealGoodsPriceElem(AbstractModel):
 
     def __init__(self):
         """
-        :param RealTotalCost: 实付金额
+        :param RealTotalCost: 实付金额（单位：分）
         :type RealTotalCost: int
+        :param OriginalTotalCost: 订单实际金额（不含折扣，单位：分）
+        :type OriginalTotalCost: int
         """
         self.RealTotalCost = None
+        self.OriginalTotalCost = None
 
 
     def _deserialize(self, params):
         self.RealTotalCost = params.get("RealTotalCost")
+        self.OriginalTotalCost = params.get("OriginalTotalCost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -883,14 +912,18 @@ class DealGoodsPriceNewElem(AbstractModel):
 
     def __init__(self):
         """
-        :param RealTotalCost: 实付金额
+        :param RealTotalCost: 实付金额（单位：分）
         :type RealTotalCost: int
+        :param OriginalTotalCost: 原始金额（不含折扣，单位：分）
+        :type OriginalTotalCost: int
         """
         self.RealTotalCost = None
+        self.OriginalTotalCost = None
 
 
     def _deserialize(self, params):
         self.RealTotalCost = params.get("RealTotalCost")
+        self.OriginalTotalCost = params.get("OriginalTotalCost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1779,6 +1812,62 @@ class DescribeAgentSelfPayDealsV2Response(AbstractModel):
                 obj._deserialize(item)
                 self.AgentPayDealSet.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DescribeClientBalanceNewRequest(AbstractModel):
+    """DescribeClientBalanceNew请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClientUin: 客户(代客)账号ID
+        :type ClientUin: str
+        """
+        self.ClientUin = None
+
+
+    def _deserialize(self, params):
+        self.ClientUin = params.get("ClientUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DescribeClientBalanceNewResponse(AbstractModel):
+    """DescribeClientBalanceNew返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Balance: 账户可用余额，单位分 （可用余额 = 现金余额 + 赠送金余额 - 欠费金额 - 冻结金额）
+        :type Balance: int
+        :param Cash: 账户现金余额，单位分
+        :type Cash: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Balance = None
+        self.Cash = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Balance = params.get("Balance")
+        self.Cash = params.get("Cash")
         self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

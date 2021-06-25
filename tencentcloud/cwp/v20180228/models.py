@@ -4723,7 +4723,7 @@ class DescribeMalwaresResponse(AbstractModel):
         """
         :param TotalCount: 木马总数。
         :type TotalCount: int
-        :param Malwares: Malware数组。
+        :param Malwares: 木马相关信息。
         :type Malwares: list of Malware
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5680,9 +5680,9 @@ class DescribeRiskDnsListRequest(AbstractModel):
 <li>MergeBeginTime - String - 是否必填：否 - 最近访问开始时间</li>
 <li>MergeEndTime - String - 是否必填：否 - 最近访问结束时间</li>
         :type Filters: list of Filter
-        :param Order: 排序方式
+        :param Order: 排序方式：根据请求次数排序：asc-升序/desc-降序
         :type Order: str
-        :param By: 排序字段
+        :param By: 排序字段：AccessCount-请求次数
         :type By: str
         """
         self.Limit = None
@@ -5749,7 +5749,7 @@ class DescribeScanMalwareScheduleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Schedule: 扫描进度
+        :param Schedule: 扫描进度（单位：%）
         :type Schedule: int
         :param RiskFileNumber: 风险文件数,当进度满了以后才有该值
         :type RiskFileNumber: int
@@ -10128,7 +10128,7 @@ class RecoverMalwaresRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Ids: 木马Id数组,单次最大删除不能超过200条
+        :param Ids: 木马Id数组（单次最大恢复不超过100条）
         :type Ids: list of int non-negative
         """
         self.Ids = None
@@ -11048,7 +11048,7 @@ class TrustMalwaresRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Ids: 木马ID数组。
+        :param Ids: 木马ID数组（单次不超过的最大条数：100）
         :type Ids: list of int non-negative
         """
         self.Ids = None

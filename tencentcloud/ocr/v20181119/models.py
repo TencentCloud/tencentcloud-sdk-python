@@ -244,6 +244,8 @@ class BankCardOCRRequest(AbstractModel):
         :type EnableReshootCheck: bool
         :param EnableBorderCheck: 边框遮挡检测开关，如果输入的图片是银行卡边框被遮挡则返回告警，默认false。
         :type EnableBorderCheck: bool
+        :param EnableQualityValue: 是否返回图片质量分数（图片质量分数是评价一个图片的模糊程度的标准），默认false。
+        :type EnableQualityValue: bool
         """
         self.ImageBase64 = None
         self.ImageUrl = None
@@ -252,6 +254,7 @@ class BankCardOCRRequest(AbstractModel):
         self.EnableCopyCheck = None
         self.EnableReshootCheck = None
         self.EnableBorderCheck = None
+        self.EnableQualityValue = None
 
 
     def _deserialize(self, params):
@@ -262,6 +265,7 @@ class BankCardOCRRequest(AbstractModel):
         self.EnableCopyCheck = params.get("EnableCopyCheck")
         self.EnableReshootCheck = params.get("EnableReshootCheck")
         self.EnableBorderCheck = params.get("EnableBorderCheck")
+        self.EnableQualityValue = params.get("EnableQualityValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -303,6 +307,9 @@ class BankCardOCRResponse(AbstractModel):
 （告警码可以同时存在多个）
 注意：此字段可能返回 null，表示取不到有效值。
         :type WarningCode: list of int
+        :param QualityValue: 图片质量分数，请求enable_quality_value时返回（取值范围：0-100，分数越低越模糊，建议阈值≥50）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QualityValue: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -314,6 +321,7 @@ class BankCardOCRResponse(AbstractModel):
         self.BorderCutImage = None
         self.CardNoImage = None
         self.WarningCode = None
+        self.QualityValue = None
         self.RequestId = None
 
 
@@ -326,6 +334,7 @@ class BankCardOCRResponse(AbstractModel):
         self.BorderCutImage = params.get("BorderCutImage")
         self.CardNoImage = params.get("CardNoImage")
         self.WarningCode = params.get("WarningCode")
+        self.QualityValue = params.get("QualityValue")
         self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -1574,11 +1583,14 @@ class EnglishOCRRequest(AbstractModel):
         :param EnableCandWord: 候选字开关，开启可返回识别时多个可能的候选字（每个候选字对应其置信度）。
 该参数默认值为false。
         :type EnableCandWord: bool
+        :param Preprocess: 预处理开关，功能是检测图片倾斜的角度，将原本倾斜的图片矫正。该参数默认值为true。
+        :type Preprocess: bool
         """
         self.ImageBase64 = None
         self.ImageUrl = None
         self.EnableCoordPoint = None
         self.EnableCandWord = None
+        self.Preprocess = None
 
 
     def _deserialize(self, params):
@@ -1586,6 +1598,7 @@ class EnglishOCRRequest(AbstractModel):
         self.ImageUrl = params.get("ImageUrl")
         self.EnableCoordPoint = params.get("EnableCoordPoint")
         self.EnableCandWord = params.get("EnableCandWord")
+        self.Preprocess = params.get("Preprocess")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

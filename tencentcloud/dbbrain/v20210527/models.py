@@ -834,7 +834,7 @@ class DescribeDBDiagReportTasksRequest(AbstractModel):
         :type TaskStatuses: str
         :param Offset: 偏移量，默认0。
         :type Offset: int
-        :param Limit: 返回数量，默认20。
+        :param Limit: 返回数量，默认20，最大值为100。
         :type Limit: int
         :param Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
         :type Product: str
@@ -991,7 +991,7 @@ class DescribeDiagDBInstancesRequest(AbstractModel):
         :type Product: str
         :param Offset: 分页参数，偏移量。
         :type Offset: int
-        :param Limit: 分页参数，分页值。
+        :param Limit: 分页参数，分页值，最大值为100。
         :type Limit: int
         :param InstanceNames: 根据实例名称条件查询。
         :type InstanceNames: list of str
@@ -1208,6 +1208,103 @@ class DescribeMailProfileResponse(AbstractModel):
         
 
 
+class DescribeMySqlProcessListRequest(AbstractModel):
+    """DescribeMySqlProcessList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID。
+        :type InstanceId: str
+        :param ID: 线程的ID，用于筛选线程列表。
+        :type ID: int
+        :param User: 线程的操作账号名，用于筛选线程列表。
+        :type User: str
+        :param Host: 线程的操作主机地址，用于筛选线程列表。
+        :type Host: str
+        :param DB: 线程的操作数据库，用于筛选线程列表。
+        :type DB: str
+        :param State: 线程的操作状态，用于筛选线程列表。
+        :type State: str
+        :param Command: 线程的执行类型，用于筛选线程列表。
+        :type Command: str
+        :param Time: 线程的操作时长最小值，单位秒，用于筛选操作时长大于该值的线程列表。
+        :type Time: int
+        :param Info: 线程的操作语句，用于筛选线程列表。
+        :type Info: str
+        :param Limit: 返回数量，默认20。
+        :type Limit: int
+        :param Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :type Product: str
+        """
+        self.InstanceId = None
+        self.ID = None
+        self.User = None
+        self.Host = None
+        self.DB = None
+        self.State = None
+        self.Command = None
+        self.Time = None
+        self.Info = None
+        self.Limit = None
+        self.Product = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ID = params.get("ID")
+        self.User = params.get("User")
+        self.Host = params.get("Host")
+        self.DB = params.get("DB")
+        self.State = params.get("State")
+        self.Command = params.get("Command")
+        self.Time = params.get("Time")
+        self.Info = params.get("Info")
+        self.Limit = params.get("Limit")
+        self.Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DescribeMySqlProcessListResponse(AbstractModel):
+    """DescribeMySqlProcessList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProcessList: 实时线程列表。
+        :type ProcessList: list of MySqlProcess
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ProcessList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ProcessList") is not None:
+            self.ProcessList = []
+            for item in params.get("ProcessList"):
+                obj = MySqlProcess()
+                obj._deserialize(item)
+                self.ProcessList.append(obj)
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class DescribeSecurityAuditLogDownloadUrlsRequest(AbstractModel):
     """DescribeSecurityAuditLogDownloadUrls请求参数结构体
 
@@ -1283,7 +1380,7 @@ class DescribeSecurityAuditLogExportTasksRequest(AbstractModel):
         :type AsyncRequestIds: list of int non-negative
         :param Offset: 偏移量，默认0。
         :type Offset: int
-        :param Limit: 返回数量，默认20。
+        :param Limit: 返回数量，默认20，最大值为100。
         :type Limit: int
         """
         self.SecAuditGroupId = None
@@ -1437,9 +1534,9 @@ class DescribeSlowLogTopSqlsRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: 截止时间，如“2019-09-10 12:13:14”，截止时间与开始时间的间隔最大可为7天。
         :type EndTime: str
-        :param SortBy: 排序键，目前支持 QueryTime,ExecTimes,RowsSent,LockTime以及RowsExamined 等排序键。
+        :param SortBy: 排序键，目前支持 QueryTime,ExecTimes,RowsSent,LockTime以及RowsExamined 等排序键，默认为QueryTime。
         :type SortBy: str
-        :param OrderBy: 排序方式，支持ASC（升序）以及DESC（降序）。
+        :param OrderBy: 排序方式，支持ASC（升序）以及DESC（降序），默认为DESC。
         :type OrderBy: str
         :param Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
@@ -2559,7 +2656,7 @@ class ModifyDiagDBInstanceConfRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceConfs: 巡检开关。
+        :param InstanceConfs: 实例配置，包括巡检、概览开关等。
         :type InstanceConfs: :class:`tencentcloud.dbbrain.v20210527.models.InstanceConfs`
         :param Regions: 生效实例地域，取值为"All"，代表全地域。
         :type Regions: str
@@ -2737,6 +2834,58 @@ class MonitorMetricSeriesData(AbstractModel):
                 obj._deserialize(item)
                 self.Series.append(obj)
         self.Timestamp = params.get("Timestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class MySqlProcess(AbstractModel):
+    """关系型数据库线程
+
+    """
+
+    def __init__(self):
+        """
+        :param ID: 线程ID。
+        :type ID: str
+        :param User: 线程的操作账号名。
+        :type User: str
+        :param Host: 线程的操作主机地址。
+        :type Host: str
+        :param DB: 线程的操作数据库。
+        :type DB: str
+        :param State: 线程的操作状态。
+        :type State: str
+        :param Command: 线程的执行类型。
+        :type Command: str
+        :param Time: 线程的操作时长，单位秒。
+        :type Time: str
+        :param Info: 线程的操作语句。
+        :type Info: str
+        """
+        self.ID = None
+        self.User = None
+        self.Host = None
+        self.DB = None
+        self.State = None
+        self.Command = None
+        self.Time = None
+        self.Info = None
+
+
+    def _deserialize(self, params):
+        self.ID = params.get("ID")
+        self.User = params.get("User")
+        self.Host = params.get("Host")
+        self.DB = params.get("DB")
+        self.State = params.get("State")
+        self.Command = params.get("Command")
+        self.Time = params.get("Time")
+        self.Info = params.get("Info")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3070,11 +3219,11 @@ class SlowLogTopSqlItem(AbstractModel):
 
     def __init__(self):
         """
-        :param LockTime: sql总锁等待时间
+        :param LockTime: sql总锁等待时间，单位秒
         :type LockTime: float
-        :param LockTimeMax: 最大锁等待时间
+        :param LockTimeMax: 最大锁等待时间，单位秒
         :type LockTimeMax: float
-        :param LockTimeMin: 最小锁等待时间
+        :param LockTimeMin: 最小锁等待时间，单位秒
         :type LockTimeMin: float
         :param RowsExamined: 总扫描行数
         :type RowsExamined: int
@@ -3082,11 +3231,11 @@ class SlowLogTopSqlItem(AbstractModel):
         :type RowsExaminedMax: int
         :param RowsExaminedMin: 最小扫描行数
         :type RowsExaminedMin: int
-        :param QueryTime: 总耗时
+        :param QueryTime: 总耗时，单位秒
         :type QueryTime: float
-        :param QueryTimeMax: 最大执行时间
+        :param QueryTimeMax: 最大执行时间，单位秒
         :type QueryTimeMax: float
-        :param QueryTimeMin: 最小执行时间
+        :param QueryTimeMin: 最小执行时间，单位秒
         :type QueryTimeMin: float
         :param RowsSent: 总返回行数
         :type RowsSent: int
@@ -3102,19 +3251,19 @@ class SlowLogTopSqlItem(AbstractModel):
         :type SqlText: str
         :param Schema: 数据库名
         :type Schema: str
-        :param QueryTimeRatio: 总耗时占比
+        :param QueryTimeRatio: 总耗时占比，单位%
         :type QueryTimeRatio: float
-        :param LockTimeRatio: sql总锁等待时间占比
+        :param LockTimeRatio: sql总锁等待时间占比，单位%
         :type LockTimeRatio: float
-        :param RowsExaminedRatio: 总扫描行数占比
+        :param RowsExaminedRatio: 总扫描行数占比，单位%
         :type RowsExaminedRatio: float
-        :param RowsSentRatio: 总返回行数占比
+        :param RowsSentRatio: 总返回行数占比，单位%
         :type RowsSentRatio: float
-        :param QueryTimeAvg: 平均执行时间
+        :param QueryTimeAvg: 平均执行时间，单位秒
         :type QueryTimeAvg: float
         :param RowsSentAvg: 平均返回行数
         :type RowsSentAvg: float
-        :param LockTimeAvg: 平均锁等待时间
+        :param LockTimeAvg: 平均锁等待时间，单位秒
         :type LockTimeAvg: float
         :param RowsExaminedAvg: 平均扫描行数
         :type RowsExaminedAvg: float

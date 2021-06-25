@@ -1013,6 +1013,10 @@ class CreateAlarmPolicyRequest(AbstractModel):
         :type NoticeIds: list of str
         :param TriggerTasks: 触发任务列表
         :type TriggerTasks: list of AlarmPolicyTriggerTask
+        :param Filter: 全局过滤条件
+        :type Filter: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyFilter`
+        :param GroupBy: 聚合维度列表，指定按哪些维度 key 来做 group by
+        :type GroupBy: list of str
         """
         self.Module = None
         self.PolicyName = None
@@ -1026,6 +1030,8 @@ class CreateAlarmPolicyRequest(AbstractModel):
         self.EventCondition = None
         self.NoticeIds = None
         self.TriggerTasks = None
+        self.Filter = None
+        self.GroupBy = None
 
 
     def _deserialize(self, params):
@@ -1050,6 +1056,10 @@ class CreateAlarmPolicyRequest(AbstractModel):
                 obj = AlarmPolicyTriggerTask()
                 obj._deserialize(item)
                 self.TriggerTasks.append(obj)
+        if params.get("Filter") is not None:
+            self.Filter = AlarmPolicyFilter()
+            self.Filter._deserialize(params.get("Filter"))
+        self.GroupBy = params.get("GroupBy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1949,14 +1959,18 @@ class DescribeAlarmEventsRequest(AbstractModel):
         :type Module: str
         :param Namespace: 告警策略类型，由 DescribeAllNamespaces 获得，例如 cvm_device
         :type Namespace: str
+        :param MonitorType: 监控类型，如 MT_QCE。如果不填默认为 MT_QCE。
+        :type MonitorType: str
         """
         self.Module = None
         self.Namespace = None
+        self.MonitorType = None
 
 
     def _deserialize(self, params):
         self.Module = params.get("Module")
         self.Namespace = params.get("Namespace")
+        self.MonitorType = params.get("MonitorType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5846,12 +5860,18 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
         :type Condition: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyCondition`
         :param EventCondition: 事件触发条件
         :type EventCondition: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyEventCondition`
+        :param Filter: 全局过滤条件
+        :type Filter: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyFilter`
+        :param GroupBy: 聚合维度列表，指定按哪些维度 key 来做 group by
+        :type GroupBy: list of str
         """
         self.Module = None
         self.PolicyId = None
         self.ConditionTemplateId = None
         self.Condition = None
         self.EventCondition = None
+        self.Filter = None
+        self.GroupBy = None
 
 
     def _deserialize(self, params):
@@ -5864,6 +5884,10 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
         if params.get("EventCondition") is not None:
             self.EventCondition = AlarmPolicyEventCondition()
             self.EventCondition._deserialize(params.get("EventCondition"))
+        if params.get("Filter") is not None:
+            self.Filter = AlarmPolicyFilter()
+            self.Filter._deserialize(params.get("Filter"))
+        self.GroupBy = params.get("GroupBy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
