@@ -301,6 +301,9 @@ class ClusterInstancesInfo(AbstractModel):
         :param ProductId: 集群版本Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductId: int
+        :param Zone: 地区ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
         """
         self.Id = None
         self.ClusterId = None
@@ -331,6 +334,7 @@ class ClusterInstancesInfo(AbstractModel):
         self.ServiceClass = None
         self.AliasInfo = None
         self.ProductId = None
+        self.Zone = None
 
 
     def _deserialize(self, params):
@@ -370,6 +374,7 @@ class ClusterInstancesInfo(AbstractModel):
         self.ServiceClass = params.get("ServiceClass")
         self.AliasInfo = params.get("AliasInfo")
         self.ProductId = params.get("ProductId")
+        self.Zone = params.get("Zone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1228,6 +1233,12 @@ class EmrProductConfigOutter(AbstractModel):
         :param CbsEncrypt: 是否开启Cbs加密
 注意：此字段可能返回 null，表示取不到有效值。
         :type CbsEncrypt: int
+        :param ApplicationRole: 自定义应用角色。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationRole: str
+        :param SecurityGroups: 安全组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecurityGroups: list of str
         """
         self.SoftInfo = None
         self.MasterNodeSize = None
@@ -1245,6 +1256,8 @@ class EmrProductConfigOutter(AbstractModel):
         self.SecurityOn = None
         self.SecurityGroup = None
         self.CbsEncrypt = None
+        self.ApplicationRole = None
+        self.SecurityGroups = None
 
 
     def _deserialize(self, params):
@@ -1272,6 +1285,8 @@ class EmrProductConfigOutter(AbstractModel):
         self.SecurityOn = params.get("SecurityOn")
         self.SecurityGroup = params.get("SecurityGroup")
         self.CbsEncrypt = params.get("CbsEncrypt")
+        self.ApplicationRole = params.get("ApplicationRole")
+        self.SecurityGroups = params.get("SecurityGroups")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

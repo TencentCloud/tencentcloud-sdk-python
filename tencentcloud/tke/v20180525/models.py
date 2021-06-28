@@ -2090,12 +2090,16 @@ class DataDisk(AbstractModel):
         :param MountTarget: 挂载目录
 注意：此字段可能返回 null，表示取不到有效值。
         :type MountTarget: str
+        :param DiskPartition: 挂载设备名或分区名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskPartition: str
         """
         self.DiskType = None
         self.FileSystem = None
         self.DiskSize = None
         self.AutoFormatAndMount = None
         self.MountTarget = None
+        self.DiskPartition = None
 
 
     def _deserialize(self, params):
@@ -2104,6 +2108,7 @@ class DataDisk(AbstractModel):
         self.DiskSize = params.get("DiskSize")
         self.AutoFormatAndMount = params.get("AutoFormatAndMount")
         self.MountTarget = params.get("MountTarget")
+        self.DiskPartition = params.get("DiskPartition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
