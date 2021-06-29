@@ -278,6 +278,34 @@ class WavClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def QueryExternalUserMappingInfo(self, request):
+        """企业可通过此接口将企业主体对应的外部联系人id转换为乐销车应用主体对应的外部联系人。
+
+        :param request: Request instance for QueryExternalUserMappingInfo.
+        :type request: :class:`tencentcloud.wav.v20210129.models.QueryExternalUserMappingInfoRequest`
+        :rtype: :class:`tencentcloud.wav.v20210129.models.QueryExternalUserMappingInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryExternalUserMappingInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryExternalUserMappingInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def QueryMiniAppCodeList(self, request):
         """查询小程序码列表接口
 

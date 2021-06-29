@@ -660,6 +660,35 @@ class ExternalContactTag(AbstractModel):
         
 
 
+class ExternalUserMappingInfo(AbstractModel):
+    """外部联系人映射信息
+
+    """
+
+    def __init__(self):
+        """
+        :param CorpExternalUserId: 企业主体对应的外部联系人userId
+        :type CorpExternalUserId: str
+        :param ExternalUserId: 乐销车应用主体对应的外部联系人, 当不存在好友关系时，该字段值为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalUserId: str
+        """
+        self.CorpExternalUserId = None
+        self.ExternalUserId = None
+
+
+    def _deserialize(self, params):
+        self.CorpExternalUserId = params.get("CorpExternalUserId")
+        self.ExternalUserId = params.get("ExternalUserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class FollowUser(AbstractModel):
     """添加了此外部联系人的企业成员信息
 
@@ -1301,6 +1330,64 @@ class QueryExternalContactListResponse(AbstractModel):
                 obj._deserialize(item)
                 self.PageData.append(obj)
         self.NextCursor = params.get("NextCursor")
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class QueryExternalUserMappingInfoRequest(AbstractModel):
+    """QueryExternalUserMappingInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CorpExternalUserIdList: 企业主体对应的外部联系人id列表，列表长度限制最大为50。
+        :type CorpExternalUserIdList: list of str
+        """
+        self.CorpExternalUserIdList = None
+
+
+    def _deserialize(self, params):
+        self.CorpExternalUserIdList = params.get("CorpExternalUserIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class QueryExternalUserMappingInfoResponse(AbstractModel):
+    """QueryExternalUserMappingInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ExternalUserIdMapping: 外部联系人映射信息, 只返回映射成功的记录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalUserIdMapping: list of ExternalUserMappingInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ExternalUserIdMapping = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ExternalUserIdMapping") is not None:
+            self.ExternalUserIdMapping = []
+            for item in params.get("ExternalUserIdMapping"):
+                obj = ExternalUserMappingInfo()
+                obj._deserialize(item)
+                self.ExternalUserIdMapping.append(obj)
         self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

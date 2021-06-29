@@ -1314,6 +1314,90 @@ class ListUsersInUserGroupResponse(AbstractModel):
         
 
 
+class ModifyUserInfoRequest(AbstractModel):
+    """ModifyUserInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param UserName: 用户名，长度限制：32个字符。 Username 和 UserId 需选择一个作为搜索条件；如两个条件同时使用则默认使用Username作为搜索条件。
+        :type UserName: str
+        :param DisplayName: 昵称，长度限制：64个字符。 默认与用户名相同。
+        :type DisplayName: str
+        :param Description: 用户备注，长度限制：512个字符。
+        :type Description: str
+        :param UserGroupIds: 用户所属用户组ID列表。
+        :type UserGroupIds: list of str
+        :param UserId: 用户 id。 Username 和 UserId 需选择一个作为搜索条件；如两个条件同时使用则默认使用Username作为搜索条件。
+        :type UserId: str
+        :param Phone: 用户手机号。
+        :type Phone: str
+        :param ExpirationTime: 用户过期时间，遵循 ISO 8601 标准。
+        :type ExpirationTime: str
+        :param Password: 用户密码， 需要符合密码策略的配置。
+        :type Password: str
+        :param Email: 用户邮箱。
+        :type Email: str
+        :param PwdNeedReset: 密码是否需要重置，为空默认为false不需要重置密码。
+        :type PwdNeedReset: bool
+        """
+        self.UserName = None
+        self.DisplayName = None
+        self.Description = None
+        self.UserGroupIds = None
+        self.UserId = None
+        self.Phone = None
+        self.ExpirationTime = None
+        self.Password = None
+        self.Email = None
+        self.PwdNeedReset = None
+
+
+    def _deserialize(self, params):
+        self.UserName = params.get("UserName")
+        self.DisplayName = params.get("DisplayName")
+        self.Description = params.get("Description")
+        self.UserGroupIds = params.get("UserGroupIds")
+        self.UserId = params.get("UserId")
+        self.Phone = params.get("Phone")
+        self.ExpirationTime = params.get("ExpirationTime")
+        self.Password = params.get("Password")
+        self.Email = params.get("Email")
+        self.PwdNeedReset = params.get("PwdNeedReset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class ModifyUserInfoResponse(AbstractModel):
+    """ModifyUserInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class OrgNodeChildInfo(AbstractModel):
     """当前机构节点下的子节点列表
 
