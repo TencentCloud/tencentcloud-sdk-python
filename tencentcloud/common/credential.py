@@ -237,9 +237,10 @@ class STSAssumeRoleCredential(object):
         self._expired_time = t_c["Response"]["ExpiredTime"] - self._duration_seconds*0.9
 
 
-class EnvironmentVariableCredentialProvider():
-    def __init__(self):
-        """Tencent Cloud EnvironmentVariableCredentialProvider.
+class EnvironmentVariableCredential():
+
+    def get_credential(self):
+        """Tencent Cloud EnvironmentVariableCredential.
 
         Access https://console.cloud.tencent.com/cam/capi to manage your
         credentials.
@@ -252,7 +253,6 @@ class EnvironmentVariableCredentialProvider():
         self.secretId = os.environ.get('TENCENTCLOUD_SECRET_ID')
         self.secretKey = os.environ.get('TENCENTCLOUD_SECRET_KEY')
 
-    def get_credential(self):
         if self.secretId is None or self.secretKey is None:
             return None
         if len(self.secretId) == 0 or len(self.secretKey) == 0:
@@ -260,9 +260,10 @@ class EnvironmentVariableCredentialProvider():
         return Credential(self.secretId, self.secretKey)
 
 
-class ProfileCredentialProvider():
-    def __init__(self):
-        """Tencent Cloud ProfileVariableCredentialProvider.
+class ProfileCredential():
+
+    def get_credential(self):
+        """Tencent Cloud ProfileCredential.
 
         Access https://console.cloud.tencent.com/cam/capi to manage your
         credentials.
@@ -298,13 +299,12 @@ class ProfileCredentialProvider():
                 client_config = ini_map.get("default")
                 self.secretId = client_config.get('secret_id', None)
                 self.secretKey = client_config.get('secret_key', None)
-                self.role_name = client_config.get('role_name', None)
+                self.role_arn = client_config.get('role_arn', None)
         else:
             self.secretId = None
             self.secretKey = None
-            self.role_name = None
+            self.role_arn = None
 
-    def get_credential(self):
         if self.secretId is None or self.secretKey is None:
             return None
         if len(self.secretId) == 0 or len(self.secretKey) == 0:
@@ -315,7 +315,7 @@ class ProfileCredentialProvider():
 class DefaultCredentialProvider(object):
     """Tencent Cloud DefaultCredentialProvider.
 
-    DefaultCredentialProvider will search credential by order EnvironmentVariableCredentialProvider ProfileCredentialProvider
+    DefaultCredentialProvider will search credential by order EnvironmentVariableCredential ProfileCredential
     and CVMRoleCredential.
     """
 
@@ -326,13 +326,13 @@ class DefaultCredentialProvider(object):
         if self.cred is not None:
             return self.cred
 
-        e_v_c_p = EnvironmentVariableCredentialProvider()
+        e_v_c_p = EnvironmentVariableCredential()
         env_cred = e_v_c_p.get_credential()
         self.cred = env_cred
         if self.cred is not None:
             return self.cred
 
-        p_c_p = ProfileCredentialProvider()
+        p_c_p = ProfileCredential()
         prof_cred = p_c_p.get_credential()
         self.cred = prof_cred
         if self.cred is not None:
@@ -344,4 +344,4 @@ class DefaultCredentialProvider(object):
         if self.cred is not None:
             return self.cred
 
-        raise TencentCloudSDKException("no valid credentail.")
+        raise TencentCloudSDKException("ClientSideError", "no valid credentail.")
