@@ -144,25 +144,20 @@ class STSAssumeRoleCredential(object):
     _version = '2018-08-13'
     _service = "sts"
 
-    def __init__(self, secret_id=None, secret_key=None, role_arn=None, role_session_name=None, duration_seconds=7200):
+    def __init__(self, secret_id, secret_key, role_arn, role_session_name, duration_seconds=7200):
         """
         :param secret_id: 接口调用凭证id
         :type secret_id: str
         :param secret_key: 接口调用凭证key
         :type secret_key: str
-
         https://cloud.tencent.com/document/api/1312/48197
-        :param role_arn: 角色的资源描述，上述链接RoleArn参数中有详细获取方式
+        :param role_arn: 角色的资源描述，参考官网文档 https://cloud.tencent.com/document/api/1312/48197 中 RoleArn 参数的描述。
         :type role_arn: str
         :param role_session_name: 临时会话名称，由用户自定义名称
         :type role_session_name: str
         :param duration_seconds: 获取临时凭证的有效期，默认7200s
         :type duration_seconds: int
         """
-
-        if None in [secret_id, secret_key, role_arn, role_session_name]:
-            raise TencentCloudSDKException("STSAssumeRoleCredential Parameter Error, "
-                                           "secret_id, secret_key, role_arn, role_session_name all required.")
         self._long_secret_id = secret_id
         self._long_secret_key = secret_key
         self._role_arn = role_arn
