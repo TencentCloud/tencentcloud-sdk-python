@@ -136,12 +136,15 @@ CriticalDiseaseInsurance:重疾险
 LifeInsurance：寿险
 AccidentInsurance：意外险
         :type InsuranceTypes: list of str
+        :param CallbackUrl: 回调地址，接收Post请求传送结果
+        :type CallbackUrl: str
         """
         self.ServiceType = None
         self.TaskInfos = None
         self.PolicyId = None
         self.TriggerType = None
         self.InsuranceTypes = None
+        self.CallbackUrl = None
 
 
     def _deserialize(self, params):
@@ -155,6 +158,7 @@ AccidentInsurance：意外险
         self.PolicyId = params.get("PolicyId")
         self.TriggerType = params.get("TriggerType")
         self.InsuranceTypes = params.get("InsuranceTypes")
+        self.CallbackUrl = params.get("CallbackUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -171,7 +175,7 @@ class CreateStructureTaskResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param MainTaskId: 创建的主任务号
+        :param MainTaskId: 创建的主任务号，用于查询结果
         :type MainTaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -305,6 +309,70 @@ class DescribeStructCompareDataResponse(AbstractModel):
         
 
 
+class DescribeStructureResultRequest(AbstractModel):
+    """DescribeStructureResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MainTaskId: 创建任务时返回的主任务ID
+        :type MainTaskId: str
+        """
+        self.MainTaskId = None
+
+
+    def _deserialize(self, params):
+        self.MainTaskId = params.get("MainTaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DescribeStructureResultResponse(AbstractModel):
+    """DescribeStructureResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 结果状态：
+0：返回成功
+1：结果未生成
+2：结果生成失败
+        :type Status: int
+        :param Results: 结构化结果
+        :type Results: list of StructureResultObject
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.Results = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        if params.get("Results") is not None:
+            self.Results = []
+            for item in params.get("Results"):
+                obj = StructureResultObject()
+                obj._deserialize(item)
+                self.Results.append(obj)
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class DescribeStructureTaskResultRequest(AbstractModel):
     """DescribeStructureTaskResult请求参数结构体
 
@@ -425,6 +493,38 @@ class ReviewDataTaskInfo(AbstractModel):
         self.SubTaskId = params.get("SubTaskId")
         self.TaskName = params.get("TaskName")
         self.TaskType = params.get("TaskType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class StructureResultObject(AbstractModel):
+    """结构化结果
+
+    """
+
+    def __init__(self):
+        """
+        :param Code: 0表示正常返回
+        :type Code: int
+        :param TaskType: 报告类型
+        :type TaskType: str
+        :param StructureResult: 结构化结果
+        :type StructureResult: str
+        """
+        self.Code = None
+        self.TaskType = None
+        self.StructureResult = None
+
+
+    def _deserialize(self, params):
+        self.Code = params.get("Code")
+        self.TaskType = params.get("TaskType")
+        self.StructureResult = params.get("StructureResult")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -442,6 +442,140 @@ class DetectDisgustResponse(AbstractModel):
         
 
 
+class DetectLabelBetaRequest(AbstractModel):
+    """DetectLabelBeta请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ImageUrl: 图片URL地址。 
+图片限制： 
+• 图片格式：PNG、JPG、JPEG。 
+• 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
+建议：
+• 图片像素：大于50*50像素，否则影响识别效果； 
+• 长宽比：长边：短边<5； 
+接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
+        :type ImageUrl: str
+        :param ImageBase64: 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+**注意：图片需要base64编码，并且要去掉编码头部。**
+        :type ImageBase64: str
+        :param Scenes: 本次调用支持的识别场景，可选值如下：
+WEB，针对网络图片优化;
+CAMERA，针对手机摄像头拍摄图片优化;
+ALBUM，针对手机相册、网盘产品优化;
+NEWS，针对新闻、资讯、广电等行业优化；
+NONECAM，非实拍图；
+LOCATION，主体位置识别；
+如果不传此参数，则默认为WEB。
+
+支持多场景（Scenes）一起检测。例如，使用 Scenes=["WEB", "CAMERA"]，即对一张图片使用两个模型同时检测，输出两套识别结果。
+        :type Scenes: list of str
+        """
+        self.ImageUrl = None
+        self.ImageBase64 = None
+        self.Scenes = None
+
+
+    def _deserialize(self, params):
+        self.ImageUrl = params.get("ImageUrl")
+        self.ImageBase64 = params.get("ImageBase64")
+        self.Scenes = params.get("Scenes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DetectLabelBetaResponse(AbstractModel):
+    """DetectLabelBeta返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Labels: Web网络版标签结果数组。如未选择WEB场景，则为空。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Labels: list of DetectLabelItem
+        :param CameraLabels: Camera摄像头版标签结果数组。如未选择CAMERA场景，则为空。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CameraLabels: list of DetectLabelItem
+        :param AlbumLabels: Album相册版标签结果数组。如未选择ALBUM场景，则为空。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlbumLabels: list of DetectLabelItem
+        :param NewsLabels: News新闻版标签结果数组。如未选择NEWS场景，则为空。
+新闻版目前为测试阶段，暂不提供每个标签的一级、二级分类信息的输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NewsLabels: list of DetectLabelItem
+        :param NoneCamLabels: 非实拍标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NoneCamLabels: list of DetectLabelItem
+        :param LocationLabels: 识别结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LocationLabels: list of Product
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Labels = None
+        self.CameraLabels = None
+        self.AlbumLabels = None
+        self.NewsLabels = None
+        self.NoneCamLabels = None
+        self.LocationLabels = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Labels") is not None:
+            self.Labels = []
+            for item in params.get("Labels"):
+                obj = DetectLabelItem()
+                obj._deserialize(item)
+                self.Labels.append(obj)
+        if params.get("CameraLabels") is not None:
+            self.CameraLabels = []
+            for item in params.get("CameraLabels"):
+                obj = DetectLabelItem()
+                obj._deserialize(item)
+                self.CameraLabels.append(obj)
+        if params.get("AlbumLabels") is not None:
+            self.AlbumLabels = []
+            for item in params.get("AlbumLabels"):
+                obj = DetectLabelItem()
+                obj._deserialize(item)
+                self.AlbumLabels.append(obj)
+        if params.get("NewsLabels") is not None:
+            self.NewsLabels = []
+            for item in params.get("NewsLabels"):
+                obj = DetectLabelItem()
+                obj._deserialize(item)
+                self.NewsLabels.append(obj)
+        if params.get("NoneCamLabels") is not None:
+            self.NoneCamLabels = []
+            for item in params.get("NoneCamLabels"):
+                obj = DetectLabelItem()
+                obj._deserialize(item)
+                self.NoneCamLabels.append(obj)
+        if params.get("LocationLabels") is not None:
+            self.LocationLabels = []
+            for item in params.get("LocationLabels"):
+                obj = Product()
+                obj._deserialize(item)
+                self.LocationLabels.append(obj)
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class DetectLabelItem(AbstractModel):
     """图像标签检测结果。
 

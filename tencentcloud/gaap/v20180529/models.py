@@ -605,12 +605,15 @@ class CheckProxyCreateRequest(AbstractModel):
         :type Concurrent: int
         :param GroupId: 如果在通道组下创建通道，需要填写通道组的ID
         :type GroupId: str
+        :param IPAddressVersion: IP版本，可取值：IPv4、IPv6，默认值IPv4
+        :type IPAddressVersion: str
         """
         self.AccessRegion = None
         self.RealServerRegion = None
         self.Bandwidth = None
         self.Concurrent = None
         self.GroupId = None
+        self.IPAddressVersion = None
 
 
     def _deserialize(self, params):
@@ -619,6 +622,7 @@ class CheckProxyCreateRequest(AbstractModel):
         self.Bandwidth = params.get("Bandwidth")
         self.Concurrent = params.get("Concurrent")
         self.GroupId = params.get("GroupId")
+        self.IPAddressVersion = params.get("IPAddressVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1315,12 +1319,15 @@ class CreateProxyGroupRequest(AbstractModel):
         :type TagSet: list of TagPair
         :param AccessRegionSet: 加速地域列表，包括加速地域名，及该地域对应的带宽和并发配置。
         :type AccessRegionSet: list of AccessConfiguration
+        :param IPAddressVersion: IP版本，可取值：IPv4、IPv6，默认值IPv4
+        :type IPAddressVersion: str
         """
         self.ProjectId = None
         self.GroupName = None
         self.RealServerRegion = None
         self.TagSet = None
         self.AccessRegionSet = None
+        self.IPAddressVersion = None
 
 
     def _deserialize(self, params):
@@ -1339,6 +1346,7 @@ class CreateProxyGroupRequest(AbstractModel):
                 obj = AccessConfiguration()
                 obj._deserialize(item)
                 self.AccessRegionSet.append(obj)
+        self.IPAddressVersion = params.get("IPAddressVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1407,6 +1415,8 @@ class CreateProxyRequest(AbstractModel):
         :type ClonedProxyId: str
         :param BillingType: 计费方式 (0:按带宽计费，1:按流量计费 默认按带宽计费）
         :type BillingType: int
+        :param IPAddressVersion: IP版本，可取值：IPv4、IPv6，默认值IPv4
+        :type IPAddressVersion: str
         """
         self.ProjectId = None
         self.ProxyName = None
@@ -1419,6 +1429,7 @@ class CreateProxyRequest(AbstractModel):
         self.TagSet = None
         self.ClonedProxyId = None
         self.BillingType = None
+        self.IPAddressVersion = None
 
 
     def _deserialize(self, params):
@@ -1438,6 +1449,7 @@ class CreateProxyRequest(AbstractModel):
                 self.TagSet.append(obj)
         self.ClonedProxyId = params.get("ClonedProxyId")
         self.BillingType = params.get("BillingType")
+        self.IPAddressVersion = params.get("IPAddressVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1714,6 +1726,10 @@ class CreateTCPListenersRequest(AbstractModel):
         :type ClientIPMethod: int
         :param FailoverSwitch: 源站是否开启主备模式：1开启，0关闭，DOMAIN类型源站不支持开启
         :type FailoverSwitch: int
+        :param HealthyThreshold: 健康阈值，表示连续检查成功多少次后认定源站健康。范围为1到10
+        :type HealthyThreshold: int
+        :param UnhealthyThreshold: 不健康阈值，表示连续检查失败多少次数后认为源站不健康。范围为1到10
+        :type UnhealthyThreshold: int
         """
         self.ListenerName = None
         self.Ports = None
@@ -1727,6 +1743,8 @@ class CreateTCPListenersRequest(AbstractModel):
         self.RealServerPorts = None
         self.ClientIPMethod = None
         self.FailoverSwitch = None
+        self.HealthyThreshold = None
+        self.UnhealthyThreshold = None
 
 
     def _deserialize(self, params):
@@ -1742,6 +1760,8 @@ class CreateTCPListenersRequest(AbstractModel):
         self.RealServerPorts = params.get("RealServerPorts")
         self.ClientIPMethod = params.get("ClientIPMethod")
         self.FailoverSwitch = params.get("FailoverSwitch")
+        self.HealthyThreshold = params.get("HealthyThreshold")
+        self.UnhealthyThreshold = params.get("UnhealthyThreshold")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2300,12 +2320,16 @@ class DescribeAccessRegionsByDestRegionRequest(AbstractModel):
         """
         :param DestRegion: 源站区域：接口DescribeDestRegions返回DestRegionSet中的RegionId字段值
         :type DestRegion: str
+        :param IPAddressVersion: IP版本，可取值：IPv4、IPv6，默认值IPv4
+        :type IPAddressVersion: str
         """
         self.DestRegion = None
+        self.IPAddressVersion = None
 
 
     def _deserialize(self, params):
         self.DestRegion = params.get("DestRegion")
+        self.IPAddressVersion = params.get("IPAddressVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3200,10 +3224,11 @@ class DescribeProxiesRequest(AbstractModel):
         :type Limit: int
         :param Filters: 过滤条件。   
 每次请求的Filters的上限为10，Filter.Values的上限为5。参数不支持同时指定InstanceIds和Filters。 
-ProjectId - String - 是否必填：否 -（过滤条件）按照项目ID过滤。    
+ProjectId - String - 是否必填：否 -（过滤条件）按照项目ID过滤。   
 AccessRegion - String - 是否必填：否 - （过滤条件）按照接入地域过滤。    
 RealServerRegion - String - 是否必填：否 - （过滤条件）按照源站地域过滤。
 GroupId - String - 是否必填：否 - （过滤条件）按照通道组ID过滤。
+IPAddressVersion - String - 是否必填：否 - （过滤条件）按照IP版本过滤。
         :type Filters: list of Filter
         :param ProxyIds: （新参数，替代InstanceIds）按照一个或者多个实例ID查询。每次请求的实例的上限为100。参数不支持同时指定InstanceIds和Filters。
         :type ProxyIds: list of str
@@ -4020,6 +4045,24 @@ class DescribeRegionAndPriceRequest(AbstractModel):
     """DescribeRegionAndPrice请求参数结构体
 
     """
+
+    def __init__(self):
+        """
+        :param IPAddressVersion: IP版本，可取值：IPv4、IPv6，默认值IPv4
+        :type IPAddressVersion: str
+        """
+        self.IPAddressVersion = None
+
+
+    def _deserialize(self, params):
+        self.IPAddressVersion = params.get("IPAddressVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
 
 
 class DescribeRegionAndPriceResponse(AbstractModel):
@@ -5253,6 +5296,8 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
         :type Concurrent: int
         :param BillingType: 计费方式，0表示按带宽计费，1表示按流量计费。默认按带宽计费
         :type BillingType: int
+        :param IPAddressVersion: IP版本，可取值：IPv4、IPv6，默认值IPv4
+        :type IPAddressVersion: str
         """
         self.AccessRegion = None
         self.Bandwidth = None
@@ -5261,6 +5306,7 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
         self.RealServerRegion = None
         self.Concurrent = None
         self.BillingType = None
+        self.IPAddressVersion = None
 
 
     def _deserialize(self, params):
@@ -5271,6 +5317,7 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
         self.RealServerRegion = params.get("RealServerRegion")
         self.Concurrent = params.get("Concurrent")
         self.BillingType = params.get("BillingType")
+        self.IPAddressVersion = params.get("IPAddressVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6278,6 +6325,10 @@ class ModifyTCPListenerAttributeRequest(AbstractModel):
         :type HealthCheck: int
         :param FailoverSwitch: 源站是否开启主备模式：1开启，0关闭，DOMAIN类型源站不支持开启
         :type FailoverSwitch: int
+        :param HealthyThreshold: 健康阈值，表示连续检查成功多少次数后认定源站健康。范围为1到10
+        :type HealthyThreshold: int
+        :param UnhealthyThreshold: 不健康阈值，表示连续检查失败次数后认定源站不健康。范围为1到10
+        :type UnhealthyThreshold: int
         """
         self.ListenerId = None
         self.GroupId = None
@@ -6288,6 +6339,8 @@ class ModifyTCPListenerAttributeRequest(AbstractModel):
         self.ConnectTimeout = None
         self.HealthCheck = None
         self.FailoverSwitch = None
+        self.HealthyThreshold = None
+        self.UnhealthyThreshold = None
 
 
     def _deserialize(self, params):
@@ -6300,6 +6353,8 @@ class ModifyTCPListenerAttributeRequest(AbstractModel):
         self.ConnectTimeout = params.get("ConnectTimeout")
         self.HealthCheck = params.get("HealthCheck")
         self.FailoverSwitch = params.get("FailoverSwitch")
+        self.HealthyThreshold = params.get("HealthyThreshold")
+        self.UnhealthyThreshold = params.get("UnhealthyThreshold")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6678,6 +6733,9 @@ class ProxyGroupDetail(AbstractModel):
         :param ClientIPMethod: 通道获取客户端IP的方式，0表示TOA，1表示Proxy Protocol
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClientIPMethod: list of int
+        :param IPAddressVersion: IP版本，可取值：IPv4、IPv6，默认值IPv4
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IPAddressVersion: str
         """
         self.CreateTime = None
         self.ProjectId = None
@@ -6695,6 +6753,7 @@ class ProxyGroupDetail(AbstractModel):
         self.PolicyId = None
         self.Version = None
         self.ClientIPMethod = None
+        self.IPAddressVersion = None
 
 
     def _deserialize(self, params):
@@ -6721,6 +6780,7 @@ class ProxyGroupDetail(AbstractModel):
         self.PolicyId = params.get("PolicyId")
         self.Version = params.get("Version")
         self.ClientIPMethod = params.get("ClientIPMethod")
+        self.IPAddressVersion = params.get("IPAddressVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6916,6 +6976,9 @@ UNKNOWN表示未知状态。
         :param ClientIPMethod: 通道获取客户端IP的方式，0表示TOA，1表示Proxy Protocol
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClientIPMethod: list of int
+        :param IPAddressVersion: IP版本：IPv4、IPv6
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IPAddressVersion: str
         """
         self.InstanceId = None
         self.CreateTime = None
@@ -6944,6 +7007,7 @@ UNKNOWN表示未知状态。
         self.ModifyConfigTime = None
         self.ProxyType = None
         self.ClientIPMethod = None
+        self.IPAddressVersion = None
 
 
     def _deserialize(self, params):
@@ -6983,6 +7047,7 @@ UNKNOWN表示未知状态。
         self.ModifyConfigTime = params.get("ModifyConfigTime")
         self.ProxyType = params.get("ProxyType")
         self.ClientIPMethod = params.get("ClientIPMethod")
+        self.IPAddressVersion = params.get("IPAddressVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7659,6 +7724,12 @@ lc表示最小连接数。
         :param ClientIPMethod: 监听器获取客户端 IP 的方式，0表示TOA, 1表示Proxy Protocol
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClientIPMethod: int
+        :param HealthyThreshold: 健康阈值，表示连续检查成功多少次后认定源站健康。范围为1到10
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HealthyThreshold: int
+        :param UnhealthyThreshold: 不健康阈值，表示连续检查失败多少次数后认为源站不健康。范围为1到10
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnhealthyThreshold: int
         """
         self.ListenerId = None
         self.ListenerName = None
@@ -7675,6 +7746,8 @@ lc表示最小连接数。
         self.RealServerSet = None
         self.CreateTime = None
         self.ClientIPMethod = None
+        self.HealthyThreshold = None
+        self.UnhealthyThreshold = None
 
 
     def _deserialize(self, params):
@@ -7698,6 +7771,8 @@ lc表示最小连接数。
                 self.RealServerSet.append(obj)
         self.CreateTime = params.get("CreateTime")
         self.ClientIPMethod = params.get("ClientIPMethod")
+        self.HealthyThreshold = params.get("HealthyThreshold")
+        self.UnhealthyThreshold = params.get("UnhealthyThreshold")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
