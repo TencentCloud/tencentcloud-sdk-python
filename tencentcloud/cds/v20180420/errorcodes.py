@@ -1,5 +1,5 @@
-# -*- coding: utf-8 -*-
-# Copyright 1999-2018 Tencent Ltd.
+# -*- coding: utf8 -*-
+# Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,4 +14,8 @@
 # limitations under the License.
 
 
-__version__ = '3.0.434'
+# 无效的资源ID，用于资源不存在或已过期。
+INVALIDPARAMETER_DBAUDITRESOURCEIDINVAILD = 'InvalidParameter.DbauditResourceIdInvaild'
+
+# 无操作权限。
+UNAUTHORIZEDOPERATION_NOPERMISSION = 'UnauthorizedOperation.NoPermission'

@@ -1,5 +1,5 @@
-# -*- coding: utf-8 -*-
-# Copyright 1999-2018 Tencent Ltd.
+# -*- coding: utf8 -*-
+# Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,4 +14,14 @@
 # limitations under the License.
 
 
-__version__ = '3.0.434'
+# 内部请求超时。
+INTERNALERROR_TIMEOUT = 'InternalError.Timeout'
+
+# 错误的名称。
+INVALIDPARAMETER_NAME = 'InvalidParameter.Name'
+
+# 号码格式错误。
+INVALIDPARAMETER_PHONENUMBER = 'InvalidParameter.PhoneNumber'
+
+# 资源不存在。
+RESOURCENOTFOUND = 'ResourceNotFound'

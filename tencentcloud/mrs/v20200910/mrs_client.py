@@ -82,6 +82,66 @@ class MrsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ReportImageStructured(self, request):
+        """接口没有流量
+
+        将输入的图片类型报告结构化
+
+        :param request: Request instance for ReportImageStructured.
+        :type request: :class:`tencentcloud.mrs.v20200910.models.ReportImageStructuredRequest`
+        :rtype: :class:`tencentcloud.mrs.v20200910.models.ReportImageStructuredResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ReportImageStructured", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ReportImageStructuredResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ReportTextStructured(self, request):
+        """接口还未上线
+
+        将输入的医疗报告文本内容进行结构化输出
+
+        :param request: Request instance for ReportTextStructured.
+        :type request: :class:`tencentcloud.mrs.v20200910.models.ReportTextStructuredRequest`
+        :rtype: :class:`tencentcloud.mrs.v20200910.models.ReportTextStructuredResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ReportTextStructured", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ReportTextStructuredResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def TextToClass(self, request):
         """文本分类
 

@@ -1,5 +1,5 @@
-# -*- coding: utf-8 -*-
-# Copyright 1999-2018 Tencent Ltd.
+# -*- coding: utf8 -*-
+# Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,4 +14,17 @@
 # limitations under the License.
 
 
-__version__ = '3.0.434'
+# 内部系统错误，组件异常。
+INTERNALERROR_CACHEERR = 'InternalError.CacheErr'
+
+# 内部系统错误，逻辑错误。
+INTERNALERROR_LOCALERR = 'InternalError.LocalErr'
+
+# 内部系统错误，超时等异常。
+INTERNALERROR_TIMEOUT = 'InternalError.Timeout'
+
+# 参数错误。
+INVALIDPARAMETER = 'InvalidParameter'
+
+# 超过配额限制。
+LIMITEXCEEDED = 'LimitExceeded'
