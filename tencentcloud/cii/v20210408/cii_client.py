@@ -27,7 +27,7 @@ class CiiClient(AbstractClient):
 
 
     def CreateStructureTask(self, request):
-        """基于提供的客户及保单信息，启动结构化识别任务。
+        """本接口(CreateStructureTask)基于提供的客户及保单信息，创建并启动结构化识别任务。
 
         :param request: Request instance for CreateStructureTask.
         :type request: :class:`tencentcloud.cii.v20210408.models.CreateStructureTaskRequest`
@@ -68,6 +68,34 @@ class CiiClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStructCompareDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeStructureResult(self, request):
+        """本接口(DescribeStructureResult)用于查询结构化结果接口
+
+        :param request: Request instance for DescribeStructureResult.
+        :type request: :class:`tencentcloud.cii.v20210408.models.DescribeStructureResultRequest`
+        :rtype: :class:`tencentcloud.cii.v20210408.models.DescribeStructureResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeStructureResult", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeStructureResultResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

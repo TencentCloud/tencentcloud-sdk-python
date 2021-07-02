@@ -1768,7 +1768,7 @@ class DeleteLoadBalancerListenersRequest(AbstractModel):
         """
         :param LoadBalancerId: 负载均衡实例ID。
         :type LoadBalancerId: str
-        :param ListenerIds: 指定删除的监听器ID数组，若不填则删除负载均衡的所有监听器。
+        :param ListenerIds: 指定删除的监听器ID数组，最大为20个。若不填则删除负载均衡的所有监听器。
         :type ListenerIds: list of str
         """
         self.LoadBalancerId = None
@@ -2856,9 +2856,9 @@ class DescribeListenersRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param LoadBalancerId: 负载均衡实例ID。
+        :param LoadBalancerId: 负载均衡实例 ID。
         :type LoadBalancerId: str
-        :param ListenerIds: 要查询的负载均衡监听器ID数组。
+        :param ListenerIds: 要查询的负载均衡监听器 ID 数组，最大为100个。
         :type ListenerIds: list of str
         :param Protocol: 要查询的监听器协议类型，取值 TCP | UDP | HTTP | HTTPS | TCP_SSL。
         :type Protocol: str
@@ -3681,9 +3681,9 @@ class DescribeTargetsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param LoadBalancerId: 负载均衡实例ID。
+        :param LoadBalancerId: 负载均衡实例 ID。
         :type LoadBalancerId: str
-        :param ListenerIds: 监听器ID列表。
+        :param ListenerIds: 监听器 ID 列表。ID 数量上限为20个。
         :type ListenerIds: list of str
         :param Protocol: 监听器协议类型。
         :type Protocol: str

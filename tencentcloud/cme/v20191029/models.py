@@ -247,7 +247,7 @@ class AudioTrackItem(AbstractModel):
 <ul>
 <li>VOD ：素材来源于云点播文件 ；</li>
 <li>CME ：视频来源于制作云媒体文件 ；</li>
-<li>EXTERNAL ：视频来源于媒资绑定。</li>
+<li>EXTERNAL ：视频来源于媒资绑定，如果媒体不是存储在腾讯云点播中或者云创中，都需要使用媒资绑定。</li>
 </ul>
         :type SourceType: str
         :param SourceMedia: 音频片段的媒体来源，可以是：
@@ -256,6 +256,8 @@ class AudioTrackItem(AbstractModel):
 <li>当 SourceType 为 CME 时，为制作云的媒体 ID，项目归属者必须对该云媒资有访问权限；</li>
 <li>当 SourceType 为 EXTERNAL 时，为媒资绑定的 Definition 与 MediaKey 中间用冒号分隔合并后的字符串，格式为 Definition:MediaKey 。</li>
 </ul>
+
+注：当 SourceType 为 EXTERNAL 时，目前仅支持外部 URL 的媒体直接导入项目中。当外部 URL Scheme 为 https 时，Definiton 为 1000000，MediaKey 为 URL 去掉 'https://'；当外部 URL Scheme 为 http 时，Definiton 为 1000001，MediaKey 为 URL 去掉 'http://'。
         :type SourceMedia: str
         :param SourceMediaStartTime: 音频片段取自媒体文件的起始时间，单位为秒。0 表示从媒体开始位置截取。默认为0。
         :type SourceMediaStartTime: float
@@ -2633,9 +2635,13 @@ class ExternalMediaInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param Definition: 媒资绑定模板 ID。
+        :param Definition: 媒资绑定模板 ID，可取值为：
+<li>1000000：媒体文件为 URL，且 URL Scheme 为 https；</li>
+<li>1000001：媒体文件为 URL，且 URL Scheme 为 http。</li>
+
+注：如果要支持其它存储平台或者类型的媒体绑定，请联系 [客服](https://cloud.tencent.com/online-service?from=doc_1156)。
         :type Definition: int
-        :param MediaKey: 媒资绑定媒体路径或文件 ID。
+        :param MediaKey: 媒资绑定媒体路径或文件 ID，如果要绑定 URL 类型的媒体，请将 URL 的 'https://' 或者 'http://' 去掉。
         :type MediaKey: str
         """
         self.Definition = None
@@ -3023,7 +3029,8 @@ class ImportMaterialRequest(AbstractModel):
         :param SourceType: 导入媒资类型，取值：
 <li>VOD：云点播文件；</li>
 <li>EXTERNAL：媒资绑定。</li>
-注意：如果不填默认为云点播文件。
+
+注意：如果不填默认为云点播文件，如果媒体存储在非腾讯云点播中，都需要使用媒资绑定。
         :type SourceType: str
         :param VodFileId: 云点播媒资 FileId，仅当 SourceType 为 VOD 时有效。
         :type VodFileId: str
@@ -3117,7 +3124,8 @@ class ImportMediaToProjectRequest(AbstractModel):
         :param SourceType: 导入媒资类型，取值：
 <li>VOD：云点播文件；</li>
 <li>EXTERNAL：媒资绑定。</li>
-注意：如果不填默认为云点播文件。
+
+注意：如果不填默认为云点播文件，如果媒体存储在非腾讯云点播中，都需要使用媒资绑定。
         :type SourceType: str
         :param VodFileId: 云点播媒资文件 Id，当 SourceType 取值 VOD 或者缺省的时候必填。
         :type VodFileId: str
@@ -5125,17 +5133,21 @@ class SlotReplacementInfo(AbstractModel):
         :param Id: 卡槽 Id。
         :type Id: int
         :param ReplacementType: 替换类型，可取值有：
-<li> AUDIO :音频;</li>
-<li> VIDEO :视频;</li>
-<li> IMAGE :图片。</li>
-注意：这里必须保证替换的素材类型与模板轨道数据的素材类型一致。
+<li> AUDIO ：音频；</li>
+<li> VIDEO ：视频；</li>
+<li> IMAGE ：图片；</li>
+<li> TEXT ：文本。</li>
+注意：这里必须保证替换的素材类型与模板轨道数据的素材类型一致。如果替换的类型为Text,，则必须保证模板轨道数据中相应卡槽的位置标记的是文本。
         :type ReplacementType: str
         :param MediaReplacementInfo: 媒体替换信息，仅当要替换的媒体类型为音频、视频、图片时有效。
         :type MediaReplacementInfo: :class:`tencentcloud.cme.v20191029.models.MediaReplacementInfo`
+        :param TextReplacementInfo: 文本替换信息，仅当要替换的卡槽类型为文本时有效。
+        :type TextReplacementInfo: :class:`tencentcloud.cme.v20191029.models.TextReplacementInfo`
         """
         self.Id = None
         self.ReplacementType = None
         self.MediaReplacementInfo = None
+        self.TextReplacementInfo = None
 
 
     def _deserialize(self, params):
@@ -5144,6 +5156,9 @@ class SlotReplacementInfo(AbstractModel):
         if params.get("MediaReplacementInfo") is not None:
             self.MediaReplacementInfo = MediaReplacementInfo()
             self.MediaReplacementInfo._deserialize(params.get("MediaReplacementInfo"))
+        if params.get("TextReplacementInfo") is not None:
+            self.TextReplacementInfo = TextReplacementInfo()
+            self.TextReplacementInfo._deserialize(params.get("TextReplacementInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5659,6 +5674,30 @@ class TeamMemberInfo(AbstractModel):
         
 
 
+class TextReplacementInfo(AbstractModel):
+    """模板插槽文本替换信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param Text: 替换的文本信息。
+        :type Text: str
+        """
+        self.Text = None
+
+
+    def _deserialize(self, params):
+        self.Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class ThirdPartyPublishInfo(AbstractModel):
     """第三方平台视频发布信息。
 
@@ -6038,7 +6077,7 @@ class VideoTrackItem(AbstractModel):
 <ul>
 <li>VOD ：媒体来源于云点播文件 。</li>
 <li>CME ：视频来源制作云媒体文件。</li>
-<li>EXTERNAL ：视频来源于媒资绑定。</li>
+<li>EXTERNAL ：视频来源于媒资绑定，如果媒体不是存储在腾讯云点播中或者云创中，都需要使用媒资绑定。</li>
 </ul>
         :type SourceType: str
         :param SourceMedia: 视频片段的媒体文件来源，取值为：
@@ -6047,6 +6086,8 @@ class VideoTrackItem(AbstractModel):
 <li>当 SourceType 为 CME 时，为制作云的媒体 ID，项目归属者必须对该云媒资有访问权限；</li>
 <li>当 SourceType 为 EXTERNAL 时，为媒资绑定的 Definition 与 MediaKey 中间用冒号分隔合并后的字符串，格式为 Definition:MediaKey 。</li>
 </ul>
+
+注：当 SourceType 为 EXTERNAL 时，目前仅支持外部 URL 的媒体直接导入项目中。当外部 URL Scheme 为 https 时，Definiton 为 1000000，MediaKey 为 URL 去掉 'https://'；当外部 URL Scheme 为 http 时，Definiton 为 1000001，MediaKey 为 URL 去掉 'http://'。
         :type SourceMedia: str
         :param SourceMediaStartTime: 视频片段取自媒体文件的起始时间，单位为秒。默认为0。
         :type SourceMediaStartTime: float

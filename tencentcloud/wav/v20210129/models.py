@@ -37,10 +37,10 @@ class ActivityDetail(AbstractModel):
         :param ActivityType: 活动类型，100:留资活动
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActivityType: int
-        :param StartTime: 活动开始时间，单位：秒
+        :param StartTime: 活动开始时间戳，单位：秒
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: int
-        :param EndTime: 活动结束时间，单位：秒
+        :param EndTime: 活动结束时间戳，单位：秒
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: int
         :param MainPhoto: 活动主图
@@ -49,7 +49,7 @@ class ActivityDetail(AbstractModel):
         :param PrivacyAgreementId: 协议编号
 注意：此字段可能返回 null，表示取不到有效值。
         :type PrivacyAgreementId: str
-        :param UpdateTime: 活动更新时间，单位：秒
+        :param UpdateTime: 活动更新时间戳，单位：秒
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: int
         :param ActivityDataList: 活动数据列表
@@ -288,7 +288,7 @@ class ChatArchivingDetail(AbstractModel):
         :type MsgId: str
         :param Action: 动作名称，switch表示切换企微账号，send表示企微普通消息
         :type Action: str
-        :param MsgType: 消息类型，当Action != "switch"时存在，比如video, text, voice 等，和企微开放文档一一对应
+        :param MsgType: 消息类型，当Action != "switch"时存在，例如video, text, voice 等，和企微开放文档一一对应
 https://open.work.weixin.qq.com/api/doc/90000/90135/91774
 注意：此字段可能返回 null，表示取不到有效值。
         :type MsgType: str
@@ -660,6 +660,35 @@ class ExternalContactTag(AbstractModel):
         
 
 
+class ExternalUserMappingInfo(AbstractModel):
+    """外部联系人映射信息
+
+    """
+
+    def __init__(self):
+        """
+        :param CorpExternalUserId: 企业主体对应的外部联系人userId
+        :type CorpExternalUserId: str
+        :param ExternalUserId: 乐销车应用主体对应的外部联系人, 当不存在好友关系时，该字段值为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalUserId: str
+        """
+        self.CorpExternalUserId = None
+        self.ExternalUserId = None
+
+
+    def _deserialize(self, params):
+        self.CorpExternalUserId = params.get("CorpExternalUserId")
+        self.ExternalUserId = params.get("ExternalUserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class FollowUser(AbstractModel):
     """添加了此外部联系人的企业成员信息
 
@@ -675,9 +704,9 @@ class FollowUser(AbstractModel):
         :param Description: 该成员对此外部联系人的描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
-        :param CreateTime: 该成员添加此外部联系人的时间,单位为秒
+        :param CreateTime: 该成员添加此外部联系人的时间戳，单位为秒
         :type CreateTime: int
-        :param AddWay: 该成员添加此客户的来源，具体含义详见来<a href="https://work.weixin.qq.com/api/doc/90000/90135/92114#%E6%9D%A5%E6%BA%90%E5%AE%9A%E4%B9%89">来源定义</a>
+        :param AddWay: 该成员添加此客户的来源，具体含义详见<a href="https://work.weixin.qq.com/api/doc/90000/90135/92114#%E6%9D%A5%E6%BA%90%E5%AE%9A%E4%B9%89">来源定义</a>
         :type AddWay: int
         :param OperUserId: 发起添加的userid，如果成员主动添加，为成员的userid；如果是客户主动添加，则为客户的外部联系人userid；如果是内部成员共享/管理员分配，则为对应的成员/管理员userid
         :type OperUserId: str
@@ -1301,6 +1330,64 @@ class QueryExternalContactListResponse(AbstractModel):
                 obj._deserialize(item)
                 self.PageData.append(obj)
         self.NextCursor = params.get("NextCursor")
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class QueryExternalUserMappingInfoRequest(AbstractModel):
+    """QueryExternalUserMappingInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CorpExternalUserIdList: 企业主体对应的外部联系人id列表，列表长度限制最大为50。
+        :type CorpExternalUserIdList: list of str
+        """
+        self.CorpExternalUserIdList = None
+
+
+    def _deserialize(self, params):
+        self.CorpExternalUserIdList = params.get("CorpExternalUserIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class QueryExternalUserMappingInfoResponse(AbstractModel):
+    """QueryExternalUserMappingInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ExternalUserIdMapping: 外部联系人映射信息, 只返回映射成功的记录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalUserIdMapping: list of ExternalUserMappingInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ExternalUserIdMapping = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ExternalUserIdMapping") is not None:
+            self.ExternalUserIdMapping = []
+            for item in params.get("ExternalUserIdMapping"):
+                obj = ExternalUserMappingInfo()
+                obj._deserialize(item)
+                self.ExternalUserIdMapping.append(obj)
         self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

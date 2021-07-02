@@ -55,9 +55,7 @@ class CmeClient(AbstractClient):
 
 
     def CreateClass(self, request):
-        """新增分类，用于管理素材。
-        <li>分类层数不能超过10；</li>
-        <li>子分类数不能超过10。</li>
+        """新增分类，用于管理素材。分类层数不能超过20。
 
         :param request: Request instance for CreateClass.
         :type request: :class:`tencentcloud.cme.v20191029.models.CreateClassRequest`

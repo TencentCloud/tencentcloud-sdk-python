@@ -4723,7 +4723,7 @@ class DescribeMalwaresResponse(AbstractModel):
         """
         :param TotalCount: 木马总数。
         :type TotalCount: int
-        :param Malwares: Malware数组。
+        :param Malwares: 木马相关信息。
         :type Malwares: list of Malware
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5680,9 +5680,9 @@ class DescribeRiskDnsListRequest(AbstractModel):
 <li>MergeBeginTime - String - 是否必填：否 - 最近访问开始时间</li>
 <li>MergeEndTime - String - 是否必填：否 - 最近访问结束时间</li>
         :type Filters: list of Filter
-        :param Order: 排序方式
+        :param Order: 排序方式：根据请求次数排序：asc-升序/desc-降序
         :type Order: str
-        :param By: 排序字段
+        :param By: 排序字段：AccessCount-请求次数
         :type By: str
         """
         self.Limit = None
@@ -5719,13 +5719,27 @@ class DescribeRiskDnsListResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param RiskDnsList: 恶意请求列表数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskDnsList: list of RiskDnsList
+        :param TotalCount: 总数量
+        :type TotalCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.RiskDnsList = None
+        self.TotalCount = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("RiskDnsList") is not None:
+            self.RiskDnsList = []
+            for item in params.get("RiskDnsList"):
+                obj = RiskDnsList()
+                obj._deserialize(item)
+                self.RiskDnsList.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -5749,7 +5763,7 @@ class DescribeScanMalwareScheduleResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Schedule: 扫描进度
+        :param Schedule: 扫描进度（单位：%）
         :type Schedule: int
         :param RiskFileNumber: 风险文件数,当进度满了以后才有该值
         :type RiskFileNumber: int
@@ -10128,7 +10142,7 @@ class RecoverMalwaresRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Ids: 木马Id数组,单次最大删除不能超过200条
+        :param Ids: 木马Id数组（单次最大恢复不超过100条）
         :type Ids: list of int non-negative
         """
         self.Ids = None
@@ -10470,6 +10484,106 @@ class ReverseShellRule(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.ModifyTime = params.get("ModifyTime")
         self.Hostip = params.get("Hostip")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class RiskDnsList(AbstractModel):
+    """恶意请求列表
+
+    """
+
+    def __init__(self):
+        """
+        :param Url: 对外访问域名
+        :type Url: str
+        :param AccessCount: 访问次数
+        :type AccessCount: int
+        :param ProcessName: 进程名
+        :type ProcessName: str
+        :param ProcessMd5: 进程MD5
+        :type ProcessMd5: str
+        :param GlobalRuleId: 是否为全局规则，0否，1是
+        :type GlobalRuleId: int
+        :param UserRuleId: 用户规则id
+        :type UserRuleId: int
+        :param Status: 状态；0-待处理，2-已加白，3-非信任状态
+        :type Status: int
+        :param CreateTime: 首次访问时间
+        :type CreateTime: str
+        :param MergeTime: 最近访问时间
+        :type MergeTime: str
+        :param Quuid: 唯一 Quuid
+        :type Quuid: str
+        :param HostIp: 主机ip
+        :type HostIp: str
+        :param Alias: 别名
+        :type Alias: str
+        :param Description: 描述
+        :type Description: str
+        :param Id: 唯一ID
+        :type Id: int
+        :param Reference: 参考
+        :type Reference: str
+        :param CmdLine: 命令行
+        :type CmdLine: str
+        :param Pid: 进程号
+        :type Pid: int
+        :param Uuid: 唯一UUID
+        :type Uuid: str
+        :param SuggestScheme: 建议方案
+        :type SuggestScheme: str
+        :param Tags: 标签特性
+        :type Tags: list of str
+        """
+        self.Url = None
+        self.AccessCount = None
+        self.ProcessName = None
+        self.ProcessMd5 = None
+        self.GlobalRuleId = None
+        self.UserRuleId = None
+        self.Status = None
+        self.CreateTime = None
+        self.MergeTime = None
+        self.Quuid = None
+        self.HostIp = None
+        self.Alias = None
+        self.Description = None
+        self.Id = None
+        self.Reference = None
+        self.CmdLine = None
+        self.Pid = None
+        self.Uuid = None
+        self.SuggestScheme = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
+        self.AccessCount = params.get("AccessCount")
+        self.ProcessName = params.get("ProcessName")
+        self.ProcessMd5 = params.get("ProcessMd5")
+        self.GlobalRuleId = params.get("GlobalRuleId")
+        self.UserRuleId = params.get("UserRuleId")
+        self.Status = params.get("Status")
+        self.CreateTime = params.get("CreateTime")
+        self.MergeTime = params.get("MergeTime")
+        self.Quuid = params.get("Quuid")
+        self.HostIp = params.get("HostIp")
+        self.Alias = params.get("Alias")
+        self.Description = params.get("Description")
+        self.Id = params.get("Id")
+        self.Reference = params.get("Reference")
+        self.CmdLine = params.get("CmdLine")
+        self.Pid = params.get("Pid")
+        self.Uuid = params.get("Uuid")
+        self.SuggestScheme = params.get("SuggestScheme")
+        self.Tags = params.get("Tags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11048,7 +11162,7 @@ class TrustMalwaresRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Ids: 木马ID数组。
+        :param Ids: 木马ID数组（单次不超过的最大条数：100）
         :type Ids: list of int non-negative
         """
         self.Ids = None

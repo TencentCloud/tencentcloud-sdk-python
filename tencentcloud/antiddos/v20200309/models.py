@@ -326,6 +326,10 @@ class BGPInstance(AbstractModel):
 "failed"：绑定失败
 ]
         :type BoundStatus: str
+        :param DDoSLevel: 四层防护严格级别
+        :type DDoSLevel: str
+        :param CCEnable: CC防护开关
+        :type CCEnable: int
         """
         self.InstanceDetail = None
         self.SpecificationLimit = None
@@ -338,6 +342,8 @@ class BGPInstance(AbstractModel):
         self.PackInfo = None
         self.EipProductInfos = None
         self.BoundStatus = None
+        self.DDoSLevel = None
+        self.CCEnable = None
 
 
     def _deserialize(self, params):
@@ -367,6 +373,8 @@ class BGPInstance(AbstractModel):
                 obj._deserialize(item)
                 self.EipProductInfos.append(obj)
         self.BoundStatus = params.get("BoundStatus")
+        self.DDoSLevel = params.get("DDoSLevel")
+        self.CCEnable = params.get("CCEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -488,6 +496,79 @@ class BlackWhiteIpRelation(AbstractModel):
         
 
 
+class BoundIpInfo(AbstractModel):
+    """高防包绑定IP对象
+
+    """
+
+    def __init__(self):
+        """
+        :param Ip: IP地址
+        :type Ip: str
+        :param BizType: 绑定的产品分类，取值[public（CVM、CLB产品），bm（黑石产品），eni（弹性网卡），vpngw（VPN网关）， natgw（NAT网关），waf（Web应用安全产品），fpc（金融产品），gaap（GAAP产品）, other(托管IP)]
+        :type BizType: str
+        :param InstanceId: IP所属的资源实例ID，当绑定新IP时必须填写此字段；例如是弹性网卡的IP，则InstanceId填写弹性网卡的ID(eni-*); 如果绑定的是托管IP没有对应的资源实例ID，请填写"none";
+        :type InstanceId: str
+        :param DeviceType: 产品分类下的子类型，取值[cvm（CVM），lb（负载均衡器），eni（弹性网卡），vpngw（VPN），natgw（NAT），waf（WAF），fpc（金融），gaap（GAAP），other（托管IP），eip（黑石弹性IP）]
+        :type DeviceType: str
+        :param IspCode: 运营商，0：电信；1：联通；2：移动；5：BGP
+        :type IspCode: int
+        """
+        self.Ip = None
+        self.BizType = None
+        self.InstanceId = None
+        self.DeviceType = None
+        self.IspCode = None
+
+
+    def _deserialize(self, params):
+        self.Ip = params.get("Ip")
+        self.BizType = params.get("BizType")
+        self.InstanceId = params.get("InstanceId")
+        self.DeviceType = params.get("DeviceType")
+        self.IspCode = params.get("IspCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class CertIdInsL7Rules(AbstractModel):
+    """使用证书的规则集合
+
+    """
+
+    def __init__(self):
+        """
+        :param L7Rules: 使用证书的规则列表
+        :type L7Rules: list of InsL7Rules
+        :param CertId: 证书ID
+        :type CertId: str
+        """
+        self.L7Rules = None
+        self.CertId = None
+
+
+    def _deserialize(self, params):
+        if params.get("L7Rules") is not None:
+            self.L7Rules = []
+            for item in params.get("L7Rules"):
+                obj = InsL7Rules()
+                obj._deserialize(item)
+                self.L7Rules.append(obj)
+        self.CertId = params.get("CertId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class CreateBlackWhiteIpListRequest(AbstractModel):
     """CreateBlackWhiteIpList请求参数结构体
 
@@ -534,6 +615,86 @@ class CreateBlackWhiteIpListResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class CreateBoundIPRequest(AbstractModel):
+    """CreateBoundIP请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Business: 大禹子产品代号（bgp表示独享包；bgp-multip表示共享包）
+        :type Business: str
+        :param Id: 资源实例ID
+        :type Id: str
+        :param BoundDevList: 绑定到资源实例的IP数组，当资源实例为高防包(独享包)时，数组只允许填1个IP；当没有要绑定的IP时可以为空数组；但是BoundDevList和UnBoundDevList至少有一个不为空；
+        :type BoundDevList: list of BoundIpInfo
+        :param UnBoundDevList: 与资源实例解绑的IP数组，当资源实例为高防包(独享包)时，数组只允许填1个IP；当没有要解绑的IP时可以为空数组；但是BoundDevList和UnBoundDevList至少有一个不为空；
+        :type UnBoundDevList: list of BoundIpInfo
+        :param CopyPolicy: 已弃用，不填
+        :type CopyPolicy: str
+        """
+        self.Business = None
+        self.Id = None
+        self.BoundDevList = None
+        self.UnBoundDevList = None
+        self.CopyPolicy = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.Id = params.get("Id")
+        if params.get("BoundDevList") is not None:
+            self.BoundDevList = []
+            for item in params.get("BoundDevList"):
+                obj = BoundIpInfo()
+                obj._deserialize(item)
+                self.BoundDevList.append(obj)
+        if params.get("UnBoundDevList") is not None:
+            self.UnBoundDevList = []
+            for item in params.get("UnBoundDevList"):
+                obj = BoundIpInfo()
+                obj._deserialize(item)
+                self.UnBoundDevList.append(obj)
+        self.CopyPolicy = params.get("CopyPolicy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class CreateBoundIPResponse(AbstractModel):
+    """CreateBoundIP返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Success: 成功码
+        :type Success: :class:`tencentcloud.antiddos.v20200309.models.SuccessCode`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Success = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Success") is not None:
+            self.Success = SuccessCode()
+            self.Success._deserialize(params.get("Success"))
         self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -807,6 +968,69 @@ class CreateIPAlarmThresholdConfigResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class CreateL7RuleCertsRequest(AbstractModel):
+    """CreateL7RuleCerts请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CertId: SSL证书ID
+        :type CertId: str
+        :param L7Rules: L7域名转发规则列表
+        :type L7Rules: list of InsL7Rules
+        """
+        self.CertId = None
+        self.L7Rules = None
+
+
+    def _deserialize(self, params):
+        self.CertId = params.get("CertId")
+        if params.get("L7Rules") is not None:
+            self.L7Rules = []
+            for item in params.get("L7Rules"):
+                obj = InsL7Rules()
+                obj._deserialize(item)
+                self.L7Rules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class CreateL7RuleCertsResponse(AbstractModel):
+    """CreateL7RuleCerts返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Success: 成功码
+        :type Success: :class:`tencentcloud.antiddos.v20200309.models.SuccessCode`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Success = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Success") is not None:
+            self.Success = SuccessCode()
+            self.Success._deserialize(params.get("Success"))
         self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -1736,6 +1960,67 @@ class DescribeDefaultAlarmThresholdResponse(AbstractModel):
                 obj = DefaultAlarmThreshold()
                 obj._deserialize(item)
                 self.DefaultAlarmConfigList.append(obj)
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DescribeL7RulesBySSLCertIdRequest(AbstractModel):
+    """DescribeL7RulesBySSLCertId请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 域名状态，可取bindable, binded, opened, closed, all，all表示全部状态
+        :type Status: str
+        :param CertIds: 证书ID列表
+        :type CertIds: list of str
+        """
+        self.Status = None
+        self.CertIds = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.CertIds = params.get("CertIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DescribeL7RulesBySSLCertIdResponse(AbstractModel):
+    """DescribeL7RulesBySSLCertId返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CertSet: 证书规则集合
+        :type CertSet: list of CertIdInsL7Rules
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CertSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CertSet") is not None:
+            self.CertSet = []
+            for item in params.get("CertSet"):
+                obj = CertIdInsL7Rules()
+                obj._deserialize(item)
+                self.CertSet.append(obj)
         self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -2977,7 +3262,7 @@ class IPLineInfo(AbstractModel):
 "ctcc"：电信线路IP
 "cucc"：联通线路IP
 "cmcc"：移动线路IP
-"abroad"：海外线路IP
+"abroad"：境外线路IP
 ]
         :type Type: str
         :param Eip: 线路IP
@@ -2990,6 +3275,54 @@ class IPLineInfo(AbstractModel):
     def _deserialize(self, params):
         self.Type = params.get("Type")
         self.Eip = params.get("Eip")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class InsL7Rules(AbstractModel):
+    """实例7层规则
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 规则状态，0: 正常运行中, 1: 配置规则中(配置生效中), 2: 配置规则失败（配置生效失败）, 3: 删除规则中(删除生效中), 5: 删除规则失败(删除失败), 6: 等待添加规则, 7: 等待删除规则, 8: 等待上传证书, 9: 规则对应的资源不存在，被隔离, 10:等待修改规则, 11:配置修改中
+        :type Status: int
+        :param Domain: 域名
+        :type Domain: str
+        :param Protocol: 协议
+        :type Protocol: str
+        :param InsId: 实例ID
+        :type InsId: str
+        :param AppId: 用户AppID
+        :type AppId: str
+        :param VirtualPort: 高防端口
+        :type VirtualPort: str
+        :param SSLId: 证书ID
+        :type SSLId: str
+        """
+        self.Status = None
+        self.Domain = None
+        self.Protocol = None
+        self.InsId = None
+        self.AppId = None
+        self.VirtualPort = None
+        self.SSLId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.Domain = params.get("Domain")
+        self.Protocol = params.get("Protocol")
+        self.InsId = params.get("InsId")
+        self.AppId = params.get("AppId")
+        self.VirtualPort = params.get("VirtualPort")
+        self.SSLId = params.get("SSLId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3981,6 +4314,34 @@ class StaticPackRelation(AbstractModel):
         self.ForwardRulesLimit = params.get("ForwardRulesLimit")
         self.AutoRenewFlag = params.get("AutoRenewFlag")
         self.CurDeadline = params.get("CurDeadline")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class SuccessCode(AbstractModel):
+    """操作返回码，只用于返回成功的情况
+
+    """
+
+    def __init__(self):
+        """
+        :param Message: 描述
+        :type Message: str
+        :param Code: 成功/错误码
+        :type Code: str
+        """
+        self.Message = None
+        self.Code = None
+
+
+    def _deserialize(self, params):
+        self.Message = params.get("Message")
+        self.Code = params.get("Code")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

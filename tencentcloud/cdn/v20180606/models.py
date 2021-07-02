@@ -3685,16 +3685,20 @@ mainland: 国内节点
 overseas: 海外节点
 global: 全球节点
         :type Area: str
+        :param Segment: 是否以IP段的格式返回。
+        :type Segment: bool
         """
         self.Domain = None
         self.Layer = None
         self.Area = None
+        self.Segment = None
 
 
     def _deserialize(self, params):
         self.Domain = params.get("Domain")
         self.Layer = params.get("Layer")
         self.Area = params.get("Area")
+        self.Segment = params.get("Segment")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5841,12 +5845,16 @@ class EnableCachesRequest(AbstractModel):
         """
         :param Urls: 解封 URL 列表
         :type Urls: list of str
+        :param Date: URL封禁日期
+        :type Date: str
         """
         self.Urls = None
+        self.Date = None
 
 
     def _deserialize(self, params):
         self.Urls = params.get("Urls")
+        self.Date = params.get("Date")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

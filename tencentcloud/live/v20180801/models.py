@@ -5677,7 +5677,7 @@ class DescribeLiveTranscodeDetailInfoRequest(AbstractModel):
         :type StreamName: str
         :param DayTime: 查询时间，北京时间，
 格式：yyyymmdd。
-注意：支持查询近1个月内某天的详细数据。
+注意：支持查询近1个月内某天的详细数据，截止到昨天。
         :type DayTime: str
         :param PageNum: 页数，默认1，
 不超过100页。
@@ -5691,7 +5691,7 @@ class DescribeLiveTranscodeDetailInfoRequest(AbstractModel):
         :type StartDayTime: str
         :param EndDayTime: 结束天时间，北京时间，
 格式：yyyymmdd。
-注意：支持查询近1个月内的详细数据，注意DayTime 与（StartDayTime，EndDayTime）必须要传一个，如果都传，会以DayTime为准 。
+注意：支持查询近1个月内的详细数据，截止到昨天，注意DayTime 与（StartDayTime，EndDayTime）必须要传一个，如果都传，会以DayTime为准 。
         :type EndDayTime: str
         """
         self.PushDomain = None
@@ -9995,11 +9995,11 @@ class RecordParam(AbstractModel):
         """
         :param RecordInterval: 录制间隔。
 单位秒，默认：1800。
-取值范围：300-7200。
+取值范围：60-7200。
 此参数对 HLS 无效，当录制 HLS 时从推流到断流生成一个文件。
         :type RecordInterval: int
         :param StorageTime: 录制存储时长。
-单位秒，取值范围： 0 - 93312000。
+单位秒，取值范围： 0 - 1500天。
 0：表示永久存储。
         :type StorageTime: int
         :param Enable: 是否开启当前格式录制，默认值为0，0：否， 1：是。
@@ -10026,12 +10026,26 @@ class RecordParam(AbstractModel):
 
 若未设置默认录制文件名为{StreamID}_{StartYear}-{StartMonth}-{StartDay}-{StartHour}-{StartMinute}-{StartSecond}_{EndYear}-{EndMonth}-{EndDay}-{EndHour}-{EndMinute}-{EndSecond}
         :type VodFileName: str
+        :param Procedure: 任务流
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Procedure: str
+        :param StorageMode: 视频存储策略。
+normal：标准存储。
+cold：低频存储。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageMode: str
+        :param ClassId: 点播应用分类
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClassId: int
         """
         self.RecordInterval = None
         self.StorageTime = None
         self.Enable = None
         self.VodSubAppId = None
         self.VodFileName = None
+        self.Procedure = None
+        self.StorageMode = None
+        self.ClassId = None
 
 
     def _deserialize(self, params):
@@ -10040,6 +10054,9 @@ class RecordParam(AbstractModel):
         self.Enable = params.get("Enable")
         self.VodSubAppId = params.get("VodSubAppId")
         self.VodFileName = params.get("VodFileName")
+        self.Procedure = params.get("Procedure")
+        self.StorageMode = params.get("StorageMode")
+        self.ClassId = params.get("ClassId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

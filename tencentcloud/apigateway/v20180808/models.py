@@ -4636,6 +4636,10 @@ class DomainSetList(AbstractModel):
         :type Protocol: str
         :param NetType: 网络类型（'INNER' 或 'OUTER'）。
         :type NetType: str
+        :param IsForcedHttps: 是否将HTTP请求强制跳转 HTTPS，默认为false。参数为 true时，API网关会将所有使用该自定义域名的 HTTP 协议的请求重定向至 HTTPS 协议进行转发。
+        :type IsForcedHttps: bool
+        :param RegistrationStatus: 域名备案注册状态
+        :type RegistrationStatus: bool
         """
         self.DomainName = None
         self.Status = None
@@ -4643,6 +4647,8 @@ class DomainSetList(AbstractModel):
         self.IsDefaultMapping = None
         self.Protocol = None
         self.NetType = None
+        self.IsForcedHttps = None
+        self.RegistrationStatus = None
 
 
     def _deserialize(self, params):
@@ -4652,6 +4658,8 @@ class DomainSetList(AbstractModel):
         self.IsDefaultMapping = params.get("IsDefaultMapping")
         self.Protocol = params.get("Protocol")
         self.NetType = params.get("NetType")
+        self.IsForcedHttps = params.get("IsForcedHttps")
+        self.RegistrationStatus = params.get("RegistrationStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

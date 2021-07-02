@@ -200,6 +200,37 @@ class TiiaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DetectLabelBeta(self, request):
+        """图像标签测试接口
+
+        >
+        - 公共参数中的签名方式必须指定为V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
+
+        :param request: Request instance for DetectLabelBeta.
+        :type request: :class:`tencentcloud.tiia.v20190529.models.DetectLabelBetaRequest`
+        :rtype: :class:`tencentcloud.tiia.v20190529.models.DetectLabelBetaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DetectLabelBeta", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DetectLabelBetaResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DetectMisbehavior(self, request):
         """可以识别输入的图片中是否包含不良行为，例如打架斗殴、赌博、抽烟等，可以应用于广告图、直播截图、短视频截图等审核，减少不良行为对平台内容质量的影响，维护健康向上的互联网环境。
         >

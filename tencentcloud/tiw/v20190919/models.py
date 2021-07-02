@@ -104,6 +104,10 @@ tar.gz： 生成`.tar.gz`压缩包
         :type CompressFileType: str
         :param ExtraData: 内部参数
         :type ExtraData: str
+        :param Priority: 文档转码优先级，支持填入以下值：<br/>
+- low: 低优先级转码，能支持500MB（下载超时时间10分钟）以及2000页文档，但资源有限可能会有比较长时间的排队，请酌情使用该功能。<br/>
+- 不填表示正常优先级转码，支持200MB文件（下载超时时间2分钟），500页以内的文档进行转码
+        :type Priority: str
         """
         self.SdkAppId = None
         self.Url = None
@@ -112,6 +116,7 @@ tar.gz： 生成`.tar.gz`压缩包
         self.ThumbnailResolution = None
         self.CompressFileType = None
         self.ExtraData = None
+        self.Priority = None
 
 
     def _deserialize(self, params):
@@ -122,6 +127,7 @@ tar.gz： 生成`.tar.gz`压缩包
         self.ThumbnailResolution = params.get("ThumbnailResolution")
         self.CompressFileType = params.get("CompressFileType")
         self.ExtraData = params.get("ExtraData")
+        self.Priority = params.get("Priority")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -1013,6 +1013,10 @@ class CreateAlarmPolicyRequest(AbstractModel):
         :type NoticeIds: list of str
         :param TriggerTasks: 触发任务列表
         :type TriggerTasks: list of AlarmPolicyTriggerTask
+        :param Filter: 全局过滤条件
+        :type Filter: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyFilter`
+        :param GroupBy: 聚合维度列表，指定按哪些维度 key 来做 group by
+        :type GroupBy: list of str
         """
         self.Module = None
         self.PolicyName = None
@@ -1026,6 +1030,8 @@ class CreateAlarmPolicyRequest(AbstractModel):
         self.EventCondition = None
         self.NoticeIds = None
         self.TriggerTasks = None
+        self.Filter = None
+        self.GroupBy = None
 
 
     def _deserialize(self, params):
@@ -1050,6 +1056,10 @@ class CreateAlarmPolicyRequest(AbstractModel):
                 obj = AlarmPolicyTriggerTask()
                 obj._deserialize(item)
                 self.TriggerTasks.append(obj)
+        if params.get("Filter") is not None:
+            self.Filter = AlarmPolicyFilter()
+            self.Filter._deserialize(params.get("Filter"))
+        self.GroupBy = params.get("GroupBy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1949,14 +1959,18 @@ class DescribeAlarmEventsRequest(AbstractModel):
         :type Module: str
         :param Namespace: 告警策略类型，由 DescribeAllNamespaces 获得，例如 cvm_device
         :type Namespace: str
+        :param MonitorType: 监控类型，如 MT_QCE。如果不填默认为 MT_QCE。
+        :type MonitorType: str
         """
         self.Module = None
         self.Namespace = None
+        self.MonitorType = None
 
 
     def _deserialize(self, params):
         self.Module = params.get("Module")
         self.Namespace = params.get("Namespace")
+        self.MonitorType = params.get("MonitorType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5263,7 +5277,7 @@ class GetMonitorDataRequest(AbstractModel):
         :type Namespace: str
         :param MetricName: 指标名称，如CPUUsage，仅支持单指标拉取。各个云产品的详细指标说明请参阅各个产品[监控指标](https://cloud.tencent.com/document/product/248/6140)文档，对应的指标英文名即为MetricName
         :type MetricName: str
-        :param Instances: 实例对象的维度组合，格式为key-value键值对形式的集合。如[{"Name":"InstanceId","Value":"ins-j0hk02zo"}]。单请求最多支持批量拉取10个实例的监控数据。各个云产品的维度请参阅各个产品[监控指标](https://cloud.tencent.com/document/product/248/6140)文档，对应的维度列即为维度组合的key,value为key对应的值
+        :param Instances: 实例对象的维度组合，格式为key-value键值对形式的集合。不同类型的实例字段完全不同，如CVM为[{"Name":"InstanceId","Value":"ins-j0hk02zo"}]，Ckafka为[{"Name":"instanceId","Value":"ckafka-l49k54dd"}]，COS为[{"Name":"appid","Value":"1258344699"},{"Name":"bucket","Value":"rig-1258344699"}]。各个云产品的维度请参阅各个产品[监控指标](https://cloud.tencent.com/document/product/248/6140)文档，对应的维度列即为维度组合的key，value为key对应的值。单请求最多支持批量拉取10个实例的监控数据。
         :type Instances: list of Instance
         :param Period: 监控统计周期，如60。默认为取值为300，单位为s。每个指标支持的统计周期不一定相同，各个云产品支持的统计周期请参阅各个产品[监控指标](https://cloud.tencent.com/document/product/248/6140)文档，对应的统计周期列即为支持的统计周期。单请求的数据点数限制为1440个。
         :type Period: int
@@ -5846,12 +5860,18 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
         :type Condition: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyCondition`
         :param EventCondition: 事件触发条件
         :type EventCondition: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyEventCondition`
+        :param Filter: 全局过滤条件
+        :type Filter: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyFilter`
+        :param GroupBy: 聚合维度列表，指定按哪些维度 key 来做 group by
+        :type GroupBy: list of str
         """
         self.Module = None
         self.PolicyId = None
         self.ConditionTemplateId = None
         self.Condition = None
         self.EventCondition = None
+        self.Filter = None
+        self.GroupBy = None
 
 
     def _deserialize(self, params):
@@ -5864,6 +5884,10 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
         if params.get("EventCondition") is not None:
             self.EventCondition = AlarmPolicyEventCondition()
             self.EventCondition._deserialize(params.get("EventCondition"))
+        if params.get("Filter") is not None:
+            self.Filter = AlarmPolicyFilter()
+            self.Filter._deserialize(params.get("Filter"))
+        self.GroupBy = params.get("GroupBy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

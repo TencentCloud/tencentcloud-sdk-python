@@ -922,6 +922,34 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeClusterControllers(self, request):
+        """用于查询Kubernetes的各个原生控制器是否开启
+
+        :param request: Request instance for DescribeClusterControllers.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterControllersRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClusterControllersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeClusterControllers", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClusterControllersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeClusterEndpointStatus(self, request):
         """查询集群访问端口状态(独立集群开启内网/外网访问，托管集群支持开启内网访问)
 

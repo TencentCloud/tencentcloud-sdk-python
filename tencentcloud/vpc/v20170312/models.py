@@ -5061,6 +5061,72 @@ class CreateVpnGatewayResponse(AbstractModel):
         
 
 
+class CreateVpnGatewayRoutesRequest(AbstractModel):
+    """CreateVpnGatewayRoutes请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpnGatewayId: VPN网关的ID
+        :type VpnGatewayId: str
+        :param Routes: VPN网关目的路由列表
+        :type Routes: list of VpnGatewayRoute
+        """
+        self.VpnGatewayId = None
+        self.Routes = None
+
+
+    def _deserialize(self, params):
+        self.VpnGatewayId = params.get("VpnGatewayId")
+        if params.get("Routes") is not None:
+            self.Routes = []
+            for item in params.get("Routes"):
+                obj = VpnGatewayRoute()
+                obj._deserialize(item)
+                self.Routes.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class CreateVpnGatewayRoutesResponse(AbstractModel):
+    """CreateVpnGatewayRoutes返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Routes: VPN网关目的路由
+        :type Routes: list of VpnGatewayRoute
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Routes = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Routes") is not None:
+            self.Routes = []
+            for item in params.get("Routes"):
+                obj = VpnGatewayRoute()
+                obj._deserialize(item)
+                self.Routes.append(obj)
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class CrossBorderCompliance(AbstractModel):
     """合规化审批单
 
@@ -6912,6 +6978,58 @@ class DeleteVpnGatewayRequest(AbstractModel):
 
 class DeleteVpnGatewayResponse(AbstractModel):
     """DeleteVpnGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DeleteVpnGatewayRoutesRequest(AbstractModel):
+    """DeleteVpnGatewayRoutes请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpnGatewayId: VPN网关实例ID
+        :type VpnGatewayId: str
+        :param RouteIds: 路由ID信息列表
+        :type RouteIds: list of str
+        """
+        self.VpnGatewayId = None
+        self.RouteIds = None
+
+
+    def _deserialize(self, params):
+        self.VpnGatewayId = params.get("VpnGatewayId")
+        self.RouteIds = params.get("RouteIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DeleteVpnGatewayRoutesResponse(AbstractModel):
+    """DeleteVpnGatewayRoutes返回参数结构体
 
     """
 
@@ -11612,6 +11730,80 @@ class DescribeVpnGatewayCcnRoutesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.RouteSet.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DescribeVpnGatewayRoutesRequest(AbstractModel):
+    """DescribeVpnGatewayRoutes请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpnGatewayId: VPN网关的ID
+        :type VpnGatewayId: str
+        :param Filters: 过滤条件,  条件包括(DestinationCidr, InstanceId,InstanceType)
+        :type Filters: list of Filter
+        :param Offset: 偏移量, 默认0
+        :type Offset: int
+        :param Limit: 单页个数, 默认20, 最大值100
+        :type Limit: int
+        """
+        self.VpnGatewayId = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.VpnGatewayId = params.get("VpnGatewayId")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DescribeVpnGatewayRoutesResponse(AbstractModel):
+    """DescribeVpnGatewayRoutes返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Routes: VPN网关目的路由
+        :type Routes: list of VpnGatewayRoute
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Routes = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Routes") is not None:
+            self.Routes = []
+            for item in params.get("Routes"):
+                obj = VpnGatewayRoute()
+                obj._deserialize(item)
+                self.Routes.append(obj)
         self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -16949,6 +17141,73 @@ class ModifyVpnGatewayCcnRoutesResponse(AbstractModel):
         
 
 
+class ModifyVpnGatewayRoutesRequest(AbstractModel):
+    """ModifyVpnGatewayRoutes请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VpnGatewayId: Vpn网关id
+        :type VpnGatewayId: str
+        :param Routes: 路由修改参数
+        :type Routes: list of VpnGatewayRouteModify
+        """
+        self.VpnGatewayId = None
+        self.Routes = None
+
+
+    def _deserialize(self, params):
+        self.VpnGatewayId = params.get("VpnGatewayId")
+        if params.get("Routes") is not None:
+            self.Routes = []
+            for item in params.get("Routes"):
+                obj = VpnGatewayRouteModify()
+                obj._deserialize(item)
+                self.Routes.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class ModifyVpnGatewayRoutesResponse(AbstractModel):
+    """ModifyVpnGatewayRoutes返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Routes: VPN路由信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Routes: list of VpnGatewayRoute
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Routes = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Routes") is not None:
+            self.Routes = []
+            for item in params.get("Routes"):
+                obj = VpnGatewayRoute()
+                obj._deserialize(item)
+                self.Routes.append(obj)
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class NatGateway(AbstractModel):
     """NAT网关对象。
 
@@ -20626,6 +20885,90 @@ class VpnGatewayQuota(AbstractModel):
         self.Bandwidth = params.get("Bandwidth")
         self.Cname = params.get("Cname")
         self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class VpnGatewayRoute(AbstractModel):
+    """Vpn网关目的路由
+
+    """
+
+    def __init__(self):
+        """
+        :param DestinationCidrBlock: 目的端IDC网段
+        :type DestinationCidrBlock: str
+        :param InstanceType: 下一跳类型（关联实例类型）可选值:"VPNCONN"(VPN通道), "CCN"(CCN实例)
+        :type InstanceType: str
+        :param InstanceId: 下一跳实例ID
+        :type InstanceId: str
+        :param Priority: 优先级, 可选值: 0, 100
+        :type Priority: int
+        :param Status: 启用状态, 可选值: "ENABLE"(启用), "DISABLE"(禁用)
+        :type Status: str
+        :param RouteId: 路由条目ID
+        :type RouteId: str
+        :param Type: 路由类型, 可选值: "VPC"(VPC路由), "CCN"(云联网传播路由), "Static"(静态路由), "BGP"(BGP路由)
+        :type Type: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param UpdateTime: 更新时间
+        :type UpdateTime: str
+        """
+        self.DestinationCidrBlock = None
+        self.InstanceType = None
+        self.InstanceId = None
+        self.Priority = None
+        self.Status = None
+        self.RouteId = None
+        self.Type = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.DestinationCidrBlock = params.get("DestinationCidrBlock")
+        self.InstanceType = params.get("InstanceType")
+        self.InstanceId = params.get("InstanceId")
+        self.Priority = params.get("Priority")
+        self.Status = params.get("Status")
+        self.RouteId = params.get("RouteId")
+        self.Type = params.get("Type")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class VpnGatewayRouteModify(AbstractModel):
+    """修改VPN状态参数
+
+    """
+
+    def __init__(self):
+        """
+        :param RouteId: Vpn网关路由ID
+        :type RouteId: str
+        :param Status: Vpn网关状态, ENABEL 启用, DISABLE禁用
+        :type Status: str
+        """
+        self.RouteId = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.RouteId = params.get("RouteId")
+        self.Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

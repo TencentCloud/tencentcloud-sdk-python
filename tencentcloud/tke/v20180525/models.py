@@ -1190,6 +1190,34 @@ class CommonName(AbstractModel):
         
 
 
+class ControllerStatus(AbstractModel):
+    """集群中控制器的状态描述
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 控制器的名字
+        :type Name: str
+        :param Enabled: 控制器是否开启
+        :type Enabled: bool
+        """
+        self.Name = None
+        self.Enabled = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
 class CreateClusterAsGroupRequest(AbstractModel):
     """CreateClusterAsGroup请求参数结构体
 
@@ -2062,12 +2090,16 @@ class DataDisk(AbstractModel):
         :param MountTarget: 挂载目录
 注意：此字段可能返回 null，表示取不到有效值。
         :type MountTarget: str
+        :param DiskPartition: 挂载设备名或分区名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskPartition: str
         """
         self.DiskType = None
         self.FileSystem = None
         self.DiskSize = None
         self.AutoFormatAndMount = None
         self.MountTarget = None
+        self.DiskPartition = None
 
 
     def _deserialize(self, params):
@@ -2076,6 +2108,7 @@ class DataDisk(AbstractModel):
         self.DiskSize = params.get("DiskSize")
         self.AutoFormatAndMount = params.get("AutoFormatAndMount")
         self.MountTarget = params.get("MountTarget")
+        self.DiskPartition = params.get("DiskPartition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2940,6 +2973,63 @@ class DescribeClusterCommonNamesResponse(AbstractModel):
                 obj = CommonName()
                 obj._deserialize(item)
                 self.CommonNames.append(obj)
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DescribeClusterControllersRequest(AbstractModel):
+    """DescribeClusterControllers请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+        
+
+
+class DescribeClusterControllersResponse(AbstractModel):
+    """DescribeClusterControllers返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ControllerStatusSet: 描述集群中各个控制器的状态
+        :type ControllerStatusSet: list of ControllerStatus
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ControllerStatusSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ControllerStatusSet") is not None:
+            self.ControllerStatusSet = []
+            for item in params.get("ControllerStatusSet"):
+                obj = ControllerStatus()
+                obj._deserialize(item)
+                self.ControllerStatusSet.append(obj)
         self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -5338,7 +5428,7 @@ class InstanceAdvancedSettings(AbstractModel):
         :param Labels: 节点Label数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type Labels: list of Label
-        :param DataDisks: 多盘数据盘挂载信息，同时请确保购买CVM的参数传递了购买多个数据盘的信息，如添加节点CreateClusterInstances API的RunInstancesPara下的DataDisks也设置了购买多个数据盘, 具体可以参考CreateClusterInstances接口的，添加集群节点(多块数据盘)样例；注意：此参数在调用接口AddExistedInstances时不起作用
+        :param DataDisks: 多盘数据盘挂载信息：新建节点时请确保购买CVM的参数传递了购买多个数据盘的信息，如CreateClusterInstances API的RunInstancesPara下的DataDisks也需要设置购买多个数据盘, 具体可以参考CreateClusterInstances接口的添加集群节点(多块数据盘)样例；添加已有节点时，请确保填写的分区信息在节点上真实存在
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataDisks: list of DataDisk
         :param ExtraArgs: 节点相关的自定义参数信息
@@ -6446,6 +6536,9 @@ class PrometheusAlertRule(AbstractModel):
         :param Describe: 该条规则的描述信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Describe: str
+        :param Annotations: 参考prometheus rule中的annotations
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Annotations: list of Label
         """
         self.Name = None
         self.Rule = None
@@ -6453,6 +6546,7 @@ class PrometheusAlertRule(AbstractModel):
         self.Template = None
         self.For = None
         self.Describe = None
+        self.Annotations = None
 
 
     def _deserialize(self, params):
@@ -6467,6 +6561,12 @@ class PrometheusAlertRule(AbstractModel):
         self.Template = params.get("Template")
         self.For = params.get("For")
         self.Describe = params.get("Describe")
+        if params.get("Annotations") is not None:
+            self.Annotations = []
+            for item in params.get("Annotations"):
+                obj = Label()
+                obj._deserialize(item)
+                self.Annotations.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

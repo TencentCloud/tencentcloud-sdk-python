@@ -419,7 +419,7 @@ class PartnersClient(AbstractClient):
 
 
     def DescribeClientBalance(self, request):
-        """为合作伙伴提供查询客户余额能力。调用者必须是合作伙伴，只能查询自己名下客户余额
+        """【该接口将逐步下线，请切换使用升级版本DescribeClientBalanceNew】为合作伙伴提供查询客户余额能力。调用者必须是合作伙伴，只能查询自己名下客户余额.
 
         :param request: Request instance for DescribeClientBalance.
         :type request: :class:`tencentcloud.partners.v20180321.models.DescribeClientBalanceRequest`
@@ -432,6 +432,34 @@ class PartnersClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClientBalanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeClientBalanceNew(self, request):
+        """为合作伙伴提供查询客户余额能力。调用者必须是合作伙伴，只能查询自己名下客户余额
+
+        :param request: Request instance for DescribeClientBalanceNew.
+        :type request: :class:`tencentcloud.partners.v20180321.models.DescribeClientBalanceNewRequest`
+        :rtype: :class:`tencentcloud.partners.v20180321.models.DescribeClientBalanceNewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeClientBalanceNew", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClientBalanceNewResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

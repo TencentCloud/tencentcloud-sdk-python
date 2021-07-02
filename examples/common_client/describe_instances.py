@@ -12,8 +12,9 @@ from tencentcloud.common.profile.http_profile import HttpProfile
 
 try:
     # 实例化一个临时认证对象，入参需要传入腾讯云账户secretId，secretKey
-    cred = credential.STSAssumeRoleCredential(os.environ.get("TENCENTCLOUD_SECRET_ID"),
-        os.environ.get("TENCENTCLOUD_SECRET_KEY"), "qcs::cam::uin/123:roleName/first", "firsttest")
+    cred = credential.Credential(
+        os.environ.get("TENCENTCLOUD_SECRET_ID"),
+        os.environ.get("TENCENTCLOUD_SECRET_KEY"))
 
     # 实例化一个http选项，可选的，没有特殊需求可以跳过。
     httpProfile = HttpProfile()
@@ -21,8 +22,7 @@ try:
     # httpProfile = HttpProfile(proxy="http://用户名:密码@代理IP:代理端口")
     httpProfile.reqMethod = "GET"  # post请求(默认为post请求)
     httpProfile.reqTimeout = 30    # 请求超时时间，单位为秒(默认60秒)
-    httpProfile.endpoint = "api.ap-shanghai.tencentcloudapi.com"  # 指定接入地域域名(默认就近接入)
-    # httpProfile.rootDomain = 'ap-shanghai.tencentcloudapi.com'    # 指定根域名, 默认为 tencentcloudapi.com
+    httpProfile.endpoint = "cvm.ap-shanghai.tencentcloudapi.com"  # 指定接入地域域名(默认就近接入)
 
     # 实例化一个client选项，可选的，没有特殊需求可以跳过。
     clientProfile = ClientProfile()
@@ -31,10 +31,8 @@ try:
     clientProfile.httpProfile = httpProfile
 
     # 实例化要请求的common client对象，clientProfile是可选的。
-    common_client = CommonClient("api", '2020-11-06', cred, "ap-shanghai", profile=clientProfile)
+    common_client = CommonClient("cvm", '2017-03-12', cred, "ap-shanghai", profile=clientProfile)
 
-    print(common_client.call_json("DescribeZones", {"Product": "cvm"}))
-
-
+    print(common_client.call_json("DescribeInstances", {"Limit": 10}))
 except TencentCloudSDKException as err:
     print(err)

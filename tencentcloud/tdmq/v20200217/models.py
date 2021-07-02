@@ -27,7 +27,7 @@ class AcknowledgeMessageRequest(AbstractModel):
         """
         :param MessageId: 用作标识消息的唯一的ID（可从 receiveMessage 的返回值中获得）
         :type MessageId: str
-        :param AckTopic: Topic 名字（可从 receiveMessage 的返回值中获得）这里尽量需要使用topic的全路径，如果不指定，默认使用的是：public/default
+        :param AckTopic: Topic 名字（可从 receiveMessage 的返回值中获得）这里尽量需要使用topic的全路径，即：tenant/namespace/topic。如果不指定，默认使用的是：public/default
         :type AckTopic: str
         :param SubName: 订阅者的名字，可以从receiveMessage的返回值中获取到。这里尽量与receiveMessage中的订阅者保持一致，否则没办法正确ack 接收回来的消息。
         :type SubName: str
@@ -3781,7 +3781,7 @@ class ReceiveMessageRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Topic: 接收消息的topic的名字, 这里尽量需要使用topic的全路径，如果不指定，默认使用的是：public/default
+        :param Topic: 接收消息的topic的名字, 这里尽量需要使用topic的全路径，如果不指定，即：tenant/namespace/topic。默认使用的是：public/default
         :type Topic: str
         :param SubscriptionName: 订阅者的名字
         :type SubscriptionName: str
@@ -3984,7 +3984,7 @@ class SendBatchMessagesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Topic: 消息要发送的topic的名字, 这里尽量需要使用topic的全路径，如果不指定，默认使用的是：public/default
+        :param Topic: 消息要发送的topic的名字, 这里尽量需要使用topic的全路径，即：tenant/namespace/topic。如果不指定，默认使用的是：public/default
         :type Topic: str
         :param Payload: 需要发送消息的内容
         :type Payload: str
@@ -4138,7 +4138,7 @@ class SendMessagesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Topic: 消息要发送的topic的名字, 这里尽量需要使用topic的全路径，如果不指定，默认使用的是：public/default
+        :param Topic: 消息要发送的topic的名字, 这里尽量需要使用topic的全路径，即：tenant/namespace/topic。如果不指定，默认使用的是：public/default
         :type Topic: str
         :param Payload: 要发送的消息的内容
         :type Payload: str

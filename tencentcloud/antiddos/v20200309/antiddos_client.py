@@ -82,6 +82,34 @@ class AntiddosClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateBoundIP(self, request):
+        """绑定IP到高防包实例，支持独享包、共享包；需要注意的是此接口绑定或解绑IP是异步接口，当处于绑定或解绑中时，则不允许再进行绑定或解绑，需要等待当前绑定或解绑完成。
+
+        :param request: Request instance for CreateBoundIP.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateBoundIPRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.CreateBoundIPResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateBoundIP", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateBoundIPResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateDDoSAI(self, request):
         """设置DDoS防护的AI防护开关
 
@@ -208,6 +236,34 @@ class AntiddosClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateIPAlarmThresholdConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateL7RuleCerts(self, request):
+        """批量配置L7转发规则的证书供SSL测调用
+
+        :param request: Request instance for CreateL7RuleCerts.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateL7RuleCertsRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.CreateL7RuleCertsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateL7RuleCerts", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateL7RuleCertsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -572,6 +628,34 @@ class AntiddosClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDefaultAlarmThresholdResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeL7RulesBySSLCertId(self, request):
+        """查询与证书ID对于域名匹配的七层规则
+
+        :param request: Request instance for DescribeL7RulesBySSLCertId.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeL7RulesBySSLCertIdRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.DescribeL7RulesBySSLCertIdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeL7RulesBySSLCertId", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeL7RulesBySSLCertIdResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

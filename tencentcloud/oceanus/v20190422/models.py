@@ -45,6 +45,10 @@ class CreateJobConfigRequest(AbstractModel):
         :type COSBucket: str
         :param LogCollect: 是否采集作业日志
         :type LogCollect: bool
+        :param JobManagerSpec: JobManager规格
+        :type JobManagerSpec: float
+        :param TaskManagerSpec: TaskManager规格
+        :type TaskManagerSpec: float
         """
         self.JobId = None
         self.EntrypointClass = None
@@ -56,6 +60,8 @@ class CreateJobConfigRequest(AbstractModel):
         self.AutoDelete = None
         self.COSBucket = None
         self.LogCollect = None
+        self.JobManagerSpec = None
+        self.TaskManagerSpec = None
 
 
     def _deserialize(self, params):
@@ -79,6 +85,8 @@ class CreateJobConfigRequest(AbstractModel):
         self.AutoDelete = params.get("AutoDelete")
         self.COSBucket = params.get("COSBucket")
         self.LogCollect = params.get("LogCollect")
+        self.JobManagerSpec = params.get("JobManagerSpec")
+        self.TaskManagerSpec = params.get("TaskManagerSpec")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1036,6 +1044,12 @@ class JobConfig(AbstractModel):
         :param MaxParallelism: 作业的最大并行度
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxParallelism: int
+        :param JobManagerSpec: JobManager规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobManagerSpec: float
+        :param TaskManagerSpec: TaskManager规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskManagerSpec: float
         """
         self.JobId = None
         self.EntrypointClass = None
@@ -1051,6 +1065,8 @@ class JobConfig(AbstractModel):
         self.COSBucket = None
         self.LogCollect = None
         self.MaxParallelism = None
+        self.JobManagerSpec = None
+        self.TaskManagerSpec = None
 
 
     def _deserialize(self, params):
@@ -1078,6 +1094,8 @@ class JobConfig(AbstractModel):
         self.COSBucket = params.get("COSBucket")
         self.LogCollect = params.get("LogCollect")
         self.MaxParallelism = params.get("MaxParallelism")
+        self.JobManagerSpec = params.get("JobManagerSpec")
+        self.TaskManagerSpec = params.get("TaskManagerSpec")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1115,7 +1133,7 @@ class JobV1(AbstractModel):
         :param Name: 作业名字
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param JobType: 作业类型
+        :param JobType: 作业类型，1：sql作业，2：Jar作业
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobType: int
         :param Status: 作业状态，1：未初始化，2：未发布，3：操作中，4：运行中，5：停止，6：暂停，-1：故障
@@ -1175,6 +1193,9 @@ class JobV1(AbstractModel):
         :param ClusterStatus: 作业所在集群状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterStatus: int
+        :param RunningCu: 细粒度下的运行的CU数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunningCu: float
         """
         self.JobId = None
         self.Region = None
@@ -1203,6 +1224,7 @@ class JobV1(AbstractModel):
         self.WebUIUrl = None
         self.SchedulerType = None
         self.ClusterStatus = None
+        self.RunningCu = None
 
 
     def _deserialize(self, params):
@@ -1233,6 +1255,7 @@ class JobV1(AbstractModel):
         self.WebUIUrl = params.get("WebUIUrl")
         self.SchedulerType = params.get("SchedulerType")
         self.ClusterStatus = params.get("ClusterStatus")
+        self.RunningCu = params.get("RunningCu")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

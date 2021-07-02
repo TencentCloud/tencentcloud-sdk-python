@@ -1816,6 +1816,10 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
         :type NeedRecordNum: int
         :param ActionType: 查询交易类型。如 按量计费日结，按量计费小时结 等
         :type ActionType: str
+        :param ResourceId: 查询指定资源信息
+        :type ResourceId: str
+        :param PayMode: 付费模式 prePay/postPay
+        :type PayMode: str
         """
         self.Offset = None
         self.Limit = None
@@ -1823,6 +1827,8 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
         self.Month = None
         self.NeedRecordNum = None
         self.ActionType = None
+        self.ResourceId = None
+        self.PayMode = None
 
 
     def _deserialize(self, params):
@@ -1832,6 +1838,8 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
         self.Month = params.get("Month")
         self.NeedRecordNum = params.get("NeedRecordNum")
         self.ActionType = params.get("ActionType")
+        self.ResourceId = params.get("ResourceId")
+        self.PayMode = params.get("PayMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
