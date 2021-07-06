@@ -389,6 +389,57 @@ class CreateImageLifecyclePersonalResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateImmutableTagRulesRequest(AbstractModel):
+    """CreateImmutableTagRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 实例 Id
+        :type RegistryId: str
+        :param NamespaceName: 命名空间
+        :type NamespaceName: str
+        :param Rule: 规则
+        :type Rule: :class:`tencentcloud.tcr.v20190924.models.ImmutableTagRule`
+        """
+        self.RegistryId = None
+        self.NamespaceName = None
+        self.Rule = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.NamespaceName = params.get("NamespaceName")
+        if params.get("Rule") is not None:
+            self.Rule = ImmutableTagRule()
+            self.Rule._deserialize(params.get("Rule"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateImmutableTagRulesResponse(AbstractModel):
+    """CreateImmutableTagRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateInstanceRequest(AbstractModel):
     """CreateInstance请求参数结构体
 
@@ -1316,6 +1367,55 @@ class DeleteImageRequest(AbstractModel):
 
 class DeleteImageResponse(AbstractModel):
     """DeleteImage返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteImmutableTagRulesRequest(AbstractModel):
+    """DeleteImmutableTagRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 实例 Id
+        :type RegistryId: str
+        :param NamespaceName: 命名空间
+        :type NamespaceName: str
+        :param RuleId: 规则 Id
+        :type RuleId: int
+        """
+        self.RegistryId = None
+        self.NamespaceName = None
+        self.RuleId = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.NamespaceName = params.get("NamespaceName")
+        self.RuleId = params.get("RuleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteImmutableTagRulesResponse(AbstractModel):
+    """DeleteImmutableTagRules返回参数结构体
 
     """
 
@@ -2521,6 +2621,66 @@ class DescribeImagesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ImageInfoList.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeImmutableTagRulesRequest(AbstractModel):
+    """DescribeImmutableTagRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 实例 Id
+        :type RegistryId: str
+        """
+        self.RegistryId = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeImmutableTagRulesResponse(AbstractModel):
+    """DescribeImmutableTagRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Rules: 规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rules: list of ImmutableTagRule
+        :param EmptyNs: 未创建规则的命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EmptyNs: list of str
+        :param Total: 规则总量
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Rules = None
+        self.EmptyNs = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = ImmutableTagRule()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+        self.EmptyNs = params.get("EmptyNs")
+        self.Total = params.get("Total")
         self.RequestId = params.get("RequestId")
 
 
@@ -4097,6 +4257,54 @@ class Header(AbstractModel):
         
 
 
+class ImmutableTagRule(AbstractModel):
+    """镜像 tag 不可变规则
+
+    """
+
+    def __init__(self):
+        """
+        :param RepositoryPattern: 仓库匹配规则
+        :type RepositoryPattern: str
+        :param TagPattern: Tag 匹配规则
+        :type TagPattern: str
+        :param RepositoryDecoration: repoMatches或repoExcludes
+        :type RepositoryDecoration: str
+        :param TagDecoration: matches或excludes
+        :type TagDecoration: str
+        :param Disabled: 禁用规则
+        :type Disabled: bool
+        :param RuleId: 规则 Id
+        :type RuleId: int
+        :param NsName: 命名空间
+        :type NsName: str
+        """
+        self.RepositoryPattern = None
+        self.TagPattern = None
+        self.RepositoryDecoration = None
+        self.TagDecoration = None
+        self.Disabled = None
+        self.RuleId = None
+        self.NsName = None
+
+
+    def _deserialize(self, params):
+        self.RepositoryPattern = params.get("RepositoryPattern")
+        self.TagPattern = params.get("TagPattern")
+        self.RepositoryDecoration = params.get("RepositoryDecoration")
+        self.TagDecoration = params.get("TagDecoration")
+        self.Disabled = params.get("Disabled")
+        self.RuleId = params.get("RuleId")
+        self.NsName = params.get("NsName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Limit(AbstractModel):
     """共享镜像仓库用户配额
 
@@ -4409,6 +4617,61 @@ class ModifyApplicationTriggerPersonalRequest(AbstractModel):
 
 class ModifyApplicationTriggerPersonalResponse(AbstractModel):
     """ModifyApplicationTriggerPersonal返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyImmutableTagRulesRequest(AbstractModel):
+    """ModifyImmutableTagRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 实例 Id
+        :type RegistryId: str
+        :param NamespaceName: 命名空间
+        :type NamespaceName: str
+        :param RuleId: 规则 Id
+        :type RuleId: int
+        :param Rule: 规则
+        :type Rule: :class:`tencentcloud.tcr.v20190924.models.ImmutableTagRule`
+        """
+        self.RegistryId = None
+        self.NamespaceName = None
+        self.RuleId = None
+        self.Rule = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.NamespaceName = params.get("NamespaceName")
+        self.RuleId = params.get("RuleId")
+        if params.get("Rule") is not None:
+            self.Rule = ImmutableTagRule()
+            self.Rule._deserialize(params.get("Rule"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyImmutableTagRulesResponse(AbstractModel):
+    """ModifyImmutableTagRules返回参数结构体
 
     """
 

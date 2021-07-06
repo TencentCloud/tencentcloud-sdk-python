@@ -166,6 +166,34 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateImmutableTagRules(self, request):
+        """创建镜像不可变规则
+
+        :param request: Request instance for CreateImmutableTagRules.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.CreateImmutableTagRulesRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.CreateImmutableTagRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateImmutableTagRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateImmutableTagRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateInstance(self, request):
         """创建实例
 
@@ -684,6 +712,34 @@ class TcrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteImagePersonalResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteImmutableTagRules(self, request):
+        """删除镜像不可变规则
+
+        :param request: Request instance for DeleteImmutableTagRules.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteImmutableTagRulesRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DeleteImmutableTagRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteImmutableTagRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteImmutableTagRulesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1300,6 +1356,34 @@ class TcrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImagesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeImmutableTagRules(self, request):
+        """列出镜像不可变规则
+
+        :param request: Request instance for DescribeImmutableTagRules.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeImmutableTagRulesRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DescribeImmutableTagRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeImmutableTagRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeImmutableTagRulesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2084,6 +2168,34 @@ class TcrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyApplicationTriggerPersonalResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyImmutableTagRules(self, request):
+        """更新镜像不可变规则
+
+        :param request: Request instance for ModifyImmutableTagRules.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.ModifyImmutableTagRulesRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.ModifyImmutableTagRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyImmutableTagRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyImmutableTagRulesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

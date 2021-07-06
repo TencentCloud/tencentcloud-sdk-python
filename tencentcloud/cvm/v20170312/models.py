@@ -3348,6 +3348,47 @@ class InquiryPriceRunInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class InquiryPriceTerminateInstancesRequest(AbstractModel):
+    """InquiryPriceTerminateInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceIds: 一个或多个待操作的实例ID。可通过[`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728)接口返回值中的`InstanceId`获取。每次请求批量实例的上限为100。
+        :type InstanceIds: list of str
+        """
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquiryPriceTerminateInstancesResponse(AbstractModel):
+    """InquiryPriceTerminateInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class Instance(AbstractModel):
     """描述实例的信息
 

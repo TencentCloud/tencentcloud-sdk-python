@@ -125,6 +125,9 @@ RESOURCEBUSY = 'ResourceBusy'
 # 资源被占用。
 RESOURCEINUSE = 'ResourceInUse'
 
+# 云硬盘当前已在迁移中，请稍后重试。
+RESOURCEINUSE_DISKMIGRATING = 'ResourceInUse.DiskMigrating'
+
 # 云硬盘正在执行快照回滚操作，请稍后重试。
 RESOURCEINUSE_DISKROLLBACKING = 'ResourceInUse.DiskRollbacking'
 

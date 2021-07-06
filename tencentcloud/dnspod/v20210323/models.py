@@ -1498,7 +1498,7 @@ class DescribeRecordListRequest(AbstractModel):
         :type SortType: str
         :param Offset: 偏移量，默认值为0。
         :type Offset: int
-        :param Limit: 限制数量，当前Limit最大支持3000。默认值为3000。
+        :param Limit: 限制数量，当前Limit最大支持3000。默认值为100。
         :type Limit: int
         """
         self.Domain = None

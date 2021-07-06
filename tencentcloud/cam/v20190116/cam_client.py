@@ -1286,6 +1286,34 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ListPoliciesGrantingServiceAccess(self, request):
+        """获取所有已授权服务
+
+        :param request: Request instance for ListPoliciesGrantingServiceAccess.
+        :type request: :class:`tencentcloud.cam.v20190116.models.ListPoliciesGrantingServiceAccessRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.ListPoliciesGrantingServiceAccessResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListPoliciesGrantingServiceAccess", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListPoliciesGrantingServiceAccessResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ListPolicyVersions(self, request):
         """该接口（ListPolicyVersions）用于获取策略版本列表
 

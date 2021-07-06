@@ -2606,6 +2606,142 @@ class ListEntitiesForPolicyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ListGrantServiceAccessActionNode(AbstractModel):
+    """ListGrantServiceAccessAction节点
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 接口名
+        :type Name: str
+        :param Description: 接口描述
+        :type Description: str
+        """
+        self.Name = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListGrantServiceAccessNode(AbstractModel):
+    """用于ListPoliciesGrantingServiceAccess接口的List节点
+
+    """
+
+    def __init__(self):
+        """
+        :param Service: 服务
+        :type Service: :class:`tencentcloud.cam.v20190116.models.ListGrantServiceAccessService`
+        :param Action: 接口信息
+        :type Action: list of ListGrantServiceAccessActionNode
+        :param Policy: 授权的策略
+        :type Policy: list of ListGrantServiceAccessPolicy
+        """
+        self.Service = None
+        self.Action = None
+        self.Policy = None
+
+
+    def _deserialize(self, params):
+        if params.get("Service") is not None:
+            self.Service = ListGrantServiceAccessService()
+            self.Service._deserialize(params.get("Service"))
+        if params.get("Action") is not None:
+            self.Action = []
+            for item in params.get("Action"):
+                obj = ListGrantServiceAccessActionNode()
+                obj._deserialize(item)
+                self.Action.append(obj)
+        if params.get("Policy") is not None:
+            self.Policy = []
+            for item in params.get("Policy"):
+                obj = ListGrantServiceAccessPolicy()
+                obj._deserialize(item)
+                self.Policy.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListGrantServiceAccessPolicy(AbstractModel):
+    """用于ListPoliciesGrantingServiceAccess接口的Policy节点
+
+    """
+
+    def __init__(self):
+        """
+        :param PolicyId: 策略ID
+        :type PolicyId: str
+        :param PolicyName: 策略名
+        :type PolicyName: str
+        :param PolicyType: 策略类型: Custom自定义策略，Presetting预设策略
+        :type PolicyType: str
+        :param PolicyDescription: 策略描述
+        :type PolicyDescription: str
+        """
+        self.PolicyId = None
+        self.PolicyName = None
+        self.PolicyType = None
+        self.PolicyDescription = None
+
+
+    def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
+        self.PolicyName = params.get("PolicyName")
+        self.PolicyType = params.get("PolicyType")
+        self.PolicyDescription = params.get("PolicyDescription")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListGrantServiceAccessService(AbstractModel):
+    """用于ListPoliciesGrantingServiceAccess接口的Service节点
+
+    """
+
+    def __init__(self):
+        """
+        :param ServiceType: 服务
+        :type ServiceType: str
+        :param ServiceName: 服务名
+        :type ServiceName: str
+        """
+        self.ServiceType = None
+        self.ServiceName = None
+
+
+    def _deserialize(self, params):
+        self.ServiceType = params.get("ServiceType")
+        self.ServiceName = params.get("ServiceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ListGroupsForUserRequest(AbstractModel):
     """ListGroupsForUser请求参数结构体
 
@@ -2731,6 +2867,68 @@ class ListGroupsResponse(AbstractModel):
                 obj = GroupInfo()
                 obj._deserialize(item)
                 self.GroupInfo.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class ListPoliciesGrantingServiceAccessRequest(AbstractModel):
+    """ListPoliciesGrantingServiceAccess请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TargetUin: 子账号uin，与RoleId、GroupId三选一必传
+        :type TargetUin: int
+        :param RoleId: 角色ID，与TargetUin、GroupId三选一必传
+        :type RoleId: int
+        :param GroupId: 用户组ID，与TargetUin、RoleId三选一必传
+        :type GroupId: int
+        :param ServiceType: 服务名，查看服务授权接口详情时需传该字段
+        :type ServiceType: str
+        """
+        self.TargetUin = None
+        self.RoleId = None
+        self.GroupId = None
+        self.ServiceType = None
+
+
+    def _deserialize(self, params):
+        self.TargetUin = params.get("TargetUin")
+        self.RoleId = params.get("RoleId")
+        self.GroupId = params.get("GroupId")
+        self.ServiceType = params.get("ServiceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListPoliciesGrantingServiceAccessResponse(AbstractModel):
+    """ListPoliciesGrantingServiceAccess返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param List: 列表
+        :type List: list of ListGrantServiceAccessNode
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.List = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = ListGrantServiceAccessNode()
+                obj._deserialize(item)
+                self.List.append(obj)
         self.RequestId = params.get("RequestId")
 
 

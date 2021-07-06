@@ -1344,6 +1344,37 @@ class CvmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def InquiryPriceTerminateInstances(self, request):
+        """本接口 (InquiryPriceTerminateInstances) 用于退还实例询价。
+
+        * 查询退还实例可以返还的费用。
+        * 支持批量操作，每次请求批量实例的上限为100。如果批量实例存在不允许操作的实例，操作会以特定[错误码](#4.-.E9.94.99.E8.AF.AF.E7.A0.81)返回。
+
+        :param request: Request instance for InquiryPriceTerminateInstances.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.InquiryPriceTerminateInstancesRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.InquiryPriceTerminateInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("InquiryPriceTerminateInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.InquiryPriceTerminateInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyDisasterRecoverGroupAttribute(self, request):
         """本接口 (ModifyDisasterRecoverGroupAttribute)用于修改[分散置放群组](https://cloud.tencent.com/document/product/213/15486)属性。
 

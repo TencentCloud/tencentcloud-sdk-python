@@ -4339,6 +4339,8 @@ class EstablishCloudBaseRunServerRequest(AbstractModel):
         :type PublicAccess: int
         :param OpenAccessTypes: OA PUBLIC MINIAPP VPC
         :type OpenAccessTypes: list of str
+        :param IsCreatePath: 是否创建Path 0未传默认创建 1创建 2不创建
+        :type IsCreatePath: int
         """
         self.EnvId = None
         self.ServiceName = None
@@ -4352,6 +4354,7 @@ class EstablishCloudBaseRunServerRequest(AbstractModel):
         self.VpcInfo = None
         self.PublicAccess = None
         self.OpenAccessTypes = None
+        self.IsCreatePath = None
 
 
     def _deserialize(self, params):
@@ -4371,6 +4374,7 @@ class EstablishCloudBaseRunServerRequest(AbstractModel):
             self.VpcInfo._deserialize(params.get("VpcInfo"))
         self.PublicAccess = params.get("PublicAccess")
         self.OpenAccessTypes = params.get("OpenAccessTypes")
+        self.IsCreatePath = params.get("IsCreatePath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

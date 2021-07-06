@@ -18,6 +18,55 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class BindStaffSkillGroupListRequest(AbstractModel):
+    """BindStaffSkillGroupList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SdkAppId: 实例ID
+        :type SdkAppId: int
+        :param StaffEmail: 坐席邮箱
+        :type StaffEmail: str
+        :param SkillGroupList: 绑定技能组列表
+        :type SkillGroupList: list of int
+        """
+        self.SdkAppId = None
+        self.StaffEmail = None
+        self.SkillGroupList = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.StaffEmail = params.get("StaffEmail")
+        self.SkillGroupList = params.get("SkillGroupList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindStaffSkillGroupListResponse(AbstractModel):
+    """BindStaffSkillGroupList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateSDKLoginTokenRequest(AbstractModel):
     """CreateSDKLoginToken请求参数结构体
 
@@ -115,13 +164,73 @@ class CreateStaffResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param ErrorStaffList: 错误坐席列表及错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorStaffList: list of ErrStaffItem
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.ErrorStaffList = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("ErrorStaffList") is not None:
+            self.ErrorStaffList = []
+            for item in params.get("ErrorStaffList"):
+                obj = ErrStaffItem()
+                obj._deserialize(item)
+                self.ErrorStaffList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteStaffRequest(AbstractModel):
+    """DeleteStaff请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SdkAppId: 实例ID
+        :type SdkAppId: int
+        :param StaffList: 待删除客服邮箱列表
+        :type StaffList: list of str
+        """
+        self.SdkAppId = None
+        self.StaffList = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.StaffList = params.get("StaffList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteStaffResponse(AbstractModel):
+    """DeleteStaff返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param OnlineStaffList: 无法删除的状态为在线的客服列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OnlineStaffList: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.OnlineStaffList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.OnlineStaffList = params.get("OnlineStaffList")
         self.RequestId = params.get("RequestId")
 
 
@@ -733,6 +842,38 @@ class DescribeTelSessionResponse(AbstractModel):
             self.Session = PSTNSession()
             self.Session._deserialize(params.get("Session"))
         self.RequestId = params.get("RequestId")
+
+
+class ErrStaffItem(AbstractModel):
+    """批量添加客服时，返回出错客服的像个信息
+
+    """
+
+    def __init__(self):
+        """
+        :param StaffEmail: 坐席邮箱地址
+        :type StaffEmail: str
+        :param Code: 错误码
+        :type Code: str
+        :param Message: 错误描述
+        :type Message: str
+        """
+        self.StaffEmail = None
+        self.Code = None
+        self.Message = None
+
+
+    def _deserialize(self, params):
+        self.StaffEmail = params.get("StaffEmail")
+        self.Code = params.get("Code")
+        self.Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class IMCdrInfo(AbstractModel):
@@ -1498,3 +1639,52 @@ notInService       不在服务区
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UnbindStaffSkillGroupListRequest(AbstractModel):
+    """UnbindStaffSkillGroupList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SdkAppId: 实例ID
+        :type SdkAppId: int
+        :param StaffEmail: 客服邮箱
+        :type StaffEmail: str
+        :param SkillGroupList: 解绑技能组列表
+        :type SkillGroupList: list of int
+        """
+        self.SdkAppId = None
+        self.StaffEmail = None
+        self.SkillGroupList = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.StaffEmail = params.get("StaffEmail")
+        self.SkillGroupList = params.get("SkillGroupList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnbindStaffSkillGroupListResponse(AbstractModel):
+    """UnbindStaffSkillGroupList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")

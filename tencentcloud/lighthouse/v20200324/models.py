@@ -977,11 +977,14 @@ class DescribeBundlesRequest(AbstractModel):
 必选：否
 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 BundleIds 和 Filters。
         :type Filters: list of Filter
+        :param Zones: 可用区列表。默认为全部可用区。
+        :type Zones: list of str
         """
         self.BundleIds = None
         self.Offset = None
         self.Limit = None
         self.Filters = None
+        self.Zones = None
 
 
     def _deserialize(self, params):
@@ -994,6 +997,7 @@ class DescribeBundlesRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.Zones = params.get("Zones")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2498,6 +2502,8 @@ FAILED：表示操作失败
         :type Platform: str
         :param OsName: 操作系统名称。
         :type OsName: str
+        :param Zone: 可用区。
+        :type Zone: str
         """
         self.InstanceId = None
         self.BundleId = None
@@ -2523,6 +2529,7 @@ FAILED：表示操作失败
         self.PlatformType = None
         self.Platform = None
         self.OsName = None
+        self.Zone = None
 
 
     def _deserialize(self, params):
@@ -2556,6 +2563,7 @@ FAILED：表示操作失败
         self.PlatformType = params.get("PlatformType")
         self.Platform = params.get("Platform")
         self.OsName = params.get("OsName")
+        self.Zone = params.get("Zone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
