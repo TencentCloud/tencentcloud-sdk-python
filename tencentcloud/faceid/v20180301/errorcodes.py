@@ -212,6 +212,9 @@ INTERNALERROR = 'InternalError'
 # 比对失败。
 INTERNALERROR_COMPAREFAIL = 'InternalError.CompareFail'
 
+# 加密失败。
+INTERNALERROR_ENCRYPTSYSTEMERROR = 'InternalError.EncryptSystemError'
+
 # 内部未知错误。
 INTERNALERROR_UNKNOWN = 'InternalError.UnKnown'
 

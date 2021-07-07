@@ -412,6 +412,78 @@ class CloudBaseRunEmptyDirVolumeSource(AbstractModel):
         
 
 
+class CloudBaseRunForGatewayConf(AbstractModel):
+    """独立网关云托管服务配置信息
+
+    """
+
+    def __init__(self):
+        """
+        :param IsZero: 是否缩容到0
+        :type IsZero: bool
+        :param Weight: 按百分比灰度的权重
+        :type Weight: int
+        :param GrayKey: 按请求/header参数的灰度Key
+        :type GrayKey: str
+        :param GrayValue: 按请求/header参数的灰度Value
+        :type GrayValue: str
+        :param IsDefault: 是否为默认版本(按请求/header参数)
+        :type IsDefault: bool
+        :param AccessType: 访问权限，对应二进制分多段，vpc内网｜公网｜oa
+        :type AccessType: int
+        :param URLs: 访问的URL（域名＋路径）列表
+        :type URLs: list of str
+        :param EnvId: 环境ID
+        :type EnvId: str
+        :param ServerName: 服务名称
+        :type ServerName: str
+        :param VersionName: 版本名称
+        :type VersionName: str
+        :param GrayType: 灰度类型：FLOW(权重), URL_PARAMS/HEAD_PARAMS
+        :type GrayType: str
+        :param LbAddr: CLB的IP:Port
+        :type LbAddr: str
+        :param ConfigType: 0:http访问服务配置信息, 1: 服务域名
+        :type ConfigType: int
+        """
+        self.IsZero = None
+        self.Weight = None
+        self.GrayKey = None
+        self.GrayValue = None
+        self.IsDefault = None
+        self.AccessType = None
+        self.URLs = None
+        self.EnvId = None
+        self.ServerName = None
+        self.VersionName = None
+        self.GrayType = None
+        self.LbAddr = None
+        self.ConfigType = None
+
+
+    def _deserialize(self, params):
+        self.IsZero = params.get("IsZero")
+        self.Weight = params.get("Weight")
+        self.GrayKey = params.get("GrayKey")
+        self.GrayValue = params.get("GrayValue")
+        self.IsDefault = params.get("IsDefault")
+        self.AccessType = params.get("AccessType")
+        self.URLs = params.get("URLs")
+        self.EnvId = params.get("EnvId")
+        self.ServerName = params.get("ServerName")
+        self.VersionName = params.get("VersionName")
+        self.GrayType = params.get("GrayType")
+        self.LbAddr = params.get("LbAddr")
+        self.ConfigType = params.get("ConfigType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CloudBaseRunImageInfo(AbstractModel):
     """CloudBaseRun 镜像信息
 
@@ -631,6 +703,53 @@ class CloudBaseRunSideSpec(AbstractModel):
                 obj = CloudBaseRunVolumeMount()
                 obj._deserialize(item)
                 self.VolumeMountInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloudBaseRunVersionFlowItem(AbstractModel):
+    """版本流量占比
+
+    """
+
+    def __init__(self):
+        """
+        :param VersionName: 版本名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionName: str
+        :param FlowRatio: 流量占比
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowRatio: int
+        :param UrlParam: 流量参数键值对（URL参数/HEADERS参数）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UrlParam: :class:`tencentcloud.tcb.v20180608.models.ObjectKV`
+        :param Priority: 优先级
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Priority: int
+        :param IsDefaultPriority: 是否是默认兜底版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsDefaultPriority: bool
+        """
+        self.VersionName = None
+        self.FlowRatio = None
+        self.UrlParam = None
+        self.Priority = None
+        self.IsDefaultPriority = None
+
+
+    def _deserialize(self, params):
+        self.VersionName = params.get("VersionName")
+        self.FlowRatio = params.get("FlowRatio")
+        if params.get("UrlParam") is not None:
+            self.UrlParam = ObjectKV()
+            self.UrlParam._deserialize(params.get("UrlParam"))
+        self.Priority = params.get("Priority")
+        self.IsDefaultPriority = params.get("IsDefaultPriority")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2336,6 +2455,66 @@ class DescribeCloudBaseProjectVersionListResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ProjectVersions.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCloudBaseRunConfForGateWayRequest(AbstractModel):
+    """DescribeCloudBaseRunConfForGateWay请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvID: 环境ID
+        :type EnvID: str
+        :param VpcID: vpc信息
+        :type VpcID: str
+        """
+        self.EnvID = None
+        self.VpcID = None
+
+
+    def _deserialize(self, params):
+        self.EnvID = params.get("EnvID")
+        self.VpcID = params.get("VpcID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudBaseRunConfForGateWayResponse(AbstractModel):
+    """DescribeCloudBaseRunConfForGateWay返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LastUpTime: 最近更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastUpTime: str
+        :param Data: 配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of CloudBaseRunForGatewayConf
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LastUpTime = None
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.LastUpTime = params.get("LastUpTime")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = CloudBaseRunForGatewayConf()
+                obj._deserialize(item)
+                self.Data.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -4341,6 +4520,8 @@ class EstablishCloudBaseRunServerRequest(AbstractModel):
         :type OpenAccessTypes: list of str
         :param IsCreatePath: 是否创建Path 0未传默认创建 1创建 2不创建
         :type IsCreatePath: int
+        :param ServerPath: 指定创建路径（如不存在，则创建。存在，则忽略）
+        :type ServerPath: str
         """
         self.EnvId = None
         self.ServiceName = None
@@ -4355,6 +4536,7 @@ class EstablishCloudBaseRunServerRequest(AbstractModel):
         self.PublicAccess = None
         self.OpenAccessTypes = None
         self.IsCreatePath = None
+        self.ServerPath = None
 
 
     def _deserialize(self, params):
@@ -4375,6 +4557,7 @@ class EstablishCloudBaseRunServerRequest(AbstractModel):
         self.PublicAccess = params.get("PublicAccess")
         self.OpenAccessTypes = params.get("OpenAccessTypes")
         self.IsCreatePath = params.get("IsCreatePath")
+        self.ServerPath = params.get("ServerPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4716,6 +4899,73 @@ class LoginStatistic(AbstractModel):
         
 
 
+class ModifyCloudBaseRunServerFlowConfRequest(AbstractModel):
+    """ModifyCloudBaseRunServerFlowConf请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境ID
+        :type EnvId: str
+        :param ServerName: 服务名称
+        :type ServerName: str
+        :param VersionFlowItems: 流量占比
+        :type VersionFlowItems: list of CloudBaseRunVersionFlowItem
+        :param TrafficType: 流量类型（URL_PARAMS / FLOW / HEADERS)
+        :type TrafficType: str
+        :param OperatorRemark: 操作备注
+        :type OperatorRemark: str
+        """
+        self.EnvId = None
+        self.ServerName = None
+        self.VersionFlowItems = None
+        self.TrafficType = None
+        self.OperatorRemark = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.ServerName = params.get("ServerName")
+        if params.get("VersionFlowItems") is not None:
+            self.VersionFlowItems = []
+            for item in params.get("VersionFlowItems"):
+                obj = CloudBaseRunVersionFlowItem()
+                obj._deserialize(item)
+                self.VersionFlowItems.append(obj)
+        self.TrafficType = params.get("TrafficType")
+        self.OperatorRemark = params.get("OperatorRemark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCloudBaseRunServerFlowConfResponse(AbstractModel):
+    """ModifyCloudBaseRunServerFlowConf返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 返回结果，succ代表成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyDatabaseACLRequest(AbstractModel):
     """ModifyDatabaseACL请求参数结构体
 
@@ -4863,6 +5113,34 @@ class ModifyEnvResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class ObjectKV(AbstractModel):
+    """Key-Value类型，模拟的 object 类型
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: object 的 key
+        :type Key: str
+        :param Value: object key 对应的 value
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class OrderInfo(AbstractModel):

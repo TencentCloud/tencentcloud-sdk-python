@@ -334,6 +334,55 @@ class CheckBankCardInformationResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CheckEidTokenStatusRequest(AbstractModel):
+    """CheckEidTokenStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EidToken: E证通流程的唯一标识，调用GetEidToken接口时生成。
+        :type EidToken: str
+        """
+        self.EidToken = None
+
+
+    def _deserialize(self, params):
+        self.EidToken = params.get("EidToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckEidTokenStatusResponse(AbstractModel):
+    """CheckEidTokenStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 枚举：
+init：token未验证
+doing: 验证中
+finished: 验证完成
+timeout: token已超时
+        :type Status: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
 class CheckIdCardInformationRequest(AbstractModel):
     """CheckIdCardInformation请求参数结构体
 
@@ -1318,7 +1367,7 @@ class GetEidResultRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EidToken: 人脸核身流程的标识，调用GetEidToken接口时生成的。
+        :param EidToken: E证通流程的唯一标识，调用GetEidToken接口时生成。
         :type EidToken: str
         :param InfoType: 指定拉取的结果信息，取值（0：全部；1：文本类；2：身份证信息；3：最佳截图信息）。
 如 13表示拉取文本类、最佳截图信息。
@@ -1438,12 +1487,15 @@ class GetEidTokenRequest(AbstractModel):
         :type Extra: str
         :param Config: 小程序模式配置，包括如何传入姓名身份证的配置。
         :type Config: :class:`tencentcloud.faceid.v20180301.models.GetEidTokenConfig`
+        :param RedirectUrl: 最长长度1024位。用户从Url中进入核身认证结束后重定向的回调链接地址。EidToken会在该链接的query参数中。
+        :type RedirectUrl: str
         """
         self.MerchantId = None
         self.IdCard = None
         self.Name = None
         self.Extra = None
         self.Config = None
+        self.RedirectUrl = None
 
 
     def _deserialize(self, params):
@@ -1454,6 +1506,7 @@ class GetEidTokenRequest(AbstractModel):
         if params.get("Config") is not None:
             self.Config = GetEidTokenConfig()
             self.Config._deserialize(params.get("Config"))
+        self.RedirectUrl = params.get("RedirectUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1470,18 +1523,22 @@ class GetEidTokenResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param EidToken: 一次核身流程的标识，有效时间为7,200秒；
+        :param EidToken: 一次核身流程的标识，有效时间为600秒；
 完成核身后，可用该标识获取验证结果信息。
         :type EidToken: str
+        :param Url: 发起核身流程的URL，用于H5场景核身。
+        :type Url: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.EidToken = None
+        self.Url = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.EidToken = params.get("EidToken")
+        self.Url = params.get("Url")
         self.RequestId = params.get("RequestId")
 
 

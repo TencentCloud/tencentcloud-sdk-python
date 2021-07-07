@@ -282,6 +282,34 @@ class ApigatewayClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreatePlugin(self, request):
+        """创建API网关插件。
+
+        :param request: Request instance for CreatePlugin.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.CreatePluginRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.CreatePluginResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreatePlugin", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreatePluginResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateService(self, request):
         """本接口（CreateService）用于创建服务。
         API 网关使用的最大单元为服务，每个服务中可创建多个 API 接口。每个服务有一个默认域名供客户调用，用户也可绑定自定义域名到此服务中。

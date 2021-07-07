@@ -734,6 +734,8 @@ class DescribeTelCdrRequest(AbstractModel):
         :type PageSize: int
         :param PageNumber: 分页页码，从 0 开始
         :type PageNumber: int
+        :param Phones: 按手机号筛选
+        :type Phones: list of str
         """
         self.StartTimeStamp = None
         self.EndTimeStamp = None
@@ -743,6 +745,7 @@ class DescribeTelCdrRequest(AbstractModel):
         self.SdkAppId = None
         self.PageSize = None
         self.PageNumber = None
+        self.Phones = None
 
 
     def _deserialize(self, params):
@@ -754,6 +757,7 @@ class DescribeTelCdrRequest(AbstractModel):
         self.SdkAppId = params.get("SdkAppId")
         self.PageSize = params.get("PageSize")
         self.PageNumber = params.get("PageNumber")
+        self.Phones = params.get("Phones")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

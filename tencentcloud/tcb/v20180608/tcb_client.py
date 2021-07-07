@@ -530,6 +530,34 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCloudBaseRunConfForGateWay(self, request):
+        """独立网关中拉取云托管服务对应的配置信息
+
+        :param request: Request instance for DescribeCloudBaseRunConfForGateWay.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunConfForGateWayRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunConfForGateWayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCloudBaseRunConfForGateWay", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCloudBaseRunConfForGateWayResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCloudBaseRunResource(self, request):
         """查看容器托管的集群状态
 
@@ -1247,6 +1275,34 @@ class TcbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EstablishWxGatewayRouteResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyCloudBaseRunServerFlowConf(self, request):
+        """修改容器内的版本流量配置
+
+        :param request: Request instance for ModifyCloudBaseRunServerFlowConf.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.ModifyCloudBaseRunServerFlowConfRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.ModifyCloudBaseRunServerFlowConfResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyCloudBaseRunServerFlowConf", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyCloudBaseRunServerFlowConfResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

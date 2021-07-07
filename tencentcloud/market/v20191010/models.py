@@ -92,57 +92,6 @@ class FlowProductRemindResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class GetCateTreeRequest(AbstractModel):
-    """GetCateTree请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param CateId: 分类ID
-        :type CateId: int
-        """
-        self.CateId = None
-
-
-    def _deserialize(self, params):
-        self.CateId = params.get("CateId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class GetCateTreeResponse(AbstractModel):
-    """GetCateTree返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param CateId: 分类ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CateId: int
-        :param Name: 分类名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Name: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.CateId = None
-        self.Name = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.CateId = params.get("CateId")
-        self.Name = params.get("Name")
-        self.RequestId = params.get("RequestId")
-
-
 class GetUsagePlanUsageAmountRequest(AbstractModel):
     """GetUsagePlanUsageAmount请求参数结构体
 

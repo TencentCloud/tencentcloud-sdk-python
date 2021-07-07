@@ -1515,6 +1515,12 @@ class DeviceInfo(AbstractModel):
         :param NwkSKey: LoRaWAN 网络会话密钥
 注意：此字段可能返回 null，表示取不到有效值。
         :type NwkSKey: str
+        :param CreateUserId: 创建人Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateUserId: int
+        :param CreatorNickName: 创建人昵称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatorNickName: str
         """
         self.DeviceName = None
         self.Status = None
@@ -1530,6 +1536,8 @@ class DeviceInfo(AbstractModel):
         self.DevEUI = None
         self.AppSKey = None
         self.NwkSKey = None
+        self.CreateUserId = None
+        self.CreatorNickName = None
 
 
     def _deserialize(self, params):
@@ -1547,6 +1555,8 @@ class DeviceInfo(AbstractModel):
         self.DevEUI = params.get("DevEUI")
         self.AppSKey = params.get("AppSKey")
         self.NwkSKey = params.get("NwkSKey")
+        self.CreateUserId = params.get("CreateUserId")
+        self.CreatorNickName = params.get("CreatorNickName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1716,6 +1726,12 @@ class FirmwareInfo(AbstractModel):
         :param FwType: 固件升级模块
 注意：此字段可能返回 null，表示取不到有效值。
         :type FwType: str
+        :param CreateUserId: 创建者子 uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateUserId: int
+        :param CreatorNickName: 创建者昵称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatorNickName: str
         """
         self.Version = None
         self.Md5sum = None
@@ -1725,6 +1741,8 @@ class FirmwareInfo(AbstractModel):
         self.Description = None
         self.ProductId = None
         self.FwType = None
+        self.CreateUserId = None
+        self.CreatorNickName = None
 
 
     def _deserialize(self, params):
@@ -1736,6 +1754,8 @@ class FirmwareInfo(AbstractModel):
         self.Description = params.get("Description")
         self.ProductId = params.get("ProductId")
         self.FwType = params.get("FwType")
+        self.CreateUserId = params.get("CreateUserId")
+        self.CreatorNickName = params.get("CreatorNickName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2868,6 +2888,12 @@ class ProductEntry(AbstractModel):
         :param EnableProductScript: 是否使用脚本进行二进制转json功能 可以取值 true / false
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableProductScript: str
+        :param CreateUserId: 创建人 UinId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateUserId: int
+        :param CreatorNickName: 创建者昵称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatorNickName: str
         """
         self.ProductId = None
         self.ProductName = None
@@ -2884,6 +2910,8 @@ class ProductEntry(AbstractModel):
         self.ProjectId = None
         self.ModuleId = None
         self.EnableProductScript = None
+        self.CreateUserId = None
+        self.CreatorNickName = None
 
 
     def _deserialize(self, params):
@@ -2902,6 +2930,8 @@ class ProductEntry(AbstractModel):
         self.ProjectId = params.get("ProjectId")
         self.ModuleId = params.get("ModuleId")
         self.EnableProductScript = params.get("EnableProductScript")
+        self.CreateUserId = params.get("CreateUserId")
+        self.CreatorNickName = params.get("CreatorNickName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

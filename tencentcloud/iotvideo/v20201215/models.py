@@ -18,6 +18,118 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AIModelApplication(AbstractModel):
+    """AI模型申请信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param ProductName: 产品名称
+        :type ProductName: str
+        :param Status: 申请状态：1-已申请；2-已取消；3-已拒绝；4-已通过
+        :type Status: int
+        """
+        self.ProductId = None
+        self.ProductName = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.ProductName = params.get("ProductName")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIModelInfo(AbstractModel):
+    """AI模型信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param ProductName: 产品名称
+        :type ProductName: str
+        :param Status: 申请状态：1-已申请；2-已取消；3-已拒绝；4-已通过
+        :type Status: int
+        :param Total: 可调用数量
+        :type Total: int
+        :param Used: 已调用数量
+        :type Used: int
+        :param ApplyTime: 申请时间
+        :type ApplyTime: int
+        :param ApprovalTime: 审批通过时间
+        :type ApprovalTime: int
+        """
+        self.ProductId = None
+        self.ProductName = None
+        self.Status = None
+        self.Total = None
+        self.Used = None
+        self.ApplyTime = None
+        self.ApprovalTime = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.ProductName = params.get("ProductName")
+        self.Status = params.get("Status")
+        self.Total = params.get("Total")
+        self.Used = params.get("Used")
+        self.ApplyTime = params.get("ApplyTime")
+        self.ApprovalTime = params.get("ApprovalTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIModelUsageInfo(AbstractModel):
+    """AI模型资源使用信息
+
+    """
+
+    def __init__(self):
+        """
+        :param CreateTime: 开通时间
+        :type CreateTime: int
+        :param Total: 资源总量
+        :type Total: int
+        :param Used: 已使用资源数量
+        :type Used: int
+        """
+        self.CreateTime = None
+        self.Total = None
+        self.Used = None
+
+
+    def _deserialize(self, params):
+        self.CreateTime = params.get("CreateTime")
+        self.Total = params.get("Total")
+        self.Used = params.get("Used")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ActionHistory(AbstractModel):
     """查询设备历史
 
@@ -78,6 +190,51 @@ class ActionHistory(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ApplyAIModelRequest(AbstractModel):
+    """ApplyAIModel请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ModelId: AI模型ID
+        :type ModelId: str
+        :param ProductId: 产品ID
+        :type ProductId: str
+        """
+        self.ModelId = None
+        self.ProductId = None
+
+
+    def _deserialize(self, params):
+        self.ModelId = params.get("ModelId")
+        self.ProductId = params.get("ProductId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApplyAIModelResponse(AbstractModel):
+    """ApplyAIModel返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class BalanceTransaction(AbstractModel):
@@ -194,6 +351,51 @@ class BatchUpdateFirmwareResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class CancelAIModelApplicationRequest(AbstractModel):
+    """CancelAIModelApplication请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ModelId: AI模型ID
+        :type ModelId: str
+        :param ProductId: 产品ID
+        :type ProductId: str
+        """
+        self.ModelId = None
+        self.ProductId = None
+
+
+    def _deserialize(self, params):
+        self.ModelId = params.get("ModelId")
+        self.ProductId = params.get("ProductId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CancelAIModelApplicationResponse(AbstractModel):
+    """CancelAIModelApplication返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -479,6 +681,63 @@ Sent = 1 表示设备已经在线并且订阅了控制下发的mqtt topic
         self.RequestId = params.get("RequestId")
 
 
+class CreateAIDetectionRequest(AbstractModel):
+    """CreateAIDetection请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        :param ModelId: AI模型ID
+        :type ModelId: str
+        :param StartTime: 图片上传的开始时间
+        :type StartTime: int
+        :param EndTime: 图片上传的结束时间
+        :type EndTime: int
+        """
+        self.ProductId = None
+        self.DeviceName = None
+        self.ModelId = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+        self.ModelId = params.get("ModelId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAIDetectionResponse(AbstractModel):
+    """CreateAIDetection返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateBatchRequest(AbstractModel):
     """CreateBatch请求参数结构体
 
@@ -529,6 +788,79 @@ class CreateBatchResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.BatchId = params.get("BatchId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateCOSCredentialsRequest(AbstractModel):
+    """CreateCOSCredentials请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        """
+        self.ProductId = None
+        self.DeviceName = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCOSCredentialsResponse(AbstractModel):
+    """CreateCOSCredentials返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StorageBucket: COS存储桶名称
+        :type StorageBucket: str
+        :param StorageRegion: COS存储桶区域
+        :type StorageRegion: str
+        :param StoragePath: COS存储桶路径
+        :type StoragePath: str
+        :param SecretID: COS上传用的SecretID
+        :type SecretID: str
+        :param SecretKey: COS上传用的SecretKey
+        :type SecretKey: str
+        :param Token: COS上传用的Token
+        :type Token: str
+        :param ExpiredTime: 密钥信息过期时间
+        :type ExpiredTime: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.StorageBucket = None
+        self.StorageRegion = None
+        self.StoragePath = None
+        self.SecretID = None
+        self.SecretKey = None
+        self.Token = None
+        self.ExpiredTime = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.StorageBucket = params.get("StorageBucket")
+        self.StorageRegion = params.get("StorageRegion")
+        self.StoragePath = params.get("StoragePath")
+        self.SecretID = params.get("SecretID")
+        self.SecretKey = params.get("SecretKey")
+        self.Token = params.get("Token")
+        self.ExpiredTime = params.get("ExpiredTime")
         self.RequestId = params.get("RequestId")
 
 
@@ -1053,6 +1385,278 @@ class DeleteProductResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAIModelApplicationsRequest(AbstractModel):
+    """DescribeAIModelApplications请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ModelId: 模型ID
+        :type ModelId: str
+        :param Limit: 分页的大小，最大100
+        :type Limit: int
+        :param Offset: 偏移量，Offset从0开始
+        :type Offset: int
+        :param ProductId: 产品ID
+        :type ProductId: str
+        """
+        self.ModelId = None
+        self.Limit = None
+        self.Offset = None
+        self.ProductId = None
+
+
+    def _deserialize(self, params):
+        self.ModelId = params.get("ModelId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.ProductId = params.get("ProductId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAIModelApplicationsResponse(AbstractModel):
+    """DescribeAIModelApplications返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 申请记录数量
+        :type TotalCount: int
+        :param Applications: 申请记录数组
+        :type Applications: list of AIModelApplication
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Applications = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Applications") is not None:
+            self.Applications = []
+            for item in params.get("Applications"):
+                obj = AIModelApplication()
+                obj._deserialize(item)
+                self.Applications.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAIModelChannelRequest(AbstractModel):
+    """DescribeAIModelChannel请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ModelId: 模型ID
+        :type ModelId: str
+        :param ProductId: 产品ID
+        :type ProductId: str
+        """
+        self.ModelId = None
+        self.ProductId = None
+
+
+    def _deserialize(self, params):
+        self.ModelId = params.get("ModelId")
+        self.ProductId = params.get("ProductId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAIModelChannelResponse(AbstractModel):
+    """DescribeAIModelChannel返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 推送类型。ckafka：消息队列；forward：http/https推送
+        :type Type: str
+        :param ForwardAddress: 第三方推送地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ForwardAddress: str
+        :param ForwardKey: 第三方推送密钥
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ForwardKey: str
+        :param CKafkaRegion: ckafka地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CKafkaRegion: str
+        :param CKafkaInstance: ckafka实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CKafkaInstance: str
+        :param CKafkaTopic: ckafka订阅主题
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CKafkaTopic: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Type = None
+        self.ForwardAddress = None
+        self.ForwardKey = None
+        self.CKafkaRegion = None
+        self.CKafkaInstance = None
+        self.CKafkaTopic = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.ForwardAddress = params.get("ForwardAddress")
+        self.ForwardKey = params.get("ForwardKey")
+        self.CKafkaRegion = params.get("CKafkaRegion")
+        self.CKafkaInstance = params.get("CKafkaInstance")
+        self.CKafkaTopic = params.get("CKafkaTopic")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAIModelUsageRequest(AbstractModel):
+    """DescribeAIModelUsage请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ModelId: 模型ID
+        :type ModelId: str
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param Offset: 偏移量，从0开始
+        :type Offset: int
+        :param Limit: 分页的大小，最大100
+        :type Limit: int
+        """
+        self.ModelId = None
+        self.ProductId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.ModelId = params.get("ModelId")
+        self.ProductId = params.get("ProductId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAIModelUsageResponse(AbstractModel):
+    """DescribeAIModelUsage返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: AI模型资源包总量
+        :type TotalCount: int
+        :param UsageInfo: AI模型资源包信息数组
+        :type UsageInfo: list of AIModelUsageInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.UsageInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("UsageInfo") is not None:
+            self.UsageInfo = []
+            for item in params.get("UsageInfo"):
+                obj = AIModelUsageInfo()
+                obj._deserialize(item)
+                self.UsageInfo.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAIModelsRequest(AbstractModel):
+    """DescribeAIModels请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ModelId: 模型ID
+        :type ModelId: str
+        :param Status: 申请状态：1-已申请；2-已取消；3-已拒绝；4-已通过
+        :type Status: int
+        :param Offset: 偏移量，Offset从0开始
+        :type Offset: int
+        :param Limit: 分页的大小，最大100
+        :type Limit: int
+        """
+        self.ModelId = None
+        self.Status = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.ModelId = params.get("ModelId")
+        self.Status = params.get("Status")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAIModelsResponse(AbstractModel):
+    """DescribeAIModels返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: AI模型数量
+        :type TotalCount: int
+        :param Models: AI模型信息数组
+        :type Models: list of AIModelInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Models = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Models") is not None:
+            self.Models = []
+            for item in params.get("Models"):
+                obj = AIModelInfo()
+                obj._deserialize(item)
+                self.Models.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3875,6 +4479,51 @@ class PublishMessageResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ReportAliveDeviceRequest(AbstractModel):
+    """ReportAliveDevice请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        """
+        self.ProductId = None
+        self.DeviceName = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReportAliveDeviceResponse(AbstractModel):
+    """ReportAliveDevice返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ResetCloudStorageRequest(AbstractModel):
     """ResetCloudStorage请求参数结构体
 
@@ -4146,6 +4795,80 @@ class TransferCloudStorageResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateAIModelChannelRequest(AbstractModel):
+    """UpdateAIModelChannel请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ModelId: 模型ID
+        :type ModelId: str
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param Type: 推送类型。ckafka：消息队列；forward：http/https推送
+        :type Type: str
+        :param ForwardAddress: 第三方推送地址
+        :type ForwardAddress: str
+        :param ForwardKey: 第三方推送密钥，不填写则腾讯云自动生成。
+        :type ForwardKey: str
+        :param CKafkaRegion: ckafka地域
+        :type CKafkaRegion: str
+        :param CKafkaInstance: ckafka实例
+        :type CKafkaInstance: str
+        :param CKafkaTopic: ckafka订阅主题
+        :type CKafkaTopic: str
+        """
+        self.ModelId = None
+        self.ProductId = None
+        self.Type = None
+        self.ForwardAddress = None
+        self.ForwardKey = None
+        self.CKafkaRegion = None
+        self.CKafkaInstance = None
+        self.CKafkaTopic = None
+
+
+    def _deserialize(self, params):
+        self.ModelId = params.get("ModelId")
+        self.ProductId = params.get("ProductId")
+        self.Type = params.get("Type")
+        self.ForwardAddress = params.get("ForwardAddress")
+        self.ForwardKey = params.get("ForwardKey")
+        self.CKafkaRegion = params.get("CKafkaRegion")
+        self.CKafkaInstance = params.get("CKafkaInstance")
+        self.CKafkaTopic = params.get("CKafkaTopic")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateAIModelChannelResponse(AbstractModel):
+    """UpdateAIModelChannel返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ForwardKey: 第三方推送密钥，如果选择自动生成则会返回此字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ForwardKey: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ForwardKey = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ForwardKey = params.get("ForwardKey")
         self.RequestId = params.get("RequestId")
 
 

@@ -1850,6 +1850,65 @@ class CreateIPStrategyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreatePluginRequest(AbstractModel):
+    """CreatePlugin请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PluginName: 用户自定义的插件名称。最长50个字符，支持 a-z,A-Z,0-9,_, 必须字母开头，字母或者数字结尾。
+        :type PluginName: str
+        :param PluginType: 插件类型。目前支持IPControl。
+        :type PluginType: str
+        :param PluginData: 插件定义语句，支持json。
+        :type PluginData: str
+        :param Description: 插件描述，限定200字以内。
+        :type Description: str
+        """
+        self.PluginName = None
+        self.PluginType = None
+        self.PluginData = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.PluginName = params.get("PluginName")
+        self.PluginType = params.get("PluginType")
+        self.PluginData = params.get("PluginData")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePluginResponse(AbstractModel):
+    """CreatePlugin返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 新建的插件详情。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.Plugin`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = Plugin()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class CreateServiceRequest(AbstractModel):
     """CreateService请求参数结构体
 

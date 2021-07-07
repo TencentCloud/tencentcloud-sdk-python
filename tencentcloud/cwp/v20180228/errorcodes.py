@@ -14,6 +14,9 @@
 # limitations under the License.
 
 
+# CAM签名/鉴权错误。
+AUTHFAILURE = 'AuthFailure'
+
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
 
@@ -118,6 +121,9 @@ INVALIDPARAMETER_REVERSHELLKEYFIELDALLEMPTY = 'InvalidParameter.ReverShellKeyFie
 
 # 规则类接口，主机IP不正确。
 INVALIDPARAMETER_RULEHOSTIPERR = 'InvalidParameter.RuleHostipErr'
+
+# 参数取值错误。
+INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
 # 标签名称长度不能超过15个字符。
 INVALIDPARAMETERVALUE_TAGNAMELENGTHLIMIT = 'InvalidParameterValue.TagNameLengthLimit'

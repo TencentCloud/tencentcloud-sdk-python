@@ -1567,6 +1567,9 @@ class IndicatorItem(AbstractModel):
         :param Normal: 是否正常
 注意：此字段可能返回 null，表示取不到有效值。
         :type Normal: bool
+        :param ItemString: 项目原文
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ItemString: str
         """
         self.Code = None
         self.Scode = None
@@ -1577,6 +1580,7 @@ class IndicatorItem(AbstractModel):
         self.Range = None
         self.Arrow = None
         self.Normal = None
+        self.ItemString = None
 
 
     def _deserialize(self, params):
@@ -1589,6 +1593,7 @@ class IndicatorItem(AbstractModel):
         self.Range = params.get("Range")
         self.Arrow = params.get("Arrow")
         self.Normal = params.get("Normal")
+        self.ItemString = params.get("ItemString")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

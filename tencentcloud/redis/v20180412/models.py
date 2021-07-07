@@ -375,7 +375,13 @@ class CreateInstanceAccountRequest(AbstractModel):
         :type InstanceId: str
         :param AccountName: 子账号名称
         :type AccountName: str
-        :param AccountPassword: 子账号密码
+        :param AccountPassword: 1.长度8-30位,推荐使用12位以上的密码
+2.不能以"/"开头
+3.至少包含两项
+    a.小写字母a-z
+    b.大写字母A-Z
+    c.数字0-9
+    d.()`~!@#$%^&*-+=_|{}[]:;<>,.?/
         :type AccountPassword: str
         :param ReadonlyPolicy: 路由策略：填写master或者replication，表示主节点或者从节点
         :type ReadonlyPolicy: list of str
@@ -785,9 +791,9 @@ class DescribeCommonDBInstancesRequest(AbstractModel):
         :type OrderByType: str
         :param Vips: 实例vip信息列表
         :type Vips: list of str
-        :param UniqVpcIds: vpc网络统一Id列表
+        :param UniqVpcIds: vpc网络ID信息列表
         :type UniqVpcIds: list of str
-        :param UniqSubnetIds: 子网统一id列表
+        :param UniqSubnetIds: 子网统一ID列表
         :type UniqSubnetIds: list of str
         :param Limit: 数量限制，默认推荐100
         :type Limit: int
@@ -1638,7 +1644,7 @@ class DescribeInstanceMonitorTopNCmdTookRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param InstanceId: 实例Id
+        :param InstanceId: 实例ID
         :type InstanceId: str
         :param SpanType: 时间范围：1——实时，2——近30分钟，3——近6小时，4——近24小时
         :type SpanType: int
@@ -4944,7 +4950,7 @@ class RedisCommonInstanceList(AbstractModel):
         :type VpcId: str
         :param SubnetId: 子网id
         :type SubnetId: str
-        :param Status: 实例状态信息，0-创建中，1-运行中
+        :param Status: 实例状态信息，1-流程中 ,2-运行中, -2-实例已隔离 ,-3-实例待回收, -4-实例已删除
         :type Status: str
         :param Vips: 实例网络ip
         :type Vips: list of str

@@ -23,8 +23,11 @@ FAILEDOPERATION = 'FailedOperation'
 # 创建录制任务失败。
 FAILEDOPERATION_CREATERECORDTASK = 'FailedOperation.CreateRecordTask'
 
-# 转推失败。
+# 转推操作失败。
 FAILEDOPERATION_STREAMCONNECT = 'FailedOperation.StreamConnect'
+
+# 非法操作，导播中正在工作中。
+FAILEDOPERATION_SWITCHERONWORKING = 'FailedOperation.SwitcherOnWorking'
 
 # 内部错误。
 INTERNALERROR = 'InternalError'
@@ -142,6 +145,9 @@ INVALIDPARAMETERVALUE_STREAMCONNECTOUTPUTINVALID = 'InvalidParameterValue.Stream
 
 # 输入流参数错误。
 INVALIDPARAMETERVALUE_STREAMINPUT = 'InvalidParameterValue.StreamInput'
+
+# 任务 Id 无效。
+INVALIDPARAMETERVALUE_TASKID = 'InvalidParameterValue.TaskId'
 
 # 团队 ID 已经存在，不能重复创建。
 INVALIDPARAMETERVALUE_TEAMID = 'InvalidParameterValue.TeamId'

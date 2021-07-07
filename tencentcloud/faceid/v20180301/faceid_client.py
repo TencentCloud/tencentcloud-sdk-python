@@ -138,6 +138,34 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CheckEidTokenStatus(self, request):
+        """用于轮询E证通H5场景EidToken验证状态。
+
+        :param request: Request instance for CheckEidTokenStatus.
+        :type request: :class:`tencentcloud.faceid.v20180301.models.CheckEidTokenStatusRequest`
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.CheckEidTokenStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CheckEidTokenStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CheckEidTokenStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CheckIdCardInformation(self, request):
         """传入身份证人像面照片，识别身份证照片上的信息，并将姓名、身份证号、身份证人像照片与公安权威库的证件照进行比对，是否属于同一个人，从而验证身份证信息的真实性。
 
@@ -363,7 +391,7 @@ class FaceidClient(AbstractClient):
 
 
     def GetEidToken(self, request):
-        """每次调用E证通小程序服务前，需先调用本接口获取EidToken，用来串联核身流程，在验证完成后，用于获取验证结果信息。
+        """每次调用E证通服务前，需先调用本接口获取EidToken，用来串联E证通流程，在验证完成后，用于获取E证通结果信息。
 
         :param request: Request instance for GetEidToken.
         :type request: :class:`tencentcloud.faceid.v20180301.models.GetEidTokenRequest`

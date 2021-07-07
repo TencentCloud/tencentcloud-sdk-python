@@ -978,6 +978,34 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetSecurityLastUsed(self, request):
+        """获取密钥最近使用情况
+
+        :param request: Request instance for GetSecurityLastUsed.
+        :type request: :class:`tencentcloud.cam.v20190116.models.GetSecurityLastUsedRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.GetSecurityLastUsedResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetSecurityLastUsed", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetSecurityLastUsedResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetServiceLinkedRoleDeletionStatus(self, request):
         """根据删除TaskId获取服务相关角色删除状态
 

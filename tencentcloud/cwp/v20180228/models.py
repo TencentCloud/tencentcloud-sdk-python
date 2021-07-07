@@ -333,7 +333,7 @@ class BashEvent(AbstractModel):
 
     def __init__(self):
         """
-        :param Id: ID
+        :param Id: 数据ID
         :type Id: int
         :param Uuid: 云镜ID
         :type Uuid: str
@@ -351,14 +351,32 @@ class BashEvent(AbstractModel):
         :type RuleId: int
         :param RuleName: 规则名称
         :type RuleName: str
-        :param RuleLevel: 规则等级
+        :param RuleLevel: 规则等级：1-高 2-中 3-低
         :type RuleLevel: int
-        :param Status: 处理状态
+        :param Status: 处理状态： 0 = 待处理 1= 已处理, 2 = 已加白
         :type Status: int
         :param CreateTime: 发生时间
         :type CreateTime: str
         :param MachineName: 主机名
         :type MachineName: str
+        :param DetectBy: 0: bash日志 1: 实时监控(雷霆版)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DetectBy: int
+        :param Pid: 进程id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Pid: str
+        :param Exe: 进程名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Exe: str
+        :param ModifyTime: 处理时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: str
+        :param RuleCategory: 规则类别  0=系统规则，1=用户规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleCategory: int
+        :param RegexBashCmd: 自动生成的正则表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegexBashCmd: str
         """
         self.Id = None
         self.Uuid = None
@@ -373,6 +391,12 @@ class BashEvent(AbstractModel):
         self.Status = None
         self.CreateTime = None
         self.MachineName = None
+        self.DetectBy = None
+        self.Pid = None
+        self.Exe = None
+        self.ModifyTime = None
+        self.RuleCategory = None
+        self.RegexBashCmd = None
 
 
     def _deserialize(self, params):
@@ -389,6 +413,12 @@ class BashEvent(AbstractModel):
         self.Status = params.get("Status")
         self.CreateTime = params.get("CreateTime")
         self.MachineName = params.get("MachineName")
+        self.DetectBy = params.get("DetectBy")
+        self.Pid = params.get("Pid")
+        self.Exe = params.get("Exe")
+        self.ModifyTime = params.get("ModifyTime")
+        self.RuleCategory = params.get("RuleCategory")
+        self.RegexBashCmd = params.get("RegexBashCmd")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -411,7 +441,7 @@ class BashRule(AbstractModel):
         :type Uuid: str
         :param Name: 规则名称
         :type Name: str
-        :param Level: 危险等级(1: 高危 2:中危 3: 低危)
+        :param Level: 危险等级(0 ：无 1: 高危 2:中危 3: 低危)
         :type Level: int
         :param Rule: 正则表达式
         :type Rule: str
@@ -429,6 +459,15 @@ class BashRule(AbstractModel):
         :type ModifyTime: str
         :param Hostip: 主机IP
         :type Hostip: str
+        :param Uuids: 生效服务器的uuid数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uuids: list of str
+        :param White: 0=黑名单 1=白名单
+注意：此字段可能返回 null，表示取不到有效值。
+        :type White: int
+        :param DealOldEvents: 是否处理之前的事件 0: 不处理 1:处理
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DealOldEvents: int
         """
         self.Id = None
         self.Uuid = None
@@ -442,6 +481,9 @@ class BashRule(AbstractModel):
         self.CreateTime = None
         self.ModifyTime = None
         self.Hostip = None
+        self.Uuids = None
+        self.White = None
+        self.DealOldEvents = None
 
 
     def _deserialize(self, params):
@@ -457,6 +499,9 @@ class BashRule(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.ModifyTime = params.get("ModifyTime")
         self.Hostip = params.get("Hostip")
+        self.Uuids = params.get("Uuids")
+        self.White = params.get("White")
+        self.DealOldEvents = params.get("DealOldEvents")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1020,6 +1065,59 @@ class CreateProtectServerRequest(AbstractModel):
 
 class CreateProtectServerResponse(AbstractModel):
     """CreateProtectServer返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateScanMalwareSettingRequest(AbstractModel):
+    """CreateScanMalwareSetting请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ScanPattern: 扫描模式 0 全盘扫描, 1 快速扫描
+        :type ScanPattern: int
+        :param HostType: 服务器分类：1:专业版服务器；2:自选服务器
+        :type HostType: int
+        :param QuuidList: 自选服务器时生效，主机quuid的string数组
+        :type QuuidList: list of str
+        :param TimeoutPeriod: 超时时间单位 秒
+        :type TimeoutPeriod: int
+        """
+        self.ScanPattern = None
+        self.HostType = None
+        self.QuuidList = None
+        self.TimeoutPeriod = None
+
+
+    def _deserialize(self, params):
+        self.ScanPattern = params.get("ScanPattern")
+        self.HostType = params.get("HostType")
+        self.QuuidList = params.get("QuuidList")
+        self.TimeoutPeriod = params.get("TimeoutPeriod")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateScanMalwareSettingResponse(AbstractModel):
+    """CreateScanMalwareSetting返回参数结构体
 
     """
 
@@ -4018,13 +4116,58 @@ class DescribeMachineRegionsResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param CVM: CVM 云服务器地域列表
+        :type CVM: list of RegionInfo
+        :param BM: BM 黑石机器地域列表
+        :type BM: list of RegionInfo
+        :param LH: LH 轻量应用服务器地域列表
+        :type LH: list of RegionInfo
+        :param ECM: ECM 边缘计算服务器地域列表
+        :type ECM: list of RegionInfo
+        :param Other: Other 混合云地域列表
+        :type Other: list of RegionInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.CVM = None
+        self.BM = None
+        self.LH = None
+        self.ECM = None
+        self.Other = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("CVM") is not None:
+            self.CVM = []
+            for item in params.get("CVM"):
+                obj = RegionInfo()
+                obj._deserialize(item)
+                self.CVM.append(obj)
+        if params.get("BM") is not None:
+            self.BM = []
+            for item in params.get("BM"):
+                obj = RegionInfo()
+                obj._deserialize(item)
+                self.BM.append(obj)
+        if params.get("LH") is not None:
+            self.LH = []
+            for item in params.get("LH"):
+                obj = RegionInfo()
+                obj._deserialize(item)
+                self.LH.append(obj)
+        if params.get("ECM") is not None:
+            self.ECM = []
+            for item in params.get("ECM"):
+                obj = RegionInfo()
+                obj._deserialize(item)
+                self.ECM.append(obj)
+        if params.get("Other") is not None:
+            self.Other = []
+            for item in params.get("Other"):
+                obj = RegionInfo()
+                obj._deserialize(item)
+                self.Other.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -4233,6 +4376,78 @@ class DescribeMalwareInfoResponse(AbstractModel):
         if params.get("MalwareInfo") is not None:
             self.MalwareInfo = MalwareInfo()
             self.MalwareInfo._deserialize(params.get("MalwareInfo"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeMalwareTimingScanSettingRequest(AbstractModel):
+    """DescribeMalwareTimingScanSetting请求参数结构体
+
+    """
+
+
+class DescribeMalwareTimingScanSettingResponse(AbstractModel):
+    """DescribeMalwareTimingScanSetting返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CheckPattern: 检测模式 0 全盘检测  1快速检测
+        :type CheckPattern: int
+        :param StartTime: 检测周期 开始时间
+        :type StartTime: str
+        :param EndTime: 检测周期 超时结束时间
+        :type EndTime: str
+        :param IsGlobal: 是否全部服务器 1 全部 2 自选
+        :type IsGlobal: int
+        :param QuuidList: 自选服务器时必须 主机quuid的string数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QuuidList: list of str
+        :param MonitoringPattern: 监控模式 0 标准 1深度
+        :type MonitoringPattern: int
+        :param Cycle: 周期 1每天
+        :type Cycle: int
+        :param EnableScan: 定时检测开关 0 关闭1 开启
+        :type EnableScan: int
+        :param Id: 唯一ID
+        :type Id: int
+        :param RealTimeMonitoring: 实时监控0 关闭 1开启
+        :type RealTimeMonitoring: int
+        :param AutoIsolation: 是否自动隔离
+        :type AutoIsolation: int
+        :param ClickTimeout: 一键扫描超时
+        :type ClickTimeout: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CheckPattern = None
+        self.StartTime = None
+        self.EndTime = None
+        self.IsGlobal = None
+        self.QuuidList = None
+        self.MonitoringPattern = None
+        self.Cycle = None
+        self.EnableScan = None
+        self.Id = None
+        self.RealTimeMonitoring = None
+        self.AutoIsolation = None
+        self.ClickTimeout = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CheckPattern = params.get("CheckPattern")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.IsGlobal = params.get("IsGlobal")
+        self.QuuidList = params.get("QuuidList")
+        self.MonitoringPattern = params.get("MonitoringPattern")
+        self.Cycle = params.get("Cycle")
+        self.EnableScan = params.get("EnableScan")
+        self.Id = params.get("Id")
+        self.RealTimeMonitoring = params.get("RealTimeMonitoring")
+        self.AutoIsolation = params.get("AutoIsolation")
+        self.ClickTimeout = params.get("ClickTimeout")
         self.RequestId = params.get("RequestId")
 
 
@@ -5247,6 +5462,197 @@ class DescribeScanMalwareScheduleResponse(AbstractModel):
         self.RiskFileNumber = params.get("RiskFileNumber")
         self.IsSchedule = params.get("IsSchedule")
         self.ScanStatus = params.get("ScanStatus")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeScanTaskDetailsRequest(AbstractModel):
+    """DescribeScanTaskDetails请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ModuleType: 模块类型 当前提供 Malware 木马 , Vul 漏洞 , Baseline 基线
+        :type ModuleType: str
+        :param TaskId: 任务ID
+        :type TaskId: int
+        :param Filters: 过滤参数
+        :type Filters: list of Filters
+        :param Limit: 需要返回的数量，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        """
+        self.ModuleType = None
+        self.TaskId = None
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.ModuleType = params.get("ModuleType")
+        self.TaskId = params.get("TaskId")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeScanTaskDetailsResponse(AbstractModel):
+    """DescribeScanTaskDetails返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ScanTaskDetailList: 扫描任务信息列表
+        :type ScanTaskDetailList: list of ScanTaskDetails
+        :param TotalCount: 总数
+        :type TotalCount: int
+        :param ScanMachineCount: 扫描机器总数
+        :type ScanMachineCount: int
+        :param RiskMachineCount: 发现风险机器数
+        :type RiskMachineCount: int
+        :param ScanBeginTime: 扫描开始时间
+        :type ScanBeginTime: str
+        :param ScanEndTime: 扫描结束时间
+        :type ScanEndTime: str
+        :param ScanTime: 检测时间
+        :type ScanTime: int
+        :param ScanProgress: 扫描进度
+        :type ScanProgress: int
+        :param ScanLeftTime: 扫描剩余时间
+        :type ScanLeftTime: int
+        :param ScanContent: 扫描内容
+        :type ScanContent: list of str
+        :param VulInfo: 漏洞信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VulInfo: list of VulDetailInfo
+        :param RiskEventCount: 风险事件个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskEventCount: int
+        :param Type: 0一键检测 1定时检测
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: int
+        :param StoppingAll: 任务是否全部正在被停止 ture是
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StoppingAll: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ScanTaskDetailList = None
+        self.TotalCount = None
+        self.ScanMachineCount = None
+        self.RiskMachineCount = None
+        self.ScanBeginTime = None
+        self.ScanEndTime = None
+        self.ScanTime = None
+        self.ScanProgress = None
+        self.ScanLeftTime = None
+        self.ScanContent = None
+        self.VulInfo = None
+        self.RiskEventCount = None
+        self.Type = None
+        self.StoppingAll = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ScanTaskDetailList") is not None:
+            self.ScanTaskDetailList = []
+            for item in params.get("ScanTaskDetailList"):
+                obj = ScanTaskDetails()
+                obj._deserialize(item)
+                self.ScanTaskDetailList.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.ScanMachineCount = params.get("ScanMachineCount")
+        self.RiskMachineCount = params.get("RiskMachineCount")
+        self.ScanBeginTime = params.get("ScanBeginTime")
+        self.ScanEndTime = params.get("ScanEndTime")
+        self.ScanTime = params.get("ScanTime")
+        self.ScanProgress = params.get("ScanProgress")
+        self.ScanLeftTime = params.get("ScanLeftTime")
+        self.ScanContent = params.get("ScanContent")
+        if params.get("VulInfo") is not None:
+            self.VulInfo = []
+            for item in params.get("VulInfo"):
+                obj = VulDetailInfo()
+                obj._deserialize(item)
+                self.VulInfo.append(obj)
+        self.RiskEventCount = params.get("RiskEventCount")
+        self.Type = params.get("Type")
+        self.StoppingAll = params.get("StoppingAll")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeScanVulSettingRequest(AbstractModel):
+    """DescribeScanVulSetting请求参数结构体
+
+    """
+
+
+class DescribeScanVulSettingResponse(AbstractModel):
+    """DescribeScanVulSetting返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param VulCategories: 漏洞类型：1: web应用漏洞 2:系统组件漏洞 (多选英文逗号分隔)
+        :type VulCategories: str
+        :param VulLevels: 危害等级：1-低危；2-中危；3-高危；4-严重 (多选英文逗号分隔)
+        :type VulLevels: str
+        :param TimerInterval: 定期检测间隔时间（天）
+        :type TimerInterval: int
+        :param TimerTime: 定期检测时间
+        :type TimerTime: str
+        :param VulEmergency: 是否紧急漏洞
+        :type VulEmergency: int
+        :param StartTime: 开始时间
+        :type StartTime: str
+        :param EnableScan: 是否开启
+        :type EnableScan: int
+        :param EndTime: 结束时间
+        :type EndTime: str
+        :param ClickTimeout: 一键扫描超时时长
+        :type ClickTimeout: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.VulCategories = None
+        self.VulLevels = None
+        self.TimerInterval = None
+        self.TimerTime = None
+        self.VulEmergency = None
+        self.StartTime = None
+        self.EnableScan = None
+        self.EndTime = None
+        self.ClickTimeout = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.VulCategories = params.get("VulCategories")
+        self.VulLevels = params.get("VulLevels")
+        self.TimerInterval = params.get("TimerInterval")
+        self.TimerTime = params.get("TimerTime")
+        self.VulEmergency = params.get("VulEmergency")
+        self.StartTime = params.get("StartTime")
+        self.EnableScan = params.get("EnableScan")
+        self.EndTime = params.get("EndTime")
+        self.ClickTimeout = params.get("ClickTimeout")
         self.RequestId = params.get("RequestId")
 
 
@@ -6539,6 +6945,83 @@ class EditBashRuleRequest(AbstractModel):
 
 class EditBashRuleResponse(AbstractModel):
     """EditBashRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class EditBashRulesRequest(AbstractModel):
+    """EditBashRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 规则名称
+        :type Name: str
+        :param Rule: 正则表达式
+        :type Rule: str
+        :param Id: 规则ID（新增时不填）
+        :type Id: int
+        :param Uuids: 客户端ID数组
+        :type Uuids: list of str
+        :param HostIp: 主机IP
+        :type HostIp: str
+        :param Level: 危险等级(0:无，1: 高危 2:中危 3: 低危)
+        :type Level: int
+        :param IsGlobal: 是否全局规则(默认否)
+        :type IsGlobal: int
+        :param White: 0=黑名单， 1=白名单
+        :type White: int
+        :param EventId: 事件列表点击“加入白名单”时,需要传EventId 事件的id
+        :type EventId: int
+        :param DealOldEvents: 是否处理旧事件为白名单 0=不处理 1=处理
+        :type DealOldEvents: int
+        """
+        self.Name = None
+        self.Rule = None
+        self.Id = None
+        self.Uuids = None
+        self.HostIp = None
+        self.Level = None
+        self.IsGlobal = None
+        self.White = None
+        self.EventId = None
+        self.DealOldEvents = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Rule = params.get("Rule")
+        self.Id = params.get("Id")
+        self.Uuids = params.get("Uuids")
+        self.HostIp = params.get("HostIp")
+        self.Level = params.get("Level")
+        self.IsGlobal = params.get("IsGlobal")
+        self.White = params.get("White")
+        self.EventId = params.get("EventId")
+        self.DealOldEvents = params.get("DealOldEvents")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EditBashRulesResponse(AbstractModel):
+    """EditBashRules返回参数结构体
 
     """
 
@@ -8483,6 +8966,8 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
         :type RealTimeMonitoring: int
         :param QuuidList: 自选服务器时必须 主机quuid的string数组
         :type QuuidList: list of str
+        :param AutoIsolation: 是否自动隔离 1隔离 0 不隔离
+        :type AutoIsolation: int
         """
         self.CheckPattern = None
         self.StartTime = None
@@ -8493,6 +8978,7 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
         self.Cycle = None
         self.RealTimeMonitoring = None
         self.QuuidList = None
+        self.AutoIsolation = None
 
 
     def _deserialize(self, params):
@@ -8505,6 +8991,7 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
         self.Cycle = params.get("Cycle")
         self.RealTimeMonitoring = params.get("RealTimeMonitoring")
         self.QuuidList = params.get("QuuidList")
+        self.AutoIsolation = params.get("AutoIsolation")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9704,6 +10191,119 @@ class RiskDnsList(AbstractModel):
         
 
 
+class ScanTaskDetails(AbstractModel):
+    """扫描任务详情列表信息
+
+    """
+
+    def __init__(self):
+        """
+        :param HostIp: 服务器IP
+        :type HostIp: str
+        :param HostName: 服务器名称
+        :type HostName: str
+        :param OsName: 操作系统
+        :type OsName: str
+        :param RiskNum: 风险数量
+        :type RiskNum: int
+        :param ScanBeginTime: 扫描开始时间
+        :type ScanBeginTime: str
+        :param ScanEndTime: 扫描结束时间
+        :type ScanEndTime: str
+        :param Uuid: 唯一Uuid
+        :type Uuid: str
+        :param Quuid: 唯一Quuid
+        :type Quuid: str
+        :param Status: 状态码
+        :type Status: str
+        :param Description: 描述
+        :type Description: str
+        :param Id: id唯一
+        :type Id: int
+        :param FailType: 失败详情
+        :type FailType: int
+        """
+        self.HostIp = None
+        self.HostName = None
+        self.OsName = None
+        self.RiskNum = None
+        self.ScanBeginTime = None
+        self.ScanEndTime = None
+        self.Uuid = None
+        self.Quuid = None
+        self.Status = None
+        self.Description = None
+        self.Id = None
+        self.FailType = None
+
+
+    def _deserialize(self, params):
+        self.HostIp = params.get("HostIp")
+        self.HostName = params.get("HostName")
+        self.OsName = params.get("OsName")
+        self.RiskNum = params.get("RiskNum")
+        self.ScanBeginTime = params.get("ScanBeginTime")
+        self.ScanEndTime = params.get("ScanEndTime")
+        self.Uuid = params.get("Uuid")
+        self.Quuid = params.get("Quuid")
+        self.Status = params.get("Status")
+        self.Description = params.get("Description")
+        self.Id = params.get("Id")
+        self.FailType = params.get("FailType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScanVulAgainRequest(AbstractModel):
+    """ScanVulAgain请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EventIds: 漏洞事件id串，多个用英文逗号分隔
+        :type EventIds: str
+        :param Uuids: 重新检查的机器uuid,多个逗号分隔
+        :type Uuids: str
+        """
+        self.EventIds = None
+        self.Uuids = None
+
+
+    def _deserialize(self, params):
+        self.EventIds = params.get("EventIds")
+        self.Uuids = params.get("Uuids")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScanVulAgainResponse(AbstractModel):
+    """ScanVulAgain返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ScanVulRequest(AbstractModel):
     """ScanVul请求参数结构体
 
@@ -9721,12 +10321,18 @@ class ScanVulRequest(AbstractModel):
         :type QuuidList: list of str
         :param VulEmergency: 是否是应急漏洞 0 否 1 是
         :type VulEmergency: int
+        :param TimeoutPeriod: 超时时长 单位秒
+        :type TimeoutPeriod: int
+        :param VulIds: 需要扫描的漏洞id
+        :type VulIds: list of int non-negative
         """
         self.VulCategories = None
         self.VulLevels = None
         self.HostType = None
         self.QuuidList = None
         self.VulEmergency = None
+        self.TimeoutPeriod = None
+        self.VulIds = None
 
 
     def _deserialize(self, params):
@@ -9735,6 +10341,8 @@ class ScanVulRequest(AbstractModel):
         self.HostType = params.get("HostType")
         self.QuuidList = params.get("QuuidList")
         self.VulEmergency = params.get("VulEmergency")
+        self.TimeoutPeriod = params.get("TimeoutPeriod")
+        self.VulIds = params.get("VulIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9763,6 +10371,75 @@ class ScanVulResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class ScanVulSettingRequest(AbstractModel):
+    """ScanVulSetting请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TimerInterval: 定期检测间隔时间（天）
+        :type TimerInterval: int
+        :param VulCategories: 漏洞类型：1: web应用漏洞 2:系统组件漏洞, 以数组方式传参[1,2]
+        :type VulCategories: list of int non-negative
+        :param VulLevels: 危害等级：1-低危；2-中危；3-高危；4-严重,以数组方式传参[1,2,3]
+        :type VulLevels: list of int non-negative
+        :param TimerTime: 定期检测时间
+        :type TimerTime: str
+        :param VulEmergency: 是否是应急漏洞 0 否 1 是
+        :type VulEmergency: int
+        :param StartTime: 扫描开始时间
+        :type StartTime: str
+        :param EndTime: 扫描结束时间
+        :type EndTime: str
+        :param EnableScan: 是否开启扫描 1开启 0不开启
+        :type EnableScan: int
+        """
+        self.TimerInterval = None
+        self.VulCategories = None
+        self.VulLevels = None
+        self.TimerTime = None
+        self.VulEmergency = None
+        self.StartTime = None
+        self.EndTime = None
+        self.EnableScan = None
+
+
+    def _deserialize(self, params):
+        self.TimerInterval = params.get("TimerInterval")
+        self.VulCategories = params.get("VulCategories")
+        self.VulLevels = params.get("VulLevels")
+        self.TimerTime = params.get("TimerTime")
+        self.VulEmergency = params.get("VulEmergency")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.EnableScan = params.get("EnableScan")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScanVulSettingResponse(AbstractModel):
+    """ScanVulSetting返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -10501,6 +11178,70 @@ NOTICE：提示
         self.LastScanTime = params.get("LastScanTime")
         self.ImpactedHostNum = params.get("ImpactedHostNum")
         self.VulStatus = params.get("VulStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VulDetailInfo(AbstractModel):
+    """漏洞详细信息
+
+    """
+
+    def __init__(self):
+        """
+        :param VulId: 漏洞ID
+        :type VulId: int
+        :param Level: 漏洞级别
+        :type Level: int
+        :param Name: 漏洞名称
+        :type Name: str
+        :param CveId: cve编号
+        :type CveId: str
+        :param VulCategory: 漏洞分类
+        :type VulCategory: int
+        :param Descript: 漏洞描述
+        :type Descript: str
+        :param Fix: 修复建议
+        :type Fix: str
+        :param Reference: 参考链接
+        :type Reference: str
+        :param CvssScore: CVSS评分
+        :type CvssScore: float
+        :param Cvss: CVSS详情
+        :type Cvss: str
+        :param PublishTime: 发布时间
+        :type PublishTime: str
+        """
+        self.VulId = None
+        self.Level = None
+        self.Name = None
+        self.CveId = None
+        self.VulCategory = None
+        self.Descript = None
+        self.Fix = None
+        self.Reference = None
+        self.CvssScore = None
+        self.Cvss = None
+        self.PublishTime = None
+
+
+    def _deserialize(self, params):
+        self.VulId = params.get("VulId")
+        self.Level = params.get("Level")
+        self.Name = params.get("Name")
+        self.CveId = params.get("CveId")
+        self.VulCategory = params.get("VulCategory")
+        self.Descript = params.get("Descript")
+        self.Fix = params.get("Fix")
+        self.Reference = params.get("Reference")
+        self.CvssScore = params.get("CvssScore")
+        self.Cvss = params.get("Cvss")
+        self.PublishTime = params.get("PublishTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

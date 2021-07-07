@@ -116,15 +116,19 @@ class DescribeSREInstanceAccessAddressResponse(AbstractModel):
         """
         :param IntranetAddress: 内网访问地址
         :type IntranetAddress: str
+        :param InternetAddress: 公网访问地址
+        :type InternetAddress: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.IntranetAddress = None
+        self.InternetAddress = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.IntranetAddress = params.get("IntranetAddress")
+        self.InternetAddress = params.get("InternetAddress")
         self.RequestId = params.get("RequestId")
 
 
