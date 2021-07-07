@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-# Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
+# Copyright (c) 2017-2021 THL A29 Limited, a Tencent company. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -109,7 +109,7 @@ class AddEcdnDomainRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -128,13 +128,6 @@ class AddEcdnDomainResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class Cache(AbstractModel):
@@ -170,7 +163,7 @@ off：关闭
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -194,7 +187,7 @@ class CacheKey(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -226,7 +219,7 @@ class CacheRule(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -266,7 +259,7 @@ class ClientCert(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -290,7 +283,7 @@ class CreateVerifyRecordRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -321,13 +314,6 @@ class CreateVerifyRecordResponse(AbstractModel):
         self.Record = params.get("Record")
         self.RecordType = params.get("RecordType")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DeleteEcdnDomainRequest(AbstractModel):
@@ -350,7 +336,7 @@ class DeleteEcdnDomainRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -369,13 +355,6 @@ class DeleteEcdnDomainResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribeDomainsConfigRequest(AbstractModel):
@@ -417,7 +396,7 @@ class DescribeDomainsConfigRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -449,13 +428,6 @@ class DescribeDomainsConfigResponse(AbstractModel):
                 self.Domains.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribeDomainsRequest(AbstractModel):
@@ -491,7 +463,7 @@ class DescribeDomainsRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -523,13 +495,6 @@ class DescribeDomainsResponse(AbstractModel):
                 self.Domains.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribeEcdnDomainLogsRequest(AbstractModel):
@@ -568,7 +533,7 @@ class DescribeEcdnDomainLogsRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -601,13 +566,6 @@ class DescribeEcdnDomainLogsResponse(AbstractModel):
                 self.DomainLogs.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribeEcdnDomainStatisticsRequest(AbstractModel):
@@ -668,7 +626,7 @@ global: 全部
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -700,13 +658,6 @@ class DescribeEcdnDomainStatisticsResponse(AbstractModel):
                 self.Data.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribeEcdnStatisticsRequest(AbstractModel):
@@ -771,7 +722,7 @@ global: 全部
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -799,13 +750,6 @@ class DescribeEcdnStatisticsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Data.append(obj)
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribeIpStatusRequest(AbstractModel):
@@ -835,7 +779,7 @@ global: 全球节点
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -867,13 +811,6 @@ class DescribeIpStatusResponse(AbstractModel):
                 self.Ips.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribePurgeQuotaRequest(AbstractModel):
@@ -909,13 +846,6 @@ class DescribePurgeQuotaResponse(AbstractModel):
             self.PathPurge = Quota()
             self.PathPurge._deserialize(params.get("PathPurge"))
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribePurgeTasksRequest(AbstractModel):
@@ -966,7 +896,7 @@ class DescribePurgeTasksRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -998,13 +928,6 @@ class DescribePurgeTasksResponse(AbstractModel):
                 self.PurgeLogs.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DetailData(AbstractModel):
@@ -1031,7 +954,7 @@ class DetailData(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1101,7 +1024,7 @@ class DomainBriefInfo(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1134,7 +1057,7 @@ class DomainData(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1274,7 +1197,7 @@ class DomainDetailInfo(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1317,7 +1240,7 @@ class DomainFilter(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1349,7 +1272,7 @@ class DomainLogs(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1382,7 +1305,7 @@ class EcdnData(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1417,7 +1340,7 @@ class ForceRedirect(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1451,7 +1374,7 @@ class Hsts(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1497,7 +1420,7 @@ class HttpHeaderPathRule(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1568,7 +1491,7 @@ class Https(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1602,7 +1525,7 @@ class IpFilter(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1631,7 +1554,7 @@ class IpFreqLimit(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1677,7 +1600,7 @@ offline：下线状态
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1728,7 +1651,7 @@ class Origin(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1756,7 +1679,7 @@ class PurgePathCacheRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1779,13 +1702,6 @@ class PurgePathCacheResponse(AbstractModel):
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class PurgeTask(AbstractModel):
@@ -1828,7 +1744,7 @@ class PurgeTask(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1852,7 +1768,7 @@ class PurgeUrlsCacheRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1875,13 +1791,6 @@ class PurgeUrlsCacheResponse(AbstractModel):
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class Quota(AbstractModel):
@@ -1912,7 +1821,7 @@ class Quota(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1946,7 +1855,7 @@ all：账号维度明细数据
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1980,7 +1889,7 @@ class ResponseHeader(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -2035,7 +1944,7 @@ class ServerCert(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -2065,7 +1974,7 @@ certExpireTime，证书过期时间
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -2089,7 +1998,7 @@ class StartEcdnDomainRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -2108,13 +2017,6 @@ class StartEcdnDomainResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class StopEcdnDomainRequest(AbstractModel):
@@ -2137,7 +2039,7 @@ class StopEcdnDomainRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -2156,13 +2058,6 @@ class StopEcdnDomainResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class Tag(AbstractModel):
@@ -2191,7 +2086,7 @@ class Tag(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -2220,7 +2115,7 @@ class TimestampData(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -2306,7 +2201,7 @@ class UpdateDomainConfigRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -2325,13 +2220,6 @@ class UpdateDomainConfigResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class WebSocket(AbstractModel):
@@ -2361,5 +2249,5 @@ class WebSocket(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

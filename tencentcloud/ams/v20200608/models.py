@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-# Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
+# Copyright (c) 2017-2021 THL A29 Limited, a Tencent company. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -94,7 +94,7 @@ class AmsDetailInfo(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -183,7 +183,7 @@ class AudioResult(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -228,7 +228,7 @@ class AudioResultDetailLanguageResult(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -269,7 +269,7 @@ class AudioResultDetailMoanResult(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -323,7 +323,7 @@ class AudioResultDetailTextResult(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -357,7 +357,7 @@ class AudioSegments(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -390,7 +390,7 @@ class BucketInfo(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -414,7 +414,7 @@ class CancelTaskRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -433,13 +433,6 @@ class CancelTaskResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class CreateAudioModerationTaskRequest(AbstractModel):
@@ -483,7 +476,7 @@ class CreateAudioModerationTaskRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -512,13 +505,6 @@ class CreateAudioModerationTaskResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Results.append(obj)
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class CreateBizConfigRequest(AbstractModel):
@@ -555,7 +541,7 @@ class CreateBizConfigRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -574,13 +560,6 @@ class CreateBizConfigResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribeAmsListRequest(AbstractModel):
@@ -620,7 +599,7 @@ class DescribeAmsListRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -656,13 +635,6 @@ class DescribeAmsListResponse(AbstractModel):
         self.Total = params.get("Total")
         self.PageToken = params.get("PageToken")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribeAudioStatRequest(AbstractModel):
@@ -694,7 +666,7 @@ class DescribeAudioStatRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -737,13 +709,6 @@ class DescribeAudioStatResponse(AbstractModel):
                 obj._deserialize(item)
                 self.EvilCount.append(obj)
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribeBizConfigRequest(AbstractModel):
@@ -766,7 +731,7 @@ class DescribeBizConfigRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -813,13 +778,6 @@ class DescribeBizConfigResponse(AbstractModel):
         self.CreatedAt = params.get("CreatedAt")
         self.UpdatedAt = params.get("UpdatedAt")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribeTaskDetailRequest(AbstractModel):
@@ -846,7 +804,7 @@ class DescribeTaskDetailRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -974,13 +932,6 @@ Block 建议屏蔽；
                 self.ImageSegments.append(obj)
         self.AudioText = params.get("AudioText")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class EvilCount(AbstractModel):
@@ -1007,7 +958,7 @@ class EvilCount(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1039,7 +990,7 @@ class FileOutput(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1067,7 +1018,7 @@ class Filter(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1098,7 +1049,7 @@ class Filters(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1157,7 +1108,7 @@ class ImageResult(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1233,7 +1184,7 @@ Ad 广告
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1307,7 +1258,7 @@ class ImageResultsResultDetail(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1352,7 +1303,7 @@ class ImageResultsResultDetailLocation(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1384,7 +1335,7 @@ class ImageSegments(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1421,7 +1372,7 @@ class InputInfo(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1462,7 +1413,7 @@ class MediaInfo(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1508,7 +1459,7 @@ class MediaModerationConfig(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1560,7 +1511,7 @@ class Overview(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1596,7 +1547,7 @@ COS 腾讯云对象存储类型
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1630,7 +1581,7 @@ class TaskInput(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1667,7 +1618,7 @@ class TaskLabel(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1707,7 +1658,7 @@ class TaskResult(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1763,5 +1714,5 @@ class TrendCount(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

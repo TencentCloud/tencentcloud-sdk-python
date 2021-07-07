@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-# Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
+# Copyright (c) 2017-2021 THL A29 Limited, a Tencent company. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -46,7 +46,7 @@ class APIDoc(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -122,7 +122,7 @@ class APIDocInfo(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -155,7 +155,7 @@ class APIDocs(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -200,7 +200,7 @@ class ApiEnvironmentStrategy(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -235,7 +235,7 @@ class ApiEnvironmentStrategyStataus(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -340,7 +340,7 @@ class ApiIdStatus(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -660,7 +660,7 @@ class ApiInfo(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -708,7 +708,7 @@ class ApiKey(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -743,7 +743,7 @@ class ApiKeysStatus(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -771,7 +771,7 @@ class ApiRequestConfig(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -866,7 +866,7 @@ class ApiUsagePlan(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -901,7 +901,7 @@ class ApiUsagePlanSet(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -934,7 +934,7 @@ class ApisStatus(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -988,7 +988,7 @@ class AttachedApiInfo(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1023,7 +1023,7 @@ class Base64EncodedTriggerRule(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1063,7 +1063,7 @@ class BindEnvironmentRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1087,13 +1087,6 @@ class BindEnvironmentResponse(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class BindIPStrategyRequest(AbstractModel):
@@ -1128,7 +1121,7 @@ class BindIPStrategyRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1152,13 +1145,6 @@ class BindIPStrategyResponse(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class BindSecretIdsRequest(AbstractModel):
@@ -1185,7 +1171,7 @@ class BindSecretIdsRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1209,13 +1195,6 @@ class BindSecretIdsResponse(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class BindSubDomainRequest(AbstractModel):
@@ -1275,7 +1254,7 @@ class BindSubDomainRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1299,13 +1278,6 @@ class BindSubDomainResponse(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class BuildAPIDocRequest(AbstractModel):
@@ -1328,7 +1300,7 @@ class BuildAPIDocRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1351,13 +1323,6 @@ class BuildAPIDocResponse(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class ConstantParameter(AbstractModel):
@@ -1392,7 +1357,7 @@ class ConstantParameter(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1428,7 +1393,7 @@ class CreateAPIDocRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1453,13 +1418,6 @@ class CreateAPIDocResponse(AbstractModel):
             self.Result = APIDoc()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class CreateApiKeyRequest(AbstractModel):
@@ -1494,7 +1452,7 @@ class CreateApiKeyRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1520,13 +1478,6 @@ class CreateApiKeyResponse(AbstractModel):
             self.Result = ApiKey()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class CreateApiRequest(AbstractModel):
@@ -1771,7 +1722,7 @@ class CreateApiRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1797,13 +1748,6 @@ class CreateApiResponse(AbstractModel):
             self.Result = CreateApiRsp()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class CreateApiRsp(AbstractModel):
@@ -1842,7 +1786,7 @@ class CreateApiRsp(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1878,7 +1822,7 @@ class CreateIPStrategyRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1904,13 +1848,65 @@ class CreateIPStrategyResponse(AbstractModel):
             self.Result = IPStrategy()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
+
+
+class CreatePluginRequest(AbstractModel):
+    """CreatePlugin请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PluginName: 用户自定义的插件名称。最长50个字符，支持 a-z,A-Z,0-9,_, 必须字母开头，字母或者数字结尾。
+        :type PluginName: str
+        :param PluginType: 插件类型。目前支持IPControl。
+        :type PluginType: str
+        :param PluginData: 插件定义语句，支持json。
+        :type PluginData: str
+        :param Description: 插件描述，限定200字以内。
+        :type Description: str
+        """
+        self.PluginName = None
+        self.PluginType = None
+        self.PluginData = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.PluginName = params.get("PluginName")
+        self.PluginType = params.get("PluginType")
+        self.PluginData = params.get("PluginData")
+        self.Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreatePluginResponse(AbstractModel):
+    """CreatePlugin返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 新建的插件详情。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.Plugin`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = Plugin()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
 
 
 class CreateServiceRequest(AbstractModel):
@@ -1974,7 +1970,7 @@ class CreateServiceRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -2026,13 +2022,6 @@ class CreateServiceResponse(AbstractModel):
         self.NetTypes = params.get("NetTypes")
         self.IpVersion = params.get("IpVersion")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class CreateUsagePlanRequest(AbstractModel):
@@ -2067,7 +2056,7 @@ class CreateUsagePlanRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -2093,13 +2082,6 @@ class CreateUsagePlanResponse(AbstractModel):
             self.Result = UsagePlanInfo()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DeleteAPIDocRequest(AbstractModel):
@@ -2122,7 +2104,7 @@ class DeleteAPIDocRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -2145,13 +2127,6 @@ class DeleteAPIDocResponse(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DeleteApiKeyRequest(AbstractModel):
@@ -2174,7 +2149,7 @@ class DeleteApiKeyRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -2198,13 +2173,6 @@ class DeleteApiKeyResponse(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DeleteApiRequest(AbstractModel):
@@ -2231,7 +2199,7 @@ class DeleteApiRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -2255,13 +2223,6 @@ class DeleteApiResponse(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DeleteIPStrategyRequest(AbstractModel):
@@ -2288,7 +2249,7 @@ class DeleteIPStrategyRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -2312,13 +2273,6 @@ class DeleteIPStrategyResponse(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DeleteServiceRequest(AbstractModel):
@@ -2345,7 +2299,7 @@ class DeleteServiceRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -2369,13 +2323,6 @@ class DeleteServiceResponse(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DeleteServiceSubDomainMappingRequest(AbstractModel):
@@ -2406,7 +2353,7 @@ class DeleteServiceSubDomainMappingRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -2429,13 +2376,6 @@ class DeleteServiceSubDomainMappingResponse(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DeleteUsagePlanRequest(AbstractModel):
@@ -2458,7 +2398,7 @@ class DeleteUsagePlanRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -2482,13 +2422,6 @@ class DeleteUsagePlanResponse(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DemoteServiceUsagePlanRequest(AbstractModel):
@@ -2519,7 +2452,7 @@ class DemoteServiceUsagePlanRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -2543,13 +2476,6 @@ class DemoteServiceUsagePlanResponse(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DesApisStatus(AbstractModel):
@@ -2663,7 +2589,7 @@ class DesApisStatus(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -2687,7 +2613,7 @@ class DescribeAPIDocDetailRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -2712,13 +2638,6 @@ class DescribeAPIDocDetailResponse(AbstractModel):
             self.Result = APIDocInfo()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribeAPIDocsRequest(AbstractModel):
@@ -2745,7 +2664,7 @@ class DescribeAPIDocsRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -2770,13 +2689,6 @@ class DescribeAPIDocsResponse(AbstractModel):
             self.Result = APIDocs()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribeApiEnvironmentStrategyRequest(AbstractModel):
@@ -2815,7 +2727,7 @@ class DescribeApiEnvironmentStrategyRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -2841,13 +2753,6 @@ class DescribeApiEnvironmentStrategyResponse(AbstractModel):
             self.Result = ApiEnvironmentStrategyStataus()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribeApiKeyRequest(AbstractModel):
@@ -2870,7 +2775,7 @@ class DescribeApiKeyRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -2896,13 +2801,6 @@ class DescribeApiKeyResponse(AbstractModel):
             self.Result = ApiKey()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribeApiKeysStatusRequest(AbstractModel):
@@ -2938,7 +2836,7 @@ class DescribeApiKeysStatusRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -2964,13 +2862,6 @@ class DescribeApiKeysStatusResponse(AbstractModel):
             self.Result = ApiKeysStatus()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribeApiRequest(AbstractModel):
@@ -2997,7 +2888,7 @@ class DescribeApiRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -3022,13 +2913,6 @@ class DescribeApiResponse(AbstractModel):
             self.Result = ApiInfo()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribeApiUsagePlanRequest(AbstractModel):
@@ -3059,7 +2943,7 @@ class DescribeApiUsagePlanRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -3085,13 +2969,6 @@ class DescribeApiUsagePlanResponse(AbstractModel):
             self.Result = ApiUsagePlanSet()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribeApisStatusRequest(AbstractModel):
@@ -3131,7 +3008,7 @@ class DescribeApisStatusRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -3156,13 +3033,6 @@ class DescribeApisStatusResponse(AbstractModel):
             self.Result = ApisStatus()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribeIPStrategyApisStatusRequest(AbstractModel):
@@ -3210,7 +3080,7 @@ class DescribeIPStrategyApisStatusRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -3236,13 +3106,6 @@ class DescribeIPStrategyApisStatusResponse(AbstractModel):
             self.Result = IPStrategyApiStatus()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribeIPStrategyRequest(AbstractModel):
@@ -3290,7 +3153,7 @@ class DescribeIPStrategyRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -3316,13 +3179,6 @@ class DescribeIPStrategyResponse(AbstractModel):
             self.Result = IPStrategy()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribeIPStrategysStatusRequest(AbstractModel):
@@ -3354,7 +3210,7 @@ class DescribeIPStrategysStatusRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -3380,13 +3236,6 @@ class DescribeIPStrategysStatusResponse(AbstractModel):
             self.Result = IPStrategysStatus()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribeLogSearchRequest(AbstractModel):
@@ -3461,7 +3310,7 @@ req_t：”>=“ 、 ”<=“
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -3519,13 +3368,6 @@ req_id：请求id。
         self.LogSet = params.get("LogSet")
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribePluginsRequest(AbstractModel):
@@ -3573,7 +3415,7 @@ class DescribePluginsRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -3598,13 +3440,6 @@ class DescribePluginsResponse(AbstractModel):
             self.Result = PluginSummary()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribeServiceEnvironmentListRequest(AbstractModel):
@@ -3635,7 +3470,7 @@ class DescribeServiceEnvironmentListRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -3661,13 +3496,6 @@ class DescribeServiceEnvironmentListResponse(AbstractModel):
             self.Result = ServiceEnvironmentSet()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribeServiceEnvironmentReleaseHistoryRequest(AbstractModel):
@@ -3702,7 +3530,7 @@ class DescribeServiceEnvironmentReleaseHistoryRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -3728,13 +3556,6 @@ class DescribeServiceEnvironmentReleaseHistoryResponse(AbstractModel):
             self.Result = ServiceReleaseHistory()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribeServiceEnvironmentStrategyRequest(AbstractModel):
@@ -3765,7 +3586,7 @@ class DescribeServiceEnvironmentStrategyRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -3791,13 +3612,6 @@ class DescribeServiceEnvironmentStrategyResponse(AbstractModel):
             self.Result = ServiceEnvironmentStrategyStatus()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribeServiceReleaseVersionRequest(AbstractModel):
@@ -3828,7 +3642,7 @@ class DescribeServiceReleaseVersionRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -3854,13 +3668,6 @@ class DescribeServiceReleaseVersionResponse(AbstractModel):
             self.Result = ServiceReleaseVersion()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribeServiceRequest(AbstractModel):
@@ -3883,7 +3690,7 @@ class DescribeServiceRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -4023,13 +3830,6 @@ class DescribeServiceResponse(AbstractModel):
         self.InstanceName = params.get("InstanceName")
         self.SetType = params.get("SetType")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribeServiceSubDomainMappingsRequest(AbstractModel):
@@ -4056,7 +3856,7 @@ class DescribeServiceSubDomainMappingsRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -4081,13 +3881,6 @@ class DescribeServiceSubDomainMappingsResponse(AbstractModel):
             self.Result = ServiceSubDomainMappings()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribeServiceSubDomainsRequest(AbstractModel):
@@ -4118,7 +3911,7 @@ class DescribeServiceSubDomainsRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -4143,13 +3936,6 @@ class DescribeServiceSubDomainsResponse(AbstractModel):
             self.Result = DomainSets()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribeServiceUsagePlanRequest(AbstractModel):
@@ -4180,7 +3966,7 @@ class DescribeServiceUsagePlanRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -4206,13 +3992,6 @@ class DescribeServiceUsagePlanResponse(AbstractModel):
             self.Result = ServiceUsagePlanSet()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribeServicesStatusRequest(AbstractModel):
@@ -4248,7 +4027,7 @@ class DescribeServicesStatusRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -4274,13 +4053,6 @@ class DescribeServicesStatusResponse(AbstractModel):
             self.Result = ServicesStatus()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribeUsagePlanEnvironmentsRequest(AbstractModel):
@@ -4315,7 +4087,7 @@ class DescribeUsagePlanEnvironmentsRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -4341,13 +4113,6 @@ class DescribeUsagePlanEnvironmentsResponse(AbstractModel):
             self.Result = UsagePlanEnvironmentStatus()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribeUsagePlanRequest(AbstractModel):
@@ -4370,7 +4135,7 @@ class DescribeUsagePlanRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -4396,13 +4161,6 @@ class DescribeUsagePlanResponse(AbstractModel):
             self.Result = UsagePlanInfo()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribeUsagePlanSecretIdsRequest(AbstractModel):
@@ -4433,7 +4191,7 @@ class DescribeUsagePlanSecretIdsRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -4459,13 +4217,6 @@ class DescribeUsagePlanSecretIdsResponse(AbstractModel):
             self.Result = UsagePlanBindSecretStatus()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribeUsagePlansStatusRequest(AbstractModel):
@@ -4501,7 +4252,7 @@ class DescribeUsagePlansStatusRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -4527,13 +4278,6 @@ class DescribeUsagePlansStatusResponse(AbstractModel):
             self.Result = UsagePlansStatus()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DisableApiKeyRequest(AbstractModel):
@@ -4556,7 +4300,7 @@ class DisableApiKeyRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -4580,13 +4324,6 @@ class DisableApiKeyResponse(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DocumentSDK(AbstractModel):
@@ -4613,7 +4350,7 @@ class DocumentSDK(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -4665,7 +4402,7 @@ class DomainSetList(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -4698,7 +4435,7 @@ class DomainSets(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -4722,7 +4459,7 @@ class EnableApiKeyRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -4746,13 +4483,6 @@ class EnableApiKeyResponse(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class Environment(AbstractModel):
@@ -4787,7 +4517,7 @@ class Environment(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -4820,7 +4550,7 @@ class EnvironmentStrategy(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -4865,7 +4595,7 @@ class ErrorCodes(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -4896,7 +4626,7 @@ class Filter(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -4928,7 +4658,7 @@ class GenerateApiDocumentRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -4953,13 +4683,6 @@ class GenerateApiDocumentResponse(AbstractModel):
             self.Result = DocumentSDK()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class HealthCheckConf(AbstractModel):
@@ -4994,7 +4717,7 @@ class HealthCheckConf(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -5064,7 +4787,7 @@ class IPStrategy(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -5112,7 +4835,7 @@ class IPStrategyApi(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -5147,7 +4870,7 @@ class IPStrategyApiStatus(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -5182,7 +4905,7 @@ class IPStrategysStatus(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -5214,7 +4937,7 @@ class LogQuery(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -5246,7 +4969,7 @@ class MicroService(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -5278,7 +5001,7 @@ class MicroServiceReq(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -5318,7 +5041,7 @@ class ModifyAPIDocRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -5343,13 +5066,6 @@ class ModifyAPIDocResponse(AbstractModel):
             self.Result = APIDoc()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class ModifyApiEnvironmentStrategyRequest(AbstractModel):
@@ -5384,7 +5100,7 @@ class ModifyApiEnvironmentStrategyRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -5408,13 +5124,6 @@ class ModifyApiEnvironmentStrategyResponse(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class ModifyApiIncrementRequest(AbstractModel):
@@ -5453,7 +5162,7 @@ class ModifyApiIncrementRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -5472,13 +5181,6 @@ class ModifyApiIncrementResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class ModifyApiRequest(AbstractModel):
@@ -5733,7 +5435,7 @@ class ModifyApiRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -5752,13 +5454,6 @@ class ModifyApiResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class ModifyIPStrategyRequest(AbstractModel):
@@ -5789,7 +5484,7 @@ class ModifyIPStrategyRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -5813,13 +5508,6 @@ class ModifyIPStrategyResponse(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class ModifyServiceEnvironmentStrategyRequest(AbstractModel):
@@ -5850,7 +5538,7 @@ class ModifyServiceEnvironmentStrategyRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -5874,13 +5562,6 @@ class ModifyServiceEnvironmentStrategyResponse(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class ModifyServiceRequest(AbstractModel):
@@ -5919,7 +5600,7 @@ class ModifyServiceRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -5938,13 +5619,6 @@ class ModifyServiceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class ModifySubDomainRequest(AbstractModel):
@@ -6000,7 +5674,7 @@ class ModifySubDomainRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -6023,13 +5697,6 @@ class ModifySubDomainResponse(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class ModifyUsagePlanRequest(AbstractModel):
@@ -6068,7 +5735,7 @@ class ModifyUsagePlanRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -6094,13 +5761,6 @@ class ModifyUsagePlanResponse(AbstractModel):
             self.Result = UsagePlanInfo()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class OauthConfig(AbstractModel):
@@ -6131,7 +5791,7 @@ class OauthConfig(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -6159,7 +5819,7 @@ class PathMapping(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -6223,7 +5883,7 @@ class Plugin(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -6256,7 +5916,7 @@ class PluginSummary(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -6286,7 +5946,7 @@ class ReleaseService(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -6322,7 +5982,7 @@ class ReleaseServiceRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -6347,13 +6007,6 @@ class ReleaseServiceResponse(AbstractModel):
             self.Result = ReleaseService()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class ReqParameter(AbstractModel):
@@ -6396,7 +6049,7 @@ class ReqParameter(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -6424,7 +6077,7 @@ class RequestConfig(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -6468,7 +6121,7 @@ class RequestParameter(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -6492,7 +6145,7 @@ class ResetAPIDocPasswordRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -6517,13 +6170,6 @@ class ResetAPIDocPasswordResponse(AbstractModel):
             self.Result = APIDoc()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class ResponseErrorCodeReq(AbstractModel):
@@ -6562,7 +6208,7 @@ class ResponseErrorCodeReq(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -6677,7 +6323,7 @@ class Service(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -6717,7 +6363,7 @@ class ServiceConfig(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -6752,7 +6398,7 @@ class ServiceEnvironmentSet(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -6798,7 +6444,7 @@ class ServiceEnvironmentStrategy(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -6833,7 +6479,7 @@ class ServiceEnvironmentStrategyStatus(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -6888,7 +6534,7 @@ class ServiceParameter(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -6923,7 +6569,7 @@ class ServiceReleaseHistory(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -6958,7 +6604,7 @@ class ServiceReleaseHistoryInfo(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -6993,7 +6639,7 @@ class ServiceReleaseVersion(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -7026,7 +6672,7 @@ class ServiceSubDomainMappings(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -7061,7 +6707,7 @@ class ServiceUsagePlanSet(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -7096,7 +6742,7 @@ class ServicesStatus(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -7124,7 +6770,7 @@ class Tag(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -7164,7 +6810,7 @@ class TargetServicesReq(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -7204,7 +6850,7 @@ class TsfLoadBalanceConfResp(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -7244,7 +6890,7 @@ class UnBindEnvironmentRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -7268,13 +6914,6 @@ class UnBindEnvironmentResponse(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class UnBindIPStrategyRequest(AbstractModel):
@@ -7309,7 +6948,7 @@ class UnBindIPStrategyRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -7333,13 +6972,6 @@ class UnBindIPStrategyResponse(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class UnBindSecretIdsRequest(AbstractModel):
@@ -7366,7 +6998,7 @@ class UnBindSecretIdsRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -7390,13 +7022,6 @@ class UnBindSecretIdsResponse(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class UnBindSubDomainRequest(AbstractModel):
@@ -7423,7 +7048,7 @@ class UnBindSubDomainRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -7446,13 +7071,6 @@ class UnBindSubDomainResponse(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class UnReleaseServiceRequest(AbstractModel):
@@ -7483,7 +7101,7 @@ class UnReleaseServiceRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -7507,13 +7125,6 @@ class UnReleaseServiceResponse(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class UpdateApiKeyRequest(AbstractModel):
@@ -7540,7 +7151,7 @@ class UpdateApiKeyRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -7566,13 +7177,6 @@ class UpdateApiKeyResponse(AbstractModel):
             self.Result = ApiKey()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class UpdateServiceRequest(AbstractModel):
@@ -7607,7 +7211,7 @@ class UpdateServiceRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -7631,13 +7235,6 @@ class UpdateServiceResponse(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class UsagePlan(AbstractModel):
@@ -7684,7 +7281,7 @@ class UsagePlan(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -7714,7 +7311,7 @@ class UsagePlanBindEnvironment(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -7749,7 +7346,7 @@ class UsagePlanBindSecret(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -7784,7 +7381,7 @@ class UsagePlanBindSecretStatus(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -7864,7 +7461,7 @@ class UsagePlanEnvironment(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -7899,7 +7496,7 @@ class UsagePlanEnvironmentStatus(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -7989,7 +7586,7 @@ class UsagePlanInfo(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -8044,7 +7641,7 @@ class UsagePlanStatusInfo(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -8079,5 +7676,5 @@ class UsagePlansStatus(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

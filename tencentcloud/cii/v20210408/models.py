@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-# Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
+# Copyright (c) 2017-2021 THL A29 Limited, a Tencent company. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -64,7 +64,7 @@ class CompareMetricsData(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -108,7 +108,7 @@ class CreateStructureTaskInfo(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -164,7 +164,7 @@ AccidentInsurance：意外险
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -187,13 +187,6 @@ class CreateStructureTaskResponse(AbstractModel):
     def _deserialize(self, params):
         self.MainTaskId = params.get("MainTaskId")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribeStructCompareDataRequest(AbstractModel):
@@ -220,7 +213,7 @@ class DescribeStructCompareDataRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -300,13 +293,6 @@ class DescribeStructCompareDataResponse(AbstractModel):
                 self.AllTasks.append(obj)
         self.TaskType = params.get("TaskType")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribeStructureResultRequest(AbstractModel):
@@ -329,7 +315,7 @@ class DescribeStructureResultRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -364,13 +350,6 @@ class DescribeStructureResultResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Results.append(obj)
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribeStructureTaskResultRequest(AbstractModel):
@@ -393,7 +372,7 @@ class DescribeStructureTaskResultRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -429,13 +408,6 @@ class DescribeStructureTaskResultResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Results.append(obj)
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class ResultObject(AbstractModel):
@@ -462,7 +434,7 @@ class ResultObject(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -498,7 +470,7 @@ class ReviewDataTaskInfo(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -530,5 +502,5 @@ class StructureResultObject(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

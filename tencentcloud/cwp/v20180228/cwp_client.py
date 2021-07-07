@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-# Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
+# Copyright (c) 2017-2021 THL A29 Limited, a Tencent company. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -208,6 +208,34 @@ class CwpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateProtectServerResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateScanMalwareSetting(self, request):
+        """该接口可以对入侵检测-文件查杀扫描检测
+
+        :param request: Request instance for CreateScanMalwareSetting.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.CreateScanMalwareSettingRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.CreateScanMalwareSettingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateScanMalwareSetting", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateScanMalwareSettingResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1762,6 +1790,34 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeMalwareTimingScanSetting(self, request):
+        """查询定时扫描配置
+
+        :param request: Request instance for DescribeMalwareTimingScanSetting.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeMalwareTimingScanSettingRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeMalwareTimingScanSettingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMalwareTimingScanSetting", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMalwareTimingScanSettingResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeMalwares(self, request):
         """本接口（DescribeMalwares）用于获取木马事件列表。
 
@@ -2196,6 +2252,62 @@ class CwpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeScanMalwareScheduleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeScanTaskDetails(self, request):
+        """DescribeScanTaskDetails 查询扫描任务详情 , 可以查询扫描进度信息/异常;
+
+        :param request: Request instance for DescribeScanTaskDetails.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeScanTaskDetailsRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeScanTaskDetailsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeScanTaskDetails", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeScanTaskDetailsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeScanVulSetting(self, request):
+        """查询定期检测的配置
+
+        :param request: Request instance for DescribeScanVulSetting.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeScanVulSettingRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeScanVulSettingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeScanVulSetting", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeScanVulSettingResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2756,6 +2868,34 @@ class CwpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EditBashRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def EditBashRules(self, request):
+        """新增或修改高危命令规则
+
+        :param request: Request instance for EditBashRules.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.EditBashRulesRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.EditBashRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("EditBashRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EditBashRulesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -3583,7 +3723,7 @@ class CwpClient(AbstractClient):
 
 
     def ScanVul(self, request):
-        """漏洞管理 - 一键检测
+        """一键检测
 
         :param request: Request instance for ScanVul.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ScanVulRequest`
@@ -3596,6 +3736,62 @@ class CwpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ScanVulResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ScanVulAgain(self, request):
+        """漏洞管理-重新检测接口
+
+        :param request: Request instance for ScanVulAgain.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.ScanVulAgainRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.ScanVulAgainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ScanVulAgain", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ScanVulAgainResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ScanVulSetting(self, request):
+        """定期扫描漏洞设置
+
+        :param request: Request instance for ScanVulSetting.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.ScanVulSettingRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.ScanVulSettingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ScanVulSetting", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ScanVulSettingResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-# Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
+# Copyright (c) 2017-2021 THL A29 Limited, a Tencent company. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -42,7 +42,7 @@ class BankCard2EVerificationRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -88,13 +88,6 @@ class BankCard2EVerificationResponse(AbstractModel):
         self.Result = params.get("Result")
         self.Description = params.get("Description")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class BankCard4EVerificationRequest(AbstractModel):
@@ -140,7 +133,7 @@ class BankCard4EVerificationRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -188,13 +181,6 @@ class BankCard4EVerificationResponse(AbstractModel):
         self.Result = params.get("Result")
         self.Description = params.get("Description")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class BankCardVerificationRequest(AbstractModel):
@@ -236,7 +222,7 @@ class BankCardVerificationRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -283,13 +269,6 @@ class BankCardVerificationResponse(AbstractModel):
         self.Result = params.get("Result")
         self.Description = params.get("Description")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class CheckBankCardInformationRequest(AbstractModel):
@@ -312,7 +291,7 @@ class CheckBankCardInformationRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -353,13 +332,55 @@ class CheckBankCardInformationResponse(AbstractModel):
         self.AccountBank = params.get("AccountBank")
         self.AccountType = params.get("AccountType")
         self.RequestId = params.get("RequestId")
+
+
+class CheckEidTokenStatusRequest(AbstractModel):
+    """CheckEidTokenStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EidToken: E证通流程的唯一标识，调用GetEidToken接口时生成。
+        :type EidToken: str
+        """
+        self.EidToken = None
+
+
+    def _deserialize(self, params):
+        self.EidToken = params.get("EidToken")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CheckEidTokenStatusResponse(AbstractModel):
+    """CheckEidTokenStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 枚举：
+init：token未验证
+doing: 验证中
+finished: 验证完成
+timeout: token已超时
+        :type Status: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
 
 
 class CheckIdCardInformationRequest(AbstractModel):
@@ -409,7 +430,7 @@ Config = {"CopyWarn":true,"ReshootWarn":true}
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -485,13 +506,6 @@ class CheckIdCardInformationResponse(AbstractModel):
         self.Warnings = params.get("Warnings")
         self.Quality = params.get("Quality")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class CheckPhoneAndNameRequest(AbstractModel):
@@ -518,7 +532,7 @@ class CheckPhoneAndNameRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -552,13 +566,6 @@ class CheckPhoneAndNameResponse(AbstractModel):
         self.Result = params.get("Result")
         self.Description = params.get("Description")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DetectAuthRequest(AbstractModel):
@@ -613,7 +620,7 @@ Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。请
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -641,13 +648,6 @@ class DetectAuthResponse(AbstractModel):
         self.Url = params.get("Url")
         self.BizToken = params.get("BizToken")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DetectDetail(AbstractModel):
@@ -735,7 +735,7 @@ class DetectDetail(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -765,7 +765,7 @@ class DetectInfoBestFrame(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -810,7 +810,7 @@ class DetectInfoIdCardData(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -949,7 +949,7 @@ class DetectInfoText(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -974,7 +974,7 @@ class DetectInfoVideoData(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1002,7 +1002,7 @@ class EidInfo(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1041,7 +1041,7 @@ class EncryptedPhoneVerificationRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1076,13 +1076,6 @@ class EncryptedPhoneVerificationResponse(AbstractModel):
         self.Result = params.get("Result")
         self.Description = params.get("Description")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class Encryption(AbstractModel):
@@ -1113,7 +1106,7 @@ class Encryption(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1137,7 +1130,7 @@ class GetActionSequenceRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1160,13 +1153,6 @@ class GetActionSequenceResponse(AbstractModel):
     def _deserialize(self, params):
         self.ActionSequence = params.get("ActionSequence")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class GetDetectInfoEnhancedRequest(AbstractModel):
@@ -1215,7 +1201,7 @@ class GetDetectInfoEnhancedRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1269,13 +1255,6 @@ class GetDetectInfoEnhancedResponse(AbstractModel):
             self.Encryption = Encryption()
             self.Encryption._deserialize(params.get("Encryption"))
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class GetDetectInfoRequest(AbstractModel):
@@ -1308,7 +1287,7 @@ class GetDetectInfoRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1379,13 +1358,6 @@ class GetDetectInfoResponse(AbstractModel):
     def _deserialize(self, params):
         self.DetectInfo = params.get("DetectInfo")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class GetEidResultRequest(AbstractModel):
@@ -1395,7 +1367,7 @@ class GetEidResultRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param EidToken: 人脸核身流程的标识，调用GetEidToken接口时生成的。
+        :param EidToken: E证通流程的唯一标识，调用GetEidToken接口时生成。
         :type EidToken: str
         :param InfoType: 指定拉取的结果信息，取值（0：全部；1：文本类；2：身份证信息；3：最佳截图信息）。
 如 13表示拉取文本类、最佳截图信息。
@@ -1418,7 +1390,7 @@ class GetEidResultRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1465,13 +1437,6 @@ class GetEidResultResponse(AbstractModel):
             self.EidInfo = EidInfo()
             self.EidInfo._deserialize(params.get("EidInfo"))
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class GetEidTokenConfig(AbstractModel):
@@ -1500,7 +1465,7 @@ class GetEidTokenConfig(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1522,12 +1487,15 @@ class GetEidTokenRequest(AbstractModel):
         :type Extra: str
         :param Config: 小程序模式配置，包括如何传入姓名身份证的配置。
         :type Config: :class:`tencentcloud.faceid.v20180301.models.GetEidTokenConfig`
+        :param RedirectUrl: 最长长度1024位。用户从Url中进入核身认证结束后重定向的回调链接地址。EidToken会在该链接的query参数中。
+        :type RedirectUrl: str
         """
         self.MerchantId = None
         self.IdCard = None
         self.Name = None
         self.Extra = None
         self.Config = None
+        self.RedirectUrl = None
 
 
     def _deserialize(self, params):
@@ -1538,12 +1506,13 @@ class GetEidTokenRequest(AbstractModel):
         if params.get("Config") is not None:
             self.Config = GetEidTokenConfig()
             self.Config._deserialize(params.get("Config"))
+        self.RedirectUrl = params.get("RedirectUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1554,26 +1523,23 @@ class GetEidTokenResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param EidToken: 一次核身流程的标识，有效时间为7,200秒；
+        :param EidToken: 一次核身流程的标识，有效时间为600秒；
 完成核身后，可用该标识获取验证结果信息。
         :type EidToken: str
+        :param Url: 发起核身流程的URL，用于H5场景核身。
+        :type Url: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.EidToken = None
+        self.Url = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.EidToken = params.get("EidToken")
+        self.Url = params.get("Url")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class GetFaceIdResultRequest(AbstractModel):
@@ -1604,7 +1570,7 @@ class GetFaceIdResultRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1658,13 +1624,6 @@ class GetFaceIdResultResponse(AbstractModel):
         self.BestFrameBase64 = params.get("BestFrameBase64")
         self.Extra = params.get("Extra")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class GetFaceIdTokenRequest(AbstractModel):
@@ -1708,7 +1667,7 @@ class GetFaceIdTokenRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1731,13 +1690,6 @@ class GetFaceIdTokenResponse(AbstractModel):
     def _deserialize(self, params):
         self.FaceIdToken = params.get("FaceIdToken")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class GetLiveCodeRequest(AbstractModel):
@@ -1765,13 +1717,6 @@ class GetLiveCodeResponse(AbstractModel):
     def _deserialize(self, params):
         self.LiveCode = params.get("LiveCode")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class GetRealNameAuthResultRequest(AbstractModel):
@@ -1794,7 +1739,7 @@ class GetRealNameAuthResultRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1825,13 +1770,6 @@ class GetRealNameAuthResultResponse(AbstractModel):
     def _deserialize(self, params):
         self.ResultType = params.get("ResultType")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class GetRealNameAuthTokenRequest(AbstractModel):
@@ -1862,7 +1800,7 @@ class GetRealNameAuthTokenRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1889,13 +1827,6 @@ class GetRealNameAuthTokenResponse(AbstractModel):
         self.AuthToken = params.get("AuthToken")
         self.RedirectURL = params.get("RedirectURL")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class IdCardOCRVerificationRequest(AbstractModel):
@@ -1943,7 +1874,7 @@ class IdCardOCRVerificationRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -2006,13 +1937,6 @@ class IdCardOCRVerificationResponse(AbstractModel):
         self.Birth = params.get("Birth")
         self.Address = params.get("Address")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class IdCardVerificationRequest(AbstractModel):
@@ -2039,7 +1963,7 @@ class IdCardVerificationRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -2074,13 +1998,6 @@ class IdCardVerificationResponse(AbstractModel):
         self.Result = params.get("Result")
         self.Description = params.get("Description")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class ImageRecognitionRequest(AbstractModel):
@@ -2117,7 +2034,7 @@ Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -2148,13 +2065,6 @@ class ImageRecognitionResponse(AbstractModel):
         self.Result = params.get("Result")
         self.Description = params.get("Description")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class LivenessCompareRequest(AbstractModel):
@@ -2203,7 +2113,7 @@ LIP为数字模式，ACTION为动作模式，SILENT为静默模式，三种模�
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -2244,13 +2154,6 @@ class LivenessCompareResponse(AbstractModel):
         self.Description = params.get("Description")
         self.BestFrameList = params.get("BestFrameList")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class LivenessRecognitionRequest(AbstractModel):
@@ -2300,7 +2203,7 @@ LIP为数字模式，ACTION为动作模式，SILENT为静默模式，三种模�
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -2341,13 +2244,6 @@ class LivenessRecognitionResponse(AbstractModel):
         self.Description = params.get("Description")
         self.BestFrameList = params.get("BestFrameList")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class LivenessRequest(AbstractModel):
@@ -2389,7 +2285,7 @@ LIP为数字模式，ACTION为动作模式，SILENT为静默模式，三种模�
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -2426,13 +2322,6 @@ class LivenessResponse(AbstractModel):
         self.Description = params.get("Description")
         self.BestFrameList = params.get("BestFrameList")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class MinorsVerificationRequest(AbstractModel):
@@ -2477,7 +2366,7 @@ class MinorsVerificationRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -2524,13 +2413,6 @@ class MinorsVerificationResponse(AbstractModel):
         self.Description = params.get("Description")
         self.AgeRange = params.get("AgeRange")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class MobileNetworkTimeVerificationRequest(AbstractModel):
@@ -2559,7 +2441,7 @@ class MobileNetworkTimeVerificationRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -2598,13 +2480,6 @@ class MobileNetworkTimeVerificationResponse(AbstractModel):
         self.Description = params.get("Description")
         self.Range = params.get("Range")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class MobileStatusRequest(AbstractModel):
@@ -2633,7 +2508,7 @@ class MobileStatusRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -2676,13 +2551,6 @@ class MobileStatusResponse(AbstractModel):
         self.Description = params.get("Description")
         self.StatusCode = params.get("StatusCode")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class PhoneVerificationRequest(AbstractModel):
@@ -2725,7 +2593,7 @@ class PhoneVerificationRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -2763,10 +2631,3 @@ class PhoneVerificationResponse(AbstractModel):
         self.Result = params.get("Result")
         self.Description = params.get("Description")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        

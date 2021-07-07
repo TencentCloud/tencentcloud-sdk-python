@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-# Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
+# Copyright (c) 2017-2021 THL A29 Limited, a Tencent company. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -978,6 +978,34 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetSecurityLastUsed(self, request):
+        """获取密钥最近使用情况
+
+        :param request: Request instance for GetSecurityLastUsed.
+        :type request: :class:`tencentcloud.cam.v20190116.models.GetSecurityLastUsedRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.GetSecurityLastUsedResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetSecurityLastUsed", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetSecurityLastUsedResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetServiceLinkedRoleDeletionStatus(self, request):
         """根据删除TaskId获取服务相关角色删除状态
 
@@ -1272,6 +1300,34 @@ class CamClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListPoliciesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ListPoliciesGrantingServiceAccess(self, request):
+        """获取所有已授权服务
+
+        :param request: Request instance for ListPoliciesGrantingServiceAccess.
+        :type request: :class:`tencentcloud.cam.v20190116.models.ListPoliciesGrantingServiceAccessRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.ListPoliciesGrantingServiceAccessResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListPoliciesGrantingServiceAccess", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListPoliciesGrantingServiceAccessResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

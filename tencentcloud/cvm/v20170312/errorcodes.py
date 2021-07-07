@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-# Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
+# Copyright (c) 2017-2021 THL A29 Limited, a Tencent company. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -280,6 +280,9 @@ INVALIDPARAMETERVALUE_INSUFFICIENTOFFERING = 'InvalidParameterValue.Insufficient
 
 # 竞价失败。
 INVALIDPARAMETERVALUE_INSUFFICIENTPRICE = 'InvalidParameterValue.InsufficientPrice'
+
+# 镜像ID不支持指定的实例机型。
+INVALIDPARAMETERVALUE_INVALIDIMAGEFORGIVENINSTANCETYPE = 'InvalidParameterValue.InvalidImageForGivenInstanceType'
 
 # 镜像不允许执行该操作
 INVALIDPARAMETERVALUE_INVALIDIMAGEID = 'InvalidParameterValue.InvalidImageId'

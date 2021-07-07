@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-# Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
+# Copyright (c) 2017-2021 THL A29 Limited, a Tencent company. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,6 +13,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+
+# CAM签名/鉴权错误。
+AUTHFAILURE = 'AuthFailure'
 
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
@@ -118,6 +121,9 @@ INVALIDPARAMETER_REVERSHELLKEYFIELDALLEMPTY = 'InvalidParameter.ReverShellKeyFie
 
 # 规则类接口，主机IP不正确。
 INVALIDPARAMETER_RULEHOSTIPERR = 'InvalidParameter.RuleHostipErr'
+
+# 参数取值错误。
+INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
 # 标签名称长度不能超过15个字符。
 INVALIDPARAMETERVALUE_TAGNAMELENGTHLIMIT = 'InvalidParameterValue.TagNameLengthLimit'

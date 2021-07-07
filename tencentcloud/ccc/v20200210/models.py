@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-# Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
+# Copyright (c) 2017-2021 THL A29 Limited, a Tencent company. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,6 +16,55 @@
 import warnings
 
 from tencentcloud.common.abstract_model import AbstractModel
+
+
+class BindStaffSkillGroupListRequest(AbstractModel):
+    """BindStaffSkillGroupList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SdkAppId: 实例ID
+        :type SdkAppId: int
+        :param StaffEmail: 坐席邮箱
+        :type StaffEmail: str
+        :param SkillGroupList: 绑定技能组列表
+        :type SkillGroupList: list of int
+        """
+        self.SdkAppId = None
+        self.StaffEmail = None
+        self.SkillGroupList = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.StaffEmail = params.get("StaffEmail")
+        self.SkillGroupList = params.get("SkillGroupList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindStaffSkillGroupListResponse(AbstractModel):
+    """BindStaffSkillGroupList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class CreateSDKLoginTokenRequest(AbstractModel):
@@ -42,7 +91,7 @@ class CreateSDKLoginTokenRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -73,13 +122,6 @@ class CreateSDKLoginTokenResponse(AbstractModel):
         self.ExpiredTime = params.get("ExpiredTime")
         self.SdkURL = params.get("SdkURL")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class CreateStaffRequest(AbstractModel):
@@ -111,7 +153,7 @@ class CreateStaffRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -122,21 +164,74 @@ class CreateStaffResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param ErrorStaffList: 错误坐席列表及错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorStaffList: list of ErrStaffItem
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.ErrorStaffList = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("ErrorStaffList") is not None:
+            self.ErrorStaffList = []
+            for item in params.get("ErrorStaffList"):
+                obj = ErrStaffItem()
+                obj._deserialize(item)
+                self.ErrorStaffList.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class DeleteStaffRequest(AbstractModel):
+    """DeleteStaff请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SdkAppId: 实例ID
+        :type SdkAppId: int
+        :param StaffList: 待删除客服邮箱列表
+        :type StaffList: list of str
+        """
+        self.SdkAppId = None
+        self.StaffList = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.StaffList = params.get("StaffList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DeleteStaffResponse(AbstractModel):
+    """DeleteStaff返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param OnlineStaffList: 无法删除的状态为在线的客服列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OnlineStaffList: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.OnlineStaffList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.OnlineStaffList = params.get("OnlineStaffList")
+        self.RequestId = params.get("RequestId")
 
 
 class DescribeChatMessagesRequest(AbstractModel):
@@ -179,7 +274,7 @@ class DescribeChatMessagesRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -211,13 +306,6 @@ class DescribeChatMessagesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Messages.append(obj)
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribeIMCdrsRequest(AbstractModel):
@@ -264,7 +352,7 @@ class DescribeIMCdrsRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -296,13 +384,6 @@ class DescribeIMCdrsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.IMCdrs.append(obj)
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribePSTNActiveSessionListRequest(AbstractModel):
@@ -333,7 +414,7 @@ class DescribePSTNActiveSessionListRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -365,13 +446,6 @@ class DescribePSTNActiveSessionListResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Sessions.append(obj)
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribeSeatUserListRequest(AbstractModel):
@@ -402,7 +476,7 @@ class DescribeSeatUserListRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -434,13 +508,6 @@ class DescribeSeatUserListResponse(AbstractModel):
                 obj._deserialize(item)
                 self.SeatUsers.append(obj)
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribeSkillGroupInfoListRequest(AbstractModel):
@@ -479,7 +546,7 @@ class DescribeSkillGroupInfoListRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -511,13 +578,6 @@ class DescribeSkillGroupInfoListResponse(AbstractModel):
                 obj._deserialize(item)
                 self.SkillGroupList.append(obj)
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribeStaffInfoListRequest(AbstractModel):
@@ -556,7 +616,7 @@ class DescribeStaffInfoListRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -588,13 +648,6 @@ class DescribeStaffInfoListResponse(AbstractModel):
                 obj._deserialize(item)
                 self.StaffList.append(obj)
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribeTelCallInfoRequest(AbstractModel):
@@ -625,7 +678,7 @@ class DescribeTelCallInfoRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -656,13 +709,6 @@ class DescribeTelCallInfoResponse(AbstractModel):
         self.TelCallInCount = params.get("TelCallInCount")
         self.SeatUsedCount = params.get("SeatUsedCount")
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribeTelCdrRequest(AbstractModel):
@@ -688,6 +734,8 @@ class DescribeTelCdrRequest(AbstractModel):
         :type PageSize: int
         :param PageNumber: 分页页码，从 0 开始
         :type PageNumber: int
+        :param Phones: 按手机号筛选
+        :type Phones: list of str
         """
         self.StartTimeStamp = None
         self.EndTimeStamp = None
@@ -697,6 +745,7 @@ class DescribeTelCdrRequest(AbstractModel):
         self.SdkAppId = None
         self.PageSize = None
         self.PageNumber = None
+        self.Phones = None
 
 
     def _deserialize(self, params):
@@ -708,12 +757,13 @@ class DescribeTelCdrRequest(AbstractModel):
         self.SdkAppId = params.get("SdkAppId")
         self.PageSize = params.get("PageSize")
         self.PageNumber = params.get("PageNumber")
+        self.Phones = params.get("Phones")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -745,13 +795,6 @@ class DescribeTelCdrResponse(AbstractModel):
                 obj._deserialize(item)
                 self.TelCdrs.append(obj)
         self.RequestId = params.get("RequestId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
-        
 
 
 class DescribeTelSessionRequest(AbstractModel):
@@ -778,7 +821,7 @@ class DescribeTelSessionRequest(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -803,12 +846,37 @@ class DescribeTelSessionResponse(AbstractModel):
             self.Session = PSTNSession()
             self.Session._deserialize(params.get("Session"))
         self.RequestId = params.get("RequestId")
+
+
+class ErrStaffItem(AbstractModel):
+    """批量添加客服时，返回出错客服的像个信息
+
+    """
+
+    def __init__(self):
+        """
+        :param StaffEmail: 坐席邮箱地址
+        :type StaffEmail: str
+        :param Code: 错误码
+        :type Code: str
+        :param Message: 错误描述
+        :type Message: str
+        """
+        self.StaffEmail = None
+        self.Code = None
+        self.Message = None
+
+
+    def _deserialize(self, params):
+        self.StaffEmail = params.get("StaffEmail")
+        self.Code = params.get("Code")
+        self.Message = params.get("Message")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -856,7 +924,7 @@ class IMCdrInfo(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -886,7 +954,7 @@ class IVRKeyPressedElement(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -914,7 +982,7 @@ class Message(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -951,7 +1019,7 @@ class MessageBody(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1027,7 +1095,7 @@ finished 已完成
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1091,7 +1159,7 @@ class PSTNSessionInfo(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1141,7 +1209,7 @@ class SeatUserInfo(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1241,7 +1309,7 @@ class ServeParticipant(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1293,7 +1361,7 @@ class SkillGroupInfoItem(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1329,7 +1397,7 @@ class SkillGroupItem(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1388,7 +1456,7 @@ class StaffInfo(AbstractModel):
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
 
 
@@ -1573,5 +1641,54 @@ notInService       不在服务区
             if name in memeber_set:
                 memeber_set.remove(name)
         if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set), Warning)
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UnbindStaffSkillGroupListRequest(AbstractModel):
+    """UnbindStaffSkillGroupList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SdkAppId: 实例ID
+        :type SdkAppId: int
+        :param StaffEmail: 客服邮箱
+        :type StaffEmail: str
+        :param SkillGroupList: 解绑技能组列表
+        :type SkillGroupList: list of int
+        """
+        self.SdkAppId = None
+        self.StaffEmail = None
+        self.SkillGroupList = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.StaffEmail = params.get("StaffEmail")
+        self.SkillGroupList = params.get("SkillGroupList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnbindStaffSkillGroupListResponse(AbstractModel):
+    """UnbindStaffSkillGroupList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")

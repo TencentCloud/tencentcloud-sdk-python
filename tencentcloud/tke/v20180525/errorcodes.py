@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-# Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
+# Copyright (c) 2017-2021 THL A29 Limited, a Tencent company. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -211,6 +211,9 @@ INVALIDPARAMETER_CIDRCONFLICTWITHOTHERROUTE = 'InvalidParameter.CidrConflictWith
 
 # CIDR和vpc的CIDR冲突。
 INVALIDPARAMETER_CIDRCONFLICTWITHVPCCIDR = 'InvalidParameter.CidrConflictWithVpcCidr'
+
+# 创建的路由与VPC下已存在的全局路由产生冲突。
+INVALIDPARAMETER_CIDRCONFLICTWITHVPCGLOBALROUTE = 'InvalidParameter.CidrConflictWithVpcGlobalRoute'
 
 # 参数错误，CIDR不符合规范。
 INVALIDPARAMETER_CIDRINVALID = 'InvalidParameter.CidrInvalid'

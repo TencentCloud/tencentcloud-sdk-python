@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-# Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
+# Copyright (c) 2017-2021 THL A29 Limited, a Tencent company. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -40,6 +40,9 @@ FAILEDOPERATION_LOGINAREANOTALLOWED = 'FailedOperation.LoginAreaNotAllowed'
 
 # 登录失败，请检查账号和密码是否正确。
 FAILEDOPERATION_LOGINFAILED = 'FailedOperation.LoginFailed'
+
+# 权限错误，您无法查看该任务的详情。
+FAILEDOPERATION_NOTBATCHTASKOWNER = 'FailedOperation.NotBatchTaskOwner'
 
 # 域名不在您的名下。
 FAILEDOPERATION_NOTDOMAINOWNER = 'FailedOperation.NotDomainOwner'

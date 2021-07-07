@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-# Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
+# Copyright (c) 2017-2021 THL A29 Limited, a Tencent company. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -211,6 +211,9 @@ INTERNALERROR = 'InternalError'
 
 # 比对失败。
 INTERNALERROR_COMPAREFAIL = 'InternalError.CompareFail'
+
+# 加密失败。
+INTERNALERROR_ENCRYPTSYSTEMERROR = 'InternalError.EncryptSystemError'
 
 # 内部未知错误。
 INTERNALERROR_UNKNOWN = 'InternalError.UnKnown'

@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-# Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
+# Copyright (c) 2017-2021 THL A29 Limited, a Tencent company. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -516,6 +516,34 @@ class TcbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCloudBaseProjectVersionListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCloudBaseRunConfForGateWay(self, request):
+        """独立网关中拉取云托管服务对应的配置信息
+
+        :param request: Request instance for DescribeCloudBaseRunConfForGateWay.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunConfForGateWayRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunConfForGateWayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCloudBaseRunConfForGateWay", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCloudBaseRunConfForGateWayResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1247,6 +1275,34 @@ class TcbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EstablishWxGatewayRouteResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyCloudBaseRunServerFlowConf(self, request):
+        """修改容器内的版本流量配置
+
+        :param request: Request instance for ModifyCloudBaseRunServerFlowConf.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.ModifyCloudBaseRunServerFlowConfRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.ModifyCloudBaseRunServerFlowConfResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyCloudBaseRunServerFlowConf", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyCloudBaseRunServerFlowConfResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

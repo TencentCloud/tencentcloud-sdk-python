@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-# Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
+# Copyright (c) 2017-2021 THL A29 Limited, a Tencent company. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -124,6 +124,9 @@ RESOURCEBUSY = 'ResourceBusy'
 
 # 资源被占用。
 RESOURCEINUSE = 'ResourceInUse'
+
+# 云硬盘当前已在迁移中，请稍后重试。
+RESOURCEINUSE_DISKMIGRATING = 'ResourceInUse.DiskMigrating'
 
 # 云硬盘正在执行快照回滚操作，请稍后重试。
 RESOURCEINUSE_DISKROLLBACKING = 'ResourceInUse.DiskRollbacking'

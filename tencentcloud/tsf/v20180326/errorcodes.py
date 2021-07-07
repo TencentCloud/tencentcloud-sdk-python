@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-# Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
+# Copyright (c) 2017-2021 THL A29 Limited, a Tencent company. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -448,6 +448,9 @@ INVALIDPARAMETERVALUE_CONTAINERGROUPREPONAMEINVALID = 'InvalidParameterValue.Con
 
 # agent 容器资源值非法 , %s。
 INVALIDPARAMETERVALUE_CONTAINERGROUPRESOURCEAGENTVALUEINVALID = 'InvalidParameterValue.ContainergroupResourceAgentValueInvalid'
+
+# istioProxy 容器资源值非法 , %s。
+INVALIDPARAMETERVALUE_CONTAINERGROUPRESOURCEISTIOVALUEINVALID = 'InvalidParameterValue.ContainergroupResourceIstioValueInvalid'
 
 # 容器端口不允许重复映射。
 INVALIDPARAMETERVALUE_CONTAINERGROUPTARGETPORTSREPEAT = 'InvalidParameterValue.ContainergroupTargetPortsRepeat'

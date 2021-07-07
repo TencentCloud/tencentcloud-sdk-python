@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-# Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
+# Copyright (c) 2017-2021 THL A29 Limited, a Tencent company. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -24,6 +24,34 @@ class CccClient(AbstractClient):
     _apiVersion = '2020-02-10'
     _endpoint = 'ccc.tencentcloudapi.com'
     _service = 'ccc'
+
+
+    def BindStaffSkillGroupList(self, request):
+        """绑定坐席所属技能组
+
+        :param request: Request instance for BindStaffSkillGroupList.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.BindStaffSkillGroupListRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.BindStaffSkillGroupListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("BindStaffSkillGroupList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.BindStaffSkillGroupListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
 
 
     def CreateSDKLoginToken(self, request):
@@ -68,6 +96,34 @@ class CccClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateStaffResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteStaff(self, request):
+        """删除坐席信息
+
+        :param request: Request instance for DeleteStaff.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.DeleteStaffRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.DeleteStaffResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteStaff", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteStaffResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -139,7 +195,7 @@ class CccClient(AbstractClient):
 
 
     def DescribePSTNActiveSessionList(self, request):
-        """获取 PSTN 活动会话列表。
+        """获取当前正在通话的会话列表
 
         :param request: Request instance for DescribePSTNActiveSessionList.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribePSTNActiveSessionListRequest`
@@ -322,6 +378,34 @@ class CccClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTelSessionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UnbindStaffSkillGroupList(self, request):
+        """解绑坐席所属技能组
+
+        :param request: Request instance for UnbindStaffSkillGroupList.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.UnbindStaffSkillGroupListRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.UnbindStaffSkillGroupListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UnbindStaffSkillGroupList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UnbindStaffSkillGroupListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

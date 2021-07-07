@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-# Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
+# Copyright (c) 2017-2021 THL A29 Limited, a Tencent company. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -40,34 +40,6 @@ class MarketClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.FlowProductRemindResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def GetCateTree(self, request):
-        """获取分类名称
-
-        :param request: Request instance for GetCateTree.
-        :type request: :class:`tencentcloud.market.v20191010.models.GetCateTreeRequest`
-        :rtype: :class:`tencentcloud.market.v20191010.models.GetCateTreeResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("GetCateTree", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.GetCateTreeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

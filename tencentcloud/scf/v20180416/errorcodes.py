@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-# Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
+# Copyright (c) 2017-2021 THL A29 Limited, a Tencent company. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -361,6 +361,9 @@ INVALIDPARAMETERVALUE_SYSTEMENVIRONMENT = 'InvalidParameterValue.SystemEnvironme
 
 # 非法的TempCosObjectName。
 INVALIDPARAMETERVALUE_TEMPCOSOBJECTNAME = 'InvalidParameterValue.TempCosObjectName'
+
+# TraceEnable取值与规范不符，请修正后再试。
+INVALIDPARAMETERVALUE_TRACEENABLE = 'InvalidParameterValue.TraceEnable'
 
 # TriggerDesc传入参数错误。
 INVALIDPARAMETERVALUE_TRIGGERDESC = 'InvalidParameterValue.TriggerDesc'
