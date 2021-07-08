@@ -26,6 +26,34 @@ class ApigatewayClient(AbstractClient):
     _service = 'apigateway'
 
 
+    def AttachPlugin(self, request):
+        """绑定插件到API上。
+
+        :param request: Request instance for AttachPlugin.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.AttachPluginRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.AttachPluginResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AttachPlugin", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AttachPluginResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def BindEnvironment(self, request):
         """本接口（BindEnvironment）用于绑定使用计划到服务或API。
         用户在发布服务到某个环境中后，如果 API 需要鉴权，还需要绑定使用计划才能进行调用，此接口用户将使用计划绑定到特定环境。
@@ -480,6 +508,34 @@ class ApigatewayClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeletePlugin(self, request):
+        """删除API网关插件
+
+        :param request: Request instance for DeletePlugin.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.DeletePluginRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.DeletePluginResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeletePlugin", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeletePluginResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteService(self, request):
         """本接口（DeleteService）用于删除 API 网关中某个服务。
 
@@ -637,6 +693,34 @@ class ApigatewayClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAPIDocsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAllPluginApis(self, request):
+        """展示插件相关的API列表，包括已绑定的和未绑定的API信息。
+
+        :param request: Request instance for DescribeAllPluginApis.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeAllPluginApisRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.DescribeAllPluginApisResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAllPluginApis", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAllPluginApisResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -920,6 +1004,62 @@ class ApigatewayClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLogSearchResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePlugin(self, request):
+        """展示插件详情，支持按照插件ID进行。
+
+        :param request: Request instance for DescribePlugin.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribePluginRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.DescribePluginResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePlugin", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePluginResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePluginApis(self, request):
+        """查询指定插件下绑定的API信息
+
+        :param request: Request instance for DescribePluginApis.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribePluginApisRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.DescribePluginApisResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePluginApis", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePluginApisResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1333,6 +1473,34 @@ class ApigatewayClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DetachPlugin(self, request):
+        """解除插件与API绑定
+
+        :param request: Request instance for DetachPlugin.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.DetachPluginRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.DetachPluginResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DetachPlugin", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DetachPluginResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DisableApiKey(self, request):
         """本接口（DisableApiKey）用于禁用一对 API 密钥。
 
@@ -1543,6 +1711,34 @@ class ApigatewayClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyIPStrategyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyPlugin(self, request):
+        """修改API网关插件。
+
+        :param request: Request instance for ModifyPlugin.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.ModifyPluginRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.ModifyPluginResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyPlugin", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyPluginResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -753,6 +753,142 @@ class DescribeAssociatedInstanceListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBlockByIpTimesListRequest(AbstractModel):
+    """DescribeBlockByIpTimesList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 开始时间
+        :type StartTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
+        :param Ip: ip查询条件
+        :type Ip: str
+        :param Zone: 地域
+        :type Zone: str
+        :param Direction: 方向
+        :type Direction: str
+        :param Source: 来源
+        :type Source: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.Ip = None
+        self.Zone = None
+        self.Direction = None
+        self.Source = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Ip = params.get("Ip")
+        self.Zone = params.get("Zone")
+        self.Direction = params.get("Direction")
+        self.Source = params.get("Source")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBlockByIpTimesListResponse(AbstractModel):
+    """DescribeBlockByIpTimesList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 返回数据
+        :type Data: list of IpStatic
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = IpStatic()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBlockStaticListRequest(AbstractModel):
+    """DescribeBlockStaticList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 开始时间
+        :type StartTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
+        :param QueryType: 类型
+        :type QueryType: str
+        :param Top: top数
+        :type Top: int
+        :param SearchValue: 查询条件
+        :type SearchValue: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.QueryType = None
+        self.Top = None
+        self.SearchValue = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.QueryType = params.get("QueryType")
+        self.Top = params.get("Top")
+        self.SearchValue = params.get("SearchValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBlockStaticListResponse(AbstractModel):
+    """DescribeBlockStaticList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 无
+        :type Data: list of StaticInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = StaticInfo()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCfwEipsRequest(AbstractModel):
     """DescribeCfwEips请求参数结构体
 
@@ -1226,6 +1362,131 @@ class DescribeSyncAssetStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTLogInfoRequest(AbstractModel):
+    """DescribeTLogInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 开始时间
+        :type StartTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
+        :param QueryType: 类型 1 告警 2阻断
+        :type QueryType: str
+        :param SearchValue: 查询条件
+        :type SearchValue: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.QueryType = None
+        self.SearchValue = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.QueryType = params.get("QueryType")
+        self.SearchValue = params.get("SearchValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTLogInfoResponse(AbstractModel):
+    """DescribeTLogInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 无
+        :type Data: :class:`tencentcloud.cfw.v20190904.models.TLogInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = TLogInfo()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTLogIpListRequest(AbstractModel):
+    """DescribeTLogIpList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 开始时间
+        :type StartTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
+        :param QueryType: 类型 1 告警 2阻断
+        :type QueryType: str
+        :param Top: top数
+        :type Top: int
+        :param SearchValue: 查询条件
+        :type SearchValue: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.QueryType = None
+        self.Top = None
+        self.SearchValue = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.QueryType = params.get("QueryType")
+        self.Top = params.get("Top")
+        self.SearchValue = params.get("SearchValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTLogIpListResponse(AbstractModel):
+    """DescribeTLogIpList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 数据集合
+        :type Data: list of StaticInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = StaticInfo()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTableStatusRequest(AbstractModel):
     """DescribeTableStatus请求参数结构体
 
@@ -1281,6 +1542,70 @@ class DescribeTableStatusResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeUnHandleEventTabListRequest(AbstractModel):
+    """DescribeUnHandleEventTabList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 开始时间
+        :type StartTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
+        :param AssetID: 查询示例ID
+        :type AssetID: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.AssetID = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.AssetID = params.get("AssetID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUnHandleEventTabListResponse(AbstractModel):
+    """DescribeUnHandleEventTabList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 租户伪攻击链未处置事件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.cfw.v20190904.models.UnHandleEvent`
+        :param ReturnCode: 错误码，0成功 非0错误
+        :type ReturnCode: int
+        :param ReturnMsg: 返回信息 success成功
+        :type ReturnMsg: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.ReturnCode = None
+        self.ReturnMsg = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = UnHandleEvent()
+            self.Data._deserialize(params.get("Data"))
+        self.ReturnCode = params.get("ReturnCode")
+        self.ReturnMsg = params.get("ReturnMsg")
         self.RequestId = params.get("RequestId")
 
 
@@ -1407,6 +1732,34 @@ class IocListData(AbstractModel):
         self.IP = params.get("IP")
         self.Direction = params.get("Direction")
         self.Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IpStatic(AbstractModel):
+    """统计折线图通用结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Num: 值
+        :type Num: int
+        :param StatTime: 折线图横坐标时间
+        :type StatTime: str
+        """
+        self.Num = None
+        self.StatTime = None
+
+
+    def _deserialize(self, params):
+        self.Num = params.get("Num")
+        self.StatTime = params.get("StatTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1669,6 +2022,51 @@ class ModifyBlockIgnoreListResponse(AbstractModel):
     def _deserialize(self, params):
         self.ReturnMsg = params.get("ReturnMsg")
         self.ReturnCode = params.get("ReturnCode")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyBlockTopRequest(AbstractModel):
+    """ModifyBlockTop请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param UniqueId: 记录id
+        :type UniqueId: str
+        :param OpeType: 操作类型 1 置顶 0取消
+        :type OpeType: str
+        """
+        self.UniqueId = None
+        self.OpeType = None
+
+
+    def _deserialize(self, params):
+        self.UniqueId = params.get("UniqueId")
+        self.OpeType = params.get("OpeType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBlockTopResponse(AbstractModel):
+    """ModifyBlockTop返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -2422,6 +2820,51 @@ class SetNatFwDnatRuleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class StaticInfo(AbstractModel):
+    """StaticInfo 告警柱形图统计信息
+
+
+    """
+
+    def __init__(self):
+        """
+        :param Num: 数
+        :type Num: int
+        :param Port: 端口
+        :type Port: str
+        :param Ip: ip信息
+        :type Ip: str
+        :param Address: 地址
+        :type Address: str
+        :param InsID: 资产id
+        :type InsID: str
+        :param InsName: 资产名称
+        :type InsName: str
+        """
+        self.Num = None
+        self.Port = None
+        self.Ip = None
+        self.Address = None
+        self.InsID = None
+        self.InsName = None
+
+
+    def _deserialize(self, params):
+        self.Num = params.get("Num")
+        self.Port = params.get("Port")
+        self.Ip = params.get("Ip")
+        self.Address = params.get("Address")
+        self.InsID = params.get("InsID")
+        self.InsName = params.get("InsName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SwitchListsData(AbstractModel):
     """防火墙开关列表对象
 
@@ -2495,6 +2938,119 @@ class SwitchListsData(AbstractModel):
         self.LastTime = params.get("LastTime")
         self.ScanMode = params.get("ScanMode")
         self.ScanStatus = params.get("ScanStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TLogInfo(AbstractModel):
+    """告警中心概览数据
+
+    """
+
+    def __init__(self):
+        """
+        :param OutNum: 失陷主机
+        :type OutNum: int
+        :param HandleNum: 待处置告警
+        :type HandleNum: int
+        :param VulNum: 漏洞攻击
+        :type VulNum: int
+        :param NetworkNum: 网络探测
+        :type NetworkNum: int
+        :param BanNum: 封禁列表
+        :type BanNum: int
+        :param BruteForceNum: 暴力破解
+        :type BruteForceNum: int
+        """
+        self.OutNum = None
+        self.HandleNum = None
+        self.VulNum = None
+        self.NetworkNum = None
+        self.BanNum = None
+        self.BruteForceNum = None
+
+
+    def _deserialize(self, params):
+        self.OutNum = params.get("OutNum")
+        self.HandleNum = params.get("HandleNum")
+        self.VulNum = params.get("VulNum")
+        self.NetworkNum = params.get("NetworkNum")
+        self.BanNum = params.get("BanNum")
+        self.BruteForceNum = params.get("BruteForceNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnHandleEvent(AbstractModel):
+    """未处置事件详情
+
+    """
+
+    def __init__(self):
+        """
+        :param EventTableListStruct: 伪攻击链类型
+        :type EventTableListStruct: list of UnHandleEventDetail
+        :param BaseLineUser: 1 是  0否
+        :type BaseLineUser: int
+        :param BaseLineInSwitch: 1 打开 0 关闭
+        :type BaseLineInSwitch: int
+        :param BaseLineOutSwitch: 1 打开 0 关闭
+        :type BaseLineOutSwitch: int
+        """
+        self.EventTableListStruct = None
+        self.BaseLineUser = None
+        self.BaseLineInSwitch = None
+        self.BaseLineOutSwitch = None
+
+
+    def _deserialize(self, params):
+        if params.get("EventTableListStruct") is not None:
+            self.EventTableListStruct = []
+            for item in params.get("EventTableListStruct"):
+                obj = UnHandleEventDetail()
+                obj._deserialize(item)
+                self.EventTableListStruct.append(obj)
+        self.BaseLineUser = params.get("BaseLineUser")
+        self.BaseLineInSwitch = params.get("BaseLineInSwitch")
+        self.BaseLineOutSwitch = params.get("BaseLineOutSwitch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnHandleEventDetail(AbstractModel):
+    """未处置事件信息汇总
+
+    """
+
+    def __init__(self):
+        """
+        :param EventName: 安全事件名称
+        :type EventName: str
+        :param Total: 未处置事件数量
+        :type Total: int
+        """
+        self.EventName = None
+        self.Total = None
+
+
+    def _deserialize(self, params):
+        self.EventName = params.get("EventName")
+        self.Total = params.get("Total")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

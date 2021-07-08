@@ -664,6 +664,39 @@ class ApiInfo(AbstractModel):
         
 
 
+class ApiInfoSummary(AbstractModel):
+    """插件相关的API列表信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 插件相关的API总数。
+        :type TotalCount: int
+        :param ApiSet: 插件相关的API信息。
+        :type ApiSet: list of AvailableApiInfo
+        """
+        self.TotalCount = None
+        self.ApiSet = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ApiSet") is not None:
+            self.ApiSet = []
+            for item in params.get("ApiSet"):
+                obj = AvailableApiInfo()
+                obj._deserialize(item)
+                self.ApiSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApiKey(AbstractModel):
     """密钥详情
 
@@ -938,6 +971,63 @@ class ApisStatus(AbstractModel):
         
 
 
+class AttachPluginRequest(AbstractModel):
+    """AttachPlugin请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PluginId: 绑定的API网关插件ID。
+        :type PluginId: str
+        :param ServiceId: 要操作的服务ID。
+        :type ServiceId: str
+        :param EnvironmentName: 要操作API的环境。
+        :type EnvironmentName: str
+        :param ApiIds: 要绑定的API列表。
+        :type ApiIds: list of str
+        """
+        self.PluginId = None
+        self.ServiceId = None
+        self.EnvironmentName = None
+        self.ApiIds = None
+
+
+    def _deserialize(self, params):
+        self.PluginId = params.get("PluginId")
+        self.ServiceId = params.get("ServiceId")
+        self.EnvironmentName = params.get("EnvironmentName")
+        self.ApiIds = params.get("ApiIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AttachPluginResponse(AbstractModel):
+    """AttachPlugin返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 绑定操作是否成功。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class AttachedApiInfo(AbstractModel):
     """插件绑定的API信息
 
@@ -983,6 +1073,89 @@ class AttachedApiInfo(AbstractModel):
         self.ApiDesc = params.get("ApiDesc")
         self.Environment = params.get("Environment")
         self.AttachedTime = params.get("AttachedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AttachedApiSummary(AbstractModel):
+    """插件绑定的API列表
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 插件绑定的API数量。
+        :type TotalCount: int
+        :param AttachedApis: 插件绑定的API信息。
+        :type AttachedApis: list of AttachedApiInfo
+        """
+        self.TotalCount = None
+        self.AttachedApis = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("AttachedApis") is not None:
+            self.AttachedApis = []
+            for item in params.get("AttachedApis"):
+                obj = AttachedApiInfo()
+                obj._deserialize(item)
+                self.AttachedApis.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AvailableApiInfo(AbstractModel):
+    """插件相关的API信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param ApiId: API ID。
+        :type ApiId: str
+        :param ApiName: API名称。
+        :type ApiName: str
+        :param ApiType: API类型。
+        :type ApiType: str
+        :param Path: API路径。
+        :type Path: str
+        :param Method: API方法。
+        :type Method: str
+        :param AttachedOtherPlugin: API是否绑定其他插件。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttachedOtherPlugin: bool
+        :param IsAttached: API是否绑定当前插件。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsAttached: bool
+        """
+        self.ApiId = None
+        self.ApiName = None
+        self.ApiType = None
+        self.Path = None
+        self.Method = None
+        self.AttachedOtherPlugin = None
+        self.IsAttached = None
+
+
+    def _deserialize(self, params):
+        self.ApiId = params.get("ApiId")
+        self.ApiName = params.get("ApiName")
+        self.ApiType = params.get("ApiType")
+        self.Path = params.get("Path")
+        self.Method = params.get("Method")
+        self.AttachedOtherPlugin = params.get("AttachedOtherPlugin")
+        self.IsAttached = params.get("IsAttached")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2275,6 +2448,51 @@ class DeleteIPStrategyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeletePluginRequest(AbstractModel):
+    """DeletePlugin请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PluginId: 要删除的API网关插件的ID。
+        :type PluginId: str
+        """
+        self.PluginId = None
+
+
+    def _deserialize(self, params):
+        self.PluginId = params.get("PluginId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeletePluginResponse(AbstractModel):
+    """DeletePlugin返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 删除操作是否成功。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteServiceRequest(AbstractModel):
     """DeleteService请求参数结构体
 
@@ -2687,6 +2905,69 @@ class DescribeAPIDocsResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Result") is not None:
             self.Result = APIDocs()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAllPluginApisRequest(AbstractModel):
+    """DescribeAllPluginApis请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ServiceId: 要查询的服务ID。
+        :type ServiceId: str
+        :param PluginId: 要查询的插件ID。
+        :type PluginId: str
+        :param EnvironmentName: 环境信息。
+        :type EnvironmentName: str
+        :param Limit: 返回数量，默认为 20，最大值为 100。
+        :type Limit: int
+        :param Offset: 偏移量，默认为 0。
+        :type Offset: int
+        """
+        self.ServiceId = None
+        self.PluginId = None
+        self.EnvironmentName = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.ServiceId = params.get("ServiceId")
+        self.PluginId = params.get("PluginId")
+        self.EnvironmentName = params.get("EnvironmentName")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAllPluginApisResponse(AbstractModel):
+    """DescribeAllPluginApis返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 插件相关API的列表。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiInfoSummary`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = ApiInfoSummary()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 
@@ -3367,6 +3648,116 @@ req_id：请求id。
         self.ConText = params.get("ConText")
         self.LogSet = params.get("LogSet")
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePluginApisRequest(AbstractModel):
+    """DescribePluginApis请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PluginId: 查询的插件ID。
+        :type PluginId: str
+        :param Limit: 返回数量，默认为 20，最大值为 100。
+        :type Limit: int
+        :param Offset: 偏移量，默认为 0。
+        :type Offset: int
+        """
+        self.PluginId = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.PluginId = params.get("PluginId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePluginApisResponse(AbstractModel):
+    """DescribePluginApis返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 插件绑定的API列表信息。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.AttachedApiSummary`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = AttachedApiSummary()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePluginRequest(AbstractModel):
+    """DescribePlugin请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PluginId: 要查询的插件ID。
+        :type PluginId: str
+        :param Limit: 返回数量，默认为 20，最大值为 100。
+        :type Limit: int
+        :param Offset: 偏移量，默认为 0。
+        :type Offset: int
+        """
+        self.PluginId = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.PluginId = params.get("PluginId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePluginResponse(AbstractModel):
+    """DescribePlugin返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 插件详情。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.Plugin`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = Plugin()
+            self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 
 
@@ -4277,6 +4668,63 @@ class DescribeUsagePlansStatusResponse(AbstractModel):
         if params.get("Result") is not None:
             self.Result = UsagePlansStatus()
             self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DetachPluginRequest(AbstractModel):
+    """DetachPlugin请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PluginId: 要解绑的API网关插件ID。
+        :type PluginId: str
+        :param ServiceId: 要操作的服务ID。
+        :type ServiceId: str
+        :param EnvironmentName: 要操作API的环境。
+        :type EnvironmentName: str
+        :param ApiId: 要解绑的API ID。
+        :type ApiId: str
+        """
+        self.PluginId = None
+        self.ServiceId = None
+        self.EnvironmentName = None
+        self.ApiId = None
+
+
+    def _deserialize(self, params):
+        self.PluginId = params.get("PluginId")
+        self.ServiceId = params.get("ServiceId")
+        self.EnvironmentName = params.get("EnvironmentName")
+        self.ApiId = params.get("ApiId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DetachPluginResponse(AbstractModel):
+    """DetachPlugin返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 解绑操作是否成功。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
 
 
@@ -5497,6 +5945,63 @@ class ModifyIPStrategyResponse(AbstractModel):
         """
         :param Result: 修改操作是否成功。
 注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyPluginRequest(AbstractModel):
+    """ModifyPlugin请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PluginId: 要修改的插件ID。
+        :type PluginId: str
+        :param PluginName: 要修改的API网关插件名称。最长50个字符，支持 a-z,A-Z,0-9,_, 必须字母开头，字母或者数字结尾。
+        :type PluginName: str
+        :param Description: 要修改的插件描述，限定200字以内。
+        :type Description: str
+        :param PluginData: 要修改的插件定义语句，支持json。
+        :type PluginData: str
+        """
+        self.PluginId = None
+        self.PluginName = None
+        self.Description = None
+        self.PluginData = None
+
+
+    def _deserialize(self, params):
+        self.PluginId = params.get("PluginId")
+        self.PluginName = params.get("PluginName")
+        self.Description = params.get("Description")
+        self.PluginData = params.get("PluginData")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyPluginResponse(AbstractModel):
+    """ModifyPlugin返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 修改操作是否成功。
         :type Result: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

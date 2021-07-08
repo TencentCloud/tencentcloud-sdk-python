@@ -110,6 +110,34 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateUserSig(self, request):
+        """创建用户数据签名
+
+        :param request: Request instance for CreateUserSig.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.CreateUserSigRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.CreateUserSigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateUserSig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateUserSigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteStaff(self, request):
         """删除坐席信息
 

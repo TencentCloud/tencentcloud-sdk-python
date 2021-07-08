@@ -374,7 +374,7 @@ class CreateInstancesRequest(AbstractModel):
         :type ActivityId: int
         :param Name: 实例名。
         :type Name: str
-        :param NeedSupportIpv6: 是否需要支持Ipv6，1：是，0：否。
+        :param NeedSupportIpv6: 是否需要支持Ipv6，1：是，0：否（默认）。
         :type NeedSupportIpv6: int
         :param TagList: 实例需要绑定的Tag信息，默认为空。
         :type TagList: list of Tag

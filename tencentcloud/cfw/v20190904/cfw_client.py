@@ -250,6 +250,62 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBlockByIpTimesList(self, request):
+        """DescribeBlockByIpTimesList 告警中心阻断ip折线图
+
+        :param request: Request instance for DescribeBlockByIpTimesList.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeBlockByIpTimesListRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeBlockByIpTimesListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBlockByIpTimesList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBlockByIpTimesListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBlockStaticList(self, request):
+        """DescribeBlockStaticList 告警中心柱形图
+
+        :param request: Request instance for DescribeBlockStaticList.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeBlockStaticListRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeBlockStaticListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBlockStaticList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBlockStaticListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCfwEips(self, request):
         """查询防火墙弹性公网ip
 
@@ -446,6 +502,62 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeTLogInfo(self, request):
+        """DescribeTLogInfo告警中心概况
+
+        :param request: Request instance for DescribeTLogInfo.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeTLogInfoRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeTLogInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTLogInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTLogInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTLogIpList(self, request):
+        """DescribeTLogIpList告警中心ip柱形图
+
+        :param request: Request instance for DescribeTLogIpList.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeTLogIpListRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeTLogIpListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTLogIpList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTLogIpListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTableStatus(self, request):
         """查询规则表状态
 
@@ -460,6 +572,34 @@ class CfwClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTableStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeUnHandleEventTabList(self, request):
+        """DescribeUnHandleEventTabList 告警中心伪攻击链事件未处置接口
+
+        :param request: Request instance for DescribeUnHandleEventTabList.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeUnHandleEventTabListRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeUnHandleEventTabListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeUnHandleEventTabList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeUnHandleEventTabListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -631,6 +771,34 @@ class CfwClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyBlockIgnoreListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyBlockTop(self, request):
+        """ModifyBlockTop取消置顶接口
+
+        :param request: Request instance for ModifyBlockTop.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyBlockTopRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.ModifyBlockTopResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyBlockTop", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyBlockTopResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

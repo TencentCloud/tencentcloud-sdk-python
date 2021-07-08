@@ -1980,6 +1980,24 @@ class GetSecurityLastUsedRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        """
+        :param SecretIdList: 查询密钥ID列表
+        :type SecretIdList: list of str
+        """
+        self.SecretIdList = None
+
+
+    def _deserialize(self, params):
+        self.SecretIdList = params.get("SecretIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class GetSecurityLastUsedResponse(AbstractModel):
     """GetSecurityLastUsed返回参数结构体
@@ -1988,13 +2006,22 @@ class GetSecurityLastUsedResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param SecretIdLastUsedRows: 密钥ID最近访问列表
+        :type SecretIdLastUsedRows: list of SecretIdLastUsed
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.SecretIdLastUsedRows = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("SecretIdLastUsedRows") is not None:
+            self.SecretIdLastUsedRows = []
+            for item in params.get("SecretIdLastUsedRows"):
+                obj = SecretIdLastUsed()
+                obj._deserialize(item)
+                self.SecretIdLastUsedRows.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3691,6 +3718,35 @@ class SAMLProviderInfo(AbstractModel):
         self.Description = params.get("Description")
         self.CreateTime = params.get("CreateTime")
         self.ModifyTime = params.get("ModifyTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SecretIdLastUsed(AbstractModel):
+    """密钥最后使用时间
+
+    """
+
+    def __init__(self):
+        """
+        :param SecretId: 密钥ID
+        :type SecretId: str
+        :param LastUsedDate: 最后访问日期(有1天延迟)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastUsedDate: str
+        """
+        self.SecretId = None
+        self.LastUsedDate = None
+
+
+    def _deserialize(self, params):
+        self.SecretId = params.get("SecretId")
+        self.LastUsedDate = params.get("LastUsedDate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

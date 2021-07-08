@@ -422,6 +422,69 @@ class ClassInfo(AbstractModel):
         
 
 
+class CopyProjectRequest(AbstractModel):
+    """CopyProject请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Platform: 平台名称，指定访问的平台。
+        :type Platform: str
+        :param ProjectId: 被复制的项目 ID。
+        :type ProjectId: str
+        :param Name: 复制后的项目名称，不填为原项目名称+"(副本)"。
+        :type Name: str
+        :param Owner: 复制后的项目归属者，不填为原项目归属者。
+        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
+        :param Operator: 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+        :type Operator: str
+        """
+        self.Platform = None
+        self.ProjectId = None
+        self.Name = None
+        self.Owner = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.Platform = params.get("Platform")
+        self.ProjectId = params.get("ProjectId")
+        self.Name = params.get("Name")
+        if params.get("Owner") is not None:
+            self.Owner = Entity()
+            self.Owner._deserialize(params.get("Owner"))
+        self.Operator = params.get("Operator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CopyProjectResponse(AbstractModel):
+    """CopyProject返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProjectId: 复制后的项目 ID。
+        :type ProjectId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ProjectId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.RequestId = params.get("RequestId")
+
+
 class CosPublishInputInfo(AbstractModel):
     """COS 发布信息。
 

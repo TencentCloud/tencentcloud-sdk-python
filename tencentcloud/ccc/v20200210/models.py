@@ -184,6 +184,63 @@ class CreateStaffResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateUserSigRequest(AbstractModel):
+    """CreateUserSig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SdkAppId: 应用 ID
+        :type SdkAppId: int
+        :param Uid: 用户 ID
+        :type Uid: str
+        :param ExpiredTime: 有效期，单位秒，不超过 1 小时
+        :type ExpiredTime: int
+        :param ClientData: 用户签名数据
+        :type ClientData: str
+        """
+        self.SdkAppId = None
+        self.Uid = None
+        self.ExpiredTime = None
+        self.ClientData = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.Uid = params.get("Uid")
+        self.ExpiredTime = params.get("ExpiredTime")
+        self.ClientData = params.get("ClientData")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateUserSigResponse(AbstractModel):
+    """CreateUserSig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param UserSig: 签名结果
+        :type UserSig: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.UserSig = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.UserSig = params.get("UserSig")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteStaffRequest(AbstractModel):
     """DeleteStaff请求参数结构体
 

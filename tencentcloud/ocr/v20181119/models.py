@@ -293,7 +293,7 @@ class BankCardOCRResponse(AbstractModel):
 （告警码可以同时存在多个）
 注意：此字段可能返回 null，表示取不到有效值。
         :type WarningCode: list of int
-        :param QualityValue: 图片质量分数，请求enable_quality_value时返回（取值范围：0-100，分数越低越模糊，建议阈值≥50）。
+        :param QualityValue: 图片质量分数，请求EnableQualityValue时返回（取值范围：0-100，分数越低越模糊，建议阈值≥50）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type QualityValue: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
