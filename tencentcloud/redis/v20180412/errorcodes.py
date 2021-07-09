@@ -206,6 +206,9 @@ RESOURCEUNAVAILABLE_INSTANCELOCKEDERROR = 'ResourceUnavailable.InstanceLockedErr
 # 订单不存在。
 RESOURCEUNAVAILABLE_INSTANCENODEAL = 'ResourceUnavailable.InstanceNoDeal'
 
+# 实例状态不支持操作。
+RESOURCEUNAVAILABLE_INSTANCENOTSUPPORTOPERATION = 'ResourceUnavailable.InstanceNotSupportOperation'
+
 # 实例状态错误。
 RESOURCEUNAVAILABLE_INSTANCESTATEERROR = 'ResourceUnavailable.InstanceStateError'
 

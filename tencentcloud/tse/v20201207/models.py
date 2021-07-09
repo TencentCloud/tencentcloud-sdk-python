@@ -145,10 +145,13 @@ class DescribeSREInstancesRequest(AbstractModel):
         :type Limit: int
         :param Offset: 翻页单页偏移量，默认值0
         :type Offset: int
+        :param QueryType: 查询类型
+        :type QueryType: str
         """
         self.Filters = None
         self.Limit = None
         self.Offset = None
+        self.QueryType = None
 
 
     def _deserialize(self, params):
@@ -160,6 +163,7 @@ class DescribeSREInstancesRequest(AbstractModel):
                 self.Filters.append(obj)
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        self.QueryType = params.get("QueryType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -197,6 +201,55 @@ class DescribeSREInstancesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Content.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class EnvInfo(AbstractModel):
+    """环境具体信息
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvName: 环境名称
+        :type EnvName: str
+        :param VpcInfos: 环境对应的网络信息
+        :type VpcInfos: list of VpcInfo
+        :param StorageCapacity: 云硬盘容量
+        :type StorageCapacity: int
+        :param Status: 运行状态
+        :type Status: str
+        :param AdminServiceIp: Admin service 访问地址
+        :type AdminServiceIp: str
+        :param ConfigServiceIp: Config service访问地址
+        :type ConfigServiceIp: str
+        """
+        self.EnvName = None
+        self.VpcInfos = None
+        self.StorageCapacity = None
+        self.Status = None
+        self.AdminServiceIp = None
+        self.ConfigServiceIp = None
+
+
+    def _deserialize(self, params):
+        self.EnvName = params.get("EnvName")
+        if params.get("VpcInfos") is not None:
+            self.VpcInfos = []
+            for item in params.get("VpcInfos"):
+                obj = VpcInfo()
+                obj._deserialize(item)
+                self.VpcInfos.append(obj)
+        self.StorageCapacity = params.get("StorageCapacity")
+        self.Status = params.get("Status")
+        self.AdminServiceIp = params.get("AdminServiceIp")
+        self.ConfigServiceIp = params.get("ConfigServiceIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Filter(AbstractModel):
@@ -338,6 +391,9 @@ class SREInstance(AbstractModel):
         :param CreateTime: 集群创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
+        :param EnvInfos: 环境配置信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnvInfos: list of EnvInfo
         """
         self.InstanceId = None
         self.Name = None
@@ -354,6 +410,7 @@ class SREInstance(AbstractModel):
         self.Paymode = None
         self.EKSClusterID = None
         self.CreateTime = None
+        self.EnvInfos = None
 
 
     def _deserialize(self, params):
@@ -372,6 +429,40 @@ class SREInstance(AbstractModel):
         self.Paymode = params.get("Paymode")
         self.EKSClusterID = params.get("EKSClusterID")
         self.CreateTime = params.get("CreateTime")
+        if params.get("EnvInfos") is not None:
+            self.EnvInfos = []
+            for item in params.get("EnvInfos"):
+                obj = EnvInfo()
+                obj._deserialize(item)
+                self.EnvInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VpcInfo(AbstractModel):
+    """私有网络信息
+
+    """
+
+    def __init__(self):
+        """
+        :param VpcId: Vpc Id
+        :type VpcId: str
+        :param SubnetId: 子网ID
+        :type SubnetId: str
+        """
+        self.VpcId = None
+        self.SubnetId = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -290,62 +290,6 @@ class CreateUserResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DecribePublicKeyRequest(AbstractModel):
-    """DecribePublicKey请求参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param ApplicationId: 应用ID，是应用的全局唯一标识。
-        :type ApplicationId: str
-        """
-        self.ApplicationId = None
-
-
-    def _deserialize(self, params):
-        self.ApplicationId = params.get("ApplicationId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DecribePublicKeyResponse(AbstractModel):
-    """DecribePublicKey返回参数结构体
-
-    """
-
-    def __init__(self):
-        """
-        :param PublicKey: jwt验证签名所用的公钥信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PublicKey: str
-        :param KeyId: jwt的密钥id。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type KeyId: str
-        :param ApplicationId: 应用ID，是应用的全局唯一标识。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ApplicationId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.PublicKey = None
-        self.KeyId = None
-        self.ApplicationId = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.PublicKey = params.get("PublicKey")
-        self.KeyId = params.get("KeyId")
-        self.ApplicationId = params.get("ApplicationId")
-        self.RequestId = params.get("RequestId")
-
-
 class DeleteOrgNodeRequest(AbstractModel):
     """DeleteOrgNode请求参数结构体
 

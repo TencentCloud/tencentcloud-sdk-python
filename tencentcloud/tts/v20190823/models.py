@@ -46,6 +46,8 @@ class CreateTtsTaskRequest(AbstractModel):
         :type Codec: str
         :param CallbackUrl: 回调 URL，用户自行搭建的用于接收识别结果的服务URL。如果用户使用轮询方式获取识别结果，则无需提交该参数。[回调说明](https://cloud.tencent.com/document/product/1073/55746)
         :type CallbackUrl: str
+        :param VoiceoverDialogueSplit: 旁白与对白文本解析，分别合成相应风格（仅适用于旁对白音色），默认 false
+        :type VoiceoverDialogueSplit: bool
         """
         self.Text = None
         self.ModelType = None
@@ -57,6 +59,7 @@ class CreateTtsTaskRequest(AbstractModel):
         self.SampleRate = None
         self.Codec = None
         self.CallbackUrl = None
+        self.VoiceoverDialogueSplit = None
 
 
     def _deserialize(self, params):
@@ -70,6 +73,7 @@ class CreateTtsTaskRequest(AbstractModel):
         self.SampleRate = params.get("SampleRate")
         self.Codec = params.get("Codec")
         self.CallbackUrl = params.get("CallbackUrl")
+        self.VoiceoverDialogueSplit = params.get("VoiceoverDialogueSplit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

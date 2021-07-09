@@ -251,6 +251,10 @@ class AutoScalingGroup(AbstractModel):
 <br><li> PRIORITY，按照可用区/子网列表的顺序，作为优先级来尝试创建实例，如果优先级最高的可用区/子网可以创建成功，则总在该可用区/子网创建。
 <br><li> EQUALITY：每次选择当前实例数最少的可用区/子网进行扩容，使得每个可用区/子网都有机会发生扩容，多次扩容出的实例会打散到多个可用区/子网。
         :type MultiZoneSubnetPolicy: str
+        :param HealthCheckType: 伸缩组实例健康检查类型，取值如下：<br><li>CVM：根据实例网络状态判断实例是否处于不健康状态，不健康的网络状态即发生实例 PING 不可达事件，详细判断标准可参考[实例健康检查](https://cloud.tencent.com/document/product/377/8553)<br><li>CLB：根据 CLB 的健康检查状态判断实例是否处于不健康状态，CLB健康检查原理可参考[健康检查](https://cloud.tencent.com/document/product/214/6097)
+        :type HealthCheckType: str
+        :param LoadBalancerHealthCheckGracePeriod: CLB健康检查宽限期
+        :type LoadBalancerHealthCheckGracePeriod: int
         """
         self.AutoScalingGroupId = None
         self.AutoScalingGroupName = None
@@ -278,6 +282,8 @@ class AutoScalingGroup(AbstractModel):
         self.ServiceSettings = None
         self.Ipv6AddressCount = None
         self.MultiZoneSubnetPolicy = None
+        self.HealthCheckType = None
+        self.LoadBalancerHealthCheckGracePeriod = None
 
 
     def _deserialize(self, params):
@@ -319,6 +325,8 @@ class AutoScalingGroup(AbstractModel):
             self.ServiceSettings._deserialize(params.get("ServiceSettings"))
         self.Ipv6AddressCount = params.get("Ipv6AddressCount")
         self.MultiZoneSubnetPolicy = params.get("MultiZoneSubnetPolicy")
+        self.HealthCheckType = params.get("HealthCheckType")
+        self.LoadBalancerHealthCheckGracePeriod = params.get("LoadBalancerHealthCheckGracePeriod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -404,14 +412,24 @@ class ClearLaunchConfigurationAttributesRequest(AbstractModel):
         :param ClearDataDisks: 是否清空数据盘信息，非必填，默认为 false。
 填 true 代表清空“数据盘”信息，清空后基于此新创建的云主机将不含有任何数据盘。
         :type ClearDataDisks: bool
+        :param ClearHostNameSettings: 是否清空云服务器主机名相关设置信息，非必填，默认为 false。
+填 true 代表清空主机名设置信息，清空后基于此新创建的云主机将不设置主机名。
+        :type ClearHostNameSettings: bool
+        :param ClearInstanceNameSettings: 是否清空云服务器实例名相关设置信息，非必填，默认为 false。
+填 true 代表清空主机名设置信息，清空后基于此新创建的云主机将按照“as-{{ 伸缩组AutoScalingGroupName }}”进行设置。
+        :type ClearInstanceNameSettings: bool
         """
         self.LaunchConfigurationId = None
         self.ClearDataDisks = None
+        self.ClearHostNameSettings = None
+        self.ClearInstanceNameSettings = None
 
 
     def _deserialize(self, params):
         self.LaunchConfigurationId = params.get("LaunchConfigurationId")
         self.ClearDataDisks = params.get("ClearDataDisks")
+        self.ClearHostNameSettings = params.get("ClearHostNameSettings")
+        self.ClearInstanceNameSettings = params.get("ClearInstanceNameSettings")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1252,7 +1270,7 @@ class DataDisk(AbstractModel):
 
     def __init__(self):
         """
-        :param DiskType: 数据盘类型。数据盘类型限制详见[CVM实例配置](https://cloud.tencent.com/document/product/213/2177)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><br>默认取值：LOCAL_BASIC。
+        :param DiskType: 数据盘类型。数据盘类型限制详见[CVM实例配置](https://cloud.tencent.com/document/product/213/2177)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><br>默认取值与系统盘类型（SystemDisk.DiskType）保持一致。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiskType: str
         :param DiskSize: 数据盘大小，单位：GB。最小调整步长为10G，不同数据盘类型取值范围不同，具体限制详见：[CVM实例配置](https://cloud.tencent.com/document/product/213/2177)。默认值为0，表示不购买数据盘。更多限制详见产品文档。
@@ -3444,7 +3462,7 @@ class ModifyLaunchConfigurationAttributesRequest(AbstractModel):
         :param ImageId: 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-8toqc6s3`。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，取返回信息中的`ImageId`字段。</li>
         :type ImageId: str
         :param InstanceTypes: 实例类型列表，不同实例机型指定了不同的资源规格，最多支持10种实例机型。
-启动配置，通过 InstanceType 表示单一实例类型，通过 InstanceTypes 表示多实例类型。指定 InstanceTypes 成功启动配置后，原有的 InstanceType 自动失效。
+InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定多实例类型，并使原有的InstanceType失效。
         :type InstanceTypes: list of str
         :param InstanceTypesCheckPolicy: 实例类型校验策略，在实际修改 InstanceTypes 时发挥作用，取值包括 ALL 和 ANY，默认取值为ANY。
 <br><li> ALL，所有实例类型（InstanceType）都可用则通过校验，否则校验报错。
@@ -3455,13 +3473,13 @@ class ModifyLaunchConfigurationAttributesRequest(AbstractModel):
         :type InstanceTypesCheckPolicy: str
         :param LaunchConfigurationName: 启动配置显示名称。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超60个字节。
         :type LaunchConfigurationName: str
-        :param UserData: 经过 Base64 编码后的自定义数据，最大长度不超过16KB。如果要清空UserData，则指定其为空字符串
+        :param UserData: 经过 Base64 编码后的自定义数据，最大长度不超过16KB。如果要清空UserData，则指定其为空字符串。
         :type UserData: str
         :param SecurityGroupIds: 实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的`SecurityGroupId`字段来获取。
 若指定该参数，请至少提供一个安全组，列表顺序有先后。
         :type SecurityGroupIds: list of str
         :param InternetAccessible: 公网带宽相关信息设置。
-本字段属复杂类型，修改时采取整字段全覆盖模式。即只修改复杂类型内部一个子字段时，也请提供全部所需子字段。
+当公网出带宽上限为0Mbps时，不支持修改为开通分配公网IP；相应的，当前为开通分配公网IP时，修改的公网出带宽上限值必须大于0Mbps。
         :type InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.InternetAccessible`
         :param InstanceChargeType: 实例计费类型。具体取值范围如下：
 <br><li>POSTPAID_BY_HOUR：按小时后付费
@@ -3470,11 +3488,13 @@ class ModifyLaunchConfigurationAttributesRequest(AbstractModel):
         :type InstanceChargeType: str
         :param InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
 若修改实例的付费模式为预付费，则该参数必传；从预付费修改为其他付费模式时，本字段原信息会自动丢弃。
-本字段属复杂类型，修改时采取整字段全覆盖模式。即只修改复杂类型内部一个子字段时，也请提供全部所需子字段。
+当新增该字段时，必须传递购买实例的时长，其它未传递字段会设置为默认值。
+当修改本字段时，当前付费模式必须为预付费。
         :type InstanceChargePrepaid: :class:`tencentcloud.autoscaling.v20180419.models.InstanceChargePrepaid`
         :param InstanceMarketOptions: 实例的市场相关选项，如竞价实例相关参数。
 若修改实例的付费模式为竞价付费，则该参数必传；从竞价付费修改为其他付费模式时，本字段原信息会自动丢弃。
-本字段属复杂类型，修改时采取整字段全覆盖模式。即只修改复杂类型内部一个子字段时，也请提供全部所需子字段。
+当新增该字段时，必须传递竞价相关选项下的竞价出价，其它未传递字段会设置为默认值。
+当修改本字段时，当前付费模式必须为竞价付费。
         :type InstanceMarketOptions: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
         :param DiskTypePolicy: 云盘类型选择策略，取值范围：
 <br><li>ORIGINAL：使用设置的云盘类型。
@@ -3482,8 +3502,18 @@ class ModifyLaunchConfigurationAttributesRequest(AbstractModel):
         :type DiskTypePolicy: str
         :param SystemDisk: 实例系统盘配置信息。
         :type SystemDisk: :class:`tencentcloud.autoscaling.v20180419.models.SystemDisk`
-        :param DataDisks: 实例数据盘配置信息。最多支持指定11块数据盘。采取整体修改，因此请提供修改后的全部值。
+        :param DataDisks: 实例数据盘配置信息。
+最多支持指定11块数据盘。采取整体修改，因此请提供修改后的全部值。
+数据盘类型默认与系统盘类型保持一致。
         :type DataDisks: list of DataDisk
+        :param HostNameSettings: 云服务器主机名（HostName）的相关设置。
+不支持windows实例设置主机名。
+新增该属性时，必须传递云服务器的主机名，其它未传递字段会设置为默认值。
+        :type HostNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.HostNameSettings`
+        :param InstanceNameSettings: 云服务器（InstanceName）实例名的相关设置。 
+如果用户在启动配置中设置此字段，则伸缩组创建出的实例 InstanceName 参照此字段进行设置，并传递给 CVM；如果用户未在启动配置中设置此字段，则伸缩组创建出的实例 InstanceName 按照“as-{{ 伸缩组AutoScalingGroupName }}”进行设置，并传递给 CVM。
+新增该属性时，必须传递云服务器的实例名称，其它未传递字段会设置为默认值。
+        :type InstanceNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
         """
         self.LaunchConfigurationId = None
         self.ImageId = None
@@ -3499,6 +3529,8 @@ class ModifyLaunchConfigurationAttributesRequest(AbstractModel):
         self.DiskTypePolicy = None
         self.SystemDisk = None
         self.DataDisks = None
+        self.HostNameSettings = None
+        self.InstanceNameSettings = None
 
 
     def _deserialize(self, params):
@@ -3529,6 +3561,12 @@ class ModifyLaunchConfigurationAttributesRequest(AbstractModel):
                 obj = DataDisk()
                 obj._deserialize(item)
                 self.DataDisks.append(obj)
+        if params.get("HostNameSettings") is not None:
+            self.HostNameSettings = HostNameSettings()
+            self.HostNameSettings._deserialize(params.get("HostNameSettings"))
+        if params.get("InstanceNameSettings") is not None:
+            self.InstanceNameSettings = InstanceNameSettings()
+            self.InstanceNameSettings._deserialize(params.get("InstanceNameSettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4458,7 +4496,7 @@ class SystemDisk(AbstractModel):
 
     def __init__(self):
         """
-        :param DiskType: 系统盘类型。系统盘类型限制详见[CVM实例配置](https://cloud.tencent.com/document/product/213/2177)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><br>默认取值：LOCAL_BASIC。
+        :param DiskType: 系统盘类型。系统盘类型限制详见[CVM实例配置](https://cloud.tencent.com/document/product/213/2177)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><br>默认取值：CLOUD_PREMIUM。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiskType: str
         :param DiskSize: 系统盘大小，单位：GB。默认值为 50

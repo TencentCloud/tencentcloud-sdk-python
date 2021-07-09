@@ -537,12 +537,16 @@ class DeleteSnapshotsRequest(AbstractModel):
         """
         :param SnapshotIds: 要删除的快照ID列表，可通过[DescribeSnapshots](/document/product/362/15647)查询。
         :type SnapshotIds: list of str
+        :param DeleteBindImages: 是否强制删除快照关联的镜像
+        :type DeleteBindImages: bool
         """
         self.SnapshotIds = None
+        self.DeleteBindImages = None
 
 
     def _deserialize(self, params):
         self.SnapshotIds = params.get("SnapshotIds")
+        self.DeleteBindImages = params.get("DeleteBindImages")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

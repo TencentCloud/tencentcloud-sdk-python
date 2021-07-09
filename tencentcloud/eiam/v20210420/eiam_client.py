@@ -138,34 +138,6 @@ class EiamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DecribePublicKey(self, request):
-        """获取JWT公钥信息
-
-        :param request: Request instance for DecribePublicKey.
-        :type request: :class:`tencentcloud.eiam.v20210420.models.DecribePublicKeyRequest`
-        :rtype: :class:`tencentcloud.eiam.v20210420.models.DecribePublicKeyResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DecribePublicKey", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DecribePublicKeyResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DeleteOrgNode(self, request):
         """删除一个机构节点
 

@@ -2243,6 +2243,73 @@ class GetReservedConcurrencyConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class InvokeFunctionRequest(AbstractModel):
+    """InvokeFunction请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FunctionName: 函数名称
+        :type FunctionName: str
+        :param Qualifier: 触发函数的版本号或别名
+        :type Qualifier: str
+        :param Event: 运行函数时的参数，以json格式传入，最大支持的参数长度是 1M
+        :type Event: str
+        :param LogType: 同步调用时指定该字段，返回值会包含4K的日志，可选值为None和Tail，默认值为None。当该值为Tail时，返回参数中的Log字段会包含对应的函数执行日志
+        :type LogType: str
+        :param Namespace: 命名空间
+        :type Namespace: str
+        :param RoutingKey: 函数灰度流量控制调用，以json格式传入，例如{"k":"v"}，注意kv都需要是字符串类型，最大支持的参数长度是1024字节
+        :type RoutingKey: str
+        """
+        self.FunctionName = None
+        self.Qualifier = None
+        self.Event = None
+        self.LogType = None
+        self.Namespace = None
+        self.RoutingKey = None
+
+
+    def _deserialize(self, params):
+        self.FunctionName = params.get("FunctionName")
+        self.Qualifier = params.get("Qualifier")
+        self.Event = params.get("Event")
+        self.LogType = params.get("LogType")
+        self.Namespace = params.get("Namespace")
+        self.RoutingKey = params.get("RoutingKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InvokeFunctionResponse(AbstractModel):
+    """InvokeFunction返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 函数执行结果
+        :type Result: :class:`tencentcloud.scf.v20180416.models.Result`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = Result()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class InvokeRequest(AbstractModel):
     """Invoke请求参数结构体
 

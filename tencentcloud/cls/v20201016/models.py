@@ -1788,14 +1788,19 @@ class FullTextInfo(AbstractModel):
         :type CaseSensitive: bool
         :param Tokenizer: 全文索引的分词符，字符串中每个字符代表一个分词符
         :type Tokenizer: str
+        :param ContainZH: 是否包含中文
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContainZH: bool
         """
         self.CaseSensitive = None
         self.Tokenizer = None
+        self.ContainZH = None
 
 
     def _deserialize(self, params):
         self.CaseSensitive = params.get("CaseSensitive")
         self.Tokenizer = params.get("Tokenizer")
+        self.ContainZH = params.get("ContainZH")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2448,7 +2453,7 @@ class ModifyIndexRequest(AbstractModel):
         """
         :param TopicId: 日志主题ID
         :type TopicId: str
-        :param Status: 是否生效
+        :param Status: 默认不生效
         :type Status: bool
         :param Rule: 索引规则，Rule和Effective两个必须有一个参数存在
         :type Rule: :class:`tencentcloud.cls.v20201016.models.RuleInfo`
@@ -3143,16 +3148,21 @@ class ValueInfo(AbstractModel):
         :type Tokenizer: str
         :param SqlFlag: 字段是否开启分析功能
         :type SqlFlag: bool
+        :param ContainZH: 是否包含中文
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContainZH: bool
         """
         self.Type = None
         self.Tokenizer = None
         self.SqlFlag = None
+        self.ContainZH = None
 
 
     def _deserialize(self, params):
         self.Type = params.get("Type")
         self.Tokenizer = params.get("Tokenizer")
         self.SqlFlag = params.get("SqlFlag")
+        self.ContainZH = params.get("ContainZH")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

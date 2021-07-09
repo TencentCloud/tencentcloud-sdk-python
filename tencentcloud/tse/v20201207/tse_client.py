@@ -83,7 +83,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeSREInstances(self, request):
-        """用于查询微服务注册中心实例列表
+        """用于查询微服务引擎实例列表
 
         :param request: Request instance for DescribeSREInstances.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeSREInstancesRequest`
