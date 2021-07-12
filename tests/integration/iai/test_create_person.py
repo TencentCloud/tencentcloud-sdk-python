@@ -5,6 +5,7 @@ from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentClo
 
 from tencentcloud.iai.v20180301 import iai_client, models
 
+
 def test_iai_create_person():
     cred = credential.Credential(
         os.environ.get("TENCENTCLOUD_SECRET_ID"),

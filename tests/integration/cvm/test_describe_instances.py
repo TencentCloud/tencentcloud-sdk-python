@@ -6,6 +6,7 @@ from tencentcloud.cvm.v20170312 import cvm_client, models
 from tencentcloud.common.profile.client_profile import ClientProfile
 from tencentcloud.common.profile.http_profile import HttpProfile
 
+
 def _test_describe_instances(http_method, sign_method, unsigned_payload=False):
     cred = credential.Credential(
         os.environ.get("TENCENTCLOUD_SECRET_ID"),
@@ -35,23 +36,30 @@ def _test_describe_instances(http_method, sign_method, unsigned_payload=False):
 def test_describe_instances_get_sha1():
     _test_describe_instances("GET", "HmacSHA1")
 
+
 def test_describe_instances_post_sha1():
     _test_describe_instances("POST", "HmacSHA1")
+
 
 def test_describe_instances_get_sha256():
     _test_describe_instances("GET", "HmacSHA256")
 
+
 def test_describe_instances_post_sha256():
     _test_describe_instances("POST", "HmacSHA256")
+
 
 def test_describe_instances_get_tc3():
     _test_describe_instances("GET", "TC3-HMAC-SHA256")
 
+
 def test_describe_instances_post_tc3():
     _test_describe_instances("POST", "TC3-HMAC-SHA256")
 
+
 def test_describe_instances_get_tc3_unsigned_payload():
     _test_describe_instances("GET", "TC3-HMAC-SHA256", True)
+
 
 def test_describe_instances_post_tc3_unsigned_payload():
     _test_describe_instances("POST", "TC3-HMAC-SHA256", True)

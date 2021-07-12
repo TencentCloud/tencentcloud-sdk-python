@@ -6,6 +6,7 @@ import pytest
 from tencentcloud.common import credential
 from tencentcloud.cvm.v20170312 import cvm_client, models
 
+
 @pytest.mark.skipif(not os.environ.get("TENCENTCLOUD_ROLE_ARN"),
                     reason="TENCENTCLOUD_ROLE_ARN env var not found")
 def test_describe_instances():

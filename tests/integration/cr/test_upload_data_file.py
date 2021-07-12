@@ -5,6 +5,7 @@ from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentClo
 
 from tencentcloud.cr.v20180321 import cr_client, models
 
+
 def test_cr_upload_data_file_multipart():
     cred = credential.Credential(
         os.environ.get("TENCENTCLOUD_SECRET_ID"),
