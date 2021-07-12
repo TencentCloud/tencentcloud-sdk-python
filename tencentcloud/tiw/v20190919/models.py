@@ -398,6 +398,9 @@ class DescribeOnlineRecordResponse(AbstractModel):
         :param ReplayUrl: 回放URL，需配合信令播放器使用。此字段仅适用于`视频生成模式`
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReplayUrl: str
+        :param Interrupts: 视频流在录制过程中断流次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Interrupts: list of Interrupt
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -414,6 +417,7 @@ class DescribeOnlineRecordResponse(AbstractModel):
         self.OmittedDurations = None
         self.VideoInfos = None
         self.ReplayUrl = None
+        self.Interrupts = None
         self.RequestId = None
 
 
@@ -441,6 +445,12 @@ class DescribeOnlineRecordResponse(AbstractModel):
                 obj._deserialize(item)
                 self.VideoInfos.append(obj)
         self.ReplayUrl = params.get("ReplayUrl")
+        if params.get("Interrupts") is not None:
+            self.Interrupts = []
+            for item in params.get("Interrupts"):
+                obj = Interrupt()
+                obj._deserialize(item)
+                self.Interrupts.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -947,6 +957,36 @@ class DescribeWhiteboardPushResponse(AbstractModel):
         self.IMSyncTime = params.get("IMSyncTime")
         self.Backup = params.get("Backup")
         self.RequestId = params.get("RequestId")
+
+
+class Interrupt(AbstractModel):
+    """实时录制中出现的用户视频流断流次数统计
+
+    """
+
+    def __init__(self):
+        """
+        :param UserId: 用户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserId: str
+        :param Count: 视频流断流次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Count: int
+        """
+        self.UserId = None
+        self.Count = None
+
+
+    def _deserialize(self, params):
+        self.UserId = params.get("UserId")
+        self.Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class LayoutParams(AbstractModel):

@@ -18,6 +18,192 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AddUsersToWorkGroupRequest(AbstractModel):
+    """AddUsersToWorkGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AddInfo: 要操作的工作组和用户信息
+        :type AddInfo: :class:`tencentcloud.dlc.v20210125.models.UserIdSetOfWorkGroupId`
+        """
+        self.AddInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("AddInfo") is not None:
+            self.AddInfo = UserIdSetOfWorkGroupId()
+            self.AddInfo._deserialize(params.get("AddInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddUsersToWorkGroupResponse(AbstractModel):
+    """AddUsersToWorkGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class AttachUserPolicyRequest(AbstractModel):
+    """AttachUserPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param UserId: 用户Id，和CAM侧Uin匹配
+        :type UserId: str
+        :param PolicySet: 鉴权策略集合
+        :type PolicySet: list of Policy
+        """
+        self.UserId = None
+        self.PolicySet = None
+
+
+    def _deserialize(self, params):
+        self.UserId = params.get("UserId")
+        if params.get("PolicySet") is not None:
+            self.PolicySet = []
+            for item in params.get("PolicySet"):
+                obj = Policy()
+                obj._deserialize(item)
+                self.PolicySet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AttachUserPolicyResponse(AbstractModel):
+    """AttachUserPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class AttachWorkGroupPolicyRequest(AbstractModel):
+    """AttachWorkGroupPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param WorkGroupId: 工作组Id
+        :type WorkGroupId: int
+        :param PolicySet: 要绑定的策略集合
+        :type PolicySet: list of Policy
+        """
+        self.WorkGroupId = None
+        self.PolicySet = None
+
+
+    def _deserialize(self, params):
+        self.WorkGroupId = params.get("WorkGroupId")
+        if params.get("PolicySet") is not None:
+            self.PolicySet = []
+            for item in params.get("PolicySet"):
+                obj = Policy()
+                obj._deserialize(item)
+                self.PolicySet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AttachWorkGroupPolicyResponse(AbstractModel):
+    """AttachWorkGroupPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class BindWorkGroupsToUserRequest(AbstractModel):
+    """BindWorkGroupsToUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AddInfo: 绑定的用户和工作组信息
+        :type AddInfo: :class:`tencentcloud.dlc.v20210125.models.WorkGroupIdSetOfUserId`
+        """
+        self.AddInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("AddInfo") is not None:
+            self.AddInfo = WorkGroupIdSetOfUserId()
+            self.AddInfo._deserialize(params.get("AddInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindWorkGroupsToUserResponse(AbstractModel):
+    """BindWorkGroupsToUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CSV(AbstractModel):
     """CSV类型数据格式
 
@@ -88,6 +274,47 @@ class CSVSerde(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CancelTaskRequest(AbstractModel):
+    """CancelTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 任务Id，全局唯一
+        :type TaskId: str
+        """
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CancelTaskResponse(AbstractModel):
+    """CancelTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class Column(AbstractModel):
@@ -376,6 +603,118 @@ class CreateTaskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateUserRequest(AbstractModel):
+    """CreateUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param UserId: 用户Id，当前主账号的子账号Uin，和CAM侧匹配
+        :type UserId: str
+        :param UserDescription: 用户描述
+        :type UserDescription: str
+        :param PolicySet: 绑定到用户的权限集合
+        :type PolicySet: list of Policy
+        """
+        self.UserId = None
+        self.UserDescription = None
+        self.PolicySet = None
+
+
+    def _deserialize(self, params):
+        self.UserId = params.get("UserId")
+        self.UserDescription = params.get("UserDescription")
+        if params.get("PolicySet") is not None:
+            self.PolicySet = []
+            for item in params.get("PolicySet"):
+                obj = Policy()
+                obj._deserialize(item)
+                self.PolicySet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateUserResponse(AbstractModel):
+    """CreateUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateWorkGroupRequest(AbstractModel):
+    """CreateWorkGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param WorkGroupName: 工作组名称
+        :type WorkGroupName: str
+        :param WorkGroupDescription: 工作组描述
+        :type WorkGroupDescription: str
+        :param PolicySet: 工作组绑定的鉴权策略集合
+        :type PolicySet: list of Policy
+        """
+        self.WorkGroupName = None
+        self.WorkGroupDescription = None
+        self.PolicySet = None
+
+
+    def _deserialize(self, params):
+        self.WorkGroupName = params.get("WorkGroupName")
+        self.WorkGroupDescription = params.get("WorkGroupDescription")
+        if params.get("PolicySet") is not None:
+            self.PolicySet = []
+            for item in params.get("PolicySet"):
+                obj = Policy()
+                obj._deserialize(item)
+                self.PolicySet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateWorkGroupResponse(AbstractModel):
+    """CreateWorkGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param WorkGroupId: 工作组Id，全局唯一
+        :type WorkGroupId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.WorkGroupId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.WorkGroupId = params.get("WorkGroupId")
+        self.RequestId = params.get("RequestId")
+
+
 class DataFormat(AbstractModel):
     """数据表数据格式。
 
@@ -571,6 +910,131 @@ class DeleteScriptResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteUserRequest(AbstractModel):
+    """DeleteUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param UserIds: 需要删除的用户的Id
+        :type UserIds: list of str
+        """
+        self.UserIds = None
+
+
+    def _deserialize(self, params):
+        self.UserIds = params.get("UserIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteUserResponse(AbstractModel):
+    """DeleteUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteUsersFromWorkGroupRequest(AbstractModel):
+    """DeleteUsersFromWorkGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AddInfo: 要删除的用户信息
+        :type AddInfo: :class:`tencentcloud.dlc.v20210125.models.UserIdSetOfWorkGroupId`
+        """
+        self.AddInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("AddInfo") is not None:
+            self.AddInfo = UserIdSetOfWorkGroupId()
+            self.AddInfo._deserialize(params.get("AddInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteUsersFromWorkGroupResponse(AbstractModel):
+    """DeleteUsersFromWorkGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteWorkGroupRequest(AbstractModel):
+    """DeleteWorkGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param WorkGroupIds: 要删除的工作组Id集合
+        :type WorkGroupIds: list of int
+        """
+        self.WorkGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.WorkGroupIds = params.get("WorkGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteWorkGroupResponse(AbstractModel):
+    """DeleteWorkGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDatabasesRequest(AbstractModel):
     """DescribeDatabases请求参数结构体
 
@@ -712,6 +1176,34 @@ class DescribeScriptsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Scripts.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeStoreLocationRequest(AbstractModel):
+    """DescribeStoreLocation请求参数结构体
+
+    """
+
+
+class DescribeStoreLocationResponse(AbstractModel):
+    """DescribeStoreLocation返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StoreLocation: 返回用户设置的结果存储位置路径，如果未设置则返回空字符串：""
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StoreLocation: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.StoreLocation = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.StoreLocation = params.get("StoreLocation")
         self.RequestId = params.get("RequestId")
 
 
@@ -933,6 +1425,76 @@ class DescribeTasksResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeUsersRequest(AbstractModel):
+    """DescribeUsers请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param UserId: 查询的用户Id，和CAM侧Uin匹配
+        :type UserId: str
+        :param Offset: 偏移量，默认为0
+        :type Offset: int
+        :param Limit: 返回数量，默认20，最大值100
+        :type Limit: int
+        :param SortBy: 排序字段，支持如下字段类型，create-time
+        :type SortBy: str
+        :param Sorting: 排序方式，desc表示正序，asc表示反序， 默认为asc
+        :type Sorting: str
+        """
+        self.UserId = None
+        self.Offset = None
+        self.Limit = None
+        self.SortBy = None
+        self.Sorting = None
+
+
+    def _deserialize(self, params):
+        self.UserId = params.get("UserId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.SortBy = params.get("SortBy")
+        self.Sorting = params.get("Sorting")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUsersResponse(AbstractModel):
+    """DescribeUsers返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 用户总数
+        :type TotalCount: int
+        :param UserSet: 用户集合
+        :type UserSet: list of UserInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.UserSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("UserSet") is not None:
+            self.UserSet = []
+            for item in params.get("UserSet"):
+                obj = UserInfo()
+                obj._deserialize(item)
+                self.UserSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeViewsRequest(AbstractModel):
     """DescribeViews请求参数结构体
 
@@ -1007,6 +1569,185 @@ class DescribeViewsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ViewList.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeWorkGroupsRequest(AbstractModel):
+    """DescribeWorkGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param WorkGroupId: 查询的工作组Id
+        :type WorkGroupId: int
+        :param Filters: 过滤条件，当前仅支持按照工作组名称进行模糊搜索。Key为workgroup-name
+        :type Filters: list of Filter
+        :param Offset: 偏移量，默认为0
+        :type Offset: int
+        :param Limit: 返回数量，默认20，最大值100
+        :type Limit: int
+        :param SortBy: 排序字段，支持如下字段类型，create-time
+        :type SortBy: str
+        :param Sorting: 排序方式，desc表示正序，asc表示反序， 默认为asc
+        :type Sorting: str
+        """
+        self.WorkGroupId = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+        self.SortBy = None
+        self.Sorting = None
+
+
+    def _deserialize(self, params):
+        self.WorkGroupId = params.get("WorkGroupId")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.SortBy = params.get("SortBy")
+        self.Sorting = params.get("Sorting")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeWorkGroupsResponse(AbstractModel):
+    """DescribeWorkGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 工作组总数
+        :type TotalCount: int
+        :param WorkGroupSet: 工作组信息集合
+        :type WorkGroupSet: list of WorkGroupInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.WorkGroupSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("WorkGroupSet") is not None:
+            self.WorkGroupSet = []
+            for item in params.get("WorkGroupSet"):
+                obj = WorkGroupInfo()
+                obj._deserialize(item)
+                self.WorkGroupSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DetachUserPolicyRequest(AbstractModel):
+    """DetachUserPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param UserId: 用户Id，和CAM侧Uin匹配
+        :type UserId: str
+        :param PolicySet: 解绑的权限集合
+        :type PolicySet: list of Policy
+        """
+        self.UserId = None
+        self.PolicySet = None
+
+
+    def _deserialize(self, params):
+        self.UserId = params.get("UserId")
+        if params.get("PolicySet") is not None:
+            self.PolicySet = []
+            for item in params.get("PolicySet"):
+                obj = Policy()
+                obj._deserialize(item)
+                self.PolicySet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DetachUserPolicyResponse(AbstractModel):
+    """DetachUserPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DetachWorkGroupPolicyRequest(AbstractModel):
+    """DetachWorkGroupPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param WorkGroupId: 工作组Id
+        :type WorkGroupId: int
+        :param PolicySet: 解绑的权限集合
+        :type PolicySet: list of Policy
+        """
+        self.WorkGroupId = None
+        self.PolicySet = None
+
+
+    def _deserialize(self, params):
+        self.WorkGroupId = params.get("WorkGroupId")
+        if params.get("PolicySet") is not None:
+            self.PolicySet = []
+            for item in params.get("PolicySet"):
+                obj = Policy()
+                obj._deserialize(item)
+                self.PolicySet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DetachWorkGroupPolicyResponse(AbstractModel):
+    """DetachWorkGroupPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -1092,6 +1833,96 @@ class KVPair(AbstractModel):
         
 
 
+class ModifyUserRequest(AbstractModel):
+    """ModifyUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param UserId: 用户Id，和CAM侧Uin匹配
+        :type UserId: str
+        :param UserDescription: 用户描述
+        :type UserDescription: str
+        """
+        self.UserId = None
+        self.UserDescription = None
+
+
+    def _deserialize(self, params):
+        self.UserId = params.get("UserId")
+        self.UserDescription = params.get("UserDescription")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyUserResponse(AbstractModel):
+    """ModifyUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyWorkGroupRequest(AbstractModel):
+    """ModifyWorkGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param WorkGroupId: 工作组Id
+        :type WorkGroupId: int
+        :param WorkGroupDescription: 工作组描述
+        :type WorkGroupDescription: str
+        """
+        self.WorkGroupId = None
+        self.WorkGroupDescription = None
+
+
+    def _deserialize(self, params):
+        self.WorkGroupId = params.get("WorkGroupId")
+        self.WorkGroupDescription = params.get("WorkGroupDescription")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyWorkGroupResponse(AbstractModel):
+    """ModifyWorkGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class Other(AbstractModel):
     """数据格式其它类型。
 
@@ -1139,6 +1970,42 @@ class Partition(AbstractModel):
         self.Name = params.get("Name")
         self.Type = params.get("Type")
         self.Comment = params.get("Comment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Policy(AbstractModel):
+    """权限对象
+
+    """
+
+    def __init__(self):
+        """
+        :param Catalog: 需要授权的数据源名称，*代表拥有全部数据源权限
+        :type Catalog: str
+        :param Database: 需要授权的数据库名称，*代表拥有全部数据库名称
+        :type Database: str
+        :param Table: 需要授权的表名称，*代表拥有全部表权限
+        :type Table: str
+        :param Operation: 授权的操作，当前只支持“ALL”
+        :type Operation: str
+        """
+        self.Catalog = None
+        self.Database = None
+        self.Table = None
+        self.Operation = None
+
+
+    def _deserialize(self, params):
+        self.Catalog = params.get("Catalog")
+        self.Database = params.get("Database")
+        self.Table = params.get("Table")
+        self.Operation = params.get("Operation")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1568,6 +2435,176 @@ class TextFile(AbstractModel):
         
 
 
+class UnbindWorkGroupsFromUserRequest(AbstractModel):
+    """UnbindWorkGroupsFromUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AddInfo: 解绑的工作组Id和用户Id的关联关系
+        :type AddInfo: :class:`tencentcloud.dlc.v20210125.models.WorkGroupIdSetOfUserId`
+        """
+        self.AddInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("AddInfo") is not None:
+            self.AddInfo = WorkGroupIdSetOfUserId()
+            self.AddInfo._deserialize(params.get("AddInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnbindWorkGroupsFromUserResponse(AbstractModel):
+    """UnbindWorkGroupsFromUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UserIdSetOfWorkGroupId(AbstractModel):
+    """绑定到同一个工作组的用户Id的集合
+
+    """
+
+    def __init__(self):
+        """
+        :param WorkGroupId: 工作组Id
+        :type WorkGroupId: int
+        :param UserIds: 用户Id集合，和CAM侧Uin匹配
+        :type UserIds: list of str
+        """
+        self.WorkGroupId = None
+        self.UserIds = None
+
+
+    def _deserialize(self, params):
+        self.WorkGroupId = params.get("WorkGroupId")
+        self.UserIds = params.get("UserIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserInfo(AbstractModel):
+    """授权用户信息
+
+    """
+
+    def __init__(self):
+        """
+        :param UserId: 用户Id，和CAM侧Uin匹配
+        :type UserId: str
+        :param UserDescription: 用户描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserDescription: str
+        :param PolicySet: 单独给用户绑定的权限集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicySet: list of Policy
+        :param Creator: 创建者
+        :type Creator: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param WorkGroupSet: 关联的工作组集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkGroupSet: list of WorkGroupMessage
+        :param IsOwner: 是否是管理员账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsOwner: bool
+        """
+        self.UserId = None
+        self.UserDescription = None
+        self.PolicySet = None
+        self.Creator = None
+        self.CreateTime = None
+        self.WorkGroupSet = None
+        self.IsOwner = None
+
+
+    def _deserialize(self, params):
+        self.UserId = params.get("UserId")
+        self.UserDescription = params.get("UserDescription")
+        if params.get("PolicySet") is not None:
+            self.PolicySet = []
+            for item in params.get("PolicySet"):
+                obj = Policy()
+                obj._deserialize(item)
+                self.PolicySet.append(obj)
+        self.Creator = params.get("Creator")
+        self.CreateTime = params.get("CreateTime")
+        if params.get("WorkGroupSet") is not None:
+            self.WorkGroupSet = []
+            for item in params.get("WorkGroupSet"):
+                obj = WorkGroupMessage()
+                obj._deserialize(item)
+                self.WorkGroupSet.append(obj)
+        self.IsOwner = params.get("IsOwner")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserMessage(AbstractModel):
+    """用户部分信息
+
+    """
+
+    def __init__(self):
+        """
+        :param UserId: 用户Id，和CAM侧Uin匹配
+        :type UserId: str
+        :param UserDescription: 用户描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserDescription: str
+        :param Creator: 创建者
+        :type Creator: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        """
+        self.UserId = None
+        self.UserDescription = None
+        self.Creator = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.UserId = params.get("UserId")
+        self.UserDescription = params.get("UserDescription")
+        self.Creator = params.get("Creator")
+        self.CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ViewBaseInfo(AbstractModel):
     """视图基本配置信息
 
@@ -1641,6 +2678,140 @@ class ViewResponseInfo(AbstractModel):
                 self.Properties.append(obj)
         self.CreateTime = params.get("CreateTime")
         self.ModifiedTime = params.get("ModifiedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WorkGroupIdSetOfUserId(AbstractModel):
+    """同一个用户绑定的工作组集合
+
+    """
+
+    def __init__(self):
+        """
+        :param UserId: 用户Id，和CAM侧Uin匹配
+        :type UserId: str
+        :param WorkGroupIds: 工作组Id集合
+        :type WorkGroupIds: list of int
+        """
+        self.UserId = None
+        self.WorkGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.UserId = params.get("UserId")
+        self.WorkGroupIds = params.get("WorkGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WorkGroupInfo(AbstractModel):
+    """工作组信息
+
+    """
+
+    def __init__(self):
+        """
+        :param WorkGroupId: 工作组Id
+        :type WorkGroupId: int
+        :param WorkGroupName: 工作组名称
+        :type WorkGroupName: str
+        :param WorkGroupDescription: 工作组描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkGroupDescription: str
+        :param UserNum: 工作组关联的用户数量
+        :type UserNum: int
+        :param UserSet: 工作组关联的用户集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserSet: list of UserMessage
+        :param PolicySet: 工作组绑定的权限集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicySet: list of Policy
+        :param Creator: 创建者
+        :type Creator: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        """
+        self.WorkGroupId = None
+        self.WorkGroupName = None
+        self.WorkGroupDescription = None
+        self.UserNum = None
+        self.UserSet = None
+        self.PolicySet = None
+        self.Creator = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.WorkGroupId = params.get("WorkGroupId")
+        self.WorkGroupName = params.get("WorkGroupName")
+        self.WorkGroupDescription = params.get("WorkGroupDescription")
+        self.UserNum = params.get("UserNum")
+        if params.get("UserSet") is not None:
+            self.UserSet = []
+            for item in params.get("UserSet"):
+                obj = UserMessage()
+                obj._deserialize(item)
+                self.UserSet.append(obj)
+        if params.get("PolicySet") is not None:
+            self.PolicySet = []
+            for item in params.get("PolicySet"):
+                obj = Policy()
+                obj._deserialize(item)
+                self.PolicySet.append(obj)
+        self.Creator = params.get("Creator")
+        self.CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WorkGroupMessage(AbstractModel):
+    """工作组部分信息
+
+    """
+
+    def __init__(self):
+        """
+        :param WorkGroupId: 工作组Id
+        :type WorkGroupId: int
+        :param WorkGroupName: 工作组名称
+        :type WorkGroupName: str
+        :param WorkGroupDescription: 工作组描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkGroupDescription: str
+        :param Creator: 创建者
+        :type Creator: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        """
+        self.WorkGroupId = None
+        self.WorkGroupName = None
+        self.WorkGroupDescription = None
+        self.Creator = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.WorkGroupId = params.get("WorkGroupId")
+        self.WorkGroupName = params.get("WorkGroupName")
+        self.WorkGroupDescription = params.get("WorkGroupDescription")
+        self.Creator = params.get("Creator")
+        self.CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

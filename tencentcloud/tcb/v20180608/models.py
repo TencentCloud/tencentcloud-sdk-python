@@ -2072,6 +2072,72 @@ class DeleteCloudBaseProjectLatestVersionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteCloudBaseRunServerVersionRequest(AbstractModel):
+    """DeleteCloudBaseRunServerVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境ID
+        :type EnvId: str
+        :param ServerName: 服务名称
+        :type ServerName: str
+        :param VersionName: 版本名称
+        :type VersionName: str
+        :param IsDeleteServer: 是否删除服务，只有最后一个版本的时候，才生效。
+        :type IsDeleteServer: bool
+        :param IsDeleteImage: 只有删除服务的时候，才会起作用
+        :type IsDeleteImage: bool
+        :param OperatorRemark: 操作备注
+        :type OperatorRemark: str
+        """
+        self.EnvId = None
+        self.ServerName = None
+        self.VersionName = None
+        self.IsDeleteServer = None
+        self.IsDeleteImage = None
+        self.OperatorRemark = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.ServerName = params.get("ServerName")
+        self.VersionName = params.get("VersionName")
+        self.IsDeleteServer = params.get("IsDeleteServer")
+        self.IsDeleteImage = params.get("IsDeleteImage")
+        self.OperatorRemark = params.get("OperatorRemark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCloudBaseRunServerVersionResponse(AbstractModel):
+    """DeleteCloudBaseRunServerVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 返回结果，succ为成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteEndUserRequest(AbstractModel):
     """DeleteEndUser请求参数结构体
 

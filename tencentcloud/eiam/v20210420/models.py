@@ -100,6 +100,161 @@ class ApplicationAuthorizationInfo(AbstractModel):
         
 
 
+class ApplicationInfoSearchCriteria(AbstractModel):
+    """应用属性搜索条件。
+
+    """
+
+    def __init__(self):
+        """
+        :param Keyword: 应用匹配搜索关键字，匹配范围包括：应用名称、应用ID。
+        :type Keyword: str
+        :param ApplicationType: 应用类型。ApplicationType的取值范围有：OAUTH2、JWT、CAS、SAML2、FORM、OIDC、APIGW。
+        :type ApplicationType: str
+        """
+        self.Keyword = None
+        self.ApplicationType = None
+
+
+    def _deserialize(self, params):
+        self.Keyword = params.get("Keyword")
+        self.ApplicationType = params.get("ApplicationType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApplicationInformation(AbstractModel):
+    """应用信息列表。
+
+    """
+
+    def __init__(self):
+        """
+        :param ApplicationId: 应用ID，是应用的全局唯一标识。
+        :type ApplicationId: str
+        :param DisplayName: 应用展示名称，长度限制：64个字符。 默认与应用名字相同。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DisplayName: str
+        :param CreatedDate: 应用创建时间，符合 ISO8601 标准。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedDate: str
+        :param LastModifiedDate: 上次更新时间，符合 ISO8601 标准。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastModifiedDate: str
+        :param AppStatus: 应用状态。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppStatus: bool
+        :param Icon: 应用图标。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Icon: str
+        :param ApplicationType: 应用类型。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationType: str
+        :param ClientId: 客户端id。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientId: str
+        """
+        self.ApplicationId = None
+        self.DisplayName = None
+        self.CreatedDate = None
+        self.LastModifiedDate = None
+        self.AppStatus = None
+        self.Icon = None
+        self.ApplicationType = None
+        self.ClientId = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.DisplayName = params.get("DisplayName")
+        self.CreatedDate = params.get("CreatedDate")
+        self.LastModifiedDate = params.get("LastModifiedDate")
+        self.AppStatus = params.get("AppStatus")
+        self.Icon = params.get("Icon")
+        self.ApplicationType = params.get("ApplicationType")
+        self.ClientId = params.get("ClientId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuthorizationInfo(AbstractModel):
+    """返回的授权关系信息。
+
+    """
+
+    def __init__(self):
+        """
+        :param AppId: 应用唯一ID。
+        :type AppId: str
+        :param AppName: 应用名称。
+        :type AppName: str
+        :param EntityName: 类型名称。
+        :type EntityName: str
+        :param EntityId: 类型唯一ID。
+        :type EntityId: str
+        :param LastModifiedDate: 上次更新时间，符合 ISO8601 标准。
+        :type LastModifiedDate: str
+        :param AuthorizationId: 授权类型唯一ID。
+        :type AuthorizationId: str
+        """
+        self.AppId = None
+        self.AppName = None
+        self.EntityName = None
+        self.EntityId = None
+        self.LastModifiedDate = None
+        self.AuthorizationId = None
+
+
+    def _deserialize(self, params):
+        self.AppId = params.get("AppId")
+        self.AppName = params.get("AppName")
+        self.EntityName = params.get("EntityName")
+        self.EntityId = params.get("EntityId")
+        self.LastModifiedDate = params.get("LastModifiedDate")
+        self.AuthorizationId = params.get("AuthorizationId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuthorizationInfoSearchCriteria(AbstractModel):
+    """用户属性搜索条件。
+
+    """
+
+    def __init__(self):
+        """
+        :param Keyword: 名称匹配搜索，当查询类型为用户时，匹配范围包括：用户名称、应用名称；当查询类型为用户组时，匹配范围包括：用户组名称、应用名称；当查询类型为组织机构时，匹配范围包括：组织机构名称、应用名称。
+        :type Keyword: str
+        """
+        self.Keyword = None
+
+
+    def _deserialize(self, params):
+        self.Keyword = params.get("Keyword")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateOrgNodeRequest(AbstractModel):
     """CreateOrgNode请求参数结构体
 
@@ -607,6 +762,62 @@ class DescribeOrgNodeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribePublicKeyRequest(AbstractModel):
+    """DescribePublicKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ApplicationId: 应用ID，是应用的全局唯一标识。
+        :type ApplicationId: str
+        """
+        self.ApplicationId = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePublicKeyResponse(AbstractModel):
+    """DescribePublicKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PublicKey: jwt验证签名所用的公钥信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicKey: str
+        :param KeyId: jwt的密钥id。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeyId: str
+        :param ApplicationId: 应用ID，是应用的全局唯一标识。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PublicKey = None
+        self.KeyId = None
+        self.ApplicationId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PublicKey = params.get("PublicKey")
+        self.KeyId = params.get("KeyId")
+        self.ApplicationId = params.get("ApplicationId")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeUserGroupRequest(AbstractModel):
     """DescribeUserGroup请求参数结构体
 
@@ -796,6 +1007,154 @@ class InheritedForm(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ListApplicationAuthorizationsRequest(AbstractModel):
+    """ListApplicationAuthorizations请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EntityType: 查询类型，包含用户（User）、用户组（UserGroup）、组织机构（OrgNode）。
+        :type EntityType: str
+        :param SearchCondition: 查询条件，支持多搜索条件组合、多数据范围匹配的搜索。同时支持查询信息内容全匹配、部分匹配、范围匹配等多种查询方式，具体查询方式为：双引号（""）表示全匹配、以星号（* ) 结尾表示字段部分匹配。如果该字段为空，则默认查全量表。
+        :type SearchCondition: :class:`tencentcloud.eiam.v20210420.models.AuthorizationInfoSearchCriteria`
+        :param Sort: 排序条件集合。可排序的属性支持：上次修改时间（lastModifiedDate）。如果该字段为空，则默认按照应用名称正向排序。
+        :type Sort: :class:`tencentcloud.eiam.v20210420.models.SortCondition`
+        :param Offset: 分页偏移量。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询。
+        :type Offset: int
+        :param Limit: 分页读取数量。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询。
+        :type Limit: int
+        """
+        self.EntityType = None
+        self.SearchCondition = None
+        self.Sort = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.EntityType = params.get("EntityType")
+        if params.get("SearchCondition") is not None:
+            self.SearchCondition = AuthorizationInfoSearchCriteria()
+            self.SearchCondition._deserialize(params.get("SearchCondition"))
+        if params.get("Sort") is not None:
+            self.Sort = SortCondition()
+            self.Sort._deserialize(params.get("Sort"))
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListApplicationAuthorizationsResponse(AbstractModel):
+    """ListApplicationAuthorizations返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param AuthorizationInfoList: 返回的应用授权信息列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthorizationInfoList: list of AuthorizationInfo
+        :param TotalCount: 返回的应用信息总数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AuthorizationInfoList = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AuthorizationInfoList") is not None:
+            self.AuthorizationInfoList = []
+            for item in params.get("AuthorizationInfoList"):
+                obj = AuthorizationInfo()
+                obj._deserialize(item)
+                self.AuthorizationInfoList.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class ListApplicationsRequest(AbstractModel):
+    """ListApplications请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SearchCondition: 查询条件，支持多搜索条件组合、多数据范围匹配的搜索。同时支持查询信息内容全匹配、部分匹配、范围匹配等多种查询方式，具体查询方式为：双引号（""）表示全匹配、以星号（* ) 结尾表示字段部分匹配。如果该字段为空，则默认查全量表。
+        :type SearchCondition: :class:`tencentcloud.eiam.v20210420.models.ApplicationInfoSearchCriteria`
+        :param Sort: 排序条件集合。可排序的属性支持：应用名字（displayName）、创建时间（createdDate）、上次修改时间（lastModifiedDate）。如果该字段为空，则默认按照应用名字正向排序。
+        :type Sort: :class:`tencentcloud.eiam.v20210420.models.SortCondition`
+        :param Offset: 分页偏移量。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询。
+        :type Offset: int
+        :param Limit: 分页读取数量。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询。
+        :type Limit: int
+        """
+        self.SearchCondition = None
+        self.Sort = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        if params.get("SearchCondition") is not None:
+            self.SearchCondition = ApplicationInfoSearchCriteria()
+            self.SearchCondition._deserialize(params.get("SearchCondition"))
+        if params.get("Sort") is not None:
+            self.Sort = SortCondition()
+            self.Sort._deserialize(params.get("Sort"))
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListApplicationsResponse(AbstractModel):
+    """ListApplications返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 返回的应用信息总数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param ApplicationInfoList: 返回的应用信息列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationInfoList: list of ApplicationInformation
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ApplicationInfoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ApplicationInfoList") is not None:
+            self.ApplicationInfoList = []
+            for item in params.get("ApplicationInfoList"):
+                obj = ApplicationInformation()
+                obj._deserialize(item)
+                self.ApplicationInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
 
 
 class ListAuthorizedApplicationsToOrgNodeRequest(AbstractModel):
@@ -996,6 +1355,78 @@ class ListUserGroupsOfUserResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ListUserGroupsRequest(AbstractModel):
+    """ListUserGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SearchCondition: 查询条件，支持多搜索条件组合、多数据范围匹配的搜索。同时支持查询信息内容全匹配、部分匹配、范围匹配等多种查询方式，具体查询方式为：双引号（""）表示全匹配、以星号（* ) 结尾表示字段部分匹配。如果该字段为空，则默认查全量表。
+        :type SearchCondition: :class:`tencentcloud.eiam.v20210420.models.UserGroupInfoSearchCriteria`
+        :param Sort: 排序条件集合。可排序的属性支持：用户组名称（DisplayName）、用户组ID（UserGroupId）、上次更新时间（LastModifiedDate）。如果该字段为空，则默认按照用户组名称正向排序。
+        :type Sort: :class:`tencentcloud.eiam.v20210420.models.SortCondition`
+        :param Offset: 分页偏移量。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询。
+        :type Offset: int
+        :param Limit: 分页读取数量。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询。
+        :type Limit: int
+        """
+        self.SearchCondition = None
+        self.Sort = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        if params.get("SearchCondition") is not None:
+            self.SearchCondition = UserGroupInfoSearchCriteria()
+            self.SearchCondition._deserialize(params.get("SearchCondition"))
+        if params.get("Sort") is not None:
+            self.Sort = SortCondition()
+            self.Sort._deserialize(params.get("Sort"))
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListUserGroupsResponse(AbstractModel):
+    """ListUserGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param UserGroupList: 返回的用户组列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserGroupList: list of UserGroupInformation
+        :param TotalCount: 返回的用户组信息总数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.UserGroupList = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("UserGroupList") is not None:
+            self.UserGroupList = []
+            for item in params.get("UserGroupList"):
+                obj = UserGroupInformation()
+                obj._deserialize(item)
+                self.UserGroupList.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class ListUsersInOrgNodeRequest(AbstractModel):
     """ListUsersInOrgNode请求参数结构体
 
@@ -1129,6 +1560,86 @@ class ListUsersInUserGroupResponse(AbstractModel):
                 obj._deserialize(item)
                 self.UserInfo.append(obj)
         self.TotalNum = params.get("TotalNum")
+        self.RequestId = params.get("RequestId")
+
+
+class ListUsersRequest(AbstractModel):
+    """ListUsers请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SearchCondition: 用户属性搜索条件，可查询条件包括：用户名、手机号码，邮箱、用户锁定状态、用户冻结状态、创建时间、上次修改时间，支持多种属性组合作为查询条件。同时支持查询信息内容全匹配、部分匹配、范围匹配等多种查询方式，具体查询方式为：双引号（“”）表示全匹配、以星号（*）结尾表示字段部分匹配、中括号以逗号分隔（[Min，Max]）表示闭区间查询、大括号以逗号分隔（{Min，Max}）表示开区间查询，中括号与大括号可以配合使用（例如：{Min，Max]表示最小值开区间，最大值闭区间查询）。范围匹配支持使用星号（例如{20,*]表示查询范围为大于20的所有数据）。范围查询同时支持时间段查询，支持的属性包括创建时间 （CreationTime）、上次修改时间（LastUpdateTime），查询的时间格式遵循 ISO 8601 标准，例如：2021-01-13T09:44:07.182+0000。
+        :type SearchCondition: :class:`tencentcloud.eiam.v20210420.models.UserSearchCriteria`
+        :param ExpectedFields: 指定期望返回的用户属性，默认返回所有用户内置属性。内置用户属性包括：用户UUID（UserId）、用户昵称（DisplayName）、用户名字（UserName）、手机号（Phone）、邮箱（Email）、用户状态（Status）、用户组（SubjectGroups）机构路径（OrgPath）、备注（Description）、创建时间 （CreationTime）、上次修改时间（LastUpdateTime）、上次登录时间（LastLoginTime）。
+        :type ExpectedFields: list of str
+        :param Sort: 排序条件集合。可排序的属性支持：用户名字（UserName）、手机号（Phone）、邮箱（Email）、用户状态（Status）、创建时间 （CreationTime）、上次修改时间（LastUpdateTime）、上次登录时间（LastLoginTime）。
+        :type Sort: :class:`tencentcloud.eiam.v20210420.models.SortCondition`
+        :param Offset: 分页偏移量，默认为0。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询，即只返回最多1000个用户。
+        :type Offset: int
+        :param Limit: 分页读取数量，默认为50，最大值为100。 Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询，即只返回最多1000个用户。
+        :type Limit: int
+        :param IncludeTotal: 是否查看搜索结果的总数，默认该选项为false不查看。
+        :type IncludeTotal: bool
+        """
+        self.SearchCondition = None
+        self.ExpectedFields = None
+        self.Sort = None
+        self.Offset = None
+        self.Limit = None
+        self.IncludeTotal = None
+
+
+    def _deserialize(self, params):
+        if params.get("SearchCondition") is not None:
+            self.SearchCondition = UserSearchCriteria()
+            self.SearchCondition._deserialize(params.get("SearchCondition"))
+        self.ExpectedFields = params.get("ExpectedFields")
+        if params.get("Sort") is not None:
+            self.Sort = SortCondition()
+            self.Sort._deserialize(params.get("Sort"))
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.IncludeTotal = params.get("IncludeTotal")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListUsersResponse(AbstractModel):
+    """ListUsers返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param UserList: 查询返回的相关用户列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserList: list of UserInformation
+        :param TotalCount: 返回查询用户的总数量，仅当入参IncludeTotal等于true时返回。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.UserList = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("UserList") is not None:
+            self.UserList = []
+            for item in params.get("UserList"):
+                obj = UserInformation()
+                obj._deserialize(item)
+                self.UserList.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -1349,6 +1860,34 @@ class RemoveUserFromUserGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SortCondition(AbstractModel):
+    """排序条件。
+
+    """
+
+    def __init__(self):
+        """
+        :param SortKey: 排序属性。
+        :type SortKey: str
+        :param SortOrder: 排序顺序，ASC为正向排序，DESC为反向排序。
+        :type SortOrder: str
+        """
+        self.SortKey = None
+        self.SortOrder = None
+
+
+    def _deserialize(self, params):
+        self.SortKey = params.get("SortKey")
+        self.SortOrder = params.get("SortOrder")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UpdateOrgNodeRequest(AbstractModel):
     """UpdateOrgNode请求参数结构体
 
@@ -1402,6 +1941,63 @@ class UpdateOrgNodeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class UserGroupInfoSearchCriteria(AbstractModel):
+    """用户组属性搜索条件。
+
+    """
+
+    def __init__(self):
+        """
+        :param Keyword: 名称匹配搜索，匹配范围包括：用户组名称、用户组ID。
+        :type Keyword: str
+        """
+        self.Keyword = None
+
+
+    def _deserialize(self, params):
+        self.Keyword = params.get("Keyword")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserGroupInformation(AbstractModel):
+    """返回的用户组列表。
+
+    """
+
+    def __init__(self):
+        """
+        :param UserGroupId: 用户组ID。
+        :type UserGroupId: str
+        :param UserGroupName: 用户组名称。
+        :type UserGroupName: str
+        :param LastModifiedDate: 上次更新时间，符合 ISO8601 标准。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastModifiedDate: str
+        """
+        self.UserGroupId = None
+        self.UserGroupName = None
+        self.LastModifiedDate = None
+
+
+    def _deserialize(self, params):
+        self.UserGroupId = params.get("UserGroupId")
+        self.UserGroupName = params.get("UserGroupName")
+        self.LastModifiedDate = params.get("LastModifiedDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UserInfo(AbstractModel):
     """用户信息列表。
 
@@ -1423,6 +2019,134 @@ class UserInfo(AbstractModel):
     def _deserialize(self, params):
         self.UserId = params.get("UserId")
         self.DisplayName = params.get("DisplayName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserInformation(AbstractModel):
+    """用户信息列表。
+
+    """
+
+    def __init__(self):
+        """
+        :param UserName: 用户名，长度限制：32个字符。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param Status: 用户状态。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param DisplayName: 昵称，长度限制：64个字符。 默认与用户名相同。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DisplayName: str
+        :param Description: 用户备注，长度限制：512个字符。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param LastUpdateTime: 用户上次更新时间，遵循 ISO 8601 标准。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastUpdateTime: str
+        :param CreationTime: 用户创建时间，遵循 ISO 8601 标准。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreationTime: str
+        :param OrgPath: 用户所属组织机构路径。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrgPath: str
+        :param Phone: 带国家号的用户手机号，例如+86-00000000000。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Phone: str
+        :param SubjectGroups: 用户所属用户组ID列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubjectGroups: list of str
+        :param Email: 用户邮箱。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Email: str
+        :param LastLoginTime: 用户上次登录时间，遵循 ISO 8601 标准。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastLoginTime: str
+        :param UserId: 用户ID，是用户全局唯一标识，长度限制：64个字符。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserId: str
+        """
+        self.UserName = None
+        self.Status = None
+        self.DisplayName = None
+        self.Description = None
+        self.LastUpdateTime = None
+        self.CreationTime = None
+        self.OrgPath = None
+        self.Phone = None
+        self.SubjectGroups = None
+        self.Email = None
+        self.LastLoginTime = None
+        self.UserId = None
+
+
+    def _deserialize(self, params):
+        self.UserName = params.get("UserName")
+        self.Status = params.get("Status")
+        self.DisplayName = params.get("DisplayName")
+        self.Description = params.get("Description")
+        self.LastUpdateTime = params.get("LastUpdateTime")
+        self.CreationTime = params.get("CreationTime")
+        self.OrgPath = params.get("OrgPath")
+        self.Phone = params.get("Phone")
+        self.SubjectGroups = params.get("SubjectGroups")
+        self.Email = params.get("Email")
+        self.LastLoginTime = params.get("LastLoginTime")
+        self.UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserSearchCriteria(AbstractModel):
+    """用户属性搜索条件。
+
+    """
+
+    def __init__(self):
+        """
+        :param UserName: 用户名，长度限制：64个字符。
+        :type UserName: str
+        :param Phone: 用户手机号。
+        :type Phone: str
+        :param Email: 用户邮箱。
+        :type Email: str
+        :param Status: 用户状态，取值 NORMAL （正常）、FREEZE （已冻结）、LOCKED （已锁定）或 NOT_ENABLED （未启用）。
+        :type Status: str
+        :param CreationTime: 用户创建时间，遵循 ISO 8601 标准。
+        :type CreationTime: str
+        :param LastUpdateTime: 用户上次更新时间区间。
+        :type LastUpdateTime: str
+        :param Keyword: 名称匹配搜索，匹配范围包括：用户名称、用户ID。
+        :type Keyword: str
+        """
+        self.UserName = None
+        self.Phone = None
+        self.Email = None
+        self.Status = None
+        self.CreationTime = None
+        self.LastUpdateTime = None
+        self.Keyword = None
+
+
+    def _deserialize(self, params):
+        self.UserName = params.get("UserName")
+        self.Phone = params.get("Phone")
+        self.Email = params.get("Email")
+        self.Status = params.get("Status")
+        self.CreationTime = params.get("CreationTime")
+        self.LastUpdateTime = params.get("LastUpdateTime")
+        self.Keyword = params.get("Keyword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

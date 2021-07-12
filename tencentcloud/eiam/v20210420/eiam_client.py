@@ -278,6 +278,34 @@ class EiamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePublicKey(self, request):
+        """获取JWT公钥信息。
+
+        :param request: Request instance for DescribePublicKey.
+        :type request: :class:`tencentcloud.eiam.v20210420.models.DescribePublicKeyRequest`
+        :rtype: :class:`tencentcloud.eiam.v20210420.models.DescribePublicKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePublicKey", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePublicKeyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeUserGroup(self, request):
         """获取用户组信息
 
@@ -320,6 +348,62 @@ class EiamClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUserInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ListApplicationAuthorizations(self, request):
+        """应用授权关系列表（含搜索条件匹配）。
+
+        :param request: Request instance for ListApplicationAuthorizations.
+        :type request: :class:`tencentcloud.eiam.v20210420.models.ListApplicationAuthorizationsRequest`
+        :rtype: :class:`tencentcloud.eiam.v20210420.models.ListApplicationAuthorizationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListApplicationAuthorizations", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListApplicationAuthorizationsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ListApplications(self, request):
+        """获取应用列表信息。
+
+        :param request: Request instance for ListApplications.
+        :type request: :class:`tencentcloud.eiam.v20210420.models.ListApplicationsRequest`
+        :rtype: :class:`tencentcloud.eiam.v20210420.models.ListApplicationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListApplications", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListApplicationsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -418,6 +502,34 @@ class EiamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ListUserGroups(self, request):
+        """获取用户组列表信息（包含查询条件）。
+
+        :param request: Request instance for ListUserGroups.
+        :type request: :class:`tencentcloud.eiam.v20210420.models.ListUserGroupsRequest`
+        :rtype: :class:`tencentcloud.eiam.v20210420.models.ListUserGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListUserGroups", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListUserGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ListUserGroupsOfUser(self, request):
         """获取用户所在的用户组列表
 
@@ -432,6 +544,34 @@ class EiamClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListUserGroupsOfUserResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ListUsers(self, request):
+        """获取用户列表信息。
+
+        :param request: Request instance for ListUsers.
+        :type request: :class:`tencentcloud.eiam.v20210420.models.ListUsersRequest`
+        :rtype: :class:`tencentcloud.eiam.v20210420.models.ListUsersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListUsers", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListUsersResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

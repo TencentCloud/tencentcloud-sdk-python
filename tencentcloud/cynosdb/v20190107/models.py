@@ -351,13 +351,13 @@ class CreateClustersRequest(AbstractModel):
         :type ProjectId: int
         :param Cpu: 普通实例Cpu核数
         :type Cpu: int
-        :param Memory: 普通实例内存
+        :param Memory: 普通实例内存,单位G
         :type Memory: int
-        :param Storage: 存储
+        :param Storage: 存储大小，单位G
         :type Storage: int
         :param ClusterName: 集群名称
         :type ClusterName: str
-        :param AdminPassword: 账号密码(8-64个字符，至少包含字母、数字、字符（支持的字符：_+-&=!@#$%^*()~）中的两种)
+        :param AdminPassword: 账号密码(8-64个字符，包含大小写英文字母、数字和符号~!@#$%^&*_-+=`|\(){}[]:;'<>,.?/中的任意三种)
         :type AdminPassword: str
         :param Port: 端口，默认5432
         :type Port: int
@@ -379,6 +379,7 @@ timeRollback，时间点回档
         :param ExpectTimeThresh: 时间点回档，指定时间允许范围
         :type ExpectTimeThresh: int
         :param StorageLimit: 普通实例存储上限，单位GB
+当DbType为MYSQL，且存储计费模式为预付费时，该参数需不大于cpu与memory对应存储规格上限
         :type StorageLimit: int
         :param InstanceCount: 实例数量
         :type InstanceCount: int
@@ -415,6 +416,10 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
         :param AutoPauseDelay: 当DbMode为SEVERLESS时，指定集群自动暂停的延迟，单位秒，可选范围[600,691200]
 默认值:600
         :type AutoPauseDelay: int
+        :param StoragePayMode: 集群存储计费模式，按量计费：0，包年包月：1。默认按量计费
+当DbType为MYSQL时，在集群计算计费模式为后付费（包括DbMode为SERVERLESS）时，存储计费模式仅可为按量计费
+回档与克隆均不支持包年包月存储
+        :type StoragePayMode: int
         """
         self.Zone = None
         self.VpcId = None
@@ -449,6 +454,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
         self.MaxCpu = None
         self.AutoPause = None
         self.AutoPauseDelay = None
+        self.StoragePayMode = None
 
 
     def _deserialize(self, params):
@@ -490,6 +496,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
         self.MaxCpu = params.get("MaxCpu")
         self.AutoPause = params.get("AutoPause")
         self.AutoPauseDelay = params.get("AutoPauseDelay")
+        self.StoragePayMode = params.get("StoragePayMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -606,6 +613,16 @@ class CynosdbCluster(AbstractModel):
 resume
 pause
         :type ServerlessStatus: str
+        :param Storage: 集群预付费存储值大小
+        :type Storage: int
+        :param StorageId: 集群存储为预付费时的存储ID，用于预付费存储变配
+        :type StorageId: str
+        :param StoragePayMode: 集群存储付费模式。0-按量计费，1-包年包月
+        :type StoragePayMode: int
+        :param MinStorageSize: 集群计算规格对应的最小存储值
+        :type MinStorageSize: int
+        :param MaxStorageSize: 集群计算规格对应的最大存储值
+        :type MaxStorageSize: int
         """
         self.Status = None
         self.UpdateTime = None
@@ -635,6 +652,11 @@ pause
         self.ResourceTags = None
         self.DbMode = None
         self.ServerlessStatus = None
+        self.Storage = None
+        self.StorageId = None
+        self.StoragePayMode = None
+        self.MinStorageSize = None
+        self.MaxStorageSize = None
 
 
     def _deserialize(self, params):
@@ -676,6 +698,11 @@ pause
                 self.ResourceTags.append(obj)
         self.DbMode = params.get("DbMode")
         self.ServerlessStatus = params.get("ServerlessStatus")
+        self.Storage = params.get("Storage")
+        self.StorageId = params.get("StorageId")
+        self.StoragePayMode = params.get("StoragePayMode")
+        self.MinStorageSize = params.get("MinStorageSize")
+        self.MaxStorageSize = params.get("MaxStorageSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -909,6 +936,12 @@ class CynosdbInstance(AbstractModel):
 resume
 pause
         :type ServerlessStatus: str
+        :param StoragePayMode: 存储付费类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StoragePayMode: int
+        :param StorageId: 预付费存储Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageId: str
         """
         self.Uin = None
         self.AppId = None
@@ -950,6 +983,8 @@ pause
         self.MinCpu = None
         self.MaxCpu = None
         self.ServerlessStatus = None
+        self.StoragePayMode = None
+        self.StorageId = None
 
 
     def _deserialize(self, params):
@@ -993,6 +1028,8 @@ pause
         self.MinCpu = params.get("MinCpu")
         self.MaxCpu = params.get("MaxCpu")
         self.ServerlessStatus = params.get("ServerlessStatus")
+        self.StoragePayMode = params.get("StoragePayMode")
+        self.StorageId = params.get("StorageId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1071,6 +1108,14 @@ class CynosdbInstanceDetail(AbstractModel):
         :type CynosVersion: str
         :param RenewFlag: 续费标志
         :type RenewFlag: int
+        :param MinCpu: serverless实例cpu下限
+        :type MinCpu: float
+        :param MaxCpu: serverless实例cpu上限
+        :type MaxCpu: float
+        :param ServerlessStatus: serverless实例状态, 可能值：
+resume
+pause
+        :type ServerlessStatus: str
         """
         self.Uin = None
         self.AppId = None
@@ -1103,6 +1148,9 @@ class CynosdbInstanceDetail(AbstractModel):
         self.Charset = None
         self.CynosVersion = None
         self.RenewFlag = None
+        self.MinCpu = None
+        self.MaxCpu = None
+        self.ServerlessStatus = None
 
 
     def _deserialize(self, params):
@@ -1137,6 +1185,9 @@ class CynosdbInstanceDetail(AbstractModel):
         self.Charset = params.get("Charset")
         self.CynosVersion = params.get("CynosVersion")
         self.RenewFlag = params.get("RenewFlag")
+        self.MinCpu = params.get("MinCpu")
+        self.MaxCpu = params.get("MaxCpu")
+        self.ServerlessStatus = params.get("ServerlessStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1366,16 +1417,21 @@ class DescribeBackupListRequest(AbstractModel):
         :type Limit: int
         :param Offset: 备份文件列表起始
         :type Offset: int
+        :param DbType: 数据库类型，取值范围: 
+<li> MYSQL </li>
+        :type DbType: str
         """
         self.ClusterId = None
         self.Limit = None
         self.Offset = None
+        self.DbType = None
 
 
     def _deserialize(self, params):
         self.ClusterId = params.get("ClusterId")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        self.DbType = params.get("DbType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1948,7 +2004,7 @@ class DescribeResourcesByDealNameRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param DealName: 计费订单id
+        :param DealName: 计费订单id（如果计费还没回调业务发货，可能出现错误码InvalidParameterValue.DealNameNotFound，这种情况需要业务重试DescribeResourcesByDealName接口直到成功）
         :type DealName: str
         """
         self.DealName = None
