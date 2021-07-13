@@ -2038,14 +2038,18 @@ class DeleteCloudBaseProjectLatestVersionRequest(AbstractModel):
         :type EnvId: str
         :param ProjectName: 项目名
         :type ProjectName: str
+        :param KeepResource: 是否保留资源
+        :type KeepResource: bool
         """
         self.EnvId = None
         self.ProjectName = None
+        self.KeepResource = None
 
 
     def _deserialize(self, params):
         self.EnvId = params.get("EnvId")
         self.ProjectName = params.get("ProjectName")
+        self.KeepResource = params.get("KeepResource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3565,6 +3569,14 @@ class DescribeEnvLimitResponse(AbstractModel):
         :type MaxFreeTrialNum: int
         :param CurrentFreeTrialNum: 微信网关体验版已购买月份数
         :type CurrentFreeTrialNum: int
+        :param ChangePayTotal: 转支付限额总数
+        :type ChangePayTotal: int
+        :param CurrentChangePayTotal: 当前已用转支付次数
+        :type CurrentChangePayTotal: int
+        :param ChangePayMonthly: 转支付每月限额
+        :type ChangePayMonthly: int
+        :param CurrentChangePayMonthly: 本月已用转支付额度
+        :type CurrentChangePayMonthly: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3578,6 +3590,10 @@ class DescribeEnvLimitResponse(AbstractModel):
         self.CurrentDeleteMonthly = None
         self.MaxFreeTrialNum = None
         self.CurrentFreeTrialNum = None
+        self.ChangePayTotal = None
+        self.CurrentChangePayTotal = None
+        self.ChangePayMonthly = None
+        self.CurrentChangePayMonthly = None
         self.RequestId = None
 
 
@@ -3592,6 +3608,10 @@ class DescribeEnvLimitResponse(AbstractModel):
         self.CurrentDeleteMonthly = params.get("CurrentDeleteMonthly")
         self.MaxFreeTrialNum = params.get("MaxFreeTrialNum")
         self.CurrentFreeTrialNum = params.get("CurrentFreeTrialNum")
+        self.ChangePayTotal = params.get("ChangePayTotal")
+        self.CurrentChangePayTotal = params.get("CurrentChangePayTotal")
+        self.ChangePayMonthly = params.get("ChangePayMonthly")
+        self.CurrentChangePayMonthly = params.get("CurrentChangePayMonthly")
         self.RequestId = params.get("RequestId")
 
 

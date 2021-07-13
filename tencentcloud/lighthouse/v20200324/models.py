@@ -3901,14 +3901,18 @@ class ZoneInfo(AbstractModel):
         :type Zone: str
         :param ZoneName: 可用区中文名称
         :type ZoneName: str
+        :param InstanceDisplayLabel: 实例购买页可用区展示标签
+        :type InstanceDisplayLabel: str
         """
         self.Zone = None
         self.ZoneName = None
+        self.InstanceDisplayLabel = None
 
 
     def _deserialize(self, params):
         self.Zone = params.get("Zone")
         self.ZoneName = params.get("ZoneName")
+        self.InstanceDisplayLabel = params.get("InstanceDisplayLabel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

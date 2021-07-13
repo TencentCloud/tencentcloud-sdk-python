@@ -1381,6 +1381,47 @@ class DescribeSafeAuthFlagCollResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSafeAuthFlagIntlRequest(AbstractModel):
+    """DescribeSafeAuthFlagIntl请求参数结构体
+
+    """
+
+
+class DescribeSafeAuthFlagIntlResponse(AbstractModel):
+    """DescribeSafeAuthFlagIntl返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LoginFlag: 登录保护设置
+        :type LoginFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlagIntl`
+        :param ActionFlag: 敏感操作保护设置
+        :type ActionFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlagIntl`
+        :param OffsiteFlag: 异地登录保护设置
+        :type OffsiteFlag: :class:`tencentcloud.cam.v20190116.models.OffsiteFlag`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LoginFlag = None
+        self.ActionFlag = None
+        self.OffsiteFlag = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("LoginFlag") is not None:
+            self.LoginFlag = LoginActionFlagIntl()
+            self.LoginFlag._deserialize(params.get("LoginFlag"))
+        if params.get("ActionFlag") is not None:
+            self.ActionFlag = LoginActionFlagIntl()
+            self.ActionFlag._deserialize(params.get("ActionFlag"))
+        if params.get("OffsiteFlag") is not None:
+            self.OffsiteFlag = OffsiteFlag()
+            self.OffsiteFlag._deserialize(params.get("OffsiteFlag"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSafeAuthFlagRequest(AbstractModel):
     """DescribeSafeAuthFlag请求参数结构体
 
@@ -1612,6 +1653,53 @@ class DetachUserPolicyResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class GetAccountSummaryRequest(AbstractModel):
+    """GetAccountSummary请求参数结构体
+
+    """
+
+
+class GetAccountSummaryResponse(AbstractModel):
+    """GetAccountSummary返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Policies: 策略数
+        :type Policies: int
+        :param Roles: 角色数
+        :type Roles: int
+        :param Idps: 身份提供商数
+        :type Idps: int
+        :param User: 子账户数
+        :type User: int
+        :param Group: 分组数
+        :type Group: int
+        :param Member: 分组用户总数
+        :type Member: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Policies = None
+        self.Roles = None
+        self.Idps = None
+        self.User = None
+        self.Group = None
+        self.Member = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Policies = params.get("Policies")
+        self.Roles = params.get("Roles")
+        self.Idps = params.get("Idps")
+        self.User = params.get("User")
+        self.Group = params.get("Group")
+        self.Member = params.get("Member")
         self.RequestId = params.get("RequestId")
 
 
@@ -3332,6 +3420,50 @@ class LoginActionFlag(AbstractModel):
         self.Stoken = params.get("Stoken")
         self.Wechat = params.get("Wechat")
         self.Custom = params.get("Custom")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LoginActionFlagIntl(AbstractModel):
+    """登录和敏感操作flag
+
+    """
+
+    def __init__(self):
+        """
+        :param Phone: 手机
+        :type Phone: int
+        :param Token: 硬token
+        :type Token: int
+        :param Stoken: 软token
+        :type Stoken: int
+        :param Wechat: 微信
+        :type Wechat: int
+        :param Custom: 自定义
+        :type Custom: int
+        :param Mail: 邮件
+        :type Mail: int
+        """
+        self.Phone = None
+        self.Token = None
+        self.Stoken = None
+        self.Wechat = None
+        self.Custom = None
+        self.Mail = None
+
+
+    def _deserialize(self, params):
+        self.Phone = params.get("Phone")
+        self.Token = params.get("Token")
+        self.Stoken = params.get("Stoken")
+        self.Wechat = params.get("Wechat")
+        self.Custom = params.get("Custom")
+        self.Mail = params.get("Mail")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

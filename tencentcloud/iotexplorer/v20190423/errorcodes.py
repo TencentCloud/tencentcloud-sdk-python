@@ -38,6 +38,9 @@ FAILEDOPERATION_OTHERUPDATETASKEXIST = 'FailedOperation.OtherUpdateTaskExist'
 # 转发已经停止。
 FAILEDOPERATION_RULEALREADYDISABLED = 'FailedOperation.RuleAlreadyDisabled'
 
+# 超过时间。
+FAILEDOPERATION_TIMEOUT = 'FailedOperation.Timeout'
+
 # 内部错误。
 INTERNALERROR = 'InternalError'
 
@@ -199,6 +202,9 @@ LIMITEXCEEDED_DEVICEEXCEEDLIMIT = 'LimitExceeded.DeviceExceedLimit'
 
 # 固件数量超出限制。
 LIMITEXCEEDED_FIRMWAREEXCEEDLIMIT = 'LimitExceeded.FirmwareExceedLimit'
+
+# 消息数量超过限制。
+LIMITEXCEEDED_MESSAGESAVED = 'LimitExceeded.MessageSaved'
 
 # 项目数量超出限制。
 LIMITEXCEEDED_PROJECTEXCEEDLIMIT = 'LimitExceeded.ProjectExceedLimit'

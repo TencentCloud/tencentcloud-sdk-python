@@ -25,9 +25,9 @@ class AddUserContactRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Name: 联系人姓名，大小写字母+数字+下划线，最小 2 位最大 60 位的长度， 不能以"_"开头，且联系人名保持唯一。
+        :param Name: 联系人姓名，由中英文、数字、空格、!@#$%^&*()_+-=（）组成，不能以下划线开头，长度在20以内。
         :type Name: str
-        :param ContactInfo: 邮箱地址，大小写字母、数字及下划线组成， 不能以"_"开头。
+        :param ContactInfo: 邮箱地址，支持大小写字母、数字、下划线及@字符， 不能以下划线开头，邮箱地址不可重复。
         :type ContactInfo: str
         :param Product: 服务产品类型，固定值："mysql"。
         :type Product: str
@@ -625,9 +625,9 @@ class DescribeDBDiagEventResponse(AbstractModel):
         :type DiagType: str
         :param EventId: 事件 ID 。
         :type EventId: int
-        :param Explanation: 事件详情。
+        :param Explanation: 诊断事件详情，若无附加解释信息则输出为空。
         :type Explanation: str
-        :param Outline: 概要。
+        :param Outline: 诊断概要。
         :type Outline: str
         :param Problem: 诊断出的问题。
         :type Problem: str
@@ -635,7 +635,7 @@ class DescribeDBDiagEventResponse(AbstractModel):
         :type Severity: int
         :param StartTime: 开始时间
         :type StartTime: str
-        :param Suggestions: 建议。
+        :param Suggestions: 诊断建议，若无建议则输出为空。
         :type Suggestions: str
         :param Metric: 保留字段。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -978,7 +978,7 @@ class DescribeHealthScoreRequest(AbstractModel):
         """
         :param InstanceId: 需要获取健康得分的实例ID。
         :type InstanceId: str
-        :param Time: 获取健康得分的时间。
+        :param Time: 获取健康得分的时间，时间格式如：2019-09-10 12:13:14。
         :type Time: str
         :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
         :type Product: str
@@ -1849,9 +1849,9 @@ class DescribeUserSqlAdviceResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Advices: SQL优化建议，可解析为JSON数组。
+        :param Advices: SQL优化建议，可解析为JSON数组，无需优化时输出为空。
         :type Advices: str
-        :param Comments: SQL优化建议备注，可解析为String数组。
+        :param Comments: SQL优化建议备注，可解析为String数组，无需优化时输出为空。
         :type Comments: str
         :param SqlText: SQL语句。
         :type SqlText: str
@@ -1859,9 +1859,9 @@ class DescribeUserSqlAdviceResponse(AbstractModel):
         :type Schema: str
         :param Tables: 相关表的DDL信息，可解析为JSON数组。
         :type Tables: str
-        :param SqlPlan: SQL执行计划，可解析为JSON。
+        :param SqlPlan: SQL执行计划，可解析为JSON，无需优化时输出为空。
         :type SqlPlan: str
-        :param Cost: SQL优化后的成本节约详情，可解析为JSON。
+        :param Cost: SQL优化后的成本节约详情，可解析为JSON，无需优化时输出为空。
         :type Cost: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1900,22 +1900,20 @@ class DiagHistoryEventItem(AbstractModel):
         :type EndTime: str
         :param StartTime: 开始时间。
         :type StartTime: str
-        :param EventId: 事件 ID 。
+        :param EventId: 事件唯一ID 。
         :type EventId: int
         :param Severity: 严重程度。严重程度分为5级，按影响程度从高至低分别为：1：致命，2：严重，3：告警，4：提示，5：健康。
         :type Severity: int
-        :param Outline: 概要。
+        :param Outline: 诊断概要。
         :type Outline: str
-        :param DiagItem: 诊断项。
+        :param DiagItem: 诊断项说明。
         :type DiagItem: str
         :param InstanceId: 实例 ID 。
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
-        :param Metric: 保留字段
+        :param Metric: 保留字段。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Metric: str
-        :param Region: 地域
-注意：此字段可能返回 null，表示取不到有效值。
+        :param Region: 地域。
         :type Region: str
         """
         self.DiagType = None
@@ -3268,10 +3266,10 @@ class UserProfile(AbstractModel):
         :param ProfileId: 配置的id。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProfileId: str
-        :param ProfileType: 配置类型。
+        :param ProfileType: 配置类型，支持值包括："dbScan_mail_configuration" - 数据库巡检邮件配置，"scheduler_mail_configuration" - 定期生成邮件配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProfileType: str
-        :param ProfileLevel: 配置级别，"User"或"Instance"。
+        :param ProfileLevel: 配置级别，支持值包括："User" - 用户级别，"Instance" - 实例级别，其中数据库巡检邮件配置为用户级别，定期生成邮件配置为实例级别。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProfileLevel: str
         :param ProfileName: 配置名称。

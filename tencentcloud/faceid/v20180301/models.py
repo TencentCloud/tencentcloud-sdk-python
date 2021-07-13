@@ -29,14 +29,20 @@ class BankCard2EVerificationRequest(AbstractModel):
         :type Name: str
         :param BankCard: 银行卡
         :type BankCard: str
+        :param Encryption: 敏感数据加密信息。对传入信息（姓名、银行卡号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         self.Name = None
         self.BankCard = None
+        self.Encryption = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.BankCard = params.get("BankCard")
+        if params.get("Encryption") is not None:
+            self.Encryption = Encryption()
+            self.Encryption._deserialize(params.get("Encryption"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -280,12 +286,18 @@ class CheckBankCardInformationRequest(AbstractModel):
         """
         :param BankCard: 银行卡号。
         :type BankCard: str
+        :param Encryption: 敏感数据加密信息。对传入信息（银行卡号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         self.BankCard = None
+        self.Encryption = None
 
 
     def _deserialize(self, params):
         self.BankCard = params.get("BankCard")
+        if params.get("Encryption") is not None:
+            self.Encryption = Encryption()
+            self.Encryption._deserialize(params.get("Encryption"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -415,16 +427,21 @@ Config = Json.stringify({"CopyWarn":true,"ReshootWarn":true})
 API 3.0 Explorer 设置方式参考：
 Config = {"CopyWarn":true,"ReshootWarn":true}
         :type Config: str
+        :param IsEncrypt: 是否需要对返回中的敏感信息进行加密。默认false。
+其中敏感信息包括：Response.IdNum、Response.Name
+        :type IsEncrypt: bool
         """
         self.ImageBase64 = None
         self.ImageUrl = None
         self.Config = None
+        self.IsEncrypt = None
 
 
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
         self.Config = params.get("Config")
+        self.IsEncrypt = params.get("IsEncrypt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -474,6 +491,9 @@ class CheckIdCardInformationResponse(AbstractModel):
         :type Warnings: str
         :param Quality: 图片质量分数，当请求Config中配置图片模糊告警该参数才有意义，取值范围（0～100），目前默认阈值是50分，低于50分会触发模糊告警。
         :type Quality: float
+        :param Encryption: 敏感数据加密信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -489,6 +509,7 @@ class CheckIdCardInformationResponse(AbstractModel):
         self.Portrait = None
         self.Warnings = None
         self.Quality = None
+        self.Encryption = None
         self.RequestId = None
 
 
@@ -505,6 +526,9 @@ class CheckIdCardInformationResponse(AbstractModel):
         self.Portrait = params.get("Portrait")
         self.Warnings = params.get("Warnings")
         self.Quality = params.get("Quality")
+        if params.get("Encryption") is not None:
+            self.Encryption = Encryption()
+            self.Encryption._deserialize(params.get("Encryption"))
         self.RequestId = params.get("RequestId")
 
 
@@ -519,14 +543,20 @@ class CheckPhoneAndNameRequest(AbstractModel):
         :type Mobile: str
         :param Name: 姓名
         :type Name: str
+        :param Encryption: 敏感数据加密信息。对传入信息（姓名、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         self.Mobile = None
         self.Name = None
+        self.Encryption = None
 
 
     def _deserialize(self, params):
         self.Mobile = params.get("Mobile")
         self.Name = params.get("Name")
+        if params.get("Encryption") is not None:
+            self.Encryption = Encryption()
+            self.Encryption._deserialize(params.get("Encryption"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1950,14 +1980,20 @@ class IdCardVerificationRequest(AbstractModel):
         :type IdCard: str
         :param Name: 姓名
         :type Name: str
+        :param Encryption: 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         self.IdCard = None
         self.Name = None
+        self.Encryption = None
 
 
     def _deserialize(self, params):
         self.IdCard = params.get("IdCard")
         self.Name = params.get("Name")
+        if params.get("Encryption") is not None:
+            self.Encryption = Encryption()
+            self.Encryption._deserialize(params.get("Encryption"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2017,11 +2053,14 @@ Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
         :type ImageBase64: str
         :param Optional: 本接口不需要传递此参数。
         :type Optional: str
+        :param Encryption: 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         self.IdCard = None
         self.Name = None
         self.ImageBase64 = None
         self.Optional = None
+        self.Encryption = None
 
 
     def _deserialize(self, params):
@@ -2029,6 +2068,9 @@ Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
         self.Name = params.get("Name")
         self.ImageBase64 = params.get("ImageBase64")
         self.Optional = params.get("Optional")
+        if params.get("Encryption") is not None:
+            self.Encryption = Encryption()
+            self.Encryption._deserialize(params.get("Encryption"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2182,6 +2224,8 @@ LIP为数字模式，ACTION为动作模式，SILENT为静默模式，三种模�
 "BestFrameNum": 2  //需要返回多张最佳截图，取值范围2-10
 }
         :type Optional: str
+        :param Encryption: 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         self.IdCard = None
         self.Name = None
@@ -2189,6 +2233,7 @@ LIP为数字模式，ACTION为动作模式，SILENT为静默模式，三种模�
         self.LivenessType = None
         self.ValidateData = None
         self.Optional = None
+        self.Encryption = None
 
 
     def _deserialize(self, params):
@@ -2198,6 +2243,9 @@ LIP为数字模式，ACTION为动作模式，SILENT为静默模式，三种模�
         self.LivenessType = params.get("LivenessType")
         self.ValidateData = params.get("ValidateData")
         self.Optional = params.get("Optional")
+        if params.get("Encryption") is not None:
+            self.Encryption = Encryption()
+            self.Encryption._deserialize(params.get("Encryption"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

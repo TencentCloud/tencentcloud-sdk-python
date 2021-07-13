@@ -74,6 +74,9 @@ FAILEDOPERATION_LANEINFOGROUPNOTEMPTY = 'FailedOperation.LaneInfoGroupNotEmpty'
 # 泳道同步到consul失败。
 FAILEDOPERATION_LANEINFORELEASECONSULFAILED = 'FailedOperation.LaneInfoReleaseConsulFailed'
 
+# 泳道发布到mesh失败。
+FAILEDOPERATION_LANEINFORELEASEMESHFAILED = 'FailedOperation.LaneInfoReleaseMeshFailed'
+
 # 全链路灰度规则启用失败。
 FAILEDOPERATION_LANERULEENABLECONSULFAILED = 'FailedOperation.LaneRuleEnableConsulFailed'
 
