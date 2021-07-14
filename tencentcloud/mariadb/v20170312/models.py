@@ -1024,6 +1024,20 @@ class DcnDetailItem(AbstractModel):
         :type DcnFlag: int
         :param DcnStatus: 实例DCN状态，0-无，1-创建中，2-同步中，3-已断开
         :type DcnStatus: int
+        :param Cpu: 实例CPU核数
+        :type Cpu: int
+        :param Memory: 实例内存大小，单位 GB
+        :type Memory: int
+        :param Storage: 实例存储大小，单位 GB
+        :type Storage: int
+        :param PayMode: 付费模式
+        :type PayMode: int
+        :param CreateTime: 实例创建时间，格式为 2006-01-02 15:04:05
+        :type CreateTime: str
+        :param PeriodEndTime: 实例到期时间，格式为 2006-01-02 15:04:05
+        :type PeriodEndTime: str
+        :param InstanceType: 1： 主实例（独享型）, 2: 主实例, 3： 灾备实例, 4： 灾备实例（独享型）
+        :type InstanceType: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -1036,6 +1050,13 @@ class DcnDetailItem(AbstractModel):
         self.StatusDesc = None
         self.DcnFlag = None
         self.DcnStatus = None
+        self.Cpu = None
+        self.Memory = None
+        self.Storage = None
+        self.PayMode = None
+        self.CreateTime = None
+        self.PeriodEndTime = None
+        self.InstanceType = None
 
 
     def _deserialize(self, params):
@@ -1050,6 +1071,13 @@ class DcnDetailItem(AbstractModel):
         self.StatusDesc = params.get("StatusDesc")
         self.DcnFlag = params.get("DcnFlag")
         self.DcnStatus = params.get("DcnStatus")
+        self.Cpu = params.get("Cpu")
+        self.Memory = params.get("Memory")
+        self.Storage = params.get("Storage")
+        self.PayMode = params.get("PayMode")
+        self.CreateTime = params.get("CreateTime")
+        self.PeriodEndTime = params.get("PeriodEndTime")
+        self.InstanceType = params.get("InstanceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2779,17 +2807,21 @@ class DescribeUpgradePriceResponse(AbstractModel):
         :type OriginalPrice: int
         :param Price: 实际价格，单位：分。受折扣等影响，可能和原价不同。
         :type Price: int
+        :param Formula: 变配明细计算公式
+        :type Formula: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.OriginalPrice = None
         self.Price = None
+        self.Formula = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.OriginalPrice = params.get("OriginalPrice")
         self.Price = params.get("Price")
+        self.Formula = params.get("Formula")
         self.RequestId = params.get("RequestId")
 
 

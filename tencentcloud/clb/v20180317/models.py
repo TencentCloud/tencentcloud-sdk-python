@@ -4425,6 +4425,9 @@ Public：公网属性， Private：内网属性。
         :param LoadBalancerPassToTarget: 负载均衡安全组上移特性是否开启标识。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LoadBalancerPassToTarget: int
+        :param TargetHealth: 后端目标健康状态。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetHealth: str
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
@@ -4458,6 +4461,7 @@ Public：公网属性， Private：内网属性。
         self.Isolation = None
         self.SecurityGroup = None
         self.LoadBalancerPassToTarget = None
+        self.TargetHealth = None
 
 
     def _deserialize(self, params):
@@ -4504,6 +4508,7 @@ Public：公网属性， Private：内网属性。
         self.Isolation = params.get("Isolation")
         self.SecurityGroup = params.get("SecurityGroup")
         self.LoadBalancerPassToTarget = params.get("LoadBalancerPassToTarget")
+        self.TargetHealth = params.get("TargetHealth")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

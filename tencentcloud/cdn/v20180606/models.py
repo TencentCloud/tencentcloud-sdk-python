@@ -9021,15 +9021,19 @@ class ScdnAclGroup(AbstractModel):
         :type RuleName: str
         :param Configure: 具体配置
         :type Configure: list of ScdnAclRule
-        :param Result: 规则行为，一般为refuse
+        :param Result: 规则行为，一般为refuse，重定向redirect
         :type Result: str
         :param Status: 规则是否生效中active|inactive
         :type Status: str
+        :param ErrorPage: 错误页面配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorPage: :class:`tencentcloud.cdn.v20180606.models.ScdnErrorPage`
         """
         self.RuleName = None
         self.Configure = None
         self.Result = None
         self.Status = None
+        self.ErrorPage = None
 
 
     def _deserialize(self, params):
@@ -9042,6 +9046,9 @@ class ScdnAclGroup(AbstractModel):
                 self.Configure.append(obj)
         self.Result = params.get("Result")
         self.Status = params.get("Status")
+        if params.get("ErrorPage") is not None:
+            self.ErrorPage = ScdnErrorPage()
+            self.ErrorPage._deserialize(params.get("ErrorPage"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

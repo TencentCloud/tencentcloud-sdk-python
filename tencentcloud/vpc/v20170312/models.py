@@ -15633,6 +15633,15 @@ class NatGateway(AbstractModel):
         :param SecurityGroupSet: NAT网关绑定的安全组列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityGroupSet: list of str
+        :param SourceIpTranslationNatRuleSet: NAT网关的SNAT转发规则。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceIpTranslationNatRuleSet: list of SourceIpTranslationNatRule
+        :param IsExclusive: 是否独享型NAT。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsExclusive: bool
+        :param ExclusiveGatewayBandwidth: 独享型NAT所在的网关集群的带宽(单位:Mbps)，当IsExclusive为false时无此字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExclusiveGatewayBandwidth: int
         """
         self.NatGatewayId = None
         self.NatGatewayName = None
@@ -15649,6 +15658,9 @@ class NatGateway(AbstractModel):
         self.SubnetId = None
         self.TagSet = None
         self.SecurityGroupSet = None
+        self.SourceIpTranslationNatRuleSet = None
+        self.IsExclusive = None
+        self.ExclusiveGatewayBandwidth = None
 
 
     def _deserialize(self, params):
@@ -15682,6 +15694,14 @@ class NatGateway(AbstractModel):
                 obj._deserialize(item)
                 self.TagSet.append(obj)
         self.SecurityGroupSet = params.get("SecurityGroupSet")
+        if params.get("SourceIpTranslationNatRuleSet") is not None:
+            self.SourceIpTranslationNatRuleSet = []
+            for item in params.get("SourceIpTranslationNatRuleSet"):
+                obj = SourceIpTranslationNatRule()
+                obj._deserialize(item)
+                self.SourceIpTranslationNatRuleSet.append(obj)
+        self.IsExclusive = params.get("IsExclusive")
+        self.ExclusiveGatewayBandwidth = params.get("ExclusiveGatewayBandwidth")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

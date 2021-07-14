@@ -946,6 +946,8 @@ class KTVMusicBaseInfo(AbstractModel):
         :type ComposerSet: list of str
         :param TagSet: 标签列表
         :type TagSet: list of str
+        :param Duration: 歌曲时长
+        :type Duration: int
         """
         self.MusicId = None
         self.Name = None
@@ -953,6 +955,7 @@ class KTVMusicBaseInfo(AbstractModel):
         self.LyricistSet = None
         self.ComposerSet = None
         self.TagSet = None
+        self.Duration = None
 
 
     def _deserialize(self, params):
@@ -962,6 +965,7 @@ class KTVMusicBaseInfo(AbstractModel):
         self.LyricistSet = params.get("LyricistSet")
         self.ComposerSet = params.get("ComposerSet")
         self.TagSet = params.get("TagSet")
+        self.Duration = params.get("Duration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

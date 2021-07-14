@@ -2732,6 +2732,88 @@ class CreateContainGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateFileConfigRequest(AbstractModel):
+    """CreateFileConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigName: 配置项名称
+        :type ConfigName: str
+        :param ConfigVersion: 配置项版本
+        :type ConfigVersion: str
+        :param ConfigFileName: 配置项文件名
+        :type ConfigFileName: str
+        :param ConfigFileValue: 配置项文件内容（原始内容编码需要 utf-8 格式，如果 ConfigFileCode 为 gbk，后台会进行转换）
+        :type ConfigFileValue: str
+        :param ApplicationId: 配置项关联应用ID
+        :type ApplicationId: str
+        :param ConfigFilePath: 发布路径
+        :type ConfigFilePath: str
+        :param ConfigVersionDesc: 配置项版本描述
+        :type ConfigVersionDesc: str
+        :param ConfigFileCode: 配置项文件编码，utf-8 或 gbk。注：如果选择 gbk，需要新版本 tsf-consul-template （公有云虚拟机需要使用 1.32 tsf-agent，容器需要从文档中获取最新的 tsf-consul-template-docker.tar.gz）的支持
+        :type ConfigFileCode: str
+        :param ConfigPostCmd: 后置命令
+        :type ConfigPostCmd: str
+        :param EncodeWithBase64: Base64编码的配置项
+        :type EncodeWithBase64: bool
+        """
+        self.ConfigName = None
+        self.ConfigVersion = None
+        self.ConfigFileName = None
+        self.ConfigFileValue = None
+        self.ApplicationId = None
+        self.ConfigFilePath = None
+        self.ConfigVersionDesc = None
+        self.ConfigFileCode = None
+        self.ConfigPostCmd = None
+        self.EncodeWithBase64 = None
+
+
+    def _deserialize(self, params):
+        self.ConfigName = params.get("ConfigName")
+        self.ConfigVersion = params.get("ConfigVersion")
+        self.ConfigFileName = params.get("ConfigFileName")
+        self.ConfigFileValue = params.get("ConfigFileValue")
+        self.ApplicationId = params.get("ApplicationId")
+        self.ConfigFilePath = params.get("ConfigFilePath")
+        self.ConfigVersionDesc = params.get("ConfigVersionDesc")
+        self.ConfigFileCode = params.get("ConfigFileCode")
+        self.ConfigPostCmd = params.get("ConfigPostCmd")
+        self.EncodeWithBase64 = params.get("EncodeWithBase64")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateFileConfigResponse(AbstractModel):
+    """CreateFileConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: true：创建成功；false：创建失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateGatewayApiRequest(AbstractModel):
     """CreateGatewayApi请求参数结构体
 
@@ -6040,6 +6122,78 @@ class DescribeEnabledUnitRuleResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Result") is not None:
             self.Result = UnitRule()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeFileConfigsRequest(AbstractModel):
+    """DescribeFileConfigs请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigId: 配置项ID
+        :type ConfigId: str
+        :param ConfigIdList: 配置项ID列表
+        :type ConfigIdList: list of str
+        :param ConfigName: 配置项名称
+        :type ConfigName: str
+        :param ApplicationId: 应用ID
+        :type ApplicationId: str
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 每页条数
+        :type Limit: int
+        :param ConfigVersion: 配置项版本
+        :type ConfigVersion: str
+        """
+        self.ConfigId = None
+        self.ConfigIdList = None
+        self.ConfigName = None
+        self.ApplicationId = None
+        self.Offset = None
+        self.Limit = None
+        self.ConfigVersion = None
+
+
+    def _deserialize(self, params):
+        self.ConfigId = params.get("ConfigId")
+        self.ConfigIdList = params.get("ConfigIdList")
+        self.ConfigName = params.get("ConfigName")
+        self.ApplicationId = params.get("ApplicationId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.ConfigVersion = params.get("ConfigVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFileConfigsResponse(AbstractModel):
+    """DescribeFileConfigs返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 文件配置项列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageFileConfig`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = TsfPageFileConfig()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 
@@ -9398,6 +9552,106 @@ class FieldRef(AbstractModel):
 
     def _deserialize(self, params):
         self.FieldPath = params.get("FieldPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FileConfig(AbstractModel):
+    """文件配置项
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigId: 配置项ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigId: str
+        :param ConfigName: 配置项名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigName: str
+        :param ConfigVersion: 配置项版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigVersion: str
+        :param ConfigVersionDesc: 配置项版本描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigVersionDesc: str
+        :param ConfigFileName: 配置项文件名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigFileName: str
+        :param ConfigFileValue: 配置项文件内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigFileValue: str
+        :param ConfigFileCode: 配置项文件编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigFileCode: str
+        :param CreationTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreationTime: str
+        :param ApplicationId: 配置项归属应用ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationId: str
+        :param ApplicationName: 应用名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationName: str
+        :param DeleteFlag: 删除标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeleteFlag: bool
+        :param ConfigVersionCount: 配置项版本数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigVersionCount: int
+        :param LastUpdateTime: 配置项最后更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastUpdateTime: str
+        :param ConfigFilePath: 发布路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigFilePath: str
+        :param ConfigPostCmd: 后置命令
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigPostCmd: str
+        :param ConfigFileValueLength: 配置项文件长度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigFileValueLength: int
+        """
+        self.ConfigId = None
+        self.ConfigName = None
+        self.ConfigVersion = None
+        self.ConfigVersionDesc = None
+        self.ConfigFileName = None
+        self.ConfigFileValue = None
+        self.ConfigFileCode = None
+        self.CreationTime = None
+        self.ApplicationId = None
+        self.ApplicationName = None
+        self.DeleteFlag = None
+        self.ConfigVersionCount = None
+        self.LastUpdateTime = None
+        self.ConfigFilePath = None
+        self.ConfigPostCmd = None
+        self.ConfigFileValueLength = None
+
+
+    def _deserialize(self, params):
+        self.ConfigId = params.get("ConfigId")
+        self.ConfigName = params.get("ConfigName")
+        self.ConfigVersion = params.get("ConfigVersion")
+        self.ConfigVersionDesc = params.get("ConfigVersionDesc")
+        self.ConfigFileName = params.get("ConfigFileName")
+        self.ConfigFileValue = params.get("ConfigFileValue")
+        self.ConfigFileCode = params.get("ConfigFileCode")
+        self.CreationTime = params.get("CreationTime")
+        self.ApplicationId = params.get("ApplicationId")
+        self.ApplicationName = params.get("ApplicationName")
+        self.DeleteFlag = params.get("DeleteFlag")
+        self.ConfigVersionCount = params.get("ConfigVersionCount")
+        self.LastUpdateTime = params.get("LastUpdateTime")
+        self.ConfigFilePath = params.get("ConfigFilePath")
+        self.ConfigPostCmd = params.get("ConfigPostCmd")
+        self.ConfigFileValueLength = params.get("ConfigFileValueLength")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12858,6 +13112,60 @@ class ReleaseConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ReleaseFileConfigRequest(AbstractModel):
+    """ReleaseFileConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigId: 配置ID
+        :type ConfigId: str
+        :param GroupId: 部署组ID
+        :type GroupId: str
+        :param ReleaseDesc: 发布描述
+        :type ReleaseDesc: str
+        """
+        self.ConfigId = None
+        self.GroupId = None
+        self.ReleaseDesc = None
+
+
+    def _deserialize(self, params):
+        self.ConfigId = params.get("ConfigId")
+        self.GroupId = params.get("GroupId")
+        self.ReleaseDesc = params.get("ReleaseDesc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReleaseFileConfigResponse(AbstractModel):
+    """ReleaseFileConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 发布结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class ReleasePublicConfigRequest(AbstractModel):
     """ReleasePublicConfig请求参数结构体
 
@@ -15005,6 +15313,41 @@ class TsfPageContainerEvent(AbstractModel):
             self.Content = []
             for item in params.get("Content"):
                 obj = ContainerEvent()
+                obj._deserialize(item)
+                self.Content.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TsfPageFileConfig(AbstractModel):
+    """文件配置项列表
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 总数目
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param Content: 文件配置数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: list of FileConfig
+        """
+        self.TotalCount = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Content") is not None:
+            self.Content = []
+            for item in params.get("Content"):
+                obj = FileConfig()
                 obj._deserialize(item)
                 self.Content.append(obj)
         memeber_set = set(params.keys())

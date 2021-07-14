@@ -263,6 +263,55 @@ class CheckInstanceNameResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CheckInstanceRequest(AbstractModel):
+    """CheckInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RegistryId: 待检测的实例Id
+        :type RegistryId: str
+        """
+        self.RegistryId = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckInstanceResponse(AbstractModel):
+    """CheckInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param IsValidated: 检查结果，true为合法，false为非法
+        :type IsValidated: bool
+        :param RegionId: 实例所在的RegionId
+        :type RegionId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.IsValidated = None
+        self.RegionId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.IsValidated = params.get("IsValidated")
+        self.RegionId = params.get("RegionId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateApplicationTriggerPersonalRequest(AbstractModel):
     """CreateApplicationTriggerPersonal请求参数结构体
 
@@ -4509,12 +4558,15 @@ class ManageReplicationRequest(AbstractModel):
         :type Description: str
         :param DestinationRegionId: 目标实例的地域ID，如广州是1
         :type DestinationRegionId: int
+        :param PeerReplicationOption: 开启跨主账号实例同步配置项
+        :type PeerReplicationOption: :class:`tencentcloud.tcr.v20190924.models.PeerReplicationOption`
         """
         self.SourceRegistryId = None
         self.DestinationRegistryId = None
         self.Rule = None
         self.Description = None
         self.DestinationRegionId = None
+        self.PeerReplicationOption = None
 
 
     def _deserialize(self, params):
@@ -4525,6 +4577,9 @@ class ManageReplicationRequest(AbstractModel):
             self.Rule._deserialize(params.get("Rule"))
         self.Description = params.get("Description")
         self.DestinationRegionId = params.get("DestinationRegionId")
+        if params.get("PeerReplicationOption") is not None:
+            self.PeerReplicationOption = PeerReplicationOption()
+            self.PeerReplicationOption._deserialize(params.get("PeerReplicationOption"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5236,6 +5291,38 @@ class NamespaceIsExistsResp(AbstractModel):
     def _deserialize(self, params):
         self.IsExist = params.get("IsExist")
         self.IsPreserved = params.get("IsPreserved")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PeerReplicationOption(AbstractModel):
+    """跨主账号实例同步参数
+
+    """
+
+    def __init__(self):
+        """
+        :param PeerRegistryUin: 待同步实例的uin
+        :type PeerRegistryUin: str
+        :param PeerRegistryToken: 待同步实例的访问永久Token
+        :type PeerRegistryToken: str
+        :param EnablePeerReplication: 是否开启跨主账号实例同步
+        :type EnablePeerReplication: bool
+        """
+        self.PeerRegistryUin = None
+        self.PeerRegistryToken = None
+        self.EnablePeerReplication = None
+
+
+    def _deserialize(self, params):
+        self.PeerRegistryUin = params.get("PeerRegistryUin")
+        self.PeerRegistryToken = params.get("PeerRegistryToken")
+        self.EnablePeerReplication = params.get("EnablePeerReplication")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

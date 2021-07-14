@@ -3095,6 +3095,9 @@ class TopicInfo(AbstractModel):
         :param StorageType: 日主题的存储类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type StorageType: str
+        :param Period: 生命周期，单位为天
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Period: int
         """
         self.LogsetId = None
         self.TopicId = None
@@ -3107,6 +3110,7 @@ class TopicInfo(AbstractModel):
         self.AutoSplit = None
         self.MaxSplitPartitions = None
         self.StorageType = None
+        self.Period = None
 
 
     def _deserialize(self, params):
@@ -3126,6 +3130,7 @@ class TopicInfo(AbstractModel):
         self.AutoSplit = params.get("AutoSplit")
         self.MaxSplitPartitions = params.get("MaxSplitPartitions")
         self.StorageType = params.get("StorageType")
+        self.Period = params.get("Period")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

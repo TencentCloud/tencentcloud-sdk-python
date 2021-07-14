@@ -95,6 +95,8 @@ class Command(AbstractModel):
         :type CreatedBy: str
         :param Tags: 命令关联的标签列表。
         :type Tags: list of Tag
+        :param Username: 在实例上执行命令的用户名。
+        :type Username: str
         """
         self.CommandId = None
         self.CommandName = None
@@ -110,6 +112,7 @@ class Command(AbstractModel):
         self.FormattedDescription = None
         self.CreatedBy = None
         self.Tags = None
+        self.Username = None
 
 
     def _deserialize(self, params):
@@ -132,6 +135,7 @@ class Command(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.Username = params.get("Username")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -156,11 +160,14 @@ class CommandDocument(AbstractModel):
         :type Timeout: int
         :param WorkingDirectory: 执行路径。
         :type WorkingDirectory: str
+        :param Username: 执行用户。
+        :type Username: str
         """
         self.Content = None
         self.CommandType = None
         self.Timeout = None
         self.WorkingDirectory = None
+        self.Username = None
 
 
     def _deserialize(self, params):
@@ -168,6 +175,7 @@ class CommandDocument(AbstractModel):
         self.CommandType = params.get("CommandType")
         self.Timeout = params.get("Timeout")
         self.WorkingDirectory = params.get("WorkingDirectory")
+        self.Username = params.get("Username")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -208,6 +216,9 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
         :type DefaultParameters: str
         :param Tags: 为命令关联的标签，列表长度不超过10。
         :type Tags: list of Tag
+        :param Username: 在 CVM 或 Lighthouse 实例中执行命令的用户名称。
+使用最小权限执行命令是权限管理的最佳实践，建议您以普通用户身份执行云助手命令。默认情况下，在Linux实例中以root用户执行命令。
+        :type Username: str
         """
         self.CommandName = None
         self.Content = None
@@ -218,6 +229,7 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
         self.EnableParameter = None
         self.DefaultParameters = None
         self.Tags = None
+        self.Username = None
 
 
     def _deserialize(self, params):
@@ -235,6 +247,7 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.Username = params.get("Username")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -718,6 +731,8 @@ class Invocation(AbstractModel):
         :type DefaultParameters: str
         :param InstanceKind: 执行命令的实例类型，取值范围：CVM、LIGHTHOUSE。
         :type InstanceKind: str
+        :param Username: 在实例上执行命令时使用的用户名。
+        :type Username: str
         """
         self.InvocationId = None
         self.CommandId = None
@@ -731,6 +746,7 @@ class Invocation(AbstractModel):
         self.Parameters = None
         self.DefaultParameters = None
         self.InstanceKind = None
+        self.Username = None
 
 
     def _deserialize(self, params):
@@ -751,6 +767,7 @@ class Invocation(AbstractModel):
         self.Parameters = params.get("Parameters")
         self.DefaultParameters = params.get("DefaultParameters")
         self.InstanceKind = params.get("InstanceKind")
+        self.Username = params.get("Username")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -895,16 +912,21 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 自定义参数最多20个。
 自定义参数名称需符合以下规范：字符数目上限64，可选范围【a-zA-Z0-9-_】。
         :type Parameters: str
+        :param Username: 在 CVM 或 Lighthouse 实例中执行命令的用户名称。
+使用最小权限执行命令是权限管理的最佳实践，建议您以普通用户身份执行云助手命令。若不填，默认以 Command 配置的 Username 执行。
+        :type Username: str
         """
         self.CommandId = None
         self.InstanceIds = None
         self.Parameters = None
+        self.Username = None
 
 
     def _deserialize(self, params):
         self.CommandId = params.get("CommandId")
         self.InstanceIds = params.get("InstanceIds")
         self.Parameters = params.get("Parameters")
+        self.Username = params.get("Username")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -963,6 +985,9 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 自定义参数最多20个。
 自定义参数名称需符合以下规范：字符数目上限64，可选范围【a-zA-Z0-9-_】。
         :type DefaultParameters: str
+        :param Username: 在 CVM 或 Lighthouse 实例中执行命令的用户名称。
+使用最小权限执行命令是权限管理的最佳实践，建议您以普通用户身份执行云助手命令。默认情况下，在Linux实例中以root用户执行命令。
+        :type Username: str
         """
         self.CommandId = None
         self.CommandName = None
@@ -972,6 +997,7 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
         self.WorkingDirectory = None
         self.Timeout = None
         self.DefaultParameters = None
+        self.Username = None
 
 
     def _deserialize(self, params):
@@ -983,6 +1009,7 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
         self.WorkingDirectory = params.get("WorkingDirectory")
         self.Timeout = params.get("Timeout")
         self.DefaultParameters = params.get("DefaultParameters")
+        self.Username = params.get("Username")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1146,6 +1173,9 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
         :type Parameters: str
         :param Tags: 如果保存命令，可为命令设置标签。列表长度不超过10。
         :type Tags: list of Tag
+        :param Username: 在 CVM 或 Lighthouse 实例中执行命令的用户名称。
+使用最小权限执行命令是权限管理的最佳实践，建议您以普通用户身份执行云助手命令。默认情况下，在Linux实例中以root用户执行命令。
+        :type Username: str
         """
         self.Content = None
         self.InstanceIds = None
@@ -1159,6 +1189,7 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
         self.DefaultParameters = None
         self.Parameters = None
         self.Tags = None
+        self.Username = None
 
 
     def _deserialize(self, params):
@@ -1179,6 +1210,7 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.Username = params.get("Username")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

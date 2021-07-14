@@ -451,10 +451,10 @@ class CallBackTemplateInfo(AbstractModel):
         :type Description: str
         :param StreamBeginNotifyUrl: 开播回调 URL。
         :type StreamBeginNotifyUrl: str
+        :param StreamMixNotifyUrl: 混流回调 URL。(参数已弃用)。
+        :type StreamMixNotifyUrl: str
         :param StreamEndNotifyUrl: 断流回调 URL。
         :type StreamEndNotifyUrl: str
-        :param StreamMixNotifyUrl: 混流回调 URL。
-        :type StreamMixNotifyUrl: str
         :param RecordNotifyUrl: 录制回调 URL。
         :type RecordNotifyUrl: str
         :param SnapshotNotifyUrl: 截图回调 URL。
@@ -468,8 +468,8 @@ class CallBackTemplateInfo(AbstractModel):
         self.TemplateName = None
         self.Description = None
         self.StreamBeginNotifyUrl = None
-        self.StreamEndNotifyUrl = None
         self.StreamMixNotifyUrl = None
+        self.StreamEndNotifyUrl = None
         self.RecordNotifyUrl = None
         self.SnapshotNotifyUrl = None
         self.PornCensorshipNotifyUrl = None
@@ -481,8 +481,8 @@ class CallBackTemplateInfo(AbstractModel):
         self.TemplateName = params.get("TemplateName")
         self.Description = params.get("Description")
         self.StreamBeginNotifyUrl = params.get("StreamBeginNotifyUrl")
-        self.StreamEndNotifyUrl = params.get("StreamEndNotifyUrl")
         self.StreamMixNotifyUrl = params.get("StreamMixNotifyUrl")
+        self.StreamEndNotifyUrl = params.get("StreamEndNotifyUrl")
         self.RecordNotifyUrl = params.get("RecordNotifyUrl")
         self.SnapshotNotifyUrl = params.get("SnapshotNotifyUrl")
         self.PornCensorshipNotifyUrl = params.get("PornCensorshipNotifyUrl")
@@ -10153,12 +10153,20 @@ class UnBindLiveDomainCertRequest(AbstractModel):
         """
         :param DomainName: 播放域名。
         :type DomainName: str
+        :param Type: 枚举值：
+gray: 解绑灰度规则
+formal(默认): 解绑正式规则
+
+不传则为formal
+        :type Type: str
         """
         self.DomainName = None
+        self.Type = None
 
 
     def _deserialize(self, params):
         self.DomainName = params.get("DomainName")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

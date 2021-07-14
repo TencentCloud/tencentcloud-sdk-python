@@ -152,26 +152,21 @@ class AudioInfoResultItem(AbstractModel):
 
     def __init__(self):
         """
-        :param Stream: 音频流的流id
+        :param Stream: 音频流的流id。
         :type Stream: int
         :param Sample: 音频采样率 。
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Sample: int
         :param Channel: 音频声道数。
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Channel: int
         :param Codec: 编码格式，如aac, mp3等。
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Codec: str
         :param Bitrate: 码率，单位：bps。
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Bitrate: int
         :param Duration: 音频时长，单位：ms。
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Duration: int
         """
@@ -1311,27 +1306,21 @@ class FileInfo(AbstractModel):
     def __init__(self):
         """
         :param FileSize: 任务结束后生成的文件大小。
-注意：此字段可能返回 null，表示取不到有效值 。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileSize: int
         :param FileType: 任务结束后生成的文件格式，例如：mp4,flv等等。
-注意：此字段可能返回 null，表示取不到有效值 。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileType: str
         :param Bitrate: 任务结束后生成的文件整体码率，单位：bps。
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Bitrate: int
         :param Duration: 任务结束后生成的文件时长，单位：ms。
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Duration: int
         :param VideoInfoResult: 任务结束后生成的文件视频信息。
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type VideoInfoResult: list of VideoInfoResultItem
         :param AudioInfoResult: 任务结束后生成的文件音频信息。
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AudioInfoResult: list of AudioInfoResultItem
         """
@@ -3284,7 +3273,6 @@ class SubTaskResultItem(AbstractModel):
         """
         :param TaskName: 子任务名称。
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskName: str
         :param StatusCode: 子任务状态。
 0：成功；
@@ -3295,18 +3283,14 @@ class SubTaskResultItem(AbstractModel):
         :type StatusMsg: str
         :param ProgressRate: 子任务进度。
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProgressRate: int
         :param DownloadUrl: 画质重生处理后文件的下载地址。
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DownloadUrl: str
         :param Md5: 画质重生处理后文件的MD5。
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Md5: str
         :param FileInfo: 画质重生处理后文件的详细信息。
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileInfo: :class:`tencentcloud.ie.v20200304.models.FileInfo`
         """
@@ -3916,8 +3900,7 @@ class VideoInfo(AbstractModel):
         :param VideoCodec: 编码器支持选项，可选值：
 h264,
 h265,
-av1
-。
+av1。
 不填默认h264。
         :type VideoCodec: str
         :param PicMarkInfo: 图片水印。
@@ -3994,34 +3977,26 @@ class VideoInfoResultItem(AbstractModel):
         :type Stream: int
         :param Width: 视频宽度。
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Width: int
         :param Height: 视频高度。
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Height: int
         :param Bitrate: 视频码率，单位：bps。
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Bitrate: int
         :param Fps: 视频帧率，用分数格式表示，如：25/1, 99/32等等。
-注意：此字段可能返回 null，表示取不到有效值 。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Fps: str
         :param Codec: 编码格式，如h264,h265等等 。
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Codec: str
         :param Rotate: 播放旋转角度，可选值0-360。
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Rotate: int
         :param Duration: 视频时长，单位：ms 。
 注意：此字段可能返回 null，表示取不到有效值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Duration: int
         :param PixFormat: 颜色空间，如yuv420p，yuv444p等等。
-注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PixFormat: str
         """

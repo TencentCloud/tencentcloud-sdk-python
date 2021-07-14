@@ -390,6 +390,34 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateFileConfig(self, request):
+        """创建文件配置项
+
+        :param request: Request instance for CreateFileConfig.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.CreateFileConfigRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.CreateFileConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateFileConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateFileConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateGatewayApi(self, request):
         """批量导入API至api分组(也支持新建API到分组)
 
@@ -1918,6 +1946,34 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEnabledUnitRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeFileConfigs(self, request):
+        """查询文件配置项列表
+
+        :param request: Request instance for DescribeFileConfigs.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeFileConfigsRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeFileConfigsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeFileConfigs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeFileConfigsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -3908,6 +3964,34 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReleaseConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ReleaseFileConfig(self, request):
+        """发布文件配置
+
+        :param request: Request instance for ReleaseFileConfig.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.ReleaseFileConfigRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.ReleaseFileConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ReleaseFileConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ReleaseFileConfigResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
