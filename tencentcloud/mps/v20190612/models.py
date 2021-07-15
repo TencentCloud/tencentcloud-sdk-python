@@ -6845,6 +6845,30 @@ class EditMediaFileInfo(AbstractModel):
         
 
 
+class EditMediaOutputConfig(AbstractModel):
+    """编辑视频的结果文件输出配置。
+
+    """
+
+    def __init__(self):
+        """
+        :param Container: 封装格式，可选值：mp4、hls、mov、flv、avi。默认是 mp4。
+        :type Container: str
+        """
+        self.Container = None
+
+
+    def _deserialize(self, params):
+        self.Container = params.get("Container")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EditMediaRequest(AbstractModel):
     """EditMedia请求参数结构体
 
@@ -6858,6 +6882,8 @@ class EditMediaRequest(AbstractModel):
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         :param OutputObjectPath: 视频处理输出文件的目标路径。
         :type OutputObjectPath: str
+        :param OutputConfig: 编辑后生成的文件配置。
+        :type OutputConfig: :class:`tencentcloud.mps.v20190612.models.EditMediaOutputConfig`
         :param TaskNotifyConfig: 任务的事件通知信息，不填代表不获取事件通知。
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
         :param TasksPriority: 任务优先级，数值越大优先级越高，取值范围是-10到 10，不填代表0。
@@ -6870,6 +6896,7 @@ class EditMediaRequest(AbstractModel):
         self.FileInfos = None
         self.OutputStorage = None
         self.OutputObjectPath = None
+        self.OutputConfig = None
         self.TaskNotifyConfig = None
         self.TasksPriority = None
         self.SessionId = None
@@ -6887,6 +6914,9 @@ class EditMediaRequest(AbstractModel):
             self.OutputStorage = TaskOutputStorage()
             self.OutputStorage._deserialize(params.get("OutputStorage"))
         self.OutputObjectPath = params.get("OutputObjectPath")
+        if params.get("OutputConfig") is not None:
+            self.OutputConfig = EditMediaOutputConfig()
+            self.OutputConfig._deserialize(params.get("OutputConfig"))
         if params.get("TaskNotifyConfig") is not None:
             self.TaskNotifyConfig = TaskNotifyConfig()
             self.TaskNotifyConfig._deserialize(params.get("TaskNotifyConfig"))

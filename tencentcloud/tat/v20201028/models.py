@@ -904,7 +904,7 @@ class InvokeCommandRequest(AbstractModel):
         """
         :param CommandId: 待触发的命令ID。
         :type CommandId: str
-        :param InstanceIds: 待执行命令的实例ID列表。
+        :param InstanceIds: 待执行命令的实例ID列表，上限100。
         :type InstanceIds: list of str
         :param Parameters: Command 的自定义参数。字段类型为json encoded string。如：{\"varA\": \"222\"}。
 key为自定义参数名称，value为该参数的默认取值。kv均为字符串型。
@@ -1136,7 +1136,7 @@ class RunCommandRequest(AbstractModel):
         """
         :param Content: Base64编码后的命令内容，长度不可超过64KB。
         :type Content: str
-        :param InstanceIds: 待执行命令的实例ID列表。 支持实例类型：
+        :param InstanceIds: 待执行命令的实例ID列表，上限100。支持实例类型：
 <li> CVM
 <li> LIGHTHOUSE
         :type InstanceIds: list of str

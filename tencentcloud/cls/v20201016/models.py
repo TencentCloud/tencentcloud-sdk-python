@@ -263,6 +263,51 @@ class AlarmTargetInfo(AbstractModel):
         
 
 
+class ApplyConfigToMachineGroupRequest(AbstractModel):
+    """ApplyConfigToMachineGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigId: 采集配置ID
+        :type ConfigId: str
+        :param GroupId: 机器组ID
+        :type GroupId: str
+        """
+        self.ConfigId = None
+        self.GroupId = None
+
+
+    def _deserialize(self, params):
+        self.ConfigId = params.get("ConfigId")
+        self.GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApplyConfigToMachineGroupResponse(AbstractModel):
+    """ApplyConfigToMachineGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CallBackInfo(AbstractModel):
     """回调配置
 
@@ -283,6 +328,75 @@ class CallBackInfo(AbstractModel):
     def _deserialize(self, params):
         self.Body = params.get("Body")
         self.Headers = params.get("Headers")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConfigInfo(AbstractModel):
+    """采集规则配置信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigId: 采集规则配置ID
+        :type ConfigId: str
+        :param LogFormat: 日志格式化方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogFormat: str
+        :param Path: 通配符日志采集路径列表，以/**/分隔文件目录和文件名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Path: str
+        :param LogType: 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表极简日志，multiline_log代表多行日志，fullregex_log代表完整正则，默认为minimalist_log
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogType: str
+        :param ExtractRule: 提取规则，如果设置了ExtractRule，则必须设置LogType
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtractRule: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
+        :param ExcludePaths: 采集黑名单路径列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExcludePaths: list of ExcludePathInfo
+        :param Output: 采集配置所属日志主题ID即TopicId
+        :type Output: str
+        :param UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        """
+        self.ConfigId = None
+        self.LogFormat = None
+        self.Path = None
+        self.LogType = None
+        self.ExtractRule = None
+        self.ExcludePaths = None
+        self.Output = None
+        self.UpdateTime = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.ConfigId = params.get("ConfigId")
+        self.LogFormat = params.get("LogFormat")
+        self.Path = params.get("Path")
+        self.LogType = params.get("LogType")
+        if params.get("ExtractRule") is not None:
+            self.ExtractRule = ExtractRuleInfo()
+            self.ExtractRule._deserialize(params.get("ExtractRule"))
+        if params.get("ExcludePaths") is not None:
+            self.ExcludePaths = []
+            for item in params.get("ExcludePaths"):
+                obj = ExcludePathInfo()
+                obj._deserialize(item)
+                self.ExcludePaths.append(obj)
+        self.Output = params.get("Output")
+        self.UpdateTime = params.get("UpdateTime")
+        self.CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -442,6 +556,78 @@ class CreateAlarmResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateConfigRequest(AbstractModel):
+    """CreateConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 采集配置名称
+        :type Name: str
+        :param Output: 采集配置所属日志主题ID即TopicId
+        :type Output: str
+        :param Path: 通配符日志采集路径列表，以/**/分隔文件目录和文件名
+        :type Path: str
+        :param LogType: 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表极简日志，multiline_log代表多行日志，fullregex_log代表完整正则，默认为minimalist_log
+        :type LogType: str
+        :param ExtractRule: 提取规则，如果设置了ExtractRule，则必须设置LogType
+        :type ExtractRule: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
+        :param ExcludePaths: 采集黑名单路径列表
+        :type ExcludePaths: list of ExcludePathInfo
+        """
+        self.Name = None
+        self.Output = None
+        self.Path = None
+        self.LogType = None
+        self.ExtractRule = None
+        self.ExcludePaths = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Output = params.get("Output")
+        self.Path = params.get("Path")
+        self.LogType = params.get("LogType")
+        if params.get("ExtractRule") is not None:
+            self.ExtractRule = ExtractRuleInfo()
+            self.ExtractRule._deserialize(params.get("ExtractRule"))
+        if params.get("ExcludePaths") is not None:
+            self.ExcludePaths = []
+            for item in params.get("ExcludePaths"):
+                obj = ExcludePathInfo()
+                obj._deserialize(item)
+                self.ExcludePaths.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateConfigResponse(AbstractModel):
+    """CreateConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigId: 采集配置ID
+        :type ConfigId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ConfigId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ConfigId = params.get("ConfigId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateExportRequest(AbstractModel):
     """CreateExport请求参数结构体
 
@@ -562,6 +748,60 @@ class CreateIndexResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateLogsetRequest(AbstractModel):
+    """CreateLogset请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LogsetName: 日志集名字，不能重名
+        :type LogsetName: str
+        :param Tags: 标签描述列表。最大支持10个标签键值对，并且不能有重复的键值对
+        :type Tags: list of Tag
+        """
+        self.LogsetName = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.LogsetName = params.get("LogsetName")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLogsetResponse(AbstractModel):
+    """CreateLogset返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LogsetId: 日志集ID
+        :type LogsetId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LogsetId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.LogsetId = params.get("LogsetId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateMachineGroupRequest(AbstractModel):
     """CreateMachineGroup请求参数结构体
 
@@ -653,12 +893,14 @@ class CreateTopicRequest(AbstractModel):
         :type PartitionCount: int
         :param Tags: 标签描述列表，通过指定该参数可以同时绑定标签到相应的日志主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。
         :type Tags: list of Tag
-        :param AutoSplit: 是否开启自动分裂，默认值为false
+        :param AutoSplit: 是否开启自动分裂，默认值为true
         :type AutoSplit: bool
         :param MaxSplitPartitions: 开启自动分裂后，每个主题能够允许的最大分区数，默认值为50
         :type MaxSplitPartitions: int
-        :param StorageType: 日志主题的存储类型，可选值 hot（热存储），cold（冷存储）默认为hot
+        :param StorageType: 日志主题的存储类型，可选值 hot（实时存储），cold（离线存储）；默认为hot。若传入cold，请先联系客服进行开白。
         :type StorageType: str
+        :param Period: 生命周期，单位天；可取值范围1~366。默认30天
+        :type Period: int
         """
         self.LogsetId = None
         self.TopicName = None
@@ -667,6 +909,7 @@ class CreateTopicRequest(AbstractModel):
         self.AutoSplit = None
         self.MaxSplitPartitions = None
         self.StorageType = None
+        self.Period = None
 
 
     def _deserialize(self, params):
@@ -682,6 +925,7 @@ class CreateTopicRequest(AbstractModel):
         self.AutoSplit = params.get("AutoSplit")
         self.MaxSplitPartitions = params.get("MaxSplitPartitions")
         self.StorageType = params.get("StorageType")
+        self.Period = params.get("Period")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -794,6 +1038,92 @@ class DeleteAlarmResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteConfigFromMachineGroupRequest(AbstractModel):
+    """DeleteConfigFromMachineGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupId: 机器组ID
+        :type GroupId: str
+        :param ConfigId: 采集配置ID
+        :type ConfigId: str
+        """
+        self.GroupId = None
+        self.ConfigId = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.ConfigId = params.get("ConfigId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteConfigFromMachineGroupResponse(AbstractModel):
+    """DeleteConfigFromMachineGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteConfigRequest(AbstractModel):
+    """DeleteConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigId: 采集规则配置ID
+        :type ConfigId: str
+        """
+        self.ConfigId = None
+
+
+    def _deserialize(self, params):
+        self.ConfigId = params.get("ConfigId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteConfigResponse(AbstractModel):
+    """DeleteConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteExportRequest(AbstractModel):
     """DeleteExport请求参数结构体
 
@@ -861,6 +1191,47 @@ class DeleteIndexRequest(AbstractModel):
 
 class DeleteIndexResponse(AbstractModel):
     """DeleteIndex返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLogsetRequest(AbstractModel):
+    """DeleteLogset请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LogsetId: 日志集ID
+        :type LogsetId: str
+        """
+        self.LogsetId = None
+
+
+    def _deserialize(self, params):
+        self.LogsetId = params.get("LogsetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLogsetResponse(AbstractModel):
+    """DeleteLogset返回参数结构体
 
     """
 
@@ -1153,6 +1524,147 @@ class DescribeAlarmsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeConfigMachineGroupsRequest(AbstractModel):
+    """DescribeConfigMachineGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigId: 采集配置ID
+        :type ConfigId: str
+        """
+        self.ConfigId = None
+
+
+    def _deserialize(self, params):
+        self.ConfigId = params.get("ConfigId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConfigMachineGroupsResponse(AbstractModel):
+    """DescribeConfigMachineGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MachineGroups: 采集规则配置绑定的机器组列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MachineGroups: list of MachineGroupInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MachineGroups = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("MachineGroups") is not None:
+            self.MachineGroups = []
+            for item in params.get("MachineGroups"):
+                obj = MachineGroupInfo()
+                obj._deserialize(item)
+                self.MachineGroups.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeConfigsRequest(AbstractModel):
+    """DescribeConfigs请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Filters: <br><li> name
+
+按照【采集配置名称】进行过滤。
+类型：String
+
+必选：否
+
+<br><li> configId
+
+按照【采集配置ID】进行过滤。
+类型：String
+
+必选：否
+
+<br><li> topicId
+
+按照【日志主题】进行过滤。
+
+类型：String
+
+必选：否
+
+每次请求的Filters的上限为10，Filter.Values的上限为5。
+        :type Filters: list of Filter
+        :param Offset: 分页的偏移量，默认值为0
+        :type Offset: int
+        :param Limit: 分页单页的限制数目，默认值为20，最大值100
+        :type Limit: int
+        """
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConfigsResponse(AbstractModel):
+    """DescribeConfigs返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Configs: 采集配置列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Configs: list of ConfigInfo
+        :param TotalCount: 过滤到的总数目
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Configs = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Configs") is not None:
+            self.Configs = []
+            for item in params.get("Configs"):
+                obj = ConfigInfo()
+                obj._deserialize(item)
+                self.Configs.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeExportsRequest(AbstractModel):
     """DescribeExports请求参数结构体
 
@@ -1350,6 +1862,154 @@ class DescribeLogContextResponse(AbstractModel):
                 self.LogContextInfos.append(obj)
         self.PrevOver = params.get("PrevOver")
         self.NextOver = params.get("NextOver")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLogsetsRequest(AbstractModel):
+    """DescribeLogsets请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Filters: <br><li> logsetName
+
+按照【日志集名称】进行过滤。
+类型：String
+
+必选：否
+
+<br><li> logsetId
+
+按照【日志集ID】进行过滤。
+类型：String
+
+必选：否
+
+<br><li> tagKey
+
+按照【标签键】进行过滤。
+
+类型：String
+
+必选：否
+
+<br><li> tag:tagKey
+
+按照【标签键值对】进行过滤。tagKey使用具体的标签键进行替换。
+类型：String
+
+必选：否
+
+
+每次请求的Filters的上限为10，Filter.Values的上限为5。
+        :type Filters: list of Filter
+        :param Offset: 分页的偏移量，默认值为0
+        :type Offset: int
+        :param Limit: 分页单页的限制数目，默认值为20，最大值100
+        :type Limit: int
+        """
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLogsetsResponse(AbstractModel):
+    """DescribeLogsets返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 分页的总数目
+        :type TotalCount: int
+        :param Logsets: 日志集列表
+        :type Logsets: list of LogsetInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Logsets = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Logsets") is not None:
+            self.Logsets = []
+            for item in params.get("Logsets"):
+                obj = LogsetInfo()
+                obj._deserialize(item)
+                self.Logsets.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeMachineGroupConfigsRequest(AbstractModel):
+    """DescribeMachineGroupConfigs请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GroupId: 机器组ID
+        :type GroupId: str
+        """
+        self.GroupId = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMachineGroupConfigsResponse(AbstractModel):
+    """DescribeMachineGroupConfigs返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Configs: 采集规则配置列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Configs: list of ConfigInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Configs = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Configs") is not None:
+            self.Configs = []
+            for item in params.get("Configs"):
+                obj = ConfigInfo()
+                obj._deserialize(item)
+                self.Configs.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1616,8 +2276,15 @@ class DescribeTopicsRequest(AbstractModel):
 
 必选：否
 
+<br><li> storageType
 
-每次请求的Filters的上限为10，Filter.Values的上限为5。
+按照【日志主题的存储类型】进行过滤。可选值 hot（实时存储），cold（离线存储）
+类型：String
+
+必选：否
+
+
+每次请求的Filters的上限为10，Filter.Values的上限为100。
         :type Filters: list of Filter
         :param Offset: 分页的偏移量，默认值为0。
         :type Offset: int
@@ -1675,6 +2342,34 @@ class DescribeTopicsResponse(AbstractModel):
                 self.Topics.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+
+
+class ExcludePathInfo(AbstractModel):
+    """黑名单path信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 类型，选填File或Path
+        :type Type: str
+        :param Value: Type对应的具体内容
+        :type Value: str
+        """
+        self.Type = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ExportInfo(AbstractModel):
@@ -1740,6 +2435,81 @@ class ExportInfo(AbstractModel):
         self.To = params.get("To")
         self.CosPath = params.get("CosPath")
         self.CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExtractRuleInfo(AbstractModel):
+    """日志提取规则
+
+    """
+
+    def __init__(self):
+        """
+        :param TimeKey: 时间字段的key名字，time_key和time_format必须成对出现
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeKey: str
+        :param TimeFormat: 时间字段的格式，参考c语言的strftime函数对于时间的格式说明输出参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeFormat: str
+        :param Delimiter: 分隔符类型日志的分隔符，只有log_type为delimiter_log时有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Delimiter: str
+        :param LogRegex: 整条日志匹配规则，只有log_type为fullregex_log时有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogRegex: str
+        :param BeginRegex: 行首匹配规则，只有log_type为multiline_log或fullregex_log时有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BeginRegex: str
+        :param Keys: 取的每个字段的key名字，为空的key代表丢弃这个字段，只有log_type为delimiter_log时有效，json_log的日志使用json本身的key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Keys: list of str
+        :param FilterKeyRegex: 需要过滤日志的key，及其对应的regex
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilterKeyRegex: list of KeyRegexInfo
+        :param UnMatchUpLoadSwitch: 解析失败日志是否上传，true表示上传，false表示不上传
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnMatchUpLoadSwitch: bool
+        :param UnMatchLogKey: 失败日志的key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnMatchLogKey: str
+        :param Backtracking: 增量采集模式下的回溯数据量，默认-1（全量采集）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Backtracking: int
+        """
+        self.TimeKey = None
+        self.TimeFormat = None
+        self.Delimiter = None
+        self.LogRegex = None
+        self.BeginRegex = None
+        self.Keys = None
+        self.FilterKeyRegex = None
+        self.UnMatchUpLoadSwitch = None
+        self.UnMatchLogKey = None
+        self.Backtracking = None
+
+
+    def _deserialize(self, params):
+        self.TimeKey = params.get("TimeKey")
+        self.TimeFormat = params.get("TimeFormat")
+        self.Delimiter = params.get("Delimiter")
+        self.LogRegex = params.get("LogRegex")
+        self.BeginRegex = params.get("BeginRegex")
+        self.Keys = params.get("Keys")
+        if params.get("FilterKeyRegex") is not None:
+            self.FilterKeyRegex = []
+            for item in params.get("FilterKeyRegex"):
+                obj = KeyRegexInfo()
+                obj._deserialize(item)
+                self.FilterKeyRegex.append(obj)
+        self.UnMatchUpLoadSwitch = params.get("UnMatchUpLoadSwitch")
+        self.UnMatchLogKey = params.get("UnMatchLogKey")
+        self.Backtracking = params.get("Backtracking")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1906,6 +2676,34 @@ class GetAlarmLogResponse(AbstractModel):
                 obj._deserialize(item)
                 self.AnalysisResults.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class KeyRegexInfo(AbstractModel):
+    """需要过滤日志的key，及其对应的regex
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: 需要过滤日志的key
+        :type Key: str
+        :param Regex: key对应的过滤规则regex
+        :type Regex: str
+        """
+        self.Key = None
+        self.Regex = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Regex = params.get("Regex")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class KeyValueInfo(AbstractModel):
@@ -2083,6 +2881,56 @@ class LogItems(AbstractModel):
                 obj = LogItem()
                 obj._deserialize(item)
                 self.Data.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogsetInfo(AbstractModel):
+    """日志集相关信息
+
+    """
+
+    def __init__(self):
+        """
+        :param LogsetId: 日志集ID
+        :type LogsetId: str
+        :param LogsetName: 日志集名称
+        :type LogsetName: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param Tags: 日志集绑定的标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        :param TopicCount: 日志集下日志主题的数目
+        :type TopicCount: int
+        :param RoleName: 若AssumerUin非空，则表示创建该日志集的服务方角色
+        :type RoleName: str
+        """
+        self.LogsetId = None
+        self.LogsetName = None
+        self.CreateTime = None
+        self.Tags = None
+        self.TopicCount = None
+        self.RoleName = None
+
+
+    def _deserialize(self, params):
+        self.LogsetId = params.get("LogsetId")
+        self.LogsetName = params.get("LogsetName")
+        self.CreateTime = params.get("CreateTime")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.TopicCount = params.get("TopicCount")
+        self.RoleName = params.get("RoleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2444,6 +3292,78 @@ class ModifyAlarmResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyConfigRequest(AbstractModel):
+    """ModifyConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ConfigId: 采集规则配置ID
+        :type ConfigId: str
+        :param Name: 采集规则配置名称
+        :type Name: str
+        :param Path: 通配符日志采集路径列表，以/**/分隔文件目录和文件名
+        :type Path: str
+        :param LogType: 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表极简日志，multiline_log代表多行日志，fullregex_log代表完整正则，默认为minimalist_log
+        :type LogType: str
+        :param ExtractRule: 提取规则，如果设置了ExtractRule，则必须设置LogType
+        :type ExtractRule: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
+        :param ExcludePaths: 采集黑名单路径列表
+        :type ExcludePaths: list of ExcludePathInfo
+        :param Output: 采集配置关联的日志主题（TopicId）
+        :type Output: str
+        """
+        self.ConfigId = None
+        self.Name = None
+        self.Path = None
+        self.LogType = None
+        self.ExtractRule = None
+        self.ExcludePaths = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.ConfigId = params.get("ConfigId")
+        self.Name = params.get("Name")
+        self.Path = params.get("Path")
+        self.LogType = params.get("LogType")
+        if params.get("ExtractRule") is not None:
+            self.ExtractRule = ExtractRuleInfo()
+            self.ExtractRule._deserialize(params.get("ExtractRule"))
+        if params.get("ExcludePaths") is not None:
+            self.ExcludePaths = []
+            for item in params.get("ExcludePaths"):
+                obj = ExcludePathInfo()
+                obj._deserialize(item)
+                self.ExcludePaths.append(obj)
+        self.Output = params.get("Output")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyConfigResponse(AbstractModel):
+    """ModifyConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyIndexRequest(AbstractModel):
     """ModifyIndex请求参数结构体
 
@@ -2480,6 +3400,60 @@ class ModifyIndexRequest(AbstractModel):
 
 class ModifyIndexResponse(AbstractModel):
     """ModifyIndex返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyLogsetRequest(AbstractModel):
+    """ModifyLogset请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LogsetId: 日志集ID
+        :type LogsetId: str
+        :param LogsetName: 日志集名称
+        :type LogsetName: str
+        :param Tags: 日志集的绑定的标签键值对。最大支持10个标签键值对，同一个资源只能同时绑定一个标签键。
+        :type Tags: list of Tag
+        """
+        self.LogsetId = None
+        self.LogsetName = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.LogsetId = params.get("LogsetId")
+        self.LogsetName = params.get("LogsetName")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLogsetResponse(AbstractModel):
+    """ModifyLogset返回参数结构体
 
     """
 
@@ -2590,6 +3564,8 @@ class ModifyTopicRequest(AbstractModel):
         :type AutoSplit: bool
         :param MaxSplitPartitions: 若开启最大分裂，该主题能够能够允许的最大分区数
         :type MaxSplitPartitions: int
+        :param Period: 生命周期，单位天；可取值范围1~366
+        :type Period: int
         """
         self.TopicId = None
         self.TopicName = None
@@ -2597,6 +3573,7 @@ class ModifyTopicRequest(AbstractModel):
         self.Status = None
         self.AutoSplit = None
         self.MaxSplitPartitions = None
+        self.Period = None
 
 
     def _deserialize(self, params):
@@ -2611,6 +3588,7 @@ class ModifyTopicRequest(AbstractModel):
         self.Status = params.get("Status")
         self.AutoSplit = params.get("AutoSplit")
         self.MaxSplitPartitions = params.get("MaxSplitPartitions")
+        self.Period = params.get("Period")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

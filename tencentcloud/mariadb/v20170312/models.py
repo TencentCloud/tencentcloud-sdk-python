@@ -704,7 +704,7 @@ class DBInstance(AbstractModel):
         :type VpcId: int
         :param SubnetId: 子网 ID，基础网络时为 0
         :type SubnetId: int
-        :param Status: 实例状态：0 创建中，1 流程处理中， 2 运行中，3 实例未初始化，-1 实例已隔离，-2 实例已删除，4 实例初始化中，5 实例删除中，6 实例重启中，7 数据迁移中
+        :param Status: 实例状态：0 创建中，1 流程处理中， 2 运行中，3 实例未初始化，-1 实例已隔离，4 实例初始化中，5 实例删除中，6 实例重启中，7 数据迁移中
         :type Status: int
         :param Vip: 内网 IP 地址
         :type Vip: str

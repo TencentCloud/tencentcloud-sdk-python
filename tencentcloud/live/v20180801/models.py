@@ -1165,8 +1165,7 @@ class CreateLiveCallbackTemplateRequest(AbstractModel):
         :param CallbackKey: 回调 Key，回调 URL 公用，回调签名详见事件消息通知文档。
 [事件消息通知](/document/product/267/32744)。
         :type CallbackKey: str
-        :param StreamMixNotifyUrl: 混流回调 URL，
-相关协议文档：[事件消息通知](/document/product/267/32744)。
+        :param StreamMixNotifyUrl: 参数已弃用。
         :type StreamMixNotifyUrl: str
         """
         self.TemplateName = None

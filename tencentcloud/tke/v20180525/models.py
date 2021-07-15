@@ -6774,7 +6774,7 @@ class RemoveNodeFromNodePoolRequest(AbstractModel):
         :type ClusterId: str
         :param NodePoolId: 节点池id
         :type NodePoolId: str
-        :param InstanceIds: 节点id列表
+        :param InstanceIds: 节点id列表，一次最多支持100台
         :type InstanceIds: list of str
         """
         self.ClusterId = None

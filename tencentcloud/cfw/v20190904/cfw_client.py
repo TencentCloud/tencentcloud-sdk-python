@@ -251,7 +251,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeBlockByIpTimesList(self, request):
-        """DescribeBlockByIpTimesList 告警中心阻断ip折线图
+        """DescribeBlockByIpTimesList 告警中心阻断IP折线图
 
         :param request: Request instance for DescribeBlockByIpTimesList.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeBlockByIpTimesListRequest`
@@ -307,7 +307,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeCfwEips(self, request):
-        """查询防火墙弹性公网ip
+        """查询防火墙弹性公网IP
 
         :param request: Request instance for DescribeCfwEips.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeCfwEipsRequest`
@@ -531,7 +531,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeTLogIpList(self, request):
-        """DescribeTLogIpList告警中心ip柱形图
+        """DescribeTLogIpList告警中心IP柱形图
 
         :param request: Request instance for DescribeTLogIpList.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeTLogIpListRequest`

@@ -548,6 +548,16 @@ class DeployServiceV2Request(AbstractModel):
         :type EksService: :class:`tencentcloud.tem.v20201221.models.EksService`
         :param VersionId: 要回滚到的历史版本id
         :type VersionId: str
+        :param PostStart: 启动后执行的脚本
+        :type PostStart: str
+        :param PreStop: 停止前执行的脚本
+        :type PreStop: str
+        :param DeployStrategyConf: 分批发布策略配置
+        :type DeployStrategyConf: :class:`tencentcloud.tem.v20201221.models.DeployStrategyConf`
+        :param Liveness: 存活探针配置
+        :type Liveness: :class:`tencentcloud.tem.v20201221.models.HealthCheckConfig`
+        :param Readiness: 就绪探针配置
+        :type Readiness: :class:`tencentcloud.tem.v20201221.models.HealthCheckConfig`
         """
         self.ServiceId = None
         self.ContainerPort = None
@@ -578,6 +588,11 @@ class DeployServiceV2Request(AbstractModel):
         self.SettingConfs = None
         self.EksService = None
         self.VersionId = None
+        self.PostStart = None
+        self.PreStop = None
+        self.DeployStrategyConf = None
+        self.Liveness = None
+        self.Readiness = None
 
 
     def _deserialize(self, params):
@@ -641,6 +656,17 @@ class DeployServiceV2Request(AbstractModel):
             self.EksService = EksService()
             self.EksService._deserialize(params.get("EksService"))
         self.VersionId = params.get("VersionId")
+        self.PostStart = params.get("PostStart")
+        self.PreStop = params.get("PreStop")
+        if params.get("DeployStrategyConf") is not None:
+            self.DeployStrategyConf = DeployStrategyConf()
+            self.DeployStrategyConf._deserialize(params.get("DeployStrategyConf"))
+        if params.get("Liveness") is not None:
+            self.Liveness = HealthCheckConfig()
+            self.Liveness._deserialize(params.get("Liveness"))
+        if params.get("Readiness") is not None:
+            self.Readiness = HealthCheckConfig()
+            self.Readiness._deserialize(params.get("Readiness"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -669,6 +695,42 @@ class DeployServiceV2Response(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
+
+
+class DeployStrategyConf(AbstractModel):
+    """分批发布策略配置
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalBatchCount: 总分批数
+        :type TotalBatchCount: int
+        :param BetaBatchNum: beta分批实例数
+        :type BetaBatchNum: int
+        :param DeployStrategyType: 分批策略：0-全自动，1-全手动，beta分批一定是手动的，这里的策略指定的是剩余批次
+        :type DeployStrategyType: int
+        :param BatchInterval: 每批暂停间隔
+        :type BatchInterval: int
+        """
+        self.TotalBatchCount = None
+        self.BetaBatchNum = None
+        self.DeployStrategyType = None
+        self.BatchInterval = None
+
+
+    def _deserialize(self, params):
+        self.TotalBatchCount = params.get("TotalBatchCount")
+        self.BetaBatchNum = params.get("BetaBatchNum")
+        self.DeployStrategyType = params.get("DeployStrategyType")
+        self.BatchInterval = params.get("BatchInterval")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeIngressRequest(AbstractModel):
@@ -1206,6 +1268,58 @@ class GenerateDownloadUrlResponse(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
+
+
+class HealthCheckConfig(AbstractModel):
+    """健康检查配置
+
+    """
+
+    def __init__(self):
+        """
+        :param Type: 支持的健康检查类型，如 HttpGet，TcpSocket，Exec
+        :type Type: str
+        :param Protocol: 仅当健康检查类型为 HttpGet 时有效，表示协议类型，如 HTTP，HTTPS
+        :type Protocol: str
+        :param Path: 仅当健康检查类型为 HttpGet 时有效，表示请求路径
+        :type Path: str
+        :param Exec: 仅当健康检查类型为 Exec 时有效，表示执行的脚本内容
+        :type Exec: str
+        :param Port: 仅当健康检查类型为 HttpGet\TcpSocket 时有效，表示请求路径
+        :type Port: int
+        :param InitialDelaySeconds: 检查延迟开始时间，单位为秒，默认为 0
+        :type InitialDelaySeconds: int
+        :param TimeoutSeconds: 超时时间，单位为秒，默认为 1
+        :type TimeoutSeconds: int
+        :param PeriodSeconds: 间隔时间，单位为秒，默认为 10
+        :type PeriodSeconds: int
+        """
+        self.Type = None
+        self.Protocol = None
+        self.Path = None
+        self.Exec = None
+        self.Port = None
+        self.InitialDelaySeconds = None
+        self.TimeoutSeconds = None
+        self.PeriodSeconds = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Protocol = params.get("Protocol")
+        self.Path = params.get("Path")
+        self.Exec = params.get("Exec")
+        self.Port = params.get("Port")
+        self.InitialDelaySeconds = params.get("InitialDelaySeconds")
+        self.TimeoutSeconds = params.get("TimeoutSeconds")
+        self.PeriodSeconds = params.get("PeriodSeconds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class IngressInfo(AbstractModel):
@@ -1885,6 +1999,9 @@ class RunVersionPod(AbstractModel):
         :param DeployVersion: 部署版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeployVersion: str
+        :param RestartCount: 重启次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RestartCount: int
         """
         self.Webshell = None
         self.PodId = None
@@ -1893,6 +2010,7 @@ class RunVersionPod(AbstractModel):
         self.PodIp = None
         self.Zone = None
         self.DeployVersion = None
+        self.RestartCount = None
 
 
     def _deserialize(self, params):
@@ -1903,6 +2021,7 @@ class RunVersionPod(AbstractModel):
         self.PodIp = params.get("PodIp")
         self.Zone = params.get("Zone")
         self.DeployVersion = params.get("DeployVersion")
+        self.RestartCount = params.get("RestartCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

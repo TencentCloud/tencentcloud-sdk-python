@@ -26,6 +26,34 @@ class ClsClient(AbstractClient):
     _service = 'cls'
 
 
+    def ApplyConfigToMachineGroup(self, request):
+        """应用采集配置到指定机器组
+
+        :param request: Request instance for ApplyConfigToMachineGroup.
+        :type request: :class:`tencentcloud.cls.v20201016.models.ApplyConfigToMachineGroupRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ApplyConfigToMachineGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ApplyConfigToMachineGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ApplyConfigToMachineGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateAlarm(self, request):
         """本接口用于创建告警策略。
 
@@ -82,6 +110,34 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateConfig(self, request):
+        """创建采集规则配置
+
+        :param request: Request instance for CreateConfig.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CreateConfigRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CreateConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateExport(self, request):
         """本接口用于创建日志导出
 
@@ -124,6 +180,34 @@ class ClsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateIndexResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateLogset(self, request):
+        """本接口用于创建日志集，返回新创建的日志集的 ID。
+
+        :param request: Request instance for CreateLogset.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CreateLogsetRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CreateLogsetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateLogset", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateLogsetResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -250,6 +334,62 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteConfig(self, request):
+        """删除采集规则配置
+
+        :param request: Request instance for DeleteConfig.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DeleteConfigRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeleteConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteConfigFromMachineGroup(self, request):
+        """删除应用到机器组的采集配置
+
+        :param request: Request instance for DeleteConfigFromMachineGroup.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DeleteConfigFromMachineGroupRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeleteConfigFromMachineGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteConfigFromMachineGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteConfigFromMachineGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteExport(self, request):
         """本接口用于删除日志导出
 
@@ -292,6 +432,34 @@ class ClsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteIndexResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteLogset(self, request):
+        """本接口用于删除日志集。
+
+        :param request: Request instance for DeleteLogset.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DeleteLogsetRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeleteLogsetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteLogset", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteLogsetResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -418,6 +586,62 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeConfigMachineGroups(self, request):
+        """获取采集规则配置所绑定的机器组
+
+        :param request: Request instance for DescribeConfigMachineGroups.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeConfigMachineGroupsRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeConfigMachineGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeConfigMachineGroups", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeConfigMachineGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeConfigs(self, request):
+        """获取采集规则配置
+
+        :param request: Request instance for DescribeConfigs.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeConfigsRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeConfigsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeConfigs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeConfigsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeExports(self, request):
         """本接口用于获取日志导出列表
 
@@ -488,6 +712,62 @@ class ClsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLogContextResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLogsets(self, request):
+        """本接口用于获取日志集信息列表。
+
+        :param request: Request instance for DescribeLogsets.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeLogsetsRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeLogsetsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLogsets", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLogsetsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeMachineGroupConfigs(self, request):
+        """获取机器组绑定的采集规则配置
+
+        :param request: Request instance for DescribeMachineGroupConfigs.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeMachineGroupConfigsRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeMachineGroupConfigsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMachineGroupConfigs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMachineGroupConfigsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -726,6 +1006,34 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyConfig(self, request):
+        """修改采集规则配置
+
+        :param request: Request instance for ModifyConfig.
+        :type request: :class:`tencentcloud.cls.v20201016.models.ModifyConfigRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ModifyConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyIndex(self, request):
         """本接口用于修改索引配置
 
@@ -740,6 +1048,34 @@ class ClsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyIndexResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyLogset(self, request):
+        """本接口用于修改日志集信息
+
+        :param request: Request instance for ModifyLogset.
+        :type request: :class:`tencentcloud.cls.v20201016.models.ModifyLogsetRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ModifyLogsetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyLogset", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyLogsetResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

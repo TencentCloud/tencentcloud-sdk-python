@@ -5668,11 +5668,17 @@ class DescribeConfigSummaryRequest(AbstractModel):
         :type Offset: int
         :param Limit: 每页条数，默认为20
         :type Limit: int
+        :param OrderBy: 按时间排序：creation_time；按名称排序：config_name
+        :type OrderBy: str
+        :param OrderType: 升序传 0，降序传 1
+        :type OrderType: int
         """
         self.ApplicationId = None
         self.SearchWord = None
         self.Offset = None
         self.Limit = None
+        self.OrderBy = None
+        self.OrderType = None
 
 
     def _deserialize(self, params):
@@ -5680,6 +5686,8 @@ class DescribeConfigSummaryRequest(AbstractModel):
         self.SearchWord = params.get("SearchWord")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderType = params.get("OrderType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7712,16 +7720,24 @@ class DescribePublicConfigSummaryRequest(AbstractModel):
         :type Offset: int
         :param Limit: 每页条数，默认为20
         :type Limit: int
+        :param OrderBy: 按时间排序：creation_time；按名称排序：config_name
+        :type OrderBy: str
+        :param OrderType: 升序传 0，降序传 1
+        :type OrderType: int
         """
         self.SearchWord = None
         self.Offset = None
         self.Limit = None
+        self.OrderBy = None
+        self.OrderType = None
 
 
     def _deserialize(self, params):
         self.SearchWord = params.get("SearchWord")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderType = params.get("OrderType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13956,10 +13972,22 @@ class ServiceSetting(AbstractModel):
         :param SubnetId: 子网ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
+        :param DisableService: 是否创建 k8s service，默认为 false
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DisableService: bool
+        :param HeadlessService: service 是否为 headless 类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HeadlessService: bool
+        :param AllowDeleteService: 当为 true 且 DisableService 也为 true 时，会删除之前创建的 service，请小心使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AllowDeleteService: bool
         """
         self.AccessType = None
         self.ProtocolPorts = None
         self.SubnetId = None
+        self.DisableService = None
+        self.HeadlessService = None
+        self.AllowDeleteService = None
 
 
     def _deserialize(self, params):
@@ -13971,6 +13999,9 @@ class ServiceSetting(AbstractModel):
                 obj._deserialize(item)
                 self.ProtocolPorts.append(obj)
         self.SubnetId = params.get("SubnetId")
+        self.DisableService = params.get("DisableService")
+        self.HeadlessService = params.get("HeadlessService")
+        self.AllowDeleteService = params.get("AllowDeleteService")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

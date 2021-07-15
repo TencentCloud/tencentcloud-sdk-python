@@ -3253,7 +3253,7 @@ class DescribeDownloadFileRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param CodeUri: 代码uri
+        :param CodeUri: 代码uri，格式如：extension://abcdefhhxxx.zip，对应 DescribeExtensionUploadInfo 接口的返回值
         :type CodeUri: str
         """
         self.CodeUri = None
@@ -3277,10 +3277,10 @@ class DescribeDownloadFileResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param FilePath: 文件路径
+        :param FilePath: 文件路径，该字段已废弃
 注意：此字段可能返回 null，表示取不到有效值。
         :type FilePath: str
-        :param CustomKey: 加密key
+        :param CustomKey: 加密key，用于计算下载加密文件的header。参考SSE-C https://cloud.tencent.com/document/product/436/7728#sse-c
 注意：此字段可能返回 null，表示取不到有效值。
         :type CustomKey: str
         :param DownloadUrl: 下载链接
