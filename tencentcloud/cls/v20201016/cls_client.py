@@ -250,6 +250,34 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateShipper(self, request):
+        """创建新的投递规则，客户如果使用此接口，需要自行处理CLS对指定bucket的写权限。
+
+        :param request: Request instance for CreateShipper.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CreateShipperRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CreateShipperResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateShipper", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateShipperResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateTopic(self, request):
         """本接口用于创建日志主题。
 
@@ -488,6 +516,34 @@ class ClsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteMachineGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteShipper(self, request):
+        """删除投递规则
+
+        :param request: Request instance for DeleteShipper.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DeleteShipperRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeleteShipperResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteShipper", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteShipperResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -866,6 +922,62 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeShipperTasks(self, request):
+        """获取投递任务列表
+
+        :param request: Request instance for DescribeShipperTasks.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeShipperTasksRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeShipperTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeShipperTasks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeShipperTasksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeShippers(self, request):
+        """获取投递规则信息列表
+
+        :param request: Request instance for DescribeShippers.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeShippersRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeShippersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeShippers", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeShippersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTopics(self, request):
         """本接口用于获取日志主题列表，支持分页
 
@@ -1118,6 +1230,34 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyShipper(self, request):
+        """修改现有的投递规则，客户如果使用此接口，需要自行处理CLS对指定bucket的写权限。
+
+        :param request: Request instance for ModifyShipper.
+        :type request: :class:`tencentcloud.cls.v20201016.models.ModifyShipperRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ModifyShipperResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyShipper", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyShipperResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyTopic(self, request):
         """本接口用于修改日志主题。
 
@@ -1132,6 +1272,34 @@ class ClsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyTopicResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RetryShipperTask(self, request):
+        """重试失败的投递任务
+
+        :param request: Request instance for RetryShipperTask.
+        :type request: :class:`tencentcloud.cls.v20201016.models.RetryShipperTaskRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.RetryShipperTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RetryShipperTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RetryShipperTaskResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

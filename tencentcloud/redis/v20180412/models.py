@@ -68,6 +68,55 @@ class Account(AbstractModel):
         
 
 
+class ApplyParamsTemplateRequest(AbstractModel):
+    """ApplyParamsTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceIds: 实例ID列表
+        :type InstanceIds: list of str
+        :param TemplateId: 应用的参数模板ID
+        :type TemplateId: str
+        """
+        self.InstanceIds = None
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        self.TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApplyParamsTemplateResponse(AbstractModel):
+    """ApplyParamsTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskIds: 任务ID
+        :type TaskIds: list of int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskIds = params.get("TaskIds")
+        self.RequestId = params.get("RequestId")
+
+
 class AssociateSecurityGroupsRequest(AbstractModel):
     """AssociateSecurityGroups请求参数结构体
 
@@ -442,8 +491,6 @@ class CreateInstancesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param ZoneId: 实例所属的可用区ID，可参考[地域和可用区](https://cloud.tencent.com/document/product/239/4106)  。
-        :type ZoneId: int
         :param TypeId: 实例类型：2 – Redis2.8内存版(标准架构)，3 – CKV 3.2内存版(标准架构)，4 – CKV 3.2内存版(集群架构)，6 – Redis4.0内存版(标准架构)，7 – Redis4.0内存版(集群架构)，8 – Redis5.0内存版(标准架构)，9 – Redis5.0内存版(集群架构)。
         :type TypeId: int
         :param MemSize: 内存容量，单位为MB， 数值需为1024的整数倍，具体规格以 [查询产品售卖规格](https://cloud.tencent.com/document/api/239/30600) 返回的规格为准。
@@ -455,6 +502,8 @@ TypeId为标准架构时，MemSize是实例总内存容量；TypeId为集群架�
         :type Period: int
         :param BillingMode: 付费方式:0-按量计费，1-包年包月。
         :type BillingMode: int
+        :param ZoneId: 实例所属的可用区ID，可参考[地域和可用区](https://cloud.tencent.com/document/product/239/4106)  。
+        :type ZoneId: int
         :param Password: 实例密码，当输入参数NoAuth为true且使用私有网络VPC时，Password为非必填，否则Password为必填参数。
 当实例类型TypeId为Redis2.8、4.0和5.0时，其密码格式为：8-30个字符，至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&*-+=_|{}[]:;<>,.?/ 中的2种，不能以"/"开头；
 当实例类型TypeId为CKV 3.2时，其密码格式为：8-30个字符，必须包含字母和数字 且 不包含其他字符。
@@ -485,13 +534,17 @@ TypeId为标准架构时，MemSize是实例总内存容量；TypeId为集群架�
         :type NodeSet: list of RedisNodeInfo
         :param ResourceTags: 购买实例绑定标签
         :type ResourceTags: list of ResourceTag
+        :param ZoneName: 实例所属的可用区名称，可参考[地域和可用区](https://cloud.tencent.com/document/product/239/4106)  。
+        :type ZoneName: str
+        :param TemplateId: 创建实例需要应用的参数模板ID，不传则应用默认的参数模板
+        :type TemplateId: str
         """
-        self.ZoneId = None
         self.TypeId = None
         self.MemSize = None
         self.GoodsNum = None
         self.Period = None
         self.BillingMode = None
+        self.ZoneId = None
         self.Password = None
         self.VpcId = None
         self.SubnetId = None
@@ -506,15 +559,17 @@ TypeId为标准架构时，MemSize是实例总内存容量；TypeId为集群架�
         self.NoAuth = None
         self.NodeSet = None
         self.ResourceTags = None
+        self.ZoneName = None
+        self.TemplateId = None
 
 
     def _deserialize(self, params):
-        self.ZoneId = params.get("ZoneId")
         self.TypeId = params.get("TypeId")
         self.MemSize = params.get("MemSize")
         self.GoodsNum = params.get("GoodsNum")
         self.Period = params.get("Period")
         self.BillingMode = params.get("BillingMode")
+        self.ZoneId = params.get("ZoneId")
         self.Password = params.get("Password")
         self.VpcId = params.get("VpcId")
         self.SubnetId = params.get("SubnetId")
@@ -539,6 +594,8 @@ TypeId为标准架构时，MemSize是实例总内存容量；TypeId为集群架�
                 obj = ResourceTag()
                 obj._deserialize(item)
                 self.ResourceTags.append(obj)
+        self.ZoneName = params.get("ZoneName")
+        self.TemplateId = params.get("TemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -570,6 +627,72 @@ class CreateInstancesResponse(AbstractModel):
     def _deserialize(self, params):
         self.DealId = params.get("DealId")
         self.InstanceIds = params.get("InstanceIds")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateParamTemplateRequest(AbstractModel):
+    """CreateParamTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 参数模板名称。
+        :type Name: str
+        :param Description: 参数模板描述。
+        :type Description: str
+        :param ProductType: 产品类型：1 – Redis2.8内存版（集群架构），2 – Redis2.8内存版（标准架构），3 – CKV 3.2内存版(标准架构)，4 – CKV 3.2内存版(集群架构)，5 – Redis2.8内存版（单机），6 – Redis4.0内存版（标准架构），7 – Redis4.0内存版（集群架构），8 – Redis5.0内存版（标准架构），9 – Redis5.0内存版（集群架构）。创建模板时必填，从源模板复制则不需要传入该参数。
+        :type ProductType: int
+        :param TemplateId: 源参数模板 ID。
+        :type TemplateId: str
+        :param ParamList: 参数列表。
+        :type ParamList: list of InstanceParam
+        """
+        self.Name = None
+        self.Description = None
+        self.ProductType = None
+        self.TemplateId = None
+        self.ParamList = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Description = params.get("Description")
+        self.ProductType = params.get("ProductType")
+        self.TemplateId = params.get("TemplateId")
+        if params.get("ParamList") is not None:
+            self.ParamList = []
+            for item in params.get("ParamList"):
+                obj = InstanceParam()
+                obj._deserialize(item)
+                self.ParamList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateParamTemplateResponse(AbstractModel):
+    """CreateParamTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 参数模板 ID。
+        :type TemplateId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TemplateId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
         self.RequestId = params.get("RequestId")
 
 
@@ -657,6 +780,47 @@ class DeleteInstanceAccountResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteParamTemplateRequest(AbstractModel):
+    """DeleteParamTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 参数模板 ID。
+        :type TemplateId: str
+        """
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteParamTemplateResponse(AbstractModel):
+    """DeleteParamTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -2271,6 +2435,138 @@ class DescribeMaintenanceWindowResponse(AbstractModel):
     def _deserialize(self, params):
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeParamTemplateInfoRequest(AbstractModel):
+    """DescribeParamTemplateInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 参数模板 ID。
+        :type TemplateId: str
+        """
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeParamTemplateInfoResponse(AbstractModel):
+    """DescribeParamTemplateInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 实例参数个数
+        :type TotalCount: int
+        :param TemplateId: 参数模板 ID。
+        :type TemplateId: str
+        :param Name: 参数模板名称。
+        :type Name: str
+        :param ProductType: 产品类型：1 – Redis2.8内存版（集群架构），2 – Redis2.8内存版（标准架构），3 – CKV 3.2内存版(标准架构)，4 – CKV 3.2内存版(集群架构)，5 – Redis2.8内存版（单机），6 – Redis4.0内存版（标准架构），7 – Redis4.0内存版（集群架构），8 – Redis5.0内存版（标准架构），9 – Redis5.0内存版（集群架构）
+        :type ProductType: int
+        :param Description: 参数模板描述
+        :type Description: str
+        :param Items: 参数详情
+        :type Items: list of ParameterDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.TemplateId = None
+        self.Name = None
+        self.ProductType = None
+        self.Description = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        self.TemplateId = params.get("TemplateId")
+        self.Name = params.get("Name")
+        self.ProductType = params.get("ProductType")
+        self.Description = params.get("Description")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = ParameterDetail()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeParamTemplatesRequest(AbstractModel):
+    """DescribeParamTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ProductTypes: 产品类型数组。产品类型：1 – Redis2.8内存版（集群架构），2 – Redis2.8内存版（标准架构），3 – CKV 3.2内存版(标准架构)，4 – CKV 3.2内存版(集群架构)，5 – Redis2.8内存版（单机），6 – Redis4.0内存版（标准架构），7 – Redis4.0内存版（集群架构），8 – Redis5.0内存版（标准架构），9 – Redis5.0内存版（集群架构）
+        :type ProductTypes: list of int
+        :param TemplateNames: 模板名称数组。
+        :type TemplateNames: list of str
+        :param TemplateIds: 模板ID数组。
+        :type TemplateIds: list of str
+        """
+        self.ProductTypes = None
+        self.TemplateNames = None
+        self.TemplateIds = None
+
+
+    def _deserialize(self, params):
+        self.ProductTypes = params.get("ProductTypes")
+        self.TemplateNames = params.get("TemplateNames")
+        self.TemplateIds = params.get("TemplateIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeParamTemplatesResponse(AbstractModel):
+    """DescribeParamTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 该用户的参数模板数量。
+        :type TotalCount: int
+        :param Items: 参数模板详情。
+        :type Items: list of ParamTemplateInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = ParamTemplateInfo()
+                obj._deserialize(item)
+                self.Items.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -4789,6 +5085,64 @@ class ModifyNetworkConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyParamTemplateRequest(AbstractModel):
+    """ModifyParamTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 源参数模板 ID。
+        :type TemplateId: str
+        :param Name: 参数模板名称。
+        :type Name: str
+        :param Description: 参数模板描述。
+        :type Description: str
+        :param ParamList: 参数列表。
+        :type ParamList: list of InstanceParam
+        """
+        self.TemplateId = None
+        self.Name = None
+        self.Description = None
+        self.ParamList = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.Name = params.get("Name")
+        self.Description = params.get("Description")
+        if params.get("ParamList") is not None:
+            self.ParamList = []
+            for item in params.get("ParamList"):
+                obj = InstanceParam()
+                obj._deserialize(item)
+                self.ParamList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyParamTemplateResponse(AbstractModel):
+    """ModifyParamTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class Outbound(AbstractModel):
     """安全组出站规则
 
@@ -4832,6 +5186,101 @@ class Outbound(AbstractModel):
         self.PortRange = params.get("PortRange")
         self.ServiceModule = params.get("ServiceModule")
         self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ParamTemplateInfo(AbstractModel):
+    """参数模板信息
+
+    """
+
+    def __init__(self):
+        """
+        :param TemplateId: 参数模板ID
+        :type TemplateId: str
+        :param Name: 参数模板名称
+        :type Name: str
+        :param Description: 参数模板描述
+        :type Description: str
+        :param ProductType: 产品类型：1 – Redis2.8内存版（集群架构），2 – Redis2.8内存版（标准架构），3 – CKV 3.2内存版(标准架构)，4 – CKV 3.2内存版(集群架构)，5 – Redis2.8内存版（单机），6 – Redis4.0内存版（标准架构），7 – Redis4.0内存版（集群架构），8 – Redis5.0内存版（标准架构），9 – Redis5.0内存版（集群架构）
+        :type ProductType: int
+        """
+        self.TemplateId = None
+        self.Name = None
+        self.Description = None
+        self.ProductType = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.Name = params.get("Name")
+        self.Description = params.get("Description")
+        self.ProductType = params.get("ProductType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ParameterDetail(AbstractModel):
+    """Redis参数模板参数详情
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 参数名称
+        :type Name: str
+        :param ParamType: 参数类型
+        :type ParamType: str
+        :param Default: 参数默认值
+        :type Default: str
+        :param Description: 参数描述
+        :type Description: str
+        :param CurrentValue: 参数当前值
+        :type CurrentValue: str
+        :param NeedReboot: 修改参数后，是否需要重启数据库以使参数生效。可能的值包括：0-不需要重启；1-需要重启
+        :type NeedReboot: int
+        :param Max: 参数允许的最大值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Max: str
+        :param Min: 参数允许的最小值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Min: str
+        :param EnumValue: 参数的可选枚举值。如果为非枚举参数，则为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnumValue: list of str
+        """
+        self.Name = None
+        self.ParamType = None
+        self.Default = None
+        self.Description = None
+        self.CurrentValue = None
+        self.NeedReboot = None
+        self.Max = None
+        self.Min = None
+        self.EnumValue = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.ParamType = params.get("ParamType")
+        self.Default = params.get("Default")
+        self.Description = params.get("Description")
+        self.CurrentValue = params.get("CurrentValue")
+        self.NeedReboot = params.get("NeedReboot")
+        self.Max = params.get("Max")
+        self.Min = params.get("Min")
+        self.EnumValue = params.get("EnumValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5107,20 +5556,24 @@ class RedisNodeInfo(AbstractModel):
         """
         :param NodeType: 节点类型，0 为主节点，1 为副本节点
         :type NodeType: int
-        :param ZoneId: 主节点或者副本节点的可用区ID
-        :type ZoneId: int
         :param NodeId: 主节点或者副本节点的ID，创建时不需要传递此参数。
         :type NodeId: int
+        :param ZoneId: 主节点或者副本节点的可用区ID
+        :type ZoneId: int
+        :param ZoneName: 主节点或者副本节点的可用区名称
+        :type ZoneName: str
         """
         self.NodeType = None
-        self.ZoneId = None
         self.NodeId = None
+        self.ZoneId = None
+        self.ZoneName = None
 
 
     def _deserialize(self, params):
         self.NodeType = params.get("NodeType")
-        self.ZoneId = params.get("ZoneId")
         self.NodeId = params.get("NodeId")
+        self.ZoneId = params.get("ZoneId")
+        self.ZoneName = params.get("ZoneName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

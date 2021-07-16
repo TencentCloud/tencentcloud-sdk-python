@@ -128,6 +128,9 @@ FAILEDOPERATION_USERNOTEXISTEDINUSERGROUP = 'FailedOperation.UserNotExistedInUse
 # 用户手机已存在。
 FAILEDOPERATION_USERPHONEEXISTED = 'FailedOperation.UserPhoneExisted'
 
+# 输入参数超出长度限制。
+INVALIDPARAMETER_PARAMETEREXCEEDSLENGTHLIMIT = 'InvalidParameter.ParameterExceedsLengthLimit'
+
 # 参数不合法。
 INVALIDPARAMETER_PARAMETERILLEGAL = 'InvalidParameter.ParameterIllegal'
 

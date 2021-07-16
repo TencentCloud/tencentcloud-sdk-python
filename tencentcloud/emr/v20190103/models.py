@@ -514,14 +514,27 @@ class CreateInstanceRequest(AbstractModel):
 <li>2：表示EMR-V2.0.1。</li>
 <li>4：表示EMR-V2.1.0。</li>
 <li>7：表示EMR-V3.0.0。</li>
+<li>9：表示EMR-V2.2.0。</li>
+<li>11：表示CLICKHOUSE-V1.0.0。</li>
+<li>13：表示DRUID-V1.0.0。</li>
+<li>15：表示EMR-V2.2.1。</li>
+<li>16：表示EMR-V2.3.0。</li>
+<li>17：表示CLICKHOUSE-V1.1.0。</li>
+<li>19：表示EMR-V2.4.0。</li>
+<li>20：表示EMR-V2.5.0。</li>
+<li>22：表示CLICKHOUSE-V1.2.0。</li>
+<li>24：表示EMR-TianQiong-V1.0.0。</li>
+<li>25：表示EMR-V3.1.0。</li>
+<li>26：表示DORIS-V1.0.0。</li>
+<li>27：表示KAFKA-V1.0.0。</li>
+<li>28：表示EMR-V3.2.0。</li>
+<li>29：表示EMR-V2.5.1。</li>
+<li>30：表示EMR-V2.6.0。</li>
         :type ProductId: int
         :param VPCSettings: 私有网络相关信息配置。通过该参数可以指定私有网络的ID，子网ID等信息。
         :type VPCSettings: :class:`tencentcloud.emr.v20190103.models.VPCSettings`
-        :param Software: 部署的组件列表。不同的EMR产品ID（ProductId：具体含义参考入参ProductId字段）需要选择不同的必选组件：
-<li>ProductId为1的时候，必选组件包括：hadoop-2.7.3、knox-1.2.0、zookeeper-3.4.9</li>
-<li>ProductId为2的时候，必选组件包括：hadoop-2.7.3、knox-1.2.0、zookeeper-3.4.9</li>
-<li>ProductId为4的时候，必选组件包括：hadoop-2.8.4、knox-1.2.0、zookeeper-3.4.9</li>
-<li>ProductId为7的时候，必选组件包括：hadoop-3.1.2、knox-1.2.0、zookeeper-3.4.9</li>
+        :param Software: 部署的组件列表。不同的EMR产品ID（ProductId：具体含义参考入参ProductId字段）对应不同可选组件列表，不同产品版本可选组件列表查询：[组件版本](https://cloud.tencent.com/document/product/589/20279) ；
+填写实例值：hive、flink。
         :type Software: list of str
         :param ResourceSpec: 节点资源的规格。
         :type ResourceSpec: :class:`tencentcloud.emr.v20190103.models.NewResourceSpec`
@@ -555,7 +568,7 @@ class CreateInstanceRequest(AbstractModel):
         :type COSSettings: :class:`tencentcloud.emr.v20190103.models.COSSettings`
         :param SgId: 实例所属安全组的ID，形如sg-xxxxxxxx。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的SecurityGroupId字段来获取。
         :type SgId: str
-        :param PreExecutedFileSettings: 引导操作脚本设置。
+        :param PreExecutedFileSettings: [引导操作](https://cloud.tencent.com/document/product/589/35656)脚本设置。
         :type PreExecutedFileSettings: list of PreExecuteFileSettings
         :param AutoRenew: 包年包月实例是否自动续费。取值范围：
 <li>0：表示不自动续费。</li>
@@ -576,12 +589,13 @@ class CreateInstanceRequest(AbstractModel):
         :param Tags: 标签描述列表。通过指定该参数可以同时绑定标签到相应的实例。
         :type Tags: list of Tag
         :param DisasterRecoverGroupIds: 分散置放群组ID列表，当前只支持指定一个。
+该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/product/213/15486 ) 的返回值中的SecurityGroupId字段来获取。
         :type DisasterRecoverGroupIds: list of str
         :param CbsEncrypt: 集群维度CBS加密盘，默认0表示不加密，1表示加密
         :type CbsEncrypt: int
         :param MetaType: hive共享元数据库类型。取值范围：
 <li>EMR_NEW_META：表示集群默认创建</li>
-<li>EMR_EXIT_METE：表示集群使用指定EMR-MetaDB。</li>
+<li>EMR_EXIT_META：表示集群使用指定EMR-MetaDB。</li>
 <li>USER_CUSTOM_META：表示集群使用自定义MetaDB。</li>
         :type MetaType: str
         :param UnifyMetaInstanceId: EMR-MetaDB实例
@@ -686,13 +700,18 @@ class CreateInstanceResponse(AbstractModel):
 
     def __init__(self):
         """
+        :param InstanceId: 实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.InstanceId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
         self.RequestId = params.get("RequestId")
 
 
@@ -1563,6 +1582,8 @@ class InquiryPriceRenewInstanceRequest(AbstractModel):
         :param Currency: 货币种类。取值范围：
 <li>CNY：表示人民币。</li>
         :type Currency: str
+        :param ModifyPayMode: 是否按量转包年包月。0：否，1：是。
+        :type ModifyPayMode: int
         """
         self.TimeSpan = None
         self.ResourceIds = None
@@ -1570,6 +1591,7 @@ class InquiryPriceRenewInstanceRequest(AbstractModel):
         self.PayMode = None
         self.TimeUnit = None
         self.Currency = None
+        self.ModifyPayMode = None
 
 
     def _deserialize(self, params):
@@ -1581,6 +1603,7 @@ class InquiryPriceRenewInstanceRequest(AbstractModel):
         self.PayMode = params.get("PayMode")
         self.TimeUnit = params.get("TimeUnit")
         self.Currency = params.get("Currency")
+        self.ModifyPayMode = params.get("ModifyPayMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2076,7 +2099,10 @@ class MultiDisk(AbstractModel):
 
     def __init__(self):
         """
-        :param DiskType: 云盘类型("CLOUD_PREMIUM","CLOUD_SSD","CLOUD_BASIC")的一种
+        :param DiskType: 云盘类型
+<li>CLOUD_SSD：表示云SSD。</li>
+<li>CLOUD_PREMIUM：表示高效云盘。</li>
+<li>CLOUD_HSSD：表示增强型SSD云硬盘。</li>
         :type DiskType: str
         :param Volume: 云盘大小
         :type Volume: int
@@ -2321,6 +2347,9 @@ class NodeHardwareInfo(AbstractModel):
         :param DynamicPodSpec: 浮动规格值json字符串
 注意：此字段可能返回 null，表示取不到有效值。
         :type DynamicPodSpec: str
+        :param SupportModifyPayMode: 是否支持变更计费类型 1是，0否
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportModifyPayMode: int
         """
         self.AppId = None
         self.SerialNo = None
@@ -2361,6 +2390,7 @@ class NodeHardwareInfo(AbstractModel):
         self.HardwareResourceType = None
         self.IsDynamicSpec = None
         self.DynamicPodSpec = None
+        self.SupportModifyPayMode = None
 
 
     def _deserialize(self, params):
@@ -2415,6 +2445,7 @@ class NodeHardwareInfo(AbstractModel):
         self.HardwareResourceType = params.get("HardwareResourceType")
         self.IsDynamicSpec = params.get("IsDynamicSpec")
         self.DynamicPodSpec = params.get("DynamicPodSpec")
+        self.SupportModifyPayMode = params.get("SupportModifyPayMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2562,8 +2593,116 @@ class PodParameter(AbstractModel):
         :param ClusterId: TKE或EKS集群ID
         :type ClusterId: str
         :param Config: 自定义权限
+如：
+{
+  "apiVersion": "v1",
+  "clusters": [
+    {
+      "cluster": {
+        "certificate-authority-data": "xxxxxx==",
+        "server": "https://xxxxx.com"
+      },
+      "name": "cls-xxxxx"
+    }
+  ],
+  "contexts": [
+    {
+      "context": {
+        "cluster": "cls-xxxxx",
+        "user": "100014xxxxx"
+      },
+      "name": "cls-a44yhcxxxxxxxxxx"
+    }
+  ],
+  "current-context": "cls-a4xxxx-context-default",
+  "kind": "Config",
+  "preferences": {},
+  "users": [
+    {
+      "name": "100014xxxxx",
+      "user": {
+        "client-certificate-data": "xxxxxx",
+        "client-key-data": "xxxxxx"
+      }
+    }
+  ]
+}
         :type Config: str
         :param Parameter: 自定义参数
+如：
+{
+    "apiVersion": "apps/v1",
+    "kind": "Deployment",
+    "metadata": {
+      "name": "test-deployment",
+      "labels": {
+        "app": "test"
+      }
+    },
+    "spec": {
+      "replicas": 3,
+      "selector": {
+        "matchLabels": {
+          "app": "test-app"
+        }
+      },
+      "template": {
+        "metadata": {
+          "annotations": {
+            "your-organization.com/department-v1": "test-example-v1",
+            "your-organization.com/department-v2": "test-example-v2"
+          },
+          "labels": {
+            "app": "test-app",
+            "environment": "production"
+          }
+        },
+        "spec": {
+          "nodeSelector": {
+            "your-organization/node-test": "test-node"
+          },
+          "containers": [
+            {
+              "name": "nginx",
+              "image": "nginx:1.14.2",
+              "ports": [
+                {
+                  "containerPort": 80
+                }
+              ]
+            }
+          ],
+          "affinity": {
+            "nodeAffinity": {
+              "requiredDuringSchedulingIgnoredDuringExecution": {
+                "nodeSelectorTerms": [
+                  {
+                    "matchExpressions": [
+                      {
+                        "key": "disk-type",
+                        "operator": "In",
+                        "values": [
+                          "ssd",
+                          "sas"
+                        ]
+                      },
+                      {
+                        "key": "cpu-num",
+                        "operator": "Gt",
+                        "values": [
+                          "6"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
         :type Parameter: str
         """
         self.ClusterId = None
@@ -2612,6 +2751,12 @@ class PodSpec(AbstractModel):
         :param DynamicPodSpec: 浮动规格
 注意：此字段可能返回 null，表示取不到有效值。
         :type DynamicPodSpec: :class:`tencentcloud.emr.v20190103.models.DynamicPodSpec`
+        :param VpcId: 代表vpc网络唯一id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param SubnetId: 代表vpc子网唯一id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
         """
         self.ResourceProviderIdentifier = None
         self.ResourceProviderType = None
@@ -2623,6 +2768,8 @@ class PodSpec(AbstractModel):
         self.PodVolumes = None
         self.IsDynamicSpec = None
         self.DynamicPodSpec = None
+        self.VpcId = None
+        self.SubnetId = None
 
 
     def _deserialize(self, params):
@@ -2643,6 +2790,8 @@ class PodSpec(AbstractModel):
         if params.get("DynamicPodSpec") is not None:
             self.DynamicPodSpec = DynamicPodSpec()
             self.DynamicPodSpec._deserialize(params.get("DynamicPodSpec"))
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2918,13 +3067,23 @@ class Resource(AbstractModel):
 
     def __init__(self):
         """
-        :param Spec: 节点规格描述
+        :param Spec: 节点规格描述，如CVM.SA2。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Spec: str
         :param StorageType: 存储类型
+取值范围：
+<li>4：表示云SSD。</li>
+<li>5：表示高效云盘。</li>
+<li>6：表示增强型SSD云硬盘。</li>
+<li>11：表示吞吐型云硬盘。</li>
+<li>12：表示极速型SSD云硬盘。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StorageType: int
         :param DiskType: 磁盘类型
+取值范围：
+<li>CLOUD_SSD：表示云SSD。</li>
+<li>CLOUD_PREMIUM：表示高效云盘。</li>
+<li>CLOUD_BASIC：表示云硬盘。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiskType: str
         :param MemSize: 内存容量,单位为M
@@ -2945,13 +3104,13 @@ class Resource(AbstractModel):
         :param Tags: 需要绑定的标签列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
-        :param InstanceType: 规格类型
+        :param InstanceType: 规格类型，如S2.MEDIUM8
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceType: str
-        :param LocalDiskNum: 本地盘数量
+        :param LocalDiskNum: 本地盘数量，该字段已废弃
 注意：此字段可能返回 null，表示取不到有效值。
         :type LocalDiskNum: int
-        :param DiskNum: 盘数量
+        :param DiskNum: 本地盘数量，如2
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiskNum: int
         """
@@ -3164,7 +3323,7 @@ class ScaleOutInstanceRequest(AbstractModel):
         :type DisasterRecoverGroupIds: list of str
         :param Tags: 扩容节点绑定标签列表。
         :type Tags: list of Tag
-        :param HardwareResourceType: 扩容所选资源类型，可选范围为"host","pod"，host为普通的CVM资源，Pod为TKE集群提供的资源
+        :param HardwareResourceType: 扩容所选资源类型，可选范围为"host","pod"，host为普通的CVM资源，Pod为TKE集群或EKS集群提供的资源
         :type HardwareResourceType: str
         :param PodSpec: 使用Pod资源扩容时，指定的Pod规格以及来源等信息
         :type PodSpec: :class:`tencentcloud.emr.v20190103.models.PodSpec`
@@ -3177,7 +3336,12 @@ class ScaleOutInstanceRequest(AbstractModel):
         :param PodParameter: POD自定义权限和自定义参数
         :type PodParameter: :class:`tencentcloud.emr.v20190103.models.PodParameter`
         :param MasterCount: 扩容的Master节点的数量。
+使用clickhouse集群扩容时，该参数不生效。
+使用kafka集群扩容时，该参数不生效。
+当HardwareResourceType=POD时，该参数不生效。
         :type MasterCount: int
+        :param StartServiceAfterScaleOut: 扩容后是否启动服务，true：启动，false：不启动
+        :type StartServiceAfterScaleOut: str
         """
         self.TimeUnit = None
         self.TimeSpan = None
@@ -3200,6 +3364,7 @@ class ScaleOutInstanceRequest(AbstractModel):
         self.YarnNodeLabel = None
         self.PodParameter = None
         self.MasterCount = None
+        self.StartServiceAfterScaleOut = None
 
 
     def _deserialize(self, params):
@@ -3238,6 +3403,7 @@ class ScaleOutInstanceRequest(AbstractModel):
             self.PodParameter = PodParameter()
             self.PodParameter._deserialize(params.get("PodParameter"))
         self.MasterCount = params.get("MasterCount")
+        self.StartServiceAfterScaleOut = params.get("StartServiceAfterScaleOut")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

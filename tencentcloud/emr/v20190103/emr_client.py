@@ -27,7 +27,7 @@ class EmrClient(AbstractClient):
 
 
     def CreateInstance(self, request):
-        """创建EMR实例
+        """创建EMR集群实例
 
         :param request: Request instance for CreateInstance.
         :type request: :class:`tencentcloud.emr.v20190103.models.CreateInstanceRequest`

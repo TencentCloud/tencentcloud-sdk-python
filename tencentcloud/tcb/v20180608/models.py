@@ -3615,6 +3615,69 @@ class DescribeEnvLimitResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeEnvPostpaidDeductRequest(AbstractModel):
+    """DescribeEnvPostpaidDeduct请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceTypes: 资源方列表
+        :type ResourceTypes: list of str
+        :param EnvId: 环境id
+        :type EnvId: str
+        :param StartTime: 查询开始时间
+        :type StartTime: str
+        :param EndTime: 查询结束时间
+        :type EndTime: str
+        """
+        self.ResourceTypes = None
+        self.EnvId = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.ResourceTypes = params.get("ResourceTypes")
+        self.EnvId = params.get("EnvId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEnvPostpaidDeductResponse(AbstractModel):
+    """DescribeEnvPostpaidDeduct返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PostPaidEnvDeductInfoList: 指标抵扣详情列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PostPaidEnvDeductInfoList: list of PostPaidEnvDeductInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PostPaidEnvDeductInfoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("PostPaidEnvDeductInfoList") is not None:
+            self.PostPaidEnvDeductInfoList = []
+            for item in params.get("PostPaidEnvDeductInfoList"):
+                obj = PostPaidEnvDeductInfo()
+                obj._deserialize(item)
+                self.PostPaidEnvDeductInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeEnvsRequest(AbstractModel):
     """DescribeEnvs请求参数结构体
 
@@ -4071,6 +4134,65 @@ class DescribeSmsQuotasResponse(AbstractModel):
                 obj = SmsFreeQuota()
                 obj._deserialize(item)
                 self.SmsFreeQuotaList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSpecialCostItemsRequest(AbstractModel):
+    """DescribeSpecialCostItems请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境id
+        :type EnvId: str
+        :param StartTime: 查询开始时间
+        :type StartTime: str
+        :param EndTime: 查询结束时间
+        :type EndTime: str
+        """
+        self.EnvId = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSpecialCostItemsResponse(AbstractModel):
+    """DescribeSpecialCostItems返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SpecialCostItems: 1分钱抵扣详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpecialCostItems: list of SpecialCostItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SpecialCostItems = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SpecialCostItems") is not None:
+            self.SpecialCostItems = []
+            for item in params.get("SpecialCostItems"):
+                obj = SpecialCostItem()
+                obj._deserialize(item)
+                self.SpecialCostItems.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -5393,6 +5515,56 @@ class PlatformStatistic(AbstractModel):
         
 
 
+class PostPaidEnvDeductInfo(AbstractModel):
+    """后付费计费详情
+
+    """
+
+    def __init__(self):
+        """
+        :param ResourceType: 资源方
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceType: str
+        :param MetricName: 指标名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricName: str
+        :param ResQuota: 按量计费详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResQuota: float
+        :param PkgQuota: 资源包抵扣详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PkgQuota: float
+        :param FreeQuota: 免费额度抵扣详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FreeQuota: float
+        :param EnvId: 环境id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnvId: str
+        """
+        self.ResourceType = None
+        self.MetricName = None
+        self.ResQuota = None
+        self.PkgQuota = None
+        self.FreeQuota = None
+        self.EnvId = None
+
+
+    def _deserialize(self, params):
+        self.ResourceType = params.get("ResourceType")
+        self.MetricName = params.get("MetricName")
+        self.ResQuota = params.get("ResQuota")
+        self.PkgQuota = params.get("PkgQuota")
+        self.FreeQuota = params.get("FreeQuota")
+        self.EnvId = params.get("EnvId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PostpayEnvQuota(AbstractModel):
     """按量付费免费配额信息
 
@@ -5700,6 +5872,46 @@ class SmsFreeQuota(AbstractModel):
         self.CycleStart = params.get("CycleStart")
         self.CycleEnd = params.get("CycleEnd")
         self.TodayUsedQuota = params.get("TodayUsedQuota")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SpecialCostItem(AbstractModel):
+    """1分钱计费详情
+
+    """
+
+    def __init__(self):
+        """
+        :param ReportDate: 上报日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReportDate: str
+        :param Uin: 腾讯云uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: str
+        :param EnvId: 资源id:环境id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnvId: str
+        :param Status: 上报任务状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        """
+        self.ReportDate = None
+        self.Uin = None
+        self.EnvId = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.ReportDate = params.get("ReportDate")
+        self.Uin = params.get("Uin")
+        self.EnvId = params.get("EnvId")
+        self.Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

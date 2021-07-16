@@ -337,6 +337,30 @@ class CallBackInfo(AbstractModel):
         
 
 
+class CompressInfo(AbstractModel):
+    """投递日志的压缩配置
+
+    """
+
+    def __init__(self):
+        """
+        :param Format: 压缩格式，支持gzip、lzop和none不压缩
+        :type Format: str
+        """
+        self.Format = None
+
+
+    def _deserialize(self, params):
+        self.Format = params.get("Format")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ConfigInfo(AbstractModel):
     """采集规则配置信息
 
@@ -349,7 +373,7 @@ class ConfigInfo(AbstractModel):
         :param LogFormat: 日志格式化方式
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogFormat: str
-        :param Path: 通配符日志采集路径列表，以/**/分隔文件目录和文件名
+        :param Path: 日志采集路径
 注意：此字段可能返回 null，表示取不到有效值。
         :type Path: str
         :param LogType: 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表极简日志，multiline_log代表多行日志，fullregex_log代表完整正则，默认为minimalist_log
@@ -397,6 +421,44 @@ class ConfigInfo(AbstractModel):
         self.Output = params.get("Output")
         self.UpdateTime = params.get("UpdateTime")
         self.CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ContentInfo(AbstractModel):
+    """投递日志的内容格式配置
+
+    """
+
+    def __init__(self):
+        """
+        :param Format: 内容格式，支持json、csv
+        :type Format: str
+        :param Csv: csv格式内容描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Csv: :class:`tencentcloud.cls.v20201016.models.CsvInfo`
+        :param Json: json格式内容描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Json: :class:`tencentcloud.cls.v20201016.models.JsonInfo`
+        """
+        self.Format = None
+        self.Csv = None
+        self.Json = None
+
+
+    def _deserialize(self, params):
+        self.Format = params.get("Format")
+        if params.get("Csv") is not None:
+            self.Csv = CsvInfo()
+            self.Csv._deserialize(params.get("Csv"))
+        if params.get("Json") is not None:
+            self.Json = JsonInfo()
+            self.Json._deserialize(params.get("Json"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -567,7 +629,7 @@ class CreateConfigRequest(AbstractModel):
         :type Name: str
         :param Output: 采集配置所属日志主题ID即TopicId
         :type Output: str
-        :param Path: 通配符日志采集路径列表，以/**/分隔文件目录和文件名
+        :param Path: 日志采集路径,包含文件名
         :type Path: str
         :param LogType: 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表极简日志，multiline_log代表多行日志，fullregex_log代表完整正则，默认为minimalist_log
         :type LogType: str
@@ -878,6 +940,96 @@ class CreateMachineGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateShipperRequest(AbstractModel):
+    """CreateShipper请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TopicId: 创建的投递规则所属的日志主题ID
+        :type TopicId: str
+        :param Bucket: 创建的投递规则投递的bucket
+        :type Bucket: str
+        :param Prefix: 创建的投递规则投递目录的前缀
+        :type Prefix: str
+        :param ShipperName: 投递规则的名字
+        :type ShipperName: str
+        :param Interval: 投递的时间间隔，单位 秒，默认300，范围 300-900
+        :type Interval: int
+        :param MaxSize: 投递的文件的最大值，单位 MB，默认256，范围 100-256
+        :type MaxSize: int
+        :param FilterRules: 投递日志的过滤规则，匹配的日志进行投递，各rule之间是and关系，最多5个，数组为空则表示不过滤而全部投递
+        :type FilterRules: list of FilterRuleInfo
+        :param Partition: 投递日志的分区规则，支持strftime的时间格式表示
+        :type Partition: str
+        :param Compress: 投递日志的压缩配置
+        :type Compress: :class:`tencentcloud.cls.v20201016.models.CompressInfo`
+        :param Content: 投递日志的内容格式配置
+        :type Content: :class:`tencentcloud.cls.v20201016.models.ContentInfo`
+        """
+        self.TopicId = None
+        self.Bucket = None
+        self.Prefix = None
+        self.ShipperName = None
+        self.Interval = None
+        self.MaxSize = None
+        self.FilterRules = None
+        self.Partition = None
+        self.Compress = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.TopicId = params.get("TopicId")
+        self.Bucket = params.get("Bucket")
+        self.Prefix = params.get("Prefix")
+        self.ShipperName = params.get("ShipperName")
+        self.Interval = params.get("Interval")
+        self.MaxSize = params.get("MaxSize")
+        if params.get("FilterRules") is not None:
+            self.FilterRules = []
+            for item in params.get("FilterRules"):
+                obj = FilterRuleInfo()
+                obj._deserialize(item)
+                self.FilterRules.append(obj)
+        self.Partition = params.get("Partition")
+        if params.get("Compress") is not None:
+            self.Compress = CompressInfo()
+            self.Compress._deserialize(params.get("Compress"))
+        if params.get("Content") is not None:
+            self.Content = ContentInfo()
+            self.Content._deserialize(params.get("Content"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateShipperResponse(AbstractModel):
+    """CreateShipper返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ShipperId: 投递规则ID
+        :type ShipperId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ShipperId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ShipperId = params.get("ShipperId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateTopicRequest(AbstractModel):
     """CreateTopic请求参数结构体
 
@@ -954,6 +1106,47 @@ class CreateTopicResponse(AbstractModel):
     def _deserialize(self, params):
         self.TopicId = params.get("TopicId")
         self.RequestId = params.get("RequestId")
+
+
+class CsvInfo(AbstractModel):
+    """csv内容描述
+
+    """
+
+    def __init__(self):
+        """
+        :param PrintKey: csv首行是否打印key
+        :type PrintKey: bool
+        :param Keys: 每列key的名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Keys: list of str
+        :param Delimiter: 各字段间的分隔符
+        :type Delimiter: str
+        :param EscapeChar: 若字段内容中包含分隔符，则使用该转义符包裹改字段，只能填写单引号、双引号、空字符串
+        :type EscapeChar: str
+        :param NonExistingField: 对于上面指定的不存在字段使用该内容填充
+        :type NonExistingField: str
+        """
+        self.PrintKey = None
+        self.Keys = None
+        self.Delimiter = None
+        self.EscapeChar = None
+        self.NonExistingField = None
+
+
+    def _deserialize(self, params):
+        self.PrintKey = params.get("PrintKey")
+        self.Keys = params.get("Keys")
+        self.Delimiter = params.get("Delimiter")
+        self.EscapeChar = params.get("EscapeChar")
+        self.NonExistingField = params.get("NonExistingField")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DeleteAlarmNoticeRequest(AbstractModel):
@@ -1273,6 +1466,47 @@ class DeleteMachineGroupRequest(AbstractModel):
 
 class DeleteMachineGroupResponse(AbstractModel):
     """DeleteMachineGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteShipperRequest(AbstractModel):
+    """DeleteShipper请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ShipperId: 投递规则ID
+        :type ShipperId: str
+        """
+        self.ShipperId = None
+
+
+    def _deserialize(self, params):
+        self.ShipperId = params.get("ShipperId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteShipperResponse(AbstractModel):
+    """DeleteShipper返回参数结构体
 
     """
 
@@ -2231,6 +2465,155 @@ class DescribePartitionsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeShipperTasksRequest(AbstractModel):
+    """DescribeShipperTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ShipperId: 投递规则ID
+        :type ShipperId: str
+        :param StartTime: 查询的开始时间戳，支持最近3天的查询， 毫秒
+        :type StartTime: int
+        :param EndTime: 查询的结束时间戳， 毫秒
+        :type EndTime: int
+        """
+        self.ShipperId = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.ShipperId = params.get("ShipperId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeShipperTasksResponse(AbstractModel):
+    """DescribeShipperTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Tasks: 投递任务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tasks: list of ShipperTaskInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Tasks = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Tasks") is not None:
+            self.Tasks = []
+            for item in params.get("Tasks"):
+                obj = ShipperTaskInfo()
+                obj._deserialize(item)
+                self.Tasks.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeShippersRequest(AbstractModel):
+    """DescribeShippers请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Filters: <br><li> shipperName
+
+按照【投递规则名称】进行过滤。
+类型：String
+
+必选：否
+
+<br><li> shipperId
+
+按照【投递规则ID】进行过滤。
+类型：String
+
+必选：否
+
+<br><li> topicId
+
+按照【日志主题】进行过滤。
+
+类型：String
+
+必选：否
+
+每次请求的Filters的上限为10，Filter.Values的上限为5。
+        :type Filters: list of Filter
+        :param Offset: 分页的偏移量，默认值为0
+        :type Offset: int
+        :param Limit: 分页单页的限制数目，默认值为20，最大值100
+        :type Limit: int
+        """
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeShippersResponse(AbstractModel):
+    """DescribeShippers返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Shippers: 投递规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Shippers: list of ShipperInfo
+        :param TotalCount: 本次查询获取到的总数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Shippers = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Shippers") is not None:
+            self.Shippers = []
+            for item in params.get("Shippers"):
+                obj = ShipperInfo()
+                obj._deserialize(item)
+                self.Shippers.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTopicsRequest(AbstractModel):
     """DescribeTopics请求参数结构体
 
@@ -2547,6 +2930,38 @@ class Filter(AbstractModel):
         
 
 
+class FilterRuleInfo(AbstractModel):
+    """投递日志的过滤规则
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: 过滤规则Key
+        :type Key: str
+        :param Regex: 过滤规则
+        :type Regex: str
+        :param Value: 过滤规则Value
+        :type Value: str
+        """
+        self.Key = None
+        self.Regex = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Regex = params.get("Regex")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FullTextInfo(AbstractModel):
     """全文索引配置
 
@@ -2676,6 +3091,35 @@ class GetAlarmLogResponse(AbstractModel):
                 obj._deserialize(item)
                 self.AnalysisResults.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class JsonInfo(AbstractModel):
+    """JSON类型描述
+
+    """
+
+    def __init__(self):
+        """
+        :param EnableTag: 启用标志
+        :type EnableTag: bool
+        :param MetaFields: 元数据信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetaFields: list of str
+        """
+        self.EnableTag = None
+        self.MetaFields = None
+
+
+    def _deserialize(self, params):
+        self.EnableTag = params.get("EnableTag")
+        self.MetaFields = params.get("MetaFields")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class KeyRegexInfo(AbstractModel):
@@ -3303,7 +3747,7 @@ class ModifyConfigRequest(AbstractModel):
         :type ConfigId: str
         :param Name: 采集规则配置名称
         :type Name: str
-        :param Path: 通配符日志采集路径列表，以/**/分隔文件目录和文件名
+        :param Path: 日志采集路径，包含文件名
         :type Path: str
         :param LogType: 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表极简日志，multiline_log代表多行日志，fullregex_log代表完整正则，默认为minimalist_log
         :type LogType: str
@@ -3545,6 +3989,96 @@ class ModifyMachineGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyShipperRequest(AbstractModel):
+    """ModifyShipper请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ShipperId: 投递规则ID
+        :type ShipperId: str
+        :param Bucket: 投递规则投递的新的bucket
+        :type Bucket: str
+        :param Prefix: 投递规则投递的新的目录前缀
+        :type Prefix: str
+        :param Status: 投递规则的开关状态
+        :type Status: bool
+        :param ShipperName: 投递规则的名字
+        :type ShipperName: str
+        :param Interval: 投递的时间间隔，单位 秒，默认300，范围 300-900
+        :type Interval: int
+        :param MaxSize: 投递的文件的最大值，单位 MB，默认256，范围 100-256
+        :type MaxSize: int
+        :param FilterRules: 投递日志的过滤规则，匹配的日志进行投递，各rule之间是and关系，最多5个，数组为空则表示不过滤而全部投递
+        :type FilterRules: list of FilterRuleInfo
+        :param Partition: 投递日志的分区规则，支持strftime的时间格式表示
+        :type Partition: str
+        :param Compress: 投递日志的压缩配置
+        :type Compress: :class:`tencentcloud.cls.v20201016.models.CompressInfo`
+        :param Content: 投递日志的内容格式配置
+        :type Content: :class:`tencentcloud.cls.v20201016.models.ContentInfo`
+        """
+        self.ShipperId = None
+        self.Bucket = None
+        self.Prefix = None
+        self.Status = None
+        self.ShipperName = None
+        self.Interval = None
+        self.MaxSize = None
+        self.FilterRules = None
+        self.Partition = None
+        self.Compress = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.ShipperId = params.get("ShipperId")
+        self.Bucket = params.get("Bucket")
+        self.Prefix = params.get("Prefix")
+        self.Status = params.get("Status")
+        self.ShipperName = params.get("ShipperName")
+        self.Interval = params.get("Interval")
+        self.MaxSize = params.get("MaxSize")
+        if params.get("FilterRules") is not None:
+            self.FilterRules = []
+            for item in params.get("FilterRules"):
+                obj = FilterRuleInfo()
+                obj._deserialize(item)
+                self.FilterRules.append(obj)
+        self.Partition = params.get("Partition")
+        if params.get("Compress") is not None:
+            self.Compress = CompressInfo()
+            self.Compress._deserialize(params.get("Compress"))
+        if params.get("Content") is not None:
+            self.Content = ContentInfo()
+            self.Content._deserialize(params.get("Content"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyShipperResponse(AbstractModel):
+    """ModifyShipper返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyTopicRequest(AbstractModel):
     """ModifyTopic请求参数结构体
 
@@ -3739,6 +4273,51 @@ class PartitionInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class RetryShipperTaskRequest(AbstractModel):
+    """RetryShipperTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ShipperId: 投递规则ID
+        :type ShipperId: str
+        :param TaskId: 投递任务ID
+        :type TaskId: str
+        """
+        self.ShipperId = None
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.ShipperId = params.get("ShipperId")
+        self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RetryShipperTaskResponse(AbstractModel):
+    """RetryShipperTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class RuleInfo(AbstractModel):
@@ -3948,6 +4527,146 @@ class SearchLogResponse(AbstractModel):
                 obj._deserialize(item)
                 self.AnalysisResults.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class ShipperInfo(AbstractModel):
+    """投递规则
+
+    """
+
+    def __init__(self):
+        """
+        :param ShipperId: 投递规则ID
+        :type ShipperId: str
+        :param TopicId: 日志主题ID
+        :type TopicId: str
+        :param Bucket: 投递的bucket地址
+        :type Bucket: str
+        :param Prefix: 投递的前缀目录
+        :type Prefix: str
+        :param ShipperName: 投递规则的名字
+        :type ShipperName: str
+        :param Interval: 投递的时间间隔，单位 秒
+        :type Interval: int
+        :param MaxSize: 投递的文件的最大值，单位 MB
+        :type MaxSize: int
+        :param Status: 是否生效
+        :type Status: bool
+        :param FilterRules: 投递日志的过滤规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilterRules: list of FilterRuleInfo
+        :param Partition: 投递日志的分区规则，支持strftime的时间格式表示
+        :type Partition: str
+        :param Compress: 投递日志的压缩配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Compress: :class:`tencentcloud.cls.v20201016.models.CompressInfo`
+        :param Content: 投递日志的内容格式配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: :class:`tencentcloud.cls.v20201016.models.ContentInfo`
+        :param CreateTime: 投递日志的创建时间
+        :type CreateTime: str
+        """
+        self.ShipperId = None
+        self.TopicId = None
+        self.Bucket = None
+        self.Prefix = None
+        self.ShipperName = None
+        self.Interval = None
+        self.MaxSize = None
+        self.Status = None
+        self.FilterRules = None
+        self.Partition = None
+        self.Compress = None
+        self.Content = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.ShipperId = params.get("ShipperId")
+        self.TopicId = params.get("TopicId")
+        self.Bucket = params.get("Bucket")
+        self.Prefix = params.get("Prefix")
+        self.ShipperName = params.get("ShipperName")
+        self.Interval = params.get("Interval")
+        self.MaxSize = params.get("MaxSize")
+        self.Status = params.get("Status")
+        if params.get("FilterRules") is not None:
+            self.FilterRules = []
+            for item in params.get("FilterRules"):
+                obj = FilterRuleInfo()
+                obj._deserialize(item)
+                self.FilterRules.append(obj)
+        self.Partition = params.get("Partition")
+        if params.get("Compress") is not None:
+            self.Compress = CompressInfo()
+            self.Compress._deserialize(params.get("Compress"))
+        if params.get("Content") is not None:
+            self.Content = ContentInfo()
+            self.Content._deserialize(params.get("Content"))
+        self.CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ShipperTaskInfo(AbstractModel):
+    """投递任务信息
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 投递任务ID
+        :type TaskId: str
+        :param ShipperId: 投递信息ID
+        :type ShipperId: str
+        :param TopicId: 日志主题ID
+        :type TopicId: str
+        :param RangeStart: 本批投递的日志的开始时间戳，毫秒
+        :type RangeStart: int
+        :param RangeEnd: 本批投递的日志的结束时间戳， 毫秒
+        :type RangeEnd: int
+        :param StartTime: 本次投递任务的开始时间戳， 毫秒
+        :type StartTime: int
+        :param EndTime: 本次投递任务的结束时间戳， 毫秒
+        :type EndTime: int
+        :param Status: 本次投递的结果，"success","running","failed"
+        :type Status: str
+        :param Message: 结果的详细信息
+        :type Message: str
+        """
+        self.TaskId = None
+        self.ShipperId = None
+        self.TopicId = None
+        self.RangeStart = None
+        self.RangeEnd = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Status = None
+        self.Message = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.ShipperId = params.get("ShipperId")
+        self.TopicId = params.get("TopicId")
+        self.RangeStart = params.get("RangeStart")
+        self.RangeEnd = params.get("RangeEnd")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Status = params.get("Status")
+        self.Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SplitPartitionRequest(AbstractModel):

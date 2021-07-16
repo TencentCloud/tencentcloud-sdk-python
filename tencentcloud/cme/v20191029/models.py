@@ -2182,6 +2182,8 @@ class ExportVideoByEditorTrackDataRequest(AbstractModel):
         :type ExportDestination: str
         :param TrackData: 在线编辑轨道数据。轨道数据相关介绍，请查看 [视频合成协议](https://cloud.tencent.com/document/product/1156/51225)。
         :type TrackData: str
+        :param CoverData: 视频封面图片文件（如 jpeg, png 等）进行 Base64 编码后的字符串，仅支持 gif、jpeg、png 三种图片格式，原图片文件不能超过2 M大 小。
+        :type CoverData: str
         :param CMEExportInfo: 导出的云剪素材信息。指定 ExportDestination = CME 时有效。
         :type CMEExportInfo: :class:`tencentcloud.cme.v20191029.models.CMEExportInfo`
         :param VODExportInfo: 导出的云点播媒资信息。指定 ExportDestination = VOD 时有效。
@@ -2193,6 +2195,7 @@ class ExportVideoByEditorTrackDataRequest(AbstractModel):
         self.Definition = None
         self.ExportDestination = None
         self.TrackData = None
+        self.CoverData = None
         self.CMEExportInfo = None
         self.VODExportInfo = None
         self.Operator = None
@@ -2203,6 +2206,7 @@ class ExportVideoByEditorTrackDataRequest(AbstractModel):
         self.Definition = params.get("Definition")
         self.ExportDestination = params.get("ExportDestination")
         self.TrackData = params.get("TrackData")
+        self.CoverData = params.get("CoverData")
         if params.get("CMEExportInfo") is not None:
             self.CMEExportInfo = CMEExportInfo()
             self.CMEExportInfo._deserialize(params.get("CMEExportInfo"))

@@ -182,6 +182,10 @@ global：全球加速
         :type OfflineCache: :class:`tencentcloud.cdn.v20180606.models.OfflineCache`
         :param Quic: QUIC正在内测中，请先提交内测申请，详情请前往QUIC产品文档。
         :type Quic: :class:`tencentcloud.cdn.v20180606.models.Quic`
+        :param AwsPrivateAccess: 回源S3私有鉴权
+        :type AwsPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.AwsPrivateAccess`
+        :param OssPrivateAccess: 回源OSS私有鉴权
+        :type OssPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.OssPrivateAccess`
         """
         self.Domain = None
         self.ServiceType = None
@@ -217,6 +221,8 @@ global：全球加速
         self.Ipv6Access = None
         self.OfflineCache = None
         self.Quic = None
+        self.AwsPrivateAccess = None
+        self.OssPrivateAccess = None
 
 
     def _deserialize(self, params):
@@ -317,6 +323,12 @@ global：全球加速
         if params.get("Quic") is not None:
             self.Quic = Quic()
             self.Quic._deserialize(params.get("Quic"))
+        if params.get("AwsPrivateAccess") is not None:
+            self.AwsPrivateAccess = AwsPrivateAccess()
+            self.AwsPrivateAccess._deserialize(params.get("AwsPrivateAccess"))
+        if params.get("OssPrivateAccess") is not None:
+            self.OssPrivateAccess = OssPrivateAccess()
+            self.OssPrivateAccess._deserialize(params.get("OssPrivateAccess"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4801,6 +4813,9 @@ off：不支持
         :param Quic: Quic配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type Quic: :class:`tencentcloud.cdn.v20180606.models.Quic`
+        :param OssPrivateAccess: 回源OSS私有鉴权
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OssPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.OssPrivateAccess`
         """
         self.ResourceId = None
         self.AppId = None
@@ -4858,6 +4873,7 @@ off：不支持
         self.OriginCombine = None
         self.PostMaxSize = None
         self.Quic = None
+        self.OssPrivateAccess = None
 
 
     def _deserialize(self, params):
@@ -5007,6 +5023,9 @@ off：不支持
         if params.get("Quic") is not None:
             self.Quic = Quic()
             self.Quic._deserialize(params.get("Quic"))
+        if params.get("OssPrivateAccess") is not None:
+            self.OssPrivateAccess = OssPrivateAccess()
+            self.OssPrivateAccess._deserialize(params.get("OssPrivateAccess"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5417,7 +5436,7 @@ class DomainFilter(AbstractModel):
 - status：域名状态，online，offline或processing。
 - serviceType：业务类型，web，download或media。
 - projectId：项目ID。
-- domainType：主源站类型，cname表示自有源，cos表示cos接入。
+- domainType：主源站类型，cname表示自有源，cos表示cos接入，third_party表示第三方对象存储。
 - fullUrlCache：全路径缓存，on或off。
 - https：是否配置https，on，off或processing。
 - originPullProtocol：回源协议类型，支持http，follow或https。
@@ -7695,6 +7714,40 @@ class OriginPullTimeout(AbstractModel):
     def _deserialize(self, params):
         self.ConnectTimeout = params.get("ConnectTimeout")
         self.ReceiveTimeout = params.get("ReceiveTimeout")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OssPrivateAccess(AbstractModel):
+    """oss回源鉴权
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: 开关， on/off。
+        :type Switch: str
+        :param AccessKey: 访问ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessKey: str
+        :param SecretKey: 密钥。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretKey: str
+        """
+        self.Switch = None
+        self.AccessKey = None
+        self.SecretKey = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.AccessKey = params.get("AccessKey")
+        self.SecretKey = params.get("SecretKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10717,6 +10770,8 @@ global：全球加速
         :type OriginCombine: :class:`tencentcloud.cdn.v20180606.models.OriginCombine`
         :param Quic: QUIC正在内测中，请先提交内测申请，详情请前往QUIC产品文档。
         :type Quic: :class:`tencentcloud.cdn.v20180606.models.Quic`
+        :param OssPrivateAccess: 回源OSS私有鉴权
+        :type OssPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.OssPrivateAccess`
         """
         self.Domain = None
         self.ProjectId = None
@@ -10758,6 +10813,7 @@ global：全球加速
         self.OfflineCache = None
         self.OriginCombine = None
         self.Quic = None
+        self.OssPrivateAccess = None
 
 
     def _deserialize(self, params):
@@ -10871,6 +10927,9 @@ global：全球加速
         if params.get("Quic") is not None:
             self.Quic = Quic()
             self.Quic._deserialize(params.get("Quic"))
+        if params.get("OssPrivateAccess") is not None:
+            self.OssPrivateAccess = OssPrivateAccess()
+            self.OssPrivateAccess._deserialize(params.get("OssPrivateAccess"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

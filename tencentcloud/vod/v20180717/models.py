@@ -10904,6 +10904,8 @@ class EditMediaTask(AbstractModel):
 <li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
 <li>70000：内部服务错误，建议重试。</li>
         :type ErrCode: int
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
         :param Message: 错误信息。
         :type Message: str
         :param Input: 视频编辑任务的输入。
@@ -10924,6 +10926,7 @@ class EditMediaTask(AbstractModel):
         self.TaskId = None
         self.Status = None
         self.ErrCode = None
+        self.ErrCodeExt = None
         self.Message = None
         self.Input = None
         self.Output = None
@@ -10937,6 +10940,7 @@ class EditMediaTask(AbstractModel):
         self.TaskId = params.get("TaskId")
         self.Status = params.get("Status")
         self.ErrCode = params.get("ErrCode")
+        self.ErrCodeExt = params.get("ErrCodeExt")
         self.Message = params.get("Message")
         if params.get("Input") is not None:
             self.Input = EditMediaTaskInput()

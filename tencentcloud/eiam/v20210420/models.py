@@ -1436,7 +1436,7 @@ class ListUsersInOrgNodeRequest(AbstractModel):
         """
         :param OrgNodeId: 机构节点ID，是机构节点全局唯一标识，长度限制：64个字符。如果为空默认读取机构根节点下用户信息。
         :type OrgNodeId: str
-        :param IncludeOrgNodeChildInfo: 限制读取子节点信息层数。当读取层数为空或0时，默认仅读取当前机构节点信息。当读取层数为1时，读取本机构节点以及其第一层子节点信息。
+        :param IncludeOrgNodeChildInfo: 是否读取其子节点信息。当其为空或false时，默认仅读取当前机构节点信息。当其为true时，读取本机构节点以及其第一层子节点信息。
         :type IncludeOrgNodeChildInfo: bool
         """
         self.OrgNodeId = None
