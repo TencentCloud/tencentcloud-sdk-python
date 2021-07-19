@@ -91,6 +91,34 @@ class LighthouseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AttachCcn(self, request):
+        """本接口 (AttachCcn) 用于建立与云联网的关联。
+
+        :param request: Request instance for AttachCcn.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.AttachCcnRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.AttachCcnResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AttachCcn", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AttachCcnResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateBlueprint(self, request):
         """本接口 (CreateBlueprint) 用于创建镜像。
 
@@ -433,6 +461,34 @@ class LighthouseClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBundlesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCcnAttachedInstances(self, request):
+        """本接口 (DescribeCcnAttachedInstances) 用于查询云联网关联的实例信息。
+
+        :param request: Request instance for DescribeCcnAttachedInstances.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeCcnAttachedInstancesRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DescribeCcnAttachedInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCcnAttachedInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCcnAttachedInstancesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -905,6 +961,34 @@ class LighthouseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DetachCcn(self, request):
+        """本接口 (AttachCcn) 用于解除与云联网的关联。
+
+        :param request: Request instance for DetachCcn.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.DetachCcnRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DetachCcnResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DetachCcn", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DetachCcnResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DisassociateInstancesKeyPairs(self, request):
         """本接口（DisassociateInstancesKeyPairs）用于解除实例与指定密钥对的绑定关系。
 
@@ -1295,6 +1379,34 @@ class LighthouseClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RebootInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ResetAttachCcn(self, request):
+        """本接口 (ResetAttachCcn) 用于关联云联网实例申请过期时，重新申请关联操作。
+
+        :param request: Request instance for ResetAttachCcn.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.ResetAttachCcnRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.ResetAttachCcnResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ResetAttachCcn", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ResetAttachCcnResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

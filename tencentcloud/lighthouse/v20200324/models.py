@@ -108,6 +108,47 @@ class AssociateInstancesKeyPairsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AttachCcnRequest(AbstractModel):
+    """AttachCcn请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CcnId: 云联网实例ID。
+        :type CcnId: str
+        """
+        self.CcnId = None
+
+
+    def _deserialize(self, params):
+        self.CcnId = params.get("CcnId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AttachCcnResponse(AbstractModel):
+    """AttachCcn返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class Blueprint(AbstractModel):
     """描述了镜像信息。
 
@@ -342,6 +383,57 @@ class Bundle(AbstractModel):
         self.BundleSalesState = params.get("BundleSalesState")
         self.BundleType = params.get("BundleType")
         self.BundleDisplayLabel = params.get("BundleDisplayLabel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CcnAttachedInstance(AbstractModel):
+    """云联网关联的实例列表。
+
+    """
+
+    def __init__(self):
+        """
+        :param CcnId: 云联网ID。
+        :type CcnId: str
+        :param CidrBlock: 关联实例CIDR。
+        :type CidrBlock: list of str
+        :param State: 关联实例状态：
+
+•  PENDING：申请中
+•  ACTIVE：已连接
+•  EXPIRED：已过期
+•  REJECTED：已拒绝
+•  DELETED：已删除
+•  FAILED：失败的（2小时后将异步强制解关联）
+•  ATTACHING：关联中
+•  DETACHING：解关联中
+•  DETACHFAILED：解关联失败（2小时后将异步强制解关联）
+        :type State: str
+        :param AttachedTime: 关联时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttachedTime: str
+        :param Description: 备注
+        :type Description: str
+        """
+        self.CcnId = None
+        self.CidrBlock = None
+        self.State = None
+        self.AttachedTime = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.CcnId = params.get("CcnId")
+        self.CidrBlock = params.get("CidrBlock")
+        self.State = params.get("State")
+        self.AttachedTime = params.get("AttachedTime")
+        self.Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1034,6 +1126,39 @@ class DescribeBundlesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.BundleSet.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCcnAttachedInstancesRequest(AbstractModel):
+    """DescribeCcnAttachedInstances请求参数结构体
+
+    """
+
+
+class DescribeCcnAttachedInstancesResponse(AbstractModel):
+    """DescribeCcnAttachedInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CcnAttachedInstanceSet: 云联网关联的实例列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CcnAttachedInstanceSet: list of CcnAttachedInstance
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CcnAttachedInstanceSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CcnAttachedInstanceSet") is not None:
+            self.CcnAttachedInstanceSet = []
+            for item in params.get("CcnAttachedInstanceSet"):
+                obj = CcnAttachedInstance()
+                obj._deserialize(item)
+                self.CcnAttachedInstanceSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1971,6 +2096,47 @@ class DescribeZonesResponse(AbstractModel):
                 obj = ZoneInfo()
                 obj._deserialize(item)
                 self.ZoneInfoSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DetachCcnRequest(AbstractModel):
+    """DetachCcn请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CcnId: 云联网实例ID。
+        :type CcnId: str
+        """
+        self.CcnId = None
+
+
+    def _deserialize(self, params):
+        self.CcnId = params.get("CcnId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DetachCcnResponse(AbstractModel):
+    """DetachCcn返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -3351,6 +3517,47 @@ class RegionInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ResetAttachCcnRequest(AbstractModel):
+    """ResetAttachCcn请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param CcnId: 云联网实例ID。
+        :type CcnId: str
+        """
+        self.CcnId = None
+
+
+    def _deserialize(self, params):
+        self.CcnId = params.get("CcnId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResetAttachCcnResponse(AbstractModel):
+    """ResetAttachCcn返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class ResetInstanceBlueprint(AbstractModel):

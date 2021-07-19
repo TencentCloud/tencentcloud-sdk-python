@@ -815,6 +815,8 @@ class InvocationTask(AbstractModel):
         :type UpdatedTime: str
         :param CommandDocument: 执行任务所执行的命令详情。
         :type CommandDocument: :class:`tencentcloud.tat.v20201028.models.CommandDocument`
+        :param ErrorInfo: 执行任务失败时的错误信息。
+        :type ErrorInfo: str
         """
         self.InvocationId = None
         self.InvocationTaskId = None
@@ -827,6 +829,7 @@ class InvocationTask(AbstractModel):
         self.CreatedTime = None
         self.UpdatedTime = None
         self.CommandDocument = None
+        self.ErrorInfo = None
 
 
     def _deserialize(self, params):
@@ -845,6 +848,7 @@ class InvocationTask(AbstractModel):
         if params.get("CommandDocument") is not None:
             self.CommandDocument = CommandDocument()
             self.CommandDocument._deserialize(params.get("CommandDocument"))
+        self.ErrorInfo = params.get("ErrorInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
