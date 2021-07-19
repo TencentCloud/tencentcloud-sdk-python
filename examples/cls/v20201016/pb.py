@@ -1,13 +1,10 @@
 # -*- coding:utf-8 -*-
 import sys
-
-import cls_kv_pb2
 import time
 import json
-import sys
 import random
 import string
-
+import cls_kv_pb2
 
 ##pb协议客户自定义
 def pb_gen(start_index, size):
