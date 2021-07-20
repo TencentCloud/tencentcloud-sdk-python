@@ -26,11 +26,32 @@ FAILEDOPERATION_NOACTIVITYTOGENERATE = 'FailedOperation.NoActivityToGenerate'
 # 内部错误。
 INTERNALERROR = 'InternalError'
 
+# Cmq 接口调用失败。
+INTERNALERROR_CALLCMQERROR = 'InternalError.CallCmqError'
+
+# Cns 接口调用失败。
+INTERNALERROR_CALLCNSERROR = 'InternalError.CallCnsError'
+
+# 内部接口调用失败。
+INTERNALERROR_CALLERROR = 'InternalError.CallError'
+
 # LB 接口调用失败。
 INTERNALERROR_CALLLBERROR = 'InternalError.CallLbError'
 
 # Monitor接口调用失败。
 INTERNALERROR_CALLMONITORERROR = 'InternalError.CallMonitorError'
+
+# 通知服务接口调用失败。
+INTERNALERROR_CALLNOTIFICATIONERROR = 'InternalError.CallNotificationError'
+
+# STS 接口调用失败。
+INTERNALERROR_CALLSTSERROR = 'InternalError.CallStsError'
+
+# Tag 接口调用失败。
+INTERNALERROR_CALLTAGERROR = 'InternalError.CallTagError'
+
+# Tvpc 接口调用失败。
+INTERNALERROR_CALLTVPCERROR = 'InternalError.CallTvpcError'
 
 # VPC接口调用失败。
 INTERNALERROR_CALLVPCERROR = 'InternalError.CallVpcError'
@@ -80,6 +101,9 @@ INVALIDPARAMETERCONFLICT = 'InvalidParameterConflict'
 # 参数取值错误。
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
+# 指定的基础容量过大，需小于等于最大实例数。
+INVALIDPARAMETERVALUE_BASECAPACITYTOOLARGE = 'InvalidParameterValue.BaseCapacityTooLarge'
+
 # 在应当指定传统型负载均衡器的参数中，错误地指定了一个非传统型的负载均衡器。
 INVALIDPARAMETERVALUE_CLASSICLB = 'InvalidParameterValue.ClassicLb'
 
@@ -109,6 +133,9 @@ INVALIDPARAMETERVALUE_FORWARDLB = 'InvalidParameterValue.ForwardLb'
 
 # 伸缩组名称重复。
 INVALIDPARAMETERVALUE_GROUPNAMEDUPLICATED = 'InvalidParameterValue.GroupNameDuplicated'
+
+# 主机名不合法。
+INVALIDPARAMETERVALUE_HOSTNAMEILLEGAL = 'InvalidParameterValue.HostNameIllegal'
 
 # 设置的实例名称不合法。
 INVALIDPARAMETERVALUE_INSTANCENAMEILLEGAL = 'InvalidParameterValue.InstanceNameIllegal'
@@ -229,6 +256,9 @@ INVALIDPARAMETERVALUE_USERDATASIZEEXCEEDED = 'InvalidParameterValue.UserDataSize
 
 # 用户组不存在。
 INVALIDPARAMETERVALUE_USERGROUPIDNOTFOUND = 'InvalidParameterValue.UserGroupIdNotFound'
+
+# 指定的可用区与地域不匹配。
+INVALIDPARAMETERVALUE_ZONEMISMATCHREGION = 'InvalidParameterValue.ZoneMismatchRegion'
 
 # 账户不支持该操作。
 INVALIDPERMISSION = 'InvalidPermission'
@@ -367,3 +397,6 @@ RESOURCEUNAVAILABLE_LOADBALANCERINOPERATION = 'ResourceUnavailable.LoadBalancerI
 
 # 项目不一致。
 RESOURCEUNAVAILABLE_PROJECTINCONSISTENT = 'ResourceUnavailable.ProjectInconsistent'
+
+# 指定的可用区不可用。
+RESOURCEUNAVAILABLE_ZONEUNAVAILABLE = 'ResourceUnavailable.ZoneUnavailable'

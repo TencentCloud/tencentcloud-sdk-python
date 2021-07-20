@@ -317,7 +317,7 @@ class CancelTaskRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 任务ID
+        :param TaskId: 该字段表示创建音频审核任务后返回的任务ID（在Results参数中），用于标识需要取消的审核任务。
         :type TaskId: str
         """
         self.TaskId = None
@@ -474,15 +474,15 @@ class CreateAudioModerationTaskRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Tasks: 输入的任务信息，最多可以同时创建10个任务
+        :param Tasks: 该字段表示输入的音频审核任务信息，具体输入内容请参见TaskInput数据结构的详细描述。<br> 备注：最多同时可创建**10个任务**。
         :type Tasks: list of TaskInput
-        :param BizType: 默认为：default，客户可以在音频审核控制台配置自己的BizType
+        :param BizType: 该字段表示策略的具体编号，用于接口调度，在内容安全控制台中可配置。若不传入Biztype参数（留空），则代表采用默认的识别策略；传入则会在审核时根据业务场景采取不同的审核策略。<br>备注：Biztype仅为数字、字母与下划线的组合，长度为3-32个字符；不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。
         :type BizType: str
-        :param Type: 审核类型，这里可选：AUDIO (点播音频)和 LIVE_AUDIO（直播音频），默认为 AUDIIO
+        :param Type: 该字段表示输入的音频审核类型，取值为：**AUDIO**（点播音频）和 **LIVE_AUDIO**（直播音频），默认值为AUDIO。
         :type Type: str
-        :param Seed: （可选）回调签名key，具体可以查看 回调签名示例
+        :param Seed: 可选参数，该字段表示回调签名的key信息，用于保证数据的安全性。 签名方法为在返回的HTTP头部添加 X-Signature 的字段，值为： seed + body 的 SHA256 编码和Hex字符串，在收到回调数据后，可以根据返回的body，用 **sha256(seed + body)**, 计算出 `X-Signature` 进行验证。<br>具体使用实例可参考 [回调签名示例](https://cloud.tencent.com/document/product/1219/53263)。
         :type Seed: str
-        :param CallbackUrl: 接收审核信息回调地址，如果设置，则审核过程中产生的违规音频片段和画面截帧发送此接口
+        :param CallbackUrl: 可选参数，该字段表示接受审核信息回调的地址，格式为URL链接默认格式。配置成功后，审核过程中产生的违规音频片段将通过此接口发送。回调返回内容格式请参考 [回调签名示例](https://cloud.tencent.com/document/product/1219/53257#.E7.A4.BA.E4.BE.8B2-.E5.9B.9E.E8.B0.83.E7.AD.BE.E5.90.8D.E7.A4.BA.E4.BE.8B)
         :type CallbackUrl: str
         """
         self.Tasks = None
@@ -519,7 +519,7 @@ class CreateAudioModerationTaskResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Results: 任务创建结果
+        :param Results: 该字段用于返回任务创建的结果，具体输出内容请参见TaskResult数据结构的详细描述。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Results: list of TaskResult
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -546,9 +546,10 @@ class DescribeTaskDetailRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 任务ID，创建任务后返回的TaskId字段
+        :param TaskId: 该字段表示创建音频审核任务后返回的任务ID（在Results参数中），用于标识需要查询任务详情的审核任务。
+<br>备注：查询接口单次最大查询量为**20条每次**。
         :type TaskId: str
-        :param ShowAllSegments: 是否展示所有分片，默认只展示命中规则的分片
+        :param ShowAllSegments: 该布尔字段表示是否展示全部的音频片段，取值：True(展示全部的音频分片)、False(只展示命中审核规则的音频分片)；默认值为False。
         :type ShowAllSegments: bool
         """
         self.TaskId = None
@@ -574,58 +575,50 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TaskId: 任务ID
+        :param TaskId: 该字段用于返回创建音频审核任务后返回的任务ID（在Results参数中），用于标识需要查询任务详情的审核任务。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param DataId: 审核时传入的数据Id
+        :param DataId: 该字段用于返回调用音频审核接口时在Tasks参数内传入的数据ID参数，方便数据的辨别和管理。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataId: str
-        :param BizType: 业务类型，用户可以在控制台查看自己配置的BizType
+        :param BizType: 该字段用于返回调用音频审核接口时传入的BizType参数，方便数据的辨别和管理。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BizType: str
-        :param Name: 任务名称
+        :param Name: 该字段用于返回调用音频审核接口时传入的TaskInput参数中的任务名称，方便任务的识别与管理。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param Status: 查询内容审核任务的状态，可选值：
-FINISH 已完成
-PENDING 等待中
-RUNNING 进行中
-ERROR 出错
-CANCELLED 已取消
+        :param Status: 该字段用于返回所查询内容的任务状态。
+<br>取值：**FINISH**（任务已完成）、**PENDING** （任务等待中）、**RUNNING** （任务进行中）、**ERROR** （任务出错）、**CANCELLED** （任务已取消）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param Type: 任务类型：可选AUDIO（点播音频），LIVE_AUDIO（直播音频）
+        :param Type: 该字段用于返回调用音频审核接口时输入的音频审核类型，取值为：**AUDIO**（点播音频）和**LIVE_AUDIO**（直播音频），默认值为AUDIO。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
-        :param Suggestion: 智能审核服务对于内容违规类型的等级，可选值：
-Pass 建议通过；
-Reveiw 建议复审；
-Block 建议屏蔽；
+        :param Suggestion: 该字段用于返回基于恶意标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
 注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
-        :param Labels: 智能审核服务对于内容违规类型的判断，详见返回值列表
-如：Label：Porn（色情）；
+        :param Labels: 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Labels: list of TaskLabel
-        :param InputInfo: 输入的媒体信息
+        :param InputInfo: 该字段用于返回审核服务的媒体内容信息，主要包括传入文件类型和访问地址。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InputInfo: :class:`tencentcloud.ams.v20201229.models.InputInfo`
-        :param AudioText: 音频文本，备注：这里的文本最大只返回前1000个字符
+        :param AudioText: 该字段用于返回音频文件识别出的对应文本内容，最大支持**前1000个字符**。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AudioText: str
-        :param AudioSegments: 音频片段审核信息
+        :param AudioSegments: 该字段用于返回音频片段的审核结果，主要包括开始时间和音频审核的相应结果。<br>具体输出内容请参见AudioSegments及AudioResult数据结构的详细描述。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AudioSegments: list of AudioSegments
-        :param ErrorType: 错误类型，如果任务状态为Error，则该字段不为空
+        :param ErrorType: 当任务状态为Error时，该字段用于返回对应错误的类型；任务状态非Error时，默认返回为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorType: str
-        :param ErrorDescription: 错误描述，如果任务状态为Error，则该字段不为空
+        :param ErrorDescription: 当任务状态为Error时，该字段用于返回对应错误的详细描述，任务状态非Error时默认返回为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorDescription: str
-        :param CreatedAt: 任务创建时间，格式为 ISO 8601
+        :param CreatedAt: 该字段用于返回被查询任务创建的时间，格式采用 ISO 8601标准。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedAt: str
-        :param UpdatedAt: 任务最后更新时间，格式为 ISO 8601
+        :param UpdatedAt: 该字段用于返回被查询任务最后更新时间，格式采用 ISO 8601标准。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedAt: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -687,15 +680,15 @@ class DescribeTasksRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Limit: 每页展示多少条。（默认展示10条）
+        :param Limit: 该参数表示任务列表每页展示的任务条数，**默认值为10**（每页展示10条任务）。
         :type Limit: int
-        :param Filter: 过滤参数
+        :param Filter: 该参数表示任务筛选器的输入参数，可根据业务类型、审核文件类型、处理建议及任务状态筛选想要查看的审核任务，具体参数内容请参见TaskFilter数据结构的详细描述。
         :type Filter: :class:`tencentcloud.ams.v20201229.models.TaskFilter`
-        :param PageToken: 翻页token，在向前或向后翻页时需要
+        :param PageToken: 该参数表示翻页时使用的Token信息，由系统自动生成，并在翻页时向下一个生成的页面传递此参数，以方便快速翻页功能的实现。当到最后一页时，该字段为空。
         :type PageToken: str
-        :param StartTime: 开始时间。默认是最近3天。
+        :param StartTime: 该参数表示任务列表的开始时间，格式为ISO8601标准的时间戳。**默认值为最近3天**，若传入该参数，则在这一时间到EndTime之间的任务将会被筛选出来。<br>备注：该参数与Filter共同起到任务筛选作用，二者作用无先后顺序。
         :type StartTime: str
-        :param EndTime: 结束时间。默认为空
+        :param EndTime: 该参数表示任务列表的结束时间，格式为ISO8601标准的时间戳。**默认值为空**，若传入该参数，则在这StartTime到这一时间之间的任务将会被筛选出来。<br>备注：该参数与Filter共同起到任务筛选作用，二者作用无先后顺序。
         :type EndTime: str
         """
         self.Limit = None
@@ -729,13 +722,13 @@ class DescribeTasksResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param Total: 任务总量，为 int 字符串
+        :param Total: 该字段用于返回当前查询的任务总量，格式为int字符串。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Total: str
-        :param Data: 当前页数据
+        :param Data: 该字段用于返回当前页的任务详细数据，具体输出内容请参见TaskData数据结构的详细描述。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of TaskData
-        :param PageToken: 翻页Token，当已经到最后一页时，该字段为空
+        :param PageToken: 该字段用于返回翻页时使用的Token信息，由系统自动生成，并在翻页时向下一个生成的页面传递此参数，以方便快速翻页功能的实现。当到最后一页时，该字段为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PageToken: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

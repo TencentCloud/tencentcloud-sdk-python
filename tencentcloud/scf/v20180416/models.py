@@ -109,7 +109,7 @@ class AsyncEvent(AbstractModel):
         :type InvokeType: str
         :param Qualifier: 函数版本
         :type Qualifier: str
-        :param Status: 事件状态
+        :param Status: 事件状态，RUNNING 表示运行中, FINISHED 表示调用成功, ABORTED 表示调用终止, FAILED 表示调用失败
         :type Status: str
         :param StartTime: 调用开始时间，格式: "%Y-%m-%d %H:%M:%S.%f"
         :type StartTime: str

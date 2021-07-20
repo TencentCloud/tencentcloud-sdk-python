@@ -61,3 +61,60 @@ class CreateWeappQRUrlResponse(AbstractModel):
     def _deserialize(self, params):
         self.Url = params.get("Url")
         self.RequestId = params.get("RequestId")
+
+
+class SyncIcpOrderWebInfoRequest(AbstractModel):
+    """SyncIcpOrderWebInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param IcpOrderId: 备案ICP订单号
+        :type IcpOrderId: str
+        :param SourceWebId: 订单里的webId
+        :type SourceWebId: str
+        :param TargetWebIds: 订单里的webId 数组(如果传入的webIds含有 订单中不包含的webId，会自动跳过)
+        :type TargetWebIds: list of str
+        :param SyncFields: 网站信息字段名 数组
+        :type SyncFields: list of str
+        :param CheckSamePerson: 是否先判断同步的网站负责人是否一致 (这里会判断 sitePersonName, sitePersonCerType,sitePersonCerNum三个字段完全一致)  默认:true. 非必要 不建议关闭修改该参数默认值
+        :type CheckSamePerson: bool
+        """
+        self.IcpOrderId = None
+        self.SourceWebId = None
+        self.TargetWebIds = None
+        self.SyncFields = None
+        self.CheckSamePerson = None
+
+
+    def _deserialize(self, params):
+        self.IcpOrderId = params.get("IcpOrderId")
+        self.SourceWebId = params.get("SourceWebId")
+        self.TargetWebIds = params.get("TargetWebIds")
+        self.SyncFields = params.get("SyncFields")
+        self.CheckSamePerson = params.get("CheckSamePerson")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SyncIcpOrderWebInfoResponse(AbstractModel):
+    """SyncIcpOrderWebInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")

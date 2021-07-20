@@ -233,6 +233,9 @@ INVALIDPARAMETER_GATEWAYALREADYASSOCIATEDCIDR = 'InvalidParameter.GatewayAlready
 # 参数错误。
 INVALIDPARAMETER_PARAM = 'InvalidParameter.Param'
 
+# Prometheus未关联本集群。
+INVALIDPARAMETER_PROMCLUSTERNOTFOUND = 'InvalidParameter.PromClusterNotFound'
+
 # Prometheus实例不存在。
 INVALIDPARAMETER_PROMINSTANCENOTFOUND = 'InvalidParameter.PromInstanceNotFound'
 

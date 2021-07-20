@@ -1246,6 +1246,10 @@ class DescribeCertificatesRequest(AbstractModel):
         :type CertificateStatus: list of int non-negative
         :param Deployable: 是否可部署，可选值：1 = 可部署，0 =  不可部署。
         :type Deployable: int
+        :param Upload: 是否筛选上传托管的 1筛选，0不筛选
+        :type Upload: int
+        :param Renew: 是否筛选可续期证书 1筛选 0不筛选
+        :type Renew: int
         """
         self.Offset = None
         self.Limit = None
@@ -1255,6 +1259,8 @@ class DescribeCertificatesRequest(AbstractModel):
         self.ExpirationSort = None
         self.CertificateStatus = None
         self.Deployable = None
+        self.Upload = None
+        self.Renew = None
 
 
     def _deserialize(self, params):
@@ -1266,6 +1272,8 @@ class DescribeCertificatesRequest(AbstractModel):
         self.ExpirationSort = params.get("ExpirationSort")
         self.CertificateStatus = params.get("CertificateStatus")
         self.Deployable = params.get("Deployable")
+        self.Upload = params.get("Upload")
+        self.Renew = params.get("Renew")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
