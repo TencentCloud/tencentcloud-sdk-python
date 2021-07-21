@@ -5263,10 +5263,14 @@ class DisableCachesResponse(AbstractModel):
         :param CacheOptResult: 提交结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type CacheOptResult: :class:`tencentcloud.cdn.v20180606.models.CacheOptResult`
+        :param TaskId: 任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.CacheOptResult = None
+        self.TaskId = None
         self.RequestId = None
 
 
@@ -5274,6 +5278,7 @@ class DisableCachesResponse(AbstractModel):
         if params.get("CacheOptResult") is not None:
             self.CacheOptResult = CacheOptResult()
             self.CacheOptResult._deserialize(params.get("CacheOptResult"))
+        self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
 
 
@@ -5840,12 +5845,12 @@ class GetDisableRecordsRequest(AbstractModel):
 
     def __init__(self):
         """
+        :param Url: 指定 URL 查询
+        :type Url: str
         :param StartTime: 开始时间，如：2018-12-12 10:24:00。
         :type StartTime: str
         :param EndTime: 结束时间，如：2018-12-14 10:24:00。
         :type EndTime: str
-        :param Url: 指定 URL 查询
-        :type Url: str
         :param Status: URL 当前状态
 disable：当前仍为禁用状态，访问返回 403
 enable：当前为可用状态，已解禁，可正常访问
@@ -5854,22 +5859,26 @@ enable：当前为可用状态，已解禁，可正常访问
         :type Offset: int
         :param Limit: 分页查询限制数目，默认为20。
         :type Limit: int
+        :param TaskId: 任务ID，任务ID和起始时间需要至少填写一项。
+        :type TaskId: str
         """
+        self.Url = None
         self.StartTime = None
         self.EndTime = None
-        self.Url = None
         self.Status = None
         self.Offset = None
         self.Limit = None
+        self.TaskId = None
 
 
     def _deserialize(self, params):
+        self.Url = params.get("Url")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
-        self.Url = params.get("Url")
         self.Status = params.get("Status")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.TaskId = params.get("TaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

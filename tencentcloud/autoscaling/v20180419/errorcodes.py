@@ -137,6 +137,9 @@ INVALIDPARAMETERVALUE_GROUPNAMEDUPLICATED = 'InvalidParameterValue.GroupNameDupl
 # 主机名不合法。
 INVALIDPARAMETERVALUE_HOSTNAMEILLEGAL = 'InvalidParameterValue.HostNameIllegal'
 
+# 指定的镜像不存在。
+INVALIDPARAMETERVALUE_IMAGENOTFOUND = 'InvalidParameterValue.ImageNotFound'
+
 # 设置的实例名称不合法。
 INVALIDPARAMETERVALUE_INSTANCENAMEILLEGAL = 'InvalidParameterValue.InstanceNameIllegal'
 
@@ -329,6 +332,9 @@ RESOURCENOTFOUND_AUTOSCALINGGROUPNOTFOUND = 'ResourceNotFound.AutoScalingGroupNo
 # 通知不存在。
 RESOURCENOTFOUND_AUTOSCALINGNOTIFICATIONNOTFOUND = 'ResourceNotFound.AutoScalingNotificationNotFound'
 
+# 指定的 CMQ queue 不存在。
+RESOURCENOTFOUND_CMQQUEUENOTFOUND = 'ResourceNotFound.CmqQueueNotFound'
+
 # 指定的实例不存在。
 RESOURCENOTFOUND_INSTANCESNOTFOUND = 'ResourceNotFound.InstancesNotFound'
 
@@ -367,6 +373,9 @@ RESOURCEUNAVAILABLE_AUTOSCALINGGROUPDISABLED = 'ResourceUnavailable.AutoScalingG
 
 # 伸缩组正在活动中。
 RESOURCEUNAVAILABLE_AUTOSCALINGGROUPINACTIVITY = 'ResourceUnavailable.AutoScalingGroupInActivity'
+
+# 指定的 CMQ Topic 无订阅者。
+RESOURCEUNAVAILABLE_CMQTOPICHASNOSUBSCRIBER = 'ResourceUnavailable.CmqTopicHasNoSubscriber'
 
 # 实例和伸缩组Vpc不一致。
 RESOURCEUNAVAILABLE_CVMVPCINCONSISTENT = 'ResourceUnavailable.CvmVpcInconsistent'

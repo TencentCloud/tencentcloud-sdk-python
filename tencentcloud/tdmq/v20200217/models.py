@@ -216,6 +216,18 @@ class Cluster(AbstractModel):
         :type MessageRetentionTime: int
         :param MaxStorageCapacity: 最大存储容量
         :type MaxStorageCapacity: int
+        :param Version: 集群版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: str
+        :param PublicEndPoint: 公网访问接入点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicEndPoint: str
+        :param VpcEndPoint: VPC访问接入点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcEndPoint: str
+        :param NamespaceNum: 命名空间数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceNum: int
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -230,6 +242,10 @@ class Cluster(AbstractModel):
         self.MaxQps = None
         self.MessageRetentionTime = None
         self.MaxStorageCapacity = None
+        self.Version = None
+        self.PublicEndPoint = None
+        self.VpcEndPoint = None
+        self.NamespaceNum = None
 
 
     def _deserialize(self, params):
@@ -246,6 +262,10 @@ class Cluster(AbstractModel):
         self.MaxQps = params.get("MaxQps")
         self.MessageRetentionTime = params.get("MessageRetentionTime")
         self.MaxStorageCapacity = params.get("MaxStorageCapacity")
+        self.Version = params.get("Version")
+        self.PublicEndPoint = params.get("PublicEndPoint")
+        self.VpcEndPoint = params.get("VpcEndPoint")
+        self.NamespaceNum = params.get("NamespaceNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

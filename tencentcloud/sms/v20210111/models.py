@@ -611,7 +611,7 @@ class DescribeSmsTemplateListRequest(AbstractModel):
     def __init__(self):
         """
         :param TemplateIdSet: 模板 ID 数组。
-注：默认数组长度最大100。
+<dx-alert infotype="notice" title="注意">默认数组长度最大100</dx-alert>
         :type TemplateIdSet: list of int non-negative
         :param International: 是否国际/港澳台短信：
 0：表示国内短信。

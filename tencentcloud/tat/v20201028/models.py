@@ -919,11 +919,17 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
         :param Username: 在 CVM 或 Lighthouse 实例中执行命令的用户名称。
 使用最小权限执行命令是权限管理的最佳实践，建议您以普通用户身份执行云助手命令。若不填，默认以 Command 配置的 Username 执行。
         :type Username: str
+        :param WorkingDirectory: 命令执行路径, 默认以Command配置的WorkingDirectory执行。
+        :type WorkingDirectory: str
+        :param Timeout: 命令超时时间，取值范围[1, 86400]。默认以Command配置的Timeout执行。
+        :type Timeout: int
         """
         self.CommandId = None
         self.InstanceIds = None
         self.Parameters = None
         self.Username = None
+        self.WorkingDirectory = None
+        self.Timeout = None
 
 
     def _deserialize(self, params):
@@ -931,6 +937,8 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
         self.InstanceIds = params.get("InstanceIds")
         self.Parameters = params.get("Parameters")
         self.Username = params.get("Username")
+        self.WorkingDirectory = params.get("WorkingDirectory")
+        self.Timeout = params.get("Timeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

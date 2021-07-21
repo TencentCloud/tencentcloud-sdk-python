@@ -603,6 +603,51 @@ class DescribeUserClbWafRegionsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyAccessPeriodRequest(AbstractModel):
+    """ModifyAccessPeriod请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Period: 访问日志保存期限，范围为[1, 30]
+        :type Period: int
+        :param TopicId: 日志主题
+        :type TopicId: str
+        """
+        self.Period = None
+        self.TopicId = None
+
+
+    def _deserialize(self, params):
+        self.Period = params.get("Period")
+        self.TopicId = params.get("TopicId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAccessPeriodResponse(AbstractModel):
+    """ModifyAccessPeriod返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyCustomRuleStatusRequest(AbstractModel):
     """ModifyCustomRuleStatus请求参数结构体
 

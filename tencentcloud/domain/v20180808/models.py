@@ -1307,14 +1307,18 @@ class ModifyDomainOwnerBatchRequest(AbstractModel):
         :type Domains: list of str
         :param NewOwnerUin: 转入账户的uin。
         :type NewOwnerUin: str
+        :param TransferDns: 是否同时转移对应的 DNS 解析域名，默认false
+        :type TransferDns: bool
         """
         self.Domains = None
         self.NewOwnerUin = None
+        self.TransferDns = None
 
 
     def _deserialize(self, params):
         self.Domains = params.get("Domains")
         self.NewOwnerUin = params.get("NewOwnerUin")
+        self.TransferDns = params.get("TransferDns")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

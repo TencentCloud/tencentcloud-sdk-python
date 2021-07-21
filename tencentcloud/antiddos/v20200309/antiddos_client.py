@@ -1172,3 +1172,31 @@ class AntiddosClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SwitchWaterPrintConfig(self, request):
+        """开启或关闭DDoS防护的水印防护配置
+
+        :param request: Request instance for SwitchWaterPrintConfig.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.SwitchWaterPrintConfigRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.SwitchWaterPrintConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SwitchWaterPrintConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SwitchWaterPrintConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

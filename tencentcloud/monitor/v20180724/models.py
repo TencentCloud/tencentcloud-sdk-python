@@ -3059,8 +3059,10 @@ class DescribeBindingPolicyObjectListRequest(AbstractModel):
         """
         :param Module: 固定值，为"monitor"
         :type Module: str
-        :param GroupId: 策略组id
+        :param GroupId: 策略组id，如果有形如 policy-xxxx 的 id，请填到 PolicyId 字段中，本字段填 0
         :type GroupId: int
+        :param PolicyId: 告警策略id，形如 policy-xxxx，如果填入，则GroupId可以填0
+        :type PolicyId: str
         :param Limit: 分页参数，每页返回的数量，取值1~100，默认20
         :type Limit: int
         :param Offset: 分页参数，页偏移量，从0开始计数，默认0
@@ -3070,6 +3072,7 @@ class DescribeBindingPolicyObjectListRequest(AbstractModel):
         """
         self.Module = None
         self.GroupId = None
+        self.PolicyId = None
         self.Limit = None
         self.Offset = None
         self.Dimensions = None
@@ -3078,6 +3081,7 @@ class DescribeBindingPolicyObjectListRequest(AbstractModel):
     def _deserialize(self, params):
         self.Module = params.get("Module")
         self.GroupId = params.get("GroupId")
+        self.PolicyId = params.get("PolicyId")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
         if params.get("Dimensions") is not None:

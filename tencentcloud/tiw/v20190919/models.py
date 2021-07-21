@@ -77,6 +77,71 @@ class Concat(AbstractModel):
         
 
 
+class CreateSnapshotTaskRequest(AbstractModel):
+    """CreateSnapshotTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Whiteboard: 白板相关参数
+        :type Whiteboard: :class:`tencentcloud.tiw.v20190919.models.SnapshotWhiteboard`
+        :param SdkAppId: 白板房间SdkAppId
+        :type SdkAppId: int
+        :param RoomId: 白板房间号
+        :type RoomId: int
+        :param CallbackURL: 白板板书生成结果通知回调地址
+        :type CallbackURL: str
+        :param COS: 白板板书文件COS存储参数， 不填默认存储在公共存储桶，公共存储桶的数据仅保存3天
+        :type COS: :class:`tencentcloud.tiw.v20190919.models.SnapshotCOS`
+        """
+        self.Whiteboard = None
+        self.SdkAppId = None
+        self.RoomId = None
+        self.CallbackURL = None
+        self.COS = None
+
+
+    def _deserialize(self, params):
+        if params.get("Whiteboard") is not None:
+            self.Whiteboard = SnapshotWhiteboard()
+            self.Whiteboard._deserialize(params.get("Whiteboard"))
+        self.SdkAppId = params.get("SdkAppId")
+        self.RoomId = params.get("RoomId")
+        self.CallbackURL = params.get("CallbackURL")
+        if params.get("COS") is not None:
+            self.COS = SnapshotCOS()
+            self.COS._deserialize(params.get("COS"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSnapshotTaskResponse(AbstractModel):
+    """CreateSnapshotTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskID: 白板板书生成任务ID，只有任务创建成功的时候才会返回此字段
+        :type TaskID: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskID = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskID = params.get("TaskID")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateTranscodeRequest(AbstractModel):
     """CreateTranscode请求参数结构体
 
@@ -534,6 +599,80 @@ class DescribeQualityMetricsResponse(AbstractModel):
                 obj = TimeValue()
                 obj._deserialize(item)
                 self.Content.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSnapshotTaskRequest(AbstractModel):
+    """DescribeSnapshotTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskID: 查询任务ID
+        :type TaskID: str
+        :param SdkAppId: 任务SdkAppId
+        :type SdkAppId: int
+        """
+        self.TaskID = None
+        self.SdkAppId = None
+
+
+    def _deserialize(self, params):
+        self.TaskID = params.get("TaskID")
+        self.SdkAppId = params.get("SdkAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSnapshotTaskResponse(AbstractModel):
+    """DescribeSnapshotTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskID: 任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskID: str
+        :param Status: 任务状态
+Running - 任务执行中
+Finished - 任务已结束
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param CreateTime: 任务创建时间，单位s
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param FinishTime: 任务完成时间，单位s
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FinishTime: int
+        :param Result: 任务结果信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tiw.v20190919.models.SnapshotResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskID = None
+        self.Status = None
+        self.CreateTime = None
+        self.FinishTime = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskID = params.get("TaskID")
+        self.Status = params.get("Status")
+        self.CreateTime = params.get("CreateTime")
+        self.FinishTime = params.get("FinishTime")
+        if params.get("Result") is not None:
+            self.Result = SnapshotResult()
+            self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 
 
@@ -1619,6 +1758,118 @@ class SetWhiteboardPushCallbackResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class SnapshotCOS(AbstractModel):
+    """板书文件存储cos参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Uin: cos所在腾讯云帐号uin
+        :type Uin: int
+        :param Region: cos所在地区
+        :type Region: str
+        :param Bucket: cos存储桶名称
+        :type Bucket: str
+        :param TargetDir: 板书文件存储根目录
+        :type TargetDir: str
+        :param Domain: CDN加速域名
+        :type Domain: str
+        """
+        self.Uin = None
+        self.Region = None
+        self.Bucket = None
+        self.TargetDir = None
+        self.Domain = None
+
+
+    def _deserialize(self, params):
+        self.Uin = params.get("Uin")
+        self.Region = params.get("Region")
+        self.Bucket = params.get("Bucket")
+        self.TargetDir = params.get("TargetDir")
+        self.Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SnapshotResult(AbstractModel):
+    """白板板书结果
+
+    """
+
+    def __init__(self):
+        """
+        :param ErrorCode: 任务执行错误码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorCode: str
+        :param ErrorMessage: 任务执行错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMessage: str
+        :param Total: 快照生成图片总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param Snapshots: 快照图片链接列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Snapshots: list of str
+        """
+        self.ErrorCode = None
+        self.ErrorMessage = None
+        self.Total = None
+        self.Snapshots = None
+
+
+    def _deserialize(self, params):
+        self.ErrorCode = params.get("ErrorCode")
+        self.ErrorMessage = params.get("ErrorMessage")
+        self.Total = params.get("Total")
+        self.Snapshots = params.get("Snapshots")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SnapshotWhiteboard(AbstractModel):
+    """生成白板板书时的白板参数，例如白板宽高等
+
+    """
+
+    def __init__(self):
+        """
+        :param Width: 白板宽度大小，默认为1280，有效取值范围[0，2560]
+        :type Width: int
+        :param Height: 白板高度大小，默认为720，有效取值范围[0，2560]
+        :type Height: int
+        :param InitParams: 白板初始化参数的JSON转义字符串，透传到白板 SDK
+        :type InitParams: str
+        """
+        self.Width = None
+        self.Height = None
+        self.InitParams = None
+
+
+    def _deserialize(self, params):
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.InitParams = params.get("InitParams")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class StartOnlineRecordRequest(AbstractModel):

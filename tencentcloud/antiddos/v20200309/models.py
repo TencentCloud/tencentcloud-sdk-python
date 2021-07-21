@@ -2927,21 +2927,25 @@ class ForwardListener(AbstractModel):
 
     def __init__(self):
         """
-        :param FrontendPort: 转发监听端口，取值1~65535
+        :param FrontendPort: 转发监听端口下限，取值1~65535
         :type FrontendPort: int
         :param ForwardProtocol: 转发协议，取值[
 TCP
 UDP
 ]
         :type ForwardProtocol: str
+        :param FrontendPortEnd: 转发监听端口上限，取值1~65535
+        :type FrontendPortEnd: int
         """
         self.FrontendPort = None
         self.ForwardProtocol = None
+        self.FrontendPortEnd = None
 
 
     def _deserialize(self, params):
         self.FrontendPort = params.get("FrontendPort")
         self.ForwardProtocol = params.get("ForwardProtocol")
+        self.FrontendPortEnd = params.get("FrontendPortEnd")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3501,7 +3505,7 @@ pcre(正则表达式)
 ]
         :type MatchType: str
         :param Str: 检测值，关键字符串或正则表达式,取值[
-当检测类型为sunday时，请填写字符串或者16进制字节码，其中要填写16进制字节码时请以\x开头，例如\x313233对应的是字符串"123"的16进制字节码;
+当检测类型为sunday时，请填写字符串或者16进制字节码，例如\x313233对应的是字符串"123"的16进制字节码;
 当检测类型为pcre时, 请填写正则表达式字符串;
 ]
         :type Str: str
@@ -3530,7 +3534,7 @@ pcre(正则表达式)
 ]
         :type MatchType2: str
         :param Str2: 第二个检测值，关键字符串或正则表达式,取值[
-当检测类型为sunday时，请填写字符串或者16进制字节码，其中要填写16进制字节码时请以\x开头，例如\x313233对应的是字符串"123"的16进制字节码;
+当检测类型为sunday时，请填写字符串或者16进制字节码，例如\x313233对应的是字符串"123"的16进制字节码;
 当检测类型为pcre时, 请填写正则表达式字符串;
 ]
         :type Str2: str
@@ -4064,6 +4068,51 @@ class SuccessCode(AbstractModel):
         
 
 
+class SwitchWaterPrintConfigRequest(AbstractModel):
+    """SwitchWaterPrintConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 资源实例ID
+        :type InstanceId: str
+        :param OpenStatus: 水印开启/关闭状态，1表示开启；0表示关闭
+        :type OpenStatus: int
+        """
+        self.InstanceId = None
+        self.OpenStatus = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.OpenStatus = params.get("OpenStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SwitchWaterPrintConfigResponse(AbstractModel):
+    """SwitchWaterPrintConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class WaterPrintConfig(AbstractModel):
     """水印防护配置
 
@@ -4082,11 +4131,17 @@ class WaterPrintConfig(AbstractModel):
         :type Listeners: list of ForwardListener
         :param Keys: 水印添加成功后生成的水印密钥列表，一条水印最少1个密钥，最多2个密钥
         :type Keys: list of WaterPrintKey
+        :param Verify: 水印检查模式, 取值[
+checkall（普通模式）
+shortfpcheckall（精简模式）
+]
+        :type Verify: str
         """
         self.Offset = None
         self.OpenStatus = None
         self.Listeners = None
         self.Keys = None
+        self.Verify = None
 
 
     def _deserialize(self, params):
@@ -4104,6 +4159,7 @@ class WaterPrintConfig(AbstractModel):
                 obj = WaterPrintKey()
                 obj._deserialize(item)
                 self.Keys.append(obj)
+        self.Verify = params.get("Verify")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

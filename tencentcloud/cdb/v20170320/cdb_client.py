@@ -438,7 +438,7 @@ class CdbClient(AbstractClient):
 
 
     def CreateParamTemplate(self, request):
-        """该接口（CreateParamTemplate）用于创建参数模板。
+        """该接口（CreateParamTemplate）用于创建参数模板，全地域公共参数Region均为ap-guangzhou。
 
         :param request: Request instance for CreateParamTemplate.
         :type request: :class:`tencentcloud.cdb.v20170320.models.CreateParamTemplateRequest`
@@ -662,7 +662,7 @@ class CdbClient(AbstractClient):
 
 
     def DeleteParamTemplate(self, request):
-        """该接口（DeleteParamTemplate）用于删除参数模板。
+        """该接口（DeleteParamTemplate）用于删除参数模板，全地域公共参数Region均为ap-guangzhou。
 
         :param request: Request instance for DeleteParamTemplate.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DeleteParamTemplateRequest`
@@ -1704,7 +1704,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeParamTemplateInfo(self, request):
-        """该接口（DescribeParamTemplateInfo）用于查询参数模板详情。
+        """该接口（DescribeParamTemplateInfo）用于查询参数模板详情，全地域公共参数Region均为ap-guangzhou。
 
         :param request: Request instance for DescribeParamTemplateInfo.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeParamTemplateInfoRequest`
@@ -2659,7 +2659,7 @@ class CdbClient(AbstractClient):
 
 
     def ModifyParamTemplate(self, request):
-        """该接口（ModifyParamTemplate）用于修改参数模板。
+        """该接口（ModifyParamTemplate）用于修改参数模板，全地域公共参数Region均为ap-guangzhou。
 
         :param request: Request instance for ModifyParamTemplate.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyParamTemplateRequest`
