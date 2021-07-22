@@ -1756,6 +1756,98 @@ class DatabaseTupleStatus(AbstractModel):
         
 
 
+class DbNormalDetail(AbstractModel):
+    """数据库配置信息
+
+    """
+
+    def __init__(self):
+        """
+        :param IsSubscribed: 是否已订阅 0：否 1：是
+        :type IsSubscribed: str
+        :param CollationName: 数据库排序规则
+        :type CollationName: str
+        :param IsAutoCleanupOn: 开启CT之后是否自动清理 0：否 1：是
+        :type IsAutoCleanupOn: str
+        :param IsBrokerEnabled: 是否已启用代理  0：否 1：是
+        :type IsBrokerEnabled: str
+        :param IsCdcEnabled: 是否已开启/关闭CDC 0：关闭 1：开启
+        :type IsCdcEnabled: str
+        :param IsDbChainingOn: 是否已启用/ 禁用CT 0：禁用 1：启用
+        :type IsDbChainingOn: str
+        :param IsEncrypted: 是否加密 0：否 1：是
+        :type IsEncrypted: str
+        :param IsFulltextEnabled: 是否全文启用 0：否 1：是
+        :type IsFulltextEnabled: str
+        :param IsMirroring: 是否是镜像 0：否 1：是
+        :type IsMirroring: str
+        :param IsPublished: 是否已发布 0：否 1：是
+        :type IsPublished: str
+        :param IsReadCommittedSnapshotOn: 是否开启快照 0：否 1：是
+        :type IsReadCommittedSnapshotOn: str
+        :param IsTrustworthyOn: 是否可信任 0：否 1：是
+        :type IsTrustworthyOn: str
+        :param MirroringState: 镜像状态
+        :type MirroringState: str
+        :param Name: 数据库名称
+        :type Name: str
+        :param RecoveryModelDesc: 恢复模式
+        :type RecoveryModelDesc: str
+        :param RetentionPeriod: 保留天数
+        :type RetentionPeriod: str
+        :param StateDesc: 数据库状态
+        :type StateDesc: str
+        :param UserAccessDesc: 用户类型
+        :type UserAccessDesc: str
+        """
+        self.IsSubscribed = None
+        self.CollationName = None
+        self.IsAutoCleanupOn = None
+        self.IsBrokerEnabled = None
+        self.IsCdcEnabled = None
+        self.IsDbChainingOn = None
+        self.IsEncrypted = None
+        self.IsFulltextEnabled = None
+        self.IsMirroring = None
+        self.IsPublished = None
+        self.IsReadCommittedSnapshotOn = None
+        self.IsTrustworthyOn = None
+        self.MirroringState = None
+        self.Name = None
+        self.RecoveryModelDesc = None
+        self.RetentionPeriod = None
+        self.StateDesc = None
+        self.UserAccessDesc = None
+
+
+    def _deserialize(self, params):
+        self.IsSubscribed = params.get("IsSubscribed")
+        self.CollationName = params.get("CollationName")
+        self.IsAutoCleanupOn = params.get("IsAutoCleanupOn")
+        self.IsBrokerEnabled = params.get("IsBrokerEnabled")
+        self.IsCdcEnabled = params.get("IsCdcEnabled")
+        self.IsDbChainingOn = params.get("IsDbChainingOn")
+        self.IsEncrypted = params.get("IsEncrypted")
+        self.IsFulltextEnabled = params.get("IsFulltextEnabled")
+        self.IsMirroring = params.get("IsMirroring")
+        self.IsPublished = params.get("IsPublished")
+        self.IsReadCommittedSnapshotOn = params.get("IsReadCommittedSnapshotOn")
+        self.IsTrustworthyOn = params.get("IsTrustworthyOn")
+        self.MirroringState = params.get("MirroringState")
+        self.Name = params.get("Name")
+        self.RecoveryModelDesc = params.get("RecoveryModelDesc")
+        self.RetentionPeriod = params.get("RetentionPeriod")
+        self.StateDesc = params.get("StateDesc")
+        self.UserAccessDesc = params.get("UserAccessDesc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DbRollbackTimeInfo(AbstractModel):
     """数据库可回档时间范围信息
 
@@ -2873,6 +2965,60 @@ class DescribeDBSecurityGroupsResponse(AbstractModel):
                 obj = SecurityGroup()
                 obj._deserialize(item)
                 self.SecurityGroupSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDBsNormalRequest(AbstractModel):
+    """DescribeDBsNormal请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID，形如mssql-7vfv3rk3
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBsNormalResponse(AbstractModel):
+    """DescribeDBsNormal返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 表示当前实例下的数据库总个数
+        :type TotalCount: int
+        :param DBList: 返回数据库的详细配置信息，比如：数据库是否开启CDC、CT等
+        :type DBList: list of DbNormalDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.DBList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("DBList") is not None:
+            self.DBList = []
+            for item in params.get("DBList"):
+                obj = DbNormalDetail()
+                obj._deserialize(item)
+                self.DBList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -5554,6 +5700,165 @@ class ModifyDBRemarkResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyDatabaseCDCRequest(AbstractModel):
+    """ModifyDatabaseCDC请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DBNames: 数据库名数组
+        :type DBNames: list of str
+        :param ModifyType: 开启、关闭数据库CDC功能 enable；开启，disable：关闭
+        :type ModifyType: str
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        """
+        self.DBNames = None
+        self.ModifyType = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.DBNames = params.get("DBNames")
+        self.ModifyType = params.get("ModifyType")
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDatabaseCDCResponse(AbstractModel):
+    """ModifyDatabaseCDC返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: 流程ID
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyDatabaseCTRequest(AbstractModel):
+    """ModifyDatabaseCT请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DBNames: 数据库名数组
+        :type DBNames: list of str
+        :param ModifyType: 启用、禁用数据库CT功能 enable；启用，disable：禁用
+        :type ModifyType: str
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param ChangeRetentionDay: 启用CT时额外保留天数，默认保留3天，最小3天，最大30天
+        :type ChangeRetentionDay: int
+        """
+        self.DBNames = None
+        self.ModifyType = None
+        self.InstanceId = None
+        self.ChangeRetentionDay = None
+
+
+    def _deserialize(self, params):
+        self.DBNames = params.get("DBNames")
+        self.ModifyType = params.get("ModifyType")
+        self.InstanceId = params.get("InstanceId")
+        self.ChangeRetentionDay = params.get("ChangeRetentionDay")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDatabaseCTResponse(AbstractModel):
+    """ModifyDatabaseCT返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: 流程ID
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyDatabaseMdfRequest(AbstractModel):
+    """ModifyDatabaseMdf请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DBNames: 数据库名数组
+        :type DBNames: list of str
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        """
+        self.DBNames = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.DBNames = params.get("DBNames")
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDatabaseMdfResponse(AbstractModel):
+    """ModifyDatabaseMdf返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param FlowId: 流程ID
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
         self.RequestId = params.get("RequestId")
 
 

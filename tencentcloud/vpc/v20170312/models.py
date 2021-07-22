@@ -10419,6 +10419,55 @@ class DescribeVpcResourceDashboardResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeVpcTaskResultRequest(AbstractModel):
+    """DescribeVpcTaskResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskId: 异步任务请求返回的RequestId。
+        :type TaskId: str
+        """
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVpcTaskResultResponse(AbstractModel):
+    """DescribeVpcTaskResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 异步任务执行结果。结果：SUCCESS、FAILED、RUNNING。3者其中之一。其中SUCCESS表示任务执行成功，FAILED表示任务执行失败，RUNNING表示任务执行中。
+        :type Status: str
+        :param Output: 异步任务执行输出。
+        :type Output: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.Output = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.Output = params.get("Output")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeVpcsRequest(AbstractModel):
     """DescribeVpcs请求参数结构体
 

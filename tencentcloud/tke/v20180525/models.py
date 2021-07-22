@@ -59,6 +59,55 @@ class AcquireClusterAdminRoleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AddClusterCIDRRequest(AbstractModel):
+    """AddClusterCIDR请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param ClusterCIDRs: 增加的ClusterCIDR
+        :type ClusterCIDRs: list of str
+        :param IgnoreClusterCIDRConflict: 是否忽略ClusterCIDR与VPC路由表的冲突
+        :type IgnoreClusterCIDRConflict: bool
+        """
+        self.ClusterId = None
+        self.ClusterCIDRs = None
+        self.IgnoreClusterCIDRConflict = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterCIDRs = params.get("ClusterCIDRs")
+        self.IgnoreClusterCIDRConflict = params.get("IgnoreClusterCIDRConflict")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddClusterCIDRResponse(AbstractModel):
+    """AddClusterCIDR返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class AddExistedInstancesRequest(AbstractModel):
     """AddExistedInstances请求参数结构体
 
@@ -4315,6 +4364,47 @@ class DescribeRouteTableConflictsResponse(AbstractModel):
                 obj = RouteTableConflict()
                 obj._deserialize(item)
                 self.RouteTableConflictSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DisableVpcCniNetworkTypeRequest(AbstractModel):
+    """DisableVpcCniNetworkType请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisableVpcCniNetworkTypeResponse(AbstractModel):
+    """DisableVpcCniNetworkType返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 

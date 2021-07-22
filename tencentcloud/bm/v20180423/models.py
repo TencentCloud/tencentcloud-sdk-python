@@ -1498,7 +1498,7 @@ class DescribeDevicesRequest(AbstractModel):
         """
         :param Offset: 偏移量
         :type Offset: int
-        :param Limit: 返回数量
+        :param Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
         :param DeviceClassCode: 机型ID，通过接口[查询设备型号(DescribeDeviceClass)](https://cloud.tencent.com/document/api/386/32911)查询
         :type DeviceClassCode: str
@@ -1532,6 +1532,8 @@ class DescribeDevicesRequest(AbstractModel):
         :type OrderField: str
         :param Order: 排序方式，取值：0:增序(默认)，1:降序
         :type Order: int
+        :param MaintainStatus: 按照维保方式过滤。可取值为 Maintain: 在保;  WillExpire: 即将过保; Expire: 已过保
+        :type MaintainStatus: str
         """
         self.Offset = None
         self.Limit = None
@@ -1551,6 +1553,7 @@ class DescribeDevicesRequest(AbstractModel):
         self.IsLuckyDevice = None
         self.OrderField = None
         self.Order = None
+        self.MaintainStatus = None
 
 
     def _deserialize(self, params):
@@ -1577,6 +1580,7 @@ class DescribeDevicesRequest(AbstractModel):
         self.IsLuckyDevice = params.get("IsLuckyDevice")
         self.OrderField = params.get("OrderField")
         self.Order = params.get("Order")
+        self.MaintainStatus = params.get("MaintainStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2755,6 +2759,12 @@ class DeviceInfo(AbstractModel):
         :type SubnetCidrBlock: str
         :param IsLuckyDevice: 标识是否是竞价实例。0: 普通设备; 1: 竞价实例设备
         :type IsLuckyDevice: int
+        :param MaintainStatus: 标识机器维保状态。Maintain: 在保;  WillExpire: 即将过保; Expire: 已过保
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaintainStatus: str
+        :param MaintainMessage: 维保信息描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaintainMessage: str
         """
         self.InstanceId = None
         self.VpcId = None
@@ -2780,6 +2790,8 @@ class DeviceInfo(AbstractModel):
         self.VpcCidrBlock = None
         self.SubnetCidrBlock = None
         self.IsLuckyDevice = None
+        self.MaintainStatus = None
+        self.MaintainMessage = None
 
 
     def _deserialize(self, params):
@@ -2812,6 +2824,8 @@ class DeviceInfo(AbstractModel):
         self.VpcCidrBlock = params.get("VpcCidrBlock")
         self.SubnetCidrBlock = params.get("SubnetCidrBlock")
         self.IsLuckyDevice = params.get("IsLuckyDevice")
+        self.MaintainStatus = params.get("MaintainStatus")
+        self.MaintainMessage = params.get("MaintainMessage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -922,6 +922,34 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDBsNormal(self, request):
+        """本接口(DescribeDBsNormal)用于查询数据库配置信息，此接口不包含数据库的关联账号
+
+        :param request: Request instance for DescribeDBsNormal.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDBsNormalRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDBsNormalResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDBsNormal", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDBsNormalResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeFlowStatus(self, request):
         """本接口(DescribeFlowStatus)用于查询流程状态。
 
@@ -1888,6 +1916,90 @@ class SqlserverClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDBRemarkResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyDatabaseCDC(self, request):
+        """本接口(ModifyDatabaseCDC)用于开启、关闭数据库数据变更捕获(CDC)
+
+        :param request: Request instance for ModifyDatabaseCDC.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDatabaseCDCRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDatabaseCDCResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDatabaseCDC", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDatabaseCDCResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyDatabaseCT(self, request):
+        """本接口(ModifyDatabaseCT)用于启用、禁用数据库数据变更跟踪(CT)
+
+        :param request: Request instance for ModifyDatabaseCT.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDatabaseCTRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDatabaseCTResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDatabaseCT", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDatabaseCTResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyDatabaseMdf(self, request):
+        """本接口(ModifyDatabaseMdf)用于收缩数据库mdf(Shrink mdf)
+
+        :param request: Request instance for ModifyDatabaseMdf.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDatabaseMdfRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDatabaseMdfResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDatabaseMdf", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDatabaseMdfResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -96,6 +96,12 @@ class BindCluster(AbstractModel):
         
 
 
+class BundleSetOpt(AbstractModel):
+    """运营端命名空间bundle实体
+
+    """
+
+
 class ClearCmqQueueRequest(AbstractModel):
     """ClearCmqQueue请求参数结构体
 
@@ -2518,6 +2524,129 @@ class DescribeEnvironmentsResponse(AbstractModel):
                 obj = Environment()
                 obj._deserialize(item)
                 self.EnvironmentSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeNamespaceBundlesOptRequest(AbstractModel):
+    """DescribeNamespaceBundlesOpt请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterName: 物理集群名
+        :type ClusterName: str
+        :param TenantId: 虚拟集群（租户）ID
+        :type TenantId: str
+        :param NamespaceName: 命名空间名
+        :type NamespaceName: str
+        :param NeedMetrics: 是否需要监控指标，若传false，则不需要传Limit和Offset分页参数
+        :type NeedMetrics: bool
+        :param Limit: 查询限制条数
+        :type Limit: int
+        :param Offset: 查询偏移量
+        :type Offset: int
+        """
+        self.ClusterName = None
+        self.TenantId = None
+        self.NamespaceName = None
+        self.NeedMetrics = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.ClusterName = params.get("ClusterName")
+        self.TenantId = params.get("TenantId")
+        self.NamespaceName = params.get("NamespaceName")
+        self.NeedMetrics = params.get("NeedMetrics")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNamespaceBundlesOptResponse(AbstractModel):
+    """DescribeNamespaceBundlesOpt返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 记录条数
+        :type TotalCount: int
+        :param BundleSet: bundle列表
+        :type BundleSet: list of BundleSetOpt
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.BundleSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("BundleSet") is not None:
+            self.BundleSet = []
+            for item in params.get("BundleSet"):
+                obj = BundleSetOpt()
+                obj._deserialize(item)
+                self.BundleSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeNodeHealthOptRequest(AbstractModel):
+    """DescribeNodeHealthOpt请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 节点实例ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNodeHealthOptResponse(AbstractModel):
+    """DescribeNodeHealthOpt返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param NodeState: 0-异常；1-正常
+        :type NodeState: int
+        :param LatestHealthCheckTime: 最近一次健康检查的时间
+        :type LatestHealthCheckTime: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NodeState = None
+        self.LatestHealthCheckTime = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.NodeState = params.get("NodeState")
+        self.LatestHealthCheckTime = params.get("LatestHealthCheckTime")
         self.RequestId = params.get("RequestId")
 
 

@@ -1034,6 +1034,34 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifySwitchTimePeriod(self, request):
+        """当升级完成后，对处于等待切换状态下的实例，强制实例立即切换。
+
+        :param request: Request instance for ModifySwitchTimePeriod.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.ModifySwitchTimePeriodRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.ModifySwitchTimePeriodResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifySwitchTimePeriod", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifySwitchTimePeriodResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def OpenDBExtranetAccess(self, request):
         """本接口（OpenDBExtranetAccess）用于开通外网。
 
@@ -1259,7 +1287,7 @@ class PostgresClient(AbstractClient):
 
 
     def UpgradeDBInstance(self, request):
-        """本接口（UpgradeDBInstance）用于升级实例。
+        """本接口（UpgradeDBInstance）用于升级实例配置。
 
         :param request: Request instance for UpgradeDBInstance.
         :type request: :class:`tencentcloud.postgres.v20170312.models.UpgradeDBInstanceRequest`

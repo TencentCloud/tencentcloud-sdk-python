@@ -54,6 +54,34 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AddClusterCIDR(self, request):
+        """给GR集群增加可用的ClusterCIDR
+
+        :param request: Request instance for AddClusterCIDR.
+        :type request: :class:`tencentcloud.tke.v20180525.models.AddClusterCIDRRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.AddClusterCIDRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AddClusterCIDR", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddClusterCIDRResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AddExistedInstances(self, request):
         """添加已经存在的实例到集群
 
@@ -1636,6 +1664,34 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRouteTableConflictsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DisableVpcCniNetworkType(self, request):
+        """提供给附加了VPC-CNI能力的Global-Route集群关闭VPC-CNI
+
+        :param request: Request instance for DisableVpcCniNetworkType.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DisableVpcCniNetworkTypeRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DisableVpcCniNetworkTypeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DisableVpcCniNetworkType", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DisableVpcCniNetworkTypeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

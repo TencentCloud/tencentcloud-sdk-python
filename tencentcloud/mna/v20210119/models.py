@@ -74,6 +74,8 @@ BU4M：上行带宽保障4Mbps
         :type Duration: int
         :param Capacity: 接口能力扩展，如果是电信用户，必须填充CTCC Token字段
         :type Capacity: :class:`tencentcloud.mna.v20210119.models.Capacity`
+        :param TemplateId: 应用模板ID
+        :type TemplateId: str
         """
         self.SrcAddressInfo = None
         self.DestAddressInfo = None
@@ -81,6 +83,7 @@ BU4M：上行带宽保障4Mbps
         self.DeviceInfo = None
         self.Duration = None
         self.Capacity = None
+        self.TemplateId = None
 
 
     def _deserialize(self, params):
@@ -98,6 +101,7 @@ BU4M：上行带宽保障4Mbps
         if params.get("Capacity") is not None:
             self.Capacity = Capacity()
             self.Capacity._deserialize(params.get("Capacity"))
+        self.TemplateId = params.get("TemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

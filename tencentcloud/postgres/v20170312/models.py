@@ -2702,6 +2702,51 @@ class ModifyReadOnlyGroupConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifySwitchTimePeriodRequest(AbstractModel):
+    """ModifySwitchTimePeriod请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DBInstanceId: 处于等待切换状态中的实例ID
+        :type DBInstanceId: str
+        :param SwitchTag: 入参取值为 0 ，代表立即切换。
+        :type SwitchTag: int
+        """
+        self.DBInstanceId = None
+        self.SwitchTag = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.SwitchTag = params.get("SwitchTag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySwitchTimePeriodResponse(AbstractModel):
+    """ModifySwitchTimePeriod返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class NormalQueryItem(AbstractModel):
     """单条SlowQuery信息
 
@@ -3726,6 +3771,12 @@ class UpgradeDBInstanceRequest(AbstractModel):
         :type VoucherIds: list of str
         :param ActivityId: 活动ID
         :type ActivityId: int
+        :param SwitchTag: 指定实例配置完成变更后的切换时间，默认为 立即切换，入参为 0 ：立即切换 。1：指定时间切换。
+        :type SwitchTag: int
+        :param SwitchStartTime: 切换开始时间
+        :type SwitchStartTime: str
+        :param SwitchEndTime: 切换截止时间
+        :type SwitchEndTime: str
         """
         self.Memory = None
         self.Storage = None
@@ -3733,6 +3784,9 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self.AutoVoucher = None
         self.VoucherIds = None
         self.ActivityId = None
+        self.SwitchTag = None
+        self.SwitchStartTime = None
+        self.SwitchEndTime = None
 
 
     def _deserialize(self, params):
@@ -3742,6 +3796,9 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self.AutoVoucher = params.get("AutoVoucher")
         self.VoucherIds = params.get("VoucherIds")
         self.ActivityId = params.get("ActivityId")
+        self.SwitchTag = params.get("SwitchTag")
+        self.SwitchStartTime = params.get("SwitchStartTime")
+        self.SwitchEndTime = params.get("SwitchEndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

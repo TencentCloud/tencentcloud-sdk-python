@@ -175,31 +175,35 @@ class FaceFusionRequest(AbstractModel):
         :type ProjectId: str
         :param ModelId: 素材 ID，请在人脸融合控制台查看。
         :type ModelId: str
+        :param RspImgType: 返回图像方式（url 或 base64) ，二选一。url有效期为7天。
+        :type RspImgType: str
         :param Image: 图片 base64 数据。请确保人脸为正脸，无旋转。若某些手机拍摄后人脸被旋转，请使用图片的 EXIF 信息对图片进行旋转处理；请勿在 base64 数据中包含头部，如“data:image/jpeg;base64,”。
         :type Image: str
-        :param RspImgType: 返回图像方式（url 或 base64) ，二选一。url有效期为30天。
-        :type RspImgType: str
         :param PornDetect: 历史遗留字段，无需填写。因为融合只需提取人脸特征，不需要鉴黄。
         :type PornDetect: int
         :param CelebrityIdentify: 0表示不需要不适宜内容识别，1表示需要不适宜内容识别。默认值为0。
 请注意，不适宜内容识别服务开启后，您需要根据返回结果自行判断是否调整您的业务逻辑。例如提示您的用户图片非法，请更换图片。
         :type CelebrityIdentify: int
+        :param Url: 图片Url地址
+        :type Url: str
         """
         self.ProjectId = None
         self.ModelId = None
-        self.Image = None
         self.RspImgType = None
+        self.Image = None
         self.PornDetect = None
         self.CelebrityIdentify = None
+        self.Url = None
 
 
     def _deserialize(self, params):
         self.ProjectId = params.get("ProjectId")
         self.ModelId = params.get("ModelId")
-        self.Image = params.get("Image")
         self.RspImgType = params.get("RspImgType")
+        self.Image = params.get("Image")
         self.PornDetect = params.get("PornDetect")
         self.CelebrityIdentify = params.get("CelebrityIdentify")
+        self.Url = params.get("Url")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -322,7 +326,7 @@ class FuseFaceRequest(AbstractModel):
         :type ProjectId: str
         :param ModelId: 素材 ID，请在人脸融合控制台查看。
         :type ModelId: str
-        :param RspImgType: 返回图像方式（url 或 base64) ，二选一。url有效期为30天。
+        :param RspImgType: 返回图像方式（url 或 base64) ，二选一。url有效期为7天。
         :type RspImgType: str
         :param MergeInfos: 用户人脸图片、素材模板图的人脸位置信息。
         :type MergeInfos: list of MergeInfo
