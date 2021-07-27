@@ -1320,6 +1320,8 @@ mainland：中国境内锁定
 overseas：中国境外锁定
 global：全球锁定
         :type Readonly: str
+        :param Product: 域名所属产品，cdn/ecdn
+        :type Product: str
         """
         self.ResourceId = None
         self.AppId = None
@@ -1334,6 +1336,7 @@ global：全球锁定
         self.Disable = None
         self.Area = None
         self.Readonly = None
+        self.Product = None
 
 
     def _deserialize(self, params):
@@ -1352,6 +1355,7 @@ global：全球锁定
         self.Disable = params.get("Disable")
         self.Area = params.get("Area")
         self.Readonly = params.get("Readonly")
+        self.Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2706,6 +2710,8 @@ flux：计费流量
 bandwidth：计费带宽
 默认为 bandwidth
         :type Metric: str
+        :param Product: 指定查询的产品数据，可选为cdn或者ecdn，默认为cdn
+        :type Product: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -2715,6 +2721,7 @@ bandwidth：计费带宽
         self.Area = None
         self.District = None
         self.Metric = None
+        self.Product = None
 
 
     def _deserialize(self, params):
@@ -2726,6 +2733,7 @@ bandwidth：计费带宽
         self.Area = params.get("Area")
         self.District = params.get("District")
         self.Metric = params.get("Metric")
+        self.Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2786,7 +2794,11 @@ class DescribeCdnDataRequest(AbstractModel):
         :type EndTime: str
         :param Metric: 指定查询指标，支持的类型有：
 flux：流量，单位为 byte
+fluxIn：上行流量，单位为 byte，该指标仅ecdn支持查询
+fluxOut：下行流量，单位为 byte，该指标仅ecdn支持查询
 bandwidth：带宽，单位为 bps
+bandwidthIn：上行带宽，单位为 bps，该指标仅ecdn支持查询
+bandwidthOut：下行带宽，单位为 bps，该指标仅ecdn支持查询
 request：请求数，单位为 次
 hitRequest：命中请求数，单位为 次
 requestHitRate：请求命中率，单位为 %，保留小数点后两位
@@ -2845,6 +2857,8 @@ overseas：指定查询中国境外 CDN 数据
 server：指定查询服务地区（腾讯云 CDN 节点服务器所在地区）数据
 client：指定查询客户端地区（用户请求终端所在地区）数据
         :type AreaType: str
+        :param Product: 指定查询的产品数据，可选为cdn或者ecdn，默认为cdn
+        :type Product: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -2860,6 +2874,7 @@ client：指定查询客户端地区（用户请求终端所在地区）数据
         self.IpProtocol = None
         self.Area = None
         self.AreaType = None
+        self.Product = None
 
 
     def _deserialize(self, params):
@@ -2877,6 +2892,7 @@ client：指定查询客户端地区（用户请求终端所在地区）数据
         self.IpProtocol = params.get("IpProtocol")
         self.Area = params.get("Area")
         self.AreaType = params.get("AreaType")
+        self.Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3098,12 +3114,20 @@ class DescribeCertDomainsRequest(AbstractModel):
         """
         :param Cert: PEM格式证书Base64编码后的字符串
         :type Cert: str
+        :param CertId: 托管证书ID，Cert和CertId不能均未空，都填写时以CerId为准。
+        :type CertId: str
+        :param Product: 域名所属产品，cdn或ecdn，默认cdn。
+        :type Product: str
         """
         self.Cert = None
+        self.CertId = None
+        self.Product = None
 
 
     def _deserialize(self, params):
         self.Cert = params.get("Cert")
+        self.CertId = params.get("CertId")
+        self.Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3868,12 +3892,16 @@ mainland：境内计费方式查询
 overseas：境外计费方式查询
 未填充时默认为 mainland
         :type Area: str
+        :param Product: 指定查询的产品数据，可选为cdn或者ecdn，默认为cdn
+        :type Product: str
         """
         self.Area = None
+        self.Product = None
 
 
     def _deserialize(self, params):
         self.Area = params.get("Area")
+        self.Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3893,18 +3921,18 @@ class DescribePayTypeResponse(AbstractModel):
         :param PayType: 计费类型：
 flux：流量计费
 bandwidth：带宽计费
+request：请求数计费
 日结计费方式切换时，若当日产生消耗，则此字段表示第二天即将生效的计费方式，若未产生消耗，则表示已经生效的计费方式。
         :type PayType: str
         :param BillingCycle: 计费周期：
 day：日结计费
 month：月结计费
         :type BillingCycle: str
-        :param StatType: 计费方式：
-monthMax：日峰值月平均计费，月结模式
-day95：日 95 带宽计费，月结模式
-month95：月95带宽计费，月结模式
-sum：总流量计费，日结与月结均有流量计费模式
-max：峰值带宽计费，日结模式
+        :param StatType: monthMax：日峰值月平均，月结模式
+day95：日 95 带宽，月结模式
+month95：月95带宽，月结模式
+sum：总流量/总请求数，日结或月结模式
+max：峰值带宽，日结模式
         :type StatType: str
         :param RegionType: 境外计费类型：
 all：全地区统一计费
@@ -3913,6 +3941,7 @@ multiple：分地区计费
         :param CurrentPayType: 当前生效计费类型：
 flux：流量计费
 bandwidth：带宽计费
+request：请求数计费
         :type CurrentPayType: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4816,6 +4845,9 @@ off：不支持
         :param OssPrivateAccess: 回源OSS私有鉴权
 注意：此字段可能返回 null，表示取不到有效值。
         :type OssPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.OssPrivateAccess`
+        :param WebSocket: WebSocket配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WebSocket: :class:`tencentcloud.cdn.v20180606.models.WebSocket`
         """
         self.ResourceId = None
         self.AppId = None
@@ -4874,6 +4906,7 @@ off：不支持
         self.PostMaxSize = None
         self.Quic = None
         self.OssPrivateAccess = None
+        self.WebSocket = None
 
 
     def _deserialize(self, params):
@@ -5026,6 +5059,9 @@ off：不支持
         if params.get("OssPrivateAccess") is not None:
             self.OssPrivateAccess = OssPrivateAccess()
             self.OssPrivateAccess._deserialize(params.get("OssPrivateAccess"))
+        if params.get("WebSocket") is not None:
+            self.WebSocket = WebSocket()
+            self.WebSocket._deserialize(params.get("WebSocket"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6896,6 +6932,8 @@ overseas：指定查询中国境外 CDN 数据，支持的 Metric 为 url、dist
 server：指定查询服务地区（腾讯云 CDN 节点服务器所在地区）数据
 client：指定查询客户端地区（用户请求终端所在地区）数据，当 Metric 为 host 时仅支持 flux、request、bandwidth Filter
         :type AreaType: str
+        :param Product: 指定查询的产品数据，可选为cdn或者ecdn，默认为cdn
+        :type Product: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -6907,6 +6945,7 @@ client：指定查询客户端地区（用户请求终端所在地区）数据�
         self.Code = None
         self.Area = None
         self.AreaType = None
+        self.Product = None
 
 
     def _deserialize(self, params):
@@ -6920,6 +6959,7 @@ client：指定查询客户端地区（用户请求终端所在地区）数据�
         self.Code = params.get("Code")
         self.Area = params.get("Area")
         self.AreaType = params.get("AreaType")
+        self.Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10556,11 +10596,15 @@ class TopicInfo(AbstractModel):
         :param CreateTime: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
+        :param Channel: 归属于cdn或ecdn
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Channel: str
         """
         self.TopicId = None
         self.TopicName = None
         self.Enabled = None
         self.CreateTime = None
+        self.Channel = None
 
 
     def _deserialize(self, params):
@@ -10568,6 +10612,7 @@ class TopicInfo(AbstractModel):
         self.TopicName = params.get("TopicName")
         self.Enabled = params.get("Enabled")
         self.CreateTime = params.get("CreateTime")
+        self.Channel = params.get("Channel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10781,6 +10826,8 @@ global：全球加速
         :type Quic: :class:`tencentcloud.cdn.v20180606.models.Quic`
         :param OssPrivateAccess: 回源OSS私有鉴权
         :type OssPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.OssPrivateAccess`
+        :param WebSocket: WebSocket配置
+        :type WebSocket: :class:`tencentcloud.cdn.v20180606.models.WebSocket`
         """
         self.Domain = None
         self.ProjectId = None
@@ -10823,6 +10870,7 @@ global：全球加速
         self.OriginCombine = None
         self.Quic = None
         self.OssPrivateAccess = None
+        self.WebSocket = None
 
 
     def _deserialize(self, params):
@@ -10939,6 +10987,9 @@ global：全球加速
         if params.get("OssPrivateAccess") is not None:
             self.OssPrivateAccess = OssPrivateAccess()
             self.OssPrivateAccess._deserialize(params.get("OssPrivateAccess"))
+        if params.get("WebSocket") is not None:
+            self.WebSocket = WebSocket()
+            self.WebSocket._deserialize(params.get("WebSocket"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11475,6 +11526,37 @@ class WafSubRuleStatus(AbstractModel):
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
         self.SubIds = params.get("SubIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WebSocket(AbstractModel):
+    """WebSocket配置
+
+    """
+
+    def __init__(self):
+        """
+        :param Switch: WebSocket 超时配置开关, 开关为off时，平台仍支持WebSocket连接，此时超时时间默认为15秒，若需要调整超时时间，将开关置为on.
+
+* WebSocket 为内测功能,如需使用,请联系腾讯云工程师开白.
+        :type Switch: str
+        :param Timeout: 设置超时时间，单位为秒，最大超时时间65秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timeout: int
+        """
+        self.Switch = None
+        self.Timeout = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Timeout = params.get("Timeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -3063,9 +3063,9 @@ class DescribeBindingPolicyObjectListRequest(AbstractModel):
         :type GroupId: int
         :param PolicyId: 告警策略id，形如 policy-xxxx，如果填入，则GroupId可以填0
         :type PolicyId: str
-        :param Limit: 分页参数，每页返回的数量，取值1~100，默认20
+        :param Limit: 每次返回的数量，取值1~100，默认20
         :type Limit: int
-        :param Offset: 分页参数，页偏移量，从0开始计数，默认0
+        :param Offset: 偏移量，从0开始计数，默认0。举例来说，参数 Offset=0&Limit=20 返回第 0 到 19 项，Offset=20&Limit=20 返回第 20 到 39 项，以此类推
         :type Offset: int
         :param Dimensions: 筛选对象的维度信息
         :type Dimensions: list of DescribeBindingPolicyObjectListDimension

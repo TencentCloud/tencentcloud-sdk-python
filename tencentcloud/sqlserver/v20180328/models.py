@@ -3001,7 +3001,7 @@ class DescribeDBsNormalResponse(AbstractModel):
         """
         :param TotalCount: 表示当前实例下的数据库总个数
         :type TotalCount: int
-        :param DBList: 返回数据库的详细配置信息，比如：数据库是否开启CDC、CT等
+        :param DBList: 返回数据库的详细配置信息，例如：数据库是否开启CDC、CT等
         :type DBList: list of DbNormalDetail
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3212,6 +3212,122 @@ class DescribeIncrementalMigrationResponse(AbstractModel):
                 obj = Migration()
                 obj._deserialize(item)
                 self.IncrementalMigrationSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInstanceParamRecordsRequest(AbstractModel):
+    """DescribeInstanceParamRecords请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例 ID，格式如：mssql-dj5i29c5n，与云数据库控制台页面中显示的实例 ID 相同，可使用 DescribeDBInstances 接口获取，其值为输出参数中字段 InstanceId 的值。
+        :type InstanceId: str
+        :param Offset: 分页，页数，默认0
+        :type Offset: int
+        :param Limit: 分页，页大小，默认20，最大不超过100
+        :type Limit: int
+        """
+        self.InstanceId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceParamRecordsResponse(AbstractModel):
+    """DescribeInstanceParamRecords返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 符合条件的记录数
+        :type TotalCount: int
+        :param Items: 参数修改记录
+        :type Items: list of ParamRecord
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = ParamRecord()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInstanceParamsRequest(AbstractModel):
+    """DescribeInstanceParams请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例 ID，格式如：mssql-dj5i29c5n，与云数据库控制台页面中显示的实例 ID 相同，可使用 DescribeDBInstances 接口获取，其值为输出参数中字段 InstanceId 的值。
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceParamsResponse(AbstractModel):
+    """DescribeInstanceParams返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 实例的参数总数
+        :type TotalCount: int
+        :param Items: 参数详情
+        :type Items: list of ParameterDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = ParameterDetail()
+                obj._deserialize(item)
+                self.Items.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -5923,6 +6039,60 @@ class ModifyIncrementalMigrationResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyInstanceParamRequest(AbstractModel):
+    """ModifyInstanceParam请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceIds: 实例短 ID 列表
+        :type InstanceIds: list of str
+        :param ParamList: 要修改的参数列表。每一个元素是 Name 和 CurrentValue 的组合。Name 是参数名，CurrentValue 是要修改的值。<b>注意</b>：如果修改的参数需要<b>重启</b>实例，那么您的实例将会在执行修改时<b>重启</b>。您可以通过DescribeInstanceParams接口查询修改参数时是否会重启实例，以免导致您的实例不符合预期重启。
+        :type ParamList: list of Parameter
+        :param WaitSwitch: 执行参数调整任务的方式，默认为 0。支持值包括：0 - 立刻执行，1 - 时间窗执行。
+        :type WaitSwitch: int
+        """
+        self.InstanceIds = None
+        self.ParamList = None
+        self.WaitSwitch = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        if params.get("ParamList") is not None:
+            self.ParamList = []
+            for item in params.get("ParamList"):
+                obj = Parameter()
+                obj._deserialize(item)
+                self.ParamList.append(obj)
+        self.WaitSwitch = params.get("WaitSwitch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceParamResponse(AbstractModel):
+    """ModifyInstanceParam返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyMaintenanceSpanRequest(AbstractModel):
     """ModifyMaintenanceSpan请求参数结构体
 
@@ -6175,6 +6345,138 @@ class ModifyReadOnlyGroupDetailsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class ParamRecord(AbstractModel):
+    """实例参数修改记录
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param ParamName: 参数名称
+        :type ParamName: str
+        :param OldValue: 参数修改前的值
+        :type OldValue: str
+        :param NewValue: 参数修改后的值
+        :type NewValue: str
+        :param Status: 参数修改状态，1-初始化等待被执行，2-执行成功，3-执行失败，4-参数修改中
+        :type Status: int
+        :param ModifyTime: 修改时间
+        :type ModifyTime: str
+        """
+        self.InstanceId = None
+        self.ParamName = None
+        self.OldValue = None
+        self.NewValue = None
+        self.Status = None
+        self.ModifyTime = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ParamName = params.get("ParamName")
+        self.OldValue = params.get("OldValue")
+        self.NewValue = params.get("NewValue")
+        self.Status = params.get("Status")
+        self.ModifyTime = params.get("ModifyTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Parameter(AbstractModel):
+    """数据库实例参数
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 参数名称
+        :type Name: str
+        :param CurrentValue: 参数值
+        :type CurrentValue: str
+        """
+        self.Name = None
+        self.CurrentValue = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.CurrentValue = params.get("CurrentValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ParameterDetail(AbstractModel):
+    """实例参数的详细描述
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 参数名称
+        :type Name: str
+        :param ParamType: 参数类型，integer-整型，enum-枚举型
+        :type ParamType: str
+        :param Default: 参数默认值
+        :type Default: str
+        :param Description: 参数描述
+        :type Description: str
+        :param CurrentValue: 参数当前值
+        :type CurrentValue: str
+        :param NeedReboot: 修改参数后，是否需要重启数据库以使参数生效，0-不需要重启，1-需要重启
+        :type NeedReboot: int
+        :param Max: 参数允许的最大值
+        :type Max: int
+        :param Min: 参数允许的最小值
+        :type Min: int
+        :param EnumValue: 参数允许的枚举类型
+        :type EnumValue: list of str
+        :param Status: 参数状态 0-状态正常 1-在修改中
+        :type Status: int
+        """
+        self.Name = None
+        self.ParamType = None
+        self.Default = None
+        self.Description = None
+        self.CurrentValue = None
+        self.NeedReboot = None
+        self.Max = None
+        self.Min = None
+        self.EnumValue = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.ParamType = params.get("ParamType")
+        self.Default = params.get("Default")
+        self.Description = params.get("Description")
+        self.CurrentValue = params.get("CurrentValue")
+        self.NeedReboot = params.get("NeedReboot")
+        self.Max = params.get("Max")
+        self.Min = params.get("Min")
+        self.EnumValue = params.get("EnumValue")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class PublishSubscribe(AbstractModel):

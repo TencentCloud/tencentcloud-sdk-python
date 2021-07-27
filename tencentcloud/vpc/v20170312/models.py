@@ -973,11 +973,14 @@ class AssociateAddressRequest(AbstractModel):
         :type NetworkInterfaceId: str
         :param PrivateIpAddress: 要绑定的内网 IP。如果指定了 `NetworkInterfaceId` 则也必须指定 `PrivateIpAddress` ，表示将 EIP 绑定到指定弹性网卡的指定内网 IP 上。同时要确保指定的 `PrivateIpAddress` 是指定的 `NetworkInterfaceId` 上的一个内网 IP。指定弹性网卡的内网 IP 可通过登录[控制台](https://console.cloud.tencent.com/vpc/eni)查询，也可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/api/215/15817)接口返回值中的`privateIpAddress`获取。
         :type PrivateIpAddress: str
+        :param EipDirectConnection: 指定绑定时是否设置直通。弹性公网 IP 直通请参见 [EIP 直通](https://cloud.tencent.com/document/product/1199/41709)。取值：True、False，默认值为 False。当绑定 CVM 实例、EKS 弹性集群时，可设定此参数为 True。此参数目前处于内测中，如需使用，请提交 [工单申请](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20CLB&level3_id=1071&queue=96&scene_code=34639&step=2)。
+        :type EipDirectConnection: bool
         """
         self.AddressId = None
         self.InstanceId = None
         self.NetworkInterfaceId = None
         self.PrivateIpAddress = None
+        self.EipDirectConnection = None
 
 
     def _deserialize(self, params):
@@ -985,6 +988,7 @@ class AssociateAddressRequest(AbstractModel):
         self.InstanceId = params.get("InstanceId")
         self.NetworkInterfaceId = params.get("NetworkInterfaceId")
         self.PrivateIpAddress = params.get("PrivateIpAddress")
+        self.EipDirectConnection = params.get("EipDirectConnection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

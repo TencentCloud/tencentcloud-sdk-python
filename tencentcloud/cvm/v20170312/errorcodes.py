@@ -287,6 +287,9 @@ INVALIDPARAMETERVALUE_INVALIDIMAGEFORGIVENINSTANCETYPE = 'InvalidParameterValue.
 # 镜像不允许执行该操作
 INVALIDPARAMETERVALUE_INVALIDIMAGEID = 'InvalidParameterValue.InvalidImageId'
 
+# 当前地域不支持指定镜像所包含的操作系统。
+INVALIDPARAMETERVALUE_INVALIDIMAGEOSNAME = 'InvalidParameterValue.InvalidImageOsName'
+
 # 镜像状态不合规范
 INVALIDPARAMETERVALUE_INVALIDIMAGESTATE = 'InvalidParameterValue.InvalidImageState'
 

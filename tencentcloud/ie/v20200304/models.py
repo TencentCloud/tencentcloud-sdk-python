@@ -3733,6 +3733,54 @@ class TaskResultFile(AbstractModel):
         
 
 
+class TextMarkInfoItem(AbstractModel):
+    """画质重生子任务文字水印信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Text: 文字内容。
+        :type Text: str
+        :param PosX: 文字水印X坐标。
+        :type PosX: int
+        :param PosY: 文字水印Y坐标。
+        :type PosY: int
+        :param FontSize: 文字大小
+        :type FontSize: int
+        :param FontFile: 字体，可选项：hei,song，simkai,arial；默认hei(黑体）。
+        :type FontFile: str
+        :param FontColor: 字体颜色，颜色见附录，不填默认black。
+        :type FontColor: str
+        :param FontAlpha: 文字透明度，可选值0-1。0：不透明，1：全透明。默认为0
+        :type FontAlpha: float
+        """
+        self.Text = None
+        self.PosX = None
+        self.PosY = None
+        self.FontSize = None
+        self.FontFile = None
+        self.FontColor = None
+        self.FontAlpha = None
+
+
+    def _deserialize(self, params):
+        self.Text = params.get("Text")
+        self.PosX = params.get("PosX")
+        self.PosY = params.get("PosY")
+        self.FontSize = params.get("FontSize")
+        self.FontFile = params.get("FontFile")
+        self.FontColor = params.get("FontColor")
+        self.FontAlpha = params.get("FontAlpha")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UrlInfo(AbstractModel):
     """任务视频Url形式下载信息。
 
@@ -3916,6 +3964,8 @@ hlg。
         :type VideoEnhance: :class:`tencentcloud.ie.v20200304.models.VideoEnhance`
         :param HiddenMarkInfo: 数字水印参数信息。
         :type HiddenMarkInfo: :class:`tencentcloud.ie.v20200304.models.HiddenMarkInfo`
+        :param TextMarkInfo: 文本水印参数信息。
+        :type TextMarkInfo: list of TextMarkInfoItem
         """
         self.Fps = None
         self.Width = None
@@ -3930,6 +3980,7 @@ hlg。
         self.Hdr = None
         self.VideoEnhance = None
         self.HiddenMarkInfo = None
+        self.TextMarkInfo = None
 
 
     def _deserialize(self, params):
@@ -3957,6 +4008,12 @@ hlg。
         if params.get("HiddenMarkInfo") is not None:
             self.HiddenMarkInfo = HiddenMarkInfo()
             self.HiddenMarkInfo._deserialize(params.get("HiddenMarkInfo"))
+        if params.get("TextMarkInfo") is not None:
+            self.TextMarkInfo = []
+            for item in params.get("TextMarkInfo"):
+                obj = TextMarkInfoItem()
+                obj._deserialize(item)
+                self.TextMarkInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

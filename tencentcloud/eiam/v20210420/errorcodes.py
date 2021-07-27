@@ -20,11 +20,11 @@ FAILEDOPERATION_ADDUSERSTOUSERGROUP = 'FailedOperation.AddUsersToUserGroup'
 # 应用ID不能为空。
 FAILEDOPERATION_APPIDISNULL = 'FailedOperation.AppIdIsNull'
 
-# FailedOperation.AppIdNotExited
-FAILEDOPERATION_APPIDNOTEXITED = 'FailedOperation.AppIdNotExited'
-
 # 应用ID不存在。
 FAILEDOPERATION_APPIDNOTFOUND = 'FailedOperation.AppIdNotFound'
+
+# 应用不存在。
+FAILEDOPERATION_APPNOTEXISTED = 'FailedOperation.AppNotExisted'
 
 # 其子机构中存在用户的机构节点不能被删除。
 FAILEDOPERATION_CHILDORGNODEWITHUSERSCANNOTBEDELETED = 'FailedOperation.ChildOrgNodeWithUsersCannotBeDeleted'
@@ -139,6 +139,3 @@ INVALIDPARAMETER_PARAMETERLLLEGAL = 'InvalidParameter.Parameterlllegal'
 
 # 输入密码不合法。
 INVALIDPARAMETER_PASSWORDISILLEGAL = 'InvalidParameter.PasswordIsIllegal'
-
-# Uin不存在。
-OPERATIONDENIED_UINNOTEXISTED = 'OperationDenied.UinNotExisted'

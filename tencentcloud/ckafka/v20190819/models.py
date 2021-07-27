@@ -504,14 +504,19 @@ class CreateInstancePreData(AbstractModel):
         :param DealNames: 订单号列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type DealNames: list of str
+        :param InstanceId: 实例Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
         """
         self.FlowId = None
         self.DealNames = None
+        self.InstanceId = None
 
 
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
         self.DealNames = params.get("DealNames")
+        self.InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -546,6 +551,20 @@ class CreateInstancePreRequest(AbstractModel):
         :type ClusterId: int
         :param RenewFlag: 预付费自动续费标记，0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)
         :type RenewFlag: int
+        :param KafkaVersion: 支持指定版本Kafka版本（0.10.2/1.1.1/2.4.2） 。指定专业版参数specificationsType=pro
+        :type KafkaVersion: str
+        :param SpecificationsType: 专业版必须填写 （专业版：profession、标准版：standard） 默认是standard。专业版填profession
+        :type SpecificationsType: str
+        :param DiskSize: 磁盘大小,专业版不填写默认最小磁盘,填写后根据磁盘带宽分区数弹性计算
+        :type DiskSize: int
+        :param BandWidth: 带宽,专业版不填写默认最小带宽,填写后根据磁盘带宽分区数弹性计算
+        :type BandWidth: int
+        :param Partition: 分区大小,专业版不填写默认最小分区数,填写后根据磁盘带宽分区数弹性计算
+        :type Partition: int
+        :param Tags: 标签
+        :type Tags: list of Tag
+        :param DiskType: 磁盘类型（ssd填写CLOUD_SSD，sata填写CLOUD_BASIC）
+        :type DiskType: str
         """
         self.InstanceName = None
         self.ZoneId = None
@@ -556,6 +575,13 @@ class CreateInstancePreRequest(AbstractModel):
         self.MsgRetentionTime = None
         self.ClusterId = None
         self.RenewFlag = None
+        self.KafkaVersion = None
+        self.SpecificationsType = None
+        self.DiskSize = None
+        self.BandWidth = None
+        self.Partition = None
+        self.Tags = None
+        self.DiskType = None
 
 
     def _deserialize(self, params):
@@ -568,6 +594,18 @@ class CreateInstancePreRequest(AbstractModel):
         self.MsgRetentionTime = params.get("MsgRetentionTime")
         self.ClusterId = params.get("ClusterId")
         self.RenewFlag = params.get("RenewFlag")
+        self.KafkaVersion = params.get("KafkaVersion")
+        self.SpecificationsType = params.get("SpecificationsType")
+        self.DiskSize = params.get("DiskSize")
+        self.BandWidth = params.get("BandWidth")
+        self.Partition = params.get("Partition")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.DiskType = params.get("DiskType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

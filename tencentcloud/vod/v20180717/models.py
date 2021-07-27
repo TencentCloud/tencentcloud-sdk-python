@@ -1034,12 +1034,12 @@ class AiContentReviewResult(AbstractModel):
 <li>Porn：图片鉴黄</li>
 <li>Terrorism：图片鉴恐</li>
 <li>Political：图片鉴政</li>
-<li>Porn.Asr：Asr 文字鉴黄</li>
+<li>Porn.Asr：Asr 文字（ 音频中的文字）鉴黄</li>
 <li>Porn.Ocr：Ocr 文字鉴黄</li>
-<li>Political.Asr：Asr 文字鉴政</li>
+<li>Political.Asr：Asr 文字（ 音频中的文字）鉴政</li>
 <li>Political.Ocr：Ocr 文字鉴政</li>
 <li>Terrorism.Ocr：Ocr 文字鉴恐</li>
-<li>Prohibited.Asr：Asr 文字鉴违禁</li>
+<li>Prohibited.Asr：Asr 文字（ 音频中的文字）鉴违禁</li>
 <li>Prohibited.Ocr：Ocr 文字鉴违禁</li>
         :type Type: str
         :param PornTask: 视频内容审核智能画面鉴黄任务的查询结果，当任务类型为 Porn 时有效。

@@ -18,6 +18,46 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ActivityRecordItem(AbstractModel):
+    """活动详情
+
+    """
+
+    def __init__(self):
+        """
+        :param Uin: 用户uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: str
+        :param ActivityId: 活动id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActivityId: int
+        :param Status: 自定义状态码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param SubStatus: 自定义子状态码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubStatus: str
+        """
+        self.Uin = None
+        self.ActivityId = None
+        self.Status = None
+        self.SubStatus = None
+
+
+    def _deserialize(self, params):
+        self.Uin = params.get("Uin")
+        self.ActivityId = params.get("ActivityId")
+        self.Status = params.get("Status")
+        self.SubStatus = params.get("SubStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AuthDomain(AbstractModel):
     """合法域名
 
@@ -2229,6 +2269,68 @@ class DeleteWxGatewayRouteResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeActivityRecordRequest(AbstractModel):
+    """DescribeActivityRecord请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ChannelToken: 渠道加密token
+        :type ChannelToken: str
+        :param Channel: 渠道来源，每个来源对应不同secretKey
+        :type Channel: str
+        :param ActivityIdList: 活动id列表
+        :type ActivityIdList: list of int
+        :param Status: 过滤状态码
+        :type Status: int
+        """
+        self.ChannelToken = None
+        self.Channel = None
+        self.ActivityIdList = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.ChannelToken = params.get("ChannelToken")
+        self.Channel = params.get("Channel")
+        self.ActivityIdList = params.get("ActivityIdList")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeActivityRecordResponse(AbstractModel):
+    """DescribeActivityRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ActivityRecords: 活动记录详情
+        :type ActivityRecords: list of ActivityRecordItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ActivityRecords = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ActivityRecords") is not None:
+            self.ActivityRecords = []
+            for item in params.get("ActivityRecords"):
+                obj = ActivityRecordItem()
+                obj._deserialize(item)
+                self.ActivityRecords.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -5633,6 +5735,63 @@ class ReinstateEnvRequest(AbstractModel):
 
 class ReinstateEnvResponse(AbstractModel):
     """ReinstateEnv返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ReplaceActivityRecordRequest(AbstractModel):
+    """ReplaceActivityRecord请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ActivityId: 活动id
+        :type ActivityId: int
+        :param Status: 状态码
+        :type Status: int
+        :param SubStatus: 自定义子状态
+        :type SubStatus: str
+        :param ChannelToken: 鉴权token
+        :type ChannelToken: str
+        :param Channel: 渠道名，不同渠道对应不同secretKey
+        :type Channel: str
+        """
+        self.ActivityId = None
+        self.Status = None
+        self.SubStatus = None
+        self.ChannelToken = None
+        self.Channel = None
+
+
+    def _deserialize(self, params):
+        self.ActivityId = params.get("ActivityId")
+        self.Status = params.get("Status")
+        self.SubStatus = params.get("SubStatus")
+        self.ChannelToken = params.get("ChannelToken")
+        self.Channel = params.get("Channel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReplaceActivityRecordResponse(AbstractModel):
+    """ReplaceActivityRecord返回参数结构体
 
     """
 

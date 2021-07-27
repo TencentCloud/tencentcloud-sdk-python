@@ -4024,6 +4024,15 @@ class StrategyInfo(AbstractModel):
         :param IsServiceLinkedPolicy: 是否是服务相关角色策略
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsServiceLinkedPolicy: int
+        :param AttachEntityCount: 关联策略实体数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttachEntityCount: int
+        :param AttachEntityBoundaryCount: 关联权限边界实体数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttachEntityBoundaryCount: int
+        :param UpdateTime: 最后编辑时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
         """
         self.PolicyId = None
         self.PolicyName = None
@@ -4037,6 +4046,9 @@ class StrategyInfo(AbstractModel):
         self.Deactived = None
         self.DeactivedDetail = None
         self.IsServiceLinkedPolicy = None
+        self.AttachEntityCount = None
+        self.AttachEntityBoundaryCount = None
+        self.UpdateTime = None
 
 
     def _deserialize(self, params):
@@ -4052,6 +4064,9 @@ class StrategyInfo(AbstractModel):
         self.Deactived = params.get("Deactived")
         self.DeactivedDetail = params.get("DeactivedDetail")
         self.IsServiceLinkedPolicy = params.get("IsServiceLinkedPolicy")
+        self.AttachEntityCount = params.get("AttachEntityCount")
+        self.AttachEntityBoundaryCount = params.get("AttachEntityBoundaryCount")
+        self.UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

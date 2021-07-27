@@ -110,16 +110,16 @@ class AudioResult(AbstractModel):
 
 
 class AudioResultDetailLanguageResult(AbstractModel):
-    """音频小语种检测结果
+    """音频语言种类检测结果
 
     """
 
     def __init__(self):
         """
-        :param Label: 该字段用于返回语种检测结果所对应的语种标签，目前支持：**Arabic**（阿拉伯语）、**English**（英语）、**Mandarin**（普通话）、**Tibetan**（藏语）、**Uyghur**（维语）、**Other**（其他上面5类之外）。
+        :param Label: 该字段用于返回对应的语言种类信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
-        :param Score: 该参数用于返回当前标签下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高**），越高代表音频越有可能属于当前返回的语种标签；如：*Uyghur 99*，则表明该音频非常有可能属于维语内容。
+        :param Score: 该参数用于返回当前标签下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高**），越高代表音频越有可能属于当前返回的语种标签；
 注意：此字段可能返回 null，表示取不到有效值。
         :type Score: int
         :param StartTime: 该参数用于返回对应语种标签的片段在音频文件内的开始时间，单位为毫秒。

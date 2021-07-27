@@ -7332,6 +7332,44 @@ class FrameTagConfigureInfoForUpdate(AbstractModel):
         
 
 
+class HeadTailParameter(AbstractModel):
+    """片头片尾参数
+
+    """
+
+    def __init__(self):
+        """
+        :param HeadSet: 片头列表。
+        :type HeadSet: list of MediaInputInfo
+        :param TailSet: 片尾列表。
+        :type TailSet: list of MediaInputInfo
+        """
+        self.HeadSet = None
+        self.TailSet = None
+
+
+    def _deserialize(self, params):
+        if params.get("HeadSet") is not None:
+            self.HeadSet = []
+            for item in params.get("HeadSet"):
+                obj = MediaInputInfo()
+                obj._deserialize(item)
+                self.HeadSet.append(obj)
+        if params.get("TailSet") is not None:
+            self.TailSet = []
+            for item in params.get("TailSet"):
+                obj = MediaInputInfo()
+                obj._deserialize(item)
+                self.TailSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ImageSpriteTaskInput(AbstractModel):
     """对视频截雪碧图任务输入参数类型
 
@@ -12935,12 +12973,18 @@ class TaskNotifyConfig(AbstractModel):
         :type TopicName: str
         :param NotifyMode: 工作流通知的模式，可取值有 Finish 和 Change，不填代表 Finish。
         :type NotifyMode: str
+        :param NotifyType: 通知类型，默认CMQ，指定URL时HTTP回调推送到 NotifyUrl 指定的地址。
+        :type NotifyType: str
+        :param NotifyUrl: HTTP回调地址，NotifyType为URL时必填。
+        :type NotifyUrl: str
         """
         self.CmqModel = None
         self.CmqRegion = None
         self.QueueName = None
         self.TopicName = None
         self.NotifyMode = None
+        self.NotifyType = None
+        self.NotifyUrl = None
 
 
     def _deserialize(self, params):
@@ -12949,6 +12993,8 @@ class TaskNotifyConfig(AbstractModel):
         self.QueueName = params.get("QueueName")
         self.TopicName = params.get("TopicName")
         self.NotifyMode = params.get("NotifyMode")
+        self.NotifyType = params.get("NotifyType")
+        self.NotifyUrl = params.get("NotifyUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13382,6 +13428,9 @@ class TranscodeTaskInput(AbstractModel):
         :param ObjectNumberFormat: 转码后输出路径中的`{number}`变量的规则。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ObjectNumberFormat: :class:`tencentcloud.mps.v20190612.models.NumberFormat`
+        :param HeadTailParameter: 片头片尾参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HeadTailParameter: :class:`tencentcloud.mps.v20190612.models.HeadTailParameter`
         """
         self.Definition = None
         self.RawParameter = None
@@ -13394,6 +13443,7 @@ class TranscodeTaskInput(AbstractModel):
         self.OutputObjectPath = None
         self.SegmentObjectName = None
         self.ObjectNumberFormat = None
+        self.HeadTailParameter = None
 
 
     def _deserialize(self, params):
@@ -13426,6 +13476,9 @@ class TranscodeTaskInput(AbstractModel):
         if params.get("ObjectNumberFormat") is not None:
             self.ObjectNumberFormat = NumberFormat()
             self.ObjectNumberFormat._deserialize(params.get("ObjectNumberFormat"))
+        if params.get("HeadTailParameter") is not None:
+            self.HeadTailParameter = HeadTailParameter()
+            self.HeadTailParameter._deserialize(params.get("HeadTailParameter"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

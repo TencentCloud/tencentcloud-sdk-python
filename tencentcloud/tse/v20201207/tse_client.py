@@ -26,34 +26,6 @@ class TseClient(AbstractClient):
     _service = 'tse'
 
 
-    def DescribeConfig(self, request):
-        """查看配置项
-
-        :param request: Request instance for DescribeConfig.
-        :type request: :class:`tencentcloud.tse.v20201207.models.DescribeConfigRequest`
-        :rtype: :class:`tencentcloud.tse.v20201207.models.DescribeConfigResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeConfig", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeConfigResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribeSREInstanceAccessAddress(self, request):
         """查询微服务注册引擎实例访问地址
 
@@ -96,34 +68,6 @@ class TseClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSREInstancesResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def ManageConfig(self, request):
-        """管理配置
-
-        :param request: Request instance for ManageConfig.
-        :type request: :class:`tencentcloud.tse.v20201207.models.ManageConfigRequest`
-        :rtype: :class:`tencentcloud.tse.v20201207.models.ManageConfigResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("ManageConfig", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ManageConfigResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

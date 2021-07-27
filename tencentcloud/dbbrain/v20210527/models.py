@@ -1487,11 +1487,14 @@ class DescribeSlowLogUserHostStatsRequest(AbstractModel):
         :type EndTime: str
         :param Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
         :type Product: str
+        :param Md5: SOL模板的MD5值
+        :type Md5: str
         """
         self.InstanceId = None
         self.StartTime = None
         self.EndTime = None
         self.Product = None
+        self.Md5 = None
 
 
     def _deserialize(self, params):
@@ -1499,6 +1502,7 @@ class DescribeSlowLogUserHostStatsRequest(AbstractModel):
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
         self.Product = params.get("Product")
+        self.Md5 = params.get("Md5")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3069,6 +3073,8 @@ class SlowLogTopSqlItem(AbstractModel):
         :type LockTimeAvg: float
         :param RowsExaminedAvg: 平均扫描行数
         :type RowsExaminedAvg: float
+        :param Md5: SOL模板的MD5值
+        :type Md5: str
         """
         self.LockTime = None
         self.LockTimeMax = None
@@ -3094,6 +3100,7 @@ class SlowLogTopSqlItem(AbstractModel):
         self.RowsSentAvg = None
         self.LockTimeAvg = None
         self.RowsExaminedAvg = None
+        self.Md5 = None
 
 
     def _deserialize(self, params):
@@ -3121,6 +3128,7 @@ class SlowLogTopSqlItem(AbstractModel):
         self.RowsSentAvg = params.get("RowsSentAvg")
         self.LockTimeAvg = params.get("LockTimeAvg")
         self.RowsExaminedAvg = params.get("RowsExaminedAvg")
+        self.Md5 = params.get("Md5")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
