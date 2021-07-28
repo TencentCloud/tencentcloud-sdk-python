@@ -1707,6 +1707,56 @@ class DeleteWaterPrintKeyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBasicDeviceStatusRequest(AbstractModel):
+    """DescribeBasicDeviceStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param IpList: IP 资源列表
+        :type IpList: list of str
+        """
+        self.IpList = None
+
+
+    def _deserialize(self, params):
+        self.IpList = params.get("IpList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBasicDeviceStatusResponse(AbstractModel):
+    """DescribeBasicDeviceStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Data: 返回资源及状态
+        :type Data: list of KeyValue
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = KeyValue()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeBlackWhiteIpListRequest(AbstractModel):
     """DescribeBlackWhiteIpList请求参数结构体
 
@@ -2499,7 +2549,7 @@ class DescribeListProtectThresholdConfigRequest(AbstractModel):
         :type FilterInstanceId: str
         :param FilterIp: IP搜索
         :type FilterIp: str
-        :param FilterDomain: 域名搜索（查询域名与协议的CC防护阈值时使用）
+        :param FilterDomain: 域名搜索(查询域名与协议的CC防护阈值时使用）
         :type FilterDomain: str
         :param FilterProtocol: 协议搜索(查询域名与协议的CC防护阈值时使用）
         :type FilterProtocol: str
@@ -3096,6 +3146,34 @@ class InstanceRelation(AbstractModel):
     def _deserialize(self, params):
         self.EipList = params.get("EipList")
         self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KeyValue(AbstractModel):
+    """字段值，K-V形式
+
+    """
+
+    def __init__(self):
+        """
+        :param Key: 字段名称
+        :type Key: str
+        :param Value: 字段取值
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

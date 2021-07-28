@@ -251,6 +251,34 @@ class GaapClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateCustomHeader(self, request):
+        """本接口（CreateCustomHeader）用于创建HTTP/HTTPS监听器的自定义header，客户端请求通过访问该监听器时，会将监听器中配置的header信息发送到源站。
+
+        :param request: Request instance for CreateCustomHeader.
+        :type request: :class:`tencentcloud.gaap.v20180529.models.CreateCustomHeaderRequest`
+        :rtype: :class:`tencentcloud.gaap.v20180529.models.CreateCustomHeaderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateCustomHeader", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateCustomHeaderResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateDomain(self, request):
         """本接口（CreateDomain）用于创建HTTP/HTTPS监听器的访问域名，客户端请求通过访问该域名来请求后端业务。
         该接口仅支持version3.0的通道。
@@ -868,6 +896,34 @@ class GaapClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBlackHeader(self, request):
+        """本接口（DescribeBlackHeader）用于查询禁用的自定义header 名称
+
+        :param request: Request instance for DescribeBlackHeader.
+        :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeBlackHeaderRequest`
+        :rtype: :class:`tencentcloud.gaap.v20180529.models.DescribeBlackHeaderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBlackHeader", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBlackHeaderResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCertificateDetail(self, request):
         """本接口（DescribeCertificateDetail）用于查询证书详情，包括证书ID，证书名字，证书类型，证书内容以及密钥等信息。
 
@@ -938,6 +994,34 @@ class GaapClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCountryAreaMappingResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCustomHeader(self, request):
+        """本接口（DescribeCustomHeader）用于自定义header列表
+
+        :param request: Request instance for DescribeCustomHeader.
+        :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeCustomHeaderRequest`
+        :rtype: :class:`tencentcloud.gaap.v20180529.models.DescribeCustomHeaderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCustomHeader", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCustomHeaderResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

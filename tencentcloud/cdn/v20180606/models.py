@@ -2307,6 +2307,81 @@ class CreateEdgePackTaskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateScdnDomainRequest(AbstractModel):
+    """CreateScdnDomain请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Domain: 域名
+        :type Domain: str
+        :param Waf: Web 攻击防护（WAF）配置
+        :type Waf: :class:`tencentcloud.cdn.v20180606.models.ScdnWafConfig`
+        :param Acl: 自定义防护策略配置
+        :type Acl: :class:`tencentcloud.cdn.v20180606.models.ScdnAclConfig`
+        :param CC: CC 防护配置，目前 CC 防护默认开启
+        :type CC: :class:`tencentcloud.cdn.v20180606.models.ScdnConfig`
+        :param Ddos: DDOS 防护配置，目前 DDoS 防护默认开启
+        :type Ddos: :class:`tencentcloud.cdn.v20180606.models.ScdnDdosConfig`
+        :param Bot: BOT 防护配置
+        :type Bot: :class:`tencentcloud.cdn.v20180606.models.ScdnBotConfig`
+        """
+        self.Domain = None
+        self.Waf = None
+        self.Acl = None
+        self.CC = None
+        self.Ddos = None
+        self.Bot = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        if params.get("Waf") is not None:
+            self.Waf = ScdnWafConfig()
+            self.Waf._deserialize(params.get("Waf"))
+        if params.get("Acl") is not None:
+            self.Acl = ScdnAclConfig()
+            self.Acl._deserialize(params.get("Acl"))
+        if params.get("CC") is not None:
+            self.CC = ScdnConfig()
+            self.CC._deserialize(params.get("CC"))
+        if params.get("Ddos") is not None:
+            self.Ddos = ScdnDdosConfig()
+            self.Ddos._deserialize(params.get("Ddos"))
+        if params.get("Bot") is not None:
+            self.Bot = ScdnBotConfig()
+            self.Bot._deserialize(params.get("Bot"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateScdnDomainResponse(AbstractModel):
+    """CreateScdnDomain返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 创建结果，Success表示成功
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateScdnFailedLogTaskRequest(AbstractModel):
     """CreateScdnFailedLogTask请求参数结构体
 

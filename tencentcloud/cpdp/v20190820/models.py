@@ -6621,6 +6621,10 @@ development: 开发环境
 ANONYMOUS: 匿名类型 USER_ID
 默认值为 USER_ID
         :type UserType: str
+        :param MigrateMode: 签约代扣穿透查询存量数据迁移模式
+        :type MigrateMode: str
+        :param ContractMethod: 签约方式
+        :type ContractMethod: str
         """
         self.MidasAppId = None
         self.UserId = None
@@ -6635,6 +6639,8 @@ ANONYMOUS: 匿名类型 USER_ID
         self.ExternalContractData = None
         self.MidasEnvironment = None
         self.UserType = None
+        self.MigrateMode = None
+        self.ContractMethod = None
 
 
     def _deserialize(self, params):
@@ -6651,6 +6657,8 @@ ANONYMOUS: 匿名类型 USER_ID
         self.ExternalContractData = params.get("ExternalContractData")
         self.MidasEnvironment = params.get("MidasEnvironment")
         self.UserType = params.get("UserType")
+        self.MigrateMode = params.get("MigrateMode")
+        self.ContractMethod = params.get("ContractMethod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11209,6 +11217,10 @@ development: 开发环境
 ANONYMOUS: 匿名类型 USER_ID
 默认值为 USER_ID
         :type UserType: str
+        :param ContractMethod: 签约方式
+        :type ContractMethod: str
+        :param MigrateMode: 签约代扣穿透查询存量数据迁移模式
+        :type MigrateMode: str
         """
         self.MidasAppId = None
         self.UserId = None
@@ -11224,6 +11236,8 @@ ANONYMOUS: 匿名类型 USER_ID
         self.TerminationReason = None
         self.MidasEnvironment = None
         self.UserType = None
+        self.ContractMethod = None
+        self.MigrateMode = None
 
 
     def _deserialize(self, params):
@@ -11241,6 +11255,8 @@ ANONYMOUS: 匿名类型 USER_ID
         self.TerminationReason = params.get("TerminationReason")
         self.MidasEnvironment = params.get("MidasEnvironment")
         self.UserType = params.get("UserType")
+        self.ContractMethod = params.get("ContractMethod")
+        self.MigrateMode = params.get("MigrateMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

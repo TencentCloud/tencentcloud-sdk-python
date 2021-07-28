@@ -603,6 +603,65 @@ class CreateTaskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateTasksInOrderRequest(AbstractModel):
+    """CreateTasksInOrder请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DatabaseName: 数据库名称。如果SQL语句中有数据库名称，优先使用SQL语句中的数据库，否则使用该参数指定的数据库。
+        :type DatabaseName: str
+        :param Tasks: SQL任务信息
+        :type Tasks: :class:`tencentcloud.dlc.v20210125.models.TasksInfo`
+        :param DatasourceConnectionName: 数据源名称，默认为COSDataCatalog
+        :type DatasourceConnectionName: str
+        """
+        self.DatabaseName = None
+        self.Tasks = None
+        self.DatasourceConnectionName = None
+
+
+    def _deserialize(self, params):
+        self.DatabaseName = params.get("DatabaseName")
+        if params.get("Tasks") is not None:
+            self.Tasks = TasksInfo()
+            self.Tasks._deserialize(params.get("Tasks"))
+        self.DatasourceConnectionName = params.get("DatasourceConnectionName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTasksInOrderResponse(AbstractModel):
+    """CreateTasksInOrder返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BatchId: 本批次提交的任务的批次Id
+        :type BatchId: str
+        :param TaskIdSet: 任务Id集合，按照执行顺序排列
+        :type TaskIdSet: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BatchId = None
+        self.TaskIdSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BatchId = params.get("BatchId")
+        self.TaskIdSet = params.get("TaskIdSet")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateUserRequest(AbstractModel):
     """CreateUser请求参数结构体
 
@@ -2397,6 +2456,47 @@ class TaskResponseInfo(AbstractModel):
         self.Percentage = params.get("Percentage")
         self.OutputMessage = params.get("OutputMessage")
         self.TaskType = params.get("TaskType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TasksInfo(AbstractModel):
+    """批量顺序执行任务集合
+
+    """
+
+    def __init__(self):
+        """
+        :param TaskType: 任务类型，SQLTask：SQL查询任务。SparkSQLTask：Spark SQL查询任务
+        :type TaskType: str
+        :param FailureTolerance: 容错策略。Proceed：前面任务出错/取消后继续执行后面的任务。Terminate：前面的任务出错/取消之后终止后面任务的执行，后面的任务全部标记为已取消。
+        :type FailureTolerance: str
+        :param SQL: base64加密后的SQL语句，用";"号分隔每个SQL语句，一次最多提交50个任务。严格按照前后顺序执行
+        :type SQL: str
+        :param Config: 任务的配置信息
+        :type Config: list of KVPair
+        """
+        self.TaskType = None
+        self.FailureTolerance = None
+        self.SQL = None
+        self.Config = None
+
+
+    def _deserialize(self, params):
+        self.TaskType = params.get("TaskType")
+        self.FailureTolerance = params.get("FailureTolerance")
+        self.SQL = params.get("SQL")
+        if params.get("Config") is not None:
+            self.Config = []
+            for item in params.get("Config"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self.Config.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

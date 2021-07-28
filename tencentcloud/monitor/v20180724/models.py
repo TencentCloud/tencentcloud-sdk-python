@@ -104,6 +104,9 @@ class AlarmHistory(AbstractModel):
         :param MetricsInfo: 指标信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type MetricsInfo: list of AlarmHistoryMetric
+        :param Dimensions: 告警实例的维度信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Dimensions: str
         """
         self.AlarmId = None
         self.MonitorType = None
@@ -128,6 +131,7 @@ class AlarmHistory(AbstractModel):
         self.Region = None
         self.PolicyExists = None
         self.MetricsInfo = None
+        self.Dimensions = None
 
 
     def _deserialize(self, params):
@@ -164,6 +168,7 @@ class AlarmHistory(AbstractModel):
                 obj = AlarmHistoryMetric()
                 obj._deserialize(item)
                 self.MetricsInfo.append(obj)
+        self.Dimensions = params.get("Dimensions")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

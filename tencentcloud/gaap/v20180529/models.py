@@ -896,6 +896,56 @@ class CreateCertificateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateCustomHeaderRequest(AbstractModel):
+    """CreateCustomHeader请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleId: 规则id
+        :type RuleId: str
+        :param Headers: 新增的header名称和内容列表， ‘’$remote_addr‘’会被解析替换成客户端ip，其他值原样透传到源站。
+        :type Headers: list of HttpHeaderParam
+        """
+        self.RuleId = None
+        self.Headers = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        if params.get("Headers") is not None:
+            self.Headers = []
+            for item in params.get("Headers"):
+                obj = HttpHeaderParam()
+                obj._deserialize(item)
+                self.Headers.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCustomHeaderResponse(AbstractModel):
+    """CreateCustomHeader返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateDomainErrorPageInfoRequest(AbstractModel):
     """CreateDomainErrorPageInfo请求参数结构体
 
@@ -2209,6 +2259,34 @@ class DescribeAccessRegionsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBlackHeaderRequest(AbstractModel):
+    """DescribeBlackHeader请求参数结构体
+
+    """
+
+
+class DescribeBlackHeaderResponse(AbstractModel):
+    """DescribeBlackHeader返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BlackHeaders: 禁用的自定义header列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlackHeaders: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BlackHeaders = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BlackHeaders = params.get("BlackHeaders")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCertificateDetailRequest(AbstractModel):
     """DescribeCertificateDetail请求参数结构体
 
@@ -2354,6 +2432,44 @@ class DescribeCountryAreaMappingResponse(AbstractModel):
                 obj = CountryAreaMap()
                 obj._deserialize(item)
                 self.CountryAreaMappingList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCustomHeaderRequest(AbstractModel):
+    """DescribeCustomHeader请求参数结构体
+
+    """
+
+
+class DescribeCustomHeaderResponse(AbstractModel):
+    """DescribeCustomHeader返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RuleId: 规则id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleId: str
+        :param Headers: 自定义header列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Headers: list of HttpHeaderParam
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RuleId = None
+        self.Headers = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        if params.get("Headers") is not None:
+            self.Headers = []
+            for item in params.get("Headers"):
+                obj = HttpHeaderParam()
+                obj._deserialize(item)
+                self.Headers.append(obj)
         self.RequestId = params.get("RequestId")
 
 

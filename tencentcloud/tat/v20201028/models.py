@@ -733,6 +733,8 @@ class Invocation(AbstractModel):
         :type InstanceKind: str
         :param Username: 在实例上执行命令时使用的用户名。
         :type Username: str
+        :param InvocationSource: 调用来源。
+        :type InvocationSource: str
         """
         self.InvocationId = None
         self.CommandId = None
@@ -747,6 +749,7 @@ class Invocation(AbstractModel):
         self.DefaultParameters = None
         self.InstanceKind = None
         self.Username = None
+        self.InvocationSource = None
 
 
     def _deserialize(self, params):
@@ -768,6 +771,7 @@ class Invocation(AbstractModel):
         self.DefaultParameters = params.get("DefaultParameters")
         self.InstanceKind = params.get("InstanceKind")
         self.Username = params.get("Username")
+        self.InvocationSource = params.get("InvocationSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -817,6 +821,8 @@ class InvocationTask(AbstractModel):
         :type CommandDocument: :class:`tencentcloud.tat.v20201028.models.CommandDocument`
         :param ErrorInfo: 执行任务失败时的错误信息。
         :type ErrorInfo: str
+        :param InvocationSource: 调用来源。
+        :type InvocationSource: str
         """
         self.InvocationId = None
         self.InvocationTaskId = None
@@ -830,6 +836,7 @@ class InvocationTask(AbstractModel):
         self.UpdatedTime = None
         self.CommandDocument = None
         self.ErrorInfo = None
+        self.InvocationSource = None
 
 
     def _deserialize(self, params):
@@ -849,6 +856,7 @@ class InvocationTask(AbstractModel):
             self.CommandDocument = CommandDocument()
             self.CommandDocument._deserialize(params.get("CommandDocument"))
         self.ErrorInfo = params.get("ErrorInfo")
+        self.InvocationSource = params.get("InvocationSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -2285,13 +2285,16 @@ class DescribeActivityRecordRequest(AbstractModel):
         :type Channel: str
         :param ActivityIdList: 活动id列表
         :type ActivityIdList: list of int
-        :param Status: 过滤状态码
+        :param Status: 过滤状态码，已废弃
         :type Status: int
+        :param Statuses: 状态码过滤数组，空数组时不过滤
+        :type Statuses: list of int
         """
         self.ChannelToken = None
         self.Channel = None
         self.ActivityIdList = None
         self.Status = None
+        self.Statuses = None
 
 
     def _deserialize(self, params):
@@ -2299,6 +2302,7 @@ class DescribeActivityRecordRequest(AbstractModel):
         self.Channel = params.get("Channel")
         self.ActivityIdList = params.get("ActivityIdList")
         self.Status = params.get("Status")
+        self.Statuses = params.get("Statuses")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
