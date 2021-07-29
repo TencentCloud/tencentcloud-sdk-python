@@ -1327,11 +1327,18 @@ class AiRecognitionTaskAsrFullTextResultOutput(AbstractModel):
     def __init__(self):
         """
         :param SegmentSet: 语音全文识别片段列表。
+<font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 SegmentSetFileUrl 对应的文件中获取。
         :type SegmentSet: list of AiRecognitionTaskAsrFullTextSegmentItem
+        :param SegmentSetFileUrl: 语音全文识别片段列表文件 URL。文件的内容为 JSON，数据结构与 SegmentSet 字段一致。 （文件不会永久存储，到达SegmentSetFileUrlExpireTime 时间点后文件将被删除）。
+        :type SegmentSetFileUrl: str
+        :param SegmentSetFileUrlExpireTime: 语音全文识别片段列表文件 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。。
+        :type SegmentSetFileUrlExpireTime: str
         :param SubtitleUrl: 字幕文件 Url。
         :type SubtitleUrl: str
         """
         self.SegmentSet = None
+        self.SegmentSetFileUrl = None
+        self.SegmentSetFileUrlExpireTime = None
         self.SubtitleUrl = None
 
 
@@ -1342,6 +1349,8 @@ class AiRecognitionTaskAsrFullTextResultOutput(AbstractModel):
                 obj = AiRecognitionTaskAsrFullTextSegmentItem()
                 obj._deserialize(item)
                 self.SegmentSet.append(obj)
+        self.SegmentSetFileUrl = params.get("SegmentSetFileUrl")
+        self.SegmentSetFileUrlExpireTime = params.get("SegmentSetFileUrlExpireTime")
         self.SubtitleUrl = params.get("SubtitleUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -1502,9 +1511,16 @@ class AiRecognitionTaskAsrWordsResultOutput(AbstractModel):
     def __init__(self):
         """
         :param ResultSet: 语音关键词识别结果集。
+<font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 ResultSetFileUrl 对应的文件中获取。
         :type ResultSet: list of AiRecognitionTaskAsrWordsResultItem
+        :param ResultSetFileUrl: 语音关键词识别结果集文件 URL。文件的内容为 JSON，数据结构与 ResultSet 字段一致。 （文件不会永久存储，到达ResultSetFileUrlExpireTime 时间点后文件将被删除）。
+        :type ResultSetFileUrl: str
+        :param ResultSetFileUrlExpireTime: 语音关键词识别结果集文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type ResultSetFileUrlExpireTime: str
         """
         self.ResultSet = None
+        self.ResultSetFileUrl = None
+        self.ResultSetFileUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -1514,6 +1530,8 @@ class AiRecognitionTaskAsrWordsResultOutput(AbstractModel):
                 obj = AiRecognitionTaskAsrWordsResultItem()
                 obj._deserialize(item)
                 self.ResultSet.append(obj)
+        self.ResultSetFileUrl = params.get("ResultSetFileUrl")
+        self.ResultSetFileUrlExpireTime = params.get("ResultSetFileUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1679,9 +1697,16 @@ class AiRecognitionTaskFaceResultOutput(AbstractModel):
     def __init__(self):
         """
         :param ResultSet: 智能人脸识别结果集。
+<font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 ResultSetFileUrl 对应的文件中获取。
         :type ResultSet: list of AiRecognitionTaskFaceResultItem
+        :param ResultSetFileUrl: 智能人脸识别结果集文件 URL。文件的内容为 JSON，数据结构与 ResultSet 字段一致。 （文件不会永久存储，到达ResultSetFileUrlExpireTime 时间点后文件将被删除）。
+        :type ResultSetFileUrl: str
+        :param ResultSetFileUrlExpireTime: 智能人脸识别结果集文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type ResultSetFileUrlExpireTime: str
         """
         self.ResultSet = None
+        self.ResultSetFileUrl = None
+        self.ResultSetFileUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -1691,6 +1716,8 @@ class AiRecognitionTaskFaceResultOutput(AbstractModel):
                 obj = AiRecognitionTaskFaceResultItem()
                 obj._deserialize(item)
                 self.ResultSet.append(obj)
+        self.ResultSetFileUrl = params.get("ResultSetFileUrl")
+        self.ResultSetFileUrlExpireTime = params.get("ResultSetFileUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1983,9 +2010,16 @@ class AiRecognitionTaskObjectResultOutput(AbstractModel):
     def __init__(self):
         """
         :param ResultSet: 智能物体识别结果集。
+<font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 ResultSetFileUrl 对应的文件中获取。
         :type ResultSet: list of AiRecognitionTaskObjectResultItem
+        :param ResultSetFileUrl: 智能物体识别结果集文件 URL。文件的内容为 JSON，数据结构与 ResultSet 字段一致。 （文件不会永久存储，到达ResultSetFileUrlExpireTime 时间点后文件将被删除）。
+        :type ResultSetFileUrl: str
+        :param ResultSetFileUrlExpireTime: 智能物体识别结果集文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type ResultSetFileUrlExpireTime: str
         """
         self.ResultSet = None
+        self.ResultSetFileUrl = None
+        self.ResultSetFileUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -1995,6 +2029,8 @@ class AiRecognitionTaskObjectResultOutput(AbstractModel):
                 obj = AiRecognitionTaskObjectResultItem()
                 obj._deserialize(item)
                 self.ResultSet.append(obj)
+        self.ResultSetFileUrl = params.get("ResultSetFileUrl")
+        self.ResultSetFileUrlExpireTime = params.get("ResultSetFileUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2121,9 +2157,16 @@ class AiRecognitionTaskOcrFullTextResultOutput(AbstractModel):
     def __init__(self):
         """
         :param SegmentSet: 文本全文识别结果集。
+<font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 SegmentSetFileUrl 对应的文件中获取。
         :type SegmentSet: list of AiRecognitionTaskOcrFullTextSegmentItem
+        :param SegmentSetFileUrl: 文本全文识别结果集文件 URL。文件的内容为 JSON，数据结构与 ResultSet 字段一致。 （文件不会永久存储，到达SegmentSetFileUrlExpireTime 时间点后文件将被删除）。
+        :type SegmentSetFileUrl: str
+        :param SegmentSetFileUrlExpireTime: 文本全文识别结果集文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type SegmentSetFileUrlExpireTime: str
         """
         self.SegmentSet = None
+        self.SegmentSetFileUrl = None
+        self.SegmentSetFileUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -2133,6 +2176,8 @@ class AiRecognitionTaskOcrFullTextResultOutput(AbstractModel):
                 obj = AiRecognitionTaskOcrFullTextSegmentItem()
                 obj._deserialize(item)
                 self.SegmentSet.append(obj)
+        self.SegmentSetFileUrl = params.get("SegmentSetFileUrl")
+        self.SegmentSetFileUrlExpireTime = params.get("SegmentSetFileUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2325,9 +2370,16 @@ class AiRecognitionTaskOcrWordsResultOutput(AbstractModel):
     def __init__(self):
         """
         :param ResultSet: 文本关键词识别结果集。
+<font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 ResultSetFileUrl 对应的文件中获取。
         :type ResultSet: list of AiRecognitionTaskOcrWordsResultItem
+        :param ResultSetFileUrl: 文本关键词识别结果集文件 URL。文件的内容为 JSON，数据结构与 ResultSet 字段一致。 （文件不会永久存储，到达ResultSetFileUrlExpireTime 时间点后文件将被删除）。
+        :type ResultSetFileUrl: str
+        :param ResultSetFileUrlExpireTime: 文本关键词识别结果集文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type ResultSetFileUrlExpireTime: str
         """
         self.ResultSet = None
+        self.ResultSetFileUrl = None
+        self.ResultSetFileUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -2337,6 +2389,8 @@ class AiRecognitionTaskOcrWordsResultOutput(AbstractModel):
                 obj = AiRecognitionTaskOcrWordsResultItem()
                 obj._deserialize(item)
                 self.ResultSet.append(obj)
+        self.ResultSetFileUrl = params.get("ResultSetFileUrl")
+        self.ResultSetFileUrlExpireTime = params.get("ResultSetFileUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2464,9 +2518,16 @@ class AiRecognitionTaskSegmentResultOutput(AbstractModel):
     def __init__(self):
         """
         :param SegmentSet: 视频拆条片段列表。
+<font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 SegmentSetFileUrl 对应的文件中获取。
         :type SegmentSet: list of AiRecognitionTaskSegmentSegmentItem
+        :param SegmentSetFileUrl: 视频拆条片段列表文件 URL。文件的内容为 JSON，数据结构与 SegmentSet 字段一致。 （文件不会永久存储，到达SegmentSetFileUrlExpireTime 时间点后文件将被删除）。
+        :type SegmentSetFileUrl: str
+        :param SegmentSetFileUrlExpireTime: 视频拆条片段列表文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type SegmentSetFileUrlExpireTime: str
         """
         self.SegmentSet = None
+        self.SegmentSetFileUrl = None
+        self.SegmentSetFileUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -2476,6 +2537,8 @@ class AiRecognitionTaskSegmentResultOutput(AbstractModel):
                 obj = AiRecognitionTaskSegmentSegmentItem()
                 obj._deserialize(item)
                 self.SegmentSet.append(obj)
+        self.SegmentSetFileUrl = params.get("SegmentSetFileUrl")
+        self.SegmentSetFileUrlExpireTime = params.get("SegmentSetFileUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

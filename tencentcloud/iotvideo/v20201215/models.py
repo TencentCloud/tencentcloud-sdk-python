@@ -3539,7 +3539,7 @@ class DeviceInfo(AbstractModel):
         :type LoginTime: int
         :param DevicePsk: 设备密钥
         :type DevicePsk: str
-        :param EnableState: 设备启用状态
+        :param EnableState: 设备启用状态 0为停用 1为可用
         :type EnableState: int
         :param ExpireTime: 设备过期时间
         :type ExpireTime: int

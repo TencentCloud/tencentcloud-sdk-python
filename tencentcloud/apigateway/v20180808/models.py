@@ -2043,6 +2043,8 @@ class CreateApiRequest(AbstractModel):
         :type UserType: str
         :param IsBase64Encoded: 是否打开Base64编码，只有后端是scf时才会生效。
         :type IsBase64Encoded: bool
+        :param ServiceScfFunctionType: scf函数类型。当后端类型是SCF时生效。支持事件触发(EVENT)，http直通云函数(HTTP)。
+        :type ServiceScfFunctionType: str
         """
         self.ServiceId = None
         self.ServiceType = None
@@ -2090,6 +2092,7 @@ class CreateApiRequest(AbstractModel):
         self.TargetNamespaceId = None
         self.UserType = None
         self.IsBase64Encoded = None
+        self.ServiceScfFunctionType = None
 
 
     def _deserialize(self, params):
@@ -2181,6 +2184,7 @@ class CreateApiRequest(AbstractModel):
         self.TargetNamespaceId = params.get("TargetNamespaceId")
         self.UserType = params.get("UserType")
         self.IsBase64Encoded = params.get("IsBase64Encoded")
+        self.ServiceScfFunctionType = params.get("ServiceScfFunctionType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3071,7 +3075,7 @@ class DesApisStatus(AbstractModel):
         :param IsDebugAfterCharge: 是否买后调试。（云市场预留字段）
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsDebugAfterCharge: bool
-        :param AuthType: API 鉴权类型。取值为SECRET（密钥对鉴权）、NONE（免鉴权）、OAUTH。
+        :param AuthType: API 鉴权类型。取值为SECRET（密钥对鉴权）、NONE（免鉴权）、OAUTH、EIAM。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AuthType: str
         :param ApiBusinessType: OAUTH API的类型。当AuthType 为 OAUTH时该字段有效， 取值为NORMAL（业务API）和 OAUTH（授权API）。
@@ -3612,6 +3616,61 @@ class DescribeApiEnvironmentStrategyResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Result") is not None:
             self.Result = ApiEnvironmentStrategyStataus()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeApiForApiAppRequest(AbstractModel):
+    """DescribeApiForApiApp请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ServiceId: API 所在的服务唯一 ID。
+        :type ServiceId: str
+        :param ApiId: API 接口唯一 ID。
+        :type ApiId: str
+        :param ApiRegion: Api所属地域
+        :type ApiRegion: str
+        """
+        self.ServiceId = None
+        self.ApiId = None
+        self.ApiRegion = None
+
+
+    def _deserialize(self, params):
+        self.ServiceId = params.get("ServiceId")
+        self.ApiId = params.get("ApiId")
+        self.ApiRegion = params.get("ApiRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeApiForApiAppResponse(AbstractModel):
+    """DescribeApiForApiApp返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: API 详情。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = ApiInfo()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 
@@ -7625,13 +7684,13 @@ class Service(AbstractModel):
 
 
 class ServiceConfig(AbstractModel):
-    """ServiceConfig
+    """ServiceConfig配置
 
     """
 
     def __init__(self):
         """
-        :param Product: 后端类型。启用vpc时生效，目前支持的类型为clb。
+        :param Product: 后端类型。启用vpc时生效，目前支持的类型为clb和vpc通道
         :type Product: str
         :param UniqVpcId: vpc 的唯一ID。
         :type UniqVpcId: str

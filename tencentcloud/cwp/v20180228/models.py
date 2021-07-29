@@ -6773,16 +6773,20 @@ class Place(AbstractModel):
         :type ProvinceId: int
         :param CountryId: 国家ID，暂只支持国内：1。
         :type CountryId: int
+        :param Location: 位置名称
+        :type Location: str
         """
         self.CityId = None
         self.ProvinceId = None
         self.CountryId = None
+        self.Location = None
 
 
     def _deserialize(self, params):
         self.CityId = params.get("CityId")
         self.ProvinceId = params.get("ProvinceId")
         self.CountryId = params.get("CountryId")
+        self.Location = params.get("Location")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

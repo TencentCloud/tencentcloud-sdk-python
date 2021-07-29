@@ -53,17 +53,26 @@ class DescribeSREInstanceAccessAddressResponse(AbstractModel):
         :type IntranetAddress: str
         :param InternetAddress: 公网访问地址
         :type InternetAddress: str
+        :param EnvAddressInfos: apollo多环境公网ip
+        :type EnvAddressInfos: list of EnvAddressInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.IntranetAddress = None
         self.InternetAddress = None
+        self.EnvAddressInfos = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.IntranetAddress = params.get("IntranetAddress")
         self.InternetAddress = params.get("InternetAddress")
+        if params.get("EnvAddressInfos") is not None:
+            self.EnvAddressInfos = []
+            for item in params.get("EnvAddressInfos"):
+                obj = EnvAddressInfo()
+                obj._deserialize(item)
+                self.EnvAddressInfos.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -138,6 +147,38 @@ class DescribeSREInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class EnvAddressInfo(AbstractModel):
+    """多环境网络信息
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvName: 环境名
+        :type EnvName: str
+        :param EnableConfigInternet: 是否开启config公网
+        :type EnableConfigInternet: bool
+        :param ConfigInternetServiceIp: config公网ip
+        :type ConfigInternetServiceIp: str
+        """
+        self.EnvName = None
+        self.EnableConfigInternet = None
+        self.ConfigInternetServiceIp = None
+
+
+    def _deserialize(self, params):
+        self.EnvName = params.get("EnvName")
+        self.EnableConfigInternet = params.get("EnableConfigInternet")
+        self.ConfigInternetServiceIp = params.get("ConfigInternetServiceIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EnvInfo(AbstractModel):
     """环境具体信息
 
@@ -157,6 +198,10 @@ class EnvInfo(AbstractModel):
         :type AdminServiceIp: str
         :param ConfigServiceIp: Config service访问地址
         :type ConfigServiceIp: str
+        :param EnableConfigInternet: 是否开启config-server公网
+        :type EnableConfigInternet: bool
+        :param ConfigInternetServiceIp: config-server公网访问地址
+        :type ConfigInternetServiceIp: str
         """
         self.EnvName = None
         self.VpcInfos = None
@@ -164,6 +209,8 @@ class EnvInfo(AbstractModel):
         self.Status = None
         self.AdminServiceIp = None
         self.ConfigServiceIp = None
+        self.EnableConfigInternet = None
+        self.ConfigInternetServiceIp = None
 
 
     def _deserialize(self, params):
@@ -178,6 +225,8 @@ class EnvInfo(AbstractModel):
         self.Status = params.get("Status")
         self.AdminServiceIp = params.get("AdminServiceIp")
         self.ConfigServiceIp = params.get("ConfigServiceIp")
+        self.EnableConfigInternet = params.get("EnableConfigInternet")
+        self.ConfigInternetServiceIp = params.get("ConfigInternetServiceIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -262,6 +311,12 @@ class SREInstance(AbstractModel):
         :param EnvInfos: 环境配置信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnvInfos: list of EnvInfo
+        :param EngineRegion: 引擎所在的区域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EngineRegion: str
+        :param EnableInternet: 注册引擎是否开启公网
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableInternet: bool
         """
         self.InstanceId = None
         self.Name = None
@@ -279,6 +334,8 @@ class SREInstance(AbstractModel):
         self.EKSClusterID = None
         self.CreateTime = None
         self.EnvInfos = None
+        self.EngineRegion = None
+        self.EnableInternet = None
 
 
     def _deserialize(self, params):
@@ -303,6 +360,8 @@ class SREInstance(AbstractModel):
                 obj = EnvInfo()
                 obj._deserialize(item)
                 self.EnvInfos.append(obj)
+        self.EngineRegion = params.get("EngineRegion")
+        self.EnableInternet = params.get("EnableInternet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

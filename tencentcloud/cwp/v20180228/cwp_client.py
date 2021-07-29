@@ -2745,7 +2745,9 @@ class CwpClient(AbstractClient):
 
 
     def RescanImpactedHost(self, request):
-        """本接口 (RescanImpactedHost) 用于漏洞重新检测。
+        """该接口已废弃
+
+        本接口 (RescanImpactedHost) 用于漏洞重新检测。
 
         :param request: Request instance for RescanImpactedHost.
         :type request: :class:`tencentcloud.cwp.v20180228.models.RescanImpactedHostRequest`

@@ -68,7 +68,7 @@ class AttachUserPolicyRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param UserId: 用户Id，和CAM侧Uin匹配
+        :param UserId: 用户Id，和子用户uin相同，需要先使用CreateUser接口创建用户。可以使用DescribeUsers接口查看。
         :type UserId: str
         :param PolicySet: 鉴权策略集合
         :type PolicySet: list of Policy
@@ -662,6 +662,65 @@ class CreateTasksInOrderResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateTasksRequest(AbstractModel):
+    """CreateTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DatabaseName: 数据库名称。如果SQL语句中有数据库名称，优先使用SQL语句中的数据库，否则使用该参数指定的数据库。
+        :type DatabaseName: str
+        :param Tasks: SQL任务信息
+        :type Tasks: :class:`tencentcloud.dlc.v20210125.models.TasksInfo`
+        :param DatasourceConnectionName: 数据源名称，默认为COSDataCatalog
+        :type DatasourceConnectionName: str
+        """
+        self.DatabaseName = None
+        self.Tasks = None
+        self.DatasourceConnectionName = None
+
+
+    def _deserialize(self, params):
+        self.DatabaseName = params.get("DatabaseName")
+        if params.get("Tasks") is not None:
+            self.Tasks = TasksInfo()
+            self.Tasks._deserialize(params.get("Tasks"))
+        self.DatasourceConnectionName = params.get("DatasourceConnectionName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTasksResponse(AbstractModel):
+    """CreateTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param BatchId: 本批次提交的任务的批次Id
+        :type BatchId: str
+        :param TaskIdSet: 任务Id集合，按照执行顺序排列
+        :type TaskIdSet: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BatchId = None
+        self.TaskIdSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BatchId = params.get("BatchId")
+        self.TaskIdSet = params.get("TaskIdSet")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateUserRequest(AbstractModel):
     """CreateUser请求参数结构体
 
@@ -669,9 +728,9 @@ class CreateUserRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param UserId: 用户Id，当前主账号的子账号Uin，和CAM侧匹配
+        :param UserId: 需要授权的子用户uin，可以通过腾讯云控制台右上角 → “账号信息” → “账号ID进行查看”。
         :type UserId: str
-        :param UserDescription: 用户描述
+        :param UserDescription: 用户描述信息，方便区分不同用户
         :type UserDescription: str
         :param PolicySet: 绑定到用户的权限集合
         :type PolicySet: list of Policy
@@ -1491,7 +1550,7 @@ class DescribeUsersRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param UserId: 查询的用户Id，和CAM侧Uin匹配
+        :param UserId: 指定查询的子用户uin，用户需要通过CreateUser接口创建。
         :type UserId: str
         :param Offset: 偏移量，默认为0
         :type Offset: int
@@ -1531,9 +1590,9 @@ class DescribeUsersResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param TotalCount: 用户总数
+        :param TotalCount: 查询到的用户总数
         :type TotalCount: int
-        :param UserSet: 用户集合
+        :param UserSet: 查询到的授权用户信息集合
         :type UserSet: list of UserInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1638,7 +1697,7 @@ class DescribeWorkGroupsRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param WorkGroupId: 查询的工作组Id
+        :param WorkGroupId: 查询的工作组Id，不填或填0表示不过滤。
         :type WorkGroupId: int
         :param Filters: 过滤条件，当前仅支持按照工作组名称进行模糊搜索。Key为workgroup-name
         :type Filters: list of Filter
@@ -2045,13 +2104,13 @@ class Policy(AbstractModel):
 
     def __init__(self):
         """
-        :param Catalog: 需要授权的数据源名称，*代表拥有全部数据源权限
+        :param Catalog: 需要授权的数据源名称，当前仅支持COSDataCatalog或者*
         :type Catalog: str
-        :param Database: 需要授权的数据库名称，*代表拥有全部数据库名称
+        :param Database: 需要授权的数据库名，填*代表当前Catalog下所有数据库
         :type Database: str
-        :param Table: 需要授权的表名称，*代表拥有全部表权限
+        :param Table: 需要授权的表名，填*代表当前Database下所有表
         :type Table: str
-        :param Operation: 授权的操作，当前只支持“ALL”
+        :param Operation: 授权粒度，当前只支持ALL，即全部权限
         :type Operation: str
         """
         self.Catalog = None
@@ -2478,7 +2537,7 @@ class TasksInfo(AbstractModel):
         :type FailureTolerance: str
         :param SQL: base64加密后的SQL语句，用";"号分隔每个SQL语句，一次最多提交50个任务。严格按照前后顺序执行
         :type SQL: str
-        :param Config: 任务的配置信息
+        :param Config: 任务的配置信息，当前仅支持SparkSQLTask任务。
         :type Config: list of KVPair
         """
         self.TaskType = None
@@ -2613,17 +2672,17 @@ class UserInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param UserId: 用户Id，和CAM侧Uin匹配
+        :param UserId: 用户Id，和子用户uin相同
         :type UserId: str
-        :param UserDescription: 用户描述
+        :param UserDescription: 用户描述信息，方便区分不同用户
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserDescription: str
         :param PolicySet: 单独给用户绑定的权限集合
 注意：此字段可能返回 null，表示取不到有效值。
         :type PolicySet: list of Policy
-        :param Creator: 创建者
+        :param Creator: 当前用户的创建者
         :type Creator: str
-        :param CreateTime: 创建时间
+        :param CreateTime: 创建时间，格式如2021-07-28 16:19:32
         :type CreateTime: str
         :param WorkGroupSet: 关联的工作组集合
 注意：此字段可能返回 null，表示取不到有效值。
@@ -2675,14 +2734,14 @@ class UserMessage(AbstractModel):
 
     def __init__(self):
         """
-        :param UserId: 用户Id，和CAM侧Uin匹配
+        :param UserId: 用户Id，和CAM侧子用户Uin匹配
         :type UserId: str
         :param UserDescription: 用户描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserDescription: str
-        :param Creator: 创建者
+        :param Creator: 当前用户的创建者
         :type Creator: str
-        :param CreateTime: 创建时间
+        :param CreateTime: 当前用户的创建时间，形如2021-07-28 16:19:32
         :type CreateTime: str
         """
         self.UserId = None
@@ -2822,7 +2881,7 @@ class WorkGroupInfo(AbstractModel):
 
     def __init__(self):
         """
-        :param WorkGroupId: 工作组Id
+        :param WorkGroupId: 查询到的工作组唯一Id
         :type WorkGroupId: int
         :param WorkGroupName: 工作组名称
         :type WorkGroupName: str
@@ -2837,9 +2896,9 @@ class WorkGroupInfo(AbstractModel):
         :param PolicySet: 工作组绑定的权限集合
 注意：此字段可能返回 null，表示取不到有效值。
         :type PolicySet: list of Policy
-        :param Creator: 创建者
+        :param Creator: 工作组的创建人
         :type Creator: str
-        :param CreateTime: 创建时间
+        :param CreateTime: 工作组的创建时间，形如2021-07-28 16:19:32
         :type CreateTime: str
         """
         self.WorkGroupId = None
@@ -2887,7 +2946,7 @@ class WorkGroupMessage(AbstractModel):
 
     def __init__(self):
         """
-        :param WorkGroupId: 工作组Id
+        :param WorkGroupId: 工作组唯一Id
         :type WorkGroupId: int
         :param WorkGroupName: 工作组名称
         :type WorkGroupName: str
@@ -2896,7 +2955,7 @@ class WorkGroupMessage(AbstractModel):
         :type WorkGroupDescription: str
         :param Creator: 创建者
         :type Creator: str
-        :param CreateTime: 创建时间
+        :param CreateTime: 工作组创建的时间，形如2021-07-28 16:19:32
         :type CreateTime: str
         """
         self.WorkGroupId = None

@@ -306,6 +306,34 @@ class WavClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def QueryLicenseInfo(self, request):
+        """该接口获取license对应的详细信息
+
+        :param request: Request instance for QueryLicenseInfo.
+        :type request: :class:`tencentcloud.wav.v20210129.models.QueryLicenseInfoRequest`
+        :rtype: :class:`tencentcloud.wav.v20210129.models.QueryLicenseInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryLicenseInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryLicenseInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def QueryMiniAppCodeList(self, request):
         """查询小程序码列表接口
 

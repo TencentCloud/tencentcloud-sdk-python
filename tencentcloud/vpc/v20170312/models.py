@@ -1565,6 +1565,12 @@ class CCN(AbstractModel):
         :type TagSet: list of Tag
         :param RoutePriorityFlag: 是否支持云联网路由优先级的功能。False：不支持，True：支持。
         :type RoutePriorityFlag: bool
+        :param RouteTableCount: 实例关联的路由表个数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RouteTableCount: int
+        :param RouteTableFlag: 是否开启云联网多路由表特性。False：未开启，True：开启。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RouteTableFlag: bool
         """
         self.CcnId = None
         self.CcnName = None
@@ -1577,6 +1583,8 @@ class CCN(AbstractModel):
         self.BandwidthLimitType = None
         self.TagSet = None
         self.RoutePriorityFlag = None
+        self.RouteTableCount = None
+        self.RouteTableFlag = None
 
 
     def _deserialize(self, params):
@@ -1596,6 +1604,8 @@ class CCN(AbstractModel):
                 obj._deserialize(item)
                 self.TagSet.append(obj)
         self.RoutePriorityFlag = params.get("RoutePriorityFlag")
+        self.RouteTableCount = params.get("RouteTableCount")
+        self.RouteTableFlag = params.get("RouteTableFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1648,6 +1658,12 @@ class CcnAttachedInstance(AbstractModel):
         :type InstanceArea: str
         :param Description: 备注
         :type Description: str
+        :param RouteTableId: 路由表ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RouteTableId: str
+        :param RouteTableName: 路由表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RouteTableName: str
         """
         self.CcnId = None
         self.InstanceType = None
@@ -1661,6 +1677,8 @@ class CcnAttachedInstance(AbstractModel):
         self.CcnUin = None
         self.InstanceArea = None
         self.Description = None
+        self.RouteTableId = None
+        self.RouteTableName = None
 
 
     def _deserialize(self, params):
@@ -1676,6 +1694,8 @@ class CcnAttachedInstance(AbstractModel):
         self.CcnUin = params.get("CcnUin")
         self.InstanceArea = params.get("InstanceArea")
         self.Description = params.get("Description")
+        self.RouteTableId = params.get("RouteTableId")
+        self.RouteTableName = params.get("RouteTableName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1756,11 +1776,15 @@ class CcnInstance(AbstractModel):
         :type InstanceType: str
         :param Description: 备注
         :type Description: str
+        :param RouteTableId: 实例关联的路由表ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RouteTableId: str
         """
         self.InstanceId = None
         self.InstanceRegion = None
         self.InstanceType = None
         self.Description = None
+        self.RouteTableId = None
 
 
     def _deserialize(self, params):
@@ -1768,6 +1792,7 @@ class CcnInstance(AbstractModel):
         self.InstanceRegion = params.get("InstanceRegion")
         self.InstanceType = params.get("InstanceType")
         self.Description = params.get("Description")
+        self.RouteTableId = params.get("RouteTableId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6694,7 +6719,7 @@ class DescribeAssistantCidrRequest(AbstractModel):
         """
         :param VpcIds: `VPC`实例`ID`数组。形如：[`vpc-6v2ht8q5`]
         :type VpcIds: list of str
-        :param Filters: 过滤条件，参数不支持同时指定NetworkInterfaceIds和Filters。
+        :param Filters: 过滤条件，参数不支持同时指定VpcIds和Filters。
 <li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li>
         :type Filters: list of Filter
         :param Offset: 偏移量，默认为0。

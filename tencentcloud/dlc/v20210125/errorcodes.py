@@ -38,6 +38,9 @@ INVALIDPARAMETER_DUPLICATEUSERNAME = 'InvalidParameter.DuplicateUserName'
 # 无效的描述信息。
 INVALIDPARAMETER_INVALIDDESCRIPTION = 'InvalidParameter.InvalidDescription'
 
+# 无效的容错策略。
+INVALIDPARAMETER_INVALIDFAILURETOLERANCE = 'InvalidParameter.InvalidFailureTolerance'
+
 # 无效的工作组Id。
 INVALIDPARAMETER_INVALIDGROUPID = 'InvalidParameter.InvalidGroupId'
 

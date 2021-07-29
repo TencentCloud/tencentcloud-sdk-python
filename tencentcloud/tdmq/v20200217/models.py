@@ -1259,6 +1259,8 @@ class CreateSubscriptionRequest(AbstractModel):
         :type ClusterId: str
         :param AutoCreatePolicyTopic: 是否自动创建死信和重试主题，True 表示创建，False表示不创建，默认自动创建死信和重试主题。
         :type AutoCreatePolicyTopic: bool
+        :param PostFixPattern: 指定死信和重试主题名称规范，LEGACY表示历史命名规则，COMMUNITY表示Pulsar社区命名规范
+        :type PostFixPattern: str
         """
         self.EnvironmentId = None
         self.TopicName = None
@@ -1267,6 +1269,7 @@ class CreateSubscriptionRequest(AbstractModel):
         self.Remark = None
         self.ClusterId = None
         self.AutoCreatePolicyTopic = None
+        self.PostFixPattern = None
 
 
     def _deserialize(self, params):
@@ -1277,6 +1280,7 @@ class CreateSubscriptionRequest(AbstractModel):
         self.Remark = params.get("Remark")
         self.ClusterId = params.get("ClusterId")
         self.AutoCreatePolicyTopic = params.get("AutoCreatePolicyTopic")
+        self.PostFixPattern = params.get("PostFixPattern")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

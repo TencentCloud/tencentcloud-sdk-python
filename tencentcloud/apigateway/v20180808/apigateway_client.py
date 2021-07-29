@@ -987,6 +987,34 @@ class ApigatewayClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeApiForApiApp(self, request):
+        """本接口（DescribeApiForApiApp）用于应用使用者查询部署于 API 网关的 API 接口的详细信息。​
+
+        :param request: Request instance for DescribeApiForApiApp.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeApiForApiAppRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.DescribeApiForApiAppResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeApiForApiApp", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeApiForApiAppResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeApiKey(self, request):
         """本接口（DescribeApiKey）用于查询密钥详情。
         用户在创建密钥后，可用此接口查询一个 API 密钥的详情，该接口会显示密钥 Key。

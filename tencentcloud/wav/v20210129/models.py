@@ -731,6 +731,61 @@ class FollowUser(AbstractModel):
         
 
 
+class LicenseInfo(AbstractModel):
+    """license相关信息
+
+    """
+
+    def __init__(self):
+        """
+        :param License: license编号
+        :type License: str
+        :param LicenseEdition: license版本；1-基础版，2-标准版，3-增值版
+        :type LicenseEdition: int
+        :param ResourceStartTime: 生效开始时间, 格式yyyy-MM-dd HH:mm:ss
+        :type ResourceStartTime: str
+        :param ResourceEndTime: 生效结束时间, 格式yyyy-MM-dd HH:mm:ss
+        :type ResourceEndTime: str
+        :param IsolationDeadline: 隔离截止时间, 格式yyyy-MM-dd HH:mm:ss
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsolationDeadline: str
+        :param DestroyTime: 资源计划销毁时间, 格式yyyy-MM-dd HH:mm:ss
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DestroyTime: str
+        :param Status: 资源状态，1.正常，2.隔离，3.销毁
+        :type Status: int
+        :param Extra: 扩展信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Extra: str
+        """
+        self.License = None
+        self.LicenseEdition = None
+        self.ResourceStartTime = None
+        self.ResourceEndTime = None
+        self.IsolationDeadline = None
+        self.DestroyTime = None
+        self.Status = None
+        self.Extra = None
+
+
+    def _deserialize(self, params):
+        self.License = params.get("License")
+        self.LicenseEdition = params.get("LicenseEdition")
+        self.ResourceStartTime = params.get("ResourceStartTime")
+        self.ResourceEndTime = params.get("ResourceEndTime")
+        self.IsolationDeadline = params.get("IsolationDeadline")
+        self.DestroyTime = params.get("DestroyTime")
+        self.Status = params.get("Status")
+        self.Extra = params.get("Extra")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LiveCodeDetail(AbstractModel):
     """活动活码详情
 
@@ -1325,6 +1380,54 @@ class QueryExternalUserMappingInfoResponse(AbstractModel):
                 obj = ExternalUserMappingInfo()
                 obj._deserialize(item)
                 self.ExternalUserIdMapping.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class QueryLicenseInfoRequest(AbstractModel):
+    """QueryLicenseInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param License: license编号
+        :type License: str
+        """
+        self.License = None
+
+
+    def _deserialize(self, params):
+        self.License = params.get("License")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryLicenseInfoResponse(AbstractModel):
+    """QueryLicenseInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param LicenseInfo: license响应信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LicenseInfo: :class:`tencentcloud.wav.v20210129.models.LicenseInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LicenseInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("LicenseInfo") is not None:
+            self.LicenseInfo = LicenseInfo()
+            self.LicenseInfo._deserialize(params.get("LicenseInfo"))
         self.RequestId = params.get("RequestId")
 
 

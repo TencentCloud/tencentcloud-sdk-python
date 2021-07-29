@@ -4367,6 +4367,70 @@ class DescribeRouteTableConflictsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeVpcCniPodLimitsRequest(AbstractModel):
+    """DescribeVpcCniPodLimits请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Zone: 查询的机型所在可用区，如：ap-guangzhou-3，默认为空，即不按可用区过滤信息
+        :type Zone: str
+        :param InstanceFamily: 查询的实例机型系列信息，如：S5，默认为空，即不按机型系列过滤信息
+        :type InstanceFamily: str
+        :param InstanceType: 查询的实例机型信息，如：S5.LARGE8，默认为空，即不按机型过滤信息
+        :type InstanceType: str
+        """
+        self.Zone = None
+        self.InstanceFamily = None
+        self.InstanceType = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.InstanceFamily = params.get("InstanceFamily")
+        self.InstanceType = params.get("InstanceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVpcCniPodLimitsResponse(AbstractModel):
+    """DescribeVpcCniPodLimits返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 机型数据数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param PodLimitsInstanceSet: 机型信息及其可支持的最大VPC-CNI模式Pod数量信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PodLimitsInstanceSet: list of PodLimitsInstance
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.PodLimitsInstanceSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("PodLimitsInstanceSet") is not None:
+            self.PodLimitsInstanceSet = []
+            for item in params.get("PodLimitsInstanceSet"):
+                obj = PodLimitsInstance()
+                obj._deserialize(item)
+                self.PodLimitsInstanceSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DisableVpcCniNetworkTypeRequest(AbstractModel):
     """DisableVpcCniNetworkType请求参数结构体
 
@@ -6038,6 +6102,83 @@ class NodePoolOption(AbstractModel):
         self.AddToNodePool = params.get("AddToNodePool")
         self.NodePoolId = params.get("NodePoolId")
         self.InheritConfigurationFromNodePool = params.get("InheritConfigurationFromNodePool")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PodLimitsByType(AbstractModel):
+    """某机型可支持的最大 VPC-CNI 模式的 Pod 数量
+
+    """
+
+    def __init__(self):
+        """
+        :param TKERouteENINonStaticIP: TKE共享网卡非固定IP模式可支持的Pod数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TKERouteENINonStaticIP: int
+        :param TKERouteENIStaticIP: TKE共享网卡固定IP模式可支持的Pod数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TKERouteENIStaticIP: int
+        :param TKEDirectENI: TKE独立网卡模式可支持的Pod数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TKEDirectENI: int
+        """
+        self.TKERouteENINonStaticIP = None
+        self.TKERouteENIStaticIP = None
+        self.TKEDirectENI = None
+
+
+    def _deserialize(self, params):
+        self.TKERouteENINonStaticIP = params.get("TKERouteENINonStaticIP")
+        self.TKERouteENIStaticIP = params.get("TKERouteENIStaticIP")
+        self.TKEDirectENI = params.get("TKEDirectENI")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PodLimitsInstance(AbstractModel):
+    """机型信息和其可支持的最大VPC-CNI模式Pod数量信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Zone: 机型所在可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        :param InstanceFamily: 机型所属机型族
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceFamily: str
+        :param InstanceType: 实例机型名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceType: str
+        :param PodLimits: 机型可支持的最大VPC-CNI模式Pod数量信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PodLimits: :class:`tencentcloud.tke.v20180525.models.PodLimitsByType`
+        """
+        self.Zone = None
+        self.InstanceFamily = None
+        self.InstanceType = None
+        self.PodLimits = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.InstanceFamily = params.get("InstanceFamily")
+        self.InstanceType = params.get("InstanceType")
+        if params.get("PodLimits") is not None:
+            self.PodLimits = PodLimitsByType()
+            self.PodLimits._deserialize(params.get("PodLimits"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

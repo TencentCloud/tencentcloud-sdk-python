@@ -279,7 +279,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateTask(self, request):
-        """本接口（CreateTask）用于创建sql查询任务。
+        """本接口（CreateTask）用于创建sql查询任务。（推荐使用CreateTasks接口）
 
         :param request: Request instance for CreateTask.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateTaskRequest`
@@ -306,8 +306,36 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateTasks(self, request):
+        """批量创建任务
+
+        :param request: Request instance for CreateTasks.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CreateTasksRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CreateTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateTasks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateTasksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateTasksInOrder(self, request):
-        """按顺序创建任务
+        """按顺序创建任务（已经废弃，后期不再维护，请使用接口CreateTasks）
 
         :param request: Request instance for CreateTasksInOrder.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateTasksInOrderRequest`
