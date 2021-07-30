@@ -26,6 +26,34 @@ class TcbClient(AbstractClient):
     _service = 'tcb'
 
 
+    def BindEnvGateway(self, request):
+        """绑定另外一个环境下的网关，callContainer请求可以访问到该网关
+
+        :param request: Request instance for BindEnvGateway.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.BindEnvGatewayRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.BindEnvGatewayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("BindEnvGateway", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.BindEnvGatewayResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CheckTcbService(self, request):
         """检查是否开通Tcb服务
 

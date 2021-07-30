@@ -188,6 +188,9 @@ class Blueprint(AbstractModel):
         :type SupportAutomationTools: bool
         :param RequiredMemorySize: 镜像所需内存大小, 单位: GB
         :type RequiredMemorySize: int
+        :param ImageId: CVM镜像共享到轻量应用服务器轻量应用服务器后的CVM镜像ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageId: str
         """
         self.BlueprintId = None
         self.DisplayTitle = None
@@ -204,6 +207,7 @@ class Blueprint(AbstractModel):
         self.BlueprintName = None
         self.SupportAutomationTools = None
         self.RequiredMemorySize = None
+        self.ImageId = None
 
 
     def _deserialize(self, params):
@@ -222,6 +226,7 @@ class Blueprint(AbstractModel):
         self.BlueprintName = params.get("BlueprintName")
         self.SupportAutomationTools = params.get("SupportAutomationTools")
         self.RequiredMemorySize = params.get("RequiredMemorySize")
+        self.ImageId = params.get("ImageId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

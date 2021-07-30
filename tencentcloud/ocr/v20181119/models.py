@@ -2178,18 +2178,29 @@ class GeneralBasicOCRRequest(AbstractModel):
         :param LanguageType: 识别语言类型。
 支持自动识别语言类型，同时支持自选语言种类，默认中英文混合(zh)，各种语言均支持与英文混合的文字识别。
 可选值：
-zh\auto\jap\kor\
-spa\fre\ger\por\
-vie\may\rus\ita\
-hol\swe\fin\dan\
-nor\hun\tha\lat\ara
-可选值分别表示：
-中英文混合、自动识别、日语、韩语、
-西班牙语、法语、德语、葡萄牙语、
-越南语、马来语、俄语、意大利语、
-荷兰语、瑞典语、芬兰语、丹麦语、
-挪威语、匈牙利语、泰语、拉丁语系、
-阿拉伯语。
+zh：中英混合
+zh_rare：支持英文、数字、中文生僻字、繁体字，特殊符号等
+auto：自动
+mix：混合语种
+jap：日语
+kor：韩语
+spa：西班牙语
+fre：法语
+ger：德语
+por：葡萄牙语
+vie：越语
+may：马来语
+rus：俄语
+ita：意大利语
+hol：荷兰语
+swe：瑞典语
+fin：芬兰语
+dan：丹麦语
+nor：挪威语
+hun：匈牙利语
+tha：泰语
+hi：印地语
+ara：阿拉伯语
         :type LanguageType: str
         :param IsPdf: 是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
         :type IsPdf: bool
@@ -6426,10 +6437,26 @@ class TrainTicketOCRResponse(AbstractModel):
         :type SeatCategory: str
         :param ID: 身份证号
         :type ID: str
-        :param InvoiceType: 发票消费类型
+        :param InvoiceType: 发票消费类型：交通
         :type InvoiceType: str
         :param SerialNumber: 序列号
         :type SerialNumber: str
+        :param AdditionalCost: 加收票价
+        :type AdditionalCost: str
+        :param HandlingFee: 手续费
+        :type HandlingFee: str
+        :param LegalAmount: 大写金额（票面有大写金额该字段才有值）
+        :type LegalAmount: str
+        :param TicketStation: 售票站
+        :type TicketStation: str
+        :param OriginalPrice: 原票价（一般有手续费的才有原始票价字段）
+        :type OriginalPrice: str
+        :param InvoiceStyle: 发票类型：火车票、火车票补票、火车票退票凭证
+        :type InvoiceStyle: str
+        :param ReceiptNumber: 收据号码
+        :type ReceiptNumber: str
+        :param IsReceipt: 仅供报销使用：1为是，0为否
+        :type IsReceipt: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -6445,6 +6472,14 @@ class TrainTicketOCRResponse(AbstractModel):
         self.ID = None
         self.InvoiceType = None
         self.SerialNumber = None
+        self.AdditionalCost = None
+        self.HandlingFee = None
+        self.LegalAmount = None
+        self.TicketStation = None
+        self.OriginalPrice = None
+        self.InvoiceStyle = None
+        self.ReceiptNumber = None
+        self.IsReceipt = None
         self.RequestId = None
 
 
@@ -6461,6 +6496,14 @@ class TrainTicketOCRResponse(AbstractModel):
         self.ID = params.get("ID")
         self.InvoiceType = params.get("InvoiceType")
         self.SerialNumber = params.get("SerialNumber")
+        self.AdditionalCost = params.get("AdditionalCost")
+        self.HandlingFee = params.get("HandlingFee")
+        self.LegalAmount = params.get("LegalAmount")
+        self.TicketStation = params.get("TicketStation")
+        self.OriginalPrice = params.get("OriginalPrice")
+        self.InvoiceStyle = params.get("InvoiceStyle")
+        self.ReceiptNumber = params.get("ReceiptNumber")
+        self.IsReceipt = params.get("IsReceipt")
         self.RequestId = params.get("RequestId")
 
 

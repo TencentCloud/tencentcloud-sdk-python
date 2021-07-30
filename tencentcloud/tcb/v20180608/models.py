@@ -106,6 +106,47 @@ class AuthDomain(AbstractModel):
         
 
 
+class BindEnvGatewayRequest(AbstractModel):
+    """BindEnvGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param SubEnvId: 子环境id
+        :type SubEnvId: str
+        """
+        self.SubEnvId = None
+
+
+    def _deserialize(self, params):
+        self.SubEnvId = params.get("SubEnvId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindEnvGatewayResponse(AbstractModel):
+    """BindEnvGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CheckTcbServiceRequest(AbstractModel):
     """CheckTcbService请求参数结构体
 

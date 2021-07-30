@@ -12869,8 +12869,8 @@ class MediaBasicInfo(AbstractModel):
 *注意：此字段暂不支持。
         :type Status: str
         :param StorageClass: 媒体文件的存储类别：
-<li>STANDARD：标准存储。</li>
-<li>STANDARD_IA：低频存储。</li>
+<li> STANDARD：标准存储。</li>
+<li> STANDARD_IA：低频存储。</li>
         :type StorageClass: str
         """
         self.Name = None
@@ -14202,6 +14202,10 @@ class MediaProcessTaskTranscodeResult(AbstractModel):
         :type Output: :class:`tencentcloud.vod.v20180717.models.MediaTranscodeItem`
         :param Progress: 转码进度，取值范围 [0-100] 。
         :type Progress: int
+        :param BeginProcessTime: 转码任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type BeginProcessTime: str
+        :param FinishTime: 转码任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type FinishTime: str
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -14210,6 +14214,8 @@ class MediaProcessTaskTranscodeResult(AbstractModel):
         self.Input = None
         self.Output = None
         self.Progress = None
+        self.BeginProcessTime = None
+        self.FinishTime = None
 
 
     def _deserialize(self, params):
@@ -14224,6 +14230,8 @@ class MediaProcessTaskTranscodeResult(AbstractModel):
             self.Output = MediaTranscodeItem()
             self.Output._deserialize(params.get("Output"))
         self.Progress = params.get("Progress")
+        self.BeginProcessTime = params.get("BeginProcessTime")
+        self.FinishTime = params.get("FinishTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

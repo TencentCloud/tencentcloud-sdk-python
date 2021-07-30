@@ -287,9 +287,6 @@ UNSUPPORTEDOPERATION_ATTACHCCNFAILED = 'UnsupportedOperation.AttachCcnFailed'
 # 镜像当前状态不支持该操作。
 UNSUPPORTEDOPERATION_BLUEPRINTCURSTATEINVALID = 'UnsupportedOperation.BlueprintCurStateInvalid'
 
-# 镜像最近一次的操作尚未完成。
-UNSUPPORTEDOPERATION_BLUEPRINTLATESTOPERATIONUNFINISHED = 'UnsupportedOperation.BlueprintLatestOperationUnfinished'
-
 # 镜像被使用中，不支持该操作。
 UNSUPPORTEDOPERATION_BLUEPRINTOCCUPIED = 'UnsupportedOperation.BlueprintOccupied'
 
@@ -337,6 +334,9 @@ UNSUPPORTEDOPERATION_KEYPAIRNOTBOUNDTOINSTANCE = 'UnsupportedOperation.KeyPairNo
 
 # 不支持的操作，实例最近一次的操作尚未完成。
 UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = 'UnsupportedOperation.LatestOperationUnfinished'
+
+# 共享镜像不支持此操作。
+UNSUPPORTEDOPERATION_NOTSUPPORTSHAREDBLUEPRINT = 'UnsupportedOperation.NotSupportSharedBlueprint'
 
 # 计费资源中心删除资源失败。
 UNSUPPORTEDOPERATION_POSTDESTROYRESOURCEFAILED = 'UnsupportedOperation.PostDestroyResourceFailed'

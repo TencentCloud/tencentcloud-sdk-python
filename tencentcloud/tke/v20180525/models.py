@@ -1901,6 +1901,57 @@ class CreateEKSClusterResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreatePrometheusAlertRuleRequest(AbstractModel):
+    """CreatePrometheusAlertRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例id
+        :type InstanceId: str
+        :param AlertRule: 告警配置
+        :type AlertRule: :class:`tencentcloud.tke.v20180525.models.PrometheusAlertRuleDetail`
+        """
+        self.InstanceId = None
+        self.AlertRule = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("AlertRule") is not None:
+            self.AlertRule = PrometheusAlertRuleDetail()
+            self.AlertRule._deserialize(params.get("AlertRule"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePrometheusAlertRuleResponse(AbstractModel):
+    """CreatePrometheusAlertRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Id: 告警id
+        :type Id: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Id = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.RequestId = params.get("RequestId")
+
+
 class CreatePrometheusDashboardRequest(AbstractModel):
     """CreatePrometheusDashboard请求参数结构体
 
@@ -2470,6 +2521,51 @@ class DeleteEKSClusterRequest(AbstractModel):
 
 class DeleteEKSClusterResponse(AbstractModel):
     """DeleteEKSCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeletePrometheusAlertRuleRequest(AbstractModel):
+    """DeletePrometheusAlertRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例id
+        :type InstanceId: str
+        :param AlertIds: 告警规则id列表
+        :type AlertIds: list of str
+        """
+        self.InstanceId = None
+        self.AlertIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.AlertIds = params.get("AlertIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeletePrometheusAlertRuleResponse(AbstractModel):
+    """DeletePrometheusAlertRule返回参数结构体
 
     """
 
@@ -4007,6 +4103,83 @@ class DescribePrometheusAlertRuleResponse(AbstractModel):
                 obj._deserialize(item)
                 self.AlertRules.append(obj)
         self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePrometheusInstanceRequest(AbstractModel):
+    """DescribePrometheusInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例id
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePrometheusInstanceResponse(AbstractModel):
+    """DescribePrometheusInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例id
+        :type InstanceId: str
+        :param Name: 实例名称
+        :type Name: str
+        :param VpcId: 私有网络id
+        :type VpcId: str
+        :param SubnetId: 子网id
+        :type SubnetId: str
+        :param COSBucket: cos桶名称
+        :type COSBucket: str
+        :param QueryAddress: 数据查询地址
+        :type QueryAddress: str
+        :param Grafana: 实例中grafana相关的信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Grafana: :class:`tencentcloud.tke.v20180525.models.PrometheusGrafanaInfo`
+        :param AlertManagerUrl: 用户自定义alertmanager
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlertManagerUrl: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceId = None
+        self.Name = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.COSBucket = None
+        self.QueryAddress = None
+        self.Grafana = None
+        self.AlertManagerUrl = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Name = params.get("Name")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.COSBucket = params.get("COSBucket")
+        self.QueryAddress = params.get("QueryAddress")
+        if params.get("Grafana") is not None:
+            self.Grafana = PrometheusGrafanaInfo()
+            self.Grafana._deserialize(params.get("Grafana"))
+        self.AlertManagerUrl = params.get("AlertManagerUrl")
         self.RequestId = params.get("RequestId")
 
 
@@ -5885,6 +6058,53 @@ class ModifyNodePoolDesiredCapacityAboutAsgResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyPrometheusAlertRuleRequest(AbstractModel):
+    """ModifyPrometheusAlertRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例id
+        :type InstanceId: str
+        :param AlertRule: 告警配置
+        :type AlertRule: :class:`tencentcloud.tke.v20180525.models.PrometheusAlertRuleDetail`
+        """
+        self.InstanceId = None
+        self.AlertRule = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("AlertRule") is not None:
+            self.AlertRule = PrometheusAlertRuleDetail()
+            self.AlertRule._deserialize(params.get("AlertRule"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyPrometheusAlertRuleResponse(AbstractModel):
+    """ModifyPrometheusAlertRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyPrometheusTemplateRequest(AbstractModel):
     """ModifyPrometheusTemplate请求参数结构体
 
@@ -6419,6 +6639,49 @@ class PrometheusConfigItem(AbstractModel):
         self.Name = params.get("Name")
         self.Config = params.get("Config")
         self.TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrometheusGrafanaInfo(AbstractModel):
+    """托管prometheus中grafana的信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Enabled: 是否启用
+        :type Enabled: bool
+        :param Domain: 域名，只有开启外网访问才有效果
+        :type Domain: str
+        :param Address: 内网地址，或者外网地址
+        :type Address: str
+        :param Internet: 是否开启了外网访问
+close = 未开启外网访问
+opening = 正在开启外网访问
+open  = 已开启外网访问
+        :type Internet: str
+        :param AdminUser: grafana管理员用户名
+        :type AdminUser: str
+        """
+        self.Enabled = None
+        self.Domain = None
+        self.Address = None
+        self.Internet = None
+        self.AdminUser = None
+
+
+    def _deserialize(self, params):
+        self.Enabled = params.get("Enabled")
+        self.Domain = params.get("Domain")
+        self.Address = params.get("Address")
+        self.Internet = params.get("Internet")
+        self.AdminUser = params.get("AdminUser")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

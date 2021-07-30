@@ -63,6 +63,41 @@ class CreateWeappQRUrlResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeGetAuthInfoRequest(AbstractModel):
+    """DescribeGetAuthInfo请求参数结构体
+
+    """
+
+
+class DescribeGetAuthInfoResponse(AbstractModel):
+    """DescribeGetAuthInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param IsTenPayMasked: 实名认证状态：0未实名，1已实名
+        :type IsTenPayMasked: str
+        :param IsAuthenticated: 实名认证类型：0个人，1企业
+        :type IsAuthenticated: str
+        :param Type: 认证类型，个人0，企业1
+        :type Type: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.IsTenPayMasked = None
+        self.IsAuthenticated = None
+        self.Type = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.IsTenPayMasked = params.get("IsTenPayMasked")
+        self.IsAuthenticated = params.get("IsAuthenticated")
+        self.Type = params.get("Type")
+        self.RequestId = params.get("RequestId")
+
+
 class SyncIcpOrderWebInfoRequest(AbstractModel):
     """SyncIcpOrderWebInfo请求参数结构体
 
