@@ -803,6 +803,8 @@ class CommonMixInputParam(AbstractModel):
     def __init__(self):
         """
         :param InputStreamName: 输入流名称。80字节以内，仅含字母、数字以及下划线的字符串。
+当LayoutParams.InputType=0(音视频)/4(纯音频)/5(纯视频)时，该值为需要混流的流名称。
+当LayoutParams.InputType=2(图片)/3(画布)时，该值仅用作标识输入，可用类似Canvas1、Pictrue1的名称。
         :type InputStreamName: str
         :param LayoutParams: 输入流布局参数。
         :type LayoutParams: :class:`tencentcloud.live.v20180801.models.CommonMixLayoutParams`
@@ -850,18 +852,18 @@ class CommonMixLayoutParams(AbstractModel):
 4表示输入流为音频。
 5表示输入流为纯视频。
         :type InputType: int
-        :param ImageWidth: 输入画面在输出时的宽度。取值范围：
-像素：[0，2000]
-百分比：[0.01，0.99]
-不填默认为输入流的宽度。
-使用百分比时，期望输出为（百分比 * 背景宽）。
-        :type ImageWidth: float
         :param ImageHeight: 输入画面在输出时的高度。取值范围：
 像素：[0，2000]
 百分比：[0.01，0.99]
 不填默认为输入流的高度。
 使用百分比时，期望输出为（百分比 * 背景高）。
         :type ImageHeight: float
+        :param ImageWidth: 输入画面在输出时的宽度。取值范围：
+像素：[0，2000]
+百分比：[0.01，0.99]
+不填默认为输入流的宽度。
+使用百分比时，期望输出为（百分比 * 背景宽）。
+        :type ImageWidth: float
         :param LocationX: 输入在输出画面的X偏移。取值范围：
 像素：[0，2000]
 百分比：[0.01，0.99]
@@ -891,8 +893,8 @@ class CommonMixLayoutParams(AbstractModel):
         """
         self.ImageLayer = None
         self.InputType = None
-        self.ImageWidth = None
         self.ImageHeight = None
+        self.ImageWidth = None
         self.LocationX = None
         self.LocationY = None
         self.Color = None
@@ -902,8 +904,8 @@ class CommonMixLayoutParams(AbstractModel):
     def _deserialize(self, params):
         self.ImageLayer = params.get("ImageLayer")
         self.InputType = params.get("InputType")
-        self.ImageWidth = params.get("ImageWidth")
         self.ImageHeight = params.get("ImageHeight")
+        self.ImageWidth = params.get("ImageWidth")
         self.LocationX = params.get("LocationX")
         self.LocationY = params.get("LocationY")
         self.Color = params.get("Color")
@@ -1302,6 +1304,9 @@ SourceType 为直播（PullLivePushLive）只可以填1个，
 SourceType 为点播（PullVodPushLive）可以填多个，上限30个。
 当前支持的文件格式：flv，mp4，hls。
 当前支持的拉流协议：http，https，rtmp。
+注意：
+1. 建议优先使用 flv 文件，对于 mp4 未交织好的文件轮播推流易产生卡顿，可通过点播转码进行重新交织后再轮播。
+2. 拒绝内网域名等攻击性拉流地址，如有使用，则做账号封禁处理。
         :type SourceUrls: list of str
         :param DomainName: 推流域名。
 将拉取过来的流推到该域名。

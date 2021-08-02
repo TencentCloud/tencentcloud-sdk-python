@@ -932,13 +932,17 @@ class DescribeBlueprintsRequest(AbstractModel):
 类型：String
 必选：否
 <li>blueprint-type</li>按照【镜像类型】进行过滤。
-取值：APP_OS（预置应用的系统 ）；PURE_OS（纯净的 OS 系统）；PRIVATE（自定义镜像）。
+取值：APP_OS（应用镜像 ）；PURE_OS（系统镜像）；PRIVATE（自定义镜像）；SHARED（共享镜像）。
 类型：String
 必选：否
 <li>platform-type</li>按照【镜像平台类型】进行过滤。
 取值： LINUX_UNIX（Linux/Unix系统）；WINDOWS（Windows 系统）。
 类型：String
 必选：否
+<li>blueprint-name</li>按照【镜像名称】进行过滤。
+类型：String
+必选：否
+
 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 BlueprintIds 和 Filters 。
         :type Filters: list of Filter
         """
@@ -1868,13 +1872,17 @@ class DescribeResetInstanceBlueprintsRequest(AbstractModel):
 类型：String
 必选：否
 <li>blueprint-type</li>按照【镜像类型】进行过滤。
-取值： APP_OS（预置应用的系统 ）；PURE_OS（纯净的 OS 系统）；PRIVATE（自定义镜像）。
+取值： APP_OS（应用镜像 ）；PURE_OS（ 系统镜像）；PRIVATE（自定义镜像）。
 类型：String
 必选：否
 <li>platform-type</li>按照【镜像平台类型】进行过滤。
 取值： LINUX_UNIX（Linux/Unix系统）；WINDOWS（Windows 系统）。
 类型：String
 必选：否
+<li>blueprint-name</li>按照【镜像名称】进行过滤。
+类型：String
+必选：否
+
 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 BlueprintIds 和 Filters 。
         :type Filters: list of Filter
         """
