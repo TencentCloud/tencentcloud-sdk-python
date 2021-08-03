@@ -12871,6 +12871,8 @@ class MediaBasicInfo(AbstractModel):
         :param StorageClass: 媒体文件的存储类别：
 <li> STANDARD：标准存储。</li>
 <li> STANDARD_IA：低频存储。</li>
+<li> ARCHIVE：归档存储。</li>
+<li> DEEP_ARCHIVE：深度归档存储。</li>
         :type StorageClass: str
         """
         self.Name = None

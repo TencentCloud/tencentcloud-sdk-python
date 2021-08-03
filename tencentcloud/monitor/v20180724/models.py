@@ -2566,7 +2566,7 @@ class DescribeAllNamespacesRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param SceneType: 根据使用场景过滤 "ST_DASHBOARD"=Dashboard类型 或 "ST_ALARM"=告警类型
+        :param SceneType: 根据使用场景过滤 目前仅有"ST_ALARM"=告警类型
         :type SceneType: str
         :param Module: 固定值，为"monitor"
         :type Module: str

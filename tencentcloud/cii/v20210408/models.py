@@ -189,6 +189,83 @@ class CreateStructureTaskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateStructureTaskTestRequest(AbstractModel):
+    """CreateStructureTaskTest请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ServiceType: 服务类型
+Structured 仅结构化
+Underwrite 结构化+核保
+        :type ServiceType: str
+        :param TaskInfos: 创建任务时可以上传多个报告，后台生成多个识别子任务，子任务的详细信息
+        :type TaskInfos: list of CreateStructureTaskInfo
+        :param PolicyId: 保单号
+        :type PolicyId: str
+        :param TriggerType: 核保触发方式
+Auto 自动
+Manual 手动
+        :type TriggerType: str
+        :param InsuranceTypes: 险种，如果是体检报告类型，此参数是必填，类型说明如下：
+CriticalDiseaseInsurance:重疾险
+LifeInsurance：寿险
+AccidentInsurance：意外险
+        :type InsuranceTypes: list of str
+        :param CallbackUrl: 回调地址，接收Post请求传送结果
+        :type CallbackUrl: str
+        """
+        self.ServiceType = None
+        self.TaskInfos = None
+        self.PolicyId = None
+        self.TriggerType = None
+        self.InsuranceTypes = None
+        self.CallbackUrl = None
+
+
+    def _deserialize(self, params):
+        self.ServiceType = params.get("ServiceType")
+        if params.get("TaskInfos") is not None:
+            self.TaskInfos = []
+            for item in params.get("TaskInfos"):
+                obj = CreateStructureTaskInfo()
+                obj._deserialize(item)
+                self.TaskInfos.append(obj)
+        self.PolicyId = params.get("PolicyId")
+        self.TriggerType = params.get("TriggerType")
+        self.InsuranceTypes = params.get("InsuranceTypes")
+        self.CallbackUrl = params.get("CallbackUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateStructureTaskTestResponse(AbstractModel):
+    """CreateStructureTaskTest返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MainTaskId: 创建的主任务号，用于查询结果
+        :type MainTaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MainTaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MainTaskId = params.get("MainTaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeStructCompareDataRequest(AbstractModel):
     """DescribeStructCompareData请求参数结构体
 
@@ -378,6 +455,64 @@ class DescribeStructureTaskResultRequest(AbstractModel):
 
 class DescribeStructureTaskResultResponse(AbstractModel):
     """DescribeStructureTaskResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 结果状态：
+0：返回成功
+1：结果未生成
+2：结果生成失败
+        :type Status: int
+        :param Results: 结构化识别结果数组，每个数组元素对应一个图片的结构化结果，顺序和输入参数的ImageList或FileList对应。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Results: list of ResultObject
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.Results = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        if params.get("Results") is not None:
+            self.Results = []
+            for item in params.get("Results"):
+                obj = ResultObject()
+                obj._deserialize(item)
+                self.Results.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeStructureTaskResultTestRequest(AbstractModel):
+    """DescribeStructureTaskResultTest请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MainTaskId: 结构化任务ID
+        :type MainTaskId: str
+        """
+        self.MainTaskId = None
+
+
+    def _deserialize(self, params):
+        self.MainTaskId = params.get("MainTaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStructureTaskResultTestResponse(AbstractModel):
+    """DescribeStructureTaskResultTest返回参数结构体
 
     """
 

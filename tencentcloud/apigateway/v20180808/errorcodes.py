@@ -131,6 +131,9 @@ FAILEDOPERATION_SCFERROR = 'FailedOperation.ScfError'
 # 服务相关的错误。
 FAILEDOPERATION_SERVICEERROR = 'FailedOperation.ServiceError'
 
+# 当前Service正在操作中, 请稍后再试。
+FAILEDOPERATION_SERVICEINOPERATION = 'FailedOperation.ServiceInOperation'
+
 # 服务不存在。
 FAILEDOPERATION_SERVICENOTEXIST = 'FailedOperation.ServiceNotExist'
 

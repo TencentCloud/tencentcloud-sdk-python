@@ -23,6 +23,9 @@ FAILEDOPERATION_APPLICATIONCREATEESATUHERROR = 'FailedOperation.ApplicationCreat
 # 应用查询失败。
 FAILEDOPERATION_APPLICATIONQUERYFAILED = 'FailedOperation.ApplicationQueryFailed'
 
+# 创建集群，开通VPC网络权限失败。
+FAILEDOPERATION_CLUSTERCREATEVPCFAIL = 'FailedOperation.ClusterCreateVpcFail'
+
 # 查询集群失败。
 FAILEDOPERATION_CLUSTERQUERYFAILED = 'FailedOperation.ClusterQueryFailed'
 
@@ -445,6 +448,9 @@ INVALIDPARAMETERVALUE_CONTAINERGROUPPORTSREPEAT = 'InvalidParameterValue.Contain
 
 # 协议值非法,限定:TCP/UDP。
 INVALIDPARAMETERVALUE_CONTAINERGROUPPROTOCOLINVALID = 'InvalidParameterValue.ContainergroupProtocolInvalid'
+
+# 公网访问方式下，协议需要一致。
+INVALIDPARAMETERVALUE_CONTAINERGROUPPROTOCOLMIXERROR = 'InvalidParameterValue.ContainergroupProtocolMixError'
 
 # 协议不能为空。
 INVALIDPARAMETERVALUE_CONTAINERGROUPPROTOCOLNULL = 'InvalidParameterValue.ContainergroupProtocolNull'

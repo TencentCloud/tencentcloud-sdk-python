@@ -1492,7 +1492,7 @@ class DescribeRecordListRequest(AbstractModel):
         :type GroupId: int
         :param Keyword: 通过关键字搜索解析记录，当前支持搜索主机头和记录值
         :type Keyword: str
-        :param SortField: 排序字段，支持 name,line,type,value,weight,mx,ttl,updated_on 几个字段。默认值为updated_on。
+        :param SortField: 排序字段，支持 name,line,type,value,weight,mx,ttl,updated_on 几个字段。
         :type SortField: str
         :param SortType: 排序方式，正序：ASC，逆序：DESC。默认值为ASC。
         :type SortType: str

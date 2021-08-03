@@ -1922,6 +1922,12 @@ class GetFunctionResponse(AbstractModel):
         :param StatusReasons: 函数状态失败原因
 注意：此字段可能返回 null，表示取不到有效值。
         :type StatusReasons: list of StatusReason
+        :param AsyncRunEnable: 是否开启异步属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsyncRunEnable: str
+        :param TraceEnable: 是否开启事件追踪
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TraceEnable: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1965,6 +1971,8 @@ class GetFunctionResponse(AbstractModel):
         self.Qualifier = None
         self.InitTimeout = None
         self.StatusReasons = None
+        self.AsyncRunEnable = None
+        self.TraceEnable = None
         self.RequestId = None
 
 
@@ -2043,6 +2051,8 @@ class GetFunctionResponse(AbstractModel):
                 obj = StatusReason()
                 obj._deserialize(item)
                 self.StatusReasons.append(obj)
+        self.AsyncRunEnable = params.get("AsyncRunEnable")
+        self.TraceEnable = params.get("TraceEnable")
         self.RequestId = params.get("RequestId")
 
 
