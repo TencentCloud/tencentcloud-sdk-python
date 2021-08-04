@@ -4837,6 +4837,29 @@ class TopicInfo(AbstractModel):
         
 
 
+class UploadLogRequest(AbstractModel):
+    """UploadLog请求参数结构体
+
+    """
+
+
+class UploadLogResponse(AbstractModel):
+    """UploadLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ValueInfo(AbstractModel):
     """需要开启键值索引的字段的索引描述信息
 

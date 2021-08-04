@@ -627,14 +627,18 @@ class DeleteDeviceRequest(AbstractModel):
         :type ProductId: str
         :param DeviceName: 设备名称。
         :type DeviceName: str
+        :param ForceDelete: 是否删除绑定设备
+        :type ForceDelete: bool
         """
         self.ProductId = None
         self.DeviceName = None
+        self.ForceDelete = None
 
 
     def _deserialize(self, params):
         self.ProductId = params.get("ProductId")
         self.DeviceName = params.get("DeviceName")
+        self.ForceDelete = params.get("ForceDelete")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

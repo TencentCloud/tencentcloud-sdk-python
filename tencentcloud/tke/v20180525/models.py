@@ -3076,12 +3076,15 @@ class DescribeClusterInstancesRequest(AbstractModel):
         :type InstanceIds: list of str
         :param InstanceRole: 节点角色, MASTER, WORKER, ETCD, MASTER_ETCD,ALL, 默认为WORKER。默认为WORKER类型。
         :type InstanceRole: str
+        :param Filters: 过滤条件列表；Name的可选值为nodepool-id、nodepool-instance-type；Name为nodepool-id表示根据节点池id过滤机器，Value的值为具体的节点池id，Name为nodepool-instance-type表示节点加入节点池的方式，Value的值为MANUALLY_ADDED（手动加入节点池）、AUTOSCALING_ADDED（伸缩组扩容方式加入节点池）、ALL（手动加入节点池 和 伸缩组扩容方式加入节点池）
+        :type Filters: list of Filter
         """
         self.ClusterId = None
         self.Offset = None
         self.Limit = None
         self.InstanceIds = None
         self.InstanceRole = None
+        self.Filters = None
 
 
     def _deserialize(self, params):
@@ -3090,6 +3093,12 @@ class DescribeClusterInstancesRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.InstanceIds = params.get("InstanceIds")
         self.InstanceRole = params.get("InstanceRole")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

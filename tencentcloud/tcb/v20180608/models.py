@@ -106,6 +106,34 @@ class AuthDomain(AbstractModel):
         
 
 
+class BackendServiceInfo(AbstractModel):
+    """网关服务信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ServiceName: 服务名称
+        :type ServiceName: str
+        :param Status: 服务状态
+        :type Status: str
+        """
+        self.ServiceName = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.ServiceName = params.get("ServiceName")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BindEnvGatewayRequest(AbstractModel):
     """BindEnvGateway请求参数结构体
 
@@ -1898,6 +1926,71 @@ class CreatePostpayPackageResponse(AbstractModel):
     def _deserialize(self, params):
         self.TranId = params.get("TranId")
         self.EnvId = params.get("EnvId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateStandaloneGatewayRequest(AbstractModel):
+    """CreateStandaloneGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境ID
+        :type EnvId: str
+        :param GatewayAlias: 网关名
+        :type GatewayAlias: str
+        :param VpcId: 私有网络ID
+        :type VpcId: str
+        :param SubnetIds: 子网ID
+        :type SubnetIds: list of str
+        :param GatewayDesc: 网关描述
+        :type GatewayDesc: str
+        :param PackageVersion: 网关套餐版本
+        :type PackageVersion: str
+        """
+        self.EnvId = None
+        self.GatewayAlias = None
+        self.VpcId = None
+        self.SubnetIds = None
+        self.GatewayDesc = None
+        self.PackageVersion = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.GatewayAlias = params.get("GatewayAlias")
+        self.VpcId = params.get("VpcId")
+        self.SubnetIds = params.get("SubnetIds")
+        self.GatewayDesc = params.get("GatewayDesc")
+        self.PackageVersion = params.get("PackageVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateStandaloneGatewayResponse(AbstractModel):
+    """CreateStandaloneGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param GatewayName: 网关名称
+        :type GatewayName: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.GatewayName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.GatewayName = params.get("GatewayName")
         self.RequestId = params.get("RequestId")
 
 
@@ -4343,6 +4436,126 @@ class DescribeSpecialCostItemsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeStandaloneGatewayPackageRequest(AbstractModel):
+    """DescribeStandaloneGatewayPackage请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境ID
+        :type EnvId: str
+        :param PackageVersion: 套餐版本，包含starter、basic、advanced、enterprise
+        :type PackageVersion: str
+        """
+        self.EnvId = None
+        self.PackageVersion = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.PackageVersion = params.get("PackageVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStandaloneGatewayPackageResponse(AbstractModel):
+    """DescribeStandaloneGatewayPackage返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Total: 总数
+        :type Total: int
+        :param StandaloneGatewayPackageList: 套餐详情
+        :type StandaloneGatewayPackageList: list of StandaloneGatewayPackageInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.StandaloneGatewayPackageList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("StandaloneGatewayPackageList") is not None:
+            self.StandaloneGatewayPackageList = []
+            for item in params.get("StandaloneGatewayPackageList"):
+                obj = StandaloneGatewayPackageInfo()
+                obj._deserialize(item)
+                self.StandaloneGatewayPackageList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeStandaloneGatewayRequest(AbstractModel):
+    """DescribeStandaloneGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境ID
+        :type EnvId: str
+        :param GatewayName: 网关名称
+        :type GatewayName: str
+        :param GatewayAlias: 网关别名
+        :type GatewayAlias: str
+        """
+        self.EnvId = None
+        self.GatewayName = None
+        self.GatewayAlias = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.GatewayName = params.get("GatewayName")
+        self.GatewayAlias = params.get("GatewayAlias")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStandaloneGatewayResponse(AbstractModel):
+    """DescribeStandaloneGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StandaloneGatewayList: 独立网关信息列表
+        :type StandaloneGatewayList: list of StandaloneGatewayInfo
+        :param Total: 总数
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.StandaloneGatewayList = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("StandaloneGatewayList") is not None:
+            self.StandaloneGatewayList = []
+            for item in params.get("StandaloneGatewayList"):
+                obj = StandaloneGatewayInfo()
+                obj._deserialize(item)
+                self.StandaloneGatewayList.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeWxCloudBaseRunEnvsRequest(AbstractModel):
     """DescribeWxCloudBaseRunEnvs请求参数结构体
 
@@ -4488,6 +4701,59 @@ class DestroyEnvResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DestroyStandaloneGatewayRequest(AbstractModel):
+    """DestroyStandaloneGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境ID
+        :type EnvId: str
+        :param GatewayName: 网名名称
+        :type GatewayName: str
+        :param IsForce: 是否强制释放
+        :type IsForce: bool
+        """
+        self.EnvId = None
+        self.GatewayName = None
+        self.IsForce = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.GatewayName = params.get("GatewayName")
+        self.IsForce = params.get("IsForce")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DestroyStandaloneGatewayResponse(AbstractModel):
+    """DestroyStandaloneGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 删除独立网关状态
+        :type Status: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
         self.RequestId = params.get("RequestId")
 
 
@@ -5923,6 +6189,8 @@ class RollUpdateCloudBaseRunServerVersionRequest(AbstractModel):
         :type OperatorRemark: str
         :param ServerPath: 服务路径（只会第一次生效）
         :type ServerPath: str
+        :param IsUpdateCls: 是否更新Cls
+        :type IsUpdateCls: bool
         """
         self.EnvId = None
         self.VersionName = None
@@ -5956,6 +6224,7 @@ class RollUpdateCloudBaseRunServerVersionRequest(AbstractModel):
         self.EnableUnion = None
         self.OperatorRemark = None
         self.ServerPath = None
+        self.IsUpdateCls = None
 
 
     def _deserialize(self, params):
@@ -6000,6 +6269,7 @@ class RollUpdateCloudBaseRunServerVersionRequest(AbstractModel):
         self.EnableUnion = params.get("EnableUnion")
         self.OperatorRemark = params.get("OperatorRemark")
         self.ServerPath = params.get("ServerPath")
+        self.IsUpdateCls = params.get("IsUpdateCls")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6125,6 +6395,100 @@ class SpecialCostItem(AbstractModel):
         
 
 
+class StandaloneGatewayInfo(AbstractModel):
+    """独立网关信息
+
+    """
+
+    def __init__(self):
+        """
+        :param GatewayName: 独立网关名称
+        :type GatewayName: str
+        :param CPU: CPU核心数
+        :type CPU: float
+        :param Mem: 内存大小，单位MB
+        :type Mem: int
+        :param PackageVersion: 套餐包版本名称
+        :type PackageVersion: str
+        :param GatewayAlias: 网关别名
+        :type GatewayAlias: str
+        :param VpcId: 私有网络ID
+        :type VpcId: str
+        :param SubnetIds: 子网ID列表
+        :type SubnetIds: list of str
+        :param GatewayDesc: 网关描述
+        :type GatewayDesc: str
+        :param GateWayStatus: 网关状态
+        :type GateWayStatus: str
+        :param ServiceInfo: 服务信息
+        :type ServiceInfo: :class:`tencentcloud.tcb.v20180608.models.BackendServiceInfo`
+        """
+        self.GatewayName = None
+        self.CPU = None
+        self.Mem = None
+        self.PackageVersion = None
+        self.GatewayAlias = None
+        self.VpcId = None
+        self.SubnetIds = None
+        self.GatewayDesc = None
+        self.GateWayStatus = None
+        self.ServiceInfo = None
+
+
+    def _deserialize(self, params):
+        self.GatewayName = params.get("GatewayName")
+        self.CPU = params.get("CPU")
+        self.Mem = params.get("Mem")
+        self.PackageVersion = params.get("PackageVersion")
+        self.GatewayAlias = params.get("GatewayAlias")
+        self.VpcId = params.get("VpcId")
+        self.SubnetIds = params.get("SubnetIds")
+        self.GatewayDesc = params.get("GatewayDesc")
+        self.GateWayStatus = params.get("GateWayStatus")
+        if params.get("ServiceInfo") is not None:
+            self.ServiceInfo = BackendServiceInfo()
+            self.ServiceInfo._deserialize(params.get("ServiceInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StandaloneGatewayPackageInfo(AbstractModel):
+    """小租户网关套餐配置
+
+    """
+
+    def __init__(self):
+        """
+        :param CPU: CPU核心数
+        :type CPU: float
+        :param Mem: 内存大小，单位MB
+        :type Mem: int
+        :param PackageVersion: 套餐包版本名称
+        :type PackageVersion: str
+        """
+        self.CPU = None
+        self.Mem = None
+        self.PackageVersion = None
+
+
+    def _deserialize(self, params):
+        self.CPU = params.get("CPU")
+        self.Mem = params.get("Mem")
+        self.PackageVersion = params.get("PackageVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StaticStorageInfo(AbstractModel):
     """静态CDN资源信息
 
@@ -6233,3 +6597,109 @@ class Tag(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class TurnOffStandaloneGatewayRequest(AbstractModel):
+    """TurnOffStandaloneGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境ID
+        :type EnvId: str
+        :param GatewayName: 网关名称
+        :type GatewayName: str
+        :param ServiceNameList: 服务名称列表
+        :type ServiceNameList: list of str
+        """
+        self.EnvId = None
+        self.GatewayName = None
+        self.ServiceNameList = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.GatewayName = params.get("GatewayName")
+        self.ServiceNameList = params.get("ServiceNameList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TurnOffStandaloneGatewayResponse(AbstractModel):
+    """TurnOffStandaloneGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 关闭独立网关状态
+        :type Status: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
+class TurnOnStandaloneGatewayRequest(AbstractModel):
+    """TurnOnStandaloneGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境ID
+        :type EnvId: str
+        :param GatewayName: 网关名称
+        :type GatewayName: str
+        :param ServiceNameList: 服务名称列表
+        :type ServiceNameList: list of str
+        """
+        self.EnvId = None
+        self.GatewayName = None
+        self.ServiceNameList = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.GatewayName = params.get("GatewayName")
+        self.ServiceNameList = params.get("ServiceNameList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TurnOnStandaloneGatewayResponse(AbstractModel):
+    """TurnOnStandaloneGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Status: 小租户网关开启状态
+        :type Status: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")

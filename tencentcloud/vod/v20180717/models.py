@@ -18890,6 +18890,9 @@ class SearchMediaRequest(AbstractModel):
         :param CreateTime: 匹配创建时间在此时间段内的文件。
 <li>包含所指定的头尾时间点。</li>
         :type CreateTime: :class:`tencentcloud.vod.v20180717.models.TimeRange`
+        :param ExpireTime: 匹配过期时间在此时间段内的文件，无法检索到已过期文件。
+<li>包含所指定的头尾时间点。</li>
+        :type ExpireTime: :class:`tencentcloud.vod.v20180717.models.TimeRange`
         :param Sort: 排序方式。
 <li>Sort.Field 可选 CreateTime 。</li>
 <li>当 Text、 Names 或 Descriptions 不为空时，Sort.Field 字段无效， 搜索结果将以匹配度排序。</li>
@@ -18918,6 +18921,12 @@ class SearchMediaRequest(AbstractModel):
         :type StorageRegions: list of str
         :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
         :type SubAppId: int
+        :param StorageClasses: 存储类型数组。可选值有：
+<li> STANDARD：标准存储。</li>
+<li> STANDARD_IA：低频存储。</li>
+<li> ARCHIVE：归档存储。</li>
+<li> DEEP_ARCHIVE：深度归档存储。</li>
+        :type StorageClasses: list of str
         :param Text: （不推荐：应使用 Names、NamePrefixes 或 Descriptions 替代）
 搜索文本，模糊匹配媒体文件名称或描述信息，匹配项越多，匹配度越高，排序越优先。长度限制：64个字符。
         :type Text: str
@@ -18954,12 +18963,14 @@ class SearchMediaRequest(AbstractModel):
         self.StreamIds = None
         self.Vids = None
         self.CreateTime = None
+        self.ExpireTime = None
         self.Sort = None
         self.Offset = None
         self.Limit = None
         self.Filters = None
         self.StorageRegions = None
         self.SubAppId = None
+        self.StorageClasses = None
         self.Text = None
         self.SourceType = None
         self.StreamId = None
@@ -18982,6 +18993,9 @@ class SearchMediaRequest(AbstractModel):
         if params.get("CreateTime") is not None:
             self.CreateTime = TimeRange()
             self.CreateTime._deserialize(params.get("CreateTime"))
+        if params.get("ExpireTime") is not None:
+            self.ExpireTime = TimeRange()
+            self.ExpireTime._deserialize(params.get("ExpireTime"))
         if params.get("Sort") is not None:
             self.Sort = SortBy()
             self.Sort._deserialize(params.get("Sort"))
@@ -18990,6 +19004,7 @@ class SearchMediaRequest(AbstractModel):
         self.Filters = params.get("Filters")
         self.StorageRegions = params.get("StorageRegions")
         self.SubAppId = params.get("SubAppId")
+        self.StorageClasses = params.get("StorageClasses")
         self.Text = params.get("Text")
         self.SourceType = params.get("SourceType")
         self.StreamId = params.get("StreamId")

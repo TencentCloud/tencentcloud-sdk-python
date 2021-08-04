@@ -847,6 +847,81 @@ class DescribeClusterNodesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCvmQuotaRequest(AbstractModel):
+    """DescribeCvmQuota请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ClusterId: EMR集群ID
+        :type ClusterId: str
+        :param ZoneId: 区ID
+        :type ZoneId: int
+        """
+        self.ClusterId = None
+        self.ZoneId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ZoneId = params.get("ZoneId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCvmQuotaResponse(AbstractModel):
+    """DescribeCvmQuota返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PostPaidQuotaSet: 后付费配额列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PostPaidQuotaSet: list of QuotaEntity
+        :param SpotPaidQuotaSet: 竞价实例配额列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpotPaidQuotaSet: list of QuotaEntity
+        :param EksQuotaSet: eks配额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EksQuotaSet: list of PodSaleSpec
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PostPaidQuotaSet = None
+        self.SpotPaidQuotaSet = None
+        self.EksQuotaSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("PostPaidQuotaSet") is not None:
+            self.PostPaidQuotaSet = []
+            for item in params.get("PostPaidQuotaSet"):
+                obj = QuotaEntity()
+                obj._deserialize(item)
+                self.PostPaidQuotaSet.append(obj)
+        if params.get("SpotPaidQuotaSet") is not None:
+            self.SpotPaidQuotaSet = []
+            for item in params.get("SpotPaidQuotaSet"):
+                obj = QuotaEntity()
+                obj._deserialize(item)
+                self.SpotPaidQuotaSet.append(obj)
+        if params.get("EksQuotaSet") is not None:
+            self.EksQuotaSet = []
+            for item in params.get("EksQuotaSet"):
+                obj = PodSaleSpec()
+                obj._deserialize(item)
+                self.EksQuotaSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeInstanceRenewNodesRequest(AbstractModel):
     """DescribeInstanceRenewNodes请求参数结构体
 
@@ -2723,6 +2798,42 @@ class PodParameter(AbstractModel):
         
 
 
+class PodSaleSpec(AbstractModel):
+    """Pod资源售卖规格
+
+    """
+
+    def __init__(self):
+        """
+        :param NodeType: 可售卖的资源规格，仅为以下值:"TASK","CORE","MASTER","ROUTER"。
+        :type NodeType: str
+        :param Cpu: Cpu核数。
+        :type Cpu: int
+        :param Memory: 内存数量，单位为GB。
+        :type Memory: int
+        :param Number: 该规格资源可申请的最大数量。
+        :type Number: int
+        """
+        self.NodeType = None
+        self.Cpu = None
+        self.Memory = None
+        self.Number = None
+
+
+    def _deserialize(self, params):
+        self.NodeType = params.get("NodeType")
+        self.Cpu = params.get("Cpu")
+        self.Memory = params.get("Memory")
+        self.Number = params.get("Number")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PodSpec(AbstractModel):
     """扩容容器资源时的资源描述
 
@@ -2792,6 +2903,50 @@ class PodSpec(AbstractModel):
             self.DynamicPodSpec._deserialize(params.get("DynamicPodSpec"))
         self.VpcId = params.get("VpcId")
         self.SubnetId = params.get("SubnetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PodState(AbstractModel):
+    """单个pod状态
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: pod的名称
+        :type Name: str
+        :param Uuid: pod uuid
+        :type Uuid: str
+        :param State: pod的状态
+        :type State: str
+        :param Reason: pod处于该状态原因
+        :type Reason: str
+        :param OwnerCluster: pod所属集群
+        :type OwnerCluster: str
+        :param Memory: pod内存大小
+        :type Memory: int
+        """
+        self.Name = None
+        self.Uuid = None
+        self.State = None
+        self.Reason = None
+        self.OwnerCluster = None
+        self.Memory = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Uuid = params.get("Uuid")
+        self.State = params.get("State")
+        self.Reason = params.get("Reason")
+        self.OwnerCluster = params.get("OwnerCluster")
+        self.Memory = params.get("Memory")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2994,6 +3149,46 @@ class PriceResource(AbstractModel):
                 self.Tags.append(obj)
         self.DiskNum = params.get("DiskNum")
         self.LocalDiskNum = params.get("LocalDiskNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QuotaEntity(AbstractModel):
+    """获取CVM配额
+
+    """
+
+    def __init__(self):
+        """
+        :param UsedQuota: 已使用配额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsedQuota: int
+        :param RemainingQuota: 剩余配额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemainingQuota: int
+        :param TotalQuota: 总配额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalQuota: int
+        :param Zone: 可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        """
+        self.UsedQuota = None
+        self.RemainingQuota = None
+        self.TotalQuota = None
+        self.Zone = None
+
+
+    def _deserialize(self, params):
+        self.UsedQuota = params.get("UsedQuota")
+        self.RemainingQuota = params.get("RemainingQuota")
+        self.TotalQuota = params.get("TotalQuota")
+        self.Zone = params.get("Zone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3521,6 +3716,49 @@ class Step(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class SyncPodStateRequest(AbstractModel):
+    """SyncPodState请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Message: EmrService中pod状态信息
+        :type Message: :class:`tencentcloud.emr.v20190103.models.PodState`
+        """
+        self.Message = None
+
+
+    def _deserialize(self, params):
+        if params.get("Message") is not None:
+            self.Message = PodState()
+            self.Message._deserialize(params.get("Message"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SyncPodStateResponse(AbstractModel):
+    """SyncPodState返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class Tag(AbstractModel):

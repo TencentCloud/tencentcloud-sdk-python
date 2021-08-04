@@ -493,15 +493,15 @@ class TextModerationRequest(AbstractModel):
 
     def __init__(self):
         """
-        :param Content: 文本内容Base64编码。原文长度需小于15000字节，即5000个汉字以内。
+        :param Content: 文本内容Base64编码。限制原文长度不能超过10000个unicode字符
         :type Content: str
-        :param BizType: 该字段用于标识业务场景。您可以在内容安全控制台创建对应的ID，配置不同的内容审核策略，通过接口调用，默认不填为0，后端使用默认策略。 -- 该字段暂未开放。
+        :param BizType: 该字段用于标识业务场景。您可以在内容安全控制台创建对应的ID，配置不同的内容审核策略，通过接口调用，默认不填为0，后端使用默认策略
         :type BizType: str
         :param DataId: 数据ID，英文字母、下划线、-组成，不超过64个字符
         :type DataId: str
-        :param User: 账号相关信息字段，填入后可识别违规风险账号。
+        :param User: 账号相关信息字段，填入后可识别违规风险账号
         :type User: :class:`tencentcloud.tms.v20200713.models.User`
-        :param Device: 设备相关信息字段，填入后可识别违规风险设备。
+        :param Device: 设备相关信息字段，填入后可识别违规风险设备
         :type Device: :class:`tencentcloud.tms.v20200713.models.Device`
         """
         self.Content = None
@@ -537,31 +537,29 @@ class TextModerationResponse(AbstractModel):
 
     def __init__(self):
         """
-        :param BizType: 您在入参时所填入的Biztype参数。 -- 该字段暂未开放。
+        :param BizType: 您在入参时所填入的Biztype参数
         :type BizType: str
-        :param EvilFlag: 数据是否属于恶意类型。
- 0：正常 1：可疑
+        :param EvilFlag: 数据是否属于恶意类型，0：正常 1：可疑
         :type EvilFlag: int
-        :param Label: 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
-以及令人反感、不安全或不适宜的内容类型。
+        :param Label: 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库，以及令人反感、不安全或不适宜的内容类型
         :type Label: str
-        :param Suggestion: 建议您拿到判断结果后的执行操作。
+        :param Suggestion: 建议您拿到判断结果后的执行操作
 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
         :type Suggestion: str
         :param Keywords: 文本命中的关键词信息，用于提示您文本违规的具体原因，可能会返回多个命中的关键词。（如：加我微信）
-如返回值为空，Score不为空，即识别结果（Label）是来自于语义模型判断的返回值。
+如返回值为空，Score不为空，即识别结果（Label）是来自于语义模型判断的返回值
 注意：此字段可能返回 null，表示取不到有效值。
         :type Keywords: list of str
         :param Score: 机器判断当前分类的置信度，取值范围：0.00~100.00。分数越高，表示越有可能属于当前分类。
 （如：色情 99.99，则该样本属于色情的置信度非常高。）
         :type Score: int
-        :param DetailResults: 接口识别样本后返回的详细结果。
+        :param DetailResults: 接口识别样本后返回的详细结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type DetailResults: list of DetailResults
-        :param RiskDetails: 接口识别样本中存在违规账号风险的检测结果。
+        :param RiskDetails: 接口识别样本中存在违规账号风险的检测结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskDetails: list of RiskDetails
-        :param Extra: 扩展字段，用于特定信息返回，不同客户/Biztype下返回信息不同。
+        :param Extra: 扩展字段，用于特定信息返回，不同客户/Biztype下返回信息不同
 注意：此字段可能返回 null，表示取不到有效值。
         :type Extra: str
         :param DataId: 请求参数中的DataId

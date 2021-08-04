@@ -1045,12 +1045,16 @@ class ClusterResource(AbstractModel):
         :type Idle: str
         :param ClusterName: 集群名称。
         :type ClusterName: str
+        :param Isp: 互联网服务供应商
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Isp: str
         """
         self.ClusterId = None
         self.Vip = None
         self.LoadBalancerId = None
         self.Idle = None
         self.ClusterName = None
+        self.Isp = None
 
 
     def _deserialize(self, params):
@@ -1059,6 +1063,7 @@ class ClusterResource(AbstractModel):
         self.LoadBalancerId = params.get("LoadBalancerId")
         self.Idle = params.get("Idle")
         self.ClusterName = params.get("ClusterName")
+        self.Isp = params.get("Isp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
