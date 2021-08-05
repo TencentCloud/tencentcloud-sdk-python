@@ -810,6 +810,34 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCurveData(self, request):
+        """根据用户传入的指标, 拉取一段时间内的监控数据。
+
+        :param request: Request instance for DescribeCurveData.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCurveDataRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeCurveDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCurveData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCurveDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDatabaseACL(self, request):
         """获取数据库权限
 

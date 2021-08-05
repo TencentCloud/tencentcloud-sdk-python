@@ -420,6 +420,53 @@ class ConsumerGroupTopic(AbstractModel):
         
 
 
+class ConsumerRecord(AbstractModel):
+    """消息记录
+
+    """
+
+    def __init__(self):
+        """
+        :param Topic: 主题名
+        :type Topic: str
+        :param Partition: 分区id
+        :type Partition: int
+        :param Offset: 位点
+        :type Offset: int
+        :param Key: 消息key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param Value: 消息value
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        :param Timestamp: 消息时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timestamp: int
+        """
+        self.Topic = None
+        self.Partition = None
+        self.Offset = None
+        self.Key = None
+        self.Value = None
+        self.Timestamp = None
+
+
+    def _deserialize(self, params):
+        self.Topic = params.get("Topic")
+        self.Partition = params.get("Partition")
+        self.Offset = params.get("Offset")
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        self.Timestamp = params.get("Timestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateAclRequest(AbstractModel):
     """CreateAcl请求参数结构体
 
@@ -2182,6 +2229,65 @@ class DynamicRetentionTime(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class FetchMessageByOffsetRequest(AbstractModel):
+    """FetchMessageByOffset请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 实例Id
+        :type InstanceId: str
+        :param Topic: 主题名
+        :type Topic: str
+        :param Partition: 分区id
+        :type Partition: int
+        :param Offset: 位点信息
+        :type Offset: int
+        """
+        self.InstanceId = None
+        self.Topic = None
+        self.Partition = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Topic = params.get("Topic")
+        self.Partition = params.get("Partition")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FetchMessageByOffsetResponse(AbstractModel):
+    """FetchMessageByOffset返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param Result: 返回结果
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.ConsumerRecord`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = ConsumerRecord()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
 
 
 class Filter(AbstractModel):

@@ -4549,6 +4549,44 @@ class DescribeRouteTableConflictsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeVersionsRequest(AbstractModel):
+    """DescribeVersions请求参数结构体
+
+    """
+
+
+class DescribeVersionsResponse(AbstractModel):
+    """DescribeVersions返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param TotalCount: 版本数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param VersionInstanceSet: 版本列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionInstanceSet: list of VersionInstance
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.VersionInstanceSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("VersionInstanceSet") is not None:
+            self.VersionInstanceSet = []
+            for item in params.get("VersionInstanceSet"):
+                obj = VersionInstance()
+                obj._deserialize(item)
+                self.VersionInstanceSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeVpcCniPodLimitsRequest(AbstractModel):
     """DescribeVpcCniPodLimits请求参数结构体
 
@@ -8070,6 +8108,41 @@ class UpgradeNodeResetParam(AbstractModel):
             self.LoginSettings = LoginSettings()
             self.LoginSettings._deserialize(params.get("LoginSettings"))
         self.SecurityGroupIds = params.get("SecurityGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VersionInstance(AbstractModel):
+    """版本信息
+
+    """
+
+    def __init__(self):
+        """
+        :param Name: 版本名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Version: 版本信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: str
+        :param Remark: Remark
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        """
+        self.Name = None
+        self.Version = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Version = params.get("Version")
+        self.Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

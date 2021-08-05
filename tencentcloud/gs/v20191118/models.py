@@ -346,7 +346,7 @@ class TrylockWorkerRequest(AbstractModel):
         :type GameRegion: str
         :param SetNo: 【废弃】资源池编号
         :type SetNo: int
-        :param UserIp: 游戏用户IP，用于就近调度，例如125.127.178.228
+        :param UserIp: 【必选】用户IP，用于就近调度，不填将严重影响用户体验
         :type UserIp: str
         :param GroupId: 分组ID
         :type GroupId: str

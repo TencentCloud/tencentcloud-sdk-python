@@ -101,9 +101,6 @@ INVALIDPARAMETER_PAGENUMBER = 'InvalidParameter.PageNumber'
 # PageSize参数错误。
 INVALIDPARAMETER_PAGESIZE = 'InvalidParameter.PageSize'
 
-# PageSize超过100。
-INVALIDPARAMETER_PAGESIZEOVERSIZE = 'InvalidParameter.PageSizeOversize'
-
 # 自定义布局参数错误。
 INVALIDPARAMETER_PRESETLAYOUTCONFIG = 'InvalidParameter.PresetLayoutConfig'
 

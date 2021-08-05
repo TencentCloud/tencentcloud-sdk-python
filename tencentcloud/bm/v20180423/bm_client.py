@@ -1303,12 +1303,14 @@ class BmClient(AbstractClient):
         AuthorizeRepair（授权维修）<br>
         Ignore（暂不提醒）<br>
         ConfirmRecovered（维修完成后，确认故障恢复）<br>
-        ConfirmUnRecovered（维修完成后，确认故障未恢复）<br>
+        ConfirmUnRecovered（维修完成后，确认故障未恢复，该操作已不推荐用）<br>
+        NeedRepairAgain（维修完成后，故障未恢复，需要重新维修，推荐用此操作打回）<br>
+        入参OperateRemark仅在Operate为NeedRepairAgain时有效，表示打回重修原因，建议给出打回的具体原因。<br>
         <br>
         操作约束（当前任务状态(TaskStatus)->对应可执行的操作）：<br>
         未授权(1)->授权维修；暂不处理<br>
         暂不处理(4)->授权维修<br>
-        待确认(3)->确认故障恢复；确认故障未恢复<br>
+        待确认(3)->确认故障恢复；确认故障未恢复；需要重新维修<br>
         未恢复(6)->确认故障恢复<br>
         <br>
         对于Ping不可达故障的任务，还允许：<br>

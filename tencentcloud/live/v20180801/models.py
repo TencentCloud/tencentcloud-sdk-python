@@ -2182,9 +2182,9 @@ class CreateRecordTaskRequest(AbstractModel):
         :type DomainName: str
         :param AppName: 推流路径。
         :type AppName: str
-        :param EndTime: 录制任务结束时间，Unix时间戳。设置时间必须大于StartTime，且EndTime - StartTime不能超过24小时。
+        :param EndTime: 录制任务结束时间，Unix时间戳。设置时间必须大于StartTime及当前时间，且EndTime - StartTime不能超过24小时。
         :type EndTime: int
-        :param StartTime: 录制任务开始时间，Unix时间戳。如果不填表示立即启动录制。不超过从当前时间开始6天之内的时间。
+        :param StartTime: 录制任务开始时间，Unix时间戳。如果不填表示立即启动录制。StartTime不能超过当前时间+6天。
         :type StartTime: int
         :param StreamType: 推流类型，默认0。取值：
 0-直播推流。
@@ -6049,6 +6049,99 @@ class DescribePullStreamConfigsResponse(AbstractModel):
                 obj = PullStreamConfig()
                 obj._deserialize(item)
                 self.PullStreamConfigs.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePushBandwidthAndFluxListRequest(AbstractModel):
+    """DescribePushBandwidthAndFluxList请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 起始时间点，格式为 yyyy-mm-dd HH:MM:SS。
+        :type StartTime: str
+        :param EndTime: 结束时间点，格式为 yyyy-mm-dd HH:MM:SS，起始和结束时间跨度不支持超过31天。
+        :type EndTime: str
+        :param PushDomains: 域名，可以填多个，若不填，表示总体数据。
+        :type PushDomains: list of str
+        :param MainlandOrOversea: 可选值：
+Mainland：查询中国大陆（境内）数据，
+Oversea：则查询国际/港澳台（境外）数据，
+不填则默认查询全球地区（境内+境外）的数据。
+        :type MainlandOrOversea: str
+        :param Granularity: 数据粒度，支持如下粒度：
+5：5分钟粒度，（跨度不支持超过1天），
+60：1小时粒度（跨度不支持超过一个月），
+1440：天粒度（跨度不支持超过一个月）。
+默认值：5。
+        :type Granularity: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.PushDomains = None
+        self.MainlandOrOversea = None
+        self.Granularity = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.PushDomains = params.get("PushDomains")
+        self.MainlandOrOversea = params.get("MainlandOrOversea")
+        self.Granularity = params.get("Granularity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePushBandwidthAndFluxListResponse(AbstractModel):
+    """DescribePushBandwidthAndFluxList返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PeakBandwidthTime: 峰值带宽所在时间点，格式为 yyyy-mm-dd HH:MM:SS。
+        :type PeakBandwidthTime: str
+        :param PeakBandwidth: 峰值带宽，单位是 Mbps。
+        :type PeakBandwidth: float
+        :param P95PeakBandwidthTime: 95峰值带宽所在时间点，格式为 yyyy-mm-dd HH:MM:SS。
+        :type P95PeakBandwidthTime: str
+        :param P95PeakBandwidth: 95峰值带宽，单位是 Mbps。
+        :type P95PeakBandwidth: float
+        :param SumFlux: 总流量，单位是 MB。
+        :type SumFlux: float
+        :param DataInfoList: 明细数据信息。
+        :type DataInfoList: list of BillDataInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PeakBandwidthTime = None
+        self.PeakBandwidth = None
+        self.P95PeakBandwidthTime = None
+        self.P95PeakBandwidth = None
+        self.SumFlux = None
+        self.DataInfoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PeakBandwidthTime = params.get("PeakBandwidthTime")
+        self.PeakBandwidth = params.get("PeakBandwidth")
+        self.P95PeakBandwidthTime = params.get("P95PeakBandwidthTime")
+        self.P95PeakBandwidth = params.get("P95PeakBandwidth")
+        self.SumFlux = params.get("SumFlux")
+        if params.get("DataInfoList") is not None:
+            self.DataInfoList = []
+            for item in params.get("DataInfoList"):
+                obj = BillDataInfo()
+                obj._deserialize(item)
+                self.DataInfoList.append(obj)
         self.RequestId = params.get("RequestId")
 
 

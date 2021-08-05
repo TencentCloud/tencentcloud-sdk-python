@@ -4237,6 +4237,7 @@ global：全球
 fail：预热失败
 done：预热成功
 process：预热中
+invalid: 预热无效(源站返回4xx或5xx状态码)
         :type Status: str
         """
         self.StartTime = None
@@ -8386,6 +8387,7 @@ class PushTask(AbstractModel):
 fail：预热失败
 done：预热成功
 process：预热中
+invalid：预热无效(源站返回4xx或5xx状态码)
         :type Status: str
         :param Percent: 预热进度百分比
         :type Percent: int

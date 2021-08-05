@@ -397,6 +397,34 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ConfirmOrder(self, request):
+        """云鉴-消费订单确认接口
+
+        :param request: Request instance for ConfirmOrder.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.ConfirmOrderRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.ConfirmOrderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ConfirmOrder", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ConfirmOrderResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ContractOrder(self, request):
         """应用需要先带上签约信息调用本接口生成支付订单号，并将应答的PayInfo透传给聚鑫SDK，拉起客户端（包括微信公众号/微信小程序/客户端App）支付。
 
@@ -580,6 +608,62 @@ class CpdpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateMerchantResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateOrder(self, request):
+        """云鉴-消费订单发起的接口
+
+        :param request: Request instance for CreateOrder.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.CreateOrderRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.CreateOrderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateOrder", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateOrderResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreatePayMerchant(self, request):
+        """商户新增的接口
+
+        :param request: Request instance for CreatePayMerchant.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.CreatePayMerchantRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.CreatePayMerchantResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreatePayMerchant", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreatePayMerchantResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -944,6 +1028,34 @@ class CpdpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAgentTaxPaymentInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyMerchant(self, request):
+        """云鉴-商户信息修改的接口
+
+        :param request: Request instance for ModifyMerchant.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.ModifyMerchantRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.ModifyMerchantResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyMerchant", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyMerchantResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1547,6 +1659,34 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def QueryMerchant(self, request):
+        """云鉴-商户信息查询接口
+
+        :param request: Request instance for QueryMerchant.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryMerchantRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryMerchantResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryMerchant", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryMerchantResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def QueryMerchantBalance(self, request):
         """跨境-对接方账户余额查询
 
@@ -1589,6 +1729,34 @@ class CpdpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryMerchantInfoForManagementResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryMerchantOrder(self, request):
+        """云鉴-消费订单查询接口
+
+        :param request: Request instance for QueryMerchantOrder.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryMerchantOrderRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryMerchantOrderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryMerchantOrder", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryMerchantOrderResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2037,6 +2205,34 @@ class CpdpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RefundMemberTransactionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RefundOrder(self, request):
+        """云鉴-消费订单退款的接口
+
+        :param request: Request instance for RefundOrder.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.RefundOrderRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.RefundOrderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RefundOrder", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RefundOrderResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

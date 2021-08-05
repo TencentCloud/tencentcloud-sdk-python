@@ -1762,6 +1762,34 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeVersions(self, request):
+        """获取集群版本信息
+
+        :param request: Request instance for DescribeVersions.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeVersionsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeVersionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeVersions", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVersionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeVpcCniPodLimits(self, request):
         """本接口查询当前用户和地域在指定可用区下的机型可支持的最大 TKE VPC-CNI 网络模式的 Pod 数量
 

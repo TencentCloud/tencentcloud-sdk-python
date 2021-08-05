@@ -1978,6 +1978,70 @@ class CloseOrderResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ConfirmOrderRequest(AbstractModel):
+    """ConfirmOrder请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MerchantAppId: 分配给商户的AppId
+        :type MerchantAppId: str
+        :param OrderNo: 平台流水号。消费订单发起成功后，返回的平台唯一订单号。
+        :type OrderNo: str
+        """
+        self.MerchantAppId = None
+        self.OrderNo = None
+
+
+    def _deserialize(self, params):
+        self.MerchantAppId = params.get("MerchantAppId")
+        self.OrderNo = params.get("OrderNo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConfirmOrderResponse(AbstractModel):
+    """ConfirmOrder返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MerchantAppId: 分配给商户的AppId
+        :type MerchantAppId: str
+        :param OrderNo: 平台流水号。消费订单发起成功后，返回的平台唯一订单号。
+        :type OrderNo: str
+        :param Status: 订单确认状态。0-确认失败
+1-确认成功 
+2-可疑状态
+        :type Status: str
+        :param Description: 订单确认状态描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MerchantAppId = None
+        self.OrderNo = None
+        self.Status = None
+        self.Description = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MerchantAppId = params.get("MerchantAppId")
+        self.OrderNo = params.get("OrderNo")
+        self.Status = params.get("Status")
+        self.Description = params.get("Description")
+        self.RequestId = params.get("RequestId")
+
+
 class ContractInfo(AbstractModel):
     """合约信息
 
@@ -3494,6 +3558,145 @@ class CreateMerchantResultData(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateOrderRequest(AbstractModel):
+    """CreateOrder请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param ChannelCode: 渠道编号。ZSB2B：招商银行B2B。
+        :type ChannelCode: str
+        :param MerchantAppId: 进件成功后返给商户方的 AppId。
+        :type MerchantAppId: str
+        :param Amount: 交易金额。单位：元
+        :type Amount: str
+        :param TraceNo: 商户流水号。商户唯一订单号由字母或数字组成。
+        :type TraceNo: str
+        :param NotifyUrl: 通知地址。商户接收交易结果的通知地址。
+        :type NotifyUrl: str
+        :param ReturnUrl: 返回地址。支付成功后，页面将跳 转返回到商户的该地址。
+        :type ReturnUrl: str
+        """
+        self.ChannelCode = None
+        self.MerchantAppId = None
+        self.Amount = None
+        self.TraceNo = None
+        self.NotifyUrl = None
+        self.ReturnUrl = None
+
+
+    def _deserialize(self, params):
+        self.ChannelCode = params.get("ChannelCode")
+        self.MerchantAppId = params.get("MerchantAppId")
+        self.Amount = params.get("Amount")
+        self.TraceNo = params.get("TraceNo")
+        self.NotifyUrl = params.get("NotifyUrl")
+        self.ReturnUrl = params.get("ReturnUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateOrderResponse(AbstractModel):
+    """CreateOrder返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MerchantAppId: 进件成功后返给商户方的AppId。
+        :type MerchantAppId: str
+        :param TraceNo: 商户流水号，商户唯一订单号由字母或数字组成。
+        :type TraceNo: str
+        :param OrderNo: 平台流水号，若下单成功则返回。
+        :type OrderNo: str
+        :param PayUrl: 支付页面跳转地址，若下单成功则返回。
+        :type PayUrl: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MerchantAppId = None
+        self.TraceNo = None
+        self.OrderNo = None
+        self.PayUrl = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MerchantAppId = params.get("MerchantAppId")
+        self.TraceNo = params.get("TraceNo")
+        self.OrderNo = params.get("OrderNo")
+        self.PayUrl = params.get("PayUrl")
+        self.RequestId = params.get("RequestId")
+
+
+class CreatePayMerchantRequest(AbstractModel):
+    """CreatePayMerchant请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param PlatformCode: 平台编号
+        :type PlatformCode: str
+        :param ChannelMerchantNo: 渠道方收款商户编号，由渠道方(银行)提 供。
+        :type ChannelMerchantNo: str
+        :param ChannelCheckFlag: 是否需要向渠道进行 商户信息验证 1:验证
+0:不验证
+        :type ChannelCheckFlag: str
+        :param MerchantName: 收款商户名称
+        :type MerchantName: str
+        :param BusinessPayFlag: 是否开通 B2B 支付 1:开通 0:不开通 缺省:1
+        :type BusinessPayFlag: str
+        """
+        self.PlatformCode = None
+        self.ChannelMerchantNo = None
+        self.ChannelCheckFlag = None
+        self.MerchantName = None
+        self.BusinessPayFlag = None
+
+
+    def _deserialize(self, params):
+        self.PlatformCode = params.get("PlatformCode")
+        self.ChannelMerchantNo = params.get("ChannelMerchantNo")
+        self.ChannelCheckFlag = params.get("ChannelCheckFlag")
+        self.MerchantName = params.get("MerchantName")
+        self.BusinessPayFlag = params.get("BusinessPayFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePayMerchantResponse(AbstractModel):
+    """CreatePayMerchant返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MerchantAppId: 分配给商户的 AppId。该 AppId 为后续各项 交易的商户标识。
+        :type MerchantAppId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MerchantAppId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MerchantAppId = params.get("MerchantAppId")
+        self.RequestId = params.get("RequestId")
 
 
 class CreateRedInvoiceItem(AbstractModel):
@@ -5071,6 +5274,55 @@ class ModifyAgentTaxPaymentInfoResponse(AbstractModel):
         if params.get("AgentTaxPaymentBatch") is not None:
             self.AgentTaxPaymentBatch = AgentTaxPaymentBatch()
             self.AgentTaxPaymentBatch._deserialize(params.get("AgentTaxPaymentBatch"))
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyMerchantRequest(AbstractModel):
+    """ModifyMerchant请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MerchantAppId: 进件成功后返给商户的AppId
+        :type MerchantAppId: str
+        :param MerchantName: 收款商户名称
+        :type MerchantName: str
+        :param BusinessPayFlag: B2B 支付标志。是否开通 B2B支付， 1:开通 0:不开通。
+        :type BusinessPayFlag: str
+        """
+        self.MerchantAppId = None
+        self.MerchantName = None
+        self.BusinessPayFlag = None
+
+
+    def _deserialize(self, params):
+        self.MerchantAppId = params.get("MerchantAppId")
+        self.MerchantName = params.get("MerchantName")
+        self.BusinessPayFlag = params.get("BusinessPayFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyMerchantResponse(AbstractModel):
+    """ModifyMerchant返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -7759,6 +8011,116 @@ class QueryMerchantInfoForManagementResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class QueryMerchantOrderRequest(AbstractModel):
+    """QueryMerchantOrder请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MerchantAppId: 进件成功后返给商户方的AppId。
+        :type MerchantAppId: str
+        :param OrderNo: 平台流水号。平台唯一订单号。
+        :type OrderNo: str
+        """
+        self.MerchantAppId = None
+        self.OrderNo = None
+
+
+    def _deserialize(self, params):
+        self.MerchantAppId = params.get("MerchantAppId")
+        self.OrderNo = params.get("OrderNo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryMerchantOrderResponse(AbstractModel):
+    """QueryMerchantOrder返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MerchantAppId: 进件成功后返给商户方的AppId。
+        :type MerchantAppId: str
+        :param OrderNo: 平台流水号。平台唯一订单号。
+        :type OrderNo: str
+        :param Status: 订单支付状态。0-下单失败 1-下单成功未支付 2-支付成功 3-支付失败 4-退款中 5-退款成功 6-退款失败 7-待付款 8-待确认。
+        :type Status: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MerchantAppId = None
+        self.OrderNo = None
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MerchantAppId = params.get("MerchantAppId")
+        self.OrderNo = params.get("OrderNo")
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
+class QueryMerchantRequest(AbstractModel):
+    """QueryMerchant请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MerchantAppId: 进件成功后返给商户方的 AppId
+        :type MerchantAppId: str
+        """
+        self.MerchantAppId = None
+
+
+    def _deserialize(self, params):
+        self.MerchantAppId = params.get("MerchantAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryMerchantResponse(AbstractModel):
+    """QueryMerchant返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MerchantAppId: 分配给商户的 AppId，该 AppId 为后续各项 交易的商户标识。
+        :type MerchantAppId: str
+        :param MerchantName: 收款商户名称。
+        :type MerchantName: str
+        :param BusinessPayFlag: B2B 支付标志。是否开通 B2B 支付， 1:开通 0:不开通。
+        :type BusinessPayFlag: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MerchantAppId = None
+        self.MerchantName = None
+        self.BusinessPayFlag = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MerchantAppId = params.get("MerchantAppId")
+        self.MerchantName = params.get("MerchantName")
+        self.BusinessPayFlag = params.get("BusinessPayFlag")
+        self.RequestId = params.get("RequestId")
+
+
 class QueryOrderOutOrderList(AbstractModel):
     """查询订单接口的出参，订单列表
 
@@ -9954,6 +10316,70 @@ class RefundMemberTransactionResponse(AbstractModel):
         self.RequestType = params.get("RequestType")
         self.FrontSequenceNumber = params.get("FrontSequenceNumber")
         self.ReservedMessage = params.get("ReservedMessage")
+        self.RequestId = params.get("RequestId")
+
+
+class RefundOrderRequest(AbstractModel):
+    """RefundOrder请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MerchantAppId: 进件成功后返给商户方的AppId
+        :type MerchantAppId: str
+        :param OrderNo: 平台流水号。消费订单发起成功后，返回的平台唯一订单号。
+        :type OrderNo: str
+        """
+        self.MerchantAppId = None
+        self.OrderNo = None
+
+
+    def _deserialize(self, params):
+        self.MerchantAppId = params.get("MerchantAppId")
+        self.OrderNo = params.get("OrderNo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RefundOrderResponse(AbstractModel):
+    """RefundOrder返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param MerchantAppId: 进件成功后返给商户方的AppId
+        :type MerchantAppId: str
+        :param OrderNo: 平台流水号。消费订单发起成功后，返回的平台唯一订单号。
+        :type OrderNo: str
+        :param Status: 订单退款状态。0-退款失败
+1-退款成功 
+2-可疑状态
+        :type Status: str
+        :param Description: 订单退款状态描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MerchantAppId = None
+        self.OrderNo = None
+        self.Status = None
+        self.Description = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MerchantAppId = params.get("MerchantAppId")
+        self.OrderNo = params.get("OrderNo")
+        self.Status = params.get("Status")
+        self.Description = params.get("Description")
         self.RequestId = params.get("RequestId")
 
 

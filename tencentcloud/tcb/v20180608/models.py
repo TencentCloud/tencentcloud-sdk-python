@@ -1245,6 +1245,42 @@ class CloudRunServiceVolume(AbstractModel):
         
 
 
+class ClsInfo(AbstractModel):
+    """cls日志信息
+
+    """
+
+    def __init__(self):
+        """
+        :param ClsRegion: cls所属地域
+        :type ClsRegion: str
+        :param ClsLogsetId: cls日志集ID
+        :type ClsLogsetId: str
+        :param ClsTopicId: cls日志主题ID
+        :type ClsTopicId: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        """
+        self.ClsRegion = None
+        self.ClsLogsetId = None
+        self.ClsTopicId = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.ClsRegion = params.get("ClsRegion")
+        self.ClsLogsetId = params.get("ClsLogsetId")
+        self.ClsTopicId = params.get("ClsTopicId")
+        self.CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CodeSource(AbstractModel):
     """云开发项目来源
 
@@ -3433,6 +3469,106 @@ class DescribeCloudBaseRunVersionSnapshotResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCurveDataRequest(AbstractModel):
+    """DescribeCurveData请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param EnvId: 环境ID
+        :type EnvId: str
+        :param MetricName: <li> 指标名: </li>
+<li> StorageRead: 存储读请求次数 </li>
+<li> StorageWrite: 存储写请求次数 </li>
+<li> StorageCdnOriginFlux: CDN回源流量, 单位字节 </li>
+<li> CDNFlux: CDN回源流量, 单位字节 </li>
+<li> FunctionInvocation: 云函数调用次数 </li>
+<li> FunctionGBs: 云函数资源使用量, 单位Mb*Ms </li>
+<li> FunctionFlux: 云函数流量, 单位千字节(KB) </li>
+<li> FunctionError: 云函数调用错误次数 </li>
+<li> FunctionDuration: 云函数运行时间, 单位毫秒 </li>
+<li> DbRead: 数据库读请求数 </li>
+<li> DbWrite: 数据库写请求数 </li>
+<li> DbCostTime10ms: 数据库耗时在10ms~50ms请求数 </li>
+<li> DbCostTime50ms: 数据库耗时在50ms~100ms请求数 </li>
+<li> DbCostTime100ms: 数据库耗时在100ms以上请求数 </li>
+<li> TkeCpuRatio: 容器CPU占用率 </li>
+<li> TkeMemRatio: 容器内存占用率 </li>
+<li> TkeCpuUsed: 容器CPU使用量 </li>
+<li> TkeMemUsed: 容器内存使用量 </li>
+<li> TkeInvokeNum: 调用量 </li>
+        :type MetricName: str
+        :param StartTime: 开始时间，如2018-08-24 10:50:00, 开始时间需要早于结束时间至少五分钟(原因是因为目前统计粒度最小是5分钟).
+        :type StartTime: str
+        :param EndTime: 结束时间，如2018-08-24 10:50:00, 结束时间需要晚于开始时间至少五分钟(原因是因为目前统计粒度最小是5分钟)..
+        :type EndTime: str
+        :param ResourceID: 资源ID, 目前仅对云函数、容器托管相关的指标有意义。云函数(FunctionInvocation, FunctionGBs, FunctionFlux, FunctionError, FunctionDuration)、容器托管（服务名称）, 如果想查询某个云函数的指标则在ResourceId中传入函数名; 如果只想查询整个namespace的指标, 则留空或不传.如果想查询数据库某个集合相关信息，传入集合名称
+        :type ResourceID: str
+        """
+        self.EnvId = None
+        self.MetricName = None
+        self.StartTime = None
+        self.EndTime = None
+        self.ResourceID = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.MetricName = params.get("MetricName")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.ResourceID = params.get("ResourceID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCurveDataResponse(AbstractModel):
+    """DescribeCurveData返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 开始时间, 会根据数据的统计周期进行取整.
+        :type StartTime: str
+        :param EndTime: 结束时间, 会根据数据的统计周期进行取整.
+        :type EndTime: str
+        :param MetricName: 指标名.
+        :type MetricName: str
+        :param Period: 统计周期(单位秒), 当时间区间为1天内, 统计周期为5分钟; 当时间区间选择为1天以上, 15天以下, 统计周期为1小时; 当时间区间选择为15天以上, 180天以下, 统计周期为1天.
+        :type Period: int
+        :param Values: 有效的监控数据, 每个有效监控数据的上报时间可以从时间数组中的对应位置上获取到.
+        :type Values: list of int
+        :param Time: 时间数据, 标识监控数据Values中的点是哪个时间段上报的.
+        :type Time: list of int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.MetricName = None
+        self.Period = None
+        self.Values = None
+        self.Time = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.MetricName = params.get("MetricName")
+        self.Period = params.get("Period")
+        self.Values = params.get("Values")
+        self.Time = params.get("Time")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDatabaseACLRequest(AbstractModel):
     """DescribeDatabaseACL请求参数结构体
 
@@ -5027,6 +5163,9 @@ class EnvInfo(AbstractModel):
         :param Tags: 环境标签列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
+        :param CustomLogServices: 自定义日志服务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomLogServices: list of ClsInfo
         """
         self.EnvId = None
         self.Source = None
@@ -5047,6 +5186,7 @@ class EnvInfo(AbstractModel):
         self.IsDefault = None
         self.Region = None
         self.Tags = None
+        self.CustomLogServices = None
 
 
     def _deserialize(self, params):
@@ -5099,6 +5239,12 @@ class EnvInfo(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        if params.get("CustomLogServices") is not None:
+            self.CustomLogServices = []
+            for item in params.get("CustomLogServices"):
+                obj = ClsInfo()
+                obj._deserialize(item)
+                self.CustomLogServices.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

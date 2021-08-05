@@ -1045,7 +1045,7 @@ class ClusterResource(AbstractModel):
         :type Idle: str
         :param ClusterName: 集群名称。
         :type ClusterName: str
-        :param Isp: 互联网服务供应商
+        :param Isp: 集群的Isp属性，如："BGP","CMCC","CUCC","CTCC","INTERNAL"。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Isp: str
         """

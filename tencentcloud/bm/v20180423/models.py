@@ -4011,14 +4011,18 @@ class RepairTaskControlRequest(AbstractModel):
         :type TaskId: str
         :param Operate: 操作
         :type Operate: str
+        :param OperateRemark: 打回操作的备注信息
+        :type OperateRemark: str
         """
         self.TaskId = None
         self.Operate = None
+        self.OperateRemark = None
 
 
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
         self.Operate = params.get("Operate")
+        self.OperateRemark = params.get("OperateRemark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
