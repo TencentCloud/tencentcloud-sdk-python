@@ -77,6 +77,9 @@ MISSINGPARAMETER_PARAM = 'MissingParameter.Param'
 # 操作被拒绝。
 OPERATIONDENIED = 'OperationDenied'
 
+# 操作失败：资源被冻结。
+OPERATIONDENIED_RESOURCEFROZEN = 'OperationDenied.ResourceFrozen'
+
 # 资源被占用。
 RESOURCEINUSE = 'ResourceInUse'
 

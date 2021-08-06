@@ -4011,7 +4011,7 @@ class RepairTaskControlRequest(AbstractModel):
         :type TaskId: str
         :param Operate: 操作
         :type Operate: str
-        :param OperateRemark: 打回操作的备注信息
+        :param OperateRemark: 需要重新维修操作的备注信息，可提供返场维修原因，以便驻场快速针对问题定位解决。
         :type OperateRemark: str
         """
         self.TaskId = None

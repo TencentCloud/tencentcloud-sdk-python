@@ -6507,6 +6507,122 @@ class TrainTicketOCRResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class UsedVehicleInvoiceInfo(AbstractModel):
+    """二手车销售统一发票信息
+
+    """
+
+    def __init__(self):
+        """
+        :param TaxBureau: 所属税局
+        :type TaxBureau: str
+        :param Buyer: 买方单位/个人
+        :type Buyer: str
+        :param BuyerNo: 买方单位代码/身份证号码
+        :type BuyerNo: str
+        :param BuyerAddress: 买方单位/个人地址
+        :type BuyerAddress: str
+        :param BuyerTel: 买方单位电话
+        :type BuyerTel: str
+        :param Seller: 卖方单位/个人
+        :type Seller: str
+        :param SellerNo: 卖方单位代码/身份证号码
+        :type SellerNo: str
+        :param SellerAddress: 卖方单位/个人地址
+        :type SellerAddress: str
+        :param SellerTel: 卖方单位电话
+        :type SellerTel: str
+        :param VehicleLicenseNo: 车牌照号
+        :type VehicleLicenseNo: str
+        :param RegisterNo: 登记证号
+        :type RegisterNo: str
+        :param VehicleIdentifyNo: 车架号/车辆识别代码
+        :type VehicleIdentifyNo: str
+        :param ManagementOffice: 转入地车辆管理所名称
+        :type ManagementOffice: str
+        :param VehicleTotalPrice: 车价合计
+        :type VehicleTotalPrice: str
+        :param Auctioneer: 经营、拍卖单位
+        :type Auctioneer: str
+        :param AuctioneerAddress: 经营、拍卖单位地址
+        :type AuctioneerAddress: str
+        :param AuctioneerTaxpayerNum: 经营、拍卖单位纳税人识别号
+        :type AuctioneerTaxpayerNum: str
+        :param AuctioneerBankAccount: 经营、拍卖单位开户银行、账号
+        :type AuctioneerBankAccount: str
+        :param AuctioneerTel: 经营、拍卖单位电话
+        :type AuctioneerTel: str
+        :param Market: 二手车市场
+        :type Market: str
+        :param MarketTaxpayerNum: 二手车市场纳税人识别号
+        :type MarketTaxpayerNum: str
+        :param MarketAddress: 二手车市场地址
+        :type MarketAddress: str
+        :param MarketBankAccount: 二手车市场开户银行账号
+        :type MarketBankAccount: str
+        :param MarketTel: 二手车市场电话
+        :type MarketTel: str
+        """
+        self.TaxBureau = None
+        self.Buyer = None
+        self.BuyerNo = None
+        self.BuyerAddress = None
+        self.BuyerTel = None
+        self.Seller = None
+        self.SellerNo = None
+        self.SellerAddress = None
+        self.SellerTel = None
+        self.VehicleLicenseNo = None
+        self.RegisterNo = None
+        self.VehicleIdentifyNo = None
+        self.ManagementOffice = None
+        self.VehicleTotalPrice = None
+        self.Auctioneer = None
+        self.AuctioneerAddress = None
+        self.AuctioneerTaxpayerNum = None
+        self.AuctioneerBankAccount = None
+        self.AuctioneerTel = None
+        self.Market = None
+        self.MarketTaxpayerNum = None
+        self.MarketAddress = None
+        self.MarketBankAccount = None
+        self.MarketTel = None
+
+
+    def _deserialize(self, params):
+        self.TaxBureau = params.get("TaxBureau")
+        self.Buyer = params.get("Buyer")
+        self.BuyerNo = params.get("BuyerNo")
+        self.BuyerAddress = params.get("BuyerAddress")
+        self.BuyerTel = params.get("BuyerTel")
+        self.Seller = params.get("Seller")
+        self.SellerNo = params.get("SellerNo")
+        self.SellerAddress = params.get("SellerAddress")
+        self.SellerTel = params.get("SellerTel")
+        self.VehicleLicenseNo = params.get("VehicleLicenseNo")
+        self.RegisterNo = params.get("RegisterNo")
+        self.VehicleIdentifyNo = params.get("VehicleIdentifyNo")
+        self.ManagementOffice = params.get("ManagementOffice")
+        self.VehicleTotalPrice = params.get("VehicleTotalPrice")
+        self.Auctioneer = params.get("Auctioneer")
+        self.AuctioneerAddress = params.get("AuctioneerAddress")
+        self.AuctioneerTaxpayerNum = params.get("AuctioneerTaxpayerNum")
+        self.AuctioneerBankAccount = params.get("AuctioneerBankAccount")
+        self.AuctioneerTel = params.get("AuctioneerTel")
+        self.Market = params.get("Market")
+        self.MarketTaxpayerNum = params.get("MarketTaxpayerNum")
+        self.MarketAddress = params.get("MarketAddress")
+        self.MarketBankAccount = params.get("MarketBankAccount")
+        self.MarketTel = params.get("MarketTel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class VatInvoice(AbstractModel):
     """增值税发票信息
 
@@ -6915,10 +7031,16 @@ class VatInvoiceVerifyResponse(AbstractModel):
         """
         :param Invoice: 增值税发票信息，详情请点击左侧链接。
         :type Invoice: :class:`tencentcloud.ocr.v20181119.models.VatInvoice`
+        :param VehicleInvoiceInfo: 机动车销售统一发票信息
+        :type VehicleInvoiceInfo: :class:`tencentcloud.ocr.v20181119.models.VehicleInvoiceInfo`
+        :param UsedVehicleInvoiceInfo: 二手车销售统一发票信息
+        :type UsedVehicleInvoiceInfo: :class:`tencentcloud.ocr.v20181119.models.UsedVehicleInvoiceInfo`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Invoice = None
+        self.VehicleInvoiceInfo = None
+        self.UsedVehicleInvoiceInfo = None
         self.RequestId = None
 
 
@@ -6926,6 +7048,12 @@ class VatInvoiceVerifyResponse(AbstractModel):
         if params.get("Invoice") is not None:
             self.Invoice = VatInvoice()
             self.Invoice._deserialize(params.get("Invoice"))
+        if params.get("VehicleInvoiceInfo") is not None:
+            self.VehicleInvoiceInfo = VehicleInvoiceInfo()
+            self.VehicleInvoiceInfo._deserialize(params.get("VehicleInvoiceInfo"))
+        if params.get("UsedVehicleInvoiceInfo") is not None:
+            self.UsedVehicleInvoiceInfo = UsedVehicleInvoiceInfo()
+            self.UsedVehicleInvoiceInfo._deserialize(params.get("UsedVehicleInvoiceInfo"))
         self.RequestId = params.get("RequestId")
 
 
@@ -7027,6 +7155,90 @@ class VatRollInvoiceOCRResponse(AbstractModel):
                 self.VatRollInvoiceInfos.append(obj)
         self.Angle = params.get("Angle")
         self.RequestId = params.get("RequestId")
+
+
+class VehicleInvoiceInfo(AbstractModel):
+    """机动车销售统一发票信息
+
+    """
+
+    def __init__(self):
+        """
+        :param CarType: 车辆类型
+        :type CarType: str
+        :param PlateModel: 厂牌型号
+        :type PlateModel: str
+        :param ProduceAddress: 产地
+        :type ProduceAddress: str
+        :param CertificateNo: 合格证号
+        :type CertificateNo: str
+        :param ImportNo: 进口证明书号
+        :type ImportNo: str
+        :param VinNo: LSVCA2NP9HN0xxxxx
+        :type VinNo: str
+        :param PayTaxesNo: 完税证书号
+        :type PayTaxesNo: str
+        :param Tonnage: 吨位
+        :type Tonnage: str
+        :param LimitCount: 限乘人数
+        :type LimitCount: str
+        :param EngineNo: 发动机号码
+        :type EngineNo: str
+        :param BizCheckFormNo: 商检单号
+        :type BizCheckFormNo: str
+        :param TaxtationOrgCode: 主管税务机关代码
+        :type TaxtationOrgCode: str
+        :param TaxtationOrgName: 主管税务机关名称
+        :type TaxtationOrgName: str
+        :param MotorTaxRate: 税率
+        :type MotorTaxRate: str
+        :param MotorBankName: 开户行
+        :type MotorBankName: str
+        :param MotorBankAccount: 账号
+        :type MotorBankAccount: str
+        """
+        self.CarType = None
+        self.PlateModel = None
+        self.ProduceAddress = None
+        self.CertificateNo = None
+        self.ImportNo = None
+        self.VinNo = None
+        self.PayTaxesNo = None
+        self.Tonnage = None
+        self.LimitCount = None
+        self.EngineNo = None
+        self.BizCheckFormNo = None
+        self.TaxtationOrgCode = None
+        self.TaxtationOrgName = None
+        self.MotorTaxRate = None
+        self.MotorBankName = None
+        self.MotorBankAccount = None
+
+
+    def _deserialize(self, params):
+        self.CarType = params.get("CarType")
+        self.PlateModel = params.get("PlateModel")
+        self.ProduceAddress = params.get("ProduceAddress")
+        self.CertificateNo = params.get("CertificateNo")
+        self.ImportNo = params.get("ImportNo")
+        self.VinNo = params.get("VinNo")
+        self.PayTaxesNo = params.get("PayTaxesNo")
+        self.Tonnage = params.get("Tonnage")
+        self.LimitCount = params.get("LimitCount")
+        self.EngineNo = params.get("EngineNo")
+        self.BizCheckFormNo = params.get("BizCheckFormNo")
+        self.TaxtationOrgCode = params.get("TaxtationOrgCode")
+        self.TaxtationOrgName = params.get("TaxtationOrgName")
+        self.MotorTaxRate = params.get("MotorTaxRate")
+        self.MotorBankName = params.get("MotorBankName")
+        self.MotorBankAccount = params.get("MotorBankAccount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class VehicleLicenseOCRRequest(AbstractModel):

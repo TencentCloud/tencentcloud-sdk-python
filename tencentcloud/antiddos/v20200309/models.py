@@ -71,6 +71,59 @@ class AssociateDDoSEipAddressResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AssociateDDoSEipLoadBalancerRequest(AbstractModel):
+    """AssociateDDoSEipLoadBalancer请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param InstanceId: 资源实例ID，实例ID形如：bgpip-0000011x。只能填写高防IP实例。
+        :type InstanceId: str
+        :param Eip: 资源实例ID对应的高防弹性公网IP。
+        :type Eip: str
+        :param LoadBalancerID: 要绑定的负载均衡ID。负载均衡 ID 形如：lb-0000002i。可通过登录控制台查询，也可通过 DescribeLoadBalancers 接口返回值中的LoadBalancerId获取。
+        :type LoadBalancerID: str
+        :param LoadBalancerRegion: Clb所在地域，例如：ap-hongkong。
+        :type LoadBalancerRegion: str
+        """
+        self.InstanceId = None
+        self.Eip = None
+        self.LoadBalancerID = None
+        self.LoadBalancerRegion = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Eip = params.get("Eip")
+        self.LoadBalancerID = params.get("LoadBalancerID")
+        self.LoadBalancerRegion = params.get("LoadBalancerRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssociateDDoSEipLoadBalancerResponse(AbstractModel):
+    """AssociateDDoSEipLoadBalancer返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class BGPIPInstance(AbstractModel):
     """高防IP资产实例信息
 

@@ -667,6 +667,12 @@ class CreateAutoScalingGroupRequest(AbstractModel):
         :param SpotMixedAllocationPolicy: 竞价混合模式下，各计费类型实例的分配策略。
 仅当 InstanceAllocationPolicy 取 SPOT_MIXED 时可用。
         :type SpotMixedAllocationPolicy: :class:`tencentcloud.autoscaling.v20180419.models.SpotMixedAllocationPolicy`
+        :param CapacityRebalance: 容量重平衡功能，仅对伸缩组内的竞价实例有效。取值范围：
+<br><li> TRUE，开启该功能，当伸缩组内的竞价实例即将被竞价实例服务自动回收前，AS 主动发起竞价实例销毁流程，如果有配置过缩容 hook，则销毁前 hook 会生效。销毁流程启动后，AS 会异步开启一个扩容活动，用于补齐期望实例数。
+<br><li> FALSE，不开启该功能，则 AS 等待竞价实例被销毁后才会去扩容补齐伸缩组期望实例数。
+
+默认取 FALSE。
+        :type CapacityRebalance: bool
         """
         self.AutoScalingGroupName = None
         self.LaunchConfigurationId = None
@@ -691,6 +697,7 @@ class CreateAutoScalingGroupRequest(AbstractModel):
         self.LoadBalancerHealthCheckGracePeriod = None
         self.InstanceAllocationPolicy = None
         self.SpotMixedAllocationPolicy = None
+        self.CapacityRebalance = None
 
 
     def _deserialize(self, params):
@@ -731,6 +738,7 @@ class CreateAutoScalingGroupRequest(AbstractModel):
         if params.get("SpotMixedAllocationPolicy") is not None:
             self.SpotMixedAllocationPolicy = SpotMixedAllocationPolicy()
             self.SpotMixedAllocationPolicy._deserialize(params.get("SpotMixedAllocationPolicy"))
+        self.CapacityRebalance = params.get("CapacityRebalance")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3371,6 +3379,10 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
         :param SpotMixedAllocationPolicy: 竞价混合模式下，各计费类型实例的分配策略。
 仅当 InstanceAllocationPolicy 取 SPOT_MIXED 时可用。
         :type SpotMixedAllocationPolicy: :class:`tencentcloud.autoscaling.v20180419.models.SpotMixedAllocationPolicy`
+        :param CapacityRebalance: 容量重平衡功能，仅对伸缩组内的竞价实例有效。取值范围：
+<br><li> TRUE，开启该功能，当伸缩组内的竞价实例即将被竞价实例服务自动回收前，AS 主动发起竞价实例销毁流程，如果有配置过缩容 hook，则销毁前 hook 会生效。销毁流程启动后，AS 会异步开启一个扩容活动，用于补齐期望实例数。
+<br><li> FALSE，不开启该功能，则 AS 等待竞价实例被销毁后才会去扩容补齐伸缩组期望实例数。
+        :type CapacityRebalance: bool
         """
         self.AutoScalingGroupId = None
         self.AutoScalingGroupName = None
@@ -3393,6 +3405,7 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
         self.LoadBalancerHealthCheckGracePeriod = None
         self.InstanceAllocationPolicy = None
         self.SpotMixedAllocationPolicy = None
+        self.CapacityRebalance = None
 
 
     def _deserialize(self, params):
@@ -3421,6 +3434,7 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
         if params.get("SpotMixedAllocationPolicy") is not None:
             self.SpotMixedAllocationPolicy = SpotMixedAllocationPolicy()
             self.SpotMixedAllocationPolicy._deserialize(params.get("SpotMixedAllocationPolicy"))
+        self.CapacityRebalance = params.get("CapacityRebalance")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

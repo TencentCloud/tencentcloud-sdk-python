@@ -1193,7 +1193,7 @@ class CreateProductRequest(AbstractModel):
         :type ProductVaildYears: int
         :param Features: 设备功能码 ypsxth音频双向通话 spdxth视频单向通话
         :type Features: list of str
-        :param ChipOs: 设备操作系统 android linux liteos
+        :param ChipOs: 设备操作系统 Linux
         :type ChipOs: str
         :param ChipManufactureId: 芯片厂商id
         :type ChipManufactureId: str

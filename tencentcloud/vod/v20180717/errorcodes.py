@@ -62,9 +62,6 @@ FAILEDOPERATION_TASKDUPLICATE = 'FailedOperation.TaskDuplicate'
 # 操作失败：上传文件到 cos 失败。
 FAILEDOPERATION_UPLOADCOSFAIL = 'FailedOperation.UploadCosFail'
 
-# 用户已经停服。
-FAILEDOPERATION_USERSTATUSINAVLID = 'FailedOperation.UserStatusInavlid'
-
 # 内部错误。
 INTERNALERROR = 'InternalError'
 

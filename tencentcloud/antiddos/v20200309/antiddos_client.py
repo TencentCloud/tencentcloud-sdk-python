@@ -54,6 +54,34 @@ class AntiddosClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AssociateDDoSEipLoadBalancer(self, request):
+        """本接口 (AssociateDDoSEipLoadBalancer) 用于将高防弹性公网IP绑定到负载均衡指定内网 IP 上。
+
+        :param request: Request instance for AssociateDDoSEipLoadBalancer.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.AssociateDDoSEipLoadBalancerRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.AssociateDDoSEipLoadBalancerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AssociateDDoSEipLoadBalancer", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AssociateDDoSEipLoadBalancerResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateBlackWhiteIpList(self, request):
         """添加DDoS防护的IP黑白名单
 

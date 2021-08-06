@@ -2190,6 +2190,37 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeLiveTranscodeTotalInfo(self, request):
+        """查询转码总量数据，可查询近30天内数据。
+        注意：
+        如果是查询某一天内，则返回5分钟粒度数据；
+        如果是查询跨天或指定域名， 则返回1小时粒度数据。
+
+        :param request: Request instance for DescribeLiveTranscodeTotalInfo.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveTranscodeTotalInfoRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLiveTranscodeTotalInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLiveTranscodeTotalInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLiveTranscodeTotalInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeLiveWatermark(self, request):
         """获取单个水印信息。
 

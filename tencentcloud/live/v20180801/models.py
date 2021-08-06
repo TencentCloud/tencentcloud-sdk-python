@@ -5407,6 +5407,75 @@ class DescribeLiveTranscodeTemplatesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeLiveTranscodeTotalInfoRequest(AbstractModel):
+    """DescribeLiveTranscodeTotalInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param StartTime: 开始时间，北京时间。
+格式：yyyy-mm-dd HH:MM:SS。
+        :type StartTime: str
+        :param EndTime: 结束时间，北京时间。
+格式：yyyy-mm-dd HH:MM:SS。
+        :type EndTime: str
+        :param PushDomains: 推流域名列表，若不填，表示查询所有域名总体数据。
+指定域名时返回1小时粒度数据。
+        :type PushDomains: list of str
+        :param MainlandOrOversea: 可选值：
+Mainland：查询中国大陆（境内）数据，
+Oversea：则查询国际/港澳台（境外）数据，
+默认：查询全球地区（境内+境外）的数据。
+        :type MainlandOrOversea: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.PushDomains = None
+        self.MainlandOrOversea = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.PushDomains = params.get("PushDomains")
+        self.MainlandOrOversea = params.get("MainlandOrOversea")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLiveTranscodeTotalInfoResponse(AbstractModel):
+    """DescribeLiveTranscodeTotalInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        """
+        :param DataInfoList: 统计数据列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataInfoList: list of TranscodeTotalInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DataInfoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DataInfoList") is not None:
+            self.DataInfoList = []
+            for item in params.get("DataInfoList"):
+                obj = TranscodeTotalInfo()
+                obj._deserialize(item)
+                self.DataInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeLiveWatermarkRequest(AbstractModel):
     """DescribeLiveWatermark请求参数结构体
 
@@ -10235,6 +10304,49 @@ topspeed_H265：极速高清-H265。
         self.Bitrate = params.get("Bitrate")
         self.Type = params.get("Type")
         self.PushDomain = params.get("PushDomain")
+        self.Resolution = params.get("Resolution")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TranscodeTotalInfo(AbstractModel):
+    """转码总量数据
+
+    """
+
+    def __init__(self):
+        """
+        :param Time: 时间点，北京时间，
+示例：2019-03-01 00:00:00。
+        :type Time: str
+        :param Duration: 转码时长，单位：分钟。
+        :type Duration: int
+        :param ModuleCodec: 编码方式，带模块，
+示例：
+liveprocessor_H264 =》直播转码-H264，
+liveprocessor_H265 =》 直播转码-H265，
+topspeed_H264 =》极速高清-H264，
+topspeed_H265 =》极速高清-H265。
+        :type ModuleCodec: str
+        :param Resolution: 分辨率，
+示例：540*480。
+        :type Resolution: str
+        """
+        self.Time = None
+        self.Duration = None
+        self.ModuleCodec = None
+        self.Resolution = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        self.Duration = params.get("Duration")
+        self.ModuleCodec = params.get("ModuleCodec")
         self.Resolution = params.get("Resolution")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

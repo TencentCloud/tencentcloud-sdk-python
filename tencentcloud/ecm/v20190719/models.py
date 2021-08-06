@@ -3577,7 +3577,7 @@ class DescribeNetworkInterfacesRequest(AbstractModel):
 vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。
 subnet-id - String - （过滤条件）所属子网实例ID，形如：subnet-f49l6u0z。
 network-interface-id - String - （过滤条件）弹性网卡实例ID，形如：eni-5k56k7k7。
-attachment.instance-id - String - （过滤条件）绑定的云服务器实例ID，形如：ins-3nqpdn3i。
+attachment.instance-id - String - （过滤条件）绑定的云服务器实例ID，形如：ein-3nqpdn3i。
 groups.security-group-id - String - （过滤条件）绑定的安全组实例ID，例如：sg-f9ekbxeq。
 network-interface-name - String - （过滤条件）网卡实例名称。
 network-interface-description - String - （过滤条件）网卡实例描述。
@@ -5194,6 +5194,8 @@ class Image(AbstractModel):
         :type ImageSource: str
         :param TaskId: 中间态和失败时候的任务ID
         :type TaskId: str
+        :param IsSupportCloudInit: 是否支持CloudInit
+        :type IsSupportCloudInit: bool
         """
         self.ImageId = None
         self.ImageName = None
@@ -5211,6 +5213,7 @@ class Image(AbstractModel):
         self.SrcImage = None
         self.ImageSource = None
         self.TaskId = None
+        self.IsSupportCloudInit = None
 
 
     def _deserialize(self, params):
@@ -5232,6 +5235,7 @@ class Image(AbstractModel):
             self.SrcImage._deserialize(params.get("SrcImage"))
         self.ImageSource = params.get("ImageSource")
         self.TaskId = params.get("TaskId")
+        self.IsSupportCloudInit = params.get("IsSupportCloudInit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7734,36 +7738,38 @@ class Module(AbstractModel):
 
     def __init__(self):
         """
-        :param ModuleId: 模块Id
+        :param ModuleId: 模块Id。
         :type ModuleId: str
-        :param ModuleName: 模块名称
+        :param ModuleName: 模块名称。
         :type ModuleName: str
         :param ModuleState: 模块状态：
-NORMAL：正常
+NORMAL：正常。
 DELETING：删除中 
-DELETEFAILED：删除失败
+DELETEFAILED：删除失败。
         :type ModuleState: str
-        :param DefaultSystemDiskSize: 默认系统盘大小
+        :param DefaultSystemDiskSize: 默认系统盘大小。
         :type DefaultSystemDiskSize: int
-        :param DefaultDataDiskSize: 默认数据盘大小
+        :param DefaultDataDiskSize: 默认数据盘大小。
         :type DefaultDataDiskSize: int
-        :param InstanceTypeConfig: 默认机型
+        :param InstanceTypeConfig: 默认机型。
         :type InstanceTypeConfig: :class:`tencentcloud.ecm.v20190719.models.InstanceTypeConfig`
-        :param DefaultImage: 默认镜像
+        :param DefaultImage: 默认镜像。
         :type DefaultImage: :class:`tencentcloud.ecm.v20190719.models.Image`
-        :param CreateTime: 创建时间
+        :param CreateTime: 创建时间。
         :type CreateTime: str
-        :param DefaultBandwidth: 默认出带宽
+        :param DefaultBandwidth: 默认出带宽。
         :type DefaultBandwidth: int
-        :param TagSet: 标签集合
+        :param TagSet: 标签集合。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagSet: list of Tag
-        :param CloseIpDirect: 是否关闭IP直通
+        :param CloseIpDirect: 是否关闭IP直通。
         :type CloseIpDirect: int
-        :param SecurityGroupIds: 默认安全组id列表
+        :param SecurityGroupIds: 默认安全组id列表。
         :type SecurityGroupIds: list of str
-        :param DefaultBandwidthIn: 默认入带宽
+        :param DefaultBandwidthIn: 默认入带宽。
         :type DefaultBandwidthIn: int
+        :param UserData: 自定义脚本数据
+        :type UserData: str
         """
         self.ModuleId = None
         self.ModuleName = None
@@ -7778,6 +7784,7 @@ DELETEFAILED：删除失败
         self.CloseIpDirect = None
         self.SecurityGroupIds = None
         self.DefaultBandwidthIn = None
+        self.UserData = None
 
 
     def _deserialize(self, params):
@@ -7803,6 +7810,7 @@ DELETEFAILED：删除失败
         self.CloseIpDirect = params.get("CloseIpDirect")
         self.SecurityGroupIds = params.get("SecurityGroupIds")
         self.DefaultBandwidthIn = params.get("DefaultBandwidthIn")
+        self.UserData = params.get("UserData")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
